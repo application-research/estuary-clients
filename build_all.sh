@@ -19,6 +19,7 @@ git status swagger.json | grep modified && {
     $cmd generate \
       -i $swagger_url \
       -l $lang \
-      -o $lang
+      -o $lang \
+      -c config.json
   done
 } || true
