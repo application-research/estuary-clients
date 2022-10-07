@@ -1,0 +1,3371 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Estuary API</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>Estuary API</h1>
+    <div class="app-desc">This is the API for the Estuary application.</div>
+    <div class="app-desc">More information: <a href="https://docs.estuary.tech/feedback">https://docs.estuary.tech/feedback</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 0.0.0</div>
+    <div class="app-desc">BasePath:/</div>
+    <div class="license-info">Apache 2.0 Apache-2.0 OR MIT</div>
+    <div class="license-url">https://github.com/application-research/estuary/blob/master/LICENSE.md</div>
+  <h2>Access</h2>
+    <ol>
+      <li>APIKey KeyParamName:Authorization KeyInQuery:false KeyInHeader:true</li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Admin">Admin</a></h4>
+  <ul>
+  <li><a href="#adminPeeringPeersDelete"><code><span class="http-method">delete</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersGet"><code><span class="http-method">get</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersPost"><code><span class="http-method">post</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringStartPost"><code><span class="http-method">post</span> /admin/peering/start</code></a></li>
+  <li><a href="#adminPeeringStatusGet"><code><span class="http-method">get</span> /admin/peering/status</code></a></li>
+  <li><a href="#adminPeeringStopPost"><code><span class="http-method">post</span> /admin/peering/stop</code></a></li>
+  <li><a href="#adminSystemConfigGet"><code><span class="http-method">get</span> /admin/system/config</code></a></li>
+  <li><a href="#adminUsersGet"><code><span class="http-method">get</span> /admin/users</code></a></li>
+  </ul>
+  <h4><a href="#Autoretrieve">Autoretrieve</a></h4>
+  <ul>
+  <li><a href="#adminAutoretrieveInitPost"><code><span class="http-method">post</span> /admin/autoretrieve/init</code></a></li>
+  <li><a href="#adminAutoretrieveListGet"><code><span class="http-method">get</span> /admin/autoretrieve/list</code></a></li>
+  <li><a href="#autoretrieveHeartbeatPost"><code><span class="http-method">post</span> /autoretrieve/heartbeat</code></a></li>
+  </ul>
+  <h4><a href="#Collections">Collections</a></h4>
+  <ul>
+  <li><a href="#collectionsColuuidCommitPost"><code><span class="http-method">post</span> /collections/{coluuid}/commit</code></a></li>
+  <li><a href="#collectionsColuuidDelete"><code><span class="http-method">delete</span> /collections/{coluuid}</code></a></li>
+  <li><a href="#collectionsColuuidGet"><code><span class="http-method">get</span> /collections/{coluuid}</code></a></li>
+  <li><a href="#collectionsColuuidPost"><code><span class="http-method">post</span> /collections/{coluuid}</code></a></li>
+  <li><a href="#collectionsFsAddPost"><code><span class="http-method">post</span> /collections/fs/add</code></a></li>
+  <li><a href="#collectionsGet"><code><span class="http-method">get</span> /collections/</code></a></li>
+  <li><a href="#collectionsPost"><code><span class="http-method">post</span> /collections/</code></a></li>
+  </ul>
+  <h4><a href="#Content">Content</a></h4>
+  <ul>
+  <li><a href="#contentAddCarPost"><code><span class="http-method">post</span> /content/add-car</code></a></li>
+  <li><a href="#contentAddIpfsPost"><code><span class="http-method">post</span> /content/add-ipfs</code></a></li>
+  <li><a href="#contentAddPost"><code><span class="http-method">post</span> /content/add</code></a></li>
+  <li><a href="#contentAggregatedContentGet"><code><span class="http-method">get</span> /content/aggregated/{content}</code></a></li>
+  <li><a href="#contentAllDealsGet"><code><span class="http-method">get</span> /content/all-deals</code></a></li>
+  <li><a href="#contentBwUsageContentGet"><code><span class="http-method">get</span> /content/bw-usage/{content}</code></a></li>
+  <li><a href="#contentCreatePost"><code><span class="http-method">post</span> /content/create</code></a></li>
+  <li><a href="#contentDealsGet"><code><span class="http-method">get</span> /content/deals</code></a></li>
+  <li><a href="#contentEnsureReplicationDatacidGet"><code><span class="http-method">get</span> /content/ensure-replication/{datacid}</code></a></li>
+  <li><a href="#contentFailuresContentGet"><code><span class="http-method">get</span> /content/failures/{content}</code></a></li>
+  <li><a href="#contentImportdealPost"><code><span class="http-method">post</span> /content/importdeal</code></a></li>
+  <li><a href="#contentListGet"><code><span class="http-method">get</span> /content/list</code></a></li>
+  <li><a href="#contentReadContGet"><code><span class="http-method">get</span> /content/read/{cont}</code></a></li>
+  <li><a href="#contentStagingZonesGet"><code><span class="http-method">get</span> /content/staging-zones</code></a></li>
+  <li><a href="#contentStatsGet"><code><span class="http-method">get</span> /content/stats</code></a></li>
+  <li><a href="#contentStatusIdGet"><code><span class="http-method">get</span> /content/status/{id}</code></a></li>
+  </ul>
+  <h4><a href="#Deals">Deals</a></h4>
+  <ul>
+  <li><a href="#dealEstimatePost"><code><span class="http-method">post</span> /deal/estimate</code></a></li>
+  <li><a href="#dealInfoDealidGet"><code><span class="http-method">get</span> /deal/info/{dealid}</code></a></li>
+  <li><a href="#dealProposalPropcidGet"><code><span class="http-method">get</span> /deal/proposal/{propcid}</code></a></li>
+  <li><a href="#dealQueryMinerGet"><code><span class="http-method">get</span> /deal/query/{miner}</code></a></li>
+  <li><a href="#dealStatusByProposalPropcidGet"><code><span class="http-method">get</span> /deal/status-by-proposal/{propcid}</code></a></li>
+  <li><a href="#dealStatusMinerPropcidGet"><code><span class="http-method">get</span> /deal/status/{miner}/{propcid}</code></a></li>
+  <li><a href="#dealTransferInProgressGet"><code><span class="http-method">get</span> /deal/transfer/in-progress</code></a></li>
+  <li><a href="#dealTransferStatusPost"><code><span class="http-method">post</span> /deal/transfer/status</code></a></li>
+  <li><a href="#dealsFailuresGet"><code><span class="http-method">get</span> /deals/failures</code></a></li>
+  <li><a href="#dealsMakeMinerPost"><code><span class="http-method">post</span> /deals/make/{miner}</code></a></li>
+  <li><a href="#dealsStatusDealGet"><code><span class="http-method">get</span> /deals/status/{deal}</code></a></li>
+  <li><a href="#publicDealsFailuresGet"><code><span class="http-method">get</span> /public/deals/failures</code></a></li>
+  <li><a href="#publicMinersStorageQueryMinerGet"><code><span class="http-method">get</span> /public/miners/storage/query/{miner}</code></a></li>
+  </ul>
+  <h4><a href="#Metrics">Metrics</a></h4>
+  <ul>
+  <li><a href="#publicMetricsDealsOnChainGet"><code><span class="http-method">get</span> /public/metrics/deals-on-chain</code></a></li>
+  </ul>
+  <h4><a href="#Miner">Miner</a></h4>
+  <ul>
+  <li><a href="#publicMinersDealsMinerGet"><code><span class="http-method">get</span> /public/miners/deals/{miner}</code></a></li>
+  <li><a href="#publicMinersStatsMinerGet"><code><span class="http-method">get</span> /public/miners/stats/{miner}</code></a></li>
+  </ul>
+  <h4><a href="#Net">Net</a></h4>
+  <ul>
+  <li><a href="#netAddrsGet"><code><span class="http-method">get</span> /net/addrs</code></a></li>
+  <li><a href="#publicMinersFailuresMinerGet"><code><span class="http-method">get</span> /public/miners/failures/{miner}</code></a></li>
+  <li><a href="#publicMinersGet"><code><span class="http-method">get</span> /public/miners</code></a></li>
+  <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
+  <li><a href="#publicNetPeersGet"><code><span class="http-method">get</span> /public/net/peers</code></a></li>
+  </ul>
+  <h4><a href="#Peering">Peering</a></h4>
+  <ul>
+  <li><a href="#adminPeeringPeersDelete"><code><span class="http-method">delete</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersGet"><code><span class="http-method">get</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersPost"><code><span class="http-method">post</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringStartPost"><code><span class="http-method">post</span> /admin/peering/start</code></a></li>
+  <li><a href="#adminPeeringStatusGet"><code><span class="http-method">get</span> /admin/peering/status</code></a></li>
+  <li><a href="#adminPeeringStopPost"><code><span class="http-method">post</span> /admin/peering/stop</code></a></li>
+  </ul>
+  <h4><a href="#Peers">Peers</a></h4>
+  <ul>
+  <li><a href="#adminPeeringPeersDelete"><code><span class="http-method">delete</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersGet"><code><span class="http-method">get</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringPeersPost"><code><span class="http-method">post</span> /admin/peering/peers</code></a></li>
+  <li><a href="#adminPeeringStartPost"><code><span class="http-method">post</span> /admin/peering/start</code></a></li>
+  <li><a href="#adminPeeringStatusGet"><code><span class="http-method">get</span> /admin/peering/status</code></a></li>
+  <li><a href="#adminPeeringStopPost"><code><span class="http-method">post</span> /admin/peering/stop</code></a></li>
+  </ul>
+  <h4><a href="#Pinning">Pinning</a></h4>
+  <ul>
+  <li><a href="#pinningPinsGet"><code><span class="http-method">get</span> /pinning/pins</code></a></li>
+  <li><a href="#pinningPinsPinidDelete"><code><span class="http-method">delete</span> /pinning/pins/{pinid}</code></a></li>
+  <li><a href="#pinningPinsPinidGet"><code><span class="http-method">get</span> /pinning/pins/{pinid}</code></a></li>
+  <li><a href="#pinningPinsPinidPost"><code><span class="http-method">post</span> /pinning/pins/{pinid}</code></a></li>
+  <li><a href="#pinningPinsPost"><code><span class="http-method">post</span> /pinning/pins</code></a></li>
+  </ul>
+  <h4><a href="#Public">Public</a></h4>
+  <ul>
+  <li><a href="#publicByCidCidGet"><code><span class="http-method">get</span> /public/by-cid/{cid}</code></a></li>
+  <li><a href="#publicInfoGet"><code><span class="http-method">get</span> /public/info</code></a></li>
+  <li><a href="#publicMetricsDealsOnChainGet"><code><span class="http-method">get</span> /public/metrics/deals-on-chain</code></a></li>
+  <li><a href="#publicMinersDealsMinerGet"><code><span class="http-method">get</span> /public/miners/deals/{miner}</code></a></li>
+  <li><a href="#publicMinersFailuresMinerGet"><code><span class="http-method">get</span> /public/miners/failures/{miner}</code></a></li>
+  <li><a href="#publicMinersGet"><code><span class="http-method">get</span> /public/miners</code></a></li>
+  <li><a href="#publicMinersStatsMinerGet"><code><span class="http-method">get</span> /public/miners/stats/{miner}</code></a></li>
+  <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
+  <li><a href="#publicNetPeersGet"><code><span class="http-method">get</span> /public/net/peers</code></a></li>
+  <li><a href="#publicStatsGet"><code><span class="http-method">get</span> /public/stats</code></a></li>
+  </ul>
+  <h4><a href="#User">User</a></h4>
+  <ul>
+  <li><a href="#userApiKeysGet"><code><span class="http-method">get</span> /user/api-keys</code></a></li>
+  <li><a href="#userApiKeysKeyDelete"><code><span class="http-method">delete</span> /user/api-keys/{key}</code></a></li>
+  <li><a href="#userApiKeysPost"><code><span class="http-method">post</span> /user/api-keys</code></a></li>
+  <li><a href="#userExportGet"><code><span class="http-method">get</span> /user/export</code></a></li>
+  <li><a href="#userStatsGet"><code><span class="http-method">get</span> /user/stats</code></a></li>
+  </ul>
+
+  <h1><a name="Admin">Admin</a></h1>
+  <div class="method"><a name="adminPeeringPeersDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Remove peers on Peering Service (<span class="nickname">adminPeeringPeersDelete</span>)</div>
+    <div class="method-notes">This endpoint can be used to remove a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">List all Peering peers (<span class="nickname">adminPeeringPeersGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to list all peers on Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Add peers on Peering Service (<span class="nickname">adminPeeringPeersPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to add a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStartPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/start</code></pre></div>
+    <div class="method-summary">Start Peering (<span class="nickname">adminPeeringStartPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to start the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStatusGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/status</code></pre></div>
+    <div class="method-summary">Check Peering Status (<span class="nickname">adminPeeringStatusGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to check the Peering status</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStopPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/stop</code></pre></div>
+    <div class="method-summary">Stop Peering (<span class="nickname">adminPeeringStopPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to stop the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminSystemConfigGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/system/config</code></pre></div>
+    <div class="method-summary">Get systems(estuary/shuttle) config (<span class="nickname">adminSystemConfigGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get system configs.</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminUsersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/users</code></pre></div>
+    <div class="method-summary">Get all users (<span class="nickname">adminUsersGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get all users.</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Autoretrieve">Autoretrieve</a></h1>
+  <div class="method"><a name="adminAutoretrieveInitPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/autoretrieve/init</code></pre></div>
+    <div class="method-summary">Register autoretrieve server (<span class="nickname">adminAutoretrieveInitPost</span>)</div>
+    <div class="method-notes">This endpoint registers a new autoretrieve server</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">addresses <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Autoretrieve's comma-separated list of addresses </div>
+<div class="param">pubKey <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Autoretrieve's public key </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminAutoretrieveListGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/autoretrieve/list</code></pre></div>
+    <div class="method-summary">List autoretrieve servers (<span class="nickname">adminAutoretrieveListGet</span>)</div>
+    <div class="method-notes">This endpoint lists all registered autoretrieve servers</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="autoretrieveHeartbeatPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /autoretrieve/heartbeat</code></pre></div>
+    <div class="method-summary">Marks autoretrieve server as up (<span class="nickname">autoretrieveHeartbeatPost</span>)</div>
+    <div class="method-notes">This endpoint updates the lastConnection field for autoretrieve</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">token (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Autoretrieve's auth token </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Collections">Collections</a></h1>
+  <div class="method"><a name="collectionsColuuidCommitPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /collections/{coluuid}/commit</code></pre></div>
+    <div class="method-summary">Produce a CID of the collection contents (<span class="nickname">collectionsColuuidCommitPost</span>)</div>
+    <div class="method-notes">This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; coluuid </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsColuuidDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /collections/{coluuid}</code></pre></div>
+    <div class="method-summary">Deletes a collection (<span class="nickname">collectionsColuuidDelete</span>)</div>
+    <div class="method-notes">This endpoint is used to delete an existing collection.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Collection ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsColuuidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections/{coluuid}</code></pre></div>
+    <div class="method-summary">Get contents in a collection (<span class="nickname">collectionsColuuidGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get contents in a collection. If no colpath query param is passed</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection UUID </div><div class="param">dir (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsColuuidPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /collections/{coluuid}</code></pre></div>
+    <div class="method-summary">Add contents to a collection (<span class="nickname">collectionsColuuidPost</span>)</div>
+    <div class="method-notes">This endpoint adds already-pinned contents (that have ContentIDs) to a collection.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#integer">integer</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Content IDs to add to collection </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      map[String, String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsFsAddPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /collections/fs/add</code></pre></div>
+    <div class="method-summary">Add a file to a collection (<span class="nickname">collectionsFsAddPost</span>)</div>
+    <div class="method-notes">This endpoint adds a file to a collection</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection ID </div><div class="param">content (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Content </div><div class="param">path (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Path to file </div>
+    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /collections/</code></pre></div>
+    <div class="method-summary">List all collections (<span class="nickname">collectionsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#main.Collection">main.Collection</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="collectionsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /collections/</code></pre></div>
+    <div class="method-summary">Create a new collection (<span class="nickname">collectionsPost</span>)</div>
+    <div class="method-notes">This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#main.createCollectionBody">main.createCollectionBody</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Collection name and description </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#main.Collection">main.Collection</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#main.Collection">main.Collection</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Content">Content</a></h1>
+  <div class="method"><a name="contentAddCarPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add-car</code></pre></div>
+    <div class="method-summary">Add Car object (<span class="nickname">contentAddCarPost</span>)</div>
+    <div class="method-notes">This endpoint is used to add a car object to the network. The object can be a file or a directory.</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Car </div>
+
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">filename (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filename </div><div class="param">commp (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Commp </div><div class="param">size (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Size </div>
+    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentAddIpfsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add-ipfs</code></pre></div>
+    <div class="method-summary">Add IPFS object (<span class="nickname">contentAddIpfsPost</span>)</div>
+    <div class="method-notes">This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#util.ContentAddIpfsBody">util.ContentAddIpfsBody</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; IPFS Body </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentAddPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add</code></pre></div>
+    <div class="method-summary">Add new content (<span class="nickname">contentAddPost</span>)</div>
+    <div class="method-notes">This endpoint is used to upload new content.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Collection UUID </div><div class="param">dir (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Directory </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>multipart/form-data</code></li>
+    </ul>
+
+
+
+
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">file (required)</div>
+
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; File to upload </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentAggregatedContentGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/aggregated/{content}</code></pre></div>
+    <div class="method-summary">Get aggregated content stats (<span class="nickname">contentAggregatedContentGet</span>)</div>
+    <div class="method-notes">This endpoint returns aggregated content stats</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">content (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentAllDealsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/all-deals</code></pre></div>
+    <div class="method-summary">Get all deals for a user (<span class="nickname">contentAllDealsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get all deals for a user</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">begin (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Begin </div><div class="param">duration (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Duration </div><div class="param">all (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; All </div>
+    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentBwUsageContentGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/bw-usage/{content}</code></pre></div>
+    <div class="method-summary">Get content bandwidth (<span class="nickname">contentBwUsageContentGet</span>)</div>
+    <div class="method-notes">This endpoint returns content bandwidth</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">content (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentCreatePost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/create</code></pre></div>
+    <div class="method-summary">Add a new content (<span class="nickname">contentCreatePost</span>)</div>
+    <div class="method-notes">This endpoint adds a new content</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Content </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentDealsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/deals</code></pre></div>
+    <div class="method-summary">Content with deals (<span class="nickname">contentDealsGet</span>)</div>
+    <div class="method-notes">This endpoint lists all content with deals</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Limit </div><div class="param">offset (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Offset </div>
+    </div>  <!-- field-items -->
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentEnsureReplicationDatacidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/ensure-replication/{datacid}</code></pre></div>
+    <div class="method-summary">Ensure Replication (<span class="nickname">contentEnsureReplicationDatacidGet</span>)</div>
+    <div class="method-notes">This endpoint ensures that the content is replicated to the specified number of providers</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">datacid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Data CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentFailuresContentGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/failures/{content}</code></pre></div>
+    <div class="method-summary">List all failures for a content (<span class="nickname">contentFailuresContentGet</span>)</div>
+    <div class="method-notes">This endpoint returns all failures for a content</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">content (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentImportdealPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/importdeal</code></pre></div>
+    <div class="method-summary">Import a deal (<span class="nickname">contentImportdealPost</span>)</div>
+    <div class="method-notes">This endpoint imports a deal into the shuttle.</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#main.importDealBody">main.importDealBody</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Import a deal </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentListGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/list</code></pre></div>
+    <div class="method-summary">List all pinned content (<span class="nickname">contentListGet</span>)</div>
+    <div class="method-notes">This endpoint lists all content</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentReadContGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/read/{cont}</code></pre></div>
+    <div class="method-summary">Read content (<span class="nickname">contentReadContGet</span>)</div>
+    <div class="method-notes">This endpoint reads content from the blockstore</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">cont (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentStagingZonesGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/staging-zones</code></pre></div>
+    <div class="method-summary">Get staging zone for user (<span class="nickname">contentStagingZonesGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get staging zone for user.</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentStatsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/stats</code></pre></div>
+    <div class="method-summary">Get content statistics (<span class="nickname">contentStatsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; limit </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentStatusIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/status/{id}</code></pre></div>
+    <div class="method-summary">Content Status (<span class="nickname">contentStatusIdGet</span>)</div>
+    <div class="method-notes">This endpoint returns the status of a content</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Deals">Deals</a></h1>
+  <div class="method"><a name="dealEstimatePost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /deal/estimate</code></pre></div>
+    <div class="method-summary">Estimate the cost of a deal (<span class="nickname">dealEstimatePost</span>)</div>
+    <div class="method-notes">This endpoint estimates the cost of a deal</div>
+
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#main.estimateDealBody">main.estimateDealBody</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The size of the deal in bytes, the replication factor, and the duration of the deal in blocks </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealInfoDealidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/info/{dealid}</code></pre></div>
+    <div class="method-summary">Get Deal Info (<span class="nickname">dealInfoDealidGet</span>)</div>
+    <div class="method-notes">This endpoint returns the deal info for a deal</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">dealid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Deal ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealProposalPropcidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/proposal/{propcid}</code></pre></div>
+    <div class="method-summary">Get Proposal (<span class="nickname">dealProposalPropcidGet</span>)</div>
+    <div class="method-notes">This endpoint returns the proposal for a deal</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">propcid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Proposal CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealQueryMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/query/{miner}</code></pre></div>
+    <div class="method-summary">Query Ask (<span class="nickname">dealQueryMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns the ask for a given CID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealStatusByProposalPropcidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/status-by-proposal/{propcid}</code></pre></div>
+    <div class="method-summary">Get Deal Status by PropCid (<span class="nickname">dealStatusByProposalPropcidGet</span>)</div>
+    <div class="method-notes">Get Deal Status by PropCid</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">propcid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; PropCid </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealStatusMinerPropcidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/status/{miner}/{propcid}</code></pre></div>
+    <div class="method-summary">Deal Status (<span class="nickname">dealStatusMinerPropcidGet</span>)</div>
+    <div class="method-notes">This endpoint returns the status of a deal</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner </div><div class="param">propcid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Proposal CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealTransferInProgressGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deal/transfer/in-progress</code></pre></div>
+    <div class="method-summary">Transfer In Progress (<span class="nickname">dealTransferInProgressGet</span>)</div>
+    <div class="method-notes">This endpoint returns the in-progress transfers</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealTransferStatusPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /deal/transfer/status</code></pre></div>
+    <div class="method-summary">Transfer Status (<span class="nickname">dealTransferStatusPost</span>)</div>
+    <div class="method-notes">This endpoint returns the status of a transfer</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealsFailuresGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deals/failures</code></pre></div>
+    <div class="method-summary">Get storage failures for user (<span class="nickname">dealsFailuresGet</span>)</div>
+    <div class="method-notes">This endpoint returns a list of storage failures for user</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealsMakeMinerPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /deals/make/{miner}</code></pre></div>
+    <div class="method-summary">Make Deal (<span class="nickname">dealsMakeMinerPost</span>)</div>
+    <div class="method-notes">This endpoint makes a deal for a given content and miner</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">dealRequest <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Deal Request </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="dealsStatusDealGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deals/status/{deal}</code></pre></div>
+    <div class="method-summary">Get Deal Status (<span class="nickname">dealsStatusDealGet</span>)</div>
+    <div class="method-notes">This endpoint returns the status of a deal</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">deal (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Deal ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicDealsFailuresGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/deals/failures</code></pre></div>
+    <div class="method-summary">Get storage failures (<span class="nickname">publicDealsFailuresGet</span>)</div>
+    <div class="method-notes">This endpoint returns a list of storage failures</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersStorageQueryMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/storage/query/{miner}</code></pre></div>
+    <div class="method-summary">Query Ask (<span class="nickname">publicMinersStorageQueryMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns the ask for a given CID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; CID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Metrics">Metrics</a></h1>
+  <div class="method"><a name="publicMetricsDealsOnChainGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/metrics/deals-on-chain</code></pre></div>
+    <div class="method-summary">Get deal metrics (<span class="nickname">publicMetricsDealsOnChainGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get deal metrics</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Miner">Miner</a></h1>
+  <div class="method"><a name="publicMinersDealsMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/deals/{miner}</code></pre></div>
+    <div class="method-summary">Get all miners deals (<span class="nickname">publicMinersDealsMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners deals</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersStatsMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/stats/{miner}</code></pre></div>
+    <div class="method-summary">Get miner stats (<span class="nickname">publicMinersStatsMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns miner stats</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Net">Net</a></h1>
+  <div class="method"><a name="netAddrsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /net/addrs</code></pre></div>
+    <div class="method-summary">Net Addrs (<span class="nickname">netAddrsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get net addrs</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersFailuresMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/failures/{miner}</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">publicMinersFailuresMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">publicMinersGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicNetAddrsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/net/addrs</code></pre></div>
+    <div class="method-summary">Net Addrs (<span class="nickname">publicNetAddrsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get net addrs</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicNetPeersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/net/peers</code></pre></div>
+    <div class="method-summary">Net Peers (<span class="nickname">publicNetPeersGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get net peers</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Peering">Peering</a></h1>
+  <div class="method"><a name="adminPeeringPeersDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Remove peers on Peering Service (<span class="nickname">adminPeeringPeersDelete</span>)</div>
+    <div class="method-notes">This endpoint can be used to remove a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">List all Peering peers (<span class="nickname">adminPeeringPeersGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to list all peers on Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Add peers on Peering Service (<span class="nickname">adminPeeringPeersPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to add a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStartPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/start</code></pre></div>
+    <div class="method-summary">Start Peering (<span class="nickname">adminPeeringStartPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to start the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStatusGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/status</code></pre></div>
+    <div class="method-summary">Check Peering Status (<span class="nickname">adminPeeringStatusGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to check the Peering status</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStopPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/stop</code></pre></div>
+    <div class="method-summary">Stop Peering (<span class="nickname">adminPeeringStopPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to stop the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Peers">Peers</a></h1>
+  <div class="method"><a name="adminPeeringPeersDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Remove peers on Peering Service (<span class="nickname">adminPeeringPeersDelete</span>)</div>
+    <div class="method-notes">This endpoint can be used to remove a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">List all Peering peers (<span class="nickname">adminPeeringPeersGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to list all peers on Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringPeersPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/peers</code></pre></div>
+    <div class="method-summary">Add peers on Peering Service (<span class="nickname">adminPeeringPeersPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to add a Peer from the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStartPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/start</code></pre></div>
+    <div class="method-summary">Start Peering (<span class="nickname">adminPeeringStartPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to start the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStatusGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/peering/status</code></pre></div>
+    <div class="method-summary">Check Peering Status (<span class="nickname">adminPeeringStatusGet</span>)</div>
+    <div class="method-notes">This endpoint can be used to check the Peering status</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminPeeringStopPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/peering/stop</code></pre></div>
+    <div class="method-summary">Stop Peering (<span class="nickname">adminPeeringStopPost</span>)</div>
+    <div class="method-notes">This endpoint can be used to stop the Peering Service</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Pinning">Pinning</a></h1>
+  <div class="method"><a name="pinningPinsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pinning/pins</code></pre></div>
+    <div class="method-summary">List all pin status objects (<span class="nickname">pinningPinsGet</span>)</div>
+    <div class="method-notes">This endpoint lists all pin status objects</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="pinningPinsPinidDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /pinning/pins/{pinid}</code></pre></div>
+    <div class="method-summary">Delete a pinned object (<span class="nickname">pinningPinsPinidDelete</span>)</div>
+    <div class="method-notes">This endpoint deletes a pinned object.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">pinid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Pin ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="pinningPinsPinidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pinning/pins/{pinid}</code></pre></div>
+    <div class="method-summary">Get a pin status object (<span class="nickname">pinningPinsPinidGet</span>)</div>
+    <div class="method-notes">This endpoint returns a pin status object.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">pinid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; cid </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="pinningPinsPinidPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pinning/pins/{pinid}</code></pre></div>
+    <div class="method-summary">Replace a pinned object (<span class="nickname">pinningPinsPinidPost</span>)</div>
+    <div class="method-notes">This endpoint replaces a pinned object.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">pinid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Pin ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="pinningPinsPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /pinning/pins</code></pre></div>
+    <div class="method-summary">Add and pin object (<span class="nickname">pinningPinsPost</span>)</div>
+    <div class="method-notes">This endpoint adds a pin to the IPFS daemon.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">cid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; cid </div><div class="param">name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; name </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Public">Public</a></h1>
+  <div class="method"><a name="publicByCidCidGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/by-cid/{cid}</code></pre></div>
+    <div class="method-summary">Get Content by Cid (<span class="nickname">publicByCidCidGet</span>)</div>
+    <div class="method-notes">This endpoint returns the content associated with a CID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">cid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Cid </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicInfoGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/info</code></pre></div>
+    <div class="method-summary">Get public node info (<span class="nickname">publicInfoGet</span>)</div>
+    <div class="method-notes">This endpoint returns information about the node</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMetricsDealsOnChainGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/metrics/deals-on-chain</code></pre></div>
+    <div class="method-summary">Get deal metrics (<span class="nickname">publicMetricsDealsOnChainGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get deal metrics</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersDealsMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/deals/{miner}</code></pre></div>
+    <div class="method-summary">Get all miners deals (<span class="nickname">publicMinersDealsMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners deals</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersFailuresMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/failures/{miner}</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">publicMinersFailuresMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">publicMinersGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicMinersStatsMinerGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners/stats/{miner}</code></pre></div>
+    <div class="method-summary">Get miner stats (<span class="nickname">publicMinersStatsMinerGet</span>)</div>
+    <div class="method-notes">This endpoint returns miner stats</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicNetAddrsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/net/addrs</code></pre></div>
+    <div class="method-summary">Net Addrs (<span class="nickname">publicNetAddrsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get net addrs</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicNetPeersGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/net/peers</code></pre></div>
+    <div class="method-summary">Net Peers (<span class="nickname">publicNetPeersGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get net peers</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      array[String]
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="publicStatsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/stats</code></pre></div>
+    <div class="method-summary">Public stats (<span class="nickname">publicStatsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get public stats.</div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="User">User</a></h1>
+  <div class="method"><a name="userApiKeysGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/api-keys</code></pre></div>
+    <div class="method-summary">Get API keys for a user (<span class="nickname">userApiKeysGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#main.getApiKeysResp">main.getApiKeysResp</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userApiKeysKeyDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /user/api-keys/{key}</code></pre></div>
+    <div class="method-summary">Revoke a User API Key. (<span class="nickname">userApiKeysKeyDelete</span>)</div>
+    <div class="method-notes">This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">key (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Key </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userApiKeysPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /user/api-keys</code></pre></div>
+    <div class="method-summary">Create API keys for a user (<span class="nickname">userApiKeysPost</span>)</div>
+    <div class="method-notes">This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#main.getApiKeysResp">main.getApiKeysResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#main.getApiKeysResp">main.getApiKeysResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userExportGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/export</code></pre></div>
+    <div class="method-summary">Export user data (<span class="nickname">userExportGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get API keys for a user.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="userStatsGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/stats</code></pre></div>
+    <div class="method-summary">Create API keys for a user (<span class="nickname">userStatsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to create API keys for a user.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#main.userStatsResponse">main.userStatsResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{"empty": false}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#main.userStatsResponse">main.userStatsResponse</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#main.Collection"><code>main.Collection</code> - </a></li>
+    <li><a href="#main.createCollectionBody"><code>main.createCollectionBody</code> - </a></li>
+    <li><a href="#main.estimateDealBody"><code>main.estimateDealBody</code> - </a></li>
+    <li><a href="#main.getApiKeysResp"><code>main.getApiKeysResp</code> - </a></li>
+    <li><a href="#main.importDealBody"><code>main.importDealBody</code> - </a></li>
+    <li><a href="#main.userStatsResponse"><code>main.userStatsResponse</code> - </a></li>
+    <li><a href="#util.ContentAddIpfsBody"><code>util.ContentAddIpfsBody</code> - </a></li>
+    <li><a href="#util.ContentAddResponse"><code>util.ContentAddResponse</code> - </a></li>
+    <li><a href="#util.HttpError"><code>util.HttpError</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="main.Collection"><code>main.Collection</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">createdAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">userId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">uuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.createCollectionBody"><code>main.createCollectionBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.estimateDealBody"><code>main.estimateDealBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">durationBlks (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">replication (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">size (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">verified (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.getApiKeysResp"><code>main.getApiKeysResp</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.importDealBody"><code>main.importDealBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">coluuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">dealIDs (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">array[Integer]</a></span>  </div>
+<div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.userStatsResponse"><code>main.userStatsResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">numPins (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">totalSize (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.ContentAddIpfsBody"><code>util.ContentAddIpfsBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">coluuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">filename (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">peers (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">root (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.ContentAddResponse"><code>util.ContentAddResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">estuaryId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">providers (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">retrieval_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.HttpError"><code>util.HttpError</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">details (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

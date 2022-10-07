@@ -1,0 +1,455 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="contentAddCarPost"></a>contentAddCarPost</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to add a car object to the network. The object can be a file or a directory.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/add-car</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">Car</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">filename</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Filename</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">commp</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Commp</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">size</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Size</p>
+	  </li>
+  </ul>
+  <h2><a name="contentAddIpfsPost"></a>contentAddIpfsPost</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/add-ipfs</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Util.ContentAddIpfsBody(Util.ContentAddIpfsBody)</span>
+      
+      <p class="param-description">IPFS Body</p>
+	  </li>
+  </ul>
+  <h2><a name="contentAddPost"></a>contentAddPost</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to upload new content.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/add</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="util.ContentAddResponse"><a href="">util.ContentAddResponse</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      <span class="param-in">Form: </span>
+      
+      
+      
+      
+      <span class="param-name">file</span>
+      <span class="param-type">File</span>
+      
+      <p class="param-description">File to upload</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">coluuid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Collection UUID</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">dir</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Directory</p>
+	  </li>
+  </ul>
+  <h2><a name="contentAggregatedContentGet"></a>contentAggregatedContentGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint returns aggregated content stats</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/aggregated/{content}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="string"><a href="">String</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Content ID</p>
+	  </li>
+  </ul>
+  <h2><a name="contentAllDealsGet"></a>contentAllDealsGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to get all deals for a user</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/all-deals</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">begin</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Begin</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">duration</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Duration</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">all</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">All</p>
+	  </li>
+  </ul>
+  <h2><a name="contentBwUsageContentGet"></a>contentBwUsageContentGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint returns content bandwidth</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/bw-usage/{content}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Content ID</p>
+	  </li>
+  </ul>
+  <h2><a name="contentCreatePost"></a>contentCreatePost</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint adds a new content</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/create</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">Content</p>
+	  </li>
+  </ul>
+  <h2><a name="contentDealsGet"></a>contentDealsGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint lists all content with deals</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/deals</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">limit</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Limit</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">offset</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Offset</p>
+	  </li>
+  </ul>
+  <h2><a name="contentEnsureReplicationDatacidGet"></a>contentEnsureReplicationDatacidGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint ensures that the content is replicated to the specified number of providers</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/ensure-replication/{datacid}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">datacid</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Data CID</p>
+	  </li>
+  </ul>
+  <h2><a name="contentFailuresContentGet"></a>contentFailuresContentGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint returns all failures for a content</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/failures/{content}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="string"><a href="">String</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">content</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Content ID</p>
+	  </li>
+  </ul>
+  <h2><a name="contentImportdealPost"></a>contentImportdealPost</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint imports a deal into the shuttle.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/importdeal</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>POST</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">Main.importDealBody(Main.importDealBody)</span>
+      
+      <p class="param-description">Import a deal</p>
+	  </li>
+  </ul>
+  <h2><a name="contentListGet"></a>contentListGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint lists all content</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/list</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="string"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="contentReadContGet"></a>contentReadContGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint reads content from the blockstore</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/read/{cont}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">cont</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">CID</p>
+	  </li>
+  </ul>
+  <h2><a name="contentStagingZonesGet"></a>contentStagingZonesGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to get staging zone for user.</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/staging-zones</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+  </ul>
+  <h2><a name="contentStatsGet"></a>contentStatsGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/stats</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">limit</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">limit</p>
+	  </li>
+  </ul>
+  <h2><a name="contentStatusIdGet"></a>contentStatusIdGet</h2>
+  <hr>
+  <p></p>
+  <p>This endpoint returns the status of a content</p>
+  <h3 class="section">URL</h3>
+  <code>https://api.estuary.tech/content/status/{id}</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model=""><a href=""></a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">id</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Content ID</p>
+	  </li>
+  </ul>
+</div>
