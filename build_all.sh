@@ -13,9 +13,7 @@ swagger_url=https://raw.githubusercontent.com/$repo_owner/estuary/master/docs/sw
 #download swagger.json from github and exit early if its identical to swagger.json in the repo
 curl $swagger_url -o swagger.json
 
-# git status swagger.json | grep modified && 
-
-{
+git status swagger.json | grep modified && {
   for lang in $(cat supported_langs); do
     rm -rf $lang
     $cmd generate \
