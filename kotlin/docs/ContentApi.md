@@ -33,8 +33,8 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val body : kotlin.String = body_example // kotlin.String | Car
@@ -85,8 +85,8 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val body : UtilContentAddIpfsBody =  // UtilContentAddIpfsBody | IPFS Body
@@ -131,8 +131,8 @@ This endpoint is used to upload new content.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val file : java.io.File = /path/to/file.txt // java.io.File | File to upload
@@ -182,8 +182,8 @@ This endpoint returns aggregated content stats
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -229,8 +229,8 @@ This endpoint is used to get all deals for a user
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val begin : kotlin.String = begin_example // kotlin.String | Begin
@@ -279,8 +279,8 @@ This endpoint returns content bandwidth
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -325,8 +325,8 @@ This endpoint adds a new content
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val body : kotlin.String = body_example // kotlin.String | Content
@@ -371,8 +371,8 @@ This endpoint lists all content with deals
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val limit : kotlin.Int = 56 // kotlin.Int | Limit
@@ -419,8 +419,8 @@ This endpoint ensures that the content is replicated to the specified number of 
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val datacid : kotlin.String = datacid_example // kotlin.String | Data CID
@@ -465,8 +465,8 @@ This endpoint returns all failures for a content
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -512,8 +512,8 @@ This endpoint imports a deal into the shuttle.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val body : MainimportDealBody =  // MainimportDealBody | Import a deal
@@ -558,8 +558,8 @@ This endpoint lists all content
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 try {
@@ -601,8 +601,8 @@ This endpoint reads content from the blockstore
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val cont : kotlin.String = cont_example // kotlin.String | CID
@@ -647,8 +647,8 @@ This endpoint is used to get staging zone for user.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 try {
@@ -689,8 +689,8 @@ This endpoint is used to get content statistics. Every content stored in the net
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val limit : kotlin.String = limit_example // kotlin.String | limit
@@ -735,8 +735,8 @@ This endpoint returns the status of a content
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = ContentApi()
 val id : kotlin.Int = 56 // kotlin.Int | Content ID

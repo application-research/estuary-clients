@@ -1,4 +1,4 @@
-# swagger_client.DealsApi
+# estuary_client.DealsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -30,19 +30,19 @@ This endpoint estimates the cost of a deal
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MainEstimateDealBody() # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainEstimateDealBody() # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try:
     # Estimate the cost of a deal
@@ -83,18 +83,18 @@ This endpoint returns the deal info for a deal
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 dealid = 56 # int | Deal ID
 
 try:
@@ -136,18 +136,18 @@ This endpoint returns the proposal for a deal
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 propcid = 'propcid_example' # str | Proposal CID
 
 try:
@@ -189,18 +189,18 @@ This endpoint returns the ask for a given CID
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | CID
 
 try:
@@ -242,18 +242,18 @@ Get Deal Status by PropCid
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 propcid = 'propcid_example' # str | PropCid
 
 try:
@@ -295,18 +295,18 @@ This endpoint returns the status of a deal
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Miner
 propcid = 'propcid_example' # str | Proposal CID
 
@@ -350,18 +350,18 @@ This endpoint returns the in-progress transfers
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Transfer In Progress
@@ -399,18 +399,18 @@ This endpoint returns the status of a transfer
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Transfer Status
@@ -448,18 +448,18 @@ This endpoint returns a list of storage failures for user
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get storage failures for user
@@ -497,18 +497,18 @@ This endpoint makes a deal for a given content and miner
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Miner
 deal_request = 'deal_request_example' # str | Deal Request
 
@@ -552,18 +552,18 @@ This endpoint returns the status of a deal
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 deal = 56 # int | Deal ID
 
 try:
@@ -605,18 +605,18 @@ This endpoint returns a list of storage failures
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get storage failures
@@ -654,18 +654,18 @@ This endpoint returns the ask for a given CID
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DealsApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | CID
 
 try:

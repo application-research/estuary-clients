@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.main_user_stats_response import MainUserStatsResponse  # noqa: E501
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.models.main_user_stats_response import MainUserStatsResponse  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestMainUserStatsResponse(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestMainUserStatsResponse(unittest.TestCase):
     def testMainUserStatsResponse(self):
         """Test MainUserStatsResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.main_user_stats_response.MainUserStatsResponse()  # noqa: E501
+        # model = estuary_client.models.main_user_stats_response.MainUserStatsResponse()  # noqa: E501
         pass
 
 

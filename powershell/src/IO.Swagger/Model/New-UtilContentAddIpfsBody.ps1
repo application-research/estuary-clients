@@ -19,10 +19,10 @@ function New-UtilContentAddIpfsBody {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.UtilContentAddIpfsBody' | Write-Verbose
+        'Creating object: estuary_client.Model.UtilContentAddIpfsBody' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.UtilContentAddIpfsBody -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.UtilContentAddIpfsBody -ArgumentList @(
             ${coluuid},
             ${dir},
             ${filename},

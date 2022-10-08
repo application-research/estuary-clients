@@ -22,8 +22,8 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = UserApi()
 try {
@@ -65,8 +65,8 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = UserApi()
 val key : kotlin.String = key_example // kotlin.String | Key
@@ -111,8 +111,8 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = UserApi()
 try {
@@ -154,8 +154,8 @@ This endpoint is used to get API keys for a user.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = UserApi()
 try {
@@ -197,8 +197,8 @@ This endpoint is used to create API keys for a user.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = UserApi()
 try {

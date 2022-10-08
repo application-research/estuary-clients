@@ -1,4 +1,4 @@
-# R API client for swagger
+# R API client for estuary_client
 
 This is the API for the Estuary application.
 

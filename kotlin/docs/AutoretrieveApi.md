@@ -20,8 +20,8 @@ This endpoint registers a new autoretrieve server
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AutoretrieveApi()
 val addresses : kotlin.String = addresses_example // kotlin.String | Autoretrieve's comma-separated list of addresses
@@ -68,8 +68,8 @@ This endpoint lists all registered autoretrieve servers
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AutoretrieveApi()
 try {
@@ -110,8 +110,8 @@ This endpoint updates the lastConnection field for autoretrieve
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AutoretrieveApi()
 val token : kotlin.String = token_example // kotlin.String | Autoretrieve's auth token

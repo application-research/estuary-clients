@@ -1,4 +1,4 @@
-# Go API Server for swagger
+# Go API Server for estuary_client
 
 This is the API for the Estuary application.
 
@@ -13,7 +13,7 @@ To see how to make this your own, look here:
 [README](https://github.com/swagger-api/swagger-codegen/blob/master/README.md)
 
 - API version: 0.0.0
-- Build date: 2022-10-07T23:21:38.159Z
+- Build date: 2022-10-07T23:59:14.222Z
 For more information, please visit [https://docs.estuary.tech/feedback](https://docs.estuary.tech/feedback)
 
 

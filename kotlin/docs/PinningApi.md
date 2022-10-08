@@ -22,8 +22,8 @@ This endpoint lists all pin status objects
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = PinningApi()
 try {
@@ -64,8 +64,8 @@ This endpoint deletes a pinned object.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
@@ -110,8 +110,8 @@ This endpoint returns a pin status object.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | cid
@@ -156,8 +156,8 @@ This endpoint replaces a pinned object.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
@@ -202,8 +202,8 @@ This endpoint adds a pin to the IPFS daemon.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = PinningApi()
 val cid : kotlin.String = cid_example // kotlin.String | cid

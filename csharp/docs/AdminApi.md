@@ -1,4 +1,4 @@
-# IO.Swagger.Api.AdminApi
+# estuary_client.Api.AdminApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -26,9 +26,9 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -87,9 +87,9 @@ This endpoint can be used to list all peers on Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -148,9 +148,9 @@ This endpoint can be used to add a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -209,9 +209,9 @@ This endpoint can be used to start the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -270,9 +270,9 @@ This endpoint can be used to check the Peering status
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -331,9 +331,9 @@ This endpoint can be used to stop the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -392,9 +392,9 @@ This endpoint is used to get system configs.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -453,9 +453,9 @@ This endpoint is used to get all users.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {

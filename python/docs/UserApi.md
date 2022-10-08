@@ -1,4 +1,4 @@
-# swagger_client.UserApi
+# estuary_client.UserApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -22,18 +22,18 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.UserApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get API keys for a user
@@ -72,18 +72,18 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.UserApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 key = 'key_example' # str | Key
 
 try:
@@ -125,18 +125,18 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.UserApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
     # Create API keys for a user
@@ -175,18 +175,18 @@ This endpoint is used to get API keys for a user.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.UserApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
     # Export user data
@@ -225,18 +225,18 @@ This endpoint is used to create API keys for a user.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.UserApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
     # Create API keys for a user

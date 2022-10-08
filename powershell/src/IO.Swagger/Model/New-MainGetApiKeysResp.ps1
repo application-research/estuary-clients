@@ -10,10 +10,10 @@ function New-MainGetApiKeysResp {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.MainGetApiKeysResp' | Write-Verbose
+        'Creating object: estuary_client.Model.MainGetApiKeysResp' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.MainGetApiKeysResp -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.MainGetApiKeysResp -ArgumentList @(
             ${expiry},
             ${token}
         )

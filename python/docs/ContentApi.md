@@ -1,4 +1,4 @@
-# swagger_client.ContentApi
+# estuary_client.ContentApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -33,18 +33,18 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 body = 'body_example' # str | Car
 filename = 'filename_example' # str | Filename (optional)
 commp = 'commp_example' # str | Commp (optional)
@@ -92,19 +92,19 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
-body = swagger_client.UtilContentAddIpfsBody() # UtilContentAddIpfsBody | IPFS Body
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = estuary_client.UtilContentAddIpfsBody() # UtilContentAddIpfsBody | IPFS Body
 
 try:
     # Add IPFS object
@@ -145,18 +145,18 @@ This endpoint is used to upload new content.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 file = '/path/to/file.txt' # file | File to upload
 coluuid = 'coluuid_example' # str | Collection UUID
 dir = 'dir_example' # str | Directory
@@ -203,18 +203,18 @@ This endpoint returns aggregated content stats
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
@@ -257,18 +257,18 @@ This endpoint is used to get all deals for a user
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 begin = 'begin_example' # str | Begin
 duration = 'duration_example' # str | Duration
 all = 'all_example' # str | All
@@ -314,18 +314,18 @@ This endpoint returns content bandwidth
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
@@ -367,18 +367,18 @@ This endpoint adds a new content
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 body = 'body_example' # str | Content
 
 try:
@@ -420,18 +420,18 @@ This endpoint lists all content with deals
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 limit = 56 # int | Limit (optional)
 offset = 56 # int | Offset (optional)
 
@@ -475,18 +475,18 @@ This endpoint ensures that the content is replicated to the specified number of 
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 datacid = 'datacid_example' # str | Data CID
 
 try:
@@ -528,18 +528,18 @@ This endpoint returns all failures for a content
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 content = 'content_example' # str | Content ID
 
 try:
@@ -582,19 +582,19 @@ This endpoint imports a deal into the shuttle.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MainImportDealBody() # MainImportDealBody | Import a deal
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainImportDealBody() # MainImportDealBody | Import a deal
 
 try:
     # Import a deal
@@ -635,18 +635,18 @@ This endpoint lists all content
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 
 try:
     # List all pinned content
@@ -685,18 +685,18 @@ This endpoint reads content from the blockstore
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 cont = 'cont_example' # str | CID
 
 try:
@@ -738,18 +738,18 @@ This endpoint is used to get staging zone for user.
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get staging zone for user
@@ -787,18 +787,18 @@ This endpoint is used to get content statistics. Every content stored in the net
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 limit = 'limit_example' # str | limit
 
 try:
@@ -840,18 +840,18 @@ This endpoint returns the status of a content
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = swagger_client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.ContentApi(swagger_client.ApiClient(configuration))
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 id = 56 # int | Content ID
 
 try:

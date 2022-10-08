@@ -16,10 +16,10 @@ function New-MainImportDealBody {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.MainImportDealBody' | Write-Verbose
+        'Creating object: estuary_client.Model.MainImportDealBody' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.MainImportDealBody -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.MainImportDealBody -ArgumentList @(
             ${coluuid},
             ${dealIDs},
             ${dir},

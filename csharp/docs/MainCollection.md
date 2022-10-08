@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MainCollection
+# estuary_client.Model.MainCollection
 ## Properties
 
 Name | Type | Description | Notes

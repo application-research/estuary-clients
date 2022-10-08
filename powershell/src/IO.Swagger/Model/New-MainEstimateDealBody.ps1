@@ -16,10 +16,10 @@ function New-MainEstimateDealBody {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.MainEstimateDealBody' | Write-Verbose
+        'Creating object: estuary_client.Model.MainEstimateDealBody' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.MainEstimateDealBody -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.MainEstimateDealBody -ArgumentList @(
             ${durationBlks},
             ${replication},
             ${size},

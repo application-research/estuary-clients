@@ -1,4 +1,4 @@
-# IO.Swagger.Model.UtilContentAddIpfsBody
+# estuary_client.Model.UtilContentAddIpfsBody
 ## Properties
 
 Name | Type | Description | Notes

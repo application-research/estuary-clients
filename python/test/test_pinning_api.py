@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.pinning_api import PinningApi  # noqa: E501
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.api.pinning_api import PinningApi  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestPinningApi(unittest.TestCase):
     """PinningApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.pinning_api.PinningApi()  # noqa: E501
+        self.api = estuary_client.api.pinning_api.PinningApi()  # noqa: E501
 
     def tearDown(self):
         pass

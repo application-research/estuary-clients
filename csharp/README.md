@@ -1,4 +1,4 @@
-# IO.Swagger - the C# library for the Estuary API
+# estuary_client - the C# library for the Estuary API
 
 This is the API for the Estuary application.
 
@@ -37,9 +37,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 ```
 <a name="packaging"></a>
 ## Packaging
@@ -49,7 +49,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out IO.Swagger.csproj
+nuget pack -Build -OutputDirectory out estuary_client.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -60,9 +60,9 @@ Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-p
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {

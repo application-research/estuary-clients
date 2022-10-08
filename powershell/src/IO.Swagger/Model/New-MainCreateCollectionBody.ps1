@@ -10,10 +10,10 @@ function New-MainCreateCollectionBody {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.MainCreateCollectionBody' | Write-Verbose
+        'Creating object: estuary_client.Model.MainCreateCollectionBody' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.MainCreateCollectionBody -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.MainCreateCollectionBody -ArgumentList @(
             ${description},
             ${name}
         )

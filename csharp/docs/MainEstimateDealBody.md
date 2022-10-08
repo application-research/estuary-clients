@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MainEstimateDealBody
+# estuary_client.Model.MainEstimateDealBody
 ## Properties
 
 Name | Type | Description | Notes

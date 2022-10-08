@@ -22,10 +22,10 @@ function New-MainCollection {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.MainCollection' | Write-Verbose
+        'Creating object: estuary_client.Model.MainCollection' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.MainCollection -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.MainCollection -ArgumentList @(
             ${cid},
             ${createdAt},
             ${description},

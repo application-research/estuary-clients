@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import io.swagger.annotations.*;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:22:00.732Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
 public class MainGetApiKeysResp   {
   
   private String expiry = null;

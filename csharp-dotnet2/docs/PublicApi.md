@@ -1,4 +1,4 @@
-# IO.Swagger.Api.PublicApi
+# estuary_client.Api.PublicApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -28,9 +28,9 @@ This endpoint returns the content associated with a CID
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -94,9 +94,9 @@ This endpoint returns information about the node
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -156,9 +156,9 @@ This endpoint is used to get deal metrics
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -218,9 +218,9 @@ This endpoint returns all miners deals
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -284,9 +284,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -350,9 +350,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -412,9 +412,9 @@ This endpoint returns miner stats
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -478,9 +478,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -541,9 +541,9 @@ This endpoint is used to get net peers
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -604,9 +604,9 @@ This endpoint is used to get public stats.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {

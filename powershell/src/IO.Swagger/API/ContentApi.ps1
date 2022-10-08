@@ -32,7 +32,7 @@ function Invoke-ContentApiContentAddIpfsPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [IO.Swagger.Model.UtilContentAddIpfsBody]
+        [estuary_client.Model.UtilContentAddIpfsBody]
         ${body}
     )
 
@@ -214,7 +214,7 @@ function Invoke-ContentApiContentImportdealPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [IO.Swagger.Model.MainImportDealBody]
+        [estuary_client.Model.MainImportDealBody]
         ${body}
     )
 

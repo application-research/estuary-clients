@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MainUserStatsResponse
+# estuary_client.Model.MainUserStatsResponse
 ## Properties
 
 Name | Type | Description | Notes

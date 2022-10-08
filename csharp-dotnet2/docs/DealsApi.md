@@ -1,4 +1,4 @@
-# IO.Swagger.Api.DealsApi
+# estuary_client.Api.DealsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -31,9 +31,9 @@ This endpoint estimates the cost of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -97,9 +97,9 @@ This endpoint returns the deal info for a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -163,9 +163,9 @@ This endpoint returns the proposal for a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -229,9 +229,9 @@ This endpoint returns the ask for a given CID
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -295,9 +295,9 @@ Get Deal Status by PropCid
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -361,9 +361,9 @@ This endpoint returns the status of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -429,9 +429,9 @@ This endpoint returns the in-progress transfers
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -491,9 +491,9 @@ This endpoint returns the status of a transfer
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -553,9 +553,9 @@ This endpoint returns a list of storage failures for user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -615,9 +615,9 @@ This endpoint makes a deal for a given content and miner
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -683,9 +683,9 @@ This endpoint returns the status of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -749,9 +749,9 @@ This endpoint returns a list of storage failures
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -811,9 +811,9 @@ This endpoint returns the ask for a given CID
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {

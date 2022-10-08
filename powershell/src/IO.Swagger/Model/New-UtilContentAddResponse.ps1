@@ -16,10 +16,10 @@ function New-UtilContentAddResponse {
     )
 
     Process {
-        'Creating object: IO.Swagger.Model.UtilContentAddResponse' | Write-Verbose
+        'Creating object: estuary_client.Model.UtilContentAddResponse' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName IO.Swagger.Model.UtilContentAddResponse -ArgumentList @(
+        New-Object -TypeName estuary_client.Model.UtilContentAddResponse -ArgumentList @(
             ${cid},
             ${estuaryId},
             ${providers},

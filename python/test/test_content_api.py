@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.content_api import ContentApi  # noqa: E501
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.api.content_api import ContentApi  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestContentApi(unittest.TestCase):
     """ContentApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.content_api.ContentApi()  # noqa: E501
+        self.api = estuary_client.api.content_api.ContentApi()  # noqa: E501
 
     def tearDown(self):
         pass

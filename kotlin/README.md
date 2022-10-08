@@ -1,4 +1,4 @@
-# io.swagger.client - Kotlin client library for Estuary API
+# estuary_client - Kotlin client library for Estuary API
 
 ## Requires
 
@@ -127,15 +127,15 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [io.swagger.client.models.MainCollection](docs/MainCollection.md)
- - [io.swagger.client.models.MaincreateCollectionBody](docs/MaincreateCollectionBody.md)
- - [io.swagger.client.models.MainestimateDealBody](docs/MainestimateDealBody.md)
- - [io.swagger.client.models.MaingetApiKeysResp](docs/MaingetApiKeysResp.md)
- - [io.swagger.client.models.MainimportDealBody](docs/MainimportDealBody.md)
- - [io.swagger.client.models.MainuserStatsResponse](docs/MainuserStatsResponse.md)
- - [io.swagger.client.models.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
- - [io.swagger.client.models.UtilContentAddResponse](docs/UtilContentAddResponse.md)
- - [io.swagger.client.models.UtilHttpError](docs/UtilHttpError.md)
+ - [estuary_client.models.MainCollection](docs/MainCollection.md)
+ - [estuary_client.models.MaincreateCollectionBody](docs/MaincreateCollectionBody.md)
+ - [estuary_client.models.MainestimateDealBody](docs/MainestimateDealBody.md)
+ - [estuary_client.models.MaingetApiKeysResp](docs/MaingetApiKeysResp.md)
+ - [estuary_client.models.MainimportDealBody](docs/MainimportDealBody.md)
+ - [estuary_client.models.MainuserStatsResponse](docs/MainuserStatsResponse.md)
+ - [estuary_client.models.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
+ - [estuary_client.models.UtilContentAddResponse](docs/UtilContentAddResponse.md)
+ - [estuary_client.models.UtilHttpError](docs/UtilHttpError.md)
 
 
 <a name="documentation-for-authorization"></a>
