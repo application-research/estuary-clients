@@ -12,7 +12,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:21:45.700Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:59:22.073Z")
 public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;

@@ -1,4 +1,4 @@
-# Eiffel API client for swagger
+# Eiffel API client for estuary_client
 
 This is the API for the Estuary application.
 

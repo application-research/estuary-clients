@@ -1,4 +1,4 @@
-# IO.Swagger - the C# library for the Estuary API
+# estuary_client - the C# library for the Estuary API
 
 This is the API for the Estuary application.
 
@@ -29,9 +29,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 ```
 <a name="getting-started"></a>
 ## Getting Started
@@ -39,9 +39,9 @@ using IO.Swagger.Model;
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -170,15 +170,15 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [IO.Swagger.Model.MainCollection](docs/MainCollection.md)
- - [IO.Swagger.Model.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [IO.Swagger.Model.MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [IO.Swagger.Model.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
- - [IO.Swagger.Model.MainImportDealBody](docs/MainImportDealBody.md)
- - [IO.Swagger.Model.MainUserStatsResponse](docs/MainUserStatsResponse.md)
- - [IO.Swagger.Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
- - [IO.Swagger.Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
- - [IO.Swagger.Model.UtilHttpError](docs/UtilHttpError.md)
+ - [estuary_client.Model.MainCollection](docs/MainCollection.md)
+ - [estuary_client.Model.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
+ - [estuary_client.Model.MainEstimateDealBody](docs/MainEstimateDealBody.md)
+ - [estuary_client.Model.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
+ - [estuary_client.Model.MainImportDealBody](docs/MainImportDealBody.md)
+ - [estuary_client.Model.MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [estuary_client.Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
+ - [estuary_client.Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
+ - [estuary_client.Model.UtilHttpError](docs/UtilHttpError.md)
 
 
 <a name="documentation-for-authorization"></a>

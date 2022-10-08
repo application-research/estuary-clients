@@ -1,4 +1,4 @@
-# Rust API client for swagger
+# Rust API client for estuary_client
 
 This is the API for the Estuary application.
 
@@ -13,7 +13,7 @@ For more information, please visit [https://docs.estuary.tech/feedback](https://
 ## Installation
 Put the package under your project folder and add the following in import:
 ```
-    "./swagger"
+    "./estuary_client"
 ```
 
 ## Documentation for API Endpoints

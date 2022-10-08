@@ -18,8 +18,8 @@ This endpoint is used to get deal metrics
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = MetricsApi()
 try {

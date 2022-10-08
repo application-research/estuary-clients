@@ -1,4 +1,4 @@
-# IO.Swagger.Api.MinerApi
+# estuary_client.Api.MinerApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -20,9 +20,9 @@ This endpoint returns all miners deals
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ This endpoint returns miner stats
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {

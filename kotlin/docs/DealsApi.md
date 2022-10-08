@@ -30,8 +30,8 @@ This endpoint estimates the cost of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val body : MainestimateDealBody =  // MainestimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
@@ -76,8 +76,8 @@ This endpoint returns the deal info for a deal
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val dealid : kotlin.Int = 56 // kotlin.Int | Deal ID
@@ -122,8 +122,8 @@ This endpoint returns the proposal for a deal
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | Proposal CID
@@ -168,8 +168,8 @@ This endpoint returns the ask for a given CID
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID
@@ -214,8 +214,8 @@ Get Deal Status by PropCid
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | PropCid
@@ -260,8 +260,8 @@ This endpoint returns the status of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
@@ -308,8 +308,8 @@ This endpoint returns the in-progress transfers
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -350,8 +350,8 @@ This endpoint returns the status of a transfer
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -392,8 +392,8 @@ This endpoint returns a list of storage failures for user
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -434,8 +434,8 @@ This endpoint makes a deal for a given content and miner
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
@@ -482,8 +482,8 @@ This endpoint returns the status of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val deal : kotlin.Int = 56 // kotlin.Int | Deal ID
@@ -528,8 +528,8 @@ This endpoint returns a list of storage failures
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -570,8 +570,8 @@ This endpoint returns the ask for a given CID
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID

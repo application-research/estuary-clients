@@ -2,7 +2,7 @@ function Invoke-DealsApiDealEstimatePost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [IO.Swagger.Model.MainEstimateDealBody]
+        [estuary_client.Model.MainEstimateDealBody]
         ${body}
     )
 

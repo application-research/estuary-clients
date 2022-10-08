@@ -19,8 +19,8 @@ This endpoint returns all miners deals
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
@@ -65,8 +65,8 @@ This endpoint returns miner stats
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner

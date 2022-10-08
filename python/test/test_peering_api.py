@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.api.peering_api import PeeringApi  # noqa: E501
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.api.peering_api import PeeringApi  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestPeeringApi(unittest.TestCase):
     """PeeringApi unit test stubs"""
 
     def setUp(self):
-        self.api = swagger_client.api.peering_api.PeeringApi()  # noqa: E501
+        self.api = estuary_client.api.peering_api.PeeringApi()  # noqa: E501
 
     def tearDown(self):
         pass

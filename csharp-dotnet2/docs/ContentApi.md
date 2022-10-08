@@ -1,4 +1,4 @@
-# IO.Swagger.Api.ContentApi
+# estuary_client.Api.ContentApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -34,9 +34,9 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -106,9 +106,9 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -172,9 +172,9 @@ This endpoint is used to upload new content.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -243,9 +243,9 @@ This endpoint returns aggregated content stats
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -310,9 +310,9 @@ This endpoint is used to get all deals for a user
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -380,9 +380,9 @@ This endpoint returns content bandwidth
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -446,9 +446,9 @@ This endpoint adds a new content
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -512,9 +512,9 @@ This endpoint lists all content with deals
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -580,9 +580,9 @@ This endpoint ensures that the content is replicated to the specified number of 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -646,9 +646,9 @@ This endpoint returns all failures for a content
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -713,9 +713,9 @@ This endpoint imports a deal into the shuttle.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -779,9 +779,9 @@ This endpoint lists all content
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -842,9 +842,9 @@ This endpoint reads content from the blockstore
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -908,9 +908,9 @@ This endpoint is used to get staging zone for user.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -970,9 +970,9 @@ This endpoint is used to get content statistics. Every content stored in the net
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -1036,9 +1036,9 @@ This endpoint returns the status of a content
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
+using estuary_client.Api;
 using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Model;
 
 namespace Example
 {

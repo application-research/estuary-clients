@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import swagger_client
-from swagger_client.models.main_collection import MainCollection  # noqa: E501
-from swagger_client.rest import ApiException
+import estuary_client
+from estuary_client.models.main_collection import MainCollection  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestMainCollection(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestMainCollection(unittest.TestCase):
     def testMainCollection(self):
         """Test MainCollection"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = swagger_client.models.main_collection.MainCollection()  # noqa: E501
+        # model = estuary_client.models.main_collection.MainCollection()  # noqa: E501
         pass
 
 

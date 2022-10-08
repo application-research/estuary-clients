@@ -39,26 +39,26 @@ function Get-FunctionsToExport {
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $ClientPath = ("$ScriptDir\csharp\SwaggerClient" | Resolve-Path).ProviderPath
-$FunctionPath = 'API', 'Model' | ForEach-Object {Join-Path "$ScriptDir\src\IO.Swagger\" $_}
-$BinPath = "$ScriptDir\src\IO.Swagger\Bin"
+$FunctionPath = 'API', 'Model' | ForEach-Object {Join-Path "$ScriptDir\src\estuary_client\" $_}
+$BinPath = "$ScriptDir\src\estuary_client\Bin"
 
 Start-Process -FilePath "$ClientPath\build.bat" -WorkingDirectory $ClientPath -Wait -NoNewWindow
 
-if (!(Test-Path "$ScriptDir\src\IO.Swagger\Bin" -PathType Container)) {
-    New-Item "$ScriptDir\src\IO.Swagger\Bin" -ItemType Directory > $null
+if (!(Test-Path "$ScriptDir\src\estuary_client\Bin" -PathType Container)) {
+    New-Item "$ScriptDir\src\estuary_client\Bin" -ItemType Directory > $null
 }
 
 Copy-Item "$ClientPath\bin\*.dll" $BinPath
 
 $Manifest = @{
-    Path = "$ScriptDir\src\IO.Swagger\IO.Swagger.psd1"
+    Path = "$ScriptDir\src\estuary_client\estuary_client.psd1"
 
     Author = 'Swagger Codegen Team'
     CompanyName = 'swagger.io'
-    Description = 'IO.Swagger - the PowerShell module for Estuary API'
+    Description = 'estuary_client - the PowerShell module for Estuary API'
 
-    RootModule = 'IO.Swagger.psm1'
-    Guid = '{5FFBBB32-8042-4A81-8546-D5DFBCDA446B}' # Has to be static, otherwise each new build will be considered different module
+    RootModule = 'estuary_client.psm1'
+    Guid = '{AC616FD4-A152-4C2D-8AEB-F750CE51D0BD}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '3.0'
 

@@ -1,4 +1,4 @@
-# IO.Swagger.Api.NetApi
+# estuary_client.Api.NetApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -23,9 +23,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -85,9 +85,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -150,9 +150,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -211,9 +211,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -273,9 +273,9 @@ This endpoint is used to get net peers
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {

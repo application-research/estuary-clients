@@ -25,8 +25,8 @@ This endpoint can be used to remove a Peer from the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -67,8 +67,8 @@ This endpoint can be used to list all peers on Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -109,8 +109,8 @@ This endpoint can be used to add a Peer from the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -151,8 +151,8 @@ This endpoint can be used to start the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -193,8 +193,8 @@ This endpoint can be used to check the Peering status
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -235,8 +235,8 @@ This endpoint can be used to stop the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -277,8 +277,8 @@ This endpoint is used to get system configs.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -319,8 +319,8 @@ This endpoint is used to get all users.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = AdminApi()
 try {

@@ -24,8 +24,8 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
@@ -71,8 +71,8 @@ This endpoint is used to delete an existing collection.
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
@@ -117,8 +117,8 @@ This endpoint is used to get contents in a collection. If no colpath query param
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
@@ -166,8 +166,8 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val body : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
@@ -213,8 +213,8 @@ This endpoint adds a file to a collection
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
@@ -263,8 +263,8 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val id : kotlin.Int = 56 // kotlin.Int | User ID
@@ -310,8 +310,8 @@ This endpoint is used to create a new collection. A collection is a representaio
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import estuary_client.infrastructure.*
+//import estuary_client.models.*
 
 val apiInstance = CollectionsApi()
 val body : MaincreateCollectionBody =  // MaincreateCollectionBody | Collection name and description

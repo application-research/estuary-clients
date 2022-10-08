@@ -1,4 +1,4 @@
-# IO.Swagger.Api.CollectionsApi
+# estuary_client.Api.CollectionsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -25,9 +25,9 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -91,9 +91,9 @@ This endpoint is used to delete an existing collection.
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -156,9 +156,9 @@ This endpoint is used to get contents in a collection. If no colpath query param
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -224,9 +224,9 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -290,9 +290,9 @@ This endpoint adds a file to a collection
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -359,9 +359,9 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
@@ -425,9 +425,9 @@ This endpoint is used to create a new collection. A collection is a representaio
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using estuary_client.Api;
+using estuary_client.Client;
+using estuary_client.Model;
 
 namespace Example
 {
