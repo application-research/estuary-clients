@@ -9,7 +9,7 @@ cmd="swagger-codegen"
 $cmd || cmd="java -jar /opt/swagger-codegen-cli/swagger-codegen-cli.jar"
 
 
-swagger_url=https://raw.githubusercontent.com/$repo_owner/estuary/master/docs/swagger.json
+swagger_url=https://raw.githubusercontent.com/$repo_owner/estuary/dev/docs/swagger.json
 #download swagger.json from github and exit early if its identical to swagger.json in the repo
 curl $swagger_url -o swagger.json
 
