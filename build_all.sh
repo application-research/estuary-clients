@@ -14,6 +14,12 @@ swagger_url=https://raw.githubusercontent.com/$repo_owner/estuary/dev/docs/swagg
 curl $swagger_url -o swagger.json
 
 git status swagger.json | grep modified && {
+
+  #increment subversion so 1.0.SUBVERSION
+  subversion=$(cat subversion)
+  subversion=$((subversion+1))
+  cat config.json.template | sed -e "s/SUBVERSION/$subversion/g" > config.json
+
   for lang in $(cat supported_langs); do
     rm -rf $lang
     $cmd generate \
