@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](SwagDealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](SwagDealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](SwagDealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](SwagDealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](SwagDealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](SwagDealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](SwagDealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -329,47 +328,6 @@ bearerAuth.setApiKey('YOUR API KEY');
 try {
     // cross your fingers
     api.dealTransferInProgressGet();
-} catch (Swagger.ApiException e) {
-    // ...handle your exceptions
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="dealTransferStatusPost"></a>
-# **dealTransferStatusPost**
-> dealTransferStatusPost()
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example
-```java
-SwagDealsApi api = new SwagDealsApi();
-SwagClient client = api.getClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
-bearerAuth.setApiKey('YOUR API KEY');
-
-try {
-    // cross your fingers
-    api.dealTransferStatusPost();
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }

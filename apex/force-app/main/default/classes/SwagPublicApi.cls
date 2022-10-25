@@ -93,11 +93,16 @@ public class SwagPublicApi {
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
+     * @param ignoreFailed Ignore Failed (optional)
      * @throws Swagger.ApiException if fails to make API call
      */
     public void publicMinersDealsMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('ignore-failed', (String) params.get('ignoreFailed')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         client.invoke(

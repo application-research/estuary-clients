@@ -22,15 +22,15 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.MinerApi();
+    instance = new EstuaryClient.MinerApi();
   });
 
   describe('(package)', function() {
@@ -40,8 +40,10 @@
           // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call
           /*
           var miner = "miner_example";
+          var opts = {};
+          opts.ignoreFailed = "ignoreFailed_example";
 
-          instance.publicMinersDealsMinerGet(miner, function(error, data, response) {
+          instance.publicMinersDealsMinerGet(miner, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

@@ -21,6 +21,8 @@ class MinerApi extends _$MinerApiClient implements ApiClient {
     @GetReq(path: "/public/miners/deals/:miner", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> publicMinersDealsMinerGet(
             @PathParam("miner") String miner
+        ,
+        @QueryParam("ignore-failed") String ignoreFailed
     );
 
     /// Get miner stats

@@ -299,41 +299,6 @@ bool SwaggerDealsApi::DealTransferInProgressGetResponse::FromJson(const TSharedP
 	return true;
 }
 
-FString SwaggerDealsApi::DealTransferStatusPostRequest::ComputePath() const
-{
-	FString Path(TEXT("/deal/transfer/status"));
-	return Path;
-}
-
-void SwaggerDealsApi::DealTransferStatusPostRequest::SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-	}
-	else
-	{
-		UE_LOG(LogSwagger, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-
-bool SwaggerDealsApi::DealTransferStatusPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return true;
-}
-
 FString SwaggerDealsApi::DealsFailuresGetRequest::ComputePath() const
 {
 	FString Path(TEXT("/deals/failures"));

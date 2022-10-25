@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -65,7 +65,7 @@ public interface UserApi {
     @RequestMapping(value = "/user/api-keys",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<MainGetApiKeysResp> userApiKeysPost();
+    ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h") @Valid @RequestParam(value = "expiry", required = false) String expiry,@ApiParam(value = "Permissions -- currently unused") @Valid @RequestParam(value = "perms", required = false) String perms);
 
 
     @ApiOperation(value = "Export user data", nickname = "userExportGet", notes = "This endpoint is used to get API keys for a user.", response = String.class, authorizations = {

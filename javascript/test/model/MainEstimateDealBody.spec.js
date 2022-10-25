@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('MainEstimateDealBody', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.MainEstimateDealBody();
+        instance = new EstuaryClient.MainEstimateDealBody();
       });
 
       it('should create an instance of MainEstimateDealBody', function() {
         // TODO: update the code to test MainEstimateDealBody
-        expect(instance).to.be.a(EstuaryApi.MainEstimateDealBody);
+        expect(instance).to.be.a(EstuaryClient.MainEstimateDealBody);
       });
 
       it('should have the property durationBlks (base name: "durationBlks")', function() {

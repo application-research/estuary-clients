@@ -82,7 +82,7 @@ static bool contentAddCarPostProcessor(MemoryStruct_s p_chunk, long code, char* 
 }
 
 static bool contentAddCarPostHelper(char * accessToken,
-	std::string body, std::string filename, std::string commp, std::string size, 
+	std::string body, std::string ignoreDupes, std::string filename, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -100,24 +100,17 @@ static bool contentAddCarPostHelper(char * accessToken,
 	string itemAtq;
 	
 
+	itemAtq = stringify(&ignoreDupes, "std::string");
+	queryParams.insert(pair<string, string>("ignore-dupes", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ignore-dupes");
+	}
+
+
 	itemAtq = stringify(&filename, "std::string");
 	queryParams.insert(pair<string, string>("filename", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("filename");
-	}
-
-
-	itemAtq = stringify(&commp, "std::string");
-	queryParams.insert(pair<string, string>("commp", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("commp");
-	}
-
-
-	itemAtq = stringify(&size, "std::string");
-	queryParams.insert(pair<string, string>("size", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("size");
 	}
 
 	string mBody = "";
@@ -183,22 +176,22 @@ static bool contentAddCarPostHelper(char * accessToken,
 
 
 bool ContentManager::contentAddCarPostAsync(char * accessToken,
-	std::string body, std::string filename, std::string commp, std::string size, 
+	std::string body, std::string ignoreDupes, std::string filename, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentAddCarPostHelper(accessToken,
-	body, filename, commp, size, 
+	body, ignoreDupes, filename, 
 	handler, userData, true);
 }
 
 bool ContentManager::contentAddCarPostSync(char * accessToken,
-	std::string body, std::string filename, std::string commp, std::string size, 
+	std::string body, std::string ignoreDupes, std::string filename, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentAddCarPostHelper(accessToken,
-	body, filename, commp, size, 
+	body, ignoreDupes, filename, 
 	handler, userData, false);
 }
 
@@ -236,7 +229,7 @@ static bool contentAddIpfsPostProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool contentAddIpfsPostHelper(char * accessToken,
-	Util.ContentAddIpfsBody body, 
+	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -253,6 +246,13 @@ static bool contentAddIpfsPostHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&ignoreDupes, "std::string");
+	queryParams.insert(pair<string, string>("ignore-dupes", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ignore-dupes");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -320,22 +320,22 @@ static bool contentAddIpfsPostHelper(char * accessToken,
 
 
 bool ContentManager::contentAddIpfsPostAsync(char * accessToken,
-	Util.ContentAddIpfsBody body, 
+	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentAddIpfsPostHelper(accessToken,
-	body, 
+	body, ignoreDupes, 
 	handler, userData, true);
 }
 
 bool ContentManager::contentAddIpfsPostSync(char * accessToken,
-	Util.ContentAddIpfsBody body, 
+	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentAddIpfsPostHelper(accessToken,
-	body, 
+	body, ignoreDupes, 
 	handler, userData, false);
 }
 
@@ -395,7 +395,7 @@ static bool contentAddPostProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool contentAddPostHelper(char * accessToken,
-	std::string file, std::string coluuid, std::string dir, 
+	std::string data, std::string filename, std::string coluuid, int replication, std::string ignoreDupes, std::string lazyProvide, std::string dir, 
 	void(* handler)(Util.ContentAddResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -412,6 +412,41 @@ static bool contentAddPostHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&coluuid, "std::string");
+	queryParams.insert(pair<string, string>("coluuid", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("coluuid");
+	}
+
+
+	itemAtq = stringify(&replication, "int");
+	queryParams.insert(pair<string, string>("replication", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("replication");
+	}
+
+
+	itemAtq = stringify(&ignoreDupes, "std::string");
+	queryParams.insert(pair<string, string>("ignore-dupes", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ignore-dupes");
+	}
+
+
+	itemAtq = stringify(&lazyProvide, "std::string");
+	queryParams.insert(pair<string, string>("lazy-provide", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("lazy-provide");
+	}
+
+
+	itemAtq = stringify(&dir, "std::string");
+	queryParams.insert(pair<string, string>("dir", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("dir");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -419,18 +454,6 @@ static bool contentAddPostHelper(char * accessToken,
 	string url("/content/add");
 	int pos;
 
-	string s_coluuid("{");
-	s_coluuid.append("coluuid");
-	s_coluuid.append("}");
-	pos = url.find(s_coluuid);
-	url.erase(pos, s_coluuid.length());
-	url.insert(pos, stringify(&coluuid, "std::string"));
-	string s_dir("{");
-	s_dir.append("dir");
-	s_dir.append("}");
-	pos = url.find(s_dir);
-	url.erase(pos, s_dir.length());
-	url.insert(pos, stringify(&dir, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -478,22 +501,22 @@ static bool contentAddPostHelper(char * accessToken,
 
 
 bool ContentManager::contentAddPostAsync(char * accessToken,
-	std::string file, std::string coluuid, std::string dir, 
+	std::string data, std::string filename, std::string coluuid, int replication, std::string ignoreDupes, std::string lazyProvide, std::string dir, 
 	void(* handler)(Util.ContentAddResponse, Error, void* )
 	, void* userData)
 {
 	return contentAddPostHelper(accessToken,
-	file, coluuid, dir, 
+	data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, 
 	handler, userData, true);
 }
 
 bool ContentManager::contentAddPostSync(char * accessToken,
-	std::string file, std::string coluuid, std::string dir, 
+	std::string data, std::string filename, std::string coluuid, int replication, std::string ignoreDupes, std::string lazyProvide, std::string dir, 
 	void(* handler)(Util.ContentAddResponse, Error, void* )
 	, void* userData)
 {
 	return contentAddPostHelper(accessToken,
-	file, coluuid, dir, 
+	data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, 
 	handler, userData, false);
 }
 
@@ -944,7 +967,7 @@ static bool contentCreatePostProcessor(MemoryStruct_s p_chunk, long code, char* 
 }
 
 static bool contentCreatePostHelper(char * accessToken,
-	std::string body, 
+	Util.ContentCreateBody req, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -961,13 +984,24 @@ static bool contentCreatePostHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&ignoreDupes, "std::string");
+	queryParams.insert(pair<string, string>("ignore-dupes", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ignore-dupes");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
 
-	if (isprimitive("std::string")) {
-		node = converttoJson(&body, "std::string", "");
+	if (isprimitive("Util.ContentCreateBody")) {
+		node = converttoJson(&req, "Util.ContentCreateBody", "");
 	}
+	
+	char *jsonStr =  req.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
 	
 
 	char *jsonStr1 =  json_to_string(node, false);
@@ -1024,22 +1058,22 @@ static bool contentCreatePostHelper(char * accessToken,
 
 
 bool ContentManager::contentCreatePostAsync(char * accessToken,
-	std::string body, 
+	Util.ContentCreateBody req, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentCreatePostHelper(accessToken,
-	body, 
+	req, ignoreDupes, 
 	handler, userData, true);
 }
 
 bool ContentManager::contentCreatePostSync(char * accessToken,
-	std::string body, 
+	Util.ContentCreateBody req, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentCreatePostHelper(accessToken,
-	body, 
+	req, ignoreDupes, 
 	handler, userData, false);
 }
 
@@ -1455,6 +1489,136 @@ bool ContentManager::contentFailuresContentGetSync(char * accessToken,
 {
 	return contentFailuresContentGetHelper(accessToken,
 	content, 
+	handler, userData, false);
+}
+
+static bool contentIdGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool contentIdGetHelper(char * accessToken,
+	int id, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/content/{id}");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "int"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(ContentManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = contentIdGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (ContentManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), contentIdGetProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __ContentManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool ContentManager::contentIdGetAsync(char * accessToken,
+	int id, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return contentIdGetHelper(accessToken,
+	id, 
+	handler, userData, true);
+}
+
+bool ContentManager::contentIdGetSync(char * accessToken,
+	int id, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return contentIdGetHelper(accessToken,
+	id, 
 	handler, userData, false);
 }
 
@@ -2021,7 +2185,7 @@ static bool contentStatsGetProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool contentStatsGetHelper(char * accessToken,
-	std::string limit, 
+	std::string limit, std::string offset, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -2038,6 +2202,14 @@ static bool contentStatsGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&limit, "std::string");
+	queryParams.insert(pair<string, string>("limit", itemAtq));
+
+
+	itemAtq = stringify(&offset, "std::string");
+	queryParams.insert(pair<string, string>("offset", itemAtq));
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -2045,12 +2217,6 @@ static bool contentStatsGetHelper(char * accessToken,
 	string url("/content/stats");
 	int pos;
 
-	string s_limit("{");
-	s_limit.append("limit");
-	s_limit.append("}");
-	pos = url.find(s_limit);
-	url.erase(pos, s_limit.length());
-	url.insert(pos, stringify(&limit, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -2098,22 +2264,22 @@ static bool contentStatsGetHelper(char * accessToken,
 
 
 bool ContentManager::contentStatsGetAsync(char * accessToken,
-	std::string limit, 
+	std::string limit, std::string offset, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentStatsGetHelper(accessToken,
-	limit, 
+	limit, offset, 
 	handler, userData, true);
 }
 
 bool ContentManager::contentStatsGetSync(char * accessToken,
-	std::string limit, 
+	std::string limit, std::string offset, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return contentStatsGetHelper(accessToken,
-	limit, 
+	limit, offset, 
 	handler, userData, false);
 }
 

@@ -108,6 +108,82 @@ export class CollectionsApi {
     }
 
     /**
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @summary Deletes a content from a collection
+     * @param coluuid Collection ID
+     * @param contentid Content ID
+     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+     */
+    public collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: models.MainDeleteContentFromCollectionBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
+        let localVarPath = this.basePath + '/collections/{coluuid}/contents'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid))).replace('{' + 'contentid' + '}', encodeURIComponent(String(contentid)));
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'coluuid' is not null or undefined
+        if (coluuid === null || coluuid === undefined) {
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        // verify required parameter 'contentid' is not null or undefined
+        if (contentid === null || contentid === undefined) {
+            throw new Error('Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'DELETE',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(body);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred();
+        $.ajax(requestOptions).then(
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve(jqXHR, data),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject(xhr, errorThrown)
+        );
+        return dfd.promise();
+    }
+
+    /**
      * This endpoint is used to delete an existing collection.
      * @summary Deletes a collection
      * @param coluuid Collection ID
@@ -170,11 +246,11 @@ export class CollectionsApi {
     /**
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
      * @summary Get contents in a collection
-     * @param coluuid Collection UUID
+     * @param coluuid coluuid
      * @param dir Directory
      */
     public collectionsColuuidGet(coluuid: string, dir?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
-        let localVarPath = this.basePath + '/collections/{coluuid}';
+        let localVarPath = this.basePath + '/collections/{coluuid}'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
         let headerParams: any = {};
@@ -183,9 +259,6 @@ export class CollectionsApi {
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidGet.');
         }
 
-        if (coluuid !== null && coluuid !== undefined) {
-            queryParameters['coluuid'] = <string><any>coluuid;
-        }
         if (dir !== null && dir !== undefined) {
             queryParameters['dir'] = <string><any>dir;
         }
@@ -238,16 +311,22 @@ export class CollectionsApi {
     /**
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @summary Add contents to a collection
-     * @param body Content IDs to add to collection
+     * @param coluuid coluuid
+     * @param contentIDs Content IDs to add to collection
      */
-    public collectionsColuuidPost(body: Array<number>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: { [key: string]: string; };  }> {
-        let localVarPath = this.basePath + '/collections/{coluuid}';
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: { [key: string]: string; };  }> {
+        let localVarPath = this.basePath + '/collections/{coluuid}'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidPost.');
+        // verify required parameter 'coluuid' is not null or undefined
+        if (coluuid === null || coluuid === undefined) {
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
+        }
+
+        // verify required parameter 'contentIDs' is not null or undefined
+        if (contentIDs === null || contentIDs === undefined) {
+            throw new Error('Required parameter contentIDs was null or undefined when calling collectionsColuuidPost.');
         }
 
 
@@ -277,7 +356,7 @@ export class CollectionsApi {
             processData: false
         };
 
-        requestOptions.data = JSON.stringify(body);
+        requestOptions.data = JSON.stringify(contentIDs);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }
@@ -385,18 +464,12 @@ export class CollectionsApi {
     /**
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @summary List all collections
-     * @param id User ID
      */
-    public collectionsGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<models.MainCollection>;  }> {
-        let localVarPath = this.basePath + '/collections/'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+    public collectionsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<models.CollectionsCollection>;  }> {
+        let localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling collectionsGet.');
-        }
-
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header
@@ -435,7 +508,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<models.MainCollection>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: Array<models.CollectionsCollection>, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -448,7 +521,7 @@ export class CollectionsApi {
      * @summary Create a new collection
      * @param body Collection name and description
      */
-    public collectionsPost(body: models.MainCreateCollectionBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainCollection;  }> {
+    public collectionsPost(body: models.MainCreateCollectionBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.CollectionsCollection;  }> {
         let localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};
@@ -499,7 +572,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: models.MainCollection, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.CollectionsCollection, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

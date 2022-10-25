@@ -1,4 +1,4 @@
-# EstuaryApi.MainGetApiKeysResp
+# EstuaryClient.MainGetApiKeysResp
 
 ## Properties
 Name | Type | Description | Notes

@@ -82,7 +82,7 @@ static bool adminPeeringPeersDeleteProcessor(MemoryStruct_s p_chunk, long code, 
 }
 
 static bool adminPeeringPeersDeleteHelper(char * accessToken,
-	
+	std::list<> body, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -102,6 +102,31 @@ static bool adminPeeringPeersDeleteHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+	//TODO: Map Container
+	if (isprimitive("")) {
+		node = converttoJson(&body, "", "array");
+	} else {
+		node = json_node_alloc();
+		json_array = json_array_new();
+		for (std::list
+			<>::iterator bodyIter = body.begin(); bodyIter != body.end(); ++bodyIter) {
+			 itemAt = (*bodyIter);
+			char *jsonStr =  itemAt.toJson();
+			JsonNode *node_temp = json_from_string(jsonStr, NULL);
+			g_free(static_cast<gpointer>(jsonStr));
+			json_array_add_element(json_array, node_temp);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
+	}
+	
+
+
+
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/admin/peering/peers");
 	int pos;
@@ -153,22 +178,22 @@ static bool adminPeeringPeersDeleteHelper(char * accessToken,
 
 
 bool PeersManager::adminPeeringPeersDeleteAsync(char * accessToken,
-	
+	std::list<> body, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return adminPeeringPeersDeleteHelper(accessToken,
-	
+	body, 
 	handler, userData, true);
 }
 
 bool PeersManager::adminPeeringPeersDeleteSync(char * accessToken,
-	
+	std::list<> body, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return adminPeeringPeersDeleteHelper(accessToken,
-	
+	body, 
 	handler, userData, false);
 }
 

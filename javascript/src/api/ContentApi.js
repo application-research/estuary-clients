@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MainImportDealBody', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse'], factory);
+    define(['ApiClient', 'model/MainImportDealBody', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/MainImportDealBody'), require('../model/UtilContentAddIpfsBody'), require('../model/UtilContentAddResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/MainImportDealBody'), require('../model/UtilContentAddIpfsBody'), require('../model/UtilContentAddResponse'), require('../model/UtilContentCreateBody'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.ContentApi = factory(root.EstuaryApi.ApiClient, root.EstuaryApi.MainImportDealBody, root.EstuaryApi.UtilContentAddIpfsBody, root.EstuaryApi.UtilContentAddResponse);
+    root.EstuaryClient.ContentApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainImportDealBody, root.EstuaryClient.UtilContentAddIpfsBody, root.EstuaryClient.UtilContentAddResponse, root.EstuaryClient.UtilContentCreateBody);
   }
-}(this, function(ApiClient, MainImportDealBody, UtilContentAddIpfsBody, UtilContentAddResponse) {
+}(this, function(ApiClient, MainImportDealBody, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody) {
   'use strict';
 
   /**
@@ -60,9 +60,8 @@
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param {String} body Car
      * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {String} opts.filename Filename
-     * @param {String} opts.commp Commp
-     * @param {String} opts.size Size
      * @param {module:api/ContentApi~contentAddCarPostCallback} callback The callback function, accepting three arguments: error, data, response
      */
     this.contentAddCarPost = function(body, opts, callback) {
@@ -78,9 +77,8 @@
       var pathParams = {
       };
       var queryParams = {
+        'ignore-dupes': opts['ignoreDupes'],
         'filename': opts['filename'],
-        'commp': opts['commp'],
-        'size': opts['size'],
       };
       var collectionQueryParams = {
       };
@@ -113,9 +111,12 @@
      * Add IPFS object
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param {module:model/UtilContentAddIpfsBody} body IPFS Body
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {module:api/ContentApi~contentAddIpfsPostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.contentAddIpfsPost = function(body, callback) {
+    this.contentAddIpfsPost = function(body, opts, callback) {
+      opts = opts || {};
       var postBody = body;
 
       // verify the required parameter 'body' is set
@@ -127,6 +128,7 @@
       var pathParams = {
       };
       var queryParams = {
+        'ignore-dupes': opts['ignoreDupes'],
       };
       var collectionQueryParams = {
       };
@@ -158,43 +160,43 @@
     /**
      * Add new content
      * This endpoint is used to upload new content.
-     * @param {File} file File to upload
-     * @param {String} coluuid Collection UUID
-     * @param {String} dir Directory
+     * @param {File} data File to upload
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filename Filenam to use for upload
+     * @param {String} opts.coluuid Collection UUID
+     * @param {Number} opts.replication Replication value
+     * @param {String} opts.ignoreDupes Ignore Dupes true/false
+     * @param {String} opts.lazyProvide Lazy Provide true/false
+     * @param {String} opts.dir Directory
      * @param {module:api/ContentApi~contentAddPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/UtilContentAddResponse}
      */
-    this.contentAddPost = function(file, coluuid, dir, callback) {
+    this.contentAddPost = function(data, opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
-      // verify the required parameter 'file' is set
-      if (file === undefined || file === null) {
-        throw new Error("Missing the required parameter 'file' when calling contentAddPost");
-      }
-
-      // verify the required parameter 'coluuid' is set
-      if (coluuid === undefined || coluuid === null) {
-        throw new Error("Missing the required parameter 'coluuid' when calling contentAddPost");
-      }
-
-      // verify the required parameter 'dir' is set
-      if (dir === undefined || dir === null) {
-        throw new Error("Missing the required parameter 'dir' when calling contentAddPost");
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling contentAddPost");
       }
 
 
       var pathParams = {
-        'coluuid': coluuid,
-        'dir': dir
       };
       var queryParams = {
+        'coluuid': opts['coluuid'],
+        'replication': opts['replication'],
+        'ignore-dupes': opts['ignoreDupes'],
+        'lazy-provide': opts['lazyProvide'],
+        'dir': opts['dir'],
       };
       var collectionQueryParams = {
       };
       var headerParams = {
       };
       var formParams = {
-        'file': file
+        'data': data,
+        'filename': opts['filename']
       };
 
       var authNames = ['bearerAuth'];
@@ -376,21 +378,25 @@
     /**
      * Add a new content
      * This endpoint adds a new content
-     * @param {String} body Content
+     * @param {module:model/UtilContentCreateBody} req Content
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {module:api/ContentApi~contentCreatePostCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.contentCreatePost = function(body, callback) {
-      var postBody = body;
+    this.contentCreatePost = function(req, opts, callback) {
+      opts = opts || {};
+      var postBody = req;
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling contentCreatePost");
+      // verify the required parameter 'req' is set
+      if (req === undefined || req === null) {
+        throw new Error("Missing the required parameter 'req' when calling contentCreatePost");
       }
 
 
       var pathParams = {
       };
       var queryParams = {
+        'ignore-dupes': opts['ignoreDupes'],
       };
       var collectionQueryParams = {
       };
@@ -547,6 +553,53 @@
 
       return this.apiClient.callApi(
         '/content/failures/{content}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the contentIdGet operation.
+     * @callback module:api/ContentApi~contentIdGetCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Content
+     * This endpoint returns a content by its ID
+     * @param {Number} id Content ID
+     * @param {module:api/ContentApi~contentIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.contentIdGet = function(id, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling contentIdGet");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/content/{id}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -738,9 +791,10 @@
      * Get content statistics
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param {String} limit limit
+     * @param {String} offset offset
      * @param {module:api/ContentApi~contentStatsGetCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.contentStatsGet = function(limit, callback) {
+    this.contentStatsGet = function(limit, offset, callback) {
       var postBody = null;
 
       // verify the required parameter 'limit' is set
@@ -748,11 +802,17 @@
         throw new Error("Missing the required parameter 'limit' when calling contentStatsGet");
       }
 
+      // verify the required parameter 'offset' is set
+      if (offset === undefined || offset === null) {
+        throw new Error("Missing the required parameter 'offset' when calling contentStatsGet");
+      }
+
 
       var pathParams = {
-        'limit': limit
       };
       var queryParams = {
+        'limit': limit,
+        'offset': offset,
       };
       var collectionQueryParams = {
       };

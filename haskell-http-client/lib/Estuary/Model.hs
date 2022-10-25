@@ -76,7 +76,7 @@ newtype All = All { unAll :: Text } deriving (P.Eq, P.Show)
 newtype Begin = Begin { unBegin :: Text } deriving (P.Eq, P.Show)
 
 -- ** Body
-newtype Body = Body { unBody :: [Int] } deriving (P.Eq, P.Show, A.ToJSON)
+newtype Body = Body { unBody :: [Text] } deriving (P.Eq, P.Show, A.ToJSON)
 
 -- ** BodyText
 newtype BodyText = BodyText { unBodyText :: Text } deriving (P.Eq, P.Show, A.ToJSON)
@@ -87,14 +87,17 @@ newtype Cid = Cid { unCid :: Text } deriving (P.Eq, P.Show)
 -- ** Coluuid
 newtype Coluuid = Coluuid { unColuuid :: Text } deriving (P.Eq, P.Show)
 
--- ** Commp
-newtype Commp = Commp { unCommp :: Text } deriving (P.Eq, P.Show)
-
 -- ** Cont
 newtype Cont = Cont { unCont :: Text } deriving (P.Eq, P.Show)
 
 -- ** Content
 newtype Content = Content { unContent :: Text } deriving (P.Eq, P.Show)
+
+-- ** ContentIDs
+newtype ContentIDs = ContentIDs { unContentIDs :: [Int] } deriving (P.Eq, P.Show, A.ToJSON)
+
+-- ** Contentid
+newtype Contentid = Contentid { unContentid :: Text } deriving (P.Eq, P.Show)
 
 -- ** Datacid
 newtype Datacid = Datacid { unDatacid :: Text } deriving (P.Eq, P.Show)
@@ -114,8 +117,8 @@ newtype Dir = Dir { unDir :: Text } deriving (P.Eq, P.Show)
 -- ** Duration
 newtype Duration = Duration { unDuration :: Text } deriving (P.Eq, P.Show)
 
--- ** File
-newtype File = File { unFile :: FilePath } deriving (P.Eq, P.Show)
+-- ** Expiry
+newtype Expiry = Expiry { unExpiry :: Text } deriving (P.Eq, P.Show)
 
 -- ** Filename
 newtype Filename = Filename { unFilename :: Text } deriving (P.Eq, P.Show)
@@ -123,8 +126,17 @@ newtype Filename = Filename { unFilename :: Text } deriving (P.Eq, P.Show)
 -- ** Id
 newtype Id = Id { unId :: Int } deriving (P.Eq, P.Show)
 
+-- ** IgnoreDupes
+newtype IgnoreDupes = IgnoreDupes { unIgnoreDupes :: Text } deriving (P.Eq, P.Show)
+
+-- ** IgnoreFailed
+newtype IgnoreFailed = IgnoreFailed { unIgnoreFailed :: Text } deriving (P.Eq, P.Show)
+
 -- ** Key
 newtype Key = Key { unKey :: Text } deriving (P.Eq, P.Show)
+
+-- ** LazyProvide
+newtype LazyProvide = LazyProvide { unLazyProvide :: Text } deriving (P.Eq, P.Show)
 
 -- ** Limit
 newtype Limit = Limit { unLimit :: Int } deriving (P.Eq, P.Show)
@@ -141,8 +153,17 @@ newtype Name = Name { unName :: Text } deriving (P.Eq, P.Show)
 -- ** Offset
 newtype Offset = Offset { unOffset :: Int } deriving (P.Eq, P.Show)
 
+-- ** OffsetText
+newtype OffsetText = OffsetText { unOffsetText :: Text } deriving (P.Eq, P.Show)
+
+-- ** ParamData
+newtype ParamData = ParamData { unParamData :: FilePath } deriving (P.Eq, P.Show)
+
 -- ** Path
 newtype Path = Path { unPath :: Text } deriving (P.Eq, P.Show)
+
+-- ** Perms
+newtype Perms = Perms { unPerms :: Text } deriving (P.Eq, P.Show)
 
 -- ** Pinid
 newtype Pinid = Pinid { unPinid :: Text } deriving (P.Eq, P.Show)
@@ -153,8 +174,8 @@ newtype Propcid = Propcid { unPropcid :: Text } deriving (P.Eq, P.Show)
 -- ** PubKey2
 newtype PubKey2 = PubKey2 { unPubKey2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
 
--- ** Size
-newtype Size = Size { unSize :: Text } deriving (P.Eq, P.Show)
+-- ** Replication
+newtype Replication = Replication { unReplication :: Int } deriving (P.Eq, P.Show)
 
 -- ** Token
 newtype Token = Token { unToken :: Text } deriving (P.Eq, P.Show)
@@ -162,21 +183,21 @@ newtype Token = Token { unToken :: Text } deriving (P.Eq, P.Show)
 -- * Models
 
 
--- ** MainCollection
--- | MainCollection
-data MainCollection = MainCollection
-  { mainCollectionCid :: !(Maybe Text) -- ^ "cid"
-  , mainCollectionCreatedAt :: !(Maybe Text) -- ^ "createdAt"
-  , mainCollectionDescription :: !(Maybe Text) -- ^ "description"
-  , mainCollectionName :: !(Maybe Text) -- ^ "name"
-  , mainCollectionUserId :: !(Maybe Int) -- ^ "userId"
-  , mainCollectionUuid :: !(Maybe Text) -- ^ "uuid"
+-- ** CollectionsCollection
+-- | CollectionsCollection
+data CollectionsCollection = CollectionsCollection
+  { collectionsCollectionCid :: !(Maybe Text) -- ^ "cid"
+  , collectionsCollectionCreatedAt :: !(Maybe Text) -- ^ "createdAt"
+  , collectionsCollectionDescription :: !(Maybe Text) -- ^ "description"
+  , collectionsCollectionName :: !(Maybe Text) -- ^ "name"
+  , collectionsCollectionUserId :: !(Maybe Int) -- ^ "userId"
+  , collectionsCollectionUuid :: !(Maybe Text) -- ^ "uuid"
   } deriving (P.Show, P.Eq, P.Typeable)
 
--- | FromJSON MainCollection
-instance A.FromJSON MainCollection where
-  parseJSON = A.withObject "MainCollection" $ \o ->
-    MainCollection
+-- | FromJSON CollectionsCollection
+instance A.FromJSON CollectionsCollection where
+  parseJSON = A.withObject "CollectionsCollection" $ \o ->
+    CollectionsCollection
       <$> (o .:? "cid")
       <*> (o .:? "createdAt")
       <*> (o .:? "description")
@@ -184,30 +205,30 @@ instance A.FromJSON MainCollection where
       <*> (o .:? "userId")
       <*> (o .:? "uuid")
 
--- | ToJSON MainCollection
-instance A.ToJSON MainCollection where
-  toJSON MainCollection {..} =
+-- | ToJSON CollectionsCollection
+instance A.ToJSON CollectionsCollection where
+  toJSON CollectionsCollection {..} =
    _omitNulls
-      [ "cid" .= mainCollectionCid
-      , "createdAt" .= mainCollectionCreatedAt
-      , "description" .= mainCollectionDescription
-      , "name" .= mainCollectionName
-      , "userId" .= mainCollectionUserId
-      , "uuid" .= mainCollectionUuid
+      [ "cid" .= collectionsCollectionCid
+      , "createdAt" .= collectionsCollectionCreatedAt
+      , "description" .= collectionsCollectionDescription
+      , "name" .= collectionsCollectionName
+      , "userId" .= collectionsCollectionUserId
+      , "uuid" .= collectionsCollectionUuid
       ]
 
 
--- | Construct a value of type 'MainCollection' (by applying it's required fields, if any)
-mkMainCollection
-  :: MainCollection
-mkMainCollection =
-  MainCollection
-  { mainCollectionCid = Nothing
-  , mainCollectionCreatedAt = Nothing
-  , mainCollectionDescription = Nothing
-  , mainCollectionName = Nothing
-  , mainCollectionUserId = Nothing
-  , mainCollectionUuid = Nothing
+-- | Construct a value of type 'CollectionsCollection' (by applying it's required fields, if any)
+mkCollectionsCollection
+  :: CollectionsCollection
+mkCollectionsCollection =
+  CollectionsCollection
+  { collectionsCollectionCid = Nothing
+  , collectionsCollectionCreatedAt = Nothing
+  , collectionsCollectionDescription = Nothing
+  , collectionsCollectionName = Nothing
+  , collectionsCollectionUserId = Nothing
+  , collectionsCollectionUuid = Nothing
   }
 
 -- ** MainCreateCollectionBody
@@ -240,6 +261,38 @@ mkMainCreateCollectionBody =
   MainCreateCollectionBody
   { mainCreateCollectionBodyDescription = Nothing
   , mainCreateCollectionBodyName = Nothing
+  }
+
+-- ** MainDeleteContentFromCollectionBody
+-- | MainDeleteContentFromCollectionBody
+data MainDeleteContentFromCollectionBody = MainDeleteContentFromCollectionBody
+  { mainDeleteContentFromCollectionBodyBy :: !(Maybe Text) -- ^ "by"
+  , mainDeleteContentFromCollectionBodyValue :: !(Maybe Text) -- ^ "value"
+  } deriving (P.Show, P.Eq, P.Typeable)
+
+-- | FromJSON MainDeleteContentFromCollectionBody
+instance A.FromJSON MainDeleteContentFromCollectionBody where
+  parseJSON = A.withObject "MainDeleteContentFromCollectionBody" $ \o ->
+    MainDeleteContentFromCollectionBody
+      <$> (o .:? "by")
+      <*> (o .:? "value")
+
+-- | ToJSON MainDeleteContentFromCollectionBody
+instance A.ToJSON MainDeleteContentFromCollectionBody where
+  toJSON MainDeleteContentFromCollectionBody {..} =
+   _omitNulls
+      [ "by" .= mainDeleteContentFromCollectionBodyBy
+      , "value" .= mainDeleteContentFromCollectionBodyValue
+      ]
+
+
+-- | Construct a value of type 'MainDeleteContentFromCollectionBody' (by applying it's required fields, if any)
+mkMainDeleteContentFromCollectionBody
+  :: MainDeleteContentFromCollectionBody
+mkMainDeleteContentFromCollectionBody =
+  MainDeleteContentFromCollectionBody
+  { mainDeleteContentFromCollectionBodyBy = Nothing
+  , mainDeleteContentFromCollectionBodyValue = Nothing
   }
 
 -- ** MainEstimateDealBody
@@ -468,6 +521,54 @@ mkUtilContentAddResponse =
   , utilContentAddResponseEstuaryId = Nothing
   , utilContentAddResponseProviders = Nothing
   , utilContentAddResponseRetrievalUrl = Nothing
+  }
+
+-- ** UtilContentCreateBody
+-- | UtilContentCreateBody
+data UtilContentCreateBody = UtilContentCreateBody
+  { utilContentCreateBodyColuuid :: !(Maybe Text) -- ^ "coluuid"
+  , utilContentCreateBodyDir :: !(Maybe Text) -- ^ "dir"
+  , utilContentCreateBodyLocation :: !(Maybe Text) -- ^ "location"
+  , utilContentCreateBodyName :: !(Maybe Text) -- ^ "name"
+  , utilContentCreateBodyRoot :: !(Maybe Text) -- ^ "root"
+  , utilContentCreateBodyType :: !(Maybe Int) -- ^ "type"
+  } deriving (P.Show, P.Eq, P.Typeable)
+
+-- | FromJSON UtilContentCreateBody
+instance A.FromJSON UtilContentCreateBody where
+  parseJSON = A.withObject "UtilContentCreateBody" $ \o ->
+    UtilContentCreateBody
+      <$> (o .:? "coluuid")
+      <*> (o .:? "dir")
+      <*> (o .:? "location")
+      <*> (o .:? "name")
+      <*> (o .:? "root")
+      <*> (o .:? "type")
+
+-- | ToJSON UtilContentCreateBody
+instance A.ToJSON UtilContentCreateBody where
+  toJSON UtilContentCreateBody {..} =
+   _omitNulls
+      [ "coluuid" .= utilContentCreateBodyColuuid
+      , "dir" .= utilContentCreateBodyDir
+      , "location" .= utilContentCreateBodyLocation
+      , "name" .= utilContentCreateBodyName
+      , "root" .= utilContentCreateBodyRoot
+      , "type" .= utilContentCreateBodyType
+      ]
+
+
+-- | Construct a value of type 'UtilContentCreateBody' (by applying it's required fields, if any)
+mkUtilContentCreateBody
+  :: UtilContentCreateBody
+mkUtilContentCreateBody =
+  UtilContentCreateBody
+  { utilContentCreateBodyColuuid = Nothing
+  , utilContentCreateBodyDir = Nothing
+  , utilContentCreateBodyLocation = Nothing
+  , utilContentCreateBodyName = Nothing
+  , utilContentCreateBodyRoot = Nothing
+  , utilContentCreateBodyType = Nothing
   }
 
 -- ** UtilHttpError

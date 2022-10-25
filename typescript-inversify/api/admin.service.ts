@@ -35,18 +35,24 @@ export class AdminService {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids
      
      */
-    public adminPeeringPeersDelete(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringPeersDelete(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public adminPeeringPeersDelete(observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'body', headers?: Headers): Observable<any>;
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringPeersDelete(body: Array<string>, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!body){
+            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        }
+
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/admin/peering/peers` as any, headers);
+        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/admin/peering/peers`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

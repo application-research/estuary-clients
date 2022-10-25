@@ -15,6 +15,7 @@ import java.io.File
 import io.swagger.client.model.MainImportDealBody
 import io.swagger.client.model.UtilContentAddIpfsBody
 import io.swagger.client.model.UtilContentAddResponse
+import io.swagger.client.model.UtilContentCreateBody
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -30,17 +31,15 @@ object ContentApi {
    *   bearerAuth (apiKey)
    * 
    * @param body Car
+   * @param ignoreDupes Ignore Dupes
    * @param filename Filename
-   * @param commp Commp
-   * @param size Size
    */
-  def contentAddCarPost(body: String, filename: Option[String] = None, commp: Option[String] = None, size: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/add-car", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
+      .withQueryParam("ignore-dupes", ignoreDupes)
       .withQueryParam("filename", filename)
-      .withQueryParam("commp", commp)
-      .withQueryParam("size", size)
         /**
    * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    * 
@@ -50,11 +49,13 @@ object ContentApi {
    *   bearerAuth (apiKey)
    * 
    * @param body IPFS Body
+   * @param ignoreDupes Ignore Dupes
    */
-  def contentAddIpfsPost(body: UtilContentAddIpfsBody)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/add-ipfs", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
+      .withQueryParam("ignore-dupes", ignoreDupes)
         /**
    * This endpoint is used to upload new content.
    * 
@@ -64,16 +65,24 @@ object ContentApi {
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
-   * @param file File to upload
+   * @param data File to upload
+   * @param filename Filenam to use for upload
    * @param coluuid Collection UUID
+   * @param replication Replication value
+   * @param ignoreDupes Ignore Dupes true/false
+   * @param lazyProvide Lazy Provide true/false
    * @param dir Directory
    */
-  def contentAddPost(file: File, coluuid: String, dir: String)(implicit apiKey: ApiKeyValue): ApiRequest[UtilContentAddResponse] =
+  def contentAddPost(data: File, filename: Option[String] = None, coluuid: Option[String] = None, replication: Option[Int] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[UtilContentAddResponse] =
     ApiRequest[UtilContentAddResponse](ApiMethods.POST, "https://api.estuary.tech", "/content/add", "multipart/form-data")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withFormParam("file", file)
-      .withPathParam("coluuid", coluuid)
-      .withPathParam("dir", dir)
+      .withFormParam("data", data)
+      .withFormParam("filename", filename)
+      .withQueryParam("coluuid", coluuid)
+      .withQueryParam("replication", replication)
+      .withQueryParam("ignore-dupes", ignoreDupes)
+      .withQueryParam("lazy-provide", lazyProvide)
+      .withQueryParam("dir", dir)
       .withSuccessResponse[UtilContentAddResponse](200)
         /**
    * This endpoint returns aggregated content stats
@@ -131,12 +140,14 @@ object ContentApi {
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
-   * @param body Content
+   * @param req Content
+   * @param ignoreDupes Ignore Dupes
    */
-  def contentCreatePost(body: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def contentCreatePost(req: UtilContentCreateBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/create", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
+      .withBody(req)
+      .withQueryParam("ignore-dupes", ignoreDupes)
         /**
    * This endpoint lists all content with deals
    * 
@@ -183,6 +194,20 @@ object ContentApi {
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("content", content)
       .withSuccessResponse[String](200)
+        /**
+   * This endpoint returns a content by its ID
+   * 
+   * Expected answers:
+   * 
+   * Available security schemes:
+   *   bearerAuth (apiKey)
+   * 
+   * @param id Content ID
+   */
+  def contentIdGet(id: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/{id}", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
+      .withPathParam("id", id)
         /**
    * This endpoint imports a deal into the shuttle.
    * 
@@ -244,11 +269,13 @@ object ContentApi {
    *   bearerAuth (apiKey)
    * 
    * @param limit limit
+   * @param offset offset
    */
-  def contentStatsGet(limit: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def contentStatsGet(limit: String, offset: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/stats", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("limit", limit)
+      .withQueryParam("limit", limit)
+      .withQueryParam("offset", offset)
         /**
    * This endpoint returns the status of a content
    * 

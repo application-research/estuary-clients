@@ -119,6 +119,16 @@ userApiKeysPost =
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 
 data UserApiKeysPost  
+
+-- | /Optional Param/ "expiry" - Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+instance HasOptionalParam UserApiKeysPost Expiry where
+  applyOptionalParam req (Expiry xs) =
+    req `setQuery` toQuery ("expiry", Just xs)
+
+-- | /Optional Param/ "perms" - Permissions -- currently unused
+instance HasOptionalParam UserApiKeysPost Perms where
+  applyOptionalParam req (Perms xs) =
+    req `setQuery` toQuery ("perms", Just xs)
 -- | @application/json@
 instance Produces UserApiKeysPost MimeJSON
 

@@ -152,7 +152,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -168,9 +168,10 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
+var ignoreFailed = ignoreFailed_example; // String | Ignore Failed
 
 try { 
-    api_instance.publicMinersDealsMinerGet(miner);
+    api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
 } catch (e) {
     print("Exception when calling PublicApi->publicMinersDealsMinerGet: $e\n");
 }
@@ -181,6 +182,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
+ **ignoreFailed** | **String**| Ignore Failed | [optional] 
 
 ### Return type
 

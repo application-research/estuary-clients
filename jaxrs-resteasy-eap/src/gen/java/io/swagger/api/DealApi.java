@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the deal API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public interface DealApi  {
    
     @POST
@@ -91,10 +91,10 @@ public interface DealApi  {
     @POST
     @Path("/transfer/status")
     
-    @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Transfer Status", notes = "This endpoint returns the status of a transfer", response = Void.class, authorizations = {
+    
+    @io.swagger.annotations.ApiOperation(value = "", notes = "", response = Void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
+    }, tags={  })
     @io.swagger.annotations.ApiResponses(value = {  })
     public Response dealTransferStatusPost(@Context SecurityContext securityContext);
 }

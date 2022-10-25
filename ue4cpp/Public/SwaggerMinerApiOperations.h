@@ -31,6 +31,8 @@ public:
     
 	/* Filter by miner */
 	FString Miner;
+	/* Ignore Failed */
+	TOptional<FString> IgnoreFailed;
 };
 
 class SWAGGER_API SwaggerMinerApi::PublicMinersDealsMinerGetResponse : public Response

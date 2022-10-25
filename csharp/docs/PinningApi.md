@@ -1,4 +1,4 @@
-# estuary_client.Api.PinningApi
+# estuary-client.Api.PinningApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -23,9 +23,9 @@ This endpoint lists all pin status objects
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -84,9 +84,9 @@ This endpoint deletes a pinned object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -149,9 +149,9 @@ This endpoint returns a pin status object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -214,9 +214,9 @@ This endpoint replaces a pinned object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -279,9 +279,9 @@ This endpoint adds a pin to the IPFS daemon.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {

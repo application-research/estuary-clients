@@ -104,12 +104,13 @@ bool publicMetricsDealsOnChainGetAsync(char * accessToken,
  *
  * This endpoint returns all miners deals
  * \param miner Filter by miner *Required*
+ * \param ignoreFailed Ignore Failed
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool publicMinersDealsMinerGetSync(char * accessToken,
-	std::string miner, 
+	std::string miner, std::string ignoreFailed, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -117,12 +118,13 @@ bool publicMinersDealsMinerGetSync(char * accessToken,
  *
  * This endpoint returns all miners deals
  * \param miner Filter by miner *Required*
+ * \param ignoreFailed Ignore Failed
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool publicMinersDealsMinerGetAsync(char * accessToken,
-	std::string miner, 
+	std::string miner, std::string ignoreFailed, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

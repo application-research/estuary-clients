@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collectionsColuuidCommitPost**](SwagCollectionsApi.md#collectionsColuuidCommitPost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collectionsColuuidContentsDelete**](SwagCollectionsApi.md#collectionsColuuidContentsDelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collectionsColuuidDelete**](SwagCollectionsApi.md#collectionsColuuidDelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collectionsColuuidGet**](SwagCollectionsApi.md#collectionsColuuidGet) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collectionsColuuidPost**](SwagCollectionsApi.md#collectionsColuuidPost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -48,6 +49,59 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| coluuid |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="collectionsColuuidContentsDelete"></a>
+# **collectionsColuuidContentsDelete**
+> String collectionsColuuidContentsDelete(coluuid, contentid, body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```java
+SwagCollectionsApi api = new SwagCollectionsApi();
+SwagClient client = api.getClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
+bearerAuth.setApiKey('YOUR API KEY');
+
+Map<String, Object> params = new Map<String, Object>{
+    'coluuid' => 'coluuid_example',
+    'contentid' => 'contentid_example',
+    'body' => SwagMainDeleteContentFromCollectionB.getExample()
+};
+
+try {
+    // cross your fingers
+    String result = api.collectionsColuuidContentsDelete(params);
+    System.debug(result);
+} catch (Swagger.ApiException e) {
+    // ...handle your exceptions
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **String**| Collection ID |
+ **contentid** | **String**| Content ID |
+ **body** | [**SwagMainDeleteContentFromCollectionB**](SwagMainDeleteContentFromCollectionB.md)| Variable to use when filtering for files (must be either \&#39;path\&#39; or \&#39;content_id\&#39;) |
 
 ### Return type
 
@@ -145,7 +199,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| Collection UUID |
+ **coluuid** | **String**| coluuid |
  **dir** | **String**| Directory | [optional]
 
 ### Return type
@@ -163,7 +217,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> Map&lt;String, String&gt; collectionsColuuidPost(body)
+> Map&lt;String, String&gt; collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -179,7 +233,8 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'body' => new List<Integer>{123}
+    'coluuid' => 'coluuid_example',
+    'contentIDs' => new List<Integer>{123}
 };
 
 try {
@@ -195,7 +250,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;Integer&gt;**| Content IDs to add to collection |
+ **coluuid** | **String**| coluuid |
+ **contentIDs** | **List&lt;Integer&gt;**| Content IDs to add to collection |
 
 ### Return type
 
@@ -264,7 +320,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> List&lt;SwagMainCollection&gt; collectionsGet(id)
+> List&lt;SwagCollectionsCollection&gt; collectionsGet()
 
 List all collections
 
@@ -279,13 +335,9 @@ SwagClient client = api.getClient();
 ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
-Map<String, Object> params = new Map<String, Object>{
-    'id' => 56
-};
-
 try {
     // cross your fingers
-    List<SwagMainCollection> result = api.collectionsGet(params);
+    List<SwagCollectionsCollection> result = api.collectionsGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -293,14 +345,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**| User ID |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;SwagMainCollection&gt;**](SwagMainCollection.md)
+[**List&lt;SwagCollectionsCollection&gt;**](SwagCollectionsCollection.md)
 
 ### Authorization
 
@@ -313,7 +362,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsPost"></a>
 # **collectionsPost**
-> SwagMainCollection collectionsPost(body)
+> SwagCollectionsCollection collectionsPost(body)
 
 Create a new collection
 
@@ -334,7 +383,7 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    SwagMainCollection result = api.collectionsPost(params);
+    SwagCollectionsCollection result = api.collectionsPost(params);
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -349,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SwagMainCollection**](SwagMainCollection.md)
+[**SwagCollectionsCollection**](SwagCollectionsCollection.md)
 
 ### Authorization
 

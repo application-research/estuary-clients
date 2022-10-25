@@ -20,9 +20,8 @@ defmodule EstuaryAPI.Api.Content do
   - connection (EstuaryAPI.Connection): Connection to server
   - body (String.t): Car
   - opts (KeywordList): [optional] Optional parameters
+    - :ignore_dupes (String.t): Ignore Dupes
     - :filename (String.t): Filename
-    - :commp (String.t): Commp
-    - :size (String.t): Size
 
   ## Returns
 
@@ -32,9 +31,8 @@ defmodule EstuaryAPI.Api.Content do
   @spec content_add_car_post(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
   def content_add_car_post(connection, body, opts \\ []) do
     optional_params = %{
-      :"filename" => :query,
-      :"commp" => :query,
-      :"size" => :query
+      :"ignore-dupes" => :query,
+      :"filename" => :query
     }
     %{}
     |> method(:post)
@@ -55,6 +53,7 @@ defmodule EstuaryAPI.Api.Content do
   - connection (EstuaryAPI.Connection): Connection to server
   - body (UtilContentAddIpfsBody): IPFS Body
   - opts (KeywordList): [optional] Optional parameters
+    - :ignore_dupes (String.t): Ignore Dupes
 
   ## Returns
 
@@ -62,11 +61,15 @@ defmodule EstuaryAPI.Api.Content do
   {:error, info} on failure
   """
   @spec content_add_ipfs_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentAddIpfsBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def content_add_ipfs_post(connection, body, _opts \\ []) do
+  def content_add_ipfs_post(connection, body, opts \\ []) do
+    optional_params = %{
+      :"ignore-dupes" => :query
+    }
     %{}
     |> method(:post)
     |> url("/content/add-ipfs")
     |> add_param(:body, :"body", body)
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -79,22 +82,35 @@ defmodule EstuaryAPI.Api.Content do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - file (String.t): File to upload
-  - coluuid (String.t): Collection UUID
-  - dir (String.t): Directory
+  - data (String.t): File to upload
   - opts (KeywordList): [optional] Optional parameters
+    - :filename (String.t): Filenam to use for upload
+    - :coluuid (String.t): Collection UUID
+    - :replication (integer()): Replication value
+    - :ignore_dupes (String.t): Ignore Dupes true/false
+    - :lazy_provide (String.t): Lazy Provide true/false
+    - :dir (String.t): Directory
 
   ## Returns
 
   {:ok, %EstuaryAPI.Model.UtilContentAddResponse{}} on success
   {:error, info} on failure
   """
-  @spec content_add_post(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, EstuaryAPI.Model.UtilContentAddResponse.t} | {:error, Tesla.Env.t}
-  def content_add_post(connection, file, coluuid, dir, _opts \\ []) do
+  @spec content_add_post(Tesla.Env.client, String.t, keyword()) :: {:ok, EstuaryAPI.Model.UtilContentAddResponse.t} | {:error, Tesla.Env.t}
+  def content_add_post(connection, data, opts \\ []) do
+    optional_params = %{
+      :"filename" => :form,
+      :"coluuid" => :query,
+      :"replication" => :query,
+      :"ignore-dupes" => :query,
+      :"lazy-provide" => :query,
+      :"dir" => :query
+    }
     %{}
     |> method(:post)
     |> url("/content/add")
-    |> add_param(:file, :"file", file)
+    |> add_param(:file, :"data", data)
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(%EstuaryAPI.Model.UtilContentAddResponse{})
@@ -187,20 +203,25 @@ defmodule EstuaryAPI.Api.Content do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - body (String.t): Content
+  - req (UtilContentCreateBody): Content
   - opts (KeywordList): [optional] Optional parameters
+    - :ignore_dupes (String.t): Ignore Dupes
 
   ## Returns
 
   {:ok, %{}} on success
   {:error, info} on failure
   """
-  @spec content_create_post(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def content_create_post(connection, body, _opts \\ []) do
+  @spec content_create_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentCreateBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  def content_create_post(connection, req, opts \\ []) do
+    optional_params = %{
+      :"ignore-dupes" => :query
+    }
     %{}
     |> method(:post)
     |> url("/content/create")
-    |> add_param(:body, :"body", body)
+    |> add_param(:body, :"req", req)
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -282,6 +303,31 @@ defmodule EstuaryAPI.Api.Content do
     %{}
     |> method(:get)
     |> url("/content/failures/#{content}")
+    |> Enum.into([])
+    |> (&Connection.request(connection, &1)).()
+    |> decode(false)
+  end
+
+  @doc """
+  Content
+  This endpoint returns a content by its ID
+
+  ## Parameters
+
+  - connection (EstuaryAPI.Connection): Connection to server
+  - id (integer()): Content ID
+  - opts (KeywordList): [optional] Optional parameters
+
+  ## Returns
+
+  {:ok, %{}} on success
+  {:error, info} on failure
+  """
+  @spec content_id_get(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  def content_id_get(connection, id, _opts \\ []) do
+    %{}
+    |> method(:get)
+    |> url("/content/#{id}")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -394,6 +440,7 @@ defmodule EstuaryAPI.Api.Content do
 
   - connection (EstuaryAPI.Connection): Connection to server
   - limit (String.t): limit
+  - offset (String.t): offset
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
@@ -401,11 +448,13 @@ defmodule EstuaryAPI.Api.Content do
   {:ok, %{}} on success
   {:error, info} on failure
   """
-  @spec content_stats_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def content_stats_get(connection, limit, _opts \\ []) do
+  @spec content_stats_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  def content_stats_get(connection, limit, offset, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/content/stats")
+    |> add_param(:query, :"limit", limit)
+    |> add_param(:query, :"offset", offset)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

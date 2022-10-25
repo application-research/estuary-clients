@@ -22,15 +22,15 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.CollectionsApi();
+    instance = new EstuaryClient.CollectionsApi();
   });
 
   describe('(package)', function() {
@@ -42,6 +42,32 @@
           var coluuid = "coluuid_example";
 
           instance.collectionsColuuidCommitPost(coluuid, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('collectionsColuuidContentsDelete', function() {
+        it('should call collectionsColuuidContentsDelete successfully', function(done) {
+          // TODO: uncomment, update parameter values for collectionsColuuidContentsDelete call and complete the assertions
+          /*
+          var coluuid = "coluuid_example";
+          var contentid = "contentid_example";
+          var body = new EstuaryClient.MainDeleteContentFromCollectionBody();
+          body.by = "";
+          body.value = "";
+
+          instance.collectionsColuuidContentsDelete(coluuid, contentid, body, function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -104,9 +130,10 @@
         it('should call collectionsColuuidPost successfully', function(done) {
           // TODO: uncomment, update parameter values for collectionsColuuidPost call and complete the assertions
           /*
-          var body = [new EstuaryApi.[Number]()];
+          var coluuid = "coluuid_example";
+          var contentIDs = [new EstuaryClient.[Number]()];
 
-          instance.collectionsColuuidPost(body, function(error, data, response) {
+          instance.collectionsColuuidPost(coluuid, contentIDs, function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -151,11 +178,10 @@
       });
       describe('collectionsGet', function() {
         it('should call collectionsGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for collectionsGet call and complete the assertions
+          // TODO: uncomment collectionsGet call and complete the assertions
           /*
-          var id = 56;
 
-          instance.collectionsGet(id, function(error, data, response) {
+          instance.collectionsGet(function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -166,7 +192,7 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryApi.MainCollection);
+              expect(data).to.be.a(EstuaryClient.CollectionsCollection);
               expect(data.cid).to.be.a('string');
               expect(data.cid).to.be("");
               expect(data.createdAt).to.be.a('string');
@@ -192,7 +218,7 @@
         it('should call collectionsPost successfully', function(done) {
           // TODO: uncomment, update parameter values for collectionsPost call and complete the assertions
           /*
-          var body = new EstuaryApi.MainCreateCollectionBody();
+          var body = new EstuaryClient.MainCreateCollectionBody();
           body.description = "";
           body.name = "";
 
@@ -202,7 +228,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryApi.MainCollection);
+            expect(data).to.be.a(EstuaryClient.CollectionsCollection);
             expect(data.cid).to.be.a('string');
             expect(data.cid).to.be("");
             expect(data.createdAt).to.be.a('string');

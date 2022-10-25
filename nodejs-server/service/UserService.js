@@ -38,9 +38,11 @@ exports.userApi_keysKeyDELETE = function(key) {
  * Create API keys for a user
  * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
  *
+ * expiry String Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+ * perms String Permissions -- currently unused (optional)
  * returns main.getApiKeysResp
  **/
-exports.userApi_keysPOST = function() {
+exports.userApi_keysPOST = function(expiry,perms) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {"empty": false};

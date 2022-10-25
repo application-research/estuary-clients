@@ -22,25 +22,26 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.PeeringApi();
+    instance = new EstuaryClient.PeeringApi();
   });
 
   describe('(package)', function() {
     describe('PeeringApi', function() {
       describe('adminPeeringPeersDelete', function() {
         it('should call adminPeeringPeersDelete successfully', function(done) {
-          // TODO: uncomment adminPeeringPeersDelete call
+          // TODO: uncomment, update parameter values for adminPeeringPeersDelete call
           /*
+          var body = [new EstuaryClient.[String]()];
 
-          instance.adminPeeringPeersDelete(function(error, data, response) {
+          instance.adminPeeringPeersDelete(body, function(error, data, response) {
             if (error) {
               done(error);
               return;

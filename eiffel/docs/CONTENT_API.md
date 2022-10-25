@@ -14,6 +14,7 @@ Feature | HTTP request | Description
 [**content_deals_get**](CONTENT_API.md#content_deals_get) | **Get** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](CONTENT_API.md#content_ensure_replication_datacid_get) | **Get** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](CONTENT_API.md#content_failures_content_get) | **Get** /content/failures/{content} | List all failures for a content
+[**content_id_get**](CONTENT_API.md#content_id_get) | **Get** /content/{id} | Content
 [**content_importdeal_post**](CONTENT_API.md#content_importdeal_post) | **Post** /content/importdeal | Import a deal
 [**content_list_get**](CONTENT_API.md#content_list_get) | **Get** /content/list | List all pinned content
 [**content_read_cont_get**](CONTENT_API.md#content_read_cont_get) | **Get** /content/read/{cont} | Read content
@@ -23,7 +24,7 @@ Feature | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post (body: STRING_32 ; filename:  detachable STRING_32 ; commp:  detachable STRING_32 ; size:  detachable STRING_32 )
+> content_add_car_post (body: STRING_32 ; ignore_dupes:  detachable STRING_32 ; filename:  detachable STRING_32 )
 	
 
 Add Car object
@@ -36,9 +37,8 @@ This endpoint is used to add a car object to the network. The object can be a fi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **STRING_32**| Car | 
+ **ignore_dupes** | **STRING_32**| Ignore Dupes | [optional] 
  **filename** | **STRING_32**| Filename | [optional] 
- **commp** | **STRING_32**| Commp | [optional] 
- **size** | **STRING_32**| Size | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY )
+> content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY ; ignore_dupes:  detachable STRING_32 )
 	
 
 Add IPFS object
@@ -69,6 +69,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UTIL_CONTENT_ADD_IPFS_BODY**](UTIL_CONTENT_ADD_IPFS_BODY.md)| IPFS Body | 
+ **ignore_dupes** | **STRING_32**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -86,7 +87,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> content_add_post (file: FILE ; coluuid: STRING_32 ; dir: STRING_32 ): detachable UTIL_CONTENT_ADD_RESPONSE
+> content_add_post (data: FILE ; filename:  detachable STRING_32 ; coluuid:  detachable STRING_32 ; replication:  detachable INTEGER_32 ; ignore_dupes:  detachable STRING_32 ; lazy_provide:  detachable STRING_32 ; dir:  detachable STRING_32 ): detachable UTIL_CONTENT_ADD_RESPONSE
 	
 
 Add new content
@@ -98,9 +99,13 @@ This endpoint is used to upload new content.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **FILE**| File to upload | 
- **coluuid** | **STRING_32**| Collection UUID | 
- **dir** | **STRING_32**| Directory | 
+ **data** | **FILE**| File to upload | 
+ **filename** | **STRING_32**| Filenam to use for upload | [optional] 
+ **coluuid** | **STRING_32**| Collection UUID | [optional] 
+ **replication** | **INTEGER_32**| Replication value | [optional] 
+ **ignore_dupes** | **STRING_32**| Ignore Dupes true/false | [optional] 
+ **lazy_provide** | **STRING_32**| Lazy Provide true/false | [optional] 
+ **dir** | **STRING_32**| Directory | [optional] 
 
 ### Return type
 
@@ -210,7 +215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post (body: STRING_32 )
+> content_create_post (req: UTIL_CONTENT_CREATE_BODY ; ignore_dupes:  detachable STRING_32 )
 	
 
 Add a new content
@@ -222,7 +227,8 @@ This endpoint adds a new content
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **STRING_32**| Content | 
+ **req** | [**UTIL_CONTENT_CREATE_BODY**](UTIL_CONTENT_CREATE_BODY.md)| Content | 
+ **ignore_dupes** | **STRING_32**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -318,6 +324,36 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**STRING_32**](STRING_32.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_id_get**
+> content_id_get (id: INTEGER_32 )
+	
+
+Content
+
+This endpoint returns a content by its ID
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **INTEGER_32**| Content ID | 
+
+### Return type
+
+{empty response body)
 
 ### Authorization
 
@@ -445,7 +481,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get (limit: STRING_32 )
+> content_stats_get (limit: STRING_32 ; offset: STRING_32 )
 	
 
 Get content statistics
@@ -458,6 +494,7 @@ This endpoint is used to get content statistics. Every content stored in the net
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **STRING_32**| limit | 
+ **offset** | **STRING_32**| offset | 
 
 ### Return type
 

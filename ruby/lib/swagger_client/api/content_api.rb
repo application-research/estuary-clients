@@ -23,9 +23,8 @@ module SwaggerClient
     # This endpoint is used to add a car object to the network. The object can be a file or a directory.
     # @param body Car
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @option opts [String] :commp Commp
-    # @option opts [String] :size Size
     # @return [nil]
     def content_add_car_post(body, opts = {})
       content_add_car_post_with_http_info(body, opts)
@@ -36,9 +35,8 @@ module SwaggerClient
     # This endpoint is used to add a car object to the network. The object can be a file or a directory.
     # @param body Car
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @option opts [String] :commp Commp
-    # @option opts [String] :size Size
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def content_add_car_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -53,9 +51,8 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
       query_params[:'filename'] = opts[:'filename'] if !opts[:'filename'].nil?
-      query_params[:'commp'] = opts[:'commp'] if !opts[:'commp'].nil?
-      query_params[:'size'] = opts[:'size'] if !opts[:'size'].nil?
 
       # header parameters
       header_params = {}
@@ -83,6 +80,7 @@ module SwaggerClient
     # This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @return [nil]
     def content_add_ipfs_post(body, opts = {})
       content_add_ipfs_post_with_http_info(body, opts)
@@ -93,6 +91,7 @@ module SwaggerClient
     # This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def content_add_ipfs_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -107,6 +106,7 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
 
       # header parameters
       header_params = {}
@@ -132,44 +132,49 @@ module SwaggerClient
     end
     # Add new content
     # This endpoint is used to upload new content.
-    # @param file File to upload
-    # @param coluuid Collection UUID
-    # @param dir Directory
+    # @param data File to upload
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :filename Filenam to use for upload
+    # @option opts [String] :coluuid Collection UUID
+    # @option opts [Integer] :replication Replication value
+    # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :lazy_provide Lazy Provide true/false
+    # @option opts [String] :dir Directory
     # @return [UtilContentAddResponse]
-    def content_add_post(file, coluuid, dir, opts = {})
-      data, _status_code, _headers = content_add_post_with_http_info(file, coluuid, dir, opts)
+    def content_add_post(data, opts = {})
+      data, _status_code, _headers = content_add_post_with_http_info(data, opts)
       data
     end
 
     # Add new content
     # This endpoint is used to upload new content.
-    # @param file File to upload
-    # @param coluuid Collection UUID
-    # @param dir Directory
+    # @param data File to upload
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :filename Filenam to use for upload
+    # @option opts [String] :coluuid Collection UUID
+    # @option opts [Integer] :replication Replication value
+    # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :lazy_provide Lazy Provide true/false
+    # @option opts [String] :dir Directory
     # @return [Array<(UtilContentAddResponse, Fixnum, Hash)>] UtilContentAddResponse data, response status code and response headers
-    def content_add_post_with_http_info(file, coluuid, dir, opts = {})
+    def content_add_post_with_http_info(data, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_post ...'
       end
-      # verify the required parameter 'file' is set
-      if @api_client.config.client_side_validation && file.nil?
-        fail ArgumentError, "Missing the required parameter 'file' when calling ContentApi.content_add_post"
-      end
-      # verify the required parameter 'coluuid' is set
-      if @api_client.config.client_side_validation && coluuid.nil?
-        fail ArgumentError, "Missing the required parameter 'coluuid' when calling ContentApi.content_add_post"
-      end
-      # verify the required parameter 'dir' is set
-      if @api_client.config.client_side_validation && dir.nil?
-        fail ArgumentError, "Missing the required parameter 'dir' when calling ContentApi.content_add_post"
+      # verify the required parameter 'data' is set
+      if @api_client.config.client_side_validation && data.nil?
+        fail ArgumentError, "Missing the required parameter 'data' when calling ContentApi.content_add_post"
       end
       # resource path
-      local_var_path = '/content/add'.sub('{' + 'coluuid' + '}', coluuid.to_s).sub('{' + 'dir' + '}', dir.to_s)
+      local_var_path = '/content/add'
 
       # query parameters
       query_params = {}
+      query_params[:'coluuid'] = opts[:'coluuid'] if !opts[:'coluuid'].nil?
+      query_params[:'replication'] = opts[:'replication'] if !opts[:'replication'].nil?
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'lazy-provide'] = opts[:'lazy_provide'] if !opts[:'lazy_provide'].nil?
+      query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 
       # header parameters
       header_params = {}
@@ -180,7 +185,8 @@ module SwaggerClient
 
       # form parameters
       form_params = {}
-      form_params['file'] = file
+      form_params['data'] = data
+      form_params['filename'] = opts[:'filename'] if !opts[:'filename'].nil?
 
       # http body (model)
       post_body = nil
@@ -368,32 +374,35 @@ module SwaggerClient
     end
     # Add a new content
     # This endpoint adds a new content
-    # @param body Content
+    # @param req Content
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @return [nil]
-    def content_create_post(body, opts = {})
-      content_create_post_with_http_info(body, opts)
+    def content_create_post(req, opts = {})
+      content_create_post_with_http_info(req, opts)
       nil
     end
 
     # Add a new content
     # This endpoint adds a new content
-    # @param body Content
+    # @param req Content
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def content_create_post_with_http_info(body, opts = {})
+    def content_create_post_with_http_info(req, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_create_post ...'
       end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling ContentApi.content_create_post"
+      # verify the required parameter 'req' is set
+      if @api_client.config.client_side_validation && req.nil?
+        fail ArgumentError, "Missing the required parameter 'req' when calling ContentApi.content_create_post"
       end
       # resource path
       local_var_path = '/content/create'
 
       # query parameters
       query_params = {}
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
 
       # header parameters
       header_params = {}
@@ -404,7 +413,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(body)
+      post_body = @api_client.object_to_http_body(req)
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -568,6 +577,57 @@ module SwaggerClient
         :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_failures_content_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Content
+    # This endpoint returns a content by its ID
+    # @param id Content ID
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def content_id_get(id, opts = {})
+      content_id_get_with_http_info(id, opts)
+      nil
+    end
+
+    # Content
+    # This endpoint returns a content by its ID
+    # @param id Content ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def content_id_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContentApi.content_id_get ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ContentApi.content_id_get"
+      end
+      # resource path
+      local_var_path = '/content/{id}'.sub('{' + 'id' + '}', id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContentApi#content_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -767,19 +827,21 @@ module SwaggerClient
     # Get content statistics
     # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     # @param limit limit
+    # @param offset offset
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def content_stats_get(limit, opts = {})
-      content_stats_get_with_http_info(limit, opts)
+    def content_stats_get(limit, offset, opts = {})
+      content_stats_get_with_http_info(limit, offset, opts)
       nil
     end
 
     # Get content statistics
     # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     # @param limit limit
+    # @param offset offset
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def content_stats_get_with_http_info(limit, opts = {})
+    def content_stats_get_with_http_info(limit, offset, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_stats_get ...'
       end
@@ -787,11 +849,17 @@ module SwaggerClient
       if @api_client.config.client_side_validation && limit.nil?
         fail ArgumentError, "Missing the required parameter 'limit' when calling ContentApi.content_stats_get"
       end
+      # verify the required parameter 'offset' is set
+      if @api_client.config.client_side_validation && offset.nil?
+        fail ArgumentError, "Missing the required parameter 'offset' when calling ContentApi.content_stats_get"
+      end
       # resource path
-      local_var_path = '/content/stats'.sub('{' + 'limit' + '}', limit.to_s)
+      local_var_path = '/content/stats'
 
       # query parameters
       query_params = {}
+      query_params[:'limit'] = limit
+      query_params[:'offset'] = offset
 
       # header parameters
       header_params = {}

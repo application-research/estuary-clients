@@ -26,10 +26,12 @@ object MinerApi {
    *   bearerAuth (apiKey)
    * 
    * @param miner Filter by miner
+   * @param ignoreFailed Ignore Failed
    */
-  def publicMinersDealsMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/deals/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withQueryParam("ignore-failed", ignoreFailed)
       .withPathParam("miner", miner)
         /**
    * This endpoint returns miner stats

@@ -14,9 +14,8 @@ private class SwagContentApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'body' => 'body_example',
-            'filename' => 'filename_example',
-            'commp' => 'commp_example',
-            'size' => 'size_example'
+            'ignoreDupes' => 'ignoreDupes_example',
+            'filename' => 'filename_example'
         };
 
         SwagClient client;
@@ -43,7 +42,8 @@ private class SwagContentApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'body' => SwagUtilContentAddIpfsBody.getExample()
+            'body' => SwagUtilContentAddIpfsBody.getExample(),
+            'ignoreDupes' => 'ignoreDupes_example'
         };
 
         SwagClient client;
@@ -70,8 +70,12 @@ private class SwagContentApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'file' => Blob.valueOf('Sample text file\nContents'),
+            'data' => Blob.valueOf('Sample text file\nContents'),
+            'filename' => 'filename_example',
             'coluuid' => 'coluuid_example',
+            'replication' => 56,
+            'ignoreDupes' => 'ignoreDupes_example',
+            'lazyProvide' => 'lazyProvide_example',
             'dir' => 'dir_example'
         };
 
@@ -194,7 +198,8 @@ private class SwagContentApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'body' => 'body_example'
+            'req' => SwagUtilContentCreateBody.getExample(),
+            'ignoreDupes' => 'ignoreDupes_example'
         };
 
         SwagClient client;
@@ -294,6 +299,33 @@ private class SwagContentApiTest {
         expectedResponse = 'aeiou';
         response = (String) api.contentFailuresContentGet(params);
         System.assertEquals(expectedResponse, response);
+    }
+
+    /**
+     * Content
+     *
+     * This endpoint returns a content by its ID
+     */
+    @isTest
+    private static void contentIdGetTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'id' => 56
+        };
+
+        SwagClient client;
+        SwagContentApi api;
+
+        client = new SwagClient();
+        api = new SwagContentApi(client);
+        ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
+            client.setApiKey('foo-bar-api-key');
+
+        api.contentIdGet(params);
     }
 
     /**
@@ -415,7 +447,8 @@ private class SwagContentApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'r_limit' => 'r_limit_example'
+            'r_limit' => 'r_limit_example',
+            'offset' => 'offset_example'
         };
 
         SwagClient client;

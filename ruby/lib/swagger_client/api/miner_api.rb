@@ -23,6 +23,7 @@ module SwaggerClient
     # This endpoint returns all miners deals
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_failed Ignore Failed
     # @return [nil]
     def public_miners_deals_miner_get(miner, opts = {})
       public_miners_deals_miner_get_with_http_info(miner, opts)
@@ -33,6 +34,7 @@ module SwaggerClient
     # This endpoint returns all miners deals
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_failed Ignore Failed
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def public_miners_deals_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
@@ -47,6 +49,7 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'ignore-failed'] = opts[:'ignore_failed'] if !opts[:'ignore_failed'].nil?
 
       # header parameters
       header_params = {}

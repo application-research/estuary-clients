@@ -53,6 +53,8 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 /// Create API keys for a user
 /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
 ///
+/// @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+/// @param perms Permissions -- currently unused (optional)
 /// 
 ///  code:200 message:"OK",
 ///  code:400 message:"Bad Request",
@@ -60,8 +62,9 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 ///  code:500 message:"Internal Server Error"
 ///
 /// @return SWGMainGetApiKeysResp*
--(NSURLSessionTask*) userApiKeysPostWithCompletionHandler: 
-    (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler;
+-(NSURLSessionTask*) userApiKeysPostWithExpiry: (NSString*) expiry
+    perms: (NSString*) perms
+    completionHandler: (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler;
 
 
 /// Export user data

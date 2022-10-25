@@ -157,10 +157,11 @@ class PublicApi(
    * This endpoint returns all miners deals
    *
    * @param miner Filter by miner 
+   * @param ignoreFailed Ignore Failed (optional)
    * @return void
    */
-  def publicMinersDealsMinerGet(miner: String) = {
-    val await = Try(Await.result(publicMinersDealsMinerGetAsync(miner), Duration.Inf))
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None) = {
+    val await = Try(Await.result(publicMinersDealsMinerGetAsync(miner, ignoreFailed), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -172,10 +173,11 @@ class PublicApi(
    * This endpoint returns all miners deals
    *
    * @param miner Filter by miner 
+   * @param ignoreFailed Ignore Failed (optional)
    * @return Future(void)
    */
-  def publicMinersDealsMinerGetAsync(miner: String) = {
-      helper.publicMinersDealsMinerGet(miner)
+  def publicMinersDealsMinerGetAsync(miner: String, ignoreFailed: Option[String] = None) = {
+      helper.publicMinersDealsMinerGet(miner, ignoreFailed)
   }
 
   /**
@@ -378,7 +380,9 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicMinersDealsMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersDealsMinerGet(miner: String,
+    ignoreFailed: Option[String] = None
+    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/public/miners/deals/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -389,6 +393,10 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
 
     if (miner == null) throw new Exception("Missing required parameter 'miner' when calling PublicApi->publicMinersDealsMinerGet")
 
+    ignoreFailed match {
+      case Some(param) => queryParams += "ignore-failed" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>

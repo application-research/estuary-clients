@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/MainEstimateDealBody'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.DealsApi = factory(root.EstuaryApi.ApiClient, root.EstuaryApi.MainEstimateDealBody);
+    root.EstuaryClient.DealsApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainEstimateDealBody);
   }
 }(this, function(ApiClient, MainEstimateDealBody) {
   'use strict';
@@ -370,46 +370,6 @@
 
       return this.apiClient.callApi(
         '/deal/transfer/in-progress', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the dealTransferStatusPost operation.
-     * @callback module:api/DealsApi~dealTransferStatusPostCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Transfer Status
-     * This endpoint returns the status of a transfer
-     * @param {module:api/DealsApi~dealTransferStatusPostCallback} callback The callback function, accepting three arguments: error, data, response
-     */
-    this.dealTransferStatusPost = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['bearerAuth'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/deal/transfer/status', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

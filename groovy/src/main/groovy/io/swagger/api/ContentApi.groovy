@@ -9,6 +9,7 @@ import io.swagger.model.File
 import io.swagger.model.MainImportDealBody
 import io.swagger.model.UtilContentAddIpfsBody
 import io.swagger.model.UtilContentAddResponse
+import io.swagger.model.UtilContentCreateBody
 
 import java.util.*;
 
@@ -17,7 +18,7 @@ class ContentApi {
     String basePath = "https://api.estuary.tech"
     String versionPath = "/api/v1"
 
-    def contentAddCarPost ( String body, String filename, String commp, String size, Closure onSuccess, Closure onFailure)  {
+    def contentAddCarPost ( String body, String ignoreDupes, String filename, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/content/add-car"
 
@@ -30,12 +31,10 @@ class ContentApi {
             throw new RuntimeException("missing required params body")
         }
 
-        if (!"null".equals(String.valueOf(filename)))
+        if (!"null".equals(String.valueOf(ignoreDupes)))
+            queryParams.put("ignore-dupes", String.valueOf(ignoreDupes))
+if (!"null".equals(String.valueOf(filename)))
             queryParams.put("filename", String.valueOf(filename))
-if (!"null".equals(String.valueOf(commp)))
-            queryParams.put("commp", String.valueOf(commp))
-if (!"null".equals(String.valueOf(size)))
-            queryParams.put("size", String.valueOf(size))
 
 
         // Also still TODO: form params, body param
@@ -45,7 +44,7 @@ if (!"null".equals(String.valueOf(size)))
                     null )
                     
     }
-    def contentAddIpfsPost ( UtilContentAddIpfsBody body, Closure onSuccess, Closure onFailure)  {
+    def contentAddIpfsPost ( UtilContentAddIpfsBody body, String ignoreDupes, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/content/add-ipfs"
 
@@ -58,7 +57,9 @@ if (!"null".equals(String.valueOf(size)))
             throw new RuntimeException("missing required params body")
         }
 
-        
+        if (!"null".equals(String.valueOf(ignoreDupes)))
+            queryParams.put("ignore-dupes", String.valueOf(ignoreDupes))
+
 
         // Also still TODO: form params, body param
 
@@ -67,7 +68,7 @@ if (!"null".equals(String.valueOf(size)))
                     null )
                     
     }
-    def contentAddPost ( File file, String coluuid, String dir, Closure onSuccess, Closure onFailure)  {
+    def contentAddPost ( File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/content/add"
 
@@ -76,19 +77,21 @@ if (!"null".equals(String.valueOf(size)))
         def headerParams = [:]
     
         // verify required params are set
-        if (file == null) {
-            throw new RuntimeException("missing required params file")
-        }
-        // verify required params are set
-        if (coluuid == null) {
-            throw new RuntimeException("missing required params coluuid")
-        }
-        // verify required params are set
-        if (dir == null) {
-            throw new RuntimeException("missing required params dir")
+        if (data == null) {
+            throw new RuntimeException("missing required params data")
         }
 
-        
+        if (!"null".equals(String.valueOf(coluuid)))
+            queryParams.put("coluuid", String.valueOf(coluuid))
+if (!"null".equals(String.valueOf(replication)))
+            queryParams.put("replication", String.valueOf(replication))
+if (!"null".equals(String.valueOf(ignoreDupes)))
+            queryParams.put("ignore-dupes", String.valueOf(ignoreDupes))
+if (!"null".equals(String.valueOf(lazyProvide)))
+            queryParams.put("lazy-provide", String.valueOf(lazyProvide))
+if (!"null".equals(String.valueOf(dir)))
+            queryParams.put("dir", String.valueOf(dir))
+
 
         // Also still TODO: form params, body param
 
@@ -177,7 +180,7 @@ if (!"null".equals(String.valueOf(all)))
                     null )
                     
     }
-    def contentCreatePost ( String body, Closure onSuccess, Closure onFailure)  {
+    def contentCreatePost ( UtilContentCreateBody req, String ignoreDupes, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/content/create"
 
@@ -186,11 +189,13 @@ if (!"null".equals(String.valueOf(all)))
         def headerParams = [:]
     
         // verify required params are set
-        if (body == null) {
-            throw new RuntimeException("missing required params body")
+        if (req == null) {
+            throw new RuntimeException("missing required params req")
         }
 
-        
+        if (!"null".equals(String.valueOf(ignoreDupes)))
+            queryParams.put("ignore-dupes", String.valueOf(ignoreDupes))
+
 
         // Also still TODO: form params, body param
 
@@ -263,6 +268,28 @@ if (!"null".equals(String.valueOf(offset)))
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
                     String.class )
+                    
+    }
+    def contentIdGet ( Integer id, Closure onSuccess, Closure onFailure)  {
+        // create path and map path parameters (TODO)
+        String resourcePath = "/content/{id}"
+
+        // query params
+        def queryParams = [:]
+        def headerParams = [:]
+    
+        // verify required params are set
+        if (id == null) {
+            throw new RuntimeException("missing required params id")
+        }
+
+        
+
+        // Also still TODO: form params, body param
+
+        invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
+                    "GET", "",
+                    null )
                     
     }
     def contentImportdealPost ( MainImportDealBody body, Closure onSuccess, Closure onFailure)  {
@@ -345,7 +372,7 @@ if (!"null".equals(String.valueOf(offset)))
                     null )
                     
     }
-    def contentStatsGet ( String limit, Closure onSuccess, Closure onFailure)  {
+    def contentStatsGet ( String limit, String offset, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/content/stats"
 
@@ -357,8 +384,16 @@ if (!"null".equals(String.valueOf(offset)))
         if (limit == null) {
             throw new RuntimeException("missing required params limit")
         }
+        // verify required params are set
+        if (offset == null) {
+            throw new RuntimeException("missing required params offset")
+        }
 
-        
+        if (!"null".equals(String.valueOf(limit)))
+            queryParams.put("limit", String.valueOf(limit))
+if (!"null".equals(String.valueOf(offset)))
+            queryParams.put("offset", String.valueOf(offset))
+
 
         // Also still TODO: form params, body param
 

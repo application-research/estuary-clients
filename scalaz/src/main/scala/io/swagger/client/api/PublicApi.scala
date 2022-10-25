@@ -84,7 +84,7 @@ object PublicApi {
     } yield resp
   }
   
-  def publicMinersDealsMinerGet(host: String, miner: String): Task[Unit] = {
+  def publicMinersDealsMinerGet(host: String, miner: String, ignoreFailed: String)(implicit ignoreFailedQuery: QueryParam[String]): Task[Unit] = {
     val path = "/public/miners/deals/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -92,7 +92,7 @@ object PublicApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreFailed", Some(ignore-failedQuery.toParamString(ignore-failed))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -285,7 +285,7 @@ class HttpServicePublicApi(service: HttpService) {
     } yield resp
   }
   
-  def publicMinersDealsMinerGet(miner: String): Task[Unit] = {
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: String)(implicit ignoreFailedQuery: QueryParam[String]): Task[Unit] = {
     val path = "/public/miners/deals/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -293,7 +293,7 @@ class HttpServicePublicApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreFailed", Some(ignore-failedQuery.toParamString(ignore-failed))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

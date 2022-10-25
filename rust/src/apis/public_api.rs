@@ -38,7 +38,7 @@ pub trait PublicApi {
     fn public_by_cid_cid_get(&self, cid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn public_info_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_deals_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn public_miners_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
@@ -238,7 +238,7 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
         )
     }
 
-    fn public_miners_deals_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -255,6 +255,7 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
 
         let query_string = {
             let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            query.append_pair("ignore-failed", &ignore_failed.to_string());
             for (key, val) in &auth_query {
                 query.append_pair(key, val);
             }

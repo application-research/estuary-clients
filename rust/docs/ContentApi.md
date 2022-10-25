@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**content_deals_get**](ContentApi.md#content_deals_get) | **Get** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **Get** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **Get** /content/failures/{content} | List all failures for a content
+[**content_id_get**](ContentApi.md#content_id_get) | **Get** /content/{id} | Content
 [**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **Post** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **Get** /content/list | List all pinned content
 [**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **Get** /content/read/{cont} | Read content
@@ -42,9 +43,8 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **String**| Car | 
+ **ignore_dupes** | **String**| Ignore Dupes | 
  **filename** | **String**| Filename | 
- **commp** | **String**| Commp | 
- **size** | **String**| Size | 
 
 ### Return type
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(ctx, body)
+> content_add_ipfs_post(ctx, body, optional)
 Add IPFS object
 
 This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -73,6 +73,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignore_dupes** | **String**| Ignore Dupes | 
 
 ### Return type
 
@@ -90,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> ::models::UtilContentAddResponse content_add_post(ctx, file, coluuid, dir)
+> ::models::UtilContentAddResponse content_add_post(ctx, data, optional)
 Add new content
 
 This endpoint is used to upload new content.
@@ -100,9 +109,21 @@ This endpoint is used to upload new content.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **file** | **File**| File to upload | 
-  **coluuid** | **String**| Collection UUID | 
-  **dir** | **String**| Directory | 
+  **data** | **File**| File to upload | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **File**| File to upload | 
+ **filename** | **String**| Filenam to use for upload | 
+ **coluuid** | **String**| Collection UUID | 
+ **replication** | **i32**| Replication value | 
+ **ignore_dupes** | **String**| Ignore Dupes true/false | 
+ **lazy_provide** | **String**| Lazy Provide true/false | 
+ **dir** | **String**| Directory | 
 
 ### Return type
 
@@ -206,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post(ctx, body)
+> content_create_post(ctx, req, optional)
 Add a new content
 
 This endpoint adds a new content
@@ -216,7 +237,16 @@ This endpoint adds a new content
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **body** | **String**| Content | 
+  **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **ignore_dupes** | **String**| Ignore Dupes | 
 
 ### Return type
 
@@ -313,6 +343,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 **String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_id_get**
+> content_id_get(ctx, id)
+Content
+
+This endpoint returns a content by its ID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **i32**| Content ID | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -430,7 +488,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get(ctx, limit)
+> content_stats_get(ctx, limit, offset)
 Get content statistics
 
 This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
@@ -441,6 +499,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **limit** | **String**| limit | 
+  **offset** | **String**| offset | 
 
 ### Return type
 

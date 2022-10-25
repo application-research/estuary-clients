@@ -24,7 +24,10 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **array[string]** | Peer ids |
 
 ### Return type
 

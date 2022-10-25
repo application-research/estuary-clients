@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.UtilHttpError = factory(root.EstuaryApi.ApiClient);
+    root.EstuaryClient.UtilHttpError = factory(root.EstuaryClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';

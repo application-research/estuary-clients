@@ -71,7 +71,7 @@ class PublicApi {
                     null )
                     
     }
-    def publicMinersDealsMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
+    def publicMinersDealsMinerGet ( String miner, String ignoreFailed, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/public/miners/deals/{miner}"
 
@@ -84,7 +84,9 @@ class PublicApi {
             throw new RuntimeException("missing required params miner")
         }
 
-        
+        if (!"null".equals(String.valueOf(ignoreFailed)))
+            queryParams.put("ignore-failed", String.valueOf(ignoreFailed))
+
 
         // Also still TODO: form params, body param
 

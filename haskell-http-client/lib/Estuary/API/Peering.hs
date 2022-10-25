@@ -70,12 +70,19 @@ import qualified Prelude as P
 -- Note: Has 'Produces' instances, but no response schema
 -- 
 adminPeeringPeersDelete0 
-  :: EstuaryRequest AdminPeeringPeersDelete0 MimeNoContent res MimeJSON
-adminPeeringPeersDelete0 =
+  :: (Consumes AdminPeeringPeersDelete0 contentType, MimeRender contentType Body)
+  => ContentType contentType -- ^ request content-type ('MimeType')
+  -> Body -- ^ "body" -  Peer ids
+  -> EstuaryRequest AdminPeeringPeersDelete0 contentType res MimeJSON
+adminPeeringPeersDelete0 _ body =
   _mkRequest "DELETE" ["/admin/peering/peers"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+    `setBodyParam` body
 
-data AdminPeeringPeersDelete0  
+data AdminPeeringPeersDelete0 
+
+-- | /Body Param/ "body" - Peer ids
+instance HasBodyParam AdminPeeringPeersDelete0 Body 
 -- | @application/json@
 instance Produces AdminPeeringPeersDelete0 MimeJSON
 

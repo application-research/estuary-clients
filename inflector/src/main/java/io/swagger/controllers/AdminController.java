@@ -10,8 +10,9 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:59:22.073Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-25T22:24:43.443Z")
 public class AdminController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
@@ -32,19 +33,19 @@ public class AdminController  {
   */
 
   /*
-    public ResponseContext adminPeeringPeersDELETE(RequestContext request ) {
+    public ResponseContext adminPeeringPeersDELETE(RequestContext request , List<String> body) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext adminPeeringPeersDELETE(RequestContext request ) {
+    public ResponseContext adminPeeringPeersDELETE(RequestContext request , List<String> body) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext adminPeeringPeersDELETE(RequestContext request ) {
+    public ResponseContext adminPeeringPeersDELETE(RequestContext request , List<String> body) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

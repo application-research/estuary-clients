@@ -16,6 +16,32 @@ function Invoke-CollectionsApiCollectionsColuuidCommitPost {
     }
 }
 
+function Invoke-CollectionsApiCollectionsColuuidContentsDelete {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${coluuid},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${contentid},
+        [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [estuary-client.Model.MainDeleteContentFromCollectionBody]
+        ${body}
+    )
+
+    Process {
+        'Calling method: CollectionsApi-CollectionsColuuidContentsDelete' | Write-Verbose
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $Script:CollectionsApi.CollectionsColuuidContentsDelete(
+            ${coluuid},
+            ${contentid},
+            ${body}
+        )
+    }
+}
+
 function Invoke-CollectionsApiCollectionsColuuidDelete {
     [CmdletBinding()]
     Param (
@@ -60,8 +86,11 @@ function Invoke-CollectionsApiCollectionsColuuidPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${coluuid},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [Int32[]]
-        ${body}
+        ${contentIDs}
     )
 
     Process {
@@ -69,7 +98,8 @@ function Invoke-CollectionsApiCollectionsColuuidPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:CollectionsApi.CollectionsColuuidPost(
-            ${body}
+            ${coluuid},
+            ${contentIDs}
         )
     }
 }
@@ -103,9 +133,6 @@ function Invoke-CollectionsApiCollectionsFsAddPost {
 function Invoke-CollectionsApiCollectionsGet {
     [CmdletBinding()]
     Param (
-        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [Int32]
-        ${id}
     )
 
     Process {
@@ -113,7 +140,6 @@ function Invoke-CollectionsApiCollectionsGet {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:CollectionsApi.CollectionsGet(
-            ${id}
         )
     }
 }
@@ -122,7 +148,7 @@ function Invoke-CollectionsApiCollectionsPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [estuary_client.Model.MainCreateCollectionBody]
+        [estuary-client.Model.MainCreateCollectionBody]
         ${body}
     )
 

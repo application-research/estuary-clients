@@ -64,7 +64,7 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns all miners deals
      *
      */
-    public void publicMinersDealsMinerGet(String miner) {
+    public void publicMinersDealsMinerGet(String miner, String ignoreFailed) {
         // TODO: Implement...
         
         

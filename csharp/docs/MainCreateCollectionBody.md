@@ -1,4 +1,4 @@
-# estuary_client.Model.MainCreateCollectionBody
+# estuary-client.Model.MainCreateCollectionBody
 ## Properties
 
 Name | Type | Description | Notes

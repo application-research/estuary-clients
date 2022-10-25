@@ -80,7 +80,8 @@ public class PeersApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        //api.adminPeeringPeersDelete();
+        List<String> body = null;
+        //api.adminPeeringPeersDelete(body);
         
         // TODO: test validations
         

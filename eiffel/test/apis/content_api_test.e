@@ -19,14 +19,13 @@ feature -- Test routines
             -- This endpoint is used to add a car object to the network. The object can be a file or a directory. 
         local
             l_body: STRING_32
+            l_ignore_dupes: STRING_32
             l_filename: STRING_32
-            l_commp: STRING_32
-            l_size: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_body
                       
-            -- api.content_add_car_post(l_body, l_filename, l_commp, l_size)
+            -- api.content_add_car_post(l_body, l_ignore_dupes, l_filename)
             assert ("not_implemented", False)
         end
     
@@ -36,11 +35,12 @@ feature -- Test routines
             -- This endpoint is used to add an IPFS object to the network. The object can be a file or a directory. 
         local
             l_body: UTIL_CONTENT_ADD_IPFS_BODY
+            l_ignore_dupes: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_body
                       
-            -- api.content_add_ipfs_post(l_body)
+            -- api.content_add_ipfs_post(l_body, l_ignore_dupes)
             assert ("not_implemented", False)
         end
     
@@ -50,16 +50,18 @@ feature -- Test routines
             -- This endpoint is used to upload new content. 
         local
             l_response: UTIL_CONTENT_ADD_RESPONSE
-            l_file: FILE
+            l_data: FILE
+            l_filename: STRING_32
             l_coluuid: STRING_32
+            l_replication: INTEGER_32
+            l_ignore_dupes: STRING_32
+            l_lazy_provide: STRING_32
             l_dir: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_file
-            -- l_coluuid
-            -- l_dir
+            -- l_data
                       
-            -- l_response := api.content_add_post(l_file, l_coluuid, l_dir)
+            -- l_response := api.content_add_post(l_data, l_filename, l_coluuid, l_replication, l_ignore_dupes, l_lazy_provide, l_dir)
             assert ("not_implemented", False)
         end
     
@@ -115,12 +117,13 @@ feature -- Test routines
             -- 
             -- This endpoint adds a new content 
         local
-            l_body: STRING_32
+            l_req: UTIL_CONTENT_CREATE_BODY
+            l_ignore_dupes: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_body
+            -- l_req
                       
-            -- api.content_create_post(l_body)
+            -- api.content_create_post(l_req, l_ignore_dupes)
             assert ("not_implemented", False)
         end
     
@@ -164,6 +167,20 @@ feature -- Test routines
             -- l_content
                       
             -- l_response := api.content_failures_content_get(l_content)
+            assert ("not_implemented", False)
+        end
+    
+    test_content_id_get
+            -- Content
+            -- 
+            -- This endpoint returns a content by its ID 
+        local
+            l_id: INTEGER_32
+        do
+            -- TODO: Initialize required params.
+            -- l_id
+                      
+            -- api.content_id_get(l_id)
             assert ("not_implemented", False)
         end
     
@@ -226,11 +243,13 @@ feature -- Test routines
             -- This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten 
         local
             l_limit: STRING_32
+            l_offset: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_limit
+            -- l_offset
                       
-            -- api.content_stats_get(l_limit)
+            -- api.content_stats_get(l_limit, l_offset)
             assert ("not_implemented", False)
         end
     

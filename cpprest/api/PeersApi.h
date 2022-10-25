@@ -22,6 +22,8 @@
 
 #include "../ApiClient.h"
 
+#include <vector>
+#include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
 
@@ -43,7 +45,9 @@ public:
     /// <remarks>
     /// This endpoint can be used to remove a Peer from the Peering Service
     /// </remarks>
+    /// <param name="body">Peer ids</param>
     pplx::task<void> adminPeeringPeersDelete(
+        std::vector<utility::string_t> body
     );
     /// <summary>
     /// List all Peering peers

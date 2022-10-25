@@ -1,10 +1,11 @@
-# estuary_client.CollectionsApi
+# estuary-client.CollectionsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collections_coluuid_commit_post**](CollectionsApi.md#collections_coluuid_commit_post) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collections_coluuid_contents_delete**](CollectionsApi.md#collections_coluuid_contents_delete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collections_coluuid_delete**](CollectionsApi.md#collections_coluuid_delete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collections_coluuid_get**](CollectionsApi.md#collections_coluuid_get) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collections_coluuid_post**](CollectionsApi.md#collections_coluuid_post) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -24,18 +25,18 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
 coluuid = 'coluuid_example' # str | coluuid
 
 try:
@@ -67,6 +68,64 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **collections_coluuid_contents_delete**
+> str collections_coluuid_contents_delete(coluuid, contentid, body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary-client
+from estuary-client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary-client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
+coluuid = 'coluuid_example' # str | Collection ID
+contentid = 'contentid_example' # str | Content ID
+body = estuary-client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+try:
+    # Deletes a content from a collection
+    api_response = api_instance.collections_coluuid_contents_delete(coluuid, contentid, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CollectionsApi->collections_coluuid_contents_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **str**| Collection ID | 
+ **contentid** | **str**| Content ID | 
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **collections_coluuid_delete**
 > collections_coluuid_delete(coluuid)
 
@@ -78,18 +137,18 @@ This endpoint is used to delete an existing collection.
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
 coluuid = 'coluuid_example' # str | Collection ID
 
 try:
@@ -131,19 +190,19 @@ This endpoint is used to get contents in a collection. If no colpath query param
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-coluuid = 'coluuid_example' # str | Collection UUID
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
+coluuid = 'coluuid_example' # str | coluuid
 dir = 'dir_example' # str | Directory (optional)
 
 try:
@@ -158,7 +217,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **str**| Collection UUID | 
+ **coluuid** | **str**| coluuid | 
  **dir** | **str**| Directory | [optional] 
 
 ### Return type
@@ -177,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> dict(str, str) collections_coluuid_post(body)
+> dict(str, str) collections_coluuid_post(coluuid, content_i_ds)
 
 Add contents to a collection
 
@@ -187,23 +246,24 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = [estuary_client.list[int]()] # list[int] | Content IDs to add to collection
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
+coluuid = 'coluuid_example' # str | coluuid
+content_i_ds = [estuary-client.list[int]()] # list[int] | Content IDs to add to collection
 
 try:
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body)
+    api_response = api_instance.collections_coluuid_post(coluuid, content_i_ds)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_post: %s\n" % e)
@@ -213,7 +273,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **list[int]**| Content IDs to add to collection | 
+ **coluuid** | **str**| coluuid | 
+ **content_i_ds** | **list[int]**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -241,18 +302,18 @@ This endpoint adds a file to a collection
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
 coluuid = 'coluuid_example' # str | Collection ID
 content = 'content_example' # str | Content
 path = 'path_example' # str | Path to file
@@ -288,7 +349,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> list[MainCollection] collections_get(id)
+> list[CollectionsCollection] collections_get()
 
 List all collections
 
@@ -298,37 +359,33 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-id = 56 # int | User ID
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
 
 try:
     # List all collections
-    api_response = api_instance.collections_get(id)
+    api_response = api_instance.collections_get()
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_get: %s\n" % e)
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[MainCollection]**](MainCollection.md)
+[**list[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -342,7 +399,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_post**
-> MainCollection collections_post(body)
+> CollectionsCollection collections_post(body)
 
 Create a new collection
 
@@ -352,19 +409,19 @@ This endpoint is used to create a new collection. A collection is a representaio
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainCreateCollectionBody() # MainCreateCollectionBody | Collection name and description
+api_instance = estuary-client.CollectionsApi(estuary-client.ApiClient(configuration))
+body = estuary-client.MainCreateCollectionBody() # MainCreateCollectionBody | Collection name and description
 
 try:
     # Create a new collection
@@ -382,7 +439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

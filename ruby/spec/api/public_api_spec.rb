@@ -71,6 +71,7 @@ describe 'PublicApi' do
   # This endpoint returns all miners deals
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :ignore_failed Ignore Failed
   # @return [nil]
   describe 'public_miners_deals_miner_get test' do
     it 'should work' do

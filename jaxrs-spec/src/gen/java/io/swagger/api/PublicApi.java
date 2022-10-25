@@ -13,7 +13,7 @@ import javax.validation.Valid;
 
 @Path("/public")
 @Api(description = "the public API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-07T23:59:40.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-25T22:25:02.267Z")
 public class PublicApi {
 
     @GET
@@ -72,7 +72,7 @@ public class PublicApi {
     }, tags={ "public", "miner",  })
     @ApiResponses(value = { 
     })
-    public Response publicMinersDealsMinerGet(@PathParam("miner") @ApiParam("Filter by miner") String miner) {
+    public Response publicMinersDealsMinerGet(@PathParam("miner") @ApiParam("Filter by miner") String miner,@QueryParam("ignore-failed")   @ApiParam("Ignore Failed")  String ignoreFailed) {
         return Response.ok().entity("magic!").build();
     }
 

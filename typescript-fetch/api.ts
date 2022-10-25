@@ -81,43 +81,43 @@ export class RequiredError extends Error {
 /**
  * 
  * @export
- * @interface MainCollection
+ * @interface CollectionsCollection
  */
-export interface MainCollection {
+export interface CollectionsCollection {
     /**
      * 
      * @type {string}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     cid?: string;
     /**
      * 
      * @type {string}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     createdAt?: string;
     /**
      * 
      * @type {string}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     description?: string;
     /**
      * 
      * @type {string}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     name?: string;
     /**
      * 
      * @type {number}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     userId?: number;
     /**
      * 
      * @type {string}
-     * @memberof MainCollection
+     * @memberof CollectionsCollection
      */
     uuid?: string;
 }
@@ -140,6 +140,26 @@ export interface MainCreateCollectionBody {
      * @memberof MainCreateCollectionBody
      */
     name?: string;
+}
+
+/**
+ * 
+ * @export
+ * @interface MainDeleteContentFromCollectionBody
+ */
+export interface MainDeleteContentFromCollectionBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof MainDeleteContentFromCollectionBody
+     */
+    by?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MainDeleteContentFromCollectionBody
+     */
+    value?: string;
 }
 
 /**
@@ -319,6 +339,50 @@ export interface UtilContentAddResponse {
 /**
  * 
  * @export
+ * @interface UtilContentCreateBody
+ */
+export interface UtilContentCreateBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilContentCreateBody
+     */
+    coluuid?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilContentCreateBody
+     */
+    dir?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilContentCreateBody
+     */
+    location?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilContentCreateBody
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilContentCreateBody
+     */
+    root?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilContentCreateBody
+     */
+    type?: number;
+}
+
+/**
+ * 
+ * @export
  * @interface UtilHttpError
  */
 export interface UtilHttpError {
@@ -352,10 +416,15 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options: any = {}): FetchArgs {
+        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+            }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
@@ -370,10 +439,14 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -609,11 +682,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersDelete(options);
+        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -762,11 +836,12 @@ export const AdminApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any) {
-            return AdminApiFp(configuration).adminPeeringPeersDelete(options)(fetch, basePath);
+        adminPeeringPeersDelete(body: Array<string>, options?: any) {
+            return AdminApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -844,12 +919,13 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
+     * @param {Array<string>} body Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public adminPeeringPeersDelete(options?: any) {
-        return AdminApiFp(this.configuration).adminPeeringPeersDelete(options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
+        return AdminApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1250,6 +1326,58 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             };
         },
         /**
+         * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+         * @summary Deletes a content from a collection
+         * @param {string} coluuid Collection ID
+         * @param {string} contentid Content ID
+         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, options: any = {}): FetchArgs {
+            // verify required parameter 'coluuid' is not null or undefined
+            if (coluuid === null || coluuid === undefined) {
+                throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
+            }
+            // verify required parameter 'contentid' is not null or undefined
+            if (contentid === null || contentid === undefined) {
+                throw new RequiredError('contentid','Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
+            }
+            const localVarPath = `/collections/{coluuid}/contents`
+                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)))
+                .replace(`{${"contentid"}}`, encodeURIComponent(String(contentid)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MainDeleteContentFromCollectionBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint is used to delete an existing collection.
          * @summary Deletes a collection
          * @param {string} coluuid Collection ID
@@ -1289,7 +1417,7 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to get contents in a collection. If no colpath query param is passed
          * @summary Get contents in a collection
-         * @param {string} coluuid Collection UUID
+         * @param {string} coluuid coluuid
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1299,7 +1427,8 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             if (coluuid === null || coluuid === undefined) {
                 throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsColuuidGet.');
             }
-            const localVarPath = `/collections/{coluuid}`;
+            const localVarPath = `/collections/{coluuid}`
+                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1311,10 +1440,6 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            if (coluuid !== undefined) {
-                localVarQueryParameter['coluuid'] = coluuid;
             }
 
             if (dir !== undefined) {
@@ -1334,16 +1459,22 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
         /**
          * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
          * @summary Add contents to a collection
-         * @param {Array<number>} body Content IDs to add to collection
+         * @param {string} coluuid coluuid
+         * @param {Array<number>} contentIDs Content IDs to add to collection
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidPost.');
+        collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options: any = {}): FetchArgs {
+            // verify required parameter 'coluuid' is not null or undefined
+            if (coluuid === null || coluuid === undefined) {
+                throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
             }
-            const localVarPath = `/collections/{coluuid}`;
+            // verify required parameter 'contentIDs' is not null or undefined
+            if (contentIDs === null || contentIDs === undefined) {
+                throw new RequiredError('contentIDs','Required parameter contentIDs was null or undefined when calling collectionsColuuidPost.');
+            }
+            const localVarPath = `/collections/{coluuid}`
+                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1364,7 +1495,7 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>"Array&lt;number&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(contentIDs || {}) : (contentIDs || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1432,17 +1563,11 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
          * @summary List all collections
-         * @param {number} id User ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsGet(id: number, options: any = {}): FetchArgs {
-            // verify required parameter 'id' is not null or undefined
-            if (id === null || id === undefined) {
-                throw new RequiredError('id','Required parameter id was null or undefined when calling collectionsGet.');
-            }
-            const localVarPath = `/collections/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+        collectionsGet(options: any = {}): FetchArgs {
+            const localVarPath = `/collections/`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1535,6 +1660,27 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
             };
         },
         /**
+         * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+         * @summary Deletes a content from a collection
+         * @param {string} coluuid Collection ID
+         * @param {string} contentid Content ID
+         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidContentsDelete(coluuid, contentid, body, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
          * This endpoint is used to delete an existing collection.
          * @summary Deletes a collection
          * @param {string} coluuid Collection ID
@@ -1556,7 +1702,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to get contents in a collection. If no colpath query param is passed
          * @summary Get contents in a collection
-         * @param {string} coluuid Collection UUID
+         * @param {string} coluuid coluuid
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1576,12 +1722,13 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
          * @summary Add contents to a collection
-         * @param {Array<number>} body Content IDs to add to collection
+         * @param {string} coluuid coluuid
+         * @param {Array<number>} contentIDs Content IDs to add to collection
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(body, options);
+        collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(coluuid, contentIDs, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1616,12 +1763,11 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
          * @summary List all collections
-         * @param {number} id User ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<MainCollection>> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsGet(id, options);
+        collectionsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CollectionsCollection>> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1639,7 +1785,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsPost(body: MainCreateCollectionBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<MainCollection> {
+        collectionsPost(body: MainCreateCollectionBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CollectionsCollection> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsPost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1671,6 +1817,18 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
             return CollectionsApiFp(configuration).collectionsColuuidCommitPost(coluuid, options)(fetch, basePath);
         },
         /**
+         * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+         * @summary Deletes a content from a collection
+         * @param {string} coluuid Collection ID
+         * @param {string} contentid Content ID
+         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, options?: any) {
+            return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(coluuid, contentid, body, options)(fetch, basePath);
+        },
+        /**
          * This endpoint is used to delete an existing collection.
          * @summary Deletes a collection
          * @param {string} coluuid Collection ID
@@ -1683,7 +1841,7 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
         /**
          * This endpoint is used to get contents in a collection. If no colpath query param is passed
          * @summary Get contents in a collection
-         * @param {string} coluuid Collection UUID
+         * @param {string} coluuid coluuid
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1694,12 +1852,13 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
         /**
          * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
          * @summary Add contents to a collection
-         * @param {Array<number>} body Content IDs to add to collection
+         * @param {string} coluuid coluuid
+         * @param {Array<number>} contentIDs Content IDs to add to collection
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, options?: any) {
-            return CollectionsApiFp(configuration).collectionsColuuidPost(body, options)(fetch, basePath);
+        collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options?: any) {
+            return CollectionsApiFp(configuration).collectionsColuuidPost(coluuid, contentIDs, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a file to a collection
@@ -1716,12 +1875,11 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
         /**
          * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
          * @summary List all collections
-         * @param {number} id User ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsGet(id: number, options?: any) {
-            return CollectionsApiFp(configuration).collectionsGet(id, options)(fetch, basePath);
+        collectionsGet(options?: any) {
+            return CollectionsApiFp(configuration).collectionsGet(options)(fetch, basePath);
         },
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
@@ -1756,6 +1914,20 @@ export class CollectionsApi extends BaseAPI {
     }
 
     /**
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @summary Deletes a content from a collection
+     * @param {string} coluuid Collection ID
+     * @param {string} contentid Content ID
+     * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CollectionsApi
+     */
+    public collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(coluuid, contentid, body, options)(this.fetch, this.basePath);
+    }
+
+    /**
      * This endpoint is used to delete an existing collection.
      * @summary Deletes a collection
      * @param {string} coluuid Collection ID
@@ -1770,7 +1942,7 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
      * @summary Get contents in a collection
-     * @param {string} coluuid Collection UUID
+     * @param {string} coluuid coluuid
      * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -1783,13 +1955,14 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @summary Add contents to a collection
-     * @param {Array<number>} body Content IDs to add to collection
+     * @param {string} coluuid coluuid
+     * @param {Array<number>} contentIDs Content IDs to add to collection
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsColuuidPost(body: Array<number>, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, options)(this.fetch, this.basePath);
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsColuuidPost(coluuid, contentIDs, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1809,13 +1982,12 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @summary List all collections
-     * @param {number} id User ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsGet(id: number, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsGet(id, options)(this.fetch, this.basePath);
+    public collectionsGet(options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsGet(options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1842,13 +2014,12 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [filename] Filename
-         * @param {string} [commp] Commp
-         * @param {string} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, options: any = {}): FetchArgs {
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddCarPost.');
@@ -1867,16 +2038,12 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
             if (filename !== undefined) {
                 localVarQueryParameter['filename'] = filename;
-            }
-
-            if (commp !== undefined) {
-                localVarQueryParameter['commp'] = commp;
-            }
-
-            if (size !== undefined) {
-                localVarQueryParameter['size'] = size;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1897,10 +2064,11 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
          * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, options: any = {}): FetchArgs {
+        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -1917,6 +2085,10 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1936,28 +2108,22 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint is used to upload new content.
          * @summary Add new content
-         * @param {any} file File to upload
-         * @param {string} coluuid Collection UUID
-         * @param {string} dir Directory
+         * @param {any} data File to upload
+         * @param {string} [filename] Filenam to use for upload
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(file: any, coluuid: string, dir: string, options: any = {}): FetchArgs {
-            // verify required parameter 'file' is not null or undefined
-            if (file === null || file === undefined) {
-                throw new RequiredError('file','Required parameter file was null or undefined when calling contentAddPost.');
+        contentAddPost(data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'data' is not null or undefined
+            if (data === null || data === undefined) {
+                throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPost.');
             }
-            // verify required parameter 'coluuid' is not null or undefined
-            if (coluuid === null || coluuid === undefined) {
-                throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling contentAddPost.');
-            }
-            // verify required parameter 'dir' is not null or undefined
-            if (dir === null || dir === undefined) {
-                throw new RequiredError('dir','Required parameter dir was null or undefined when calling contentAddPost.');
-            }
-            const localVarPath = `/content/add`
-                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)))
-                .replace(`{${"dir"}}`, encodeURIComponent(String(dir)));
+            const localVarPath = `/content/add`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1972,8 +2138,32 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            if (file !== undefined) {
-                localVarFormParams.set('file', file as any);
+            if (coluuid !== undefined) {
+                localVarQueryParameter['coluuid'] = coluuid;
+            }
+
+            if (replication !== undefined) {
+                localVarQueryParameter['replication'] = replication;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (lazyProvide !== undefined) {
+                localVarQueryParameter['lazy-provide'] = lazyProvide;
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
+            }
+
+            if (data !== undefined) {
+                localVarFormParams.set('data', data as any);
+            }
+
+            if (filename !== undefined) {
+                localVarFormParams.set('filename', filename as any);
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -2124,14 +2314,15 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint adds a new content
          * @summary Add a new content
-         * @param {string} body Content
+         * @param {UtilContentCreateBody} req Content
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentCreatePost(body: string, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling contentCreatePost.');
+        contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'req' is not null or undefined
+            if (req === null || req === undefined) {
+                throw new RequiredError('req','Required parameter req was null or undefined when calling contentCreatePost.');
             }
             const localVarPath = `/content/create`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -2147,14 +2338,18 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            const needsSerialization = (<any>"UtilContentCreateBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(req || {}) : (req || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2253,6 +2448,43 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             }
             const localVarPath = `/content/failures/{content}`
                 .replace(`{${"content"}}`, encodeURIComponent(String(content)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns a content by its ID
+         * @summary Content
+         * @param {number} id Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentIdGet(id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'id' is not null or undefined
+            if (id === null || id === undefined) {
+                throw new RequiredError('id','Required parameter id was null or undefined when calling contentIdGet.');
+            }
+            const localVarPath = `/content/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -2419,16 +2651,20 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
          * @summary Get content statistics
          * @param {string} limit limit
+         * @param {string} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStatsGet(limit: string, options: any = {}): FetchArgs {
+        contentStatsGet(limit: string, offset: string, options: any = {}): FetchArgs {
             // verify required parameter 'limit' is not null or undefined
             if (limit === null || limit === undefined) {
                 throw new RequiredError('limit','Required parameter limit was null or undefined when calling contentStatsGet.');
             }
-            const localVarPath = `/content/stats`
-                .replace(`{${"limit"}}`, encodeURIComponent(String(limit)));
+            // verify required parameter 'offset' is not null or undefined
+            if (offset === null || offset === undefined) {
+                throw new RequiredError('offset','Required parameter offset was null or undefined when calling contentStatsGet.');
+            }
+            const localVarPath = `/content/stats`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -2440,6 +2676,14 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -2502,14 +2746,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [filename] Filename
-         * @param {string} [commp] Commp
-         * @param {string} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, filename, commp, size, options);
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2524,11 +2767,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
          * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, options);
+        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2542,14 +2786,18 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to upload new content.
          * @summary Add new content
-         * @param {any} file File to upload
-         * @param {string} coluuid Collection UUID
-         * @param {string} dir Directory
+         * @param {any} data File to upload
+         * @param {string} [filename] Filenam to use for upload
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(file: any, coluuid: string, dir: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(file, coluuid, dir, options);
+        contentAddPost(data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2622,12 +2870,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint adds a new content
          * @summary Add a new content
-         * @param {string} body Content
+         * @param {UtilContentCreateBody} req Content
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentCreatePost(body: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentCreatePost(body, options);
+        contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentCreatePost(req, ignoreDupes, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2690,6 +2939,25 @@ export const ContentApiFp = function(configuration?: Configuration) {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
                         return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns a content by its ID
+         * @summary Content
+         * @param {number} id Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentIdGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentIdGet(id, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
                     } else {
                         throw response;
                     }
@@ -2774,11 +3042,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
          * @summary Get content statistics
          * @param {string} limit limit
+         * @param {string} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStatsGet(limit: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStatsGet(limit, options);
+        contentStatsGet(limit: string, offset: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStatsGet(limit, offset, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2821,36 +3090,40 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [filename] Filename
-         * @param {string} [commp] Commp
-         * @param {string} [size] Size
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, options?: any) {
-            return ContentApiFp(configuration).contentAddCarPost(body, filename, commp, size, options)(fetch, basePath);
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
          * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, options?: any) {
-            return ContentApiFp(configuration).contentAddIpfsPost(body, options)(fetch, basePath);
+        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to upload new content.
          * @summary Add new content
-         * @param {any} file File to upload
-         * @param {string} coluuid Collection UUID
-         * @param {string} dir Directory
+         * @param {any} data File to upload
+         * @param {string} [filename] Filenam to use for upload
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(file: any, coluuid: string, dir: string, options?: any) {
-            return ContentApiFp(configuration).contentAddPost(file, coluuid, dir, options)(fetch, basePath);
+        contentAddPost(data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(fetch, basePath);
         },
         /**
          * This endpoint returns aggregated content stats
@@ -2887,12 +3160,13 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint adds a new content
          * @summary Add a new content
-         * @param {string} body Content
+         * @param {UtilContentCreateBody} req Content
+         * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentCreatePost(body: string, options?: any) {
-            return ContentApiFp(configuration).contentCreatePost(body, options)(fetch, basePath);
+        contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options?: any) {
+            return ContentApiFp(configuration).contentCreatePost(req, ignoreDupes, options)(fetch, basePath);
         },
         /**
          * This endpoint lists all content with deals
@@ -2924,6 +3198,16 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          */
         contentFailuresContentGet(content: string, options?: any) {
             return ContentApiFp(configuration).contentFailuresContentGet(content, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns a content by its ID
+         * @summary Content
+         * @param {number} id Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentIdGet(id: number, options?: any) {
+            return ContentApiFp(configuration).contentIdGet(id, options)(fetch, basePath);
         },
         /**
          * This endpoint imports a deal into the shuttle.
@@ -2967,11 +3251,12 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
          * @summary Get content statistics
          * @param {string} limit limit
+         * @param {string} offset offset
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStatsGet(limit: string, options?: any) {
-            return ContentApiFp(configuration).contentStatsGet(limit, options)(fetch, basePath);
+        contentStatsGet(limit: string, offset: string, options?: any) {
+            return ContentApiFp(configuration).contentStatsGet(limit, offset, options)(fetch, basePath);
         },
         /**
          * This endpoint returns the status of a content
@@ -2997,41 +3282,45 @@ export class ContentApi extends BaseAPI {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @summary Add Car object
      * @param {string} body Car
+     * @param {string} [ignoreDupes] Ignore Dupes
      * @param {string} [filename] Filename
-     * @param {string} [commp] Commp
-     * @param {string} [size] Size
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddCarPost(body, filename, commp, size, options)(this.fetch, this.basePath);
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options)(this.fetch, this.basePath);
     }
 
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
      * @param {UtilContentAddIpfsBody} body IPFS Body
+     * @param {string} [ignoreDupes] Ignore Dupes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, options?: any) {
-        return ContentApiFp(this.configuration).contentAddIpfsPost(body, options)(this.fetch, this.basePath);
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options)(this.fetch, this.basePath);
     }
 
     /**
      * This endpoint is used to upload new content.
      * @summary Add new content
-     * @param {any} file File to upload
-     * @param {string} coluuid Collection UUID
-     * @param {string} dir Directory
+     * @param {any} data File to upload
+     * @param {string} [filename] Filenam to use for upload
+     * @param {string} [coluuid] Collection UUID
+     * @param {number} [replication] Replication value
+     * @param {string} [ignoreDupes] Ignore Dupes true/false
+     * @param {string} [lazyProvide] Lazy Provide true/false
+     * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddPost(file: any, coluuid: string, dir: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddPost(file, coluuid, dir, options)(this.fetch, this.basePath);
+    public contentAddPost(data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3075,13 +3364,14 @@ export class ContentApi extends BaseAPI {
     /**
      * This endpoint adds a new content
      * @summary Add a new content
-     * @param {string} body Content
+     * @param {UtilContentCreateBody} req Content
+     * @param {string} [ignoreDupes] Ignore Dupes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentCreatePost(body: string, options?: any) {
-        return ContentApiFp(this.configuration).contentCreatePost(body, options)(this.fetch, this.basePath);
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentCreatePost(req, ignoreDupes, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3119,6 +3409,18 @@ export class ContentApi extends BaseAPI {
      */
     public contentFailuresContentGet(content: string, options?: any) {
         return ContentApiFp(this.configuration).contentFailuresContentGet(content, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns a content by its ID
+     * @summary Content
+     * @param {number} id Content ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public contentIdGet(id: number, options?: any) {
+        return ContentApiFp(this.configuration).contentIdGet(id, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3171,12 +3473,13 @@ export class ContentApi extends BaseAPI {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @summary Get content statistics
      * @param {string} limit limit
+     * @param {string} offset offset
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentStatsGet(limit: string, options?: any) {
-        return ContentApiFp(this.configuration).contentStatsGet(limit, options)(this.fetch, this.basePath);
+    public contentStatsGet(limit: string, offset: string, options?: any) {
+        return ContentApiFp(this.configuration).contentStatsGet(limit, offset, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3440,37 +3743,6 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
             const localVarPath = `/deal/transfer/in-progress`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint returns the status of a transfer
-         * @summary Transfer Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options: any = {}): FetchArgs {
-            const localVarPath = `/deal/transfer/status`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -3817,24 +4089,6 @@ export const DealsApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint returns the status of a transfer
-         * @summary Transfer Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealTransferStatusPost(options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
          * This endpoint returns a list of storage failures for user
          * @summary Get storage failures for user
          * @param {*} [options] Override http request option.
@@ -4008,15 +4262,6 @@ export const DealsApiFactory = function (configuration?: Configuration, fetch?: 
             return DealsApiFp(configuration).dealTransferInProgressGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint returns the status of a transfer
-         * @summary Transfer Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options?: any) {
-            return DealsApiFp(configuration).dealTransferStatusPost(options)(fetch, basePath);
-        },
-        /**
          * This endpoint returns a list of storage failures for user
          * @summary Get storage failures for user
          * @param {*} [options] Override http request option.
@@ -4160,17 +4405,6 @@ export class DealsApi extends BaseAPI {
     }
 
     /**
-     * This endpoint returns the status of a transfer
-     * @summary Transfer Status
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DealsApi
-     */
-    public dealTransferStatusPost(options?: any) {
-        return DealsApiFp(this.configuration).dealTransferStatusPost(options)(this.fetch, this.basePath);
-    }
-
-    /**
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      * @param {*} [options] Override http request option.
@@ -4227,6 +4461,107 @@ export class DealsApi extends BaseAPI {
      */
     public publicMinersStorageQueryMinerGet(miner: string, options?: any) {
         return DealsApiFp(this.configuration).publicMinersStorageQueryMinerGet(miner, options)(this.fetch, this.basePath);
+    }
+
+}
+
+/**
+ * DefaultApi - fetch parameter creator
+ * @export
+ */
+export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(options: any = {}): FetchArgs {
+            const localVarPath = `/deal/transfer/status`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).dealTransferStatusPost(options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(options?: any) {
+            return DefaultApiFp(configuration).dealTransferStatusPost(options)(fetch, basePath);
+        },
+    };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public dealTransferStatusPost(options?: any) {
+        return DefaultApiFp(this.configuration).dealTransferStatusPost(options)(this.fetch, this.basePath);
     }
 
 }
@@ -4346,10 +4681,11 @@ export const MinerApiFetchParamCreator = function (configuration?: Configuration
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options: any = {}): FetchArgs {
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options: any = {}): FetchArgs {
             // verify required parameter 'miner' is not null or undefined
             if (miner === null || miner === undefined) {
                 throw new RequiredError('miner','Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
@@ -4367,6 +4703,10 @@ export const MinerApiFetchParamCreator = function (configuration?: Configuration
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreFailed !== undefined) {
+                localVarQueryParameter['ignore-failed'] = ignoreFailed;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -4429,11 +4769,12 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, options);
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -4476,11 +4817,12 @@ export const MinerApiFactory = function (configuration?: Configuration, fetch?: 
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options?: any) {
-            return MinerApiFp(configuration).publicMinersDealsMinerGet(miner, options)(fetch, basePath);
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any) {
+            return MinerApiFp(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options)(fetch, basePath);
         },
         /**
          * This endpoint returns miner stats
@@ -4506,12 +4848,13 @@ export class MinerApi extends BaseAPI {
      * This endpoint returns all miners deals
      * @summary Get all miners deals
      * @param {string} miner Filter by miner
+     * @param {string} [ignoreFailed] Ignore Failed
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public publicMinersDealsMinerGet(miner: string, options?: any) {
-        return MinerApiFp(this.configuration).publicMinersDealsMinerGet(miner, options)(this.fetch, this.basePath);
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any) {
+        return MinerApiFp(this.configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -4927,10 +5270,15 @@ export const PeeringApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options: any = {}): FetchArgs {
+        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+            }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
@@ -4945,10 +5293,14 @@ export const PeeringApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5122,11 +5474,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersDelete(options);
+        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -5239,11 +5592,12 @@ export const PeeringApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringPeersDelete(options)(fetch, basePath);
+        adminPeeringPeersDelete(body: Array<string>, options?: any) {
+            return PeeringApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -5303,12 +5657,13 @@ export class PeeringApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
+     * @param {Array<string>} body Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PeeringApi
      */
-    public adminPeeringPeersDelete(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringPeersDelete(options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
+        return PeeringApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -5377,10 +5732,15 @@ export const PeersApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options: any = {}): FetchArgs {
+        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+            }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
@@ -5395,10 +5755,14 @@ export const PeersApiFetchParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5572,11 +5936,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersDelete(options);
+        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -5689,11 +6054,12 @@ export const PeersApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(options?: any) {
-            return PeersApiFp(configuration).adminPeeringPeersDelete(options)(fetch, basePath);
+        adminPeeringPeersDelete(body: Array<string>, options?: any) {
+            return PeersApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -5753,12 +6119,13 @@ export class PeersApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
+     * @param {Array<string>} body Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PeersApi
      */
-    public adminPeeringPeersDelete(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringPeersDelete(options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
+        return PeersApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -6353,10 +6720,11 @@ export const PublicApiFetchParamCreator = function (configuration?: Configuratio
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options: any = {}): FetchArgs {
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options: any = {}): FetchArgs {
             // verify required parameter 'miner' is not null or undefined
             if (miner === null || miner === undefined) {
                 throw new RequiredError('miner','Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
@@ -6374,6 +6742,10 @@ export const PublicApiFetchParamCreator = function (configuration?: Configuratio
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreFailed !== undefined) {
+                localVarQueryParameter['ignore-failed'] = ignoreFailed;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -6652,11 +7024,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, options);
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -6818,11 +7191,12 @@ export const PublicApiFactory = function (configuration?: Configuration, fetch?:
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
+         * @param {string} [ignoreFailed] Ignore Failed
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, options?: any) {
-            return PublicApiFp(configuration).publicMinersDealsMinerGet(miner, options)(fetch, basePath);
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any) {
+            return PublicApiFp(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options)(fetch, basePath);
         },
         /**
          * This endpoint returns all miners
@@ -6928,12 +7302,13 @@ export class PublicApi extends BaseAPI {
      * This endpoint returns all miners deals
      * @summary Get all miners deals
      * @param {string} miner Filter by miner
+     * @param {string} [ignoreFailed] Ignore Failed
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PublicApi
      */
-    public publicMinersDealsMinerGet(miner: string, options?: any) {
-        return PublicApiFp(this.configuration).publicMinersDealsMinerGet(miner, options)(this.fetch, this.basePath);
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any) {
+        return PublicApiFp(this.configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -7083,10 +7458,12 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysPost(options: any = {}): FetchArgs {
+        userApiKeysPost(expiry?: string, perms?: string, options: any = {}): FetchArgs {
             const localVarPath = `/user/api-keys`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -7099,6 +7476,14 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (expiry !== undefined) {
+                localVarQueryParameter['expiry'] = expiry;
+            }
+
+            if (perms !== undefined) {
+                localVarQueryParameter['perms'] = perms;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -7222,11 +7607,13 @@ export const UserApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<MainGetApiKeysResp> {
-            const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysPost(options);
+        userApiKeysPost(expiry?: string, perms?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<MainGetApiKeysResp> {
+            const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysPost(expiry, perms, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -7304,11 +7691,13 @@ export const UserApiFactory = function (configuration?: Configuration, fetch?: F
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysPost(options?: any) {
-            return UserApiFp(configuration).userApiKeysPost(options)(fetch, basePath);
+        userApiKeysPost(expiry?: string, perms?: string, options?: any) {
+            return UserApiFp(configuration).userApiKeysPost(expiry, perms, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to get API keys for a user.
@@ -7364,12 +7753,14 @@ export class UserApi extends BaseAPI {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
+     * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param {string} [perms] Permissions -- currently unused
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public userApiKeysPost(options?: any) {
-        return UserApiFp(this.configuration).userApiKeysPost(options)(this.fetch, this.basePath);
+    public userApiKeysPost(expiry?: string, perms?: string, options?: any) {
+        return UserApiFp(this.configuration).userApiKeysPost(expiry, perms, options)(this.fetch, this.basePath);
     }
 
     /**

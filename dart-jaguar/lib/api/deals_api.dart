@@ -73,13 +73,6 @@ class DealsApi extends _$DealsApiClient implements ApiClient {
     Future<void> dealTransferInProgressGet(
     );
 
-    /// Transfer Status
-    ///
-    /// This endpoint returns the status of a transfer
-    @PostReq(path: "/deal/transfer/status", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> dealTransferStatusPost(
-    );
-
     /// Get storage failures for user
     ///
     /// This endpoint returns a list of storage failures for user

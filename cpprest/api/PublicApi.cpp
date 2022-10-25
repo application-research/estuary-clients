@@ -346,7 +346,7 @@ pplx::task<void> PublicApi::publicMetricsDealsOnChainGet()
         return void();
     });
 }
-pplx::task<void> PublicApi::publicMinersDealsMinerGet(utility::string_t miner)
+pplx::task<void> PublicApi::publicMinersDealsMinerGet(utility::string_t miner, boost::optional<utility::string_t> ignoreFailed)
 {
 
 
@@ -388,6 +388,10 @@ pplx::task<void> PublicApi::publicMinersDealsMinerGet(utility::string_t miner)
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    if (ignoreFailed)
+    {
+        queryParams[utility::conversions::to_string_t("ignore-failed")] = ApiClient::parameterToString(*ignoreFailed);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;

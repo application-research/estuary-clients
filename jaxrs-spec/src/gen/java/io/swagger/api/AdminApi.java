@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -13,7 +14,7 @@ import javax.validation.Valid;
 
 @Path("/admin")
 @Api(description = "the admin API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-07T23:59:40.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-25T22:25:02.267Z")
 public class AdminApi {
 
     @POST
@@ -48,7 +49,7 @@ public class AdminApi {
     }, tags={ "admin", "peering", "peers",  })
     @ApiResponses(value = { 
     })
-    public Response adminPeeringPeersDelete() {
+    public Response adminPeeringPeersDelete(@Valid List<String> body) {
         return Response.ok().entity("magic!").build();
     }
 

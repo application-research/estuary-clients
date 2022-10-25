@@ -34,10 +34,9 @@ isa_ok($api, 'WWW::SwaggerClient::ContentApi');
 #
 {
     my $body = undef; # replace NULL with a proper value
+    my $ignore_dupes = undef; # replace NULL with a proper value
     my $filename = undef; # replace NULL with a proper value
-    my $commp = undef; # replace NULL with a proper value
-    my $size = undef; # replace NULL with a proper value
-    my $result = $api->content_add_car_post(body => $body, filename => $filename, commp => $commp, size => $size);
+    my $result = $api->content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename);
 }
 
 #
@@ -45,17 +44,22 @@ isa_ok($api, 'WWW::SwaggerClient::ContentApi');
 #
 {
     my $body = undef; # replace NULL with a proper value
-    my $result = $api->content_add_ipfs_post(body => $body);
+    my $ignore_dupes = undef; # replace NULL with a proper value
+    my $result = $api->content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes);
 }
 
 #
 # content_add_post test
 #
 {
-    my $file = undef; # replace NULL with a proper value
+    my $data = undef; # replace NULL with a proper value
+    my $filename = undef; # replace NULL with a proper value
     my $coluuid = undef; # replace NULL with a proper value
+    my $replication = undef; # replace NULL with a proper value
+    my $ignore_dupes = undef; # replace NULL with a proper value
+    my $lazy_provide = undef; # replace NULL with a proper value
     my $dir = undef; # replace NULL with a proper value
-    my $result = $api->content_add_post(file => $file, coluuid => $coluuid, dir => $dir);
+    my $result = $api->content_add_post(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignore_dupes => $ignore_dupes, lazy_provide => $lazy_provide, dir => $dir);
 }
 
 #
@@ -88,8 +92,9 @@ isa_ok($api, 'WWW::SwaggerClient::ContentApi');
 # content_create_post test
 #
 {
-    my $body = undef; # replace NULL with a proper value
-    my $result = $api->content_create_post(body => $body);
+    my $req = undef; # replace NULL with a proper value
+    my $ignore_dupes = undef; # replace NULL with a proper value
+    my $result = $api->content_create_post(req => $req, ignore_dupes => $ignore_dupes);
 }
 
 #
@@ -115,6 +120,14 @@ isa_ok($api, 'WWW::SwaggerClient::ContentApi');
 {
     my $content = undef; # replace NULL with a proper value
     my $result = $api->content_failures_content_get(content => $content);
+}
+
+#
+# content_id_get test
+#
+{
+    my $id = undef; # replace NULL with a proper value
+    my $result = $api->content_id_get(id => $id);
 }
 
 #
@@ -152,7 +165,8 @@ isa_ok($api, 'WWW::SwaggerClient::ContentApi');
 #
 {
     my $limit = undef; # replace NULL with a proper value
-    my $result = $api->content_stats_get(limit => $limit);
+    my $offset = undef; # replace NULL with a proper value
+    my $result = $api->content_stats_get(limit => $limit, offset => $offset);
 }
 
 #

@@ -171,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet($miner)
+> publicMinersDealsMinerGet($miner, $ignore_failed)
 
 Get all miners deals
 
@@ -194,9 +194,10 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
     $config
 );
 $miner = "miner_example"; // string | Filter by miner
+$ignore_failed = "ignore_failed_example"; // string | Ignore Failed
 
 try {
-    $apiInstance->publicMinersDealsMinerGet($miner);
+    $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMinersDealsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -208,6 +209,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner |
+ **ignore_failed** | **string**| Ignore Failed | [optional]
 
 ### Return type
 

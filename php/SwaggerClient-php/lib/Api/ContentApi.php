@@ -93,17 +93,16 @@ class ContentApi
      * Add Car object
      *
      * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      * @param  string $filename Filename (optional)
-     * @param  string $commp Commp (optional)
-     * @param  string $size Size (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function contentAddCarPost($body, $filename = null, $commp = null, $size = null)
+    public function contentAddCarPost($body, $ignore_dupes = null, $filename = null)
     {
-        $this->contentAddCarPostWithHttpInfo($body, $filename, $commp, $size);
+        $this->contentAddCarPostWithHttpInfo($body, $ignore_dupes, $filename);
     }
 
     /**
@@ -112,18 +111,17 @@ class ContentApi
      * Add Car object
      *
      * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      * @param  string $filename Filename (optional)
-     * @param  string $commp Commp (optional)
-     * @param  string $size Size (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddCarPostWithHttpInfo($body, $filename = null, $commp = null, $size = null)
+    public function contentAddCarPostWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
         $returnType = '';
-        $request = $this->contentAddCarPostRequest($body, $filename, $commp, $size);
+        $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         try {
             $options = $this->createHttpClientOption();
@@ -168,16 +166,15 @@ class ContentApi
      * Add Car object
      *
      * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      * @param  string $filename Filename (optional)
-     * @param  string $commp Commp (optional)
-     * @param  string $size Size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddCarPostAsync($body, $filename = null, $commp = null, $size = null)
+    public function contentAddCarPostAsync($body, $ignore_dupes = null, $filename = null)
     {
-        return $this->contentAddCarPostAsyncWithHttpInfo($body, $filename, $commp, $size)
+        return $this->contentAddCarPostAsyncWithHttpInfo($body, $ignore_dupes, $filename)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -191,17 +188,16 @@ class ContentApi
      * Add Car object
      *
      * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      * @param  string $filename Filename (optional)
-     * @param  string $commp Commp (optional)
-     * @param  string $size Size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddCarPostAsyncWithHttpInfo($body, $filename = null, $commp = null, $size = null)
+    public function contentAddCarPostAsyncWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
         $returnType = '';
-        $request = $this->contentAddCarPostRequest($body, $filename, $commp, $size);
+        $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -230,14 +226,13 @@ class ContentApi
      * Create request for operation 'contentAddCarPost'
      *
      * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      * @param  string $filename Filename (optional)
-     * @param  string $commp Commp (optional)
-     * @param  string $size Size (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddCarPostRequest($body, $filename = null, $commp = null, $size = null)
+    protected function contentAddCarPostRequest($body, $ignore_dupes = null, $filename = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -254,16 +249,12 @@ class ContentApi
         $multipart = false;
 
         // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes);
+        }
+        // query params
         if ($filename !== null) {
             $queryParams['filename'] = ObjectSerializer::toQueryValue($filename);
-        }
-        // query params
-        if ($commp !== null) {
-            $queryParams['commp'] = ObjectSerializer::toQueryValue($commp);
-        }
-        // query params
-        if ($size !== null) {
-            $queryParams['size'] = ObjectSerializer::toQueryValue($size);
         }
 
 
@@ -352,14 +343,15 @@ class ContentApi
      * Add IPFS object
      *
      * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function contentAddIpfsPost($body)
+    public function contentAddIpfsPost($body, $ignore_dupes = null)
     {
-        $this->contentAddIpfsPostWithHttpInfo($body);
+        $this->contentAddIpfsPostWithHttpInfo($body, $ignore_dupes);
     }
 
     /**
@@ -368,15 +360,16 @@ class ContentApi
      * Add IPFS object
      *
      * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddIpfsPostWithHttpInfo($body)
+    public function contentAddIpfsPostWithHttpInfo($body, $ignore_dupes = null)
     {
         $returnType = '';
-        $request = $this->contentAddIpfsPostRequest($body);
+        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes);
 
         try {
             $options = $this->createHttpClientOption();
@@ -421,13 +414,14 @@ class ContentApi
      * Add IPFS object
      *
      * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddIpfsPostAsync($body)
+    public function contentAddIpfsPostAsync($body, $ignore_dupes = null)
     {
-        return $this->contentAddIpfsPostAsyncWithHttpInfo($body)
+        return $this->contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -441,14 +435,15 @@ class ContentApi
      * Add IPFS object
      *
      * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddIpfsPostAsyncWithHttpInfo($body)
+    public function contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes = null)
     {
         $returnType = '';
-        $request = $this->contentAddIpfsPostRequest($body);
+        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -477,11 +472,12 @@ class ContentApi
      * Create request for operation 'contentAddIpfsPost'
      *
      * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddIpfsPostRequest($body)
+    protected function contentAddIpfsPostRequest($body, $ignore_dupes = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -497,6 +493,10 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes);
+        }
 
 
         // body params
@@ -583,17 +583,21 @@ class ContentApi
      *
      * Add new content
      *
-     * @param  \SplFileObject $file File to upload (required)
-     * @param  string $coluuid Collection UUID (required)
-     * @param  string $dir Directory (required)
+     * @param  \SplFileObject $data File to upload (required)
+     * @param  string $filename Filenam to use for upload (optional)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\UtilContentAddResponse
      */
-    public function contentAddPost($file, $coluuid, $dir)
+    public function contentAddPost($data, $filename = null, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        list($response) = $this->contentAddPostWithHttpInfo($file, $coluuid, $dir);
+        list($response) = $this->contentAddPostWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
         return $response;
     }
 
@@ -602,18 +606,22 @@ class ContentApi
      *
      * Add new content
      *
-     * @param  \SplFileObject $file File to upload (required)
-     * @param  string $coluuid Collection UUID (required)
-     * @param  string $dir Directory (required)
+     * @param  \SplFileObject $data File to upload (required)
+     * @param  string $filename Filenam to use for upload (optional)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\UtilContentAddResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddPostWithHttpInfo($file, $coluuid, $dir)
+    public function contentAddPostWithHttpInfo($data, $filename = null, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
         $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
-        $request = $this->contentAddPostRequest($file, $coluuid, $dir);
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
 
         try {
             $options = $this->createHttpClientOption();
@@ -679,16 +687,20 @@ class ContentApi
      *
      * Add new content
      *
-     * @param  \SplFileObject $file File to upload (required)
-     * @param  string $coluuid Collection UUID (required)
-     * @param  string $dir Directory (required)
+     * @param  \SplFileObject $data File to upload (required)
+     * @param  string $filename Filenam to use for upload (optional)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsync($file, $coluuid, $dir)
+    public function contentAddPostAsync($data, $filename = null, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        return $this->contentAddPostAsyncWithHttpInfo($file, $coluuid, $dir)
+        return $this->contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -701,17 +713,21 @@ class ContentApi
      *
      * Add new content
      *
-     * @param  \SplFileObject $file File to upload (required)
-     * @param  string $coluuid Collection UUID (required)
-     * @param  string $dir Directory (required)
+     * @param  \SplFileObject $data File to upload (required)
+     * @param  string $filename Filenam to use for upload (optional)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsyncWithHttpInfo($file, $coluuid, $dir)
+    public function contentAddPostAsyncWithHttpInfo($data, $filename = null, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
         $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
-        $request = $this->contentAddPostRequest($file, $coluuid, $dir);
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -753,31 +769,23 @@ class ContentApi
     /**
      * Create request for operation 'contentAddPost'
      *
-     * @param  \SplFileObject $file File to upload (required)
-     * @param  string $coluuid Collection UUID (required)
-     * @param  string $dir Directory (required)
+     * @param  \SplFileObject $data File to upload (required)
+     * @param  string $filename Filenam to use for upload (optional)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddPostRequest($file, $coluuid, $dir)
+    protected function contentAddPostRequest($data, $filename = null, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        // verify the required parameter 'file' is set
-        if ($file === null || (is_array($file) && count($file) === 0)) {
+        // verify the required parameter 'data' is set
+        if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $file when calling contentAddPost'
-            );
-        }
-        // verify the required parameter 'coluuid' is set
-        if ($coluuid === null || (is_array($coluuid) && count($coluuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $coluuid when calling contentAddPost'
-            );
-        }
-        // verify the required parameter 'dir' is set
-        if ($dir === null || (is_array($dir) && count($dir) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $dir when calling contentAddPost'
+                'Missing the required parameter $data when calling contentAddPost'
             );
         }
 
@@ -788,28 +796,36 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($coluuid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'coluuid' . '}',
-                ObjectSerializer::toPathValue($coluuid),
-                $resourcePath
-            );
+            $queryParams['coluuid'] = ObjectSerializer::toQueryValue($coluuid);
         }
-        // path params
+        // query params
+        if ($replication !== null) {
+            $queryParams['replication'] = ObjectSerializer::toQueryValue($replication);
+        }
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes);
+        }
+        // query params
+        if ($lazy_provide !== null) {
+            $queryParams['lazy-provide'] = ObjectSerializer::toQueryValue($lazy_provide);
+        }
+        // query params
         if ($dir !== null) {
-            $resourcePath = str_replace(
-                '{' . 'dir' . '}',
-                ObjectSerializer::toPathValue($dir),
-                $resourcePath
-            );
+            $queryParams['dir'] = ObjectSerializer::toQueryValue($dir);
         }
+
 
         // form params
-        if ($file !== null) {
+        if ($data !== null) {
             $multipart = true;
-            $formParams['file'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($file), 'rb');
+            $formParams['data'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($data), 'rb');
+        }
+        // form params
+        if ($filename !== null) {
+            $formParams['filename'] = ObjectSerializer::toFormValue($filename);
         }
         // body params
         $_tempBody = null;
@@ -1666,15 +1682,16 @@ class ContentApi
      *
      * Add a new content
      *
-     * @param  string $body Content (required)
+     * @param  \Swagger\Client\Model\UtilContentCreateBody $req Content (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function contentCreatePost($body)
+    public function contentCreatePost($req, $ignore_dupes = null)
     {
-        $this->contentCreatePostWithHttpInfo($body);
+        $this->contentCreatePostWithHttpInfo($req, $ignore_dupes);
     }
 
     /**
@@ -1682,16 +1699,17 @@ class ContentApi
      *
      * Add a new content
      *
-     * @param  string $body Content (required)
+     * @param  \Swagger\Client\Model\UtilContentCreateBody $req Content (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentCreatePostWithHttpInfo($body)
+    public function contentCreatePostWithHttpInfo($req, $ignore_dupes = null)
     {
         $returnType = '';
-        $request = $this->contentCreatePostRequest($body);
+        $request = $this->contentCreatePostRequest($req, $ignore_dupes);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1735,14 +1753,15 @@ class ContentApi
      *
      * Add a new content
      *
-     * @param  string $body Content (required)
+     * @param  \Swagger\Client\Model\UtilContentCreateBody $req Content (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentCreatePostAsync($body)
+    public function contentCreatePostAsync($req, $ignore_dupes = null)
     {
-        return $this->contentCreatePostAsyncWithHttpInfo($body)
+        return $this->contentCreatePostAsyncWithHttpInfo($req, $ignore_dupes)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1755,15 +1774,16 @@ class ContentApi
      *
      * Add a new content
      *
-     * @param  string $body Content (required)
+     * @param  \Swagger\Client\Model\UtilContentCreateBody $req Content (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentCreatePostAsyncWithHttpInfo($body)
+    public function contentCreatePostAsyncWithHttpInfo($req, $ignore_dupes = null)
     {
         $returnType = '';
-        $request = $this->contentCreatePostRequest($body);
+        $request = $this->contentCreatePostRequest($req, $ignore_dupes);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1791,17 +1811,18 @@ class ContentApi
     /**
      * Create request for operation 'contentCreatePost'
      *
-     * @param  string $body Content (required)
+     * @param  \Swagger\Client\Model\UtilContentCreateBody $req Content (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentCreatePostRequest($body)
+    protected function contentCreatePostRequest($req, $ignore_dupes = null)
     {
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'req' is set
+        if ($req === null || (is_array($req) && count($req) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling contentCreatePost'
+                'Missing the required parameter $req when calling contentCreatePost'
             );
         }
 
@@ -1812,12 +1833,16 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes);
+        }
 
 
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
+        if (isset($req)) {
+            $_tempBody = $req;
         }
 
         if ($multipart) {
@@ -2560,6 +2585,243 @@ class ContentApi
             $resourcePath = str_replace(
                 '{' . 'content' . '}',
                 ObjectSerializer::toPathValue($content),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contentIdGet
+     *
+     * Content
+     *
+     * @param  int $id Content ID (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function contentIdGet($id)
+    {
+        $this->contentIdGetWithHttpInfo($id);
+    }
+
+    /**
+     * Operation contentIdGetWithHttpInfo
+     *
+     * Content
+     *
+     * @param  int $id Content ID (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contentIdGetWithHttpInfo($id)
+    {
+        $returnType = '';
+        $request = $this->contentIdGetRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contentIdGetAsync
+     *
+     * Content
+     *
+     * @param  int $id Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentIdGetAsync($id)
+    {
+        return $this->contentIdGetAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contentIdGetAsyncWithHttpInfo
+     *
+     * Content
+     *
+     * @param  int $id Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentIdGetAsyncWithHttpInfo($id)
+    {
+        $returnType = '';
+        $request = $this->contentIdGetRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contentIdGet'
+     *
+     * @param  int $id Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function contentIdGetRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling contentIdGet'
+            );
+        }
+
+        $resourcePath = '/content/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -3588,14 +3850,15 @@ class ContentApi
      * Get content statistics
      *
      * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function contentStatsGet($limit)
+    public function contentStatsGet($limit, $offset)
     {
-        $this->contentStatsGetWithHttpInfo($limit);
+        $this->contentStatsGetWithHttpInfo($limit, $offset);
     }
 
     /**
@@ -3604,15 +3867,16 @@ class ContentApi
      * Get content statistics
      *
      * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentStatsGetWithHttpInfo($limit)
+    public function contentStatsGetWithHttpInfo($limit, $offset)
     {
         $returnType = '';
-        $request = $this->contentStatsGetRequest($limit);
+        $request = $this->contentStatsGetRequest($limit, $offset);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3657,13 +3921,14 @@ class ContentApi
      * Get content statistics
      *
      * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentStatsGetAsync($limit)
+    public function contentStatsGetAsync($limit, $offset)
     {
-        return $this->contentStatsGetAsyncWithHttpInfo($limit)
+        return $this->contentStatsGetAsyncWithHttpInfo($limit, $offset)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3677,14 +3942,15 @@ class ContentApi
      * Get content statistics
      *
      * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentStatsGetAsyncWithHttpInfo($limit)
+    public function contentStatsGetAsyncWithHttpInfo($limit, $offset)
     {
         $returnType = '';
-        $request = $this->contentStatsGetRequest($limit);
+        $request = $this->contentStatsGetRequest($limit, $offset);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3713,16 +3979,23 @@ class ContentApi
      * Create request for operation 'contentStatsGet'
      *
      * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentStatsGetRequest($limit)
+    protected function contentStatsGetRequest($limit, $offset)
     {
         // verify the required parameter 'limit' is set
         if ($limit === null || (is_array($limit) && count($limit) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $limit when calling contentStatsGet'
+            );
+        }
+        // verify the required parameter 'offset' is set
+        if ($offset === null || (is_array($offset) && count($offset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $offset when calling contentStatsGet'
             );
         }
 
@@ -3733,15 +4006,15 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
-
-        // path params
+        // query params
         if ($limit !== null) {
-            $resourcePath = str_replace(
-                '{' . 'limit' . '}',
-                ObjectSerializer::toPathValue($limit),
-                $resourcePath
-            );
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
         }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+
 
         // body params
         $_tempBody = null;

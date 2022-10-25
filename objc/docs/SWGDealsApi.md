@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](SWGDealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](SWGDealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](SWGDealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](SWGDealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](SWGDealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](SWGDealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](SWGDealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
@@ -375,56 +374,6 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
           ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealTransferInProgressGet: %@", error);
-                        }
-                    }];
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **dealTransferStatusPost**
-```objc
--(NSURLSessionTask*) dealTransferStatusPostWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
-```
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example 
-```objc
-SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
-
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-
-
-
-SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
-
-// Transfer Status
-[apiInstance dealTransferStatusPostWithCompletionHandler: 
-          ^(NSError* error) {
-                        if (error) {
-                            NSLog(@"Error calling SWGDealsApi->dealTransferStatusPost: %@", error);
                         }
                     }];
 ```

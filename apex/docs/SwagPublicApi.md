@@ -148,7 +148,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -164,7 +164,8 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'miner' => 'miner_example'
+    'miner' => 'miner_example',
+    'ignoreFailed' => 'ignoreFailed_example'
 };
 
 try {
@@ -180,6 +181,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner |
+ **ignoreFailed** | **String**| Ignore Failed | [optional]
 
 ### Return type
 

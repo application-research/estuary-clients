@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersDealsMinerGet**
-> PublicMinersDealsMinerGet(ctx, miner)
+> PublicMinersDealsMinerGet(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -104,6 +104,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **miner** | **string**| Filter by miner | 
+ **optional** | ***PublicApiPublicMinersDealsMinerGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PublicApiPublicMinersDealsMinerGetOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreFailed** | **optional.String**| Ignore Failed | 
 
 ### Return type
 

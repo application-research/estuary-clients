@@ -4,6 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 
+import java.util.List;
 
 import java.util.List;
 import io.swagger.api.NotFoundException;
@@ -15,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class AdminApiServiceImpl implements AdminApiService {
       public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext)
       throws NotFoundException {
@@ -27,7 +28,7 @@ public class AdminApiServiceImpl implements AdminApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response adminPeeringPeersDelete(SecurityContext securityContext)
+      public Response adminPeeringPeersDelete(List<String> body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

@@ -20,6 +20,8 @@ class AdminApi extends _$AdminApiClient implements ApiClient {
     /// This endpoint can be used to remove a Peer from the Peering Service
     @DeleteReq(path: "/admin/peering/peers", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> adminPeeringPeersDelete(
+        
+        @AsJson() List<String> body
     );
 
     /// List all Peering peers

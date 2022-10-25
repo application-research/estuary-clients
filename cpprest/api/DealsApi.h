@@ -110,14 +110,6 @@ public:
     pplx::task<void> dealTransferInProgressGet(
     );
     /// <summary>
-    /// Transfer Status
-    /// </summary>
-    /// <remarks>
-    /// This endpoint returns the status of a transfer
-    /// </remarks>
-    pplx::task<void> dealTransferStatusPost(
-    );
-    /// <summary>
     /// Get storage failures for user
     /// </summary>
     /// <remarks>

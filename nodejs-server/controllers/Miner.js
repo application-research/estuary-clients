@@ -5,7 +5,8 @@ var Miner = require('../service/MinerService');
 
 module.exports.publicMinersDealsMinerGET = function publicMinersDealsMinerGET (req, res, next) {
   var miner = req.swagger.params['miner'].value;
-  Miner.publicMinersDealsMinerGET(miner)
+  var ignoreFailed = req.swagger.params['ignore-failed'].value;
+  Miner.publicMinersDealsMinerGET(miner,ignoreFailed)
     .then(function (response) {
       utils.writeJson(res, response);
     })

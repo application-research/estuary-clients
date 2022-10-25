@@ -11,7 +11,7 @@ import java.util.List;
 import io.swagger.model.*;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:59:22.073Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-25T22:24:43.443Z")
 public class PublicController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
@@ -50,13 +50,13 @@ public class PublicController  {
   */
 
   /*
-    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner, String ignoreFailed) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner, String ignoreFailed) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

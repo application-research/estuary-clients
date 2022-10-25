@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**DealStatusByProposalPropcidGet**](DealsApi.md#DealStatusByProposalPropcidGet) | **Get** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**DealStatusMinerPropcidGet**](DealsApi.md#DealStatusMinerPropcidGet) | **Get** /deal/status/{miner}/{propcid} | Deal Status
 [**DealTransferInProgressGet**](DealsApi.md#DealTransferInProgressGet) | **Get** /deal/transfer/in-progress | Transfer In Progress
-[**DealTransferStatusPost**](DealsApi.md#DealTransferStatusPost) | **Post** /deal/transfer/status | Transfer Status
 [**DealsFailuresGet**](DealsApi.md#DealsFailuresGet) | **Get** /deals/failures | Get storage failures for user
 [**DealsMakeMinerPost**](DealsApi.md#DealsMakeMinerPost) | **Post** /deals/make/{miner} | Make Deal
 [**DealsStatusDealGet**](DealsApi.md#DealsStatusDealGet) | **Get** /deals/status/{deal} | Get Deal Status
@@ -193,30 +192,6 @@ Name | Type | Description  | Notes
 Transfer In Progress
 
 This endpoint returns the in-progress transfers
-
-### Required Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **DealTransferStatusPost**
-> DealTransferStatusPost(ctx, )
-Transfer Status
-
-This endpoint returns the status of a transfer
 
 ### Required Parameters
 This endpoint does not need any parameter.

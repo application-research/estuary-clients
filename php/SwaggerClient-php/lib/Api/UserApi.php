@@ -608,14 +608,16 @@ class UserApi
      *
      * Create API keys for a user
      *
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\MainGetApiKeysResp
      */
-    public function userApiKeysPost()
+    public function userApiKeysPost($expiry = null, $perms = null)
     {
-        list($response) = $this->userApiKeysPostWithHttpInfo();
+        list($response) = $this->userApiKeysPostWithHttpInfo($expiry, $perms);
         return $response;
     }
 
@@ -624,15 +626,17 @@ class UserApi
      *
      * Create API keys for a user
      *
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\MainGetApiKeysResp, HTTP status code, HTTP response headers (array of strings)
      */
-    public function userApiKeysPostWithHttpInfo()
+    public function userApiKeysPostWithHttpInfo($expiry = null, $perms = null)
     {
         $returnType = '\Swagger\Client\Model\MainGetApiKeysResp';
-        $request = $this->userApiKeysPostRequest();
+        $request = $this->userApiKeysPostRequest($expiry, $perms);
 
         try {
             $options = $this->createHttpClientOption();
@@ -722,13 +726,15 @@ class UserApi
      *
      * Create API keys for a user
      *
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function userApiKeysPostAsync()
+    public function userApiKeysPostAsync($expiry = null, $perms = null)
     {
-        return $this->userApiKeysPostAsyncWithHttpInfo()
+        return $this->userApiKeysPostAsyncWithHttpInfo($expiry, $perms)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -741,14 +747,16 @@ class UserApi
      *
      * Create API keys for a user
      *
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function userApiKeysPostAsyncWithHttpInfo()
+    public function userApiKeysPostAsyncWithHttpInfo($expiry = null, $perms = null)
     {
         $returnType = '\Swagger\Client\Model\MainGetApiKeysResp';
-        $request = $this->userApiKeysPostRequest();
+        $request = $this->userApiKeysPostRequest($expiry, $perms);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -790,11 +798,13 @@ class UserApi
     /**
      * Create request for operation 'userApiKeysPost'
      *
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function userApiKeysPostRequest()
+    protected function userApiKeysPostRequest($expiry = null, $perms = null)
     {
 
         $resourcePath = '/user/api-keys';
@@ -804,6 +814,14 @@ class UserApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($expiry !== null) {
+            $queryParams['expiry'] = ObjectSerializer::toQueryValue($expiry);
+        }
+        // query params
+        if ($perms !== null) {
+            $queryParams['perms'] = ObjectSerializer::toQueryValue($perms);
+        }
 
 
         // body params

@@ -146,10 +146,26 @@ SWGUserApi::userApiKeysKeyDeleteCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGUserApi::userApiKeysPost() {
+SWGUserApi::userApiKeysPost(QString* expiry, QString* perms) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/user/api-keys");
 
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("expiry"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(expiry)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("perms"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(perms)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();

@@ -221,8 +221,9 @@ export class PublicApi {
      * This endpoint returns all miners deals
      * @summary Get all miners deals
      * @param miner Filter by miner
+     * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
         let localVarPath = this.basePath + '/public/miners/deals/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -232,6 +233,9 @@ export class PublicApi {
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
         }
 
+        if (ignoreFailed !== null && ignoreFailed !== undefined) {
+            queryParameters['ignore-failed'] = <string><any>ignoreFailed;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header

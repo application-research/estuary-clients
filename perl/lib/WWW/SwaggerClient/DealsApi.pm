@@ -488,51 +488,6 @@ sub deal_transfer_in_progress_get {
 }
 
 #
-# deal_transfer_status_post
-#
-# Transfer Status
-# 
-{
-    my $params = {
-    };
-    __PACKAGE__->method_documentation->{ 'deal_transfer_status_post' } = { 
-    	summary => 'Transfer Status',
-        params => $params,
-        returns => undef,
-        };
-}
-# @return void
-#
-sub deal_transfer_status_post {
-    my ($self, %args) = @_;
-
-    # parse inputs
-    my $_resource_path = '/deal/transfer/status';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(bearerAuth )];
-
-    # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    return;
-}
-
-#
 # deals_failures_get
 #
 # Get storage failures for user

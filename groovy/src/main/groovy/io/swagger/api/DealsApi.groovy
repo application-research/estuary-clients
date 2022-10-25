@@ -168,24 +168,6 @@ class DealsApi {
                     null )
                     
     }
-    def dealTransferStatusPost ( Closure onSuccess, Closure onFailure)  {
-        // create path and map path parameters (TODO)
-        String resourcePath = "/deal/transfer/status"
-
-        // query params
-        def queryParams = [:]
-        def headerParams = [:]
-    
-
-        
-
-        // Also still TODO: form params, body param
-
-        invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
-                    "POST", "",
-                    null )
-                    
-    }
     def dealsFailuresGet ( Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/deals/failures"

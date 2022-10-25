@@ -268,7 +268,7 @@ pplx::task<void> UserApi::userApiKeysKeyDelete(utility::string_t key)
         return void();
     });
 }
-pplx::task<std::shared_ptr<Main.getApiKeysResp>> UserApi::userApiKeysPost()
+pplx::task<std::shared_ptr<Main.getApiKeysResp>> UserApi::userApiKeysPost(boost::optional<utility::string_t> expiry, boost::optional<utility::string_t> perms)
 {
 
 
@@ -309,6 +309,14 @@ pplx::task<std::shared_ptr<Main.getApiKeysResp>> UserApi::userApiKeysPost()
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    if (expiry)
+    {
+        queryParams[utility::conversions::to_string_t("expiry")] = ApiClient::parameterToString(*expiry);
+    }
+    if (perms)
+    {
+        queryParams[utility::conversions::to_string_t("perms")] = ApiClient::parameterToString(*perms);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;

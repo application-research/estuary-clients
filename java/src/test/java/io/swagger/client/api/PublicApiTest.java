@@ -88,7 +88,8 @@ public class PublicApiTest {
     @Test
     public void publicMinersDealsMinerGetTest() throws Exception {
         String miner = null;
-        api.publicMinersDealsMinerGet(miner);
+        String ignoreFailed = null;
+        api.publicMinersDealsMinerGet(miner, ignoreFailed);
 
         // TODO: test validations
     }

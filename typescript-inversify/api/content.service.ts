@@ -23,6 +23,7 @@ import HttpResponse from '../HttpResponse';
 import { MainImportDealBody } from '../model/mainImportDealBody';
 import { UtilContentAddIpfsBody } from '../model/utilContentAddIpfsBody';
 import { UtilContentAddResponse } from '../model/utilContentAddResponse';
+import { UtilContentCreateBody } from '../model/utilContentCreateBody';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -39,27 +40,23 @@ export class ContentService {
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car
+     * @param ignoreDupes Ignore Dupes
      * @param filename Filename
-     * @param commp Commp
-     * @param size Size
      
      */
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', headers?: Headers): Observable<any>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
         }
 
         let queryParameters: string[] = [];
+        if (ignoreDupes !== undefined) {
+            queryParameters.push('ignoreDupes='+encodeURIComponent(String(ignoreDupes)));
+        }
         if (filename !== undefined) {
             queryParameters.push('filename='+encodeURIComponent(String(filename)));
-        }
-        if (commp !== undefined) {
-            queryParameters.push('commp='+encodeURIComponent(String(commp)));
-        }
-        if (size !== undefined) {
-            queryParameters.push('size='+encodeURIComponent(String(size)));
         }
 
         // authentication (bearerAuth) required
@@ -81,13 +78,19 @@ export class ContentService {
      * Add IPFS object
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body
+     * @param ignoreDupes Ignore Dupes
      
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<any>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
+        }
+
+        let queryParameters: string[] = [];
+        if (ignoreDupes !== undefined) {
+            queryParameters.push('ignoreDupes='+encodeURIComponent(String(ignoreDupes)));
         }
 
         // authentication (bearerAuth) required
@@ -97,7 +100,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-ipfs`, body as any, headers);
+        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-ipfs?${queryParameters.join('&')}`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -108,24 +111,37 @@ export class ContentService {
     /**
      * Add new content
      * This endpoint is used to upload new content.
-     * @param file File to upload
+     * @param data File to upload
+     * @param filename Filenam to use for upload
      * @param coluuid Collection UUID
+     * @param replication Replication value
+     * @param ignoreDupes Ignore Dupes true/false
+     * @param lazyProvide Lazy Provide true/false
      * @param dir Directory
      
      */
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe?: 'body', headers?: Headers): Observable<UtilContentAddResponse>;
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<UtilContentAddResponse>>;
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!file){
-            throw new Error('Required parameter file was null or undefined when calling contentAddPost.');
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'body', headers?: Headers): Observable<UtilContentAddResponse>;
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!data){
+            throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
         }
 
-        if (!coluuid){
-            throw new Error('Required parameter coluuid was null or undefined when calling contentAddPost.');
+        let queryParameters: string[] = [];
+        if (coluuid !== undefined) {
+            queryParameters.push('coluuid='+encodeURIComponent(String(coluuid)));
         }
-
-        if (!dir){
-            throw new Error('Required parameter dir was null or undefined when calling contentAddPost.');
+        if (replication !== undefined) {
+            queryParameters.push('replication='+encodeURIComponent(String(replication)));
+        }
+        if (ignoreDupes !== undefined) {
+            queryParameters.push('ignoreDupes='+encodeURIComponent(String(ignoreDupes)));
+        }
+        if (lazyProvide !== undefined) {
+            queryParameters.push('lazyProvide='+encodeURIComponent(String(lazyProvide)));
+        }
+        if (dir !== undefined) {
+            queryParameters.push('dir='+encodeURIComponent(String(dir)));
         }
 
         // authentication (bearerAuth) required
@@ -136,11 +152,14 @@ export class ContentService {
 
         let formData: FormData = new FormData();
         headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-        if (file !== undefined) {
-            formData.append('file', <any>file);
+        if (data !== undefined) {
+            formData.append('data', <any>data);
+        }
+        if (filename !== undefined) {
+            formData.append('filename', <any>filename);
         }
 
-        const response: Observable<HttpResponse<UtilContentAddResponse>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add` as any, body, headers);
+        const response: Observable<HttpResponse<UtilContentAddResponse>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add?${queryParameters.join('&')}` as any, body, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -253,14 +272,20 @@ export class ContentService {
     /**
      * Add a new content
      * This endpoint adds a new content
-     * @param body Content
+     * @param req Content
+     * @param ignoreDupes Ignore Dupes
      
      */
-    public contentCreatePost(body: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentCreatePost(body: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public contentCreatePost(body: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!body){
-            throw new Error('Required parameter body was null or undefined when calling contentCreatePost.');
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<any>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!req){
+            throw new Error('Required parameter req was null or undefined when calling contentCreatePost.');
+        }
+
+        let queryParameters: string[] = [];
+        if (ignoreDupes !== undefined) {
+            queryParameters.push('ignoreDupes='+encodeURIComponent(String(ignoreDupes)));
         }
 
         // authentication (bearerAuth) required
@@ -270,7 +295,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/create`, body as any, headers);
+        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/create?${queryParameters.join('&')}`, req as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -357,6 +382,33 @@ export class ContentService {
         headers['Accept'] = 'application/json';
 
         const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/failures/${encodeURIComponent(String(content))}` as any, headers);
+        if (observe === 'body') {
+               return response.map(httpResponse => httpResponse.response);
+        }
+        return response;
+    }
+
+
+    /**
+     * Content
+     * This endpoint returns a content by its ID
+     * @param id Content ID
+     
+     */
+    public contentIdGet(id: number, observe?: 'body', headers?: Headers): Observable<any>;
+    public contentIdGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentIdGet(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!id){
+            throw new Error('Required parameter id was null or undefined when calling contentIdGet.');
+        }
+
+        // authentication (bearerAuth) required
+        if (this.APIConfiguration.apiKeys['Authorization']) {
+            headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
+        }
+        headers['Accept'] = 'application/json';
+
+        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/${encodeURIComponent(String(id))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -467,13 +519,26 @@ export class ContentService {
      * Get content statistics
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param limit limit
+     * @param offset offset
      
      */
-    public contentStatsGet(limit: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentStatsGet(limit: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public contentStatsGet(limit: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public contentStatsGet(limit: string, offset: string, observe?: 'body', headers?: Headers): Observable<any>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentStatsGet(limit: string, offset: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!limit){
             throw new Error('Required parameter limit was null or undefined when calling contentStatsGet.');
+        }
+
+        if (!offset){
+            throw new Error('Required parameter offset was null or undefined when calling contentStatsGet.');
+        }
+
+        let queryParameters: string[] = [];
+        if (limit !== undefined) {
+            queryParameters.push('limit='+encodeURIComponent(String(limit)));
+        }
+        if (offset !== undefined) {
+            queryParameters.push('offset='+encodeURIComponent(String(offset)));
         }
 
         // authentication (bearerAuth) required
@@ -482,7 +547,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/stats` as any, headers);
+        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/stats?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

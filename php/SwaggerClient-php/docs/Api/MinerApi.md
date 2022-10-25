@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet($miner)
+> publicMinersDealsMinerGet($miner, $ignore_failed)
 
 Get all miners deals
 
@@ -32,9 +32,10 @@ $apiInstance = new Swagger\Client\Api\MinerApi(
     $config
 );
 $miner = "miner_example"; // string | Filter by miner
+$ignore_failed = "ignore_failed_example"; // string | Ignore Failed
 
 try {
-    $apiInstance->publicMinersDealsMinerGet($miner);
+    $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
 } catch (Exception $e) {
     echo 'Exception when calling MinerApi->publicMinersDealsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -46,6 +47,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner |
+ **ignore_failed** | **string**| Ignore Failed | [optional]
 
 ### Return type
 

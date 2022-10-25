@@ -77,6 +77,11 @@ publicMinersDealsMinerGet0 (Miner miner) =
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 
 data PublicMinersDealsMinerGet0  
+
+-- | /Optional Param/ "ignore-failed" - Ignore Failed
+instance HasOptionalParam PublicMinersDealsMinerGet0 IgnoreFailed where
+  applyOptionalParam req (IgnoreFailed xs) =
+    req `setQuery` toQuery ("ignore-failed", Just xs)
 -- | @application/json@
 instance Produces PublicMinersDealsMinerGet0 MimeJSON
 

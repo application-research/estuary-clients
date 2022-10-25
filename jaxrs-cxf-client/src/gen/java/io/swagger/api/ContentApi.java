@@ -4,6 +4,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,7 +42,7 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add Car object", tags={  })
     @ApiResponses(value = {  })
-    public void contentAddCarPost(String body, @QueryParam("filename")String filename, @QueryParam("commp")String commp, @QueryParam("size")String size);
+    public void contentAddCarPost(String body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("filename")String filename);
 
     /**
      * Add IPFS object
@@ -54,7 +55,7 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add IPFS object", tags={  })
     @ApiResponses(value = {  })
-    public void contentAddIpfsPost(UtilContentAddIpfsBody body);
+    public void contentAddIpfsPost(UtilContentAddIpfsBody body, @QueryParam("ignore-dupes")String ignoreDupes);
 
     /**
      * Add new content
@@ -69,7 +70,7 @@ public interface ContentApi  {
     @ApiOperation(value = "Add new content", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class) })
-    public UtilContentAddResponse contentAddPost( @Multipart(value = "file" ) Attachment fileDetail, @PathParam("coluuid") String coluuid, @PathParam("dir") String dir);
+    public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename", required = false)  String filename, @QueryParam("coluuid")String coluuid, @QueryParam("replication")Integer replication, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("lazy-provide")String lazyProvide, @QueryParam("dir")String dir);
 
     /**
      * Get aggregated content stats
@@ -122,7 +123,7 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add a new content", tags={  })
     @ApiResponses(value = {  })
-    public void contentCreatePost(String body);
+    public void contentCreatePost(UtilContentCreateBody req, @QueryParam("ignore-dupes")String ignoreDupes);
 
     /**
      * Content with deals
@@ -163,6 +164,19 @@ public interface ContentApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class) })
     public String contentFailuresContentGet(@PathParam("content") String content);
+
+    /**
+     * Content
+     *
+     * This endpoint returns a content by its ID
+     *
+     */
+    @GET
+    @Path("/content/{id}")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Content", tags={  })
+    @ApiResponses(value = {  })
+    public void contentIdGet(@PathParam("id") Integer id);
 
     /**
      * Import a deal
@@ -228,7 +242,7 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get content statistics", tags={  })
     @ApiResponses(value = {  })
-    public void contentStatsGet(@PathParam("limit") String limit);
+    public void contentStatsGet(@QueryParam("limit")String limit, @QueryParam("offset")String offset);
 
     /**
      * Content Status

@@ -13,7 +13,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public interface PublicApiService {
       Response publicByCidCidGet(String cid,SecurityContext securityContext)
       throws NotFoundException;
@@ -23,7 +23,7 @@ public interface PublicApiService {
       throws NotFoundException;
       Response publicMetricsDealsOnChainGet(SecurityContext securityContext)
       throws NotFoundException;
-      Response publicMinersDealsMinerGet(String miner,SecurityContext securityContext)
+      Response publicMinersDealsMinerGet(String miner,String ignoreFailed,SecurityContext securityContext)
       throws NotFoundException;
       Response publicMinersFailuresMinerGet(String miner,SecurityContext securityContext)
       throws NotFoundException;

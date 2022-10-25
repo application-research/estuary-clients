@@ -148,13 +148,25 @@ export class UserService {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param perms Permissions -- currently unused
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysPost(observe?: 'body', reportProgress?: boolean): Observable<MainGetApiKeysResp>;
-    public userApiKeysPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MainGetApiKeysResp>>;
-    public userApiKeysPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MainGetApiKeysResp>>;
-    public userApiKeysPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'body', reportProgress?: boolean): Observable<MainGetApiKeysResp>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MainGetApiKeysResp>>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MainGetApiKeysResp>>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (expiry !== undefined && expiry !== null) {
+            queryParameters = queryParameters.set('expiry', <any>expiry);
+        }
+        if (perms !== undefined && perms !== null) {
+            queryParameters = queryParameters.set('perms', <any>perms);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -179,6 +191,7 @@ export class UserService {
         return this.httpClient.post<MainGetApiKeysResp>(`${this.basePath}/user/api-keys`,
             null,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

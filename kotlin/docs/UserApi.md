@@ -22,8 +22,8 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = UserApi()
 try {
@@ -65,8 +65,8 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = UserApi()
 val key : kotlin.String = key_example // kotlin.String | Key
@@ -102,7 +102,7 @@ null (empty response body)
 
 <a name="userApiKeysPost"></a>
 # **userApiKeysPost**
-> MaingetApiKeysResp userApiKeysPost()
+> MaingetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -111,12 +111,14 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = UserApi()
+val expiry : kotlin.String = expiry_example // kotlin.String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+val perms : kotlin.String = perms_example // kotlin.String | Permissions -- currently unused
 try {
-    val result : MaingetApiKeysResp = apiInstance.userApiKeysPost()
+    val result : MaingetApiKeysResp = apiInstance.userApiKeysPost(expiry, perms)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userApiKeysPost")
@@ -128,7 +130,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **kotlin.String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **perms** | **kotlin.String**| Permissions -- currently unused | [optional]
 
 ### Return type
 
@@ -154,8 +160,8 @@ This endpoint is used to get API keys for a user.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = UserApi()
 try {
@@ -197,8 +203,8 @@ This endpoint is used to create API keys for a user.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = UserApi()
 try {

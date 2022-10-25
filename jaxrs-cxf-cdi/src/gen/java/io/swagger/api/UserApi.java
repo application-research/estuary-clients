@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 @Api(description = "the user API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 
 public class UserApi  {
 
@@ -76,8 +76,8 @@ public class UserApi  {
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response userApiKeysPost() {
-        return delegate.userApiKeysPost(securityContext);
+    public Response userApiKeysPost( @ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h")  @QueryParam("expiry") String expiry,  @ApiParam(value = "Permissions -- currently unused")  @QueryParam("perms") String perms) {
+        return delegate.userApiKeysPost(expiry, perms, securityContext);
     }
 
     @GET

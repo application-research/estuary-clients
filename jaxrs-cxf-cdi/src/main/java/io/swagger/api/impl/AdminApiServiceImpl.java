@@ -5,6 +5,7 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
+import java.util.List;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 public class AdminApiServiceImpl implements AdminApiService {
       @Override
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext) {
@@ -28,7 +29,7 @@ public class AdminApiServiceImpl implements AdminApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response adminPeeringPeersDelete(SecurityContext securityContext) {
+      public Response adminPeeringPeersDelete(List<String> body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

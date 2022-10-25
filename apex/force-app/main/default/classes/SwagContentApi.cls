@@ -29,9 +29,8 @@ public class SwagContentApi {
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car (required)
+     * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
-     * @param commp Commp (optional)
-     * @param size Size (optional)
      * @throws Swagger.ApiException if fails to make API call
      */
     public void contentAddCarPost(Map<String, Object> params) {
@@ -39,9 +38,8 @@ public class SwagContentApi {
         List<Swagger.Param> query = new List<Swagger.Param>();
 
         // cast query params to verify their expected type
+        query.addAll(client.makeParam('ignore-dupes', (String) params.get('ignoreDupes')));
         query.addAll(client.makeParam('filename', (String) params.get('filename')));
-        query.addAll(client.makeParam('commp', (String) params.get('commp')));
-        query.addAll(client.makeParam('size', (String) params.get('size')));
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
@@ -61,11 +59,16 @@ public class SwagContentApi {
      * Add IPFS object
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
+     * @param ignoreDupes Ignore Dupes (optional)
      * @throws Swagger.ApiException if fails to make API call
      */
     public void contentAddIpfsPost(Map<String, Object> params) {
         client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('ignore-dupes', (String) params.get('ignoreDupes')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         client.invoke(
@@ -83,29 +86,37 @@ public class SwagContentApi {
     /**
      * Add new content
      * This endpoint is used to upload new content.
-     * @param file File to upload (required)
-     * @param coluuid Collection UUID (required)
-     * @param dir Directory (required)
+     * @param data File to upload (required)
+     * @param filename Filenam to use for upload (optional)
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
      * @return SwagUtilContentAddResponse
      * @throws Swagger.ApiException if fails to make API call
      */
     public SwagUtilContentAddResponse contentAddPost(Map<String, Object> params) {
-        client.assertNotNull(params.get('file'), 'file');
-        client.assertNotNull(params.get('coluuid'), 'coluuid');
-        client.assertNotNull(params.get('dir'), 'dir');
+        client.assertNotNull(params.get('data'), 'data');
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('coluuid', (String) params.get('coluuid')));
+        query.addAll(client.makeParam('replication', (Integer) params.get('replication')));
+        query.addAll(client.makeParam('ignore-dupes', (String) params.get('ignoreDupes')));
+        query.addAll(client.makeParam('lazy-provide', (String) params.get('lazyProvide')));
+        query.addAll(client.makeParam('dir', (String) params.get('dir')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         // cast form params to verify their expected type
-        form.addAll(client.makeParam('file', (Blob) params.get('file')));
+        form.addAll(client.makeParam('data', (Blob) params.get('data')));
+        form.addAll(client.makeParam('filename', (String) params.get('filename')));
 
         return (SwagUtilContentAddResponse) client.invoke(
             'POST', '/content/add', '',
             query, form,
-            new Map<String, Object>{
-                'coluuid' => (String) params.get('coluuid'),
-                'dir' => (String) params.get('dir')
-            },
+            new Map<String, Object>(),
             new Map<String, Object>(),
             new List<String>{ 'application/json' },
             new List<String>{ 'application/x-www-form-urlencoded' },
@@ -197,17 +208,22 @@ public class SwagContentApi {
     /**
      * Add a new content
      * This endpoint adds a new content
-     * @param body Content (required)
+     * @param req Content (required)
+     * @param ignoreDupes Ignore Dupes (optional)
      * @throws Swagger.ApiException if fails to make API call
      */
     public void contentCreatePost(Map<String, Object> params) {
-        client.assertNotNull(params.get('body'), 'body');
+        client.assertNotNull(params.get('req'), 'req');
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('ignore-dupes', (String) params.get('ignoreDupes')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         client.invoke(
             'POST', '/content/create',
-            (String) params.get('body'),
+            (SwagUtilContentCreateBody) params.get('req'),
             query, form,
             new Map<String, Object>(),
             new Map<String, Object>(),
@@ -291,6 +307,30 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
             String.class
+        );
+    }
+    /**
+     * Content
+     * This endpoint returns a content by its ID
+     * @param id Content ID (required)
+     * @throws Swagger.ApiException if fails to make API call
+     */
+    public void contentIdGet(Map<String, Object> params) {
+        client.assertNotNull(params.get('id'), 'id');
+        List<Swagger.Param> query = new List<Swagger.Param>();
+        List<Swagger.Param> form = new List<Swagger.Param>();
+
+        client.invoke(
+            'GET', '/content/{id}', '',
+            query, form,
+            new Map<String, Object>{
+                'id' => (Integer) params.get('id')
+            },
+            new Map<String, Object>(),
+            new List<String>{ 'application/json' },
+            new List<String>{ 'application/json' },
+            new List<String> { 'bearerAuth' },
+            null
         );
     }
     /**
@@ -385,19 +425,24 @@ public class SwagContentApi {
      * Get content statistics
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param r_limit limit (required)
+     * @param offset offset (required)
      * @throws Swagger.ApiException if fails to make API call
      */
     public void contentStatsGet(Map<String, Object> params) {
         client.assertNotNull(params.get('r_limit'), 'r_limit');
+        client.assertNotNull(params.get('offset'), 'offset');
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('limit', (String) params.get('r_limit')));
+        query.addAll(client.makeParam('offset', (String) params.get('offset')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         client.invoke(
             'GET', '/content/stats', '',
             query, form,
-            new Map<String, Object>{
-                'limit' => (String) params.get('r_limit')
-            },
+            new Map<String, Object>(),
             new Map<String, Object>(),
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },

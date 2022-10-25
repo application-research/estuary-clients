@@ -38,10 +38,12 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
-        case 'MainCollection':
-          return new MainCollection.fromJson(value);
+        case 'CollectionsCollection':
+          return new CollectionsCollection.fromJson(value);
         case 'MainCreateCollectionBody':
           return new MainCreateCollectionBody.fromJson(value);
+        case 'MainDeleteContentFromCollectionBody':
+          return new MainDeleteContentFromCollectionBody.fromJson(value);
         case 'MainEstimateDealBody':
           return new MainEstimateDealBody.fromJson(value);
         case 'MainGetApiKeysResp':
@@ -54,6 +56,8 @@ class ApiClient {
           return new UtilContentAddIpfsBody.fromJson(value);
         case 'UtilContentAddResponse':
           return new UtilContentAddResponse.fromJson(value);
+        case 'UtilContentCreateBody':
+          return new UtilContentCreateBody.fromJson(value);
         case 'UtilHttpError':
           return new UtilHttpError.fromJson(value);
         default:

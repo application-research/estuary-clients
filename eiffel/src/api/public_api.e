@@ -111,11 +111,13 @@ feature -- API Access
 			end
 		end	
 
-	public_miners_deals_miner_get (miner: STRING_32)
+	public_miners_deals_miner_get (miner: STRING_32; ignore_failed: STRING_32)
 			-- Get all miners deals
 			-- This endpoint returns all miners deals
 			-- 
 			-- argument: miner Filter by miner (required)
+			-- 
+			-- argument: ignore_failed Ignore Failed (optional)
 			-- 
 			-- 
 		require
@@ -129,6 +131,7 @@ feature -- API Access
 			
 			l_path := "/public/miners/deals/{miner}"
 			l_path.replace_substring_all ("{"+"miner"+"}", api_client.url_encode (miner.out))
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ignore-failed", ignore_failed));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then

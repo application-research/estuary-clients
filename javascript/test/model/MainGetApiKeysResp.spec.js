@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('MainGetApiKeysResp', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.MainGetApiKeysResp();
+        instance = new EstuaryClient.MainGetApiKeysResp();
       });
 
       it('should create an instance of MainGetApiKeysResp', function() {
         // TODO: update the code to test MainGetApiKeysResp
-        expect(instance).to.be.a(EstuaryApi.MainGetApiKeysResp);
+        expect(instance).to.be.a(EstuaryClient.MainGetApiKeysResp);
       });
 
       it('should have the property expiry (base name: "expiry")', function() {

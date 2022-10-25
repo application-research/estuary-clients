@@ -57,12 +57,16 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("MainCollection".equalsIgnoreCase(className)) {
-      return new TypeToken<List<MainCollection>>(){}.getType();
+    if ("CollectionsCollection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<CollectionsCollection>>(){}.getType();
     }
     
     if ("MainCreateCollectionBody".equalsIgnoreCase(className)) {
       return new TypeToken<List<MainCreateCollectionBody>>(){}.getType();
+    }
+    
+    if ("MainDeleteContentFromCollectionBody".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MainDeleteContentFromCollectionBody>>(){}.getType();
     }
     
     if ("MainEstimateDealBody".equalsIgnoreCase(className)) {
@@ -89,6 +93,10 @@ public class JsonUtil {
       return new TypeToken<List<UtilContentAddResponse>>(){}.getType();
     }
     
+    if ("UtilContentCreateBody".equalsIgnoreCase(className)) {
+      return new TypeToken<List<UtilContentCreateBody>>(){}.getType();
+    }
+    
     if ("UtilHttpError".equalsIgnoreCase(className)) {
       return new TypeToken<List<UtilHttpError>>(){}.getType();
     }
@@ -99,12 +107,16 @@ public class JsonUtil {
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("MainCollection".equalsIgnoreCase(className)) {
-      return new TypeToken<MainCollection>(){}.getType();
+    if ("CollectionsCollection".equalsIgnoreCase(className)) {
+      return new TypeToken<CollectionsCollection>(){}.getType();
     }
     
     if ("MainCreateCollectionBody".equalsIgnoreCase(className)) {
       return new TypeToken<MainCreateCollectionBody>(){}.getType();
+    }
+    
+    if ("MainDeleteContentFromCollectionBody".equalsIgnoreCase(className)) {
+      return new TypeToken<MainDeleteContentFromCollectionBody>(){}.getType();
     }
     
     if ("MainEstimateDealBody".equalsIgnoreCase(className)) {
@@ -129,6 +141,10 @@ public class JsonUtil {
     
     if ("UtilContentAddResponse".equalsIgnoreCase(className)) {
       return new TypeToken<UtilContentAddResponse>(){}.getType();
+    }
+    
+    if ("UtilContentCreateBody".equalsIgnoreCase(className)) {
+      return new TypeToken<UtilContentCreateBody>(){}.getType();
     }
     
     if ("UtilHttpError".equalsIgnoreCase(className)) {

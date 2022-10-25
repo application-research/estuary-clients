@@ -13,7 +13,7 @@ class PeersApi {
     String basePath = "https://api.estuary.tech"
     String versionPath = "/api/v1"
 
-    def adminPeeringPeersDelete ( Closure onSuccess, Closure onFailure)  {
+    def adminPeeringPeersDelete ( List<String> body, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/admin/peering/peers"
 
@@ -21,6 +21,10 @@ class PeersApi {
         def queryParams = [:]
         def headerParams = [:]
     
+        // verify required params are set
+        if (body == null) {
+            throw new RuntimeException("missing required params body")
+        }
 
         
 

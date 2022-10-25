@@ -1,4 +1,4 @@
-# estuary_client.MinerApi
+# estuary-client.MinerApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner)
+> public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
 
 Get all miners deals
 
@@ -19,23 +19,24 @@ This endpoint returns all miners deals
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.MinerApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.MinerApi(estuary-client.ApiClient(configuration))
 miner = 'miner_example' # str | Filter by miner
+ignore_failed = 'ignore_failed_example' # str | Ignore Failed (optional)
 
 try:
     # Get all miners deals
-    api_instance.public_miners_deals_miner_get(miner)
+    api_instance.public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
 except ApiException as e:
     print("Exception when calling MinerApi->public_miners_deals_miner_get: %s\n" % e)
 ```
@@ -45,6 +46,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **str**| Filter by miner | 
+ **ignore_failed** | **str**| Ignore Failed | [optional] 
 
 ### Return type
 
@@ -72,18 +74,18 @@ This endpoint returns miner stats
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.MinerApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.MinerApi(estuary-client.ApiClient(configuration))
 miner = 'miner_example' # str | Filter by miner
 
 try:

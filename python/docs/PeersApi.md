@@ -1,4 +1,4 @@
-# estuary_client.PeersApi
+# estuary-client.PeersApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete()
+> admin_peering_peers_delete(body)
 
 Remove peers on Peering Service
 
@@ -23,28 +23,32 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
+body = [estuary-client.list[str]()] # list[str] | Peer ids
 
 try:
     # Remove peers on Peering Service
-    api_instance.admin_peering_peers_delete()
+    api_instance.admin_peering_peers_delete(body)
 except ApiException as e:
     print("Exception when calling PeersApi->admin_peering_peers_delete: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **list[str]**| Peer ids | 
 
 ### Return type
 
@@ -72,18 +76,18 @@ This endpoint can be used to list all peers on Peering Service
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
 
 try:
     # List all Peering peers
@@ -121,18 +125,18 @@ This endpoint can be used to add a Peer from the Peering Service
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
 
 try:
     # Add peers on Peering Service
@@ -170,18 +174,18 @@ This endpoint can be used to start the Peering Service
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
 
 try:
     # Start Peering
@@ -219,18 +223,18 @@ This endpoint can be used to check the Peering status
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
 
 try:
     # Check Peering Status
@@ -268,18 +272,18 @@ This endpoint can be used to stop the Peering Service
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.PeersApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.PeersApi(estuary-client.ApiClient(configuration))
 
 try:
     # Stop Peering

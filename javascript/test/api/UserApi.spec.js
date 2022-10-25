@@ -22,15 +22,15 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.UserApi();
+    instance = new EstuaryClient.UserApi();
   });
 
   describe('(package)', function() {
@@ -51,7 +51,7 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryApi.MainGetApiKeysResp);
+              expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
               expect(data.expiry).to.be.a('string');
               expect(data.expiry).to.be("");
               expect(data.token).to.be.a('string');
@@ -86,16 +86,19 @@
       });
       describe('userApiKeysPost', function() {
         it('should call userApiKeysPost successfully', function(done) {
-          // TODO: uncomment userApiKeysPost call and complete the assertions
+          // TODO: uncomment, update parameter values for userApiKeysPost call and complete the assertions
           /*
+          var opts = {};
+          opts.expiry = "expiry_example";
+          opts.perms = "perms_example";
 
-          instance.userApiKeysPost(function(error, data, response) {
+          instance.userApiKeysPost(opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryApi.MainGetApiKeysResp);
+            expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
             expect(data.expiry).to.be.a('string');
             expect(data.expiry).to.be("");
             expect(data.token).to.be.a('string');
@@ -140,7 +143,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryApi.MainUserStatsResponse);
+            expect(data).to.be.a(EstuaryClient.MainUserStatsResponse);
             expect(data.numPins).to.be.a('number');
             expect(data.numPins).to.be(0);
             expect(data.totalSize).to.be.a('number');

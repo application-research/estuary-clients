@@ -54,9 +54,8 @@ sub new {
 # Add Car object
 # 
 # @param string $body Car (required)
+# @param string $ignore_dupes Ignore Dupes (optional)
 # @param string $filename Filename (optional)
-# @param string $commp Commp (optional)
-# @param string $size Size (optional)
 {
     my $params = {
     'body' => {
@@ -64,19 +63,14 @@ sub new {
         description => 'Car',
         required => '1',
     },
+    'ignore_dupes' => {
+        data_type => 'string',
+        description => 'Ignore Dupes',
+        required => '0',
+    },
     'filename' => {
         data_type => 'string',
         description => 'Filename',
-        required => '0',
-    },
-    'commp' => {
-        data_type => 'string',
-        description => 'Commp',
-        required => '0',
-    },
-    'size' => {
-        data_type => 'string',
-        description => 'Size',
         required => '0',
     },
     };
@@ -112,18 +106,13 @@ sub content_add_car_post {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     # query params
+    if ( exists $args{'ignore_dupes'}) {
+        $query_params->{'ignore-dupes'} = $self->{api_client}->to_query_value($args{'ignore_dupes'});
+    }
+
+    # query params
     if ( exists $args{'filename'}) {
         $query_params->{'filename'} = $self->{api_client}->to_query_value($args{'filename'});
-    }
-
-    # query params
-    if ( exists $args{'commp'}) {
-        $query_params->{'commp'} = $self->{api_client}->to_query_value($args{'commp'});
-    }
-
-    # query params
-    if ( exists $args{'size'}) {
-        $query_params->{'size'} = $self->{api_client}->to_query_value($args{'size'});
     }
 
     my $_body_data;
@@ -148,12 +137,18 @@ sub content_add_car_post {
 # Add IPFS object
 # 
 # @param UtilContentAddIpfsBody $body IPFS Body (required)
+# @param string $ignore_dupes Ignore Dupes (optional)
 {
     my $params = {
     'body' => {
         data_type => 'UtilContentAddIpfsBody',
         description => 'IPFS Body',
         required => '1',
+    },
+    'ignore_dupes' => {
+        data_type => 'string',
+        description => 'Ignore Dupes',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'content_add_ipfs_post' } = { 
@@ -187,6 +182,11 @@ sub content_add_ipfs_post {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'ignore_dupes'}) {
+        $query_params->{'ignore-dupes'} = $self->{api_client}->to_query_value($args{'ignore_dupes'});
+    }
+
     my $_body_data;
     # body params
     if ( exists $args{'body'}) {
@@ -208,25 +208,49 @@ sub content_add_ipfs_post {
 #
 # Add new content
 # 
-# @param File $file File to upload (required)
-# @param string $coluuid Collection UUID (required)
-# @param string $dir Directory (required)
+# @param File $data File to upload (required)
+# @param string $filename Filenam to use for upload (optional)
+# @param string $coluuid Collection UUID (optional)
+# @param int $replication Replication value (optional)
+# @param string $ignore_dupes Ignore Dupes true/false (optional)
+# @param string $lazy_provide Lazy Provide true/false (optional)
+# @param string $dir Directory (optional)
 {
     my $params = {
-    'file' => {
+    'data' => {
         data_type => 'File',
         description => 'File to upload',
         required => '1',
     },
+    'filename' => {
+        data_type => 'string',
+        description => 'Filenam to use for upload',
+        required => '0',
+    },
     'coluuid' => {
         data_type => 'string',
         description => 'Collection UUID',
-        required => '1',
+        required => '0',
+    },
+    'replication' => {
+        data_type => 'int',
+        description => 'Replication value',
+        required => '0',
+    },
+    'ignore_dupes' => {
+        data_type => 'string',
+        description => 'Ignore Dupes true/false',
+        required => '0',
+    },
+    'lazy_provide' => {
+        data_type => 'string',
+        description => 'Lazy Provide true/false',
+        required => '0',
     },
     'dir' => {
         data_type => 'string',
         description => 'Directory',
-        required => '1',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'content_add_post' } = { 
@@ -240,19 +264,9 @@ sub content_add_ipfs_post {
 sub content_add_post {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'file' is set
-    unless (exists $args{'file'}) {
-      croak("Missing the required parameter 'file' when calling content_add_post");
-    }
-
-    # verify the required parameter 'coluuid' is set
-    unless (exists $args{'coluuid'}) {
-      croak("Missing the required parameter 'coluuid' when calling content_add_post");
-    }
-
-    # verify the required parameter 'dir' is set
-    unless (exists $args{'dir'}) {
-      croak("Missing the required parameter 'dir' when calling content_add_post");
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling content_add_post");
     }
 
     # parse inputs
@@ -270,25 +284,41 @@ sub content_add_post {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('multipart/form-data');
 
-    # path params
+    # query params
     if ( exists $args{'coluuid'}) {
-        my $_base_variable = "{" . "coluuid" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'coluuid'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
+        $query_params->{'coluuid'} = $self->{api_client}->to_query_value($args{'coluuid'});
     }
 
-    # path params
+    # query params
+    if ( exists $args{'replication'}) {
+        $query_params->{'replication'} = $self->{api_client}->to_query_value($args{'replication'});
+    }
+
+    # query params
+    if ( exists $args{'ignore_dupes'}) {
+        $query_params->{'ignore-dupes'} = $self->{api_client}->to_query_value($args{'ignore_dupes'});
+    }
+
+    # query params
+    if ( exists $args{'lazy_provide'}) {
+        $query_params->{'lazy-provide'} = $self->{api_client}->to_query_value($args{'lazy_provide'});
+    }
+
+    # query params
     if ( exists $args{'dir'}) {
-        my $_base_variable = "{" . "dir" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'dir'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
+        $query_params->{'dir'} = $self->{api_client}->to_query_value($args{'dir'});
     }
 
     # form params
-    if ( exists $args{'file'} ) {
-        $form_params->{'file'} = [] unless defined $form_params->{'file'};
-        push @{$form_params->{'file'}}, $args{'file'};
+    if ( exists $args{'data'} ) {
+        $form_params->{'data'} = [] unless defined $form_params->{'data'};
+        push @{$form_params->{'data'}}, $args{'data'};
             }
+    
+    # form params
+    if ( exists $args{'filename'} ) {
+                $form_params->{'filename'} = $self->{api_client}->to_form_value($args{'filename'});
+    }
     
     my $_body_data;
     # authentication setting, if any
@@ -533,13 +563,19 @@ sub content_bw_usage_content_get {
 #
 # Add a new content
 # 
-# @param string $body Content (required)
+# @param UtilContentCreateBody $req Content (required)
+# @param string $ignore_dupes Ignore Dupes (optional)
 {
     my $params = {
-    'body' => {
-        data_type => 'string',
+    'req' => {
+        data_type => 'UtilContentCreateBody',
         description => 'Content',
         required => '1',
+    },
+    'ignore_dupes' => {
+        data_type => 'string',
+        description => 'Ignore Dupes',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'content_create_post' } = { 
@@ -553,9 +589,9 @@ sub content_bw_usage_content_get {
 sub content_create_post {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'body' is set
-    unless (exists $args{'body'}) {
-      croak("Missing the required parameter 'body' when calling content_create_post");
+    # verify the required parameter 'req' is set
+    unless (exists $args{'req'}) {
+      croak("Missing the required parameter 'req' when calling content_create_post");
     }
 
     # parse inputs
@@ -573,10 +609,15 @@ sub content_create_post {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'ignore_dupes'}) {
+        $query_params->{'ignore-dupes'} = $self->{api_client}->to_query_value($args{'ignore_dupes'});
+    }
+
     my $_body_data;
     # body params
-    if ( exists $args{'body'}) {
-        $_body_data = $args{'body'};
+    if ( exists $args{'req'}) {
+        $_body_data = $args{'req'};
     }
 
     # authentication setting, if any
@@ -784,6 +825,69 @@ sub content_failures_content_get {
     }
     my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
+}
+
+#
+# content_id_get
+#
+# Content
+# 
+# @param int $id Content ID (required)
+{
+    my $params = {
+    'id' => {
+        data_type => 'int',
+        description => 'Content ID',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'content_id_get' } = { 
+    	summary => 'Content',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub content_id_get {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling content_id_get");
+    }
+
+    # parse inputs
+    my $_resource_path = '/content/{id}';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(bearerAuth )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
 }
 
 #
@@ -1010,11 +1114,17 @@ sub content_staging_zones_get {
 # Get content statistics
 # 
 # @param string $limit limit (required)
+# @param string $offset offset (required)
 {
     my $params = {
     'limit' => {
         data_type => 'string',
         description => 'limit',
+        required => '1',
+    },
+    'offset' => {
+        data_type => 'string',
+        description => 'offset',
         required => '1',
     },
     };
@@ -1034,6 +1144,11 @@ sub content_stats_get {
       croak("Missing the required parameter 'limit' when calling content_stats_get");
     }
 
+    # verify the required parameter 'offset' is set
+    unless (exists $args{'offset'}) {
+      croak("Missing the required parameter 'offset' when calling content_stats_get");
+    }
+
     # parse inputs
     my $_resource_path = '/content/stats';
 
@@ -1049,11 +1164,14 @@ sub content_stats_get {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
-    # path params
+    # query params
     if ( exists $args{'limit'}) {
-        my $_base_variable = "{" . "limit" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'limit'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
+        $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'offset'}) {
+        $query_params->{'offset'} = $self->{api_client}->to_query_value($args{'offset'});
     }
 
     my $_body_data;

@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.PublicApi = factory(root.EstuaryApi.ApiClient);
+    root.EstuaryClient.PublicApi = factory(root.EstuaryClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -186,9 +186,12 @@
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param {String} miner Filter by miner
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreFailed Ignore Failed
      * @param {module:api/PublicApi~publicMinersDealsMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.publicMinersDealsMinerGet = function(miner, callback) {
+    this.publicMinersDealsMinerGet = function(miner, opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
       // verify the required parameter 'miner' is set
@@ -201,6 +204,7 @@
         'miner': miner
       };
       var queryParams = {
+        'ignore-failed': opts['ignoreFailed'],
       };
       var collectionQueryParams = {
       };

@@ -35,6 +35,7 @@ describe 'PeersApi' do
   # unit tests for admin_peering_peers_delete
   # Remove peers on Peering Service
   # This endpoint can be used to remove a Peer from the Peering Service
+  # @param body Peer ids
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'admin_peering_peers_delete test' do

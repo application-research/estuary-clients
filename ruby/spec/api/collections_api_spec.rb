@@ -44,6 +44,20 @@ describe 'CollectionsApi' do
     end
   end
 
+  # unit tests for collections_coluuid_contents_delete
+  # Deletes a content from a collection
+  # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+  # @param coluuid Collection ID
+  # @param contentid Content ID
+  # @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'collections_coluuid_contents_delete test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for collections_coluuid_delete
   # Deletes a collection
   # This endpoint is used to delete an existing collection.
@@ -59,7 +73,7 @@ describe 'CollectionsApi' do
   # unit tests for collections_coluuid_get
   # Get contents in a collection
   # This endpoint is used to get contents in a collection. If no colpath query param is passed
-  # @param coluuid Collection UUID
+  # @param coluuid coluuid
   # @param [Hash] opts the optional parameters
   # @option opts [String] :dir Directory
   # @return [String]
@@ -72,7 +86,8 @@ describe 'CollectionsApi' do
   # unit tests for collections_coluuid_post
   # Add contents to a collection
   # This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-  # @param body Content IDs to add to collection
+  # @param coluuid coluuid
+  # @param content_i_ds Content IDs to add to collection
   # @param [Hash] opts the optional parameters
   # @return [Hash<String, String>]
   describe 'collections_coluuid_post test' do
@@ -98,9 +113,8 @@ describe 'CollectionsApi' do
   # unit tests for collections_get
   # List all collections
   # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-  # @param id User ID
   # @param [Hash] opts the optional parameters
-  # @return [Array<MainCollection>]
+  # @return [Array<CollectionsCollection>]
   describe 'collections_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -112,7 +126,7 @@ describe 'CollectionsApi' do
   # This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
   # @param body Collection name and description
   # @param [Hash] opts the optional parameters
-  # @return [MainCollection]
+  # @return [CollectionsCollection]
   describe 'collections_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

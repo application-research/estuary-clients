@@ -79,6 +79,10 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
+	/* Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h */
+	TOptional<FString> Expiry;
+	/* Permissions -- currently unused */
+	TOptional<FString> Perms;
 };
 
 class SWAGGER_API SwaggerUserApi::UserApiKeysPostResponse : public Response

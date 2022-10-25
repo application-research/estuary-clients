@@ -116,10 +116,12 @@ API.Client.UserApi.prototype.userApiKeysKeyDelete = function(key, opt_extraHttpR
 /**
  * Create API keys for a user
  * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+ * @param {!string=} opt_expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+ * @param {!string=} opt_perms Permissions -- currently unused
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!API.Client.main.getApiKeysResp>}
  */
-API.Client.UserApi.prototype.userApiKeysPost = function(opt_extraHttpRequestParams) {
+API.Client.UserApi.prototype.userApiKeysPost = function(opt_expiry, opt_perms, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/user/api-keys';
 
@@ -128,6 +130,14 @@ API.Client.UserApi.prototype.userApiKeysPost = function(opt_extraHttpRequestPara
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
+  if (opt_expiry !== undefined) {
+    queryParameters['expiry'] = opt_expiry;
+  }
+
+  if (opt_perms !== undefined) {
+    queryParameters['perms'] = opt_perms;
+  }
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',

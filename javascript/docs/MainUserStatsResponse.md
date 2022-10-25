@@ -1,4 +1,4 @@
-# EstuaryApi.MainUserStatsResponse
+# EstuaryClient.MainUserStatsResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,5 +1,5 @@
 [package]
-name = "estuary_client"
+name = "estuary-client"
 version = "1.0.0"
 authors = ["Swagger Codegen team and contributors"]
 

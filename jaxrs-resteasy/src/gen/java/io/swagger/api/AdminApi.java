@@ -6,6 +6,7 @@ import io.swagger.api.AdminApiService;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
+import java.util.List;
 
 import java.util.Map;
 import java.util.List;
@@ -25,7 +26,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the admin API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class AdminApi  {
 
     @Inject AdminApiService service;
@@ -62,9 +63,9 @@ public class AdminApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "admin","peering","peers", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response adminPeeringPeersDelete(@Context SecurityContext securityContext)
+    public Response adminPeeringPeersDelete(@ApiParam(value = "Peer ids" ,required=true) List<String> body,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.adminPeeringPeersDelete(securityContext);
+        return service.adminPeeringPeersDelete(body,securityContext);
     }
     @GET
     @Path("/peering/peers")

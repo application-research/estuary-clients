@@ -240,34 +240,6 @@ feature -- API Access
 			end
 		end	
 
-	deal_transfer_status_post 
-			-- Transfer Status
-			-- This endpoint returns the status of a transfer
-			-- 
-			-- 
-		require
-		local
-  			l_path: STRING
-  			l_request: API_CLIENT_REQUEST
-  			l_response: API_CLIENT_RESPONSE
-		do
-			reset_error
-			create l_request
-			
-			l_path := "/deal/transfer/status"
-
-
-			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
-				l_request.add_header(l_accept,"Accept");
-			end
-			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
-			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
-			if l_response.has_error then
-				last_error := l_response.error
-			end
-		end	
-
 	deals_failures_get 
 			-- Get storage failures for user
 			-- This endpoint returns a list of storage failures for user

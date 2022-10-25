@@ -119,6 +119,18 @@ bool SwaggerUserApi::UserApiKeysKeyDeleteResponse::FromJson(const TSharedPtr<FJs
 FString SwaggerUserApi::UserApiKeysPostRequest::ComputePath() const
 {
 	FString Path(TEXT("/user/api-keys"));
+	TArray<FString> QueryParams;
+	if(Expiry.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("expiry=")) + ToUrlString(Expiry.GetValue()));
+	}
+	if(Perms.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("perms=")) + ToUrlString(Perms.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 

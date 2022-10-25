@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_post**
-> user_api_keys_post : detachable MAIN_GET_API_KEYS_RESP
+> user_api_keys_post (expiry:  detachable STRING_32 ; perms:  detachable STRING_32 ): detachable MAIN_GET_API_KEYS_RESP
 	
 
 Create API keys for a user
@@ -78,7 +78,11 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **STRING_32**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **STRING_32**| Permissions -- currently unused | [optional] 
 
 ### Return type
 

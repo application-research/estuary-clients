@@ -28,6 +28,25 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
     
+    test_collections_coluuid_contents_delete
+            -- Deletes a content from a collection
+            -- 
+            -- This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path 
+        local
+            l_response: STRING_32
+            l_coluuid: STRING_32
+            l_contentid: STRING_32
+            l_body: MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY
+        do
+            -- TODO: Initialize required params.
+            -- l_coluuid
+            -- l_contentid
+            -- l_body
+                      
+            -- l_response := api.collections_coluuid_contents_delete(l_coluuid, l_contentid, l_body)
+            assert ("not_implemented", False)
+        end
+    
     test_collections_coluuid_delete
             -- Deletes a collection
             -- 
@@ -64,12 +83,14 @@ feature -- Test routines
             -- This endpoint adds already-pinned contents (that have ContentIDs) to a collection. 
         local
             l_response: STRING_TABLE[STRING_32]
-            l_body: LIST [INTEGER_32]
+            l_coluuid: STRING_32
+            l_content_ids: LIST [INTEGER_32]
         do
             -- TODO: Initialize required params.
-            -- create {ARRAYED_LIST [INTEGER_32]} l_body.make (2)
+            -- l_coluuid
+            -- create {ARRAYED_LIST [INTEGER_32]} l_content_ids.make (2)
                       
-            -- l_response := api.collections_coluuid_post(l_body)
+            -- l_response := api.collections_coluuid_post(l_coluuid, l_content_ids)
             assert ("not_implemented", False)
         end
     
@@ -96,13 +117,11 @@ feature -- Test routines
             -- 
             -- This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user. 
         local
-            l_response: LIST [MAIN_COLLECTION]
-            l_id: INTEGER_32
+            l_response: LIST [COLLECTIONS_COLLECTION]
         do
             -- TODO: Initialize required params.
-            -- l_id
                       
-            -- l_response := api.collections_get(l_id)
+            -- l_response := api.collections_get
             assert ("not_implemented", False)
         end
     
@@ -111,7 +130,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection. 
         local
-            l_response: MAIN_COLLECTION
+            l_response: COLLECTIONS_COLLECTION
             l_body: MAIN_CREATE_COLLECTION_BODY
         do
             -- TODO: Initialize required params.

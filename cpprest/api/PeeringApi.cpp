@@ -36,7 +36,7 @@ PeeringApi::~PeeringApi()
 {
 }
 
-pplx::task<void> PeeringApi::adminPeeringPeersDelete()
+pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string_t> body)
 {
 
 
@@ -85,11 +85,37 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete()
     if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
+        web::json::value json;
+
+        {
+            std::vector<web::json::value> jsonArray;
+            for( auto& item : body )
+            {
+                jsonArray.push_back( item.get() ? item->toJson() : web::json::value::null() );
+                
+            }
+            json = web::json::value::array(jsonArray);
+        }
+        
+        httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
     else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
+        {
+            std::vector<web::json::value> jsonArray;
+            for( auto& item : body )
+            {
+                jsonArray.push_back( item.get() ? item->toJson() : web::json::value::null() );
+                
+            }
+            multipart->add(ModelBase::toHttpContent(utility::conversions::to_string_t("body"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
+        }
+        
+        httpBody = multipart;
+        requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
     else
     {

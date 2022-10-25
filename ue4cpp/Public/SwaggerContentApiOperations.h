@@ -18,6 +18,7 @@
 #include "SwaggerMain_importDealBody.h"
 #include "SwaggerUtil_ContentAddIpfsBody.h"
 #include "SwaggerUtil_ContentAddResponse.h"
+#include "SwaggerUtil_ContentCreateBody.h"
 
 namespace Swagger 
 {
@@ -35,12 +36,10 @@ public:
     
 	/* Car */
 	FString Body;
+	/* Ignore Dupes */
+	TOptional<FString> IgnoreDupes;
 	/* Filename */
 	TOptional<FString> Filename;
-	/* Commp */
-	TOptional<FString> Commp;
-	/* Size */
-	TOptional<FString> Size;
 };
 
 class SWAGGER_API SwaggerContentApi::ContentAddCarPostResponse : public Response
@@ -65,6 +64,8 @@ public:
     
 	/* IPFS Body */
 	SwaggerUtil_ContentAddIpfsBody Body;
+	/* Ignore Dupes */
+	TOptional<FString> IgnoreDupes;
 };
 
 class SWAGGER_API SwaggerContentApi::ContentAddIpfsPostResponse : public Response
@@ -88,11 +89,19 @@ public:
 	FString ComputePath() const final;
     
 	/* File to upload */
-	HttpFileInput File;
+	HttpFileInput Data;
+	/* Filenam to use for upload */
+	TOptional<FString> Filename;
 	/* Collection UUID */
-	FString Coluuid;
+	TOptional<FString> Coluuid;
+	/* Replication value */
+	TOptional<int32> Replication;
+	/* Ignore Dupes true/false */
+	TOptional<FString> IgnoreDupes;
+	/* Lazy Provide true/false */
+	TOptional<FString> LazyProvide;
 	/* Directory */
-	FString Dir;
+	TOptional<FString> Dir;
 };
 
 class SWAGGER_API SwaggerContentApi::ContentAddPostResponse : public Response
@@ -194,7 +203,9 @@ public:
 	FString ComputePath() const final;
     
 	/* Content */
-	FString Body;
+	SwaggerUtil_ContentCreateBody Req;
+	/* Ignore Dupes */
+	TOptional<FString> IgnoreDupes;
 };
 
 class SWAGGER_API SwaggerContentApi::ContentCreatePostResponse : public Response
@@ -279,6 +290,30 @@ public:
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
     FString Content;
+};
+
+/* Content
+ *
+ * This endpoint returns a content by its ID
+*/
+class SWAGGER_API SwaggerContentApi::ContentIdGetRequest : public Request
+{
+public:
+    virtual ~ContentIdGetRequest() {}
+	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
+	FString ComputePath() const final;
+    
+	/* Content ID */
+	int32 Id;
+};
+
+class SWAGGER_API SwaggerContentApi::ContentIdGetResponse : public Response
+{
+public:
+    virtual ~ContentIdGetResponse() {}
+	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
+    
+    
 };
 
 /* Import a deal
@@ -387,6 +422,8 @@ public:
     
 	/* limit */
 	FString Limit;
+	/* offset */
+	FString Offset;
 };
 
 class SWAGGER_API SwaggerContentApi::ContentStatsGetResponse : public Response

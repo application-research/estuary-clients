@@ -26,6 +26,7 @@
 #include "Main.importDealBody.h"
 #include "Util.ContentAddIpfsBody.h"
 #include "Util.ContentAddResponse.h"
+#include "Util.ContentCreateBody.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -49,14 +50,12 @@ public:
     /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
     /// </remarks>
     /// <param name="body">Car</param>
+    /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
     /// <param name="filename">Filename (optional)</param>
-    /// <param name="commp">Commp (optional)</param>
-    /// <param name="size">Size (optional)</param>
     pplx::task<void> contentAddCarPost(
         utility::string_t body,
-        boost::optional<utility::string_t> filename,
-        boost::optional<utility::string_t> commp,
-        boost::optional<utility::string_t> size
+        boost::optional<utility::string_t> ignoreDupes,
+        boost::optional<utility::string_t> filename
     );
     /// <summary>
     /// Add IPFS object
@@ -65,8 +64,10 @@ public:
     /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     /// </remarks>
     /// <param name="body">IPFS Body</param>
+    /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
     pplx::task<void> contentAddIpfsPost(
-        std::shared_ptr<Util.ContentAddIpfsBody> body
+        std::shared_ptr<Util.ContentAddIpfsBody> body,
+        boost::optional<utility::string_t> ignoreDupes
     );
     /// <summary>
     /// Add new content
@@ -74,13 +75,21 @@ public:
     /// <remarks>
     /// This endpoint is used to upload new content.
     /// </remarks>
-    /// <param name="file">File to upload</param>
-    /// <param name="coluuid">Collection UUID</param>
-    /// <param name="dir">Directory</param>
+    /// <param name="data">File to upload</param>
+    /// <param name="filename">Filenam to use for upload (optional)</param>
+    /// <param name="coluuid">Collection UUID (optional)</param>
+    /// <param name="replication">Replication value (optional)</param>
+    /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+    /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+    /// <param name="dir">Directory (optional)</param>
     pplx::task<std::shared_ptr<Util.ContentAddResponse>> contentAddPost(
-        std::shared_ptr<HttpContent> file,
-        utility::string_t coluuid,
-        utility::string_t dir
+        std::shared_ptr<HttpContent> data,
+        boost::optional<utility::string_t> filename,
+        boost::optional<utility::string_t> coluuid,
+        boost::optional<int32_t> replication,
+        boost::optional<utility::string_t> ignoreDupes,
+        boost::optional<utility::string_t> lazyProvide,
+        boost::optional<utility::string_t> dir
     );
     /// <summary>
     /// Get aggregated content stats
@@ -122,9 +131,11 @@ public:
     /// <remarks>
     /// This endpoint adds a new content
     /// </remarks>
-    /// <param name="body">Content</param>
+    /// <param name="req">Content</param>
+    /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
     pplx::task<void> contentCreatePost(
-        utility::string_t body
+        std::shared_ptr<Util.ContentCreateBody> req,
+        boost::optional<utility::string_t> ignoreDupes
     );
     /// <summary>
     /// Content with deals
@@ -157,6 +168,16 @@ public:
     /// <param name="content">Content ID</param>
     pplx::task<utility::string_t> contentFailuresContentGet(
         utility::string_t content
+    );
+    /// <summary>
+    /// Content
+    /// </summary>
+    /// <remarks>
+    /// This endpoint returns a content by its ID
+    /// </remarks>
+    /// <param name="id">Content ID</param>
+    pplx::task<void> contentIdGet(
+        int32_t id
     );
     /// <summary>
     /// Import a deal
@@ -201,8 +222,10 @@ public:
     /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     /// </remarks>
     /// <param name="limit">limit</param>
+    /// <param name="offset">offset</param>
     pplx::task<void> contentStatsGet(
-        utility::string_t limit
+        utility::string_t limit,
+        utility::string_t offset
     );
     /// <summary>
     /// Content Status

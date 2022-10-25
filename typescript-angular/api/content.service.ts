@@ -21,6 +21,7 @@ import { Observable }                                        from 'rxjs/Observab
 import { MainImportDealBody } from '../model/mainImportDealBody';
 import { UtilContentAddIpfsBody } from '../model/utilContentAddIpfsBody';
 import { UtilContentAddResponse } from '../model/utilContentAddResponse';
+import { UtilContentCreateBody } from '../model/utilContentCreateBody';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -62,16 +63,15 @@ export class ContentService {
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car
+     * @param ignoreDupes Ignore Dupes
      * @param filename Filename
-     * @param commp Commp
-     * @param size Size
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
@@ -79,16 +79,12 @@ export class ContentService {
 
 
 
-
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
         if (filename !== undefined && filename !== null) {
             queryParameters = queryParameters.set('filename', <any>filename);
-        }
-        if (commp !== undefined && commp !== null) {
-            queryParameters = queryParameters.set('commp', <any>commp);
-        }
-        if (size !== undefined && size !== null) {
-            queryParameters = queryParameters.set('size', <any>size);
         }
 
         let headers = this.defaultHeaders;
@@ -131,16 +127,23 @@ export class ContentService {
      * Add IPFS object
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body
+     * @param ignoreDupes Ignore Dupes
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
+        }
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
         }
 
         let headers = this.defaultHeaders;
@@ -170,6 +173,7 @@ export class ContentService {
         return this.httpClient.post<any>(`${this.basePath}/content/add-ipfs`,
             body,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -181,27 +185,46 @@ export class ContentService {
     /**
      * Add new content
      * This endpoint is used to upload new content.
-     * @param file File to upload
+     * @param data File to upload
+     * @param filename Filenam to use for upload
      * @param coluuid Collection UUID
+     * @param replication Replication value
+     * @param ignoreDupes Ignore Dupes true/false
+     * @param lazyProvide Lazy Provide true/false
      * @param dir Directory
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
-    public contentAddPost(file: Blob, coluuid: string, dir: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
+    public contentAddPost(data: Blob, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling contentAddPost.');
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
         }
 
-        if (coluuid === null || coluuid === undefined) {
-            throw new Error('Required parameter coluuid was null or undefined when calling contentAddPost.');
-        }
 
-        if (dir === null || dir === undefined) {
-            throw new Error('Required parameter dir was null or undefined when calling contentAddPost.');
+
+
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (coluuid !== undefined && coluuid !== null) {
+            queryParameters = queryParameters.set('coluuid', <any>coluuid);
+        }
+        if (replication !== undefined && replication !== null) {
+            queryParameters = queryParameters.set('replication', <any>replication);
+        }
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (lazyProvide !== undefined && lazyProvide !== null) {
+            queryParameters = queryParameters.set('lazy-provide', <any>lazyProvide);
+        }
+        if (dir !== undefined && dir !== null) {
+            queryParameters = queryParameters.set('dir', <any>dir);
         }
 
         let headers = this.defaultHeaders;
@@ -239,13 +262,17 @@ export class ContentService {
             formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         }
 
-        if (file !== undefined) {
-            formParams = formParams.append('file', <any>file) || formParams;
+        if (data !== undefined) {
+            formParams = formParams.append('data', <any>data) || formParams;
+        }
+        if (filename !== undefined) {
+            formParams = formParams.append('filename', <any>filename) || formParams;
         }
 
         return this.httpClient.post<UtilContentAddResponse>(`${this.basePath}/content/add`,
             convertFormParamsToString ? formParams.toString() : formParams,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -417,17 +444,24 @@ export class ContentService {
     /**
      * Add a new content
      * This endpoint adds a new content
-     * @param body Content
+     * @param req Content
+     * @param ignoreDupes Ignore Dupes
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentCreatePost(body: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentCreatePost(body: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentCreatePost(body: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public contentCreatePost(body: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling contentCreatePost.');
+        if (req === null || req === undefined) {
+            throw new Error('Required parameter req was null or undefined when calling contentCreatePost.');
+        }
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
         }
 
         let headers = this.defaultHeaders;
@@ -455,8 +489,9 @@ export class ContentService {
         }
 
         return this.httpClient.post<any>(`${this.basePath}/content/create`,
-            body,
+            req,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -602,6 +637,52 @@ export class ContentService {
         ];
 
         return this.httpClient.get<string>(`${this.basePath}/content/failures/${encodeURIComponent(String(content))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Content
+     * This endpoint returns a content by its ID
+     * @param id Content ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public contentIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public contentIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public contentIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling contentIdGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<any>(`${this.basePath}/content/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -794,16 +875,29 @@ export class ContentService {
      * Get content statistics
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param limit limit
+     * @param offset offset
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentStatsGet(limit: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentStatsGet(limit: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentStatsGet(limit: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public contentStatsGet(limit: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentStatsGet(limit: string, offset: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentStatsGet(limit: string, offset: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (limit === null || limit === undefined) {
             throw new Error('Required parameter limit was null or undefined when calling contentStatsGet.');
+        }
+
+        if (offset === null || offset === undefined) {
+            throw new Error('Required parameter offset was null or undefined when calling contentStatsGet.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (limit !== undefined && limit !== null) {
+            queryParameters = queryParameters.set('limit', <any>limit);
+        }
+        if (offset !== undefined && offset !== null) {
+            queryParameters = queryParameters.set('offset', <any>offset);
         }
 
         let headers = this.defaultHeaders;
@@ -828,6 +922,7 @@ export class ContentService {
 
         return this.httpClient.get<any>(`${this.basePath}/content/stats`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

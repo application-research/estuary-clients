@@ -67,7 +67,7 @@ object UserApi {
     } yield resp
   }
   
-  def userApiKeysPost(host: String): Task[GetApiKeysResp] = {
+  def userApiKeysPost(host: String, expiry: String, perms: String)(implicit expiryQuery: QueryParam[String], permsQuery: QueryParam[String]): Task[GetApiKeysResp] = {
     implicit val returnTypeDecoder: EntityDecoder[GetApiKeysResp] = jsonOf[GetApiKeysResp]
 
     val path = "/user/api-keys"
@@ -77,7 +77,7 @@ object UserApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("expiry", Some(expiryQuery.toParamString(expiry))), ("perms", Some(permsQuery.toParamString(perms))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -177,7 +177,7 @@ class HttpServiceUserApi(service: HttpService) {
     } yield resp
   }
   
-  def userApiKeysPost(): Task[GetApiKeysResp] = {
+  def userApiKeysPost(expiry: String, perms: String)(implicit expiryQuery: QueryParam[String], permsQuery: QueryParam[String]): Task[GetApiKeysResp] = {
     implicit val returnTypeDecoder: EntityDecoder[GetApiKeysResp] = jsonOf[GetApiKeysResp]
 
     val path = "/user/api-keys"
@@ -187,7 +187,7 @@ class HttpServiceUserApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("expiry", Some(expiryQuery.toParamString(expiry))), ("perms", Some(permsQuery.toParamString(perms))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

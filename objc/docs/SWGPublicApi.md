@@ -173,6 +173,7 @@ void (empty response body)
 # **publicMinersDealsMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
+    ignoreFailed: (NSString*) ignoreFailed
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -191,11 +192,13 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 
 
 NSString* miner = @"miner_example"; // Filter by miner
+NSString* ignoreFailed = @"ignoreFailed_example"; // Ignore Failed (optional)
 
 SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get all miners deals
 [apiInstance publicMinersDealsMinerGetWithMiner:miner
+              ignoreFailed:ignoreFailed
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMinersDealsMinerGet: %@", error);
@@ -208,6 +211,7 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **NSString***| Filter by miner | 
+ **ignoreFailed** | **NSString***| Ignore Failed | [optional] 
 
 ### Return type
 

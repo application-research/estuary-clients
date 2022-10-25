@@ -15,8 +15,9 @@ import { HttpClient } from 'aurelia-http-client';
 import { Api } from './Api';
 import { AuthStorage } from './AuthStorage';
 import {
-  MainCollection,
+  MainDeleteContentFromCollectionBody,
   MainCreateCollectionBody,
+  CollectionsCollection,
 } from './models';
 
 /**
@@ -24,6 +25,15 @@ import {
  */
 export interface ICollectionsColuuidCommitPostParams {
   coluuid: string;
+}
+
+/**
+ * collectionsColuuidContentsDelete - parameters interface
+ */
+export interface ICollectionsColuuidContentsDeleteParams {
+  coluuid: string;
+  contentid: string;
+  body: MainDeleteContentFromCollectionBody;
 }
 
 /**
@@ -45,7 +55,8 @@ export interface ICollectionsColuuidGetParams {
  * collectionsColuuidPost - parameters interface
  */
 export interface ICollectionsColuuidPostParams {
-  body: Array<number>;
+  coluuid: string;
+  contentIDs: Array<number>;
 }
 
 /**
@@ -61,7 +72,6 @@ export interface ICollectionsFsAddPostParams {
  * collectionsGet - parameters interface
  */
 export interface ICollectionsGetParams {
-  id: number;
 }
 
 /**
@@ -118,6 +128,44 @@ export class CollectionsApi extends Api {
   }
 
   /**
+   * Deletes a content from a collection
+   * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+   * @param params.coluuid Collection ID
+   * @param params.contentid Content ID
+   * @param params.body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+   */
+  async collectionsColuuidContentsDelete(params: ICollectionsColuuidContentsDeleteParams): Promise<string> {
+    // Verify required parameters are set
+    this.ensureParamIsSet('collectionsColuuidContentsDelete', params, 'coluuid');
+    this.ensureParamIsSet('collectionsColuuidContentsDelete', params, 'contentid');
+    this.ensureParamIsSet('collectionsColuuidContentsDelete', params, 'body');
+
+    // Create URL to call
+    const url = `${this.basePath}/collections/{coluuid}/contents`
+      .replace(`{${'coluuid'}}`, encodeURIComponent(`${params['coluuid']}`))
+      .replace(`{${'contentid'}}`, encodeURIComponent(`${params['contentid']}`));
+
+    const response = await this.httpClient.createRequest(url)
+      // Set HTTP method
+      .asDelete()
+      // Encode body parameter
+      .withHeader('content-type', 'application/json')
+      .withContent(JSON.stringify(params['body'] || {}))
+
+      // Authentication 'bearerAuth' required
+      .withHeader('Authorization', this.authStorage.getbearerAuth())
+      // Send the request
+      .send();
+
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw new Error(response.content);
+    }
+
+    // Extract the content
+    return response.content;
+  }
+
+  /**
    * Deletes a collection
    * This endpoint is used to delete an existing collection.
    * @param params.coluuid Collection ID
@@ -150,7 +198,7 @@ export class CollectionsApi extends Api {
   /**
    * Get contents in a collection
    * This endpoint is used to get contents in a collection. If no colpath query param is passed
-   * @param params.coluuid Collection UUID
+   * @param params.coluuid coluuid
    * @param params.dir Directory
    */
   async collectionsColuuidGet(params: ICollectionsColuuidGetParams): Promise<string> {
@@ -158,14 +206,14 @@ export class CollectionsApi extends Api {
     this.ensureParamIsSet('collectionsColuuidGet', params, 'coluuid');
 
     // Create URL to call
-    const url = `${this.basePath}/collections/{coluuid}`;
+    const url = `${this.basePath}/collections/{coluuid}`
+      .replace(`{${'coluuid'}}`, encodeURIComponent(`${params['coluuid']}`));
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asGet()
       // Set query parameters
       .withParams({ 
-        'coluuid': params['coluuid'],
         'dir': params['dir'],
       })
 
@@ -185,21 +233,24 @@ export class CollectionsApi extends Api {
   /**
    * Add contents to a collection
    * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-   * @param params.body Content IDs to add to collection
+   * @param params.coluuid coluuid
+   * @param params.contentIDs Content IDs to add to collection
    */
   async collectionsColuuidPost(params: ICollectionsColuuidPostParams): Promise<{ [key: string]: string; }> {
     // Verify required parameters are set
-    this.ensureParamIsSet('collectionsColuuidPost', params, 'body');
+    this.ensureParamIsSet('collectionsColuuidPost', params, 'coluuid');
+    this.ensureParamIsSet('collectionsColuuidPost', params, 'contentIDs');
 
     // Create URL to call
-    const url = `${this.basePath}/collections/{coluuid}`;
+    const url = `${this.basePath}/collections/{coluuid}`
+      .replace(`{${'coluuid'}}`, encodeURIComponent(`${params['coluuid']}`));
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
       // Encode body parameter
       .withHeader('content-type', 'application/json')
-      .withContent(JSON.stringify(params['body'] || {}))
+      .withContent(JSON.stringify(params['contentIDs'] || {}))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())
@@ -256,15 +307,12 @@ export class CollectionsApi extends Api {
   /**
    * List all collections
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-   * @param params.id User ID
    */
-  async collectionsGet(params: ICollectionsGetParams): Promise<Array<MainCollection>> {
+  async collectionsGet(): Promise<Array<CollectionsCollection>> {
     // Verify required parameters are set
-    this.ensureParamIsSet('collectionsGet', params, 'id');
 
     // Create URL to call
-    const url = `${this.basePath}/collections/`
-      .replace(`{${'id'}}`, encodeURIComponent(`${params['id']}`));
+    const url = `${this.basePath}/collections/`;
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
@@ -288,7 +336,7 @@ export class CollectionsApi extends Api {
    * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
    * @param params.body Collection name and description
    */
-  async collectionsPost(params: ICollectionsPostParams): Promise<MainCollection> {
+  async collectionsPost(params: ICollectionsPostParams): Promise<CollectionsCollection> {
     // Verify required parameters are set
     this.ensureParamIsSet('collectionsPost', params, 'body');
 

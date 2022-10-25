@@ -13,7 +13,7 @@ Feature | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete 
+> admin_peering_peers_delete (body: LIST [STRING_32] )
 	
 
 Remove peers on Peering Service
@@ -22,7 +22,10 @@ This endpoint can be used to remove a Peer from the Peering Service
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**LIST [STRING_32]**](STRING_32.md)| Peer ids | 
 
 ### Return type
 

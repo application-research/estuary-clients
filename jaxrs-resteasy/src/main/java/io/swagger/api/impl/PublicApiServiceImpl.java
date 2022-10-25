@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class PublicApiServiceImpl implements PublicApiService {
       public Response publicByCidCidGet(String cid,SecurityContext securityContext)
       throws NotFoundException {
@@ -37,7 +37,7 @@ public class PublicApiServiceImpl implements PublicApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response publicMinersDealsMinerGet(String miner,SecurityContext securityContext)
+      public Response publicMinersDealsMinerGet(String miner,String ignoreFailed,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

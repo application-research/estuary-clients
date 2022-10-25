@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/MainGetApiKeysResp'), require('../model/MainUserStatsResponse'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.UserApi = factory(root.EstuaryApi.ApiClient, root.EstuaryApi.MainGetApiKeysResp, root.EstuaryApi.MainUserStatsResponse, root.EstuaryApi.UtilHttpError);
+    root.EstuaryClient.UserApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainGetApiKeysResp, root.EstuaryClient.MainUserStatsResponse, root.EstuaryClient.UtilHttpError);
   }
 }(this, function(ApiClient, MainGetApiKeysResp, MainUserStatsResponse, UtilHttpError) {
   'use strict';
@@ -146,16 +146,22 @@
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param {String} opts.perms Permissions -- currently unused
      * @param {module:api/UserApi~userApiKeysPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/MainGetApiKeysResp}
      */
-    this.userApiKeysPost = function(callback) {
+    this.userApiKeysPost = function(opts, callback) {
+      opts = opts || {};
       var postBody = null;
 
 
       var pathParams = {
       };
       var queryParams = {
+        'expiry': opts['expiry'],
+        'perms': opts['perms'],
       };
       var collectionQueryParams = {
       };

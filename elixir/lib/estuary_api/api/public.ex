@@ -93,6 +93,7 @@ defmodule EstuaryAPI.Api.Public do
   - connection (EstuaryAPI.Connection): Connection to server
   - miner (String.t): Filter by miner
   - opts (KeywordList): [optional] Optional parameters
+    - :ignore_failed (String.t): Ignore Failed
 
   ## Returns
 
@@ -100,10 +101,14 @@ defmodule EstuaryAPI.Api.Public do
   {:error, info} on failure
   """
   @spec public_miners_deals_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def public_miners_deals_miner_get(connection, miner, _opts \\ []) do
+  def public_miners_deals_miner_get(connection, miner, opts \\ []) do
+    optional_params = %{
+      :"ignore-failed" => :query
+    }
     %{}
     |> method(:get)
     |> url("/public/miners/deals/#{miner}")
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

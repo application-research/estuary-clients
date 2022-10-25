@@ -103,8 +103,9 @@ export class PublicApi {
      * This endpoint returns all miners deals
      * @summary Get all miners deals
      * @param miner Filter by miner
+     * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/public/miners/deals/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -113,6 +114,10 @@ export class PublicApi {
         // verify required parameter 'miner' is not null or undefined
         if (miner === null || miner === undefined) {
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
+        }
+
+        if (ignoreFailed !== undefined) {
+            queryParameters['ignore-failed'] = ignoreFailed;
         }
 
         let httpRequestParams: ng.IRequestConfig = {

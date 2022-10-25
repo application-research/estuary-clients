@@ -64,10 +64,15 @@ object UserApi {
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
+   * 
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+   * @param perms Permissions -- currently unused
    */
-  def userApiKeysPost()(implicit apiKey: ApiKeyValue): ApiRequest[MainGetApiKeysResp] =
+  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[MainGetApiKeysResp] =
     ApiRequest[MainGetApiKeysResp](ApiMethods.POST, "https://api.estuary.tech", "/user/api-keys", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withQueryParam("expiry", expiry)
+      .withQueryParam("perms", perms)
       .withSuccessResponse[MainGetApiKeysResp](200)
       .withErrorResponse[UtilHttpError](400)
       .withErrorResponse[UtilHttpError](404)

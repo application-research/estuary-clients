@@ -8,6 +8,7 @@
 #include "Main.importDealBody.h"
 #include "Util.ContentAddIpfsBody.h"
 #include "Util.ContentAddResponse.h"
+#include "Util.ContentCreateBody.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -30,15 +31,14 @@ public:
  *
  * This endpoint is used to add a car object to the network. The object can be a file or a directory.
  * \param body Car *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param filename Filename
- * \param commp Commp
- * \param size Size
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddCarPostSync(char * accessToken,
-	std::string body, std::string filename, std::string commp, std::string size, 
+	std::string body, std::string ignoreDupes, std::string filename, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -46,15 +46,14 @@ bool contentAddCarPostSync(char * accessToken,
  *
  * This endpoint is used to add a car object to the network. The object can be a file or a directory.
  * \param body Car *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param filename Filename
- * \param commp Commp
- * \param size Size
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddCarPostAsync(char * accessToken,
-	std::string body, std::string filename, std::string commp, std::string size, 
+	std::string body, std::string ignoreDupes, std::string filename, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -63,12 +62,13 @@ bool contentAddCarPostAsync(char * accessToken,
  *
  * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
  * \param body IPFS Body *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddIpfsPostSync(char * accessToken,
-	Util.ContentAddIpfsBody body, 
+	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -76,12 +76,13 @@ bool contentAddIpfsPostSync(char * accessToken,
  *
  * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
  * \param body IPFS Body *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddIpfsPostAsync(char * accessToken,
-	Util.ContentAddIpfsBody body, 
+	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -89,30 +90,38 @@ bool contentAddIpfsPostAsync(char * accessToken,
 /*! \brief Add new content. *Synchronous*
  *
  * This endpoint is used to upload new content.
- * \param file File to upload *Required*
- * \param coluuid Collection UUID *Required*
- * \param dir Directory *Required*
+ * \param data File to upload *Required*
+ * \param filename Filenam to use for upload
+ * \param coluuid Collection UUID
+ * \param replication Replication value
+ * \param ignoreDupes Ignore Dupes true/false
+ * \param lazyProvide Lazy Provide true/false
+ * \param dir Directory
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddPostSync(char * accessToken,
-	std::string file, std::string coluuid, std::string dir, 
+	std::string data, std::string filename, std::string coluuid, int replication, std::string ignoreDupes, std::string lazyProvide, std::string dir, 
 	void(* handler)(Util.ContentAddResponse, Error, void* )
 	, void* userData);
 
 /*! \brief Add new content. *Asynchronous*
  *
  * This endpoint is used to upload new content.
- * \param file File to upload *Required*
- * \param coluuid Collection UUID *Required*
- * \param dir Directory *Required*
+ * \param data File to upload *Required*
+ * \param filename Filenam to use for upload
+ * \param coluuid Collection UUID
+ * \param replication Replication value
+ * \param ignoreDupes Ignore Dupes true/false
+ * \param lazyProvide Lazy Provide true/false
+ * \param dir Directory
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentAddPostAsync(char * accessToken,
-	std::string file, std::string coluuid, std::string dir, 
+	std::string data, std::string filename, std::string coluuid, int replication, std::string ignoreDupes, std::string lazyProvide, std::string dir, 
 	void(* handler)(Util.ContentAddResponse, Error, void* )
 	, void* userData);
 
@@ -205,26 +214,28 @@ bool contentBwUsageContentGetAsync(char * accessToken,
 /*! \brief Add a new content. *Synchronous*
  *
  * This endpoint adds a new content
- * \param body Content *Required*
+ * \param req Content *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentCreatePostSync(char * accessToken,
-	std::string body, 
+	Util.ContentCreateBody req, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 /*! \brief Add a new content. *Asynchronous*
  *
  * This endpoint adds a new content
- * \param body Content *Required*
+ * \param req Content *Required*
+ * \param ignoreDupes Ignore Dupes
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentCreatePostAsync(char * accessToken,
-	std::string body, 
+	Util.ContentCreateBody req, std::string ignoreDupes, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -310,6 +321,33 @@ bool contentFailuresContentGetAsync(char * accessToken,
 	std::string content, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData);
+
+
+/*! \brief Content. *Synchronous*
+ *
+ * This endpoint returns a content by its ID
+ * \param id Content ID *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool contentIdGetSync(char * accessToken,
+	int id, 
+	
+	void(* handler)(Error, void* ) , void* userData);
+
+/*! \brief Content. *Asynchronous*
+ *
+ * This endpoint returns a content by its ID
+ * \param id Content ID *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool contentIdGetAsync(char * accessToken,
+	int id, 
+	
+	void(* handler)(Error, void* ) , void* userData);
 
 
 /*! \brief Import a deal. *Synchronous*
@@ -420,12 +458,13 @@ bool contentStagingZonesGetAsync(char * accessToken,
  *
  * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
  * \param limit limit *Required*
+ * \param offset offset *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentStatsGetSync(char * accessToken,
-	std::string limit, 
+	std::string limit, std::string offset, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
@@ -433,12 +472,13 @@ bool contentStatsGetSync(char * accessToken,
  *
  * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
  * \param limit limit *Required*
+ * \param offset offset *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool contentStatsGetAsync(char * accessToken,
-	std::string limit, 
+	std::string limit, std::string offset, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

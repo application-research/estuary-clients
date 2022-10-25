@@ -1,4 +1,4 @@
-# estuary_client.Model.MainEstimateDealBody
+# estuary-client.Model.MainEstimateDealBody
 ## Properties
 
 Name | Type | Description | Notes

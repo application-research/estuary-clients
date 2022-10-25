@@ -58,9 +58,10 @@ public class MinerApi {
   * Get all miners deals
   * This endpoint returns all miners deals
    * @param miner Filter by miner
+   * @param ignoreFailed Ignore Failed
    * @return void
   */
-  public void publicMinersDealsMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void publicMinersDealsMinerGet (String miner, String ignoreFailed) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -77,6 +78,7 @@ public class MinerApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-failed", ignoreFailed));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -119,9 +121,9 @@ public class MinerApi {
       /**
    * Get all miners deals
    * This endpoint returns all miners deals
-   * @param miner Filter by miner
+   * @param miner Filter by miner   * @param ignoreFailed Ignore Failed
   */
-  public void publicMinersDealsMinerGet (String miner, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void publicMinersDealsMinerGet (String miner, String ignoreFailed, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'miner' is set
@@ -140,6 +142,7 @@ public class MinerApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-failed", ignoreFailed));
 
 
     String[] contentTypes = {

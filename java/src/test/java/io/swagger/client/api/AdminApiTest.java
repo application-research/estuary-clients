@@ -41,7 +41,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() throws Exception {
-        api.adminPeeringPeersDelete();
+        List<String> body = null;
+        api.adminPeeringPeersDelete(body);
 
         // TODO: test validations
     }

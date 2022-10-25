@@ -36,7 +36,7 @@ ContentApi::~ContentApi()
 {
 }
 
-pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::optional<utility::string_t> filename, boost::optional<utility::string_t> commp, boost::optional<utility::string_t> size)
+pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::optional<utility::string_t> ignoreDupes, boost::optional<utility::string_t> filename)
 {
 
 
@@ -77,17 +77,13 @@ pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::op
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    if (ignoreDupes)
+    {
+        queryParams[utility::conversions::to_string_t("ignore-dupes")] = ApiClient::parameterToString(*ignoreDupes);
+    }
     if (filename)
     {
         queryParams[utility::conversions::to_string_t("filename")] = ApiClient::parameterToString(*filename);
-    }
-    if (commp)
-    {
-        queryParams[utility::conversions::to_string_t("commp")] = ApiClient::parameterToString(*commp);
-    }
-    if (size)
-    {
-        queryParams[utility::conversions::to_string_t("size")] = ApiClient::parameterToString(*size);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -161,7 +157,7 @@ pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::op
         return void();
     });
 }
-pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddIpfsBody> body)
+pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddIpfsBody> body, boost::optional<utility::string_t> ignoreDupes)
 {
 
     // verify the required parameter 'body' is set
@@ -208,6 +204,10 @@ pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddI
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    if (ignoreDupes)
+    {
+        queryParams[utility::conversions::to_string_t("ignore-dupes")] = ApiClient::parameterToString(*ignoreDupes);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -285,21 +285,19 @@ pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddI
         return void();
     });
 }
-pplx::task<std::shared_ptr<Util.ContentAddResponse>> ContentApi::contentAddPost(std::shared_ptr<HttpContent> file, utility::string_t coluuid, utility::string_t dir)
+pplx::task<std::shared_ptr<Util.ContentAddResponse>> ContentApi::contentAddPost(std::shared_ptr<HttpContent> data, boost::optional<utility::string_t> filename, boost::optional<utility::string_t> coluuid, boost::optional<int32_t> replication, boost::optional<utility::string_t> ignoreDupes, boost::optional<utility::string_t> lazyProvide, boost::optional<utility::string_t> dir)
 {
 
-    // verify the required parameter 'file' is set
-    if (file == nullptr)
+    // verify the required parameter 'data' is set
+    if (data == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'file' when calling ContentApi->contentAddPost"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'data' when calling ContentApi->contentAddPost"));
     }
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/content/add");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("coluuid") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(coluuid));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("dir") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(dir));
-
+    
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
@@ -335,9 +333,33 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
     consumeHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
 
-    if (file != nullptr)
+    if (data != nullptr)
     {
-        fileParams[ utility::conversions::to_string_t("file") ] = file;
+        fileParams[ utility::conversions::to_string_t("data") ] = data;
+    }
+    if (filename)
+    {
+        formParams[ utility::conversions::to_string_t("filename") ] = ApiClient::parameterToString(*filename);
+    }
+    if (coluuid)
+    {
+        queryParams[utility::conversions::to_string_t("coluuid")] = ApiClient::parameterToString(*coluuid);
+    }
+    if (replication)
+    {
+        queryParams[utility::conversions::to_string_t("replication")] = ApiClient::parameterToString(*replication);
+    }
+    if (ignoreDupes)
+    {
+        queryParams[utility::conversions::to_string_t("ignore-dupes")] = ApiClient::parameterToString(*ignoreDupes);
+    }
+    if (lazyProvide)
+    {
+        queryParams[utility::conversions::to_string_t("lazy-provide")] = ApiClient::parameterToString(*lazyProvide);
+    }
+    if (dir)
+    {
+        queryParams[utility::conversions::to_string_t("dir")] = ApiClient::parameterToString(*dir);
     }
 
     std::shared_ptr<IHttpBody> httpBody;
@@ -767,8 +789,14 @@ pplx::task<void> ContentApi::contentBwUsageContentGet(utility::string_t content)
         return void();
     });
 }
-pplx::task<void> ContentApi::contentCreatePost(utility::string_t body)
+pplx::task<void> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreateBody> req, boost::optional<utility::string_t> ignoreDupes)
 {
+
+    // verify the required parameter 'req' is set
+    if (req == nullptr)
+    {
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'req' when calling ContentApi->contentCreatePost"));
+    }
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
@@ -808,6 +836,10 @@ pplx::task<void> ContentApi::contentCreatePost(utility::string_t body)
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    if (ignoreDupes)
+    {
+        queryParams[utility::conversions::to_string_t("ignore-dupes")] = ApiClient::parameterToString(*ignoreDupes);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -818,7 +850,8 @@ pplx::task<void> ContentApi::contentCreatePost(utility::string_t body)
         requestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value json;
 
-        json = ModelBase::toJson(body);
+        json = ModelBase::toJson(req);
+        
 
         httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
@@ -827,7 +860,11 @@ pplx::task<void> ContentApi::contentCreatePost(utility::string_t body)
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
-        multipart->add(ModelBase::toHttpContent("body", body));
+
+        if(req.get())
+        {
+            req->toMultipart(multipart, utility::conversions::to_string_t("req"));
+        }
 
         httpBody = multipart;
         requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
@@ -1225,6 +1262,110 @@ pplx::task<utility::string_t> ContentApi::contentFailuresContentGet(utility::str
         }
 
         return result;
+    });
+}
+pplx::task<void> ContentApi::contentIdGet(int32_t id)
+{
+
+
+    std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
+    utility::string_t path = utility::conversions::to_string_t("/content/{id}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("id") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(id));
+
+    std::map<utility::string_t, utility::string_t> queryParams;
+    std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
+    std::map<utility::string_t, utility::string_t> formParams;
+    std::map<utility::string_t, std::shared_ptr<HttpContent>> fileParams;
+
+    std::unordered_set<utility::string_t> responseHttpContentTypes;
+    responseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
+
+    utility::string_t responseHttpContentType;
+
+    // use JSON if possible
+    if ( responseHttpContentTypes.size() == 0 )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // JSON
+    else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(400, utility::conversions::to_string_t("ContentApi->contentIdGet does not produce any supported media type"));
+    }
+
+    headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
+
+    std::unordered_set<utility::string_t> consumeHttpContentTypes;
+
+
+    std::shared_ptr<IHttpBody> httpBody;
+    utility::string_t requestHttpContentType;
+
+    // use JSON if possible
+    if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("application/json");
+    }
+    // multipart formdata
+    else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
+    {
+        requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    else
+    {
+        throw ApiException(415, utility::conversions::to_string_t("ContentApi->contentIdGet does not consume any supported media type"));
+    }
+
+    // authentication (bearerAuth) required
+    {
+        utility::string_t apiKey = apiConfiguration->getApiKey(utility::conversions::to_string_t("Authorization"));
+        if ( apiKey.size() > 0 )
+        {
+            headerParams[utility::conversions::to_string_t("Authorization")] = apiKey;
+        }
+    }
+
+    return m_ApiClient->callApi(path, utility::conversions::to_string_t("GET"), queryParams, httpBody, headerParams, formParams, fileParams, requestHttpContentType)
+    .then([=](web::http::http_response response)
+    {
+        // 1xx - informational : OK
+        // 2xx - successful       : OK
+        // 3xx - redirection   : OK
+        // 4xx - client error  : not OK
+        // 5xx - client error  : not OK
+        if (response.status_code() >= 400)
+        {
+            throw ApiException(response.status_code()
+                , utility::conversions::to_string_t("error calling contentIdGet: ") + response.reason_phrase()
+                , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+        }
+
+        // check response content type
+        if(response.headers().has(utility::conversions::to_string_t("Content-Type")))
+        {
+            utility::string_t contentType = response.headers()[utility::conversions::to_string_t("Content-Type")];
+            if( contentType.find(responseHttpContentType) == std::string::npos )
+            {
+                throw ApiException(500
+                    , utility::conversions::to_string_t("error calling contentIdGet: unexpected response type: ") + contentType
+                    , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
+            }
+        }
+
+        return response.extract_string();
+    })
+    .then([=](utility::string_t response)
+    {
+        return void();
     });
 }
 pplx::task<void> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDealBody> body)
@@ -1684,14 +1825,13 @@ pplx::task<void> ContentApi::contentStagingZonesGet()
         return void();
     });
 }
-pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit)
+pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit, utility::string_t offset)
 {
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/content/stats");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("limit") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(limit));
-
+    
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
@@ -1726,6 +1866,12 @@ pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit)
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    {
+        queryParams[utility::conversions::to_string_t("limit")] = ApiClient::parameterToString(limit);
+    }
+    {
+        queryParams[utility::conversions::to_string_t("offset")] = ApiClient::parameterToString(offset);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;

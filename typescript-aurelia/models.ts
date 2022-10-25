@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface MainCollection {
+export interface CollectionsCollection {
   cid?: string;
   createdAt?: string;
   description?: string;
@@ -22,6 +22,11 @@ export interface MainCollection {
 export interface MainCreateCollectionBody {
   description?: string;
   name?: string;
+}
+
+export interface MainDeleteContentFromCollectionBody {
+  by?: string;
+  value?: string;
 }
 
 export interface MainEstimateDealBody {
@@ -61,6 +66,15 @@ export interface UtilContentAddResponse {
   estuaryId?: number;
   providers?: Array<string>;
   retrievalUrl?: string;
+}
+
+export interface UtilContentCreateBody {
+  coluuid?: string;
+  dir?: string;
+  location?: string;
+  name?: string;
+  root?: string;
+  type?: number;
 }
 
 export interface UtilHttpError {

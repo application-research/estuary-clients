@@ -38,6 +38,10 @@ class UserApi extends _$UserApiClient implements ApiClient {
     /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     @PostReq(path: "/user/api-keys", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<MainGetApiKeysResp> userApiKeysPost(
+        
+        @QueryParam("expiry") String expiry, 
+        
+        @QueryParam("perms") String perms
     );
 
     /// Export user data

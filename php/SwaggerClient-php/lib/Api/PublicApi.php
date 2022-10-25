@@ -766,14 +766,15 @@ class PublicApi
      * Get all miners deals
      *
      * @param  string $miner Filter by miner (required)
+     * @param  string $ignore_failed Ignore Failed (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function publicMinersDealsMinerGet($miner)
+    public function publicMinersDealsMinerGet($miner, $ignore_failed = null)
     {
-        $this->publicMinersDealsMinerGetWithHttpInfo($miner);
+        $this->publicMinersDealsMinerGetWithHttpInfo($miner, $ignore_failed);
     }
 
     /**
@@ -782,15 +783,16 @@ class PublicApi
      * Get all miners deals
      *
      * @param  string $miner Filter by miner (required)
+     * @param  string $ignore_failed Ignore Failed (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function publicMinersDealsMinerGetWithHttpInfo($miner)
+    public function publicMinersDealsMinerGetWithHttpInfo($miner, $ignore_failed = null)
     {
         $returnType = '';
-        $request = $this->publicMinersDealsMinerGetRequest($miner);
+        $request = $this->publicMinersDealsMinerGetRequest($miner, $ignore_failed);
 
         try {
             $options = $this->createHttpClientOption();
@@ -835,13 +837,14 @@ class PublicApi
      * Get all miners deals
      *
      * @param  string $miner Filter by miner (required)
+     * @param  string $ignore_failed Ignore Failed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publicMinersDealsMinerGetAsync($miner)
+    public function publicMinersDealsMinerGetAsync($miner, $ignore_failed = null)
     {
-        return $this->publicMinersDealsMinerGetAsyncWithHttpInfo($miner)
+        return $this->publicMinersDealsMinerGetAsyncWithHttpInfo($miner, $ignore_failed)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -855,14 +858,15 @@ class PublicApi
      * Get all miners deals
      *
      * @param  string $miner Filter by miner (required)
+     * @param  string $ignore_failed Ignore Failed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function publicMinersDealsMinerGetAsyncWithHttpInfo($miner)
+    public function publicMinersDealsMinerGetAsyncWithHttpInfo($miner, $ignore_failed = null)
     {
         $returnType = '';
-        $request = $this->publicMinersDealsMinerGetRequest($miner);
+        $request = $this->publicMinersDealsMinerGetRequest($miner, $ignore_failed);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -891,11 +895,12 @@ class PublicApi
      * Create request for operation 'publicMinersDealsMinerGet'
      *
      * @param  string $miner Filter by miner (required)
+     * @param  string $ignore_failed Ignore Failed (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function publicMinersDealsMinerGetRequest($miner)
+    protected function publicMinersDealsMinerGetRequest($miner, $ignore_failed = null)
     {
         // verify the required parameter 'miner' is set
         if ($miner === null || (is_array($miner) && count($miner) === 0)) {
@@ -911,6 +916,10 @@ class PublicApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($ignore_failed !== null) {
+            $queryParams['ignore-failed'] = ObjectSerializer::toQueryValue($ignore_failed);
+        }
 
         // path params
         if ($miner !== null) {

@@ -37,7 +37,7 @@ public interface AdminApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Remove peers on Peering Service", tags={  })
     @ApiResponses(value = {  })
-    public void adminPeeringPeersDelete();
+    public void adminPeeringPeersDelete(List<String> body);
 
     /**
      * List all Peering peers

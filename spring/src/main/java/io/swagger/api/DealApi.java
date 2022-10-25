@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Validated
 @Api(value = "deal", description = "the deal API")
@@ -98,12 +98,11 @@ public interface DealApi {
     ResponseEntity<Void> dealTransferInProgressGet();
 
 
-    @ApiOperation(value = "Transfer Status", nickname = "dealTransferStatusPost", notes = "This endpoint returns the status of a transfer", authorizations = {
+    @ApiOperation(value = "", nickname = "dealTransferStatusPost", notes = "", authorizations = {
         @Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
+    }, tags={  })
     @ApiResponses(value = {  })
     @RequestMapping(value = "/deal/transfer/status",
-        produces = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<Void> dealTransferStatusPost();
 

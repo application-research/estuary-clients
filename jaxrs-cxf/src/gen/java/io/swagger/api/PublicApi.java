@@ -78,7 +78,7 @@ public interface PublicApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all miners deals", tags={ "public", "miner",  })
     @ApiResponses(value = {  })
-    public void publicMinersDealsMinerGet(@PathParam("miner") String miner);
+    public void publicMinersDealsMinerGet(@PathParam("miner") String miner, @QueryParam("ignore-failed") String ignoreFailed);
 
     /**
      * Get all miners

@@ -42,14 +42,16 @@ Import the following:
 #import <SwaggerClient/SWGApiClient.h>
 #import <SwaggerClient/SWGDefaultConfiguration.h>
 // load models
-#import <SwaggerClient/SWGMainCollection.h>
+#import <SwaggerClient/SWGCollectionsCollection.h>
 #import <SwaggerClient/SWGMainCreateCollectionBody.h>
+#import <SwaggerClient/SWGMainDeleteContentFromCollectionBody.h>
 #import <SwaggerClient/SWGMainEstimateDealBody.h>
 #import <SwaggerClient/SWGMainGetApiKeysResp.h>
 #import <SwaggerClient/SWGMainImportDealBody.h>
 #import <SwaggerClient/SWGMainUserStatsResponse.h>
 #import <SwaggerClient/SWGUtilContentAddIpfsBody.h>
 #import <SwaggerClient/SWGUtilContentAddResponse.h>
+#import <SwaggerClient/SWGUtilContentCreateBody.h>
 #import <SwaggerClient/SWGUtilHttpError.h>
 // load API classes for accessing endpoints
 #import <SwaggerClient/SWGAdminApi.h>
@@ -57,6 +59,7 @@ Import the following:
 #import <SwaggerClient/SWGCollectionsApi.h>
 #import <SwaggerClient/SWGContentApi.h>
 #import <SwaggerClient/SWGDealsApi.h>
+#import <SwaggerClient/SWGDefaultApi.h>
 #import <SwaggerClient/SWGMetricsApi.h>
 #import <SwaggerClient/SWGMinerApi.h>
 #import <SwaggerClient/SWGNetApi.h>
@@ -86,12 +89,13 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
+NSArray<NSString*>* *body = @[[[NSArray<NSString> alloc] init]]; // Peer ids
 
 SWGAdminApi *apiInstance = [[SWGAdminApi alloc] init];
 
 // Remove peers on Peering Service
-[apiInstance adminPeeringPeersDeleteWithCompletionHandler: 
-              ^(NSError* error) {
+[apiInstance adminPeeringPeersDeleteWithBody:body
+              completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -117,6 +121,7 @@ Class | Method | HTTP request | Description
 *SWGAutoretrieveApi* | [**adminAutoretrieveListGet**](docs/SWGAutoretrieveApi.md#adminautoretrievelistget) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 *SWGAutoretrieveApi* | [**autoretrieveHeartbeatPost**](docs/SWGAutoretrieveApi.md#autoretrieveheartbeatpost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *SWGCollectionsApi* | [**collectionsColuuidCommitPost**](docs/SWGCollectionsApi.md#collectionscoluuidcommitpost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*SWGCollectionsApi* | [**collectionsColuuidContentsDelete**](docs/SWGCollectionsApi.md#collectionscoluuidcontentsdelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 *SWGCollectionsApi* | [**collectionsColuuidDelete**](docs/SWGCollectionsApi.md#collectionscoluuiddelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 *SWGCollectionsApi* | [**collectionsColuuidGet**](docs/SWGCollectionsApi.md#collectionscoluuidget) | **GET** /collections/{coluuid} | Get contents in a collection
 *SWGCollectionsApi* | [**collectionsColuuidPost**](docs/SWGCollectionsApi.md#collectionscoluuidpost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -133,6 +138,7 @@ Class | Method | HTTP request | Description
 *SWGContentApi* | [**contentDealsGet**](docs/SWGContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 *SWGContentApi* | [**contentEnsureReplicationDatacidGet**](docs/SWGContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *SWGContentApi* | [**contentFailuresContentGet**](docs/SWGContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+*SWGContentApi* | [**contentIdGet**](docs/SWGContentApi.md#contentidget) | **GET** /content/{id} | Content
 *SWGContentApi* | [**contentImportdealPost**](docs/SWGContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *SWGContentApi* | [**contentListGet**](docs/SWGContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 *SWGContentApi* | [**contentReadContGet**](docs/SWGContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
@@ -146,12 +152,12 @@ Class | Method | HTTP request | Description
 *SWGDealsApi* | [**dealStatusByProposalPropcidGet**](docs/SWGDealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *SWGDealsApi* | [**dealStatusMinerPropcidGet**](docs/SWGDealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *SWGDealsApi* | [**dealTransferInProgressGet**](docs/SWGDealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
-*SWGDealsApi* | [**dealTransferStatusPost**](docs/SWGDealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *SWGDealsApi* | [**dealsFailuresGet**](docs/SWGDealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *SWGDealsApi* | [**dealsMakeMinerPost**](docs/SWGDealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *SWGDealsApi* | [**dealsStatusDealGet**](docs/SWGDealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *SWGDealsApi* | [**publicDealsFailuresGet**](docs/SWGDealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *SWGDealsApi* | [**publicMinersStorageQueryMinerGet**](docs/SWGDealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*SWGDefaultApi* | [**dealTransferStatusPost**](docs/SWGDefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *SWGMetricsApi* | [**publicMetricsDealsOnChainGet**](docs/SWGMetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SWGMinerApi* | [**publicMinersDealsMinerGet**](docs/SWGMinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SWGMinerApi* | [**publicMinersStatsMinerGet**](docs/SWGMinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -196,14 +202,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [SWGMainCollection](docs/SWGMainCollection.md)
+ - [SWGCollectionsCollection](docs/SWGCollectionsCollection.md)
  - [SWGMainCreateCollectionBody](docs/SWGMainCreateCollectionBody.md)
+ - [SWGMainDeleteContentFromCollectionBody](docs/SWGMainDeleteContentFromCollectionBody.md)
  - [SWGMainEstimateDealBody](docs/SWGMainEstimateDealBody.md)
  - [SWGMainGetApiKeysResp](docs/SWGMainGetApiKeysResp.md)
  - [SWGMainImportDealBody](docs/SWGMainImportDealBody.md)
  - [SWGMainUserStatsResponse](docs/SWGMainUserStatsResponse.md)
  - [SWGUtilContentAddIpfsBody](docs/SWGUtilContentAddIpfsBody.md)
  - [SWGUtilContentAddResponse](docs/SWGUtilContentAddResponse.md)
+ - [SWGUtilContentCreateBody](docs/SWGUtilContentCreateBody.md)
  - [SWGUtilHttpError](docs/SWGUtilHttpError.md)
 
 

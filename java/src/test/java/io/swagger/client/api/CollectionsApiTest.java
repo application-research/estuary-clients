@@ -13,8 +13,9 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.model.MainCollection;
+import io.swagger.client.model.CollectionsCollection;
 import io.swagger.client.model.MainCreateCollectionBody;
+import io.swagger.client.model.MainDeleteContentFromCollectionBody;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -46,6 +47,24 @@ public class CollectionsApiTest {
     public void collectionsColuuidCommitPostTest() throws Exception {
         String coluuid = null;
         String response = api.collectionsColuuidCommitPost(coluuid);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Deletes a content from a collection
+     *
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void collectionsColuuidContentsDeleteTest() throws Exception {
+        String coluuid = null;
+        String contentid = null;
+        MainDeleteContentFromCollectionBody body = null;
+        String response = api.collectionsColuuidContentsDelete(coluuid, contentid, body);
 
         // TODO: test validations
     }
@@ -93,8 +112,9 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidPostTest() throws Exception {
-        List<Integer> body = null;
-        Map<String, String> response = api.collectionsColuuidPost(body);
+        String coluuid = null;
+        List<Integer> contentIDs = null;
+        Map<String, String> response = api.collectionsColuuidPost(coluuid, contentIDs);
 
         // TODO: test validations
     }
@@ -127,8 +147,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() throws Exception {
-        Integer id = null;
-        List<MainCollection> response = api.collectionsGet(id);
+        List<CollectionsCollection> response = api.collectionsGet();
 
         // TODO: test validations
     }
@@ -144,7 +163,7 @@ public class CollectionsApiTest {
     @Test
     public void collectionsPostTest() throws Exception {
         MainCreateCollectionBody body = null;
-        MainCollection response = api.collectionsPost(body);
+        CollectionsCollection response = api.collectionsPost(body);
 
         // TODO: test validations
     }

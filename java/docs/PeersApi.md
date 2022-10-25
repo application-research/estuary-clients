@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -38,8 +38,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PeersApi apiInstance = new PeersApi();
+List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete();
+    apiInstance.adminPeeringPeersDelete(body);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringPeersDelete");
     e.printStackTrace();
@@ -47,7 +48,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **List&lt;String&gt;**| Peer ids |
 
 ### Return type
 

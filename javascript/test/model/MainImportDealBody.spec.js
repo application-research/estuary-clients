@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('MainImportDealBody', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.MainImportDealBody();
+        instance = new EstuaryClient.MainImportDealBody();
       });
 
       it('should create an instance of MainImportDealBody', function() {
         // TODO: update the code to test MainImportDealBody
-        expect(instance).to.be.a(EstuaryApi.MainImportDealBody);
+        expect(instance).to.be.a(EstuaryClient.MainImportDealBody);
       });
 
       it('should have the property coluuid (base name: "coluuid")', function() {

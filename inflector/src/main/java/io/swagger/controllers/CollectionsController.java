@@ -10,13 +10,14 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import io.swagger.model.CollectionsCollection;
 import java.util.List;
-import io.swagger.model.MainCollection;
 import io.swagger.model.MainCreateCollectionBody;
+import io.swagger.model.MainDeleteContentFromCollectionBody;
 import java.util.Map;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:59:22.073Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-25T22:24:43.443Z")
 public class CollectionsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
@@ -26,6 +27,12 @@ public class CollectionsController  {
 
   /*
     public ResponseContext collectionsColuuidCommitPOST(RequestContext request , String coluuid) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext collectionsColuuidContentsDELETE(RequestContext request , String coluuid, String contentid, MainDeleteContentFromCollectionBody body) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -43,7 +50,7 @@ public class CollectionsController  {
   */
 
   /*
-    public ResponseContext collectionsColuuidPOST(RequestContext request , List<Integer> body) {
+    public ResponseContext collectionsColuuidPOST(RequestContext request , String coluuid, List<Integer> contentIDs) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -55,7 +62,7 @@ public class CollectionsController  {
   */
 
   /*
-    public ResponseContext collectionsGET(RequestContext request , Integer id) {
+    public ResponseContext collectionsGET(RequestContext request ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

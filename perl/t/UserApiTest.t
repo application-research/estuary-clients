@@ -48,7 +48,9 @@ isa_ok($api, 'WWW::SwaggerClient::UserApi');
 # user_api_keys_post test
 #
 {
-    my $result = $api->user_api_keys_post();
+    my $expiry = undef; # replace NULL with a proper value
+    my $perms = undef; # replace NULL with a proper value
+    my $result = $api->user_api_keys_post(expiry => $expiry, perms => $perms);
 }
 
 #

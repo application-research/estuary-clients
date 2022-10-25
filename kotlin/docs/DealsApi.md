@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -30,8 +29,8 @@ This endpoint estimates the cost of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val body : MainestimateDealBody =  // MainestimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
@@ -76,8 +75,8 @@ This endpoint returns the deal info for a deal
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val dealid : kotlin.Int = 56 // kotlin.Int | Deal ID
@@ -122,8 +121,8 @@ This endpoint returns the proposal for a deal
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | Proposal CID
@@ -168,8 +167,8 @@ This endpoint returns the ask for a given CID
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID
@@ -214,8 +213,8 @@ Get Deal Status by PropCid
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | PropCid
@@ -260,8 +259,8 @@ This endpoint returns the status of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
@@ -308,8 +307,8 @@ This endpoint returns the in-progress transfers
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -319,48 +318,6 @@ try {
     e.printStackTrace()
 } catch (e: ServerException) {
     println("5xx response calling DealsApi#dealTransferInProgressGet")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="dealTransferStatusPost"></a>
-# **dealTransferStatusPost**
-> dealTransferStatusPost()
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example
-```kotlin
-// Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
-
-val apiInstance = DealsApi()
-try {
-    apiInstance.dealTransferStatusPost()
-} catch (e: ClientException) {
-    println("4xx response calling DealsApi#dealTransferStatusPost")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling DealsApi#dealTransferStatusPost")
     e.printStackTrace()
 }
 ```
@@ -392,8 +349,8 @@ This endpoint returns a list of storage failures for user
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -434,8 +391,8 @@ This endpoint makes a deal for a given content and miner
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
@@ -482,8 +439,8 @@ This endpoint returns the status of a deal
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val deal : kotlin.Int = 56 // kotlin.Int | Deal ID
@@ -528,8 +485,8 @@ This endpoint returns a list of storage failures
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 try {
@@ -570,8 +527,8 @@ This endpoint returns the ask for a given CID
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID

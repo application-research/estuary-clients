@@ -120,8 +120,9 @@ void (empty response body)
 
 # **userApiKeysPost**
 ```objc
--(NSURLSessionTask*) userApiKeysPostWithCompletionHandler: 
-        (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler;
+-(NSURLSessionTask*) userApiKeysPostWithExpiry: (NSString*) expiry
+    perms: (NSString*) perms
+        completionHandler: (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler;
 ```
 
 Create API keys for a user
@@ -138,12 +139,15 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
+NSString* expiry = @"expiry_example"; // Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+NSString* perms = @"perms_example"; // Permissions -- currently unused (optional)
 
 SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Create API keys for a user
-[apiInstance userApiKeysPostWithCompletionHandler: 
-          ^(SWGMainGetApiKeysResp* output, NSError* error) {
+[apiInstance userApiKeysPostWithExpiry:expiry
+              perms:perms
+          completionHandler: ^(SWGMainGetApiKeysResp* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -154,7 +158,11 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **NSString***| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **NSString***| Permissions -- currently unused | [optional] 
 
 ### Return type
 

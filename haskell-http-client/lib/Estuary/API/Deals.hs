@@ -231,29 +231,6 @@ data DealTransferInProgressGet
 instance Produces DealTransferInProgressGet MimeJSON
 
 
--- *** dealTransferStatusPost
-
--- | @POST \/deal\/transfer\/status@
--- 
--- Transfer Status
--- 
--- This endpoint returns the status of a transfer
--- 
--- AuthMethod: 'AuthApiKeyBearerAuth'
--- 
--- Note: Has 'Produces' instances, but no response schema
--- 
-dealTransferStatusPost 
-  :: EstuaryRequest DealTransferStatusPost MimeNoContent res MimeJSON
-dealTransferStatusPost =
-  _mkRequest "POST" ["/deal/transfer/status"]
-    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-
-data DealTransferStatusPost  
--- | @application/json@
-instance Produces DealTransferStatusPost MimeJSON
-
-
 -- *** dealsFailuresGet
 
 -- | @GET \/deals\/failures@

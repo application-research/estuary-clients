@@ -1,10 +1,11 @@
-# EstuaryApi.CollectionsApi
+# EstuaryClient.CollectionsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collectionsColuuidCommitPost**](CollectionsApi.md#collectionsColuuidCommitPost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collectionsColuuidContentsDelete**](CollectionsApi.md#collectionsColuuidContentsDelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collectionsColuuidDelete**](CollectionsApi.md#collectionsColuuidDelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collectionsColuuidGet**](CollectionsApi.md#collectionsColuuidGet) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collectionsColuuidPost**](CollectionsApi.md#collectionsColuuidPost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -23,8 +24,8 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -32,7 +33,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
 var coluuid = "coluuid_example"; // String | coluuid
 
@@ -66,6 +67,65 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="collectionsColuuidContentsDelete"></a>
+# **collectionsColuuidContentsDelete**
+> 'String' collectionsColuuidContentsDelete(coluuid, contentid, body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```javascript
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+var apiInstance = new EstuaryClient.CollectionsApi();
+
+var coluuid = "coluuid_example"; // String | Collection ID
+
+var contentid = "contentid_example"; // String | Content ID
+
+var body = new EstuaryClient.MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.collectionsColuuidContentsDelete(coluuid, contentid, body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **String**| Collection ID | 
+ **contentid** | **String**| Content ID | 
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either 'path' or 'content_id') | 
+
+### Return type
+
+**'String'**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
 > collectionsColuuidDelete(coluuid)
@@ -76,8 +136,8 @@ This endpoint is used to delete an existing collection.
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -85,7 +145,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
 var coluuid = "coluuid_example"; // String | Collection ID
 
@@ -129,8 +189,8 @@ This endpoint is used to get contents in a collection. If no colpath query param
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -138,9 +198,9 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
-var coluuid = "coluuid_example"; // String | Collection UUID
+var coluuid = "coluuid_example"; // String | coluuid
 
 var opts = { 
   'dir': "dir_example" // String | Directory
@@ -160,7 +220,7 @@ apiInstance.collectionsColuuidGet(coluuid, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| Collection UUID | 
+ **coluuid** | **String**| coluuid | 
  **dir** | **String**| Directory | [optional] 
 
 ### Return type
@@ -178,7 +238,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> {'String': 'String'} collectionsColuuidPost(body)
+> {'String': 'String'} collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -186,8 +246,8 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -195,9 +255,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
-var body = [new EstuaryApi.[Number]()]; // [Number] | Content IDs to add to collection
+var coluuid = "coluuid_example"; // String | coluuid
+
+var contentIDs = [new EstuaryClient.[Number]()]; // [Number] | Content IDs to add to collection
 
 
 var callback = function(error, data, response) {
@@ -207,14 +269,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.collectionsColuuidPost(body, callback);
+apiInstance.collectionsColuuidPost(coluuid, contentIDs, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **[Number]**| Content IDs to add to collection | 
+ **coluuid** | **String**| coluuid | 
+ **contentIDs** | **[Number]**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -239,8 +302,8 @@ This endpoint adds a file to a collection
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -248,7 +311,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
 var coluuid = "coluuid_example"; // String | Collection ID
 
@@ -290,7 +353,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> [MainCollection] collectionsGet(id)
+> [CollectionsCollection] collectionsGet()
 
 List all collections
 
@@ -298,8 +361,8 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -307,10 +370,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
-
-var id = 56; // Number | User ID
-
+var apiInstance = new EstuaryClient.CollectionsApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -319,18 +379,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.collectionsGet(id, callback);
+apiInstance.collectionsGet(callback);
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Number**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MainCollection]**](MainCollection.md)
+[**[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -343,7 +400,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsPost"></a>
 # **collectionsPost**
-> MainCollection collectionsPost(body)
+> CollectionsCollection collectionsPost(body)
 
 Create a new collection
 
@@ -351,8 +408,8 @@ This endpoint is used to create a new collection. A collection is a representaio
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -360,9 +417,9 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.CollectionsApi();
+var apiInstance = new EstuaryClient.CollectionsApi();
 
-var body = new EstuaryApi.MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+var body = new EstuaryClient.MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
 
 
 var callback = function(error, data, response) {
@@ -383,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

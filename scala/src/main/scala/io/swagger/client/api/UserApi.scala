@@ -135,10 +135,12 @@ class UserApi(
    * Create API keys for a user
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
    *
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+   * @param perms Permissions -- currently unused (optional)
    * @return GetApiKeysResp
    */
-  def userApiKeysPost(): Option[GetApiKeysResp] = {
-    val await = Try(Await.result(userApiKeysPostAsync(), Duration.Inf))
+  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None): Option[GetApiKeysResp] = {
+    val await = Try(Await.result(userApiKeysPostAsync(expiry, perms), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -149,10 +151,12 @@ class UserApi(
    * Create API keys for a user asynchronously
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
    *
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+   * @param perms Permissions -- currently unused (optional)
    * @return Future(GetApiKeysResp)
    */
-  def userApiKeysPostAsync(): Future[GetApiKeysResp] = {
-      helper.userApiKeysPost()
+  def userApiKeysPostAsync(expiry: Option[String] = None, perms: Option[String] = None): Future[GetApiKeysResp] = {
+      helper.userApiKeysPost(expiry, perms)
   }
 
   /**
@@ -240,7 +244,9 @@ class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends
     }
   }
 
-  def userApiKeysPost()(implicit reader: ClientResponseReader[GetApiKeysResp]): Future[GetApiKeysResp] = {
+  def userApiKeysPost(expiry: Option[String] = None,
+    perms: Option[String] = None
+    )(implicit reader: ClientResponseReader[GetApiKeysResp]): Future[GetApiKeysResp] = {
     // create path and map variables
     val path = (addFmt("/user/api-keys"))
 
@@ -248,6 +254,14 @@ class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    expiry match {
+      case Some(param) => queryParams += "expiry" -> param.toString
+      case _ => queryParams
+    }
+    perms match {
+      case Some(param) => queryParams += "perms" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>

@@ -6,13 +6,10 @@ function Invoke-ContentApiContentAddCarPost {
         ${body},
         [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${filename},
+        ${ignoreDupes},
         [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${commp},
-        [Parameter(Position = 3, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
-        [String]
-        ${size}
+        ${filename}
     )
 
     Process {
@@ -21,9 +18,8 @@ function Invoke-ContentApiContentAddCarPost {
 
         $Script:ContentApi.ContentAddCarPost(
             ${body},
-            ${filename},
-            ${commp},
-            ${size}
+            ${ignoreDupes},
+            ${filename}
         )
     }
 }
@@ -32,8 +28,11 @@ function Invoke-ContentApiContentAddIpfsPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [estuary_client.Model.UtilContentAddIpfsBody]
-        ${body}
+        [estuary-client.Model.UtilContentAddIpfsBody]
+        ${body},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${ignoreDupes}
     )
 
     Process {
@@ -41,7 +40,8 @@ function Invoke-ContentApiContentAddIpfsPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:ContentApi.ContentAddIpfsPost(
-            ${body}
+            ${body},
+            ${ignoreDupes}
         )
     }
 }
@@ -51,11 +51,23 @@ function Invoke-ContentApiContentAddPost {
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]
-        ${file},
-        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        ${data},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${filename},
+        [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${coluuid},
-        [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [Parameter(Position = 3, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [Int32]
+        ${replication},
+        [Parameter(Position = 4, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${ignoreDupes},
+        [Parameter(Position = 5, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${lazyProvide},
+        [Parameter(Position = 6, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
         ${dir}
     )
@@ -65,8 +77,12 @@ function Invoke-ContentApiContentAddPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:ContentApi.ContentAddPost(
-            ${file},
+            ${data},
+            ${filename},
             ${coluuid},
+            ${replication},
+            ${ignoreDupes},
+            ${lazyProvide},
             ${dir}
         )
     }
@@ -138,8 +154,11 @@ function Invoke-ContentApiContentCreatePost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [estuary-client.Model.UtilContentCreateBody]
+        ${req},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
         [String]
-        ${body}
+        ${ignoreDupes}
     )
 
     Process {
@@ -147,7 +166,8 @@ function Invoke-ContentApiContentCreatePost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:ContentApi.ContentCreatePost(
-            ${body}
+            ${req},
+            ${ignoreDupes}
         )
     }
 }
@@ -210,11 +230,29 @@ function Invoke-ContentApiContentFailuresContentGet {
     }
 }
 
+function Invoke-ContentApiContentIdGet {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [Int32]
+        ${id}
+    )
+
+    Process {
+        'Calling method: ContentApi-ContentIdGet' | Write-Verbose
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $Script:ContentApi.ContentIdGet(
+            ${id}
+        )
+    }
+}
+
 function Invoke-ContentApiContentImportdealPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [estuary_client.Model.MainImportDealBody]
+        [estuary-client.Model.MainImportDealBody]
         ${body}
     )
 
@@ -279,7 +317,10 @@ function Invoke-ContentApiContentStatsGet {
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]
-        ${limit}
+        ${limit},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${offset}
     )
 
     Process {
@@ -287,7 +328,8 @@ function Invoke-ContentApiContentStatsGet {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:ContentApi.ContentStatsGet(
-            ${limit}
+            ${limit},
+            ${offset}
         )
     }
 }

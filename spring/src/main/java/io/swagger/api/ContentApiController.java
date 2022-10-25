@@ -4,6 +4,7 @@ import io.swagger.model.MainImportDealBody;
 import org.springframework.core.io.Resource;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Controller
 public class ContentApiController implements ContentApi {
@@ -40,17 +41,17 @@ public class ContentApiController implements ContentApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> contentAddCarPost(@ApiParam(value = "Car" ,required=true )  @Valid @RequestBody String body,@ApiParam(value = "Filename") @Valid @RequestParam(value = "filename", required = false) String filename,@ApiParam(value = "Commp") @Valid @RequestParam(value = "commp", required = false) String commp,@ApiParam(value = "Size") @Valid @RequestParam(value = "size", required = false) String size) {
+    public ResponseEntity<Void> contentAddCarPost(@ApiParam(value = "Car" ,required=true )  @Valid @RequestBody String body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@ApiParam(value = "Filename") @Valid @RequestParam(value = "filename", required = false) String filename) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true )  @Valid @RequestBody UtilContentAddIpfsBody body) {
+    public ResponseEntity<Void> contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true )  @Valid @RequestBody UtilContentAddIpfsBody body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<UtilContentAddResponse> contentAddPost(@ApiParam(value = "File to upload") @Valid @RequestPart(value="file", required=true) MultipartFile file,@ApiParam(value = "Collection UUID",required=true) @PathVariable("coluuid") String coluuid,@ApiParam(value = "Directory",required=true) @PathVariable("dir") String dir) {
+    public ResponseEntity<UtilContentAddResponse> contentAddPost(@ApiParam(value = "File to upload") @Valid @RequestPart(value="data", required=true) MultipartFile data,@ApiParam(value = "Filenam to use for upload") @RequestParam(value="filename", required=false)  String filename,@ApiParam(value = "Collection UUID") @Valid @RequestParam(value = "coluuid", required = false) String coluuid,@ApiParam(value = "Replication value") @Valid @RequestParam(value = "replication", required = false) Integer replication,@ApiParam(value = "Ignore Dupes true/false") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@ApiParam(value = "Lazy Provide true/false") @Valid @RequestParam(value = "lazy-provide", required = false) String lazyProvide,@ApiParam(value = "Directory") @Valid @RequestParam(value = "dir", required = false) String dir) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -88,7 +89,7 @@ public class ContentApiController implements ContentApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentCreatePost(@ApiParam(value = "Content" ,required=true )  @Valid @RequestBody String body) {
+    public ResponseEntity<Void> contentCreatePost(@ApiParam(value = "Content" ,required=true )  @Valid @RequestBody UtilContentCreateBody req,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -115,6 +116,11 @@ public class ContentApiController implements ContentApi {
         }
 
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<Void> contentIdGet(@ApiParam(value = "Content ID",required=true) @PathVariable("id") Integer id) {
+        String accept = request.getHeader("Accept");
+        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<Void> contentImportdealPost(@ApiParam(value = "Import a deal" ,required=true )  @Valid @RequestBody MainImportDealBody body) {
@@ -146,7 +152,7 @@ public class ContentApiController implements ContentApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentStatsGet(@ApiParam(value = "limit",required=true) @PathVariable("limit") String limit) {
+    public ResponseEntity<Void> contentStatsGet(@NotNull @ApiParam(value = "limit", required = true) @Valid @RequestParam(value = "limit", required = true) String limit,@NotNull @ApiParam(value = "offset", required = true) @Valid @RequestParam(value = "offset", required = true) String offset) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }

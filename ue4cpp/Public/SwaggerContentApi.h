@@ -47,6 +47,8 @@ public:
 	class ContentEnsureReplicationDatacidGetResponse;
 	class ContentFailuresContentGetRequest;
 	class ContentFailuresContentGetResponse;
+	class ContentIdGetRequest;
+	class ContentIdGetResponse;
 	class ContentImportdealPostRequest;
 	class ContentImportdealPostResponse;
 	class ContentListGetRequest;
@@ -70,6 +72,7 @@ public:
     DECLARE_DELEGATE_OneParam(FContentDealsGetDelegate, const ContentDealsGetResponse&);
     DECLARE_DELEGATE_OneParam(FContentEnsureReplicationDatacidGetDelegate, const ContentEnsureReplicationDatacidGetResponse&);
     DECLARE_DELEGATE_OneParam(FContentFailuresContentGetDelegate, const ContentFailuresContentGetResponse&);
+    DECLARE_DELEGATE_OneParam(FContentIdGetDelegate, const ContentIdGetResponse&);
     DECLARE_DELEGATE_OneParam(FContentImportdealPostDelegate, const ContentImportdealPostResponse&);
     DECLARE_DELEGATE_OneParam(FContentListGetDelegate, const ContentListGetResponse&);
     DECLARE_DELEGATE_OneParam(FContentReadContGetDelegate, const ContentReadContGetResponse&);
@@ -87,6 +90,7 @@ public:
     bool ContentDealsGet(const ContentDealsGetRequest& Request, const FContentDealsGetDelegate& Delegate = FContentDealsGetDelegate()) const;
     bool ContentEnsureReplicationDatacidGet(const ContentEnsureReplicationDatacidGetRequest& Request, const FContentEnsureReplicationDatacidGetDelegate& Delegate = FContentEnsureReplicationDatacidGetDelegate()) const;
     bool ContentFailuresContentGet(const ContentFailuresContentGetRequest& Request, const FContentFailuresContentGetDelegate& Delegate = FContentFailuresContentGetDelegate()) const;
+    bool ContentIdGet(const ContentIdGetRequest& Request, const FContentIdGetDelegate& Delegate = FContentIdGetDelegate()) const;
     bool ContentImportdealPost(const ContentImportdealPostRequest& Request, const FContentImportdealPostDelegate& Delegate = FContentImportdealPostDelegate()) const;
     bool ContentListGet(const ContentListGetRequest& Request, const FContentListGetDelegate& Delegate = FContentListGetDelegate()) const;
     bool ContentReadContGet(const ContentReadContGetRequest& Request, const FContentReadContGetDelegate& Delegate = FContentReadContGetDelegate()) const;
@@ -105,6 +109,7 @@ private:
     void OnContentDealsGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentDealsGetDelegate Delegate) const;
     void OnContentEnsureReplicationDatacidGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentEnsureReplicationDatacidGetDelegate Delegate) const;
     void OnContentFailuresContentGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentFailuresContentGetDelegate Delegate) const;
+    void OnContentIdGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentIdGetDelegate Delegate) const;
     void OnContentImportdealPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentImportdealPostDelegate Delegate) const;
     void OnContentListGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentListGetDelegate Delegate) const;
     void OnContentReadContGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentReadContGetDelegate Delegate) const;

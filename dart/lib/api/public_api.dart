@@ -160,7 +160,7 @@ class PublicApi {
   /// Get all miners deals
   ///
   /// This endpoint returns all miners deals
-  Future publicMinersDealsMinerGet(String miner) async {
+  Future publicMinersDealsMinerGet(String miner, { String ignoreFailed }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -175,6 +175,9 @@ class PublicApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreFailed != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-failed", ignoreFailed));
+    }
     
     List<String> contentTypes = [];
 

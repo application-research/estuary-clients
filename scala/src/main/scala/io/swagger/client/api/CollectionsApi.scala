@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 
 import io.swagger.client.model.Collection
 import io.swagger.client.model.CreateCollectionBody
+import io.swagger.client.model.DeleteContentFromCollectionBody
 import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -108,6 +109,36 @@ class CollectionsApi(
   }
 
   /**
+   * Deletes a content from a collection
+   * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+   *
+   * @param coluuid Collection ID 
+   * @param contentid Content ID 
+   * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) 
+   * @return String
+   */
+  def collectionsColuuidContentsDelete(coluuid: String, contentid: String, body: DeleteContentFromCollectionBody): Option[String] = {
+    val await = Try(Await.result(collectionsColuuidContentsDeleteAsync(coluuid, contentid, body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Deletes a content from a collection asynchronously
+   * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+   *
+   * @param coluuid Collection ID 
+   * @param contentid Content ID 
+   * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) 
+   * @return Future(String)
+   */
+  def collectionsColuuidContentsDeleteAsync(coluuid: String, contentid: String, body: DeleteContentFromCollectionBody): Future[String] = {
+      helper.collectionsColuuidContentsDelete(coluuid, contentid, body)
+  }
+
+  /**
    * Deletes a collection
    * This endpoint is used to delete an existing collection.
    *
@@ -137,7 +168,7 @@ class CollectionsApi(
    * Get contents in a collection
    * This endpoint is used to get contents in a collection. If no colpath query param is passed
    *
-   * @param coluuid Collection UUID 
+   * @param coluuid coluuid 
    * @param dir Directory (optional)
    * @return String
    */
@@ -153,7 +184,7 @@ class CollectionsApi(
    * Get contents in a collection asynchronously
    * This endpoint is used to get contents in a collection. If no colpath query param is passed
    *
-   * @param coluuid Collection UUID 
+   * @param coluuid coluuid 
    * @param dir Directory (optional)
    * @return Future(String)
    */
@@ -165,11 +196,12 @@ class CollectionsApi(
    * Add contents to a collection
    * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    *
-   * @param body Content IDs to add to collection 
+   * @param coluuid coluuid 
+   * @param contentIDs Content IDs to add to collection 
    * @return Map[String, String]
    */
-  def collectionsColuuidPost(body: List[Integer]): Option[Map[String, String]] = {
-    val await = Try(Await.result(collectionsColuuidPostAsync(body), Duration.Inf))
+  def collectionsColuuidPost(coluuid: String, contentIDs: List[Integer]): Option[Map[String, String]] = {
+    val await = Try(Await.result(collectionsColuuidPostAsync(coluuid, contentIDs), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -180,11 +212,12 @@ class CollectionsApi(
    * Add contents to a collection asynchronously
    * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    *
-   * @param body Content IDs to add to collection 
+   * @param coluuid coluuid 
+   * @param contentIDs Content IDs to add to collection 
    * @return Future(Map[String, String])
    */
-  def collectionsColuuidPostAsync(body: List[Integer]): Future[Map[String, String]] = {
-      helper.collectionsColuuidPost(body)
+  def collectionsColuuidPostAsync(coluuid: String, contentIDs: List[Integer]): Future[Map[String, String]] = {
+      helper.collectionsColuuidPost(coluuid, contentIDs)
   }
 
   /**
@@ -221,11 +254,10 @@ class CollectionsApi(
    * List all collections
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @param id User ID 
    * @return List[Collection]
    */
-  def collectionsGet(id: Integer): Option[List[Collection]] = {
-    val await = Try(Await.result(collectionsGetAsync(id), Duration.Inf))
+  def collectionsGet(): Option[List[Collection]] = {
+    val await = Try(Await.result(collectionsGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -236,11 +268,10 @@ class CollectionsApi(
    * List all collections asynchronously
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @param id User ID 
    * @return Future(List[Collection])
    */
-  def collectionsGetAsync(id: Integer): Future[List[Collection]] = {
-      helper.collectionsGet(id)
+  def collectionsGetAsync(): Future[List[Collection]] = {
+      helper.collectionsGet()
   }
 
   /**
@@ -291,6 +322,30 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
+  def collectionsColuuidContentsDelete(coluuid: String,
+    contentid: String,
+    body: DeleteContentFromCollectionBody)(implicit reader: ClientResponseReader[String], writer: RequestWriter[DeleteContentFromCollectionBody]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/collections/{coluuid}/contents")
+      replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString)
+      replaceAll("\\{" + "contentid" + "\\}", contentid.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (coluuid == null) throw new Exception("Missing required parameter 'coluuid' when calling CollectionsApi->collectionsColuuidContentsDelete")
+
+    if (contentid == null) throw new Exception("Missing required parameter 'contentid' when calling CollectionsApi->collectionsColuuidContentsDelete")
+
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling CollectionsApi->collectionsColuuidContentsDelete")
+
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def collectionsColuuidDelete(coluuid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
@@ -313,7 +368,8 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     dir: Option[String] = None
     )(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
-    val path = (addFmt("/collections/{coluuid}"))
+    val path = (addFmt("/collections/{coluuid}")
+      replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -321,7 +377,6 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
     if (coluuid == null) throw new Exception("Missing required parameter 'coluuid' when calling CollectionsApi->collectionsColuuidGet")
 
-    queryParams += "coluuid" -> coluuid.toString
     dir match {
       case Some(param) => queryParams += "dir" -> param.toString
       case _ => queryParams
@@ -333,17 +388,21 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def collectionsColuuidPost(body: List[Integer])(implicit reader: ClientResponseReader[Map[String, String]], writer: RequestWriter[List[Integer]]): Future[Map[String, String]] = {
+  def collectionsColuuidPost(coluuid: String,
+    contentIDs: List[Integer])(implicit reader: ClientResponseReader[Map[String, String]], writer: RequestWriter[List[Integer]]): Future[Map[String, String]] = {
     // create path and map variables
-    val path = (addFmt("/collections/{coluuid}"))
+    val path = (addFmt("/collections/{coluuid}")
+      replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (body == null) throw new Exception("Missing required parameter 'body' when calling CollectionsApi->collectionsColuuidPost")
+    if (coluuid == null) throw new Exception("Missing required parameter 'coluuid' when calling CollectionsApi->collectionsColuuidPost")
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    if (contentIDs == null) throw new Exception("Missing required parameter 'contentIDs' when calling CollectionsApi->collectionsColuuidPost")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(contentIDs))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -375,10 +434,9 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def collectionsGet(id: Integer)(implicit reader: ClientResponseReader[List[Collection]]): Future[List[Collection]] = {
+  def collectionsGet()(implicit reader: ClientResponseReader[List[Collection]]): Future[List[Collection]] = {
     // create path and map variables
-    val path = (addFmt("/collections/")
-      replaceAll("\\{" + "id" + "\\}", id.toString))
+    val path = (addFmt("/collections/"))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]

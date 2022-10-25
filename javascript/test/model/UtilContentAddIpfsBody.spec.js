@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('UtilContentAddIpfsBody', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.UtilContentAddIpfsBody();
+        instance = new EstuaryClient.UtilContentAddIpfsBody();
       });
 
       it('should create an instance of UtilContentAddIpfsBody', function() {
         // TODO: update the code to test UtilContentAddIpfsBody
-        expect(instance).to.be.a(EstuaryApi.UtilContentAddIpfsBody);
+        expect(instance).to.be.a(EstuaryClient.UtilContentAddIpfsBody);
       });
 
       it('should have the property coluuid (base name: "coluuid")', function() {

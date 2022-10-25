@@ -25,8 +25,9 @@
 
 package io.swagger.api;
 
-import io.swagger.model.MainCollection;
+import io.swagger.model.CollectionsCollection;
 import io.swagger.model.MainCreateCollectionBody;
+import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -92,6 +93,26 @@ public class CollectionsApiTest {
     }
     
     /**
+     * Deletes a content from a collection
+     *
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void collectionsColuuidContentsDeleteTest() {
+        String coluuid = null;
+        String contentid = null;
+        MainDeleteContentFromCollectionBody body = null;
+        //String response = api.collectionsColuuidContentsDelete(coluuid, contentid, body);
+        //assertNotNull(response);
+        // TODO: test validations
+        
+        
+    }
+    
+    /**
      * Deletes a collection
      *
      * This endpoint is used to delete an existing collection.
@@ -138,8 +159,9 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidPostTest() {
-        List<Integer> body = null;
-        //Map<String, String> response = api.collectionsColuuidPost(body);
+        String coluuid = null;
+        List<Integer> contentIDs = null;
+        //Map<String, String> response = api.collectionsColuuidPost(coluuid, contentIDs);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -176,8 +198,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() {
-        Integer id = null;
-        //List<MainCollection> response = api.collectionsGet(id);
+        //List<CollectionsCollection> response = api.collectionsGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -195,7 +216,7 @@ public class CollectionsApiTest {
     @Test
     public void collectionsPostTest() {
         MainCreateCollectionBody body = null;
-        //MainCollection response = api.collectionsPost(body);
+        //CollectionsCollection response = api.collectionsPost(body);
         //assertNotNull(response);
         // TODO: test validations
         

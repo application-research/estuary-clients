@@ -1,4 +1,4 @@
-# EstuaryApi.MainCreateCollectionBody
+# EstuaryClient.MainCreateCollectionBody
 
 ## Properties
 Name | Type | Description | Notes

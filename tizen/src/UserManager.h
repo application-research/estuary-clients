@@ -81,24 +81,28 @@ bool userApiKeysKeyDeleteAsync(char * accessToken,
 /*! \brief Create API keys for a user. *Synchronous*
  *
  * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+ * \param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+ * \param perms Permissions -- currently unused
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool userApiKeysPostSync(char * accessToken,
-	
+	std::string expiry, std::string perms, 
 	void(* handler)(Main.getApiKeysResp, Error, void* )
 	, void* userData);
 
 /*! \brief Create API keys for a user. *Asynchronous*
  *
  * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+ * \param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+ * \param perms Permissions -- currently unused
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool userApiKeysPostAsync(char * accessToken,
-	
+	std::string expiry, std::string perms, 
 	void(* handler)(Main.getApiKeysResp, Error, void* )
 	, void* userData);
 

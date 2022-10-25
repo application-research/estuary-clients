@@ -9,6 +9,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 
 @io.swagger.annotations.Api(description = "the content API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public interface ContentApi  {
    
     @POST
@@ -37,7 +38,7 @@ public interface ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body, @QueryParam("filename") String filename, @QueryParam("commp") String commp, @QueryParam("size") String size,@Context SecurityContext securityContext);
+    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("filename") String filename,@Context SecurityContext securityContext);
     @POST
     @Path("/add-ipfs")
     
@@ -46,7 +47,7 @@ public interface ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,@Context SecurityContext securityContext);
+    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body, @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext);
     @POST
     @Path("/add")
     @Consumes({ "multipart/form-data" })
@@ -56,7 +57,7 @@ public interface ContentApi  {
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class) })
-    public Response contentAddPost(MultipartFormDataInput input, @PathParam("coluuid") String coluuid, @PathParam("dir") String dir,@Context SecurityContext securityContext);
+    public Response contentAddPost(MultipartFormDataInput input, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir,@Context SecurityContext securityContext);
     @GET
     @Path("/aggregated/{content}")
     
@@ -93,7 +94,7 @@ public interface ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) String body,@Context SecurityContext securityContext);
+    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) UtilContentCreateBody req, @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext);
     @GET
     @Path("/deals")
     
@@ -122,6 +123,15 @@ public interface ContentApi  {
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class) })
     public Response contentFailuresContentGet( @PathParam("content") String content,@Context SecurityContext securityContext);
+    @GET
+    @Path("/{id}")
+    
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = Void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "bearerAuth")
+    }, tags={ "content", })
+    @io.swagger.annotations.ApiResponses(value = {  })
+    public Response contentIdGet( @PathParam("id") Integer id,@Context SecurityContext securityContext);
     @POST
     @Path("/importdeal")
     
@@ -167,7 +177,7 @@ public interface ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentStatsGet( @PathParam("limit") String limit,@Context SecurityContext securityContext);
+    public Response contentStatsGet( @NotNull @QueryParam("limit") String limit, @NotNull @QueryParam("offset") String offset,@Context SecurityContext securityContext);
     @GET
     @Path("/status/{id}")
     

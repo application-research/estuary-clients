@@ -1,4 +1,4 @@
-# estuary_client.Api.MinerApi
+# estuary-client.Api.MinerApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicminersdealsminerget"></a>
 # **PublicMinersDealsMinerGet**
-> void PublicMinersDealsMinerGet (string miner)
+> void PublicMinersDealsMinerGet (string miner, string ignoreFailed)
 
 Get all miners deals
 
@@ -20,9 +20,9 @@ This endpoint returns all miners deals
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -38,11 +38,12 @@ namespace Example
 
             var apiInstance = new MinerApi();
             var miner = miner_example;  // string | Filter by miner
+            var ignoreFailed = ignoreFailed_example;  // string | Ignore Failed (optional) 
 
             try
             {
                 // Get all miners deals
-                apiInstance.PublicMinersDealsMinerGet(miner);
+                apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
             }
             catch (Exception e)
             {
@@ -58,6 +59,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner | 
+ **ignoreFailed** | **string**| Ignore Failed | [optional] 
 
 ### Return type
 
@@ -86,9 +88,9 @@ This endpoint returns miner stats
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

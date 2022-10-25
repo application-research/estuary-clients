@@ -49,7 +49,10 @@ function Invoke-PublicApiPublicMinersDealsMinerGet {
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]
-        ${miner}
+        ${miner},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${ignoreFailed}
     )
 
     Process {
@@ -57,7 +60,8 @@ function Invoke-PublicApiPublicMinersDealsMinerGet {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:PublicApi.PublicMinersDealsMinerGet(
-            ${miner}
+            ${miner},
+            ${ignoreFailed}
         )
     }
 }

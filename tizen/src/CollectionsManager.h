@@ -5,8 +5,9 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
-#include "Main.Collection.h"
+#include "Collections.Collection.h"
 #include "Main.createCollectionBody.h"
+#include "Main.deleteContentFromCollectionBody.h"
 #include "Util.HttpError.h"
 #include <list>
 #include <map>
@@ -55,6 +56,37 @@ bool collectionsColuuidCommitPostAsync(char * accessToken,
 	, void* userData);
 
 
+/*! \brief Deletes a content from a collection. *Synchronous*
+ *
+ * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+ * \param coluuid Collection ID *Required*
+ * \param contentid Content ID *Required*
+ * \param body Variable to use when filtering for files (must be either 'path' or 'content_id') *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool collectionsColuuidContentsDeleteSync(char * accessToken,
+	std::string coluuid, std::string contentid, Main.deleteContentFromCollectionBody body, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
+
+/*! \brief Deletes a content from a collection. *Asynchronous*
+ *
+ * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+ * \param coluuid Collection ID *Required*
+ * \param contentid Content ID *Required*
+ * \param body Variable to use when filtering for files (must be either 'path' or 'content_id') *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool collectionsColuuidContentsDeleteAsync(char * accessToken,
+	std::string coluuid, std::string contentid, Main.deleteContentFromCollectionBody body, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
+
+
 /*! \brief Deletes a collection. *Synchronous*
  *
  * This endpoint is used to delete an existing collection.
@@ -85,7 +117,7 @@ bool collectionsColuuidDeleteAsync(char * accessToken,
 /*! \brief Get contents in a collection. *Synchronous*
  *
  * This endpoint is used to get contents in a collection. If no colpath query param is passed
- * \param coluuid Collection UUID *Required*
+ * \param coluuid coluuid *Required*
  * \param dir Directory
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -99,7 +131,7 @@ bool collectionsColuuidGetSync(char * accessToken,
 /*! \brief Get contents in a collection. *Asynchronous*
  *
  * This endpoint is used to get contents in a collection. If no colpath query param is passed
- * \param coluuid Collection UUID *Required*
+ * \param coluuid coluuid *Required*
  * \param dir Directory
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
@@ -114,26 +146,28 @@ bool collectionsColuuidGetAsync(char * accessToken,
 /*! \brief Add contents to a collection. *Synchronous*
  *
  * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
- * \param body Content IDs to add to collection *Required*
+ * \param coluuid coluuid *Required*
+ * \param contentIDs Content IDs to add to collection *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool collectionsColuuidPostSync(char * accessToken,
-	std::list<> body, 
+	std::string coluuid, std::list<> contentIDs, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
 /*! \brief Add contents to a collection. *Asynchronous*
  *
  * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
- * \param body Content IDs to add to collection *Required*
+ * \param coluuid coluuid *Required*
+ * \param contentIDs Content IDs to add to collection *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool collectionsColuuidPostAsync(char * accessToken,
-	std::list<> body, 
+	std::string coluuid, std::list<> contentIDs, 
 	void(* handler)(std::map<std::string,std::string>, Error, void* )
 	, void* userData);
 
@@ -172,27 +206,25 @@ bool collectionsFsAddPostAsync(char * accessToken,
 /*! \brief List all collections. *Synchronous*
  *
  * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
- * \param id User ID *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool collectionsGetSync(char * accessToken,
-	int id, 
-	void(* handler)(std::list<Main.Collection>, Error, void* )
+	
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
 	, void* userData);
 
 /*! \brief List all collections. *Asynchronous*
  *
  * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
- * \param id User ID *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool collectionsGetAsync(char * accessToken,
-	int id, 
-	void(* handler)(std::list<Main.Collection>, Error, void* )
+	
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
 	, void* userData);
 
 
@@ -206,7 +238,7 @@ bool collectionsGetAsync(char * accessToken,
  */
 bool collectionsPostSync(char * accessToken,
 	Main.createCollectionBody body, 
-	void(* handler)(Main.Collection, Error, void* )
+	void(* handler)(Collections.Collection, Error, void* )
 	, void* userData);
 
 /*! \brief Create a new collection. *Asynchronous*
@@ -219,7 +251,7 @@ bool collectionsPostSync(char * accessToken,
  */
 bool collectionsPostAsync(char * accessToken,
 	Main.createCollectionBody body, 
-	void(* handler)(Main.Collection, Error, void* )
+	void(* handler)(Collections.Collection, Error, void* )
 	, void* userData);
 
 

@@ -5,9 +5,10 @@
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
  *
+ * body List Peer ids
  * no response value expected for this operation
  **/
-exports.adminPeeringPeersDELETE = function() {
+exports.adminPeeringPeersDELETE = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });

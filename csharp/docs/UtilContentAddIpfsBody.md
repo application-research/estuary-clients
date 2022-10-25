@@ -1,4 +1,4 @@
-# estuary_client.Model.UtilContentAddIpfsBody
+# estuary-client.Model.UtilContentAddIpfsBody
 ## Properties
 
 Name | Type | Description | Notes

@@ -111,7 +111,7 @@ class UserApi {
   /// Create API keys for a user
   ///
   /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-  Future<MainGetApiKeysResp> userApiKeysPost() async {
+  Future<MainGetApiKeysResp> userApiKeysPost({ String expiry, String perms }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -123,6 +123,12 @@ class UserApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(expiry != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "expiry", expiry));
+    }
+    if(perms != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "perms", perms));
+    }
     
     List<String> contentTypes = [];
 

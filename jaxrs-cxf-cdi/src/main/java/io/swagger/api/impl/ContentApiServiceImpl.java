@@ -10,6 +10,7 @@ import java.io.InputStream;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.util.List;
 
@@ -20,20 +21,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 public class ContentApiServiceImpl implements ContentApiService {
       @Override
-      public Response contentAddCarPost(String body, String filename, String commp, String size, SecurityContext securityContext) {
+      public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentAddIpfsPost(UtilContentAddIpfsBody body, SecurityContext securityContext) {
+      public Response contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentAddPost(InputStream fileInputStream, Attachment fileDetail, String coluuid, String dir, SecurityContext securityContext) {
+      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -53,7 +54,7 @@ public class ContentApiServiceImpl implements ContentApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentCreatePost(String body, SecurityContext securityContext) {
+      public Response contentCreatePost(UtilContentCreateBody req, String ignoreDupes, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -69,6 +70,11 @@ public class ContentApiServiceImpl implements ContentApiService {
   }
       @Override
       public Response contentFailuresContentGet(String content, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response contentIdGet(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -93,7 +99,7 @@ public class ContentApiServiceImpl implements ContentApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentStatsGet(String limit, SecurityContext securityContext) {
+      public Response contentStatsGet(String limit, String offset, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

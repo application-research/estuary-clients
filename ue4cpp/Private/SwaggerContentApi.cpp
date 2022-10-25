@@ -353,6 +353,32 @@ void SwaggerContentApi::OnContentFailuresContentGetResponse(FHttpRequestPtr Http
 	Delegate.ExecuteIfBound(Response);
 }
 
+bool SwaggerContentApi::ContentIdGet(const ContentIdGetRequest& Request, const FContentIdGetDelegate& Delegate /*= FContentIdGetDelegate()*/) const
+{
+	if (!IsValid())
+		return false;
+
+	TSharedRef<IHttpRequest> HttpRequest = FHttpModule::Get().CreateRequest();
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+	
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &SwaggerContentApi::OnContentIdGetResponse, Delegate);
+	return HttpRequest->ProcessRequest();
+}
+
+void SwaggerContentApi::OnContentIdGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FContentIdGetDelegate Delegate) const
+{
+	ContentIdGetResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 bool SwaggerContentApi::ContentImportdealPost(const ContentImportdealPostRequest& Request, const FContentImportdealPostDelegate& Delegate /*= FContentImportdealPostDelegate()*/) const
 {
 	if (!IsValid())

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](SWGContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](SWGContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](SWGContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](SWGContentApi.md#contentidget) | **GET** /content/{id} | Content
 [**contentImportdealPost**](SWGContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](SWGContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](SWGContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
@@ -25,9 +26,8 @@ Method | HTTP request | Description
 # **contentAddCarPost**
 ```objc
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
+    ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-    commp: (NSString*) commp
-    size: (NSString*) size
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -46,17 +46,15 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 
 
 NSString* body = body_example; // Car
+NSString* ignoreDupes = @"ignoreDupes_example"; // Ignore Dupes (optional)
 NSString* filename = @"filename_example"; // Filename (optional)
-NSString* commp = @"commp_example"; // Commp (optional)
-NSString* size = @"size_example"; // Size (optional)
 
 SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Add Car object
 [apiInstance contentAddCarPostWithBody:body
+              ignoreDupes:ignoreDupes
               filename:filename
-              commp:commp
-              size:size
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentAddCarPost: %@", error);
@@ -69,9 +67,8 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **NSString***| Car | 
+ **ignoreDupes** | **NSString***| Ignore Dupes | [optional] 
  **filename** | **NSString***| Filename | [optional] 
- **commp** | **NSString***| Commp | [optional] 
- **size** | **NSString***| Size | [optional] 
 
 ### Return type
 
@@ -91,6 +88,7 @@ void (empty response body)
 # **contentAddIpfsPost**
 ```objc
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
+    ignoreDupes: (NSString*) ignoreDupes
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -109,11 +107,13 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 
 
 SWGUtilContentAddIpfsBody* body = [[SWGUtilContentAddIpfsBody alloc] init]; // IPFS Body
+NSString* ignoreDupes = @"ignoreDupes_example"; // Ignore Dupes (optional)
 
 SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Add IPFS object
 [apiInstance contentAddIpfsPostWithBody:body
+              ignoreDupes:ignoreDupes
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentAddIpfsPost: %@", error);
@@ -126,6 +126,7 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**SWGUtilContentAddIpfsBody***](SWGUtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignoreDupes** | **NSString***| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -144,8 +145,12 @@ void (empty response body)
 
 # **contentAddPost**
 ```objc
--(NSURLSessionTask*) contentAddPostWithFile: (NSURL*) file
+-(NSURLSessionTask*) contentAddPostWithData: (NSURL*) data
+    filename: (NSString*) filename
     coluuid: (NSString*) coluuid
+    replication: (NSNumber*) replication
+    ignoreDupes: (NSString*) ignoreDupes
+    lazyProvide: (NSString*) lazyProvide
     dir: (NSString*) dir
         completionHandler: (void (^)(SWGUtilContentAddResponse* output, NSError* error)) handler;
 ```
@@ -164,15 +169,23 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSURL* file = [NSURL fileURLWithPath:@"/path/to/file.txt"]; // File to upload
-NSString* coluuid = @"coluuid_example"; // Collection UUID
-NSString* dir = @"dir_example"; // Directory
+NSURL* data = [NSURL fileURLWithPath:@"/path/to/file.txt"]; // File to upload
+NSString* filename = @"filename_example"; // Filenam to use for upload (optional)
+NSString* coluuid = @"coluuid_example"; // Collection UUID (optional)
+NSNumber* replication = @56; // Replication value (optional)
+NSString* ignoreDupes = @"ignoreDupes_example"; // Ignore Dupes true/false (optional)
+NSString* lazyProvide = @"lazyProvide_example"; // Lazy Provide true/false (optional)
+NSString* dir = @"dir_example"; // Directory (optional)
 
 SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Add new content
-[apiInstance contentAddPostWithFile:file
+[apiInstance contentAddPostWithData:data
+              filename:filename
               coluuid:coluuid
+              replication:replication
+              ignoreDupes:ignoreDupes
+              lazyProvide:lazyProvide
               dir:dir
           completionHandler: ^(SWGUtilContentAddResponse* output, NSError* error) {
                         if (output) {
@@ -188,9 +201,13 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **NSURL***| File to upload | 
- **coluuid** | **NSString***| Collection UUID | 
- **dir** | **NSString***| Directory | 
+ **data** | **NSURL***| File to upload | 
+ **filename** | **NSString***| Filenam to use for upload | [optional] 
+ **coluuid** | **NSString***| Collection UUID | [optional] 
+ **replication** | **NSNumber***| Replication value | [optional] 
+ **ignoreDupes** | **NSString***| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **NSString***| Lazy Provide true/false | [optional] 
+ **dir** | **NSString***| Directory | [optional] 
 
 ### Return type
 
@@ -382,7 +399,8 @@ void (empty response body)
 
 # **contentCreatePost**
 ```objc
--(NSURLSessionTask*) contentCreatePostWithBody: (NSString*) body
+-(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
+    ignoreDupes: (NSString*) ignoreDupes
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -400,12 +418,14 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* body = body_example; // Content
+SWGUtilContentCreateBody* req = [[SWGUtilContentCreateBody alloc] init]; // Content
+NSString* ignoreDupes = @"ignoreDupes_example"; // Ignore Dupes (optional)
 
 SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Add a new content
-[apiInstance contentCreatePostWithBody:body
+[apiInstance contentCreatePostWithReq:req
+              ignoreDupes:ignoreDupes
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentCreatePost: %@", error);
@@ -417,7 +437,8 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **NSString***| Content | 
+ **req** | [**SWGUtilContentCreateBody***](SWGUtilContentCreateBody.md)| Content | 
+ **ignoreDupes** | **NSString***| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -591,6 +612,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 **NSString***
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentIdGet**
+```objc
+-(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
+        completionHandler: (void (^)(NSError* error)) handler;
+```
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example 
+```objc
+SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+
+
+NSNumber* _id = @56; // Content ID
+
+SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
+
+// Content
+[apiInstance contentIdGetWithId:_id
+          completionHandler: ^(NSError* error) {
+                        if (error) {
+                            NSLog(@"Error calling SWGContentApi->contentIdGet: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_id** | **NSNumber***| Content ID | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -817,6 +892,7 @@ void (empty response body)
 # **contentStatsGet**
 ```objc
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
+    offset: (NSString*) offset
         completionHandler: (void (^)(NSError* error)) handler;
 ```
 
@@ -835,11 +911,13 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 
 
 NSString* limit = @"limit_example"; // limit
+NSString* offset = @"offset_example"; // offset
 
 SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Get content statistics
 [apiInstance contentStatsGetWithLimit:limit
+              offset:offset
           completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentStatsGet: %@", error);
@@ -852,6 +930,7 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **NSString***| limit | 
+ **offset** | **NSString***| offset | 
 
 ### Return type
 

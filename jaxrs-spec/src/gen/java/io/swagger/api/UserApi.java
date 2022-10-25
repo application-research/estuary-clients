@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Path("/user")
 @Api(description = "the user API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-07T23:59:40.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-25T22:25:02.267Z")
 public class UserApi {
 
     @GET
@@ -59,7 +59,7 @@ public class UserApi {
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
     })
-    public Response userApiKeysPost() {
+    public Response userApiKeysPost(@QueryParam("expiry")   @ApiParam("Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h")  String expiry,@QueryParam("perms")   @ApiParam("Permissions -- currently unused")  String perms) {
         return Response.ok().entity("magic!").build();
     }
 

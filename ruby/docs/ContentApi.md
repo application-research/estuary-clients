@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**content_deals_get**](ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
+[**content_id_get**](ContentApi.md#content_id_get) | **GET** /content/{id} | Content
 [**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
 [**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
@@ -46,9 +47,8 @@ api_instance = SwaggerClient::ContentApi.new
 body = 'body_example' # String | Car
 
 opts = { 
-  filename: 'filename_example', # String | Filename
-  commp: 'commp_example', # String | Commp
-  size: 'size_example' # String | Size
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  filename: 'filename_example' # String | Filename
 }
 
 begin
@@ -64,9 +64,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **String**| Car | 
+ **ignore_dupes** | **String**| Ignore Dupes | [optional] 
  **filename** | **String**| Filename | [optional] 
- **commp** | **String**| Commp | [optional] 
- **size** | **String**| Size | [optional] 
 
 ### Return type
 
@@ -84,7 +83,7 @@ nil (empty response body)
 
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(body)
+> content_add_ipfs_post(body, opts)
 
 Add IPFS object
 
@@ -106,10 +105,13 @@ api_instance = SwaggerClient::ContentApi.new
 
 body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
 
+opts = { 
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+}
 
 begin
   #Add IPFS object
-  api_instance.content_add_ipfs_post(body)
+  api_instance.content_add_ipfs_post(body, opts)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_ipfs_post: #{e}"
 end
@@ -120,6 +122,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignore_dupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -137,7 +140,7 @@ nil (empty response body)
 
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(file, coluuid, dir)
+> UtilContentAddResponse content_add_post(data, opts)
 
 Add new content
 
@@ -157,16 +160,20 @@ end
 
 api_instance = SwaggerClient::ContentApi.new
 
-file = File.new('/path/to/file.txt') # File | File to upload
+data = File.new('/path/to/file.txt') # File | File to upload
 
-coluuid = 'coluuid_example' # String | Collection UUID
-
-dir = 'dir_example' # String | Directory
-
+opts = { 
+  filename: 'filename_example', # String | Filenam to use for upload
+  coluuid: 'coluuid_example', # String | Collection UUID
+  replication: 56, # Integer | Replication value
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
+  lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
+  dir: 'dir_example' # String | Directory
+}
 
 begin
   #Add new content
-  result = api_instance.content_add_post(file, coluuid, dir)
+  result = api_instance.content_add_post(data, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -177,9 +184,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| File to upload | 
- **coluuid** | **String**| Collection UUID | 
- **dir** | **String**| Directory | 
+ **data** | **File**| File to upload | 
+ **filename** | **String**| Filenam to use for upload | [optional] 
+ **coluuid** | **String**| Collection UUID | [optional] 
+ **replication** | **Integer**| Replication value | [optional] 
+ **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
+ **lazy_provide** | **String**| Lazy Provide true/false | [optional] 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 
@@ -363,7 +374,7 @@ nil (empty response body)
 
 
 # **content_create_post**
-> content_create_post(body)
+> content_create_post(req, opts)
 
 Add a new content
 
@@ -383,12 +394,15 @@ end
 
 api_instance = SwaggerClient::ContentApi.new
 
-body = 'body_example' # String | Content
+req = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
 
+opts = { 
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+}
 
 begin
   #Add a new content
-  api_instance.content_create_post(body)
+  api_instance.content_create_post(req, opts)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_create_post: #{e}"
 end
@@ -398,7 +412,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Content | 
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **ignore_dupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -566,6 +581,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 **String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **content_id_get**
+> content_id_get(id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+
+id = 56 # Integer | Content ID
+
+
+begin
+  #Content
+  api_instance.content_id_get(id)
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_id_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Content ID | 
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -780,7 +848,7 @@ nil (empty response body)
 
 
 # **content_stats_get**
-> content_stats_get(limit)
+> content_stats_get(limit, offset)
 
 Get content statistics
 
@@ -802,10 +870,12 @@ api_instance = SwaggerClient::ContentApi.new
 
 limit = 'limit_example' # String | limit
 
+offset = 'offset_example' # String | offset
+
 
 begin
   #Get content statistics
-  api_instance.content_stats_get(limit)
+  api_instance.content_stats_get(limit, offset)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_stats_get: #{e}"
 end
@@ -816,6 +886,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 

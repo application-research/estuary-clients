@@ -30,7 +30,7 @@ SWGAdminApi::SWGAdminApi(QString host, QString basePath) {
 }
 
 void
-SWGAdminApi::adminPeeringPeersDelete() {
+SWGAdminApi::adminPeeringPeersDelete(QList<QString*>*& body) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/admin/peering/peers");
 
@@ -40,7 +40,14 @@ SWGAdminApi::adminPeeringPeersDelete() {
     SWGHttpRequestInput input(fullPath, "DELETE");
 
 
+    QJsonObject body_jobj;
+    toJsonArray((QList<void*>*)body, body_jobj, QString("body"), QString("SWGUser*"));
 
+    QJsonDocument doc(body_jobj);
+    QByteArray bytes = doc.toJson();
+
+    input.request_body.append(bytes);
+    
 
 
     foreach(QString key, this->defaultHeaders.keys()) {

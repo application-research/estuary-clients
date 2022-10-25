@@ -1,4 +1,4 @@
-# estuary_client.Api.AutoretrieveApi
+# estuary-client.Api.AutoretrieveApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -21,9 +21,9 @@ This endpoint registers a new autoretrieve server
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -89,9 +89,9 @@ This endpoint lists all registered autoretrieve servers
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -151,9 +151,9 @@ This endpoint updates the lastConnection field for autoretrieve
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

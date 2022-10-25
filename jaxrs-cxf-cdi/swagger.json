@@ -78,7 +78,18 @@
         "summary" : "Remove peers on Peering Service",
         "description" : "This endpoint can be used to remove a Peer from the Peering Service",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Peer ids",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        } ],
         "responses" : { }
       }
     },
@@ -154,20 +165,14 @@
         "summary" : "List all collections",
         "description" : "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.",
         "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "User ID",
-          "required" : true,
-          "type" : "integer"
-        } ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
             "description" : "OK",
             "schema" : {
               "type" : "array",
               "items" : {
-                "$ref" : "#/definitions/main.Collection"
+                "$ref" : "#/definitions/collections.Collection"
               }
             }
           },
@@ -209,7 +214,7 @@
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/main.Collection"
+              "$ref" : "#/definitions/collections.Collection"
             }
           },
           "400" : {
@@ -269,8 +274,8 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "coluuid",
-          "in" : "query",
-          "description" : "Collection UUID",
+          "in" : "path",
+          "description" : "coluuid",
           "required" : true,
           "type" : "string"
         }, {
@@ -296,8 +301,14 @@
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
+          "name" : "coluuid",
+          "in" : "path",
+          "description" : "coluuid",
+          "required" : true,
+          "type" : "string"
+        }, {
           "in" : "body",
-          "name" : "body",
+          "name" : "contentIDs",
           "description" : "Content IDs to add to collection",
           "required" : true,
           "schema" : {
@@ -356,6 +367,49 @@
         }
       }
     },
+    "/collections/{coluuid}/contents" : {
+      "delete" : {
+        "tags" : [ "collections" ],
+        "summary" : "Deletes a content from a collection",
+        "description" : "This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "coluuid",
+          "in" : "path",
+          "description" : "Collection ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "contentid",
+          "in" : "path",
+          "description" : "Content ID",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Variable to use when filtering for files (must be either 'path' or 'content_id')",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/main.deleteContentFromCollectionBody"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/util.HttpError"
+            }
+          }
+        }
+      }
+    },
     "/content/add" : {
       "post" : {
         "tags" : [ "content" ],
@@ -364,22 +418,46 @@
         "consumes" : [ "multipart/form-data" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "file",
+          "name" : "data",
           "in" : "formData",
           "description" : "File to upload",
           "required" : true,
           "type" : "file"
         }, {
+          "name" : "filename",
+          "in" : "formData",
+          "description" : "Filenam to use for upload",
+          "required" : false,
+          "type" : "string"
+        }, {
           "name" : "coluuid",
-          "in" : "path",
+          "in" : "query",
           "description" : "Collection UUID",
-          "required" : true,
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "replication",
+          "in" : "query",
+          "description" : "Replication value",
+          "required" : false,
+          "type" : "integer"
+        }, {
+          "name" : "ignore-dupes",
+          "in" : "query",
+          "description" : "Ignore Dupes true/false",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "lazy-provide",
+          "in" : "query",
+          "description" : "Lazy Provide true/false",
+          "required" : false,
           "type" : "string"
         }, {
           "name" : "dir",
-          "in" : "path",
+          "in" : "query",
           "description" : "Directory",
-          "required" : true,
+          "required" : false,
           "type" : "string"
         } ],
         "responses" : {
@@ -407,21 +485,15 @@
             "type" : "string"
           }
         }, {
+          "name" : "ignore-dupes",
+          "in" : "query",
+          "description" : "Ignore Dupes",
+          "required" : false,
+          "type" : "string"
+        }, {
           "name" : "filename",
           "in" : "query",
           "description" : "Filename",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "commp",
-          "in" : "query",
-          "description" : "Commp",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "size",
-          "in" : "query",
-          "description" : "Size",
           "required" : false,
           "type" : "string"
         } ],
@@ -442,6 +514,12 @@
           "schema" : {
             "$ref" : "#/definitions/util.ContentAddIpfsBody"
           }
+        }, {
+          "name" : "ignore-dupes",
+          "in" : "query",
+          "description" : "Ignore Dupes",
+          "required" : false,
+          "type" : "string"
         } ],
         "responses" : { }
       }
@@ -521,12 +599,18 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "in" : "body",
-          "name" : "body",
+          "name" : "req",
           "description" : "Content",
           "required" : true,
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/definitions/util.ContentCreateBody"
           }
+        }, {
+          "name" : "ignore-dupes",
+          "in" : "query",
+          "description" : "Ignore Dupes",
+          "required" : false,
+          "type" : "string"
         } ],
         "responses" : { }
       }
@@ -664,8 +748,14 @@
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "limit",
-          "in" : "path",
+          "in" : "query",
           "description" : "limit",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "offset",
           "required" : true,
           "type" : "string"
         } ],
@@ -677,6 +767,22 @@
         "tags" : [ "content" ],
         "summary" : "Content Status",
         "description" : "This endpoint returns the status of a content",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Content ID",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : { }
+      }
+    },
+    "/content/{id}" : {
+      "get" : {
+        "tags" : [ "content" ],
+        "summary" : "Content",
+        "description" : "This endpoint returns a content by its ID",
         "produces" : [ "application/json" ],
         "parameters" : [ {
           "name" : "id",
@@ -804,10 +910,6 @@
     },
     "/deal/transfer/status" : {
       "post" : {
-        "tags" : [ "deals" ],
-        "summary" : "Transfer Status",
-        "description" : "This endpoint returns the status of a transfer",
-        "produces" : [ "application/json" ],
         "parameters" : [ ],
         "responses" : { }
       }
@@ -1043,6 +1145,12 @@
           "description" : "Filter by miner",
           "required" : true,
           "type" : "string"
+        }, {
+          "name" : "ignore-failed",
+          "in" : "query",
+          "description" : "Ignore Failed",
+          "required" : false,
+          "type" : "string"
         } ],
         "responses" : { }
       }
@@ -1187,7 +1295,19 @@
         "summary" : "Create API keys for a user",
         "description" : "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.",
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "name" : "expiry",
+          "in" : "query",
+          "description" : "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "perms",
+          "in" : "query",
+          "description" : "Permissions -- currently unused",
+          "required" : false,
+          "type" : "string"
+        } ],
         "responses" : {
           "200" : {
             "description" : "OK",
@@ -1275,7 +1395,7 @@
     }
   },
   "definitions" : {
-    "main.Collection" : {
+    "collections.Collection" : {
       "type" : "object",
       "properties" : {
         "cid" : {
@@ -1305,6 +1425,17 @@
           "type" : "string"
         },
         "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "main.deleteContentFromCollectionBody" : {
+      "type" : "object",
+      "properties" : {
+        "by" : {
+          "type" : "string"
+        },
+        "value" : {
           "type" : "string"
         }
       }
@@ -1408,6 +1539,29 @@
         },
         "retrieval_url" : {
           "type" : "string"
+        }
+      }
+    },
+    "util.ContentCreateBody" : {
+      "type" : "object",
+      "properties" : {
+        "coluuid" : {
+          "type" : "string"
+        },
+        "dir" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "root" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "integer"
         }
       }
     },

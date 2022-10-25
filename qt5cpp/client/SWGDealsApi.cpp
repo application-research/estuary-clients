@@ -388,55 +388,6 @@ SWGDealsApi::dealTransferInProgressGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGDealsApi::dealTransferStatusPost() {
-    QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/deal/transfer/status");
-
-
-
-    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
-    SWGHttpRequestInput input(fullPath, "POST");
-
-
-
-
-
-    foreach(QString key, this->defaultHeaders.keys()) {
-        input.headers.insert(key, this->defaultHeaders.value(key));
-    }
-
-    connect(worker,
-            &SWGHttpRequestWorker::on_execution_finished,
-            this,
-            &SWGDealsApi::dealTransferStatusPostCallback);
-
-    worker->execute(&input);
-}
-
-void
-SWGDealsApi::dealTransferStatusPostCallback(SWGHttpRequestWorker * worker) {
-    QString msg;
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        msg = QString("Success! %1 bytes").arg(worker->response.length());
-    }
-    else {
-        msg = "Error: " + worker->error_str;
-    }
-
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        emit dealTransferStatusPostSignal();
-    } else {
-        emit dealTransferStatusPostSignalE(error_type, error_str);
-        emit dealTransferStatusPostSignalEFull(worker, error_type, error_str);
-    }
-}
-
-void
 SWGDealsApi::dealsFailuresGet() {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/deals/failures");

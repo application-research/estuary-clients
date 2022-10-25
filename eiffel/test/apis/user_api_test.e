@@ -46,10 +46,12 @@ feature -- Test routines
             -- This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features. 
         local
             l_response: MAIN_GET_API_KEYS_RESP
+            l_expiry: STRING_32
+            l_perms: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- l_response := api.user_api_keys_post
+            -- l_response := api.user_api_keys_post(l_expiry, l_perms)
             assert ("not_implemented", False)
         end
     

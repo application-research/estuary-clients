@@ -95,40 +95,51 @@ declare -a result_color_table=( "$WHITE" "$WHITE" "$GREEN" "$YELLOW" "$WHITE" "$
 # 0 - optional
 # 1 - required
 declare -A operation_parameters_minimum_occurrences
+operation_parameters_minimum_occurrences["adminPeeringPeersDelete:::body"]=1
 operation_parameters_minimum_occurrences["adminAutoretrieveInitPost:::addresses"]=1
 operation_parameters_minimum_occurrences["adminAutoretrieveInitPost:::pubKey"]=1
 operation_parameters_minimum_occurrences["autoretrieveHeartbeatPost:::token"]=1
 operation_parameters_minimum_occurrences["collectionsColuuidCommitPost:::coluuid"]=1
+operation_parameters_minimum_occurrences["collectionsColuuidContentsDelete:::coluuid"]=1
+operation_parameters_minimum_occurrences["collectionsColuuidContentsDelete:::contentid"]=1
+operation_parameters_minimum_occurrences["collectionsColuuidContentsDelete:::body"]=1
 operation_parameters_minimum_occurrences["collectionsColuuidDelete:::coluuid"]=1
 operation_parameters_minimum_occurrences["collectionsColuuidGet:::coluuid"]=1
 operation_parameters_minimum_occurrences["collectionsColuuidGet:::dir"]=0
-operation_parameters_minimum_occurrences["collectionsColuuidPost:::body"]=1
+operation_parameters_minimum_occurrences["collectionsColuuidPost:::coluuid"]=1
+operation_parameters_minimum_occurrences["collectionsColuuidPost:::contentIDs"]=1
 operation_parameters_minimum_occurrences["collectionsFsAddPost:::coluuid"]=1
 operation_parameters_minimum_occurrences["collectionsFsAddPost:::content"]=1
 operation_parameters_minimum_occurrences["collectionsFsAddPost:::path"]=1
-operation_parameters_minimum_occurrences["collectionsGet:::id"]=1
 operation_parameters_minimum_occurrences["collectionsPost:::body"]=1
 operation_parameters_minimum_occurrences["contentAddCarPost:::body"]=1
+operation_parameters_minimum_occurrences["contentAddCarPost:::ignore-dupes"]=0
 operation_parameters_minimum_occurrences["contentAddCarPost:::filename"]=0
-operation_parameters_minimum_occurrences["contentAddCarPost:::commp"]=0
-operation_parameters_minimum_occurrences["contentAddCarPost:::size"]=0
 operation_parameters_minimum_occurrences["contentAddIpfsPost:::body"]=1
-operation_parameters_minimum_occurrences["contentAddPost:::file"]=1
-operation_parameters_minimum_occurrences["contentAddPost:::coluuid"]=1
-operation_parameters_minimum_occurrences["contentAddPost:::dir"]=1
+operation_parameters_minimum_occurrences["contentAddIpfsPost:::ignore-dupes"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::data"]=1
+operation_parameters_minimum_occurrences["contentAddPost:::filename"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::coluuid"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::replication"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::ignore-dupes"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::lazy-provide"]=0
+operation_parameters_minimum_occurrences["contentAddPost:::dir"]=0
 operation_parameters_minimum_occurrences["contentAggregatedContentGet:::content"]=1
 operation_parameters_minimum_occurrences["contentAllDealsGet:::begin"]=1
 operation_parameters_minimum_occurrences["contentAllDealsGet:::duration"]=1
 operation_parameters_minimum_occurrences["contentAllDealsGet:::all"]=1
 operation_parameters_minimum_occurrences["contentBwUsageContentGet:::content"]=1
-operation_parameters_minimum_occurrences["contentCreatePost:::body"]=1
+operation_parameters_minimum_occurrences["contentCreatePost:::req"]=1
+operation_parameters_minimum_occurrences["contentCreatePost:::ignore-dupes"]=0
 operation_parameters_minimum_occurrences["contentDealsGet:::limit"]=0
 operation_parameters_minimum_occurrences["contentDealsGet:::offset"]=0
 operation_parameters_minimum_occurrences["contentEnsureReplicationDatacidGet:::datacid"]=1
 operation_parameters_minimum_occurrences["contentFailuresContentGet:::content"]=1
+operation_parameters_minimum_occurrences["contentIdGet:::id"]=1
 operation_parameters_minimum_occurrences["contentImportdealPost:::body"]=1
 operation_parameters_minimum_occurrences["contentReadContGet:::cont"]=1
 operation_parameters_minimum_occurrences["contentStatsGet:::limit"]=1
+operation_parameters_minimum_occurrences["contentStatsGet:::offset"]=1
 operation_parameters_minimum_occurrences["contentStatusIdGet:::id"]=1
 operation_parameters_minimum_occurrences["dealEstimatePost:::body"]=1
 operation_parameters_minimum_occurrences["dealInfoDealidGet:::dealid"]=1
@@ -142,8 +153,11 @@ operation_parameters_minimum_occurrences["dealsMakeMinerPost:::dealRequest"]=1
 operation_parameters_minimum_occurrences["dealsStatusDealGet:::deal"]=1
 operation_parameters_minimum_occurrences["publicMinersStorageQueryMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::miner"]=1
+operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_minimum_occurrences["publicMinersStatsMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["publicMinersFailuresMinerGet:::miner"]=1
+operation_parameters_minimum_occurrences["adminPeeringPeersDelete:::body"]=1
+operation_parameters_minimum_occurrences["adminPeeringPeersDelete:::body"]=1
 operation_parameters_minimum_occurrences["pinningPinsPinidDelete:::pinid"]=1
 operation_parameters_minimum_occurrences["pinningPinsPinidGet:::pinid"]=1
 operation_parameters_minimum_occurrences["pinningPinsPinidPost:::pinid"]=1
@@ -151,9 +165,12 @@ operation_parameters_minimum_occurrences["pinningPinsPost:::cid"]=1
 operation_parameters_minimum_occurrences["pinningPinsPost:::name"]=1
 operation_parameters_minimum_occurrences["publicByCidCidGet:::cid"]=1
 operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::miner"]=1
+operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_minimum_occurrences["publicMinersFailuresMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["publicMinersStatsMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["userApiKeysKeyDelete:::key"]=1
+operation_parameters_minimum_occurrences["userApiKeysPost:::expiry"]=0
+operation_parameters_minimum_occurrences["userApiKeysPost:::perms"]=0
 
 ##
 # This array stores the maximum number of allowed occurrences for parameter
@@ -162,40 +179,51 @@ operation_parameters_minimum_occurrences["userApiKeysKeyDelete:::key"]=1
 # N - N values
 # 0 - unlimited
 declare -A operation_parameters_maximum_occurrences
+operation_parameters_maximum_occurrences["adminPeeringPeersDelete:::body"]=0
 operation_parameters_maximum_occurrences["adminAutoretrieveInitPost:::addresses"]=0
 operation_parameters_maximum_occurrences["adminAutoretrieveInitPost:::pubKey"]=0
 operation_parameters_maximum_occurrences["autoretrieveHeartbeatPost:::token"]=0
 operation_parameters_maximum_occurrences["collectionsColuuidCommitPost:::coluuid"]=0
+operation_parameters_maximum_occurrences["collectionsColuuidContentsDelete:::coluuid"]=0
+operation_parameters_maximum_occurrences["collectionsColuuidContentsDelete:::contentid"]=0
+operation_parameters_maximum_occurrences["collectionsColuuidContentsDelete:::body"]=0
 operation_parameters_maximum_occurrences["collectionsColuuidDelete:::coluuid"]=0
 operation_parameters_maximum_occurrences["collectionsColuuidGet:::coluuid"]=0
 operation_parameters_maximum_occurrences["collectionsColuuidGet:::dir"]=0
-operation_parameters_maximum_occurrences["collectionsColuuidPost:::body"]=0
+operation_parameters_maximum_occurrences["collectionsColuuidPost:::coluuid"]=0
+operation_parameters_maximum_occurrences["collectionsColuuidPost:::contentIDs"]=0
 operation_parameters_maximum_occurrences["collectionsFsAddPost:::coluuid"]=0
 operation_parameters_maximum_occurrences["collectionsFsAddPost:::content"]=0
 operation_parameters_maximum_occurrences["collectionsFsAddPost:::path"]=0
-operation_parameters_maximum_occurrences["collectionsGet:::id"]=0
 operation_parameters_maximum_occurrences["collectionsPost:::body"]=0
 operation_parameters_maximum_occurrences["contentAddCarPost:::body"]=0
+operation_parameters_maximum_occurrences["contentAddCarPost:::ignore-dupes"]=0
 operation_parameters_maximum_occurrences["contentAddCarPost:::filename"]=0
-operation_parameters_maximum_occurrences["contentAddCarPost:::commp"]=0
-operation_parameters_maximum_occurrences["contentAddCarPost:::size"]=0
 operation_parameters_maximum_occurrences["contentAddIpfsPost:::body"]=0
-operation_parameters_maximum_occurrences["contentAddPost:::file"]=0
+operation_parameters_maximum_occurrences["contentAddIpfsPost:::ignore-dupes"]=0
+operation_parameters_maximum_occurrences["contentAddPost:::data"]=0
+operation_parameters_maximum_occurrences["contentAddPost:::filename"]=0
 operation_parameters_maximum_occurrences["contentAddPost:::coluuid"]=0
+operation_parameters_maximum_occurrences["contentAddPost:::replication"]=0
+operation_parameters_maximum_occurrences["contentAddPost:::ignore-dupes"]=0
+operation_parameters_maximum_occurrences["contentAddPost:::lazy-provide"]=0
 operation_parameters_maximum_occurrences["contentAddPost:::dir"]=0
 operation_parameters_maximum_occurrences["contentAggregatedContentGet:::content"]=0
 operation_parameters_maximum_occurrences["contentAllDealsGet:::begin"]=0
 operation_parameters_maximum_occurrences["contentAllDealsGet:::duration"]=0
 operation_parameters_maximum_occurrences["contentAllDealsGet:::all"]=0
 operation_parameters_maximum_occurrences["contentBwUsageContentGet:::content"]=0
-operation_parameters_maximum_occurrences["contentCreatePost:::body"]=0
+operation_parameters_maximum_occurrences["contentCreatePost:::req"]=0
+operation_parameters_maximum_occurrences["contentCreatePost:::ignore-dupes"]=0
 operation_parameters_maximum_occurrences["contentDealsGet:::limit"]=0
 operation_parameters_maximum_occurrences["contentDealsGet:::offset"]=0
 operation_parameters_maximum_occurrences["contentEnsureReplicationDatacidGet:::datacid"]=0
 operation_parameters_maximum_occurrences["contentFailuresContentGet:::content"]=0
+operation_parameters_maximum_occurrences["contentIdGet:::id"]=0
 operation_parameters_maximum_occurrences["contentImportdealPost:::body"]=0
 operation_parameters_maximum_occurrences["contentReadContGet:::cont"]=0
 operation_parameters_maximum_occurrences["contentStatsGet:::limit"]=0
+operation_parameters_maximum_occurrences["contentStatsGet:::offset"]=0
 operation_parameters_maximum_occurrences["contentStatusIdGet:::id"]=0
 operation_parameters_maximum_occurrences["dealEstimatePost:::body"]=0
 operation_parameters_maximum_occurrences["dealInfoDealidGet:::dealid"]=0
@@ -209,8 +237,11 @@ operation_parameters_maximum_occurrences["dealsMakeMinerPost:::dealRequest"]=0
 operation_parameters_maximum_occurrences["dealsStatusDealGet:::deal"]=0
 operation_parameters_maximum_occurrences["publicMinersStorageQueryMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::miner"]=0
+operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_maximum_occurrences["publicMinersStatsMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["publicMinersFailuresMinerGet:::miner"]=0
+operation_parameters_maximum_occurrences["adminPeeringPeersDelete:::body"]=0
+operation_parameters_maximum_occurrences["adminPeeringPeersDelete:::body"]=0
 operation_parameters_maximum_occurrences["pinningPinsPinidDelete:::pinid"]=0
 operation_parameters_maximum_occurrences["pinningPinsPinidGet:::pinid"]=0
 operation_parameters_maximum_occurrences["pinningPinsPinidPost:::pinid"]=0
@@ -218,48 +249,62 @@ operation_parameters_maximum_occurrences["pinningPinsPost:::cid"]=0
 operation_parameters_maximum_occurrences["pinningPinsPost:::name"]=0
 operation_parameters_maximum_occurrences["publicByCidCidGet:::cid"]=0
 operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::miner"]=0
+operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_maximum_occurrences["publicMinersFailuresMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["publicMinersStatsMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["userApiKeysKeyDelete:::key"]=0
+operation_parameters_maximum_occurrences["userApiKeysPost:::expiry"]=0
+operation_parameters_maximum_occurrences["userApiKeysPost:::perms"]=0
 
 ##
 # The type of collection for specifying multiple values for parameter:
 # - multi, csv, ssv, tsv
 declare -A operation_parameters_collection_type
+operation_parameters_collection_type["adminPeeringPeersDelete:::body"]=
 operation_parameters_collection_type["adminAutoretrieveInitPost:::addresses"]=""
 operation_parameters_collection_type["adminAutoretrieveInitPost:::pubKey"]=""
 operation_parameters_collection_type["autoretrieveHeartbeatPost:::token"]=""
 operation_parameters_collection_type["collectionsColuuidCommitPost:::coluuid"]=""
+operation_parameters_collection_type["collectionsColuuidContentsDelete:::coluuid"]=""
+operation_parameters_collection_type["collectionsColuuidContentsDelete:::contentid"]=""
+operation_parameters_collection_type["collectionsColuuidContentsDelete:::body"]=""
 operation_parameters_collection_type["collectionsColuuidDelete:::coluuid"]=""
 operation_parameters_collection_type["collectionsColuuidGet:::coluuid"]=""
 operation_parameters_collection_type["collectionsColuuidGet:::dir"]=""
-operation_parameters_collection_type["collectionsColuuidPost:::body"]=
+operation_parameters_collection_type["collectionsColuuidPost:::coluuid"]=""
+operation_parameters_collection_type["collectionsColuuidPost:::contentIDs"]=
 operation_parameters_collection_type["collectionsFsAddPost:::coluuid"]=""
 operation_parameters_collection_type["collectionsFsAddPost:::content"]=""
 operation_parameters_collection_type["collectionsFsAddPost:::path"]=""
-operation_parameters_collection_type["collectionsGet:::id"]=""
 operation_parameters_collection_type["collectionsPost:::body"]=""
 operation_parameters_collection_type["contentAddCarPost:::body"]=""
+operation_parameters_collection_type["contentAddCarPost:::ignore-dupes"]=""
 operation_parameters_collection_type["contentAddCarPost:::filename"]=""
-operation_parameters_collection_type["contentAddCarPost:::commp"]=""
-operation_parameters_collection_type["contentAddCarPost:::size"]=""
 operation_parameters_collection_type["contentAddIpfsPost:::body"]=""
-operation_parameters_collection_type["contentAddPost:::file"]=""
+operation_parameters_collection_type["contentAddIpfsPost:::ignore-dupes"]=""
+operation_parameters_collection_type["contentAddPost:::data"]=""
+operation_parameters_collection_type["contentAddPost:::filename"]=""
 operation_parameters_collection_type["contentAddPost:::coluuid"]=""
+operation_parameters_collection_type["contentAddPost:::replication"]=""
+operation_parameters_collection_type["contentAddPost:::ignore-dupes"]=""
+operation_parameters_collection_type["contentAddPost:::lazy-provide"]=""
 operation_parameters_collection_type["contentAddPost:::dir"]=""
 operation_parameters_collection_type["contentAggregatedContentGet:::content"]=""
 operation_parameters_collection_type["contentAllDealsGet:::begin"]=""
 operation_parameters_collection_type["contentAllDealsGet:::duration"]=""
 operation_parameters_collection_type["contentAllDealsGet:::all"]=""
 operation_parameters_collection_type["contentBwUsageContentGet:::content"]=""
-operation_parameters_collection_type["contentCreatePost:::body"]=""
+operation_parameters_collection_type["contentCreatePost:::req"]=""
+operation_parameters_collection_type["contentCreatePost:::ignore-dupes"]=""
 operation_parameters_collection_type["contentDealsGet:::limit"]=""
 operation_parameters_collection_type["contentDealsGet:::offset"]=""
 operation_parameters_collection_type["contentEnsureReplicationDatacidGet:::datacid"]=""
 operation_parameters_collection_type["contentFailuresContentGet:::content"]=""
+operation_parameters_collection_type["contentIdGet:::id"]=""
 operation_parameters_collection_type["contentImportdealPost:::body"]=""
 operation_parameters_collection_type["contentReadContGet:::cont"]=""
 operation_parameters_collection_type["contentStatsGet:::limit"]=""
+operation_parameters_collection_type["contentStatsGet:::offset"]=""
 operation_parameters_collection_type["contentStatusIdGet:::id"]=""
 operation_parameters_collection_type["dealEstimatePost:::body"]=""
 operation_parameters_collection_type["dealInfoDealidGet:::dealid"]=""
@@ -273,8 +318,11 @@ operation_parameters_collection_type["dealsMakeMinerPost:::dealRequest"]=""
 operation_parameters_collection_type["dealsStatusDealGet:::deal"]=""
 operation_parameters_collection_type["publicMinersStorageQueryMinerGet:::miner"]=""
 operation_parameters_collection_type["publicMinersDealsMinerGet:::miner"]=""
+operation_parameters_collection_type["publicMinersDealsMinerGet:::ignore-failed"]=""
 operation_parameters_collection_type["publicMinersStatsMinerGet:::miner"]=""
 operation_parameters_collection_type["publicMinersFailuresMinerGet:::miner"]=""
+operation_parameters_collection_type["adminPeeringPeersDelete:::body"]=
+operation_parameters_collection_type["adminPeeringPeersDelete:::body"]=
 operation_parameters_collection_type["pinningPinsPinidDelete:::pinid"]=""
 operation_parameters_collection_type["pinningPinsPinidGet:::pinid"]=""
 operation_parameters_collection_type["pinningPinsPinidPost:::pinid"]=""
@@ -282,9 +330,12 @@ operation_parameters_collection_type["pinningPinsPost:::cid"]=""
 operation_parameters_collection_type["pinningPinsPost:::name"]=""
 operation_parameters_collection_type["publicByCidCidGet:::cid"]=""
 operation_parameters_collection_type["publicMinersDealsMinerGet:::miner"]=""
+operation_parameters_collection_type["publicMinersDealsMinerGet:::ignore-failed"]=""
 operation_parameters_collection_type["publicMinersFailuresMinerGet:::miner"]=""
 operation_parameters_collection_type["publicMinersStatsMinerGet:::miner"]=""
 operation_parameters_collection_type["userApiKeysKeyDelete:::key"]=""
+operation_parameters_collection_type["userApiKeysPost:::expiry"]=""
+operation_parameters_collection_type["userApiKeysPost:::perms"]=""
 
 
 ##
@@ -688,6 +739,7 @@ echo "  $ops" | column -t -s ';'
     echo -e "${BOLD}${WHITE}[collections]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}collectionsColuuidCommitPost${OFF};Produce a CID of the collection contents (AUTH)
+  ${CYAN}collectionsColuuidContentsDelete${OFF};Deletes a content from a collection (AUTH)
   ${CYAN}collectionsColuuidDelete${OFF};Deletes a collection (AUTH)
   ${CYAN}collectionsColuuidGet${OFF};Get contents in a collection (AUTH)
   ${CYAN}collectionsColuuidPost${OFF};Add contents to a collection (AUTH)
@@ -709,6 +761,7 @@ read -r -d '' ops <<EOF
   ${CYAN}contentDealsGet${OFF};Content with deals (AUTH)
   ${CYAN}contentEnsureReplicationDatacidGet${OFF};Ensure Replication (AUTH)
   ${CYAN}contentFailuresContentGet${OFF};List all failures for a content (AUTH)
+  ${CYAN}contentIdGet${OFF};Content (AUTH)
   ${CYAN}contentImportdealPost${OFF};Import a deal (AUTH)
   ${CYAN}contentListGet${OFF};List all pinned content (AUTH)
   ${CYAN}contentReadContGet${OFF};Read content (AUTH)
@@ -727,12 +780,17 @@ read -r -d '' ops <<EOF
   ${CYAN}dealStatusByProposalPropcidGet${OFF};Get Deal Status by PropCid (AUTH)
   ${CYAN}dealStatusMinerPropcidGet${OFF};Deal Status (AUTH)
   ${CYAN}dealTransferInProgressGet${OFF};Transfer In Progress (AUTH)
-  ${CYAN}dealTransferStatusPost${OFF};Transfer Status (AUTH)
   ${CYAN}dealsFailuresGet${OFF};Get storage failures for user (AUTH)
   ${CYAN}dealsMakeMinerPost${OFF};Make Deal (AUTH)
   ${CYAN}dealsStatusDealGet${OFF};Get Deal Status (AUTH)
   ${CYAN}publicDealsFailuresGet${OFF};Get storage failures (AUTH)
   ${CYAN}publicMinersStorageQueryMinerGet${OFF};Query Ask (AUTH)
+EOF
+echo "  $ops" | column -t -s ';'
+    echo ""
+    echo -e "${BOLD}${WHITE}[default]${OFF}"
+read -r -d '' ops <<EOF
+  ${CYAN}dealTransferStatusPost${OFF}; (AUTH)
 EOF
 echo "  $ops" | column -t -s ';'
     echo ""
@@ -876,6 +934,9 @@ print_adminPeeringPeersDelete_help() {
     echo -e "${BOLD}${WHITE}adminPeeringPeersDelete - Remove peers on Peering Service${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "This endpoint can be used to remove a Peer from the Peering Service" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Peer ids" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -1047,6 +1108,29 @@ print_collectionsColuuidCommitPost_help() {
 }
 ##############################################################################
 #
+# Print help for collectionsColuuidContentsDelete operation
+#
+##############################################################################
+print_collectionsColuuidContentsDelete_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}collectionsColuuidContentsDelete - Deletes a content from a collection${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Collection ID ${YELLOW}Specify as: coluuid=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}contentid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Content ID ${YELLOW}Specify as: contentid=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Variable to use when filtering for files (must be either 'path' or 'content_id')" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+    code=200
+    echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+    code=400
+    echo -e "${result_color_table[${code:0:1}]}  400;Bad Request${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
 # Print help for collectionsColuuidDelete operation
 #
 ##############################################################################
@@ -1073,8 +1157,7 @@ print_collectionsColuuidGet_help() {
     echo -e "This endpoint is used to get contents in a collection. If no colpath query param is passed" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Collection UUID${YELLOW} Specify as: coluuid=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - coluuid ${YELLOW}Specify as: coluuid=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}dir${OFF} ${BLUE}[string]${OFF}${OFF} - Directory${YELLOW} Specify as: dir=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
@@ -1094,6 +1177,7 @@ print_collectionsColuuidPost_help() {
     echo -e "This endpoint adds already-pinned contents (that have ContentIDs) to a collection." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - coluuid ${YELLOW}Specify as: coluuid=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[application/json]${OFF} ${RED}(required)${OFF}${OFF} - Content IDs to add to collection" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
@@ -1133,8 +1217,6 @@ print_collectionsGet_help() {
     echo -e ""
     echo -e "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user." | paste -sd' ' | fold -sw 80
     echo -e ""
-    echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}id${OFF} ${BLUE}[integer]${OFF} ${RED}(required)${OFF}${OFF} - User ID ${YELLOW}Specify as: id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -1183,11 +1265,9 @@ print_contentAddCarPost_help() {
     echo -e "This endpoint is used to add a car object to the network. The object can be a file or a directory." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ignore-dupes${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Dupes${YELLOW} Specify as: ignore-dupes=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}filename${OFF} ${BLUE}[string]${OFF}${OFF} - Filename${YELLOW} Specify as: filename=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}commp${OFF} ${BLUE}[string]${OFF}${OFF} - Commp${YELLOW} Specify as: commp=value${OFF}" \
-        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}size${OFF} ${BLUE}[string]${OFF}${OFF} - Size${YELLOW} Specify as: size=value${OFF}" \
         | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Car" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
@@ -1206,6 +1286,8 @@ print_contentAddIpfsPost_help() {
     echo -e "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ignore-dupes${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Dupes${YELLOW} Specify as: ignore-dupes=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - IPFS Body" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
@@ -1223,8 +1305,16 @@ print_contentAddPost_help() {
     echo -e "This endpoint is used to upload new content." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Collection UUID ${YELLOW}Specify as: coluuid=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e "  * ${GREEN}dir${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Directory ${YELLOW}Specify as: dir=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}coluuid${OFF} ${BLUE}[string]${OFF}${OFF} - Collection UUID${YELLOW} Specify as: coluuid=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}replication${OFF} ${BLUE}[integer]${OFF}${OFF} - Replication value${YELLOW} Specify as: replication=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ignore-dupes${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Dupes true/false${YELLOW} Specify as: ignore-dupes=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}lazy-provide${OFF} ${BLUE}[string]${OFF}${OFF} - Lazy Provide true/false${YELLOW} Specify as: lazy-provide=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}dir${OFF} ${BLUE}[string]${OFF}${OFF} - Directory${YELLOW} Specify as: dir=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -1297,6 +1387,8 @@ print_contentCreatePost_help() {
     echo -e "This endpoint adds a new content" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}ignore-dupes${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Dupes${YELLOW} Specify as: ignore-dupes=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Content" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
@@ -1354,6 +1446,22 @@ print_contentFailuresContentGet_help() {
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
     echo -e "${result_color_table[${code:0:1}]}  200;OK${OFF}" | paste -sd' ' | column -t -s ';' | fold -sw 80 | sed '2,$s/^/       /'
+}
+##############################################################################
+#
+# Print help for contentIdGet operation
+#
+##############################################################################
+print_contentIdGet_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}contentIdGet - Content${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo -e "This endpoint returns a content by its ID" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}id${OFF} ${BLUE}[integer]${OFF} ${RED}(required)${OFF}${OFF} - Content ID ${YELLOW}Specify as: id=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
 }
 ##############################################################################
 #
@@ -1430,7 +1538,10 @@ print_contentStatsGet_help() {
     echo -e "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten" | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - limit ${YELLOW}Specify as: limit=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}limit${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - limit${YELLOW} Specify as: limit=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}offset${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - offset${YELLOW} Specify as: offset=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
 }
@@ -1564,20 +1675,6 @@ print_dealTransferInProgressGet_help() {
 }
 ##############################################################################
 #
-# Print help for dealTransferStatusPost operation
-#
-##############################################################################
-print_dealTransferStatusPost_help() {
-    echo ""
-    echo -e "${BOLD}${WHITE}dealTransferStatusPost - Transfer Status${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
-    echo -e ""
-    echo -e "This endpoint returns the status of a transfer" | paste -sd' ' | fold -sw 80
-    echo -e ""
-    echo ""
-    echo -e "${BOLD}${WHITE}Responses${OFF}"
-}
-##############################################################################
-#
 # Print help for dealsFailuresGet operation
 #
 ##############################################################################
@@ -1656,6 +1753,18 @@ print_publicMinersStorageQueryMinerGet_help() {
 }
 ##############################################################################
 #
+# Print help for dealTransferStatusPost operation
+#
+##############################################################################
+print_dealTransferStatusPost_help() {
+    echo ""
+    echo -e "${BOLD}${WHITE}dealTransferStatusPost - ${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
+    echo ""
+    echo -e "${BOLD}${WHITE}Responses${OFF}"
+}
+##############################################################################
+#
 # Print help for publicMetricsDealsOnChainGet operation
 #
 ##############################################################################
@@ -1681,6 +1790,8 @@ print_publicMinersDealsMinerGet_help() {
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}miner${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Filter by miner ${YELLOW}Specify as: miner=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ignore-failed${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Failed${YELLOW} Specify as: ignore-failed=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
 }
@@ -1789,6 +1900,9 @@ print_adminPeeringPeersDelete_help() {
     echo -e ""
     echo -e "This endpoint can be used to remove a Peer from the Peering Service" | paste -sd' ' | fold -sw 80
     echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Peer ids" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
 }
@@ -1872,6 +1986,9 @@ print_adminPeeringPeersDelete_help() {
     echo -e "${BOLD}${WHITE}adminPeeringPeersDelete - Remove peers on Peering Service${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo -e "This endpoint can be used to remove a Peer from the Peering Service" | paste -sd' ' | fold -sw 80
+    echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}body${OFF} ${BLUE}[]${OFF} ${RED}(required)${OFF}${OFF} - Peer ids" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
@@ -2088,6 +2205,8 @@ print_publicMinersDealsMinerGet_help() {
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
     echo -e "  * ${GREEN}miner${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Filter by miner ${YELLOW}Specify as: miner=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}ignore-failed${OFF} ${BLUE}[string]${OFF}${OFF} - Ignore Failed${YELLOW} Specify as: ignore-failed=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
 }
@@ -2232,6 +2351,11 @@ print_userApiKeysPost_help() {
     echo -e ""
     echo -e "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features." | paste -sd' ' | fold -sw 80
     echo -e ""
+    echo -e "${BOLD}${WHITE}Parameters${OFF}"
+    echo -e "  * ${GREEN}expiry${OFF} ${BLUE}[string]${OFF}${OFF} - Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h${YELLOW} Specify as: expiry=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}perms${OFF} ${BLUE}[string]${OFF}${OFF} - Permissions -- currently unused${YELLOW} Specify as: perms=value${OFF}" \
+        | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -2306,10 +2430,43 @@ call_adminPeeringPeersDelete() {
     if [[ -n $basic_auth_credential ]]; then
         basic_auth_option="-u ${basic_auth_credential}"
     fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the Swagger specification
+    # if values produces and consumes are defined unambigously
+    #
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
     fi
 }
 
@@ -2744,6 +2901,75 @@ call_collectionsColuuidCommitPost() {
 
 ##############################################################################
 #
+# Call collectionsColuuidContentsDelete operation
+#
+##############################################################################
+call_collectionsColuuidContentsDelete() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(coluuid contentid)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/collections/{coluuid}/contents" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="DELETE"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the Swagger specification
+    # if values produces and consumes are defined unambigously
+    #
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
+    else
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
+    fi
+}
+
+##############################################################################
+#
 # Call collectionsColuuidDelete operation
 #
 ##############################################################################
@@ -2786,10 +3012,10 @@ call_collectionsColuuidDelete() {
 call_collectionsColuuidGet() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=()
+    local path_parameter_names=(coluuid)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(coluuid dir  )
+    local query_parameter_names=(dir  )
     local path
 
     if ! path=$(build_request_path "/collections/{coluuid}" path_parameter_names query_parameter_names); then
@@ -2822,7 +3048,7 @@ call_collectionsColuuidGet() {
 call_collectionsColuuidPost() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=()
+    local path_parameter_names=(coluuid)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local query_parameter_names=(  )
@@ -2936,7 +3162,7 @@ call_collectionsFsAddPost() {
 call_collectionsGet() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=(id)
+    local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local query_parameter_names=(  )
@@ -3044,7 +3270,7 @@ call_contentAddCarPost() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(filename commp size  )
+    local query_parameter_names=(ignore-dupes filename  )
     local path
 
     if ! path=$(build_request_path "/content/add-car" path_parameter_names query_parameter_names); then
@@ -3113,7 +3339,7 @@ call_contentAddIpfsPost() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ignore-dupes  )
     local path
 
     if ! path=$(build_request_path "/content/add-ipfs" path_parameter_names query_parameter_names); then
@@ -3179,10 +3405,10 @@ call_contentAddIpfsPost() {
 call_contentAddPost() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=(coluuid dir)
+    local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(coluuid replication ignore-dupes lazy-provide dir  )
     local path
 
     if ! path=$(build_request_path "/content/add" path_parameter_names query_parameter_names); then
@@ -3326,7 +3552,7 @@ call_contentCreatePost() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ignore-dupes  )
     local path
 
     if ! path=$(build_request_path "/content/create" path_parameter_names query_parameter_names); then
@@ -3471,6 +3697,42 @@ call_contentFailuresContentGet() {
     local path
 
     if ! path=$(build_request_path "/content/failures/{content}" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="GET"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
+# Call contentIdGet operation
+#
+##############################################################################
+call_contentIdGet() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=(id)
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/content/{id}" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -3677,10 +3939,10 @@ call_contentStagingZonesGet() {
 call_contentStatsGet() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=(limit)
+    local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(limit offset  )
     local path
 
     if ! path=$(build_request_path "/content/stats" path_parameter_names query_parameter_names); then
@@ -4028,42 +4290,6 @@ call_dealTransferInProgressGet() {
 
 ##############################################################################
 #
-# Call dealTransferStatusPost operation
-#
-##############################################################################
-call_dealTransferStatusPost() {
-    # ignore error about 'path_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local path_parameter_names=()
-    # ignore error about 'query_parameter_names' being unused; passed by reference
-    # shellcheck disable=SC2034
-    local query_parameter_names=(  )
-    local path
-
-    if ! path=$(build_request_path "/deal/transfer/status" path_parameter_names query_parameter_names); then
-        ERROR_MSG=$path
-        exit 1
-    fi
-    local method="POST"
-    local headers_curl
-    headers_curl=$(header_arguments_to_curl)
-    if [[ -n $header_accept ]]; then
-        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
-    fi
-
-    local basic_auth_option=""
-    if [[ -n $basic_auth_credential ]]; then
-        basic_auth_option="-u ${basic_auth_credential}"
-    fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
-    fi
-}
-
-##############################################################################
-#
 # Call dealsFailuresGet operation
 #
 ##############################################################################
@@ -4277,6 +4503,42 @@ call_publicMinersStorageQueryMinerGet() {
 
 ##############################################################################
 #
+# Call dealTransferStatusPost operation
+#
+##############################################################################
+call_dealTransferStatusPost() {
+    # ignore error about 'path_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local path_parameter_names=()
+    # ignore error about 'query_parameter_names' being unused; passed by reference
+    # shellcheck disable=SC2034
+    local query_parameter_names=(  )
+    local path
+
+    if ! path=$(build_request_path "/deal/transfer/status" path_parameter_names query_parameter_names); then
+        ERROR_MSG=$path
+        exit 1
+    fi
+    local method="POST"
+    local headers_curl
+    headers_curl=$(header_arguments_to_curl)
+    if [[ -n $header_accept ]]; then
+        headers_curl="${headers_curl} -H 'Accept: ${header_accept}'"
+    fi
+
+    local basic_auth_option=""
+    if [[ -n $basic_auth_credential ]]; then
+        basic_auth_option="-u ${basic_auth_credential}"
+    fi
+    if [[ "$print_curl" = true ]]; then
+        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    else
+        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    fi
+}
+
+##############################################################################
+#
 # Call publicMetricsDealsOnChainGet operation
 #
 ##############################################################################
@@ -4322,7 +4584,7 @@ call_publicMinersDealsMinerGet() {
     local path_parameter_names=(miner)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ignore-failed  )
     local path
 
     if ! path=$(build_request_path "/public/miners/deals/{miner}" path_parameter_names query_parameter_names); then
@@ -4592,10 +4854,43 @@ call_adminPeeringPeersDelete() {
     if [[ -n $basic_auth_credential ]]; then
         basic_auth_option="-u ${basic_auth_credential}"
     fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the Swagger specification
+    # if values produces and consumes are defined unambigously
+    #
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
     fi
 }
 
@@ -4808,10 +5103,43 @@ call_adminPeeringPeersDelete() {
     if [[ -n $basic_auth_credential ]]; then
         basic_auth_option="-u ${basic_auth_credential}"
     fi
-    if [[ "$print_curl" = true ]]; then
-        echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+    local body_json_curl=""
+
+    #
+    # Check if the user provided 'Content-type' headers in the
+    # command line. If not try to set them based on the Swagger specification
+    # if values produces and consumes are defined unambigously
+    #
+
+
+    if [[ -z $header_content_type && "$force" = false ]]; then
+        :
     else
-        eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\""
+        headers_curl="${headers_curl} -H 'Content-type: ${header_content_type}'"
+    fi
+
+
+    #
+    # If we have received some body content over pipe, pass it from the
+    # temporary file to cURL
+    #
+    if [[ -n $body_content_temp_file ]]; then
+        if [[ "$print_curl" = true ]]; then
+            echo "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        else
+            eval "cat ${body_content_temp_file} | curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} \"${host}${path}\" -d @-"
+        fi
+        rm "${body_content_temp_file}"
+    #
+    # If not, try to build the content body from arguments KEY==VALUE and KEY:=VALUE
+    #
+    else
+        body_json_curl=$(body_parameters_to_json)
+        if [[ "$print_curl" = true ]]; then
+            echo "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        else
+            eval "curl ${basic_auth_option} ${curl_arguments} ${headers_curl} -X ${method} ${body_json_curl} \"${host}${path}\""
+        fi
     fi
 }
 
@@ -5294,7 +5622,7 @@ call_publicMinersDealsMinerGet() {
     local path_parameter_names=(miner)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(ignore-failed  )
     local path
 
     if ! path=$(build_request_path "/public/miners/deals/{miner}" path_parameter_names query_parameter_names); then
@@ -5618,7 +5946,7 @@ call_userApiKeysPost() {
     local path_parameter_names=()
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local query_parameter_names=(  )
+    local query_parameter_names=(expiry perms  )
     local path
 
     if ! path=$(build_request_path "/user/api-keys" path_parameter_names query_parameter_names); then
@@ -5848,6 +6176,9 @@ case $key in
     collectionsColuuidCommitPost)
     operation="collectionsColuuidCommitPost"
     ;;
+    collectionsColuuidContentsDelete)
+    operation="collectionsColuuidContentsDelete"
+    ;;
     collectionsColuuidDelete)
     operation="collectionsColuuidDelete"
     ;;
@@ -5896,6 +6227,9 @@ case $key in
     contentFailuresContentGet)
     operation="contentFailuresContentGet"
     ;;
+    contentIdGet)
+    operation="contentIdGet"
+    ;;
     contentImportdealPost)
     operation="contentImportdealPost"
     ;;
@@ -5935,9 +6269,6 @@ case $key in
     dealTransferInProgressGet)
     operation="dealTransferInProgressGet"
     ;;
-    dealTransferStatusPost)
-    operation="dealTransferStatusPost"
-    ;;
     dealsFailuresGet)
     operation="dealsFailuresGet"
     ;;
@@ -5952,6 +6283,9 @@ case $key in
     ;;
     publicMinersStorageQueryMinerGet)
     operation="publicMinersStorageQueryMinerGet"
+    ;;
+    dealTransferStatusPost)
+    operation="dealTransferStatusPost"
     ;;
     publicMetricsDealsOnChainGet)
     operation="publicMetricsDealsOnChainGet"
@@ -6193,6 +6527,9 @@ case $operation in
     collectionsColuuidCommitPost)
     call_collectionsColuuidCommitPost
     ;;
+    collectionsColuuidContentsDelete)
+    call_collectionsColuuidContentsDelete
+    ;;
     collectionsColuuidDelete)
     call_collectionsColuuidDelete
     ;;
@@ -6241,6 +6578,9 @@ case $operation in
     contentFailuresContentGet)
     call_contentFailuresContentGet
     ;;
+    contentIdGet)
+    call_contentIdGet
+    ;;
     contentImportdealPost)
     call_contentImportdealPost
     ;;
@@ -6280,9 +6620,6 @@ case $operation in
     dealTransferInProgressGet)
     call_dealTransferInProgressGet
     ;;
-    dealTransferStatusPost)
-    call_dealTransferStatusPost
-    ;;
     dealsFailuresGet)
     call_dealsFailuresGet
     ;;
@@ -6297,6 +6634,9 @@ case $operation in
     ;;
     publicMinersStorageQueryMinerGet)
     call_publicMinersStorageQueryMinerGet
+    ;;
+    dealTransferStatusPost)
+    call_dealTransferStatusPost
     ;;
     publicMetricsDealsOnChainGet)
     call_publicMetricsDealsOnChainGet

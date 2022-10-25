@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary_client
-from estuary_client.api.content_api import ContentApi  # noqa: E501
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.api.content_api import ContentApi  # noqa: E501
+from estuary-client.rest import ApiException
 
 
 class TestContentApi(unittest.TestCase):
     """ContentApi unit test stubs"""
 
     def setUp(self):
-        self.api = estuary_client.api.content_api.ContentApi()  # noqa: E501
+        self.api = estuary-client.api.content_api.ContentApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -96,6 +96,13 @@ class TestContentApi(unittest.TestCase):
         """Test case for content_failures_content_get
 
         List all failures for a content  # noqa: E501
+        """
+        pass
+
+    def test_content_id_get(self):
+        """Test case for content_id_get
+
+        Content  # noqa: E501
         """
         pass
 

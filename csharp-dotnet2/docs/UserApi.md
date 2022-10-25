@@ -1,4 +1,4 @@
-# estuary_client.Api.UserApi
+# estuary-client.Api.UserApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -23,9 +23,9 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -142,7 +142,7 @@ void (empty response body)
 
 <a name="userapikeyspost"></a>
 # **UserApiKeysPost**
-> MainGetApiKeysResp UserApiKeysPost ()
+> MainGetApiKeysResp UserApiKeysPost (string expiry, string perms)
 
 Create API keys for a user
 
@@ -152,9 +152,9 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -169,11 +169,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserApi();
+            var expiry = expiry_example;  // string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional) 
+            var perms = perms_example;  // string | Permissions - - currently unused (optional) 
 
             try
             {
                 // Create API keys for a user
-                MainGetApiKeysResp result = apiInstance.UserApiKeysPost();
+                MainGetApiKeysResp result = apiInstance.UserApiKeysPost(expiry, perms);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -186,7 +188,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **string**| Permissions - - currently unused | [optional] 
 
 ### Return type
 
@@ -215,9 +221,9 @@ This endpoint is used to get API keys for a user.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -278,9 +284,9 @@ This endpoint is used to create API keys for a user.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

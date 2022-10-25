@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, filename, commp, size)
+> contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -33,16 +34,15 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val body : kotlin.String = body_example // kotlin.String | Car
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 val filename : kotlin.String = filename_example // kotlin.String | Filename
-val commp : kotlin.String = commp_example // kotlin.String | Commp
-val size : kotlin.String = size_example // kotlin.String | Size
 try {
-    apiInstance.contentAddCarPost(body, filename, commp, size)
+    apiInstance.contentAddCarPost(body, ignoreDupes, filename)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddCarPost")
     e.printStackTrace()
@@ -57,9 +57,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **kotlin.String**| Car |
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
  **filename** | **kotlin.String**| Filename | [optional]
- **commp** | **kotlin.String**| Commp | [optional]
- **size** | **kotlin.String**| Size | [optional]
 
 ### Return type
 
@@ -76,7 +75,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body)
+> contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -85,13 +84,14 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val body : UtilContentAddIpfsBody =  // UtilContentAddIpfsBody | IPFS Body
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 try {
-    apiInstance.contentAddIpfsPost(body)
+    apiInstance.contentAddIpfsPost(body, ignoreDupes)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddIpfsPost")
     e.printStackTrace()
@@ -106,6 +106,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body |
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -122,7 +123,7 @@ null (empty response body)
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(file, coluuid, dir)
+> UtilContentAddResponse contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
 Add new content
 
@@ -131,15 +132,19 @@ This endpoint is used to upload new content.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
-val file : java.io.File = /path/to/file.txt // java.io.File | File to upload
+val `data` : java.io.File = /path/to/file.txt // java.io.File | File to upload
+val filename : kotlin.String = filename_example // kotlin.String | Filenam to use for upload
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
+val replication : kotlin.Int = 56 // kotlin.Int | Replication value
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes true/false
+val lazyProvide : kotlin.String = lazyProvide_example // kotlin.String | Lazy Provide true/false
 val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : UtilContentAddResponse = apiInstance.contentAddPost(file, coluuid, dir)
+    val result : UtilContentAddResponse = apiInstance.contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddPost")
@@ -154,9 +159,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **java.io.File**| File to upload |
- **coluuid** | **kotlin.String**| Collection UUID |
- **dir** | **kotlin.String**| Directory |
+ **&#x60;data&#x60;** | **java.io.File**| File to upload |
+ **filename** | **kotlin.String**| Filenam to use for upload | [optional]
+ **coluuid** | **kotlin.String**| Collection UUID | [optional]
+ **replication** | **kotlin.Int**| Replication value | [optional]
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes true/false | [optional]
+ **lazyProvide** | **kotlin.String**| Lazy Provide true/false | [optional]
+ **dir** | **kotlin.String**| Directory | [optional]
 
 ### Return type
 
@@ -182,8 +191,8 @@ This endpoint returns aggregated content stats
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -229,8 +238,8 @@ This endpoint is used to get all deals for a user
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val begin : kotlin.String = begin_example // kotlin.String | Begin
@@ -279,8 +288,8 @@ This endpoint returns content bandwidth
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -316,7 +325,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(body)
+> contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -325,13 +334,14 @@ This endpoint adds a new content
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
-val body : kotlin.String = body_example // kotlin.String | Content
+val req : UtilContentCreateBody =  // UtilContentCreateBody | Content
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 try {
-    apiInstance.contentCreatePost(body)
+    apiInstance.contentCreatePost(req, ignoreDupes)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentCreatePost")
     e.printStackTrace()
@@ -345,7 +355,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **kotlin.String**| Content |
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -371,8 +382,8 @@ This endpoint lists all content with deals
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val limit : kotlin.Int = 56 // kotlin.Int | Limit
@@ -419,8 +430,8 @@ This endpoint ensures that the content is replicated to the specified number of 
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val datacid : kotlin.String = datacid_example // kotlin.String | Data CID
@@ -465,8 +476,8 @@ This endpoint returns all failures for a content
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
@@ -501,6 +512,52 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="contentIdGet"></a>
+# **contentIdGet**
+> contentIdGet(id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
+
+val apiInstance = ContentApi()
+val id : kotlin.Int = 56 // kotlin.Int | Content ID
+try {
+    apiInstance.contentIdGet(id)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#contentIdGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#contentIdGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **kotlin.Int**| Content ID |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="contentImportdealPost"></a>
 # **contentImportdealPost**
 > contentImportdealPost(body)
@@ -512,8 +569,8 @@ This endpoint imports a deal into the shuttle.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val body : MainimportDealBody =  // MainimportDealBody | Import a deal
@@ -558,8 +615,8 @@ This endpoint lists all content
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 try {
@@ -601,8 +658,8 @@ This endpoint reads content from the blockstore
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val cont : kotlin.String = cont_example // kotlin.String | CID
@@ -647,8 +704,8 @@ This endpoint is used to get staging zone for user.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 try {
@@ -680,7 +737,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(limit)
+> contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -689,13 +746,14 @@ This endpoint is used to get content statistics. Every content stored in the net
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val limit : kotlin.String = limit_example // kotlin.String | limit
+val offset : kotlin.String = offset_example // kotlin.String | offset
 try {
-    apiInstance.contentStatsGet(limit)
+    apiInstance.contentStatsGet(limit, offset)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentStatsGet")
     e.printStackTrace()
@@ -710,6 +768,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **kotlin.String**| limit |
+ **offset** | **kotlin.String**| offset |
 
 ### Return type
 
@@ -735,8 +794,8 @@ This endpoint returns the status of a content
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = ContentApi()
 val id : kotlin.Int = 56 // kotlin.Int | Content ID

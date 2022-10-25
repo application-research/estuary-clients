@@ -10,6 +10,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.util.Map;
 import java.util.List;
@@ -30,7 +31,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 
 @io.swagger.annotations.Api(description = "the content API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class ContentApi  {
 
     @Inject ContentApiService service;
@@ -43,9 +44,9 @@ public class ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @QueryParam("filename") String filename,  @QueryParam("commp") String commp,  @QueryParam("size") String size,@Context SecurityContext securityContext)
+    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("filename") String filename,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddCarPost(body,filename,commp,size,securityContext);
+        return service.contentAddCarPost(body,ignoreDupes,filename,securityContext);
     }
     @POST
     @Path("/add-ipfs")
@@ -55,9 +56,9 @@ public class ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,@Context SecurityContext securityContext)
+    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddIpfsPost(body,securityContext);
+        return service.contentAddIpfsPost(body,ignoreDupes,securityContext);
     }
     @POST
     @Path("/add")
@@ -68,9 +69,9 @@ public class ContentApi  {
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class) })
-    public Response contentAddPost(MultipartFormDataInput input, @PathParam("coluuid") String coluuid, @PathParam("dir") String dir,@Context SecurityContext securityContext)
+    public Response contentAddPost(MultipartFormDataInput input,  @QueryParam("coluuid") String coluuid,  @QueryParam("replication") Integer replication,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("lazy-provide") String lazyProvide,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddPost(input,coluuid,dir,securityContext);
+        return service.contentAddPost(input,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
     }
     @GET
     @Path("/aggregated/{content}")
@@ -117,9 +118,9 @@ public class ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) String body,@Context SecurityContext securityContext)
+    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) UtilContentCreateBody req,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentCreatePost(body,securityContext);
+        return service.contentCreatePost(req,ignoreDupes,securityContext);
     }
     @GET
     @Path("/deals")
@@ -157,6 +158,18 @@ public class ContentApi  {
     public Response contentFailuresContentGet( @PathParam("content") String content,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentFailuresContentGet(content,securityContext);
+    }
+    @GET
+    @Path("/{id}")
+    
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = Void.class, authorizations = {
+        @io.swagger.annotations.Authorization(value = "bearerAuth")
+    }, tags={ "content", })
+    @io.swagger.annotations.ApiResponses(value = {  })
+    public Response contentIdGet( @PathParam("id") Integer id,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return service.contentIdGet(id,securityContext);
     }
     @POST
     @Path("/importdeal")
@@ -215,9 +228,9 @@ public class ContentApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "content", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response contentStatsGet( @PathParam("limit") String limit,@Context SecurityContext securityContext)
+    public Response contentStatsGet( @NotNull  @QueryParam("limit") String limit, @NotNull  @QueryParam("offset") String offset,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentStatsGet(limit,securityContext);
+        return service.contentStatsGet(limit,offset,securityContext);
     }
     @GET
     @Path("/status/{id}")

@@ -5,6 +5,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,7 +33,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      */
-    public void contentAddCarPost(String body, String filename, String commp, String size) {
+    public void contentAddCarPost(String body, String ignoreDupes, String filename) {
         // TODO: Implement...
         
         
@@ -44,7 +45,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      *
      */
-    public void contentAddIpfsPost(UtilContentAddIpfsBody body) {
+    public void contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) {
         // TODO: Implement...
         
         
@@ -56,7 +57,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to upload new content.
      *
      */
-    public UtilContentAddResponse contentAddPost( Attachment fileDetail, String coluuid, String dir) {
+    public UtilContentAddResponse contentAddPost( Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
         // TODO: Implement...
         
         return null;
@@ -104,7 +105,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint adds a new content
      *
      */
-    public void contentCreatePost(String body) {
+    public void contentCreatePost(UtilContentCreateBody req, String ignoreDupes) {
         // TODO: Implement...
         
         
@@ -144,6 +145,18 @@ public class ContentApiServiceImpl implements ContentApi {
         // TODO: Implement...
         
         return null;
+    }
+    
+    /**
+     * Content
+     *
+     * This endpoint returns a content by its ID
+     *
+     */
+    public void contentIdGet(Integer id) {
+        // TODO: Implement...
+        
+        
     }
     
     /**
@@ -200,7 +213,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      *
      */
-    public void contentStatsGet(String limit) {
+    public void contentStatsGet(String limit, String offset) {
         // TODO: Implement...
         
         

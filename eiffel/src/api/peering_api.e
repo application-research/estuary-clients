@@ -24,9 +24,11 @@ inherit
 feature -- API Access
 
 
-	admin_peering_peers_delete 
+	admin_peering_peers_delete (body: LIST [STRING_32])
 			-- Remove peers on Peering Service
 			-- This endpoint can be used to remove a Peer from the Peering Service
+			-- 
+			-- argument: body Peer ids (required)
 			-- 
 			-- 
 		require
@@ -37,7 +39,7 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			
+			l_request.set_body(body)
 			l_path := "/admin/peering/peers"
 
 

@@ -1,10 +1,11 @@
-# estuary_client.Api.CollectionsApi
+# estuary-client.Api.CollectionsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CollectionsColuuidCommitPost**](CollectionsApi.md#collectionscoluuidcommitpost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**CollectionsColuuidContentsDelete**](CollectionsApi.md#collectionscoluuidcontentsdelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**CollectionsColuuidDelete**](CollectionsApi.md#collectionscoluuiddelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**CollectionsColuuidGet**](CollectionsApi.md#collectionscoluuidget) | **GET** /collections/{coluuid} | Get contents in a collection
 [**CollectionsColuuidPost**](CollectionsApi.md#collectionscoluuidpost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -25,9 +26,9 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -80,6 +81,77 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="collectionscoluuidcontentsdelete"></a>
+# **CollectionsColuuidContentsDelete**
+> string CollectionsColuuidContentsDelete (string coluuid, string contentid, MainDeleteContentFromCollectionBody body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using IO.Swagger.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class CollectionsColuuidContentsDeleteExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new CollectionsApi();
+            var coluuid = coluuid_example;  // string | Collection ID
+            var contentid = contentid_example;  // string | Content ID
+            var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+            try
+            {
+                // Deletes a content from a collection
+                string result = apiInstance.CollectionsColuuidContentsDelete(coluuid, contentid, body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CollectionsApi.CollectionsColuuidContentsDelete: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **string**| Collection ID | 
+ **contentid** | **string**| Content ID | 
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="collectionscoluuiddelete"></a>
 # **CollectionsColuuidDelete**
 > void CollectionsColuuidDelete (string coluuid)
@@ -92,9 +164,9 @@ This endpoint is used to delete an existing collection.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -158,9 +230,9 @@ This endpoint is used to get contents in a collection. If no colpath query param
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -175,7 +247,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var coluuid = coluuid_example;  // string | Collection UUID
+            var coluuid = coluuid_example;  // string | coluuid
             var dir = dir_example;  // string | Directory (optional) 
 
             try
@@ -197,7 +269,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **string**| Collection UUID | 
+ **coluuid** | **string**| coluuid | 
  **dir** | **string**| Directory | [optional] 
 
 ### Return type
@@ -217,7 +289,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionscoluuidpost"></a>
 # **CollectionsColuuidPost**
-> Dictionary<string, string> CollectionsColuuidPost (List<int?> body)
+> Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
 
 Add contents to a collection
 
@@ -227,9 +299,9 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -244,12 +316,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var body = ;  // List<int?> | Content IDs to add to collection
+            var coluuid = coluuid_example;  // string | coluuid
+            var contentIDs = ;  // List<int?> | Content IDs to add to collection
 
             try
             {
                 // Add contents to a collection
-                Dictionary&lt;string, string&gt; result = apiInstance.CollectionsColuuidPost(body);
+                Dictionary&lt;string, string&gt; result = apiInstance.CollectionsColuuidPost(coluuid, contentIDs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -265,7 +338,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List<int?>**| Content IDs to add to collection | 
+ **coluuid** | **string**| coluuid | 
+ **contentIDs** | **List<int?>**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -294,9 +368,9 @@ This endpoint adds a file to a collection
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -354,7 +428,7 @@ void (empty response body)
 
 <a name="collectionsget"></a>
 # **CollectionsGet**
-> List<MainCollection> CollectionsGet (int? id)
+> List<CollectionsCollection> CollectionsGet ()
 
 List all collections
 
@@ -364,9 +438,9 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -381,12 +455,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var id = 56;  // int? | User ID
 
             try
             {
                 // List all collections
-                List&lt;MainCollection&gt; result = apiInstance.CollectionsGet(id);
+                List&lt;CollectionsCollection&gt; result = apiInstance.CollectionsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -399,14 +472,11 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int?**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<MainCollection>**](MainCollection.md)
+[**List<CollectionsCollection>**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -421,7 +491,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionspost"></a>
 # **CollectionsPost**
-> MainCollection CollectionsPost (MainCreateCollectionBody body)
+> CollectionsCollection CollectionsPost (MainCreateCollectionBody body)
 
 Create a new collection
 
@@ -431,9 +501,9 @@ This endpoint is used to create a new collection. A collection is a representaio
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -453,7 +523,7 @@ namespace Example
             try
             {
                 // Create a new collection
-                MainCollection result = apiInstance.CollectionsPost(body);
+                CollectionsCollection result = apiInstance.CollectionsPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -473,7 +543,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

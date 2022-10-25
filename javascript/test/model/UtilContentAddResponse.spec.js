@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('UtilContentAddResponse', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.UtilContentAddResponse();
+        instance = new EstuaryClient.UtilContentAddResponse();
       });
 
       it('should create an instance of UtilContentAddResponse', function() {
         // TODO: update the code to test UtilContentAddResponse
-        expect(instance).to.be.a(EstuaryApi.UtilContentAddResponse);
+        expect(instance).to.be.a(EstuaryClient.UtilContentAddResponse);
       });
 
       it('should have the property cid (base name: "cid")', function() {

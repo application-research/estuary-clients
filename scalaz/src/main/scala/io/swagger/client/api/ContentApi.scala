@@ -27,7 +27,7 @@ object ContentApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def contentAddCarPost(host: String, body: String, filename: String, commp: String, size: String)(implicit filenameQuery: QueryParam[String], commpQuery: QueryParam[String], sizeQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddCarPost(host: String, body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/add-car"
     
     val httpMethod = Method.POST
@@ -35,7 +35,7 @@ object ContentApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("filename", Some(filenameQuery.toParamString(filename))), ("commp", Some(commpQuery.toParamString(commp))), ("size", Some(sizeQuery.toParamString(size))))
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))), ("filename", Some(filenameQuery.toParamString(filename))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -46,7 +46,7 @@ object ContentApi {
     } yield resp
   }
   
-  def contentAddIpfsPost(host: String, body: ContentAddIpfsBody): Task[Unit] = {
+  def contentAddIpfsPost(host: String, body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/add-ipfs"
     
     val httpMethod = Method.POST
@@ -54,7 +54,7 @@ object ContentApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -65,17 +65,17 @@ object ContentApi {
     } yield resp
   }
   
-  def contentAddPost(host: String, file: File, coluuid: String, dir: String): Task[ContentAddResponse] = {
+  def contentAddPost(host: String, data: File, filename: String, coluuid: String, replication: Integer, ignoreDupes: String, lazyProvide: String, dir: String)(implicit coluuidQuery: QueryParam[String], replicationQuery: QueryParam[Integer], ignoreDupesQuery: QueryParam[String], lazyProvideQuery: QueryParam[String], dirQuery: QueryParam[String]): Task[ContentAddResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ContentAddResponse] = jsonOf[ContentAddResponse]
 
-    val path = "/content/add".replaceAll("\\{" + "coluuid" + "\\}",escape(coluuid.toString)).replaceAll("\\{" + "dir" + "\\}",escape(dir.toString))
+    val path = "/content/add"
     
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("coluuid", Some(coluuidQuery.toParamString(coluuid))), ("replication", Some(replicationQuery.toParamString(replication))), ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))), ("lazyProvide", Some(lazy-provideQuery.toParamString(lazy-provide))), ("dir", Some(dirQuery.toParamString(dir))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -145,7 +145,7 @@ object ContentApi {
     } yield resp
   }
   
-  def contentCreatePost(host: String, body: String): Task[Unit] = {
+  def contentCreatePost(host: String, req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/create"
     
     val httpMethod = Method.POST
@@ -153,12 +153,12 @@ object ContentApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(req)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -219,6 +219,25 @@ object ContentApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[String](req)
+
+    } yield resp
+  }
+  
+  def contentIdGet(host: String, id: Integer): Task[Unit] = {
+    val path = "/content/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+    
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -301,15 +320,15 @@ object ContentApi {
     } yield resp
   }
   
-  def contentStatsGet(host: String, limit: String): Task[Unit] = {
-    val path = "/content/stats".replaceAll("\\{" + "limit" + "\\}",escape(limit.toString))
+  def contentStatsGet(host: String, limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[Unit] = {
+    val path = "/content/stats"
     
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("limit", Some(limitQuery.toParamString(limit))), ("offset", Some(offsetQuery.toParamString(offset))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -346,7 +365,7 @@ class HttpServiceContentApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def contentAddCarPost(body: String, filename: String, commp: String, size: String)(implicit filenameQuery: QueryParam[String], commpQuery: QueryParam[String], sizeQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddCarPost(body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/add-car"
     
     val httpMethod = Method.POST
@@ -354,7 +373,7 @@ class HttpServiceContentApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("filename", Some(filenameQuery.toParamString(filename))), ("commp", Some(commpQuery.toParamString(commp))), ("size", Some(sizeQuery.toParamString(size))))
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))), ("filename", Some(filenameQuery.toParamString(filename))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -365,7 +384,7 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentAddIpfsPost(body: ContentAddIpfsBody): Task[Unit] = {
+  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/add-ipfs"
     
     val httpMethod = Method.POST
@@ -373,7 +392,7 @@ class HttpServiceContentApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -384,17 +403,17 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentAddPost(file: File, coluuid: String, dir: String): Task[ContentAddResponse] = {
+  def contentAddPost(data: File, filename: String, coluuid: String, replication: Integer, ignoreDupes: String, lazyProvide: String, dir: String)(implicit coluuidQuery: QueryParam[String], replicationQuery: QueryParam[Integer], ignoreDupesQuery: QueryParam[String], lazyProvideQuery: QueryParam[String], dirQuery: QueryParam[String]): Task[ContentAddResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ContentAddResponse] = jsonOf[ContentAddResponse]
 
-    val path = "/content/add".replaceAll("\\{" + "coluuid" + "\\}",escape(coluuid.toString)).replaceAll("\\{" + "dir" + "\\}",escape(dir.toString))
+    val path = "/content/add"
     
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("coluuid", Some(coluuidQuery.toParamString(coluuid))), ("replication", Some(replicationQuery.toParamString(replication))), ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))), ("lazyProvide", Some(lazy-provideQuery.toParamString(lazy-provide))), ("dir", Some(dirQuery.toParamString(dir))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -464,7 +483,7 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentCreatePost(body: String): Task[Unit] = {
+  def contentCreatePost(req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
     val path = "/content/create"
     
     val httpMethod = Method.POST
@@ -472,12 +491,12 @@ class HttpServiceContentApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreDupes", Some(ignore-dupesQuery.toParamString(ignore-dupes))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(req)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -538,6 +557,25 @@ class HttpServiceContentApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[String](req)
+
+    } yield resp
+  }
+  
+  def contentIdGet(id: Integer): Task[Unit] = {
+    val path = "/content/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+    
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -620,15 +658,15 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentStatsGet(limit: String): Task[Unit] = {
-    val path = "/content/stats".replaceAll("\\{" + "limit" + "\\}",escape(limit.toString))
+  def contentStatsGet(limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[Unit] = {
+    val path = "/content/stats"
     
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("limit", Some(limitQuery.toParamString(limit))), ("offset", Some(offsetQuery.toParamString(offset))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

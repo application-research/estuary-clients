@@ -1,4 +1,4 @@
-# EstuaryApi.MainEstimateDealBody
+# EstuaryClient.MainEstimateDealBody
 
 ## Properties
 Name | Type | Description | Notes

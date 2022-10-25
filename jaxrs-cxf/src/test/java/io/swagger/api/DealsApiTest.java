@@ -198,23 +198,6 @@ public class DealsApiTest {
     }
     
     /**
-     * Transfer Status
-     *
-     * This endpoint returns the status of a transfer
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void dealTransferStatusPostTest() {
-        //api.dealTransferStatusPost();
-        
-        // TODO: test validations
-        
-        
-    }
-    
-    /**
      * Get storage failures for user
      *
      * This endpoint returns a list of storage failures for user

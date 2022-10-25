@@ -13,13 +13,17 @@ Method | HTTP request | Description
 
 
 # **AdminPeeringPeersDelete**
-> AdminPeeringPeersDelete(ctx, )
+> AdminPeeringPeersDelete(ctx, body)
 Remove peers on Peering Service
 
 This endpoint can be used to remove a Peer from the Peering Service
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | **[]string**| Peer ids | 
 
 ### Return type
 

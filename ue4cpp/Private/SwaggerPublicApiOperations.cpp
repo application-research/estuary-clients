@@ -138,6 +138,14 @@ FString SwaggerPublicApi::PublicMinersDealsMinerGetRequest::ComputePath() const
 
 	FString Path = FString::Format(TEXT("/public/miners/deals/{miner}"), PathParams);
 	
+	TArray<FString> QueryParams;
+	if(IgnoreFailed.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ignore-failed=")) + ToUrlString(IgnoreFailed.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 

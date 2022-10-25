@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -19,13 +19,14 @@ This endpoint returns all miners deals
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
+val ignoreFailed : kotlin.String = ignoreFailed_example // kotlin.String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner)
+    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#publicMinersDealsMinerGet")
     e.printStackTrace()
@@ -40,6 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **kotlin.String**| Filter by miner |
+ **ignoreFailed** | **kotlin.String**| Ignore Failed | [optional]
 
 ### Return type
 
@@ -65,8 +67,8 @@ This endpoint returns miner stats
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner

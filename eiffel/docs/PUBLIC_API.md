@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get (miner: STRING_32 )
+> public_miners_deals_miner_get (miner: STRING_32 ; ignore_failed:  detachable STRING_32 )
 	
 
 Get all miners deals
@@ -114,6 +114,7 @@ This endpoint returns all miners deals
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **STRING_32**| Filter by miner | 
+ **ignore_failed** | **STRING_32**| Ignore Failed | [optional] 
 
 ### Return type
 

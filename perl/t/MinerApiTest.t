@@ -34,7 +34,8 @@ isa_ok($api, 'WWW::SwaggerClient::MinerApi');
 #
 {
     my $miner = undef; # replace NULL with a proper value
-    my $result = $api->public_miners_deals_miner_get(miner => $miner);
+    my $ignore_failed = undef; # replace NULL with a proper value
+    my $result = $api->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
 }
 
 #

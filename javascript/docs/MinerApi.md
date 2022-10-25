@@ -1,4 +1,4 @@
-# EstuaryApi.MinerApi
+# EstuaryClient.MinerApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, opts)
 
 Get all miners deals
 
@@ -18,8 +18,8 @@ This endpoint returns all miners deals
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -27,10 +27,13 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.MinerApi();
+var apiInstance = new EstuaryClient.MinerApi();
 
 var miner = "miner_example"; // String | Filter by miner
 
+var opts = { 
+  'ignoreFailed': "ignoreFailed_example" // String | Ignore Failed
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -39,7 +42,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.publicMinersDealsMinerGet(miner, callback);
+apiInstance.publicMinersDealsMinerGet(miner, opts, callback);
 ```
 
 ### Parameters
@@ -47,6 +50,7 @@ apiInstance.publicMinersDealsMinerGet(miner, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
+ **ignoreFailed** | **String**| Ignore Failed | [optional] 
 
 ### Return type
 
@@ -71,8 +75,8 @@ This endpoint returns miner stats
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -80,7 +84,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.MinerApi();
+var apiInstance = new EstuaryClient.MinerApi();
 
 var miner = "miner_example"; // String | Filter by miner
 

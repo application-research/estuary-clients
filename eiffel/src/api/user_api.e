@@ -88,9 +88,13 @@ feature -- API Access
 			end
 		end	
 
-	user_api_keys_post : detachable MAIN_GET_API_KEYS_RESP
+	user_api_keys_post (expiry: STRING_32; perms: STRING_32): detachable MAIN_GET_API_KEYS_RESP
 			-- Create API keys for a user
 			-- This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+			-- 
+			-- argument: expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+			-- 
+			-- argument: perms Permissions -- currently unused (optional)
 			-- 
 			-- 
 			-- Result MAIN_GET_API_KEYS_RESP
@@ -104,6 +108,8 @@ feature -- API Access
 			create l_request
 			
 			l_path := "/user/api-keys"
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "expiry", expiry));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "perms", perms));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then

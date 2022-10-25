@@ -99,6 +99,8 @@ public:
     
 	/* Filter by miner */
 	FString Miner;
+	/* Ignore Failed */
+	TOptional<FString> IgnoreFailed;
 };
 
 class SWAGGER_API SwaggerPublicApi::PublicMinersDealsMinerGetResponse : public Response

@@ -1,4 +1,4 @@
-# EstuaryApi.NetApi
+# EstuaryClient.NetApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -21,8 +21,8 @@ This endpoint is used to get net addrs
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -30,7 +30,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.NetApi();
+var apiInstance = new EstuaryClient.NetApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -68,8 +68,8 @@ This endpoint returns all miners
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -77,7 +77,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.NetApi();
+var apiInstance = new EstuaryClient.NetApi();
 
 var miner = "miner_example"; // String | Filter by miner
 
@@ -121,8 +121,8 @@ This endpoint returns all miners
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -130,7 +130,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.NetApi();
+var apiInstance = new EstuaryClient.NetApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -168,8 +168,8 @@ This endpoint is used to get net addrs
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -177,7 +177,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.NetApi();
+var apiInstance = new EstuaryClient.NetApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -215,8 +215,8 @@ This endpoint is used to get net peers
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -224,7 +224,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.NetApi();
+var apiInstance = new EstuaryClient.NetApi();
 
 var callback = function(error, data, response) {
   if (error) {

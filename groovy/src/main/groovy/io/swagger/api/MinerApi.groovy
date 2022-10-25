@@ -13,7 +13,7 @@ class MinerApi {
     String basePath = "https://api.estuary.tech"
     String versionPath = "/api/v1"
 
-    def publicMinersDealsMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
+    def publicMinersDealsMinerGet ( String miner, String ignoreFailed, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/public/miners/deals/{miner}"
 
@@ -26,7 +26,9 @@ class MinerApi {
             throw new RuntimeException("missing required params miner")
         }
 
-        
+        if (!"null".equals(String.valueOf(ignoreFailed)))
+            queryParams.put("ignore-failed", String.valueOf(ignoreFailed))
+
 
         // Also still TODO: form params, body param
 

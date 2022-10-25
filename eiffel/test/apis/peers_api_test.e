@@ -18,10 +18,12 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to remove a Peer from the Peering Service 
         local
+            l_body: LIST [STRING_32]
         do
             -- TODO: Initialize required params.
+            -- create {ARRAYED_LIST [STRING_32]} l_body.make (2)
                       
-            -- api.admin_peering_peers_delete
+            -- api.admin_peering_peers_delete(l_body)
             assert ("not_implemented", False)
         end
     

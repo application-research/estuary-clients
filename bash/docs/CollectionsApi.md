@@ -5,6 +5,7 @@ All URIs are relative to **
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collectionsColuuidCommitPost**](CollectionsApi.md#collectionsColuuidCommitPost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collectionsColuuidContentsDelete**](CollectionsApi.md#collectionsColuuidContentsDelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collectionsColuuidDelete**](CollectionsApi.md#collectionsColuuidDelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collectionsColuuidGet**](CollectionsApi.md#collectionsColuuidGet) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collectionsColuuidPost**](CollectionsApi.md#collectionsColuuidPost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -29,6 +30,40 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string** | coluuid |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not Applicable
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **collectionsColuuidContentsDelete**
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```bash
+ collectionsColuuidContentsDelete coluuid=value contentid=value
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **string** | Collection ID |
+ **contentid** | **string** | Content ID |
+ **body** | [**Main.deleteContentFromCollectionBody**](Main.deleteContentFromCollectionBody.md) | Variable to use when filtering for files (must be either 'path' or 'content_id') |
 
 ### Return type
 
@@ -85,14 +120,14 @@ This endpoint is used to get contents in a collection. If no colpath query param
 
 ### Example
 ```bash
- collectionsColuuidGet  coluuid=value  dir=value
+ collectionsColuuidGet coluuid=value  dir=value
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **string** | Collection UUID |
+ **coluuid** | **string** | coluuid |
  **dir** | **string** | Directory | [optional]
 
 ### Return type
@@ -118,14 +153,15 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 
 ### Example
 ```bash
- collectionsColuuidPost
+ collectionsColuuidPost coluuid=value
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **array[integer]** | Content IDs to add to collection |
+ **coluuid** | **string** | coluuid |
+ **contentIDs** | **array[integer]** | Content IDs to add to collection |
 
 ### Return type
 
@@ -184,18 +220,15 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 ### Example
 ```bash
- collectionsGet id=value
+ collectionsGet
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **integer** | User ID |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**array[Main.Collection]**](Main.Collection.md)
+[**array[Collections.Collection]**](Collections.Collection.md)
 
 ### Authorization
 
@@ -227,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Main.Collection**](Main.Collection.md)
+[**Collections.Collection**](Collections.Collection.md)
 
 ### Authorization
 

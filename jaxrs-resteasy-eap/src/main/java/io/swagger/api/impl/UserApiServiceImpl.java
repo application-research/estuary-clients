@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public class UserApiServiceImpl implements UserApi {
       public Response userApiKeysGet(SecurityContext securityContext) {
       // do some magic!
@@ -25,7 +25,7 @@ public class UserApiServiceImpl implements UserApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response userApiKeysPost(SecurityContext securityContext) {
+      public Response userApiKeysPost(String expiry,String perms,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

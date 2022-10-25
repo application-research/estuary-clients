@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('MainCreateCollectionBody', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.MainCreateCollectionBody();
+        instance = new EstuaryClient.MainCreateCollectionBody();
       });
 
       it('should create an instance of MainCreateCollectionBody', function() {
         // TODO: update the code to test MainCreateCollectionBody
-        expect(instance).to.be.a(EstuaryApi.MainCreateCollectionBody);
+        expect(instance).to.be.a(EstuaryClient.MainCreateCollectionBody);
       });
 
       it('should have the property description (base name: "description")', function() {

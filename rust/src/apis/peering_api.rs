@@ -35,7 +35,7 @@ impl<C: hyper::client::Connect> PeeringApiClient<C> {
 }
 
 pub trait PeeringApi {
-    fn admin_peering_peers_delete(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn admin_peering_peers_delete(&self, body: Vec<String>) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn admin_peering_peers_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn admin_peering_peers_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
     fn admin_peering_start_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
@@ -45,7 +45,7 @@ pub trait PeeringApi {
 
 
 impl<C: hyper::client::Connect>PeeringApi for PeeringApiClient<C> {
-    fn admin_peering_peers_delete(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_peers_delete(&self, body: Vec<String>) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -86,6 +86,10 @@ impl<C: hyper::client::Connect>PeeringApi for PeeringApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
+        let serialized = serde_json::to_string(&body).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
 
         // send request
         Box::new(

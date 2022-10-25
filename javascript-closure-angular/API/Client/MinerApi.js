@@ -46,10 +46,11 @@ API.Client.MinerApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Get all miners deals
  * This endpoint returns all miners deals
  * @param {!string} miner Filter by miner
+ * @param {!string=} opt_ignoreFailed Ignore Failed
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.MinerApi.prototype.publicMinersDealsMinerGet = function(miner, opt_extraHttpRequestParams) {
+API.Client.MinerApi.prototype.publicMinersDealsMinerGet = function(miner, opt_ignoreFailed, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/public/miners/deals/{miner}'
       .replace('{' + 'miner' + '}', String(miner));
@@ -63,6 +64,10 @@ API.Client.MinerApi.prototype.publicMinersDealsMinerGet = function(miner, opt_ex
   if (!miner) {
     throw new Error('Missing required parameter miner when calling publicMinersDealsMinerGet');
   }
+  if (opt_ignoreFailed !== undefined) {
+    queryParameters['ignore-failed'] = opt_ignoreFailed;
+  }
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'GET',

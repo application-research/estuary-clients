@@ -5,12 +5,16 @@
  * Add new content
  * This endpoint is used to upload new content.
  *
- * file File File to upload
- * coluuid String Collection UUID
- * dir String Directory
+ * data File File to upload
+ * filename String Filenam to use for upload (optional)
+ * coluuid String Collection UUID (optional)
+ * replication Integer Replication value (optional)
+ * ignoreDupes String Ignore Dupes true/false (optional)
+ * lazyProvide String Lazy Provide true/false (optional)
+ * dir String Directory (optional)
  * returns util.ContentAddResponse
  **/
-exports.contentAddPOST = function(file,coluuid,dir) {
+exports.contentAddPOST = function(data,filename,coluuid,replication,ignoreDupes,lazyProvide,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {"empty": false};
@@ -28,12 +32,11 @@ exports.contentAddPOST = function(file,coluuid,dir) {
  * This endpoint is used to add a car object to the network. The object can be a file or a directory.
  *
  * body String Car
+ * ignoreDupes String Ignore Dupes (optional)
  * filename String Filename (optional)
- * commp String Commp (optional)
- * size String Size (optional)
  * no response value expected for this operation
  **/
-exports.contentAdd_carPOST = function(body,filename,commp,size) {
+exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -45,9 +48,10 @@ exports.contentAdd_carPOST = function(body,filename,commp,size) {
  * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
  *
  * body Util.ContentAddIpfsBody IPFS Body
+ * ignoreDupes String Ignore Dupes (optional)
  * no response value expected for this operation
  **/
-exports.contentAdd_ipfsPOST = function(body) {
+exports.contentAdd_ipfsPOST = function(body,ignoreDupes) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -111,10 +115,11 @@ exports.contentBw_usageContentGET = function(content) {
  * Add a new content
  * This endpoint adds a new content
  *
- * body String Content
+ * req Util.ContentCreateBody Content
+ * ignoreDupes String Ignore Dupes (optional)
  * no response value expected for this operation
  **/
-exports.contentCreatePOST = function(body) {
+exports.contentCreatePOST = function(req,ignoreDupes) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -169,6 +174,20 @@ exports.contentFailuresContentGET = function(content) {
     } else {
       resolve();
     }
+  });
+}
+
+
+/**
+ * Content
+ * This endpoint returns a content by its ID
+ *
+ * id Integer Content ID
+ * no response value expected for this operation
+ **/
+exports.contentIdGET = function(id) {
+  return new Promise(function(resolve, reject) {
+    resolve();
   });
 }
 
@@ -238,9 +257,10 @@ exports.contentStaging_zonesGET = function() {
  * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
  *
  * limit String limit
+ * offset String offset
  * no response value expected for this operation
  **/
-exports.contentStatsGET = function(limit) {
+exports.contentStatsGET = function(limit,offset) {
   return new Promise(function(resolve, reject) {
     resolve();
   });

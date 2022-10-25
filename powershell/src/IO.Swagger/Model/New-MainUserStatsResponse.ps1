@@ -10,10 +10,10 @@ function New-MainUserStatsResponse {
     )
 
     Process {
-        'Creating object: estuary_client.Model.MainUserStatsResponse' | Write-Verbose
+        'Creating object: estuary-client.Model.MainUserStatsResponse' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName estuary_client.Model.MainUserStatsResponse -ArgumentList @(
+        New-Object -TypeName estuary-client.Model.MainUserStatsResponse -ArgumentList @(
             ${numPins},
             ${totalSize}
         )

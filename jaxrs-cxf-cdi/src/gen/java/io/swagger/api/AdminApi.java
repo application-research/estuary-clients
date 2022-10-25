@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import java.util.List;
 import io.swagger.api.AdminApiService;
 
 import javax.ws.rs.*;
@@ -24,7 +25,7 @@ import javax.validation.constraints.*;
 @Api(description = "the admin API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 
 public class AdminApi  {
 
@@ -65,8 +66,8 @@ public class AdminApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "admin", "peering", "peers",  })
     @ApiResponses(value = {  })
-    public Response adminPeeringPeersDelete() {
-        return delegate.adminPeeringPeersDelete(securityContext);
+    public Response adminPeeringPeersDelete(@ApiParam(value = "Peer ids" ,required=true) List<String> body) {
+        return delegate.adminPeeringPeersDelete(body, securityContext);
     }
 
     @GET

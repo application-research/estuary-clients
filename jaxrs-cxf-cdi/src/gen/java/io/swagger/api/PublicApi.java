@@ -24,7 +24,7 @@ import javax.validation.constraints.*;
 @Api(description = "the public API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 
 public class PublicApi  {
 
@@ -89,8 +89,8 @@ public class PublicApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "public", "miner",  })
     @ApiResponses(value = {  })
-    public Response publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathParam("miner") String miner) {
-        return delegate.publicMinersDealsMinerGet(miner, securityContext);
+    public Response publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathParam("miner") String miner,  @ApiParam(value = "Ignore Failed")  @QueryParam("ignore-failed") String ignoreFailed) {
+        return delegate.publicMinersDealsMinerGet(miner, ignoreFailed, securityContext);
     }
 
     @GET

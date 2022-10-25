@@ -64,13 +64,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_post**
-> ::models::MainGetApiKeysResp user_api_keys_post(ctx, )
+> ::models::MainGetApiKeysResp user_api_keys_post(ctx, optional)
 Create API keys for a user
 
 This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | 
+ **perms** | **String**| Permissions -- currently unused | 
 
 ### Return type
 

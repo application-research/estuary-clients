@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collectionsColuuidCommitPost**](CollectionsApi.md#collectionsColuuidCommitPost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collectionsColuuidContentsDelete**](CollectionsApi.md#collectionsColuuidContentsDelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collectionsColuuidDelete**](CollectionsApi.md#collectionsColuuidDelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collectionsColuuidGet**](CollectionsApi.md#collectionsColuuidGet) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collectionsColuuidPost**](CollectionsApi.md#collectionsColuuidPost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -24,8 +25,8 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
@@ -60,6 +61,57 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="collectionsColuuidContentsDelete"></a>
+# **collectionsColuuidContentsDelete**
+> kotlin.String collectionsColuuidContentsDelete(coluuid, contentid, body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
+
+val apiInstance = CollectionsApi()
+val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
+val contentid : kotlin.String = contentid_example // kotlin.String | Content ID
+val body : MaindeleteContentFromCollectionBody =  // MaindeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+try {
+    val result : kotlin.String = apiInstance.collectionsColuuidContentsDelete(coluuid, contentid, body)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling CollectionsApi#collectionsColuuidContentsDelete")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling CollectionsApi#collectionsColuuidContentsDelete")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **kotlin.String**| Collection ID |
+ **contentid** | **kotlin.String**| Content ID |
+ **body** | [**MaindeleteContentFromCollectionBody**](MaindeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
 > collectionsColuuidDelete(coluuid)
@@ -71,8 +123,8 @@ This endpoint is used to delete an existing collection.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
@@ -117,11 +169,11 @@ This endpoint is used to get contents in a collection. If no colpath query param
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
-val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
+val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
 val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
     val result : kotlin.String = apiInstance.collectionsColuuidGet(coluuid, dir)
@@ -139,7 +191,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **kotlin.String**| Collection UUID |
+ **coluuid** | **kotlin.String**| coluuid |
  **dir** | **kotlin.String**| Directory | [optional]
 
 ### Return type
@@ -157,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; collectionsColuuidPost(body)
+> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -166,13 +218,14 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
-val body : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
+val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
+val contentIDs : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
 try {
-    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.collectionsColuuidPost(body)
+    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.collectionsColuuidPost(coluuid, contentIDs)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidPost")
@@ -187,7 +240,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **kotlin.Array&lt;kotlin.Int&gt;**| Content IDs to add to collection |
+ **coluuid** | **kotlin.String**| coluuid |
+ **contentIDs** | **kotlin.Array&lt;kotlin.Int&gt;**| Content IDs to add to collection |
 
 ### Return type
 
@@ -213,8 +267,8 @@ This endpoint adds a file to a collection
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
@@ -254,7 +308,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> kotlin.Array&lt;MainCollection&gt; collectionsGet(id)
+> kotlin.Array&lt;CollectionsCollection&gt; collectionsGet()
 
 List all collections
 
@@ -263,13 +317,12 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
-val id : kotlin.Int = 56 // kotlin.Int | User ID
 try {
-    val result : kotlin.Array<MainCollection> = apiInstance.collectionsGet(id)
+    val result : kotlin.Array<CollectionsCollection> = apiInstance.collectionsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsGet")
@@ -281,14 +334,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **kotlin.Int**| User ID |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**kotlin.Array&lt;MainCollection&gt;**](MainCollection.md)
+[**kotlin.Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -301,7 +351,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsPost"></a>
 # **collectionsPost**
-> MainCollection collectionsPost(body)
+> CollectionsCollection collectionsPost(body)
 
 Create a new collection
 
@@ -310,13 +360,13 @@ This endpoint is used to create a new collection. A collection is a representaio
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = CollectionsApi()
 val body : MaincreateCollectionBody =  // MaincreateCollectionBody | Collection name and description
 try {
-    val result : MainCollection = apiInstance.collectionsPost(body)
+    val result : CollectionsCollection = apiInstance.collectionsPost(body)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsPost")
@@ -335,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

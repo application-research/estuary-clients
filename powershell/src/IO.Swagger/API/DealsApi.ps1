@@ -2,7 +2,7 @@ function Invoke-DealsApiDealEstimatePost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [estuary_client.Model.MainEstimateDealBody]
+        [estuary-client.Model.MainEstimateDealBody]
         ${body}
     )
 
@@ -120,20 +120,6 @@ function Invoke-DealsApiDealTransferInProgressGet {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:DealsApi.DealTransferInProgressGet(
-        )
-    }
-}
-
-function Invoke-DealsApiDealTransferStatusPost {
-    [CmdletBinding()]
-    Param (
-    )
-
-    Process {
-        'Calling method: DealsApi-DealTransferStatusPost' | Write-Verbose
-        $PSBoundParameters | Out-DebugParameter | Write-Debug
-
-        $Script:DealsApi.DealTransferStatusPost(
         )
     }
 }

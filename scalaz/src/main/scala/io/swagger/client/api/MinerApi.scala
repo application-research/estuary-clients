@@ -27,7 +27,7 @@ object MinerApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def publicMinersDealsMinerGet(host: String, miner: String): Task[Unit] = {
+  def publicMinersDealsMinerGet(host: String, miner: String, ignoreFailed: String)(implicit ignoreFailedQuery: QueryParam[String]): Task[Unit] = {
     val path = "/public/miners/deals/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -35,7 +35,7 @@ object MinerApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreFailed", Some(ignore-failedQuery.toParamString(ignore-failed))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -72,7 +72,7 @@ class HttpServiceMinerApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def publicMinersDealsMinerGet(miner: String): Task[Unit] = {
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: String)(implicit ignoreFailedQuery: QueryParam[String]): Task[Unit] = {
     val path = "/public/miners/deals/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -80,7 +80,7 @@ class HttpServiceMinerApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ignoreFailed", Some(ignore-failedQuery.toParamString(ignore-failed))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))

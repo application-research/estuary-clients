@@ -11,7 +11,7 @@
 -}
 
 
-module Request.Deals exposing (dealEstimatePost, dealInfoDealidGet, dealProposalPropcidGet, dealQueryMinerGet, dealStatusByProposalPropcidGet, dealStatusMinerPropcidGet, dealTransferInProgressGet, dealTransferStatusPost, dealsFailuresGet, dealsMakeMinerPost, dealsStatusDealGet, publicDealsFailuresGet, publicMinersStorageQueryMinerGet)
+module Request.Deals exposing (dealEstimatePost, dealInfoDealidGet, dealProposalPropcidGet, dealQueryMinerGet, dealStatusByProposalPropcidGet, dealStatusMinerPropcidGet, dealTransferInProgressGet, dealsFailuresGet, dealsMakeMinerPost, dealsStatusDealGet, publicDealsFailuresGet, publicMinersStorageQueryMinerGet)
 
 import Data.MainEstimateDealBody exposing (MainEstimateDealBody, mainEstimateDealBodyEncoder)
 import Data.String exposing (Encode.string, String)
@@ -127,22 +127,6 @@ dealTransferInProgressGet : Http.Request
 dealTransferInProgressGet =
     { method = "GET"
     , url = basePath ++ "/deal/transfer/in-progress"
-    , headers = []
-    , body = Http.emptyBody
-    , expect = 
-    , timeout = Just 30000
-    , withCredentials = False
-    }
-        |> Http.request
-
-
-{-
-   This endpoint returns the status of a transfer
--}
-dealTransferStatusPost : Http.Request 
-dealTransferStatusPost =
-    { method = "POST"
-    , url = basePath ++ "/deal/transfer/status"
     , headers = []
     , body = Http.emptyBody
     , expect = 

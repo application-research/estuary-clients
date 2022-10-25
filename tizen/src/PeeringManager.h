@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include <list>
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -26,24 +27,26 @@ public:
 /*! \brief Remove peers on Peering Service. *Synchronous*
  *
  * This endpoint can be used to remove a Peer from the Peering Service
+ * \param body Peer ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool adminPeeringPeersDeleteSync(char * accessToken,
-	
+	std::list<> body, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 
 /*! \brief Remove peers on Peering Service. *Asynchronous*
  *
  * This endpoint can be used to remove a Peer from the Peering Service
+ * \param body Peer ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool adminPeeringPeersDeleteAsync(char * accessToken,
-	
+	std::list<> body, 
 	
 	void(* handler)(Error, void* ) , void* userData);
 

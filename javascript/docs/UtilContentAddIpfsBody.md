@@ -1,4 +1,4 @@
-# EstuaryApi.UtilContentAddIpfsBody
+# EstuaryClient.UtilContentAddIpfsBody
 
 ## Properties
 Name | Type | Description | Notes

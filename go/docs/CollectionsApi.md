@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CollectionsColuuidCommitPost**](CollectionsApi.md#CollectionsColuuidCommitPost) | **Post** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**CollectionsColuuidContentsDelete**](CollectionsApi.md#CollectionsColuuidContentsDelete) | **Delete** /collections/{coluuid}/contents | Deletes a content from a collection
 [**CollectionsColuuidDelete**](CollectionsApi.md#CollectionsColuuidDelete) | **Delete** /collections/{coluuid} | Deletes a collection
 [**CollectionsColuuidGet**](CollectionsApi.md#CollectionsColuuidGet) | **Get** /collections/{coluuid} | Get contents in a collection
 [**CollectionsColuuidPost**](CollectionsApi.md#CollectionsColuuidPost) | **Post** /collections/{coluuid} | Add contents to a collection
@@ -25,6 +26,36 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **coluuid** | **string**| coluuid | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **CollectionsColuuidContentsDelete**
+> string CollectionsColuuidContentsDelete(ctx, coluuid, contentid, body)
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **coluuid** | **string**| Collection ID | 
+  **contentid** | **string**| Content ID | 
+  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -80,7 +111,7 @@ This endpoint is used to get contents in a collection. If no colpath query param
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **coluuid** | **string**| Collection UUID | 
+  **coluuid** | **string**| coluuid | 
  **optional** | ***CollectionsApiCollectionsColuuidGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -107,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidPost**
-> map[string]string CollectionsColuuidPost(ctx, body)
+> map[string]string CollectionsColuuidPost(ctx, coluuid, contentIDs)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -117,7 +148,8 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | **[]int32**| Content IDs to add to collection | 
+  **coluuid** | **string**| coluuid | 
+  **contentIDs** | **[]int32**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -165,21 +197,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsGet**
-> []MainCollection CollectionsGet(ctx, id)
+> []CollectionsCollection CollectionsGet(ctx, )
 List all collections
 
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | **int32**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]MainCollection**](main.Collection.md)
+[**[]CollectionsCollection**](collections.Collection.md)
 
 ### Authorization
 
@@ -193,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsPost**
-> MainCollection CollectionsPost(ctx, body)
+> CollectionsCollection CollectionsPost(ctx, body)
 Create a new collection
 
 This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
@@ -207,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](main.Collection.md)
+[**CollectionsCollection**](collections.Collection.md)
 
 ### Authorization
 

@@ -50,11 +50,10 @@ export class ContentApi {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @summary Add Car object
      * @param body Car
+     * @param ignoreDupes Ignore Dupes
      * @param filename Filename
-     * @param commp Commp
-     * @param size Size
      */
-    public contentAddCarPost(body: string, filename?: string, commp?: string, size?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
         let localVarPath = this.basePath + '/content/add-car';
 
         let queryParameters: any = {};
@@ -64,14 +63,11 @@ export class ContentApi {
             throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
         }
 
+        if (ignoreDupes !== null && ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = <string><any>ignoreDupes;
+        }
         if (filename !== null && filename !== undefined) {
             queryParameters['filename'] = <string><any>filename;
-        }
-        if (commp !== null && commp !== undefined) {
-            queryParameters['commp'] = <string><any>commp;
-        }
-        if (size !== null && size !== undefined) {
-            queryParameters['size'] = <string><any>size;
         }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
@@ -126,8 +122,9 @@ export class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
      * @param body IPFS Body
+     * @param ignoreDupes Ignore Dupes
      */
-    public contentAddIpfsPost(body: models.UtilContentAddIpfsBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentAddIpfsPost(body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
         let localVarPath = this.basePath + '/content/add-ipfs';
 
         let queryParameters: any = {};
@@ -137,6 +134,9 @@ export class ContentApi {
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
         }
 
+        if (ignoreDupes !== null && ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = <string><any>ignoreDupes;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header
@@ -189,37 +189,49 @@ export class ContentApi {
     /**
      * This endpoint is used to upload new content.
      * @summary Add new content
-     * @param file File to upload
+     * @param data File to upload
+     * @param filename Filenam to use for upload
      * @param coluuid Collection UUID
+     * @param replication Replication value
+     * @param ignoreDupes Ignore Dupes true/false
+     * @param lazyProvide Lazy Provide true/false
      * @param dir Directory
      */
-    public contentAddPost(file: any, coluuid: string, dir: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.UtilContentAddResponse;  }> {
-        let localVarPath = this.basePath + '/content/add'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid))).replace('{' + 'dir' + '}', encodeURIComponent(String(dir)));
+    public contentAddPost(data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.UtilContentAddResponse;  }> {
+        let localVarPath = this.basePath + '/content/add';
 
         let queryParameters: any = {};
         let headerParams: any = {};
         let formParams = new FormData();
         let reqHasFile = false;
 
-        // verify required parameter 'file' is not null or undefined
-        if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling contentAddPost.');
+        // verify required parameter 'data' is not null or undefined
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
         }
 
-        // verify required parameter 'coluuid' is not null or undefined
-        if (coluuid === null || coluuid === undefined) {
-            throw new Error('Required parameter coluuid was null or undefined when calling contentAddPost.');
+        if (coluuid !== null && coluuid !== undefined) {
+            queryParameters['coluuid'] = <string><any>coluuid;
         }
-
-        // verify required parameter 'dir' is not null or undefined
-        if (dir === null || dir === undefined) {
-            throw new Error('Required parameter dir was null or undefined when calling contentAddPost.');
+        if (replication !== null && replication !== undefined) {
+            queryParameters['replication'] = <string><any>replication;
         }
-
+        if (ignoreDupes !== null && ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = <string><any>ignoreDupes;
+        }
+        if (lazyProvide !== null && lazyProvide !== undefined) {
+            queryParameters['lazy-provide'] = <string><any>lazyProvide;
+        }
+        if (dir !== null && dir !== undefined) {
+            queryParameters['dir'] = <string><any>dir;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         reqHasFile = true;
-        formParams.append("file", file);
+        formParams.append("data", data);
+        if (filename !== null && filename !== undefined) {
+            formParams.append('filename', <any>filename);
+        }
         // to determine the Content-Type header
         let consumes: string[] = [
             'multipart/form-data'
@@ -480,18 +492,22 @@ export class ContentApi {
     /**
      * This endpoint adds a new content
      * @summary Add a new content
-     * @param body Content
+     * @param req Content
+     * @param ignoreDupes Ignore Dupes
      */
-    public contentCreatePost(body: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentCreatePost(req: models.UtilContentCreateBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
         let localVarPath = this.basePath + '/content/create';
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling contentCreatePost.');
+        // verify required parameter 'req' is not null or undefined
+        if (req === null || req === undefined) {
+            throw new Error('Required parameter req was null or undefined when calling contentCreatePost.');
         }
 
+        if (ignoreDupes !== null && ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = <string><any>ignoreDupes;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header
@@ -518,7 +534,7 @@ export class ContentApi {
             processData: false
         };
 
-        requestOptions.data = JSON.stringify(body);
+        requestOptions.data = JSON.stringify(req);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }
@@ -719,6 +735,67 @@ export class ContentApi {
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
             (data: string, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve(jqXHR, data),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject(xhr, errorThrown)
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint returns a content by its ID
+     * @summary Content
+     * @param id Content ID
+     */
+    public contentIdGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+        let localVarPath = this.basePath + '/content/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling contentIdGet.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'GET',
+            headers: headerParams,
+            processData: false
+        };
+
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred();
+        $.ajax(requestOptions).then(
+            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -965,9 +1042,10 @@ export class ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @summary Get content statistics
      * @param limit limit
+     * @param offset offset
      */
-    public contentStatsGet(limit: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
-        let localVarPath = this.basePath + '/content/stats'.replace('{' + 'limit' + '}', encodeURIComponent(String(limit)));
+    public contentStatsGet(limit: string, offset: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+        let localVarPath = this.basePath + '/content/stats';
 
         let queryParameters: any = {};
         let headerParams: any = {};
@@ -976,6 +1054,17 @@ export class ContentApi {
             throw new Error('Required parameter limit was null or undefined when calling contentStatsGet.');
         }
 
+        // verify required parameter 'offset' is not null or undefined
+        if (offset === null || offset === undefined) {
+            throw new Error('Required parameter offset was null or undefined when calling contentStatsGet.');
+        }
+
+        if (limit !== null && limit !== undefined) {
+            queryParameters['limit'] = <string><any>limit;
+        }
+        if (offset !== null && offset !== undefined) {
+            queryParameters['offset'] = <string><any>offset;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header

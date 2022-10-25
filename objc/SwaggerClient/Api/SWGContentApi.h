@@ -2,6 +2,7 @@
 #import "SWGMainImportDealBody.h"
 #import "SWGUtilContentAddIpfsBody.h"
 #import "SWGUtilContentAddResponse.h"
+#import "SWGUtilContentCreateBody.h"
 #import "SWGApi.h"
 
 /**
@@ -29,16 +30,14 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
 ///
 /// @param body Car
+/// @param ignoreDupes Ignore Dupes (optional)
 /// @param filename Filename (optional)
-/// @param commp Commp (optional)
-/// @param size Size (optional)
 /// 
 ///
 /// @return void
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
+    ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-    commp: (NSString*) commp
-    size: (NSString*) size
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -46,25 +45,35 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 ///
 /// @param body IPFS Body
+/// @param ignoreDupes Ignore Dupes (optional)
 /// 
 ///
 /// @return void
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
+    ignoreDupes: (NSString*) ignoreDupes
     completionHandler: (void (^)(NSError* error)) handler;
 
 
 /// Add new content
 /// This endpoint is used to upload new content.
 ///
-/// @param file File to upload
-/// @param coluuid Collection UUID
-/// @param dir Directory
+/// @param data File to upload
+/// @param filename Filenam to use for upload (optional)
+/// @param coluuid Collection UUID (optional)
+/// @param replication Replication value (optional)
+/// @param ignoreDupes Ignore Dupes true/false (optional)
+/// @param lazyProvide Lazy Provide true/false (optional)
+/// @param dir Directory (optional)
 /// 
 ///  code:200 message:"OK"
 ///
 /// @return SWGUtilContentAddResponse*
--(NSURLSessionTask*) contentAddPostWithFile: (NSURL*) file
+-(NSURLSessionTask*) contentAddPostWithData: (NSURL*) data
+    filename: (NSString*) filename
     coluuid: (NSString*) coluuid
+    replication: (NSNumber*) replication
+    ignoreDupes: (NSString*) ignoreDupes
+    lazyProvide: (NSString*) lazyProvide
     dir: (NSString*) dir
     completionHandler: (void (^)(SWGUtilContentAddResponse* output, NSError* error)) handler;
 
@@ -110,11 +119,13 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// Add a new content
 /// This endpoint adds a new content
 ///
-/// @param body Content
+/// @param req Content
+/// @param ignoreDupes Ignore Dupes (optional)
 /// 
 ///
 /// @return void
--(NSURLSessionTask*) contentCreatePostWithBody: (NSString*) body
+-(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
+    ignoreDupes: (NSString*) ignoreDupes
     completionHandler: (void (^)(NSError* error)) handler;
 
 
@@ -152,6 +163,17 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @return NSString*
 -(NSURLSessionTask*) contentFailuresContentGetWithContent: (NSString*) content
     completionHandler: (void (^)(NSString* output, NSError* error)) handler;
+
+
+/// Content
+/// This endpoint returns a content by its ID
+///
+/// @param _id Content ID
+/// 
+///
+/// @return void
+-(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
+    completionHandler: (void (^)(NSError* error)) handler;
 
 
 /// Import a deal
@@ -201,10 +223,12 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 ///
 /// @param limit limit
+/// @param offset offset
 /// 
 ///
 /// @return void
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
+    offset: (NSString*) offset
     completionHandler: (void (^)(NSError* error)) handler;
 
 

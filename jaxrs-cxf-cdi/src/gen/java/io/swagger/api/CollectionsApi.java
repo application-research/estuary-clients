@@ -1,8 +1,9 @@
 package io.swagger.api;
 
+import io.swagger.model.CollectionsCollection;
 import java.util.List;
-import io.swagger.model.MainCollection;
 import io.swagger.model.MainCreateCollectionBody;
+import io.swagger.model.MainDeleteContentFromCollectionBody;
 import java.util.Map;
 import io.swagger.model.UtilHttpError;
 import io.swagger.api.CollectionsApiService;
@@ -29,7 +30,7 @@ import javax.validation.constraints.*;
 @Api(description = "the collections API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 
 public class CollectionsApi  {
 
@@ -49,6 +50,20 @@ public class CollectionsApi  {
         @ApiResponse(code = 200, message = "OK", response = String.class) })
     public Response collectionsColuuidCommitPost(@ApiParam(value = "coluuid",required=true) @PathParam("coluuid") String coluuid) {
         return delegate.collectionsColuuidCommitPost(coluuid, securityContext);
+    }
+
+    @DELETE
+    @Path("/{coluuid}/contents")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Deletes a content from a collection", notes = "This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path", response = String.class, authorizations = {
+        @Authorization(value = "bearerAuth")
+    }, tags={ "collections",  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class) })
+    public Response collectionsColuuidContentsDelete(@ApiParam(value = "Collection ID",required=true) @PathParam("coluuid") String coluuid, @ApiParam(value = "Content ID",required=true) @PathParam("contentid") String contentid, @ApiParam(value = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body) {
+        return delegate.collectionsColuuidContentsDelete(coluuid, contentid, body, securityContext);
     }
 
     @DELETE
@@ -72,7 +87,7 @@ public class CollectionsApi  {
     }, tags={ "collections",  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class) })
-    public Response collectionsColuuidGet( @NotNull @ApiParam(value = "Collection UUID",required=true)  @QueryParam("coluuid") String coluuid,  @ApiParam(value = "Directory")  @QueryParam("dir") String dir) {
+    public Response collectionsColuuidGet(@ApiParam(value = "coluuid",required=true) @PathParam("coluuid") String coluuid,  @ApiParam(value = "Directory")  @QueryParam("dir") String dir) {
         return delegate.collectionsColuuidGet(coluuid, dir, securityContext);
     }
 
@@ -85,8 +100,8 @@ public class CollectionsApi  {
     }, tags={ "collections",  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Map.class, responseContainer = "Map") })
-    public Response collectionsColuuidPost(@ApiParam(value = "Content IDs to add to collection" ,required=true) List<Integer> body) {
-        return delegate.collectionsColuuidPost(body, securityContext);
+    public Response collectionsColuuidPost(@ApiParam(value = "coluuid",required=true) @PathParam("coluuid") String coluuid, @ApiParam(value = "Content IDs to add to collection" ,required=true) List<Integer> contentIDs) {
+        return delegate.collectionsColuuidPost(coluuid, contentIDs, securityContext);
     }
 
     @POST
@@ -105,27 +120,27 @@ public class CollectionsApi  {
     @Path("/")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all collections", notes = "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.", response = MainCollection.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "List all collections", notes = "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.", response = CollectionsCollection.class, responseContainer = "List", authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "collections",  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainCollection.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response collectionsGet(@ApiParam(value = "User ID",required=true) @PathParam("id") Integer id) {
-        return delegate.collectionsGet(id, securityContext);
+    public Response collectionsGet() {
+        return delegate.collectionsGet(securityContext);
     }
 
     @POST
     @Path("/")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a new collection", notes = "This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.", response = MainCollection.class, authorizations = {
+    @ApiOperation(value = "Create a new collection", notes = "This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.", response = CollectionsCollection.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainCollection.class),
+        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })

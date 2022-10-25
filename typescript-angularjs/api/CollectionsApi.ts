@@ -56,6 +56,49 @@ export class CollectionsApi {
         return this.$http(httpRequestParams);
     }
     /**
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @summary Deletes a content from a collection
+     * @param coluuid Collection ID
+     * @param contentid Content ID
+     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+     */
+    public collectionsColuuidContentsDelete (coluuid: string, contentid: string, body: models.MainDeleteContentFromCollectionBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+        const localVarPath = this.basePath + '/collections/{coluuid}/contents'
+            .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)))
+            .replace('{' + 'contentid' + '}', encodeURIComponent(String(contentid)));
+
+        let queryParameters: any = {};
+        let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        // verify required parameter 'coluuid' is not null or undefined
+        if (coluuid === null || coluuid === undefined) {
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        // verify required parameter 'contentid' is not null or undefined
+        if (contentid === null || contentid === undefined) {
+            throw new Error('Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        let httpRequestParams: ng.IRequestConfig = {
+            method: 'DELETE',
+            url: localVarPath,
+            data: body,
+            params: queryParameters,
+            headers: headerParams
+        };
+
+        if (extraHttpRequestParams) {
+            httpRequestParams = (<any>Object).assign(httpRequestParams, extraHttpRequestParams);
+        }
+
+        return this.$http(httpRequestParams);
+    }
+    /**
      * This endpoint is used to delete an existing collection.
      * @summary Deletes a collection
      * @param coluuid Collection ID
@@ -87,21 +130,18 @@ export class CollectionsApi {
     /**
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
      * @summary Get contents in a collection
-     * @param coluuid Collection UUID
+     * @param coluuid coluuid
      * @param dir Directory
      */
     public collectionsColuuidGet (coluuid: string, dir?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
-        const localVarPath = this.basePath + '/collections/{coluuid}';
+        const localVarPath = this.basePath + '/collections/{coluuid}'
+            .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
         // verify required parameter 'coluuid' is not null or undefined
         if (coluuid === null || coluuid === undefined) {
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidGet.');
-        }
-
-        if (coluuid !== undefined) {
-            queryParameters['coluuid'] = coluuid;
         }
 
         if (dir !== undefined) {
@@ -124,22 +164,29 @@ export class CollectionsApi {
     /**
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @summary Add contents to a collection
-     * @param body Content IDs to add to collection
+     * @param coluuid coluuid
+     * @param contentIDs Content IDs to add to collection
      */
-    public collectionsColuuidPost (body: Array<number>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{ [key: string]: string; }> {
-        const localVarPath = this.basePath + '/collections/{coluuid}';
+    public collectionsColuuidPost (coluuid: string, contentIDs: Array<number>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{ [key: string]: string; }> {
+        const localVarPath = this.basePath + '/collections/{coluuid}'
+            .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidPost.');
+        // verify required parameter 'coluuid' is not null or undefined
+        if (coluuid === null || coluuid === undefined) {
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
+        }
+
+        // verify required parameter 'contentIDs' is not null or undefined
+        if (contentIDs === null || contentIDs === undefined) {
+            throw new Error('Required parameter contentIDs was null or undefined when calling collectionsColuuidPost.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,
-            data: body,
+            data: contentIDs,
             params: queryParameters,
             headers: headerParams
         };
@@ -205,19 +252,12 @@ export class CollectionsApi {
     /**
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @summary List all collections
-     * @param id User ID
      */
-    public collectionsGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.MainCollection>> {
-        const localVarPath = this.basePath + '/collections/'
-            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+    public collectionsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.CollectionsCollection>> {
+        const localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling collectionsGet.');
-        }
-
         let httpRequestParams: ng.IRequestConfig = {
             method: 'GET',
             url: localVarPath,
@@ -236,7 +276,7 @@ export class CollectionsApi {
      * @summary Create a new collection
      * @param body Collection name and description
      */
-    public collectionsPost (body: models.MainCreateCollectionBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainCollection> {
+    public collectionsPost (body: models.MainCreateCollectionBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CollectionsCollection> {
         const localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};

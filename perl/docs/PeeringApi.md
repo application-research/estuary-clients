@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete()
+> admin_peering_peers_delete(body => $body)
 
 Remove peers on Peering Service
 
@@ -36,9 +36,10 @@ my $api_instance = WWW::SwaggerClient::PeeringApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
+my $body = [WWW::SwaggerClient::Object::ARRAY[string]->new()]; # ARRAY[string] | Peer ids
 
 eval { 
-    $api_instance->admin_peering_peers_delete();
+    $api_instance->admin_peering_peers_delete(body => $body);
 };
 if ($@) {
     warn "Exception when calling PeeringApi->admin_peering_peers_delete: $@\n";
@@ -46,7 +47,10 @@ if ($@) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **ARRAY[string]**| Peer ids | 
 
 ### Return type
 

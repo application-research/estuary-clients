@@ -1,4 +1,4 @@
-# R API client for estuary_client
+# R API client for estuary-client
 
 This is the API for the Estuary application.
 

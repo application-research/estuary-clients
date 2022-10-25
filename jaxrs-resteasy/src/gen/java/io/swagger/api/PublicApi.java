@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the public API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class PublicApi  {
 
     @Inject PublicApiService service;
@@ -86,9 +86,9 @@ public class PublicApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "public","miner", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response publicMinersDealsMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext)
+    public Response publicMinersDealsMinerGet( @PathParam("miner") String miner,  @QueryParam("ignore-failed") String ignoreFailed,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.publicMinersDealsMinerGet(miner,securityContext);
+        return service.publicMinersDealsMinerGet(miner,ignoreFailed,securityContext);
     }
     @GET
     @Path("/miners/failures/{miner}")

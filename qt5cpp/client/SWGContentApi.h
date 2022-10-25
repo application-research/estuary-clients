@@ -20,6 +20,7 @@
 #include "SWGMain.importDealBody.h"
 #include "SWGUtil.ContentAddIpfsBody.h"
 #include "SWGUtil.ContentAddResponse.h"
+#include "SWGUtil.ContentCreateBody.h"
 
 #include <QObject>
 
@@ -37,21 +38,22 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void contentAddCarPost(QString*& body, QString* filename, QString* commp, QString* size);
-    void contentAddIpfsPost(SWGUtil.ContentAddIpfsBody& body);
-    void contentAddPost(SWGHttpRequestInputFileElement* file, QString* coluuid, QString* dir);
+    void contentAddCarPost(QString*& body, QString* ignore_dupes, QString* filename);
+    void contentAddIpfsPost(SWGUtil.ContentAddIpfsBody& body, QString* ignore_dupes);
+    void contentAddPost(SWGHttpRequestInputFileElement* data, QString* filename, QString* coluuid, qint32 replication, QString* ignore_dupes, QString* lazy_provide, QString* dir);
     void contentAggregatedContentGet(QString* content);
     void contentAllDealsGet(QString* begin, QString* duration, QString* all);
     void contentBwUsageContentGet(QString* content);
-    void contentCreatePost(QString*& body);
+    void contentCreatePost(SWGUtil.ContentCreateBody& req, QString* ignore_dupes);
     void contentDealsGet(qint32 limit, qint32 offset);
     void contentEnsureReplicationDatacidGet(QString* datacid);
     void contentFailuresContentGet(QString* content);
+    void contentIdGet(qint32 id);
     void contentImportdealPost(SWGMain.importDealBody& body);
     void contentListGet();
     void contentReadContGet(QString* cont);
     void contentStagingZonesGet();
-    void contentStatsGet(QString* limit);
+    void contentStatsGet(QString* limit, QString* offset);
     void contentStatusIdGet(qint32 id);
     
 private:
@@ -65,6 +67,7 @@ private:
     void contentDealsGetCallback (SWGHttpRequestWorker * worker);
     void contentEnsureReplicationDatacidGetCallback (SWGHttpRequestWorker * worker);
     void contentFailuresContentGetCallback (SWGHttpRequestWorker * worker);
+    void contentIdGetCallback (SWGHttpRequestWorker * worker);
     void contentImportdealPostCallback (SWGHttpRequestWorker * worker);
     void contentListGetCallback (SWGHttpRequestWorker * worker);
     void contentReadContGetCallback (SWGHttpRequestWorker * worker);
@@ -83,6 +86,7 @@ signals:
     void contentDealsGetSignal();
     void contentEnsureReplicationDatacidGetSignal();
     void contentFailuresContentGetSignal(QString* summary);
+    void contentIdGetSignal();
     void contentImportdealPostSignal();
     void contentListGetSignal(QList<QString*>* summary);
     void contentReadContGetSignal();
@@ -100,6 +104,7 @@ signals:
     void contentDealsGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
     void contentEnsureReplicationDatacidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
     void contentFailuresContentGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentIdGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
     void contentImportdealPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
     void contentListGetSignalE(QList<QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentReadContGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
@@ -117,6 +122,7 @@ signals:
     void contentDealsGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentEnsureReplicationDatacidGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentFailuresContentGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentIdGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentImportdealPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentListGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentReadContGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

@@ -82,7 +82,16 @@ paths:
       description: "This endpoint can be used to remove a Peer from the Peering Service"
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Peer ids"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "string"
+        x-exportParamName: "Body"
       responses: {}
   /admin/peering/start:
     post:
@@ -166,20 +175,14 @@ paths:
         \ This endpoint provides a way to list all collections to the user."
       produces:
       - "application/json"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "User ID"
-        required: true
-        type: "integer"
-        x-exportParamName: "Id"
+      parameters: []
       responses:
         "200":
           description: "OK"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/main.Collection"
+              $ref: "#/definitions/collections.Collection"
         "400":
           description: "Bad Request"
           schema:
@@ -213,7 +216,7 @@ paths:
         "200":
           description: "OK"
           schema:
-            $ref: "#/definitions/main.Collection"
+            $ref: "#/definitions/collections.Collection"
         "400":
           description: "Bad Request"
           schema:
@@ -265,8 +268,8 @@ paths:
       - "application/json"
       parameters:
       - name: "coluuid"
-        in: "query"
-        description: "Collection UUID"
+        in: "path"
+        description: "coluuid"
         required: true
         type: "string"
         x-exportParamName: "Coluuid"
@@ -293,15 +296,21 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "coluuid"
+        in: "path"
+        description: "coluuid"
+        required: true
+        type: "string"
+        x-exportParamName: "Coluuid"
       - in: "body"
-        name: "body"
+        name: "contentIDs"
         description: "Content IDs to add to collection"
         required: true
         schema:
           type: "array"
           items:
             type: "integer"
-        x-exportParamName: "Body"
+        x-exportParamName: "ContentIDs"
       responses:
         "200":
           description: "OK"
@@ -343,6 +352,46 @@ paths:
           description: "OK"
           schema:
             type: "string"
+  /collections/{coluuid}/contents:
+    delete:
+      tags:
+      - "collections"
+      summary: "Deletes a content from a collection"
+      description: "This endpoint is used to delete an existing content from an existing\
+        \ collection. If two or more files with the same contentid exist in the collection,\
+        \ delete the one in the specified path"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "coluuid"
+        in: "path"
+        description: "Collection ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Coluuid"
+      - name: "contentid"
+        in: "path"
+        description: "Content ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Contentid"
+      - in: "body"
+        name: "body"
+        description: "Variable to use when filtering for files (must be either 'path'\
+          \ or 'content_id')"
+        required: true
+        schema:
+          $ref: "#/definitions/main.deleteContentFromCollectionBody"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/add:
     post:
       tags:
@@ -354,24 +403,54 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "file"
+      - name: "data"
         in: "formData"
         description: "File to upload"
         required: true
         type: "file"
-        x-exportParamName: "File"
+        x-exportParamName: "Data"
+      - name: "filename"
+        in: "formData"
+        description: "Filenam to use for upload"
+        required: false
+        type: "string"
+        x-exportParamName: "Filename"
+        x-optionalDataType: "String"
       - name: "coluuid"
-        in: "path"
+        in: "query"
         description: "Collection UUID"
-        required: true
+        required: false
         type: "string"
         x-exportParamName: "Coluuid"
+        x-optionalDataType: "String"
+      - name: "replication"
+        in: "query"
+        description: "Replication value"
+        required: false
+        type: "integer"
+        x-exportParamName: "Replication"
+        x-optionalDataType: "Int32"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes true/false"
+        required: false
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
+      - name: "lazy-provide"
+        in: "query"
+        description: "Lazy Provide true/false"
+        required: false
+        type: "string"
+        x-exportParamName: "LazyProvide"
+        x-optionalDataType: "String"
       - name: "dir"
-        in: "path"
+        in: "query"
         description: "Directory"
-        required: true
+        required: false
         type: "string"
         x-exportParamName: "Dir"
+        x-optionalDataType: "String"
       responses:
         "200":
           description: "OK"
@@ -394,26 +473,19 @@ paths:
         schema:
           type: "string"
         x-exportParamName: "Body"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
       - name: "filename"
         in: "query"
         description: "Filename"
         required: false
         type: "string"
         x-exportParamName: "Filename"
-        x-optionalDataType: "String"
-      - name: "commp"
-        in: "query"
-        description: "Commp"
-        required: false
-        type: "string"
-        x-exportParamName: "Commp"
-        x-optionalDataType: "String"
-      - name: "size"
-        in: "query"
-        description: "Size"
-        required: false
-        type: "string"
-        x-exportParamName: "Size"
         x-optionalDataType: "String"
       responses: {}
   /content/add-ipfs:
@@ -433,6 +505,13 @@ paths:
         schema:
           $ref: "#/definitions/util.ContentAddIpfsBody"
         x-exportParamName: "Body"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
       responses: {}
   /content/aggregated/{content}:
     get:
@@ -508,12 +587,19 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "body"
+        name: "req"
         description: "Content"
         required: true
         schema:
-          type: "string"
-        x-exportParamName: "Body"
+          $ref: "#/definitions/util.ContentCreateBody"
+        x-exportParamName: "Req"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
       responses: {}
   /content/deals:
     get:
@@ -648,11 +734,17 @@ paths:
       - "application/json"
       parameters:
       - name: "limit"
-        in: "path"
+        in: "query"
         description: "limit"
         required: true
         type: "string"
         x-exportParamName: "Limit"
+      - name: "offset"
+        in: "query"
+        description: "offset"
+        required: true
+        type: "string"
+        x-exportParamName: "Offset"
       responses: {}
   /content/status/{id}:
     get:
@@ -660,6 +752,22 @@ paths:
       - "content"
       summary: "Content Status"
       description: "This endpoint returns the status of a content"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Content ID"
+        required: true
+        type: "integer"
+        x-exportParamName: "Id"
+      responses: {}
+  /content/{id}:
+    get:
+      tags:
+      - "content"
+      summary: "Content"
+      description: "This endpoint returns a content by its ID"
       produces:
       - "application/json"
       parameters:
@@ -786,12 +894,6 @@ paths:
       responses: {}
   /deal/transfer/status:
     post:
-      tags:
-      - "deals"
-      summary: "Transfer Status"
-      description: "This endpoint returns the status of a transfer"
-      produces:
-      - "application/json"
       parameters: []
       responses: {}
   /deals/failures:
@@ -1022,6 +1124,13 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "Miner"
+      - name: "ignore-failed"
+        in: "query"
+        description: "Ignore Failed"
+        required: false
+        type: "string"
+        x-exportParamName: "IgnoreFailed"
+        x-optionalDataType: "String"
       responses: {}
   /public/miners/failures/{miner}:
     get:
@@ -1155,7 +1264,22 @@ paths:
         \ each user is given an API key to access all features."
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+      - name: "expiry"
+        in: "query"
+        description: "Expiration - Expiration - Valid time units are ns, us (or µ\
+          s), ms, s, m, h. for example 300h"
+        required: false
+        type: "string"
+        x-exportParamName: "Expiry"
+        x-optionalDataType: "String"
+      - name: "perms"
+        in: "query"
+        description: "Permissions -- currently unused"
+        required: false
+        type: "string"
+        x-exportParamName: "Perms"
+        x-optionalDataType: "String"
       responses:
         "200":
           description: "OK"
@@ -1226,7 +1350,7 @@ securityDefinitions:
     name: "Authorization"
     in: "header"
 definitions:
-  main.Collection:
+  collections.Collection:
     type: "object"
     properties:
       cid:
@@ -1254,6 +1378,13 @@ definitions:
       description:
         type: "string"
       name:
+        type: "string"
+  main.deleteContentFromCollectionBody:
+    type: "object"
+    properties:
+      by:
+        type: "string"
+      value:
         type: "string"
   main.estimateDealBody:
     type: "object"
@@ -1334,6 +1465,21 @@ definitions:
       - "providers"
       - "providers"
       cid: "cid"
+  util.ContentCreateBody:
+    type: "object"
+    properties:
+      coluuid:
+        type: "string"
+      dir:
+        type: "string"
+      location:
+        type: "string"
+      name:
+        type: "string"
+      root:
+        type: "string"
+      type:
+        type: "integer"
   util.HttpError:
     type: "object"
     properties:

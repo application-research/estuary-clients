@@ -21,6 +21,7 @@ import {
  * adminPeeringPeersDelete - parameters interface
  */
 export interface IAdminPeeringPeersDeleteParams {
+  body: Array<string>;
 }
 
 /**
@@ -72,9 +73,11 @@ export class PeersApi extends Api {
   /**
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
+   * @param params.body Peer ids
    */
-  async adminPeeringPeersDelete(): Promise<any> {
+  async adminPeeringPeersDelete(params: IAdminPeeringPeersDeleteParams): Promise<any> {
     // Verify required parameters are set
+    this.ensureParamIsSet('adminPeeringPeersDelete', params, 'body');
 
     // Create URL to call
     const url = `${this.basePath}/admin/peering/peers`;
@@ -82,6 +85,9 @@ export class PeersApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asDelete()
+      // Encode body parameter
+      .withHeader('content-type', 'application/json')
+      .withContent(JSON.stringify(params['body'] || {}))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

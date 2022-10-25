@@ -1,4 +1,4 @@
-# Rust API client for estuary_client
+# Rust API client for estuary-client
 
 This is the API for the Estuary application.
 
@@ -13,7 +13,7 @@ For more information, please visit [https://docs.estuary.tech/feedback](https://
 ## Installation
 Put the package under your project folder and add the following in import:
 ```
-    "./estuary_client"
+    "./estuary-client"
 ```
 
 ## Documentation for API Endpoints
@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 *AutoretrieveApi* | [**admin_autoretrieve_list_get**](docs/AutoretrieveApi.md#admin_autoretrieve_list_get) | **Get** /admin/autoretrieve/list | List autoretrieve servers
 *AutoretrieveApi* | [**autoretrieve_heartbeat_post**](docs/AutoretrieveApi.md#autoretrieve_heartbeat_post) | **Post** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *CollectionsApi* | [**collections_coluuid_commit_post**](docs/CollectionsApi.md#collections_coluuid_commit_post) | **Post** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*CollectionsApi* | [**collections_coluuid_contents_delete**](docs/CollectionsApi.md#collections_coluuid_contents_delete) | **Delete** /collections/{coluuid}/contents | Deletes a content from a collection
 *CollectionsApi* | [**collections_coluuid_delete**](docs/CollectionsApi.md#collections_coluuid_delete) | **Delete** /collections/{coluuid} | Deletes a collection
 *CollectionsApi* | [**collections_coluuid_get**](docs/CollectionsApi.md#collections_coluuid_get) | **Get** /collections/{coluuid} | Get contents in a collection
 *CollectionsApi* | [**collections_coluuid_post**](docs/CollectionsApi.md#collections_coluuid_post) | **Post** /collections/{coluuid} | Add contents to a collection
@@ -50,6 +51,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**content_deals_get**](docs/ContentApi.md#content_deals_get) | **Get** /content/deals | Content with deals
 *ContentApi* | [**content_ensure_replication_datacid_get**](docs/ContentApi.md#content_ensure_replication_datacid_get) | **Get** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**content_failures_content_get**](docs/ContentApi.md#content_failures_content_get) | **Get** /content/failures/{content} | List all failures for a content
+*ContentApi* | [**content_id_get**](docs/ContentApi.md#content_id_get) | **Get** /content/{id} | Content
 *ContentApi* | [**content_importdeal_post**](docs/ContentApi.md#content_importdeal_post) | **Post** /content/importdeal | Import a deal
 *ContentApi* | [**content_list_get**](docs/ContentApi.md#content_list_get) | **Get** /content/list | List all pinned content
 *ContentApi* | [**content_read_cont_get**](docs/ContentApi.md#content_read_cont_get) | **Get** /content/read/{cont} | Read content
@@ -63,12 +65,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**deal_status_by_proposal_propcid_get**](docs/DealsApi.md#deal_status_by_proposal_propcid_get) | **Get** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**deal_status_miner_propcid_get**](docs/DealsApi.md#deal_status_miner_propcid_get) | **Get** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**deal_transfer_in_progress_get**](docs/DealsApi.md#deal_transfer_in_progress_get) | **Get** /deal/transfer/in-progress | Transfer In Progress
-*DealsApi* | [**deal_transfer_status_post**](docs/DealsApi.md#deal_transfer_status_post) | **Post** /deal/transfer/status | Transfer Status
 *DealsApi* | [**deals_failures_get**](docs/DealsApi.md#deals_failures_get) | **Get** /deals/failures | Get storage failures for user
 *DealsApi* | [**deals_make_miner_post**](docs/DealsApi.md#deals_make_miner_post) | **Post** /deals/make/{miner} | Make Deal
 *DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **Get** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **Get** /public/deals/failures | Get storage failures
 *DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **Get** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**deal_transfer_status_post**](docs/DefaultApi.md#deal_transfer_status_post) | **Post** /deal/transfer/status | 
 *MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **Get** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **Get** /public/miners/stats/{miner} | Get miner stats
@@ -113,14 +115,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [MainCollection](docs/MainCollection.md)
+ - [CollectionsCollection](docs/CollectionsCollection.md)
  - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
+ - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/MainImportDealBody.md)
  - [MainUserStatsResponse](docs/MainUserStatsResponse.md)
  - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
+ - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [UtilHttpError](docs/UtilHttpError.md)
 
 

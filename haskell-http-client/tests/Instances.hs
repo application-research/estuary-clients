@@ -89,21 +89,27 @@ instance ApproxEq TI.Day where
 
 -- * Models
  
-instance Arbitrary MainCollection where
+instance Arbitrary CollectionsCollection where
   arbitrary =
-    MainCollection
-      <$> arbitrary -- mainCollectionCid :: Maybe Text
-      <*> arbitrary -- mainCollectionCreatedAt :: Maybe Text
-      <*> arbitrary -- mainCollectionDescription :: Maybe Text
-      <*> arbitrary -- mainCollectionName :: Maybe Text
-      <*> arbitrary -- mainCollectionUserId :: Maybe Int
-      <*> arbitrary -- mainCollectionUuid :: Maybe Text
+    CollectionsCollection
+      <$> arbitrary -- collectionsCollectionCid :: Maybe Text
+      <*> arbitrary -- collectionsCollectionCreatedAt :: Maybe Text
+      <*> arbitrary -- collectionsCollectionDescription :: Maybe Text
+      <*> arbitrary -- collectionsCollectionName :: Maybe Text
+      <*> arbitrary -- collectionsCollectionUserId :: Maybe Int
+      <*> arbitrary -- collectionsCollectionUuid :: Maybe Text
     
 instance Arbitrary MainCreateCollectionBody where
   arbitrary =
     MainCreateCollectionBody
       <$> arbitrary -- mainCreateCollectionBodyDescription :: Maybe Text
       <*> arbitrary -- mainCreateCollectionBodyName :: Maybe Text
+    
+instance Arbitrary MainDeleteContentFromCollectionBody where
+  arbitrary =
+    MainDeleteContentFromCollectionBody
+      <$> arbitrary -- mainDeleteContentFromCollectionBodyBy :: Maybe Text
+      <*> arbitrary -- mainDeleteContentFromCollectionBodyValue :: Maybe Text
     
 instance Arbitrary MainEstimateDealBody where
   arbitrary =
@@ -149,6 +155,16 @@ instance Arbitrary UtilContentAddResponse where
       <*> arbitrary -- utilContentAddResponseEstuaryId :: Maybe Int
       <*> arbitrary -- utilContentAddResponseProviders :: Maybe [Text]
       <*> arbitrary -- utilContentAddResponseRetrievalUrl :: Maybe Text
+    
+instance Arbitrary UtilContentCreateBody where
+  arbitrary =
+    UtilContentCreateBody
+      <$> arbitrary -- utilContentCreateBodyColuuid :: Maybe Text
+      <*> arbitrary -- utilContentCreateBodyDir :: Maybe Text
+      <*> arbitrary -- utilContentCreateBodyLocation :: Maybe Text
+      <*> arbitrary -- utilContentCreateBodyName :: Maybe Text
+      <*> arbitrary -- utilContentCreateBodyRoot :: Maybe Text
+      <*> arbitrary -- utilContentCreateBodyType :: Maybe Int
     
 instance Arbitrary UtilHttpError where
   arbitrary =

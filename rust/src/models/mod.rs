@@ -1,7 +1,9 @@
-mod main_collection;
-pub use self::main_collection::MainCollection;
+mod collections_collection;
+pub use self::collections_collection::CollectionsCollection;
 mod main_create_collection_body;
 pub use self::main_create_collection_body::MainCreateCollectionBody;
+mod main_delete_content_from_collection_body;
+pub use self::main_delete_content_from_collection_body::MainDeleteContentFromCollectionBody;
 mod main_estimate_deal_body;
 pub use self::main_estimate_deal_body::MainEstimateDealBody;
 mod main_get_api_keys_resp;
@@ -14,6 +16,8 @@ mod util_content_add_ipfs_body;
 pub use self::util_content_add_ipfs_body::UtilContentAddIpfsBody;
 mod util_content_add_response;
 pub use self::util_content_add_response::UtilContentAddResponse;
+mod util_content_create_body;
+pub use self::util_content_create_body::UtilContentCreateBody;
 mod util_http_error;
 pub use self::util_http_error::UtilHttpError;
 

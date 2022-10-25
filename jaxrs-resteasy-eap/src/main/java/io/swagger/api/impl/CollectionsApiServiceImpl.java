@@ -4,9 +4,10 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 
+import io.swagger.model.CollectionsCollection;
 import java.util.List;
-import io.swagger.model.MainCollection;
 import io.swagger.model.MainCreateCollectionBody;
+import io.swagger.model.MainDeleteContentFromCollectionBody;
 import java.util.Map;
 import io.swagger.model.UtilHttpError;
 
@@ -17,9 +18,13 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public class CollectionsApiServiceImpl implements CollectionsApi {
       public Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response collectionsColuuidContentsDelete(String coluuid,String contentid,MainDeleteContentFromCollectionBody body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -31,7 +36,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response collectionsColuuidPost(List<Integer> body,SecurityContext securityContext) {
+      public Response collectionsColuuidPost(String coluuid,List<Integer> contentIDs,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -39,7 +44,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response collectionsGet(Integer id,SecurityContext securityContext) {
+      public Response collectionsGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

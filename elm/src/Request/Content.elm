@@ -11,8 +11,9 @@
 -}
 
 
-module Request.Content exposing (contentAddCarPost, contentAddIpfsPost, contentAddPost, contentAggregatedContentGet, contentAllDealsGet, contentBwUsageContentGet, contentCreatePost, contentDealsGet, contentEnsureReplicationDatacidGet, contentFailuresContentGet, contentImportdealPost, contentListGet, contentReadContGet, contentStagingZonesGet, contentStatsGet, contentStatusIdGet)
+module Request.Content exposing (contentAddCarPost, contentAddIpfsPost, contentAddPost, contentAggregatedContentGet, contentAllDealsGet, contentBwUsageContentGet, contentCreatePost, contentDealsGet, contentEnsureReplicationDatacidGet, contentFailuresContentGet, contentIdGet, contentImportdealPost, contentListGet, contentReadContGet, contentStagingZonesGet, contentStatsGet, contentStatusIdGet)
 
+import Data.UtilContentCreateBody exposing (UtilContentCreateBody, utilContentCreateBodyEncoder)
 import Data.UtilContentAddIpfsBody exposing (UtilContentAddIpfsBody, utilContentAddIpfsBodyEncoder)
 import Data.UtilContentAddResponse exposing (UtilContentAddResponse, utilContentAddResponseDecoder)
 import Data.String exposing (Decode.string, Encode.string, String)
@@ -61,8 +62,8 @@ contentAddIpfsPost model =
 {-
    This endpoint is used to upload new content.
 -}
-contentAddPost : String -> String -> Http.Request UtilContentAddResponse
-contentAddPost coluuid dir =
+contentAddPost : Http.Request UtilContentAddResponse
+contentAddPost =
     { method = "POST"
     , url = basePath ++ "/content/add"
     , headers = []
@@ -125,12 +126,12 @@ contentBwUsageContentGet content =
 {-
    This endpoint adds a new content
 -}
-contentCreatePost : String -> Http.Request 
+contentCreatePost : UtilContentCreateBody -> Http.Request 
 contentCreatePost model =
     { method = "POST"
     , url = basePath ++ "/content/create"
     , headers = []
-    , body = Http.jsonBody <| Encode.string model
+    , body = Http.jsonBody <| utilContentCreateBodyEncoder model
     , expect = 
     , timeout = Just 30000
     , withCredentials = False
@@ -180,6 +181,22 @@ contentFailuresContentGet content =
     , headers = []
     , body = Http.emptyBody
     , expect = Http.expectJson Decode.string
+    , timeout = Just 30000
+    , withCredentials = False
+    }
+        |> Http.request
+
+
+{-
+   This endpoint returns a content by its ID
+-}
+contentIdGet : Int -> Http.Request 
+contentIdGet id =
+    { method = "GET"
+    , url = basePath ++ "/content/" ++ toString id
+    , headers = []
+    , body = Http.emptyBody
+    , expect = 
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -253,8 +270,8 @@ contentStagingZonesGet =
 {-
    This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 -}
-contentStatsGet : String -> Http.Request 
-contentStatsGet limit =
+contentStatsGet : Http.Request 
+contentStatsGet =
     { method = "GET"
     , url = basePath ++ "/content/stats"
     , headers = []

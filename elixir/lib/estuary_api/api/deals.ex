@@ -188,30 +188,6 @@ defmodule EstuaryAPI.Api.Deals do
   end
 
   @doc """
-  Transfer Status
-  This endpoint returns the status of a transfer
-
-  ## Parameters
-
-  - connection (EstuaryAPI.Connection): Connection to server
-  - opts (KeywordList): [optional] Optional parameters
-
-  ## Returns
-
-  {:ok, %{}} on success
-  {:error, info} on failure
-  """
-  @spec deal_transfer_status_post(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def deal_transfer_status_post(connection, _opts \\ []) do
-    %{}
-    |> method(:post)
-    |> url("/deal/transfer/status")
-    |> Enum.into([])
-    |> (&Connection.request(connection, &1)).()
-    |> decode(false)
-  end
-
-  @doc """
   Get storage failures for user
   This endpoint returns a list of storage failures for user
 

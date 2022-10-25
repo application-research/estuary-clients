@@ -80,7 +80,15 @@ paths:
       description: "This endpoint can be used to remove a Peer from the Peering Service"
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Peer ids"
+        required: true
+        schema:
+          type: "array"
+          items:
+            type: "string"
       responses: {}
   /admin/peering/start:
     post:
@@ -163,19 +171,14 @@ paths:
         \ This endpoint provides a way to list all collections to the user."
       produces:
       - "application/json"
-      parameters:
-      - name: "id"
-        in: "path"
-        description: "User ID"
-        required: true
-        type: "integer"
+      parameters: []
       responses:
         "200":
           description: "OK"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/main.Collection"
+              $ref: "#/definitions/collections.Collection"
         "400":
           description: "Bad Request"
           schema:
@@ -208,7 +211,7 @@ paths:
         "200":
           description: "OK"
           schema:
-            $ref: "#/definitions/main.Collection"
+            $ref: "#/definitions/collections.Collection"
         "400":
           description: "Bad Request"
           schema:
@@ -257,8 +260,8 @@ paths:
       - "application/json"
       parameters:
       - name: "coluuid"
-        in: "query"
-        description: "Collection UUID"
+        in: "path"
+        description: "coluuid"
         required: true
         type: "string"
       - name: "dir"
@@ -282,8 +285,13 @@ paths:
       produces:
       - "application/json"
       parameters:
+      - name: "coluuid"
+        in: "path"
+        description: "coluuid"
+        required: true
+        type: "string"
       - in: "body"
-        name: "body"
+        name: "contentIDs"
         description: "Content IDs to add to collection"
         required: true
         schema:
@@ -329,6 +337,43 @@ paths:
           description: "OK"
           schema:
             type: "string"
+  /collections/{coluuid}/contents:
+    delete:
+      tags:
+      - "collections"
+      summary: "Deletes a content from a collection"
+      description: "This endpoint is used to delete an existing content from an existing\
+        \ collection. If two or more files with the same contentid exist in the collection,\
+        \ delete the one in the specified path"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "coluuid"
+        in: "path"
+        description: "Collection ID"
+        required: true
+        type: "string"
+      - name: "contentid"
+        in: "path"
+        description: "Content ID"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Variable to use when filtering for files (must be either 'path'\
+          \ or 'content_id')"
+        required: true
+        schema:
+          $ref: "#/definitions/main.deleteContentFromCollectionBody"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/add:
     post:
       tags:
@@ -340,20 +385,40 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "file"
+      - name: "data"
         in: "formData"
         description: "File to upload"
         required: true
         type: "file"
+      - name: "filename"
+        in: "formData"
+        description: "Filenam to use for upload"
+        required: false
+        type: "string"
       - name: "coluuid"
-        in: "path"
+        in: "query"
         description: "Collection UUID"
-        required: true
+        required: false
+        type: "string"
+      - name: "replication"
+        in: "query"
+        description: "Replication value"
+        required: false
+        type: "integer"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes true/false"
+        required: false
+        type: "string"
+      - name: "lazy-provide"
+        in: "query"
+        description: "Lazy Provide true/false"
+        required: false
         type: "string"
       - name: "dir"
-        in: "path"
+        in: "query"
         description: "Directory"
-        required: true
+        required: false
         type: "string"
       responses:
         "200":
@@ -376,19 +441,14 @@ paths:
         required: true
         schema:
           type: "string"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
       - name: "filename"
         in: "query"
         description: "Filename"
-        required: false
-        type: "string"
-      - name: "commp"
-        in: "query"
-        description: "Commp"
-        required: false
-        type: "string"
-      - name: "size"
-        in: "query"
-        description: "Size"
         required: false
         type: "string"
       responses: {}
@@ -408,6 +468,11 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/util.ContentAddIpfsBody"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
       responses: {}
   /content/aggregated/{content}:
     get:
@@ -478,11 +543,16 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "body"
+        name: "req"
         description: "Content"
         required: true
         schema:
-          type: "string"
+          $ref: "#/definitions/util.ContentCreateBody"
+      - name: "ignore-dupes"
+        in: "query"
+        description: "Ignore Dupes"
+        required: false
+        type: "string"
       responses: {}
   /content/deals:
     get:
@@ -609,8 +679,13 @@ paths:
       - "application/json"
       parameters:
       - name: "limit"
-        in: "path"
+        in: "query"
         description: "limit"
+        required: true
+        type: "string"
+      - name: "offset"
+        in: "query"
+        description: "offset"
         required: true
         type: "string"
       responses: {}
@@ -620,6 +695,21 @@ paths:
       - "content"
       summary: "Content Status"
       description: "This endpoint returns the status of a content"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Content ID"
+        required: true
+        type: "integer"
+      responses: {}
+  /content/{id}:
+    get:
+      tags:
+      - "content"
+      summary: "Content"
+      description: "This endpoint returns a content by its ID"
       produces:
       - "application/json"
       parameters:
@@ -738,12 +828,6 @@ paths:
       responses: {}
   /deal/transfer/status:
     post:
-      tags:
-      - "deals"
-      summary: "Transfer Status"
-      description: "This endpoint returns the status of a transfer"
-      produces:
-      - "application/json"
       parameters: []
       responses: {}
   /deals/failures:
@@ -964,6 +1048,11 @@ paths:
         description: "Filter by miner"
         required: true
         type: "string"
+      - name: "ignore-failed"
+        in: "query"
+        description: "Ignore Failed"
+        required: false
+        type: "string"
       responses: {}
   /public/miners/failures/{miner}:
     get:
@@ -1094,7 +1183,18 @@ paths:
         \ each user is given an API key to access all features."
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+      - name: "expiry"
+        in: "query"
+        description: "Expiration - Expiration - Valid time units are ns, us (or µ\
+          s), ms, s, m, h. for example 300h"
+        required: false
+        type: "string"
+      - name: "perms"
+        in: "query"
+        description: "Permissions -- currently unused"
+        required: false
+        type: "string"
       responses:
         "200":
           description: "OK"
@@ -1164,7 +1264,7 @@ securityDefinitions:
     name: "Authorization"
     in: "header"
 definitions:
-  main.Collection:
+  collections.Collection:
     type: "object"
     properties:
       cid:
@@ -1199,6 +1299,17 @@ definitions:
         type: "string"
         x-dataType: "Text"
       name:
+        type: "string"
+        x-dataType: "Text"
+    x-mimeTypes:
+    - "MimeJSON"
+  main.deleteContentFromCollectionBody:
+    type: "object"
+    properties:
+      by:
+        type: "string"
+        x-dataType: "Text"
+      value:
         type: "string"
         x-dataType: "Text"
     x-mimeTypes:
@@ -1309,6 +1420,29 @@ definitions:
       - "providers"
       - "providers"
       cid: "cid"
+  util.ContentCreateBody:
+    type: "object"
+    properties:
+      coluuid:
+        type: "string"
+        x-dataType: "Text"
+      dir:
+        type: "string"
+        x-dataType: "Text"
+      location:
+        type: "string"
+        x-dataType: "Text"
+      name:
+        type: "string"
+        x-dataType: "Text"
+      root:
+        type: "string"
+        x-dataType: "Text"
+      type:
+        type: "integer"
+        x-dataType: "Int"
+    x-mimeTypes:
+    - "MimeJSON"
   util.HttpError:
     type: "object"
     properties:

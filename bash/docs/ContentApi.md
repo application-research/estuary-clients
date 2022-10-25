@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
@@ -30,7 +31,7 @@ This endpoint is used to add a car object to the network. The object can be a fi
 
 ### Example
 ```bash
- contentAddCarPost  filename=value  commp=value  size=value
+ contentAddCarPost  ignore-dupes=value  filename=value
 ```
 
 ### Parameters
@@ -38,9 +39,8 @@ This endpoint is used to add a car object to the network. The object can be a fi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string** | Car |
+ **ignoreDupes** | **string** | Ignore Dupes | [optional]
  **filename** | **string** | Filename | [optional]
- **commp** | **string** | Commp | [optional]
- **size** | **string** | Size | [optional]
 
 ### Return type
 
@@ -65,7 +65,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 
 ### Example
 ```bash
- contentAddIpfsPost
+ contentAddIpfsPost  ignore-dupes=value
 ```
 
 ### Parameters
@@ -73,6 +73,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Util.ContentAddIpfsBody**](Util.ContentAddIpfsBody.md) | IPFS Body |
+ **ignoreDupes** | **string** | Ignore Dupes | [optional]
 
 ### Return type
 
@@ -97,16 +98,20 @@ This endpoint is used to upload new content.
 
 ### Example
 ```bash
- contentAddPost coluuid=value dir=value
+ contentAddPost  coluuid=value  replication=value  ignore-dupes=value  lazy-provide=value  dir=value
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File** | File to upload |
- **coluuid** | **string** | Collection UUID |
- **dir** | **string** | Directory |
+ **data** | **File** | File to upload |
+ **filename** | **string** | Filenam to use for upload | [optional]
+ **coluuid** | **string** | Collection UUID | [optional]
+ **replication** | **integer** | Replication value | [optional]
+ **ignoreDupes** | **string** | Ignore Dupes true/false | [optional]
+ **lazyProvide** | **string** | Lazy Provide true/false | [optional]
+ **dir** | **string** | Directory | [optional]
 
 ### Return type
 
@@ -229,14 +234,15 @@ This endpoint adds a new content
 
 ### Example
 ```bash
- contentCreatePost
+ contentCreatePost  ignore-dupes=value
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string** | Content |
+ **req** | [**Util.ContentCreateBody**](Util.ContentCreateBody.md) | Content |
+ **ignoreDupes** | **string** | Ignore Dupes | [optional]
 
 ### Return type
 
@@ -338,6 +344,38 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not Applicable
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+## **contentIdGet**
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```bash
+ contentIdGet id=value
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **integer** | Content ID |
+
+### Return type
+
+(empty response body)
 
 ### Authorization
 
@@ -480,7 +518,7 @@ This endpoint is used to get content statistics. Every content stored in the net
 
 ### Example
 ```bash
- contentStatsGet limit=value
+ contentStatsGet  limit=value  offset=value
 ```
 
 ### Parameters
@@ -488,6 +526,7 @@ This endpoint is used to get content statistics. Every content stored in the net
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **string** | limit |
+ **offset** | **string** | offset |
 
 ### Return type
 

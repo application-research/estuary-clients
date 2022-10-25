@@ -15,6 +15,7 @@ import { HttpClient } from 'aurelia-http-client';
 import { Api } from './Api';
 import { AuthStorage } from './AuthStorage';
 import {
+  UtilContentCreateBody,
   UtilContentAddIpfsBody,
   UtilContentAddResponse,
   MainImportDealBody,
@@ -25,9 +26,8 @@ import {
  */
 export interface IContentAddCarPostParams {
   body: string;
+  ignoreDupes?: string;
   filename?: string;
-  commp?: string;
-  size?: string;
 }
 
 /**
@@ -35,15 +35,20 @@ export interface IContentAddCarPostParams {
  */
 export interface IContentAddIpfsPostParams {
   body: UtilContentAddIpfsBody;
+  ignoreDupes?: string;
 }
 
 /**
  * contentAddPost - parameters interface
  */
 export interface IContentAddPostParams {
-  file: any;
-  coluuid: string;
-  dir: string;
+  data: any;
+  filename?: string;
+  coluuid?: string;
+  replication?: number;
+  ignoreDupes?: string;
+  lazyProvide?: string;
+  dir?: string;
 }
 
 /**
@@ -73,7 +78,8 @@ export interface IContentBwUsageContentGetParams {
  * contentCreatePost - parameters interface
  */
 export interface IContentCreatePostParams {
-  body: string;
+  req: UtilContentCreateBody;
+  ignoreDupes?: string;
 }
 
 /**
@@ -96,6 +102,13 @@ export interface IContentEnsureReplicationDatacidGetParams {
  */
 export interface IContentFailuresContentGetParams {
   content: string;
+}
+
+/**
+ * contentIdGet - parameters interface
+ */
+export interface IContentIdGetParams {
+  id: number;
 }
 
 /**
@@ -129,6 +142,7 @@ export interface IContentStagingZonesGetParams {
  */
 export interface IContentStatsGetParams {
   limit: string;
+  offset: string;
 }
 
 /**
@@ -158,9 +172,8 @@ export class ContentApi extends Api {
    * Add Car object
    * This endpoint is used to add a car object to the network. The object can be a file or a directory.
    * @param params.body Car
+   * @param params.ignoreDupes Ignore Dupes
    * @param params.filename Filename
-   * @param params.commp Commp
-   * @param params.size Size
    */
   async contentAddCarPost(params: IContentAddCarPostParams): Promise<any> {
     // Verify required parameters are set
@@ -174,9 +187,8 @@ export class ContentApi extends Api {
       .asPost()
       // Set query parameters
       .withParams({ 
+        'ignore-dupes': params['ignoreDupes'],
         'filename': params['filename'],
-        'commp': params['commp'],
-        'size': params['size'],
       })
       // Encode body parameter
       .withHeader('content-type', 'application/json')
@@ -199,6 +211,7 @@ export class ContentApi extends Api {
    * Add IPFS object
    * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    * @param params.body IPFS Body
+   * @param params.ignoreDupes Ignore Dupes
    */
   async contentAddIpfsPost(params: IContentAddIpfsPostParams): Promise<any> {
     // Verify required parameters are set
@@ -210,6 +223,10 @@ export class ContentApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
+      // Set query parameters
+      .withParams({ 
+        'ignore-dupes': params['ignoreDupes'],
+      })
       // Encode body parameter
       .withHeader('content-type', 'application/json')
       .withContent(JSON.stringify(params['body'] || {}))
@@ -230,28 +247,37 @@ export class ContentApi extends Api {
   /**
    * Add new content
    * This endpoint is used to upload new content.
-   * @param params.file File to upload
+   * @param params.data File to upload
+   * @param params.filename Filenam to use for upload
    * @param params.coluuid Collection UUID
+   * @param params.replication Replication value
+   * @param params.ignoreDupes Ignore Dupes true/false
+   * @param params.lazyProvide Lazy Provide true/false
    * @param params.dir Directory
    */
   async contentAddPost(params: IContentAddPostParams): Promise<UtilContentAddResponse> {
     // Verify required parameters are set
-    this.ensureParamIsSet('contentAddPost', params, 'file');
-    this.ensureParamIsSet('contentAddPost', params, 'coluuid');
-    this.ensureParamIsSet('contentAddPost', params, 'dir');
+    this.ensureParamIsSet('contentAddPost', params, 'data');
 
     // Create URL to call
-    const url = `${this.basePath}/content/add`
-      .replace(`{${'coluuid'}}`, encodeURIComponent(`${params['coluuid']}`))
-      .replace(`{${'dir'}}`, encodeURIComponent(`${params['dir']}`));
+    const url = `${this.basePath}/content/add`;
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
+      // Set query parameters
+      .withParams({ 
+        'coluuid': params['coluuid'],
+        'replication': params['replication'],
+        'ignore-dupes': params['ignoreDupes'],
+        'lazy-provide': params['lazyProvide'],
+        'dir': params['dir'],
+      })
       // Encode form parameters
       .withHeader('content-type', 'application/x-www-form-urlencoded')
       .withContent(this.queryString({ 
-        'file': params['file'],
+        'data': params['data'],
+        'filename': params['filename'],
       }))
 
       // Authentication 'bearerAuth' required
@@ -369,11 +395,12 @@ export class ContentApi extends Api {
   /**
    * Add a new content
    * This endpoint adds a new content
-   * @param params.body Content
+   * @param params.req Content
+   * @param params.ignoreDupes Ignore Dupes
    */
   async contentCreatePost(params: IContentCreatePostParams): Promise<any> {
     // Verify required parameters are set
-    this.ensureParamIsSet('contentCreatePost', params, 'body');
+    this.ensureParamIsSet('contentCreatePost', params, 'req');
 
     // Create URL to call
     const url = `${this.basePath}/content/create`;
@@ -381,9 +408,13 @@ export class ContentApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
+      // Set query parameters
+      .withParams({ 
+        'ignore-dupes': params['ignoreDupes'],
+      })
       // Encode body parameter
       .withHeader('content-type', 'application/json')
-      .withContent(JSON.stringify(params['body'] || {}))
+      .withContent(JSON.stringify(params['req'] || {}))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())
@@ -474,6 +505,36 @@ export class ContentApi extends Api {
     // Create URL to call
     const url = `${this.basePath}/content/failures/{content}`
       .replace(`{${'content'}}`, encodeURIComponent(`${params['content']}`));
+
+    const response = await this.httpClient.createRequest(url)
+      // Set HTTP method
+      .asGet()
+
+      // Authentication 'bearerAuth' required
+      .withHeader('Authorization', this.authStorage.getbearerAuth())
+      // Send the request
+      .send();
+
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      throw new Error(response.content);
+    }
+
+    // Extract the content
+    return response.content;
+  }
+
+  /**
+   * Content
+   * This endpoint returns a content by its ID
+   * @param params.id Content ID
+   */
+  async contentIdGet(params: IContentIdGetParams): Promise<any> {
+    // Verify required parameters are set
+    this.ensureParamIsSet('contentIdGet', params, 'id');
+
+    // Create URL to call
+    const url = `${this.basePath}/content/{id}`
+      .replace(`{${'id'}}`, encodeURIComponent(`${params['id']}`));
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
@@ -612,18 +673,24 @@ export class ContentApi extends Api {
    * Get content statistics
    * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    * @param params.limit limit
+   * @param params.offset offset
    */
   async contentStatsGet(params: IContentStatsGetParams): Promise<any> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentStatsGet', params, 'limit');
+    this.ensureParamIsSet('contentStatsGet', params, 'offset');
 
     // Create URL to call
-    const url = `${this.basePath}/content/stats`
-      .replace(`{${'limit'}}`, encodeURIComponent(`${params['limit']}`));
+    const url = `${this.basePath}/content/stats`;
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asGet()
+      // Set query parameters
+      .withParams({ 
+        'limit': params['limit'],
+        'offset': params['offset'],
+      })
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Path("/deal")
 @Api(description = "the deal API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-07T23:59:40.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-25T22:25:02.267Z")
 public class DealApi {
 
     @POST
@@ -103,10 +103,9 @@ public class DealApi {
 
     @POST
     @Path("/transfer/status")
-    @Produces({ "application/json" })
-    @ApiOperation(value = "Transfer Status", notes = "This endpoint returns the status of a transfer", response = Void.class, authorizations = {
+    @ApiOperation(value = "", notes = "", response = Void.class, authorizations = {
         @Authorization(value = "bearerAuth")
-    }, tags={ "deals" })
+    }, tags={  })
     @ApiResponses(value = { 
     })
     public Response dealTransferStatusPost() {

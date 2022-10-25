@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the public API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public interface PublicApi  {
    
     @GET
@@ -68,7 +68,7 @@ public interface PublicApi  {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "public","miner", })
     @io.swagger.annotations.ApiResponses(value = {  })
-    public Response publicMinersDealsMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext);
+    public Response publicMinersDealsMinerGet( @PathParam("miner") String miner, @QueryParam("ignore-failed") String ignoreFailed,@Context SecurityContext securityContext);
     @GET
     @Path("/miners/failures/{miner}")
     

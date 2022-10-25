@@ -1,2 +1,2 @@
-testCase,httpStatusCode,cid,miner,miner,miner
-Success,200,0,0,0,0
+testCase,httpStatusCode,cid,miner,ignoreFailed,miner,miner
+Success,200,0,0,0,0,0

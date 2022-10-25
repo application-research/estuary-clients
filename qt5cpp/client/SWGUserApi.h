@@ -38,7 +38,7 @@ public:
 
     void userApiKeysGet();
     void userApiKeysKeyDelete(QString* key);
-    void userApiKeysPost();
+    void userApiKeysPost(QString* expiry, QString* perms);
     void userExportGet();
     void userStatsGet();
     

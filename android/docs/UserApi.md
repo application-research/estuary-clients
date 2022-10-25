@@ -94,7 +94,7 @@ null (empty response body)
 
 <a name="userApiKeysPost"></a>
 # **userApiKeysPost**
-> MainGetApiKeysResp userApiKeysPost()
+> MainGetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -106,8 +106,10 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 //import io.swagger.client.api.UserApi;
 
 UserApi apiInstance = new UserApi();
+String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+String perms = "perms_example"; // String | Permissions -- currently unused
 try {
-    MainGetApiKeysResp result = apiInstance.userApiKeysPost();
+    MainGetApiKeysResp result = apiInstance.userApiKeysPost(expiry, perms);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysPost");
@@ -116,7 +118,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **perms** | **String**| Permissions -- currently unused | [optional]
 
 ### Return type
 

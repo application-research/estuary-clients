@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -31,16 +31,23 @@ SwagClient client = api.getClient();
 ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
+Map<String, Object> params = new Map<String, Object>{
+    'body' => new List<String>{'aeiou'}
+};
+
 try {
     // cross your fingers
-    api.adminPeeringPeersDelete();
+    api.adminPeeringPeersDelete(params);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **List&lt;String&gt;**| Peer ids |
 
 ### Return type
 

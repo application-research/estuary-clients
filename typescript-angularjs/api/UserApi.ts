@@ -80,12 +80,22 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param perms Permissions -- currently unused
      */
-    public userApiKeysPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainGetApiKeysResp> {
+    public userApiKeysPost (expiry?: string, perms?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainGetApiKeysResp> {
         const localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        if (expiry !== undefined) {
+            queryParameters['expiry'] = expiry;
+        }
+
+        if (perms !== undefined) {
+            queryParameters['perms'] = perms;
+        }
+
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,

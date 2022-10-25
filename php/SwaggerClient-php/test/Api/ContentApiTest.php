@@ -172,6 +172,16 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for contentIdGet
+     *
+     * Content.
+     *
+     */
+    public function testContentIdGet()
+    {
+    }
+
+    /**
      * Test case for contentImportdealPost
      *
      * Import a deal.

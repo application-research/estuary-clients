@@ -14,8 +14,9 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerCollectionsApi.h"
 
-#include "SwaggerMain_Collection.h"
+#include "SwaggerCollections_Collection.h"
 #include "SwaggerMain_createCollectionBody.h"
+#include "SwaggerMain_deleteContentFromCollectionBody.h"
 #include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
@@ -40,6 +41,35 @@ class SWAGGER_API SwaggerCollectionsApi::CollectionsColuuidCommitPostResponse : 
 {
 public:
     virtual ~CollectionsColuuidCommitPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
+	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
+    
+    FString Content;
+};
+
+/* Deletes a content from a collection
+ *
+ * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+*/
+class SWAGGER_API SwaggerCollectionsApi::CollectionsColuuidContentsDeleteRequest : public Request
+{
+public:
+    virtual ~CollectionsColuuidContentsDeleteRequest() {}
+	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
+	FString ComputePath() const final;
+    
+	/* Collection ID */
+	FString Coluuid;
+	/* Content ID */
+	FString Contentid;
+	/* Variable to use when filtering for files (must be either 'path' or 'content_id') */
+	SwaggerMain_deleteContentFromCollectionBody Body;
+};
+
+class SWAGGER_API SwaggerCollectionsApi::CollectionsColuuidContentsDeleteResponse : public Response
+{
+public:
+    virtual ~CollectionsColuuidContentsDeleteResponse() {}
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
@@ -81,7 +111,7 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* Collection UUID */
+	/* coluuid */
 	FString Coluuid;
 	/* Directory */
 	TOptional<FString> Dir;
@@ -108,8 +138,10 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
+	/* coluuid */
+	FString Coluuid;
 	/* Content IDs to add to collection */
-	TArray<int32> Body;
+	TArray<int32> ContentIDs;
 };
 
 class SWAGGER_API SwaggerCollectionsApi::CollectionsColuuidPostResponse : public Response
@@ -161,8 +193,6 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* User ID */
-	int32 Id;
 };
 
 class SWAGGER_API SwaggerCollectionsApi::CollectionsGetResponse : public Response
@@ -172,7 +202,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<SwaggerMain_Collection> Content;
+    TArray<SwaggerCollections_Collection> Content;
 };
 
 /* Create a new collection
@@ -197,7 +227,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    SwaggerMain_Collection Content;
+    SwaggerCollections_Collection Content;
 };
 
 }

@@ -68,6 +68,11 @@ private class SwagUserApiTest {
         res.setStatus('OK');
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
+        Map<String, Object> params = new Map<String, Object>{
+            'expiry' => 'expiry_example',
+            'perms' => 'perms_example'
+        };
+
         SwagClient client;
         SwagUserApi api;
         SwagMainGetApiKeysResp response;
@@ -81,7 +86,7 @@ private class SwagUserApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody('{"empty": false}');
         expectedResponse = SwagMainGetApiKeysResp.getExample();
-        response = (SwagMainGetApiKeysResp) api.userApiKeysPost();
+        response = (SwagMainGetApiKeysResp) api.userApiKeysPost(params);
         System.assertEquals(expectedResponse, response);
     }
 

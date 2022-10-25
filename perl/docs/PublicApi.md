@@ -164,7 +164,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner => $miner)
+> public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed)
 
 Get all miners deals
 
@@ -183,9 +183,10 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 );
 
 my $miner = 'miner_example'; # string | Filter by miner
+my $ignore_failed = 'ignore_failed_example'; # string | Ignore Failed
 
 eval { 
-    $api_instance->public_miners_deals_miner_get(miner => $miner);
+    $api_instance->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_miners_deals_miner_get: $@\n";
@@ -197,6 +198,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner | 
+ **ignore_failed** | **string**| Ignore Failed | [optional] 
 
 ### Return type
 

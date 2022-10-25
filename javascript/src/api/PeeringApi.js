@@ -22,10 +22,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.PeeringApi = factory(root.EstuaryApi.ApiClient);
+    root.EstuaryClient.PeeringApi = factory(root.EstuaryClient.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -58,10 +58,16 @@
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param {Array.<module:model/String>} body Peer ids
      * @param {module:api/PeeringApi~adminPeeringPeersDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.adminPeeringPeersDelete = function(callback) {
-      var postBody = null;
+    this.adminPeeringPeersDelete = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling adminPeeringPeersDelete");
+      }
 
 
       var pathParams = {

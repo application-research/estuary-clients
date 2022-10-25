@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Controller
 public class UserApiController implements UserApi {
@@ -58,7 +58,7 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<MainGetApiKeysResp> userApiKeysPost() {
+    public ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h") @Valid @RequestParam(value = "expiry", required = false) String expiry,@ApiParam(value = "Permissions -- currently unused") @Valid @RequestParam(value = "perms", required = false) String perms) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

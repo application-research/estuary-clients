@@ -303,37 +303,6 @@ API.Client.DealsApi.prototype.dealTransferInProgressGet = function(opt_extraHttp
 }
 
 /**
- * Transfer Status
- * This endpoint returns the status of a transfer
- * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
- */
-API.Client.DealsApi.prototype.dealTransferStatusPost = function(opt_extraHttpRequestParams) {
-  /** @const {string} */
-  var path = this.basePath_ + '/deal/transfer/status';
-
-  /** @type {!Object} */
-  var queryParameters = {};
-
-  /** @type {!Object} */
-  var headerParams = angular.extend({}, this.defaultHeaders_);
-  /** @type {!Object} */
-  var httpRequestParams = {
-    method: 'POST',
-    url: path,
-    json: true,
-            params: queryParameters,
-    headers: headerParams
-  };
-
-  if (opt_extraHttpRequestParams) {
-    httpRequestParams = angular.extend(httpRequestParams, opt_extraHttpRequestParams);
-  }
-
-  return (/** @type {?} */ (this.http_))(httpRequestParams);
-}
-
-/**
  * Get storage failures for user
  * This endpoint returns a list of storage failures for user
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.

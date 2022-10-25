@@ -17,6 +17,7 @@ export { AutoretrieveApi } from './AutoretrieveApi';
 export { CollectionsApi } from './CollectionsApi';
 export { ContentApi } from './ContentApi';
 export { DealsApi } from './DealsApi';
+export { DefaultApi } from './DefaultApi';
 export { MetricsApi } from './MetricsApi';
 export { MinerApi } from './MinerApi';
 export { NetApi } from './NetApi';
@@ -26,13 +27,15 @@ export { PinningApi } from './PinningApi';
 export { PublicApi } from './PublicApi';
 export { UserApi } from './UserApi';
 export {
-  MainCollection,
+  CollectionsCollection,
   MainCreateCollectionBody,
+  MainDeleteContentFromCollectionBody,
   MainEstimateDealBody,
   MainGetApiKeysResp,
   MainImportDealBody,
   MainUserStatsResponse,
   UtilContentAddIpfsBody,
   UtilContentAddResponse,
+  UtilContentCreateBody,
   UtilHttpError,
 } from './models';

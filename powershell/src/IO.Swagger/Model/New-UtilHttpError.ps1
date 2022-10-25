@@ -13,10 +13,10 @@ function New-UtilHttpError {
     )
 
     Process {
-        'Creating object: estuary_client.Model.UtilHttpError' | Write-Verbose
+        'Creating object: estuary-client.Model.UtilHttpError' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName estuary_client.Model.UtilHttpError -ArgumentList @(
+        New-Object -TypeName estuary-client.Model.UtilHttpError -ArgumentList @(
             ${code},
             ${details},
             ${reason}

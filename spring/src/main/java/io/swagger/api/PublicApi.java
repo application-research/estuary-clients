@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Validated
 @Api(value = "public", description = "the public API")
@@ -74,7 +74,7 @@ public interface PublicApi {
     @RequestMapping(value = "/public/miners/deals/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner);
+    ResponseEntity<Void> publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner,@ApiParam(value = "Ignore Failed") @Valid @RequestParam(value = "ignore-failed", required = false) String ignoreFailed);
 
 
     @ApiOperation(value = "Get all miners", nickname = "publicMinersFailuresMinerGet", notes = "This endpoint returns all miners", authorizations = {

@@ -1,4 +1,4 @@
-# estuary_client.Api.ContentApi
+# estuary-client.Api.ContentApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**ContentDealsGet**](ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 [**ContentEnsureReplicationDatacidGet**](ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**ContentFailuresContentGet**](ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+[**ContentIdGet**](ContentApi.md#contentidget) | **GET** /content/{id} | Content
 [**ContentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**ContentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 [**ContentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
-> void ContentAddCarPost (string body, string filename = null, string commp = null, string size = null)
+> void ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
 
 Add Car object
 
@@ -34,9 +35,9 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -51,14 +52,13 @@ namespace Example
 
             var apiInstance = new ContentApi();
             var body = body_example;  // string | Car
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
             var filename = filename_example;  // string | Filename (optional) 
-            var commp = commp_example;  // string | Commp (optional) 
-            var size = size_example;  // string | Size (optional) 
 
             try
             {
                 // Add Car object
-                apiInstance.ContentAddCarPost(body, filename, commp, size);
+                apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
             }
             catch (Exception e)
             {
@@ -74,9 +74,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string**| Car | 
+ **ignoreDupes** | **string**| Ignore Dupes | [optional] 
  **filename** | **string**| Filename | [optional] 
- **commp** | **string**| Commp | [optional] 
- **size** | **string**| Size | [optional] 
 
 ### Return type
 
@@ -95,7 +94,7 @@ void (empty response body)
 
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> void ContentAddIpfsPost (UtilContentAddIpfsBody body)
+> void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null)
 
 Add IPFS object
 
@@ -105,9 +104,9 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -122,11 +121,12 @@ namespace Example
 
             var apiInstance = new ContentApi();
             var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
 
             try
             {
                 // Add IPFS object
-                apiInstance.ContentAddIpfsPost(body);
+                apiInstance.ContentAddIpfsPost(body, ignoreDupes);
             }
             catch (Exception e)
             {
@@ -142,6 +142,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignoreDupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -160,7 +161,7 @@ void (empty response body)
 
 <a name="contentaddpost"></a>
 # **ContentAddPost**
-> UtilContentAddResponse ContentAddPost (System.IO.Stream _file, string coluuid, string dir)
+> UtilContentAddResponse ContentAddPost (System.IO.Stream data, string filename = null, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
 
 Add new content
 
@@ -170,9 +171,9 @@ This endpoint is used to upload new content.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -186,14 +187,18 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var _file = new System.IO.Stream(); // System.IO.Stream | File to upload
-            var coluuid = coluuid_example;  // string | Collection UUID
-            var dir = dir_example;  // string | Directory
+            var data = new System.IO.Stream(); // System.IO.Stream | File to upload
+            var filename = filename_example;  // string | Filenam to use for upload (optional) 
+            var coluuid = coluuid_example;  // string | Collection UUID (optional) 
+            var replication = 56;  // int? | Replication value (optional) 
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes true/false (optional) 
+            var lazyProvide = lazyProvide_example;  // string | Lazy Provide true/false (optional) 
+            var dir = dir_example;  // string | Directory (optional) 
 
             try
             {
                 // Add new content
-                UtilContentAddResponse result = apiInstance.ContentAddPost(_file, coluuid, dir);
+                UtilContentAddResponse result = apiInstance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -209,9 +214,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **_file** | **System.IO.Stream**| File to upload | 
- **coluuid** | **string**| Collection UUID | 
- **dir** | **string**| Directory | 
+ **data** | **System.IO.Stream**| File to upload | 
+ **filename** | **string**| Filenam to use for upload | [optional] 
+ **coluuid** | **string**| Collection UUID | [optional] 
+ **replication** | **int?**| Replication value | [optional] 
+ **ignoreDupes** | **string**| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **string**| Lazy Provide true/false | [optional] 
+ **dir** | **string**| Directory | [optional] 
 
 ### Return type
 
@@ -240,9 +249,9 @@ This endpoint returns aggregated content stats
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -306,9 +315,9 @@ This endpoint is used to get all deals for a user
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -375,9 +384,9 @@ This endpoint returns content bandwidth
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -430,7 +439,7 @@ void (empty response body)
 
 <a name="contentcreatepost"></a>
 # **ContentCreatePost**
-> void ContentCreatePost (string body)
+> void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null)
 
 Add a new content
 
@@ -440,9 +449,9 @@ This endpoint adds a new content
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -456,12 +465,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = body_example;  // string | Content
+            var req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
 
             try
             {
                 // Add a new content
-                apiInstance.ContentCreatePost(body);
+                apiInstance.ContentCreatePost(req, ignoreDupes);
             }
             catch (Exception e)
             {
@@ -476,7 +486,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string**| Content | 
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **ignoreDupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -505,9 +516,9 @@ This endpoint lists all content with deals
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -572,9 +583,9 @@ This endpoint ensures that the content is replicated to the specified number of 
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -637,9 +648,9 @@ This endpoint returns all failures for a content
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -691,6 +702,71 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="contentidget"></a>
+# **ContentIdGet**
+> void ContentIdGet (int? id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class ContentIdGetExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var id = 56;  // int? | Content ID
+
+            try
+            {
+                // Content
+                apiInstance.ContentIdGet(id);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.ContentIdGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int?**| Content ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="contentimportdealpost"></a>
 # **ContentImportdealPost**
 > void ContentImportdealPost (MainImportDealBody body)
@@ -703,9 +779,9 @@ This endpoint imports a deal into the shuttle.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -768,9 +844,9 @@ This endpoint lists all content
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -830,9 +906,9 @@ This endpoint reads content from the blockstore
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -895,9 +971,9 @@ This endpoint is used to get staging zone for user.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -946,7 +1022,7 @@ void (empty response body)
 
 <a name="contentstatsget"></a>
 # **ContentStatsGet**
-> void ContentStatsGet (string limit)
+> void ContentStatsGet (string limit, string offset)
 
 Get content statistics
 
@@ -956,9 +1032,9 @@ This endpoint is used to get content statistics. Every content stored in the net
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -973,11 +1049,12 @@ namespace Example
 
             var apiInstance = new ContentApi();
             var limit = limit_example;  // string | limit
+            var offset = offset_example;  // string | offset
 
             try
             {
                 // Get content statistics
-                apiInstance.ContentStatsGet(limit);
+                apiInstance.ContentStatsGet(limit, offset);
             }
             catch (Exception e)
             {
@@ -993,6 +1070,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **string**| limit | 
+ **offset** | **string**| offset | 
 
 ### Return type
 
@@ -1021,9 +1099,9 @@ This endpoint returns the status of a content
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {

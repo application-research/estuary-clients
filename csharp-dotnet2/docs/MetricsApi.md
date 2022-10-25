@@ -1,4 +1,4 @@
-# estuary_client.Api.MetricsApi
+# estuary-client.Api.MetricsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -19,9 +19,9 @@ This endpoint is used to get deal metrics
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

@@ -53,9 +53,12 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
 /// This endpoint returns all miners deals
 ///  @param miner Filter by miner 
 ///
+///  @param ignoreFailed Ignore Failed (optional)
+///
 ///  @returns void
 ///
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
+    ignoreFailed: (NSString*) ignoreFailed
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
@@ -76,6 +79,9 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (ignoreFailed != nil) {
+        queryParams[@"ignore-failed"] = ignoreFailed;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`

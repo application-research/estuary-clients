@@ -14,8 +14,9 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-07T23:59:22.073Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-25T22:24:43.443Z")
 public class ContentController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
@@ -24,19 +25,19 @@ public class ContentController  {
    **/
 
   /*
-    public ResponseContext contentAddCarPOST(RequestContext request , String body, String filename, String commp, String size) {
+    public ResponseContext contentAddCarPOST(RequestContext request , String body, String ignoreDupes, String filename) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAddIpfsPOST(RequestContext request , UtilContentAddIpfsBody body) {
+    public ResponseContext contentAddIpfsPOST(RequestContext request , UtilContentAddIpfsBody body, String ignoreDupes) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAddPOST(RequestContext request , FormDataContentDisposition fileDetail, String coluuid, String dir) {
+    public ResponseContext contentAddPOST(RequestContext request , FormDataContentDisposition fileDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -60,7 +61,7 @@ public class ContentController  {
   */
 
   /*
-    public ResponseContext contentCreatePOST(RequestContext request , String body) {
+    public ResponseContext contentCreatePOST(RequestContext request , UtilContentCreateBody req, String ignoreDupes) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -79,6 +80,12 @@ public class ContentController  {
 
   /*
     public ResponseContext contentFailuresContentGET(RequestContext request , String content) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext contentIdGET(RequestContext request , Integer id) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -108,7 +115,7 @@ public class ContentController  {
   */
 
   /*
-    public ResponseContext contentStatsGET(RequestContext request , String limit) {
+    public ResponseContext contentStatsGET(RequestContext request , String limit, String offset) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

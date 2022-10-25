@@ -1,4 +1,4 @@
-# estuary_client.Api.DealsApi
+# estuary-client.Api.DealsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**DealStatusByProposalPropcidGet**](DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**DealStatusMinerPropcidGet**](DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**DealTransferInProgressGet**](DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**DealTransferStatusPost**](DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 [**DealsFailuresGet**](DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 [**DealsMakeMinerPost**](DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 [**DealsStatusDealGet**](DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
@@ -31,9 +30,9 @@ This endpoint estimates the cost of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -96,9 +95,9 @@ This endpoint returns the deal info for a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -161,9 +160,9 @@ This endpoint returns the proposal for a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -226,9 +225,9 @@ This endpoint returns the ask for a given CID
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -291,9 +290,9 @@ Get Deal Status by PropCid
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -356,9 +355,9 @@ This endpoint returns the status of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -423,9 +422,9 @@ This endpoint returns the in-progress transfers
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -472,67 +471,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="dealtransferstatuspost"></a>
-# **DealTransferStatusPost**
-> void DealTransferStatusPost ()
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
-
-namespace Example
-{
-    public class DealTransferStatusPostExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
-
-            var apiInstance = new DealsApi();
-
-            try
-            {
-                // Transfer Status
-                apiInstance.DealTransferStatusPost();
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DealsApi.DealTransferStatusPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealsfailuresget"></a>
 # **DealsFailuresGet**
 > void DealsFailuresGet ()
@@ -545,9 +483,9 @@ This endpoint returns a list of storage failures for user
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -606,9 +544,9 @@ This endpoint makes a deal for a given content and miner
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -673,9 +611,9 @@ This endpoint returns the status of a deal
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -738,9 +676,9 @@ This endpoint returns a list of storage failures
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -799,9 +737,9 @@ This endpoint returns the ask for a given CID
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {

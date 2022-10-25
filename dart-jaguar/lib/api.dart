@@ -12,6 +12,7 @@ import 'package:swagger/api/autoretrieve_api.dart';
 import 'package:swagger/api/collections_api.dart';
 import 'package:swagger/api/content_api.dart';
 import 'package:swagger/api/deals_api.dart';
+import 'package:swagger/api/default_api.dart';
 import 'package:swagger/api/metrics_api.dart';
 import 'package:swagger/api/miner_api.dart';
 import 'package:swagger/api/net_api.dart';
@@ -21,26 +22,30 @@ import 'package:swagger/api/pinning_api.dart';
 import 'package:swagger/api/public_api.dart';
 import 'package:swagger/api/user_api.dart';
 
-import 'package:swagger/model/main_collection.dart';
+import 'package:swagger/model/collections_collection.dart';
 import 'package:swagger/model/main_create_collection_body.dart';
+import 'package:swagger/model/main_delete_content_from_collection_body.dart';
 import 'package:swagger/model/main_estimate_deal_body.dart';
 import 'package:swagger/model/main_get_api_keys_resp.dart';
 import 'package:swagger/model/main_import_deal_body.dart';
 import 'package:swagger/model/main_user_stats_response.dart';
 import 'package:swagger/model/util_content_add_ipfs_body.dart';
 import 'package:swagger/model/util_content_add_response.dart';
+import 'package:swagger/model/util_content_create_body.dart';
 import 'package:swagger/model/util_http_error.dart';
 
 
 final jsonJaguarRepo = JsonRepo()
-..add(MainCollectionSerializer())
+..add(CollectionsCollectionSerializer())
 ..add(MainCreateCollectionBodySerializer())
+..add(MainDeleteContentFromCollectionBodySerializer())
 ..add(MainEstimateDealBodySerializer())
 ..add(MainGetApiKeysRespSerializer())
 ..add(MainImportDealBodySerializer())
 ..add(MainUserStatsResponseSerializer())
 ..add(UtilContentAddIpfsBodySerializer())
 ..add(UtilContentAddResponseSerializer())
+..add(UtilContentCreateBodySerializer())
 ..add(UtilHttpErrorSerializer())
 ;
 
@@ -157,6 +162,21 @@ class JaguarApiGen {
             serializers = jsonJaguarRepo;
         }
         return DealsApi(base: base, serializers: serializers);
+    }
+
+    
+    /**
+     * Get DefaultApi instance, base route and serializer can be overridden by a given but be careful,
+     * by doing that all interceptors will not be executed
+     */
+    DefaultApi getDefaultApi({Route base, SerializerRepo serializers}) {
+        if(base == null) {
+            base = _baseRoute;
+        }
+        if(serializers == null) {
+            serializers = jsonJaguarRepo;
+        }
+        return DefaultApi(base: base, serializers: serializers);
     }
 
     

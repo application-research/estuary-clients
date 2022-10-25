@@ -113,7 +113,7 @@ nil (empty response body)
 
 
 # **user_api_keys_post**
-> MainGetApiKeysResp user_api_keys_post
+> MainGetApiKeysResp user_api_keys_post(opts)
 
 Create API keys for a user
 
@@ -133,9 +133,14 @@ end
 
 api_instance = SwaggerClient::UserApi.new
 
+opts = { 
+  expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  perms: 'perms_example' # String | Permissions -- currently unused
+}
+
 begin
   #Create API keys for a user
-  result = api_instance.user_api_keys_post
+  result = api_instance.user_api_keys_post(opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling UserApi->user_api_keys_post: #{e}"
@@ -143,7 +148,11 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
 

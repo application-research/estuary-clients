@@ -1,7 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.MainCollection;
+import io.swagger.model.CollectionsCollection;
 import io.swagger.model.MainCreateCollectionBody;
+import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -44,6 +45,21 @@ public interface CollectionsApi  {
     public String collectionsColuuidCommitPost(@PathParam("coluuid") String coluuid);
 
     /**
+     * Deletes a content from a collection
+     *
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     *
+     */
+    @DELETE
+    @Path("/collections/{coluuid}/contents")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Deletes a content from a collection", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class) })
+    public String collectionsColuuidContentsDelete(@PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid, MainDeleteContentFromCollectionBody body);
+
+    /**
      * Deletes a collection
      *
      * This endpoint is used to delete an existing collection.
@@ -67,7 +83,7 @@ public interface CollectionsApi  {
     @ApiOperation(value = "Get contents in a collection", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class) })
-    public String collectionsColuuidGet(@QueryParam("coluuid")String coluuid, @QueryParam("dir")String dir);
+    public String collectionsColuuidGet(@PathParam("coluuid") String coluuid, @QueryParam("dir")String dir);
 
     /**
      * Add contents to a collection
@@ -82,7 +98,7 @@ public interface CollectionsApi  {
     @ApiOperation(value = "Add contents to a collection", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Map.class, responseContainer = "Map") })
-    public Map<String, String> collectionsColuuidPost(List<Integer> body);
+    public Map<String, String> collectionsColuuidPost(@PathParam("coluuid") String coluuid, List<Integer> contentIDs);
 
     /**
      * Add a file to a collection
@@ -108,11 +124,11 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List all collections", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainCollection.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public List<MainCollection> collectionsGet(@PathParam("id") Integer id);
+    public List<CollectionsCollection> collectionsGet();
 
     /**
      * Create a new collection
@@ -125,10 +141,10 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create a new collection", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainCollection.class),
+        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public MainCollection collectionsPost(MainCreateCollectionBody body);
+    public CollectionsCollection collectionsPost(MainCreateCollectionBody body);
 }
 

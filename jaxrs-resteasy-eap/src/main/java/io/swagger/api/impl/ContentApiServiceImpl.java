@@ -9,6 +9,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import java.util.List;
 
@@ -17,17 +18,17 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public class ContentApiServiceImpl implements ContentApi {
-      public Response contentAddCarPost(String body,String filename,String commp,String size,SecurityContext securityContext) {
+      public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddIpfsPost(UtilContentAddIpfsBody body,SecurityContext securityContext) {
+      public Response contentAddIpfsPost(UtilContentAddIpfsBody body,String ignoreDupes,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddPost(MultipartFormDataInput input,String coluuid,String dir,SecurityContext securityContext) {
+      public Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -43,7 +44,7 @@ public class ContentApiServiceImpl implements ContentApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentCreatePost(String body,SecurityContext securityContext) {
+      public Response contentCreatePost(UtilContentCreateBody req,String ignoreDupes,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -56,6 +57,10 @@ public class ContentApiServiceImpl implements ContentApi {
       return Response.ok().build();
   }
       public Response contentFailuresContentGet(String content,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response contentIdGet(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -75,7 +80,7 @@ public class ContentApiServiceImpl implements ContentApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentStatsGet(String limit,SecurityContext securityContext) {
+      public Response contentStatsGet(String limit,String offset,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

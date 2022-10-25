@@ -87,18 +87,28 @@ export class UserService {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param perms Permissions -- currently unused
      
      */
-    public userApiKeysPost(observe?: 'body', headers?: Headers): Observable<MainGetApiKeysResp>;
-    public userApiKeysPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<MainGetApiKeysResp>>;
-    public userApiKeysPost(observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'body', headers?: Headers): Observable<MainGetApiKeysResp>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<MainGetApiKeysResp>>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        let queryParameters: string[] = [];
+        if (expiry !== undefined) {
+            queryParameters.push('expiry='+encodeURIComponent(String(expiry)));
+        }
+        if (perms !== undefined) {
+            queryParameters.push('perms='+encodeURIComponent(String(perms)));
+        }
+
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<MainGetApiKeysResp>> = this.httpClient.post(`${this.APIConfiguration.basePath}/user/api-keys` as any, headers);
+        const response: Observable<HttpResponse<MainGetApiKeysResp>> = this.httpClient.post(`${this.APIConfiguration.basePath}/user/api-keys?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

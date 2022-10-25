@@ -22,15 +22,15 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.ContentApi();
+    instance = new EstuaryClient.ContentApi();
   });
 
   describe('(package)', function() {
@@ -41,9 +41,8 @@
           /*
           var body = "body_example";
           var opts = {};
+          opts.ignoreDupes = "ignoreDupes_example";
           opts.filename = "filename_example";
-          opts.commp = "commp_example";
-          opts.size = "size_example";
 
           instance.contentAddCarPost(body, opts, function(error, data, response) {
             if (error) {
@@ -62,14 +61,16 @@
         it('should call contentAddIpfsPost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentAddIpfsPost call
           /*
-          var body = new EstuaryApi.UtilContentAddIpfsBody();
+          var body = new EstuaryClient.UtilContentAddIpfsBody();
           body.coluuid = "";
           body.dir = "";
           body.filename = "";
           body.peers = [""];
           body.root = "";
+          var opts = {};
+          opts.ignoreDupes = "ignoreDupes_example";
 
-          instance.contentAddIpfsPost(body, function(error, data, response) {
+          instance.contentAddIpfsPost(body, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -86,17 +87,22 @@
         it('should call contentAddPost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentAddPost call and complete the assertions
           /*
-          var file = "/path/to/file.txt";
-          var coluuid = "coluuid_example";
-          var dir = "dir_example";
+          var data = "/path/to/file.txt";
+          var opts = {};
+          opts.filename = "filename_example";
+          opts.coluuid = "coluuid_example";
+          opts.replication = 56;
+          opts.ignoreDupes = "ignoreDupes_example";
+          opts.lazyProvide = "lazyProvide_example";
+          opts.dir = "dir_example";
 
-          instance.contentAddPost(file, coluuid, dir, function(error, data, response) {
+          instance.contentAddPost(data, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryApi.UtilContentAddResponse);
+            expect(data).to.be.a(EstuaryClient.UtilContentAddResponse);
             expect(data.cid).to.be.a('string');
             expect(data.cid).to.be("");
             expect(data.estuaryId).to.be.a('number');
@@ -187,9 +193,17 @@
         it('should call contentCreatePost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentCreatePost call
           /*
-          var body = "body_example";
+          var req = new EstuaryClient.UtilContentCreateBody();
+          req.coluuid = "";
+          req.dir = "";
+          req.location = "";
+          req.name = "";
+          req.root = "";
+          req.type = 0;
+          var opts = {};
+          opts.ignoreDupes = "ignoreDupes_example";
 
-          instance.contentCreatePost(body, function(error, data, response) {
+          instance.contentCreatePost(req, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -264,11 +278,30 @@
           done();
         });
       });
+      describe('contentIdGet', function() {
+        it('should call contentIdGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for contentIdGet call
+          /*
+          var id = 56;
+
+          instance.contentIdGet(id, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('contentImportdealPost', function() {
         it('should call contentImportdealPost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentImportdealPost call
           /*
-          var body = new EstuaryApi.MainImportDealBody();
+          var body = new EstuaryClient.MainImportDealBody();
           body.coluuid = "";
           body.dealIDs = [0];
           body.dir = "";
@@ -356,8 +389,9 @@
           // TODO: uncomment, update parameter values for contentStatsGet call
           /*
           var limit = "limit_example";
+          var offset = "offset_example";
 
-          instance.contentStatsGet(limit, function(error, data, response) {
+          instance.contentStatsGet(limit, offset, function(error, data, response) {
             if (error) {
               done(error);
               return;

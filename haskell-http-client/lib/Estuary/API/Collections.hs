@@ -79,6 +79,36 @@ data CollectionsColuuidCommitPost
 instance Produces CollectionsColuuidCommitPost MimeJSON
 
 
+-- *** collectionsColuuidContentsDelete
+
+-- | @DELETE \/collections\/{coluuid}\/contents@
+-- 
+-- Deletes a content from a collection
+-- 
+-- This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+-- 
+-- AuthMethod: 'AuthApiKeyBearerAuth'
+-- 
+collectionsColuuidContentsDelete 
+  :: (Consumes CollectionsColuuidContentsDelete contentType, MimeRender contentType MainDeleteContentFromCollectionBody)
+  => ContentType contentType -- ^ request content-type ('MimeType')
+  -> Coluuid -- ^ "coluuid" -  Collection ID
+  -> Contentid -- ^ "contentid" -  Content ID
+  -> MainDeleteContentFromCollectionBody -- ^ "body" -  Variable to use when filtering for files (must be either 'path' or 'content_id')
+  -> EstuaryRequest CollectionsColuuidContentsDelete contentType Text MimeJSON
+collectionsColuuidContentsDelete _ (Coluuid coluuid) (Contentid contentid) body =
+  _mkRequest "DELETE" ["/collections/",toPath coluuid,"/contents"]
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+    `setBodyParam` body
+
+data CollectionsColuuidContentsDelete 
+
+-- | /Body Param/ "body" - Variable to use when filtering for files (must be either 'path' or 'content_id')
+instance HasBodyParam CollectionsColuuidContentsDelete MainDeleteContentFromCollectionBody 
+-- | @application/json@
+instance Produces CollectionsColuuidContentsDelete MimeJSON
+
+
 -- *** collectionsColuuidDelete
 
 -- | @DELETE \/collections\/{coluuid}@
@@ -109,12 +139,11 @@ data CollectionsColuuidDelete
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsColuuidGet 
-  :: Coluuid -- ^ "coluuid" -  Collection UUID
+  :: Coluuid -- ^ "coluuid" -  coluuid
   -> EstuaryRequest CollectionsColuuidGet MimeNoContent Text MimeJSON
 collectionsColuuidGet (Coluuid coluuid) =
-  _mkRequest "GET" ["/collections/{coluuid}"]
+  _mkRequest "GET" ["/collections/",toPath coluuid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `setQuery` toQuery ("coluuid", Just coluuid)
 
 data CollectionsColuuidGet  
 
@@ -137,18 +166,19 @@ instance Produces CollectionsColuuidGet MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsColuuidPost 
-  :: (Consumes CollectionsColuuidPost MimeJSON, MimeRender MimeJSON Body)
-  => Body -- ^ "body" -  Content IDs to add to collection
+  :: (Consumes CollectionsColuuidPost MimeJSON, MimeRender MimeJSON ContentIDs)
+  => Coluuid -- ^ "coluuid" -  coluuid
+  -> ContentIDs -- ^ "contentIDs" -  Content IDs to add to collection
   -> EstuaryRequest CollectionsColuuidPost MimeJSON ((Map.Map String Text)) MimeJSON
-collectionsColuuidPost body =
-  _mkRequest "POST" ["/collections/{coluuid}"]
+collectionsColuuidPost (Coluuid coluuid) contentIDs =
+  _mkRequest "POST" ["/collections/",toPath coluuid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `setBodyParam` body
+    `setBodyParam` contentIDs
 
 data CollectionsColuuidPost 
 
--- | /Body Param/ "body" - Content IDs to add to collection
-instance HasBodyParam CollectionsColuuidPost Body 
+-- | /Body Param/ "contentIDs" - Content IDs to add to collection
+instance HasBodyParam CollectionsColuuidPost ContentIDs 
 
 -- | @application/json@
 instance Consumes CollectionsColuuidPost MimeJSON
@@ -197,9 +227,8 @@ instance Produces CollectionsFsAddPost MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsGet 
-  :: Id -- ^ "id" -  User ID
-  -> EstuaryRequest CollectionsGet MimeNoContent [MainCollection] MimeJSON
-collectionsGet (Id id) =
+  :: EstuaryRequest CollectionsGet MimeNoContent [CollectionsCollection] MimeJSON
+collectionsGet =
   _mkRequest "GET" ["/collections/"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 
@@ -222,7 +251,7 @@ collectionsPost
   :: (Consumes CollectionsPost contentType, MimeRender contentType MainCreateCollectionBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> MainCreateCollectionBody -- ^ "body" -  Collection name and description
-  -> EstuaryRequest CollectionsPost contentType MainCollection MimeJSON
+  -> EstuaryRequest CollectionsPost contentType CollectionsCollection MimeJSON
 collectionsPost _ body =
   _mkRequest "POST" ["/collections/"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

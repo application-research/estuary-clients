@@ -108,18 +108,6 @@ public class DealsApiServiceImpl implements DealsApi {
     }
     
     /**
-     * Transfer Status
-     *
-     * This endpoint returns the status of a transfer
-     *
-     */
-    public void dealTransferStatusPost() {
-        // TODO: Implement...
-        
-        
-    }
-    
-    /**
      * Get storage failures for user
      *
      * This endpoint returns a list of storage failures for user

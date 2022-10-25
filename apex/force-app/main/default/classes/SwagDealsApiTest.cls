@@ -187,29 +187,6 @@ private class SwagDealsApiTest {
     }
 
     /**
-     * Transfer Status
-     *
-     * This endpoint returns the status of a transfer
-     */
-    @isTest
-    private static void dealTransferStatusPostTest() {
-        HttpResponse res = new HttpResponse();
-        res.setStatusCode(200);
-        res.setStatus('OK');
-        Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
-
-        SwagClient client;
-        SwagDealsApi api;
-
-        client = new SwagClient();
-        api = new SwagDealsApi(client);
-        ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
-            client.setApiKey('foo-bar-api-key');
-
-        api.dealTransferStatusPost();
-    }
-
-    /**
      * Get storage failures for user
      *
      * This endpoint returns a list of storage failures for user

@@ -53,8 +53,14 @@ sub new {
 #
 # Remove peers on Peering Service
 # 
+# @param ARRAY[string] $body Peer ids (required)
 {
     my $params = {
+    'body' => {
+        data_type => 'ARRAY[string]',
+        description => 'Peer ids',
+        required => '1',
+    },
     };
     __PACKAGE__->method_documentation->{ 'admin_peering_peers_delete' } = { 
     	summary => 'Remove peers on Peering Service',
@@ -66,6 +72,11 @@ sub new {
 #
 sub admin_peering_peers_delete {
     my ($self, %args) = @_;
+
+    # verify the required parameter 'body' is set
+    unless (exists $args{'body'}) {
+      croak("Missing the required parameter 'body' when calling admin_peering_peers_delete");
+    }
 
     # parse inputs
     my $_resource_path = '/admin/peering/peers';
@@ -83,6 +94,11 @@ sub admin_peering_peers_delete {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     my $_body_data;
+    # body params
+    if ( exists $args{'body'}) {
+        $_body_data = $args{'body'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(bearerAuth )];
 

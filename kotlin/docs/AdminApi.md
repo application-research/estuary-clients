@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -25,12 +25,13 @@ This endpoint can be used to remove a Peer from the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
+val body : kotlin.Array<kotlin.String> =  // kotlin.Array<kotlin.String> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete()
+    apiInstance.adminPeeringPeersDelete(body)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringPeersDelete")
     e.printStackTrace()
@@ -41,7 +42,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **kotlin.Array&lt;kotlin.String&gt;**| Peer ids |
 
 ### Return type
 
@@ -67,8 +71,8 @@ This endpoint can be used to list all peers on Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -109,8 +113,8 @@ This endpoint can be used to add a Peer from the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -151,8 +155,8 @@ This endpoint can be used to start the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -193,8 +197,8 @@ This endpoint can be used to check the Peering status
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -235,8 +239,8 @@ This endpoint can be used to stop the Peering Service
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -277,8 +281,8 @@ This endpoint is used to get system configs.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {
@@ -319,8 +323,8 @@ This endpoint is used to get all users.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = AdminApi()
 try {

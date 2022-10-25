@@ -12,6 +12,10 @@ private class SwagPeersApiTest {
         res.setStatus('OK');
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
+        Map<String, Object> params = new Map<String, Object>{
+            'body' => new List<String>{'aeiou'}
+        };
+
         SwagClient client;
         SwagPeersApi api;
 
@@ -20,7 +24,7 @@ private class SwagPeersApiTest {
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringPeersDelete();
+        api.adminPeeringPeersDelete(params);
     }
 
     /**

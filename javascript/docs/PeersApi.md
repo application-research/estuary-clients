@@ -1,4 +1,4 @@
-# EstuaryApi.PeersApi
+# EstuaryClient.PeersApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -22,8 +22,8 @@ This endpoint can be used to remove a Peer from the Peering Service
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -31,7 +31,10 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
+
+var body = [new EstuaryClient.[String]()]; // [String] | Peer ids
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -40,11 +43,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.adminPeeringPeersDelete(callback);
+apiInstance.adminPeeringPeersDelete(body, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **[String]**| Peer ids | 
 
 ### Return type
 
@@ -69,8 +75,8 @@ This endpoint can be used to list all peers on Peering Service
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -78,7 +84,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -116,8 +122,8 @@ This endpoint can be used to add a Peer from the Peering Service
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -125,7 +131,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -163,8 +169,8 @@ This endpoint can be used to start the Peering Service
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -172,7 +178,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -210,8 +216,8 @@ This endpoint can be used to check the Peering status
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -219,7 +225,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -257,8 +263,8 @@ This endpoint can be used to stop the Peering Service
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -266,7 +272,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.PeersApi();
+var apiInstance = new EstuaryClient.PeersApi();
 
 var callback = function(error, data, response) {
   if (error) {

@@ -15,7 +15,8 @@
 goog.provide('API.Client.CollectionsApi');
 
 goog.require('API.Client.MainCreateCollectionBody');
-goog.require('API.Client.main.Collection');
+goog.require('API.Client.MainDeleteContentFromCollectionBody');
+goog.require('API.Client.collections.Collection');
 goog.require('API.Client.util.HttpError');
 
 /**
@@ -83,6 +84,55 @@ API.Client.CollectionsApi.prototype.collectionsColuuidCommitPost = function(colu
 }
 
 /**
+ * Deletes a content from a collection
+ * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+ * @param {!string} coluuid Collection ID
+ * @param {!string} contentid Content ID
+ * @param {!MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+ * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
+ * @return {!angular.$q.Promise<!string>}
+ */
+API.Client.CollectionsApi.prototype.collectionsColuuidContentsDelete = function(coluuid, contentid, body, opt_extraHttpRequestParams) {
+  /** @const {string} */
+  var path = this.basePath_ + '/collections/{coluuid}/contents'
+      .replace('{' + 'coluuid' + '}', String(coluuid))
+      .replace('{' + 'contentid' + '}', String(contentid));
+
+  /** @type {!Object} */
+  var queryParameters = {};
+
+  /** @type {!Object} */
+  var headerParams = angular.extend({}, this.defaultHeaders_);
+  // verify required parameter 'coluuid' is set
+  if (!coluuid) {
+    throw new Error('Missing required parameter coluuid when calling collectionsColuuidContentsDelete');
+  }
+  // verify required parameter 'contentid' is set
+  if (!contentid) {
+    throw new Error('Missing required parameter contentid when calling collectionsColuuidContentsDelete');
+  }
+  // verify required parameter 'body' is set
+  if (!body) {
+    throw new Error('Missing required parameter body when calling collectionsColuuidContentsDelete');
+  }
+  /** @type {!Object} */
+  var httpRequestParams = {
+    method: 'DELETE',
+    url: path,
+    json: true,
+    data: body,
+        params: queryParameters,
+    headers: headerParams
+  };
+
+  if (opt_extraHttpRequestParams) {
+    httpRequestParams = angular.extend(httpRequestParams, opt_extraHttpRequestParams);
+  }
+
+  return (/** @type {?} */ (this.http_))(httpRequestParams);
+}
+
+/**
  * Deletes a collection
  * This endpoint is used to delete an existing collection.
  * @param {!string} coluuid Collection ID
@@ -122,14 +172,15 @@ API.Client.CollectionsApi.prototype.collectionsColuuidDelete = function(coluuid,
 /**
  * Get contents in a collection
  * This endpoint is used to get contents in a collection. If no colpath query param is passed
- * @param {!string} coluuid Collection UUID
+ * @param {!string} coluuid coluuid
  * @param {!string=} opt_dir Directory
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!string>}
  */
 API.Client.CollectionsApi.prototype.collectionsColuuidGet = function(coluuid, opt_dir, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/collections/{coluuid}';
+  var path = this.basePath_ + '/collections/{coluuid}'
+      .replace('{' + 'coluuid' + '}', String(coluuid));
 
   /** @type {!Object} */
   var queryParameters = {};
@@ -140,10 +191,6 @@ API.Client.CollectionsApi.prototype.collectionsColuuidGet = function(coluuid, op
   if (!coluuid) {
     throw new Error('Missing required parameter coluuid when calling collectionsColuuidGet');
   }
-  if (coluuid !== undefined) {
-    queryParameters['coluuid'] = coluuid;
-  }
-
   if (opt_dir !== undefined) {
     queryParameters['dir'] = opt_dir;
   }
@@ -167,29 +214,35 @@ API.Client.CollectionsApi.prototype.collectionsColuuidGet = function(coluuid, op
 /**
  * Add contents to a collection
  * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
- * @param {!Array<!number>} body Content IDs to add to collection
+ * @param {!string} coluuid coluuid
+ * @param {!Array<!number>} contentIDs Content IDs to add to collection
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!Object<!string, string>>}
  */
-API.Client.CollectionsApi.prototype.collectionsColuuidPost = function(body, opt_extraHttpRequestParams) {
+API.Client.CollectionsApi.prototype.collectionsColuuidPost = function(coluuid, contentIDs, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/collections/{coluuid}';
+  var path = this.basePath_ + '/collections/{coluuid}'
+      .replace('{' + 'coluuid' + '}', String(coluuid));
 
   /** @type {!Object} */
   var queryParameters = {};
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'body' is set
-  if (!body) {
-    throw new Error('Missing required parameter body when calling collectionsColuuidPost');
+  // verify required parameter 'coluuid' is set
+  if (!coluuid) {
+    throw new Error('Missing required parameter coluuid when calling collectionsColuuidPost');
+  }
+  // verify required parameter 'contentIDs' is set
+  if (!contentIDs) {
+    throw new Error('Missing required parameter contentIDs when calling collectionsColuuidPost');
   }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
     url: path,
     json: true,
-    data: body,
+    data: contentIDs,
         params: queryParameters,
     headers: headerParams
   };
@@ -262,24 +315,18 @@ API.Client.CollectionsApi.prototype.collectionsFsAddPost = function(coluuid, con
 /**
  * List all collections
  * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
- * @param {!number} id User ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Array<!API.Client.main.Collection>>}
+ * @return {!angular.$q.Promise<!Array<!API.Client.collections.Collection>>}
  */
-API.Client.CollectionsApi.prototype.collectionsGet = function(id, opt_extraHttpRequestParams) {
+API.Client.CollectionsApi.prototype.collectionsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/collections/'
-      .replace('{' + 'id' + '}', String(id));
+  var path = this.basePath_ + '/collections/';
 
   /** @type {!Object} */
   var queryParameters = {};
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'id' is set
-  if (!id) {
-    throw new Error('Missing required parameter id when calling collectionsGet');
-  }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'GET',
@@ -301,7 +348,7 @@ API.Client.CollectionsApi.prototype.collectionsGet = function(id, opt_extraHttpR
  * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
  * @param {!MainCreateCollectionBody} body Collection name and description
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!API.Client.main.Collection>}
+ * @return {!angular.$q.Promise<!API.Client.collections.Collection>}
  */
 API.Client.CollectionsApi.prototype.collectionsPost = function(body, opt_extraHttpRequestParams) {
   /** @const {string} */

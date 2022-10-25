@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MainCollection', 'model/MainCreateCollectionBody', 'model/MainEstimateDealBody', 'model/MainGetApiKeysResp', 'model/MainImportDealBody', 'model/MainUserStatsResponse', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilHttpError', 'api/AdminApi', 'api/AutoretrieveApi', 'api/CollectionsApi', 'api/ContentApi', 'api/DealsApi', 'api/MetricsApi', 'api/MinerApi', 'api/NetApi', 'api/PeeringApi', 'api/PeersApi', 'api/PinningApi', 'api/PublicApi', 'api/UserApi'], factory);
+    define(['ApiClient', 'model/CollectionsCollection', 'model/MainCreateCollectionBody', 'model/MainDeleteContentFromCollectionBody', 'model/MainEstimateDealBody', 'model/MainGetApiKeysResp', 'model/MainImportDealBody', 'model/MainUserStatsResponse', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody', 'model/UtilHttpError', 'api/AdminApi', 'api/AutoretrieveApi', 'api/CollectionsApi', 'api/ContentApi', 'api/DealsApi', 'api/DefaultApi', 'api/MetricsApi', 'api/MinerApi', 'api/NetApi', 'api/PeeringApi', 'api/PeersApi', 'api/PinningApi', 'api/PublicApi', 'api/UserApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/MainCollection'), require('./model/MainCreateCollectionBody'), require('./model/MainEstimateDealBody'), require('./model/MainGetApiKeysResp'), require('./model/MainImportDealBody'), require('./model/MainUserStatsResponse'), require('./model/UtilContentAddIpfsBody'), require('./model/UtilContentAddResponse'), require('./model/UtilHttpError'), require('./api/AdminApi'), require('./api/AutoretrieveApi'), require('./api/CollectionsApi'), require('./api/ContentApi'), require('./api/DealsApi'), require('./api/MetricsApi'), require('./api/MinerApi'), require('./api/NetApi'), require('./api/PeeringApi'), require('./api/PeersApi'), require('./api/PinningApi'), require('./api/PublicApi'), require('./api/UserApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/CollectionsCollection'), require('./model/MainCreateCollectionBody'), require('./model/MainDeleteContentFromCollectionBody'), require('./model/MainEstimateDealBody'), require('./model/MainGetApiKeysResp'), require('./model/MainImportDealBody'), require('./model/MainUserStatsResponse'), require('./model/UtilContentAddIpfsBody'), require('./model/UtilContentAddResponse'), require('./model/UtilContentCreateBody'), require('./model/UtilHttpError'), require('./api/AdminApi'), require('./api/AutoretrieveApi'), require('./api/CollectionsApi'), require('./api/ContentApi'), require('./api/DealsApi'), require('./api/DefaultApi'), require('./api/MetricsApi'), require('./api/MinerApi'), require('./api/NetApi'), require('./api/PeeringApi'), require('./api/PeersApi'), require('./api/PinningApi'), require('./api/PublicApi'), require('./api/UserApi'));
   }
-}(function(ApiClient, MainCollection, MainCreateCollectionBody, MainEstimateDealBody, MainGetApiKeysResp, MainImportDealBody, MainUserStatsResponse, UtilContentAddIpfsBody, UtilContentAddResponse, UtilHttpError, AdminApi, AutoretrieveApi, CollectionsApi, ContentApi, DealsApi, MetricsApi, MinerApi, NetApi, PeeringApi, PeersApi, PinningApi, PublicApi, UserApi) {
+}(function(ApiClient, CollectionsCollection, MainCreateCollectionBody, MainDeleteContentFromCollectionBody, MainEstimateDealBody, MainGetApiKeysResp, MainImportDealBody, MainUserStatsResponse, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody, UtilHttpError, AdminApi, AutoretrieveApi, CollectionsApi, ContentApi, DealsApi, DefaultApi, MetricsApi, MinerApi, NetApi, PeeringApi, PeersApi, PinningApi, PublicApi, UserApi) {
   'use strict';
 
   /**
@@ -30,9 +30,9 @@
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
    * <pre>
-   * var EstuaryApi = require('index'); // See note below*.
-   * var xxxSvc = new EstuaryApi.XxxApi(); // Allocate the API class we're going to use.
-   * var yyyModel = new EstuaryApi.Yyy(); // Construct a model instance.
+   * var EstuaryClient = require('index'); // See note below*.
+   * var xxxSvc = new EstuaryClient.XxxApi(); // Allocate the API class we're going to use.
+   * var yyyModel = new EstuaryClient.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -44,8 +44,8 @@
    * <p>
    * A non-AMD browser application (discouraged) might do something like this:
    * <pre>
-   * var xxxSvc = new EstuaryApi.XxxApi(); // Allocate the API class we're going to use.
-   * var yyy = new EstuaryApi.Yyy(); // Construct a model instance.
+   * var xxxSvc = new EstuaryClient.XxxApi(); // Allocate the API class we're going to use.
+   * var yyy = new EstuaryClient.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -62,15 +62,20 @@
      */
     ApiClient: ApiClient,
     /**
-     * The MainCollection model constructor.
-     * @property {module:model/MainCollection}
+     * The CollectionsCollection model constructor.
+     * @property {module:model/CollectionsCollection}
      */
-    MainCollection: MainCollection,
+    CollectionsCollection: CollectionsCollection,
     /**
      * The MainCreateCollectionBody model constructor.
      * @property {module:model/MainCreateCollectionBody}
      */
     MainCreateCollectionBody: MainCreateCollectionBody,
+    /**
+     * The MainDeleteContentFromCollectionBody model constructor.
+     * @property {module:model/MainDeleteContentFromCollectionBody}
+     */
+    MainDeleteContentFromCollectionBody: MainDeleteContentFromCollectionBody,
     /**
      * The MainEstimateDealBody model constructor.
      * @property {module:model/MainEstimateDealBody}
@@ -102,6 +107,11 @@
      */
     UtilContentAddResponse: UtilContentAddResponse,
     /**
+     * The UtilContentCreateBody model constructor.
+     * @property {module:model/UtilContentCreateBody}
+     */
+    UtilContentCreateBody: UtilContentCreateBody,
+    /**
      * The UtilHttpError model constructor.
      * @property {module:model/UtilHttpError}
      */
@@ -131,6 +141,11 @@
      * @property {module:api/DealsApi}
      */
     DealsApi: DealsApi,
+    /**
+     * The DefaultApi service constructor.
+     * @property {module:api/DefaultApi}
+     */
+    DefaultApi: DefaultApi,
     /**
      * The MetricsApi service constructor.
      * @property {module:api/MetricsApi}

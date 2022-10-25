@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete
+> admin_peering_peers_delete(body)
 
 Remove peers on Peering Service
 
@@ -35,16 +35,22 @@ end
 
 api_instance = SwaggerClient::AdminApi.new
 
+body = [SwaggerClient::Array<String>.new] # Array<String> | Peer ids
+
+
 begin
   #Remove peers on Peering Service
-  api_instance.admin_peering_peers_delete
+  api_instance.admin_peering_peers_delete(body)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_delete: #{e}"
 end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **Array&lt;String&gt;**| Peer ids | 
 
 ### Return type
 

@@ -14,13 +14,13 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 public interface PublicApiService {
       public Response publicByCidCidGet(String cid, SecurityContext securityContext);
       public Response publicDealsFailuresGet(SecurityContext securityContext);
       public Response publicInfoGet(SecurityContext securityContext);
       public Response publicMetricsDealsOnChainGet(SecurityContext securityContext);
-      public Response publicMinersDealsMinerGet(String miner, SecurityContext securityContext);
+      public Response publicMinersDealsMinerGet(String miner, String ignoreFailed, SecurityContext securityContext);
       public Response publicMinersFailuresMinerGet(String miner, SecurityContext securityContext);
       public Response publicMinersGet(SecurityContext securityContext);
       public Response publicMinersStatsMinerGet(String miner, SecurityContext securityContext);

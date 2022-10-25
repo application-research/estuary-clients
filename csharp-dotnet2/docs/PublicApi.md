@@ -1,4 +1,4 @@
-# estuary_client.Api.PublicApi
+# estuary-client.Api.PublicApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -28,9 +28,9 @@ This endpoint returns the content associated with a CID
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -94,9 +94,9 @@ This endpoint returns information about the node
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -156,9 +156,9 @@ This endpoint is used to get deal metrics
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -208,7 +208,7 @@ void (empty response body)
 
 <a name="publicminersdealsminerget"></a>
 # **PublicMinersDealsMinerGet**
-> void PublicMinersDealsMinerGet (string miner)
+> void PublicMinersDealsMinerGet (string miner, string ignoreFailed)
 
 Get all miners deals
 
@@ -218,9 +218,9 @@ This endpoint returns all miners deals
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -236,11 +236,12 @@ namespace Example
 
             var apiInstance = new PublicApi();
             var miner = miner_example;  // string | Filter by miner
+            var ignoreFailed = ignoreFailed_example;  // string | Ignore Failed (optional) 
 
             try
             {
                 // Get all miners deals
-                apiInstance.PublicMinersDealsMinerGet(miner);
+                apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
             }
             catch (Exception e)
             {
@@ -256,6 +257,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| Filter by miner | 
+ **ignoreFailed** | **string**| Ignore Failed | [optional] 
 
 ### Return type
 
@@ -284,9 +286,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -350,9 +352,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -412,9 +414,9 @@ This endpoint returns miner stats
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -478,9 +480,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -541,9 +543,9 @@ This endpoint is used to get net peers
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -604,9 +606,9 @@ This endpoint is used to get public stats.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

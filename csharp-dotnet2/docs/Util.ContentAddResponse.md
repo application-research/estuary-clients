@@ -1,4 +1,4 @@
-# estuary_client.Model.UtilContentAddResponse
+# estuary-client.Model.UtilContentAddResponse
 ## Properties
 
 Name | Type | Description | Notes

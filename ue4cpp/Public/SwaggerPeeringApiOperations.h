@@ -29,6 +29,8 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
+	/* Peer ids */
+	TArray<FString> Body;
 };
 
 class SWAGGER_API SwaggerPeeringApi::AdminPeeringPeersDeleteResponse : public Response

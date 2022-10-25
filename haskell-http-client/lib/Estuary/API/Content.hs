@@ -84,20 +84,15 @@ data ContentAddCarPost
 -- | /Body Param/ "body" - Car
 instance HasBodyParam ContentAddCarPost BodyText 
 
+-- | /Optional Param/ "ignore-dupes" - Ignore Dupes
+instance HasOptionalParam ContentAddCarPost IgnoreDupes where
+  applyOptionalParam req (IgnoreDupes xs) =
+    req `setQuery` toQuery ("ignore-dupes", Just xs)
+
 -- | /Optional Param/ "filename" - Filename
 instance HasOptionalParam ContentAddCarPost Filename where
   applyOptionalParam req (Filename xs) =
     req `setQuery` toQuery ("filename", Just xs)
-
--- | /Optional Param/ "commp" - Commp
-instance HasOptionalParam ContentAddCarPost Commp where
-  applyOptionalParam req (Commp xs) =
-    req `setQuery` toQuery ("commp", Just xs)
-
--- | /Optional Param/ "size" - Size
-instance HasOptionalParam ContentAddCarPost Size where
-  applyOptionalParam req (Size xs) =
-    req `setQuery` toQuery ("size", Just xs)
 -- | @application/json@
 instance Produces ContentAddCarPost MimeJSON
 
@@ -128,6 +123,11 @@ data ContentAddIpfsPost
 
 -- | /Body Param/ "body" - IPFS Body
 instance HasBodyParam ContentAddIpfsPost UtilContentAddIpfsBody 
+
+-- | /Optional Param/ "ignore-dupes" - Ignore Dupes
+instance HasOptionalParam ContentAddIpfsPost IgnoreDupes where
+  applyOptionalParam req (IgnoreDupes xs) =
+    req `setQuery` toQuery ("ignore-dupes", Just xs)
 -- | @application/json@
 instance Produces ContentAddIpfsPost MimeJSON
 
@@ -144,16 +144,44 @@ instance Produces ContentAddIpfsPost MimeJSON
 -- 
 contentAddPost 
   :: (Consumes ContentAddPost MimeMultipartFormData)
-  => File -- ^ "file" -  File to upload
-  -> Coluuid -- ^ "coluuid" -  Collection UUID
-  -> Dir -- ^ "dir" -  Directory
+  => ParamData -- ^ "_data" -  File to upload
   -> EstuaryRequest ContentAddPost MimeMultipartFormData UtilContentAddResponse MimeJSON
-contentAddPost (File file) (Coluuid coluuid) (Dir dir) =
+contentAddPost (ParamData _data) =
   _mkRequest "POST" ["/content/add"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `_addMultiFormPart` NH.partFileSource "file" file
+    `_addMultiFormPart` NH.partFileSource "data" _data
 
 data ContentAddPost  
+
+-- | /Optional Param/ "filename" - Filenam to use for upload
+instance HasOptionalParam ContentAddPost Filename where
+  applyOptionalParam req (Filename xs) =
+    req `_addMultiFormPart` NH.partLBS "filename" (mimeRender' MimeMultipartFormData xs)
+
+-- | /Optional Param/ "coluuid" - Collection UUID
+instance HasOptionalParam ContentAddPost Coluuid where
+  applyOptionalParam req (Coluuid xs) =
+    req `setQuery` toQuery ("coluuid", Just xs)
+
+-- | /Optional Param/ "replication" - Replication value
+instance HasOptionalParam ContentAddPost Replication where
+  applyOptionalParam req (Replication xs) =
+    req `setQuery` toQuery ("replication", Just xs)
+
+-- | /Optional Param/ "ignore-dupes" - Ignore Dupes true/false
+instance HasOptionalParam ContentAddPost IgnoreDupes where
+  applyOptionalParam req (IgnoreDupes xs) =
+    req `setQuery` toQuery ("ignore-dupes", Just xs)
+
+-- | /Optional Param/ "lazy-provide" - Lazy Provide true/false
+instance HasOptionalParam ContentAddPost LazyProvide where
+  applyOptionalParam req (LazyProvide xs) =
+    req `setQuery` toQuery ("lazy-provide", Just xs)
+
+-- | /Optional Param/ "dir" - Directory
+instance HasOptionalParam ContentAddPost Dir where
+  applyOptionalParam req (Dir xs) =
+    req `setQuery` toQuery ("dir", Just xs)
 
 -- | @multipart/form-data@
 instance Consumes ContentAddPost MimeMultipartFormData
@@ -250,19 +278,24 @@ instance Produces ContentBwUsageContentGet MimeJSON
 -- Note: Has 'Produces' instances, but no response schema
 -- 
 contentCreatePost 
-  :: (Consumes ContentCreatePost contentType, MimeRender contentType BodyText)
+  :: (Consumes ContentCreatePost contentType, MimeRender contentType UtilContentCreateBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
-  -> BodyText -- ^ "body" -  Content
+  -> UtilContentCreateBody -- ^ "req" -  Content
   -> EstuaryRequest ContentCreatePost contentType res MimeJSON
-contentCreatePost _ body =
+contentCreatePost _ req =
   _mkRequest "POST" ["/content/create"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `setBodyParam` body
+    `setBodyParam` req
 
 data ContentCreatePost 
 
--- | /Body Param/ "body" - Content
-instance HasBodyParam ContentCreatePost BodyText 
+-- | /Body Param/ "req" - Content
+instance HasBodyParam ContentCreatePost UtilContentCreateBody 
+
+-- | /Optional Param/ "ignore-dupes" - Ignore Dupes
+instance HasOptionalParam ContentCreatePost IgnoreDupes where
+  applyOptionalParam req (IgnoreDupes xs) =
+    req `setQuery` toQuery ("ignore-dupes", Just xs)
 -- | @application/json@
 instance Produces ContentCreatePost MimeJSON
 
@@ -344,6 +377,30 @@ contentFailuresContentGet (Content content) =
 data ContentFailuresContentGet  
 -- | @application/json@
 instance Produces ContentFailuresContentGet MimeJSON
+
+
+-- *** contentIdGet
+
+-- | @GET \/content\/{id}@
+-- 
+-- Content
+-- 
+-- This endpoint returns a content by its ID
+-- 
+-- AuthMethod: 'AuthApiKeyBearerAuth'
+-- 
+-- Note: Has 'Produces' instances, but no response schema
+-- 
+contentIdGet 
+  :: Id -- ^ "id" -  Content ID
+  -> EstuaryRequest ContentIdGet MimeNoContent res MimeJSON
+contentIdGet (Id id) =
+  _mkRequest "GET" ["/content/",toPath id]
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+
+data ContentIdGet  
+-- | @application/json@
+instance Produces ContentIdGet MimeJSON
 
 
 -- *** contentImportdealPost
@@ -458,10 +515,13 @@ instance Produces ContentStagingZonesGet MimeJSON
 -- 
 contentStatsGet 
   :: LimitText -- ^ "limit" -  limit
+  -> OffsetText -- ^ "offset" -  offset
   -> EstuaryRequest ContentStatsGet MimeNoContent res MimeJSON
-contentStatsGet (LimitText limit) =
+contentStatsGet (LimitText limit) (OffsetText offset) =
   _mkRequest "GET" ["/content/stats"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+    `setQuery` toQuery ("limit", Just limit)
+    `setQuery` toQuery ("offset", Just offset)
 
 data ContentStatsGet  
 -- | @application/json@

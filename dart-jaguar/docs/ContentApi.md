@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **Get** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **Get** /content/ensure-replication/:datacid | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **Get** /content/failures/:content | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentIdGet) | **Get** /content/:id | Content
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **Post** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **Get** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **Get** /content/read/:cont | Read content
@@ -28,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **contentAddCarPost**
-> contentAddCarPost(body, filename, commp, size)
+> contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -44,12 +45,11 @@ import 'package:swagger/api.dart';
 
 var api_instance = new ContentApi();
 var body = new String(); // String | Car
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 var filename = filename_example; // String | Filename
-var commp = commp_example; // String | Commp
-var size = size_example; // String | Size
 
 try { 
-    api_instance.contentAddCarPost(body, filename, commp, size);
+    api_instance.contentAddCarPost(body, ignoreDupes, filename);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddCarPost: $e\n");
 }
@@ -60,9 +60,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **String**| Car | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **filename** | **String**| Filename | [optional] 
- **commp** | **String**| Commp | [optional] 
- **size** | **String**| Size | [optional] 
 
 ### Return type
 
@@ -80,7 +79,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body)
+> contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -96,9 +95,10 @@ import 'package:swagger/api.dart';
 
 var api_instance = new ContentApi();
 var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try { 
-    api_instance.contentAddIpfsPost(body);
+    api_instance.contentAddIpfsPost(body, ignoreDupes);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddIpfsPost: $e\n");
 }
@@ -109,6 +109,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -126,7 +127,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(file, coluuid, dir)
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
 Add new content
 
@@ -141,12 +142,16 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var file = /path/to/file.txt; // MultipartFile | File to upload
+var data = /path/to/file.txt; // MultipartFile | File to upload
+var filename = filename_example; // String | Filenam to use for upload
 var coluuid = coluuid_example; // String | Collection UUID
+var replication = 56; // int | Replication value
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+var lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
 var dir = dir_example; // String | Directory
 
 try { 
-    var result = api_instance.contentAddPost(file, coluuid, dir);
+    var result = api_instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddPost: $e\n");
@@ -157,9 +162,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **MultipartFile**| File to upload | 
- **coluuid** | **String**| Collection UUID | 
- **dir** | **String**| Directory | 
+ **data** | **MultipartFile**| File to upload | 
+ **filename** | **String**| Filenam to use for upload | [optional] 
+ **coluuid** | **String**| Collection UUID | [optional] 
+ **replication** | **int**| Replication value | [optional] 
+ **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 
@@ -320,7 +329,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentCreatePost**
-> contentCreatePost(body)
+> contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -335,10 +344,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var body = new String(); // String | Content
+var req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try { 
-    api_instance.contentCreatePost(body);
+    api_instance.contentCreatePost(req, ignoreDupes);
 } catch (e) {
     print("Exception when calling ContentApi->contentCreatePost: $e\n");
 }
@@ -348,7 +358,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Content | 
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -494,6 +505,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 **String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentIdGet**
+> contentIdGet(id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example 
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+var id = 56; // int | Content ID
+
+try { 
+    api_instance.contentIdGet(id);
+} catch (e) {
+    print("Exception when calling ContentApi->contentIdGet: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Content ID | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -684,7 +741,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentStatsGet**
-> contentStatsGet(limit)
+> contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -700,9 +757,10 @@ import 'package:swagger/api.dart';
 
 var api_instance = new ContentApi();
 var limit = limit_example; // String | limit
+var offset = offset_example; // String | offset
 
 try { 
-    api_instance.contentStatsGet(limit);
+    api_instance.contentStatsGet(limit, offset);
 } catch (e) {
     print("Exception when calling ContentApi->contentStatsGet: $e\n");
 }
@@ -713,6 +771,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 

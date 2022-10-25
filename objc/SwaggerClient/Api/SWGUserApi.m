@@ -174,15 +174,26 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 ///
 /// Create API keys for a user
 /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+///  @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+///
+///  @param perms Permissions -- currently unused (optional)
+///
 ///  @returns SWGMainGetApiKeysResp*
 ///
--(NSURLSessionTask*) userApiKeysPostWithCompletionHandler: 
-    (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler {
+-(NSURLSessionTask*) userApiKeysPostWithExpiry: (NSString*) expiry
+    perms: (NSString*) perms
+    completionHandler: (void (^)(SWGMainGetApiKeysResp* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/api-keys"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (expiry != nil) {
+        queryParams[@"expiry"] = expiry;
+    }
+    if (perms != nil) {
+        queryParams[@"perms"] = perms;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`

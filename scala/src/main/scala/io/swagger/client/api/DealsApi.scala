@@ -262,30 +262,6 @@ class DealsApi(
   }
 
   /**
-   * Transfer Status
-   * This endpoint returns the status of a transfer
-   *
-   * @return void
-   */
-  def dealTransferStatusPost() = {
-    val await = Try(Await.result(dealTransferStatusPostAsync(), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Transfer Status asynchronously
-   * This endpoint returns the status of a transfer
-   *
-   * @return Future(void)
-   */
-  def dealTransferStatusPostAsync() = {
-      helper.dealTransferStatusPost()
-  }
-
-  /**
    * Get storage failures for user
    * This endpoint returns a list of storage failures for user
    *
@@ -535,21 +511,6 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def dealTransferStatusPost()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
-    // create path and map variables
-    val path = (addFmt("/deal/transfer/status"))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

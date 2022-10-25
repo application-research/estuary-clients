@@ -36,6 +36,8 @@ export interface IUserApiKeysKeyDeleteParams {
  * userApiKeysPost - parameters interface
  */
 export interface IUserApiKeysPostParams {
+  expiry?: string;
+  perms?: string;
 }
 
 /**
@@ -126,8 +128,10 @@ export class UserApi extends Api {
   /**
    * Create API keys for a user
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+   * @param params.expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+   * @param params.perms Permissions -- currently unused
    */
-  async userApiKeysPost(): Promise<MainGetApiKeysResp> {
+  async userApiKeysPost(params: IUserApiKeysPostParams): Promise<MainGetApiKeysResp> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -136,6 +140,11 @@ export class UserApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
+      // Set query parameters
+      .withParams({ 
+        'expiry': params['expiry'],
+        'perms': params['perms'],
+      })
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

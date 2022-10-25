@@ -30,12 +30,20 @@ SWGMinerApi::SWGMinerApi(QString host, QString basePath) {
 }
 
 void
-SWGMinerApi::publicMinersDealsMinerGet(QString* miner) {
+SWGMinerApi::publicMinersDealsMinerGet(QString* miner, QString* ignore_failed) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/public/miners/deals/{miner}");
 
     QString minerPathParam("{"); minerPathParam.append("miner").append("}");
     fullPath.replace(minerPathParam, stringValue(miner));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("ignore-failed"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(ignore_failed)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();

@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:swagger/model/util_content_add_ipfs_body.dart';
 import 'package:swagger/model/util_content_add_response.dart';
 import 'package:swagger/model/main_import_deal_body.dart';
+import 'package:swagger/model/util_content_create_body.dart';
 
 
 part 'content_api.jretro.dart';
@@ -24,11 +25,9 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     @PostReq(path: "/content/add-car", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> contentAddCarPost(
         
-        @QueryParam("filename") String filename, 
+        @QueryParam("ignore-dupes") String ignoreDupes, 
         
-        @QueryParam("commp") String commp, 
-        
-        @QueryParam("size") String size
+        @QueryParam("filename") String filename
         ,
         @AsJson() String body, 
     );
@@ -39,7 +38,9 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     @PostReq(path: "/content/add-ipfs", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> contentAddIpfsPost(
         
-        @AsJson() UtilContentAddIpfsBody body
+        @QueryParam("ignore-dupes") String ignoreDupes
+        ,
+        @AsJson() UtilContentAddIpfsBody body, 
     );
 
     /// Add new content
@@ -47,10 +48,20 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     /// This endpoint is used to upload new content.
     @PostReq(path: "/content/add", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<UtilContentAddResponse> contentAddPost(
-            @PathParam("coluuid") String coluuid, 
-            @PathParam("dir") String dir
+        
+        @QueryParam("coluuid") String coluuid, 
+        
+        @QueryParam("replication") int replication, 
+        
+        @QueryParam("ignore-dupes") String ignoreDupes, 
+        
+        @QueryParam("lazy-provide") String lazyProvide, 
+        
+        @QueryParam("dir") String dir
         ,
-        @AsMultipartField() MultipartFile file
+        @AsMultipartField() MultipartFile data, 
+        
+        @AsMultipartField() String filename
     );
 
     /// Get aggregated content stats
@@ -88,7 +99,9 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     @PostReq(path: "/content/create", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> contentCreatePost(
         
-        @AsJson() String body
+        @QueryParam("ignore-dupes") String ignoreDupes
+        ,
+        @AsJson() UtilContentCreateBody req, 
     );
 
     /// Content with deals
@@ -116,6 +129,14 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     @GetReq(path: "/content/failures/:content", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<String> contentFailuresContentGet(
             @PathParam("content") String content
+    );
+
+    /// Content
+    ///
+    /// This endpoint returns a content by its ID
+    @GetReq(path: "/content/:id", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
+    Future<void> contentIdGet(
+            @PathParam("id") int id
     );
 
     /// Import a deal
@@ -154,7 +175,10 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     @GetReq(path: "/content/stats", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<void> contentStatsGet(
-            @PathParam("limit") String limit
+        
+        @QueryParam("limit") String limit, 
+        
+        @QueryParam("offset") String offset
     );
 
     /// Content Status

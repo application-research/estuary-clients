@@ -33,6 +33,12 @@ function Invoke-UserApiUserApiKeysKeyDelete {
 function Invoke-UserApiUserApiKeysPost {
     [CmdletBinding()]
     Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${expiry},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${perms}
     )
 
     Process {
@@ -40,6 +46,8 @@ function Invoke-UserApiUserApiKeysPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:UserApi.UserApiKeysPost(
+            ${expiry},
+            ${perms}
         )
     }
 }

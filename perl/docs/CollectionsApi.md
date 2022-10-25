@@ -10,6 +10,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collections_coluuid_commit_post**](CollectionsApi.md#collections_coluuid_commit_post) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collections_coluuid_contents_delete**](CollectionsApi.md#collections_coluuid_contents_delete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collections_coluuid_delete**](CollectionsApi.md#collections_coluuid_delete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collections_coluuid_get**](CollectionsApi.md#collections_coluuid_get) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collections_coluuid_post**](CollectionsApi.md#collections_coluuid_post) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -53,6 +54,61 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| coluuid | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **collections_coluuid_contents_delete**
+> string collections_coluuid_contents_delete(coluuid => $coluuid, contentid => $contentid, body => $body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::SwaggerClient::CollectionsApi;
+my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
+
+    # Configure API key authorization: bearerAuth
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+);
+
+my $coluuid = 'coluuid_example'; # string | Collection ID
+my $contentid = 'contentid_example'; # string | Content ID
+my $body = WWW::SwaggerClient::Object::MainDeleteContentFromCollectionBody->new(); # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+eval { 
+    my $result = $api_instance->collections_coluuid_contents_delete(coluuid => $coluuid, contentid => $contentid, body => $body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CollectionsApi->collections_coluuid_contents_delete: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **string**| Collection ID | 
+ **contentid** | **string**| Content ID | 
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -138,7 +194,7 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $coluuid = 'coluuid_example'; # string | Collection UUID
+my $coluuid = 'coluuid_example'; # string | coluuid
 my $dir = 'dir_example'; # string | Directory
 
 eval { 
@@ -154,7 +210,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **string**| Collection UUID | 
+ **coluuid** | **string**| coluuid | 
  **dir** | **string**| Directory | [optional] 
 
 ### Return type
@@ -173,7 +229,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> HASH[string,string] collections_coluuid_post(body => $body)
+> HASH[string,string] collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds)
 
 Add contents to a collection
 
@@ -191,10 +247,11 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $body = [WWW::SwaggerClient::Object::ARRAY[int]->new()]; # ARRAY[int] | Content IDs to add to collection
+my $coluuid = 'coluuid_example'; # string | coluuid
+my $content_i_ds = [WWW::SwaggerClient::Object::ARRAY[int]->new()]; # ARRAY[int] | Content IDs to add to collection
 
 eval { 
-    my $result = $api_instance->collections_coluuid_post(body => $body);
+    my $result = $api_instance->collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds);
     print Dumper($result);
 };
 if ($@) {
@@ -206,7 +263,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **ARRAY[int]**| Content IDs to add to collection | 
+ **coluuid** | **string**| coluuid | 
+ **content_i_ds** | **ARRAY[int]**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -278,7 +336,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> ARRAY[MainCollection] collections_get(id => $id)
+> ARRAY[CollectionsCollection] collections_get()
 
 List all collections
 
@@ -296,10 +354,9 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $id = 56; # int | User ID
 
 eval { 
-    my $result = $api_instance->collections_get(id => $id);
+    my $result = $api_instance->collections_get();
     print Dumper($result);
 };
 if ($@) {
@@ -308,14 +365,11 @@ if ($@) {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**ARRAY[MainCollection]**](MainCollection.md)
+[**ARRAY[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -329,7 +383,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_post**
-> MainCollection collections_post(body => $body)
+> CollectionsCollection collections_post(body => $body)
 
 Create a new collection
 
@@ -366,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

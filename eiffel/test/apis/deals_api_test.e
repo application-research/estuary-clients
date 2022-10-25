@@ -111,18 +111,6 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
     
-    test_deal_transfer_status_post
-            -- Transfer Status
-            -- 
-            -- This endpoint returns the status of a transfer 
-        local
-        do
-            -- TODO: Initialize required params.
-                      
-            -- api.deal_transfer_status_post
-            assert ("not_implemented", False)
-        end
-    
     test_deals_failures_get
             -- Get storage failures for user
             -- 

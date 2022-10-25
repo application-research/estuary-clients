@@ -13,6 +13,7 @@
 
 module Request.Peering exposing (adminPeeringPeersDelete, adminPeeringPeersGet, adminPeeringPeersPost, adminPeeringStartPost, adminPeeringStatusGet, adminPeeringStopPost)
 
+import Data.String exposing (Encode.string, String)
 import Http
 import Json.Decode as Decode
 
@@ -25,12 +26,12 @@ basePath =
 {-
    This endpoint can be used to remove a Peer from the Peering Service
 -}
-adminPeeringPeersDelete : Http.Request 
-adminPeeringPeersDelete =
+adminPeeringPeersDelete : String -> Http.Request 
+adminPeeringPeersDelete model =
     { method = "DELETE"
     , url = basePath ++ "/admin/peering/peers"
     , headers = []
-    , body = Http.emptyBody
+    , body = Http.jsonBody <| Encode.string model
     , expect = 
     , timeout = Just 30000
     , withCredentials = False

@@ -24,10 +24,13 @@ object AdminApi {
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
+   * 
+   * @param body Peer ids
    */
-  def adminPeeringPeersDelete()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def adminPeeringPeersDelete(body: Seq[String])(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.DELETE, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withBody(body)
         /**
    * This endpoint can be used to list all peers on Peering Service
    * 

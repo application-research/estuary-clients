@@ -17,6 +17,7 @@ import java.io.File;
 import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
 import io.swagger.client.model.UtilContentAddResponse;
+import io.swagger.client.model.UtilContentCreateBody;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -46,10 +47,9 @@ public class ContentApiTest {
     @Test
     public void contentAddCarPostTest() throws Exception {
         String body = null;
+        String ignoreDupes = null;
         String filename = null;
-        String commp = null;
-        String size = null;
-        api.contentAddCarPost(body, filename, commp, size);
+        api.contentAddCarPost(body, ignoreDupes, filename);
 
         // TODO: test validations
     }
@@ -65,7 +65,8 @@ public class ContentApiTest {
     @Test
     public void contentAddIpfsPostTest() throws Exception {
         UtilContentAddIpfsBody body = null;
-        api.contentAddIpfsPost(body);
+        String ignoreDupes = null;
+        api.contentAddIpfsPost(body, ignoreDupes);
 
         // TODO: test validations
     }
@@ -80,10 +81,14 @@ public class ContentApiTest {
      */
     @Test
     public void contentAddPostTest() throws Exception {
-        File file = null;
+        File data = null;
+        String filename = null;
         String coluuid = null;
+        Integer replication = null;
+        String ignoreDupes = null;
+        String lazyProvide = null;
         String dir = null;
-        UtilContentAddResponse response = api.contentAddPost(file, coluuid, dir);
+        UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
 
         // TODO: test validations
     }
@@ -148,8 +153,9 @@ public class ContentApiTest {
      */
     @Test
     public void contentCreatePostTest() throws Exception {
-        String body = null;
-        api.contentCreatePost(body);
+        UtilContentCreateBody req = null;
+        String ignoreDupes = null;
+        api.contentCreatePost(req, ignoreDupes);
 
         // TODO: test validations
     }
@@ -199,6 +205,22 @@ public class ContentApiTest {
     public void contentFailuresContentGetTest() throws Exception {
         String content = null;
         String response = api.contentFailuresContentGet(content);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Content
+     *
+     * This endpoint returns a content by its ID
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void contentIdGetTest() throws Exception {
+        Integer id = null;
+        api.contentIdGet(id);
 
         // TODO: test validations
     }
@@ -276,7 +298,8 @@ public class ContentApiTest {
     @Test
     public void contentStatsGetTest() throws Exception {
         String limit = null;
-        api.contentStatsGet(limit);
+        String offset = null;
+        api.contentStatsGet(limit, offset);
 
         // TODO: test validations
     }

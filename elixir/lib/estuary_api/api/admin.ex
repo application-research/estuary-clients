@@ -18,6 +18,7 @@ defmodule EstuaryAPI.Api.Admin do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
+  - body ([String.t]): Peer ids
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
@@ -25,11 +26,12 @@ defmodule EstuaryAPI.Api.Admin do
   {:ok, %{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_peers_delete(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def admin_peering_peers_delete(connection, _opts \\ []) do
+  @spec admin_peering_peers_delete(Tesla.Env.client, list(String.t), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  def admin_peering_peers_delete(connection, body, _opts \\ []) do
     %{}
     |> method(:delete)
     |> url("/admin/peering/peers")
+    |> add_param(:body, :"body", body)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

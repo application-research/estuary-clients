@@ -5,6 +5,7 @@ import java.io.InputStream;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 
 @Path("/content")
 @Api(description = "the content API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-07T23:59:40.764Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-10-25T22:25:02.267Z")
 public class ContentApi {
 
     @POST
@@ -29,7 +30,7 @@ public class ContentApi {
     }, tags={ "content",  })
     @ApiResponses(value = { 
     })
-    public Response contentAddCarPost(@Valid String body,@QueryParam("filename")   @ApiParam("Filename")  String filename,@QueryParam("commp")   @ApiParam("Commp")  String commp,@QueryParam("size")   @ApiParam("Size")  String size) {
+    public Response contentAddCarPost(@Valid String body,@QueryParam("ignore-dupes")   @ApiParam("Ignore Dupes")  String ignoreDupes,@QueryParam("filename")   @ApiParam("Filename")  String filename) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -41,7 +42,7 @@ public class ContentApi {
     }, tags={ "content",  })
     @ApiResponses(value = { 
     })
-    public Response contentAddIpfsPost(@Valid UtilContentAddIpfsBody body) {
+    public Response contentAddIpfsPost(@Valid UtilContentAddIpfsBody body,@QueryParam("ignore-dupes")   @ApiParam("Ignore Dupes")  String ignoreDupes) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -55,7 +56,7 @@ public class ContentApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class)
     })
-    public Response contentAddPost( @FormParam(value = "file") InputStream fileInputStream,@PathParam("coluuid") @ApiParam("Collection UUID") String coluuid,@PathParam("dir") @ApiParam("Directory") String dir) {
+    public Response contentAddPost( @FormParam(value = "data") InputStream dataInputStream,@FormParam(value = "filename")  String filename,@QueryParam("coluuid")   @ApiParam("Collection UUID")  String coluuid,@QueryParam("replication")   @ApiParam("Replication value")  Integer replication,@QueryParam("ignore-dupes")   @ApiParam("Ignore Dupes true/false")  String ignoreDupes,@QueryParam("lazy-provide")   @ApiParam("Lazy Provide true/false")  String lazyProvide,@QueryParam("dir")   @ApiParam("Directory")  String dir) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -104,7 +105,7 @@ public class ContentApi {
     }, tags={ "content",  })
     @ApiResponses(value = { 
     })
-    public Response contentCreatePost(@Valid String body) {
+    public Response contentCreatePost(@Valid UtilContentCreateBody req,@QueryParam("ignore-dupes")   @ApiParam("Ignore Dupes")  String ignoreDupes) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -142,6 +143,18 @@ public class ContentApi {
         @ApiResponse(code = 200, message = "OK", response = String.class)
     })
     public Response contentFailuresContentGet(@PathParam("content") @ApiParam("Content ID") String content) {
+        return Response.ok().entity("magic!").build();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = Void.class, authorizations = {
+        @Authorization(value = "bearerAuth")
+    }, tags={ "content",  })
+    @ApiResponses(value = { 
+    })
+    public Response contentIdGet(@PathParam("id") @ApiParam("Content ID") Integer id) {
         return Response.ok().entity("magic!").build();
     }
 
@@ -202,7 +215,7 @@ public class ContentApi {
     }, tags={ "content",  })
     @ApiResponses(value = { 
     })
-    public Response contentStatsGet(@PathParam("limit") @ApiParam("limit") String limit) {
+    public Response contentStatsGet(@QueryParam("limit") @NotNull   @ApiParam("limit")  String limit,@QueryParam("offset") @NotNull   @ApiParam("offset")  String offset) {
         return Response.ok().entity("magic!").build();
     }
 

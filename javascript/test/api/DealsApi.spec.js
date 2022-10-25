@@ -22,15 +22,15 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new EstuaryApi.DealsApi();
+    instance = new EstuaryClient.DealsApi();
   });
 
   describe('(package)', function() {
@@ -39,7 +39,7 @@
         it('should call dealEstimatePost successfully', function(done) {
           // TODO: uncomment, update parameter values for dealEstimatePost call
           /*
-          var body = new EstuaryApi.MainEstimateDealBody();
+          var body = new EstuaryClient.MainEstimateDealBody();
           body.durationBlks = 0;
           body.replication = 0;
           body.size = 0;
@@ -160,24 +160,6 @@
           /*
 
           instance.dealTransferInProgressGet(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
-      describe('dealTransferStatusPost', function() {
-        it('should call dealTransferStatusPost successfully', function(done) {
-          // TODO: uncomment dealTransferStatusPost call
-          /*
-
-          instance.dealTransferStatusPost(function(error, data, response) {
             if (error) {
               done(error);
               return;

@@ -116,17 +116,6 @@ describe 'DealsApi' do
     end
   end
 
-  # unit tests for deal_transfer_status_post
-  # Transfer Status
-  # This endpoint returns the status of a transfer
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'deal_transfer_status_post test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for deals_failures_get
   # Get storage failures for user
   # This endpoint returns a list of storage failures for user

@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('MainUserStatsResponse', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.MainUserStatsResponse();
+        instance = new EstuaryClient.MainUserStatsResponse();
       });
 
       it('should create an instance of MainUserStatsResponse', function() {
         // TODO: update the code to test MainUserStatsResponse
-        expect(instance).to.be.a(EstuaryApi.MainUserStatsResponse);
+        expect(instance).to.be.a(EstuaryClient.MainUserStatsResponse);
       });
 
       it('should have the property numPins (base name: "numPins")', function() {

@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import java.util.List;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,7 +29,7 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to remove a Peer from the Peering Service
      *
      */
-    public void adminPeeringPeersDelete() {
+    public void adminPeeringPeersDelete(List<String> body) {
         // TODO: Implement...
         
         

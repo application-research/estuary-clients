@@ -22,8 +22,8 @@ This endpoint is used to get net addrs
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = NetApi()
 try {
@@ -65,8 +65,8 @@ This endpoint returns all miners
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = NetApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
@@ -111,8 +111,8 @@ This endpoint returns all miners
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = NetApi()
 try {
@@ -153,8 +153,8 @@ This endpoint is used to get net addrs
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = NetApi()
 try {
@@ -196,8 +196,8 @@ This endpoint is used to get net peers
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = NetApi()
 try {

@@ -51,10 +51,23 @@ NSInteger kSWGPeeringApiMissingParamErrorCode = 234513;
 ///
 /// Remove peers on Peering Service
 /// This endpoint can be used to remove a Peer from the Peering Service
+///  @param body Peer ids 
+///
 ///  @returns void
 ///
--(NSURLSessionTask*) adminPeeringPeersDeleteWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter 'body' is set
+    if (body == nil) {
+        NSParameterAssert(body);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
+            NSError* error = [NSError errorWithDomain:kSWGPeeringApiErrorDomain code:kSWGPeeringApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/peers"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -80,6 +93,7 @@ NSInteger kSWGPeeringApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = body;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"

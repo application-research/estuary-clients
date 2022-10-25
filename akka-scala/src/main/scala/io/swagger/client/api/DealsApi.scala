@@ -116,17 +116,6 @@ object DealsApi {
     ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/transfer/in-progress", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
         /**
-   * This endpoint returns the status of a transfer
-   * 
-   * Expected answers:
-   * 
-   * Available security schemes:
-   *   bearerAuth (apiKey)
-   */
-  def dealTransferStatusPost()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/deal/transfer/status", "application/json")
-      .withApiKey(apiKey, "Authorization", HEADER)
-        /**
    * This endpoint returns a list of storage failures for user
    * 
    * Expected answers:

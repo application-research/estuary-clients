@@ -80,6 +80,7 @@ _()
     operations["adminAutoretrieveListGet"]=1
     operations["autoretrieveHeartbeatPost"]=1
     operations["collectionsColuuidCommitPost"]=1
+    operations["collectionsColuuidContentsDelete"]=1
     operations["collectionsColuuidDelete"]=1
     operations["collectionsColuuidGet"]=1
     operations["collectionsColuuidPost"]=1
@@ -96,6 +97,7 @@ _()
     operations["contentDealsGet"]=1
     operations["contentEnsureReplicationDatacidGet"]=1
     operations["contentFailuresContentGet"]=1
+    operations["contentIdGet"]=1
     operations["contentImportdealPost"]=1
     operations["contentListGet"]=1
     operations["contentReadContGet"]=1
@@ -109,12 +111,12 @@ _()
     operations["dealStatusByProposalPropcidGet"]=1
     operations["dealStatusMinerPropcidGet"]=1
     operations["dealTransferInProgressGet"]=1
-    operations["dealTransferStatusPost"]=1
     operations["dealsFailuresGet"]=1
     operations["dealsMakeMinerPost"]=1
     operations["dealsStatusDealGet"]=1
     operations["publicDealsFailuresGet"]=1
     operations["publicMinersStorageQueryMinerGet"]=1
+    operations["dealTransferStatusPost"]=1
     operations["publicMetricsDealsOnChainGet"]=1
     operations["publicMinersDealsMinerGet"]=1
     operations["publicMinersStatsMinerGet"]=1
@@ -171,27 +173,29 @@ _()
     operation_parameters["adminAutoretrieveListGet"]=""
     operation_parameters["autoretrieveHeartbeatPost"]="token: "
     operation_parameters["collectionsColuuidCommitPost"]="coluuid= "
+    operation_parameters["collectionsColuuidContentsDelete"]="coluuid= contentid= "
     operation_parameters["collectionsColuuidDelete"]="coluuid= "
     operation_parameters["collectionsColuuidGet"]="coluuid= dir= "
-    operation_parameters["collectionsColuuidPost"]=""
+    operation_parameters["collectionsColuuidPost"]="coluuid= "
     operation_parameters["collectionsFsAddPost"]="coluuid= content= path= "
-    operation_parameters["collectionsGet"]="id= "
+    operation_parameters["collectionsGet"]=""
     operation_parameters["collectionsPost"]=""
-    operation_parameters["contentAddCarPost"]="filename= commp= size= "
-    operation_parameters["contentAddIpfsPost"]=""
-    operation_parameters["contentAddPost"]="coluuid= dir= "
+    operation_parameters["contentAddCarPost"]="ignore-dupes= filename= "
+    operation_parameters["contentAddIpfsPost"]="ignore-dupes= "
+    operation_parameters["contentAddPost"]="coluuid= replication= ignore-dupes= lazy-provide= dir= "
     operation_parameters["contentAggregatedContentGet"]="content= "
     operation_parameters["contentAllDealsGet"]="begin= duration= all= "
     operation_parameters["contentBwUsageContentGet"]="content= "
-    operation_parameters["contentCreatePost"]=""
+    operation_parameters["contentCreatePost"]="ignore-dupes= "
     operation_parameters["contentDealsGet"]="limit= offset= "
     operation_parameters["contentEnsureReplicationDatacidGet"]="datacid= "
     operation_parameters["contentFailuresContentGet"]="content= "
+    operation_parameters["contentIdGet"]="id= "
     operation_parameters["contentImportdealPost"]=""
     operation_parameters["contentListGet"]=""
     operation_parameters["contentReadContGet"]="cont= "
     operation_parameters["contentStagingZonesGet"]=""
-    operation_parameters["contentStatsGet"]="limit= "
+    operation_parameters["contentStatsGet"]="limit= offset= "
     operation_parameters["contentStatusIdGet"]="id= "
     operation_parameters["dealEstimatePost"]=""
     operation_parameters["dealInfoDealidGet"]="dealid= "
@@ -200,14 +204,14 @@ _()
     operation_parameters["dealStatusByProposalPropcidGet"]="propcid= "
     operation_parameters["dealStatusMinerPropcidGet"]="miner= propcid= "
     operation_parameters["dealTransferInProgressGet"]=""
-    operation_parameters["dealTransferStatusPost"]=""
     operation_parameters["dealsFailuresGet"]=""
     operation_parameters["dealsMakeMinerPost"]="miner= "
     operation_parameters["dealsStatusDealGet"]="deal= "
     operation_parameters["publicDealsFailuresGet"]=""
     operation_parameters["publicMinersStorageQueryMinerGet"]="miner= "
+    operation_parameters["dealTransferStatusPost"]=""
     operation_parameters["publicMetricsDealsOnChainGet"]=""
-    operation_parameters["publicMinersDealsMinerGet"]="miner= "
+    operation_parameters["publicMinersDealsMinerGet"]="miner= ignore-failed= "
     operation_parameters["publicMinersStatsMinerGet"]="miner= "
     operation_parameters["netAddrsGet"]=""
     operation_parameters["publicMinersFailuresMinerGet"]="miner= "
@@ -234,7 +238,7 @@ _()
     operation_parameters["publicByCidCidGet"]="cid= "
     operation_parameters["publicInfoGet"]=""
     operation_parameters["publicMetricsDealsOnChainGet"]=""
-    operation_parameters["publicMinersDealsMinerGet"]="miner= "
+    operation_parameters["publicMinersDealsMinerGet"]="miner= ignore-failed= "
     operation_parameters["publicMinersFailuresMinerGet"]="miner= "
     operation_parameters["publicMinersGet"]=""
     operation_parameters["publicMinersStatsMinerGet"]="miner= "
@@ -243,7 +247,7 @@ _()
     operation_parameters["publicStatsGet"]=""
     operation_parameters["userApiKeysGet"]=""
     operation_parameters["userApiKeysKeyDelete"]="key= "
-    operation_parameters["userApiKeysPost"]=""
+    operation_parameters["userApiKeysPost"]="expiry= perms= "
     operation_parameters["userExportGet"]=""
     operation_parameters["userStatsGet"]=""
 

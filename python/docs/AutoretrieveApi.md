@@ -1,4 +1,4 @@
-# estuary_client.AutoretrieveApi
+# estuary-client.AutoretrieveApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -20,18 +20,18 @@ This endpoint registers a new autoretrieve server
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.AutoretrieveApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.AutoretrieveApi(estuary-client.ApiClient(configuration))
 addresses = 'addresses_example' # str | Autoretrieve's comma-separated list of addresses
 pub_key = 'pub_key_example' # str | Autoretrieve's public key
 
@@ -75,18 +75,18 @@ This endpoint lists all registered autoretrieve servers
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.AutoretrieveApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.AutoretrieveApi(estuary-client.ApiClient(configuration))
 
 try:
     # List autoretrieve servers
@@ -124,18 +124,18 @@ This endpoint updates the lastConnection field for autoretrieve
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.AutoretrieveApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.AutoretrieveApi(estuary-client.ApiClient(configuration))
 token = 'token_example' # str | Autoretrieve's auth token
 
 try:

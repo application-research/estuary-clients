@@ -49,12 +49,18 @@ export class AdminApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
+     * @param body Peer ids
      */
-    public adminPeeringPeersDelete(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringPeersDelete(body: Array<string>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
         let localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
         let headerParams: any = {};
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        }
+
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header
@@ -72,6 +78,8 @@ export class AdminApi {
         }
 
 
+        headerParams['Content-Type'] = 'application/json';
+
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
             type: 'DELETE',
@@ -79,6 +87,7 @@ export class AdminApi {
             processData: false
         };
 
+        requestOptions.data = JSON.stringify(body);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }

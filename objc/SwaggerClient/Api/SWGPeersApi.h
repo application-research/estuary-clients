@@ -25,11 +25,12 @@ extern NSInteger kSWGPeersApiMissingParamErrorCode;
 /// Remove peers on Peering Service
 /// This endpoint can be used to remove a Peer from the Peering Service
 ///
+/// @param body Peer ids
 /// 
 ///
 /// @return void
--(NSURLSessionTask*) adminPeeringPeersDeleteWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
+    completionHandler: (void (^)(NSError* error)) handler;
 
 
 /// List all Peering peers

@@ -36,7 +36,7 @@ public:
     void publicByCidCidGet(QString* cid);
     void publicInfoGet();
     void publicMetricsDealsOnChainGet();
-    void publicMinersDealsMinerGet(QString* miner);
+    void publicMinersDealsMinerGet(QString* miner, QString* ignore_failed);
     void publicMinersFailuresMinerGet(QString* miner);
     void publicMinersGet();
     void publicMinersStatsMinerGet(QString* miner);

@@ -55,13 +55,14 @@ public class AdminApi {
 
     /**
      * Build call for adminPeeringPeersDelete
+     * @param body Peer ids (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(List<String> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
 
         // create path and map variables
         String localVarPath = "/admin/peering/peers";
@@ -102,10 +103,15 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(List<String> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling adminPeeringPeersDelete(Async)");
+        }
         
 
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(body, progressListener, progressRequestListener);
         return call;
 
     }
@@ -113,31 +119,34 @@ public class AdminApi {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringPeersDelete() throws ApiException {
-        adminPeeringPeersDeleteWithHttpInfo();
+    public void adminPeeringPeersDelete(List<String> body) throws ApiException {
+        adminPeeringPeersDeleteWithHttpInfo(body);
     }
 
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringPeersDeleteWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(null, null);
+    public ApiResponse<Void> adminPeeringPeersDeleteWithHttpInfo(List<String> body) throws ApiException {
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, null, null);
         return apiClient.execute(call);
     }
 
     /**
      * Remove peers on Peering Service (asynchronously)
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(List<String> body, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -158,7 +167,7 @@ public class AdminApi {
             };
         }
 
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

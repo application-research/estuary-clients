@@ -15,7 +15,7 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
-python3 -m estuary_client
+python3 -m estuary-client
 ```
 
 and open your browser to here:
@@ -42,8 +42,8 @@ To run the server on a Docker container, please execute the following from the r
 
 ```bash
 # building the image
-docker build -t estuary_client .
+docker build -t estuary-client .
 
 # starting up a container
-docker run -p 8080:8080 estuary_client
+docker run -p 8080:8080 estuary-client
 ```

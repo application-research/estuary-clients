@@ -65,7 +65,11 @@ public:
     /// <remarks>
     /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     /// </remarks>
+    /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)</param>
+    /// <param name="perms">Permissions -- currently unused (optional)</param>
     pplx::task<std::shared_ptr<Main.getApiKeysResp>> userApiKeysPost(
+        boost::optional<utility::string_t> expiry,
+        boost::optional<utility::string_t> perms
     );
     /// <summary>
     /// Export user data

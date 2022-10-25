@@ -14,6 +14,19 @@ module.exports.collectionsColuuidCommitPOST = function collectionsColuuidCommitP
     });
 };
 
+module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidContentsDELETE (req, res, next) {
+  var coluuid = req.swagger.params['coluuid'].value;
+  var contentid = req.swagger.params['contentid'].value;
+  var body = req.swagger.params['body'].value;
+  Collections.collectionsColuuidContentsDELETE(coluuid,contentid,body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.collectionsColuuidDELETE = function collectionsColuuidDELETE (req, res, next) {
   var coluuid = req.swagger.params['coluuid'].value;
   Collections.collectionsColuuidDELETE(coluuid)
@@ -38,8 +51,9 @@ module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res,
 };
 
 module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Collections.collectionsColuuidPOST(body)
+  var coluuid = req.swagger.params['coluuid'].value;
+  var contentIDs = req.swagger.params['contentIDs'].value;
+  Collections.collectionsColuuidPOST(coluuid,contentIDs)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -62,8 +76,7 @@ module.exports.collectionsFsAddPOST = function collectionsFsAddPOST (req, res, n
 };
 
 module.exports.collectionsGET = function collectionsGET (req, res, next) {
-  var id = req.swagger.params['id'].value;
-  Collections.collectionsGET(id)
+  Collections.collectionsGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the user API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-07T23:59:37.480Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:24:58.988Z")
 public class UserApi  {
 
     @Inject UserApiService service;
@@ -79,9 +79,9 @@ public class UserApi  {
         @io.swagger.annotations.ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         
         @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response userApiKeysPost(@Context SecurityContext securityContext)
+    public Response userApiKeysPost(  @QueryParam("expiry") String expiry,  @QueryParam("perms") String perms,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.userApiKeysPost(securityContext);
+        return service.userApiKeysPost(expiry,perms,securityContext);
     }
     @GET
     @Path("/export")

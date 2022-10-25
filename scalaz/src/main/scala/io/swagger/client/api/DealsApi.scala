@@ -160,25 +160,6 @@ object DealsApi {
     } yield resp
   }
   
-  def dealTransferStatusPost(host: String): Task[Unit] = {
-    val path = "/deal/transfer/status"
-    
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-  
   def dealsFailuresGet(host: String): Task[Unit] = {
     val path = "/deals/failures"
     
@@ -399,25 +380,6 @@ class HttpServiceDealsApi(service: HttpService) {
     val path = "/deal/transfer/in-progress"
     
     val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-  
-  def dealTransferStatusPost(): Task[Unit] = {
-    val path = "/deal/transfer/status"
-    
-    val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )

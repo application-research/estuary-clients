@@ -27,7 +27,7 @@ object AdminApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminPeeringPeersDelete(host: String): Task[Unit] = {
+  def adminPeeringPeersDelete(host: String, body: List[String]): Task[Unit] = {
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.DELETE
@@ -40,7 +40,7 @@ object AdminApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -186,7 +186,7 @@ class HttpServiceAdminApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminPeeringPeersDelete(): Task[Unit] = {
+  def adminPeeringPeersDelete(body: List[String]): Task[Unit] = {
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.DELETE
@@ -199,7 +199,7 @@ class HttpServiceAdminApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

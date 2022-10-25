@@ -36,7 +36,8 @@ module.exports.publicMetricsDeals_on_chainGET = function publicMetricsDeals_on_c
 
 module.exports.publicMinersDealsMinerGET = function publicMinersDealsMinerGET (req, res, next) {
   var miner = req.swagger.params['miner'].value;
-  Public.publicMinersDealsMinerGET(miner)
+  var ignoreFailed = req.swagger.params['ignore-failed'].value;
+  Public.publicMinersDealsMinerGET(miner,ignoreFailed)
     .then(function (response) {
       utils.writeJson(res, response);
     })

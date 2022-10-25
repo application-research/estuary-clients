@@ -71,6 +71,70 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
+    # Deletes a content from a collection
+    # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+    # @param coluuid Collection ID
+    # @param contentid Content ID
+    # @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def collections_coluuid_contents_delete(coluuid, contentid, body, opts = {})
+      data, _status_code, _headers = collections_coluuid_contents_delete_with_http_info(coluuid, contentid, body, opts)
+      data
+    end
+
+    # Deletes a content from a collection
+    # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+    # @param coluuid Collection ID
+    # @param contentid Content ID
+    # @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def collections_coluuid_contents_delete_with_http_info(coluuid, contentid, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_contents_delete ...'
+      end
+      # verify the required parameter 'coluuid' is set
+      if @api_client.config.client_side_validation && coluuid.nil?
+        fail ArgumentError, "Missing the required parameter 'coluuid' when calling CollectionsApi.collections_coluuid_contents_delete"
+      end
+      # verify the required parameter 'contentid' is set
+      if @api_client.config.client_side_validation && contentid.nil?
+        fail ArgumentError, "Missing the required parameter 'contentid' when calling CollectionsApi.collections_coluuid_contents_delete"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling CollectionsApi.collections_coluuid_contents_delete"
+      end
+      # resource path
+      local_var_path = '/collections/{coluuid}/contents'.sub('{' + 'coluuid' + '}', coluuid.to_s).sub('{' + 'contentid' + '}', contentid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CollectionsApi#collections_coluuid_contents_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Deletes a collection
     # This endpoint is used to delete an existing collection.
     # @param coluuid Collection ID
@@ -122,7 +186,7 @@ module SwaggerClient
     end
     # Get contents in a collection
     # This endpoint is used to get contents in a collection. If no colpath query param is passed
-    # @param coluuid Collection UUID
+    # @param coluuid coluuid
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
     # @return [String]
@@ -133,7 +197,7 @@ module SwaggerClient
 
     # Get contents in a collection
     # This endpoint is used to get contents in a collection. If no colpath query param is passed
-    # @param coluuid Collection UUID
+    # @param coluuid coluuid
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
@@ -146,11 +210,10 @@ module SwaggerClient
         fail ArgumentError, "Missing the required parameter 'coluuid' when calling CollectionsApi.collections_coluuid_get"
       end
       # resource path
-      local_var_path = '/collections/{coluuid}'
+      local_var_path = '/collections/{coluuid}'.sub('{' + 'coluuid' + '}', coluuid.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'coluuid'] = coluuid
       query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 
       # header parameters
@@ -178,29 +241,35 @@ module SwaggerClient
     end
     # Add contents to a collection
     # This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-    # @param body Content IDs to add to collection
+    # @param coluuid coluuid
+    # @param content_i_ds Content IDs to add to collection
     # @param [Hash] opts the optional parameters
     # @return [Hash<String, String>]
-    def collections_coluuid_post(body, opts = {})
-      data, _status_code, _headers = collections_coluuid_post_with_http_info(body, opts)
+    def collections_coluuid_post(coluuid, content_i_ds, opts = {})
+      data, _status_code, _headers = collections_coluuid_post_with_http_info(coluuid, content_i_ds, opts)
       data
     end
 
     # Add contents to a collection
     # This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-    # @param body Content IDs to add to collection
+    # @param coluuid coluuid
+    # @param content_i_ds Content IDs to add to collection
     # @param [Hash] opts the optional parameters
     # @return [Array<(Hash<String, String>, Fixnum, Hash)>] Hash<String, String> data, response status code and response headers
-    def collections_coluuid_post_with_http_info(body, opts = {})
+    def collections_coluuid_post_with_http_info(coluuid, content_i_ds, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_post ...'
       end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling CollectionsApi.collections_coluuid_post"
+      # verify the required parameter 'coluuid' is set
+      if @api_client.config.client_side_validation && coluuid.nil?
+        fail ArgumentError, "Missing the required parameter 'coluuid' when calling CollectionsApi.collections_coluuid_post"
+      end
+      # verify the required parameter 'content_i_ds' is set
+      if @api_client.config.client_side_validation && content_i_ds.nil?
+        fail ArgumentError, "Missing the required parameter 'content_i_ds' when calling CollectionsApi.collections_coluuid_post"
       end
       # resource path
-      local_var_path = '/collections/{coluuid}'
+      local_var_path = '/collections/{coluuid}'.sub('{' + 'coluuid' + '}', coluuid.to_s)
 
       # query parameters
       query_params = {}
@@ -216,7 +285,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(body)
+      post_body = @api_client.object_to_http_body(content_i_ds)
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -298,29 +367,23 @@ module SwaggerClient
     end
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-    # @param id User ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<MainCollection>]
-    def collections_get(id, opts = {})
-      data, _status_code, _headers = collections_get_with_http_info(id, opts)
+    # @return [Array<CollectionsCollection>]
+    def collections_get(opts = {})
+      data, _status_code, _headers = collections_get_with_http_info(opts)
       data
     end
 
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-    # @param id User ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<MainCollection>, Fixnum, Hash)>] Array<MainCollection> data, response status code and response headers
-    def collections_get_with_http_info(id, opts = {})
+    # @return [Array<(Array<CollectionsCollection>, Fixnum, Hash)>] Array<CollectionsCollection> data, response status code and response headers
+    def collections_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_get ...'
       end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling CollectionsApi.collections_get"
-      end
       # resource path
-      local_var_path = '/collections/'.sub('{' + 'id' + '}', id.to_s)
+      local_var_path = '/collections/'
 
       # query parameters
       query_params = {}
@@ -342,7 +405,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Array<MainCollection>')
+        :return_type => 'Array<CollectionsCollection>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -352,7 +415,7 @@ module SwaggerClient
     # This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
     # @param body Collection name and description
     # @param [Hash] opts the optional parameters
-    # @return [MainCollection]
+    # @return [CollectionsCollection]
     def collections_post(body, opts = {})
       data, _status_code, _headers = collections_post_with_http_info(body, opts)
       data
@@ -362,7 +425,7 @@ module SwaggerClient
     # This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
     # @param body Collection name and description
     # @param [Hash] opts the optional parameters
-    # @return [Array<(MainCollection, Fixnum, Hash)>] MainCollection data, response status code and response headers
+    # @return [Array<(CollectionsCollection, Fixnum, Hash)>] CollectionsCollection data, response status code and response headers
     def collections_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_post ...'
@@ -394,7 +457,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'MainCollection')
+        :return_type => 'CollectionsCollection')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

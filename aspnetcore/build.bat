@@ -3,7 +3,7 @@
 
 @echo off
 
-dotnet restore src\estuary_client
-dotnet build src\estuary_client
-echo Now, run the following to start the project: dotnet run -p src\estuary_client\estuary_client.csproj --launch-profile web.
+dotnet restore src\estuary-client
+dotnet build src\estuary-client
+echo Now, run the following to start the project: dotnet run -p src\estuary-client\estuary-client.csproj --launch-profile web.
 echo.

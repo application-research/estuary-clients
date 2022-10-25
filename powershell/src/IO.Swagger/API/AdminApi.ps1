@@ -1,6 +1,9 @@
 function Invoke-AdminApiAdminPeeringPeersDelete {
     [CmdletBinding()]
     Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String[]]
+        ${body}
     )
 
     Process {
@@ -8,6 +11,7 @@ function Invoke-AdminApiAdminPeeringPeersDelete {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:AdminApi.AdminPeeringPeersDelete(
+            ${body}
         )
     }
 }

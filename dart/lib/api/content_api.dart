@@ -10,7 +10,7 @@ class ContentApi {
   /// Add Car object
   ///
   /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
-  Future contentAddCarPost(String body, { String filename, String commp, String size }) async {
+  Future contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -25,14 +25,11 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
     if(filename != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "filename", filename));
-    }
-    if(commp != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "commp", commp));
-    }
-    if(size != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "size", size));
     }
     
     List<String> contentTypes = [];
@@ -71,7 +68,7 @@ class ContentApi {
   /// Add IPFS object
   ///
   /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
-  Future contentAddIpfsPost(UtilContentAddIpfsBody body) async {
+  Future contentAddIpfsPost(UtilContentAddIpfsBody body, { String ignoreDupes }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -86,6 +83,9 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
     
     List<String> contentTypes = [];
 
@@ -123,27 +123,36 @@ class ContentApi {
   /// Add new content
   ///
   /// This endpoint is used to upload new content.
-  Future<UtilContentAddResponse> contentAddPost(MultipartFile file, String coluuid, String dir) async {
+  Future<UtilContentAddResponse> contentAddPost(MultipartFile data, { String filename, String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
     Object postBody = null;
 
     // verify required params are set
-    if(file == null) {
-     throw new ApiException(400, "Missing required param: file");
-    }
-    if(coluuid == null) {
-     throw new ApiException(400, "Missing required param: coluuid");
-    }
-    if(dir == null) {
-     throw new ApiException(400, "Missing required param: dir");
+    if(data == null) {
+     throw new ApiException(400, "Missing required param: data");
     }
 
     // create path and map variables
-    String path = "/content/add".replaceAll("{format}","json").replaceAll("{" + "coluuid" + "}", coluuid.toString()).replaceAll("{" + "dir" + "}", dir.toString());
+    String path = "/content/add".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(coluuid != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "coluuid", coluuid));
+    }
+    if(replication != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "replication", replication));
+    }
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(lazyProvide != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "lazy-provide", lazyProvide));
+    }
+    if(dir != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
+    }
     
     List<String> contentTypes = ["multipart/form-data"];
 
@@ -154,10 +163,15 @@ class ContentApi {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
       
-      if (file != null) {
+      if (data != null) {
         hasFields = true;
-        mp.fields['file'] = file.field;
-        mp.files.add(file);
+        mp.fields['data'] = data.field;
+        mp.files.add(data);
+      }
+      
+      if (filename != null) {
+        hasFields = true;
+        mp.fields['filename'] = parameterToString(filename);
       }
       
       if(hasFields)
@@ -165,6 +179,8 @@ class ContentApi {
     }
     else {
       
+if (filename != null)
+        formParams['filename'] = parameterToString(filename);
     }
 
     var response = await apiClient.invokeAPI(path,
@@ -353,12 +369,12 @@ class ContentApi {
   /// Add a new content
   ///
   /// This endpoint adds a new content
-  Future contentCreatePost(String body) async {
-    Object postBody = body;
+  Future contentCreatePost(UtilContentCreateBody req, { String ignoreDupes }) async {
+    Object postBody = req;
 
     // verify required params are set
-    if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
+    if(req == null) {
+     throw new ApiException(400, "Missing required param: req");
     }
 
     // create path and map variables
@@ -368,6 +384,9 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
     
     List<String> contentTypes = [];
 
@@ -559,6 +578,58 @@ class ContentApi {
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
+    }
+  }
+  /// Content
+  ///
+  /// This endpoint returns a content by its ID
+  Future contentIdGet(int id) async {
+    Object postBody = null;
+
+    // verify required params are set
+    if(id == null) {
+     throw new ApiException(400, "Missing required param: id");
+    }
+
+    // create path and map variables
+    String path = "/content/{id}".replaceAll("{format}","json").replaceAll("{" + "id" + "}", id.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    List<String> authNames = ["bearerAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+          }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'GET',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, response.body);
+    } else if(response.body != null) {
+      return 
+          ;
+    } else {
+      return ;
     }
   }
   /// Import a deal
@@ -766,21 +837,26 @@ class ContentApi {
   /// Get content statistics
   ///
   /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
-  Future contentStatsGet(String limit) async {
+  Future contentStatsGet(String limit, String offset) async {
     Object postBody = null;
 
     // verify required params are set
     if(limit == null) {
      throw new ApiException(400, "Missing required param: limit");
     }
+    if(offset == null) {
+     throw new ApiException(400, "Missing required param: offset");
+    }
 
     // create path and map variables
-    String path = "/content/stats".replaceAll("{format}","json").replaceAll("{" + "limit" + "}", limit.toString());
+    String path = "/content/stats".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
     
     List<String> contentTypes = [];
 

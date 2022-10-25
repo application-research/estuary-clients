@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
@@ -23,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **contentAddCarPost**
-> contentAddCarPost($body, $filename, $commp, $size)
+> contentAddCarPost($body, $ignore_dupes, $filename)
 
 Add Car object
 
@@ -46,12 +47,11 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     $config
 );
 $body = "body_example"; // string | Car
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 $filename = "filename_example"; // string | Filename
-$commp = "commp_example"; // string | Commp
-$size = "size_example"; // string | Size
 
 try {
-    $apiInstance->contentAddCarPost($body, $filename, $commp, $size);
+    $apiInstance->contentAddCarPost($body, $ignore_dupes, $filename);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -63,9 +63,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string**| Car |
+ **ignore_dupes** | **string**| Ignore Dupes | [optional]
  **filename** | **string**| Filename | [optional]
- **commp** | **string**| Commp | [optional]
- **size** | **string**| Size | [optional]
 
 ### Return type
 
@@ -83,7 +82,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddIpfsPost**
-> contentAddIpfsPost($body)
+> contentAddIpfsPost($body, $ignore_dupes)
 
 Add IPFS object
 
@@ -106,9 +105,10 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     $config
 );
 $body = new \Swagger\Client\Model\UtilContentAddIpfsBody(); // \Swagger\Client\Model\UtilContentAddIpfsBody | IPFS Body
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
-    $apiInstance->contentAddIpfsPost($body);
+    $apiInstance->contentAddIpfsPost($body, $ignore_dupes);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddIpfsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -120,6 +120,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\Swagger\Client\Model\UtilContentAddIpfsBody**](../Model/UtilContentAddIpfsBody.md)| IPFS Body |
+ **ignore_dupes** | **string**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -137,7 +138,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddPost**
-> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($file, $coluuid, $dir)
+> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
 
 Add new content
 
@@ -159,12 +160,16 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file = "/path/to/file.txt"; // \SplFileObject | File to upload
+$data = "/path/to/file.txt"; // \SplFileObject | File to upload
+$filename = "filename_example"; // string | Filenam to use for upload
 $coluuid = "coluuid_example"; // string | Collection UUID
+$replication = 56; // int | Replication value
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes true/false
+$lazy_provide = "lazy_provide_example"; // string | Lazy Provide true/false
 $dir = "dir_example"; // string | Directory
 
 try {
-    $result = $apiInstance->contentAddPost($file, $coluuid, $dir);
+    $result = $apiInstance->contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -176,9 +181,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **\SplFileObject**| File to upload |
- **coluuid** | **string**| Collection UUID |
- **dir** | **string**| Directory |
+ **data** | **\SplFileObject**| File to upload |
+ **filename** | **string**| Filenam to use for upload | [optional]
+ **coluuid** | **string**| Collection UUID | [optional]
+ **replication** | **int**| Replication value | [optional]
+ **ignore_dupes** | **string**| Ignore Dupes true/false | [optional]
+ **lazy_provide** | **string**| Lazy Provide true/false | [optional]
+ **dir** | **string**| Directory | [optional]
 
 ### Return type
 
@@ -363,7 +372,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentCreatePost**
-> contentCreatePost($body)
+> contentCreatePost($req, $ignore_dupes)
 
 Add a new content
 
@@ -385,10 +394,11 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = "body_example"; // string | Content
+$req = new \Swagger\Client\Model\UtilContentCreateBody(); // \Swagger\Client\Model\UtilContentCreateBody | Content
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
-    $apiInstance->contentCreatePost($body);
+    $apiInstance->contentCreatePost($req, $ignore_dupes);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentCreatePost: ', $e->getMessage(), PHP_EOL;
 }
@@ -399,7 +409,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string**| Content |
+ **req** | [**\Swagger\Client\Model\UtilContentCreateBody**](../Model/UtilContentCreateBody.md)| Content |
+ **ignore_dupes** | **string**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -569,6 +580,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **contentIdGet**
+> contentIdGet($id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | Content ID
+
+try {
+    $apiInstance->contentIdGet($id);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentIdGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Content ID |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -791,7 +856,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentStatsGet**
-> contentStatsGet($limit)
+> contentStatsGet($limit, $offset)
 
 Get content statistics
 
@@ -814,9 +879,10 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     $config
 );
 $limit = "limit_example"; // string | limit
+$offset = "offset_example"; // string | offset
 
 try {
-    $apiInstance->contentStatsGet($limit);
+    $apiInstance->contentStatsGet($limit, $offset);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentStatsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -828,6 +894,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **string**| limit |
+ **offset** | **string**| offset |
 
 ### Return type
 

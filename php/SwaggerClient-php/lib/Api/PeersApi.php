@@ -92,14 +92,15 @@ class PeersApi
      *
      * Remove peers on Peering Service
      *
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function adminPeeringPeersDelete()
+    public function adminPeeringPeersDelete($body)
     {
-        $this->adminPeeringPeersDeleteWithHttpInfo();
+        $this->adminPeeringPeersDeleteWithHttpInfo($body);
     }
 
     /**
@@ -107,15 +108,16 @@ class PeersApi
      *
      * Remove peers on Peering Service
      *
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function adminPeeringPeersDeleteWithHttpInfo()
+    public function adminPeeringPeersDeleteWithHttpInfo($body)
     {
         $returnType = '';
-        $request = $this->adminPeeringPeersDeleteRequest();
+        $request = $this->adminPeeringPeersDeleteRequest($body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -159,13 +161,14 @@ class PeersApi
      *
      * Remove peers on Peering Service
      *
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function adminPeeringPeersDeleteAsync()
+    public function adminPeeringPeersDeleteAsync($body)
     {
-        return $this->adminPeeringPeersDeleteAsyncWithHttpInfo()
+        return $this->adminPeeringPeersDeleteAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -178,14 +181,15 @@ class PeersApi
      *
      * Remove peers on Peering Service
      *
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function adminPeeringPeersDeleteAsyncWithHttpInfo()
+    public function adminPeeringPeersDeleteAsyncWithHttpInfo($body)
     {
         $returnType = '';
-        $request = $this->adminPeeringPeersDeleteRequest();
+        $request = $this->adminPeeringPeersDeleteRequest($body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -213,12 +217,19 @@ class PeersApi
     /**
      * Create request for operation 'adminPeeringPeersDelete'
      *
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function adminPeeringPeersDeleteRequest()
+    protected function adminPeeringPeersDeleteRequest($body)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling adminPeeringPeersDelete'
+            );
+        }
 
         $resourcePath = '/admin/peering/peers';
         $formParams = [];
@@ -231,6 +242,9 @@ class PeersApi
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(

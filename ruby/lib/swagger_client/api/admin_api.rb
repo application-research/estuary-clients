@@ -21,20 +21,26 @@ module SwaggerClient
     end
     # Remove peers on Peering Service
     # This endpoint can be used to remove a Peer from the Peering Service
+    # @param body Peer ids
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def admin_peering_peers_delete(opts = {})
-      admin_peering_peers_delete_with_http_info(opts)
+    def admin_peering_peers_delete(body, opts = {})
+      admin_peering_peers_delete_with_http_info(body, opts)
       nil
     end
 
     # Remove peers on Peering Service
     # This endpoint can be used to remove a Peer from the Peering Service
+    # @param body Peer ids
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def admin_peering_peers_delete_with_http_info(opts = {})
+    def admin_peering_peers_delete_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AdminApi.admin_peering_peers_delete ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling AdminApi.admin_peering_peers_delete"
       end
       # resource path
       local_var_path = '/admin/peering/peers'
@@ -51,7 +57,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(body)
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,

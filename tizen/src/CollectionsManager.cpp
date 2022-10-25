@@ -195,6 +195,177 @@ bool CollectionsManager::collectionsColuuidCommitPostSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool collectionsColuuidContentsDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	std::string out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool collectionsColuuidContentsDeleteHelper(char * accessToken,
+	std::string coluuid, std::string contentid, Main.deleteContentFromCollectionBody body, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("Main.deleteContentFromCollectionBody")) {
+		node = converttoJson(&body, "Main.deleteContentFromCollectionBody", "");
+	}
+	
+	char *jsonStr =  body.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/collections/{coluuid}/contents");
+	int pos;
+
+	string s_coluuid("{");
+	s_coluuid.append("coluuid");
+	s_coluuid.append("}");
+	pos = url.find(s_coluuid);
+	url.erase(pos, s_coluuid.length());
+	url.insert(pos, stringify(&coluuid, "std::string"));
+	string s_contentid("{");
+	s_contentid.append("contentid");
+	s_contentid.append("}");
+	pos = url.find(s_contentid);
+	url.erase(pos, s_contentid.length());
+	url.insert(pos, stringify(&contentid, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("DELETE");
+
+	if(strcmp("PUT", "DELETE") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(CollectionsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = collectionsColuuidContentsDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (CollectionsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), collectionsColuuidContentsDeleteProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __CollectionsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool CollectionsManager::collectionsColuuidContentsDeleteAsync(char * accessToken,
+	std::string coluuid, std::string contentid, Main.deleteContentFromCollectionBody body, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
+{
+	return collectionsColuuidContentsDeleteHelper(accessToken,
+	coluuid, contentid, body, 
+	handler, userData, true);
+}
+
+bool CollectionsManager::collectionsColuuidContentsDeleteSync(char * accessToken,
+	std::string coluuid, std::string contentid, Main.deleteContentFromCollectionBody body, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
+{
+	return collectionsColuuidContentsDeleteHelper(accessToken,
+	coluuid, contentid, body, 
+	handler, userData, false);
+}
+
 static bool collectionsColuuidDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -394,10 +565,6 @@ static bool collectionsColuuidGetHelper(char * accessToken,
 	string itemAtq;
 	
 
-	itemAtq = stringify(&coluuid, "std::string");
-	queryParams.insert(pair<string, string>("coluuid", itemAtq));
-
-
 	itemAtq = stringify(&dir, "std::string");
 	queryParams.insert(pair<string, string>("dir", itemAtq));
 	if( itemAtq.empty()==true){
@@ -411,6 +578,12 @@ static bool collectionsColuuidGetHelper(char * accessToken,
 	string url("/collections/{coluuid}");
 	int pos;
 
+	string s_coluuid("{");
+	s_coluuid.append("coluuid");
+	s_coluuid.append("}");
+	pos = url.find(s_coluuid);
+	url.erase(pos, s_coluuid.length());
+	url.insert(pos, stringify(&coluuid, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -511,7 +684,7 @@ static bool collectionsColuuidPostProcessor(MemoryStruct_s p_chunk, long code, c
 }
 
 static bool collectionsColuuidPostHelper(char * accessToken,
-	std::list<> body, 
+	std::string coluuid, std::list<> contentIDs, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -533,12 +706,12 @@ static bool collectionsColuuidPostHelper(char * accessToken,
 	JsonArray* json_array;
 	//TODO: Map Container
 	if (isprimitive("")) {
-		node = converttoJson(&body, "", "array");
+		node = converttoJson(&contentIDs, "", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<>::iterator bodyIter = body.begin(); bodyIter != body.end(); ++bodyIter) {
+			<>::iterator bodyIter = contentIDs.begin(); bodyIter != contentIDs.end(); ++bodyIter) {
 			 itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
@@ -560,6 +733,12 @@ static bool collectionsColuuidPostHelper(char * accessToken,
 	string url("/collections/{coluuid}");
 	int pos;
 
+	string s_coluuid("{");
+	s_coluuid.append("coluuid");
+	s_coluuid.append("}");
+	pos = url.find(s_coluuid);
+	url.erase(pos, s_coluuid.length());
+	url.insert(pos, stringify(&coluuid, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -607,22 +786,22 @@ static bool collectionsColuuidPostHelper(char * accessToken,
 
 
 bool CollectionsManager::collectionsColuuidPostAsync(char * accessToken,
-	std::list<> body, 
+	std::string coluuid, std::list<> contentIDs, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
 	return collectionsColuuidPostHelper(accessToken,
-	body, 
+	coluuid, contentIDs, 
 	handler, userData, true);
 }
 
 bool CollectionsManager::collectionsColuuidPostSync(char * accessToken,
-	std::list<> body, 
+	std::string coluuid, std::list<> contentIDs, 
 	void(* handler)(std::map<string,string>, Error, void* )
 	, void* userData)
 {
 	return collectionsColuuidPostHelper(accessToken,
-	body, 
+	coluuid, contentIDs, 
 	handler, userData, false);
 }
 
@@ -765,13 +944,13 @@ bool CollectionsManager::collectionsFsAddPostSync(char * accessToken,
 static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<Main.Collection>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<Main.Collection>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<Collections.Collection>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<Main.Collection> out;
+	std::list<Collections.Collection> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -785,7 +964,7 @@ static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			Main.Collection singlemodel;
+			Collections.Collection singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -810,8 +989,8 @@ static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool collectionsGetHelper(char * accessToken,
-	int id, 
-	void(* handler)(std::list<Main.Collection>, Error, void* )
+	
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -834,12 +1013,6 @@ static bool collectionsGetHelper(char * accessToken,
 	string url("/collections/");
 	int pos;
 
-	string s_id("{");
-	s_id.append("id");
-	s_id.append("}");
-	pos = url.find(s_id);
-	url.erase(pos, s_id.length());
-	url.insert(pos, stringify(&id, "int"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -887,36 +1060,36 @@ static bool collectionsGetHelper(char * accessToken,
 
 
 bool CollectionsManager::collectionsGetAsync(char * accessToken,
-	int id, 
-	void(* handler)(std::list<Main.Collection>, Error, void* )
+	
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
 	, void* userData)
 {
 	return collectionsGetHelper(accessToken,
-	id, 
+	
 	handler, userData, true);
 }
 
 bool CollectionsManager::collectionsGetSync(char * accessToken,
-	int id, 
-	void(* handler)(std::list<Main.Collection>, Error, void* )
+	
+	void(* handler)(std::list<Collections.Collection>, Error, void* )
 	, void* userData)
 {
 	return collectionsGetHelper(accessToken,
-	id, 
+	
 	handler, userData, false);
 }
 
 static bool collectionsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Main.Collection, Error, void* )
-	= reinterpret_cast<void(*)(Main.Collection, Error, void* )> (voidHandler);
+	void(* handler)(Collections.Collection, Error, void* )
+	= reinterpret_cast<void(*)(Collections.Collection, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Main.Collection out;
+	Collections.Collection out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -924,12 +1097,12 @@ static bool collectionsPostProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("Main.Collection")) {
+		if (isprimitive("Collections.Collection")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Main.Collection", "Main.Collection");
+			jsonToValue(&out, pJson, "Collections.Collection", "Collections.Collection");
 			json_node_free(pJson);
 
-			if ("Main.Collection" == "std::string") {
+			if ("Collections.Collection" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -978,7 +1151,7 @@ static bool collectionsPostProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 static bool collectionsPostHelper(char * accessToken,
 	Main.createCollectionBody body, 
-	void(* handler)(Main.Collection, Error, void* )
+	void(* handler)(Collections.Collection, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1062,7 +1235,7 @@ static bool collectionsPostHelper(char * accessToken,
 
 bool CollectionsManager::collectionsPostAsync(char * accessToken,
 	Main.createCollectionBody body, 
-	void(* handler)(Main.Collection, Error, void* )
+	void(* handler)(Collections.Collection, Error, void* )
 	, void* userData)
 {
 	return collectionsPostHelper(accessToken,
@@ -1072,7 +1245,7 @@ bool CollectionsManager::collectionsPostAsync(char * accessToken,
 
 bool CollectionsManager::collectionsPostSync(char * accessToken,
 	Main.createCollectionBody body, 
-	void(* handler)(Main.Collection, Error, void* )
+	void(* handler)(Collections.Collection, Error, void* )
 	, void* userData)
 {
 	return collectionsPostHelper(accessToken,

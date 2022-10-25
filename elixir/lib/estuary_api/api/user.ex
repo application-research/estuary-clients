@@ -68,6 +68,8 @@ defmodule EstuaryAPI.Api.User do
 
   - connection (EstuaryAPI.Connection): Connection to server
   - opts (KeywordList): [optional] Optional parameters
+    - :expiry (String.t): Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    - :perms (String.t): Permissions -- currently unused
 
   ## Returns
 
@@ -75,10 +77,15 @@ defmodule EstuaryAPI.Api.User do
   {:error, info} on failure
   """
   @spec user_api_keys_post(Tesla.Env.client, keyword()) :: {:ok, EstuaryAPI.Model.MainGetApiKeysResp.t} | {:error, Tesla.Env.t}
-  def user_api_keys_post(connection, _opts \\ []) do
+  def user_api_keys_post(connection, opts \\ []) do
+    optional_params = %{
+      :"expiry" => :query,
+      :"perms" => :query
+    }
     %{}
     |> method(:post)
     |> url("/user/api-keys")
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(%EstuaryAPI.Model.MainGetApiKeysResp{})

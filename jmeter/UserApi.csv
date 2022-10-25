@@ -1,2 +1,2 @@
-testCase,httpStatusCode,key
-Success,200,0
+testCase,httpStatusCode,key,expiry,perms
+Success,200,0,0,0

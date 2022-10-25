@@ -24,17 +24,15 @@ inherit
 feature -- API Access
 
 
-	content_add_car_post (body: STRING_32; filename: STRING_32; commp: STRING_32; size: STRING_32)
+	content_add_car_post (body: STRING_32; ignore_dupes: STRING_32; filename: STRING_32)
 			-- Add Car object
 			-- This endpoint is used to add a car object to the network. The object can be a file or a directory.
 			-- 
 			-- argument: body Car (required)
 			-- 
+			-- argument: ignore_dupes Ignore Dupes (optional)
+			-- 
 			-- argument: filename Filename (optional)
-			-- 
-			-- argument: commp Commp (optional)
-			-- 
-			-- argument: size Size (optional)
 			-- 
 			-- 
 		require
@@ -47,9 +45,8 @@ feature -- API Access
 			create l_request
 			l_request.set_body(body)
 			l_path := "/content/add-car"
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ignore-dupes", ignore_dupes));
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "filename", filename));
-			l_request.fill_query_params(api_client.parameter_to_tuple("", "commp", commp));
-			l_request.fill_query_params(api_client.parameter_to_tuple("", "size", size));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -63,11 +60,13 @@ feature -- API Access
 			end
 		end	
 
-	content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY)
+	content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY; ignore_dupes: STRING_32)
 			-- Add IPFS object
 			-- This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 			-- 
 			-- argument: body IPFS Body (required)
+			-- 
+			-- argument: ignore_dupes Ignore Dupes (optional)
 			-- 
 			-- 
 		require
@@ -80,6 +79,7 @@ feature -- API Access
 			create l_request
 			l_request.set_body(body)
 			l_path := "/content/add-ipfs"
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ignore-dupes", ignore_dupes));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -93,15 +93,23 @@ feature -- API Access
 			end
 		end	
 
-	content_add_post (file: FILE; coluuid: STRING_32; dir: STRING_32): detachable UTIL_CONTENT_ADD_RESPONSE
+	content_add_post (data: FILE; filename: STRING_32; coluuid: STRING_32; replication: INTEGER_32; ignore_dupes: STRING_32; lazy_provide: STRING_32; dir: STRING_32): detachable UTIL_CONTENT_ADD_RESPONSE
 			-- Add new content
 			-- This endpoint is used to upload new content.
 			-- 
-			-- argument: file File to upload (required)
+			-- argument: data File to upload (required)
 			-- 
-			-- argument: coluuid Collection UUID (required)
+			-- argument: filename Filenam to use for upload (optional)
 			-- 
-			-- argument: dir Directory (required)
+			-- argument: coluuid Collection UUID (optional)
+			-- 
+			-- argument: replication Replication value (optional)
+			-- 
+			-- argument: ignore_dupes Ignore Dupes true/false (optional)
+			-- 
+			-- argument: lazy_provide Lazy Provide true/false (optional)
+			-- 
+			-- argument: dir Directory (optional)
 			-- 
 			-- 
 			-- Result UTIL_CONTENT_ADD_RESPONSE
@@ -115,11 +123,17 @@ feature -- API Access
 			create l_request
 			
 			l_path := "/content/add"
-			l_path.replace_substring_all ("{"+"coluuid"+"}", api_client.url_encode (coluuid.out))
-			l_path.replace_substring_all ("{"+"dir"+"}", api_client.url_encode (dir.out))
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "coluuid", coluuid));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "replication", replication));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ignore-dupes", ignore_dupes));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "lazy-provide", lazy_provide));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "dir", dir));
 
-			if attached file as l_file then
-				l_request.add_form(l_file,"file");
+			if attached data as l_data then
+				l_request.add_form(l_data,"data");
+			end
+			if attached filename as l_filename then
+				l_request.add_form(l_filename,"filename");
 			end
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -241,11 +255,13 @@ feature -- API Access
 			end
 		end	
 
-	content_create_post (body: STRING_32)
+	content_create_post (req: UTIL_CONTENT_CREATE_BODY; ignore_dupes: STRING_32)
 			-- Add a new content
 			-- This endpoint adds a new content
 			-- 
-			-- argument: body Content (required)
+			-- argument: req Content (required)
+			-- 
+			-- argument: ignore_dupes Ignore Dupes (optional)
 			-- 
 			-- 
 		require
@@ -256,8 +272,9 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			l_request.set_body(body)
+			l_request.set_body(req)
 			l_path := "/content/create"
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "ignore-dupes", ignore_dupes));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -369,6 +386,37 @@ feature -- API Access
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
+			end
+		end	
+
+	content_id_get (id: INTEGER_32)
+			-- Content
+			-- This endpoint returns a content by its ID
+			-- 
+			-- argument: id Content ID (required)
+			-- 
+			-- 
+		require
+		local
+  			l_path: STRING
+  			l_request: API_CLIENT_REQUEST
+  			l_response: API_CLIENT_RESPONSE
+		do
+			reset_error
+			create l_request
+			
+			l_path := "/content/{id}"
+			l_path.replace_substring_all ("{"+"id"+"}", api_client.url_encode (id.out))
+
+
+			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
+				l_request.add_header(l_accept,"Accept");
+			end
+			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
+			l_request.set_auth_names (<<"bearerAuth">>)
+			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			if l_response.has_error then
+				last_error := l_response.error
 			end
 		end	
 
@@ -494,11 +542,13 @@ feature -- API Access
 			end
 		end	
 
-	content_stats_get (limit: STRING_32)
+	content_stats_get (limit: STRING_32; offset: STRING_32)
 			-- Get content statistics
 			-- This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 			-- 
 			-- argument: limit limit (required)
+			-- 
+			-- argument: offset offset (required)
 			-- 
 			-- 
 		require
@@ -511,7 +561,8 @@ feature -- API Access
 			create l_request
 			
 			l_path := "/content/stats"
-			l_path.replace_substring_all ("{"+"limit"+"}", api_client.url_encode (limit.out))
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "limit", limit));
+			l_request.fill_query_params(api_client.parameter_to_tuple("", "offset", offset));
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then

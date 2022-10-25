@@ -13,7 +13,8 @@ private class SwagMinerApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'miner' => 'miner_example'
+            'miner' => 'miner_example',
+            'ignoreFailed' => 'ignoreFailed_example'
         };
 
         SwagClient client;

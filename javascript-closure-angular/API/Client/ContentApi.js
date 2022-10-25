@@ -16,6 +16,7 @@ goog.provide('API.Client.ContentApi');
 
 goog.require('API.Client.MainImportDealBody');
 goog.require('API.Client.UtilContentAddIpfsBody');
+goog.require('API.Client.UtilContentCreateBody');
 goog.require('API.Client.util.ContentAddResponse');
 
 /**
@@ -49,13 +50,12 @@ API.Client.ContentApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Add Car object
  * This endpoint is used to add a car object to the network. The object can be a file or a directory.
  * @param {!string} body Car
+ * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!string=} opt_filename Filename
- * @param {!string=} opt_commp Commp
- * @param {!string=} opt_size Size
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_filename, opt_commp, opt_size, opt_extraHttpRequestParams) {
+API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_ignoreDupes, opt_filename, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/content/add-car';
 
@@ -68,16 +68,12 @@ API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_filename,
   if (!body) {
     throw new Error('Missing required parameter body when calling contentAddCarPost');
   }
+  if (opt_ignoreDupes !== undefined) {
+    queryParameters['ignore-dupes'] = opt_ignoreDupes;
+  }
+
   if (opt_filename !== undefined) {
     queryParameters['filename'] = opt_filename;
-  }
-
-  if (opt_commp !== undefined) {
-    queryParameters['commp'] = opt_commp;
-  }
-
-  if (opt_size !== undefined) {
-    queryParameters['size'] = opt_size;
   }
 
   /** @type {!Object} */
@@ -101,10 +97,11 @@ API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_filename,
  * Add IPFS object
  * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
  * @param {!UtilContentAddIpfsBody} body IPFS Body
+ * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.ContentApi.prototype.contentAddIpfsPost = function(body, opt_extraHttpRequestParams) {
+API.Client.ContentApi.prototype.contentAddIpfsPost = function(body, opt_ignoreDupes, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/content/add-ipfs';
 
@@ -117,6 +114,10 @@ API.Client.ContentApi.prototype.contentAddIpfsPost = function(body, opt_extraHtt
   if (!body) {
     throw new Error('Missing required parameter body when calling contentAddIpfsPost');
   }
+  if (opt_ignoreDupes !== undefined) {
+    queryParameters['ignore-dupes'] = opt_ignoreDupes;
+  }
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
@@ -137,17 +138,19 @@ API.Client.ContentApi.prototype.contentAddIpfsPost = function(body, opt_extraHtt
 /**
  * Add new content
  * This endpoint is used to upload new content.
- * @param {!Object} file File to upload
- * @param {!string} coluuid Collection UUID
- * @param {!string} dir Directory
+ * @param {!Object} data File to upload
+ * @param {!string=} opt_filename Filenam to use for upload
+ * @param {!string=} opt_coluuid Collection UUID
+ * @param {!number=} opt_replication Replication value
+ * @param {!string=} opt_ignoreDupes Ignore Dupes true/false
+ * @param {!string=} opt_lazyProvide Lazy Provide true/false
+ * @param {!string=} opt_dir Directory
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!API.Client.util.ContentAddResponse>}
  */
-API.Client.ContentApi.prototype.contentAddPost = function(file, coluuid, dir, opt_extraHttpRequestParams) {
+API.Client.ContentApi.prototype.contentAddPost = function(data, opt_filename, opt_coluuid, opt_replication, opt_ignoreDupes, opt_lazyProvide, opt_dir, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/content/add'
-      .replace('{' + 'coluuid' + '}', String(coluuid))
-      .replace('{' + 'dir' + '}', String(dir));
+  var path = this.basePath_ + '/content/add';
 
   /** @type {!Object} */
   var queryParameters = {};
@@ -157,21 +160,35 @@ API.Client.ContentApi.prototype.contentAddPost = function(file, coluuid, dir, op
   /** @type {!Object} */
   var formParams = {};
 
-  // verify required parameter 'file' is set
-  if (!file) {
-    throw new Error('Missing required parameter file when calling contentAddPost');
+  // verify required parameter 'data' is set
+  if (!data) {
+    throw new Error('Missing required parameter data when calling contentAddPost');
   }
-  // verify required parameter 'coluuid' is set
-  if (!coluuid) {
-    throw new Error('Missing required parameter coluuid when calling contentAddPost');
+  if (opt_coluuid !== undefined) {
+    queryParameters['coluuid'] = opt_coluuid;
   }
-  // verify required parameter 'dir' is set
-  if (!dir) {
-    throw new Error('Missing required parameter dir when calling contentAddPost');
+
+  if (opt_replication !== undefined) {
+    queryParameters['replication'] = opt_replication;
   }
+
+  if (opt_ignoreDupes !== undefined) {
+    queryParameters['ignore-dupes'] = opt_ignoreDupes;
+  }
+
+  if (opt_lazyProvide !== undefined) {
+    queryParameters['lazy-provide'] = opt_lazyProvide;
+  }
+
+  if (opt_dir !== undefined) {
+    queryParameters['dir'] = opt_dir;
+  }
+
   headerParams['Content-Type'] = 'application/x-www-form-urlencoded';
 
-  formParams['file'] = file;
+  formParams['data'] = data;
+
+  formParams['filename'] = opt_filename;
 
   /** @type {!Object} */
   var httpRequestParams = {
@@ -325,11 +342,12 @@ API.Client.ContentApi.prototype.contentBwUsageContentGet = function(content, opt
 /**
  * Add a new content
  * This endpoint adds a new content
- * @param {!string} body Content
+ * @param {!UtilContentCreateBody} req Content
+ * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.ContentApi.prototype.contentCreatePost = function(body, opt_extraHttpRequestParams) {
+API.Client.ContentApi.prototype.contentCreatePost = function(req, opt_ignoreDupes, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/content/create';
 
@@ -338,16 +356,20 @@ API.Client.ContentApi.prototype.contentCreatePost = function(body, opt_extraHttp
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'body' is set
-  if (!body) {
-    throw new Error('Missing required parameter body when calling contentCreatePost');
+  // verify required parameter 'req' is set
+  if (!req) {
+    throw new Error('Missing required parameter req when calling contentCreatePost');
   }
+  if (opt_ignoreDupes !== undefined) {
+    queryParameters['ignore-dupes'] = opt_ignoreDupes;
+  }
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
     url: path,
     json: true,
-    data: body,
+    data: req,
         params: queryParameters,
     headers: headerParams
   };
@@ -457,6 +479,43 @@ API.Client.ContentApi.prototype.contentFailuresContentGet = function(content, op
   // verify required parameter 'content' is set
   if (!content) {
     throw new Error('Missing required parameter content when calling contentFailuresContentGet');
+  }
+  /** @type {!Object} */
+  var httpRequestParams = {
+    method: 'GET',
+    url: path,
+    json: true,
+            params: queryParameters,
+    headers: headerParams
+  };
+
+  if (opt_extraHttpRequestParams) {
+    httpRequestParams = angular.extend(httpRequestParams, opt_extraHttpRequestParams);
+  }
+
+  return (/** @type {?} */ (this.http_))(httpRequestParams);
+}
+
+/**
+ * Content
+ * This endpoint returns a content by its ID
+ * @param {!number} id Content ID
+ * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
+ * @return {!angular.$q.Promise}
+ */
+API.Client.ContentApi.prototype.contentIdGet = function(id, opt_extraHttpRequestParams) {
+  /** @const {string} */
+  var path = this.basePath_ + '/content/{id}'
+      .replace('{' + 'id' + '}', String(id));
+
+  /** @type {!Object} */
+  var queryParameters = {};
+
+  /** @type {!Object} */
+  var headerParams = angular.extend({}, this.defaultHeaders_);
+  // verify required parameter 'id' is set
+  if (!id) {
+    throw new Error('Missing required parameter id when calling contentIdGet');
   }
   /** @type {!Object} */
   var httpRequestParams = {
@@ -614,13 +673,13 @@ API.Client.ContentApi.prototype.contentStagingZonesGet = function(opt_extraHttpR
  * Get content statistics
  * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
  * @param {!string} limit limit
+ * @param {!string} offset offset
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.ContentApi.prototype.contentStatsGet = function(limit, opt_extraHttpRequestParams) {
+API.Client.ContentApi.prototype.contentStatsGet = function(limit, offset, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/content/stats'
-      .replace('{' + 'limit' + '}', String(limit));
+  var path = this.basePath_ + '/content/stats';
 
   /** @type {!Object} */
   var queryParameters = {};
@@ -631,6 +690,18 @@ API.Client.ContentApi.prototype.contentStatsGet = function(limit, opt_extraHttpR
   if (!limit) {
     throw new Error('Missing required parameter limit when calling contentStatsGet');
   }
+  // verify required parameter 'offset' is set
+  if (!offset) {
+    throw new Error('Missing required parameter offset when calling contentStatsGet');
+  }
+  if (limit !== undefined) {
+    queryParameters['limit'] = limit;
+  }
+
+  if (offset !== undefined) {
+    queryParameters['offset'] = offset;
+  }
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'GET',

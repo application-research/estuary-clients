@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collectionsColuuidCommitPost**](SWGCollectionsApi.md#collectionscoluuidcommitpost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collectionsColuuidContentsDelete**](SWGCollectionsApi.md#collectionscoluuidcontentsdelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collectionsColuuidDelete**](SWGCollectionsApi.md#collectionscoluuiddelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collectionsColuuidGet**](SWGCollectionsApi.md#collectionscoluuidget) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collectionsColuuidPost**](SWGCollectionsApi.md#collectionscoluuidpost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -54,6 +55,71 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **NSString***| coluuid | 
+
+### Return type
+
+**NSString***
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **collectionsColuuidContentsDelete**
+```objc
+-(NSURLSessionTask*) collectionsColuuidContentsDeleteWithColuuid: (NSString*) coluuid
+    contentid: (NSString*) contentid
+    body: (SWGMainDeleteContentFromCollectionBody*) body
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
+```
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example 
+```objc
+SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+
+
+NSString* coluuid = @"coluuid_example"; // Collection ID
+NSString* contentid = @"contentid_example"; // Content ID
+SWGMainDeleteContentFromCollectionBody* body = [[SWGMainDeleteContentFromCollectionBody alloc] init]; // Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
+
+// Deletes a content from a collection
+[apiInstance collectionsColuuidContentsDeleteWithColuuid:coluuid
+              contentid:contentid
+              body:body
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling SWGCollectionsApi->collectionsColuuidContentsDelete: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **NSString***| Collection ID | 
+ **contentid** | **NSString***| Content ID | 
+ **body** | [**SWGMainDeleteContentFromCollectionBody***](SWGMainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -145,7 +211,7 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* coluuid = @"coluuid_example"; // Collection UUID
+NSString* coluuid = @"coluuid_example"; // coluuid
 NSString* dir = @"dir_example"; // Directory (optional)
 
 SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
@@ -167,7 +233,7 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **NSString***| Collection UUID | 
+ **coluuid** | **NSString***| coluuid | 
  **dir** | **NSString***| Directory | [optional] 
 
 ### Return type
@@ -187,7 +253,8 @@ Name | Type | Description  | Notes
 
 # **collectionsColuuidPost**
 ```objc
--(NSURLSessionTask*) collectionsColuuidPostWithBody: (NSArray<NSNumber*>*) body
+-(NSURLSessionTask*) collectionsColuuidPostWithColuuid: (NSString*) coluuid
+    contentIDs: (NSArray<NSNumber*>*) contentIDs
         completionHandler: (void (^)(NSDictionary<NSString*, NSString*>* output, NSError* error)) handler;
 ```
 
@@ -205,12 +272,14 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSArray<NSNumber*>* body = @[[[NSArray<NSNumber> alloc] init]]; // Content IDs to add to collection
+NSString* coluuid = @"coluuid_example"; // coluuid
+NSArray<NSNumber*>* contentIDs = @[[[NSArray<NSNumber> alloc] init]]; // Content IDs to add to collection
 
 SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 // Add contents to a collection
-[apiInstance collectionsColuuidPostWithBody:body
+[apiInstance collectionsColuuidPostWithColuuid:coluuid
+              contentIDs:contentIDs
           completionHandler: ^(NSDictionary<NSString*, NSString*>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -225,7 +294,8 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **NSArray&lt;NSNumber*&gt;***| Content IDs to add to collection | 
+ **coluuid** | **NSString***| coluuid | 
+ **contentIDs** | **NSArray&lt;NSNumber*&gt;***| Content IDs to add to collection | 
 
 ### Return type
 
@@ -306,8 +376,8 @@ void (empty response body)
 
 # **collectionsGet**
 ```objc
--(NSURLSessionTask*) collectionsGetWithId: (NSNumber*) _id
-        completionHandler: (void (^)(NSArray<SWGMainCollection>* output, NSError* error)) handler;
+-(NSURLSessionTask*) collectionsGetWithCompletionHandler: 
+        (void (^)(NSArray<SWGCollectionsCollection>* output, NSError* error)) handler;
 ```
 
 List all collections
@@ -324,13 +394,12 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSNumber* _id = @56; // User ID
 
 SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 // List all collections
-[apiInstance collectionsGetWithId:_id
-          completionHandler: ^(NSArray<SWGMainCollection>* output, NSError* error) {
+[apiInstance collectionsGetWithCompletionHandler: 
+          ^(NSArray<SWGCollectionsCollection>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -341,14 +410,11 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **_id** | **NSNumber***| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**NSArray<SWGMainCollection>***](SWGMainCollection.md)
+[**NSArray<SWGCollectionsCollection>***](SWGCollectionsCollection.md)
 
 ### Authorization
 
@@ -364,7 +430,7 @@ Name | Type | Description  | Notes
 # **collectionsPost**
 ```objc
 -(NSURLSessionTask*) collectionsPostWithBody: (SWGMainCreateCollectionBody*) body
-        completionHandler: (void (^)(SWGMainCollection* output, NSError* error)) handler;
+        completionHandler: (void (^)(SWGCollectionsCollection* output, NSError* error)) handler;
 ```
 
 Create a new collection
@@ -387,7 +453,7 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 // Create a new collection
 [apiInstance collectionsPostWithBody:body
-          completionHandler: ^(SWGMainCollection* output, NSError* error) {
+          completionHandler: ^(SWGCollectionsCollection* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -405,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SWGMainCollection***](SWGMainCollection.md)
+[**SWGCollectionsCollection***](SWGCollectionsCollection.md)
 
 ### Authorization
 

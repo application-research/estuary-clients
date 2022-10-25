@@ -6,9 +6,10 @@
  * This endpoint returns all miners deals
  *
  * miner String Filter by miner
+ * ignoreFailed String Ignore Failed (optional)
  * no response value expected for this operation
  **/
-exports.publicMinersDealsMinerGET = function(miner) {
+exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
   return new Promise(function(resolve, reject) {
     resolve();
   });

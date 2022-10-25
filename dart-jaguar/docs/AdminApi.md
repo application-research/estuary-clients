@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -35,16 +35,20 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
+var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
 
 try { 
-    api_instance.adminPeeringPeersDelete();
+    api_instance.adminPeeringPeersDelete(body);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersDelete: $e\n");
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **List&lt;String&gt;**| Peer ids | 
 
 ### Return type
 

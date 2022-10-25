@@ -224,28 +224,6 @@ export class DealsService {
 
 
     /**
-     * Transfer Status
-     * This endpoint returns the status of a transfer
-     
-     */
-    public dealTransferStatusPost(observe?: 'body', headers?: Headers): Observable<any>;
-    public dealTransferStatusPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public dealTransferStatusPost(observe: any = 'body', headers: Headers = {}): Observable<any> {
-        // authentication (bearerAuth) required
-        if (this.APIConfiguration.apiKeys['Authorization']) {
-            headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
-        }
-        headers['Accept'] = 'application/json';
-
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deal/transfer/status` as any, headers);
-        if (observe === 'body') {
-               return response.map(httpResponse => httpResponse.response);
-        }
-        return response;
-    }
-
-
-    /**
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
      

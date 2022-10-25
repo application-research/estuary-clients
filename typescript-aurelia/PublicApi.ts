@@ -41,6 +41,7 @@ export interface IPublicMetricsDealsOnChainGetParams {
  */
 export interface IPublicMinersDealsMinerGetParams {
   miner: string;
+  ignoreFailed?: string;
 }
 
 /**
@@ -185,6 +186,7 @@ export class PublicApi extends Api {
    * Get all miners deals
    * This endpoint returns all miners deals
    * @param params.miner Filter by miner
+   * @param params.ignoreFailed Ignore Failed
    */
   async publicMinersDealsMinerGet(params: IPublicMinersDealsMinerGetParams): Promise<any> {
     // Verify required parameters are set
@@ -197,6 +199,10 @@ export class PublicApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asGet()
+      // Set query parameters
+      .withParams({ 
+        'ignore-failed': params['ignoreFailed'],
+      })
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

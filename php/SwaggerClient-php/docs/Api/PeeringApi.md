@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete()
+> adminPeeringPeersDelete($body)
 
 Remove peers on Peering Service
 
@@ -35,9 +35,10 @@ $apiInstance = new Swagger\Client\Api\PeeringApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\string[]()); // string[] | Peer ids
 
 try {
-    $apiInstance->adminPeeringPeersDelete();
+    $apiInstance->adminPeeringPeersDelete($body);
 } catch (Exception $e) {
     echo 'Exception when calling PeeringApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -45,7 +46,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **string[]**| Peer ids |
 
 ### Return type
 

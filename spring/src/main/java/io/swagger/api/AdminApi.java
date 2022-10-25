@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Validated
 @Api(value = "admin", description = "the admin API")
@@ -54,7 +55,7 @@ public interface AdminApi {
     @RequestMapping(value = "/admin/peering/peers",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> adminPeeringPeersDelete();
+    ResponseEntity<Void> adminPeeringPeersDelete(@ApiParam(value = "Peer ids" ,required=true )  @Valid @RequestBody List<String> body);
 
 
     @ApiOperation(value = "List all Peering peers", nickname = "adminPeeringPeersGet", notes = "This endpoint can be used to list all peers on Peering Service", authorizations = {

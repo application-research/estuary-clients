@@ -57,10 +57,12 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 /// This endpoint returns all miners deals
 ///
 /// @param miner Filter by miner
+/// @param ignoreFailed Ignore Failed (optional)
 /// 
 ///
 /// @return void
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
+    ignoreFailed: (NSString*) ignoreFailed
     completionHandler: (void (^)(NSError* error)) handler;
 
 

@@ -1,4 +1,4 @@
-# estuary_client.Model.MainUserStatsResponse
+# estuary-client.Model.MainUserStatsResponse
 ## Properties
 
 Name | Type | Description | Notes

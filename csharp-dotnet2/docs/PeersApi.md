@@ -1,4 +1,4 @@
-# estuary_client.Api.PeersApi
+# estuary-client.Api.PeersApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**
-> void AdminPeeringPeersDelete ()
+> void AdminPeeringPeersDelete (List<string> body)
 
 Remove peers on Peering Service
 
@@ -24,9 +24,9 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -41,11 +41,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PeersApi();
+            var body = ;  // List<string> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                apiInstance.AdminPeeringPeersDelete();
+                apiInstance.AdminPeeringPeersDelete(body);
             }
             catch (Exception e)
             {
@@ -57,7 +58,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **List<string>**| Peer ids | 
 
 ### Return type
 
@@ -86,9 +90,9 @@ This endpoint can be used to list all peers on Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -148,9 +152,9 @@ This endpoint can be used to add a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -210,9 +214,9 @@ This endpoint can be used to start the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -272,9 +276,9 @@ This endpoint can be used to check the Peering status
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -334,9 +338,9 @@ This endpoint can be used to stop the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
+using estuary-client.Api;
 using IO.Swagger.Client;
-using estuary_client.Model;
+using estuary-client.Model;
 
 namespace Example
 {

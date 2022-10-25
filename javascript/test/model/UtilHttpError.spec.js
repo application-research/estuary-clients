@@ -22,9 +22,9 @@
     factory(require('expect.js'), require('../../src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.EstuaryApi);
+    factory(root.expect, root.EstuaryClient);
   }
-}(this, function(expect, EstuaryApi) {
+}(this, function(expect, EstuaryClient) {
   'use strict';
 
   var instance;
@@ -32,12 +32,12 @@
   describe('(package)', function() {
     describe('UtilHttpError', function() {
       beforeEach(function() {
-        instance = new EstuaryApi.UtilHttpError();
+        instance = new EstuaryClient.UtilHttpError();
       });
 
       it('should create an instance of UtilHttpError', function() {
         // TODO: update the code to test UtilHttpError
-        expect(instance).to.be.a(EstuaryApi.UtilHttpError);
+        expect(instance).to.be.a(EstuaryClient.UtilHttpError);
       });
 
       it('should have the property code (base name: "code")', function() {

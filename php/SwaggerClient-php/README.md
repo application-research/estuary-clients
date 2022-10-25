@@ -68,9 +68,10 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\string[]()); // string[] | Peer ids
 
 try {
-    $apiInstance->adminPeeringPeersDelete();
+    $apiInstance->adminPeeringPeersDelete($body);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -96,6 +97,7 @@ Class | Method | HTTP request | Description
 *AutoretrieveApi* | [**adminAutoretrieveListGet**](docs/Api/AutoretrieveApi.md#adminautoretrievelistget) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 *AutoretrieveApi* | [**autoretrieveHeartbeatPost**](docs/Api/AutoretrieveApi.md#autoretrieveheartbeatpost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *CollectionsApi* | [**collectionsColuuidCommitPost**](docs/Api/CollectionsApi.md#collectionscoluuidcommitpost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*CollectionsApi* | [**collectionsColuuidContentsDelete**](docs/Api/CollectionsApi.md#collectionscoluuidcontentsdelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 *CollectionsApi* | [**collectionsColuuidDelete**](docs/Api/CollectionsApi.md#collectionscoluuiddelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 *CollectionsApi* | [**collectionsColuuidGet**](docs/Api/CollectionsApi.md#collectionscoluuidget) | **GET** /collections/{coluuid} | Get contents in a collection
 *CollectionsApi* | [**collectionsColuuidPost**](docs/Api/CollectionsApi.md#collectionscoluuidpost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -112,6 +114,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentDealsGet**](docs/Api/ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/Api/ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs/Api/ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+*ContentApi* | [**contentIdGet**](docs/Api/ContentApi.md#contentidget) | **GET** /content/{id} | Content
 *ContentApi* | [**contentImportdealPost**](docs/Api/ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/Api/ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 *ContentApi* | [**contentReadContGet**](docs/Api/ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
@@ -125,12 +128,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/Api/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/Api/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/Api/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
-*DealsApi* | [**dealTransferStatusPost**](docs/Api/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/Api/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/Api/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/Api/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/Api/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/Api/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**dealTransferStatusPost**](docs/Api/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/Api/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -175,14 +178,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [MainCollection](docs/Model/MainCollection.md)
+ - [CollectionsCollection](docs/Model/CollectionsCollection.md)
  - [MainCreateCollectionBody](docs/Model/MainCreateCollectionBody.md)
+ - [MainDeleteContentFromCollectionBody](docs/Model/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/Model/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/Model/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/Model/MainImportDealBody.md)
  - [MainUserStatsResponse](docs/Model/MainUserStatsResponse.md)
  - [UtilContentAddIpfsBody](docs/Model/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/Model/UtilContentAddResponse.md)
+ - [UtilContentCreateBody](docs/Model/UtilContentCreateBody.md)
  - [UtilHttpError](docs/Model/UtilHttpError.md)
 
 

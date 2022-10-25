@@ -16,10 +16,10 @@ function New-UtilContentAddResponse {
     )
 
     Process {
-        'Creating object: estuary_client.Model.UtilContentAddResponse' | Write-Verbose
+        'Creating object: estuary-client.Model.UtilContentAddResponse' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        New-Object -TypeName estuary_client.Model.UtilContentAddResponse -ArgumentList @(
+        New-Object -TypeName estuary-client.Model.UtilContentAddResponse -ArgumentList @(
             ${cid},
             ${estuaryId},
             ${providers},

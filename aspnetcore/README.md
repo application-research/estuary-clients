@@ -1,4 +1,4 @@
-# estuary_client - ASP.NET Core 3.0 Server
+# estuary-client - ASP.NET Core 3.0 Server
 
 This is the API for the Estuary application.
 
@@ -19,7 +19,7 @@ build.bat
 ## Run in Docker
 
 ```
-cd src/estuary_client
-docker build -t estuary_client .
-docker run -p 5000:5000 estuary_client
+cd src/estuary-client
+docker build -t estuary-client .
+docker run -p 5000:5000 estuary-client
 ```

@@ -7,16 +7,16 @@ wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 mozroots --import --sync
 
 echo "[INFO] remove bin/Debug/SwaggerClientTest.dll"
-rm src/estuary_client.Test/bin/Debug/estuary_client.Test.dll 2> /dev/null
+rm src/estuary-client.Test/bin/Debug/estuary-client.Test.dll 2> /dev/null
 
 echo "[INFO] install NUnit runners via NuGet"
 wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 mozroots --import --sync
-mono nuget.exe install src/estuary_client.Test/packages.config -o packages
+mono nuget.exe install src/estuary-client.Test/packages.config -o packages
 
 echo "[INFO] Install NUnit runners via NuGet"
 mono nuget.exe install NUnit.Runners -Version 2.6.4 -OutputDirectory packages 
 
 echo "[INFO] Build the solution and run the unit test"
-xbuild estuary_client.sln && \
-    mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/estuary_client.Test/bin/Debug/estuary_client.Test.dll
+xbuild estuary-client.sln && \
+    mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/estuary-client.Test/bin/Debug/estuary-client.Test.dll

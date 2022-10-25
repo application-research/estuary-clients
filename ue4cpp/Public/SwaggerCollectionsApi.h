@@ -29,6 +29,8 @@ public:
 
 	class CollectionsColuuidCommitPostRequest;
 	class CollectionsColuuidCommitPostResponse;
+	class CollectionsColuuidContentsDeleteRequest;
+	class CollectionsColuuidContentsDeleteResponse;
 	class CollectionsColuuidDeleteRequest;
 	class CollectionsColuuidDeleteResponse;
 	class CollectionsColuuidGetRequest;
@@ -43,6 +45,7 @@ public:
 	class CollectionsPostResponse;
 	
     DECLARE_DELEGATE_OneParam(FCollectionsColuuidCommitPostDelegate, const CollectionsColuuidCommitPostResponse&);
+    DECLARE_DELEGATE_OneParam(FCollectionsColuuidContentsDeleteDelegate, const CollectionsColuuidContentsDeleteResponse&);
     DECLARE_DELEGATE_OneParam(FCollectionsColuuidDeleteDelegate, const CollectionsColuuidDeleteResponse&);
     DECLARE_DELEGATE_OneParam(FCollectionsColuuidGetDelegate, const CollectionsColuuidGetResponse&);
     DECLARE_DELEGATE_OneParam(FCollectionsColuuidPostDelegate, const CollectionsColuuidPostResponse&);
@@ -51,6 +54,7 @@ public:
     DECLARE_DELEGATE_OneParam(FCollectionsPostDelegate, const CollectionsPostResponse&);
     
     bool CollectionsColuuidCommitPost(const CollectionsColuuidCommitPostRequest& Request, const FCollectionsColuuidCommitPostDelegate& Delegate = FCollectionsColuuidCommitPostDelegate()) const;
+    bool CollectionsColuuidContentsDelete(const CollectionsColuuidContentsDeleteRequest& Request, const FCollectionsColuuidContentsDeleteDelegate& Delegate = FCollectionsColuuidContentsDeleteDelegate()) const;
     bool CollectionsColuuidDelete(const CollectionsColuuidDeleteRequest& Request, const FCollectionsColuuidDeleteDelegate& Delegate = FCollectionsColuuidDeleteDelegate()) const;
     bool CollectionsColuuidGet(const CollectionsColuuidGetRequest& Request, const FCollectionsColuuidGetDelegate& Delegate = FCollectionsColuuidGetDelegate()) const;
     bool CollectionsColuuidPost(const CollectionsColuuidPostRequest& Request, const FCollectionsColuuidPostDelegate& Delegate = FCollectionsColuuidPostDelegate()) const;
@@ -60,6 +64,7 @@ public:
     
 private:
     void OnCollectionsColuuidCommitPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidCommitPostDelegate Delegate) const;
+    void OnCollectionsColuuidContentsDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidContentsDeleteDelegate Delegate) const;
     void OnCollectionsColuuidDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidDeleteDelegate Delegate) const;
     void OnCollectionsColuuidGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidGetDelegate Delegate) const;
     void OnCollectionsColuuidPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidPostDelegate Delegate) const;

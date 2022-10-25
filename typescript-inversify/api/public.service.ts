@@ -107,13 +107,19 @@ export class PublicService {
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param miner Filter by miner
+     * @param ignoreFailed Ignore Failed
      
      */
-    public publicMinersDealsMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public publicMinersDealsMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', headers?: Headers): Observable<any>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
+        }
+
+        let queryParameters: string[] = [];
+        if (ignoreFailed !== undefined) {
+            queryParameters.push('ignoreFailed='+encodeURIComponent(String(ignoreFailed)));
         }
 
         // authentication (bearerAuth) required
@@ -122,7 +128,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

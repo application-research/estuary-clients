@@ -16,7 +16,7 @@ This endpoint returns all miners deals
 
 ### Example
 ```bash
- publicMinersDealsMinerGet miner=value
+ publicMinersDealsMinerGet miner=value  ignore-failed=value
 ```
 
 ### Parameters
@@ -24,6 +24,7 @@ This endpoint returns all miners deals
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string** | Filter by miner |
+ **ignoreFailed** | **string** | Ignore Failed | [optional]
 
 ### Return type
 

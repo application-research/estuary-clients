@@ -5,6 +5,7 @@ import java.io.InputStream;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 import io.swagger.api.ContentApiService;
 
 import javax.ws.rs.*;
@@ -29,7 +30,7 @@ import javax.validation.constraints.*;
 @Api(description = "the content API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 
 public class ContentApi  {
 
@@ -46,8 +47,8 @@ public class ContentApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "content",  })
     @ApiResponses(value = {  })
-    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @ApiParam(value = "Filename")  @QueryParam("filename") String filename,  @ApiParam(value = "Commp")  @QueryParam("commp") String commp,  @ApiParam(value = "Size")  @QueryParam("size") String size) {
-        return delegate.contentAddCarPost(body, filename, commp, size, securityContext);
+    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes,  @ApiParam(value = "Filename")  @QueryParam("filename") String filename) {
+        return delegate.contentAddCarPost(body, ignoreDupes, filename, securityContext);
     }
 
     @POST
@@ -58,8 +59,8 @@ public class ContentApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "content",  })
     @ApiResponses(value = {  })
-    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body) {
-        return delegate.contentAddIpfsPost(body, securityContext);
+    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes) {
+        return delegate.contentAddIpfsPost(body, ignoreDupes, securityContext);
     }
 
     @POST
@@ -71,8 +72,8 @@ public class ContentApi  {
     }, tags={ "content",  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class) })
-    public Response contentAddPost( @Multipart(value = "file") InputStream fileInputStream, @Multipart(value = "file" ) Attachment fileDetail, @ApiParam(value = "Collection UUID",required=true) @PathParam("coluuid") String coluuid, @ApiParam(value = "Directory",required=true) @PathParam("dir") String dir) {
-        return delegate.contentAddPost(fileInputStream, fileDetail, coluuid, dir, securityContext);
+    public Response contentAddPost( @Multipart(value = "data") InputStream dataInputStream, @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename", required = false)  String filename,  @ApiParam(value = "Collection UUID")  @QueryParam("coluuid") String coluuid,  @ApiParam(value = "Replication value")  @QueryParam("replication") Integer replication,  @ApiParam(value = "Ignore Dupes true/false")  @QueryParam("ignore-dupes") String ignoreDupes,  @ApiParam(value = "Lazy Provide true/false")  @QueryParam("lazy-provide") String lazyProvide,  @ApiParam(value = "Directory")  @QueryParam("dir") String dir) {
+        return delegate.contentAddPost(dataInputStream, dataDetail, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, securityContext);
     }
 
     @GET
@@ -120,8 +121,8 @@ public class ContentApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "content",  })
     @ApiResponses(value = {  })
-    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) String body) {
-        return delegate.contentCreatePost(body, securityContext);
+    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) UtilContentCreateBody req,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes) {
+        return delegate.contentCreatePost(req, ignoreDupes, securityContext);
     }
 
     @GET
@@ -159,6 +160,18 @@ public class ContentApi  {
         @ApiResponse(code = 200, message = "OK", response = String.class) })
     public Response contentFailuresContentGet(@ApiParam(value = "Content ID",required=true) @PathParam("content") String content) {
         return delegate.contentFailuresContentGet(content, securityContext);
+    }
+
+    @GET
+    @Path("/{id}")
+    
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = Void.class, authorizations = {
+        @Authorization(value = "bearerAuth")
+    }, tags={ "content",  })
+    @ApiResponses(value = {  })
+    public Response contentIdGet(@ApiParam(value = "Content ID",required=true) @PathParam("id") Integer id) {
+        return delegate.contentIdGet(id, securityContext);
     }
 
     @POST
@@ -218,8 +231,8 @@ public class ContentApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "content",  })
     @ApiResponses(value = {  })
-    public Response contentStatsGet(@ApiParam(value = "limit",required=true) @PathParam("limit") String limit) {
-        return delegate.contentStatsGet(limit, securityContext);
+    public Response contentStatsGet( @NotNull @ApiParam(value = "limit",required=true)  @QueryParam("limit") String limit,  @NotNull @ApiParam(value = "offset",required=true)  @QueryParam("offset") String offset) {
+        return delegate.contentStatsGet(limit, offset, securityContext);
     }
 
     @GET

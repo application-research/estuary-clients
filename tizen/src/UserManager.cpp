@@ -387,7 +387,7 @@ static bool userApiKeysPostProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool userApiKeysPostHelper(char * accessToken,
-	
+	std::string expiry, std::string perms, 
 	void(* handler)(Main.getApiKeysResp, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -404,6 +404,20 @@ static bool userApiKeysPostHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&expiry, "std::string");
+	queryParams.insert(pair<string, string>("expiry", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("expiry");
+	}
+
+
+	itemAtq = stringify(&perms, "std::string");
+	queryParams.insert(pair<string, string>("perms", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("perms");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -458,22 +472,22 @@ static bool userApiKeysPostHelper(char * accessToken,
 
 
 bool UserManager::userApiKeysPostAsync(char * accessToken,
-	
+	std::string expiry, std::string perms, 
 	void(* handler)(Main.getApiKeysResp, Error, void* )
 	, void* userData)
 {
 	return userApiKeysPostHelper(accessToken,
-	
+	expiry, perms, 
 	handler, userData, true);
 }
 
 bool UserManager::userApiKeysPostSync(char * accessToken,
-	
+	std::string expiry, std::string perms, 
 	void(* handler)(Main.getApiKeysResp, Error, void* )
 	, void* userData)
 {
 	return userApiKeysPostHelper(accessToken,
-	
+	expiry, perms, 
 	handler, userData, false);
 }
 

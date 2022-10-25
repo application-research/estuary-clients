@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**collections_coluuid_commit_post**](CollectionsApi.md#collections_coluuid_commit_post) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collections_coluuid_contents_delete**](CollectionsApi.md#collections_coluuid_contents_delete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collections_coluuid_delete**](CollectionsApi.md#collections_coluuid_delete) | **DELETE** /collections/{coluuid} | Deletes a collection
 [**collections_coluuid_get**](CollectionsApi.md#collections_coluuid_get) | **GET** /collections/{coluuid} | Get contents in a collection
 [**collections_coluuid_post**](CollectionsApi.md#collections_coluuid_post) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -51,6 +52,66 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| coluuid | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **collections_coluuid_contents_delete**
+> String collections_coluuid_contents_delete(coluuid, contentid, body)
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::CollectionsApi.new
+
+coluuid = 'coluuid_example' # String | Collection ID
+
+contentid = 'contentid_example' # String | Content ID
+
+body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+
+
+begin
+  #Deletes a content from a collection
+  result = api_instance.collections_coluuid_contents_delete(coluuid, contentid, body)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling CollectionsApi->collections_coluuid_contents_delete: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **String**| Collection ID | 
+ **contentid** | **String**| Content ID | 
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -141,7 +202,7 @@ end
 
 api_instance = SwaggerClient::CollectionsApi.new
 
-coluuid = 'coluuid_example' # String | Collection UUID
+coluuid = 'coluuid_example' # String | coluuid
 
 opts = { 
   dir: 'dir_example' # String | Directory
@@ -160,7 +221,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| Collection UUID | 
+ **coluuid** | **String**| coluuid | 
  **dir** | **String**| Directory | [optional] 
 
 ### Return type
@@ -179,7 +240,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_post**
-> Hash&lt;String, String&gt; collections_coluuid_post(body)
+> Hash&lt;String, String&gt; collections_coluuid_post(coluuid, content_i_ds)
 
 Add contents to a collection
 
@@ -199,12 +260,14 @@ end
 
 api_instance = SwaggerClient::CollectionsApi.new
 
-body = [SwaggerClient::Array<Integer>.new] # Array<Integer> | Content IDs to add to collection
+coluuid = 'coluuid_example' # String | coluuid
+
+content_i_ds = [SwaggerClient::Array<Integer>.new] # Array<Integer> | Content IDs to add to collection
 
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(body)
+  result = api_instance.collections_coluuid_post(coluuid, content_i_ds)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"
@@ -215,7 +278,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Array&lt;Integer&gt;**| Content IDs to add to collection | 
+ **coluuid** | **String**| coluuid | 
+ **content_i_ds** | **Array&lt;Integer&gt;**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -292,7 +356,7 @@ nil (empty response body)
 
 
 # **collections_get**
-> Array&lt;MainCollection&gt; collections_get(id)
+> Array&lt;CollectionsCollection&gt; collections_get
 
 List all collections
 
@@ -312,12 +376,9 @@ end
 
 api_instance = SwaggerClient::CollectionsApi.new
 
-id = 56 # Integer | User ID
-
-
 begin
   #List all collections
-  result = api_instance.collections_get(id)
+  result = api_instance.collections_get
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_get: #{e}"
@@ -325,14 +386,11 @@ end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Integer**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**Array&lt;MainCollection&gt;**](MainCollection.md)
+[**Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 
@@ -346,7 +404,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_post**
-> MainCollection collections_post(body)
+> CollectionsCollection collections_post(body)
 
 Create a new collection
 
@@ -386,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainCollection**](MainCollection.md)
+[**CollectionsCollection**](CollectionsCollection.md)
 
 ### Authorization
 

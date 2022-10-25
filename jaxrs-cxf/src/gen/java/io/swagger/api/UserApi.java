@@ -76,7 +76,7 @@ public interface UserApi  {
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public MainGetApiKeysResp userApiKeysPost();
+    public MainGetApiKeysResp userApiKeysPost(@QueryParam("expiry") String expiry, @QueryParam("perms") String perms);
 
     /**
      * Export user data

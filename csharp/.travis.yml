@@ -4,6 +4,6 @@
 language: csharp
 mono:
   - latest
-solution: estuary_client.sln
+solution: estuary-client.sln
 script:
   - /bin/sh ./mono_nunit_test.sh

@@ -306,6 +306,7 @@ case $state in
             "adminUsersGet[Get all users]"             "adminAutoretrieveInitPost[Register autoretrieve server]" \
             "adminAutoretrieveListGet[List autoretrieve servers]" \
             "autoretrieveHeartbeatPost[Marks autoretrieve server as up]"             "collectionsColuuidCommitPost[Produce a CID of the collection contents]" \
+            "collectionsColuuidContentsDelete[Deletes a content from a collection]" \
             "collectionsColuuidDelete[Deletes a collection]" \
             "collectionsColuuidGet[Get contents in a collection]" \
             "collectionsColuuidPost[Add contents to a collection]" \
@@ -321,6 +322,7 @@ case $state in
             "contentDealsGet[Content with deals]" \
             "contentEnsureReplicationDatacidGet[Ensure Replication]" \
             "contentFailuresContentGet[List all failures for a content]" \
+            "contentIdGet[Content]" \
             "contentImportdealPost[Import a deal]" \
             "contentListGet[List all pinned content]" \
             "contentReadContGet[Read content]" \
@@ -333,12 +335,11 @@ case $state in
             "dealStatusByProposalPropcidGet[Get Deal Status by PropCid]" \
             "dealStatusMinerPropcidGet[Deal Status]" \
             "dealTransferInProgressGet[Transfer In Progress]" \
-            "dealTransferStatusPost[Transfer Status]" \
             "dealsFailuresGet[Get storage failures for user]" \
             "dealsMakeMinerPost[Make Deal]" \
             "dealsStatusDealGet[Get Deal Status]" \
             "publicDealsFailuresGet[Get storage failures]" \
-            "publicMinersStorageQueryMinerGet[Query Ask]"             "publicMetricsDealsOnChainGet[Get deal metrics]"             "publicMinersDealsMinerGet[Get all miners deals]" \
+            "publicMinersStorageQueryMinerGet[Query Ask]"             "dealTransferStatusPost[]"             "publicMetricsDealsOnChainGet[Get deal metrics]"             "publicMinersDealsMinerGet[Get all miners deals]" \
             "publicMinersStatsMinerGet[Get miner stats]"             "netAddrsGet[Net Addrs]" \
             "publicMinersFailuresMinerGet[Get all miners]" \
             "publicMinersGet[Get all miners]" \
@@ -451,6 +452,14 @@ case $state in
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      collectionsColuuidContentsDelete)
+        local -a _op_arguments
+        _op_arguments=(
+          "coluuid=:[PATH] Collection ID"
+"contentid=:[PATH] Content ID"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       collectionsColuuidDelete)
         local -a _op_arguments
         _op_arguments=(
@@ -461,15 +470,16 @@ case $state in
       collectionsColuuidGet)
         local -a _op_arguments
         _op_arguments=(
-                    "coluuid=:[QUERY] Collection UUID"
-"dir=:[QUERY] Directory"
+          "coluuid=:[PATH] coluuid"
+          "dir=:[QUERY] Directory"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       collectionsColuuidPost)
         local -a _op_arguments
         _op_arguments=(
-                              )
+          "coluuid=:[PATH] coluuid"
+                    )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       collectionsFsAddPost)
@@ -484,8 +494,7 @@ case $state in
       collectionsGet)
         local -a _op_arguments
         _op_arguments=(
-          "id=:[PATH] User ID"
-                    )
+                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       collectionsPost)
@@ -497,24 +506,27 @@ case $state in
       contentAddCarPost)
         local -a _op_arguments
         _op_arguments=(
-                    "filename=:[QUERY] Filename"
-"commp=:[QUERY] Commp"
-"size=:[QUERY] Size"
+                    "ignore-dupes=:[QUERY] Ignore Dupes"
+"filename=:[QUERY] Filename"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       contentAddIpfsPost)
         local -a _op_arguments
         _op_arguments=(
-                              )
+                    "ignore-dupes=:[QUERY] Ignore Dupes"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       contentAddPost)
         local -a _op_arguments
         _op_arguments=(
-          "coluuid=:[PATH] Collection UUID"
-"dir=:[PATH] Directory"
-                    )
+                    "coluuid=:[QUERY] Collection UUID"
+"replication=:[QUERY] Replication value"
+"ignore-dupes=:[QUERY] Ignore Dupes true/false"
+"lazy-provide=:[QUERY] Lazy Provide true/false"
+"dir=:[QUERY] Directory"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       contentAggregatedContentGet)
@@ -543,7 +555,8 @@ case $state in
       contentCreatePost)
         local -a _op_arguments
         _op_arguments=(
-                              )
+                    "ignore-dupes=:[QUERY] Ignore Dupes"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       contentDealsGet)
@@ -565,6 +578,13 @@ case $state in
         local -a _op_arguments
         _op_arguments=(
           "content=:[PATH] Content ID"
+                    )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
+      contentIdGet)
+        local -a _op_arguments
+        _op_arguments=(
+          "id=:[PATH] Content ID"
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
@@ -596,8 +616,9 @@ case $state in
       contentStatsGet)
         local -a _op_arguments
         _op_arguments=(
-          "limit=:[PATH] limit"
-                    )
+                    "limit=:[QUERY] limit"
+"offset=:[QUERY] offset"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       contentStatusIdGet)
@@ -655,12 +676,6 @@ case $state in
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      dealTransferStatusPost)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
       dealsFailuresGet)
         local -a _op_arguments
         _op_arguments=(
@@ -694,6 +709,12 @@ case $state in
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      dealTransferStatusPost)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       publicMetricsDealsOnChainGet)
         local -a _op_arguments
         _op_arguments=(
@@ -704,7 +725,8 @@ case $state in
         local -a _op_arguments
         _op_arguments=(
           "miner=:[PATH] Filter by miner"
-                    )
+          "ignore-failed=:[QUERY] Ignore Failed"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       publicMinersStatsMinerGet)
@@ -875,7 +897,8 @@ case $state in
         local -a _op_arguments
         _op_arguments=(
           "miner=:[PATH] Filter by miner"
-                    )
+          "ignore-failed=:[QUERY] Ignore Failed"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       publicMinersFailuresMinerGet)
@@ -932,7 +955,9 @@ case $state in
       userApiKeysPost)
         local -a _op_arguments
         _op_arguments=(
-                              )
+                    "expiry=:[QUERY] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h"
+"perms=:[QUERY] Permissions -- currently unused"
+          )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       userExportGet)

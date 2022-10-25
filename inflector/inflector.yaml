@@ -4,14 +4,16 @@ swaggerUrl: ./src/main/swagger/swagger.yaml
 modelMappings:
   # to enable explicit mappings, use this syntax:
   DefinitionFromSwaggerSpecification: fully.qualified.path.to.Model
-  MainCollection : io.swagger.model.MainCollection
+  CollectionsCollection : io.swagger.model.CollectionsCollection
 MainCreateCollectionBody : io.swagger.model.MainCreateCollectionBody
+MainDeleteContentFromCollectionBody : io.swagger.model.MainDeleteContentFromCollectionBody
 MainEstimateDealBody : io.swagger.model.MainEstimateDealBody
 MainGetApiKeysResp : io.swagger.model.MainGetApiKeysResp
 MainImportDealBody : io.swagger.model.MainImportDealBody
 MainUserStatsResponse : io.swagger.model.MainUserStatsResponse
 UtilContentAddIpfsBody : io.swagger.model.UtilContentAddIpfsBody
 UtilContentAddResponse : io.swagger.model.UtilContentAddResponse
+UtilContentCreateBody : io.swagger.model.UtilContentCreateBody
 UtilHttpError : io.swagger.model.UtilHttpError
 
 entityProcessors:

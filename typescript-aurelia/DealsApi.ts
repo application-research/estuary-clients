@@ -68,12 +68,6 @@ export interface IDealTransferInProgressGetParams {
 }
 
 /**
- * dealTransferStatusPost - parameters interface
- */
-export interface IDealTransferStatusPostParams {
-}
-
-/**
  * dealsFailuresGet - parameters interface
  */
 export interface IDealsFailuresGetParams {
@@ -321,33 +315,6 @@ export class DealsApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asGet()
-
-      // Authentication 'bearerAuth' required
-      .withHeader('Authorization', this.authStorage.getbearerAuth())
-      // Send the request
-      .send();
-
-    if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw new Error(response.content);
-    }
-
-    // Extract the content
-    return response.content;
-  }
-
-  /**
-   * Transfer Status
-   * This endpoint returns the status of a transfer
-   */
-  async dealTransferStatusPost(): Promise<any> {
-    // Verify required parameters are set
-
-    // Create URL to call
-    const url = `${this.basePath}/deal/transfer/status`;
-
-    const response = await this.httpClient.createRequest(url)
-      // Set HTTP method
-      .asPost()
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

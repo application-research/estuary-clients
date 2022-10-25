@@ -37,6 +37,34 @@ defmodule EstuaryAPI.Api.Collections do
   end
 
   @doc """
+  Deletes a content from a collection
+  This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+  ## Parameters
+
+  - connection (EstuaryAPI.Connection): Connection to server
+  - coluuid (String.t): Collection ID
+  - contentid (String.t): Content ID
+  - body (MainDeleteContentFromCollectionBody): Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+  - opts (KeywordList): [optional] Optional parameters
+
+  ## Returns
+
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
+  {:error, info} on failure
+  """
+  @spec collections_coluuid_contents_delete(Tesla.Env.client, String.t, String.t, EstuaryAPI.Model.MainDeleteContentFromCollectionBody.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def collections_coluuid_contents_delete(connection, coluuid, contentid, body, _opts \\ []) do
+    %{}
+    |> method(:delete)
+    |> url("/collections/#{coluuid}/contents")
+    |> add_param(:body, :"body", body)
+    |> Enum.into([])
+    |> (&Connection.request(connection, &1)).()
+    |> decode(false)
+  end
+
+  @doc """
   Deletes a collection
   This endpoint is used to delete an existing collection.
 
@@ -68,7 +96,7 @@ defmodule EstuaryAPI.Api.Collections do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - coluuid (String.t): Collection UUID
+  - coluuid (String.t): coluuid
   - opts (KeywordList): [optional] Optional parameters
     - :dir (String.t): Directory
 
@@ -85,7 +113,6 @@ defmodule EstuaryAPI.Api.Collections do
     %{}
     |> method(:get)
     |> url("/collections/#{coluuid}")
-    |> add_param(:query, :"coluuid", coluuid)
     |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
@@ -99,7 +126,8 @@ defmodule EstuaryAPI.Api.Collections do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - body ([integer()]): Content IDs to add to collection
+  - coluuid (String.t): coluuid
+  - content_i_ds ([integer()]): Content IDs to add to collection
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
@@ -107,12 +135,12 @@ defmodule EstuaryAPI.Api.Collections do
   {:ok, %{}} on success
   {:error, info} on failure
   """
-  @spec collections_coluuid_post(Tesla.Env.client, list(Integer.t), keyword()) :: {:ok, map()} | {:error, Tesla.Env.t}
-  def collections_coluuid_post(connection, body, _opts \\ []) do
+  @spec collections_coluuid_post(Tesla.Env.client, String.t, list(Integer.t), keyword()) :: {:ok, map()} | {:error, Tesla.Env.t}
+  def collections_coluuid_post(connection, coluuid, content_i_ds, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/collections/#{coluuid}")
-    |> add_param(:body, :"body", body)
+    |> add_param(:body, :"contentIDs", content_i_ds)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode()
@@ -155,22 +183,21 @@ defmodule EstuaryAPI.Api.Collections do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - id (integer()): User ID
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
 
-  {:ok, [%MainCollection{}, ...]} on success
+  {:ok, [%CollectionsCollection{}, ...]} on success
   {:error, info} on failure
   """
-  @spec collections_get(Tesla.Env.client, integer(), keyword()) :: {:ok, list(EstuaryAPI.Model.MainCollection.t)} | {:error, Tesla.Env.t}
-  def collections_get(connection, id, _opts \\ []) do
+  @spec collections_get(Tesla.Env.client, keyword()) :: {:ok, list(EstuaryAPI.Model.CollectionsCollection.t)} | {:error, Tesla.Env.t}
+  def collections_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/collections/")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode([%EstuaryAPI.Model.MainCollection{}])
+    |> decode([%EstuaryAPI.Model.CollectionsCollection{}])
   end
 
   @doc """
@@ -185,10 +212,10 @@ defmodule EstuaryAPI.Api.Collections do
 
   ## Returns
 
-  {:ok, %EstuaryAPI.Model.MainCollection{}} on success
+  {:ok, %EstuaryAPI.Model.CollectionsCollection{}} on success
   {:error, info} on failure
   """
-  @spec collections_post(Tesla.Env.client, EstuaryAPI.Model.MainCreateCollectionBody.t, keyword()) :: {:ok, EstuaryAPI.Model.MainCollection.t} | {:error, Tesla.Env.t}
+  @spec collections_post(Tesla.Env.client, EstuaryAPI.Model.MainCreateCollectionBody.t, keyword()) :: {:ok, EstuaryAPI.Model.CollectionsCollection.t} | {:error, Tesla.Env.t}
   def collections_post(connection, body, _opts \\ []) do
     %{}
     |> method(:post)
@@ -196,6 +223,6 @@ defmodule EstuaryAPI.Api.Collections do
     |> add_param(:body, :"body", body)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode(%EstuaryAPI.Model.MainCollection{})
+    |> decode(%EstuaryAPI.Model.CollectionsCollection{})
   end
 end

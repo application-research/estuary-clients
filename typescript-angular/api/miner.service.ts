@@ -59,16 +59,23 @@ export class MinerService {
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param miner Filter by miner
+     * @param ignoreFailed Ignore Failed
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersDealsMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersDealsMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public publicMinersDealsMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
+        }
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreFailed !== undefined && ignoreFailed !== null) {
+            queryParameters = queryParameters.set('ignore-failed', <any>ignoreFailed);
         }
 
         let headers = this.defaultHeaders;
@@ -93,6 +100,7 @@ export class MinerService {
 
         return this.httpClient.get<any>(`${this.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}`,
             {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

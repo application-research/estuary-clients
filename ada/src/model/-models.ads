@@ -43,65 +43,182 @@ package .Models is
 
 
 
-   type Util_ContentAddIpfsBody_Type is
+   type Util_ContentAddResponse_Type is
      record
-       Coluuid : Swagger.Nullable_UString;
-       Dir : Swagger.Nullable_UString;
-       Filename : Swagger.Nullable_UString;
-       Peers : Swagger.Nullable_UString_Vectors.Vector;
-       Root : Swagger.Nullable_UString;
+       Cid : Swagger.Nullable_UString;
+       Estuary_Id : Swagger.Nullable_Integer;
+       Providers : Swagger.Nullable_UString_Vectors.Vector;
+       Retrieval_Url : Swagger.Nullable_UString;
      end record;
 
-   package Util_ContentAddIpfsBody_Type_Vectors is
+   package Util_ContentAddResponse_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Util_ContentAddIpfsBody_Type);
+                                  Element_Type => Util_ContentAddResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Util_ContentAddIpfsBody_Type);
+                        Value : in Util_ContentAddResponse_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Util_ContentAddIpfsBody_Type_Vectors.Vector);
+                        Value : in Util_ContentAddResponse_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Util_ContentAddIpfsBody_Type);
+                          Value : out Util_ContentAddResponse_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Util_ContentAddIpfsBody_Type_Vectors.Vector);
+                          Value : out Util_ContentAddResponse_Type_Vectors.Vector);
 
 
 
 
-   type Main_importDealBody_Type is
+   type Main_userStatsResponse_Type is
      record
-       Coluuid : Swagger.Nullable_UString;
-       Deal_I_Ds : Swagger.Nullable_Integer_Vectors.Vector;
-       Dir : Swagger.Nullable_UString;
+       Num_Pins : Swagger.Nullable_Integer;
+       Total_Size : Swagger.Nullable_Integer;
+     end record;
+
+   package Main_userStatsResponse_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Main_userStatsResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_userStatsResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_userStatsResponse_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_userStatsResponse_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_userStatsResponse_Type_Vectors.Vector);
+
+
+
+
+   type Main_getApiKeysResp_Type is
+     record
+       Expiry : Swagger.Nullable_UString;
+       Token : Swagger.Nullable_UString;
+     end record;
+
+   package Main_getApiKeysResp_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Main_getApiKeysResp_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_getApiKeysResp_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_getApiKeysResp_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_getApiKeysResp_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_getApiKeysResp_Type_Vectors.Vector);
+
+
+
+
+   type Main_deleteContentFromCollectionBody_Type is
+     record
+       By : Swagger.Nullable_UString;
+       Value : Swagger.Nullable_UString;
+     end record;
+
+   package Main_deleteContentFromCollectionBody_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Main_deleteContentFromCollectionBody_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_deleteContentFromCollectionBody_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_deleteContentFromCollectionBody_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_deleteContentFromCollectionBody_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_deleteContentFromCollectionBody_Type_Vectors.Vector);
+
+
+
+
+   type Collections_Collection_Type is
+     record
+       Cid : Swagger.Nullable_UString;
+       Created_At : Swagger.Nullable_UString;
+       Description : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
+       User_Id : Swagger.Nullable_Integer;
+       Uuid : Swagger.Nullable_UString;
+     end record;
+
+   package Collections_Collection_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Collections_Collection_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Collections_Collection_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Collections_Collection_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Collections_Collection_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Collections_Collection_Type_Vectors.Vector);
+
+
+
+
+   type Main_createCollectionBody_Type is
+     record
+       Description : Swagger.Nullable_UString;
        Name : Swagger.Nullable_UString;
      end record;
 
-   package Main_importDealBody_Type_Vectors is
+   package Main_createCollectionBody_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_importDealBody_Type);
+                                  Element_Type => Main_createCollectionBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_importDealBody_Type);
+                        Value : in Main_createCollectionBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_importDealBody_Type_Vectors.Vector);
+                        Value : in Main_createCollectionBody_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_importDealBody_Type);
+                          Value : out Main_createCollectionBody_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_importDealBody_Type_Vectors.Vector);
+                          Value : out Main_createCollectionBody_Type_Vectors.Vector);
 
 
 
@@ -137,153 +254,98 @@ package .Models is
 
 
 
-   type Main_Collection_Type is
+   type Main_importDealBody_Type is
      record
-       Cid : Swagger.Nullable_UString;
-       Created_At : Swagger.Nullable_UString;
-       Description : Swagger.Nullable_UString;
-       Name : Swagger.Nullable_UString;
-       User_Id : Swagger.Nullable_Integer;
-       Uuid : Swagger.Nullable_UString;
-     end record;
-
-   package Main_Collection_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_Collection_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Main_Collection_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Main_Collection_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Main_Collection_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Main_Collection_Type_Vectors.Vector);
-
-
-
-
-   type Main_createCollectionBody_Type is
-     record
-       Description : Swagger.Nullable_UString;
+       Coluuid : Swagger.Nullable_UString;
+       Deal_I_Ds : Swagger.Nullable_Integer_Vectors.Vector;
+       Dir : Swagger.Nullable_UString;
        Name : Swagger.Nullable_UString;
      end record;
 
-   package Main_createCollectionBody_Type_Vectors is
+   package Main_importDealBody_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_createCollectionBody_Type);
+                                  Element_Type => Main_importDealBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_createCollectionBody_Type);
+                        Value : in Main_importDealBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_createCollectionBody_Type_Vectors.Vector);
+                        Value : in Main_importDealBody_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_createCollectionBody_Type);
+                          Value : out Main_importDealBody_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_createCollectionBody_Type_Vectors.Vector);
+                          Value : out Main_importDealBody_Type_Vectors.Vector);
 
 
 
 
-   type Main_getApiKeysResp_Type is
+   type Util_ContentAddIpfsBody_Type is
      record
-       Expiry : Swagger.Nullable_UString;
-       Token : Swagger.Nullable_UString;
+       Coluuid : Swagger.Nullable_UString;
+       Dir : Swagger.Nullable_UString;
+       Filename : Swagger.Nullable_UString;
+       Peers : Swagger.Nullable_UString_Vectors.Vector;
+       Root : Swagger.Nullable_UString;
      end record;
 
-   package Main_getApiKeysResp_Type_Vectors is
+   package Util_ContentAddIpfsBody_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_getApiKeysResp_Type);
+                                  Element_Type => Util_ContentAddIpfsBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_getApiKeysResp_Type);
+                        Value : in Util_ContentAddIpfsBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_getApiKeysResp_Type_Vectors.Vector);
+                        Value : in Util_ContentAddIpfsBody_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_getApiKeysResp_Type);
+                          Value : out Util_ContentAddIpfsBody_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_getApiKeysResp_Type_Vectors.Vector);
+                          Value : out Util_ContentAddIpfsBody_Type_Vectors.Vector);
 
 
 
 
-   type Main_userStatsResponse_Type is
+   type Util_ContentCreateBody_Type is
      record
-       Num_Pins : Swagger.Nullable_Integer;
-       Total_Size : Swagger.Nullable_Integer;
+       Coluuid : Swagger.Nullable_UString;
+       Dir : Swagger.Nullable_UString;
+       Location : Swagger.Nullable_UString;
+       Name : Swagger.Nullable_UString;
+       Root : Swagger.Nullable_UString;
+       P_Type : Swagger.Nullable_Integer;
      end record;
 
-   package Main_userStatsResponse_Type_Vectors is
+   package Util_ContentCreateBody_Type_Vectors is
       new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_userStatsResponse_Type);
+                                  Element_Type => Util_ContentCreateBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_userStatsResponse_Type);
+                        Value : in Util_ContentCreateBody_Type);
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
-                        Value : in Main_userStatsResponse_Type_Vectors.Vector);
+                        Value : in Util_ContentCreateBody_Type_Vectors.Vector);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_userStatsResponse_Type);
+                          Value : out Util_ContentCreateBody_Type);
 
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
-                          Value : out Main_userStatsResponse_Type_Vectors.Vector);
-
-
-
-
-   type Util_ContentAddResponse_Type is
-     record
-       Cid : Swagger.Nullable_UString;
-       Estuary_Id : Swagger.Nullable_Integer;
-       Providers : Swagger.Nullable_UString_Vectors.Vector;
-       Retrieval_Url : Swagger.Nullable_UString;
-     end record;
-
-   package Util_ContentAddResponse_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Util_ContentAddResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Util_ContentAddResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Util_ContentAddResponse_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Util_ContentAddResponse_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Util_ContentAddResponse_Type_Vectors.Vector);
+                          Value : out Util_ContentCreateBody_Type_Vectors.Vector);
 
 
 

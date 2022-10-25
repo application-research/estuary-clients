@@ -1,4 +1,4 @@
-# estuary_client - the C# library for the Estuary API
+# estuary-client - the C# library for the Estuary API
 
 This is the API for the Estuary application.
 
@@ -37,9 +37,9 @@ Run the following command to generate the DLL
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 ```
 <a name="packaging"></a>
 ## Packaging
@@ -49,7 +49,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out estuary_client.csproj
+nuget pack -Build -OutputDirectory out estuary-client.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -60,9 +60,9 @@ Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-p
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary_client.Api;
-using estuary_client.Client;
-using estuary_client.Model;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
 
 namespace Example
 {
@@ -77,11 +77,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
+            var body = ;  // List<string> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                apiInstance.AdminPeeringPeersDelete();
+                apiInstance.AdminPeeringPeersDelete(body);
             }
             catch (Exception e)
             {
@@ -112,6 +113,7 @@ Class | Method | HTTP request | Description
 *AutoretrieveApi* | [**AdminAutoretrieveListGet**](docs/AutoretrieveApi.md#adminautoretrievelistget) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 *AutoretrieveApi* | [**AutoretrieveHeartbeatPost**](docs/AutoretrieveApi.md#autoretrieveheartbeatpost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *CollectionsApi* | [**CollectionsColuuidCommitPost**](docs/CollectionsApi.md#collectionscoluuidcommitpost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*CollectionsApi* | [**CollectionsColuuidContentsDelete**](docs/CollectionsApi.md#collectionscoluuidcontentsdelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 *CollectionsApi* | [**CollectionsColuuidDelete**](docs/CollectionsApi.md#collectionscoluuiddelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 *CollectionsApi* | [**CollectionsColuuidGet**](docs/CollectionsApi.md#collectionscoluuidget) | **GET** /collections/{coluuid} | Get contents in a collection
 *CollectionsApi* | [**CollectionsColuuidPost**](docs/CollectionsApi.md#collectionscoluuidpost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -128,6 +130,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**ContentDealsGet**](docs/ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 *ContentApi* | [**ContentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**ContentFailuresContentGet**](docs/ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+*ContentApi* | [**ContentIdGet**](docs/ContentApi.md#contentidget) | **GET** /content/{id} | Content
 *ContentApi* | [**ContentImportdealPost**](docs/ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**ContentListGet**](docs/ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 *ContentApi* | [**ContentReadContGet**](docs/ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
@@ -141,12 +144,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**DealStatusByProposalPropcidGet**](docs/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**DealStatusMinerPropcidGet**](docs/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**DealTransferInProgressGet**](docs/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
-*DealsApi* | [**DealTransferStatusPost**](docs/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**DealsFailuresGet**](docs/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**DealsMakeMinerPost**](docs/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**DealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**PublicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**PublicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**DealTransferStatusPost**](docs/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**PublicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -192,14 +195,16 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Model.MainCollection](docs/MainCollection.md)
+ - [Model.CollectionsCollection](docs/CollectionsCollection.md)
  - [Model.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
+ - [Model.MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [Model.MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [Model.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [Model.MainImportDealBody](docs/MainImportDealBody.md)
  - [Model.MainUserStatsResponse](docs/MainUserStatsResponse.md)
  - [Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
+ - [Model.UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [Model.UtilHttpError](docs/UtilHttpError.md)
 
 

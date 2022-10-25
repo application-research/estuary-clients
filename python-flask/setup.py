@@ -3,7 +3,7 @@
 import sys
 from setuptools import setup, find_packages
 
-NAME = "estuary_client"
+NAME = "estuary-client"
 VERSION = "1.0.0"
 
 # To install the library, run the following
@@ -30,7 +30,7 @@ setup(
     package_data={'': ['swagger/swagger.yaml']},
     include_package_data=True,
     entry_points={
-        'console_scripts': ['estuary_client=estuary_client.__main__:main']},
+        'console_scripts': ['estuary-client=estuary-client.__main__:main']},
     long_description="""\
     This is the API for the Estuary application.
     """

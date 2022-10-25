@@ -73,6 +73,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 *collectionsColuuidCommitPostSync* | *POST* /collections/{coluuid}/commit | Produce a CID of the collection contents.
 *collectionsColuuidCommitPostASync* | *POST* /collections/{coluuid}/commit | Produce a CID of the collection contents.
+*collectionsColuuidContentsDeleteSync* | *DELETE* /collections/{coluuid}/contents | Deletes a content from a collection.
+*collectionsColuuidContentsDeleteASync* | *DELETE* /collections/{coluuid}/contents | Deletes a content from a collection.
 *collectionsColuuidDeleteSync* | *DELETE* /collections/{coluuid} | Deletes a collection.
 *collectionsColuuidDeleteASync* | *DELETE* /collections/{coluuid} | Deletes a collection.
 *collectionsColuuidGetSync* | *GET* /collections/{coluuid} | Get contents in a collection.
@@ -109,6 +111,8 @@ Method | HTTP request | Description
 *contentEnsureReplicationDatacidGetASync* | *GET* /content/ensure-replication/{datacid} | Ensure Replication.
 *contentFailuresContentGetSync* | *GET* /content/failures/{content} | List all failures for a content.
 *contentFailuresContentGetASync* | *GET* /content/failures/{content} | List all failures for a content.
+*contentIdGetSync* | *GET* /content/{id} | Content.
+*contentIdGetASync* | *GET* /content/{id} | Content.
 *contentImportdealPostSync* | *POST* /content/importdeal | Import a deal.
 *contentImportdealPostASync* | *POST* /content/importdeal | Import a deal.
 *contentListGetSync* | *GET* /content/list | List all pinned content.
@@ -139,8 +143,6 @@ Method | HTTP request | Description
 *dealStatusMinerPropcidGetASync* | *GET* /deal/status/{miner}/{propcid} | Deal Status.
 *dealTransferInProgressGetSync* | *GET* /deal/transfer/in-progress | Transfer In Progress.
 *dealTransferInProgressGetASync* | *GET* /deal/transfer/in-progress | Transfer In Progress.
-*dealTransferStatusPostSync* | *POST* /deal/transfer/status | Transfer Status.
-*dealTransferStatusPostASync* | *POST* /deal/transfer/status | Transfer Status.
 *dealsFailuresGetSync* | *GET* /deals/failures | Get storage failures for user.
 *dealsFailuresGetASync* | *GET* /deals/failures | Get storage failures for user.
 *dealsMakeMinerPostSync* | *POST* /deals/make/{miner} | Make Deal.
@@ -151,6 +153,12 @@ Method | HTTP request | Description
 *publicDealsFailuresGetASync* | *GET* /public/deals/failures | Get storage failures.
 *publicMinersStorageQueryMinerGetSync* | *GET* /public/miners/storage/query/{miner} | Query Ask.
 *publicMinersStorageQueryMinerGetASync* | *GET* /public/miners/storage/query/{miner} | Query Ask.
+
+### DefaultManager
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*dealTransferStatusPostSync* | *POST* /deal/transfer/status | .
+*dealTransferStatusPostASync* | *POST* /deal/transfer/status | .
 
 ### MetricsManager
 Method | HTTP request | Description
@@ -268,13 +276,15 @@ Method | HTTP request | Description
 ## What are the Model files for the data structures/objects?
 Class | Description
 ------------- | -------------
- *Main.Collection* | 
+ *Collections.Collection* | 
  *Main.createCollectionBody* | 
+ *Main.deleteContentFromCollectionBody* | 
  *Main.estimateDealBody* | 
  *Main.getApiKeysResp* | 
  *Main.importDealBody* | 
  *Main.userStatsResponse* | 
  *Util.ContentAddIpfsBody* | 
  *Util.ContentAddResponse* | 
+ *Util.ContentCreateBody* | 
  *Util.HttpError* | 
 

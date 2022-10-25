@@ -20,8 +20,9 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
-import { MainCollection } from '../model/mainCollection';
+import { CollectionsCollection } from '../model/collectionsCollection';
 import { MainCreateCollectionBody } from '../model/mainCreateCollectionBody';
+import { MainDeleteContentFromCollectionBody } from '../model/mainDeleteContentFromCollectionBody';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
@@ -63,6 +64,44 @@ export class CollectionsService {
 
 
     /**
+     * Deletes a content from a collection
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @param coluuid Collection ID
+     * @param contentid Content ID
+     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
+     
+     */
+    public collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, observe?: 'body', headers?: Headers): Observable<string>;
+    public collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public collectionsColuuidContentsDelete(coluuid: string, contentid: string, body: MainDeleteContentFromCollectionBody, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!coluuid){
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        if (!contentid){
+            throw new Error('Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        if (!body){
+            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
+        }
+
+        // authentication (bearerAuth) required
+        if (this.APIConfiguration.apiKeys['Authorization']) {
+            headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
+        }
+        headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
+
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}/contents`, body as any, headers);
+        if (observe === 'body') {
+               return response.map(httpResponse => httpResponse.response);
+        }
+        return response;
+    }
+
+
+    /**
      * Deletes a collection
      * This endpoint is used to delete an existing collection.
      * @param coluuid Collection ID
@@ -92,7 +131,7 @@ export class CollectionsService {
     /**
      * Get contents in a collection
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
-     * @param coluuid Collection UUID
+     * @param coluuid coluuid
      * @param dir Directory
      
      */
@@ -104,9 +143,6 @@ export class CollectionsService {
         }
 
         let queryParameters: string[] = [];
-        if (coluuid !== undefined) {
-            queryParameters.push('coluuid='+encodeURIComponent(String(coluuid)));
-        }
         if (dir !== undefined) {
             queryParameters.push('dir='+encodeURIComponent(String(dir)));
         }
@@ -128,14 +164,19 @@ export class CollectionsService {
     /**
      * Add contents to a collection
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-     * @param body Content IDs to add to collection
+     * @param coluuid coluuid
+     * @param contentIDs Content IDs to add to collection
      
      */
-    public collectionsColuuidPost(body: Array<number>, observe?: 'body', headers?: Headers): Observable<{ [key: string]: string; }>;
-    public collectionsColuuidPost(body: Array<number>, observe?: 'response', headers?: Headers): Observable<HttpResponse<{ [key: string]: string; }>>;
-    public collectionsColuuidPost(body: Array<number>, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!body){
-            throw new Error('Required parameter body was null or undefined when calling collectionsColuuidPost.');
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'body', headers?: Headers): Observable<{ [key: string]: string; }>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'response', headers?: Headers): Observable<HttpResponse<{ [key: string]: string; }>>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!coluuid){
+            throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
+        }
+
+        if (!contentIDs){
+            throw new Error('Required parameter contentIDs was null or undefined when calling collectionsColuuidPost.');
         }
 
         // authentication (bearerAuth) required
@@ -145,7 +186,7 @@ export class CollectionsService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<{ [key: string]: string; }>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}`, body as any, headers);
+        const response: Observable<HttpResponse<{ [key: string]: string; }>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}`, contentIDs as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -204,23 +245,18 @@ export class CollectionsService {
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @param id User ID
      
      */
-    public collectionsGet(id: number, observe?: 'body', headers?: Headers): Observable<Array<MainCollection>>;
-    public collectionsGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<MainCollection>>>;
-    public collectionsGet(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!id){
-            throw new Error('Required parameter id was null or undefined when calling collectionsGet.');
-        }
-
+    public collectionsGet(observe?: 'body', headers?: Headers): Observable<Array<CollectionsCollection>>;
+    public collectionsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CollectionsCollection>>>;
+    public collectionsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<MainCollection>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/collections/` as any, headers);
+        const response: Observable<HttpResponse<Array<CollectionsCollection>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/collections/` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -234,8 +270,8 @@ export class CollectionsService {
      * @param body Collection name and description
      
      */
-    public collectionsPost(body: MainCreateCollectionBody, observe?: 'body', headers?: Headers): Observable<MainCollection>;
-    public collectionsPost(body: MainCreateCollectionBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<MainCollection>>;
+    public collectionsPost(body: MainCreateCollectionBody, observe?: 'body', headers?: Headers): Observable<CollectionsCollection>;
+    public collectionsPost(body: MainCreateCollectionBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<CollectionsCollection>>;
     public collectionsPost(body: MainCreateCollectionBody, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling collectionsPost.');
@@ -248,7 +284,7 @@ export class CollectionsService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<MainCollection>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/`, body as any, headers);
+        const response: Observable<HttpResponse<CollectionsCollection>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

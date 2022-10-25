@@ -82,6 +82,16 @@ class CollectionsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for collectionsColuuidContentsDelete
+     *
+     * Deletes a content from a collection.
+     *
+     */
+    public function testCollectionsColuuidContentsDelete()
+    {
+    }
+
+    /**
      * Test case for collectionsColuuidDelete
      *
      * Deletes a collection.

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **PublicMinersDealsMinerGet**
-> PublicMinersDealsMinerGet(ctx, miner)
+> PublicMinersDealsMinerGet(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -20,6 +20,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **miner** | **string**| Filter by miner | 
+ **optional** | ***MinerApiPublicMinersDealsMinerGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a MinerApiPublicMinersDealsMinerGetOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreFailed** | **optional.String**| Ignore Failed | 
 
 ### Return type
 

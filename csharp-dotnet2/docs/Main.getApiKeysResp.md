@@ -1,4 +1,4 @@
-# estuary_client.Model.MainGetApiKeysResp
+# estuary-client.Model.MainGetApiKeysResp
 ## Properties
 
 Name | Type | Description | Notes

@@ -217,6 +217,7 @@ font-style: italic;
   <h4><a href="#Collections">Collections</a></h4>
   <ul>
   <li><a href="#collectionsColuuidCommitPost"><code><span class="http-method">post</span> /collections/{coluuid}/commit</code></a></li>
+  <li><a href="#collectionsColuuidContentsDelete"><code><span class="http-method">delete</span> /collections/{coluuid}/contents</code></a></li>
   <li><a href="#collectionsColuuidDelete"><code><span class="http-method">delete</span> /collections/{coluuid}</code></a></li>
   <li><a href="#collectionsColuuidGet"><code><span class="http-method">get</span> /collections/{coluuid}</code></a></li>
   <li><a href="#collectionsColuuidPost"><code><span class="http-method">post</span> /collections/{coluuid}</code></a></li>
@@ -236,6 +237,7 @@ font-style: italic;
   <li><a href="#contentDealsGet"><code><span class="http-method">get</span> /content/deals</code></a></li>
   <li><a href="#contentEnsureReplicationDatacidGet"><code><span class="http-method">get</span> /content/ensure-replication/{datacid}</code></a></li>
   <li><a href="#contentFailuresContentGet"><code><span class="http-method">get</span> /content/failures/{content}</code></a></li>
+  <li><a href="#contentIdGet"><code><span class="http-method">get</span> /content/{id}</code></a></li>
   <li><a href="#contentImportdealPost"><code><span class="http-method">post</span> /content/importdeal</code></a></li>
   <li><a href="#contentListGet"><code><span class="http-method">get</span> /content/list</code></a></li>
   <li><a href="#contentReadContGet"><code><span class="http-method">get</span> /content/read/{cont}</code></a></li>
@@ -252,12 +254,15 @@ font-style: italic;
   <li><a href="#dealStatusByProposalPropcidGet"><code><span class="http-method">get</span> /deal/status-by-proposal/{propcid}</code></a></li>
   <li><a href="#dealStatusMinerPropcidGet"><code><span class="http-method">get</span> /deal/status/{miner}/{propcid}</code></a></li>
   <li><a href="#dealTransferInProgressGet"><code><span class="http-method">get</span> /deal/transfer/in-progress</code></a></li>
-  <li><a href="#dealTransferStatusPost"><code><span class="http-method">post</span> /deal/transfer/status</code></a></li>
   <li><a href="#dealsFailuresGet"><code><span class="http-method">get</span> /deals/failures</code></a></li>
   <li><a href="#dealsMakeMinerPost"><code><span class="http-method">post</span> /deals/make/{miner}</code></a></li>
   <li><a href="#dealsStatusDealGet"><code><span class="http-method">get</span> /deals/status/{deal}</code></a></li>
   <li><a href="#publicDealsFailuresGet"><code><span class="http-method">get</span> /public/deals/failures</code></a></li>
   <li><a href="#publicMinersStorageQueryMinerGet"><code><span class="http-method">get</span> /public/miners/storage/query/{miner}</code></a></li>
+  </ul>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#dealTransferStatusPost"><code><span class="http-method">post</span> /deal/transfer/status</code></a></li>
   </ul>
   <h4><a href="#Metrics">Metrics</a></h4>
   <ul>
@@ -334,6 +339,13 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Peer ids </div>
+
+    </div>  <!-- field-items -->
 
 
 
@@ -687,6 +699,65 @@ font-style: italic;
         <a href="#String">String</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="collectionsColuuidContentsDelete"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /collections/{coluuid}/contents</code></pre></div>
+    <div class="method-summary">Deletes a content from a collection (<span class="nickname">collectionsColuuidContentsDelete</span>)</div>
+    <div class="method-notes">This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Collection ID </div><div class="param">contentid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#main.deleteContentFromCollectionBody">main.deleteContentFromCollectionBody</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Variable to use when filtering for files (must be either 'path' or 'content_id') </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "bytes": [],
+  "empty": true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="collectionsColuuidDelete"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -721,15 +792,19 @@ font-style: italic;
     <div class="method-summary">Get contents in a collection (<span class="nickname">collectionsColuuidGet</span>)</div>
     <div class="method-notes">This endpoint is used to get contents in a collection. If no colpath query param is passed</div>
 
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; coluuid </div>
+    </div>  <!-- field-items -->
 
 
 
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">coluuid (required)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection UUID </div><div class="param">dir (optional)</div>
+      <div class="param">dir (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>
     </div>  <!-- field-items -->
@@ -770,6 +845,12 @@ font-style: italic;
     <div class="method-summary">Add contents to a collection (<span class="nickname">collectionsColuuidPost</span>)</div>
     <div class="method-notes">This endpoint adds already-pinned contents (that have ContentIDs) to a collection.</div>
 
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; coluuid </div>
+    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -779,7 +860,7 @@ font-style: italic;
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#integer">integer</a> (required)</div>
+      <div class="param">contentIDs <a href="#integer">integer</a> (required)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Content IDs to add to collection </div>
 
@@ -857,12 +938,6 @@ font-style: italic;
     <div class="method-summary">List all collections (<span class="nickname">collectionsGet</span>)</div>
     <div class="method-notes">This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User ID </div>
-    </div>  <!-- field-items -->
 
 
 
@@ -871,7 +946,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#main.Collection">main.Collection</a>]
+      array[<a href="#collections.Collection">collections.Collection</a>]
       
     </div>
 
@@ -925,7 +1000,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#main.Collection">main.Collection</a>
+      <a href="#collections.Collection">collections.Collection</a>
       
     </div>
 
@@ -945,7 +1020,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#main.Collection">main.Collection</a>
+        <a href="#collections.Collection">collections.Collection</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -978,13 +1053,11 @@ font-style: italic;
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">filename (optional)</div>
+      <div class="param">ignore-dupes (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filename </div><div class="param">commp (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div><div class="param">filename (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Commp </div><div class="param">size (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Size </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filename </div>
     </div>  <!-- field-items -->
 
 
@@ -1020,6 +1093,12 @@ font-style: italic;
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-dupes (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>
+    </div>  <!-- field-items -->
 
 
 
@@ -1043,14 +1122,6 @@ font-style: italic;
     <div class="method-summary">Add new content (<span class="nickname">contentAddPost</span>)</div>
     <div class="method-notes">This endpoint is used to upload new content.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">coluuid (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Collection UUID </div><div class="param">dir (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Directory </div>
-    </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
@@ -1060,12 +1131,28 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection UUID </div><div class="param">replication (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Replication value </div><div class="param">ignore-dupes (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes true/false </div><div class="param">lazy-provide (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Lazy Provide true/false </div><div class="param">dir (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>
+    </div>  <!-- field-items -->
 
     <h3 class="field-label">Form parameters</h3>
     <div class="field-items">
-      <div class="param">file (required)</div>
+      <div class="param">data (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; File to upload </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; File to upload </div><div class="param">filename (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; Filenam to use for upload </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -1221,13 +1308,19 @@ font-style: italic;
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#string">string</a> (required)</div>
+      <div class="param">req <a href="#util.ContentCreateBody">util.ContentCreateBody</a> (required)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Content </div>
 
     </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-dupes (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>
+    </div>  <!-- field-items -->
 
 
 
@@ -1357,6 +1450,39 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     OK
         <a href="#String">String</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentIdGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/{id}</code></pre></div>
+    <div class="method-summary">Content (<span class="nickname">contentIdGet</span>)</div>
+    <div class="method-notes">This endpoint returns a content by its ID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Content ID </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="contentImportdealPost"/>
@@ -1498,16 +1624,18 @@ font-style: italic;
     <div class="method-summary">Get content statistics (<span class="nickname">contentStatsGet</span>)</div>
     <div class="method-notes">This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</div>
 
-    <h3 class="field-label">Path parameters</h3>
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
       <div class="param">limit (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; limit </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; limit </div><div class="param">offset (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; offset </div>
     </div>  <!-- field-items -->
-
-
-
-
 
 
 
@@ -1786,33 +1914,6 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="dealTransferStatusPost"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /deal/transfer/status</code></pre></div>
-    <div class="method-summary">Transfer Status (<span class="nickname">dealTransferStatusPost</span>)</div>
-    <div class="method-notes">This endpoint returns the status of a transfer</div>
-
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-  </div> <!-- method -->
-  <hr/>
   <div class="method"><a name="dealsFailuresGet"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1973,6 +2074,28 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
   </div> <!-- method -->
   <hr/>
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="dealTransferStatusPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /deal/transfer/status</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">dealTransferStatusPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Metrics">Metrics</a></h1>
   <div class="method"><a name="publicMetricsDealsOnChainGet"/>
     <div class="method-path">
@@ -2019,6 +2142,12 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-failed (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Failed </div>
+    </div>  <!-- field-items -->
 
 
 
@@ -2253,6 +2382,13 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Peer ids </div>
+
+    </div>  <!-- field-items -->
 
 
 
@@ -2416,6 +2552,13 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Peer ids </div>
+
+    </div>  <!-- field-items -->
 
 
 
@@ -2845,6 +2988,12 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-failed (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Failed </div>
+    </div>  <!-- field-items -->
 
 
 
@@ -3149,6 +3298,14 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">expiry (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h </div><div class="param">perms (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Permissions -- currently unused </div>
+    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -3270,19 +3427,21 @@ font-style: italic;
 
   <h3>Table of Contents</h3>
   <ol>
-    <li><a href="#main.Collection"><code>main.Collection</code> - </a></li>
+    <li><a href="#collections.Collection"><code>collections.Collection</code> - </a></li>
     <li><a href="#main.createCollectionBody"><code>main.createCollectionBody</code> - </a></li>
+    <li><a href="#main.deleteContentFromCollectionBody"><code>main.deleteContentFromCollectionBody</code> - </a></li>
     <li><a href="#main.estimateDealBody"><code>main.estimateDealBody</code> - </a></li>
     <li><a href="#main.getApiKeysResp"><code>main.getApiKeysResp</code> - </a></li>
     <li><a href="#main.importDealBody"><code>main.importDealBody</code> - </a></li>
     <li><a href="#main.userStatsResponse"><code>main.userStatsResponse</code> - </a></li>
     <li><a href="#util.ContentAddIpfsBody"><code>util.ContentAddIpfsBody</code> - </a></li>
     <li><a href="#util.ContentAddResponse"><code>util.ContentAddResponse</code> - </a></li>
+    <li><a href="#util.ContentCreateBody"><code>util.ContentCreateBody</code> - </a></li>
     <li><a href="#util.HttpError"><code>util.HttpError</code> - </a></li>
   </ol>
 
   <div class="model">
-    <h3><a name="main.Collection"><code>main.Collection</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="collections.Collection"><code>collections.Collection</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -3299,6 +3458,14 @@ font-style: italic;
     <div class="field-items">
       <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="main.deleteContentFromCollectionBody"><code>main.deleteContentFromCollectionBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">by (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3356,6 +3523,18 @@ font-style: italic;
 <div class="param">estuaryId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">providers (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
 <div class="param">retrieval_url (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.ContentCreateBody"><code>util.ContentCreateBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">coluuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">location (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">root (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

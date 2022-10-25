@@ -117,7 +117,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **userApiKeysPost**
-> \Swagger\Client\Model\MainGetApiKeysResp userApiKeysPost()
+> \Swagger\Client\Model\MainGetApiKeysResp userApiKeysPost($expiry, $perms)
 
 Create API keys for a user
 
@@ -139,9 +139,11 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     new GuzzleHttp\Client(),
     $config
 );
+$expiry = "expiry_example"; // string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+$perms = "perms_example"; // string | Permissions -- currently unused
 
 try {
-    $result = $apiInstance->userApiKeysPost();
+    $result = $apiInstance->userApiKeysPost($expiry, $perms);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->userApiKeysPost: ', $e->getMessage(), PHP_EOL;
@@ -150,7 +152,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **perms** | **string**| Permissions -- currently unused | [optional]
 
 ### Return type
 

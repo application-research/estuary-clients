@@ -26,17 +26,13 @@ FString SwaggerContentApi::ContentAddCarPostRequest::ComputePath() const
 {
 	FString Path(TEXT("/content/add-car"));
 	TArray<FString> QueryParams;
+	if(IgnoreDupes.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ignore-dupes=")) + ToUrlString(IgnoreDupes.GetValue()));
+	}
 	if(Filename.IsSet())
 	{
 		QueryParams.Add(FString(TEXT("filename=")) + ToUrlString(Filename.GetValue()));
-	}
-	if(Commp.IsSet())
-	{
-		QueryParams.Add(FString(TEXT("commp=")) + ToUrlString(Commp.GetValue()));
-	}
-	if(Size.IsSet())
-	{
-		QueryParams.Add(FString(TEXT("size=")) + ToUrlString(Size.GetValue()));
 	}
 	Path += TCHAR('?');
 	Path += FString::Join(QueryParams, TEXT("&"));
@@ -87,6 +83,14 @@ bool SwaggerContentApi::ContentAddCarPostResponse::FromJson(const TSharedPtr<FJs
 FString SwaggerContentApi::ContentAddIpfsPostRequest::ComputePath() const
 {
 	FString Path(TEXT("/content/add-ipfs"));
+	TArray<FString> QueryParams;
+	if(IgnoreDupes.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ignore-dupes=")) + ToUrlString(IgnoreDupes.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 
@@ -132,12 +136,31 @@ bool SwaggerContentApi::ContentAddIpfsPostResponse::FromJson(const TSharedPtr<FJ
 
 FString SwaggerContentApi::ContentAddPostRequest::ComputePath() const
 {
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("coluuid"), ToStringFormatArg(Coluuid) },
-	{ TEXT("dir"), ToStringFormatArg(Dir) } };
+	FString Path(TEXT("/content/add"));
+	TArray<FString> QueryParams;
+	if(Coluuid.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("coluuid=")) + ToUrlString(Coluuid.GetValue()));
+	}
+	if(Replication.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("replication=")) + ToUrlString(Replication.GetValue()));
+	}
+	if(IgnoreDupes.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ignore-dupes=")) + ToUrlString(IgnoreDupes.GetValue()));
+	}
+	if(LazyProvide.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("lazy-provide=")) + ToUrlString(LazyProvide.GetValue()));
+	}
+	if(Dir.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("dir=")) + ToUrlString(Dir.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
 
-	FString Path = FString::Format(TEXT("/content/add"), PathParams);
-	
 	return Path;
 }
 
@@ -151,19 +174,28 @@ void SwaggerContentApi::ContentAddPostRequest::SetupHttpRequest(const TSharedRef
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Form parameter (file) was ignored, cannot be used in JsonBody"));
+		UE_LOG(LogSwagger, Error, TEXT("Form parameter (data) was ignored, cannot be used in JsonBody"));
+		UE_LOG(LogSwagger, Error, TEXT("Form parameter (filename) was ignored, cannot be used in JsonBody"));
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
 		HttpMultipartFormData FormData;
-		FormData.AddFilePart(TEXT("file"), File);
+		FormData.AddFilePart(TEXT("data"), Data);
+		if(Filename.IsSet())
+		{
+			FormData.AddStringPart(TEXT("filename"), *ToUrlString(Filename.GetValue()));
+		}
 
 		FormData.SetupHttpRequest(HttpRequest);
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
 		TArray<FString> FormParams;
-		UE_LOG(LogSwagger, Error, TEXT("Form parameter (file) was ignored, Files are not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Form parameter (data) was ignored, Files are not supported in urlencoded requests"));
+		if(Filename.IsSet())
+		{
+			FormParams.Add(FString(TEXT("filename=")) + ToUrlString(Filename.GetValue()));
+		}
 		
 		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/x-www-form-urlencoded; charset=utf-8"));
 		HttpRequest->SetContentAsString(FString::Join(FormParams, TEXT("&")));
@@ -325,6 +357,14 @@ bool SwaggerContentApi::ContentBwUsageContentGetResponse::FromJson(const TShared
 FString SwaggerContentApi::ContentCreatePostRequest::ComputePath() const
 {
 	FString Path(TEXT("/content/create"));
+	TArray<FString> QueryParams;
+	if(IgnoreDupes.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ignore-dupes=")) + ToUrlString(IgnoreDupes.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 
@@ -342,7 +382,7 @@ void SwaggerContentApi::ContentCreatePostRequest::SetupHttpRequest(const TShared
 		FString JsonBody;
 		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
 
-		WriteJsonValue(Writer, Body);
+		WriteJsonValue(Writer, Req);
 		Writer->Close();
 
 		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
@@ -350,11 +390,11 @@ void SwaggerContentApi::ContentCreatePostRequest::SetupHttpRequest(const TShared
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (body) was ignored, not supported in multipart form"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (req) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (body) was ignored, not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (req) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -502,6 +542,45 @@ void SwaggerContentApi::ContentFailuresContentGetResponse::SetHttpResponseCode(E
 bool SwaggerContentApi::ContentFailuresContentGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString SwaggerContentApi::ContentIdGetRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), ToStringFormatArg(Id) } };
+
+	FString Path = FString::Format(TEXT("/content/{id}"), PathParams);
+	
+	return Path;
+}
+
+void SwaggerContentApi::ContentIdGetRequest::SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+	}
+	else
+	{
+		UE_LOG(LogSwagger, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+
+bool SwaggerContentApi::ContentIdGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
 }
 
 FString SwaggerContentApi::ContentImportdealPostRequest::ComputePath() const
@@ -672,11 +751,13 @@ bool SwaggerContentApi::ContentStagingZonesGetResponse::FromJson(const TSharedPt
 
 FString SwaggerContentApi::ContentStatsGetRequest::ComputePath() const
 {
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("limit"), ToStringFormatArg(Limit) } };
+	FString Path(TEXT("/content/stats"));
+	TArray<FString> QueryParams;
+	QueryParams.Add(FString(TEXT("limit=")) + ToUrlString(Limit));
+	QueryParams.Add(FString(TEXT("offset=")) + ToUrlString(Offset));
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
 
-	FString Path = FString::Format(TEXT("/content/stats"), PathParams);
-	
 	return Path;
 }
 

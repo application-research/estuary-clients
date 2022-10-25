@@ -6,6 +6,7 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
+import java.util.List;
 
 import java.util.List;
 
@@ -14,11 +15,11 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-07T23:59:33.064Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:24:54.497Z")
 public interface AdminApiService {
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext);
       public Response adminAutoretrieveListGet(SecurityContext securityContext);
-      public Response adminPeeringPeersDelete(SecurityContext securityContext);
+      public Response adminPeeringPeersDelete(List<String> body, SecurityContext securityContext);
       public Response adminPeeringPeersGet(SecurityContext securityContext);
       public Response adminPeeringPeersPost(SecurityContext securityContext);
       public Response adminPeeringStartPost(SecurityContext securityContext);

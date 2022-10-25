@@ -114,7 +114,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_post**
-> MainGetApiKeysResp user_api_keys_post()
+> MainGetApiKeysResp user_api_keys_post(expiry => $expiry, perms => $perms)
 
 Create API keys for a user
 
@@ -132,9 +132,11 @@ my $api_instance = WWW::SwaggerClient::UserApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
+my $expiry = 'expiry_example'; # string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+my $perms = 'perms_example'; # string | Permissions -- currently unused
 
 eval { 
-    my $result = $api_instance->user_api_keys_post();
+    my $result = $api_instance->user_api_keys_post(expiry => $expiry, perms => $perms);
     print Dumper($result);
 };
 if ($@) {
@@ -143,7 +145,11 @@ if ($@) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **string**| Permissions -- currently unused | [optional] 
 
 ### Return type
 

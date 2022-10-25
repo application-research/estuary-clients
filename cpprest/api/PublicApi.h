@@ -71,8 +71,10 @@ public:
     /// This endpoint returns all miners deals
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
+    /// <param name="ignoreFailed">Ignore Failed (optional)</param>
     pplx::task<void> publicMinersDealsMinerGet(
-        utility::string_t miner
+        utility::string_t miner,
+        boost::optional<utility::string_t> ignoreFailed
     );
     /// <summary>
     /// Get all miners

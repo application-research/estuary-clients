@@ -230,28 +230,6 @@ export class DealsApi {
         return this.$http(httpRequestParams);
     }
     /**
-     * This endpoint returns the status of a transfer
-     * @summary Transfer Status
-     */
-    public dealTransferStatusPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
-        const localVarPath = this.basePath + '/deal/transfer/status';
-
-        let queryParameters: any = {};
-        let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        let httpRequestParams: ng.IRequestConfig = {
-            method: 'POST',
-            url: localVarPath,
-            params: queryParameters,
-            headers: headerParams
-        };
-
-        if (extraHttpRequestParams) {
-            httpRequestParams = (<any>Object).assign(httpRequestParams, extraHttpRequestParams);
-        }
-
-        return this.$http(httpRequestParams);
-    }
-    /**
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      */

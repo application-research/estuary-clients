@@ -80,11 +80,15 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 
 ### Example
 ```bash
- userApiKeysPost
+ userApiKeysPost  expiry=value  perms=value
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **string** | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **perms** | **string** | Permissions -- currently unused | [optional]
 
 ### Return type
 

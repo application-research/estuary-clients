@@ -4,6 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 
+import java.util.List;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-07T23:59:39.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
 public class AdminApiServiceImpl implements AdminApi {
       public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext) {
       // do some magic!
@@ -22,7 +23,7 @@ public class AdminApiServiceImpl implements AdminApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response adminPeeringPeersDelete(SecurityContext securityContext) {
+      public Response adminPeeringPeersDelete(List<String> body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

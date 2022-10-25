@@ -103,7 +103,7 @@ null (empty response body)
 
 <a name="userApiKeysPost"></a>
 # **userApiKeysPost**
-> SwagMainGetApiKeysResp userApiKeysPost()
+> SwagMainGetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -118,9 +118,14 @@ SwagClient client = api.getClient();
 ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
+Map<String, Object> params = new Map<String, Object>{
+    'expiry' => 'expiry_example',
+    'perms' => 'perms_example'
+};
+
 try {
     // cross your fingers
-    SwagMainGetApiKeysResp result = api.userApiKeysPost();
+    SwagMainGetApiKeysResp result = api.userApiKeysPost(params);
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -128,7 +133,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **perms** | **String**| Permissions -- currently unused | [optional]
 
 ### Return type
 

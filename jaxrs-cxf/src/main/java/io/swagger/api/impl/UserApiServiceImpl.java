@@ -55,7 +55,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      *
      */
-    public MainGetApiKeysResp userApiKeysPost() {
+    public MainGetApiKeysResp userApiKeysPost(String expiry, String perms) {
         // TODO: Implement...
         
         return null;

@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-08T00:00:16.548Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:25:38.573Z")
 
 @Controller
 public class AdminApiController implements AdminApi {
@@ -46,7 +47,7 @@ public class AdminApiController implements AdminApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> adminPeeringPeersDelete() {
+    public ResponseEntity<Void> adminPeeringPeersDelete(@ApiParam(value = "Peer ids" ,required=true )  @Valid @RequestBody List<String> body) {
         String accept = request.getHeader("Accept");
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }

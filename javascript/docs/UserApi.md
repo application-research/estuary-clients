@@ -1,4 +1,4 @@
-# EstuaryApi.UserApi
+# EstuaryClient.UserApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -21,8 +21,8 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -30,7 +30,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.UserApi();
+var apiInstance = new EstuaryClient.UserApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -68,8 +68,8 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -77,7 +77,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.UserApi();
+var apiInstance = new EstuaryClient.UserApi();
 
 var key = "key_example"; // String | Key
 
@@ -113,7 +113,7 @@ null (empty response body)
 
 <a name="userApiKeysPost"></a>
 # **userApiKeysPost**
-> MainGetApiKeysResp userApiKeysPost()
+> MainGetApiKeysResp userApiKeysPost(opts)
 
 Create API keys for a user
 
@@ -121,8 +121,8 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -130,7 +130,12 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.UserApi();
+var apiInstance = new EstuaryClient.UserApi();
+
+var opts = { 
+  'expiry': "expiry_example", // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  'perms': "perms_example" // String | Permissions -- currently unused
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -139,11 +144,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.userApiKeysPost(callback);
+apiInstance.userApiKeysPost(opts, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
 
@@ -168,8 +177,8 @@ This endpoint is used to get API keys for a user.
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -177,7 +186,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.UserApi();
+var apiInstance = new EstuaryClient.UserApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -215,8 +224,8 @@ This endpoint is used to create API keys for a user.
 
 ### Example
 ```javascript
-var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
+var EstuaryClient = require('estuary-client');
+var defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
 var bearerAuth = defaultClient.authentications['bearerAuth'];
@@ -224,7 +233,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryApi.UserApi();
+var apiInstance = new EstuaryClient.UserApi();
 
 var callback = function(error, data, response) {
   if (error) {

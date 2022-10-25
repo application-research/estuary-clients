@@ -5,6 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Feature | HTTP request | Description
 ------------- | ------------- | -------------
 [**collections_coluuid_commit_post**](COLLECTIONS_API.md#collections_coluuid_commit_post) | **Post** /collections/{coluuid}/commit | Produce a CID of the collection contents
+[**collections_coluuid_contents_delete**](COLLECTIONS_API.md#collections_coluuid_contents_delete) | **Delete** /collections/{coluuid}/contents | Deletes a content from a collection
 [**collections_coluuid_delete**](COLLECTIONS_API.md#collections_coluuid_delete) | **Delete** /collections/{coluuid} | Deletes a collection
 [**collections_coluuid_get**](COLLECTIONS_API.md#collections_coluuid_get) | **Get** /collections/{coluuid} | Get contents in a collection
 [**collections_coluuid_post**](COLLECTIONS_API.md#collections_coluuid_post) | **Post** /collections/{coluuid} | Add contents to a collection
@@ -27,6 +28,38 @@ This endpoint is used to save the contents in a collection, producing a top-leve
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **STRING_32**| coluuid | 
+
+### Return type
+
+[**STRING_32**](STRING_32.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **collections_coluuid_contents_delete**
+> collections_coluuid_contents_delete (coluuid: STRING_32 ; contentid: STRING_32 ; body: MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY ): detachable STRING_32
+	
+
+Deletes a content from a collection
+
+This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coluuid** | **STRING_32**| Collection ID | 
+ **contentid** | **STRING_32**| Content ID | 
+ **body** | [**MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY**](MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -86,7 +119,7 @@ This endpoint is used to get contents in a collection. If no colpath query param
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **STRING_32**| Collection UUID | 
+ **coluuid** | **STRING_32**| coluuid | 
  **dir** | **STRING_32**| Directory | [optional] 
 
 ### Return type
@@ -105,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> collections_coluuid_post (body: LIST [INTEGER_32] ): detachable STRING_TABLE[STRING_32]
+> collections_coluuid_post (coluuid: STRING_32 ; content_ids: LIST [INTEGER_32] ): detachable STRING_TABLE[STRING_32]
 	
 
 Add contents to a collection
@@ -117,7 +150,8 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **LIST [INTEGER_32]**| Content IDs to add to collection | 
+ **coluuid** | **STRING_32**| coluuid | 
+ **content_ids** | **LIST [INTEGER_32]**| Content IDs to add to collection | 
 
 ### Return type
 
@@ -167,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> collections_get (id: INTEGER_32 ): detachable LIST [MAIN_COLLECTION]
+> collections_get : detachable LIST [COLLECTIONS_COLLECTION]
 	
 
 List all collections
@@ -176,14 +210,11 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **INTEGER_32**| User ID | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**LIST [MAIN_COLLECTION]**](main.Collection.md)
+[**LIST [COLLECTIONS_COLLECTION]**](collections.Collection.md)
 
 ### Authorization
 
@@ -197,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_post**
-> collections_post (body: MAIN_CREATE_COLLECTION_BODY ): detachable MAIN_COLLECTION
+> collections_post (body: MAIN_CREATE_COLLECTION_BODY ): detachable COLLECTIONS_COLLECTION
 	
 
 Create a new collection
@@ -213,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MAIN_COLLECTION**](main.Collection.md)
+[**COLLECTIONS_COLLECTION**](collections.Collection.md)
 
 ### Authorization
 

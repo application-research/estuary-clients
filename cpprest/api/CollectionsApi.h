@@ -22,8 +22,9 @@
 
 #include "../ApiClient.h"
 
-#include "Main.Collection.h"
+#include "Collections.Collection.h"
 #include "Main.createCollectionBody.h"
+#include "Main.deleteContentFromCollectionBody.h"
 #include "Util.HttpError.h"
 #include <vector>
 #include <cpprest/details/basic_types.h>
@@ -53,6 +54,20 @@ public:
         utility::string_t coluuid
     );
     /// <summary>
+    /// Deletes a content from a collection
+    /// </summary>
+    /// <remarks>
+    /// This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+    /// </remarks>
+    /// <param name="coluuid">Collection ID</param>
+    /// <param name="contentid">Content ID</param>
+    /// <param name="body">Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)</param>
+    pplx::task<utility::string_t> collectionsColuuidContentsDelete(
+        utility::string_t coluuid,
+        utility::string_t contentid,
+        std::shared_ptr<Main.deleteContentFromCollectionBody> body
+    );
+    /// <summary>
     /// Deletes a collection
     /// </summary>
     /// <remarks>
@@ -68,7 +83,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get contents in a collection. If no colpath query param is passed
     /// </remarks>
-    /// <param name="coluuid">Collection UUID</param>
+    /// <param name="coluuid">coluuid</param>
     /// <param name="dir">Directory (optional)</param>
     pplx::task<utility::string_t> collectionsColuuidGet(
         utility::string_t coluuid,
@@ -80,9 +95,11 @@ public:
     /// <remarks>
     /// This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
     /// </remarks>
-    /// <param name="body">Content IDs to add to collection</param>
+    /// <param name="coluuid">coluuid</param>
+    /// <param name="contentIDs">Content IDs to add to collection</param>
     pplx::task<std::map<utility::string_t, utility::string_t>> collectionsColuuidPost(
-        std::vector<int32_t> body
+        utility::string_t coluuid,
+        std::vector<int32_t> contentIDs
     );
     /// <summary>
     /// Add a file to a collection
@@ -104,9 +121,7 @@ public:
     /// <remarks>
     /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     /// </remarks>
-    /// <param name="id">User ID</param>
-    pplx::task<std::vector<std::shared_ptr<Main.Collection>>> collectionsGet(
-        int32_t id
+    pplx::task<std::vector<std::shared_ptr<Collections.Collection>>> collectionsGet(
     );
     /// <summary>
     /// Create a new collection
@@ -115,7 +130,7 @@ public:
     /// This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
     /// </remarks>
     /// <param name="body">Collection name and description</param>
-    pplx::task<std::shared_ptr<Main.Collection>> collectionsPost(
+    pplx::task<std::shared_ptr<Collections.Collection>> collectionsPost(
         std::shared_ptr<Main.createCollectionBody> body
     );
 

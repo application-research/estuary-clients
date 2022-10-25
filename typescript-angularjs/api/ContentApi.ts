@@ -30,11 +30,10 @@ export class ContentApi {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @summary Add Car object
      * @param body Car
+     * @param ignoreDupes Ignore Dupes
      * @param filename Filename
-     * @param commp Commp
-     * @param size Size
      */
-    public contentAddCarPost (body: string, filename?: string, commp?: string, size?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentAddCarPost (body: string, ignoreDupes?: string, filename?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/content/add-car';
 
         let queryParameters: any = {};
@@ -44,16 +43,12 @@ export class ContentApi {
             throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
         }
 
+        if (ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = ignoreDupes;
+        }
+
         if (filename !== undefined) {
             queryParameters['filename'] = filename;
-        }
-
-        if (commp !== undefined) {
-            queryParameters['commp'] = commp;
-        }
-
-        if (size !== undefined) {
-            queryParameters['size'] = size;
         }
 
         let httpRequestParams: ng.IRequestConfig = {
@@ -74,8 +69,9 @@ export class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
      * @param body IPFS Body
+     * @param ignoreDupes Ignore Dupes
      */
-    public contentAddIpfsPost (body: models.UtilContentAddIpfsBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentAddIpfsPost (body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/content/add-ipfs';
 
         let queryParameters: any = {};
@@ -83,6 +79,10 @@ export class ContentApi {
         // verify required parameter 'body' is not null or undefined
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
+        }
+
+        if (ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = ignoreDupes;
         }
 
         let httpRequestParams: ng.IRequestConfig = {
@@ -102,37 +102,51 @@ export class ContentApi {
     /**
      * This endpoint is used to upload new content.
      * @summary Add new content
-     * @param file File to upload
+     * @param data File to upload
+     * @param filename Filenam to use for upload
      * @param coluuid Collection UUID
+     * @param replication Replication value
+     * @param ignoreDupes Ignore Dupes true/false
+     * @param lazyProvide Lazy Provide true/false
      * @param dir Directory
      */
-    public contentAddPost (file: any, coluuid: string, dir: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UtilContentAddResponse> {
-        const localVarPath = this.basePath + '/content/add'
-            .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)))
-            .replace('{' + 'dir' + '}', encodeURIComponent(String(dir)));
+    public contentAddPost (data: any, filename?: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UtilContentAddResponse> {
+        const localVarPath = this.basePath + '/content/add';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let formParams: any = {};
 
-        // verify required parameter 'file' is not null or undefined
-        if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling contentAddPost.');
+        // verify required parameter 'data' is not null or undefined
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
         }
 
-        // verify required parameter 'coluuid' is not null or undefined
-        if (coluuid === null || coluuid === undefined) {
-            throw new Error('Required parameter coluuid was null or undefined when calling contentAddPost.');
+        if (coluuid !== undefined) {
+            queryParameters['coluuid'] = coluuid;
         }
 
-        // verify required parameter 'dir' is not null or undefined
-        if (dir === null || dir === undefined) {
-            throw new Error('Required parameter dir was null or undefined when calling contentAddPost.');
+        if (replication !== undefined) {
+            queryParameters['replication'] = replication;
+        }
+
+        if (ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = ignoreDupes;
+        }
+
+        if (lazyProvide !== undefined) {
+            queryParameters['lazy-provide'] = lazyProvide;
+        }
+
+        if (dir !== undefined) {
+            queryParameters['dir'] = dir;
         }
 
         headerParams['Content-Type'] = 'application/x-www-form-urlencoded';
 
-        formParams['file'] = file;
+        formParams['data'] = data;
+
+        formParams['filename'] = filename;
 
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
@@ -261,22 +275,27 @@ export class ContentApi {
     /**
      * This endpoint adds a new content
      * @summary Add a new content
-     * @param body Content
+     * @param req Content
+     * @param ignoreDupes Ignore Dupes
      */
-    public contentCreatePost (body: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentCreatePost (req: models.UtilContentCreateBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/content/create';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling contentCreatePost.');
+        // verify required parameter 'req' is not null or undefined
+        if (req === null || req === undefined) {
+            throw new Error('Required parameter req was null or undefined when calling contentCreatePost.');
+        }
+
+        if (ignoreDupes !== undefined) {
+            queryParameters['ignore-dupes'] = ignoreDupes;
         }
 
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,
-            data: body,
+            data: req,
             params: queryParameters,
             headers: headerParams
         };
@@ -362,6 +381,35 @@ export class ContentApi {
         // verify required parameter 'content' is not null or undefined
         if (content === null || content === undefined) {
             throw new Error('Required parameter content was null or undefined when calling contentFailuresContentGet.');
+        }
+
+        let httpRequestParams: ng.IRequestConfig = {
+            method: 'GET',
+            url: localVarPath,
+            params: queryParameters,
+            headers: headerParams
+        };
+
+        if (extraHttpRequestParams) {
+            httpRequestParams = (<any>Object).assign(httpRequestParams, extraHttpRequestParams);
+        }
+
+        return this.$http(httpRequestParams);
+    }
+    /**
+     * This endpoint returns a content by its ID
+     * @summary Content
+     * @param id Content ID
+     */
+    public contentIdGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+        const localVarPath = this.basePath + '/content/{id}'
+            .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
+
+        let queryParameters: any = {};
+        let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling contentIdGet.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {
@@ -483,16 +531,29 @@ export class ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @summary Get content statistics
      * @param limit limit
+     * @param offset offset
      */
-    public contentStatsGet (limit: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
-        const localVarPath = this.basePath + '/content/stats'
-            .replace('{' + 'limit' + '}', encodeURIComponent(String(limit)));
+    public contentStatsGet (limit: string, offset: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+        const localVarPath = this.basePath + '/content/stats';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
         // verify required parameter 'limit' is not null or undefined
         if (limit === null || limit === undefined) {
             throw new Error('Required parameter limit was null or undefined when calling contentStatsGet.');
+        }
+
+        // verify required parameter 'offset' is not null or undefined
+        if (offset === null || offset === undefined) {
+            throw new Error('Required parameter offset was null or undefined when calling contentStatsGet.');
+        }
+
+        if (limit !== undefined) {
+            queryParameters['limit'] = limit;
+        }
+
+        if (offset !== undefined) {
+            queryParameters['offset'] = offset;
         }
 
         let httpRequestParams: ng.IRequestConfig = {

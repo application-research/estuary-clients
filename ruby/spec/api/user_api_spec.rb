@@ -59,6 +59,8 @@ describe 'UserApi' do
   # Create API keys for a user
   # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  # @option opts [String] :perms Permissions -- currently unused
   # @return [MainGetApiKeysResp]
   describe 'user_api_keys_post test' do
     it 'should work' do

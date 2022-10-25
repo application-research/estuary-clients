@@ -15,6 +15,8 @@
 
 #include "SWGHttpRequest.h"
 
+#include <QList>
+#include <QString>
 
 #include <QObject>
 
@@ -32,7 +34,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void adminPeeringPeersDelete();
+    void adminPeeringPeersDelete(QList<QString*>*& body);
     void adminPeeringPeersGet();
     void adminPeeringPeersPost();
     void adminPeeringStartPost();

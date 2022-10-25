@@ -165,8 +165,20 @@ sub user_api_keys_key_delete {
 #
 # Create API keys for a user
 # 
+# @param string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+# @param string $perms Permissions -- currently unused (optional)
 {
     my $params = {
+    'expiry' => {
+        data_type => 'string',
+        description => 'Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h',
+        required => '0',
+    },
+    'perms' => {
+        data_type => 'string',
+        description => 'Permissions -- currently unused',
+        required => '0',
+    },
     };
     __PACKAGE__->method_documentation->{ 'user_api_keys_post' } = { 
     	summary => 'Create API keys for a user',
@@ -193,6 +205,16 @@ sub user_api_keys_post {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'expiry'}) {
+        $query_params->{'expiry'} = $self->{api_client}->to_query_value($args{'expiry'});
+    }
+
+    # query params
+    if ( exists $args{'perms'}) {
+        $query_params->{'perms'} = $self->{api_client}->to_query_value($args{'perms'});
+    }
 
     my $_body_data;
     # authentication setting, if any

@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import java.util.*;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -57,10 +58,16 @@ public class AdminApi {
   /**
   * Remove peers on Peering Service
   * This endpoint can be used to remove a Peer from the Peering Service
+   * @param body Peer ids
    * @return void
   */
-  public void adminPeeringPeersDelete () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
+  public void adminPeeringPeersDelete (List<String> body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = body;
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling adminPeeringPeersDelete",
+        new ApiException(400, "Missing the required parameter 'body' when calling adminPeeringPeersDelete"));
+    }
 
     // create path and map variables
     String path = "/admin/peering/peers";
@@ -113,11 +120,16 @@ public class AdminApi {
       /**
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
-
+   * @param body Peer ids
   */
-  public void adminPeeringPeersDelete (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
+  public void adminPeeringPeersDelete (List<String> body, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = body;
 
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling adminPeeringPeersDelete",
+        new ApiException(400, "Missing the required parameter 'body' when calling adminPeeringPeersDelete"));
+    }
 
     // create path and map variables
     String path = "/admin/peering/peers".replaceAll("\\{format\\}","json");

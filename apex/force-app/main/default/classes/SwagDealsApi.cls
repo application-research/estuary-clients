@@ -192,26 +192,6 @@ public class SwagDealsApi {
         );
     }
     /**
-     * Transfer Status
-     * This endpoint returns the status of a transfer
-     * @throws Swagger.ApiException if fails to make API call
-     */
-    public void dealTransferStatusPost() {
-        List<Swagger.Param> query = new List<Swagger.Param>();
-        List<Swagger.Param> form = new List<Swagger.Param>();
-
-        client.invoke(
-            'POST', '/deal/transfer/status', '',
-            query, form,
-            new Map<String, Object>(),
-            new Map<String, Object>(),
-            new List<String>{ 'application/json' },
-            new List<String>{ 'application/json' },
-            new List<String> { 'bearerAuth' },
-            null
-        );
-    }
-    /**
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
      * @throws Swagger.ApiException if fails to make API call

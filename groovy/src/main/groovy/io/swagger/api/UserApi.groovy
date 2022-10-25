@@ -56,7 +56,7 @@ class UserApi {
                     null )
                     
     }
-    def userApiKeysPost ( Closure onSuccess, Closure onFailure)  {
+    def userApiKeysPost ( String expiry, String perms, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/user/api-keys"
 
@@ -65,7 +65,11 @@ class UserApi {
         def headerParams = [:]
     
 
-        
+        if (!"null".equals(String.valueOf(expiry)))
+            queryParams.put("expiry", String.valueOf(expiry))
+if (!"null".equals(String.valueOf(perms)))
+            queryParams.put("perms", String.valueOf(perms))
+
 
         // Also still TODO: form params, body param
 

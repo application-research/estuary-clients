@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import java.util.List;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,7 +40,7 @@ public interface AdminApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Remove peers on Peering Service", tags={ "admin", "peering", "peers",  })
     @ApiResponses(value = {  })
-    public void adminPeeringPeersDelete();
+    public void adminPeeringPeersDelete(@Valid List<String> body);
 
     /**
      * List all Peering peers

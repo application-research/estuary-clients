@@ -36,37 +36,37 @@ import Estuary.Model
 import Estuary.Core
 
 
--- * MainCollection
+-- * CollectionsCollection
 
--- | 'mainCollectionCid' Lens
-mainCollectionCidL :: Lens_' MainCollection (Maybe Text)
-mainCollectionCidL f MainCollection{..} = (\mainCollectionCid -> MainCollection { mainCollectionCid, ..} ) <$> f mainCollectionCid
-{-# INLINE mainCollectionCidL #-}
+-- | 'collectionsCollectionCid' Lens
+collectionsCollectionCidL :: Lens_' CollectionsCollection (Maybe Text)
+collectionsCollectionCidL f CollectionsCollection{..} = (\collectionsCollectionCid -> CollectionsCollection { collectionsCollectionCid, ..} ) <$> f collectionsCollectionCid
+{-# INLINE collectionsCollectionCidL #-}
 
--- | 'mainCollectionCreatedAt' Lens
-mainCollectionCreatedAtL :: Lens_' MainCollection (Maybe Text)
-mainCollectionCreatedAtL f MainCollection{..} = (\mainCollectionCreatedAt -> MainCollection { mainCollectionCreatedAt, ..} ) <$> f mainCollectionCreatedAt
-{-# INLINE mainCollectionCreatedAtL #-}
+-- | 'collectionsCollectionCreatedAt' Lens
+collectionsCollectionCreatedAtL :: Lens_' CollectionsCollection (Maybe Text)
+collectionsCollectionCreatedAtL f CollectionsCollection{..} = (\collectionsCollectionCreatedAt -> CollectionsCollection { collectionsCollectionCreatedAt, ..} ) <$> f collectionsCollectionCreatedAt
+{-# INLINE collectionsCollectionCreatedAtL #-}
 
--- | 'mainCollectionDescription' Lens
-mainCollectionDescriptionL :: Lens_' MainCollection (Maybe Text)
-mainCollectionDescriptionL f MainCollection{..} = (\mainCollectionDescription -> MainCollection { mainCollectionDescription, ..} ) <$> f mainCollectionDescription
-{-# INLINE mainCollectionDescriptionL #-}
+-- | 'collectionsCollectionDescription' Lens
+collectionsCollectionDescriptionL :: Lens_' CollectionsCollection (Maybe Text)
+collectionsCollectionDescriptionL f CollectionsCollection{..} = (\collectionsCollectionDescription -> CollectionsCollection { collectionsCollectionDescription, ..} ) <$> f collectionsCollectionDescription
+{-# INLINE collectionsCollectionDescriptionL #-}
 
--- | 'mainCollectionName' Lens
-mainCollectionNameL :: Lens_' MainCollection (Maybe Text)
-mainCollectionNameL f MainCollection{..} = (\mainCollectionName -> MainCollection { mainCollectionName, ..} ) <$> f mainCollectionName
-{-# INLINE mainCollectionNameL #-}
+-- | 'collectionsCollectionName' Lens
+collectionsCollectionNameL :: Lens_' CollectionsCollection (Maybe Text)
+collectionsCollectionNameL f CollectionsCollection{..} = (\collectionsCollectionName -> CollectionsCollection { collectionsCollectionName, ..} ) <$> f collectionsCollectionName
+{-# INLINE collectionsCollectionNameL #-}
 
--- | 'mainCollectionUserId' Lens
-mainCollectionUserIdL :: Lens_' MainCollection (Maybe Int)
-mainCollectionUserIdL f MainCollection{..} = (\mainCollectionUserId -> MainCollection { mainCollectionUserId, ..} ) <$> f mainCollectionUserId
-{-# INLINE mainCollectionUserIdL #-}
+-- | 'collectionsCollectionUserId' Lens
+collectionsCollectionUserIdL :: Lens_' CollectionsCollection (Maybe Int)
+collectionsCollectionUserIdL f CollectionsCollection{..} = (\collectionsCollectionUserId -> CollectionsCollection { collectionsCollectionUserId, ..} ) <$> f collectionsCollectionUserId
+{-# INLINE collectionsCollectionUserIdL #-}
 
--- | 'mainCollectionUuid' Lens
-mainCollectionUuidL :: Lens_' MainCollection (Maybe Text)
-mainCollectionUuidL f MainCollection{..} = (\mainCollectionUuid -> MainCollection { mainCollectionUuid, ..} ) <$> f mainCollectionUuid
-{-# INLINE mainCollectionUuidL #-}
+-- | 'collectionsCollectionUuid' Lens
+collectionsCollectionUuidL :: Lens_' CollectionsCollection (Maybe Text)
+collectionsCollectionUuidL f CollectionsCollection{..} = (\collectionsCollectionUuid -> CollectionsCollection { collectionsCollectionUuid, ..} ) <$> f collectionsCollectionUuid
+{-# INLINE collectionsCollectionUuidL #-}
 
 
 
@@ -81,6 +81,20 @@ mainCreateCollectionBodyDescriptionL f MainCreateCollectionBody{..} = (\mainCrea
 mainCreateCollectionBodyNameL :: Lens_' MainCreateCollectionBody (Maybe Text)
 mainCreateCollectionBodyNameL f MainCreateCollectionBody{..} = (\mainCreateCollectionBodyName -> MainCreateCollectionBody { mainCreateCollectionBodyName, ..} ) <$> f mainCreateCollectionBodyName
 {-# INLINE mainCreateCollectionBodyNameL #-}
+
+
+
+-- * MainDeleteContentFromCollectionBody
+
+-- | 'mainDeleteContentFromCollectionBodyBy' Lens
+mainDeleteContentFromCollectionBodyByL :: Lens_' MainDeleteContentFromCollectionBody (Maybe Text)
+mainDeleteContentFromCollectionBodyByL f MainDeleteContentFromCollectionBody{..} = (\mainDeleteContentFromCollectionBodyBy -> MainDeleteContentFromCollectionBody { mainDeleteContentFromCollectionBodyBy, ..} ) <$> f mainDeleteContentFromCollectionBodyBy
+{-# INLINE mainDeleteContentFromCollectionBodyByL #-}
+
+-- | 'mainDeleteContentFromCollectionBodyValue' Lens
+mainDeleteContentFromCollectionBodyValueL :: Lens_' MainDeleteContentFromCollectionBody (Maybe Text)
+mainDeleteContentFromCollectionBodyValueL f MainDeleteContentFromCollectionBody{..} = (\mainDeleteContentFromCollectionBodyValue -> MainDeleteContentFromCollectionBody { mainDeleteContentFromCollectionBodyValue, ..} ) <$> f mainDeleteContentFromCollectionBodyValue
+{-# INLINE mainDeleteContentFromCollectionBodyValueL #-}
 
 
 
@@ -210,6 +224,40 @@ utilContentAddResponseProvidersL f UtilContentAddResponse{..} = (\utilContentAdd
 utilContentAddResponseRetrievalUrlL :: Lens_' UtilContentAddResponse (Maybe Text)
 utilContentAddResponseRetrievalUrlL f UtilContentAddResponse{..} = (\utilContentAddResponseRetrievalUrl -> UtilContentAddResponse { utilContentAddResponseRetrievalUrl, ..} ) <$> f utilContentAddResponseRetrievalUrl
 {-# INLINE utilContentAddResponseRetrievalUrlL #-}
+
+
+
+-- * UtilContentCreateBody
+
+-- | 'utilContentCreateBodyColuuid' Lens
+utilContentCreateBodyColuuidL :: Lens_' UtilContentCreateBody (Maybe Text)
+utilContentCreateBodyColuuidL f UtilContentCreateBody{..} = (\utilContentCreateBodyColuuid -> UtilContentCreateBody { utilContentCreateBodyColuuid, ..} ) <$> f utilContentCreateBodyColuuid
+{-# INLINE utilContentCreateBodyColuuidL #-}
+
+-- | 'utilContentCreateBodyDir' Lens
+utilContentCreateBodyDirL :: Lens_' UtilContentCreateBody (Maybe Text)
+utilContentCreateBodyDirL f UtilContentCreateBody{..} = (\utilContentCreateBodyDir -> UtilContentCreateBody { utilContentCreateBodyDir, ..} ) <$> f utilContentCreateBodyDir
+{-# INLINE utilContentCreateBodyDirL #-}
+
+-- | 'utilContentCreateBodyLocation' Lens
+utilContentCreateBodyLocationL :: Lens_' UtilContentCreateBody (Maybe Text)
+utilContentCreateBodyLocationL f UtilContentCreateBody{..} = (\utilContentCreateBodyLocation -> UtilContentCreateBody { utilContentCreateBodyLocation, ..} ) <$> f utilContentCreateBodyLocation
+{-# INLINE utilContentCreateBodyLocationL #-}
+
+-- | 'utilContentCreateBodyName' Lens
+utilContentCreateBodyNameL :: Lens_' UtilContentCreateBody (Maybe Text)
+utilContentCreateBodyNameL f UtilContentCreateBody{..} = (\utilContentCreateBodyName -> UtilContentCreateBody { utilContentCreateBodyName, ..} ) <$> f utilContentCreateBodyName
+{-# INLINE utilContentCreateBodyNameL #-}
+
+-- | 'utilContentCreateBodyRoot' Lens
+utilContentCreateBodyRootL :: Lens_' UtilContentCreateBody (Maybe Text)
+utilContentCreateBodyRootL f UtilContentCreateBody{..} = (\utilContentCreateBodyRoot -> UtilContentCreateBody { utilContentCreateBodyRoot, ..} ) <$> f utilContentCreateBodyRoot
+{-# INLINE utilContentCreateBodyRootL #-}
+
+-- | 'utilContentCreateBodyType' Lens
+utilContentCreateBodyTypeL :: Lens_' UtilContentCreateBody (Maybe Int)
+utilContentCreateBodyTypeL f UtilContentCreateBody{..} = (\utilContentCreateBodyType -> UtilContentCreateBody { utilContentCreateBodyType, ..} ) <$> f utilContentCreateBodyType
+{-# INLINE utilContentCreateBodyTypeL #-}
 
 
 

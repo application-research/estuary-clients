@@ -207,12 +207,18 @@ sub public_metrics_deals_on_chain_get {
 # Get all miners deals
 # 
 # @param string $miner Filter by miner (required)
+# @param string $ignore_failed Ignore Failed (optional)
 {
     my $params = {
     'miner' => {
         data_type => 'string',
         description => 'Filter by miner',
         required => '1',
+    },
+    'ignore_failed' => {
+        data_type => 'string',
+        description => 'Ignore Failed',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'public_miners_deals_miner_get' } = { 
@@ -245,6 +251,11 @@ sub public_miners_deals_miner_get {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'ignore_failed'}) {
+        $query_params->{'ignore-failed'} = $self->{api_client}->to_query_value($args{'ignore_failed'});
+    }
 
     # path params
     if ( exists $args{'miner'}) {

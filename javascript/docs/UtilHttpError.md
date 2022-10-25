@@ -1,4 +1,4 @@
-# EstuaryApi.UtilHttpError
+# EstuaryClient.UtilHttpError
 
 ## Properties
 Name | Type | Description | Notes

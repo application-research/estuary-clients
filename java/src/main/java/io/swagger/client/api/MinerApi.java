@@ -56,12 +56,13 @@ public class MinerApi {
     /**
      * Build call for publicMinersDealsMinerGet
      * @param miner Filter by miner (required)
+     * @param ignoreFailed Ignore Failed (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call publicMinersDealsMinerGetCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersDealsMinerGetCall(String miner, String ignoreFailed, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -70,6 +71,8 @@ public class MinerApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ignoreFailed != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ignore-failed", ignoreFailed));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -104,7 +107,7 @@ public class MinerApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call publicMinersDealsMinerGetValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call publicMinersDealsMinerGetValidateBeforeCall(String miner, String ignoreFailed, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'miner' is set
         if (miner == null) {
@@ -112,7 +115,7 @@ public class MinerApi {
         }
         
 
-        com.squareup.okhttp.Call call = publicMinersDealsMinerGetCall(miner, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = publicMinersDealsMinerGetCall(miner, ignoreFailed, progressListener, progressRequestListener);
         return call;
 
     }
@@ -121,21 +124,23 @@ public class MinerApi {
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
+     * @param ignoreFailed Ignore Failed (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersDealsMinerGet(String miner) throws ApiException {
-        publicMinersDealsMinerGetWithHttpInfo(miner);
+    public void publicMinersDealsMinerGet(String miner, String ignoreFailed) throws ApiException {
+        publicMinersDealsMinerGetWithHttpInfo(miner, ignoreFailed);
     }
 
     /**
      * Get all miners deals
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
+     * @param ignoreFailed Ignore Failed (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersDealsMinerGetWithHttpInfo(String miner) throws ApiException {
-        com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, null, null);
+    public ApiResponse<Void> publicMinersDealsMinerGetWithHttpInfo(String miner, String ignoreFailed) throws ApiException {
+        com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, ignoreFailed, null, null);
         return apiClient.execute(call);
     }
 
@@ -143,11 +148,12 @@ public class MinerApi {
      * Get all miners deals (asynchronously)
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
+     * @param ignoreFailed Ignore Failed (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersDealsMinerGetAsync(String miner, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersDealsMinerGetAsync(String miner, String ignoreFailed, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -168,7 +174,7 @@ public class MinerApi {
             };
         }
 
-        com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, ignoreFailed, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

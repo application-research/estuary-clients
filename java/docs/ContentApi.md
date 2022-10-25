@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, filename, commp, size)
+> contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -49,11 +50,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 ContentApi apiInstance = new ContentApi();
 String body = "body_example"; // String | Car
+String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String filename = "filename_example"; // String | Filename
-String commp = "commp_example"; // String | Commp
-String size = "size_example"; // String | Size
 try {
-    apiInstance.contentAddCarPost(body, filename, commp, size);
+    apiInstance.contentAddCarPost(body, ignoreDupes, filename);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddCarPost");
     e.printStackTrace();
@@ -65,9 +65,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **String**| Car |
+ **ignoreDupes** | **String**| Ignore Dupes | [optional]
  **filename** | **String**| Filename | [optional]
- **commp** | **String**| Commp | [optional]
- **size** | **String**| Size | [optional]
 
 ### Return type
 
@@ -84,7 +83,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body)
+> contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -109,8 +108,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 ContentApi apiInstance = new ContentApi();
 UtilContentAddIpfsBody body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentAddIpfsPost(body);
+    apiInstance.contentAddIpfsPost(body, ignoreDupes);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
     e.printStackTrace();
@@ -122,6 +122,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body |
+ **ignoreDupes** | **String**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -138,7 +139,7 @@ null (empty response body)
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(file, coluuid, dir)
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
 Add new content
 
@@ -162,11 +163,15 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-File file = new File("/path/to/file.txt"); // File | File to upload
+File data = new File("/path/to/file.txt"); // File | File to upload
+String filename = "filename_example"; // String | Filenam to use for upload
 String coluuid = "coluuid_example"; // String | Collection UUID
+Integer replication = 56; // Integer | Replication value
+String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
+String lazyProvide = "lazyProvide_example"; // String | Lazy Provide true/false
 String dir = "dir_example"; // String | Directory
 try {
-    UtilContentAddResponse result = apiInstance.contentAddPost(file, coluuid, dir);
+    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -178,9 +183,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| File to upload |
- **coluuid** | **String**| Collection UUID |
- **dir** | **String**| Directory |
+ **data** | **File**| File to upload |
+ **filename** | **String**| Filenam to use for upload | [optional]
+ **coluuid** | **String**| Collection UUID | [optional]
+ **replication** | **Integer**| Replication value | [optional]
+ **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
+ **lazyProvide** | **String**| Lazy Provide true/false | [optional]
+ **dir** | **String**| Directory | [optional]
 
 ### Return type
 
@@ -364,7 +373,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(body)
+> contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -388,9 +397,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-String body = "body_example"; // String | Content
+UtilContentCreateBody req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentCreatePost(body);
+    apiInstance.contentCreatePost(req, ignoreDupes);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentCreatePost");
     e.printStackTrace();
@@ -401,7 +411,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Content |
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
+ **ignoreDupes** | **String**| Ignore Dupes | [optional]
 
 ### Return type
 
@@ -571,6 +582,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 **String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentIdGet"></a>
+# **contentIdGet**
+> contentIdGet(id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+Integer id = 56; // Integer | Content ID
+try {
+    apiInstance.contentIdGet(id);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentIdGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Integer**| Content ID |
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
@@ -792,7 +857,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(limit)
+> contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -817,8 +882,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 ContentApi apiInstance = new ContentApi();
 String limit = "limit_example"; // String | limit
+String offset = "offset_example"; // String | offset
 try {
-    apiInstance.contentStatsGet(limit);
+    apiInstance.contentStatsGet(limit, offset);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStatsGet");
     e.printStackTrace();
@@ -830,6 +896,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **String**| limit |
+ **offset** | **String**| offset |
 
 ### Return type
 

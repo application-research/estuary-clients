@@ -376,51 +376,6 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Transfer Status
-    # This endpoint returns the status of a transfer
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def deal_transfer_status_post(opts = {})
-      deal_transfer_status_post_with_http_info(opts)
-      nil
-    end
-
-    # Transfer Status
-    # This endpoint returns the status of a transfer
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def deal_transfer_status_post_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DealsApi.deal_transfer_status_post ...'
-      end
-      # resource path
-      local_var_path = '/deal/transfer/status'
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['bearerAuth']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DealsApi#deal_transfer_status_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
     # Get storage failures for user
     # This endpoint returns a list of storage failures for user
     # @param [Hash] opts the optional parameters

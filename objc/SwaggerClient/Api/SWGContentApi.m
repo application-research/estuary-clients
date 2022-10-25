@@ -4,6 +4,7 @@
 #import "SWGMainImportDealBody.h"
 #import "SWGUtilContentAddIpfsBody.h"
 #import "SWGUtilContentAddResponse.h"
+#import "SWGUtilContentCreateBody.h"
 
 
 @interface SWGContentApi ()
@@ -56,18 +57,15 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
 ///  @param body Car 
 ///
+///  @param ignoreDupes Ignore Dupes (optional)
+///
 ///  @param filename Filename (optional)
-///
-///  @param commp Commp (optional)
-///
-///  @param size Size (optional)
 ///
 ///  @returns void
 ///
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
+    ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-    commp: (NSString*) commp
-    size: (NSString*) size
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
@@ -85,14 +83,11 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (ignoreDupes != nil) {
+        queryParams[@"ignore-dupes"] = ignoreDupes;
+    }
     if (filename != nil) {
         queryParams[@"filename"] = filename;
-    }
-    if (commp != nil) {
-        queryParams[@"commp"] = commp;
-    }
-    if (size != nil) {
-        queryParams[@"size"] = size;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
@@ -140,9 +135,12 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 ///  @param body IPFS Body 
 ///
+///  @param ignoreDupes Ignore Dupes (optional)
+///
 ///  @returns void
 ///
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
+    ignoreDupes: (NSString*) ignoreDupes
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
@@ -160,6 +158,9 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (ignoreDupes != nil) {
+        queryParams[@"ignore-dupes"] = ignoreDupes;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -204,45 +205,35 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 /// Add new content
 /// This endpoint is used to upload new content.
-///  @param file File to upload 
+///  @param data File to upload 
 ///
-///  @param coluuid Collection UUID 
+///  @param filename Filenam to use for upload (optional)
 ///
-///  @param dir Directory 
+///  @param coluuid Collection UUID (optional)
+///
+///  @param replication Replication value (optional)
+///
+///  @param ignoreDupes Ignore Dupes true/false (optional)
+///
+///  @param lazyProvide Lazy Provide true/false (optional)
+///
+///  @param dir Directory (optional)
 ///
 ///  @returns SWGUtilContentAddResponse*
 ///
--(NSURLSessionTask*) contentAddPostWithFile: (NSURL*) file
+-(NSURLSessionTask*) contentAddPostWithData: (NSURL*) data
+    filename: (NSString*) filename
     coluuid: (NSString*) coluuid
+    replication: (NSNumber*) replication
+    ignoreDupes: (NSString*) ignoreDupes
+    lazyProvide: (NSString*) lazyProvide
     dir: (NSString*) dir
     completionHandler: (void (^)(SWGUtilContentAddResponse* output, NSError* error)) handler {
-    // verify the required parameter 'file' is set
-    if (file == nil) {
-        NSParameterAssert(file);
+    // verify the required parameter 'data' is set
+    if (data == nil) {
+        NSParameterAssert(data);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"file"] };
-            NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'coluuid' is set
-    if (coluuid == nil) {
-        NSParameterAssert(coluuid);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"coluuid"] };
-            NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(nil, error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'dir' is set
-    if (dir == nil) {
-        NSParameterAssert(dir);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"dir"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"data"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -252,14 +243,23 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/add"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (coluuid != nil) {
-        pathParams[@"coluuid"] = coluuid;
-    }
-    if (dir != nil) {
-        pathParams[@"dir"] = dir;
-    }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (coluuid != nil) {
+        queryParams[@"coluuid"] = coluuid;
+    }
+    if (replication != nil) {
+        queryParams[@"replication"] = replication;
+    }
+    if (ignoreDupes != nil) {
+        queryParams[@"ignore-dupes"] = ignoreDupes;
+    }
+    if (lazyProvide != nil) {
+        queryParams[@"lazy-provide"] = lazyProvide;
+    }
+    if (dir != nil) {
+        queryParams[@"dir"] = dir;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -280,7 +280,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    localVarFiles[@"file"] = file;
+    localVarFiles[@"data"] = data;
+    if (filename) {
+        formParams[@"filename"] = filename;
+    }
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -542,17 +545,20 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 /// Add a new content
 /// This endpoint adds a new content
-///  @param body Content 
+///  @param req Content 
+///
+///  @param ignoreDupes Ignore Dupes (optional)
 ///
 ///  @returns void
 ///
--(NSURLSessionTask*) contentCreatePostWithBody: (NSString*) body
+-(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
+    ignoreDupes: (NSString*) ignoreDupes
     completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'body' is set
-    if (body == nil) {
-        NSParameterAssert(body);
+    // verify the required parameter 'req' is set
+    if (req == nil) {
+        NSParameterAssert(req);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"req"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
             handler(error);
         }
@@ -564,6 +570,9 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (ignoreDupes != nil) {
+        queryParams[@"ignore-dupes"] = ignoreDupes;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`
@@ -584,7 +593,7 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = body;
+    bodyParam = req;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -800,6 +809,74 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
                                     handler((NSString*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Content
+/// This endpoint returns a content by its ID
+///  @param _id Content ID 
+///
+///  @returns void
+///
+-(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
+    completionHandler: (void (^)(NSError* error)) handler {
+    // verify the required parameter '_id' is set
+    if (_id == nil) {
+        NSParameterAssert(_id);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"_id"] };
+            NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/{id}"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+    if (_id != nil) {
+        pathParams[@"id"] = _id;
+    }
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"bearerAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"GET"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: nil
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler(error);
                                 }
                             }];
 }
@@ -1047,9 +1124,12 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 ///  @param limit limit 
 ///
+///  @param offset offset 
+///
 ///  @returns void
 ///
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
+    offset: (NSString*) offset
     completionHandler: (void (^)(NSError* error)) handler {
     // verify the required parameter 'limit' is set
     if (limit == nil) {
@@ -1062,14 +1142,28 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
         return nil;
     }
 
+    // verify the required parameter 'offset' is set
+    if (offset == nil) {
+        NSParameterAssert(offset);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"offset"] };
+            NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
+            handler(error);
+        }
+        return nil;
+    }
+
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/stats"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (limit != nil) {
-        pathParams[@"limit"] = limit;
-    }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    if (limit != nil) {
+        queryParams[@"limit"] = limit;
+    }
+    if (offset != nil) {
+        queryParams[@"offset"] = offset;
+    }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
     // HTTP header `Accept`

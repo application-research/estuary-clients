@@ -1,4 +1,4 @@
-# estuary_client.MetricsApi
+# estuary-client.MetricsApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -18,18 +18,18 @@ This endpoint is used to get deal metrics
 ```python
 from __future__ import print_function
 import time
-import estuary_client
-from estuary_client.rest import ApiException
+import estuary-client
+from estuary-client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
+configuration = estuary-client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary_client.MetricsApi(estuary_client.ApiClient(configuration))
+api_instance = estuary-client.MetricsApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get deal metrics

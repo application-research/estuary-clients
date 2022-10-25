@@ -15,24 +15,29 @@
 
 #include "SWGObject.h"
 
-#include "SWGMain.Collection.h"
+#include "SWGCollections.Collection.h"
 #include "SWGMain.createCollectionBody.h"
+#include "SWGMain.deleteContentFromCollectionBody.h"
 #include "SWGMain.estimateDealBody.h"
 #include "SWGMain.getApiKeysResp.h"
 #include "SWGMain.importDealBody.h"
 #include "SWGMain.userStatsResponse.h"
 #include "SWGUtil.ContentAddIpfsBody.h"
 #include "SWGUtil.ContentAddResponse.h"
+#include "SWGUtil.ContentCreateBody.h"
 #include "SWGUtil.HttpError.h"
 
 namespace Swagger {
 
   inline void* create(QString type) {
-    if(QString("SWGMain.Collection").compare(type) == 0) {
-      return new SWGMain.Collection();
+    if(QString("SWGCollections.Collection").compare(type) == 0) {
+      return new SWGCollections.Collection();
     }
     if(QString("SWGMain.createCollectionBody").compare(type) == 0) {
       return new SWGMain.createCollectionBody();
+    }
+    if(QString("SWGMain.deleteContentFromCollectionBody").compare(type) == 0) {
+      return new SWGMain.deleteContentFromCollectionBody();
     }
     if(QString("SWGMain.estimateDealBody").compare(type) == 0) {
       return new SWGMain.estimateDealBody();
@@ -51,6 +56,9 @@ namespace Swagger {
     }
     if(QString("SWGUtil.ContentAddResponse").compare(type) == 0) {
       return new SWGUtil.ContentAddResponse();
+    }
+    if(QString("SWGUtil.ContentCreateBody").compare(type) == 0) {
+      return new SWGUtil.ContentCreateBody();
     }
     if(QString("SWGUtil.HttpError").compare(type) == 0) {
       return new SWGUtil.HttpError();

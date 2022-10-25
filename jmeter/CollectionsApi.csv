@@ -1,2 +1,2 @@
-testCase,httpStatusCode,coluuid,coluuid,coluuid,dir,body,coluuid,content,path,id,body
-Success,200,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,coluuid,coluuid,contentid,body,coluuid,coluuid,dir,coluuid,contentIDs,coluuid,content,path,body
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0

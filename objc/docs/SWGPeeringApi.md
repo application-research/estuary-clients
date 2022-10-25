@@ -14,8 +14,8 @@ Method | HTTP request | Description
 
 # **adminPeeringPeersDelete**
 ```objc
--(NSURLSessionTask*) adminPeeringPeersDeleteWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
+        completionHandler: (void (^)(NSError* error)) handler;
 ```
 
 Remove peers on Peering Service
@@ -32,12 +32,13 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
+NSArray<NSString*>* body = @[[[NSArray<NSString> alloc] init]]; // Peer ids
 
 SWGPeeringApi*apiInstance = [[SWGPeeringApi alloc] init];
 
 // Remove peers on Peering Service
-[apiInstance adminPeeringPeersDeleteWithCompletionHandler: 
-          ^(NSError* error) {
+[apiInstance adminPeeringPeersDeleteWithBody:body
+          completionHandler: ^(NSError* error) {
                         if (error) {
                             NSLog(@"Error calling SWGPeeringApi->adminPeeringPeersDelete: %@", error);
                         }
@@ -45,7 +46,10 @@ SWGPeeringApi*apiInstance = [[SWGPeeringApi alloc] init];
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **NSArray&lt;NSString*&gt;***| Peer ids | 
 
 ### Return type
 

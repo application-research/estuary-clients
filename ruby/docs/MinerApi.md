@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner)
+> public_miners_deals_miner_get(miner, opts)
 
 Get all miners deals
 
@@ -31,10 +31,13 @@ api_instance = SwaggerClient::MinerApi.new
 
 miner = 'miner_example' # String | Filter by miner
 
+opts = { 
+  ignore_failed: 'ignore_failed_example' # String | Ignore Failed
+}
 
 begin
   #Get all miners deals
-  api_instance.public_miners_deals_miner_get(miner)
+  api_instance.public_miners_deals_miner_get(miner, opts)
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MinerApi->public_miners_deals_miner_get: #{e}"
 end
@@ -45,6 +48,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
+ **ignore_failed** | **String**| Ignore Failed | [optional] 
 
 ### Return type
 

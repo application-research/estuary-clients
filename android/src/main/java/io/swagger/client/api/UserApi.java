@@ -299,9 +299,11 @@ public class UserApi {
   /**
   * Create API keys for a user
   * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+   * @param perms Permissions -- currently unused
    * @return MainGetApiKeysResp
   */
-  public MainGetApiKeysResp userApiKeysPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MainGetApiKeysResp userApiKeysPost (String expiry, String perms) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -313,6 +315,8 @@ public class UserApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "expiry", expiry));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "perms", perms));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -355,9 +359,9 @@ public class UserApi {
       /**
    * Create API keys for a user
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h   * @param perms Permissions -- currently unused
   */
-  public void userApiKeysPost (final Response.Listener<MainGetApiKeysResp> responseListener, final Response.ErrorListener errorListener) {
+  public void userApiKeysPost (String expiry, String perms, final Response.Listener<MainGetApiKeysResp> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -371,6 +375,8 @@ public class UserApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "expiry", expiry));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "perms", perms));
 
 
     String[] contentTypes = {

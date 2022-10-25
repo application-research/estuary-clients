@@ -82,7 +82,7 @@ static bool publicMinersDealsMinerGetProcessor(MemoryStruct_s p_chunk, long code
 }
 
 static bool publicMinersDealsMinerGetHelper(char * accessToken,
-	std::string miner, 
+	std::string miner, std::string ignoreFailed, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -99,6 +99,13 @@ static bool publicMinersDealsMinerGetHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&ignoreFailed, "std::string");
+	queryParams.insert(pair<string, string>("ignore-failed", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ignore-failed");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -159,22 +166,22 @@ static bool publicMinersDealsMinerGetHelper(char * accessToken,
 
 
 bool MinerManager::publicMinersDealsMinerGetAsync(char * accessToken,
-	std::string miner, 
+	std::string miner, std::string ignoreFailed, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return publicMinersDealsMinerGetHelper(accessToken,
-	miner, 
+	miner, ignoreFailed, 
 	handler, userData, true);
 }
 
 bool MinerManager::publicMinersDealsMinerGetSync(char * accessToken,
-	std::string miner, 
+	std::string miner, std::string ignoreFailed, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return publicMinersDealsMinerGetHelper(accessToken,
-	miner, 
+	miner, ignoreFailed, 
 	handler, userData, false);
 }
 

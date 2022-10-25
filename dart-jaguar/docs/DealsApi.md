@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **Get** /deal/status-by-proposal/:propcid | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **Get** /deal/status/:miner/:propcid | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **Get** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **Post** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **Get** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **Post** /deals/make/:miner | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **Get** /deals/status/:deal | Get Deal Status
@@ -323,48 +322,6 @@ try {
     api_instance.dealTransferInProgressGet();
 } catch (e) {
     print("Exception when calling DealsApi->dealTransferInProgressGet: $e\n");
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **dealTransferStatusPost**
-> dealTransferStatusPost()
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example 
-```dart
-import 'package:swagger/api.dart';
-// TODO Configure API key authorization: bearerAuth
-//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
-
-var api_instance = new DealsApi();
-
-try { 
-    api_instance.dealTransferStatusPost();
-} catch (e) {
-    print("Exception when calling DealsApi->dealTransferStatusPost: $e\n");
 }
 ```
 

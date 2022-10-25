@@ -136,7 +136,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -149,8 +149,9 @@ This endpoint returns all miners deals
 
 PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
+String ignoreFailed = "ignoreFailed_example"; // String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner);
+    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersDealsMinerGet");
     e.printStackTrace();
@@ -162,6 +163,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner |
+ **ignoreFailed** | **String**| Ignore Failed | [optional]
 
 ### Return type
 

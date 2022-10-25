@@ -100,19 +100,6 @@ exports.dealTransferIn_progressGET = function() {
 
 
 /**
- * Transfer Status
- * This endpoint returns the status of a transfer
- *
- * no response value expected for this operation
- **/
-exports.dealTransferStatusPOST = function() {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
  * Get storage failures for user
  * This endpoint returns a list of storage failures for user
  *

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MainCollection', 'model/MainCreateCollectionBody', 'model/UtilHttpError'], factory);
+    define(['ApiClient', 'model/CollectionsCollection', 'model/MainCreateCollectionBody', 'model/MainDeleteContentFromCollectionBody', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/MainCollection'), require('../model/MainCreateCollectionBody'), require('../model/UtilHttpError'));
+    module.exports = factory(require('../ApiClient'), require('../model/CollectionsCollection'), require('../model/MainCreateCollectionBody'), require('../model/MainDeleteContentFromCollectionBody'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
-    if (!root.EstuaryApi) {
-      root.EstuaryApi = {};
+    if (!root.EstuaryClient) {
+      root.EstuaryClient = {};
     }
-    root.EstuaryApi.CollectionsApi = factory(root.EstuaryApi.ApiClient, root.EstuaryApi.MainCollection, root.EstuaryApi.MainCreateCollectionBody, root.EstuaryApi.UtilHttpError);
+    root.EstuaryClient.CollectionsApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.CollectionsCollection, root.EstuaryClient.MainCreateCollectionBody, root.EstuaryClient.MainDeleteContentFromCollectionBody, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient, MainCollection, MainCreateCollectionBody, UtilHttpError) {
+}(this, function(ApiClient, CollectionsCollection, MainCreateCollectionBody, MainDeleteContentFromCollectionBody, UtilHttpError) {
   'use strict';
 
   /**
@@ -96,6 +96,67 @@
     }
 
     /**
+     * Callback function to receive the result of the collectionsColuuidContentsDelete operation.
+     * @callback module:api/CollectionsApi~collectionsColuuidContentsDeleteCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Deletes a content from a collection
+     * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @param {String} coluuid Collection ID
+     * @param {String} contentid Content ID
+     * @param {module:model/MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either 'path' or 'content_id')
+     * @param {module:api/CollectionsApi~collectionsColuuidContentsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
+     */
+    this.collectionsColuuidContentsDelete = function(coluuid, contentid, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'coluuid' is set
+      if (coluuid === undefined || coluuid === null) {
+        throw new Error("Missing the required parameter 'coluuid' when calling collectionsColuuidContentsDelete");
+      }
+
+      // verify the required parameter 'contentid' is set
+      if (contentid === undefined || contentid === null) {
+        throw new Error("Missing the required parameter 'contentid' when calling collectionsColuuidContentsDelete");
+      }
+
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling collectionsColuuidContentsDelete");
+      }
+
+
+      var pathParams = {
+        'coluuid': coluuid,
+        'contentid': contentid
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/collections/{coluuid}/contents', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the collectionsColuuidDelete operation.
      * @callback module:api/CollectionsApi~collectionsColuuidDeleteCallback
      * @param {String} error Error message, if any.
@@ -153,7 +214,7 @@
     /**
      * Get contents in a collection
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
-     * @param {String} coluuid Collection UUID
+     * @param {String} coluuid coluuid
      * @param {Object} opts Optional parameters
      * @param {String} opts.dir Directory
      * @param {module:api/CollectionsApi~collectionsColuuidGetCallback} callback The callback function, accepting three arguments: error, data, response
@@ -170,9 +231,9 @@
 
 
       var pathParams = {
+        'coluuid': coluuid
       };
       var queryParams = {
-        'coluuid': coluuid,
         'dir': opts['dir'],
       };
       var collectionQueryParams = {
@@ -205,20 +266,27 @@
     /**
      * Add contents to a collection
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-     * @param {Array.<module:model/Number>} body Content IDs to add to collection
+     * @param {String} coluuid coluuid
+     * @param {Array.<module:model/Number>} contentIDs Content IDs to add to collection
      * @param {module:api/CollectionsApi~collectionsColuuidPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Object.<String, {'String': 'String'}>}
      */
-    this.collectionsColuuidPost = function(body, callback) {
-      var postBody = body;
+    this.collectionsColuuidPost = function(coluuid, contentIDs, callback) {
+      var postBody = contentIDs;
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling collectionsColuuidPost");
+      // verify the required parameter 'coluuid' is set
+      if (coluuid === undefined || coluuid === null) {
+        throw new Error("Missing the required parameter 'coluuid' when calling collectionsColuuidPost");
+      }
+
+      // verify the required parameter 'contentIDs' is set
+      if (contentIDs === undefined || contentIDs === null) {
+        throw new Error("Missing the required parameter 'contentIDs' when calling collectionsColuuidPost");
       }
 
 
       var pathParams = {
+        'coluuid': coluuid
       };
       var queryParams = {
       };
@@ -306,28 +374,21 @@
      * Callback function to receive the result of the collectionsGet operation.
      * @callback module:api/CollectionsApi~collectionsGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/MainCollection>} data The data returned by the service call.
+     * @param {Array.<module:model/CollectionsCollection>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @param {Number} id User ID
      * @param {module:api/CollectionsApi~collectionsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/MainCollection>}
+     * data is of type: {@link Array.<module:model/CollectionsCollection>}
      */
-    this.collectionsGet = function(id, callback) {
+    this.collectionsGet = function(callback) {
       var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling collectionsGet");
-      }
 
 
       var pathParams = {
-        'id': id
       };
       var queryParams = {
       };
@@ -341,7 +402,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [MainCollection];
+      var returnType = [CollectionsCollection];
 
       return this.apiClient.callApi(
         '/collections/', 'GET',
@@ -354,7 +415,7 @@
      * Callback function to receive the result of the collectionsPost operation.
      * @callback module:api/CollectionsApi~collectionsPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/MainCollection} data The data returned by the service call.
+     * @param {module:model/CollectionsCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -363,7 +424,7 @@
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
      * @param {module:model/MainCreateCollectionBody} body Collection name and description
      * @param {module:api/CollectionsApi~collectionsPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/MainCollection}
+     * data is of type: {@link module:model/CollectionsCollection}
      */
     this.collectionsPost = function(body, callback) {
       var postBody = body;
@@ -388,7 +449,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = MainCollection;
+      var returnType = CollectionsCollection;
 
       return this.apiClient.callApi(
         '/collections/', 'POST',

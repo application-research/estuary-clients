@@ -106,7 +106,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userApiKeysPost**
-> MainGetApiKeysResp userApiKeysPost()
+> MainGetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -121,9 +121,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new UserApi();
+var expiry = expiry_example; // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+var perms = perms_example; // String | Permissions -- currently unused
 
 try { 
-    var result = api_instance.userApiKeysPost();
+    var result = api_instance.userApiKeysPost(expiry, perms);
     print(result);
 } catch (e) {
     print("Exception when calling UserApi->userApiKeysPost: $e\n");
@@ -131,7 +133,11 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
 

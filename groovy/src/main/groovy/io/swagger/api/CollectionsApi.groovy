@@ -5,8 +5,9 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
-import io.swagger.model.MainCollection
+import io.swagger.model.CollectionsCollection
 import io.swagger.model.MainCreateCollectionBody
+import io.swagger.model.MainDeleteContentFromCollectionBody
 import io.swagger.model.Map
 import io.swagger.model.UtilHttpError
 
@@ -36,6 +37,36 @@ class CollectionsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
+                    String.class )
+                    
+    }
+    def collectionsColuuidContentsDelete ( String coluuid, String contentid, MainDeleteContentFromCollectionBody body, Closure onSuccess, Closure onFailure)  {
+        // create path and map path parameters (TODO)
+        String resourcePath = "/collections/{coluuid}/contents"
+
+        // query params
+        def queryParams = [:]
+        def headerParams = [:]
+    
+        // verify required params are set
+        if (coluuid == null) {
+            throw new RuntimeException("missing required params coluuid")
+        }
+        // verify required params are set
+        if (contentid == null) {
+            throw new RuntimeException("missing required params contentid")
+        }
+        // verify required params are set
+        if (body == null) {
+            throw new RuntimeException("missing required params body")
+        }
+
+        
+
+        // Also still TODO: form params, body param
+
+        invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
+                    "DELETE", "",
                     String.class )
                     
     }
@@ -74,9 +105,7 @@ class CollectionsApi {
             throw new RuntimeException("missing required params coluuid")
         }
 
-        if (!"null".equals(String.valueOf(coluuid)))
-            queryParams.put("coluuid", String.valueOf(coluuid))
-if (!"null".equals(String.valueOf(dir)))
+        if (!"null".equals(String.valueOf(dir)))
             queryParams.put("dir", String.valueOf(dir))
 
 
@@ -87,7 +116,7 @@ if (!"null".equals(String.valueOf(dir)))
                     String.class )
                     
     }
-    def collectionsColuuidPost ( List<Integer> body, Closure onSuccess, Closure onFailure)  {
+    def collectionsColuuidPost ( String coluuid, List<Integer> contentIDs, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/collections/{coluuid}"
 
@@ -96,8 +125,12 @@ if (!"null".equals(String.valueOf(dir)))
         def headerParams = [:]
     
         // verify required params are set
-        if (body == null) {
-            throw new RuntimeException("missing required params body")
+        if (coluuid == null) {
+            throw new RuntimeException("missing required params coluuid")
+        }
+        // verify required params are set
+        if (contentIDs == null) {
+            throw new RuntimeException("missing required params contentIDs")
         }
 
         
@@ -145,7 +178,7 @@ if (!"null".equals(String.valueOf(path)))
                     null )
                     
     }
-    def collectionsGet ( Integer id, Closure onSuccess, Closure onFailure)  {
+    def collectionsGet ( Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/collections/"
 
@@ -153,10 +186,6 @@ if (!"null".equals(String.valueOf(path)))
         def queryParams = [:]
         def headerParams = [:]
     
-        // verify required params are set
-        if (id == null) {
-            throw new RuntimeException("missing required params id")
-        }
 
         
 
@@ -164,7 +193,7 @@ if (!"null".equals(String.valueOf(path)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "array",
-                    MainCollection.class )
+                    CollectionsCollection.class )
                     
     }
     def collectionsPost ( MainCreateCollectionBody body, Closure onSuccess, Closure onFailure)  {
@@ -186,7 +215,7 @@ if (!"null".equals(String.valueOf(path)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    MainCollection.class )
+                    CollectionsCollection.class )
                     
     }
 }

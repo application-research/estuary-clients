@@ -101,16 +101,6 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
     (void (^)(NSError* error)) handler;
 
 
-/// Transfer Status
-/// This endpoint returns the status of a transfer
-///
-/// 
-///
-/// @return void
--(NSURLSessionTask*) dealTransferStatusPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
-
-
 /// Get storage failures for user
 /// This endpoint returns a list of storage failures for user
 ///

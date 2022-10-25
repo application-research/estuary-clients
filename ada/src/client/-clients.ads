@@ -16,7 +16,8 @@ package .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
@@ -78,6 +79,15 @@ package .Clients is
        Coluuid : in Swagger.UString;
        Result : out Swagger.UString);
 
+   --  Deletes a content from a collection
+   --  This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+   procedure Collections_Coluuid_Contents_Delete
+      (Client : in out Client_Type;
+       Coluuid : in Swagger.UString;
+       Contentid : in Swagger.UString;
+       P_Body : in .Models.Main_deleteContentFromCollectionBody_Type;
+       Result : out Swagger.UString);
+
    --  Deletes a collection
    --  This endpoint is used to delete an existing collection.
    procedure Collections_Coluuid_Delete
@@ -96,7 +106,8 @@ package .Clients is
    --  This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    procedure Collections_Coluuid_Post
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_Integer_Vectors.Vector;
+       Coluuid : in Swagger.UString;
+       Content_I_Ds : in Swagger.Nullable_Integer_Vectors.Vector;
        Result : out Swagger.Nullable_UString_Map);
 
    --  Add a file to a collection
@@ -111,38 +122,41 @@ package .Clients is
    --  This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    procedure Collections_Get
       (Client : in out Client_Type;
-       Id : in Integer;
-       Result : out .Models.Main_Collection_Type_Vectors.Vector);
+       Result : out .Models.Collections_Collection_Type_Vectors.Vector);
 
    --  Create a new collection
    --  This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
    procedure Collections_Post
       (Client : in out Client_Type;
        P_Body : in .Models.Main_createCollectionBody_Type;
-       Result : out .Models.Main_Collection_Type);
+       Result : out .Models.Collections_Collection_Type);
 
    --  Add Car object
    --  This endpoint is used to add a car object to the network. The object can be a file or a directory.
    procedure Content_Add_Car_Post
       (Client : in out Client_Type;
        P_Body : in Swagger.UString;
-       Filename : in Swagger.Nullable_UString;
-       Commp : in Swagger.Nullable_UString;
-       Size : in Swagger.Nullable_UString);
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Filename : in Swagger.Nullable_UString);
 
    --  Add IPFS object
    --  This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    procedure Content_Add_Ipfs_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Util_ContentAddIpfsBody_Type);
+       P_Body : in .Models.Util_ContentAddIpfsBody_Type;
+       Ignore_Dupes : in Swagger.Nullable_UString);
 
    --  Add new content
    --  This endpoint is used to upload new content.
    procedure Content_Add_Post
       (Client : in out Client_Type;
-       File : in Swagger.File_Part_Type;
-       Coluuid : in Swagger.UString;
-       Dir : in Swagger.UString;
+       Data : in Swagger.File_Part_Type;
+       Filename : in Swagger.Nullable_UString;
+       Coluuid : in Swagger.Nullable_UString;
+       Replication : in Swagger.Nullable_Integer;
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Lazy_Provide : in Swagger.Nullable_UString;
+       Dir : in Swagger.Nullable_UString;
        Result : out .Models.Util_ContentAddResponse_Type);
 
    --  Get aggregated content stats
@@ -170,7 +184,8 @@ package .Clients is
    --  This endpoint adds a new content
    procedure Content_Create_Post
       (Client : in out Client_Type;
-       P_Body : in Swagger.UString);
+       Req : in .Models.Util_ContentCreateBody_Type;
+       Ignore_Dupes : in Swagger.Nullable_UString);
 
    --  Content with deals
    --  This endpoint lists all content with deals
@@ -191,6 +206,12 @@ package .Clients is
       (Client : in out Client_Type;
        Content : in Swagger.UString;
        Result : out Swagger.UString);
+
+   --  Content
+   --  This endpoint returns a content by its ID
+   procedure Content_Id_Get
+      (Client : in out Client_Type;
+       Id : in Integer);
 
    --  Import a deal
    --  This endpoint imports a deal into the shuttle.
@@ -219,7 +240,8 @@ package .Clients is
    --  This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    procedure Content_Stats_Get
       (Client : in out Client_Type;
-       Limit : in Swagger.UString);
+       Limit : in Swagger.UString;
+       Offset : in Swagger.UString);
 
    --  Content Status
    --  This endpoint returns the status of a content
@@ -269,11 +291,6 @@ package .Clients is
    procedure Deal_Transfer_In_Progress_Get
       (Client : in out Client_Type);
 
-   --  Transfer Status
-   --  This endpoint returns the status of a transfer
-   procedure Deal_Transfer_Status_Post
-      (Client : in out Client_Type);
-
    --  Get storage failures for user
    --  This endpoint returns a list of storage failures for user
    procedure Deals_Failures_Get
@@ -303,6 +320,10 @@ package .Clients is
       (Client : in out Client_Type;
        Miner : in Swagger.UString);
 
+   --  
+   procedure Deal_Transfer_Status_Post
+      (Client : in out Client_Type);
+
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
@@ -312,7 +333,8 @@ package .Clients is
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Ignore_Failed : in Swagger.Nullable_UString);
 
    --  Get miner stats
    --  This endpoint returns miner stats
@@ -352,7 +374,8 @@ package .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
@@ -382,7 +405,8 @@ package .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
@@ -459,7 +483,8 @@ package .Clients is
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Ignore_Failed : in Swagger.Nullable_UString);
 
    --  Get all miners
    --  This endpoint returns all miners
@@ -511,6 +536,8 @@ package .Clients is
    --  This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
    procedure User_Api_Keys_Post
       (Client : in out Client_Type;
+       Expiry : in Swagger.Nullable_UString;
+       Perms : in Swagger.Nullable_UString;
        Result : out .Models.Main_getApiKeysResp_Type);
 
    --  Export user data

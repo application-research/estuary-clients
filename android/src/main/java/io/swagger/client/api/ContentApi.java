@@ -27,6 +27,7 @@ import java.io.File;
 import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
 import io.swagger.client.model.UtilContentAddResponse;
+import io.swagger.client.model.UtilContentCreateBody;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -62,12 +63,11 @@ public class ContentApi {
   * Add Car object
   * This endpoint is used to add a car object to the network. The object can be a file or a directory.
    * @param body Car
+   * @param ignoreDupes Ignore Dupes
    * @param filename Filename
-   * @param commp Commp
-   * @param size Size
    * @return void
   */
-  public void contentAddCarPost (String body, String filename, String commp, String size) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void contentAddCarPost (String body, String ignoreDupes, String filename) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -84,9 +84,8 @@ public class ContentApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filename", filename));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "commp", commp));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "size", size));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -129,9 +128,9 @@ public class ContentApi {
       /**
    * Add Car object
    * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-   * @param body Car   * @param filename Filename   * @param commp Commp   * @param size Size
+   * @param body Car   * @param ignoreDupes Ignore Dupes   * @param filename Filename
   */
-  public void contentAddCarPost (String body, String filename, String commp, String size, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void contentAddCarPost (String body, String ignoreDupes, String filename, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -150,9 +149,8 @@ public class ContentApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "filename", filename));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "commp", commp));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "size", size));
 
 
     String[] contentTypes = {
@@ -194,9 +192,10 @@ public class ContentApi {
   * Add IPFS object
   * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    * @param body IPFS Body
+   * @param ignoreDupes Ignore Dupes
    * @return void
   */
-  public void contentAddIpfsPost (UtilContentAddIpfsBody body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void contentAddIpfsPost (UtilContentAddIpfsBody body, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -213,6 +212,7 @@ public class ContentApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -255,9 +255,9 @@ public class ContentApi {
       /**
    * Add IPFS object
    * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
-   * @param body IPFS Body
+   * @param body IPFS Body   * @param ignoreDupes Ignore Dupes
   */
-  public void contentAddIpfsPost (UtilContentAddIpfsBody body, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void contentAddIpfsPost (UtilContentAddIpfsBody body, String ignoreDupes, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
     // verify the required parameter 'body' is set
@@ -276,6 +276,7 @@ public class ContentApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
 
 
     String[] contentTypes = {
@@ -316,31 +317,25 @@ public class ContentApi {
   /**
   * Add new content
   * This endpoint is used to upload new content.
-   * @param file File to upload
+   * @param data File to upload
+   * @param filename Filenam to use for upload
    * @param coluuid Collection UUID
+   * @param replication Replication value
+   * @param ignoreDupes Ignore Dupes true/false
+   * @param lazyProvide Lazy Provide true/false
    * @param dir Directory
    * @return UtilContentAddResponse
   */
-  public UtilContentAddResponse contentAddPost (File file, String coluuid, String dir) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public UtilContentAddResponse contentAddPost (File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'file' is set
-    if (file == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'file' when calling contentAddPost"));
-    }
-    // verify the required parameter 'coluuid' is set
-    if (coluuid == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'coluuid' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'coluuid' when calling contentAddPost"));
-    }
-    // verify the required parameter 'dir' is set
-    if (dir == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'dir' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'dir' when calling contentAddPost"));
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'data' when calling contentAddPost",
+        new ApiException(400, "Missing the required parameter 'data' when calling contentAddPost"));
     }
 
     // create path and map variables
-    String path = "/content/add".replaceAll("\\{" + "coluuid" + "\\}", apiInvoker.escapeString(coluuid.toString())).replaceAll("\\{" + "dir" + "\\}", apiInvoker.escapeString(dir.toString()));
+    String path = "/content/add";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -348,6 +343,11 @@ public class ContentApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "coluuid", coluuid));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "replication", replication));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "lazy-provide", lazyProvide));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "dir", dir));
     String[] contentTypes = {
       "multipart/form-data"
     };
@@ -356,13 +356,17 @@ public class ContentApi {
     if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
+      if (data != null) {
+        localVarBuilder.addBinaryBody("data", data);
+      }
+      if (filename != null) {
+        localVarBuilder.addTextBody("filename", ApiInvoker.parameterToString(filename), ApiInvoker.TEXT_PLAIN_UTF8);
       }
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
+      formParams.put("filename", ApiInvoker.parameterToString(filename));
     }
 
     String[] authNames = new String[] { "bearerAuth" };
@@ -394,29 +398,19 @@ public class ContentApi {
       /**
    * Add new content
    * This endpoint is used to upload new content.
-   * @param file File to upload   * @param coluuid Collection UUID   * @param dir Directory
+   * @param data File to upload   * @param filename Filenam to use for upload   * @param coluuid Collection UUID   * @param replication Replication value   * @param ignoreDupes Ignore Dupes true/false   * @param lazyProvide Lazy Provide true/false   * @param dir Directory
   */
-  public void contentAddPost (File file, String coluuid, String dir, final Response.Listener<UtilContentAddResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void contentAddPost (File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final Response.Listener<UtilContentAddResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'file' is set
-    if (file == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'file' when calling contentAddPost"));
-    }
-    // verify the required parameter 'coluuid' is set
-    if (coluuid == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'coluuid' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'coluuid' when calling contentAddPost"));
-    }
-    // verify the required parameter 'dir' is set
-    if (dir == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'dir' when calling contentAddPost",
-        new ApiException(400, "Missing the required parameter 'dir' when calling contentAddPost"));
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'data' when calling contentAddPost",
+        new ApiException(400, "Missing the required parameter 'data' when calling contentAddPost"));
     }
 
     // create path and map variables
-    String path = "/content/add".replaceAll("\\{format\\}","json").replaceAll("\\{" + "coluuid" + "\\}", apiInvoker.escapeString(coluuid.toString())).replaceAll("\\{" + "dir" + "\\}", apiInvoker.escapeString(dir.toString()));
+    String path = "/content/add".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -425,6 +419,11 @@ public class ContentApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "coluuid", coluuid));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "replication", replication));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "lazy-provide", lazyProvide));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "dir", dir));
 
 
     String[] contentTypes = {
@@ -436,8 +435,12 @@ public class ContentApi {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
-      if (file != null) {
-        localVarBuilder.addBinaryBody("file", file);
+      if (data != null) {
+        localVarBuilder.addBinaryBody("data", data);
+      }
+      
+      if (filename != null) {
+        localVarBuilder.addTextBody("filename", ApiInvoker.parameterToString(filename), ApiInvoker.TEXT_PLAIN_UTF8);
       }
       
 
@@ -446,6 +449,7 @@ public class ContentApi {
     } else {
       // normal form params
       
+formParams.put("filename", ApiInvoker.parameterToString(filename));
     }
 
     String[] authNames = new String[] { "bearerAuth" };
@@ -875,15 +879,16 @@ public class ContentApi {
   /**
   * Add a new content
   * This endpoint adds a new content
-   * @param body Content
+   * @param req Content
+   * @param ignoreDupes Ignore Dupes
    * @return void
   */
-  public void contentCreatePost (String body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = body;
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling contentCreatePost",
-        new ApiException(400, "Missing the required parameter 'body' when calling contentCreatePost"));
+  public void contentCreatePost (UtilContentCreateBody req, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = req;
+    // verify the required parameter 'req' is set
+    if (req == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'req' when calling contentCreatePost",
+        new ApiException(400, "Missing the required parameter 'req' when calling contentCreatePost"));
     }
 
     // create path and map variables
@@ -895,6 +900,7 @@ public class ContentApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -937,15 +943,15 @@ public class ContentApi {
       /**
    * Add a new content
    * This endpoint adds a new content
-   * @param body Content
+   * @param req Content   * @param ignoreDupes Ignore Dupes
   */
-  public void contentCreatePost (String body, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = body;
+  public void contentCreatePost (UtilContentCreateBody req, String ignoreDupes, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = req;
 
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling contentCreatePost",
-        new ApiException(400, "Missing the required parameter 'body' when calling contentCreatePost"));
+    // verify the required parameter 'req' is set
+    if (req == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'req' when calling contentCreatePost",
+        new ApiException(400, "Missing the required parameter 'req' when calling contentCreatePost"));
     }
 
     // create path and map variables
@@ -958,6 +964,7 @@ public class ContentApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "ignore-dupes", ignoreDupes));
 
 
     String[] contentTypes = {
@@ -1352,6 +1359,129 @@ public class ContentApi {
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Content
+  * This endpoint returns a content by its ID
+   * @param id Content ID
+   * @return void
+  */
+  public void contentIdGet (Integer id) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling contentIdGet",
+        new ApiException(400, "Missing the required parameter 'id' when calling contentIdGet"));
+    }
+
+    // create path and map variables
+    String path = "/content/{id}".replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "bearerAuth" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Content
+   * This endpoint returns a content by its ID
+   * @param id Content ID
+  */
+  public void contentIdGet (Integer id, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'id' when calling contentIdGet",
+        new ApiException(400, "Missing the required parameter 'id' when calling contentIdGet"));
+    }
+
+    // create path and map variables
+    String path = "/content/{id}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiInvoker.escapeString(id.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "bearerAuth" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1841,18 +1971,24 @@ public class ContentApi {
   * Get content statistics
   * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    * @param limit limit
+   * @param offset offset
    * @return void
   */
-  public void contentStatsGet (String limit) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void contentStatsGet (String limit, String offset) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'limit' is set
     if (limit == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'limit' when calling contentStatsGet",
         new ApiException(400, "Missing the required parameter 'limit' when calling contentStatsGet"));
     }
+    // verify the required parameter 'offset' is set
+    if (offset == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'offset' when calling contentStatsGet",
+        new ApiException(400, "Missing the required parameter 'offset' when calling contentStatsGet"));
+    }
 
     // create path and map variables
-    String path = "/content/stats".replaceAll("\\{" + "limit" + "\\}", apiInvoker.escapeString(limit.toString()));
+    String path = "/content/stats";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1860,6 +1996,8 @@ public class ContentApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -1902,9 +2040,9 @@ public class ContentApi {
       /**
    * Get content statistics
    * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
-   * @param limit limit
+   * @param limit limit   * @param offset offset
   */
-  public void contentStatsGet (String limit, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void contentStatsGet (String limit, String offset, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'limit' is set
@@ -1912,9 +2050,14 @@ public class ContentApi {
       VolleyError error = new VolleyError("Missing the required parameter 'limit' when calling contentStatsGet",
         new ApiException(400, "Missing the required parameter 'limit' when calling contentStatsGet"));
     }
+    // verify the required parameter 'offset' is set
+    if (offset == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'offset' when calling contentStatsGet",
+        new ApiException(400, "Missing the required parameter 'offset' when calling contentStatsGet"));
+    }
 
     // create path and map variables
-    String path = "/content/stats".replaceAll("\\{format\\}","json").replaceAll("\\{" + "limit" + "\\}", apiInvoker.escapeString(limit.toString()));
+    String path = "/content/stats".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -1923,6 +2066,8 @@ public class ContentApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "offset", offset));
 
 
     String[] contentTypes = {

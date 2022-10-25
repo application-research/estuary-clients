@@ -64,13 +64,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UserApiKeysPost**
-> MainGetApiKeysResp UserApiKeysPost(ctx, )
+> MainGetApiKeysResp UserApiKeysPost(ctx, optional)
 Create API keys for a user
 
 This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***UserApiUserApiKeysPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a UserApiUserApiKeysPostOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expiry** | **optional.String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | 
+ **perms** | **optional.String**| Permissions -- currently unused | 
 
 ### Return type
 

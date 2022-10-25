@@ -29,15 +29,22 @@ export class AdminApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
+     * @param body Peer ids
      */
-    public adminPeeringPeersDelete (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringPeersDelete (body: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        }
+
         let httpRequestParams: ng.IRequestConfig = {
             method: 'DELETE',
             url: localVarPath,
+            data: body,
             params: queryParameters,
             headers: headerParams
         };

@@ -118,7 +118,9 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysPostTest() {
-        //MainGetApiKeysResp response = api.userApiKeysPost();
+        String expiry = null;
+        String perms = null;
+        //MainGetApiKeysResp response = api.userApiKeysPost(expiry, perms);
         //assertNotNull(response);
         // TODO: test validations
         

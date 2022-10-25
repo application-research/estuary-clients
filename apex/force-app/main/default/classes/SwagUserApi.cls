@@ -73,11 +73,18 @@ public class SwagUserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param perms Permissions -- currently unused (optional)
      * @return SwagMainGetApiKeysResp
      * @throws Swagger.ApiException if fails to make API call
      */
-    public SwagMainGetApiKeysResp userApiKeysPost() {
+    public SwagMainGetApiKeysResp userApiKeysPost(Map<String, Object> params) {
         List<Swagger.Param> query = new List<Swagger.Param>();
+
+        // cast query params to verify their expected type
+        query.addAll(client.makeParam('expiry', (String) params.get('expiry')));
+        query.addAll(client.makeParam('perms', (String) params.get('perms')));
+
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         return (SwagMainGetApiKeysResp) client.invoke(

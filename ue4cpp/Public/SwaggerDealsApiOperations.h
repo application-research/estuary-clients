@@ -187,28 +187,6 @@ public:
     
 };
 
-/* Transfer Status
- *
- * This endpoint returns the status of a transfer
-*/
-class SWAGGER_API SwaggerDealsApi::DealTransferStatusPostRequest : public Request
-{
-public:
-    virtual ~DealTransferStatusPostRequest() {}
-	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
-	FString ComputePath() const final;
-    
-};
-
-class SWAGGER_API SwaggerDealsApi::DealTransferStatusPostResponse : public Response
-{
-public:
-    virtual ~DealTransferStatusPostResponse() {}
-	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
-    
-    
-};
-
 /* Get storage failures for user
  *
  * This endpoint returns a list of storage failures for user

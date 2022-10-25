@@ -10,10 +10,13 @@ class PeeringApi {
   /// Remove peers on Peering Service
   ///
   /// This endpoint can be used to remove a Peer from the Peering Service
-  Future adminPeeringPeersDelete() async {
-    Object postBody = null;
+  Future adminPeeringPeersDelete(List<String> body) async {
+    Object postBody = body;
 
     // verify required params are set
+    if(body == null) {
+     throw new ApiException(400, "Missing required param: body");
+    }
 
     // create path and map variables
     String path = "/admin/peering/peers".replaceAll("{format}","json");

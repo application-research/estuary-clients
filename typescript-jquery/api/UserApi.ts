@@ -165,12 +165,20 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param perms Permissions -- currently unused
      */
-    public userApiKeysPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainGetApiKeysResp;  }> {
+    public userApiKeysPost(expiry?: string, perms?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainGetApiKeysResp;  }> {
         let localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
         let headerParams: any = {};
+        if (expiry !== null && expiry !== undefined) {
+            queryParameters['expiry'] = <string><any>expiry;
+        }
+        if (perms !== null && perms !== undefined) {
+            queryParameters['perms'] = <string><any>perms;
+        }
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
         // to determine the Content-Type header

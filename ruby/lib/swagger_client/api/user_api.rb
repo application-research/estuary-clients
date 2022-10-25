@@ -119,6 +119,8 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    # @option opts [String] :perms Permissions -- currently unused
     # @return [MainGetApiKeysResp]
     def user_api_keys_post(opts = {})
       data, _status_code, _headers = user_api_keys_post_with_http_info(opts)
@@ -128,6 +130,8 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    # @option opts [String] :perms Permissions -- currently unused
     # @return [Array<(MainGetApiKeysResp, Fixnum, Hash)>] MainGetApiKeysResp data, response status code and response headers
     def user_api_keys_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -138,6 +142,8 @@ module SwaggerClient
 
       # query parameters
       query_params = {}
+      query_params[:'expiry'] = opts[:'expiry'] if !opts[:'expiry'].nil?
+      query_params[:'perms'] = opts[:'perms'] if !opts[:'perms'].nil?
 
       # header parameters
       header_params = {}

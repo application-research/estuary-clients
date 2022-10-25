@@ -13,13 +13,17 @@ package body .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", P_Body);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Req);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
@@ -166,6 +170,29 @@ package body .Clients is
       Swagger.Streams.Deserialize (Reply, "", Result);
    end Collections_Coluuid_Commit_Post;
 
+   --  Deletes a content from a collection
+   --  This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+   procedure Collections_Coluuid_Contents_Delete
+      (Client : in out Client_Type;
+       Coluuid : in Swagger.UString;
+       Contentid : in Swagger.UString;
+       P_Body : in .Models.Main_deleteContentFromCollectionBody_Type;
+       Result : out Swagger.UString) is
+      URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", P_Body);
+
+      URI.Set_Path ("/collections/{coluuid}/contents");
+      URI.Set_Path_Param ("coluuid", Coluuid);
+      URI.Set_Path_Param ("contentid", Contentid);
+      Client.Call (Swagger.Clients.DELETE, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
+   end Collections_Coluuid_Contents_Delete;
+
    --  Deletes a collection
    --  This endpoint is used to delete an existing collection.
    procedure Collections_Coluuid_Delete
@@ -192,9 +219,9 @@ package body .Clients is
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
-      URI.Add_Param ("coluuid", Coluuid);
       URI.Add_Param ("dir", Dir);
       URI.Set_Path ("/collections/{coluuid}");
+      URI.Set_Path_Param ("coluuid", Coluuid);
       Client.Call (Swagger.Clients.GET, URI, Reply);
       Swagger.Streams.Deserialize (Reply, "", Result);
    end Collections_Coluuid_Get;
@@ -203,7 +230,8 @@ package body .Clients is
    --  This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    procedure Collections_Coluuid_Post
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_Integer_Vectors.Vector;
+       Coluuid : in Swagger.UString;
+       Content_I_Ds : in Swagger.Nullable_Integer_Vectors.Vector;
        Result : out Swagger.Nullable_UString_Map) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
@@ -211,9 +239,10 @@ package body .Clients is
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", P_Body);
+      .Models.Serialize (Req.Stream, "", Content_I_Ds);
 
       URI.Set_Path ("/collections/{coluuid}");
+      URI.Set_Path_Param ("coluuid", Coluuid);
       Client.Call (Swagger.Clients.POST, URI, Req, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Collections_Coluuid_Post;
@@ -240,15 +269,13 @@ package body .Clients is
    --  This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    procedure Collections_Get
       (Client : in out Client_Type;
-       Id : in Integer;
-       Result : out .Models.Main_Collection_Type_Vectors.Vector) is
+       Result : out .Models.Collections_Collection_Type_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/collections/");
-      URI.Set_Path_Param ("id", Swagger.To_String (Id));
       Client.Call (Swagger.Clients.GET, URI, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Collections_Get;
@@ -258,7 +285,7 @@ package body .Clients is
    procedure Collections_Post
       (Client : in out Client_Type;
        P_Body : in .Models.Main_createCollectionBody_Type;
-       Result : out .Models.Main_Collection_Type) is
+       Result : out .Models.Collections_Collection_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
@@ -277,9 +304,8 @@ package body .Clients is
    procedure Content_Add_Car_Post
       (Client : in out Client_Type;
        P_Body : in Swagger.UString;
-       Filename : in Swagger.Nullable_UString;
-       Commp : in Swagger.Nullable_UString;
-       Size : in Swagger.Nullable_UString) is
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Filename : in Swagger.Nullable_UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
    begin
@@ -287,9 +313,8 @@ package body .Clients is
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
       .Models.Serialize (Req.Stream, "", P_Body);
 
+      URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Add_Param ("filename", Filename);
-      URI.Add_Param ("commp", Commp);
-      URI.Add_Param ("size", Size);
       URI.Set_Path ("/content/add-car");
       Client.Call (Swagger.Clients.POST, URI, Req);
    end Content_Add_Car_Post;
@@ -298,7 +323,8 @@ package body .Clients is
    --  This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    procedure Content_Add_Ipfs_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Util_ContentAddIpfsBody_Type) is
+       P_Body : in .Models.Util_ContentAddIpfsBody_Type;
+       Ignore_Dupes : in Swagger.Nullable_UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
    begin
@@ -306,6 +332,7 @@ package body .Clients is
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
       .Models.Serialize (Req.Stream, "", P_Body);
 
+      URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Set_Path ("/content/add-ipfs");
       Client.Call (Swagger.Clients.POST, URI, Req);
    end Content_Add_Ipfs_Post;
@@ -314,9 +341,13 @@ package body .Clients is
    --  This endpoint is used to upload new content.
    procedure Content_Add_Post
       (Client : in out Client_Type;
-       File : in Swagger.File_Part_Type;
-       Coluuid : in Swagger.UString;
-       Dir : in Swagger.UString;
+       Data : in Swagger.File_Part_Type;
+       Filename : in Swagger.Nullable_UString;
+       Coluuid : in Swagger.Nullable_UString;
+       Replication : in Swagger.Nullable_Integer;
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Lazy_Provide : in Swagger.Nullable_UString;
+       Dir : in Swagger.Nullable_UString;
        Result : out .Models.Util_ContentAddResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
@@ -324,11 +355,15 @@ package body .Clients is
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_FORM));
-      .Models.Serialize (Req.Stream, "file", File);
+      .Models.Serialize (Req.Stream, "data", Data);
+      .Models.Serialize (Req.Stream, "filename", Filename);
 
+      URI.Add_Param ("coluuid", Coluuid);
+      URI.Add_Param ("replication", Replication);
+      URI.Add_Param ("ignore-dupes", Ignore_Dupes);
+      URI.Add_Param ("lazy-provide", Lazy_Provide);
+      URI.Add_Param ("dir", Dir);
       URI.Set_Path ("/content/add");
-      URI.Set_Path_Param ("coluuid", Coluuid);
-      URI.Set_Path_Param ("dir", Dir);
       Client.Call (Swagger.Clients.POST, URI, Req, Reply);
       .Models.Deserialize (Reply, "", Result);
    end Content_Add_Post;
@@ -386,14 +421,16 @@ package body .Clients is
    --  This endpoint adds a new content
    procedure Content_Create_Post
       (Client : in out Client_Type;
-       P_Body : in Swagger.UString) is
+       Req : in .Models.Util_ContentCreateBody_Type;
+       Ignore_Dupes : in Swagger.Nullable_UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", P_Body);
+      .Models.Serialize (Req.Stream, "", Req);
 
+      URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Set_Path ("/content/create");
       Client.Call (Swagger.Clients.POST, URI, Req);
    end Content_Create_Post;
@@ -444,6 +481,20 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI, Reply);
       Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Failures_Content_Get;
+
+   --  Content
+   --  This endpoint returns a content by its ID
+   procedure Content_Id_Get
+      (Client : in out Client_Type;
+       Id : in Integer) is
+      URI   : Swagger.Clients.URI_Type;
+   begin
+      Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+
+      URI.Set_Path ("/content/{id}");
+      URI.Set_Path_Param ("id", Swagger.To_String (Id));
+      Client.Call (Swagger.Clients.GET, URI);
+   end Content_Id_Get;
 
    --  Import a deal
    --  This endpoint imports a deal into the shuttle.
@@ -506,13 +557,15 @@ package body .Clients is
    --  This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    procedure Content_Stats_Get
       (Client : in out Client_Type;
-       Limit : in Swagger.UString) is
+       Limit : in Swagger.UString;
+       Offset : in Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
+      URI.Add_Param ("limit", Limit);
+      URI.Add_Param ("offset", Offset);
       URI.Set_Path ("/content/stats");
-      URI.Set_Path_Param ("limit", Limit);
       Client.Call (Swagger.Clients.GET, URI);
    end Content_Stats_Get;
 
@@ -630,18 +683,6 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI);
    end Deal_Transfer_In_Progress_Get;
 
-   --  Transfer Status
-   --  This endpoint returns the status of a transfer
-   procedure Deal_Transfer_Status_Post
-      (Client : in out Client_Type) is
-      URI   : Swagger.Clients.URI_Type;
-   begin
-      Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
-
-      URI.Set_Path ("/deal/transfer/status");
-      Client.Call (Swagger.Clients.POST, URI);
-   end Deal_Transfer_Status_Post;
-
    --  Get storage failures for user
    --  This endpoint returns a list of storage failures for user
    procedure Deals_Failures_Get
@@ -712,6 +753,17 @@ package body .Clients is
       Client.Call (Swagger.Clients.GET, URI);
    end Public_Miners_Storage_Query_Miner_Get;
 
+   --  
+   procedure Deal_Transfer_Status_Post
+      (Client : in out Client_Type) is
+      URI   : Swagger.Clients.URI_Type;
+   begin
+
+
+      URI.Set_Path ("/deal/transfer/status");
+      Client.Call (Swagger.Clients.POST, URI);
+   end Deal_Transfer_Status_Post;
+
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
@@ -728,11 +780,13 @@ package body .Clients is
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Ignore_Failed : in Swagger.Nullable_UString) is
       URI   : Swagger.Clients.URI_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
+      URI.Add_Param ("ignore-failed", Ignore_Failed);
       URI.Set_Path ("/public/miners/deals/{miner}");
       URI.Set_Path_Param ("miner", Miner);
       Client.Call (Swagger.Clients.GET, URI);
@@ -826,13 +880,17 @@ package body .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", P_Body);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Req);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
@@ -898,13 +956,17 @@ package body .Clients is
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", P_Body);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Req);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
@@ -1079,11 +1141,13 @@ package body .Clients is
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Ignore_Failed : in Swagger.Nullable_UString) is
       URI   : Swagger.Clients.URI_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
+      URI.Add_Param ("ignore-failed", Ignore_Failed);
       URI.Set_Path ("/public/miners/deals/{miner}");
       URI.Set_Path_Param ("miner", Miner);
       Client.Call (Swagger.Clients.GET, URI);
@@ -1204,12 +1268,16 @@ package body .Clients is
    --  This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
    procedure User_Api_Keys_Post
       (Client : in out Client_Type;
+       Expiry : in Swagger.Nullable_UString;
+       Perms : in Swagger.Nullable_UString;
        Result : out .Models.Main_getApiKeysResp_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
+      URI.Add_Param ("expiry", Expiry);
+      URI.Add_Param ("perms", Perms);
       URI.Set_Path ("/user/api-keys");
       Client.Call (Swagger.Clients.POST, URI, Reply);
       .Models.Deserialize (Reply, "", Result);

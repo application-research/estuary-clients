@@ -18,7 +18,7 @@ procedure .Client is
 
    procedure Usage is
    begin
-      Put_Line ("Usage: defaultPackage {params}...");
+      Put_Line ("Usage: estuary-client {params}...");
    end Usage;
 
 begin

@@ -27,8 +27,8 @@ This endpoint returns the content associated with a CID
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 val cid : kotlin.String = cid_example // kotlin.String | Cid
@@ -73,8 +73,8 @@ This endpoint returns information about the node
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {
@@ -115,8 +115,8 @@ This endpoint is used to get deal metrics
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {
@@ -148,7 +148,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner)
+> publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -157,13 +157,14 @@ This endpoint returns all miners deals
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
+val ignoreFailed : kotlin.String = ignoreFailed_example // kotlin.String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner)
+    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMinersDealsMinerGet")
     e.printStackTrace()
@@ -178,6 +179,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **kotlin.String**| Filter by miner |
+ **ignoreFailed** | **kotlin.String**| Ignore Failed | [optional]
 
 ### Return type
 
@@ -203,8 +205,8 @@ This endpoint returns all miners
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
@@ -249,8 +251,8 @@ This endpoint returns all miners
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {
@@ -291,8 +293,8 @@ This endpoint returns miner stats
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
@@ -337,8 +339,8 @@ This endpoint is used to get net addrs
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {
@@ -380,8 +382,8 @@ This endpoint is used to get net peers
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {
@@ -423,8 +425,8 @@ This endpoint is used to get public stats.
 ### Example
 ```kotlin
 // Import classes:
-//import estuary_client.infrastructure.*
-//import estuary_client.models.*
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
 
 val apiInstance = PublicApi()
 try {

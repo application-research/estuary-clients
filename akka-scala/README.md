@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 *AutoretrieveApi* | **adminAutoretrieveListGet** | **GET** /admin/autoretrieve/list | List autoretrieve servers
 *AutoretrieveApi* | **autoretrieveHeartbeatPost** | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *CollectionsApi* | **collectionsColuuidCommitPost** | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*CollectionsApi* | **collectionsColuuidContentsDelete** | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 *CollectionsApi* | **collectionsColuuidDelete** | **DELETE** /collections/{coluuid} | Deletes a collection
 *CollectionsApi* | **collectionsColuuidGet** | **GET** /collections/{coluuid} | Get contents in a collection
 *CollectionsApi* | **collectionsColuuidPost** | **POST** /collections/{coluuid} | Add contents to a collection
@@ -94,6 +95,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | **contentDealsGet** | **GET** /content/deals | Content with deals
 *ContentApi* | **contentEnsureReplicationDatacidGet** | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | **contentFailuresContentGet** | **GET** /content/failures/{content} | List all failures for a content
+*ContentApi* | **contentIdGet** | **GET** /content/{id} | Content
 *ContentApi* | **contentImportdealPost** | **POST** /content/importdeal | Import a deal
 *ContentApi* | **contentListGet** | **GET** /content/list | List all pinned content
 *ContentApi* | **contentReadContGet** | **GET** /content/read/{cont} | Read content
@@ -107,12 +109,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | **dealStatusByProposalPropcidGet** | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | **dealStatusMinerPropcidGet** | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | **dealTransferInProgressGet** | **GET** /deal/transfer/in-progress | Transfer In Progress
-*DealsApi* | **dealTransferStatusPost** | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | **dealsFailuresGet** | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | **dealsMakeMinerPost** | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | **dealsStatusDealGet** | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | **publicDealsFailuresGet** | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | **publicMinersStorageQueryMinerGet** | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | **dealTransferStatusPost** | **POST** /deal/transfer/status | 
 *MetricsApi* | **publicMetricsDealsOnChainGet** | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | **publicMinersDealsMinerGet** | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | **publicMinersStatsMinerGet** | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -157,14 +159,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [MainCollection](MainCollection.md)
+ - [CollectionsCollection](CollectionsCollection.md)
  - [MainCreateCollectionBody](MainCreateCollectionBody.md)
+ - [MainDeleteContentFromCollectionBody](MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](MainEstimateDealBody.md)
  - [MainGetApiKeysResp](MainGetApiKeysResp.md)
  - [MainImportDealBody](MainImportDealBody.md)
  - [MainUserStatsResponse](MainUserStatsResponse.md)
  - [UtilContentAddIpfsBody](UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](UtilContentAddResponse.md)
+ - [UtilContentCreateBody](UtilContentCreateBody.md)
  - [UtilHttpError](UtilHttpError.md)
 
 

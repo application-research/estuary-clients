@@ -119,6 +119,32 @@ void SwaggerCollectionsApi::OnCollectionsColuuidCommitPostResponse(FHttpRequestP
 	Delegate.ExecuteIfBound(Response);
 }
 
+bool SwaggerCollectionsApi::CollectionsColuuidContentsDelete(const CollectionsColuuidContentsDeleteRequest& Request, const FCollectionsColuuidContentsDeleteDelegate& Delegate /*= FCollectionsColuuidContentsDeleteDelegate()*/) const
+{
+	if (!IsValid())
+		return false;
+
+	TSharedRef<IHttpRequest> HttpRequest = FHttpModule::Get().CreateRequest();
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+	
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &SwaggerCollectionsApi::OnCollectionsColuuidContentsDeleteResponse, Delegate);
+	return HttpRequest->ProcessRequest();
+}
+
+void SwaggerCollectionsApi::OnCollectionsColuuidContentsDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FCollectionsColuuidContentsDeleteDelegate Delegate) const
+{
+	CollectionsColuuidContentsDeleteResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 bool SwaggerCollectionsApi::CollectionsColuuidDelete(const CollectionsColuuidDeleteRequest& Request, const FCollectionsColuuidDeleteDelegate& Delegate /*= FCollectionsColuuidDeleteDelegate()*/) const
 {
 	if (!IsValid())

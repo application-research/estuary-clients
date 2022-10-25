@@ -46,9 +46,13 @@ SwagAdminApi api = new SwagAdminApi();
 SwagClient client = api.getClient();
 
 
+Map<String, Object> params = new Map<String, Object>{
+    'body' => new List<String>{'aeiou'}
+};
+
 try {
     // cross your fingers
-    api.adminPeeringPeersDelete();
+    api.adminPeeringPeersDelete(params);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -72,6 +76,7 @@ Class | Method | HTTP request | Description
 *SwagAutoretrieveApi* | [**adminAutoretrieveListGet**](docs/SwagAutoretrieveApi.md#adminAutoretrieveListGet) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 *SwagAutoretrieveApi* | [**autoretrieveHeartbeatPost**](docs/SwagAutoretrieveApi.md#autoretrieveHeartbeatPost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 *SwagCollectionsApi* | [**collectionsColuuidCommitPost**](docs/SwagCollectionsApi.md#collectionsColuuidCommitPost) | **POST** /collections/{coluuid}/commit | Produce a CID of the collection contents
+*SwagCollectionsApi* | [**collectionsColuuidContentsDelete**](docs/SwagCollectionsApi.md#collectionsColuuidContentsDelete) | **DELETE** /collections/{coluuid}/contents | Deletes a content from a collection
 *SwagCollectionsApi* | [**collectionsColuuidDelete**](docs/SwagCollectionsApi.md#collectionsColuuidDelete) | **DELETE** /collections/{coluuid} | Deletes a collection
 *SwagCollectionsApi* | [**collectionsColuuidGet**](docs/SwagCollectionsApi.md#collectionsColuuidGet) | **GET** /collections/{coluuid} | Get contents in a collection
 *SwagCollectionsApi* | [**collectionsColuuidPost**](docs/SwagCollectionsApi.md#collectionsColuuidPost) | **POST** /collections/{coluuid} | Add contents to a collection
@@ -88,6 +93,7 @@ Class | Method | HTTP request | Description
 *SwagContentApi* | [**contentDealsGet**](docs/SwagContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 *SwagContentApi* | [**contentEnsureReplicationDatacidGet**](docs/SwagContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *SwagContentApi* | [**contentFailuresContentGet**](docs/SwagContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
+*SwagContentApi* | [**contentIdGet**](docs/SwagContentApi.md#contentIdGet) | **GET** /content/{id} | Content
 *SwagContentApi* | [**contentImportdealPost**](docs/SwagContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *SwagContentApi* | [**contentListGet**](docs/SwagContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 *SwagContentApi* | [**contentReadContGet**](docs/SwagContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
@@ -101,12 +107,12 @@ Class | Method | HTTP request | Description
 *SwagDealsApi* | [**dealStatusByProposalPropcidGet**](docs/SwagDealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *SwagDealsApi* | [**dealStatusMinerPropcidGet**](docs/SwagDealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *SwagDealsApi* | [**dealTransferInProgressGet**](docs/SwagDealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
-*SwagDealsApi* | [**dealTransferStatusPost**](docs/SwagDealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 *SwagDealsApi* | [**dealsFailuresGet**](docs/SwagDealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 *SwagDealsApi* | [**dealsMakeMinerPost**](docs/SwagDealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 *SwagDealsApi* | [**dealsStatusDealGet**](docs/SwagDealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *SwagDealsApi* | [**publicDealsFailuresGet**](docs/SwagDealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *SwagDealsApi* | [**publicMinersStorageQueryMinerGet**](docs/SwagDealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*SwagDefaultApi* | [**dealTransferStatusPost**](docs/SwagDefaultApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | 
 *SwagMetricsApi* | [**publicMetricsDealsOnChainGet**](docs/SwagMetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SwagMinerApi* | [**publicMinersDealsMinerGet**](docs/SwagMinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwagMinerApi* | [**publicMinersStatsMinerGet**](docs/SwagMinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -151,14 +157,16 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [SwagMainCollection](docs/SwagMainCollection.md)
+ - [SwagCollectionsCollection](docs/SwagCollectionsCollection.md)
  - [SwagMainCreateCollectionBody](docs/SwagMainCreateCollectionBody.md)
+ - [SwagMainDeleteContentFromCollectionB](docs/SwagMainDeleteContentFromCollectionB.md)
  - [SwagMainEstimateDealBody](docs/SwagMainEstimateDealBody.md)
  - [SwagMainGetApiKeysResp](docs/SwagMainGetApiKeysResp.md)
  - [SwagMainImportDealBody](docs/SwagMainImportDealBody.md)
  - [SwagMainUserStatsResponse](docs/SwagMainUserStatsResponse.md)
  - [SwagUtilContentAddIpfsBody](docs/SwagUtilContentAddIpfsBody.md)
  - [SwagUtilContentAddResponse](docs/SwagUtilContentAddResponse.md)
+ - [SwagUtilContentCreateBody](docs/SwagUtilContentCreateBody.md)
  - [SwagUtilHttpError](docs/SwagUtilHttpError.md)
 
 

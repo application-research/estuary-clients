@@ -86,13 +86,6 @@ isa_ok($api, 'WWW::SwaggerClient::DealsApi');
 }
 
 #
-# deal_transfer_status_post test
-#
-{
-    my $result = $api->deal_transfer_status_post();
-}
-
-#
 # deals_failures_get test
 #
 {

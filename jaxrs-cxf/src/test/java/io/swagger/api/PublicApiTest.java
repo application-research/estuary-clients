@@ -133,7 +133,8 @@ public class PublicApiTest {
     @Test
     public void publicMinersDealsMinerGetTest() {
         String miner = null;
-        //api.publicMinersDealsMinerGet(miner);
+        String ignoreFailed = null;
+        //api.publicMinersDealsMinerGet(miner, ignoreFailed);
         
         // TODO: test validations
         

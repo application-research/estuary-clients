@@ -30,7 +30,7 @@ SWGContentApi::SWGContentApi(QString host, QString basePath) {
 }
 
 void
-SWGContentApi::contentAddCarPost(QString*& body, QString* filename, QString* commp, QString* size) {
+SWGContentApi::contentAddCarPost(QString*& body, QString* ignore_dupes, QString* filename) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/content/add-car");
 
@@ -39,25 +39,17 @@ SWGContentApi::contentAddCarPost(QString*& body, QString* filename, QString* com
       fullPath.append("&");
     else
       fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("ignore-dupes"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(ignore_dupes)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
     fullPath.append(QUrl::toPercentEncoding("filename"))
         .append("=")
         .append(QUrl::toPercentEncoding(stringValue(filename)));
-
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("commp"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(stringValue(commp)));
-
-    if (fullPath.indexOf("?") > 0)
-      fullPath.append("&");
-    else
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("size"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(stringValue(size)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
@@ -106,10 +98,18 @@ SWGContentApi::contentAddCarPostCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGContentApi::contentAddIpfsPost(SWGUtil.ContentAddIpfsBody& body) {
+SWGContentApi::contentAddIpfsPost(SWGUtil.ContentAddIpfsBody& body, QString* ignore_dupes) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/content/add-ipfs");
 
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("ignore-dupes"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(ignore_dupes)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
@@ -158,21 +158,60 @@ SWGContentApi::contentAddIpfsPostCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGContentApi::contentAddPost(SWGHttpRequestInputFileElement* file, QString* coluuid, QString* dir) {
+SWGContentApi::contentAddPost(SWGHttpRequestInputFileElement* data, QString* filename, QString* coluuid, qint32 replication, QString* ignore_dupes, QString* lazy_provide, QString* dir) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/content/add");
 
-    QString coluuidPathParam("{"); coluuidPathParam.append("coluuid").append("}");
-    fullPath.replace(coluuidPathParam, stringValue(coluuid));
-    QString dirPathParam("{"); dirPathParam.append("dir").append("}");
-    fullPath.replace(dirPathParam, stringValue(dir));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("coluuid"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(coluuid)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("replication"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(replication)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("ignore-dupes"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(ignore_dupes)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("lazy-provide"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(lazy_provide)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("dir"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(dir)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
     SWGHttpRequestInput input(fullPath, "POST");
 
-    if (file != nullptr) {
-        input.add_file("file", (*file).local_filename, (*file).request_filename, (*file).mime_type);
+    if (data != nullptr) {
+        input.add_file("data", (*data).local_filename, (*data).request_filename, (*data).mime_type);
+    }
+    if (filename != nullptr) {
+        input.add_var("filename", *filename);
     }
 
 
@@ -397,10 +436,18 @@ SWGContentApi::contentBwUsageContentGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGContentApi::contentCreatePost(QString*& body) {
+SWGContentApi::contentCreatePost(SWGUtil.ContentCreateBody& req, QString* ignore_dupes) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/content/create");
 
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("ignore-dupes"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(ignore_dupes)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
@@ -408,7 +455,7 @@ SWGContentApi::contentCreatePost(QString*& body) {
 
 
     
-    QString output(*body);
+    QString output = req.asJson();
     input.request_body.append(output);
     
 
@@ -616,6 +663,57 @@ SWGContentApi::contentFailuresContentGetCallback(SWGHttpRequestWorker * worker) 
     } else {
         emit contentFailuresContentGetSignalE(output, error_type, error_str);
         emit contentFailuresContentGetSignalEFull(worker, error_type, error_str);
+    }
+}
+
+void
+SWGContentApi::contentIdGet(qint32 id) {
+    QString fullPath;
+    fullPath.append(this->host).append(this->basePath).append("/content/{id}");
+
+    QString idPathParam("{"); idPathParam.append("id").append("}");
+    fullPath.replace(idPathParam, stringValue(id));
+
+
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
+
+
+
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
+
+    connect(worker,
+            &SWGHttpRequestWorker::on_execution_finished,
+            this,
+            &SWGContentApi::contentIdGetCallback);
+
+    worker->execute(&input);
+}
+
+void
+SWGContentApi::contentIdGetCallback(SWGHttpRequestWorker * worker) {
+    QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        msg = QString("Success! %1 bytes").arg(worker->response.length());
+    }
+    else {
+        msg = "Error: " + worker->error_str;
+    }
+
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit contentIdGetSignal();
+    } else {
+        emit contentIdGetSignalE(error_type, error_str);
+        emit contentIdGetSignalEFull(worker, error_type, error_str);
     }
 }
 
@@ -837,12 +935,26 @@ SWGContentApi::contentStagingZonesGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGContentApi::contentStatsGet(QString* limit) {
+SWGContentApi::contentStatsGet(QString* limit, QString* offset) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/content/stats");
 
-    QString limitPathParam("{"); limitPathParam.append("limit").append("}");
-    fullPath.replace(limitPathParam, stringValue(limit));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("limit"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(limit)));
+
+    if (fullPath.indexOf("?") > 0)
+      fullPath.append("&");
+    else
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("offset"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(offset)));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();

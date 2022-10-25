@@ -1,4 +1,4 @@
-# EstuaryApi.UtilContentAddResponse
+# EstuaryClient.UtilContentAddResponse
 
 ## Properties
 Name | Type | Description | Notes

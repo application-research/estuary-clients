@@ -29,6 +29,7 @@ import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
+import io.swagger.model.UtilContentCreateBody;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -85,10 +86,9 @@ public class ContentApiTest {
     @Test
     public void contentAddCarPostTest() {
         String body = null;
+        String ignoreDupes = null;
         String filename = null;
-        String commp = null;
-        String size = null;
-        //api.contentAddCarPost(body, filename, commp, size);
+        //api.contentAddCarPost(body, ignoreDupes, filename);
         
         // TODO: test validations
         
@@ -106,7 +106,8 @@ public class ContentApiTest {
     @Test
     public void contentAddIpfsPostTest() {
         UtilContentAddIpfsBody body = null;
-        //api.contentAddIpfsPost(body);
+        String ignoreDupes = null;
+        //api.contentAddIpfsPost(body, ignoreDupes);
         
         // TODO: test validations
         
@@ -123,10 +124,14 @@ public class ContentApiTest {
      */
     @Test
     public void contentAddPostTest() {
-        org.apache.cxf.jaxrs.ext.multipart.Attachment file = null;
+        org.apache.cxf.jaxrs.ext.multipart.Attachment data = null;
+        String filename = null;
         String coluuid = null;
+        Integer replication = null;
+        String ignoreDupes = null;
+        String lazyProvide = null;
         String dir = null;
-        //UtilContentAddResponse response = api.contentAddPost(file, coluuid, dir);
+        //UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -199,8 +204,9 @@ public class ContentApiTest {
      */
     @Test
     public void contentCreatePostTest() {
-        String body = null;
-        //api.contentCreatePost(body);
+        UtilContentCreateBody req = null;
+        String ignoreDupes = null;
+        //api.contentCreatePost(req, ignoreDupes);
         
         // TODO: test validations
         
@@ -257,6 +263,24 @@ public class ContentApiTest {
         String content = null;
         //String response = api.contentFailuresContentGet(content);
         //assertNotNull(response);
+        // TODO: test validations
+        
+        
+    }
+    
+    /**
+     * Content
+     *
+     * This endpoint returns a content by its ID
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void contentIdGetTest() {
+        Integer id = null;
+        //api.contentIdGet(id);
+        
         // TODO: test validations
         
         
@@ -343,7 +367,8 @@ public class ContentApiTest {
     @Test
     public void contentStatsGetTest() {
         String limit = null;
-        //api.contentStatsGet(limit);
+        String offset = null;
+        //api.contentStatsGet(limit, offset);
         
         // TODO: test validations
         

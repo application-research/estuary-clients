@@ -41,8 +41,6 @@ public:
 	class DealStatusMinerPropcidGetResponse;
 	class DealTransferInProgressGetRequest;
 	class DealTransferInProgressGetResponse;
-	class DealTransferStatusPostRequest;
-	class DealTransferStatusPostResponse;
 	class DealsFailuresGetRequest;
 	class DealsFailuresGetResponse;
 	class DealsMakeMinerPostRequest;
@@ -61,7 +59,6 @@ public:
     DECLARE_DELEGATE_OneParam(FDealStatusByProposalPropcidGetDelegate, const DealStatusByProposalPropcidGetResponse&);
     DECLARE_DELEGATE_OneParam(FDealStatusMinerPropcidGetDelegate, const DealStatusMinerPropcidGetResponse&);
     DECLARE_DELEGATE_OneParam(FDealTransferInProgressGetDelegate, const DealTransferInProgressGetResponse&);
-    DECLARE_DELEGATE_OneParam(FDealTransferStatusPostDelegate, const DealTransferStatusPostResponse&);
     DECLARE_DELEGATE_OneParam(FDealsFailuresGetDelegate, const DealsFailuresGetResponse&);
     DECLARE_DELEGATE_OneParam(FDealsMakeMinerPostDelegate, const DealsMakeMinerPostResponse&);
     DECLARE_DELEGATE_OneParam(FDealsStatusDealGetDelegate, const DealsStatusDealGetResponse&);
@@ -75,7 +72,6 @@ public:
     bool DealStatusByProposalPropcidGet(const DealStatusByProposalPropcidGetRequest& Request, const FDealStatusByProposalPropcidGetDelegate& Delegate = FDealStatusByProposalPropcidGetDelegate()) const;
     bool DealStatusMinerPropcidGet(const DealStatusMinerPropcidGetRequest& Request, const FDealStatusMinerPropcidGetDelegate& Delegate = FDealStatusMinerPropcidGetDelegate()) const;
     bool DealTransferInProgressGet(const DealTransferInProgressGetRequest& Request, const FDealTransferInProgressGetDelegate& Delegate = FDealTransferInProgressGetDelegate()) const;
-    bool DealTransferStatusPost(const DealTransferStatusPostRequest& Request, const FDealTransferStatusPostDelegate& Delegate = FDealTransferStatusPostDelegate()) const;
     bool DealsFailuresGet(const DealsFailuresGetRequest& Request, const FDealsFailuresGetDelegate& Delegate = FDealsFailuresGetDelegate()) const;
     bool DealsMakeMinerPost(const DealsMakeMinerPostRequest& Request, const FDealsMakeMinerPostDelegate& Delegate = FDealsMakeMinerPostDelegate()) const;
     bool DealsStatusDealGet(const DealsStatusDealGetRequest& Request, const FDealsStatusDealGetDelegate& Delegate = FDealsStatusDealGetDelegate()) const;
@@ -90,7 +86,6 @@ private:
     void OnDealStatusByProposalPropcidGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealStatusByProposalPropcidGetDelegate Delegate) const;
     void OnDealStatusMinerPropcidGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealStatusMinerPropcidGetDelegate Delegate) const;
     void OnDealTransferInProgressGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealTransferInProgressGetDelegate Delegate) const;
-    void OnDealTransferStatusPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealTransferStatusPostDelegate Delegate) const;
     void OnDealsFailuresGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealsFailuresGetDelegate Delegate) const;
     void OnDealsMakeMinerPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealsMakeMinerPostDelegate Delegate) const;
     void OnDealsStatusDealGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealsStatusDealGetDelegate Delegate) const;

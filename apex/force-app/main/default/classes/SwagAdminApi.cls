@@ -28,14 +28,17 @@ public class SwagAdminApi {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids (required)
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringPeersDelete() {
+    public void adminPeeringPeersDelete(Map<String, Object> params) {
+        client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         client.invoke(
-            'DELETE', '/admin/peering/peers', '',
+            'DELETE', '/admin/peering/peers',
+            (List<String>) params.get('body'),
             query, form,
             new Map<String, Object>(),
             new Map<String, Object>(),

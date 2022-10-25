@@ -58,13 +58,18 @@ export class PeersService {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
+     * @param body Peer ids
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersDelete(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringPeersDelete(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringPeersDelete(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public adminPeeringPeersDelete(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringPeersDelete(body: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        }
 
         let headers = this.defaultHeaders;
 
@@ -85,6 +90,10 @@ export class PeersService {
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.delete<any>(`${this.basePath}/admin/peering/peers`,
             {

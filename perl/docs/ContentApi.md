@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**content_deals_get**](ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
+[**content_id_get**](ContentApi.md#content_id_get) | **GET** /content/{id} | Content
 [**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
 [**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
@@ -28,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post(body => $body, filename => $filename, commp => $commp, size => $size)
+> content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename)
 
 Add Car object
 
@@ -47,12 +48,11 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 );
 
 my $body = WWW::SwaggerClient::Object::string->new(); # string | Car
+my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 my $filename = 'filename_example'; # string | Filename
-my $commp = 'commp_example'; # string | Commp
-my $size = 'size_example'; # string | Size
 
 eval { 
-    $api_instance->content_add_car_post(body => $body, filename => $filename, commp => $commp, size => $size);
+    $api_instance->content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_add_car_post: $@\n";
@@ -64,9 +64,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **string**| Car | 
+ **ignore_dupes** | **string**| Ignore Dupes | [optional] 
  **filename** | **string**| Filename | [optional] 
- **commp** | **string**| Commp | [optional] 
- **size** | **string**| Size | [optional] 
 
 ### Return type
 
@@ -84,7 +83,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(body => $body)
+> content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes)
 
 Add IPFS object
 
@@ -103,9 +102,10 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 );
 
 my $body = WWW::SwaggerClient::Object::UtilContentAddIpfsBody->new(); # UtilContentAddIpfsBody | IPFS Body
+my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 
 eval { 
-    $api_instance->content_add_ipfs_post(body => $body);
+    $api_instance->content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_add_ipfs_post: $@\n";
@@ -117,6 +117,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **ignore_dupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -134,7 +135,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(file => $file, coluuid => $coluuid, dir => $dir)
+> UtilContentAddResponse content_add_post(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignore_dupes => $ignore_dupes, lazy_provide => $lazy_provide, dir => $dir)
 
 Add new content
 
@@ -152,12 +153,16 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $file = '/path/to/file.txt'; # File | File to upload
+my $data = '/path/to/file.txt'; # File | File to upload
+my $filename = 'filename_example'; # string | Filenam to use for upload
 my $coluuid = 'coluuid_example'; # string | Collection UUID
+my $replication = 56; # int | Replication value
+my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes true/false
+my $lazy_provide = 'lazy_provide_example'; # string | Lazy Provide true/false
 my $dir = 'dir_example'; # string | Directory
 
 eval { 
-    my $result = $api_instance->content_add_post(file => $file, coluuid => $coluuid, dir => $dir);
+    my $result = $api_instance->content_add_post(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignore_dupes => $ignore_dupes, lazy_provide => $lazy_provide, dir => $dir);
     print Dumper($result);
 };
 if ($@) {
@@ -169,9 +174,13 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| File to upload | 
- **coluuid** | **string**| Collection UUID | 
- **dir** | **string**| Directory | 
+ **data** | **File**| File to upload | 
+ **filename** | **string**| Filenam to use for upload | [optional] 
+ **coluuid** | **string**| Collection UUID | [optional] 
+ **replication** | **int**| Replication value | [optional] 
+ **ignore_dupes** | **string**| Ignore Dupes true/false | [optional] 
+ **lazy_provide** | **string**| Lazy Provide true/false | [optional] 
+ **dir** | **string**| Directory | [optional] 
 
 ### Return type
 
@@ -344,7 +353,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post(body => $body)
+> content_create_post(req => $req, ignore_dupes => $ignore_dupes)
 
 Add a new content
 
@@ -362,10 +371,11 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $body = WWW::SwaggerClient::Object::string->new(); # string | Content
+my $req = WWW::SwaggerClient::Object::UtilContentCreateBody->new(); # UtilContentCreateBody | Content
+my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 
 eval { 
-    $api_instance->content_create_post(body => $body);
+    $api_instance->content_create_post(req => $req, ignore_dupes => $ignore_dupes);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_create_post: $@\n";
@@ -376,7 +386,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string**| Content | 
+ **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **ignore_dupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type
 
@@ -534,6 +545,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 **string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_id_get**
+> content_id_get(id => $id)
+
+Content
+
+This endpoint returns a content by its ID
+
+### Example 
+```perl
+use Data::Dumper;
+use WWW::SwaggerClient::ContentApi;
+my $api_instance = WWW::SwaggerClient::ContentApi->new(
+
+    # Configure API key authorization: bearerAuth
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+);
+
+my $id = 56; # int | Content ID
+
+eval { 
+    $api_instance->content_id_get(id => $id);
+};
+if ($@) {
+    warn "Exception when calling ContentApi->content_id_get: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Content ID | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -740,7 +801,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get(limit => $limit)
+> content_stats_get(limit => $limit, offset => $offset)
 
 Get content statistics
 
@@ -759,9 +820,10 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 );
 
 my $limit = 'limit_example'; # string | limit
+my $offset = 'offset_example'; # string | offset
 
 eval { 
-    $api_instance->content_stats_get(limit => $limit);
+    $api_instance->content_stats_get(limit => $limit, offset => $offset);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_stats_get: $@\n";
@@ -773,6 +835,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **string**| limit | 
+ **offset** | **string**| offset | 
 
 ### Return type
 

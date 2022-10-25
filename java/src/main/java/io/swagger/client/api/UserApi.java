@@ -290,12 +290,14 @@ public class UserApi {
     }
     /**
      * Build call for userApiKeysPost
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param perms Permissions -- currently unused (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysPostCall(String expiry, String perms, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -303,6 +305,10 @@ public class UserApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (expiry != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiry", expiry));
+        if (perms != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("perms", perms));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -337,10 +343,10 @@ public class UserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call userApiKeysPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call userApiKeysPostValidateBeforeCall(String expiry, String perms, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = userApiKeysPostCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userApiKeysPostCall(expiry, perms, progressListener, progressRequestListener);
         return call;
 
     }
@@ -348,22 +354,26 @@ public class UserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param perms Permissions -- currently unused (optional)
      * @return MainGetApiKeysResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MainGetApiKeysResp userApiKeysPost() throws ApiException {
-        ApiResponse<MainGetApiKeysResp> resp = userApiKeysPostWithHttpInfo();
+    public MainGetApiKeysResp userApiKeysPost(String expiry, String perms) throws ApiException {
+        ApiResponse<MainGetApiKeysResp> resp = userApiKeysPostWithHttpInfo(expiry, perms);
         return resp.getData();
     }
 
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param perms Permissions -- currently unused (optional)
      * @return ApiResponse&lt;MainGetApiKeysResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MainGetApiKeysResp> userApiKeysPostWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(null, null);
+    public ApiResponse<MainGetApiKeysResp> userApiKeysPostWithHttpInfo(String expiry, String perms) throws ApiException {
+        com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(expiry, perms, null, null);
         Type localVarReturnType = new TypeToken<MainGetApiKeysResp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -371,11 +381,13 @@ public class UserApi {
     /**
      * Create API keys for a user (asynchronously)
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param perms Permissions -- currently unused (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysPostAsync(final ApiCallback<MainGetApiKeysResp> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysPostAsync(String expiry, String perms, final ApiCallback<MainGetApiKeysResp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -396,7 +408,7 @@ public class UserApi {
             };
         }
 
-        com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(expiry, perms, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<MainGetApiKeysResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

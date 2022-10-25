@@ -45,10 +45,11 @@ API.Client.AdminApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
 /**
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
+ * @param {!Array<!string>} body Peer ids
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise}
  */
-API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(opt_extraHttpRequestParams) {
+API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(body, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/admin/peering/peers';
 
@@ -57,12 +58,17 @@ API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(opt_extraHttpRe
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
+  // verify required parameter 'body' is set
+  if (!body) {
+    throw new Error('Missing required parameter body when calling adminPeeringPeersDelete');
+  }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'DELETE',
     url: path,
     json: true,
-            params: queryParameters,
+    data: body,
+        params: queryParameters,
     headers: headerParams
   };
 

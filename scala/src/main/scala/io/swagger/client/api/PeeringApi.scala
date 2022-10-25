@@ -82,10 +82,11 @@ class PeeringApi(
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
    *
+   * @param body Peer ids 
    * @return void
    */
-  def adminPeeringPeersDelete() = {
-    val await = Try(Await.result(adminPeeringPeersDeleteAsync(), Duration.Inf))
+  def adminPeeringPeersDelete(body: List[String]) = {
+    val await = Try(Await.result(adminPeeringPeersDeleteAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -96,10 +97,11 @@ class PeeringApi(
    * Remove peers on Peering Service asynchronously
    * This endpoint can be used to remove a Peer from the Peering Service
    *
+   * @param body Peer ids 
    * @return Future(void)
    */
-  def adminPeeringPeersDeleteAsync() = {
-      helper.adminPeeringPeersDelete()
+  def adminPeeringPeersDeleteAsync(body: List[String]) = {
+      helper.adminPeeringPeersDelete(body)
   }
 
   /**
@@ -226,7 +228,7 @@ class PeeringApi(
 
 class PeeringApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def adminPeeringPeersDelete()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringPeersDelete(body: List[String])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[String]]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -235,7 +237,7 @@ class PeeringApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
 
-    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

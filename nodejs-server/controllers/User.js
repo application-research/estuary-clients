@@ -25,7 +25,9 @@ module.exports.userApi_keysKeyDELETE = function userApi_keysKeyDELETE (req, res,
 };
 
 module.exports.userApi_keysPOST = function userApi_keysPOST (req, res, next) {
-  User.userApi_keysPOST()
+  var expiry = req.swagger.params['expiry'].value;
+  var perms = req.swagger.params['perms'].value;
+  User.userApi_keysPOST(expiry,perms)
     .then(function (response) {
       utils.writeJson(res, response);
     })

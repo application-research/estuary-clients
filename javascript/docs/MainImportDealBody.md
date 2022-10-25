@@ -1,4 +1,4 @@
-# EstuaryApi.MainImportDealBody
+# EstuaryClient.MainImportDealBody
 
 ## Properties
 Name | Type | Description | Notes

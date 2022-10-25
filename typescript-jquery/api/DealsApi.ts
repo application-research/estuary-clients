@@ -477,61 +477,6 @@ export class DealsApi {
     }
 
     /**
-     * This endpoint returns the status of a transfer
-     * @summary Transfer Status
-     */
-    public dealTransferStatusPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
-        let localVarPath = this.basePath + '/deal/transfer/status';
-
-        let queryParameters: any = {};
-        let headerParams: any = {};
-
-        localVarPath = localVarPath + "?" + $.param(queryParameters);
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (bearerAuth) required
-        if (this.configuration.apiKey) {
-            headerParams['Authorization'] = this.configuration.apiKey;
-        }
-
-
-        let requestOptions: JQueryAjaxSettings = {
-            url: localVarPath,
-            type: 'POST',
-            headers: headerParams,
-            processData: false
-        };
-
-        if (headerParams['Content-Type']) {
-            requestOptions.contentType = headerParams['Content-Type'];
-        }
-
-        if (extraJQueryAjaxSettings) {
-            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
-        }
-
-        if (this.defaultExtraJQueryAjaxSettings) {
-            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
-        }
-
-        let dfd = $.Deferred();
-        $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
-                dfd.resolve(jqXHR, data),
-            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
-                dfd.reject(xhr, errorThrown)
-        );
-        return dfd.promise();
-    }
-
-    /**
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      */

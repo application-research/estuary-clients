@@ -33,7 +33,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void publicMinersDealsMinerGet(QString* miner);
+    void publicMinersDealsMinerGet(QString* miner, QString* ignore_failed);
     void publicMinersStatsMinerGet(QString* miner);
     
 private:

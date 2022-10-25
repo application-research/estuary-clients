@@ -117,7 +117,7 @@ namespace IO.Swagger.Client
         /// </summary>
         public static String ToDebugReport()
         {
-            String report = "C# SDK (estuary_client) Debug Report:\n";
+            String report = "C# SDK (estuary-client) Debug Report:\n";
             report += "    OS: " + Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + Assembly
                      .GetExecutingAssembly()

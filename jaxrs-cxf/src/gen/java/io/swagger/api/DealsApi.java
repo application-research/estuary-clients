@@ -121,19 +121,6 @@ public interface DealsApi  {
     public void dealTransferInProgressGet();
 
     /**
-     * Transfer Status
-     *
-     * This endpoint returns the status of a transfer
-     *
-     */
-    @POST
-    @Path("/deal/transfer/status")
-    @Produces({ "application/json" })
-    @ApiOperation(value = "Transfer Status", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealTransferStatusPost();
-
-    /**
      * Get storage failures for user
      *
      * This endpoint returns a list of storage failures for user

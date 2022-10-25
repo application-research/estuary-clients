@@ -60,6 +60,47 @@ feature -- API Access
 			end
 		end	
 
+	collections_coluuid_contents_delete (coluuid: STRING_32; contentid: STRING_32; body: MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY): detachable STRING_32
+			-- Deletes a content from a collection
+			-- This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+			-- 
+			-- argument: coluuid Collection ID (required)
+			-- 
+			-- argument: contentid Content ID (required)
+			-- 
+			-- argument: body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) (required)
+			-- 
+			-- 
+			-- Result STRING_32
+		require
+		local
+  			l_path: STRING
+  			l_request: API_CLIENT_REQUEST
+  			l_response: API_CLIENT_RESPONSE
+		do
+			reset_error
+			create l_request
+			l_request.set_body(body)
+			l_path := "/collections/{coluuid}/contents"
+			l_path.replace_substring_all ("{"+"coluuid"+"}", api_client.url_encode (coluuid.out))
+			l_path.replace_substring_all ("{"+"contentid"+"}", api_client.url_encode (contentid.out))
+
+
+			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
+				l_request.add_header(l_accept,"Accept");
+			end
+			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
+			l_request.set_auth_names (<<"bearerAuth">>)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
+			if l_response.has_error then
+				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
+			end
+		end	
+
 	collections_coluuid_delete (coluuid: STRING_32)
 			-- Deletes a collection
 			-- This endpoint is used to delete an existing collection.
@@ -95,7 +136,7 @@ feature -- API Access
 			-- Get contents in a collection
 			-- This endpoint is used to get contents in a collection. If no colpath query param is passed
 			-- 
-			-- argument: coluuid Collection UUID (required)
+			-- argument: coluuid coluuid (required)
 			-- 
 			-- argument: dir Directory (optional)
 			-- 
@@ -111,7 +152,7 @@ feature -- API Access
 			create l_request
 			
 			l_path := "/collections/{coluuid}"
-			l_request.fill_query_params(api_client.parameter_to_tuple("", "coluuid", coluuid));
+			l_path.replace_substring_all ("{"+"coluuid"+"}", api_client.url_encode (coluuid.out))
 			l_request.fill_query_params(api_client.parameter_to_tuple("", "dir", dir));
 
 
@@ -130,11 +171,13 @@ feature -- API Access
 			end
 		end	
 
-	collections_coluuid_post (body: LIST [INTEGER_32]): detachable STRING_TABLE[STRING_32]
+	collections_coluuid_post (coluuid: STRING_32; content_ids: LIST [INTEGER_32]): detachable STRING_TABLE[STRING_32]
 			-- Add contents to a collection
 			-- This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
 			-- 
-			-- argument: body Content IDs to add to collection (required)
+			-- argument: coluuid coluuid (required)
+			-- 
+			-- argument: content_ids Content IDs to add to collection (required)
 			-- 
 			-- 
 			-- Result STRING_TABLE[STRING_32]
@@ -146,8 +189,9 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			l_request.set_body(body)
+			l_request.set_body(content_ids)
 			l_path := "/collections/{coluuid}"
+			l_path.replace_substring_all ("{"+"coluuid"+"}", api_client.url_encode (coluuid.out))
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -202,14 +246,12 @@ feature -- API Access
 			end
 		end	
 
-	collections_get (id: INTEGER_32): detachable LIST [MAIN_COLLECTION]
+	collections_get : detachable LIST [COLLECTIONS_COLLECTION]
 			-- List all collections
 			-- This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
 			-- 
-			-- argument: id User ID (required)
 			-- 
-			-- 
-			-- Result LIST [MAIN_COLLECTION]
+			-- Result LIST [COLLECTIONS_COLLECTION]
 		require
 		local
   			l_path: STRING
@@ -220,7 +262,6 @@ feature -- API Access
 			create l_request
 			
 			l_path := "/collections/"
-			l_path.replace_substring_all ("{"+"id"+"}", api_client.url_encode (id.out))
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
@@ -231,21 +272,21 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { LIST [MAIN_COLLECTION] } l_response.data ({ LIST [MAIN_COLLECTION] }) as l_data then
+			elseif attached { LIST [COLLECTIONS_COLLECTION] } l_response.data ({ LIST [COLLECTIONS_COLLECTION] }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	collections_post (body: MAIN_CREATE_COLLECTION_BODY): detachable MAIN_COLLECTION
+	collections_post (body: MAIN_CREATE_COLLECTION_BODY): detachable COLLECTIONS_COLLECTION
 			-- Create a new collection
 			-- This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
 			-- 
 			-- argument: body Collection name and description (required)
 			-- 
 			-- 
-			-- Result MAIN_COLLECTION
+			-- Result COLLECTIONS_COLLECTION
 		require
 		local
   			l_path: STRING
@@ -266,7 +307,7 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { MAIN_COLLECTION } l_response.data ({ MAIN_COLLECTION }) as l_data then
+			elseif attached { COLLECTIONS_COLLECTION } l_response.data ({ COLLECTIONS_COLLECTION }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")

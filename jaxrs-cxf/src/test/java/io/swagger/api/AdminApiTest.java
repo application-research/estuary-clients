@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import java.util.List;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -80,7 +81,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        //api.adminPeeringPeersDelete();
+        List<String> body = null;
+        //api.adminPeeringPeersDelete(body);
         
         // TODO: test validations
         

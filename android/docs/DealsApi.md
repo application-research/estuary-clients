@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -291,44 +290,6 @@ try {
     apiInstance.dealTransferInProgressGet();
 } catch (ApiException e) {
     System.err.println("Exception when calling DealsApi#dealTransferInProgressGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="dealTransferStatusPost"></a>
-# **dealTransferStatusPost**
-> dealTransferStatusPost()
-
-Transfer Status
-
-This endpoint returns the status of a transfer
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.api.DealsApi;
-
-DealsApi apiInstance = new DealsApi();
-try {
-    apiInstance.dealTransferStatusPost();
-} catch (ApiException e) {
-    System.err.println("Exception when calling DealsApi#dealTransferStatusPost");
     e.printStackTrace();
 }
 ```
