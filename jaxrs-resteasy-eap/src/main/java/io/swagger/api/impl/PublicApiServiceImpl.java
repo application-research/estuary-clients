@@ -12,7 +12,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:53:12.944Z")
 public class PublicApiServiceImpl implements PublicApi {
       public Response publicByCidCidGet(String cid,SecurityContext securityContext) {
       // do some magic!

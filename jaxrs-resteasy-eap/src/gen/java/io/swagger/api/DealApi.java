@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the deal API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:25:00.571Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:53:12.944Z")
 public interface DealApi  {
    
     @POST

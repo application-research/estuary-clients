@@ -33,7 +33,7 @@
   /**
    * The MainEstimateDealBody model module.
    * @module model/MainEstimateDealBody
-   * @version 0.0.0
+   * @version 1.0.1
    */
 
   /**

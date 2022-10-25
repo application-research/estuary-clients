@@ -33,7 +33,7 @@
   /**
    * The UtilContentAddIpfsBody model module.
    * @module model/UtilContentAddIpfsBody
-   * @version 0.0.0
+   * @version 1.0.1
    */
 
   /**

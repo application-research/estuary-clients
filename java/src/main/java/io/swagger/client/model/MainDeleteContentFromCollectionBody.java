@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * MainDeleteContentFromCollectionBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-10-25T22:24:45.150Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-10-25T22:52:57.283Z")
 public class MainDeleteContentFromCollectionBody {
   @SerializedName("by")
   private String by = null;

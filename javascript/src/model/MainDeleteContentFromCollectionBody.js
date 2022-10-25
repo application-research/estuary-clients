@@ -33,7 +33,7 @@
   /**
    * The MainDeleteContentFromCollectionBody model module.
    * @module model/MainDeleteContentFromCollectionBody
-   * @version 0.0.0
+   * @version 1.0.1
    */
 
   /**
