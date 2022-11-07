@@ -1,11 +1,10 @@
-# \DefaultApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DealTransferStatusPost**](DefaultApi.md#DealTransferStatusPost) | **Post** /deal/transfer/status | 
-
 
 # **DealTransferStatusPost**
 > DealTransferStatusPost(ctx, )
