@@ -10,8 +10,9 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-10-25T22:52:55.523Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-07T20:05:41.507Z")
 public class DealsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map

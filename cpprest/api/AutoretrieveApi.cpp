@@ -36,7 +36,7 @@ AutoretrieveApi::~AutoretrieveApi()
 {
 }
 
-pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t addresses, utility::string_t pubKey)
+pplx::task<utility::string_t> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t addresses, utility::string_t pubKey)
 {
 
 
@@ -56,7 +56,7 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t ad
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -68,6 +68,11 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t ad
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
     }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
+    }
     else
     {
         throw ApiException(400, utility::conversions::to_string_t("AutoretrieveApi->adminAutoretrieveInitPost does not produce any supported media type"));
@@ -77,6 +82,12 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t ad
 
     std::unordered_set<utility::string_t> consumeHttpContentTypes;
 
+    {
+        formParams[ utility::conversions::to_string_t("addresses") ] = ApiClient::parameterToString(addresses);
+    }
+    {
+        formParams[ utility::conversions::to_string_t("pubKey") ] = ApiClient::parameterToString(pubKey);
+    }
 
     std::shared_ptr<IHttpBody> httpBody;
     utility::string_t requestHttpContentType;
@@ -85,21 +96,11 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t ad
     if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
-        web::json::value json;
-
-        json = ModelBase::toJson(pubKey);
-
-        httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
     else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-        std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
-        multipart->add(ModelBase::toHttpContent("pubKey", pubKey));
-
-        httpBody = multipart;
-        requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
     else
     {
@@ -146,10 +147,33 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveInitPost(utility::string_t ad
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminAutoretrieveInitPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> AutoretrieveApi::adminAutoretrieveListGet()
+pplx::task<utility::string_t> AutoretrieveApi::adminAutoretrieveListGet()
 {
 
 
@@ -169,7 +193,7 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveListGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -180,6 +204,11 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveListGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -249,10 +278,33 @@ pplx::task<void> AutoretrieveApi::adminAutoretrieveListGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminAutoretrieveListGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> AutoretrieveApi::autoretrieveHeartbeatPost(utility::string_t token)
+pplx::task<utility::string_t> AutoretrieveApi::autoretrieveHeartbeatPost(utility::string_t token)
 {
 
 
@@ -272,7 +324,7 @@ pplx::task<void> AutoretrieveApi::autoretrieveHeartbeatPost(utility::string_t to
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -283,6 +335,11 @@ pplx::task<void> AutoretrieveApi::autoretrieveHeartbeatPost(utility::string_t to
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -355,7 +412,30 @@ pplx::task<void> AutoretrieveApi::autoretrieveHeartbeatPost(utility::string_t to
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling autoretrieveHeartbeatPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

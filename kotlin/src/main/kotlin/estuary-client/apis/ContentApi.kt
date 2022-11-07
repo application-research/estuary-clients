@@ -15,6 +15,7 @@ import estuary-client.models.MainimportDealBody
 import estuary-client.models.UtilContentAddIpfsBody
 import estuary-client.models.UtilContentAddResponse
 import estuary-client.models.UtilContentCreateBody
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -26,9 +27,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * @param body Car 
     * @param ignoreDupes Ignore Dupes (optional)
     * @param filename Filename (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String, filename: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String, filename: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "filename" to listOf("$filename"))
         
@@ -44,13 +46,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -64,9 +66,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     * @param body IPFS Body 
     * @param ignoreDupes Ignore Dupes (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"))
         
@@ -82,13 +85,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -185,9 +188,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * @param begin Begin 
     * @param duration Duration 
     * @param all All 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentAllDealsGet(begin: kotlin.String, duration: kotlin.String, all: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentAllDealsGet(begin: kotlin.String, duration: kotlin.String, all: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("begin" to listOf("$begin"), "duration" to listOf("$duration"), "all" to listOf("$all"))
         
@@ -203,13 +207,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -222,9 +226,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Get content bandwidth
     * This endpoint returns content bandwidth
     * @param content Content ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentBwUsageContentGet(content: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentBwUsageContentGet(content: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -240,13 +245,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -260,9 +265,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * This endpoint adds a new content
     * @param req Content 
     * @param ignoreDupes Ignore Dupes (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun contentCreatePost(req: UtilContentCreateBody, ignoreDupes: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentCreatePost(req: UtilContentCreateBody, ignoreDupes: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = req
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"))
         
@@ -278,13 +284,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -298,9 +304,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * This endpoint lists all content with deals
     * @param limit Limit (optional)
     * @param offset Offset (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun contentDealsGet(limit: kotlin.Int, offset: kotlin.Int) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentDealsGet(limit: kotlin.Int, offset: kotlin.Int) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("limit" to listOf("$limit"), "offset" to listOf("$offset"))
         
@@ -316,13 +323,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -335,9 +342,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Ensure Replication
     * This endpoint ensures that the content is replicated to the specified number of providers
     * @param datacid Data CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentEnsureReplicationDatacidGet(datacid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentEnsureReplicationDatacidGet(datacid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -353,13 +361,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -410,9 +418,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Content
     * This endpoint returns a content by its ID
     * @param id Content ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentIdGet(id: kotlin.Int) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentIdGet(id: kotlin.Int) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -428,13 +437,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -447,9 +456,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Import a deal
     * This endpoint imports a deal into the shuttle.
     * @param body Import a deal 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentImportdealPost(body: MainimportDealBody) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentImportdealPost(body: MainimportDealBody) : kotlin.String {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -465,13 +475,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -483,10 +493,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     /**
     * List all pinned content
     * This endpoint lists all content
-    * @return kotlin.Array<kotlin.String>
+    * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun contentListGet() : kotlin.Array<kotlin.String> {
+    fun contentListGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -502,13 +512,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.Array<kotlin.String>>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -521,9 +531,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Read content
     * This endpoint reads content from the blockstore
     * @param cont CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentReadContGet(cont: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentReadContGet(cont: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -539,13 +550,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -557,9 +568,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     /**
     * Get staging zone for user
     * This endpoint is used to get staging zone for user.
-    * @return void
+    * @return kotlin.String
     */
-    fun contentStagingZonesGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentStagingZonesGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -575,13 +587,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -595,9 +607,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     * @param limit limit 
     * @param offset offset 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentStatsGet(limit: kotlin.String, offset: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentStatsGet(limit: kotlin.String, offset: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("limit" to listOf("$limit"), "offset" to listOf("$offset"))
         
@@ -613,13 +626,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -632,9 +645,10 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Content Status
     * This endpoint returns the status of a content
     * @param id Content ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun contentStatusIdGet(id: kotlin.Int) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun contentStatusIdGet(id: kotlin.Int) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -650,13 +664,13 @@ class ContentApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

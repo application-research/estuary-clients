@@ -14,7 +14,9 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.ChannelIDParam
 import io.swagger.client.model.EstimateDealBody
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -84,9 +86,9 @@ class DealsApi(
    * This endpoint estimates the cost of a deal
    *
    * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
-   * @return void
+   * @return String
    */
-  def dealEstimatePost(body: EstimateDealBody) = {
+  def dealEstimatePost(body: EstimateDealBody): Option[String] = {
     val await = Try(Await.result(dealEstimatePostAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -99,9 +101,9 @@ class DealsApi(
    * This endpoint estimates the cost of a deal
    *
    * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealEstimatePostAsync(body: EstimateDealBody) = {
+  def dealEstimatePostAsync(body: EstimateDealBody): Future[String] = {
       helper.dealEstimatePost(body)
   }
 
@@ -110,9 +112,9 @@ class DealsApi(
    * This endpoint returns the deal info for a deal
    *
    * @param dealid Deal ID 
-   * @return void
+   * @return String
    */
-  def dealInfoDealidGet(dealid: Integer) = {
+  def dealInfoDealidGet(dealid: Integer): Option[String] = {
     val await = Try(Await.result(dealInfoDealidGetAsync(dealid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -125,9 +127,9 @@ class DealsApi(
    * This endpoint returns the deal info for a deal
    *
    * @param dealid Deal ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealInfoDealidGetAsync(dealid: Integer) = {
+  def dealInfoDealidGetAsync(dealid: Integer): Future[String] = {
       helper.dealInfoDealidGet(dealid)
   }
 
@@ -136,9 +138,9 @@ class DealsApi(
    * This endpoint returns the proposal for a deal
    *
    * @param propcid Proposal CID 
-   * @return void
+   * @return String
    */
-  def dealProposalPropcidGet(propcid: String) = {
+  def dealProposalPropcidGet(propcid: String): Option[String] = {
     val await = Try(Await.result(dealProposalPropcidGetAsync(propcid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -151,9 +153,9 @@ class DealsApi(
    * This endpoint returns the proposal for a deal
    *
    * @param propcid Proposal CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealProposalPropcidGetAsync(propcid: String) = {
+  def dealProposalPropcidGetAsync(propcid: String): Future[String] = {
       helper.dealProposalPropcidGet(propcid)
   }
 
@@ -162,9 +164,9 @@ class DealsApi(
    * This endpoint returns the ask for a given CID
    *
    * @param miner CID 
-   * @return void
+   * @return String
    */
-  def dealQueryMinerGet(miner: String) = {
+  def dealQueryMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(dealQueryMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -177,9 +179,9 @@ class DealsApi(
    * This endpoint returns the ask for a given CID
    *
    * @param miner CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealQueryMinerGetAsync(miner: String) = {
+  def dealQueryMinerGetAsync(miner: String): Future[String] = {
       helper.dealQueryMinerGet(miner)
   }
 
@@ -188,9 +190,9 @@ class DealsApi(
    * Get Deal Status by PropCid
    *
    * @param propcid PropCid 
-   * @return void
+   * @return String
    */
-  def dealStatusByProposalPropcidGet(propcid: String) = {
+  def dealStatusByProposalPropcidGet(propcid: String): Option[String] = {
     val await = Try(Await.result(dealStatusByProposalPropcidGetAsync(propcid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -203,9 +205,9 @@ class DealsApi(
    * Get Deal Status by PropCid
    *
    * @param propcid PropCid 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealStatusByProposalPropcidGetAsync(propcid: String) = {
+  def dealStatusByProposalPropcidGetAsync(propcid: String): Future[String] = {
       helper.dealStatusByProposalPropcidGet(propcid)
   }
 
@@ -215,9 +217,9 @@ class DealsApi(
    *
    * @param miner Miner 
    * @param propcid Proposal CID 
-   * @return void
+   * @return String
    */
-  def dealStatusMinerPropcidGet(miner: String, propcid: String) = {
+  def dealStatusMinerPropcidGet(miner: String, propcid: String): Option[String] = {
     val await = Try(Await.result(dealStatusMinerPropcidGetAsync(miner, propcid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -231,9 +233,9 @@ class DealsApi(
    *
    * @param miner Miner 
    * @param propcid Proposal CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealStatusMinerPropcidGetAsync(miner: String, propcid: String) = {
+  def dealStatusMinerPropcidGetAsync(miner: String, propcid: String): Future[String] = {
       helper.dealStatusMinerPropcidGet(miner, propcid)
   }
 
@@ -241,9 +243,9 @@ class DealsApi(
    * Transfer In Progress
    * This endpoint returns the in-progress transfers
    *
-   * @return void
+   * @return String
    */
-  def dealTransferInProgressGet() = {
+  def dealTransferInProgressGet(): Option[String] = {
     val await = Try(Await.result(dealTransferInProgressGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -255,19 +257,45 @@ class DealsApi(
    * Transfer In Progress asynchronously
    * This endpoint returns the in-progress transfers
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealTransferInProgressGetAsync() = {
+  def dealTransferInProgressGetAsync(): Future[String] = {
       helper.dealTransferInProgressGet()
+  }
+
+  /**
+   * Transfer Status
+   * This endpoint returns the status of a transfer
+   *
+   * @param chanid Channel ID 
+   * @return String
+   */
+  def dealTransferStatusPost(chanid: ChannelIDParam): Option[String] = {
+    val await = Try(Await.result(dealTransferStatusPostAsync(chanid), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Transfer Status asynchronously
+   * This endpoint returns the status of a transfer
+   *
+   * @param chanid Channel ID 
+   * @return Future(String)
+   */
+  def dealTransferStatusPostAsync(chanid: ChannelIDParam): Future[String] = {
+      helper.dealTransferStatusPost(chanid)
   }
 
   /**
    * Get storage failures for user
    * This endpoint returns a list of storage failures for user
    *
-   * @return void
+   * @return String
    */
-  def dealsFailuresGet() = {
+  def dealsFailuresGet(): Option[String] = {
     val await = Try(Await.result(dealsFailuresGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -279,9 +307,9 @@ class DealsApi(
    * Get storage failures for user asynchronously
    * This endpoint returns a list of storage failures for user
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealsFailuresGetAsync() = {
+  def dealsFailuresGetAsync(): Future[String] = {
       helper.dealsFailuresGet()
   }
 
@@ -291,9 +319,9 @@ class DealsApi(
    *
    * @param miner Miner 
    * @param dealRequest Deal Request 
-   * @return void
+   * @return String
    */
-  def dealsMakeMinerPost(miner: String, dealRequest: String) = {
+  def dealsMakeMinerPost(miner: String, dealRequest: String): Option[String] = {
     val await = Try(Await.result(dealsMakeMinerPostAsync(miner, dealRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -307,9 +335,9 @@ class DealsApi(
    *
    * @param miner Miner 
    * @param dealRequest Deal Request 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealsMakeMinerPostAsync(miner: String, dealRequest: String) = {
+  def dealsMakeMinerPostAsync(miner: String, dealRequest: String): Future[String] = {
       helper.dealsMakeMinerPost(miner, dealRequest)
   }
 
@@ -318,9 +346,9 @@ class DealsApi(
    * This endpoint returns the status of a deal
    *
    * @param deal Deal ID 
-   * @return void
+   * @return String
    */
-  def dealsStatusDealGet(deal: Integer) = {
+  def dealsStatusDealGet(deal: Integer): Option[String] = {
     val await = Try(Await.result(dealsStatusDealGetAsync(deal), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -333,9 +361,9 @@ class DealsApi(
    * This endpoint returns the status of a deal
    *
    * @param deal Deal ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def dealsStatusDealGetAsync(deal: Integer) = {
+  def dealsStatusDealGetAsync(deal: Integer): Future[String] = {
       helper.dealsStatusDealGet(deal)
   }
 
@@ -343,9 +371,9 @@ class DealsApi(
    * Get storage failures
    * This endpoint returns a list of storage failures
    *
-   * @return void
+   * @return String
    */
-  def publicDealsFailuresGet() = {
+  def publicDealsFailuresGet(): Option[String] = {
     val await = Try(Await.result(publicDealsFailuresGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -357,9 +385,9 @@ class DealsApi(
    * Get storage failures asynchronously
    * This endpoint returns a list of storage failures
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicDealsFailuresGetAsync() = {
+  def publicDealsFailuresGetAsync(): Future[String] = {
       helper.publicDealsFailuresGet()
   }
 
@@ -368,9 +396,9 @@ class DealsApi(
    * This endpoint returns the ask for a given CID
    *
    * @param miner CID 
-   * @return void
+   * @return String
    */
-  def publicMinersStorageQueryMinerGet(miner: String) = {
+  def publicMinersStorageQueryMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(publicMinersStorageQueryMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -383,9 +411,9 @@ class DealsApi(
    * This endpoint returns the ask for a given CID
    *
    * @param miner CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersStorageQueryMinerGetAsync(miner: String) = {
+  def publicMinersStorageQueryMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersStorageQueryMinerGet(miner)
   }
 
@@ -393,7 +421,7 @@ class DealsApi(
 
 class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def dealEstimatePost(body: EstimateDealBody)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[EstimateDealBody]): Future[Unit] = {
+  def dealEstimatePost(body: EstimateDealBody)(implicit reader: ClientResponseReader[String], writer: RequestWriter[EstimateDealBody]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/estimate"))
 
@@ -409,7 +437,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealInfoDealidGet(dealid: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealInfoDealidGet(dealid: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/info/{dealid}")
       replaceAll("\\{" + "dealid" + "\\}", dealid.toString))
@@ -425,7 +453,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealProposalPropcidGet(propcid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealProposalPropcidGet(propcid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/proposal/{propcid}")
       replaceAll("\\{" + "propcid" + "\\}", propcid.toString))
@@ -443,7 +471,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealQueryMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealQueryMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/query/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -461,7 +489,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealStatusByProposalPropcidGet(propcid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealStatusByProposalPropcidGet(propcid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/status-by-proposal/{propcid}")
       replaceAll("\\{" + "propcid" + "\\}", propcid.toString))
@@ -480,7 +508,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
   }
 
   def dealStatusMinerPropcidGet(miner: String,
-    propcid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    propcid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/status/{miner}/{propcid}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString)
@@ -501,7 +529,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealTransferInProgressGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealTransferInProgressGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/transfer/in-progress"))
 
@@ -516,7 +544,23 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealsFailuresGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealTransferStatusPost(chanid: ChannelIDParam)(implicit reader: ClientResponseReader[String], writer: RequestWriter[ChannelIDParam]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/deal/transfer/status"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (chanid == null) throw new Exception("Missing required parameter 'chanid' when calling DealsApi->dealTransferStatusPost")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(chanid))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def dealsFailuresGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deals/failures"))
 
@@ -532,7 +576,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
   }
 
   def dealsMakeMinerPost(miner: String,
-    dealRequest: String)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[String]): Future[Unit] = {
+    dealRequest: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deals/make/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -552,7 +596,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealsStatusDealGet(deal: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def dealsStatusDealGet(deal: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deals/status/{deal}")
       replaceAll("\\{" + "deal" + "\\}", deal.toString))
@@ -568,7 +612,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def publicDealsFailuresGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicDealsFailuresGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/deals/failures"))
 
@@ -583,7 +627,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def publicMinersStorageQueryMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersStorageQueryMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/storage/query/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))

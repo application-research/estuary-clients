@@ -22,7 +22,9 @@
 
 #include "../ApiClient.h"
 
+#include "Main.ChannelIDParam.h"
 #include "Main.estimateDealBody.h"
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -46,7 +48,7 @@ public:
     /// This endpoint estimates the cost of a deal
     /// </remarks>
     /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-    pplx::task<void> dealEstimatePost(
+    pplx::task<utility::string_t> dealEstimatePost(
         std::shared_ptr<Main.estimateDealBody> body
     );
     /// <summary>
@@ -56,7 +58,7 @@ public:
     /// This endpoint returns the deal info for a deal
     /// </remarks>
     /// <param name="dealid">Deal ID</param>
-    pplx::task<void> dealInfoDealidGet(
+    pplx::task<utility::string_t> dealInfoDealidGet(
         int32_t dealid
     );
     /// <summary>
@@ -66,7 +68,7 @@ public:
     /// This endpoint returns the proposal for a deal
     /// </remarks>
     /// <param name="propcid">Proposal CID</param>
-    pplx::task<void> dealProposalPropcidGet(
+    pplx::task<utility::string_t> dealProposalPropcidGet(
         utility::string_t propcid
     );
     /// <summary>
@@ -76,7 +78,7 @@ public:
     /// This endpoint returns the ask for a given CID
     /// </remarks>
     /// <param name="miner">CID</param>
-    pplx::task<void> dealQueryMinerGet(
+    pplx::task<utility::string_t> dealQueryMinerGet(
         utility::string_t miner
     );
     /// <summary>
@@ -86,7 +88,7 @@ public:
     /// Get Deal Status by PropCid
     /// </remarks>
     /// <param name="propcid">PropCid</param>
-    pplx::task<void> dealStatusByProposalPropcidGet(
+    pplx::task<utility::string_t> dealStatusByProposalPropcidGet(
         utility::string_t propcid
     );
     /// <summary>
@@ -97,7 +99,7 @@ public:
     /// </remarks>
     /// <param name="miner">Miner</param>
     /// <param name="propcid">Proposal CID</param>
-    pplx::task<void> dealStatusMinerPropcidGet(
+    pplx::task<utility::string_t> dealStatusMinerPropcidGet(
         utility::string_t miner,
         utility::string_t propcid
     );
@@ -107,7 +109,17 @@ public:
     /// <remarks>
     /// This endpoint returns the in-progress transfers
     /// </remarks>
-    pplx::task<void> dealTransferInProgressGet(
+    pplx::task<utility::string_t> dealTransferInProgressGet(
+    );
+    /// <summary>
+    /// Transfer Status
+    /// </summary>
+    /// <remarks>
+    /// This endpoint returns the status of a transfer
+    /// </remarks>
+    /// <param name="chanid">Channel ID</param>
+    pplx::task<utility::string_t> dealTransferStatusPost(
+        std::shared_ptr<Main.ChannelIDParam> chanid
     );
     /// <summary>
     /// Get storage failures for user
@@ -115,7 +127,7 @@ public:
     /// <remarks>
     /// This endpoint returns a list of storage failures for user
     /// </remarks>
-    pplx::task<void> dealsFailuresGet(
+    pplx::task<utility::string_t> dealsFailuresGet(
     );
     /// <summary>
     /// Make Deal
@@ -125,7 +137,7 @@ public:
     /// </remarks>
     /// <param name="miner">Miner</param>
     /// <param name="dealRequest">Deal Request</param>
-    pplx::task<void> dealsMakeMinerPost(
+    pplx::task<utility::string_t> dealsMakeMinerPost(
         utility::string_t miner,
         utility::string_t dealRequest
     );
@@ -136,7 +148,7 @@ public:
     /// This endpoint returns the status of a deal
     /// </remarks>
     /// <param name="deal">Deal ID</param>
-    pplx::task<void> dealsStatusDealGet(
+    pplx::task<utility::string_t> dealsStatusDealGet(
         int32_t deal
     );
     /// <summary>
@@ -145,7 +157,7 @@ public:
     /// <remarks>
     /// This endpoint returns a list of storage failures
     /// </remarks>
-    pplx::task<void> publicDealsFailuresGet(
+    pplx::task<utility::string_t> publicDealsFailuresGet(
     );
     /// <summary>
     /// Query Ask
@@ -154,7 +166,7 @@ public:
     /// This endpoint returns the ask for a given CID
     /// </remarks>
     /// <param name="miner">CID</param>
-    pplx::task<void> publicMinersStorageQueryMinerGet(
+    pplx::task<utility::string_t> publicMinersStorageQueryMinerGet(
         utility::string_t miner
     );
 

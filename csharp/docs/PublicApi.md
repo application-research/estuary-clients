@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="publicbycidcidget"></a>
 # **PublicByCidCidGet**
-> void PublicByCidCidGet (string cid)
+> string PublicByCidCidGet (string cid)
 
 Get Content by Cid
 
@@ -49,7 +49,8 @@ namespace Example
             try
             {
                 // Get Content by Cid
-                apiInstance.PublicByCidCidGet(cid);
+                string result = apiInstance.PublicByCidCidGet(cid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -83,7 +84,7 @@ void (empty response body)
 
 <a name="publicinfoget"></a>
 # **PublicInfoGet**
-> void PublicInfoGet ()
+> string PublicInfoGet ()
 
 Get public node info
 
@@ -113,7 +114,8 @@ namespace Example
             try
             {
                 // Get public node info
-                apiInstance.PublicInfoGet();
+                string result = apiInstance.PublicInfoGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -129,7 +131,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -144,7 +146,7 @@ void (empty response body)
 
 <a name="publicmetricsdealsonchainget"></a>
 # **PublicMetricsDealsOnChainGet**
-> void PublicMetricsDealsOnChainGet ()
+> string PublicMetricsDealsOnChainGet ()
 
 Get deal metrics
 
@@ -174,7 +176,8 @@ namespace Example
             try
             {
                 // Get deal metrics
-                apiInstance.PublicMetricsDealsOnChainGet();
+                string result = apiInstance.PublicMetricsDealsOnChainGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -190,7 +193,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -205,7 +208,7 @@ void (empty response body)
 
 <a name="publicminersdealsminerget"></a>
 # **PublicMinersDealsMinerGet**
-> void PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
+> string PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
 
 Get all miners deals
 
@@ -237,7 +240,8 @@ namespace Example
             try
             {
                 // Get all miners deals
-                apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
+                string result = apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -257,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -272,7 +276,7 @@ void (empty response body)
 
 <a name="publicminersfailuresminerget"></a>
 # **PublicMinersFailuresMinerGet**
-> void PublicMinersFailuresMinerGet (string miner)
+> string PublicMinersFailuresMinerGet (string miner)
 
 Get all miners
 
@@ -303,7 +307,8 @@ namespace Example
             try
             {
                 // Get all miners
-                apiInstance.PublicMinersFailuresMinerGet(miner);
+                string result = apiInstance.PublicMinersFailuresMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -322,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -337,7 +342,7 @@ void (empty response body)
 
 <a name="publicminersget"></a>
 # **PublicMinersGet**
-> void PublicMinersGet ()
+> string PublicMinersGet ()
 
 Get all miners
 
@@ -367,7 +372,8 @@ namespace Example
             try
             {
                 // Get all miners
-                apiInstance.PublicMinersGet();
+                string result = apiInstance.PublicMinersGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -383,7 +389,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -398,7 +404,7 @@ void (empty response body)
 
 <a name="publicminersstatsminerget"></a>
 # **PublicMinersStatsMinerGet**
-> void PublicMinersStatsMinerGet (string miner)
+> string PublicMinersStatsMinerGet (string miner)
 
 Get miner stats
 
@@ -429,7 +435,8 @@ namespace Example
             try
             {
                 // Get miner stats
-                apiInstance.PublicMinersStatsMinerGet(miner);
+                string result = apiInstance.PublicMinersStatsMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -448,7 +455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -587,7 +594,7 @@ This endpoint does not need any parameter.
 
 <a name="publicstatsget"></a>
 # **PublicStatsGet**
-> void PublicStatsGet ()
+> string PublicStatsGet ()
 
 Public stats
 
@@ -617,7 +624,8 @@ namespace Example
             try
             {
                 // Public stats
-                apiInstance.PublicStatsGet();
+                string result = apiInstance.PublicStatsGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -633,7 +641,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

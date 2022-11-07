@@ -18,7 +18,6 @@ module Estuary.API
   , module Estuary.API.Collections
   , module Estuary.API.Content
   , module Estuary.API.Deals
-  , module Estuary.API.ApiDefault
   , module Estuary.API.Metrics
   , module Estuary.API.Miner
   , module Estuary.API.Net
@@ -34,7 +33,6 @@ import Estuary.API.Autoretrieve
 import Estuary.API.Collections
 import Estuary.API.Content
 import Estuary.API.Deals
-import Estuary.API.ApiDefault
 import Estuary.API.Metrics
 import Estuary.API.Miner
 import Estuary.API.Net

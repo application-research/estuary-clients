@@ -22,7 +22,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<MainGetApiKeysResp>]
+    # @return [Array<Array<MainGetApiKeysResp>>]
     def user_api_keys_get(opts = {})
       data, _status_code, _headers = user_api_keys_get_with_http_info(opts)
       data
@@ -31,7 +31,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<MainGetApiKeysResp>, Fixnum, Hash)>] Array<MainGetApiKeysResp> data, response status code and response headers
+    # @return [Array<(Array<Array<MainGetApiKeysResp>>, Fixnum, Hash)>] Array<Array<MainGetApiKeysResp>> data, response status code and response headers
     def user_api_keys_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_get ...'
@@ -59,7 +59,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Array<MainGetApiKeysResp>')
+        :return_type => 'Array<Array<MainGetApiKeysResp>>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UserApi#user_api_keys_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -69,17 +69,17 @@ module SwaggerClient
     # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
     # @param key Key
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def user_api_keys_key_delete(key, opts = {})
-      user_api_keys_key_delete_with_http_info(key, opts)
-      nil
+      data, _status_code, _headers = user_api_keys_key_delete_with_http_info(key, opts)
+      data
     end
 
     # Revoke a User API Key.
     # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
     # @param key Key
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def user_api_keys_key_delete_with_http_info(key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_key_delete ...'
@@ -110,7 +110,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UserApi#user_api_keys_key_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -119,7 +120,7 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     # @option opts [String] :perms Permissions -- currently unused
     # @return [MainGetApiKeysResp]
     def user_api_keys_post(opts = {})
@@ -130,7 +131,7 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     # @option opts [String] :perms Permissions -- currently unused
     # @return [Array<(MainGetApiKeysResp, Fixnum, Hash)>] MainGetApiKeysResp data, response status code and response headers
     def user_api_keys_post_with_http_info(opts = {})
@@ -217,7 +218,7 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user.
     # @param [Hash] opts the optional parameters
-    # @return [MainUserStatsResponse]
+    # @return [String]
     def user_stats_get(opts = {})
       data, _status_code, _headers = user_stats_get_with_http_info(opts)
       data
@@ -226,7 +227,7 @@ module SwaggerClient
     # Create API keys for a user
     # This endpoint is used to create API keys for a user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(MainUserStatsResponse, Fixnum, Hash)>] MainUserStatsResponse data, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def user_stats_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_stats_get ...'
@@ -254,7 +255,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'MainUserStatsResponse')
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UserApi#user_stats_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

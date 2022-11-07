@@ -65,12 +65,12 @@ Class | Method | HTTP request | Description
 *DEALS_API* | [**deal_status_by_proposal_propcid_get**](docs/DEALS_API.md#deal_status_by_proposal_propcid_get) | **Get** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DEALS_API* | [**deal_status_miner_propcid_get**](docs/DEALS_API.md#deal_status_miner_propcid_get) | **Get** /deal/status/{miner}/{propcid} | Deal Status
 *DEALS_API* | [**deal_transfer_in_progress_get**](docs/DEALS_API.md#deal_transfer_in_progress_get) | **Get** /deal/transfer/in-progress | Transfer In Progress
+*DEALS_API* | [**deal_transfer_status_post**](docs/DEALS_API.md#deal_transfer_status_post) | **Post** /deal/transfer/status | Transfer Status
 *DEALS_API* | [**deals_failures_get**](docs/DEALS_API.md#deals_failures_get) | **Get** /deals/failures | Get storage failures for user
 *DEALS_API* | [**deals_make_miner_post**](docs/DEALS_API.md#deals_make_miner_post) | **Post** /deals/make/{miner} | Make Deal
 *DEALS_API* | [**deals_status_deal_get**](docs/DEALS_API.md#deals_status_deal_get) | **Get** /deals/status/{deal} | Get Deal Status
 *DEALS_API* | [**public_deals_failures_get**](docs/DEALS_API.md#public_deals_failures_get) | **Get** /public/deals/failures | Get storage failures
 *DEALS_API* | [**public_miners_storage_query_miner_get**](docs/DEALS_API.md#public_miners_storage_query_miner_get) | **Get** /public/miners/storage/query/{miner} | Query Ask
-*DEFAULT_API* | [**deal_transfer_status_post**](docs/DEFAULT_API.md#deal_transfer_status_post) | **Post** /deal/transfer/status | 
 *METRICS_API* | [**public_metrics_deals_on_chain_get**](docs/METRICS_API.md#public_metrics_deals_on_chain_get) | **Get** /public/metrics/deals-on-chain | Get deal metrics
 *MINER_API* | [**public_miners_deals_miner_get**](docs/MINER_API.md#public_miners_deals_miner_get) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MINER_API* | [**public_miners_stats_miner_get**](docs/MINER_API.md#public_miners_stats_miner_get) | **Get** /public/miners/stats/{miner} | Get miner stats
@@ -116,12 +116,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [COLLECTIONS_COLLECTION](docs/COLLECTIONS_COLLECTION.md)
+ - [MAIN_CHANNEL_ID_PARAM](docs/MAIN_CHANNEL_ID_PARAM.md)
  - [MAIN_CREATE_COLLECTION_BODY](docs/MAIN_CREATE_COLLECTION_BODY.md)
  - [MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY](docs/MAIN_DELETE_CONTENT_FROM_COLLECTION_BODY.md)
  - [MAIN_ESTIMATE_DEAL_BODY](docs/MAIN_ESTIMATE_DEAL_BODY.md)
  - [MAIN_GET_API_KEYS_RESP](docs/MAIN_GET_API_KEYS_RESP.md)
  - [MAIN_IMPORT_DEAL_BODY](docs/MAIN_IMPORT_DEAL_BODY.md)
- - [MAIN_USER_STATS_RESPONSE](docs/MAIN_USER_STATS_RESPONSE.md)
+ - [TYPES_IPFS_PIN](docs/TYPES_IPFS_PIN.md)
  - [UTIL_CONTENT_ADD_IPFS_BODY](docs/UTIL_CONTENT_ADD_IPFS_BODY.md)
  - [UTIL_CONTENT_ADD_RESPONSE](docs/UTIL_CONTENT_ADD_RESPONSE.md)
  - [UTIL_CONTENT_CREATE_BODY](docs/UTIL_CONTENT_CREATE_BODY.md)

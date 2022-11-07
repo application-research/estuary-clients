@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using estuary-client.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -31,8 +32,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns></returns>
-        void DealEstimatePost (MainEstimateDealBody body);
+        /// <returns>string</returns>
+        string DealEstimatePost (MainEstimateDealBody body);
 
         /// <summary>
         /// Estimate the cost of a deal
@@ -42,8 +43,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealEstimatePostWithHttpInfo (MainEstimateDealBody body);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealEstimatePostWithHttpInfo (MainEstimateDealBody body);
         /// <summary>
         /// Get Deal Info
         /// </summary>
@@ -52,8 +53,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns></returns>
-        void DealInfoDealidGet (int? dealid);
+        /// <returns>string</returns>
+        string DealInfoDealidGet (int? dealid);
 
         /// <summary>
         /// Get Deal Info
@@ -63,8 +64,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealInfoDealidGetWithHttpInfo (int? dealid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealInfoDealidGetWithHttpInfo (int? dealid);
         /// <summary>
         /// Get Proposal
         /// </summary>
@@ -73,8 +74,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        void DealProposalPropcidGet (string propcid);
+        /// <returns>string</returns>
+        string DealProposalPropcidGet (string propcid);
 
         /// <summary>
         /// Get Proposal
@@ -84,8 +85,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealProposalPropcidGetWithHttpInfo (string propcid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealProposalPropcidGetWithHttpInfo (string propcid);
         /// <summary>
         /// Query Ask
         /// </summary>
@@ -94,8 +95,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        void DealQueryMinerGet (string miner);
+        /// <returns>string</returns>
+        string DealQueryMinerGet (string miner);
 
         /// <summary>
         /// Query Ask
@@ -105,8 +106,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealQueryMinerGetWithHttpInfo (string miner);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealQueryMinerGetWithHttpInfo (string miner);
         /// <summary>
         /// Get Deal Status by PropCid
         /// </summary>
@@ -115,8 +116,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns></returns>
-        void DealStatusByProposalPropcidGet (string propcid);
+        /// <returns>string</returns>
+        string DealStatusByProposalPropcidGet (string propcid);
 
         /// <summary>
         /// Get Deal Status by PropCid
@@ -126,8 +127,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealStatusByProposalPropcidGetWithHttpInfo (string propcid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealStatusByProposalPropcidGetWithHttpInfo (string propcid);
         /// <summary>
         /// Deal Status
         /// </summary>
@@ -137,8 +138,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        void DealStatusMinerPropcidGet (string miner, string propcid);
+        /// <returns>string</returns>
+        string DealStatusMinerPropcidGet (string miner, string propcid);
 
         /// <summary>
         /// Deal Status
@@ -149,8 +150,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealStatusMinerPropcidGetWithHttpInfo (string miner, string propcid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealStatusMinerPropcidGetWithHttpInfo (string miner, string propcid);
         /// <summary>
         /// Transfer In Progress
         /// </summary>
@@ -158,8 +159,8 @@ namespace estuary-client.Api
         /// This endpoint returns the in-progress transfers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void DealTransferInProgressGet ();
+        /// <returns>string</returns>
+        string DealTransferInProgressGet ();
 
         /// <summary>
         /// Transfer In Progress
@@ -168,8 +169,29 @@ namespace estuary-client.Api
         /// This endpoint returns the in-progress transfers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealTransferInProgressGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealTransferInProgressGetWithHttpInfo ();
+        /// <summary>
+        /// Transfer Status
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the status of a transfer
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>string</returns>
+        string DealTransferStatusPost (MainChannelIDParam chanid);
+
+        /// <summary>
+        /// Transfer Status
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the status of a transfer
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealTransferStatusPostWithHttpInfo (MainChannelIDParam chanid);
         /// <summary>
         /// Get storage failures for user
         /// </summary>
@@ -177,8 +199,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures for user
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void DealsFailuresGet ();
+        /// <returns>string</returns>
+        string DealsFailuresGet ();
 
         /// <summary>
         /// Get storage failures for user
@@ -187,8 +209,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures for user
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealsFailuresGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealsFailuresGetWithHttpInfo ();
         /// <summary>
         /// Make Deal
         /// </summary>
@@ -198,8 +220,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns></returns>
-        void DealsMakeMinerPost (string miner, string dealRequest);
+        /// <returns>string</returns>
+        string DealsMakeMinerPost (string miner, string dealRequest);
 
         /// <summary>
         /// Make Deal
@@ -210,8 +232,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealsMakeMinerPostWithHttpInfo (string miner, string dealRequest);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealsMakeMinerPostWithHttpInfo (string miner, string dealRequest);
         /// <summary>
         /// Get Deal Status
         /// </summary>
@@ -220,8 +242,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns></returns>
-        void DealsStatusDealGet (int? deal);
+        /// <returns>string</returns>
+        string DealsStatusDealGet (int? deal);
 
         /// <summary>
         /// Get Deal Status
@@ -231,8 +253,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DealsStatusDealGetWithHttpInfo (int? deal);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> DealsStatusDealGetWithHttpInfo (int? deal);
         /// <summary>
         /// Get storage failures
         /// </summary>
@@ -240,8 +262,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void PublicDealsFailuresGet ();
+        /// <returns>string</returns>
+        string PublicDealsFailuresGet ();
 
         /// <summary>
         /// Get storage failures
@@ -250,8 +272,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PublicDealsFailuresGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> PublicDealsFailuresGetWithHttpInfo ();
         /// <summary>
         /// Query Ask
         /// </summary>
@@ -260,8 +282,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        void PublicMinersStorageQueryMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersStorageQueryMinerGet (string miner);
 
         /// <summary>
         /// Query Ask
@@ -271,8 +293,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PublicMinersStorageQueryMinerGetWithHttpInfo (string miner);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> PublicMinersStorageQueryMinerGetWithHttpInfo (string miner);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -283,8 +305,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealEstimatePostAsync (MainEstimateDealBody body);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealEstimatePostAsync (MainEstimateDealBody body);
 
         /// <summary>
         /// Estimate the cost of a deal
@@ -294,8 +316,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body);
         /// <summary>
         /// Get Deal Info
         /// </summary>
@@ -304,8 +326,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealInfoDealidGetAsync (int? dealid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealInfoDealidGetAsync (int? dealid);
 
         /// <summary>
         /// Get Deal Info
@@ -315,8 +337,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealInfoDealidGetAsyncWithHttpInfo (int? dealid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealInfoDealidGetAsyncWithHttpInfo (int? dealid);
         /// <summary>
         /// Get Proposal
         /// </summary>
@@ -325,8 +347,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealProposalPropcidGetAsync (string propcid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealProposalPropcidGetAsync (string propcid);
 
         /// <summary>
         /// Get Proposal
@@ -336,8 +358,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealProposalPropcidGetAsyncWithHttpInfo (string propcid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealProposalPropcidGetAsyncWithHttpInfo (string propcid);
         /// <summary>
         /// Query Ask
         /// </summary>
@@ -346,8 +368,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealQueryMinerGetAsync (string miner);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealQueryMinerGetAsync (string miner);
 
         /// <summary>
         /// Query Ask
@@ -357,8 +379,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealQueryMinerGetAsyncWithHttpInfo (string miner);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealQueryMinerGetAsyncWithHttpInfo (string miner);
         /// <summary>
         /// Get Deal Status by PropCid
         /// </summary>
@@ -367,8 +389,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealStatusByProposalPropcidGetAsync (string propcid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealStatusByProposalPropcidGetAsync (string propcid);
 
         /// <summary>
         /// Get Deal Status by PropCid
@@ -378,8 +400,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealStatusByProposalPropcidGetAsyncWithHttpInfo (string propcid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealStatusByProposalPropcidGetAsyncWithHttpInfo (string propcid);
         /// <summary>
         /// Deal Status
         /// </summary>
@@ -389,8 +411,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealStatusMinerPropcidGetAsync (string miner, string propcid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealStatusMinerPropcidGetAsync (string miner, string propcid);
 
         /// <summary>
         /// Deal Status
@@ -401,8 +423,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealStatusMinerPropcidGetAsyncWithHttpInfo (string miner, string propcid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealStatusMinerPropcidGetAsyncWithHttpInfo (string miner, string propcid);
         /// <summary>
         /// Transfer In Progress
         /// </summary>
@@ -410,8 +432,8 @@ namespace estuary-client.Api
         /// This endpoint returns the in-progress transfers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealTransferInProgressGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealTransferInProgressGetAsync ();
 
         /// <summary>
         /// Transfer In Progress
@@ -420,8 +442,29 @@ namespace estuary-client.Api
         /// This endpoint returns the in-progress transfers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealTransferInProgressGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealTransferInProgressGetAsyncWithHttpInfo ();
+        /// <summary>
+        /// Transfer Status
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the status of a transfer
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (MainChannelIDParam chanid);
+
+        /// <summary>
+        /// Transfer Status
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the status of a transfer
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (MainChannelIDParam chanid);
         /// <summary>
         /// Get storage failures for user
         /// </summary>
@@ -429,8 +472,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures for user
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealsFailuresGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealsFailuresGetAsync ();
 
         /// <summary>
         /// Get storage failures for user
@@ -439,8 +482,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures for user
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealsFailuresGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealsFailuresGetAsyncWithHttpInfo ();
         /// <summary>
         /// Make Deal
         /// </summary>
@@ -450,8 +493,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealsMakeMinerPostAsync (string miner, string dealRequest);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealsMakeMinerPostAsync (string miner, string dealRequest);
 
         /// <summary>
         /// Make Deal
@@ -462,8 +505,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealsMakeMinerPostAsyncWithHttpInfo (string miner, string dealRequest);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealsMakeMinerPostAsyncWithHttpInfo (string miner, string dealRequest);
         /// <summary>
         /// Get Deal Status
         /// </summary>
@@ -472,8 +515,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DealsStatusDealGetAsync (int? deal);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> DealsStatusDealGetAsync (int? deal);
 
         /// <summary>
         /// Get Deal Status
@@ -483,8 +526,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DealsStatusDealGetAsyncWithHttpInfo (int? deal);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> DealsStatusDealGetAsyncWithHttpInfo (int? deal);
         /// <summary>
         /// Get storage failures
         /// </summary>
@@ -492,8 +535,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PublicDealsFailuresGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> PublicDealsFailuresGetAsync ();
 
         /// <summary>
         /// Get storage failures
@@ -502,8 +545,8 @@ namespace estuary-client.Api
         /// This endpoint returns a list of storage failures
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PublicDealsFailuresGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> PublicDealsFailuresGetAsyncWithHttpInfo ();
         /// <summary>
         /// Query Ask
         /// </summary>
@@ -512,8 +555,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PublicMinersStorageQueryMinerGetAsync (string miner);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> PublicMinersStorageQueryMinerGetAsync (string miner);
 
         /// <summary>
         /// Query Ask
@@ -523,8 +566,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersStorageQueryMinerGetAsyncWithHttpInfo (string miner);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersStorageQueryMinerGetAsyncWithHttpInfo (string miner);
         #endregion Asynchronous Operations
     }
 
@@ -630,10 +673,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns></returns>
-        public void DealEstimatePost (MainEstimateDealBody body)
+        /// <returns>string</returns>
+        public string DealEstimatePost (MainEstimateDealBody body)
         {
-             DealEstimatePostWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = DealEstimatePostWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -641,8 +685,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealEstimatePostWithHttpInfo (MainEstimateDealBody body)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealEstimatePostWithHttpInfo (MainEstimateDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -697,9 +741,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -707,10 +751,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealEstimatePostAsync (MainEstimateDealBody body)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealEstimatePostAsync (MainEstimateDealBody body)
         {
-             await DealEstimatePostAsyncWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = await DealEstimatePostAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -719,8 +764,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -775,9 +820,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -785,10 +830,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns></returns>
-        public void DealInfoDealidGet (int? dealid)
+        /// <returns>string</returns>
+        public string DealInfoDealidGet (int? dealid)
         {
-             DealInfoDealidGetWithHttpInfo(dealid);
+             ApiResponse<string> localVarResponse = DealInfoDealidGetWithHttpInfo(dealid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -796,8 +842,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealInfoDealidGetWithHttpInfo (int? dealid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealInfoDealidGetWithHttpInfo (int? dealid)
         {
             // verify the required parameter 'dealid' is set
             if (dealid == null)
@@ -845,9 +891,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -855,10 +901,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealInfoDealidGetAsync (int? dealid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealInfoDealidGetAsync (int? dealid)
         {
-             await DealInfoDealidGetAsyncWithHttpInfo(dealid);
+             ApiResponse<string> localVarResponse = await DealInfoDealidGetAsyncWithHttpInfo(dealid);
+             return localVarResponse.Data;
 
         }
 
@@ -867,8 +914,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="dealid">Deal ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealInfoDealidGetAsyncWithHttpInfo (int? dealid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealInfoDealidGetAsyncWithHttpInfo (int? dealid)
         {
             // verify the required parameter 'dealid' is set
             if (dealid == null)
@@ -916,9 +963,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -926,10 +973,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        public void DealProposalPropcidGet (string propcid)
+        /// <returns>string</returns>
+        public string DealProposalPropcidGet (string propcid)
         {
-             DealProposalPropcidGetWithHttpInfo(propcid);
+             ApiResponse<string> localVarResponse = DealProposalPropcidGetWithHttpInfo(propcid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -937,8 +985,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealProposalPropcidGetWithHttpInfo (string propcid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealProposalPropcidGetWithHttpInfo (string propcid)
         {
             // verify the required parameter 'propcid' is set
             if (propcid == null)
@@ -986,9 +1034,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -996,10 +1044,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealProposalPropcidGetAsync (string propcid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealProposalPropcidGetAsync (string propcid)
         {
-             await DealProposalPropcidGetAsyncWithHttpInfo(propcid);
+             ApiResponse<string> localVarResponse = await DealProposalPropcidGetAsyncWithHttpInfo(propcid);
+             return localVarResponse.Data;
 
         }
 
@@ -1008,8 +1057,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealProposalPropcidGetAsyncWithHttpInfo (string propcid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealProposalPropcidGetAsyncWithHttpInfo (string propcid)
         {
             // verify the required parameter 'propcid' is set
             if (propcid == null)
@@ -1057,9 +1106,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1067,10 +1116,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        public void DealQueryMinerGet (string miner)
+        /// <returns>string</returns>
+        public string DealQueryMinerGet (string miner)
         {
-             DealQueryMinerGetWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = DealQueryMinerGetWithHttpInfo(miner);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1078,8 +1128,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealQueryMinerGetWithHttpInfo (string miner)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealQueryMinerGetWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1127,9 +1177,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1137,10 +1187,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealQueryMinerGetAsync (string miner)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealQueryMinerGetAsync (string miner)
         {
-             await DealQueryMinerGetAsyncWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = await DealQueryMinerGetAsyncWithHttpInfo(miner);
+             return localVarResponse.Data;
 
         }
 
@@ -1149,8 +1200,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealQueryMinerGetAsyncWithHttpInfo (string miner)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealQueryMinerGetAsyncWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1198,9 +1249,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1208,10 +1259,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns></returns>
-        public void DealStatusByProposalPropcidGet (string propcid)
+        /// <returns>string</returns>
+        public string DealStatusByProposalPropcidGet (string propcid)
         {
-             DealStatusByProposalPropcidGetWithHttpInfo(propcid);
+             ApiResponse<string> localVarResponse = DealStatusByProposalPropcidGetWithHttpInfo(propcid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1219,8 +1271,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealStatusByProposalPropcidGetWithHttpInfo (string propcid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealStatusByProposalPropcidGetWithHttpInfo (string propcid)
         {
             // verify the required parameter 'propcid' is set
             if (propcid == null)
@@ -1268,9 +1320,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1278,10 +1330,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealStatusByProposalPropcidGetAsync (string propcid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealStatusByProposalPropcidGetAsync (string propcid)
         {
-             await DealStatusByProposalPropcidGetAsyncWithHttpInfo(propcid);
+             ApiResponse<string> localVarResponse = await DealStatusByProposalPropcidGetAsyncWithHttpInfo(propcid);
+             return localVarResponse.Data;
 
         }
 
@@ -1290,8 +1343,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="propcid">PropCid</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealStatusByProposalPropcidGetAsyncWithHttpInfo (string propcid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealStatusByProposalPropcidGetAsyncWithHttpInfo (string propcid)
         {
             // verify the required parameter 'propcid' is set
             if (propcid == null)
@@ -1339,9 +1392,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1350,10 +1403,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        public void DealStatusMinerPropcidGet (string miner, string propcid)
+        /// <returns>string</returns>
+        public string DealStatusMinerPropcidGet (string miner, string propcid)
         {
-             DealStatusMinerPropcidGetWithHttpInfo(miner, propcid);
+             ApiResponse<string> localVarResponse = DealStatusMinerPropcidGetWithHttpInfo(miner, propcid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1362,8 +1416,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealStatusMinerPropcidGetWithHttpInfo (string miner, string propcid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealStatusMinerPropcidGetWithHttpInfo (string miner, string propcid)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1415,9 +1469,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1426,10 +1480,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealStatusMinerPropcidGetAsync (string miner, string propcid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealStatusMinerPropcidGetAsync (string miner, string propcid)
         {
-             await DealStatusMinerPropcidGetAsyncWithHttpInfo(miner, propcid);
+             ApiResponse<string> localVarResponse = await DealStatusMinerPropcidGetAsyncWithHttpInfo(miner, propcid);
+             return localVarResponse.Data;
 
         }
 
@@ -1439,8 +1494,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealStatusMinerPropcidGetAsyncWithHttpInfo (string miner, string propcid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealStatusMinerPropcidGetAsyncWithHttpInfo (string miner, string propcid)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1492,27 +1547,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void DealTransferInProgressGet ()
+        /// <returns>string</returns>
+        public string DealTransferInProgressGet ()
         {
-             DealTransferInProgressGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = DealTransferInProgressGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealTransferInProgressGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealTransferInProgressGetWithHttpInfo ()
         {
 
             var localVarPath = "/deal/transfer/in-progress";
@@ -1556,19 +1612,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealTransferInProgressGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealTransferInProgressGetAsync ()
         {
-             await DealTransferInProgressGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await DealTransferInProgressGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1576,8 +1633,8 @@ namespace estuary-client.Api
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealTransferInProgressGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealTransferInProgressGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/deal/transfer/in-progress";
@@ -1621,27 +1678,185 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
-        /// Get storage failures for user This endpoint returns a list of storage failures for user
+        /// Transfer Status This endpoint returns the status of a transfer
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void DealsFailuresGet ()
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>string</returns>
+        public string DealTransferStatusPost (MainChannelIDParam chanid)
         {
-             DealsFailuresGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = DealTransferStatusPostWithHttpInfo(chanid);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Transfer Status This endpoint returns the status of a transfer
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealTransferStatusPostWithHttpInfo (MainChannelIDParam chanid)
+        {
+            // verify the required parameter 'chanid' is set
+            if (chanid == null)
+                throw new ApiException(400, "Missing required parameter 'chanid' when calling DealsApi->DealTransferStatusPost");
+
+            var localVarPath = "/deal/transfer/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (chanid != null && chanid.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(chanid); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = chanid; // byte array
+            }
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DealTransferStatusPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Transfer Status This endpoint returns the status of a transfer
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (MainChannelIDParam chanid)
+        {
+             ApiResponse<string> localVarResponse = await DealTransferStatusPostAsyncWithHttpInfo(chanid);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Transfer Status This endpoint returns the status of a transfer
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (MainChannelIDParam chanid)
+        {
+            // verify the required parameter 'chanid' is set
+            if (chanid == null)
+                throw new ApiException(400, "Missing required parameter 'chanid' when calling DealsApi->DealTransferStatusPost");
+
+            var localVarPath = "/deal/transfer/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (chanid != null && chanid.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(chanid); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = chanid; // byte array
+            }
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DealTransferStatusPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealsFailuresGetWithHttpInfo ()
+        /// <returns>string</returns>
+        public string DealsFailuresGet ()
+        {
+             ApiResponse<string> localVarResponse = DealsFailuresGetWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get storage failures for user This endpoint returns a list of storage failures for user
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealsFailuresGetWithHttpInfo ()
         {
 
             var localVarPath = "/deals/failures";
@@ -1685,19 +1900,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealsFailuresGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealsFailuresGetAsync ()
         {
-             await DealsFailuresGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await DealsFailuresGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1705,8 +1921,8 @@ namespace estuary-client.Api
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealsFailuresGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealsFailuresGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/deals/failures";
@@ -1750,9 +1966,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1761,10 +1977,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns></returns>
-        public void DealsMakeMinerPost (string miner, string dealRequest)
+        /// <returns>string</returns>
+        public string DealsMakeMinerPost (string miner, string dealRequest)
         {
-             DealsMakeMinerPostWithHttpInfo(miner, dealRequest);
+             ApiResponse<string> localVarResponse = DealsMakeMinerPostWithHttpInfo(miner, dealRequest);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1773,8 +1990,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealsMakeMinerPostWithHttpInfo (string miner, string dealRequest)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealsMakeMinerPostWithHttpInfo (string miner, string dealRequest)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1833,9 +2050,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1844,10 +2061,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealsMakeMinerPostAsync (string miner, string dealRequest)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealsMakeMinerPostAsync (string miner, string dealRequest)
         {
-             await DealsMakeMinerPostAsyncWithHttpInfo(miner, dealRequest);
+             ApiResponse<string> localVarResponse = await DealsMakeMinerPostAsyncWithHttpInfo(miner, dealRequest);
+             return localVarResponse.Data;
 
         }
 
@@ -1857,8 +2075,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealsMakeMinerPostAsyncWithHttpInfo (string miner, string dealRequest)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealsMakeMinerPostAsyncWithHttpInfo (string miner, string dealRequest)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1917,9 +2135,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1927,10 +2145,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns></returns>
-        public void DealsStatusDealGet (int? deal)
+        /// <returns>string</returns>
+        public string DealsStatusDealGet (int? deal)
         {
-             DealsStatusDealGetWithHttpInfo(deal);
+             ApiResponse<string> localVarResponse = DealsStatusDealGetWithHttpInfo(deal);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1938,8 +2157,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DealsStatusDealGetWithHttpInfo (int? deal)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > DealsStatusDealGetWithHttpInfo (int? deal)
         {
             // verify the required parameter 'deal' is set
             if (deal == null)
@@ -1987,9 +2206,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1997,10 +2216,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DealsStatusDealGetAsync (int? deal)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> DealsStatusDealGetAsync (int? deal)
         {
-             await DealsStatusDealGetAsyncWithHttpInfo(deal);
+             ApiResponse<string> localVarResponse = await DealsStatusDealGetAsyncWithHttpInfo(deal);
+             return localVarResponse.Data;
 
         }
 
@@ -2009,8 +2229,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="deal">Deal ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DealsStatusDealGetAsyncWithHttpInfo (int? deal)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealsStatusDealGetAsyncWithHttpInfo (int? deal)
         {
             // verify the required parameter 'deal' is set
             if (deal == null)
@@ -2058,27 +2278,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void PublicDealsFailuresGet ()
+        /// <returns>string</returns>
+        public string PublicDealsFailuresGet ()
         {
-             PublicDealsFailuresGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = PublicDealsFailuresGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PublicDealsFailuresGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > PublicDealsFailuresGetWithHttpInfo ()
         {
 
             var localVarPath = "/public/deals/failures";
@@ -2122,19 +2343,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PublicDealsFailuresGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> PublicDealsFailuresGetAsync ()
         {
-             await PublicDealsFailuresGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await PublicDealsFailuresGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -2142,8 +2364,8 @@ namespace estuary-client.Api
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PublicDealsFailuresGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicDealsFailuresGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/public/deals/failures";
@@ -2187,9 +2409,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2197,10 +2419,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        public void PublicMinersStorageQueryMinerGet (string miner)
+        /// <returns>string</returns>
+        public string PublicMinersStorageQueryMinerGet (string miner)
         {
-             PublicMinersStorageQueryMinerGetWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = PublicMinersStorageQueryMinerGetWithHttpInfo(miner);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2208,8 +2431,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PublicMinersStorageQueryMinerGetWithHttpInfo (string miner)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > PublicMinersStorageQueryMinerGetWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -2257,9 +2480,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2267,10 +2490,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PublicMinersStorageQueryMinerGetAsync (string miner)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> PublicMinersStorageQueryMinerGetAsync (string miner)
         {
-             await PublicMinersStorageQueryMinerGetAsyncWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = await PublicMinersStorageQueryMinerGetAsyncWithHttpInfo(miner);
+             return localVarResponse.Data;
 
         }
 
@@ -2279,8 +2503,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersStorageQueryMinerGetAsyncWithHttpInfo (string miner)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersStorageQueryMinerGetAsyncWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -2328,9 +2552,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

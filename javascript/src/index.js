@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CollectionsCollection', 'model/MainCreateCollectionBody', 'model/MainDeleteContentFromCollectionBody', 'model/MainEstimateDealBody', 'model/MainGetApiKeysResp', 'model/MainImportDealBody', 'model/MainUserStatsResponse', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody', 'model/UtilHttpError', 'api/AdminApi', 'api/AutoretrieveApi', 'api/CollectionsApi', 'api/ContentApi', 'api/DealsApi', 'api/DefaultApi', 'api/MetricsApi', 'api/MinerApi', 'api/NetApi', 'api/PeeringApi', 'api/PeersApi', 'api/PinningApi', 'api/PublicApi', 'api/UserApi'], factory);
+    define(['ApiClient', 'model/CollectionsCollection', 'model/MainChannelIDParam', 'model/MainCreateCollectionBody', 'model/MainDeleteContentFromCollectionBody', 'model/MainEstimateDealBody', 'model/MainGetApiKeysResp', 'model/MainImportDealBody', 'model/TypesIpfsPin', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody', 'model/UtilHttpError', 'api/AdminApi', 'api/AutoretrieveApi', 'api/CollectionsApi', 'api/ContentApi', 'api/DealsApi', 'api/MetricsApi', 'api/MinerApi', 'api/NetApi', 'api/PeeringApi', 'api/PeersApi', 'api/PinningApi', 'api/PublicApi', 'api/UserApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/CollectionsCollection'), require('./model/MainCreateCollectionBody'), require('./model/MainDeleteContentFromCollectionBody'), require('./model/MainEstimateDealBody'), require('./model/MainGetApiKeysResp'), require('./model/MainImportDealBody'), require('./model/MainUserStatsResponse'), require('./model/UtilContentAddIpfsBody'), require('./model/UtilContentAddResponse'), require('./model/UtilContentCreateBody'), require('./model/UtilHttpError'), require('./api/AdminApi'), require('./api/AutoretrieveApi'), require('./api/CollectionsApi'), require('./api/ContentApi'), require('./api/DealsApi'), require('./api/DefaultApi'), require('./api/MetricsApi'), require('./api/MinerApi'), require('./api/NetApi'), require('./api/PeeringApi'), require('./api/PeersApi'), require('./api/PinningApi'), require('./api/PublicApi'), require('./api/UserApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/CollectionsCollection'), require('./model/MainChannelIDParam'), require('./model/MainCreateCollectionBody'), require('./model/MainDeleteContentFromCollectionBody'), require('./model/MainEstimateDealBody'), require('./model/MainGetApiKeysResp'), require('./model/MainImportDealBody'), require('./model/TypesIpfsPin'), require('./model/UtilContentAddIpfsBody'), require('./model/UtilContentAddResponse'), require('./model/UtilContentCreateBody'), require('./model/UtilHttpError'), require('./api/AdminApi'), require('./api/AutoretrieveApi'), require('./api/CollectionsApi'), require('./api/ContentApi'), require('./api/DealsApi'), require('./api/MetricsApi'), require('./api/MinerApi'), require('./api/NetApi'), require('./api/PeeringApi'), require('./api/PeersApi'), require('./api/PinningApi'), require('./api/PublicApi'), require('./api/UserApi'));
   }
-}(function(ApiClient, CollectionsCollection, MainCreateCollectionBody, MainDeleteContentFromCollectionBody, MainEstimateDealBody, MainGetApiKeysResp, MainImportDealBody, MainUserStatsResponse, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody, UtilHttpError, AdminApi, AutoretrieveApi, CollectionsApi, ContentApi, DealsApi, DefaultApi, MetricsApi, MinerApi, NetApi, PeeringApi, PeersApi, PinningApi, PublicApi, UserApi) {
+}(function(ApiClient, CollectionsCollection, MainChannelIDParam, MainCreateCollectionBody, MainDeleteContentFromCollectionBody, MainEstimateDealBody, MainGetApiKeysResp, MainImportDealBody, TypesIpfsPin, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody, UtilHttpError, AdminApi, AutoretrieveApi, CollectionsApi, ContentApi, DealsApi, MetricsApi, MinerApi, NetApi, PeeringApi, PeersApi, PinningApi, PublicApi, UserApi) {
   'use strict';
 
   /**
@@ -67,6 +67,11 @@
      */
     CollectionsCollection: CollectionsCollection,
     /**
+     * The MainChannelIDParam model constructor.
+     * @property {module:model/MainChannelIDParam}
+     */
+    MainChannelIDParam: MainChannelIDParam,
+    /**
      * The MainCreateCollectionBody model constructor.
      * @property {module:model/MainCreateCollectionBody}
      */
@@ -92,10 +97,10 @@
      */
     MainImportDealBody: MainImportDealBody,
     /**
-     * The MainUserStatsResponse model constructor.
-     * @property {module:model/MainUserStatsResponse}
+     * The TypesIpfsPin model constructor.
+     * @property {module:model/TypesIpfsPin}
      */
-    MainUserStatsResponse: MainUserStatsResponse,
+    TypesIpfsPin: TypesIpfsPin,
     /**
      * The UtilContentAddIpfsBody model constructor.
      * @property {module:model/UtilContentAddIpfsBody}
@@ -141,11 +146,6 @@
      * @property {module:api/DealsApi}
      */
     DealsApi: DealsApi,
-    /**
-     * The DefaultApi service constructor.
-     * @property {module:api/DefaultApi}
-     */
-    DefaultApi: DefaultApi,
     /**
      * The MetricsApi service constructor.
      * @property {module:api/MetricsApi}

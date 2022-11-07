@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> String adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -30,12 +30,13 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'body' => new List<String>{'aeiou'}
+    'peerIds' => new List<Boolean>{true}
 };
 
 try {
     // cross your fingers
-    api.adminPeeringPeersDelete(params);
+    String result = api.adminPeeringPeersDelete(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -45,11 +46,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| Peer ids |
+ **peerIds** | **List&lt;Boolean&gt;**| Peer ids |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -62,7 +63,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersGet"></a>
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -79,7 +80,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminPeeringPeersGet();
+    String result = api.adminPeeringPeersGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -90,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -103,7 +105,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -120,7 +122,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminPeeringPeersPost();
+    String result = api.adminPeeringPeersPost();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -131,7 +134,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -144,7 +147,7 @@ null (empty response body)
 
 <a name="adminPeeringStartPost"></a>
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> String adminPeeringStartPost()
 
 Start Peering
 
@@ -161,7 +164,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminPeeringStartPost();
+    String result = api.adminPeeringStartPost();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -172,7 +176,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -185,7 +189,7 @@ null (empty response body)
 
 <a name="adminPeeringStatusGet"></a>
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -202,7 +206,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminPeeringStatusGet();
+    String result = api.adminPeeringStatusGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -213,7 +218,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -226,7 +231,7 @@ null (empty response body)
 
 <a name="adminPeeringStopPost"></a>
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> String adminPeeringStopPost()
 
 Stop Peering
 
@@ -243,7 +248,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminPeeringStopPost();
+    String result = api.adminPeeringStopPost();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -254,7 +260,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

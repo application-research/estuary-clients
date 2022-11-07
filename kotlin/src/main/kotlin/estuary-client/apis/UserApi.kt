@@ -12,7 +12,6 @@
 package estuary-client.apis
 
 import estuary-client.models.MaingetApiKeysResp
-import estuary-client.models.MainuserStatsResponse
 import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -22,10 +21,10 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
     /**
     * Get API keys for a user
     * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-    * @return kotlin.Array<MaingetApiKeysResp>
+    * @return kotlin.Array<kotlin.Array<MaingetApiKeysResp>>
     */
     @Suppress("UNCHECKED_CAST")
-    fun userApiKeysGet() : kotlin.Array<MaingetApiKeysResp> {
+    fun userApiKeysGet() : kotlin.Array<kotlin.Array<MaingetApiKeysResp>> {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -41,13 +40,13 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.Array<MaingetApiKeysResp>>(
+        val response = request<kotlin.Array<kotlin.Array<MaingetApiKeysResp>>>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<MaingetApiKeysResp>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.Array<MaingetApiKeysResp>>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -60,9 +59,10 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
     * Revoke a User API Key.
     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
     * @param key Key 
-    * @return void
+    * @return kotlin.String
     */
-    fun userApiKeysKeyDelete(key: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun userApiKeysKeyDelete(key: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -78,13 +78,13 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -96,7 +96,7 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
     /**
     * Create API keys for a user
     * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
     * @param perms Permissions -- currently unused (optional)
     * @return MaingetApiKeysResp
     */
@@ -172,10 +172,10 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
     /**
     * Create API keys for a user
     * This endpoint is used to create API keys for a user.
-    * @return MainuserStatsResponse
+    * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun userStatsGet() : MainuserStatsResponse {
+    fun userStatsGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -191,13 +191,13 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<MainuserStatsResponse>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as MainuserStatsResponse
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

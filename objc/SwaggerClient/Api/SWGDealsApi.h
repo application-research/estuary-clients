@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
+#import "SWGMainChannelIDParam.h"
 #import "SWGMainEstimateDealBody.h"
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -28,10 +30,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealEstimatePostWithBody: (SWGMainEstimateDealBody*) body
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get Deal Info
@@ -39,10 +44,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param dealid Deal ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealInfoDealidGetWithDealid: (NSNumber*) dealid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get Proposal
@@ -50,10 +58,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param propcid Proposal CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealProposalPropcidGetWithPropcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Query Ask
@@ -61,10 +72,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param miner CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealQueryMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get Deal Status by PropCid
@@ -72,10 +86,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param propcid PropCid
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealStatusByProposalPropcidGetWithPropcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Deal Status
@@ -84,31 +101,54 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 /// @param miner Miner
 /// @param propcid Proposal CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealStatusMinerPropcidGetWithMiner: (NSString*) miner
     propcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Transfer In Progress
 /// This endpoint returns the in-progress transfers
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealTransferInProgressGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
+
+
+/// Transfer Status
+/// This endpoint returns the status of a transfer
+///
+/// @param chanid Channel ID
+/// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
+///
+/// @return NSString*
+-(NSURLSessionTask*) dealTransferStatusPostWithChanid: (SWGMainChannelIDParam*) chanid
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get storage failures for user
 /// This endpoint returns a list of storage failures for user
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealsFailuresGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Make Deal
@@ -117,11 +157,14 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 /// @param miner Miner
 /// @param dealRequest Deal Request
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealsMakeMinerPostWithMiner: (NSString*) miner
     dealRequest: (NSString*) dealRequest
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get Deal Status
@@ -129,20 +172,26 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param deal Deal ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) dealsStatusDealGetWithDeal: (NSNumber*) deal
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get storage failures
 /// This endpoint returns a list of storage failures
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicDealsFailuresGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Query Ask
@@ -150,10 +199,13 @@ extern NSInteger kSWGDealsApiMissingParamErrorCode;
 ///
 /// @param miner CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersStorageQueryMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 

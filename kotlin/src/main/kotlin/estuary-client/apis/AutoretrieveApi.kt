@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -21,13 +22,14 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
     * This endpoint registers a new autoretrieve server
     * @param addresses Autoretrieve&#39;s comma-separated list of addresses 
     * @param pubKey Autoretrieve&#39;s public key 
-    * @return void
+    * @return kotlin.String
     */
-    fun adminAutoretrieveInitPost(addresses: kotlin.String, pubKey: kotlin.String) : Unit {
-        val localVariableBody: kotlin.Any? = addressespubKey
+    @Suppress("UNCHECKED_CAST")
+    fun adminAutoretrieveInitPost(addresses: kotlin.String, pubKey: kotlin.String) : kotlin.String {
+        val localVariableBody: kotlin.Any? = mapOf("addresses" to addresses, "pubKey" to pubKey)
         val localVariableQuery: MultiValueMap = mapOf()
         
-        val contentHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
+        val contentHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf("Content-Type" to "multipart/form-data")
         val acceptsHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf("Accept" to "application/json")
         val localVariableHeaders: kotlin.collections.MutableMap<kotlin.String,kotlin.String> = mutableMapOf()
         localVariableHeaders.putAll(contentHeaders)
@@ -39,13 +41,13 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -57,9 +59,10 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
     /**
     * List autoretrieve servers
     * This endpoint lists all registered autoretrieve servers
-    * @return void
+    * @return kotlin.String
     */
-    fun adminAutoretrieveListGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminAutoretrieveListGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -75,13 +78,13 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -94,9 +97,10 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
     * Marks autoretrieve server as up
     * This endpoint updates the lastConnection field for autoretrieve
     * @param token Autoretrieve&#39;s auth token 
-    * @return void
+    * @return kotlin.String
     */
-    fun autoretrieveHeartbeatPost(token: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun autoretrieveHeartbeatPost(token: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -112,13 +116,13 @@ class AutoretrieveApi(basePath: kotlin.String = "https://api.estuary.tech") : Ap
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

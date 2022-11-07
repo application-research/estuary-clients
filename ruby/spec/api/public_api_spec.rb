@@ -37,7 +37,7 @@ describe 'PublicApi' do
   # This endpoint returns the content associated with a CID
   # @param cid Cid
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_by_cid_cid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'PublicApi' do
   # Get public node info
   # This endpoint returns information about the node
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_info_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'PublicApi' do
   # Get deal metrics
   # This endpoint is used to get deal metrics
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_metrics_deals_on_chain_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -72,7 +72,7 @@ describe 'PublicApi' do
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_failed Ignore Failed
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_deals_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -84,7 +84,7 @@ describe 'PublicApi' do
   # This endpoint returns all miners
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_failures_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -95,7 +95,7 @@ describe 'PublicApi' do
   # Get all miners
   # This endpoint returns all miners
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -107,7 +107,7 @@ describe 'PublicApi' do
   # This endpoint returns miner stats
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_stats_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -140,7 +140,7 @@ describe 'PublicApi' do
   # Public stats
   # This endpoint is used to get public stats.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_stats_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

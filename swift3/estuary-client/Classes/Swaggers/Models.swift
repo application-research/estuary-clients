@@ -338,6 +338,38 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "CollectionsCollection", actual: "\(source)"))
             }
         }
+        // Decoder for [MainChannelIDParam]
+        Decoders.addDecoder(clazz: [MainChannelIDParam].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[MainChannelIDParam]> in
+            return Decoders.decode(clazz: [MainChannelIDParam].self, source: source)
+        }
+
+        // Decoder for MainChannelIDParam
+        Decoders.addDecoder(clazz: MainChannelIDParam.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<MainChannelIDParam> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? MainChannelIDParam() : instance as! MainChannelIDParam
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"] as AnyObject?) {
+                
+                case let .success(value): _result.id = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["initiator"] as AnyObject?) {
+                
+                case let .success(value): _result.initiator = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["responder"] as AnyObject?) {
+                
+                case let .success(value): _result.responder = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "MainChannelIDParam", actual: "\(source)"))
+            }
+        }
         // Decoder for [MainCreateCollectionBody]
         Decoders.addDecoder(clazz: [MainCreateCollectionBody].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[MainCreateCollectionBody]> in
             return Decoders.decode(clazz: [MainCreateCollectionBody].self, source: source)
@@ -492,30 +524,42 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "MainImportDealBody", actual: "\(source)"))
             }
         }
-        // Decoder for [MainUserStatsResponse]
-        Decoders.addDecoder(clazz: [MainUserStatsResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[MainUserStatsResponse]> in
-            return Decoders.decode(clazz: [MainUserStatsResponse].self, source: source)
+        // Decoder for [TypesIpfsPin]
+        Decoders.addDecoder(clazz: [TypesIpfsPin].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsPin]> in
+            return Decoders.decode(clazz: [TypesIpfsPin].self, source: source)
         }
 
-        // Decoder for MainUserStatsResponse
-        Decoders.addDecoder(clazz: MainUserStatsResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<MainUserStatsResponse> in
+        // Decoder for TypesIpfsPin
+        Decoders.addDecoder(clazz: TypesIpfsPin.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsPin> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? MainUserStatsResponse() : instance as! MainUserStatsResponse
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["numPins"] as AnyObject?) {
+                let _result = instance == nil ? TypesIpfsPin() : instance as! TypesIpfsPin
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["cid"] as AnyObject?) {
                 
-                case let .success(value): _result.numPins = value
+                case let .success(value): _result.cid = value
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["totalSize"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["meta"] as AnyObject?) {
                 
-                case let .success(value): _result.totalSize = value
+                case let .success(value): _result.meta = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["origins"] as AnyObject?) {
+                
+                case let .success(value): _result.origins = value
                 case let .failure(error): break
                 
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "MainUserStatsResponse", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "TypesIpfsPin", actual: "\(source)"))
             }
         }
         // Decoder for [UtilContentAddIpfsBody]

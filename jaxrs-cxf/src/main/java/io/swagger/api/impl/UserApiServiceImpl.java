@@ -1,8 +1,8 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import java.util.List;
 import io.swagger.model.MainGetApiKeysResp;
-import io.swagger.model.MainUserStatsResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -31,7 +31,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      *
      */
-    public List<MainGetApiKeysResp> userApiKeysGet() {
+    public List<List<MainGetApiKeysResp>> userApiKeysGet() {
         // TODO: Implement...
         
         return null;
@@ -43,10 +43,10 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
      *
      */
-    public void userApiKeysKeyDelete(String key) {
+    public String userApiKeysKeyDelete(String key) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -79,7 +79,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to create API keys for a user.
      *
      */
-    public MainUserStatsResponse userStatsGet() {
+    public String userStatsGet() {
         // TODO: Implement...
         
         return null;

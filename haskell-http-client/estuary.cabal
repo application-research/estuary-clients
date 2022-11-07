@@ -67,7 +67,6 @@ library
       Estuary.API.Collections
       Estuary.API.Content
       Estuary.API.Deals
-      Estuary.API.ApiDefault
       Estuary.API.Metrics
       Estuary.API.Miner
       Estuary.API.Net

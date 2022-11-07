@@ -6,11 +6,20 @@
  * This endpoint estimates the cost of a deal
  *
  * body Main.estimateDealBody The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealEstimatePOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -20,11 +29,20 @@ exports.dealEstimatePOST = function(body) {
  * This endpoint returns the deal info for a deal
  *
  * dealid Integer Deal ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealInfoDealidGET = function(dealid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -34,11 +52,20 @@ exports.dealInfoDealidGET = function(dealid) {
  * This endpoint returns the proposal for a deal
  *
  * propcid String Proposal CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealProposalPropcidGET = function(propcid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -48,11 +75,20 @@ exports.dealProposalPropcidGET = function(propcid) {
  * This endpoint returns the ask for a given CID
  *
  * miner String CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealQueryMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -63,11 +99,20 @@ exports.dealQueryMinerGET = function(miner) {
  *
  * miner String Miner
  * propcid String Proposal CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealStatusMinerPropcidGET = function(miner,propcid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -77,11 +122,20 @@ exports.dealStatusMinerPropcidGET = function(miner,propcid) {
  * Get Deal Status by PropCid
  *
  * propcid String PropCid
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealStatus_by_proposalPropcidGET = function(propcid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -90,11 +144,43 @@ exports.dealStatus_by_proposalPropcidGET = function(propcid) {
  * Transfer In Progress
  * This endpoint returns the in-progress transfers
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealTransferIn_progressGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
+ * Transfer Status
+ * This endpoint returns the status of a transfer
+ *
+ * chanid Main.ChannelIDParam Channel ID
+ * returns String
+ **/
+exports.dealTransferStatusPOST = function(chanid) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -103,11 +189,20 @@ exports.dealTransferIn_progressGET = function() {
  * Get storage failures for user
  * This endpoint returns a list of storage failures for user
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealsFailuresGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -118,11 +213,20 @@ exports.dealsFailuresGET = function() {
  *
  * miner String Miner
  * dealRequest String Deal Request
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealsMakeMinerPOST = function(miner,dealRequest) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -132,11 +236,20 @@ exports.dealsMakeMinerPOST = function(miner,dealRequest) {
  * This endpoint returns the status of a deal
  *
  * deal Integer Deal ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.dealsStatusDealGET = function(deal) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -145,11 +258,20 @@ exports.dealsStatusDealGET = function(deal) {
  * Get storage failures
  * This endpoint returns a list of storage failures
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicDealsFailuresGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -159,11 +281,20 @@ exports.publicDealsFailuresGET = function() {
  * This endpoint returns the ask for a given CID
  *
  * miner String CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersStorageQueryMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

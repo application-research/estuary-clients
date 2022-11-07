@@ -51,7 +51,7 @@ export class DealsApi {
      * @summary Estimate the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      */
-    public dealEstimatePost(body: models.MainEstimateDealBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealEstimatePost(body: models.MainEstimateDealBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/estimate';
 
         let queryParameters: any = {};
@@ -102,7 +102,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -115,7 +115,7 @@ export class DealsApi {
      * @summary Get Deal Info
      * @param dealid Deal ID
      */
-    public dealInfoDealidGet(dealid: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealInfoDealidGet(dealid: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/info/{dealid}'.replace('{' + 'dealid' + '}', encodeURIComponent(String(dealid)));
 
         let queryParameters: any = {};
@@ -163,7 +163,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -176,7 +176,7 @@ export class DealsApi {
      * @summary Get Proposal
      * @param propcid Proposal CID
      */
-    public dealProposalPropcidGet(propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealProposalPropcidGet(propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/proposal/{propcid}'.replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
 
         let queryParameters: any = {};
@@ -224,7 +224,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -237,7 +237,7 @@ export class DealsApi {
      * @summary Query Ask
      * @param miner CID
      */
-    public dealQueryMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealQueryMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/query/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -285,7 +285,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -298,7 +298,7 @@ export class DealsApi {
      * @summary Get Deal Status by PropCid
      * @param propcid PropCid
      */
-    public dealStatusByProposalPropcidGet(propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealStatusByProposalPropcidGet(propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/status-by-proposal/{propcid}'.replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
 
         let queryParameters: any = {};
@@ -346,7 +346,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -360,7 +360,7 @@ export class DealsApi {
      * @param miner Miner
      * @param propcid Proposal CID
      */
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/status/{miner}/{propcid}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner))).replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
 
         let queryParameters: any = {};
@@ -413,7 +413,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -425,7 +425,7 @@ export class DealsApi {
      * This endpoint returns the in-progress transfers
      * @summary Transfer In Progress
      */
-    public dealTransferInProgressGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealTransferInProgressGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deal/transfer/in-progress';
 
         let queryParameters: any = {};
@@ -468,7 +468,71 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
+                dfd.resolve(jqXHR, data),
+            (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
+                dfd.reject(xhr, errorThrown)
+        );
+        return dfd.promise();
+    }
+
+    /**
+     * This endpoint returns the status of a transfer
+     * @summary Transfer Status
+     * @param chanid Channel ID
+     */
+    public dealTransferStatusPost(chanid: models.MainChannelIDParam, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
+        let localVarPath = this.basePath + '/deal/transfer/status';
+
+        let queryParameters: any = {};
+        let headerParams: any = {};
+        // verify required parameter 'chanid' is not null or undefined
+        if (chanid === null || chanid === undefined) {
+            throw new Error('Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+        }
+
+
+        localVarPath = localVarPath + "?" + $.param(queryParameters);
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKey) {
+            headerParams['Authorization'] = this.configuration.apiKey;
+        }
+
+
+        headerParams['Content-Type'] = 'application/json';
+
+        let requestOptions: JQueryAjaxSettings = {
+            url: localVarPath,
+            type: 'POST',
+            headers: headerParams,
+            processData: false
+        };
+
+        requestOptions.data = JSON.stringify(chanid);
+        if (headerParams['Content-Type']) {
+            requestOptions.contentType = headerParams['Content-Type'];
+        }
+
+        if (extraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, extraJQueryAjaxSettings);
+        }
+
+        if (this.defaultExtraJQueryAjaxSettings) {
+            requestOptions = (<any>Object).assign(requestOptions, this.defaultExtraJQueryAjaxSettings);
+        }
+
+        let dfd = $.Deferred();
+        $.ajax(requestOptions).then(
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -480,7 +544,7 @@ export class DealsApi {
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      */
-    public dealsFailuresGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealsFailuresGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deals/failures';
 
         let queryParameters: any = {};
@@ -523,7 +587,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -537,7 +601,7 @@ export class DealsApi {
      * @param miner Miner
      * @param dealRequest Deal Request
      */
-    public dealsMakeMinerPost(miner: string, dealRequest: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealsMakeMinerPost(miner: string, dealRequest: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deals/make/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -593,7 +657,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -606,7 +670,7 @@ export class DealsApi {
      * @summary Get Deal Status
      * @param deal Deal ID
      */
-    public dealsStatusDealGet(deal: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public dealsStatusDealGet(deal: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/deals/status/{deal}'.replace('{' + 'deal' + '}', encodeURIComponent(String(deal)));
 
         let queryParameters: any = {};
@@ -654,7 +718,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -666,7 +730,7 @@ export class DealsApi {
      * This endpoint returns a list of storage failures
      * @summary Get storage failures
      */
-    public publicDealsFailuresGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicDealsFailuresGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/deals/failures';
 
         let queryParameters: any = {};
@@ -709,7 +773,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -722,7 +786,7 @@ export class DealsApi {
      * @summary Query Ask
      * @param miner CID
      */
-    public publicMinersStorageQueryMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersStorageQueryMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/storage/query/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -770,7 +834,7 @@ export class DealsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

@@ -6,11 +6,11 @@
 
 %% @doc Get deal metrics
 %% This endpoint is used to get deal metrics
--spec public_metrics_deals_on_chain_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_metrics_deals_on_chain_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_metrics_deals_on_chain_get(Ctx) ->
     public_metrics_deals_on_chain_get(Ctx, #{}).
 
--spec public_metrics_deals_on_chain_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_metrics_deals_on_chain_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_metrics_deals_on_chain_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

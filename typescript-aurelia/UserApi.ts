@@ -15,7 +15,6 @@ import { HttpClient } from 'aurelia-http-client';
 import { Api } from './Api';
 import { AuthStorage } from './AuthStorage';
 import {
-  MainUserStatsResponse,
   MainGetApiKeysResp,
 } from './models';
 
@@ -72,7 +71,7 @@ export class UserApi extends Api {
    * Get API keys for a user
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    */
-  async userApiKeysGet(): Promise<Array<MainGetApiKeysResp>> {
+  async userApiKeysGet(): Promise<Array<Array<MainGetApiKeysResp>>> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -100,7 +99,7 @@ export class UserApi extends Api {
    * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
    * @param params.key Key
    */
-  async userApiKeysKeyDelete(params: IUserApiKeysKeyDeleteParams): Promise<any> {
+  async userApiKeysKeyDelete(params: IUserApiKeysKeyDeleteParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('userApiKeysKeyDelete', params, 'key');
 
@@ -128,7 +127,7 @@ export class UserApi extends Api {
   /**
    * Create API keys for a user
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-   * @param params.expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+   * @param params.expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
    * @param params.perms Permissions -- currently unused
    */
   async userApiKeysPost(params: IUserApiKeysPostParams): Promise<MainGetApiKeysResp> {
@@ -190,7 +189,7 @@ export class UserApi extends Api {
    * Create API keys for a user
    * This endpoint is used to create API keys for a user.
    */
-  async userStatsGet(): Promise<MainUserStatsResponse> {
+  async userStatsGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call

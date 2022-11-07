@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using estuary-client.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -32,8 +33,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns></returns>
-        void AdminAutoretrieveInitPost (string addresses, string pubKey);
+        /// <returns>string</returns>
+        string AdminAutoretrieveInitPost (string addresses, string pubKey);
 
         /// <summary>
         /// Register autoretrieve server
@@ -44,8 +45,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminAutoretrieveInitPostWithHttpInfo (string addresses, string pubKey);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminAutoretrieveInitPostWithHttpInfo (string addresses, string pubKey);
         /// <summary>
         /// List autoretrieve servers
         /// </summary>
@@ -53,8 +54,8 @@ namespace estuary-client.Api
         /// This endpoint lists all registered autoretrieve servers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminAutoretrieveListGet ();
+        /// <returns>string</returns>
+        string AdminAutoretrieveListGet ();
 
         /// <summary>
         /// List autoretrieve servers
@@ -63,8 +64,8 @@ namespace estuary-client.Api
         /// This endpoint lists all registered autoretrieve servers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminAutoretrieveListGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminAutoretrieveListGetWithHttpInfo ();
         /// <summary>
         /// Marks autoretrieve server as up
         /// </summary>
@@ -73,8 +74,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns></returns>
-        void AutoretrieveHeartbeatPost (string token);
+        /// <returns>string</returns>
+        string AutoretrieveHeartbeatPost (string token);
 
         /// <summary>
         /// Marks autoretrieve server as up
@@ -84,8 +85,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AutoretrieveHeartbeatPostWithHttpInfo (string token);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AutoretrieveHeartbeatPostWithHttpInfo (string token);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -97,8 +98,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminAutoretrieveInitPostAsync (string addresses, string pubKey);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminAutoretrieveInitPostAsync (string addresses, string pubKey);
 
         /// <summary>
         /// Register autoretrieve server
@@ -109,8 +110,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminAutoretrieveInitPostAsyncWithHttpInfo (string addresses, string pubKey);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminAutoretrieveInitPostAsyncWithHttpInfo (string addresses, string pubKey);
         /// <summary>
         /// List autoretrieve servers
         /// </summary>
@@ -118,8 +119,8 @@ namespace estuary-client.Api
         /// This endpoint lists all registered autoretrieve servers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminAutoretrieveListGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminAutoretrieveListGetAsync ();
 
         /// <summary>
         /// List autoretrieve servers
@@ -128,8 +129,8 @@ namespace estuary-client.Api
         /// This endpoint lists all registered autoretrieve servers
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminAutoretrieveListGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminAutoretrieveListGetAsyncWithHttpInfo ();
         /// <summary>
         /// Marks autoretrieve server as up
         /// </summary>
@@ -138,8 +139,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AutoretrieveHeartbeatPostAsync (string token);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AutoretrieveHeartbeatPostAsync (string token);
 
         /// <summary>
         /// Marks autoretrieve server as up
@@ -149,8 +150,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AutoretrieveHeartbeatPostAsyncWithHttpInfo (string token);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AutoretrieveHeartbeatPostAsyncWithHttpInfo (string token);
         #endregion Asynchronous Operations
     }
 
@@ -257,10 +258,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns></returns>
-        public void AdminAutoretrieveInitPost (string addresses, string pubKey)
+        /// <returns>string</returns>
+        public string AdminAutoretrieveInitPost (string addresses, string pubKey)
         {
-             AdminAutoretrieveInitPostWithHttpInfo(addresses, pubKey);
+             ApiResponse<string> localVarResponse = AdminAutoretrieveInitPostWithHttpInfo(addresses, pubKey);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -269,8 +271,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminAutoretrieveInitPostWithHttpInfo (string addresses, string pubKey)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminAutoretrieveInitPostWithHttpInfo (string addresses, string pubKey)
         {
             // verify the required parameter 'addresses' is set
             if (addresses == null)
@@ -300,14 +302,8 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (pubKey != null && pubKey.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(pubKey); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = pubKey; // byte array
-            }
+            if (addresses != null) localVarFormParams.Add("addresses", this.Configuration.ApiClient.ParameterToString(addresses)); // form parameter
+            if (pubKey != null) localVarFormParams.Add("pubKey", this.Configuration.ApiClient.ParameterToString(pubKey)); // form parameter
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -328,9 +324,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -339,10 +335,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminAutoretrieveInitPostAsync (string addresses, string pubKey)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminAutoretrieveInitPostAsync (string addresses, string pubKey)
         {
-             await AdminAutoretrieveInitPostAsyncWithHttpInfo(addresses, pubKey);
+             ApiResponse<string> localVarResponse = await AdminAutoretrieveInitPostAsyncWithHttpInfo(addresses, pubKey);
+             return localVarResponse.Data;
 
         }
 
@@ -352,8 +349,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminAutoretrieveInitPostAsyncWithHttpInfo (string addresses, string pubKey)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminAutoretrieveInitPostAsyncWithHttpInfo (string addresses, string pubKey)
         {
             // verify the required parameter 'addresses' is set
             if (addresses == null)
@@ -383,14 +380,8 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (pubKey != null && pubKey.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(pubKey); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = pubKey; // byte array
-            }
+            if (addresses != null) localVarFormParams.Add("addresses", this.Configuration.ApiClient.ParameterToString(addresses)); // form parameter
+            if (pubKey != null) localVarFormParams.Add("pubKey", this.Configuration.ApiClient.ParameterToString(pubKey)); // form parameter
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -411,27 +402,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminAutoretrieveListGet ()
+        /// <returns>string</returns>
+        public string AdminAutoretrieveListGet ()
         {
-             AdminAutoretrieveListGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminAutoretrieveListGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminAutoretrieveListGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminAutoretrieveListGetWithHttpInfo ()
         {
 
             var localVarPath = "/admin/autoretrieve/list";
@@ -475,19 +467,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminAutoretrieveListGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminAutoretrieveListGetAsync ()
         {
-             await AdminAutoretrieveListGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminAutoretrieveListGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -495,8 +488,8 @@ namespace estuary-client.Api
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminAutoretrieveListGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminAutoretrieveListGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/autoretrieve/list";
@@ -540,9 +533,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -550,10 +543,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns></returns>
-        public void AutoretrieveHeartbeatPost (string token)
+        /// <returns>string</returns>
+        public string AutoretrieveHeartbeatPost (string token)
         {
-             AutoretrieveHeartbeatPostWithHttpInfo(token);
+             ApiResponse<string> localVarResponse = AutoretrieveHeartbeatPostWithHttpInfo(token);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -561,8 +555,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AutoretrieveHeartbeatPostWithHttpInfo (string token)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AutoretrieveHeartbeatPostWithHttpInfo (string token)
         {
             // verify the required parameter 'token' is set
             if (token == null)
@@ -610,9 +604,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -620,10 +614,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AutoretrieveHeartbeatPostAsync (string token)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AutoretrieveHeartbeatPostAsync (string token)
         {
-             await AutoretrieveHeartbeatPostAsyncWithHttpInfo(token);
+             ApiResponse<string> localVarResponse = await AutoretrieveHeartbeatPostAsyncWithHttpInfo(token);
+             return localVarResponse.Data;
 
         }
 
@@ -632,8 +627,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AutoretrieveHeartbeatPostAsyncWithHttpInfo (string token)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AutoretrieveHeartbeatPostAsyncWithHttpInfo (string token)
         {
             // verify the required parameter 'token' is set
             if (token == null)
@@ -681,9 +676,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

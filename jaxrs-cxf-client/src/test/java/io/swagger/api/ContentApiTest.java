@@ -30,6 +30,7 @@ import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -88,8 +89,8 @@ public class ContentApiTest {
         String body = null;
         String ignoreDupes = null;
         String filename = null;
-        //api.contentAddCarPost(body, ignoreDupes, filename);
-        
+        //String response = api.contentAddCarPost(body, ignoreDupes, filename);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -107,8 +108,8 @@ public class ContentApiTest {
     public void contentAddIpfsPostTest() {
         UtilContentAddIpfsBody body = null;
         String ignoreDupes = null;
-        //api.contentAddIpfsPost(body, ignoreDupes);
-        
+        //String response = api.contentAddIpfsPost(body, ignoreDupes);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -169,8 +170,8 @@ public class ContentApiTest {
         String begin = null;
         String duration = null;
         String all = null;
-        //api.contentAllDealsGet(begin, duration, all);
-        
+        //String response = api.contentAllDealsGet(begin, duration, all);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -187,8 +188,8 @@ public class ContentApiTest {
     @Test
     public void contentBwUsageContentGetTest() {
         String content = null;
-        //api.contentBwUsageContentGet(content);
-        
+        //String response = api.contentBwUsageContentGet(content);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -206,8 +207,8 @@ public class ContentApiTest {
     public void contentCreatePostTest() {
         UtilContentCreateBody req = null;
         String ignoreDupes = null;
-        //api.contentCreatePost(req, ignoreDupes);
-        
+        //String response = api.contentCreatePost(req, ignoreDupes);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -225,8 +226,8 @@ public class ContentApiTest {
     public void contentDealsGetTest() {
         Integer limit = null;
         Integer offset = null;
-        //api.contentDealsGet(limit, offset);
-        
+        //String response = api.contentDealsGet(limit, offset);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -243,8 +244,8 @@ public class ContentApiTest {
     @Test
     public void contentEnsureReplicationDatacidGetTest() {
         String datacid = null;
-        //api.contentEnsureReplicationDatacidGet(datacid);
-        
+        //String response = api.contentEnsureReplicationDatacidGet(datacid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -279,8 +280,8 @@ public class ContentApiTest {
     @Test
     public void contentIdGetTest() {
         Integer id = null;
-        //api.contentIdGet(id);
-        
+        //String response = api.contentIdGet(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -297,8 +298,8 @@ public class ContentApiTest {
     @Test
     public void contentImportdealPostTest() {
         MainImportDealBody body = null;
-        //api.contentImportdealPost(body);
-        
+        //String response = api.contentImportdealPost(body);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -314,7 +315,7 @@ public class ContentApiTest {
      */
     @Test
     public void contentListGetTest() {
-        //List<String> response = api.contentListGet();
+        //String response = api.contentListGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -332,8 +333,8 @@ public class ContentApiTest {
     @Test
     public void contentReadContGetTest() {
         String cont = null;
-        //api.contentReadContGet(cont);
-        
+        //String response = api.contentReadContGet(cont);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -349,8 +350,8 @@ public class ContentApiTest {
      */
     @Test
     public void contentStagingZonesGetTest() {
-        //api.contentStagingZonesGet();
-        
+        //String response = api.contentStagingZonesGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -368,8 +369,8 @@ public class ContentApiTest {
     public void contentStatsGetTest() {
         String limit = null;
         String offset = null;
-        //api.contentStatsGet(limit, offset);
-        
+        //String response = api.contentStatsGet(limit, offset);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -386,8 +387,8 @@ public class ContentApiTest {
     @Test
     public void contentStatusIdGetTest() {
         Integer id = null;
-        //api.contentStatusIdGet(id);
-        
+        //String response = api.contentStatusIdGet(id);
+        //assertNotNull(response);
         // TODO: test validations
         
         

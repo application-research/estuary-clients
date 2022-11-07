@@ -19,6 +19,7 @@
 #include "SwaggerUtil_ContentAddIpfsBody.h"
 #include "SwaggerUtil_ContentAddResponse.h"
 #include "SwaggerUtil_ContentCreateBody.h"
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -46,9 +47,10 @@ class SWAGGER_API SwaggerContentApi::ContentAddCarPostResponse : public Response
 {
 public:
     virtual ~ContentAddCarPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Add IPFS object
@@ -72,9 +74,10 @@ class SWAGGER_API SwaggerContentApi::ContentAddIpfsPostResponse : public Respons
 {
 public:
     virtual ~ContentAddIpfsPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Add new content
@@ -162,9 +165,10 @@ class SWAGGER_API SwaggerContentApi::ContentAllDealsGetResponse : public Respons
 {
 public:
     virtual ~ContentAllDealsGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get content bandwidth
@@ -186,9 +190,10 @@ class SWAGGER_API SwaggerContentApi::ContentBwUsageContentGetResponse : public R
 {
 public:
     virtual ~ContentBwUsageContentGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Add a new content
@@ -212,9 +217,10 @@ class SWAGGER_API SwaggerContentApi::ContentCreatePostResponse : public Response
 {
 public:
     virtual ~ContentCreatePostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Content with deals
@@ -238,9 +244,10 @@ class SWAGGER_API SwaggerContentApi::ContentDealsGetResponse : public Response
 {
 public:
     virtual ~ContentDealsGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Ensure Replication
@@ -262,9 +269,10 @@ class SWAGGER_API SwaggerContentApi::ContentEnsureReplicationDatacidGetResponse 
 {
 public:
     virtual ~ContentEnsureReplicationDatacidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* List all failures for a content
@@ -311,9 +319,10 @@ class SWAGGER_API SwaggerContentApi::ContentIdGetResponse : public Response
 {
 public:
     virtual ~ContentIdGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Import a deal
@@ -335,9 +344,10 @@ class SWAGGER_API SwaggerContentApi::ContentImportdealPostResponse : public Resp
 {
 public:
     virtual ~ContentImportdealPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* List all pinned content
@@ -360,7 +370,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<FString> Content;
+    FString Content;
 };
 
 /* Read content
@@ -382,9 +392,10 @@ class SWAGGER_API SwaggerContentApi::ContentReadContGetResponse : public Respons
 {
 public:
     virtual ~ContentReadContGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get staging zone for user
@@ -404,9 +415,10 @@ class SWAGGER_API SwaggerContentApi::ContentStagingZonesGetResponse : public Res
 {
 public:
     virtual ~ContentStagingZonesGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get content statistics
@@ -430,9 +442,10 @@ class SWAGGER_API SwaggerContentApi::ContentStatsGetResponse : public Response
 {
 public:
     virtual ~ContentStatsGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Content Status
@@ -454,9 +467,10 @@ class SWAGGER_API SwaggerContentApi::ContentStatusIdGetResponse : public Respons
 {
 public:
     virtual ~ContentStatusIdGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

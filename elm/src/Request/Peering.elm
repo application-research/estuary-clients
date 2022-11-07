@@ -13,7 +13,9 @@
 
 module Request.Peering exposing (adminPeeringPeersDelete, adminPeeringPeersGet, adminPeeringPeersPost, adminPeeringStartPost, adminPeeringStatusGet, adminPeeringStopPost)
 
-import Data.String exposing (Encode.string, String)
+import Data.Bool exposing (Bool, Encode.bool)
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
 
@@ -26,13 +28,13 @@ basePath =
 {-
    This endpoint can be used to remove a Peer from the Peering Service
 -}
-adminPeeringPeersDelete : String -> Http.Request 
+adminPeeringPeersDelete : Bool -> Http.Request String
 adminPeeringPeersDelete model =
     { method = "DELETE"
     , url = basePath ++ "/admin/peering/peers"
     , headers = []
-    , body = Http.jsonBody <| Encode.string model
-    , expect = 
+    , body = Http.jsonBody <| Encode.bool model
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -42,13 +44,13 @@ adminPeeringPeersDelete model =
 {-
    This endpoint can be used to list all peers on Peering Service
 -}
-adminPeeringPeersGet : Http.Request 
+adminPeeringPeersGet : Http.Request String
 adminPeeringPeersGet =
     { method = "GET"
     , url = basePath ++ "/admin/peering/peers"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -58,13 +60,13 @@ adminPeeringPeersGet =
 {-
    This endpoint can be used to add a Peer from the Peering Service
 -}
-adminPeeringPeersPost : Http.Request 
+adminPeeringPeersPost : Http.Request String
 adminPeeringPeersPost =
     { method = "POST"
     , url = basePath ++ "/admin/peering/peers"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -74,13 +76,13 @@ adminPeeringPeersPost =
 {-
    This endpoint can be used to start the Peering Service
 -}
-adminPeeringStartPost : Http.Request 
+adminPeeringStartPost : Http.Request String
 adminPeeringStartPost =
     { method = "POST"
     , url = basePath ++ "/admin/peering/start"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -90,13 +92,13 @@ adminPeeringStartPost =
 {-
    This endpoint can be used to check the Peering status
 -}
-adminPeeringStatusGet : Http.Request 
+adminPeeringStatusGet : Http.Request String
 adminPeeringStatusGet =
     { method = "GET"
     , url = basePath ++ "/admin/peering/status"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -106,13 +108,13 @@ adminPeeringStatusGet =
 {-
    This endpoint can be used to stop the Peering Service
 -}
-adminPeeringStopPost : Http.Request 
+adminPeeringStopPost : Http.Request String
 adminPeeringStopPost =
     { method = "POST"
     , url = basePath ++ "/admin/peering/stop"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

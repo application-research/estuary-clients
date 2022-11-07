@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'public_metrics_deals_on_chain_get' } = { 
     	summary => 'Get deal metrics',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_metrics_deals_on_chain_get {
     my ($self, %args) = @_;
@@ -87,10 +87,14 @@ sub public_metrics_deals_on_chain_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

@@ -86,6 +86,14 @@ isa_ok($api, 'WWW::SwaggerClient::DealsApi');
 }
 
 #
+# deal_transfer_status_post test
+#
+{
+    my $chanid = undef; # replace NULL with a proper value
+    my $result = $api->deal_transfer_status_post(chanid => $chanid);
+}
+
+#
 # deals_failures_get test
 #
 {

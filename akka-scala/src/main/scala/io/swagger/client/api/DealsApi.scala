@@ -11,7 +11,9 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.MainChannelIDParam
 import io.swagger.client.model.MainEstimateDealBody
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -22,76 +24,109 @@ object DealsApi {
    * This endpoint estimates the cost of a deal
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
    */
-  def dealEstimatePost(body: MainEstimateDealBody)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/deal/estimate", "application/json")
+  def dealEstimatePost(body: MainEstimateDealBody)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/deal/estimate", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the deal info for a deal
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param dealid Deal ID
    */
-  def dealInfoDealidGet(dealid: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/info/{dealid}", "application/json")
+  def dealInfoDealidGet(dealid: Int)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/info/{dealid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("dealid", dealid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the proposal for a deal
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param propcid Proposal CID
    */
-  def dealProposalPropcidGet(propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/proposal/{propcid}", "application/json")
+  def dealProposalPropcidGet(propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/proposal/{propcid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("propcid", propcid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the ask for a given CID
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param miner CID
    */
-  def dealQueryMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/query/{miner}", "application/json")
+  def dealQueryMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/query/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * Get Deal Status by PropCid
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param propcid PropCid
    */
-  def dealStatusByProposalPropcidGet(propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/status-by-proposal/{propcid}", "application/json")
+  def dealStatusByProposalPropcidGet(propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/status-by-proposal/{propcid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("propcid", propcid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the status of a deal
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -99,37 +134,75 @@ object DealsApi {
    * @param miner Miner
    * @param propcid Proposal CID
    */
-  def dealStatusMinerPropcidGet(miner: String, propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/status/{miner}/{propcid}", "application/json")
+  def dealStatusMinerPropcidGet(miner: String, propcid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/status/{miner}/{propcid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
       .withPathParam("propcid", propcid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the in-progress transfers
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def dealTransferInProgressGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deal/transfer/in-progress", "application/json")
+  def dealTransferInProgressGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deal/transfer/in-progress", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
+        /**
+   * This endpoint returns the status of a transfer
+   * 
+   * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
+   * 
+   * Available security schemes:
+   *   bearerAuth (apiKey)
+   * 
+   * @param chanid Channel ID
+   */
+  def dealTransferStatusPost(chanid: MainChannelIDParam)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/deal/transfer/status", "application/json")
+      .withApiKey(apiKey, "Authorization", HEADER)
+      .withBody(chanid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns a list of storage failures for user
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def dealsFailuresGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deals/failures", "application/json")
+  def dealsFailuresGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deals/failures", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint makes a deal for a given content and miner
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -137,50 +210,71 @@ object DealsApi {
    * @param miner Miner
    * @param dealRequest Deal Request
    */
-  def dealsMakeMinerPost(miner: String, dealRequest: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/deals/make/{miner}", "application/json")
+  def dealsMakeMinerPost(miner: String, dealRequest: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/deals/make/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(dealRequest)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the status of a deal
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param deal Deal ID
    */
-  def dealsStatusDealGet(deal: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/deals/status/{deal}", "application/json")
+  def dealsStatusDealGet(deal: Int)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/deals/status/{deal}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("deal", deal)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns a list of storage failures
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def publicDealsFailuresGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/deals/failures", "application/json")
+  def publicDealsFailuresGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/deals/failures", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the ask for a given CID
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param miner CID
    */
-  def publicMinersStorageQueryMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/storage/query/{miner}", "application/json")
+  def publicMinersStorageQueryMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/storage/query/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

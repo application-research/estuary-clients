@@ -37,7 +37,7 @@
     describe('DealsApi', function() {
       describe('dealEstimatePost', function() {
         it('should call dealEstimatePost successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealEstimatePost call
+          // TODO: uncomment, update parameter values for dealEstimatePost call and complete the assertions
           /*
           var body = new EstuaryClient.MainEstimateDealBody();
           body.durationBlks = 0;
@@ -50,6 +50,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -60,7 +63,7 @@
       });
       describe('dealInfoDealidGet', function() {
         it('should call dealInfoDealidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealInfoDealidGet call
+          // TODO: uncomment, update parameter values for dealInfoDealidGet call and complete the assertions
           /*
           var dealid = 56;
 
@@ -69,6 +72,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -79,7 +85,7 @@
       });
       describe('dealProposalPropcidGet', function() {
         it('should call dealProposalPropcidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealProposalPropcidGet call
+          // TODO: uncomment, update parameter values for dealProposalPropcidGet call and complete the assertions
           /*
           var propcid = "propcid_example";
 
@@ -88,6 +94,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -98,7 +107,7 @@
       });
       describe('dealQueryMinerGet', function() {
         it('should call dealQueryMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealQueryMinerGet call
+          // TODO: uncomment, update parameter values for dealQueryMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -107,6 +116,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -117,7 +129,7 @@
       });
       describe('dealStatusByProposalPropcidGet', function() {
         it('should call dealStatusByProposalPropcidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealStatusByProposalPropcidGet call
+          // TODO: uncomment, update parameter values for dealStatusByProposalPropcidGet call and complete the assertions
           /*
           var propcid = "propcid_example";
 
@@ -126,6 +138,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -136,7 +151,7 @@
       });
       describe('dealStatusMinerPropcidGet', function() {
         it('should call dealStatusMinerPropcidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealStatusMinerPropcidGet call
+          // TODO: uncomment, update parameter values for dealStatusMinerPropcidGet call and complete the assertions
           /*
           var miner = "miner_example";
           var propcid = "propcid_example";
@@ -146,6 +161,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -156,7 +174,7 @@
       });
       describe('dealTransferInProgressGet', function() {
         it('should call dealTransferInProgressGet successfully', function(done) {
-          // TODO: uncomment dealTransferInProgressGet call
+          // TODO: uncomment dealTransferInProgressGet call and complete the assertions
           /*
 
           instance.dealTransferInProgressGet(function(error, data, response) {
@@ -164,6 +182,34 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('dealTransferStatusPost', function() {
+        it('should call dealTransferStatusPost successfully', function(done) {
+          // TODO: uncomment, update parameter values for dealTransferStatusPost call and complete the assertions
+          /*
+          var chanid = new EstuaryClient.MainChannelIDParam();
+          chanid.id = 0;
+          chanid.initiator = "";
+          chanid.responder = "";
+
+          instance.dealTransferStatusPost(chanid, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -174,7 +220,7 @@
       });
       describe('dealsFailuresGet', function() {
         it('should call dealsFailuresGet successfully', function(done) {
-          // TODO: uncomment dealsFailuresGet call
+          // TODO: uncomment dealsFailuresGet call and complete the assertions
           /*
 
           instance.dealsFailuresGet(function(error, data, response) {
@@ -182,6 +228,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -192,7 +241,7 @@
       });
       describe('dealsMakeMinerPost', function() {
         it('should call dealsMakeMinerPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealsMakeMinerPost call
+          // TODO: uncomment, update parameter values for dealsMakeMinerPost call and complete the assertions
           /*
           var miner = "miner_example";
           var dealRequest = "dealRequest_example";
@@ -202,6 +251,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -212,7 +264,7 @@
       });
       describe('dealsStatusDealGet', function() {
         it('should call dealsStatusDealGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for dealsStatusDealGet call
+          // TODO: uncomment, update parameter values for dealsStatusDealGet call and complete the assertions
           /*
           var deal = 56;
 
@@ -221,6 +273,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -231,7 +286,7 @@
       });
       describe('publicDealsFailuresGet', function() {
         it('should call publicDealsFailuresGet successfully', function(done) {
-          // TODO: uncomment publicDealsFailuresGet call
+          // TODO: uncomment publicDealsFailuresGet call and complete the assertions
           /*
 
           instance.publicDealsFailuresGet(function(error, data, response) {
@@ -239,6 +294,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -249,7 +307,7 @@
       });
       describe('publicMinersStorageQueryMinerGet', function() {
         it('should call publicMinersStorageQueryMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersStorageQueryMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersStorageQueryMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -258,6 +316,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

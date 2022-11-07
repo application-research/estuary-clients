@@ -60,6 +60,12 @@ void SwaggerNetApi::NetAddrsGetResponse::SetHttpResponseCode(EHttpResponseCodes:
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -101,10 +107,27 @@ void SwaggerNetApi::PublicMinersFailuresMinerGetRequest::SetupHttpRequest(const 
 	}
 }
 
+void SwaggerNetApi::PublicMinersFailuresMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerNetApi::PublicMinersFailuresMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerNetApi::PublicMinersGetRequest::ComputePath() const
@@ -136,10 +159,27 @@ void SwaggerNetApi::PublicMinersGetRequest::SetupHttpRequest(const TSharedRef<IH
 	}
 }
 
+void SwaggerNetApi::PublicMinersGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerNetApi::PublicMinersGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerNetApi::PublicNetAddrsGetRequest::ComputePath() const
@@ -225,6 +265,12 @@ void SwaggerNetApi::PublicNetPeersGetResponse::SetHttpResponseCode(EHttpResponse
 	case 200:
 	default:
 		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
 		break;
 	}
 }

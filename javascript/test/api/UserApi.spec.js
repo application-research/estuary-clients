@@ -51,11 +51,8 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
-              expect(data.expiry).to.be.a('string');
-              expect(data.expiry).to.be("");
-              expect(data.token).to.be.a('string');
-              expect(data.token).to.be("");
+              expect(data).to.be.a(Array);
+              // expect(data).to.be(null);
             }
 
             done();
@@ -67,7 +64,7 @@
       });
       describe('userApiKeysKeyDelete', function() {
         it('should call userApiKeysKeyDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for userApiKeysKeyDelete call
+          // TODO: uncomment, update parameter values for userApiKeysKeyDelete call and complete the assertions
           /*
           var key = "key_example";
 
@@ -76,6 +73,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -143,11 +143,8 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.MainUserStatsResponse);
-            expect(data.numPins).to.be.a('number');
-            expect(data.numPins).to.be(0);
-            expect(data.totalSize).to.be.a('number');
-            expect(data.totalSize).to.be(0);
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

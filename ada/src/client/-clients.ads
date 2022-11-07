@@ -17,60 +17,71 @@ package .Clients is
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get systems(estuary/shuttle) config
    --  This endpoint is used to get system configs.
    procedure Admin_System_Config_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get all users
    --  This endpoint is used to get all users.
    procedure Admin_Users_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Register autoretrieve server
    --  This endpoint registers a new autoretrieve server
    procedure Admin_Autoretrieve_Init_Post
       (Client : in out Client_Type;
        Addresses : in Swagger.UString;
-       Pub_Key : in Swagger.UString);
+       Pub_Key : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  List autoretrieve servers
    --  This endpoint lists all registered autoretrieve servers
    procedure Admin_Autoretrieve_List_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Marks autoretrieve server as up
    --  This endpoint updates the lastConnection field for autoretrieve
    procedure Autoretrieve_Heartbeat_Post
       (Client : in out Client_Type;
-       Token : in Swagger.UString);
+       Token : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Produce a CID of the collection contents
    --  This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.
@@ -92,7 +103,8 @@ package .Clients is
    --  This endpoint is used to delete an existing collection.
    procedure Collections_Coluuid_Delete
       (Client : in out Client_Type;
-       Coluuid : in Swagger.UString);
+       Coluuid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get contents in a collection
    --  This endpoint is used to get contents in a collection. If no colpath query param is passed
@@ -108,7 +120,7 @@ package .Clients is
       (Client : in out Client_Type;
        Coluuid : in Swagger.UString;
        Content_I_Ds : in Swagger.Nullable_Integer_Vectors.Vector;
-       Result : out Swagger.Nullable_UString_Map);
+       Result : out Swagger.UString);
 
    --  Add a file to a collection
    --  This endpoint adds a file to a collection
@@ -116,13 +128,14 @@ package .Clients is
       (Client : in out Client_Type;
        Coluuid : in Swagger.UString;
        Content : in Swagger.UString;
-       Path : in Swagger.UString);
+       Path : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  List all collections
    --  This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    procedure Collections_Get
       (Client : in out Client_Type;
-       Result : out .Models.Collections_Collection_Type_Vectors.Vector);
+       Result : out .Models.Collections_Collection_Type_Vectors.Vector_Vectors.Vector);
 
    --  Create a new collection
    --  This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
@@ -137,14 +150,16 @@ package .Clients is
       (Client : in out Client_Type;
        P_Body : in Swagger.UString;
        Ignore_Dupes : in Swagger.Nullable_UString;
-       Filename : in Swagger.Nullable_UString);
+       Filename : in Swagger.Nullable_UString;
+       Result : out Swagger.UString);
 
    --  Add IPFS object
    --  This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    procedure Content_Add_Ipfs_Post
       (Client : in out Client_Type;
        P_Body : in .Models.Util_ContentAddIpfsBody_Type;
-       Ignore_Dupes : in Swagger.Nullable_UString);
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Result : out Swagger.UString);
 
    --  Add new content
    --  This endpoint is used to upload new content.
@@ -172,33 +187,38 @@ package .Clients is
       (Client : in out Client_Type;
        P_Begin : in Swagger.UString;
        Duration : in Swagger.UString;
-       P_All : in Swagger.UString);
+       P_All : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get content bandwidth
    --  This endpoint returns content bandwidth
    procedure Content_Bw_Usage_Content_Get
       (Client : in out Client_Type;
-       Content : in Swagger.UString);
+       Content : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Add a new content
    --  This endpoint adds a new content
    procedure Content_Create_Post
       (Client : in out Client_Type;
        Req : in .Models.Util_ContentCreateBody_Type;
-       Ignore_Dupes : in Swagger.Nullable_UString);
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Result : out Swagger.UString);
 
    --  Content with deals
    --  This endpoint lists all content with deals
    procedure Content_Deals_Get
       (Client : in out Client_Type;
        Limit : in Swagger.Nullable_Integer;
-       Offset : in Swagger.Nullable_Integer);
+       Offset : in Swagger.Nullable_Integer;
+       Result : out Swagger.UString);
 
    --  Ensure Replication
    --  This endpoint ensures that the content is replicated to the specified number of providers
    procedure Content_Ensure_Replication_Datacid_Get
       (Client : in out Client_Type;
-       Datacid : in Swagger.UString);
+       Datacid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  List all failures for a content
    --  This endpoint returns all failures for a content
@@ -211,153 +231,179 @@ package .Clients is
    --  This endpoint returns a content by its ID
    procedure Content_Id_Get
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out Swagger.UString);
 
    --  Import a deal
    --  This endpoint imports a deal into the shuttle.
    procedure Content_Importdeal_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Main_importDealBody_Type);
+       P_Body : in .Models.Main_importDealBody_Type;
+       Result : out Swagger.UString);
 
    --  List all pinned content
    --  This endpoint lists all content
    procedure Content_List_Get
       (Client : in out Client_Type;
-       Result : out Swagger.Nullable_UString_Vectors.Vector);
+       Result : out Swagger.UString);
 
    --  Read content
    --  This endpoint reads content from the blockstore
    procedure Content_Read_Cont_Get
       (Client : in out Client_Type;
-       Cont : in Swagger.UString);
+       Cont : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get staging zone for user
    --  This endpoint is used to get staging zone for user.
    procedure Content_Staging_Zones_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get content statistics
    --  This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    procedure Content_Stats_Get
       (Client : in out Client_Type;
        Limit : in Swagger.UString;
-       Offset : in Swagger.UString);
+       Offset : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Content Status
    --  This endpoint returns the status of a content
    procedure Content_Status_Id_Get
       (Client : in out Client_Type;
-       Id : in Integer);
+       Id : in Integer;
+       Result : out Swagger.UString);
 
    --  Estimate the cost of a deal
    --  This endpoint estimates the cost of a deal
    procedure Deal_Estimate_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Main_estimateDealBody_Type);
+       P_Body : in .Models.Main_estimateDealBody_Type;
+       Result : out Swagger.UString);
 
    --  Get Deal Info
    --  This endpoint returns the deal info for a deal
    procedure Deal_Info_Dealid_Get
       (Client : in out Client_Type;
-       Dealid : in Integer);
+       Dealid : in Integer;
+       Result : out Swagger.UString);
 
    --  Get Proposal
    --  This endpoint returns the proposal for a deal
    procedure Deal_Proposal_Propcid_Get
       (Client : in out Client_Type;
-       Propcid : in Swagger.UString);
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Query Ask
    --  This endpoint returns the ask for a given CID
    procedure Deal_Query_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get Deal Status by PropCid
    --  Get Deal Status by PropCid
    procedure Deal_Status_By_Proposal_Propcid_Get
       (Client : in out Client_Type;
-       Propcid : in Swagger.UString);
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Deal Status
    --  This endpoint returns the status of a deal
    procedure Deal_Status_Miner_Propcid_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Propcid : in Swagger.UString);
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Transfer In Progress
    --  This endpoint returns the in-progress transfers
    procedure Deal_Transfer_In_Progress_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
+
+   --  Transfer Status
+   --  This endpoint returns the status of a transfer
+   procedure Deal_Transfer_Status_Post
+      (Client : in out Client_Type;
+       Chanid : in .Models.Main_ChannelIDParam_Type;
+       Result : out Swagger.UString);
 
    --  Get storage failures for user
    --  This endpoint returns a list of storage failures for user
    procedure Deals_Failures_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Make Deal
    --  This endpoint makes a deal for a given content and miner
    procedure Deals_Make_Miner_Post
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Deal_Request : in Swagger.UString);
+       Deal_Request : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get Deal Status
    --  This endpoint returns the status of a deal
    procedure Deals_Status_Deal_Get
       (Client : in out Client_Type;
-       Deal : in Integer);
+       Deal : in Integer;
+       Result : out Swagger.UString);
 
    --  Get storage failures
    --  This endpoint returns a list of storage failures
    procedure Public_Deals_Failures_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Query Ask
    --  This endpoint returns the ask for a given CID
    procedure Public_Miners_Storage_Query_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
-
-   --  
-   procedure Deal_Transfer_Status_Post
-      (Client : in out Client_Type);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get all miners deals
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Ignore_Failed : in Swagger.Nullable_UString);
+       Ignore_Failed : in Swagger.Nullable_UString;
+       Result : out Swagger.UString);
 
    --  Get miner stats
    --  This endpoint returns miner stats
    procedure Public_Miners_Stats_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Net Addrs
    --  This endpoint is used to get net addrs
    procedure Net_Addrs_Get
       (Client : in out Client_Type;
-       Result : out Swagger.Nullable_UString_Vectors.Vector);
+       Result : out Swagger.UString);
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Failures_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Net Addrs
    --  This endpoint is used to get net addrs
@@ -375,133 +421,156 @@ package .Clients is
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector);
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString);
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  List all pin status objects
    --  This endpoint lists all pin status objects
    procedure Pinning_Pins_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Delete a pinned object
    --  This endpoint deletes a pinned object.
    procedure Pinning_Pins_Pinid_Delete
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString);
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get a pin status object
    --  This endpoint returns a pin status object.
    procedure Pinning_Pins_Pinid_Get
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString);
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Replace a pinned object
    --  This endpoint replaces a pinned object.
    procedure Pinning_Pins_Pinid_Post
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString);
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Add and pin object
    --  This endpoint adds a pin to the IPFS daemon.
    procedure Pinning_Pins_Post
       (Client : in out Client_Type;
-       Cid : in Swagger.UString;
-       Name : in Swagger.UString);
+       Pin : in .Models.Types_IpfsPin_Type;
+       Result : out Swagger.UString);
 
    --  Get Content by Cid
    --  This endpoint returns the content associated with a CID
    procedure Public_By_Cid_Cid_Get
       (Client : in out Client_Type;
-       Cid : in Swagger.UString);
+       Cid : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get public node info
    --  This endpoint returns information about the node
    procedure Public_Info_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get all miners deals
    --  This endpoint returns all miners deals
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Ignore_Failed : in Swagger.Nullable_UString);
+       Ignore_Failed : in Swagger.Nullable_UString;
+       Result : out Swagger.UString);
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Failures_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get miner stats
    --  This endpoint returns miner stats
    procedure Public_Miners_Stats_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString);
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Net Addrs
    --  This endpoint is used to get net addrs
@@ -518,19 +587,21 @@ package .Clients is
    --  Public stats
    --  This endpoint is used to get public stats.
    procedure Public_Stats_Get
-      (Client : in out Client_Type);
+      (Client : in out Client_Type;
+       Result : out Swagger.UString);
 
    --  Get API keys for a user
    --  This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    procedure User_Api_Keys_Get
       (Client : in out Client_Type;
-       Result : out .Models.Main_getApiKeysResp_Type_Vectors.Vector);
+       Result : out .Models.Main_getApiKeysResp_Type_Vectors.Vector_Vectors.Vector);
 
    --  Revoke a User API Key.
    --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
    procedure User_Api_Keys_Key_Delete
       (Client : in out Client_Type;
-       Key : in Swagger.UString);
+       Key : in Swagger.UString;
+       Result : out Swagger.UString);
 
    --  Create API keys for a user
    --  This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
@@ -550,6 +621,6 @@ package .Clients is
    --  This endpoint is used to create API keys for a user.
    procedure User_Stats_Get
       (Client : in out Client_Type;
-       Result : out .Models.Main_userStatsResponse_Type);
+       Result : out Swagger.UString);
 
 end .Clients;

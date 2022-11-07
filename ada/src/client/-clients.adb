@@ -14,100 +14,124 @@ package body .Clients is
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", P_Body);
+      .Models.Serialize (Req.Stream, "", Peer_Ids);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI, Req);
+      Client.Call (Swagger.Clients.DELETE, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Get;
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Post;
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/start");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Start_Post;
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/status");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Status_Get;
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/stop");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Stop_Post;
 
    --  Get systems(estuary/shuttle) config
    --  This endpoint is used to get system configs.
    procedure Admin_System_Config_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/system/config");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_System_Config_Get;
 
    --  Get all users
    --  This endpoint is used to get all users.
    procedure Admin_Users_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/users");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Users_Get;
 
    --  Register autoretrieve server
@@ -115,42 +139,51 @@ package body .Clients is
    procedure Admin_Autoretrieve_Init_Post
       (Client : in out Client_Type;
        Addresses : in Swagger.UString;
-       Pub_Key : in Swagger.UString) is
+       Pub_Key : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
-      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", Addresses);
-      .Models.Serialize (Req.Stream, "", Pub_Key);
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_FORM));
+      .Models.Serialize (Req.Stream, "addresses", Addresses);
+      .Models.Serialize (Req.Stream, "pubKey", Pub_Key);
 
       URI.Set_Path ("/admin/autoretrieve/init");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Autoretrieve_Init_Post;
 
    --  List autoretrieve servers
    --  This endpoint lists all registered autoretrieve servers
    procedure Admin_Autoretrieve_List_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/autoretrieve/list");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Autoretrieve_List_Get;
 
    --  Marks autoretrieve server as up
    --  This endpoint updates the lastConnection field for autoretrieve
    procedure Autoretrieve_Heartbeat_Post
       (Client : in out Client_Type;
-       Token : in Swagger.UString) is
+       Token : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/autoretrieve/heartbeat");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Autoretrieve_Heartbeat_Post;
 
    --  Produce a CID of the collection contents
@@ -197,14 +230,17 @@ package body .Clients is
    --  This endpoint is used to delete an existing collection.
    procedure Collections_Coluuid_Delete
       (Client : in out Client_Type;
-       Coluuid : in Swagger.UString) is
+       Coluuid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
 
 
       URI.Set_Path ("/collections/{coluuid}");
       URI.Set_Path_Param ("coluuid", Coluuid);
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Collections_Coluuid_Delete;
 
    --  Get contents in a collection
@@ -232,7 +268,7 @@ package body .Clients is
       (Client : in out Client_Type;
        Coluuid : in Swagger.UString;
        Content_I_Ds : in Swagger.Nullable_Integer_Vectors.Vector;
-       Result : out Swagger.Nullable_UString_Map) is
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
@@ -244,7 +280,7 @@ package body .Clients is
       URI.Set_Path ("/collections/{coluuid}");
       URI.Set_Path_Param ("coluuid", Coluuid);
       Client.Call (Swagger.Clients.POST, URI, Req, Reply);
-      .Models.Deserialize (Reply, "", Result);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Collections_Coluuid_Post;
 
    --  Add a file to a collection
@@ -253,8 +289,10 @@ package body .Clients is
       (Client : in out Client_Type;
        Coluuid : in Swagger.UString;
        Content : in Swagger.UString;
-       Path : in Swagger.UString) is
+       Path : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
@@ -262,14 +300,15 @@ package body .Clients is
       URI.Add_Param ("content", Content);
       URI.Add_Param ("path", Path);
       URI.Set_Path ("/collections/fs/add");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Collections_Fs_Add_Post;
 
    --  List all collections
    --  This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    procedure Collections_Get
       (Client : in out Client_Type;
-       Result : out .Models.Collections_Collection_Type_Vectors.Vector) is
+       Result : out .Models.Collections_Collection_Type_Vectors.Vector_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -305,9 +344,11 @@ package body .Clients is
       (Client : in out Client_Type;
        P_Body : in Swagger.UString;
        Ignore_Dupes : in Swagger.Nullable_UString;
-       Filename : in Swagger.Nullable_UString) is
+       Filename : in Swagger.Nullable_UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
@@ -316,7 +357,8 @@ package body .Clients is
       URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Add_Param ("filename", Filename);
       URI.Set_Path ("/content/add-car");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Add_Car_Post;
 
    --  Add IPFS object
@@ -324,9 +366,11 @@ package body .Clients is
    procedure Content_Add_Ipfs_Post
       (Client : in out Client_Type;
        P_Body : in .Models.Util_ContentAddIpfsBody_Type;
-       Ignore_Dupes : in Swagger.Nullable_UString) is
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
@@ -334,7 +378,8 @@ package body .Clients is
 
       URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Set_Path ("/content/add-ipfs");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Add_Ipfs_Post;
 
    --  Add new content
@@ -391,8 +436,10 @@ package body .Clients is
       (Client : in out Client_Type;
        P_Begin : in Swagger.UString;
        Duration : in Swagger.UString;
-       P_All : in Swagger.UString) is
+       P_All : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
@@ -400,21 +447,25 @@ package body .Clients is
       URI.Add_Param ("duration", Duration);
       URI.Add_Param ("all", P_All);
       URI.Set_Path ("/content/all-deals");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_All_Deals_Get;
 
    --  Get content bandwidth
    --  This endpoint returns content bandwidth
    procedure Content_Bw_Usage_Content_Get
       (Client : in out Client_Type;
-       Content : in Swagger.UString) is
+       Content : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/bw-usage/{content}");
       URI.Set_Path_Param ("content", Content);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Bw_Usage_Content_Get;
 
    --  Add a new content
@@ -422,9 +473,11 @@ package body .Clients is
    procedure Content_Create_Post
       (Client : in out Client_Type;
        Req : in .Models.Util_ContentCreateBody_Type;
-       Ignore_Dupes : in Swagger.Nullable_UString) is
+       Ignore_Dupes : in Swagger.Nullable_UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
@@ -432,7 +485,8 @@ package body .Clients is
 
       URI.Add_Param ("ignore-dupes", Ignore_Dupes);
       URI.Set_Path ("/content/create");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Create_Post;
 
    --  Content with deals
@@ -440,29 +494,35 @@ package body .Clients is
    procedure Content_Deals_Get
       (Client : in out Client_Type;
        Limit : in Swagger.Nullable_Integer;
-       Offset : in Swagger.Nullable_Integer) is
+       Offset : in Swagger.Nullable_Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Add_Param ("limit", Limit);
       URI.Add_Param ("offset", Offset);
       URI.Set_Path ("/content/deals");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Deals_Get;
 
    --  Ensure Replication
    --  This endpoint ensures that the content is replicated to the specified number of providers
    procedure Content_Ensure_Replication_Datacid_Get
       (Client : in out Client_Type;
-       Datacid : in Swagger.UString) is
+       Datacid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/ensure-replication/{datacid}");
       URI.Set_Path_Param ("datacid", Datacid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Ensure_Replication_Datacid_Get;
 
    --  List all failures for a content
@@ -486,37 +546,43 @@ package body .Clients is
    --  This endpoint returns a content by its ID
    procedure Content_Id_Get
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/{id}");
       URI.Set_Path_Param ("id", Swagger.To_String (Id));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Id_Get;
 
    --  Import a deal
    --  This endpoint imports a deal into the shuttle.
    procedure Content_Importdeal_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Main_importDealBody_Type) is
+       P_Body : in .Models.Main_importDealBody_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
       .Models.Serialize (Req.Stream, "", P_Body);
 
       URI.Set_Path ("/content/importdeal");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Importdeal_Post;
 
    --  List all pinned content
    --  This endpoint lists all content
    procedure Content_List_Get
       (Client : in out Client_Type;
-       Result : out Swagger.Nullable_UString_Vectors.Vector) is
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -524,33 +590,39 @@ package body .Clients is
 
       URI.Set_Path ("/content/list");
       Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_List_Get;
 
    --  Read content
    --  This endpoint reads content from the blockstore
    procedure Content_Read_Cont_Get
       (Client : in out Client_Type;
-       Cont : in Swagger.UString) is
+       Cont : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/read/{cont}");
       URI.Set_Path_Param ("cont", Cont);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Read_Cont_Get;
 
    --  Get staging zone for user
    --  This endpoint is used to get staging zone for user.
    procedure Content_Staging_Zones_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/staging-zones");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Staging_Zones_Get;
 
    --  Get content statistics
@@ -558,101 +630,122 @@ package body .Clients is
    procedure Content_Stats_Get
       (Client : in out Client_Type;
        Limit : in Swagger.UString;
-       Offset : in Swagger.UString) is
+       Offset : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Add_Param ("limit", Limit);
       URI.Add_Param ("offset", Offset);
       URI.Set_Path ("/content/stats");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Stats_Get;
 
    --  Content Status
    --  This endpoint returns the status of a content
    procedure Content_Status_Id_Get
       (Client : in out Client_Type;
-       Id : in Integer) is
+       Id : in Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/content/status/{id}");
       URI.Set_Path_Param ("id", Swagger.To_String (Id));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Content_Status_Id_Get;
 
    --  Estimate the cost of a deal
    --  This endpoint estimates the cost of a deal
    procedure Deal_Estimate_Post
       (Client : in out Client_Type;
-       P_Body : in .Models.Main_estimateDealBody_Type) is
+       P_Body : in .Models.Main_estimateDealBody_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
       .Models.Serialize (Req.Stream, "", P_Body);
 
       URI.Set_Path ("/deal/estimate");
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Estimate_Post;
 
    --  Get Deal Info
    --  This endpoint returns the deal info for a deal
    procedure Deal_Info_Dealid_Get
       (Client : in out Client_Type;
-       Dealid : in Integer) is
+       Dealid : in Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/info/{dealid}");
       URI.Set_Path_Param ("dealid", Swagger.To_String (Dealid));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Info_Dealid_Get;
 
    --  Get Proposal
    --  This endpoint returns the proposal for a deal
    procedure Deal_Proposal_Propcid_Get
       (Client : in out Client_Type;
-       Propcid : in Swagger.UString) is
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/proposal/{propcid}");
       URI.Set_Path_Param ("propcid", Propcid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Proposal_Propcid_Get;
 
    --  Query Ask
    --  This endpoint returns the ask for a given CID
    procedure Deal_Query_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/query/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Query_Miner_Get;
 
    --  Get Deal Status by PropCid
    --  Get Deal Status by PropCid
    procedure Deal_Status_By_Proposal_Propcid_Get
       (Client : in out Client_Type;
-       Propcid : in Swagger.UString) is
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/status-by-proposal/{propcid}");
       URI.Set_Path_Param ("propcid", Propcid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Status_By_Proposal_Propcid_Get;
 
    --  Deal Status
@@ -660,39 +753,67 @@ package body .Clients is
    procedure Deal_Status_Miner_Propcid_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Propcid : in Swagger.UString) is
+       Propcid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/status/{miner}/{propcid}");
       URI.Set_Path_Param ("miner", Miner);
       URI.Set_Path_Param ("propcid", Propcid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Status_Miner_Propcid_Get;
 
    --  Transfer In Progress
    --  This endpoint returns the in-progress transfers
    procedure Deal_Transfer_In_Progress_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deal/transfer/in-progress");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deal_Transfer_In_Progress_Get;
+
+   --  Transfer Status
+   --  This endpoint returns the status of a transfer
+   procedure Deal_Transfer_Status_Post
+      (Client : in out Client_Type;
+       Chanid : in .Models.Main_ChannelIDParam_Type;
+       Result : out Swagger.UString) is
+      URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
+   begin
+      Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", Chanid);
+
+      URI.Set_Path ("/deal/transfer/status");
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
+   end Deal_Transfer_Status_Post;
 
    --  Get storage failures for user
    --  This endpoint returns a list of storage failures for user
    procedure Deals_Failures_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deals/failures");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deals_Failures_Get;
 
    --  Make Deal
@@ -700,9 +821,11 @@ package body .Clients is
    procedure Deals_Make_Miner_Post
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Deal_Request : in Swagger.UString) is
+       Deal_Request : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
@@ -710,70 +833,72 @@ package body .Clients is
 
       URI.Set_Path ("/deals/make/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.POST, URI, Req);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deals_Make_Miner_Post;
 
    --  Get Deal Status
    --  This endpoint returns the status of a deal
    procedure Deals_Status_Deal_Get
       (Client : in out Client_Type;
-       Deal : in Integer) is
+       Deal : in Integer;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/deals/status/{deal}");
       URI.Set_Path_Param ("deal", Swagger.To_String (Deal));
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Deals_Status_Deal_Get;
 
    --  Get storage failures
    --  This endpoint returns a list of storage failures
    procedure Public_Deals_Failures_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/deals/failures");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Deals_Failures_Get;
 
    --  Query Ask
    --  This endpoint returns the ask for a given CID
    procedure Public_Miners_Storage_Query_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners/storage/query/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Storage_Query_Miner_Get;
-
-   --  
-   procedure Deal_Transfer_Status_Post
-      (Client : in out Client_Type) is
-      URI   : Swagger.Clients.URI_Type;
-   begin
-
-
-      URI.Set_Path ("/deal/transfer/status");
-      Client.Call (Swagger.Clients.POST, URI);
-   end Deal_Transfer_Status_Post;
 
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/metrics/deals-on-chain");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Metrics_Deals_On_Chain_Get;
 
    --  Get all miners deals
@@ -781,36 +906,42 @@ package body .Clients is
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Ignore_Failed : in Swagger.Nullable_UString) is
+       Ignore_Failed : in Swagger.Nullable_UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Add_Param ("ignore-failed", Ignore_Failed);
       URI.Set_Path ("/public/miners/deals/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Deals_Miner_Get;
 
    --  Get miner stats
    --  This endpoint returns miner stats
    procedure Public_Miners_Stats_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners/stats/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Stats_Miner_Get;
 
    --  Net Addrs
    --  This endpoint is used to get net addrs
    procedure Net_Addrs_Get
       (Client : in out Client_Type;
-       Result : out Swagger.Nullable_UString_Vectors.Vector) is
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -818,33 +949,39 @@ package body .Clients is
 
       URI.Set_Path ("/net/addrs");
       Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Net_Addrs_Get;
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Failures_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners/failures/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Failures_Miner_Get;
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Get;
 
    --  Net Addrs
@@ -881,260 +1018,320 @@ package body .Clients is
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", P_Body);
+      .Models.Serialize (Req.Stream, "", Peer_Ids);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI, Req);
+      Client.Call (Swagger.Clients.DELETE, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Get;
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Post;
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/start");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Start_Post;
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/status");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Status_Get;
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/stop");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Stop_Post;
 
    --  Remove peers on Peering Service
    --  This endpoint can be used to remove a Peer from the Peering Service
    procedure Admin_Peering_Peers_Delete
       (Client : in out Client_Type;
-       P_Body : in Swagger.Nullable_UString_Vectors.Vector) is
+       Peer_Ids : in Swagger.Nullable_Boolean_Vectors.Vector;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
       Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
-      .Models.Serialize (Req.Stream, "", P_Body);
+      .Models.Serialize (Req.Stream, "", Peer_Ids);
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.DELETE, URI, Req);
+      Client.Call (Swagger.Clients.DELETE, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Delete;
 
    --  List all Peering peers
    --  This endpoint can be used to list all peers on Peering Service
    procedure Admin_Peering_Peers_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Get;
 
    --  Add peers on Peering Service
    --  This endpoint can be used to add a Peer from the Peering Service
    procedure Admin_Peering_Peers_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/peers");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Peers_Post;
 
    --  Start Peering
    --  This endpoint can be used to start the Peering Service
    procedure Admin_Peering_Start_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/start");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Start_Post;
 
    --  Check Peering Status
    --  This endpoint can be used to check the Peering status
    procedure Admin_Peering_Status_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/status");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Status_Get;
 
    --  Stop Peering
    --  This endpoint can be used to stop the Peering Service
    procedure Admin_Peering_Stop_Post
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/admin/peering/stop");
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Admin_Peering_Stop_Post;
 
    --  List all pin status objects
    --  This endpoint lists all pin status objects
    procedure Pinning_Pins_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/pinning/pins");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Get;
 
    --  Delete a pinned object
    --  This endpoint deletes a pinned object.
    procedure Pinning_Pins_Pinid_Delete
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString) is
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Delete;
 
    --  Get a pin status object
    --  This endpoint returns a pin status object.
    procedure Pinning_Pins_Pinid_Get
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString) is
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Get;
 
    --  Replace a pinned object
    --  This endpoint replaces a pinned object.
    procedure Pinning_Pins_Pinid_Post
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString) is
+       Pinid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Post;
 
    --  Add and pin object
    --  This endpoint adds a pin to the IPFS daemon.
    procedure Pinning_Pins_Post
       (Client : in out Client_Type;
-       Cid : in Swagger.UString;
-       Name : in Swagger.UString) is
+       Pin : in .Models.Types_IpfsPin_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", Pin);
 
       URI.Set_Path ("/pinning/pins");
-      URI.Set_Path_Param ("cid", Cid);
-      URI.Set_Path_Param ("name", Name);
-      Client.Call (Swagger.Clients.POST, URI);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Post;
 
    --  Get Content by Cid
    --  This endpoint returns the content associated with a CID
    procedure Public_By_Cid_Cid_Get
       (Client : in out Client_Type;
-       Cid : in Swagger.UString) is
+       Cid : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/by-cid/{cid}");
       URI.Set_Path_Param ("cid", Cid);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_By_Cid_Cid_Get;
 
    --  Get public node info
    --  This endpoint returns information about the node
    procedure Public_Info_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/info");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Info_Get;
 
    --  Get deal metrics
    --  This endpoint is used to get deal metrics
    procedure Public_Metrics_Deals_On_Chain_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/metrics/deals-on-chain");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Metrics_Deals_On_Chain_Get;
 
    --  Get all miners deals
@@ -1142,55 +1339,67 @@ package body .Clients is
    procedure Public_Miners_Deals_Miner_Get
       (Client : in out Client_Type;
        Miner : in Swagger.UString;
-       Ignore_Failed : in Swagger.Nullable_UString) is
+       Ignore_Failed : in Swagger.Nullable_UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Add_Param ("ignore-failed", Ignore_Failed);
       URI.Set_Path ("/public/miners/deals/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Deals_Miner_Get;
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Failures_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners/failures/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Failures_Miner_Get;
 
    --  Get all miners
    --  This endpoint returns all miners
    procedure Public_Miners_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Get;
 
    --  Get miner stats
    --  This endpoint returns miner stats
    procedure Public_Miners_Stats_Miner_Get
       (Client : in out Client_Type;
-       Miner : in Swagger.UString) is
+       Miner : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/miners/stats/{miner}");
       URI.Set_Path_Param ("miner", Miner);
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Miners_Stats_Miner_Get;
 
    --  Net Addrs
@@ -1226,20 +1435,23 @@ package body .Clients is
    --  Public stats
    --  This endpoint is used to get public stats.
    procedure Public_Stats_Get
-      (Client : in out Client_Type) is
+      (Client : in out Client_Type;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/public/stats");
-      Client.Call (Swagger.Clients.GET, URI);
+      Client.Call (Swagger.Clients.GET, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end Public_Stats_Get;
 
    --  Get API keys for a user
    --  This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    procedure User_Api_Keys_Get
       (Client : in out Client_Type;
-       Result : out .Models.Main_getApiKeysResp_Type_Vectors.Vector) is
+       Result : out .Models.Main_getApiKeysResp_Type_Vectors.Vector_Vectors.Vector) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1254,14 +1466,17 @@ package body .Clients is
    --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
    procedure User_Api_Keys_Key_Delete
       (Client : in out Client_Type;
-       Key : in Swagger.UString) is
+       Key : in Swagger.UString;
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/user/api-keys/{key}");
       URI.Set_Path_Param ("key", Key);
-      Client.Call (Swagger.Clients.DELETE, URI);
+      Client.Call (Swagger.Clients.DELETE, URI, Reply);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end User_Api_Keys_Key_Delete;
 
    --  Create API keys for a user
@@ -1302,7 +1517,7 @@ package body .Clients is
    --  This endpoint is used to create API keys for a user.
    procedure User_Stats_Get
       (Client : in out Client_Type;
-       Result : out .Models.Main_userStatsResponse_Type) is
+       Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1310,6 +1525,6 @@ package body .Clients is
 
       URI.Set_Path ("/user/stats");
       Client.Call (Swagger.Clients.GET, URI, Reply);
-      .Models.Deserialize (Reply, "", Result);
+      Swagger.Streams.Deserialize (Reply, "", Result);
    end User_Stats_Get;
 end .Clients;

@@ -18,7 +18,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get net addrs 
         local
-            l_response: LIST [STRING_32]
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
@@ -31,12 +31,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns all miners 
         local
+            l_response: STRING_32
             l_miner: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_miner
                       
-            -- api.public_miners_failures_miner_get(l_miner)
+            -- l_response := api.public_miners_failures_miner_get(l_miner)
             assert ("not_implemented", False)
         end
     
@@ -45,10 +46,11 @@ feature -- Test routines
             -- 
             -- This endpoint returns all miners 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.public_miners_get
+            -- l_response := api.public_miners_get
             assert ("not_implemented", False)
         end
     

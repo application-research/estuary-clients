@@ -28,7 +28,7 @@ Method | HTTP request | Description
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
     ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add Car object
@@ -55,7 +55,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 [apiInstance contentAddCarPostWithBody:body
               ignoreDupes:ignoreDupes
               filename:filename
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentAddCarPost: %@", error);
                         }
@@ -72,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -89,7 +92,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
     ignoreDupes: (NSString*) ignoreDupes
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add IPFS object
@@ -114,7 +117,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 // Add IPFS object
 [apiInstance contentAddIpfsPostWithBody:body
               ignoreDupes:ignoreDupes
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentAddIpfsPost: %@", error);
                         }
@@ -130,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -286,7 +292,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) contentAllDealsGetWithBegin: (NSString*) begin
     duration: (NSString*) duration
     all: (NSString*) all
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all deals for a user
@@ -313,7 +319,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 [apiInstance contentAllDealsGetWithBegin:begin
               duration:duration
               all:all
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentAllDealsGet: %@", error);
                         }
@@ -330,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -346,7 +355,7 @@ void (empty response body)
 # **contentBwUsageContentGet**
 ```objc
 -(NSURLSessionTask*) contentBwUsageContentGetWithContent: (NSString*) content
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get content bandwidth
@@ -369,7 +378,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Get content bandwidth
 [apiInstance contentBwUsageContentGetWithContent:content
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentBwUsageContentGet: %@", error);
                         }
@@ -384,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -401,7 +413,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
     ignoreDupes: (NSString*) ignoreDupes
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add a new content
@@ -426,7 +438,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 // Add a new content
 [apiInstance contentCreatePostWithReq:req
               ignoreDupes:ignoreDupes
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentCreatePost: %@", error);
                         }
@@ -442,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -459,7 +474,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) contentDealsGetWithLimit: (NSNumber*) limit
     offset: (NSNumber*) offset
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Content with deals
@@ -484,7 +499,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 // Content with deals
 [apiInstance contentDealsGetWithLimit:limit
               offset:offset
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentDealsGet: %@", error);
                         }
@@ -500,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -516,7 +534,7 @@ void (empty response body)
 # **contentEnsureReplicationDatacidGet**
 ```objc
 -(NSURLSessionTask*) contentEnsureReplicationDatacidGetWithDatacid: (NSString*) datacid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Ensure Replication
@@ -539,7 +557,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Ensure Replication
 [apiInstance contentEnsureReplicationDatacidGetWithDatacid:datacid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentEnsureReplicationDatacidGet: %@", error);
                         }
@@ -554,7 +575,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -627,7 +648,7 @@ Name | Type | Description  | Notes
 # **contentIdGet**
 ```objc
 -(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Content
@@ -650,7 +671,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Content
 [apiInstance contentIdGetWithId:_id
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentIdGet: %@", error);
                         }
@@ -665,7 +689,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -681,7 +705,7 @@ void (empty response body)
 # **contentImportdealPost**
 ```objc
 -(NSURLSessionTask*) contentImportdealPostWithBody: (SWGMainImportDealBody*) body
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Import a deal
@@ -704,7 +728,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Import a deal
 [apiInstance contentImportdealPostWithBody:body
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentImportdealPost: %@", error);
                         }
@@ -719,7 +746,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -735,7 +762,7 @@ void (empty response body)
 # **contentListGet**
 ```objc
 -(NSURLSessionTask*) contentListGetWithCompletionHandler: 
-        (void (^)(NSArray<NSString*>* output, NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 List all pinned content
@@ -757,7 +784,7 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // List all pinned content
 [apiInstance contentListGetWithCompletionHandler: 
-          ^(NSArray<NSString*>* output, NSError* error) {
+          ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -772,7 +799,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**NSArray<NSString*>***
+**NSString***
 
 ### Authorization
 
@@ -788,7 +815,7 @@ This endpoint does not need any parameter.
 # **contentReadContGet**
 ```objc
 -(NSURLSessionTask*) contentReadContGetWithCont: (NSString*) cont
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Read content
@@ -811,7 +838,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Read content
 [apiInstance contentReadContGetWithCont:cont
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentReadContGet: %@", error);
                         }
@@ -826,7 +856,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -842,7 +872,7 @@ void (empty response body)
 # **contentStagingZonesGet**
 ```objc
 -(NSURLSessionTask*) contentStagingZonesGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get staging zone for user
@@ -864,7 +894,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Get staging zone for user
 [apiInstance contentStagingZonesGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentStagingZonesGet: %@", error);
                         }
@@ -876,7 +909,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -893,7 +926,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
     offset: (NSString*) offset
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get content statistics
@@ -918,7 +951,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 // Get content statistics
 [apiInstance contentStatsGetWithLimit:limit
               offset:offset
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentStatsGet: %@", error);
                         }
@@ -934,7 +970,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -950,7 +986,7 @@ void (empty response body)
 # **contentStatusIdGet**
 ```objc
 -(NSURLSessionTask*) contentStatusIdGetWithId: (NSNumber*) _id
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Content Status
@@ -973,7 +1009,10 @@ SWGContentApi*apiInstance = [[SWGContentApi alloc] init];
 
 // Content Status
 [apiInstance contentStatusIdGetWithId:_id
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGContentApi->contentStatusIdGet: %@", error);
                         }
@@ -988,7 +1027,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

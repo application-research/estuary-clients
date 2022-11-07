@@ -18,6 +18,7 @@ feature -- Test routines
             -- 
             -- This endpoint registers a new autoretrieve server 
         local
+            l_response: STRING_32
             l_addresses: STRING_32
             l_pub_key: STRING_32
         do
@@ -25,7 +26,7 @@ feature -- Test routines
             -- l_addresses
             -- l_pub_key
                       
-            -- api.admin_autoretrieve_init_post(l_addresses, l_pub_key)
+            -- l_response := api.admin_autoretrieve_init_post(l_addresses, l_pub_key)
             assert ("not_implemented", False)
         end
     
@@ -34,10 +35,11 @@ feature -- Test routines
             -- 
             -- This endpoint lists all registered autoretrieve servers 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_autoretrieve_list_get
+            -- l_response := api.admin_autoretrieve_list_get
             assert ("not_implemented", False)
         end
     
@@ -46,12 +48,13 @@ feature -- Test routines
             -- 
             -- This endpoint updates the lastConnection field for autoretrieve 
         local
+            l_response: STRING_32
             l_token: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_token
                       
-            -- api.autoretrieve_heartbeat_post(l_token)
+            -- l_response := api.autoretrieve_heartbeat_post(l_token)
             assert ("not_implemented", False)
         end
 

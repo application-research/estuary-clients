@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
@@ -61,9 +62,12 @@ class TestPinningController(BaseTestCase):
 
         Add and pin object
         """
+        pin = TypesIpfsPin()
         response = self.client.open(
-            '//pinning/pins'.format(cid='cid_example', name='name_example'),
-            method='POST')
+            '//pinning/pins',
+            method='POST',
+            data=json.dumps(pin),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

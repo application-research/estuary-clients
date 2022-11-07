@@ -18,7 +18,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { MainChannelIDParam } from '../model/mainChannelIDParam';
 import { MainEstimateDealBody } from '../model/mainEstimateDealBody';
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,9 +65,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealEstimatePost(body: MainEstimateDealBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -96,7 +98,7 @@ export class DealsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/deal/estimate`,
+        return this.httpClient.post<string>(`${this.basePath}/deal/estimate`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -114,9 +116,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealInfoDealidGet(dealid: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealInfoDealidGet(dealid: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealInfoDealidGet(dealid: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealInfoDealidGet(dealid: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealInfoDealidGet(dealid: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealInfoDealidGet(dealid: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealInfoDealidGet(dealid: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (dealid === null || dealid === undefined) {
@@ -143,7 +145,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/info/${encodeURIComponent(String(dealid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/info/${encodeURIComponent(String(dealid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -160,9 +162,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealProposalPropcidGet(propcid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealProposalPropcidGet(propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealProposalPropcidGet(propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealProposalPropcidGet(propcid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealProposalPropcidGet(propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealProposalPropcidGet(propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealProposalPropcidGet(propcid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (propcid === null || propcid === undefined) {
@@ -189,7 +191,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/proposal/${encodeURIComponent(String(propcid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/proposal/${encodeURIComponent(String(propcid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -206,9 +208,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealQueryMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealQueryMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealQueryMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealQueryMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealQueryMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealQueryMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealQueryMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -235,7 +237,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/query/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/query/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -252,9 +254,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealStatusByProposalPropcidGet(propcid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (propcid === null || propcid === undefined) {
@@ -281,7 +283,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/status-by-proposal/${encodeURIComponent(String(propcid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/status-by-proposal/${encodeURIComponent(String(propcid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -299,9 +301,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealStatusMinerPropcidGet(miner: string, propcid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -332,7 +334,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/status/${encodeURIComponent(String(miner))}/${encodeURIComponent(String(propcid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/status/${encodeURIComponent(String(miner))}/${encodeURIComponent(String(propcid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -348,9 +350,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealTransferInProgressGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealTransferInProgressGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealTransferInProgressGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealTransferInProgressGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealTransferInProgressGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealTransferInProgressGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealTransferInProgressGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -373,7 +375,58 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deal/transfer/in-progress`,
+        return this.httpClient.get<string>(`${this.basePath}/deal/transfer/in-progress`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (chanid === null || chanid === undefined) {
+            throw new Error('Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.post<string>(`${this.basePath}/deal/transfer/status`,
+            chanid,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -389,9 +442,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealsFailuresGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealsFailuresGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealsFailuresGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealsFailuresGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealsFailuresGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealsFailuresGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealsFailuresGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -414,7 +467,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deals/failures`,
+        return this.httpClient.get<string>(`${this.basePath}/deals/failures`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -432,9 +485,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealsMakeMinerPost(miner: string, dealRequest: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -469,7 +522,7 @@ export class DealsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/deals/make/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.post<string>(`${this.basePath}/deals/make/${encodeURIComponent(String(miner))}`,
             dealRequest,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -487,9 +540,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealsStatusDealGet(deal: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public dealsStatusDealGet(deal: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public dealsStatusDealGet(deal: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public dealsStatusDealGet(deal: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealsStatusDealGet(deal: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealsStatusDealGet(deal: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public dealsStatusDealGet(deal: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (deal === null || deal === undefined) {
@@ -516,7 +569,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/deals/status/${encodeURIComponent(String(deal))}`,
+        return this.httpClient.get<string>(`${this.basePath}/deals/status/${encodeURIComponent(String(deal))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -532,9 +585,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicDealsFailuresGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicDealsFailuresGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicDealsFailuresGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicDealsFailuresGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicDealsFailuresGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicDealsFailuresGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicDealsFailuresGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -557,7 +610,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/deals/failures`,
+        return this.httpClient.get<string>(`${this.basePath}/public/deals/failures`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -574,9 +627,9 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersStorageQueryMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -603,7 +656,7 @@ export class DealsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/storage/query/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/storage/query/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

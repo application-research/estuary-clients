@@ -70,6 +70,25 @@ collectionsCollectionUuidL f CollectionsCollection{..} = (\collectionsCollection
 
 
 
+-- * MainChannelIDParam
+
+-- | 'mainChannelIDParamId' Lens
+mainChannelIDParamIdL :: Lens_' MainChannelIDParam (Maybe Int)
+mainChannelIDParamIdL f MainChannelIDParam{..} = (\mainChannelIDParamId -> MainChannelIDParam { mainChannelIDParamId, ..} ) <$> f mainChannelIDParamId
+{-# INLINE mainChannelIDParamIdL #-}
+
+-- | 'mainChannelIDParamInitiator' Lens
+mainChannelIDParamInitiatorL :: Lens_' MainChannelIDParam (Maybe Text)
+mainChannelIDParamInitiatorL f MainChannelIDParam{..} = (\mainChannelIDParamInitiator -> MainChannelIDParam { mainChannelIDParamInitiator, ..} ) <$> f mainChannelIDParamInitiator
+{-# INLINE mainChannelIDParamInitiatorL #-}
+
+-- | 'mainChannelIDParamResponder' Lens
+mainChannelIDParamResponderL :: Lens_' MainChannelIDParam (Maybe Text)
+mainChannelIDParamResponderL f MainChannelIDParam{..} = (\mainChannelIDParamResponder -> MainChannelIDParam { mainChannelIDParamResponder, ..} ) <$> f mainChannelIDParamResponder
+{-# INLINE mainChannelIDParamResponderL #-}
+
+
+
 -- * MainCreateCollectionBody
 
 -- | 'mainCreateCollectionBodyDescription' Lens
@@ -160,17 +179,27 @@ mainImportDealBodyNameL f MainImportDealBody{..} = (\mainImportDealBodyName -> M
 
 
 
--- * MainUserStatsResponse
+-- * TypesIpfsPin
 
--- | 'mainUserStatsResponseNumPins' Lens
-mainUserStatsResponseNumPinsL :: Lens_' MainUserStatsResponse (Maybe Int)
-mainUserStatsResponseNumPinsL f MainUserStatsResponse{..} = (\mainUserStatsResponseNumPins -> MainUserStatsResponse { mainUserStatsResponseNumPins, ..} ) <$> f mainUserStatsResponseNumPins
-{-# INLINE mainUserStatsResponseNumPinsL #-}
+-- | 'typesIpfsPinCid' Lens
+typesIpfsPinCidL :: Lens_' TypesIpfsPin (Maybe Text)
+typesIpfsPinCidL f TypesIpfsPin{..} = (\typesIpfsPinCid -> TypesIpfsPin { typesIpfsPinCid, ..} ) <$> f typesIpfsPinCid
+{-# INLINE typesIpfsPinCidL #-}
 
--- | 'mainUserStatsResponseTotalSize' Lens
-mainUserStatsResponseTotalSizeL :: Lens_' MainUserStatsResponse (Maybe Int)
-mainUserStatsResponseTotalSizeL f MainUserStatsResponse{..} = (\mainUserStatsResponseTotalSize -> MainUserStatsResponse { mainUserStatsResponseTotalSize, ..} ) <$> f mainUserStatsResponseTotalSize
-{-# INLINE mainUserStatsResponseTotalSizeL #-}
+-- | 'typesIpfsPinMeta' Lens
+typesIpfsPinMetaL :: Lens_' TypesIpfsPin (Maybe A.Value)
+typesIpfsPinMetaL f TypesIpfsPin{..} = (\typesIpfsPinMeta -> TypesIpfsPin { typesIpfsPinMeta, ..} ) <$> f typesIpfsPinMeta
+{-# INLINE typesIpfsPinMetaL #-}
+
+-- | 'typesIpfsPinName' Lens
+typesIpfsPinNameL :: Lens_' TypesIpfsPin (Maybe Text)
+typesIpfsPinNameL f TypesIpfsPin{..} = (\typesIpfsPinName -> TypesIpfsPin { typesIpfsPinName, ..} ) <$> f typesIpfsPinName
+{-# INLINE typesIpfsPinNameL #-}
+
+-- | 'typesIpfsPinOrigins' Lens
+typesIpfsPinOriginsL :: Lens_' TypesIpfsPin (Maybe [Text])
+typesIpfsPinOriginsL f TypesIpfsPin{..} = (\typesIpfsPinOrigins -> TypesIpfsPin { typesIpfsPinOrigins, ..} ) <$> f typesIpfsPinOrigins
+{-# INLINE typesIpfsPinOriginsL #-}
 
 
 

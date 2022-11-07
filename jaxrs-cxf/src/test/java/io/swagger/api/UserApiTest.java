@@ -25,8 +25,8 @@
 
 package io.swagger.api;
 
+import java.util.List;
 import io.swagger.model.MainGetApiKeysResp;
-import io.swagger.model.MainUserStatsResponse;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -83,7 +83,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() {
-        //List<MainGetApiKeysResp> response = api.userApiKeysGet();
+        //List<List<MainGetApiKeysResp>> response = api.userApiKeysGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -101,8 +101,8 @@ public class UserApiTest {
     @Test
     public void userApiKeysKeyDeleteTest() {
         String key = null;
-        //api.userApiKeysKeyDelete(key);
-        
+        //String response = api.userApiKeysKeyDelete(key);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -154,7 +154,7 @@ public class UserApiTest {
      */
     @Test
     public void userStatsGetTest() {
-        //MainUserStatsResponse response = api.userStatsGet();
+        //String response = api.userStatsGet();
         //assertNotNull(response);
         // TODO: test validations
         

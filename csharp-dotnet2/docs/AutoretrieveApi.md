@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="adminautoretrieveinitpost"></a>
 # **AdminAutoretrieveInitPost**
-> void AdminAutoretrieveInitPost (string addresses, string pubKey)
+> string AdminAutoretrieveInitPost (string addresses, string pubKey)
 
 Register autoretrieve server
 
@@ -44,7 +44,8 @@ namespace Example
             try
             {
                 // Register autoretrieve server
-                apiInstance.AdminAutoretrieveInitPost(addresses, pubKey);
+                string result = apiInstance.AdminAutoretrieveInitPost(addresses, pubKey);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -79,7 +80,7 @@ void (empty response body)
 
 <a name="adminautoretrievelistget"></a>
 # **AdminAutoretrieveListGet**
-> void AdminAutoretrieveListGet ()
+> string AdminAutoretrieveListGet ()
 
 List autoretrieve servers
 
@@ -110,7 +111,8 @@ namespace Example
             try
             {
                 // List autoretrieve servers
-                apiInstance.AdminAutoretrieveListGet();
+                string result = apiInstance.AdminAutoretrieveListGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -126,7 +128,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -141,7 +143,7 @@ void (empty response body)
 
 <a name="autoretrieveheartbeatpost"></a>
 # **AutoretrieveHeartbeatPost**
-> void AutoretrieveHeartbeatPost (string token)
+> string AutoretrieveHeartbeatPost (string token)
 
 Marks autoretrieve server as up
 
@@ -173,7 +175,8 @@ namespace Example
             try
             {
                 // Marks autoretrieve server as up
-                apiInstance.AutoretrieveHeartbeatPost(token);
+                string result = apiInstance.AutoretrieveHeartbeatPost(token);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -192,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

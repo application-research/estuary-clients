@@ -22,17 +22,17 @@ defmodule EstuaryAPI.Api.Net do
 
   ## Returns
 
-  {:ok, [%String{}, ...]} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec net_addrs_get(Tesla.Env.client, keyword()) :: {:ok, list(String.t)} | {:error, Tesla.Env.t}
+  @spec net_addrs_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def net_addrs_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/net/addrs")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode([%EstuaryAPI.Model.String{}])
+    |> decode(false)
   end
 
   @doc """
@@ -47,10 +47,10 @@ defmodule EstuaryAPI.Api.Net do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_failures_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_failures_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_failures_miner_get(connection, miner, _opts \\ []) do
     %{}
     |> method(:get)
@@ -71,10 +71,10 @@ defmodule EstuaryAPI.Api.Net do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_get(connection, _opts \\ []) do
     %{}
     |> method(:get)

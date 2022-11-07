@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="netAddrsGet"></a>
 # **netAddrsGet**
-> List&lt;String&gt; netAddrsGet()
+> String netAddrsGet()
 
 Net Addrs
 
@@ -38,7 +38,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 NetApi apiInstance = new NetApi();
 try {
-    List<String> result = apiInstance.netAddrsGet();
+    String result = apiInstance.netAddrsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#netAddrsGet");
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -90,7 +90,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 NetApi apiInstance = new NetApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner);
+    String result = apiInstance.publicMinersFailuresMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#publicMinersFailuresMinerGet");
     e.printStackTrace();
@@ -105,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -118,7 +119,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> String publicMinersGet()
 
 Get all miners
 
@@ -143,7 +144,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 NetApi apiInstance = new NetApi();
 try {
-    apiInstance.publicMinersGet();
+    String result = apiInstance.publicMinersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling NetApi#publicMinersGet");
     e.printStackTrace();
@@ -155,7 +157,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

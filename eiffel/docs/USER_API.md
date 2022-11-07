@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **user_api_keys_get**
-> user_api_keys_get : detachable LIST [MAIN_GET_API_KEYS_RESP]
+> user_api_keys_get : detachable LIST [LIST [MAIN_GET_API_KEYS_RESP]]
 	
 
 Get API keys for a user
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**LIST [MAIN_GET_API_KEYS_RESP]**](main.getApiKeysResp.md)
+[**LIST [LIST [MAIN_GET_API_KEYS_RESP]]**](LIST.md)
 
 ### Authorization
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_key_delete**
-> user_api_keys_key_delete (key: STRING_32 )
+> user_api_keys_key_delete (key: STRING_32 ): detachable STRING_32
 	
 
 Revoke a User API Key.
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **STRING_32**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **STRING_32**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **STRING_32**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -127,7 +127,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_stats_get**
-> user_stats_get : detachable MAIN_USER_STATS_RESPONSE
+> user_stats_get : detachable STRING_32
 	
 
 Create API keys for a user
@@ -140,7 +140,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MAIN_USER_STATS_RESPONSE**](main.userStatsResponse.md)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

@@ -27,7 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.MainChannelIDParam;
 import io.swagger.client.model.MainEstimateDealBody;
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -121,22 +123,25 @@ public class DealsApi {
      * Estimate the cost of a deal
      * This endpoint estimates the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealEstimatePost(MainEstimateDealBody body) throws ApiException {
-        dealEstimatePostWithHttpInfo(body);
+    public String dealEstimatePost(MainEstimateDealBody body) throws ApiException {
+        ApiResponse<String> resp = dealEstimatePostWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Estimate the cost of a deal
      * This endpoint estimates the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealEstimatePostWithHttpInfo(MainEstimateDealBody body) throws ApiException {
+    public ApiResponse<String> dealEstimatePostWithHttpInfo(MainEstimateDealBody body) throws ApiException {
         com.squareup.okhttp.Call call = dealEstimatePostValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -147,7 +152,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealEstimatePostAsync(MainEstimateDealBody body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealEstimatePostAsync(MainEstimateDealBody body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -169,7 +174,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealEstimatePostValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -240,22 +246,25 @@ public class DealsApi {
      * Get Deal Info
      * This endpoint returns the deal info for a deal
      * @param dealid Deal ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealInfoDealidGet(Integer dealid) throws ApiException {
-        dealInfoDealidGetWithHttpInfo(dealid);
+    public String dealInfoDealidGet(Integer dealid) throws ApiException {
+        ApiResponse<String> resp = dealInfoDealidGetWithHttpInfo(dealid);
+        return resp.getData();
     }
 
     /**
      * Get Deal Info
      * This endpoint returns the deal info for a deal
      * @param dealid Deal ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealInfoDealidGetWithHttpInfo(Integer dealid) throws ApiException {
+    public ApiResponse<String> dealInfoDealidGetWithHttpInfo(Integer dealid) throws ApiException {
         com.squareup.okhttp.Call call = dealInfoDealidGetValidateBeforeCall(dealid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -266,7 +275,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealInfoDealidGetAsync(Integer dealid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealInfoDealidGetAsync(Integer dealid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -288,7 +297,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealInfoDealidGetValidateBeforeCall(dealid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -359,22 +369,25 @@ public class DealsApi {
      * Get Proposal
      * This endpoint returns the proposal for a deal
      * @param propcid Proposal CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealProposalPropcidGet(String propcid) throws ApiException {
-        dealProposalPropcidGetWithHttpInfo(propcid);
+    public String dealProposalPropcidGet(String propcid) throws ApiException {
+        ApiResponse<String> resp = dealProposalPropcidGetWithHttpInfo(propcid);
+        return resp.getData();
     }
 
     /**
      * Get Proposal
      * This endpoint returns the proposal for a deal
      * @param propcid Proposal CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealProposalPropcidGetWithHttpInfo(String propcid) throws ApiException {
+    public ApiResponse<String> dealProposalPropcidGetWithHttpInfo(String propcid) throws ApiException {
         com.squareup.okhttp.Call call = dealProposalPropcidGetValidateBeforeCall(propcid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -385,7 +398,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealProposalPropcidGetAsync(String propcid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealProposalPropcidGetAsync(String propcid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -407,7 +420,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealProposalPropcidGetValidateBeforeCall(propcid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -478,22 +492,25 @@ public class DealsApi {
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealQueryMinerGet(String miner) throws ApiException {
-        dealQueryMinerGetWithHttpInfo(miner);
+    public String dealQueryMinerGet(String miner) throws ApiException {
+        ApiResponse<String> resp = dealQueryMinerGetWithHttpInfo(miner);
+        return resp.getData();
     }
 
     /**
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealQueryMinerGetWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<String> dealQueryMinerGetWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = dealQueryMinerGetValidateBeforeCall(miner, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -504,7 +521,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealQueryMinerGetAsync(String miner, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealQueryMinerGetAsync(String miner, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -526,7 +543,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealQueryMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -597,22 +615,25 @@ public class DealsApi {
      * Get Deal Status by PropCid
      * Get Deal Status by PropCid
      * @param propcid PropCid (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealStatusByProposalPropcidGet(String propcid) throws ApiException {
-        dealStatusByProposalPropcidGetWithHttpInfo(propcid);
+    public String dealStatusByProposalPropcidGet(String propcid) throws ApiException {
+        ApiResponse<String> resp = dealStatusByProposalPropcidGetWithHttpInfo(propcid);
+        return resp.getData();
     }
 
     /**
      * Get Deal Status by PropCid
      * Get Deal Status by PropCid
      * @param propcid PropCid (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealStatusByProposalPropcidGetWithHttpInfo(String propcid) throws ApiException {
+    public ApiResponse<String> dealStatusByProposalPropcidGetWithHttpInfo(String propcid) throws ApiException {
         com.squareup.okhttp.Call call = dealStatusByProposalPropcidGetValidateBeforeCall(propcid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -623,7 +644,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealStatusByProposalPropcidGetAsync(String propcid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealStatusByProposalPropcidGetAsync(String propcid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -645,7 +666,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealStatusByProposalPropcidGetValidateBeforeCall(propcid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -724,10 +746,12 @@ public class DealsApi {
      * This endpoint returns the status of a deal
      * @param miner Miner (required)
      * @param propcid Proposal CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealStatusMinerPropcidGet(String miner, String propcid) throws ApiException {
-        dealStatusMinerPropcidGetWithHttpInfo(miner, propcid);
+    public String dealStatusMinerPropcidGet(String miner, String propcid) throws ApiException {
+        ApiResponse<String> resp = dealStatusMinerPropcidGetWithHttpInfo(miner, propcid);
+        return resp.getData();
     }
 
     /**
@@ -735,12 +759,13 @@ public class DealsApi {
      * This endpoint returns the status of a deal
      * @param miner Miner (required)
      * @param propcid Proposal CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealStatusMinerPropcidGetWithHttpInfo(String miner, String propcid) throws ApiException {
+    public ApiResponse<String> dealStatusMinerPropcidGetWithHttpInfo(String miner, String propcid) throws ApiException {
         com.squareup.okhttp.Call call = dealStatusMinerPropcidGetValidateBeforeCall(miner, propcid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -752,7 +777,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealStatusMinerPropcidGetAsync(String miner, String propcid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealStatusMinerPropcidGetAsync(String miner, String propcid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -774,7 +799,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealStatusMinerPropcidGetValidateBeforeCall(miner, propcid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -837,21 +863,24 @@ public class DealsApi {
     /**
      * Transfer In Progress
      * This endpoint returns the in-progress transfers
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealTransferInProgressGet() throws ApiException {
-        dealTransferInProgressGetWithHttpInfo();
+    public String dealTransferInProgressGet() throws ApiException {
+        ApiResponse<String> resp = dealTransferInProgressGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Transfer In Progress
      * This endpoint returns the in-progress transfers
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealTransferInProgressGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> dealTransferInProgressGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = dealTransferInProgressGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -861,7 +890,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealTransferInProgressGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealTransferInProgressGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -883,7 +912,130 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealTransferInProgressGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for dealTransferStatusPost
+     * @param chanid Channel ID (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call dealTransferStatusPostCall(MainChannelIDParam chanid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = chanid;
+
+        // create path and map variables
+        String localVarPath = "/deal/transfer/status";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call dealTransferStatusPostValidateBeforeCall(MainChannelIDParam chanid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'chanid' is set
+        if (chanid == null) {
+            throw new ApiException("Missing the required parameter 'chanid' when calling dealTransferStatusPost(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = dealTransferStatusPostCall(chanid, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String dealTransferStatusPost(MainChannelIDParam chanid) throws ApiException {
+        ApiResponse<String> resp = dealTransferStatusPostWithHttpInfo(chanid);
+        return resp.getData();
+    }
+
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> dealTransferStatusPostWithHttpInfo(MainChannelIDParam chanid) throws ApiException {
+        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(chanid, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Transfer Status (asynchronously)
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call dealTransferStatusPostAsync(MainChannelIDParam chanid, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(chanid, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -946,21 +1098,24 @@ public class DealsApi {
     /**
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealsFailuresGet() throws ApiException {
-        dealsFailuresGetWithHttpInfo();
+    public String dealsFailuresGet() throws ApiException {
+        ApiResponse<String> resp = dealsFailuresGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealsFailuresGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> dealsFailuresGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = dealsFailuresGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -970,7 +1125,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealsFailuresGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealsFailuresGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -992,7 +1147,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealsFailuresGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1070,10 +1226,12 @@ public class DealsApi {
      * This endpoint makes a deal for a given content and miner
      * @param miner Miner (required)
      * @param dealRequest Deal Request (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealsMakeMinerPost(String miner, String dealRequest) throws ApiException {
-        dealsMakeMinerPostWithHttpInfo(miner, dealRequest);
+    public String dealsMakeMinerPost(String miner, String dealRequest) throws ApiException {
+        ApiResponse<String> resp = dealsMakeMinerPostWithHttpInfo(miner, dealRequest);
+        return resp.getData();
     }
 
     /**
@@ -1081,12 +1239,13 @@ public class DealsApi {
      * This endpoint makes a deal for a given content and miner
      * @param miner Miner (required)
      * @param dealRequest Deal Request (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealsMakeMinerPostWithHttpInfo(String miner, String dealRequest) throws ApiException {
+    public ApiResponse<String> dealsMakeMinerPostWithHttpInfo(String miner, String dealRequest) throws ApiException {
         com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(miner, dealRequest, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1098,7 +1257,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealsMakeMinerPostAsync(String miner, String dealRequest, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealsMakeMinerPostAsync(String miner, String dealRequest, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1120,7 +1279,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(miner, dealRequest, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1191,22 +1351,25 @@ public class DealsApi {
      * Get Deal Status
      * This endpoint returns the status of a deal
      * @param deal Deal ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void dealsStatusDealGet(Integer deal) throws ApiException {
-        dealsStatusDealGetWithHttpInfo(deal);
+    public String dealsStatusDealGet(Integer deal) throws ApiException {
+        ApiResponse<String> resp = dealsStatusDealGetWithHttpInfo(deal);
+        return resp.getData();
     }
 
     /**
      * Get Deal Status
      * This endpoint returns the status of a deal
      * @param deal Deal ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> dealsStatusDealGetWithHttpInfo(Integer deal) throws ApiException {
+    public ApiResponse<String> dealsStatusDealGetWithHttpInfo(Integer deal) throws ApiException {
         com.squareup.okhttp.Call call = dealsStatusDealGetValidateBeforeCall(deal, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1217,7 +1380,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealsStatusDealGetAsync(Integer deal, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealsStatusDealGetAsync(Integer deal, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1239,7 +1402,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = dealsStatusDealGetValidateBeforeCall(deal, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1302,21 +1466,24 @@ public class DealsApi {
     /**
      * Get storage failures
      * This endpoint returns a list of storage failures
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicDealsFailuresGet() throws ApiException {
-        publicDealsFailuresGetWithHttpInfo();
+    public String publicDealsFailuresGet() throws ApiException {
+        ApiResponse<String> resp = publicDealsFailuresGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get storage failures
      * This endpoint returns a list of storage failures
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicDealsFailuresGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> publicDealsFailuresGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = publicDealsFailuresGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1326,7 +1493,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicDealsFailuresGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicDealsFailuresGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1348,7 +1515,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = publicDealsFailuresGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1419,22 +1587,25 @@ public class DealsApi {
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersStorageQueryMinerGet(String miner) throws ApiException {
-        publicMinersStorageQueryMinerGetWithHttpInfo(miner);
+    public String publicMinersStorageQueryMinerGet(String miner) throws ApiException {
+        ApiResponse<String> resp = publicMinersStorageQueryMinerGetWithHttpInfo(miner);
+        return resp.getData();
     }
 
     /**
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersStorageQueryMinerGetWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<String> publicMinersStorageQueryMinerGetWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = publicMinersStorageQueryMinerGetValidateBeforeCall(miner, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1445,7 +1616,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersStorageQueryMinerGetAsync(String miner, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersStorageQueryMinerGetAsync(String miner, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1467,7 +1638,8 @@ public class DealsApi {
         }
 
         com.squareup.okhttp.Call call = publicMinersStorageQueryMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

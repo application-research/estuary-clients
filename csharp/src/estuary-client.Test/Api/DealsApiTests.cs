@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -71,8 +72,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //MainEstimateDealBody body = null;
-            //instance.DealEstimatePost(body);
-            
+            //var response = instance.DealEstimatePost(body);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -83,8 +84,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? dealid = null;
-            //instance.DealInfoDealidGet(dealid);
-            
+            //var response = instance.DealInfoDealidGet(dealid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -95,8 +96,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string propcid = null;
-            //instance.DealProposalPropcidGet(propcid);
-            
+            //var response = instance.DealProposalPropcidGet(propcid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -107,8 +108,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
-            //instance.DealQueryMinerGet(miner);
-            
+            //var response = instance.DealQueryMinerGet(miner);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -119,8 +120,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string propcid = null;
-            //instance.DealStatusByProposalPropcidGet(propcid);
-            
+            //var response = instance.DealStatusByProposalPropcidGet(propcid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -132,8 +133,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //string propcid = null;
-            //instance.DealStatusMinerPropcidGet(miner, propcid);
-            
+            //var response = instance.DealStatusMinerPropcidGet(miner, propcid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -143,8 +144,20 @@ namespace estuary-client.Test
         public void DealTransferInProgressGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.DealTransferInProgressGet();
-            
+            //var response = instance.DealTransferInProgressGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        
+        /// <summary>
+        /// Test DealTransferStatusPost
+        /// </summary>
+        [Test]
+        public void DealTransferStatusPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //MainChannelIDParam chanid = null;
+            //var response = instance.DealTransferStatusPost(chanid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -154,8 +167,8 @@ namespace estuary-client.Test
         public void DealsFailuresGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.DealsFailuresGet();
-            
+            //var response = instance.DealsFailuresGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -167,8 +180,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //string dealRequest = null;
-            //instance.DealsMakeMinerPost(miner, dealRequest);
-            
+            //var response = instance.DealsMakeMinerPost(miner, dealRequest);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -179,8 +192,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? deal = null;
-            //instance.DealsStatusDealGet(deal);
-            
+            //var response = instance.DealsStatusDealGet(deal);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -190,8 +203,8 @@ namespace estuary-client.Test
         public void PublicDealsFailuresGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicDealsFailuresGet();
-            
+            //var response = instance.PublicDealsFailuresGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -202,8 +215,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
-            //instance.PublicMinersStorageQueryMinerGet(miner);
-            
+            //var response = instance.PublicMinersStorageQueryMinerGet(miner);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

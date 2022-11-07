@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -37,7 +37,8 @@ MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Filter by miner
 String ignoreFailed = "ignoreFailed_example"; // String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    String result = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#publicMinersDealsMinerGet");
     e.printStackTrace();
@@ -53,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -92,7 +93,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner);
+    String result = apiInstance.publicMinersStatsMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#publicMinersStatsMinerGet");
     e.printStackTrace();
@@ -107,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

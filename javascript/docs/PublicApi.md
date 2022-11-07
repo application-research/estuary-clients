@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="publicByCidCidGet"></a>
 # **publicByCidCidGet**
-> publicByCidCidGet(cid)
+> 'String' publicByCidCidGet(cid)
 
 Get Content by Cid
 
@@ -44,7 +44,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicByCidCidGet(cid, callback);
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -71,7 +71,7 @@ null (empty response body)
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> publicInfoGet()
+> 'String' publicInfoGet()
 
 Get public node info
 
@@ -94,7 +94,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicInfoGet(callback);
@@ -105,7 +105,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -118,7 +118,7 @@ null (empty response body)
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> 'String' publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -141,7 +141,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMetricsDealsOnChainGet(callback);
@@ -152,7 +152,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -165,7 +165,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, opts)
+> 'String' publicMinersDealsMinerGet(miner, opts)
 
 Get all miners deals
 
@@ -194,7 +194,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersDealsMinerGet(miner, opts, callback);
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -222,7 +222,7 @@ null (empty response body)
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> 'String' publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -248,7 +248,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersFailuresMinerGet(miner, callback);
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -275,7 +275,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> 'String' publicMinersGet()
 
 Get all miners
 
@@ -298,7 +298,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersGet(callback);
@@ -309,7 +309,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -322,7 +322,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> 'String' publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -348,7 +348,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersStatsMinerGet(miner, callback);
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -469,7 +469,7 @@ This endpoint does not need any parameter.
 
 <a name="publicStatsGet"></a>
 # **publicStatsGet**
-> publicStatsGet()
+> 'String' publicStatsGet()
 
 Public stats
 
@@ -492,7 +492,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicStatsGet(callback);
@@ -503,7 +503,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

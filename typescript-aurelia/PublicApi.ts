@@ -103,7 +103,7 @@ export class PublicApi extends Api {
    * This endpoint returns the content associated with a CID
    * @param params.cid Cid
    */
-  async publicByCidCidGet(params: IPublicByCidCidGetParams): Promise<any> {
+  async publicByCidCidGet(params: IPublicByCidCidGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicByCidCidGet', params, 'cid');
 
@@ -132,7 +132,7 @@ export class PublicApi extends Api {
    * Get public node info
    * This endpoint returns information about the node
    */
-  async publicInfoGet(): Promise<any> {
+  async publicInfoGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -159,7 +159,7 @@ export class PublicApi extends Api {
    * Get deal metrics
    * This endpoint is used to get deal metrics
    */
-  async publicMetricsDealsOnChainGet(): Promise<any> {
+  async publicMetricsDealsOnChainGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -188,7 +188,7 @@ export class PublicApi extends Api {
    * @param params.miner Filter by miner
    * @param params.ignoreFailed Ignore Failed
    */
-  async publicMinersDealsMinerGet(params: IPublicMinersDealsMinerGetParams): Promise<any> {
+  async publicMinersDealsMinerGet(params: IPublicMinersDealsMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersDealsMinerGet', params, 'miner');
 
@@ -222,7 +222,7 @@ export class PublicApi extends Api {
    * This endpoint returns all miners
    * @param params.miner Filter by miner
    */
-  async publicMinersFailuresMinerGet(params: IPublicMinersFailuresMinerGetParams): Promise<any> {
+  async publicMinersFailuresMinerGet(params: IPublicMinersFailuresMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersFailuresMinerGet', params, 'miner');
 
@@ -251,7 +251,7 @@ export class PublicApi extends Api {
    * Get all miners
    * This endpoint returns all miners
    */
-  async publicMinersGet(): Promise<any> {
+  async publicMinersGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -279,7 +279,7 @@ export class PublicApi extends Api {
    * This endpoint returns miner stats
    * @param params.miner Filter by miner
    */
-  async publicMinersStatsMinerGet(params: IPublicMinersStatsMinerGetParams): Promise<any> {
+  async publicMinersStatsMinerGet(params: IPublicMinersStatsMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersStatsMinerGet', params, 'miner');
 
@@ -362,7 +362,7 @@ export class PublicApi extends Api {
    * Public stats
    * This endpoint is used to get public stats.
    */
-  async publicStatsGet(): Promise<any> {
+  async publicStatsGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call

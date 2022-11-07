@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+> str content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
 
 Add Car object
 
@@ -52,7 +52,8 @@ filename = 'filename_example' # str | Filename (optional)
 
 try:
     # Add Car object
-    api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+    api_response = api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_car_post: %s\n" % e)
 ```
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -81,7 +82,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+> str content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
 
 Add IPFS object
 
@@ -108,7 +109,8 @@ ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
     # Add IPFS object
-    api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_ipfs_post: %s\n" % e)
 ```
@@ -122,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -256,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_all_deals_get**
-> content_all_deals_get(begin, duration, all)
+> str content_all_deals_get(begin, duration, all)
 
 Get all deals for a user
 
@@ -284,7 +286,8 @@ all = 'all_example' # str | All
 
 try:
     # Get all deals for a user
-    api_instance.content_all_deals_get(begin, duration, all)
+    api_response = api_instance.content_all_deals_get(begin, duration, all)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_all_deals_get: %s\n" % e)
 ```
@@ -299,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -313,7 +316,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_bw_usage_content_get**
-> content_bw_usage_content_get(content)
+> str content_bw_usage_content_get(content)
 
 Get content bandwidth
 
@@ -339,7 +342,8 @@ content = 'content_example' # str | Content ID
 
 try:
     # Get content bandwidth
-    api_instance.content_bw_usage_content_get(content)
+    api_response = api_instance.content_bw_usage_content_get(content)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_bw_usage_content_get: %s\n" % e)
 ```
@@ -352,7 +356,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -366,7 +370,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post(req, ignore_dupes=ignore_dupes)
+> str content_create_post(req, ignore_dupes=ignore_dupes)
 
 Add a new content
 
@@ -393,7 +397,8 @@ ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
     # Add a new content
-    api_instance.content_create_post(req, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_create_post(req, ignore_dupes=ignore_dupes)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_create_post: %s\n" % e)
 ```
@@ -407,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -421,7 +426,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_deals_get**
-> content_deals_get(limit=limit, offset=offset)
+> str content_deals_get(limit=limit, offset=offset)
 
 Content with deals
 
@@ -448,7 +453,8 @@ offset = 56 # int | Offset (optional)
 
 try:
     # Content with deals
-    api_instance.content_deals_get(limit=limit, offset=offset)
+    api_response = api_instance.content_deals_get(limit=limit, offset=offset)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_deals_get: %s\n" % e)
 ```
@@ -462,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -476,7 +482,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get(datacid)
+> str content_ensure_replication_datacid_get(datacid)
 
 Ensure Replication
 
@@ -502,7 +508,8 @@ datacid = 'datacid_example' # str | Data CID
 
 try:
     # Ensure Replication
-    api_instance.content_ensure_replication_datacid_get(datacid)
+    api_response = api_instance.content_ensure_replication_datacid_get(datacid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_ensure_replication_datacid_get: %s\n" % e)
 ```
@@ -515,7 +522,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -583,7 +590,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_id_get**
-> content_id_get(id)
+> str content_id_get(id)
 
 Content
 
@@ -609,7 +616,8 @@ id = 56 # int | Content ID
 
 try:
     # Content
-    api_instance.content_id_get(id)
+    api_response = api_instance.content_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_id_get: %s\n" % e)
 ```
@@ -622,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -636,7 +644,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_importdeal_post**
-> content_importdeal_post(body)
+> str content_importdeal_post(body)
 
 Import a deal
 
@@ -662,7 +670,8 @@ body = estuary-client.MainImportDealBody() # MainImportDealBody | Import a deal
 
 try:
     # Import a deal
-    api_instance.content_importdeal_post(body)
+    api_response = api_instance.content_importdeal_post(body)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_importdeal_post: %s\n" % e)
 ```
@@ -675,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -689,7 +698,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_list_get**
-> list[str] content_list_get()
+> str content_list_get()
 
 List all pinned content
 
@@ -725,7 +734,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[str]**
+**str**
 
 ### Authorization
 
@@ -739,7 +748,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_read_cont_get**
-> content_read_cont_get(cont)
+> str content_read_cont_get(cont)
 
 Read content
 
@@ -765,7 +774,8 @@ cont = 'cont_example' # str | CID
 
 try:
     # Read content
-    api_instance.content_read_cont_get(cont)
+    api_response = api_instance.content_read_cont_get(cont)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_read_cont_get: %s\n" % e)
 ```
@@ -778,7 +788,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -792,7 +802,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_staging_zones_get**
-> content_staging_zones_get()
+> str content_staging_zones_get()
 
 Get staging zone for user
 
@@ -817,7 +827,8 @@ api_instance = estuary-client.ContentApi(estuary-client.ApiClient(configuration)
 
 try:
     # Get staging zone for user
-    api_instance.content_staging_zones_get()
+    api_response = api_instance.content_staging_zones_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_staging_zones_get: %s\n" % e)
 ```
@@ -827,7 +838,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -841,7 +852,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get(limit, offset)
+> str content_stats_get(limit, offset)
 
 Get content statistics
 
@@ -868,7 +879,8 @@ offset = 'offset_example' # str | offset
 
 try:
     # Get content statistics
-    api_instance.content_stats_get(limit, offset)
+    api_response = api_instance.content_stats_get(limit, offset)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_stats_get: %s\n" % e)
 ```
@@ -882,7 +894,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -896,7 +908,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_status_id_get**
-> content_status_id_get(id)
+> str content_status_id_get(id)
 
 Content Status
 
@@ -922,7 +934,8 @@ id = 56 # int | Content ID
 
 try:
     # Content Status
-    api_instance.content_status_id_get(id)
+    api_response = api_instance.content_status_id_get(id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_status_id_get: %s\n" % e)
 ```
@@ -935,7 +948,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

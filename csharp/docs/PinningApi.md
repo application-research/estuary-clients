@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningpinsget"></a>
 # **PinningPinsGet**
-> void PinningPinsGet ()
+> string PinningPinsGet ()
 
 List all pin status objects
 
@@ -43,7 +43,8 @@ namespace Example
             try
             {
                 // List all pin status objects
-                apiInstance.PinningPinsGet();
+                string result = apiInstance.PinningPinsGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -59,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -74,7 +75,7 @@ void (empty response body)
 
 <a name="pinningpinspiniddelete"></a>
 # **PinningPinsPinidDelete**
-> void PinningPinsPinidDelete (string pinid)
+> string PinningPinsPinidDelete (string pinid)
 
 Delete a pinned object
 
@@ -105,7 +106,8 @@ namespace Example
             try
             {
                 // Delete a pinned object
-                apiInstance.PinningPinsPinidDelete(pinid);
+                string result = apiInstance.PinningPinsPinidDelete(pinid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -124,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -139,7 +141,7 @@ void (empty response body)
 
 <a name="pinningpinspinidget"></a>
 # **PinningPinsPinidGet**
-> void PinningPinsPinidGet (string pinid)
+> string PinningPinsPinidGet (string pinid)
 
 Get a pin status object
 
@@ -170,7 +172,8 @@ namespace Example
             try
             {
                 // Get a pin status object
-                apiInstance.PinningPinsPinidGet(pinid);
+                string result = apiInstance.PinningPinsPinidGet(pinid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -189,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -204,7 +207,7 @@ void (empty response body)
 
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> void PinningPinsPinidPost (string pinid)
+> string PinningPinsPinidPost (string pinid)
 
 Replace a pinned object
 
@@ -235,7 +238,8 @@ namespace Example
             try
             {
                 // Replace a pinned object
-                apiInstance.PinningPinsPinidPost(pinid);
+                string result = apiInstance.PinningPinsPinidPost(pinid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -254,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -269,7 +273,7 @@ void (empty response body)
 
 <a name="pinningpinspost"></a>
 # **PinningPinsPost**
-> void PinningPinsPost (string cid, string name)
+> string PinningPinsPost (TypesIpfsPin pin)
 
 Add and pin object
 
@@ -295,13 +299,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var cid = cid_example;  // string | cid
-            var name = name_example;  // string | name
+            var pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
             try
             {
                 // Add and pin object
-                apiInstance.PinningPinsPost(cid, name);
+                string result = apiInstance.PinningPinsPost(pin);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -316,12 +320,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **string**| cid | 
- **name** | **string**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

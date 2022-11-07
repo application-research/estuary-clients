@@ -33,8 +33,8 @@ isa_ok($api, 'WWW::SwaggerClient::PeeringApi');
 # admin_peering_peers_delete test
 #
 {
-    my $body = undef; # replace NULL with a proper value
-    my $result = $api->admin_peering_peers_delete(body => $body);
+    my $peer_ids = undef; # replace NULL with a proper value
+    my $result = $api->admin_peering_peers_delete(peer_ids => $peer_ids);
 }
 
 #

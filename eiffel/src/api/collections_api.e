@@ -101,13 +101,14 @@ feature -- API Access
 			end
 		end	
 
-	collections_coluuid_delete (coluuid: STRING_32)
+	collections_coluuid_delete (coluuid: STRING_32): detachable STRING_32
 			-- Deletes a collection
 			-- This endpoint is used to delete an existing collection.
 			-- 
 			-- argument: coluuid Collection ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -126,9 +127,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
@@ -171,7 +176,7 @@ feature -- API Access
 			end
 		end	
 
-	collections_coluuid_post (coluuid: STRING_32; content_ids: LIST [INTEGER_32]): detachable STRING_TABLE[STRING_32]
+	collections_coluuid_post (coluuid: STRING_32; content_ids: LIST [INTEGER_32]): detachable STRING_32
 			-- Add contents to a collection
 			-- This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
 			-- 
@@ -180,7 +185,7 @@ feature -- API Access
 			-- argument: content_ids Content IDs to add to collection (required)
 			-- 
 			-- 
-			-- Result STRING_TABLE[STRING_32]
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -202,14 +207,14 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_TABLE[STRING_32] } l_response.data ({ STRING_TABLE[STRING_32] }) as l_data then
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	collections_fs_add_post (coluuid: STRING_32; content: STRING_32; path: STRING_32)
+	collections_fs_add_post (coluuid: STRING_32; content: STRING_32; path: STRING_32): detachable STRING_32
 			-- Add a file to a collection
 			-- This endpoint adds a file to a collection
 			-- 
@@ -220,6 +225,7 @@ feature -- API Access
 			-- argument: path Path to file (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -240,18 +246,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	collections_get : detachable LIST [COLLECTIONS_COLLECTION]
+	collections_get : detachable LIST [LIST [COLLECTIONS_COLLECTION]]
 			-- List all collections
 			-- This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
 			-- 
 			-- 
-			-- Result LIST [COLLECTIONS_COLLECTION]
+			-- Result LIST [LIST [COLLECTIONS_COLLECTION]]
 		require
 		local
   			l_path: STRING
@@ -272,7 +282,7 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { LIST [COLLECTIONS_COLLECTION] } l_response.data ({ LIST [COLLECTIONS_COLLECTION] }) as l_data then
+			elseif attached { LIST [LIST [COLLECTIONS_COLLECTION]] } l_response.data ({ LIST [LIST [COLLECTIONS_COLLECTION]] }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")

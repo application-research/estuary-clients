@@ -29,14 +29,15 @@ public class SwagPublicApi {
      * Get Content by Cid
      * This endpoint returns the content associated with a CID
      * @param cid Cid (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicByCidCidGet(Map<String, Object> params) {
+    public String publicByCidCidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('cid'), 'cid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/by-cid/{cid}', '',
             query, form,
             new Map<String, Object>{
@@ -46,19 +47,20 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get public node info
      * This endpoint returns information about the node
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicInfoGet() {
+    public String publicInfoGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/info', '',
             query, form,
             new Map<String, Object>(),
@@ -66,19 +68,20 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get deal metrics
      * This endpoint is used to get deal metrics
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMetricsDealsOnChainGet() {
+    public String publicMetricsDealsOnChainGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/metrics/deals-on-chain', '',
             query, form,
             new Map<String, Object>(),
@@ -86,7 +89,7 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -94,9 +97,10 @@ public class SwagPublicApi {
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
      * @param ignoreFailed Ignore Failed (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersDealsMinerGet(Map<String, Object> params) {
+    public String publicMinersDealsMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
 
@@ -105,7 +109,7 @@ public class SwagPublicApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/deals/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -115,21 +119,22 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersFailuresMinerGet(Map<String, Object> params) {
+    public String publicMinersFailuresMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/failures/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -139,19 +144,20 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get all miners
      * This endpoint returns all miners
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersGet() {
+    public String publicMinersGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners', '',
             query, form,
             new Map<String, Object>(),
@@ -159,21 +165,22 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get miner stats
      * This endpoint returns miner stats
      * @param miner Filter by miner (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersStatsMinerGet(Map<String, Object> params) {
+    public String publicMinersStatsMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/stats/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -183,7 +190,7 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -231,13 +238,14 @@ public class SwagPublicApi {
     /**
      * Public stats
      * This endpoint is used to get public stats.
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicStatsGet() {
+    public String publicStatsGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/stats', '',
             query, form,
             new Map<String, Object>(),
@@ -245,7 +253,7 @@ public class SwagPublicApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

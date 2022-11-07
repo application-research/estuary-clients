@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**DealStatusByProposalPropcidGet**](DealsApi.md#DealStatusByProposalPropcidGet) | **Get** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**DealStatusMinerPropcidGet**](DealsApi.md#DealStatusMinerPropcidGet) | **Get** /deal/status/{miner}/{propcid} | Deal Status
 [**DealTransferInProgressGet**](DealsApi.md#DealTransferInProgressGet) | **Get** /deal/transfer/in-progress | Transfer In Progress
+[**DealTransferStatusPost**](DealsApi.md#DealTransferStatusPost) | **Post** /deal/transfer/status | Transfer Status
 [**DealsFailuresGet**](DealsApi.md#DealsFailuresGet) | **Get** /deals/failures | Get storage failures for user
 [**DealsMakeMinerPost**](DealsApi.md#DealsMakeMinerPost) | **Post** /deals/make/{miner} | Make Deal
 [**DealsStatusDealGet**](DealsApi.md#DealsStatusDealGet) | **Get** /deals/status/{deal} | Get Deal Status
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **DealEstimatePost**
-> DealEstimatePost(ctx, body)
+> string DealEstimatePost(ctx, body)
 Estimate the cost of a deal
 
 This endpoint estimates the cost of a deal
@@ -33,7 +34,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -47,7 +48,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealInfoDealidGet**
-> DealInfoDealidGet(ctx, dealid)
+> string DealInfoDealidGet(ctx, dealid)
 Get Deal Info
 
 This endpoint returns the deal info for a deal
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -75,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealProposalPropcidGet**
-> DealProposalPropcidGet(ctx, propcid)
+> string DealProposalPropcidGet(ctx, propcid)
 Get Proposal
 
 This endpoint returns the proposal for a deal
@@ -89,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -103,7 +104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealQueryMinerGet**
-> DealQueryMinerGet(ctx, miner)
+> string DealQueryMinerGet(ctx, miner)
 Query Ask
 
 This endpoint returns the ask for a given CID
@@ -117,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -131,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealStatusByProposalPropcidGet**
-> DealStatusByProposalPropcidGet(ctx, propcid)
+> string DealStatusByProposalPropcidGet(ctx, propcid)
 Get Deal Status by PropCid
 
 Get Deal Status by PropCid
@@ -145,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -159,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealStatusMinerPropcidGet**
-> DealStatusMinerPropcidGet(ctx, miner, propcid)
+> string DealStatusMinerPropcidGet(ctx, miner, propcid)
 Deal Status
 
 This endpoint returns the status of a deal
@@ -174,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -188,7 +189,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealTransferInProgressGet**
-> DealTransferInProgressGet(ctx, )
+> string DealTransferInProgressGet(ctx, )
 Transfer In Progress
 
 This endpoint returns the in-progress transfers
@@ -198,7 +199,35 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **DealTransferStatusPost**
+> string DealTransferStatusPost(ctx, chanid)
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **chanid** | [**MainChannelIdParam**](MainChannelIdParam.md)| Channel ID | 
+
+### Return type
+
+**string**
 
 ### Authorization
 
@@ -212,7 +241,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealsFailuresGet**
-> DealsFailuresGet(ctx, )
+> string DealsFailuresGet(ctx, )
 Get storage failures for user
 
 This endpoint returns a list of storage failures for user
@@ -222,7 +251,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -236,7 +265,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealsMakeMinerPost**
-> DealsMakeMinerPost(ctx, miner, dealRequest)
+> string DealsMakeMinerPost(ctx, miner, dealRequest)
 Make Deal
 
 This endpoint makes a deal for a given content and miner
@@ -251,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -265,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DealsStatusDealGet**
-> DealsStatusDealGet(ctx, deal)
+> string DealsStatusDealGet(ctx, deal)
 Get Deal Status
 
 This endpoint returns the status of a deal
@@ -279,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -293,7 +322,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicDealsFailuresGet**
-> PublicDealsFailuresGet(ctx, )
+> string PublicDealsFailuresGet(ctx, )
 Get storage failures
 
 This endpoint returns a list of storage failures
@@ -303,7 +332,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -317,7 +346,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersStorageQueryMinerGet**
-> PublicMinersStorageQueryMinerGet(ctx, miner)
+> string PublicMinersStorageQueryMinerGet(ctx, miner)
 Query Ask
 
 This endpoint returns the ask for a given CID
@@ -331,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

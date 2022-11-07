@@ -5,6 +5,7 @@
 #import "SWGUtilContentAddIpfsBody.h"
 #import "SWGUtilContentAddResponse.h"
 #import "SWGUtilContentCreateBody.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGContentApi ()
@@ -61,19 +62,19 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param filename Filename (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
     ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
         NSParameterAssert(body);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -122,10 +123,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -137,18 +138,18 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param ignoreDupes Ignore Dupes (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
     ignoreDupes: (NSString*) ignoreDupes
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
         NSParameterAssert(body);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -194,10 +195,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -381,19 +382,19 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param all All 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentAllDealsGetWithBegin: (NSString*) begin
     duration: (NSString*) duration
     all: (NSString*) all
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'begin' is set
     if (begin == nil) {
         NSParameterAssert(begin);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"begin"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -404,7 +405,7 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"duration"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -415,7 +416,7 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"all"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -466,10 +467,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -479,17 +480,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint returns content bandwidth
 ///  @param content Content ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentBwUsageContentGetWithContent: (NSString*) content
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'content' is set
     if (content == nil) {
         NSParameterAssert(content);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"content"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -534,10 +535,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -549,18 +550,18 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param ignoreDupes Ignore Dupes (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
     ignoreDupes: (NSString*) ignoreDupes
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'req' is set
     if (req == nil) {
         NSParameterAssert(req);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"req"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -606,10 +607,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -621,11 +622,11 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param offset Offset (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentDealsGetWithLimit: (NSNumber*) limit
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/deals"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -669,10 +670,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -682,17 +683,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint ensures that the content is replicated to the specified number of providers
 ///  @param datacid Data CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentEnsureReplicationDatacidGetWithDatacid: (NSString*) datacid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'datacid' is set
     if (datacid == nil) {
         NSParameterAssert(datacid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"datacid"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -737,10 +738,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -818,17 +819,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint returns a content by its ID
 ///  @param _id Content ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"_id"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -873,10 +874,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -886,17 +887,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint imports a deal into the shuttle.
 ///  @param body Import a deal 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentImportdealPostWithBody: (SWGMainImportDealBody*) body
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
         NSParameterAssert(body);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -939,10 +940,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -950,10 +951,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 /// List all pinned content
 /// This endpoint lists all content
-///  @returns NSArray<NSString*>*
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentListGetWithCompletionHandler: 
-    (void (^)(NSArray<NSString*>* output, NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/list"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -991,10 +992,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<NSString*>*"
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<NSString*>*)data, error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -1004,17 +1005,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint reads content from the blockstore
 ///  @param cont CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentReadContGetWithCont: (NSString*) cont
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'cont' is set
     if (cont == nil) {
         NSParameterAssert(cont);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cont"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -1059,10 +1060,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -1070,10 +1071,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 /// Get staging zone for user
 /// This endpoint is used to get staging zone for user.
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentStagingZonesGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/content/staging-zones"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -1111,10 +1112,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -1126,18 +1127,18 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 ///
 ///  @param offset offset 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
     offset: (NSString*) offset
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'limit' is set
     if (limit == nil) {
         NSParameterAssert(limit);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"limit"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -1148,7 +1149,7 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"offset"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -1196,10 +1197,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -1209,17 +1210,17 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
 /// This endpoint returns the status of a content
 ///  @param _id Content ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) contentStatusIdGetWithId: (NSNumber*) _id
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter '_id' is set
     if (_id == nil) {
         NSParameterAssert(_id);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"_id"] };
             NSError* error = [NSError errorWithDomain:kSWGContentApiErrorDomain code:kSWGContentApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -1264,10 +1265,10 @@ NSInteger kSWGContentApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

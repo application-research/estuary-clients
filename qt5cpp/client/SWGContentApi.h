@@ -21,6 +21,7 @@
 #include "SWGUtil.ContentAddIpfsBody.h"
 #include "SWGUtil.ContentAddResponse.h"
 #include "SWGUtil.ContentCreateBody.h"
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -76,41 +77,41 @@ private:
     void contentStatusIdGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void contentAddCarPostSignal();
-    void contentAddIpfsPostSignal();
+    void contentAddCarPostSignal(QString* summary);
+    void contentAddIpfsPostSignal(QString* summary);
     void contentAddPostSignal(SWGUtil.ContentAddResponse* summary);
     void contentAggregatedContentGetSignal(QString* summary);
-    void contentAllDealsGetSignal();
-    void contentBwUsageContentGetSignal();
-    void contentCreatePostSignal();
-    void contentDealsGetSignal();
-    void contentEnsureReplicationDatacidGetSignal();
+    void contentAllDealsGetSignal(QString* summary);
+    void contentBwUsageContentGetSignal(QString* summary);
+    void contentCreatePostSignal(QString* summary);
+    void contentDealsGetSignal(QString* summary);
+    void contentEnsureReplicationDatacidGetSignal(QString* summary);
     void contentFailuresContentGetSignal(QString* summary);
-    void contentIdGetSignal();
-    void contentImportdealPostSignal();
-    void contentListGetSignal(QList<QString*>* summary);
-    void contentReadContGetSignal();
-    void contentStagingZonesGetSignal();
-    void contentStatsGetSignal();
-    void contentStatusIdGetSignal();
+    void contentIdGetSignal(QString* summary);
+    void contentImportdealPostSignal(QString* summary);
+    void contentListGetSignal(QString* summary);
+    void contentReadContGetSignal(QString* summary);
+    void contentStagingZonesGetSignal(QString* summary);
+    void contentStatsGetSignal(QString* summary);
+    void contentStatusIdGetSignal(QString* summary);
     
-    void contentAddCarPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentAddIpfsPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentAddCarPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentAddIpfsPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentAddPostSignalE(SWGUtil.ContentAddResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentAggregatedContentGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentAllDealsGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentBwUsageContentGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentCreatePostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentDealsGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentEnsureReplicationDatacidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentAllDealsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentBwUsageContentGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentCreatePostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentDealsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentEnsureReplicationDatacidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentFailuresContentGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentIdGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentImportdealPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentListGetSignalE(QList<QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentReadContGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentStagingZonesGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentStatsGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void contentStatusIdGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentIdGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentImportdealPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentListGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentReadContGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentStagingZonesGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentStatsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void contentStatusIdGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void contentAddCarPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void contentAddIpfsPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

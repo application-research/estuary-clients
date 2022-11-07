@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**DealStatusByProposalPropcidGet**](DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**DealStatusMinerPropcidGet**](DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**DealTransferInProgressGet**](DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**DealTransferStatusPost**](DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 [**DealsFailuresGet**](DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 [**DealsMakeMinerPost**](DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 [**DealsStatusDealGet**](DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
@@ -20,7 +21,7 @@ Method | HTTP request | Description
 
 <a name="dealestimatepost"></a>
 # **DealEstimatePost**
-> void DealEstimatePost (MainEstimateDealBody body)
+> string DealEstimatePost (MainEstimateDealBody body)
 
 Estimate the cost of a deal
 
@@ -51,7 +52,8 @@ namespace Example
             try
             {
                 // Estimate the cost of a deal
-                apiInstance.DealEstimatePost(body);
+                string result = apiInstance.DealEstimatePost(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -70,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -85,7 +87,7 @@ void (empty response body)
 
 <a name="dealinfodealidget"></a>
 # **DealInfoDealidGet**
-> void DealInfoDealidGet (int? dealid)
+> string DealInfoDealidGet (int? dealid)
 
 Get Deal Info
 
@@ -116,7 +118,8 @@ namespace Example
             try
             {
                 // Get Deal Info
-                apiInstance.DealInfoDealidGet(dealid);
+                string result = apiInstance.DealInfoDealidGet(dealid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -135,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -150,7 +153,7 @@ void (empty response body)
 
 <a name="dealproposalpropcidget"></a>
 # **DealProposalPropcidGet**
-> void DealProposalPropcidGet (string propcid)
+> string DealProposalPropcidGet (string propcid)
 
 Get Proposal
 
@@ -181,7 +184,8 @@ namespace Example
             try
             {
                 // Get Proposal
-                apiInstance.DealProposalPropcidGet(propcid);
+                string result = apiInstance.DealProposalPropcidGet(propcid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -200,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -215,7 +219,7 @@ void (empty response body)
 
 <a name="dealqueryminerget"></a>
 # **DealQueryMinerGet**
-> void DealQueryMinerGet (string miner)
+> string DealQueryMinerGet (string miner)
 
 Query Ask
 
@@ -246,7 +250,8 @@ namespace Example
             try
             {
                 // Query Ask
-                apiInstance.DealQueryMinerGet(miner);
+                string result = apiInstance.DealQueryMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -265,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -280,7 +285,7 @@ void (empty response body)
 
 <a name="dealstatusbyproposalpropcidget"></a>
 # **DealStatusByProposalPropcidGet**
-> void DealStatusByProposalPropcidGet (string propcid)
+> string DealStatusByProposalPropcidGet (string propcid)
 
 Get Deal Status by PropCid
 
@@ -311,7 +316,8 @@ namespace Example
             try
             {
                 // Get Deal Status by PropCid
-                apiInstance.DealStatusByProposalPropcidGet(propcid);
+                string result = apiInstance.DealStatusByProposalPropcidGet(propcid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -330,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -345,7 +351,7 @@ void (empty response body)
 
 <a name="dealstatusminerpropcidget"></a>
 # **DealStatusMinerPropcidGet**
-> void DealStatusMinerPropcidGet (string miner, string propcid)
+> string DealStatusMinerPropcidGet (string miner, string propcid)
 
 Deal Status
 
@@ -377,7 +383,8 @@ namespace Example
             try
             {
                 // Deal Status
-                apiInstance.DealStatusMinerPropcidGet(miner, propcid);
+                string result = apiInstance.DealStatusMinerPropcidGet(miner, propcid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -397,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -412,7 +419,7 @@ void (empty response body)
 
 <a name="dealtransferinprogressget"></a>
 # **DealTransferInProgressGet**
-> void DealTransferInProgressGet ()
+> string DealTransferInProgressGet ()
 
 Transfer In Progress
 
@@ -442,7 +449,8 @@ namespace Example
             try
             {
                 // Transfer In Progress
-                apiInstance.DealTransferInProgressGet();
+                string result = apiInstance.DealTransferInProgressGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -458,7 +466,73 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="dealtransferstatuspost"></a>
+# **DealTransferStatusPost**
+> string DealTransferStatusPost (MainChannelIDParam chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class DealTransferStatusPostExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new DealsApi();
+            var chanid = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+
+            try
+            {
+                // Transfer Status
+                string result = apiInstance.DealTransferStatusPost(chanid);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DealsApi.DealTransferStatusPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**string**
 
 ### Authorization
 
@@ -473,7 +547,7 @@ void (empty response body)
 
 <a name="dealsfailuresget"></a>
 # **DealsFailuresGet**
-> void DealsFailuresGet ()
+> string DealsFailuresGet ()
 
 Get storage failures for user
 
@@ -503,7 +577,8 @@ namespace Example
             try
             {
                 // Get storage failures for user
-                apiInstance.DealsFailuresGet();
+                string result = apiInstance.DealsFailuresGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -519,7 +594,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -534,7 +609,7 @@ void (empty response body)
 
 <a name="dealsmakeminerpost"></a>
 # **DealsMakeMinerPost**
-> void DealsMakeMinerPost (string miner, string dealRequest)
+> string DealsMakeMinerPost (string miner, string dealRequest)
 
 Make Deal
 
@@ -566,7 +641,8 @@ namespace Example
             try
             {
                 // Make Deal
-                apiInstance.DealsMakeMinerPost(miner, dealRequest);
+                string result = apiInstance.DealsMakeMinerPost(miner, dealRequest);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -586,7 +662,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -601,7 +677,7 @@ void (empty response body)
 
 <a name="dealsstatusdealget"></a>
 # **DealsStatusDealGet**
-> void DealsStatusDealGet (int? deal)
+> string DealsStatusDealGet (int? deal)
 
 Get Deal Status
 
@@ -632,7 +708,8 @@ namespace Example
             try
             {
                 // Get Deal Status
-                apiInstance.DealsStatusDealGet(deal);
+                string result = apiInstance.DealsStatusDealGet(deal);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -651,7 +728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -666,7 +743,7 @@ void (empty response body)
 
 <a name="publicdealsfailuresget"></a>
 # **PublicDealsFailuresGet**
-> void PublicDealsFailuresGet ()
+> string PublicDealsFailuresGet ()
 
 Get storage failures
 
@@ -696,7 +773,8 @@ namespace Example
             try
             {
                 // Get storage failures
-                apiInstance.PublicDealsFailuresGet();
+                string result = apiInstance.PublicDealsFailuresGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -712,7 +790,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -727,7 +805,7 @@ void (empty response body)
 
 <a name="publicminersstoragequeryminerget"></a>
 # **PublicMinersStorageQueryMinerGet**
-> void PublicMinersStorageQueryMinerGet (string miner)
+> string PublicMinersStorageQueryMinerGet (string miner)
 
 Query Ask
 
@@ -758,7 +836,8 @@ namespace Example
             try
             {
                 // Query Ask
-                apiInstance.PublicMinersStorageQueryMinerGet(miner);
+                string result = apiInstance.PublicMinersStorageQueryMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -777,7 +856,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

@@ -27,11 +27,11 @@ This endpoint can be used to remove a Peer from the Peering Service
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **array[string]** | Peer ids |
+ **peerIds** | **array[boolean]** | Peer ids |
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -118,7 +118,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -176,7 +176,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 

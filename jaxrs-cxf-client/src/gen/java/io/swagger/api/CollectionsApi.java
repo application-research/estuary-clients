@@ -41,7 +41,9 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Produce a CID of the collection contents", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String collectionsColuuidCommitPost(@PathParam("coluuid") String coluuid);
 
     /**
@@ -56,7 +58,8 @@ public interface CollectionsApi  {
     @ApiOperation(value = "Deletes a content from a collection", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class) })
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String collectionsColuuidContentsDelete(@PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid, MainDeleteContentFromCollectionBody body);
 
     /**
@@ -68,8 +71,11 @@ public interface CollectionsApi  {
     @DELETE
     @Path("/collections/{coluuid}")
     @ApiOperation(value = "Deletes a collection", tags={  })
-    @ApiResponses(value = {  })
-    public void collectionsColuuidDelete(@PathParam("coluuid") String coluuid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String collectionsColuuidDelete(@PathParam("coluuid") String coluuid);
 
     /**
      * Get contents in a collection
@@ -82,7 +88,9 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get contents in a collection", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String collectionsColuuidGet(@PathParam("coluuid") String coluuid, @QueryParam("dir")String dir);
 
     /**
@@ -97,8 +105,10 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add contents to a collection", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = Map.class, responseContainer = "Map") })
-    public Map<String, String> collectionsColuuidPost(@PathParam("coluuid") String coluuid, List<Integer> contentIDs);
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String collectionsColuuidPost(@PathParam("coluuid") String coluuid, List<Integer> contentIDs);
 
     /**
      * Add a file to a collection
@@ -110,8 +120,11 @@ public interface CollectionsApi  {
     @Path("/collections/fs/add")
     @Produces({ "application/json" })
     @ApiOperation(value = "Add a file to a collection", tags={  })
-    @ApiResponses(value = {  })
-    public void collectionsFsAddPost(@QueryParam("coluuid")String coluuid, @QueryParam("content")String content, @QueryParam("path")String path);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String collectionsFsAddPost(@QueryParam("coluuid")String coluuid, @QueryParam("content")String content, @QueryParam("path")String path);
 
     /**
      * List all collections
@@ -124,11 +137,11 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List all collections", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = List.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public List<CollectionsCollection> collectionsGet();
+    public List<List<CollectionsCollection>> collectionsGet();
 
     /**
      * Create a new collection

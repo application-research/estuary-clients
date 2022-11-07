@@ -43,7 +43,7 @@ export class MetricsApi extends Api {
    * Get deal metrics
    * This endpoint is used to get deal metrics
    */
-  async publicMetricsDealsOnChainGet(): Promise<any> {
+  async publicMetricsDealsOnChainGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call

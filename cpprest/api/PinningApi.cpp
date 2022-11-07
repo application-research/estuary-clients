@@ -36,7 +36,7 @@ PinningApi::~PinningApi()
 {
 }
 
-pplx::task<void> PinningApi::pinningPinsGet()
+pplx::task<utility::string_t> PinningApi::pinningPinsGet()
 {
 
 
@@ -56,7 +56,7 @@ pplx::task<void> PinningApi::pinningPinsGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -67,6 +67,11 @@ pplx::task<void> PinningApi::pinningPinsGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -136,10 +141,33 @@ pplx::task<void> PinningApi::pinningPinsGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling pinningPinsGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PinningApi::pinningPinsPinidDelete(utility::string_t pinid)
+pplx::task<utility::string_t> PinningApi::pinningPinsPinidDelete(utility::string_t pinid)
 {
 
 
@@ -160,7 +188,7 @@ pplx::task<void> PinningApi::pinningPinsPinidDelete(utility::string_t pinid)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -171,6 +199,11 @@ pplx::task<void> PinningApi::pinningPinsPinidDelete(utility::string_t pinid)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -240,10 +273,33 @@ pplx::task<void> PinningApi::pinningPinsPinidDelete(utility::string_t pinid)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling pinningPinsPinidDelete: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PinningApi::pinningPinsPinidGet(utility::string_t pinid)
+pplx::task<utility::string_t> PinningApi::pinningPinsPinidGet(utility::string_t pinid)
 {
 
 
@@ -264,7 +320,7 @@ pplx::task<void> PinningApi::pinningPinsPinidGet(utility::string_t pinid)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -275,6 +331,11 @@ pplx::task<void> PinningApi::pinningPinsPinidGet(utility::string_t pinid)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -344,10 +405,33 @@ pplx::task<void> PinningApi::pinningPinsPinidGet(utility::string_t pinid)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling pinningPinsPinidGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
+pplx::task<utility::string_t> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
 {
 
 
@@ -368,7 +452,7 @@ pplx::task<void> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -379,6 +463,11 @@ pplx::task<void> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -448,18 +537,45 @@ pplx::task<void> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling pinningPinsPinidPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PinningApi::pinningPinsPost(utility::string_t cid, utility::string_t name)
+pplx::task<utility::string_t> PinningApi::pinningPinsPost(std::shared_ptr<Types.IpfsPin> pin)
 {
+
+    // verify the required parameter 'pin' is set
+    if (pin == nullptr)
+    {
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'pin' when calling PinningApi->pinningPinsPost"));
+    }
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
     utility::string_t path = utility::conversions::to_string_t("/pinning/pins");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("cid") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(cid));
-boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("name") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(name));
-
+    
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> formParams;
@@ -473,7 +589,7 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -484,6 +600,11 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -502,11 +623,26 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(pin);
+        
+
+        httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
     else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
+
+        if(pin.get())
+        {
+            pin->toMultipart(multipart, utility::conversions::to_string_t("pin"));
+        }
+
+        httpBody = multipart;
+        requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
     else
     {
@@ -553,7 +689,30 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling pinningPinsPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

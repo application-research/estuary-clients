@@ -14,7 +14,9 @@
 
 goog.provide('API.Client.DealsApi');
 
+goog.require('API.Client.MainChannelIDParam');
 goog.require('API.Client.MainEstimateDealBody');
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -48,7 +50,7 @@ API.Client.DealsApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * This endpoint estimates the cost of a deal
  * @param {!MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealEstimatePost = function(body, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -85,7 +87,7 @@ API.Client.DealsApi.prototype.dealEstimatePost = function(body, opt_extraHttpReq
  * This endpoint returns the deal info for a deal
  * @param {!number} dealid Deal ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealInfoDealidGet = function(dealid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -122,7 +124,7 @@ API.Client.DealsApi.prototype.dealInfoDealidGet = function(dealid, opt_extraHttp
  * This endpoint returns the proposal for a deal
  * @param {!string} propcid Proposal CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealProposalPropcidGet = function(propcid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -159,7 +161,7 @@ API.Client.DealsApi.prototype.dealProposalPropcidGet = function(propcid, opt_ext
  * This endpoint returns the ask for a given CID
  * @param {!string} miner CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealQueryMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -196,7 +198,7 @@ API.Client.DealsApi.prototype.dealQueryMinerGet = function(miner, opt_extraHttpR
  * Get Deal Status by PropCid
  * @param {!string} propcid PropCid
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealStatusByProposalPropcidGet = function(propcid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -234,7 +236,7 @@ API.Client.DealsApi.prototype.dealStatusByProposalPropcidGet = function(propcid,
  * @param {!string} miner Miner
  * @param {!string} propcid Proposal CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealStatusMinerPropcidGet = function(miner, propcid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -275,7 +277,7 @@ API.Client.DealsApi.prototype.dealStatusMinerPropcidGet = function(miner, propci
  * Transfer In Progress
  * This endpoint returns the in-progress transfers
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealTransferInProgressGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -303,10 +305,47 @@ API.Client.DealsApi.prototype.dealTransferInProgressGet = function(opt_extraHttp
 }
 
 /**
+ * Transfer Status
+ * This endpoint returns the status of a transfer
+ * @param {!MainChannelIDParam} chanid Channel ID
+ * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
+ * @return {!angular.$q.Promise<!string>}
+ */
+API.Client.DealsApi.prototype.dealTransferStatusPost = function(chanid, opt_extraHttpRequestParams) {
+  /** @const {string} */
+  var path = this.basePath_ + '/deal/transfer/status';
+
+  /** @type {!Object} */
+  var queryParameters = {};
+
+  /** @type {!Object} */
+  var headerParams = angular.extend({}, this.defaultHeaders_);
+  // verify required parameter 'chanid' is set
+  if (!chanid) {
+    throw new Error('Missing required parameter chanid when calling dealTransferStatusPost');
+  }
+  /** @type {!Object} */
+  var httpRequestParams = {
+    method: 'POST',
+    url: path,
+    json: true,
+    data: chanid,
+        params: queryParameters,
+    headers: headerParams
+  };
+
+  if (opt_extraHttpRequestParams) {
+    httpRequestParams = angular.extend(httpRequestParams, opt_extraHttpRequestParams);
+  }
+
+  return (/** @type {?} */ (this.http_))(httpRequestParams);
+}
+
+/**
  * Get storage failures for user
  * This endpoint returns a list of storage failures for user
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealsFailuresGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -339,7 +378,7 @@ API.Client.DealsApi.prototype.dealsFailuresGet = function(opt_extraHttpRequestPa
  * @param {!string} miner Miner
  * @param {!string} dealRequest Deal Request
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealsMakeMinerPost = function(miner, dealRequest, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -381,7 +420,7 @@ API.Client.DealsApi.prototype.dealsMakeMinerPost = function(miner, dealRequest, 
  * This endpoint returns the status of a deal
  * @param {!number} deal Deal ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.dealsStatusDealGet = function(deal, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -417,7 +456,7 @@ API.Client.DealsApi.prototype.dealsStatusDealGet = function(deal, opt_extraHttpR
  * Get storage failures
  * This endpoint returns a list of storage failures
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.publicDealsFailuresGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -449,7 +488,7 @@ API.Client.DealsApi.prototype.publicDealsFailuresGet = function(opt_extraHttpReq
  * This endpoint returns the ask for a given CID
  * @param {!string} miner CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.DealsApi.prototype.publicMinersStorageQueryMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */

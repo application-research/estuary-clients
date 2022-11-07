@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **pinningPinsGet**
-> pinningPinsGet()
+> String pinningPinsGet()
 
 List all pin status objects
 
@@ -34,7 +34,8 @@ import 'package:swagger/api.dart';
 var api_instance = new PinningApi();
 
 try { 
-    api_instance.pinningPinsGet();
+    var result = api_instance.pinningPinsGet();
+    print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsGet: $e\n");
 }
@@ -45,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -59,7 +60,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete(pinid)
+> String pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -77,7 +78,8 @@ var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
 
 try { 
-    api_instance.pinningPinsPinidDelete(pinid);
+    var result = api_instance.pinningPinsPinidDelete(pinid);
+    print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidDelete: $e\n");
 }
@@ -91,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -105,7 +107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+> String pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -123,7 +125,8 @@ var api_instance = new PinningApi();
 var pinid = pinid_example; // String | cid
 
 try { 
-    api_instance.pinningPinsPinidGet(pinid);
+    var result = api_instance.pinningPinsPinidGet(pinid);
+    print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidGet: $e\n");
 }
@@ -137,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -151,7 +154,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid)
 
 Replace a pinned object
 
@@ -169,7 +172,8 @@ var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
 
 try { 
-    api_instance.pinningPinsPinidPost(pinid);
+    var result = api_instance.pinningPinsPinidPost(pinid);
+    print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidPost: $e\n");
 }
@@ -183,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -197,7 +201,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPost**
-> pinningPinsPost(cid, name)
+> String pinningPinsPost(pin)
 
 Add and pin object
 
@@ -212,11 +216,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PinningApi();
-var cid = cid_example; // String | cid
-var name = name_example; // String | name
+var pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try { 
-    api_instance.pinningPinsPost(cid, name);
+    var result = api_instance.pinningPinsPost(pin);
+    print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPost: $e\n");
 }
@@ -226,12 +230,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid | 
- **name** | **String**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

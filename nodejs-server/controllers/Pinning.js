@@ -14,9 +14,8 @@ module.exports.pinningPinsGET = function pinningPinsGET (req, res, next) {
 };
 
 module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next) {
-  var cid = req.swagger.params['cid'].value;
-  var name = req.swagger.params['name'].value;
-  Pinning.pinningPinsPOST(cid,name)
+  var pin = req.swagger.params['pin'].value;
+  Pinning.pinningPinsPOST(pin)
     .then(function (response) {
       utils.writeJson(res, response);
     })

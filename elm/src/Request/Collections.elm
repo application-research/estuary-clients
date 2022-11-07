@@ -17,7 +17,7 @@ import Data.MainDeleteContentFromCollectionBody exposing (MainDeleteContentFromC
 import Data.MainCreateCollectionBody exposing (MainCreateCollectionBody, mainCreateCollectionBodyEncoder)
 import Data.CollectionsCollection exposing (CollectionsCollection, collectionsCollectionDecoder)
 import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
-import Data.String exposing (Decode.string, String, stringDecoder)
+import Data.String exposing (Decode.string, String)
 import Data.Int exposing (Encode.int, Int)
 import Http
 import Json.Decode as Decode
@@ -63,13 +63,13 @@ collectionsColuuidContentsDelete coluuid contentid model =
 {-
    This endpoint is used to delete an existing collection.
 -}
-collectionsColuuidDelete : String -> Http.Request 
+collectionsColuuidDelete : String -> Http.Request String
 collectionsColuuidDelete coluuid =
     { method = "DELETE"
     , url = basePath ++ "/collections/" ++ coluuid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -101,7 +101,7 @@ collectionsColuuidPost coluuid model =
     , url = basePath ++ "/collections/" ++ coluuid
     , headers = []
     , body = Http.jsonBody <| Encode.int model
-    , expect = Http.expectJson stringDecoder
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -111,13 +111,13 @@ collectionsColuuidPost coluuid model =
 {-
    This endpoint adds a file to a collection
 -}
-collectionsFsAddPost : Http.Request 
+collectionsFsAddPost : Http.Request String
 collectionsFsAddPost =
     { method = "POST"
     , url = basePath ++ "/collections/fs/add"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

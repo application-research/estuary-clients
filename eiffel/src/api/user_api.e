@@ -24,12 +24,12 @@ inherit
 feature -- API Access
 
 
-	user_api_keys_get : detachable LIST [MAIN_GET_API_KEYS_RESP]
+	user_api_keys_get : detachable LIST [LIST [MAIN_GET_API_KEYS_RESP]]
 			-- Get API keys for a user
 			-- This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
 			-- 
 			-- 
-			-- Result LIST [MAIN_GET_API_KEYS_RESP]
+			-- Result LIST [LIST [MAIN_GET_API_KEYS_RESP]]
 		require
 		local
   			l_path: STRING
@@ -50,20 +50,21 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { LIST [MAIN_GET_API_KEYS_RESP] } l_response.data ({ LIST [MAIN_GET_API_KEYS_RESP] }) as l_data then
+			elseif attached { LIST [LIST [MAIN_GET_API_KEYS_RESP]] } l_response.data ({ LIST [LIST [MAIN_GET_API_KEYS_RESP]] }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	user_api_keys_key_delete (key: STRING_32)
+	user_api_keys_key_delete (key: STRING_32): detachable STRING_32
 			-- Revoke a User API Key.
 			-- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
 			-- 
 			-- argument: key Key (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -82,9 +83,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
@@ -92,7 +97,7 @@ feature -- API Access
 			-- Create API keys for a user
 			-- This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
 			-- 
-			-- argument: expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+			-- argument: expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 			-- 
 			-- argument: perms Permissions -- currently unused (optional)
 			-- 
@@ -160,12 +165,12 @@ feature -- API Access
 			end
 		end	
 
-	user_stats_get : detachable MAIN_USER_STATS_RESPONSE
+	user_stats_get : detachable STRING_32
 			-- Create API keys for a user
 			-- This endpoint is used to create API keys for a user.
 			-- 
 			-- 
-			-- Result MAIN_USER_STATS_RESPONSE
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -186,7 +191,7 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { MAIN_USER_STATS_RESPONSE } l_response.data ({ MAIN_USER_STATS_RESPONSE }) as l_data then
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")

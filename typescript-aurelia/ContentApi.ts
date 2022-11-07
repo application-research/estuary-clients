@@ -175,7 +175,7 @@ export class ContentApi extends Api {
    * @param params.ignoreDupes Ignore Dupes
    * @param params.filename Filename
    */
-  async contentAddCarPost(params: IContentAddCarPostParams): Promise<any> {
+  async contentAddCarPost(params: IContentAddCarPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentAddCarPost', params, 'body');
 
@@ -213,7 +213,7 @@ export class ContentApi extends Api {
    * @param params.body IPFS Body
    * @param params.ignoreDupes Ignore Dupes
    */
-  async contentAddIpfsPost(params: IContentAddIpfsPostParams): Promise<any> {
+  async contentAddIpfsPost(params: IContentAddIpfsPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentAddIpfsPost', params, 'body');
 
@@ -330,7 +330,7 @@ export class ContentApi extends Api {
    * @param params.duration Duration
    * @param params.all All
    */
-  async contentAllDealsGet(params: IContentAllDealsGetParams): Promise<any> {
+  async contentAllDealsGet(params: IContentAllDealsGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentAllDealsGet', params, 'begin');
     this.ensureParamIsSet('contentAllDealsGet', params, 'duration');
@@ -367,7 +367,7 @@ export class ContentApi extends Api {
    * This endpoint returns content bandwidth
    * @param params.content Content ID
    */
-  async contentBwUsageContentGet(params: IContentBwUsageContentGetParams): Promise<any> {
+  async contentBwUsageContentGet(params: IContentBwUsageContentGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentBwUsageContentGet', params, 'content');
 
@@ -398,7 +398,7 @@ export class ContentApi extends Api {
    * @param params.req Content
    * @param params.ignoreDupes Ignore Dupes
    */
-  async contentCreatePost(params: IContentCreatePostParams): Promise<any> {
+  async contentCreatePost(params: IContentCreatePostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentCreatePost', params, 'req');
 
@@ -435,7 +435,7 @@ export class ContentApi extends Api {
    * @param params.limit Limit
    * @param params.offset Offset
    */
-  async contentDealsGet(params: IContentDealsGetParams): Promise<any> {
+  async contentDealsGet(params: IContentDealsGetParams): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -468,7 +468,7 @@ export class ContentApi extends Api {
    * This endpoint ensures that the content is replicated to the specified number of providers
    * @param params.datacid Data CID
    */
-  async contentEnsureReplicationDatacidGet(params: IContentEnsureReplicationDatacidGetParams): Promise<any> {
+  async contentEnsureReplicationDatacidGet(params: IContentEnsureReplicationDatacidGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentEnsureReplicationDatacidGet', params, 'datacid');
 
@@ -528,7 +528,7 @@ export class ContentApi extends Api {
    * This endpoint returns a content by its ID
    * @param params.id Content ID
    */
-  async contentIdGet(params: IContentIdGetParams): Promise<any> {
+  async contentIdGet(params: IContentIdGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentIdGet', params, 'id');
 
@@ -558,7 +558,7 @@ export class ContentApi extends Api {
    * This endpoint imports a deal into the shuttle.
    * @param params.body Import a deal
    */
-  async contentImportdealPost(params: IContentImportdealPostParams): Promise<any> {
+  async contentImportdealPost(params: IContentImportdealPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentImportdealPost', params, 'body');
 
@@ -589,7 +589,7 @@ export class ContentApi extends Api {
    * List all pinned content
    * This endpoint lists all content
    */
-  async contentListGet(): Promise<Array<string>> {
+  async contentListGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -617,7 +617,7 @@ export class ContentApi extends Api {
    * This endpoint reads content from the blockstore
    * @param params.cont CID
    */
-  async contentReadContGet(params: IContentReadContGetParams): Promise<any> {
+  async contentReadContGet(params: IContentReadContGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentReadContGet', params, 'cont');
 
@@ -646,7 +646,7 @@ export class ContentApi extends Api {
    * Get staging zone for user
    * This endpoint is used to get staging zone for user.
    */
-  async contentStagingZonesGet(): Promise<any> {
+  async contentStagingZonesGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -675,7 +675,7 @@ export class ContentApi extends Api {
    * @param params.limit limit
    * @param params.offset offset
    */
-  async contentStatsGet(params: IContentStatsGetParams): Promise<any> {
+  async contentStatsGet(params: IContentStatsGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentStatsGet', params, 'limit');
     this.ensureParamIsSet('contentStatsGet', params, 'offset');
@@ -710,7 +710,7 @@ export class ContentApi extends Api {
    * This endpoint returns the status of a content
    * @param params.id Content ID
    */
-  async contentStatusIdGet(params: IContentStatusIdGetParams): Promise<any> {
+  async contentStatusIdGet(params: IContentStatusIdGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('contentStatusIdGet', params, 'id');
 

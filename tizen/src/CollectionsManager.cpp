@@ -79,6 +79,16 @@ static bool collectionsColuuidCommitPostProcessor(MemoryStruct_s p_chunk, long c
 			}
 		} else {
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -231,6 +241,11 @@ static bool collectionsColuuidContentsDeleteProcessor(MemoryStruct_s p_chunk, lo
 			printf("\n%s\n", jsonStr);
 			g_free(static_cast<gpointer>(jsonStr));
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -369,21 +384,48 @@ bool CollectionsManager::collectionsColuuidContentsDeleteSync(char * accessToken
 static bool collectionsColuuidDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -394,15 +436,15 @@ static bool collectionsColuuidDeleteProcessor(MemoryStruct_s p_chunk, long code,
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool collectionsColuuidDeleteHelper(char * accessToken,
 	std::string coluuid, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -478,8 +520,8 @@ static bool collectionsColuuidDeleteHelper(char * accessToken,
 
 bool CollectionsManager::collectionsColuuidDeleteAsync(char * accessToken,
 	std::string coluuid, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return collectionsColuuidDeleteHelper(accessToken,
 	coluuid, 
@@ -488,8 +530,8 @@ bool CollectionsManager::collectionsColuuidDeleteAsync(char * accessToken,
 
 bool CollectionsManager::collectionsColuuidDeleteSync(char * accessToken,
 	std::string coluuid, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return collectionsColuuidDeleteHelper(accessToken,
 	coluuid, 
@@ -526,6 +568,16 @@ static bool collectionsColuuidGetProcessor(MemoryStruct_s p_chunk, long code, ch
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 		}
 		handler(out, error, userData);
@@ -653,14 +705,14 @@ bool CollectionsManager::collectionsColuuidGetSync(char * accessToken,
 static bool collectionsColuuidPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::map<string,string>, Error, void* )
-	= reinterpret_cast<void(*)(std::map<string,string>, Error, void* )> (voidHandler);
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::map<string,string> out;
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -668,6 +720,33 @@ static bool collectionsColuuidPostProcessor(MemoryStruct_s p_chunk, long code, c
 
 
 
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -685,7 +764,7 @@ static bool collectionsColuuidPostProcessor(MemoryStruct_s p_chunk, long code, c
 
 static bool collectionsColuuidPostHelper(char * accessToken,
 	std::string coluuid, std::list<> contentIDs, 
-	void(* handler)(std::map<string,string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -787,7 +866,7 @@ static bool collectionsColuuidPostHelper(char * accessToken,
 
 bool CollectionsManager::collectionsColuuidPostAsync(char * accessToken,
 	std::string coluuid, std::list<> contentIDs, 
-	void(* handler)(std::map<string,string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return collectionsColuuidPostHelper(accessToken,
@@ -797,7 +876,7 @@ bool CollectionsManager::collectionsColuuidPostAsync(char * accessToken,
 
 bool CollectionsManager::collectionsColuuidPostSync(char * accessToken,
 	std::string coluuid, std::list<> contentIDs, 
-	void(* handler)(std::map<string,string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return collectionsColuuidPostHelper(accessToken,
@@ -808,21 +887,48 @@ bool CollectionsManager::collectionsColuuidPostSync(char * accessToken,
 static bool collectionsFsAddPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -833,15 +939,15 @@ static bool collectionsFsAddPostProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool collectionsFsAddPostHelper(char * accessToken,
 	std::string coluuid, std::string content, std::string path, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -923,8 +1029,8 @@ static bool collectionsFsAddPostHelper(char * accessToken,
 
 bool CollectionsManager::collectionsFsAddPostAsync(char * accessToken,
 	std::string coluuid, std::string content, std::string path, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return collectionsFsAddPostHelper(accessToken,
 	coluuid, content, path, 
@@ -933,8 +1039,8 @@ bool CollectionsManager::collectionsFsAddPostAsync(char * accessToken,
 
 bool CollectionsManager::collectionsFsAddPostSync(char * accessToken,
 	std::string coluuid, std::string content, std::string path, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return collectionsFsAddPostHelper(accessToken,
 	coluuid, content, path, 
@@ -944,13 +1050,13 @@ bool CollectionsManager::collectionsFsAddPostSync(char * accessToken,
 static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<Collections.Collection>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<std::list>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<std::list>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<Collections.Collection> out;
+	std::list<std::list> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -964,7 +1070,7 @@ static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			Collections.Collection singlemodel;
+			std::list singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -990,7 +1096,7 @@ static bool collectionsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool collectionsGetHelper(char * accessToken,
 	
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1061,7 +1167,7 @@ static bool collectionsGetHelper(char * accessToken,
 
 bool CollectionsManager::collectionsGetAsync(char * accessToken,
 	
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData)
 {
 	return collectionsGetHelper(accessToken,
@@ -1071,7 +1177,7 @@ bool CollectionsManager::collectionsGetAsync(char * accessToken,
 
 bool CollectionsManager::collectionsGetSync(char * accessToken,
 	
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData)
 {
 	return collectionsGetHelper(accessToken,

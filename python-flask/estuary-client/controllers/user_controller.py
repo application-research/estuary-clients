@@ -2,7 +2,6 @@ import connexion
 import six
 
 from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp  # noqa: E501
-from estuary-client.models.main_user_stats_response import MainUserStatsResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -13,7 +12,7 @@ def user_api_keys_get():  # noqa: E501
     This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user. # noqa: E501
 
 
-    :rtype: List[MainGetApiKeysResp]
+    :rtype: List[List[MainGetApiKeysResp]]
     """
     return 'do some magic!'
 
@@ -26,7 +25,7 @@ def user_api_keys_key_delete(key):  # noqa: E501
     :param key: Key
     :type key: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -36,7 +35,7 @@ def user_api_keys_post(expiry=None, perms=None):  # noqa: E501
 
     This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features. # noqa: E501
 
-    :param expiry: Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    :param expiry: Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     :type expiry: str
     :param perms: Permissions -- currently unused
     :type perms: str
@@ -63,6 +62,6 @@ def user_stats_get():  # noqa: E501
     This endpoint is used to create API keys for a user. # noqa: E501
 
 
-    :rtype: MainUserStatsResponse
+    :rtype: str
     """
     return 'do some magic!'

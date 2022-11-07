@@ -14,7 +14,6 @@
 package io.swagger.client.api;
 
 import io.swagger.client.model.MainGetApiKeysResp;
-import io.swagger.client.model.MainUserStatsResponse;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -44,7 +43,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() throws Exception {
-        List<MainGetApiKeysResp> response = api.userApiKeysGet();
+        List<List<MainGetApiKeysResp>> response = api.userApiKeysGet();
 
         // TODO: test validations
     }
@@ -60,7 +59,7 @@ public class UserApiTest {
     @Test
     public void userApiKeysKeyDeleteTest() throws Exception {
         String key = null;
-        api.userApiKeysKeyDelete(key);
+        String response = api.userApiKeysKeyDelete(key);
 
         // TODO: test validations
     }
@@ -107,7 +106,7 @@ public class UserApiTest {
      */
     @Test
     public void userStatsGetTest() throws Exception {
-        MainUserStatsResponse response = api.userStatsGet();
+        String response = api.userStatsGet();
 
         // TODO: test validations
     }

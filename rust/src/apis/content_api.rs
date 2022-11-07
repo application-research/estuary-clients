@@ -35,28 +35,28 @@ impl<C: hyper::client::Connect> ContentApiClient<C> {
 }
 
 pub trait ContentApi {
-    fn content_add_car_post(&self, body: &str, ignore_dupes: &str, filename: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_add_ipfs_post(&self, body: ::models::UtilContentAddIpfsBody, ignore_dupes: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn content_add_car_post(&self, body: &str, ignore_dupes: &str, filename: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_add_ipfs_post(&self, body: ::models::UtilContentAddIpfsBody, ignore_dupes: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn content_add_post(&self, data: ::models::File, filename: &str, coluuid: &str, replication: i32, ignore_dupes: &str, lazy_provide: &str, dir: &str) -> Box<Future<Item = ::models::UtilContentAddResponse, Error = Error<serde_json::Value>>>;
     fn content_aggregated_content_get(&self, content: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn content_all_deals_get(&self, begin: &str, duration: &str, all: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_bw_usage_content_get(&self, content: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_create_post(&self, req: ::models::UtilContentCreateBody, ignore_dupes: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_deals_get(&self, limit: i32, offset: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_ensure_replication_datacid_get(&self, datacid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn content_all_deals_get(&self, begin: &str, duration: &str, all: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_bw_usage_content_get(&self, content: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_create_post(&self, req: ::models::UtilContentCreateBody, ignore_dupes: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_deals_get(&self, limit: i32, offset: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_ensure_replication_datacid_get(&self, datacid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn content_failures_content_get(&self, content: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn content_id_get(&self, id: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_importdeal_post(&self, body: ::models::MainImportDealBody) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_list_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
-    fn content_read_cont_get(&self, cont: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_staging_zones_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_stats_get(&self, limit: &str, offset: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn content_status_id_get(&self, id: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn content_id_get(&self, id: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_importdeal_post(&self, body: ::models::MainImportDealBody) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_list_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_read_cont_get(&self, cont: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_staging_zones_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_stats_get(&self, limit: &str, offset: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn content_status_id_get(&self, id: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
-    fn content_add_car_post(&self, body: &str, ignore_dupes: &str, filename: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_add_car_post(&self, body: &str, ignore_dupes: &str, filename: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -121,11 +121,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_add_ipfs_post(&self, body: ::models::UtilContentAddIpfsBody, ignore_dupes: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_add_ipfs_post(&self, body: ::models::UtilContentAddIpfsBody, ignore_dupes: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -189,7 +192,10 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
@@ -330,7 +336,7 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
         )
     }
 
-    fn content_all_deals_get(&self, begin: &str, duration: &str, all: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_all_deals_get(&self, begin: &str, duration: &str, all: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -392,11 +398,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_bw_usage_content_get(&self, content: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_bw_usage_content_get(&self, content: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -455,11 +464,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_create_post(&self, req: ::models::UtilContentCreateBody, ignore_dupes: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_create_post(&self, req: ::models::UtilContentCreateBody, ignore_dupes: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -523,11 +535,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_deals_get(&self, limit: i32, offset: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_deals_get(&self, limit: i32, offset: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -588,11 +603,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_ensure_replication_datacid_get(&self, datacid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_ensure_replication_datacid_get(&self, datacid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -651,7 +669,10 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
@@ -721,7 +742,7 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
         )
     }
 
-    fn content_id_get(&self, id: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_id_get(&self, id: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -780,11 +801,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_importdeal_post(&self, body: ::models::MainImportDealBody) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_importdeal_post(&self, body: ::models::MainImportDealBody) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -847,11 +871,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_list_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>> {
+    fn content_list_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -911,13 +938,13 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<Vec<String>, _> = serde_json::from_slice(&body);
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn content_read_cont_get(&self, cont: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_read_cont_get(&self, cont: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -976,11 +1003,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_staging_zones_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_staging_zones_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1039,11 +1069,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_stats_get(&self, limit: &str, offset: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_stats_get(&self, limit: &str, offset: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1104,11 +1137,14 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn content_status_id_get(&self, id: i32) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn content_status_id_get(&self, id: i32) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -1167,7 +1203,10 @@ impl<C: hyper::client::Connect>ContentApi for ContentApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

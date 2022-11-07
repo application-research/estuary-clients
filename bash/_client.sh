@@ -335,11 +335,12 @@ case $state in
             "dealStatusByProposalPropcidGet[Get Deal Status by PropCid]" \
             "dealStatusMinerPropcidGet[Deal Status]" \
             "dealTransferInProgressGet[Transfer In Progress]" \
+            "dealTransferStatusPost[Transfer Status]" \
             "dealsFailuresGet[Get storage failures for user]" \
             "dealsMakeMinerPost[Make Deal]" \
             "dealsStatusDealGet[Get Deal Status]" \
             "publicDealsFailuresGet[Get storage failures]" \
-            "publicMinersStorageQueryMinerGet[Query Ask]"             "dealTransferStatusPost[]"             "publicMetricsDealsOnChainGet[Get deal metrics]"             "publicMinersDealsMinerGet[Get all miners deals]" \
+            "publicMinersStorageQueryMinerGet[Query Ask]"             "publicMetricsDealsOnChainGet[Get deal metrics]"             "publicMinersDealsMinerGet[Get all miners deals]" \
             "publicMinersStatsMinerGet[Get miner stats]"             "netAddrsGet[Net Addrs]" \
             "publicMinersFailuresMinerGet[Get all miners]" \
             "publicMinersGet[Get all miners]" \
@@ -676,6 +677,12 @@ case $state in
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
+      dealTransferStatusPost)
+        local -a _op_arguments
+        _op_arguments=(
+                              )
+        _describe -t actions 'operations' _op_arguments -S '' && ret=0
+        ;;
       dealsFailuresGet)
         local -a _op_arguments
         _op_arguments=(
@@ -707,12 +714,6 @@ case $state in
         _op_arguments=(
           "miner=:[PATH] CID"
                     )
-        _describe -t actions 'operations' _op_arguments -S '' && ret=0
-        ;;
-      dealTransferStatusPost)
-        local -a _op_arguments
-        _op_arguments=(
-                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       publicMetricsDealsOnChainGet)
@@ -869,9 +870,7 @@ case $state in
       pinningPinsPost)
         local -a _op_arguments
         _op_arguments=(
-          "cid=:[PATH] cid"
-"name=:[PATH] name"
-                    )
+                              )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
       publicByCidCidGet)
@@ -955,7 +954,7 @@ case $state in
       userApiKeysPost)
         local -a _op_arguments
         _op_arguments=(
-                    "expiry=:[QUERY] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h"
+                    "expiry=:[QUERY] Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h"
 "perms=:[QUERY] Permissions -- currently unused"
           )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0

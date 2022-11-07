@@ -8,7 +8,7 @@ Feature | HTTP request | Description
 
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get 
+> public_metrics_deals_on_chain_get : detachable STRING_32
 	
 
 Get deal metrics
@@ -21,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get()
+> str public_metrics_deals_on_chain_get()
 
 Get deal metrics
 
@@ -33,7 +33,8 @@ api_instance = estuary-client.MetricsApi(estuary-client.ApiClient(configuration)
 
 try:
     # Get deal metrics
-    api_instance.public_metrics_deals_on_chain_get()
+    api_response = api_instance.public_metrics_deals_on_chain_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling MetricsApi->public_metrics_deals_on_chain_get: %s\n" % e)
 ```
@@ -43,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

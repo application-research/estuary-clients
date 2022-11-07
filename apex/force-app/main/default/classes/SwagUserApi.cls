@@ -28,14 +28,14 @@ public class SwagUserApi {
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return List<SwagMainGetApiKeysResp>
+     * @return List<List<SwagMainGetApiKeysResp>>
      * @throws Swagger.ApiException if fails to make API call
      */
-    public List<SwagMainGetApiKeysResp> userApiKeysGet() {
+    public List<List<SwagMainGetApiKeysResp>> userApiKeysGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (List<SwagMainGetApiKeysResp>) client.invoke(
+        return (List<List<SwagMainGetApiKeysResp>>) client.invoke(
             'GET', '/user/api-keys', '',
             query, form,
             new Map<String, Object>(),
@@ -43,21 +43,22 @@ public class SwagUserApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            List<SwagMainGetApiKeysResp>.class
+            List<List<SwagMainGetApiKeysResp>>.class
         );
     }
     /**
      * Revoke a User API Key.
      * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
      * @param key Key (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void userApiKeysKeyDelete(Map<String, Object> params) {
+    public String userApiKeysKeyDelete(Map<String, Object> params) {
         client.assertNotNull(params.get('key'), 'key');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'DELETE', '/user/api-keys/{key}', '',
             query, form,
             new Map<String, Object>{
@@ -67,13 +68,13 @@ public class SwagUserApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
      * @return SwagMainGetApiKeysResp
      * @throws Swagger.ApiException if fails to make API call
@@ -122,14 +123,14 @@ public class SwagUserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user.
-     * @return SwagMainUserStatsResponse
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public SwagMainUserStatsResponse userStatsGet() {
+    public String userStatsGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (SwagMainUserStatsResponse) client.invoke(
+        return (String) client.invoke(
             'GET', '/user/stats', '',
             query, form,
             new Map<String, Object>(),
@@ -137,7 +138,7 @@ public class SwagUserApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            SwagMainUserStatsResponse.class
+            String.class
         );
     }
 }

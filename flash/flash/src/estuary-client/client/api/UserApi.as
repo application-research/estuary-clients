@@ -7,7 +7,6 @@ import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
 import estuary-client.client.model.MainGetApiKeysResp;
-import estuary-client.client.model.MainUserStatsResponse;
 import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
@@ -59,7 +58,7 @@ public class UserApi extends SwaggerApi {
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function user_api_keys_key_delete (key: String): String {
         // create path and map variables
@@ -83,7 +82,7 @@ public class UserApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "user_api_keys_key_delete";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
@@ -153,7 +152,7 @@ if("null" != String(perms))
     }
 
     /*
-     * Returns MainUserStatsResponse 
+     * Returns String 
      */
     public function user_stats_get (): String {
         // create path and map variables
@@ -173,7 +172,7 @@ if("null" != String(perms))
         token.requestId = requestId;
         token.completionEventType = "user_stats_get";
 
-        token.returnType = MainUserStatsResponse;
+        token.returnType = String;
         return requestId;
 
     }

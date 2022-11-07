@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:53:50.942Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
 
 @Controller
 public class AutoretrieveApiController implements AutoretrieveApi {
@@ -36,9 +37,18 @@ public class AutoretrieveApiController implements AutoretrieveApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> autoretrieveHeartbeatPost(@ApiParam(value = "Autoretrieve's auth token" ,required=true) @RequestHeader(value="token", required=true) String token) {
+    public ResponseEntity<String> autoretrieveHeartbeatPost(@ApiParam(value = "Autoretrieve's auth token" ,required=true) @RequestHeader(value="token", required=true) String token) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

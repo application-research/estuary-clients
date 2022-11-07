@@ -50,10 +50,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
-var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
+var peerIds = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
 
 try {
-    api_instance.adminPeeringPeersDelete(body);
+    var result = api_instance.adminPeeringPeersDelete(peerIds);
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersDelete: $e\n");
 }
@@ -109,12 +110,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs//DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs//DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs//DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs//DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs//DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs//DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs//DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs//DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs//DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs//DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs//MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs//MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs//MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -160,12 +161,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CollectionsCollection](docs//CollectionsCollection.md)
+ - [MainChannelIDParam](docs//MainChannelIDParam.md)
  - [MainCreateCollectionBody](docs//MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs//MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs//MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs//MainGetApiKeysResp.md)
  - [MainImportDealBody](docs//MainImportDealBody.md)
- - [MainUserStatsResponse](docs//MainUserStatsResponse.md)
+ - [TypesIpfsPin](docs//TypesIpfsPin.md)
  - [UtilContentAddIpfsBody](docs//UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs//UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs//UtilContentCreateBody.md)

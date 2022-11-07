@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+> String collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -120,7 +120,8 @@ This endpoint is used to delete an existing collection.
 CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | Collection ID
 try {
-    apiInstance.collectionsColuuidDelete(coluuid);
+    String result = apiInstance.collectionsColuuidDelete(coluuid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidDelete");
     e.printStackTrace();
@@ -135,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -193,7 +194,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> Map&lt;String, String&gt; collectionsColuuidPost(coluuid, contentIDs)
+> String collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -208,7 +209,7 @@ CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | coluuid
 List<Integer> contentIDs = Arrays.asList(new List<Integer>()); // List<Integer> | Content IDs to add to collection
 try {
-    Map<String, String> result = apiInstance.collectionsColuuidPost(coluuid, contentIDs);
+    String result = apiInstance.collectionsColuuidPost(coluuid, contentIDs);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -225,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Map&lt;String, String&gt;**
+**String**
 
 ### Authorization
 
@@ -238,7 +239,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -254,7 +255,8 @@ String coluuid = "coluuid_example"; // String | Collection ID
 String content = "content_example"; // String | Content
 String path = "path_example"; // String | Path to file
 try {
-    apiInstance.collectionsFsAddPost(coluuid, content, path);
+    String result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
     e.printStackTrace();
@@ -271,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -284,7 +286,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> List&lt;CollectionsCollection&gt; collectionsGet()
+> List&lt;List&lt;CollectionsCollection&gt;&gt; collectionsGet()
 
 List all collections
 
@@ -297,7 +299,7 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 CollectionsApi apiInstance = new CollectionsApi();
 try {
-    List<CollectionsCollection> result = apiInstance.collectionsGet();
+    List<List<CollectionsCollection>> result = apiInstance.collectionsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -310,7 +312,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
+[**List&lt;List&lt;CollectionsCollection&gt;&gt;**](List.md)
 
 ### Authorization
 

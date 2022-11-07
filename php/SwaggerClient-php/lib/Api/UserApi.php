@@ -95,7 +95,7 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MainGetApiKeysResp[]
+     * @return \Swagger\Client\Model\MainGetApiKeysResp[][]
      */
     public function userApiKeysGet()
     {
@@ -111,11 +111,11 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\MainGetApiKeysResp[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\MainGetApiKeysResp[][], HTTP status code, HTTP response headers (array of strings)
      */
     public function userApiKeysGetWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[]';
+        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[][]';
         $request = $this->userApiKeysGetRequest();
 
         try {
@@ -167,7 +167,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\MainGetApiKeysResp[]',
+                        '\Swagger\Client\Model\MainGetApiKeysResp[][]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -231,7 +231,7 @@ class UserApi
      */
     public function userApiKeysGetAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[]';
+        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[][]';
         $request = $this->userApiKeysGetRequest();
 
         return $this->client
@@ -375,11 +375,12 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function userApiKeysKeyDelete($key)
     {
-        $this->userApiKeysKeyDeleteWithHttpInfo($key);
+        list($response) = $this->userApiKeysKeyDeleteWithHttpInfo($key);
+        return $response;
     }
 
     /**
@@ -391,11 +392,11 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function userApiKeysKeyDeleteWithHttpInfo($key)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->userApiKeysKeyDeleteRequest($key);
 
         try {
@@ -426,10 +427,48 @@ class UserApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -467,14 +506,28 @@ class UserApi
      */
     public function userApiKeysKeyDeleteAsyncWithHttpInfo($key)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->userApiKeysKeyDeleteRequest($key);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -608,7 +661,7 @@ class UserApi
      *
      * Create API keys for a user
      *
-     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -626,7 +679,7 @@ class UserApi
      *
      * Create API keys for a user
      *
-     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -726,7 +779,7 @@ class UserApi
      *
      * Create API keys for a user
      *
-     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
@@ -747,7 +800,7 @@ class UserApi
      *
      * Create API keys for a user
      *
-     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
@@ -798,7 +851,7 @@ class UserApi
     /**
      * Create request for operation 'userApiKeysPost'
      *
-     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param  string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param  string $perms Permissions -- currently unused (optional)
      *
      * @throws \InvalidArgumentException
@@ -985,6 +1038,22 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1163,7 +1232,7 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MainUserStatsResponse
+     * @return string
      */
     public function userStatsGet()
     {
@@ -1179,11 +1248,11 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\MainUserStatsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function userStatsGetWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainUserStatsResponse';
+        $returnType = 'string';
         $request = $this->userStatsGetRequest();
 
         try {
@@ -1235,7 +1304,23 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\MainUserStatsResponse',
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1275,7 +1360,7 @@ class UserApi
      */
     public function userStatsGetAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainUserStatsResponse';
+        $returnType = 'string';
         $request = $this->userStatsGetRequest();
 
         return $this->client

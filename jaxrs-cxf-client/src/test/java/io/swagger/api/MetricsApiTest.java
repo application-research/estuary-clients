@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -80,8 +81,8 @@ public class MetricsApiTest {
      */
     @Test
     public void publicMetricsDealsOnChainGetTest() {
-        //api.publicMetricsDealsOnChainGet();
-        
+        //String response = api.publicMetricsDealsOnChainGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         

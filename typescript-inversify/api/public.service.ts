@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -38,8 +39,8 @@ export class PublicService {
      * @param cid Cid
      
      */
-    public publicByCidCidGet(cid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicByCidCidGet(cid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicByCidCidGet(cid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicByCidCidGet(cid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicByCidCidGet(cid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!cid){
             throw new Error('Required parameter cid was null or undefined when calling publicByCidCidGet.');
@@ -51,7 +52,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/by-cid/${encodeURIComponent(String(cid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/by-cid/${encodeURIComponent(String(cid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -64,8 +65,8 @@ export class PublicService {
      * This endpoint returns information about the node
      
      */
-    public publicInfoGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicInfoGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicInfoGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicInfoGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicInfoGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -73,7 +74,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/info` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/info` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -86,8 +87,8 @@ export class PublicService {
      * This endpoint is used to get deal metrics
      
      */
-    public publicMetricsDealsOnChainGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMetricsDealsOnChainGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMetricsDealsOnChainGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMetricsDealsOnChainGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMetricsDealsOnChainGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -95,7 +96,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/metrics/deals-on-chain` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/metrics/deals-on-chain` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -110,8 +111,8 @@ export class PublicService {
      * @param ignoreFailed Ignore Failed
      
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
@@ -128,7 +129,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -142,8 +143,8 @@ export class PublicService {
      * @param miner Filter by miner
      
      */
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersFailuresMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersFailuresMinerGet.');
@@ -155,7 +156,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -168,8 +169,8 @@ export class PublicService {
      * This endpoint returns all miners
      
      */
-    public publicMinersGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -177,7 +178,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -191,8 +192,8 @@ export class PublicService {
      * @param miner Filter by miner
      
      */
-    public publicMinersStatsMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersStatsMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersStatsMinerGet.');
@@ -204,7 +205,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -261,8 +262,8 @@ export class PublicService {
      * This endpoint is used to get public stats.
      
      */
-    public publicStatsGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicStatsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicStatsGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicStatsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicStatsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -270,7 +271,7 @@ export class PublicService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/stats` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/stats` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

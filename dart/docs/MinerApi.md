@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -33,7 +33,8 @@ var miner = miner_example; // String | Filter by miner
 var ignoreFailed = ignoreFailed_example; // String | Ignore Failed
 
 try { 
-    api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    var result = api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    print(result);
 } catch (e) {
     print("Exception when calling MinerApi->publicMinersDealsMinerGet: $e\n");
 }
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -62,7 +63,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -80,7 +81,8 @@ var api_instance = new MinerApi();
 var miner = miner_example; // String | Filter by miner
 
 try { 
-    api_instance.publicMinersStatsMinerGet(miner);
+    var result = api_instance.publicMinersStatsMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling MinerApi->publicMinersStatsMinerGet: $e\n");
 }
@@ -94,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

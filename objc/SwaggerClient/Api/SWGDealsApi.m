@@ -1,7 +1,9 @@
 #import "SWGDealsApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGMainChannelIDParam.h"
 #import "SWGMainEstimateDealBody.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGDealsApi ()
@@ -54,17 +56,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint estimates the cost of a deal
 ///  @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealEstimatePostWithBody: (SWGMainEstimateDealBody*) body
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'body' is set
     if (body == nil) {
         NSParameterAssert(body);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -107,10 +109,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -120,17 +122,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint returns the deal info for a deal
 ///  @param dealid Deal ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealInfoDealidGetWithDealid: (NSNumber*) dealid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'dealid' is set
     if (dealid == nil) {
         NSParameterAssert(dealid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"dealid"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -175,10 +177,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -188,17 +190,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint returns the proposal for a deal
 ///  @param propcid Proposal CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealProposalPropcidGetWithPropcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'propcid' is set
     if (propcid == nil) {
         NSParameterAssert(propcid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"propcid"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -243,10 +245,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -256,17 +258,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint returns the ask for a given CID
 ///  @param miner CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealQueryMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -311,10 +313,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -324,17 +326,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// Get Deal Status by PropCid
 ///  @param propcid PropCid 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealStatusByProposalPropcidGetWithPropcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'propcid' is set
     if (propcid == nil) {
         NSParameterAssert(propcid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"propcid"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -379,10 +381,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -394,18 +396,18 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 ///
 ///  @param propcid Proposal CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealStatusMinerPropcidGetWithMiner: (NSString*) miner
     propcid: (NSString*) propcid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -416,7 +418,7 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"propcid"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -464,10 +466,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -475,10 +477,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 ///
 /// Transfer In Progress
 /// This endpoint returns the in-progress transfers
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealTransferInProgressGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/deal/transfer/in-progress"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -516,10 +518,76 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
+                                }
+                            }];
+}
+
+///
+/// Transfer Status
+/// This endpoint returns the status of a transfer
+///  @param chanid Channel ID 
+///
+///  @returns NSString*
+///
+-(NSURLSessionTask*) dealTransferStatusPostWithChanid: (SWGMainChannelIDParam*) chanid
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
+    // verify the required parameter 'chanid' is set
+    if (chanid == nil) {
+        NSParameterAssert(chanid);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"chanid"] };
+            NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/deal/transfer/status"];
+
+    NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
+
+    NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
+    [headerParams addEntriesFromDictionary:self.defaultHeaders];
+    // HTTP header `Accept`
+    NSString *acceptHeader = [self.apiClient.sanitizer selectHeaderAccept:@[@"application/json"]];
+    if(acceptHeader.length > 0) {
+        headerParams[@"Accept"] = acceptHeader;
+    }
+
+    // response content type
+    NSString *responseContentType = [[acceptHeader componentsSeparatedByString:@", "] firstObject] ?: @"";
+
+    // request content type
+    NSString *requestContentType = [self.apiClient.sanitizer selectHeaderContentType:@[]];
+
+    // Authentication setting
+    NSArray *authSettings = @[@"bearerAuth"];
+
+    id bodyParam = nil;
+    NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = chanid;
+
+    return [self.apiClient requestWithPath: resourcePath
+                                    method: @"POST"
+                                pathParams: pathParams
+                               queryParams: queryParams
+                                formParams: formParams
+                                     files: localVarFiles
+                                      body: bodyParam
+                              headerParams: headerParams
+                              authSettings: authSettings
+                        requestContentType: requestContentType
+                       responseContentType: responseContentType
+                              responseType: @"NSString*"
+                           completionBlock: ^(id data, NSError *error) {
+                                if(handler) {
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -527,10 +595,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 ///
 /// Get storage failures for user
 /// This endpoint returns a list of storage failures for user
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealsFailuresGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/deals/failures"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -568,10 +636,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -583,18 +651,18 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 ///
 ///  @param dealRequest Deal Request 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealsMakeMinerPostWithMiner: (NSString*) miner
     dealRequest: (NSString*) dealRequest
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -605,7 +673,7 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"dealRequest"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -651,10 +719,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -664,17 +732,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint returns the status of a deal
 ///  @param deal Deal ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) dealsStatusDealGetWithDeal: (NSNumber*) deal
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'deal' is set
     if (deal == nil) {
         NSParameterAssert(deal);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"deal"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -719,10 +787,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -730,10 +798,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 ///
 /// Get storage failures
 /// This endpoint returns a list of storage failures
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicDealsFailuresGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/deals/failures"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -771,10 +839,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -784,17 +852,17 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
 /// This endpoint returns the ask for a given CID
 ///  @param miner CID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersStorageQueryMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGDealsApiErrorDomain code:kSWGDealsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -839,10 +907,10 @@ NSInteger kSWGDealsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

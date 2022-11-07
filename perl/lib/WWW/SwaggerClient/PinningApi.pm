@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'pinning_pins_get' } = { 
     	summary => 'List all pin status objects',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub pinning_pins_get {
     my ($self, %args) = @_;
@@ -87,10 +87,14 @@ sub pinning_pins_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -110,10 +114,10 @@ sub pinning_pins_get {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_delete' } = { 
     	summary => 'Delete a pinned object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub pinning_pins_pinid_delete {
     my ($self, %args) = @_;
@@ -150,10 +154,14 @@ sub pinning_pins_pinid_delete {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -173,10 +181,10 @@ sub pinning_pins_pinid_delete {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_get' } = { 
     	summary => 'Get a pin status object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub pinning_pins_pinid_get {
     my ($self, %args) = @_;
@@ -213,10 +221,14 @@ sub pinning_pins_pinid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -236,10 +248,10 @@ sub pinning_pins_pinid_get {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_post' } = { 
     	summary => 'Replace a pinned object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub pinning_pins_pinid_post {
     my ($self, %args) = @_;
@@ -276,10 +288,14 @@ sub pinning_pins_pinid_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -287,40 +303,29 @@ sub pinning_pins_pinid_post {
 #
 # Add and pin object
 # 
-# @param string $cid cid (required)
-# @param string $name name (required)
+# @param TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
 {
     my $params = {
-    'cid' => {
-        data_type => 'string',
-        description => 'cid',
-        required => '1',
-    },
-    'name' => {
-        data_type => 'string',
-        description => 'name',
+    'pin' => {
+        data_type => 'TypesIpfsPin',
+        description => 'Pin Body {cid:cid, name:name}',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'pinning_pins_post' } = { 
     	summary => 'Add and pin object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub pinning_pins_post {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'cid' is set
-    unless (exists $args{'cid'}) {
-      croak("Missing the required parameter 'cid' when calling pinning_pins_post");
-    }
-
-    # verify the required parameter 'name' is set
-    unless (exists $args{'name'}) {
-      croak("Missing the required parameter 'name' when calling pinning_pins_post");
+    # verify the required parameter 'pin' is set
+    unless (exists $args{'pin'}) {
+      croak("Missing the required parameter 'pin' when calling pinning_pins_post");
     }
 
     # parse inputs
@@ -338,29 +343,24 @@ sub pinning_pins_post {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
-    # path params
-    if ( exists $args{'cid'}) {
-        my $_base_variable = "{" . "cid" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'cid'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'name'}) {
-        my $_base_variable = "{" . "name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'name'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
     my $_body_data;
+    # body params
+    if ( exists $args{'pin'}) {
+        $_body_data = $args{'pin'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

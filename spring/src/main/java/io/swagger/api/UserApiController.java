@@ -1,7 +1,7 @@
 package io.swagger.api;
 
+import java.util.List;
 import io.swagger.model.MainGetApiKeysResp;
-import io.swagger.model.MainUserStatsResponse;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:53:50.942Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
 
 @Controller
 public class UserApiController implements UserApi {
@@ -39,26 +39,35 @@ public class UserApiController implements UserApi {
         this.request = request;
     }
 
-    public ResponseEntity<List<MainGetApiKeysResp>> userApiKeysGet() {
+    public ResponseEntity<List<List<MainGetApiKeysResp>>> userApiKeysGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<MainGetApiKeysResp>>(objectMapper.readValue("{}", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<List<MainGetApiKeysResp>>>(objectMapper.readValue("{}", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<List<MainGetApiKeysResp>>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<List<MainGetApiKeysResp>>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> userApiKeysKeyDelete(@ApiParam(value = "Key",required=true) @PathVariable("key") String key) {
+    public ResponseEntity<String> userApiKeysKeyDelete(@ApiParam(value = "Key",required=true) @PathVariable("key") String key) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h") @Valid @RequestParam(value = "expiry", required = false) String expiry,@ApiParam(value = "Permissions -- currently unused") @Valid @RequestParam(value = "perms", required = false) String perms) {
+    public ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h") @Valid @RequestParam(value = "expiry", required = false) String expiry,@ApiParam(value = "Permissions -- currently unused") @Valid @RequestParam(value = "perms", required = false) String perms) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -86,18 +95,18 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<MainUserStatsResponse> userStatsGet() {
+    public ResponseEntity<String> userStatsGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<MainUserStatsResponse>(objectMapper.readValue("{\"empty\": false}", MainUserStatsResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<MainUserStatsResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<MainUserStatsResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

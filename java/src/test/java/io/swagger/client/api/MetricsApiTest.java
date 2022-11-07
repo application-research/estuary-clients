@@ -13,6 +13,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,7 +42,7 @@ public class MetricsApiTest {
      */
     @Test
     public void publicMetricsDealsOnChainGetTest() throws Exception {
-        api.publicMetricsDealsOnChainGet();
+        String response = api.publicMetricsDealsOnChainGet();
 
         // TODO: test validations
     }

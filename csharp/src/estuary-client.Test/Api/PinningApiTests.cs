@@ -71,8 +71,8 @@ namespace estuary-client.Test
         public void PinningPinsGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PinningPinsGet();
-            
+            //var response = instance.PinningPinsGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -83,8 +83,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pinid = null;
-            //instance.PinningPinsPinidDelete(pinid);
-            
+            //var response = instance.PinningPinsPinidDelete(pinid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -95,8 +95,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pinid = null;
-            //instance.PinningPinsPinidGet(pinid);
-            
+            //var response = instance.PinningPinsPinidGet(pinid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -107,8 +107,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pinid = null;
-            //instance.PinningPinsPinidPost(pinid);
-            
+            //var response = instance.PinningPinsPinidPost(pinid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -118,10 +118,9 @@ namespace estuary-client.Test
         public void PinningPinsPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string cid = null;
-            //string name = null;
-            //instance.PinningPinsPost(cid, name);
-            
+            //TypesIpfsPin pin = null;
+            //var response = instance.PinningPinsPost(pin);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

@@ -39,7 +39,7 @@ describe 'ContentApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_dupes Ignore Dupes
   # @option opts [String] :filename Filename
-  # @return [nil]
+  # @return [String]
   describe 'content_add_car_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -52,7 +52,7 @@ describe 'ContentApi' do
   # @param body IPFS Body
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_dupes Ignore Dupes
-  # @return [nil]
+  # @return [String]
   describe 'content_add_ipfs_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -96,7 +96,7 @@ describe 'ContentApi' do
   # @param duration Duration
   # @param all All
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_all_deals_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -108,7 +108,7 @@ describe 'ContentApi' do
   # This endpoint returns content bandwidth
   # @param content Content ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_bw_usage_content_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -121,7 +121,7 @@ describe 'ContentApi' do
   # @param req Content
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_dupes Ignore Dupes
-  # @return [nil]
+  # @return [String]
   describe 'content_create_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -134,7 +134,7 @@ describe 'ContentApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :limit Limit
   # @option opts [Integer] :offset Offset
-  # @return [nil]
+  # @return [String]
   describe 'content_deals_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -146,7 +146,7 @@ describe 'ContentApi' do
   # This endpoint ensures that the content is replicated to the specified number of providers
   # @param datacid Data CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_ensure_replication_datacid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -170,7 +170,7 @@ describe 'ContentApi' do
   # This endpoint returns a content by its ID
   # @param id Content ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_id_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -182,7 +182,7 @@ describe 'ContentApi' do
   # This endpoint imports a deal into the shuttle.
   # @param body Import a deal
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_importdeal_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -193,7 +193,7 @@ describe 'ContentApi' do
   # List all pinned content
   # This endpoint lists all content
   # @param [Hash] opts the optional parameters
-  # @return [Array<String>]
+  # @return [String]
   describe 'content_list_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -205,7 +205,7 @@ describe 'ContentApi' do
   # This endpoint reads content from the blockstore
   # @param cont CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_read_cont_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -216,7 +216,7 @@ describe 'ContentApi' do
   # Get staging zone for user
   # This endpoint is used to get staging zone for user.
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_staging_zones_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -229,7 +229,7 @@ describe 'ContentApi' do
   # @param limit limit
   # @param offset offset
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_stats_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -241,7 +241,7 @@ describe 'ContentApi' do
   # This endpoint returns the status of a content
   # @param id Content ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'content_status_id_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

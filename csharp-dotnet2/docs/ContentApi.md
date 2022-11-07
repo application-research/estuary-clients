@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
-> void ContentAddCarPost (string body, string ignoreDupes, string filename)
+> string ContentAddCarPost (string body, string ignoreDupes, string filename)
 
 Add Car object
 
@@ -59,7 +59,8 @@ namespace Example
             try
             {
                 // Add Car object
-                apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
+                string result = apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -80,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -95,7 +96,7 @@ void (empty response body)
 
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
+> string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
 
 Add IPFS object
 
@@ -128,7 +129,8 @@ namespace Example
             try
             {
                 // Add IPFS object
-                apiInstance.ContentAddIpfsPost(body, ignoreDupes);
+                string result = apiInstance.ContentAddIpfsPost(body, ignoreDupes);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -309,7 +311,7 @@ Name | Type | Description  | Notes
 
 <a name="contentalldealsget"></a>
 # **ContentAllDealsGet**
-> void ContentAllDealsGet (string begin, string duration, string all)
+> string ContentAllDealsGet (string begin, string duration, string all)
 
 Get all deals for a user
 
@@ -343,7 +345,8 @@ namespace Example
             try
             {
                 // Get all deals for a user
-                apiInstance.ContentAllDealsGet(begin, duration, all);
+                string result = apiInstance.ContentAllDealsGet(begin, duration, all);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -364,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -379,7 +382,7 @@ void (empty response body)
 
 <a name="contentbwusagecontentget"></a>
 # **ContentBwUsageContentGet**
-> void ContentBwUsageContentGet (string content)
+> string ContentBwUsageContentGet (string content)
 
 Get content bandwidth
 
@@ -411,7 +414,8 @@ namespace Example
             try
             {
                 // Get content bandwidth
-                apiInstance.ContentBwUsageContentGet(content);
+                string result = apiInstance.ContentBwUsageContentGet(content);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -430,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -445,7 +449,7 @@ void (empty response body)
 
 <a name="contentcreatepost"></a>
 # **ContentCreatePost**
-> void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes)
+> string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes)
 
 Add a new content
 
@@ -478,7 +482,8 @@ namespace Example
             try
             {
                 // Add a new content
-                apiInstance.ContentCreatePost(req, ignoreDupes);
+                string result = apiInstance.ContentCreatePost(req, ignoreDupes);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -498,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -513,7 +518,7 @@ void (empty response body)
 
 <a name="contentdealsget"></a>
 # **ContentDealsGet**
-> void ContentDealsGet (int? limit, int? offset)
+> string ContentDealsGet (int? limit, int? offset)
 
 Content with deals
 
@@ -546,7 +551,8 @@ namespace Example
             try
             {
                 // Content with deals
-                apiInstance.ContentDealsGet(limit, offset);
+                string result = apiInstance.ContentDealsGet(limit, offset);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -566,7 +572,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -581,7 +587,7 @@ void (empty response body)
 
 <a name="contentensurereplicationdatacidget"></a>
 # **ContentEnsureReplicationDatacidGet**
-> void ContentEnsureReplicationDatacidGet (string datacid)
+> string ContentEnsureReplicationDatacidGet (string datacid)
 
 Ensure Replication
 
@@ -613,7 +619,8 @@ namespace Example
             try
             {
                 // Ensure Replication
-                apiInstance.ContentEnsureReplicationDatacidGet(datacid);
+                string result = apiInstance.ContentEnsureReplicationDatacidGet(datacid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -632,7 +639,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -714,7 +721,7 @@ Name | Type | Description  | Notes
 
 <a name="contentidget"></a>
 # **ContentIdGet**
-> void ContentIdGet (int? id)
+> string ContentIdGet (int? id)
 
 Content
 
@@ -746,7 +753,8 @@ namespace Example
             try
             {
                 // Content
-                apiInstance.ContentIdGet(id);
+                string result = apiInstance.ContentIdGet(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -765,7 +773,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -780,7 +788,7 @@ void (empty response body)
 
 <a name="contentimportdealpost"></a>
 # **ContentImportdealPost**
-> void ContentImportdealPost (MainImportDealBody body)
+> string ContentImportdealPost (MainImportDealBody body)
 
 Import a deal
 
@@ -812,7 +820,8 @@ namespace Example
             try
             {
                 // Import a deal
-                apiInstance.ContentImportdealPost(body);
+                string result = apiInstance.ContentImportdealPost(body);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -831,7 +840,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -846,7 +855,7 @@ void (empty response body)
 
 <a name="contentlistget"></a>
 # **ContentListGet**
-> List<string> ContentListGet ()
+> string ContentListGet ()
 
 List all pinned content
 
@@ -877,7 +886,7 @@ namespace Example
             try
             {
                 // List all pinned content
-                List&lt;string&gt; result = apiInstance.ContentListGet();
+                string result = apiInstance.ContentListGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -894,7 +903,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<string>**
+**string**
 
 ### Authorization
 
@@ -909,7 +918,7 @@ This endpoint does not need any parameter.
 
 <a name="contentreadcontget"></a>
 # **ContentReadContGet**
-> void ContentReadContGet (string cont)
+> string ContentReadContGet (string cont)
 
 Read content
 
@@ -941,7 +950,8 @@ namespace Example
             try
             {
                 // Read content
-                apiInstance.ContentReadContGet(cont);
+                string result = apiInstance.ContentReadContGet(cont);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -960,7 +970,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -975,7 +985,7 @@ void (empty response body)
 
 <a name="contentstagingzonesget"></a>
 # **ContentStagingZonesGet**
-> void ContentStagingZonesGet ()
+> string ContentStagingZonesGet ()
 
 Get staging zone for user
 
@@ -1006,7 +1016,8 @@ namespace Example
             try
             {
                 // Get staging zone for user
-                apiInstance.ContentStagingZonesGet();
+                string result = apiInstance.ContentStagingZonesGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1022,7 +1033,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1037,7 +1048,7 @@ void (empty response body)
 
 <a name="contentstatsget"></a>
 # **ContentStatsGet**
-> void ContentStatsGet (string limit, string offset)
+> string ContentStatsGet (string limit, string offset)
 
 Get content statistics
 
@@ -1070,7 +1081,8 @@ namespace Example
             try
             {
                 // Get content statistics
-                apiInstance.ContentStatsGet(limit, offset);
+                string result = apiInstance.ContentStatsGet(limit, offset);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1090,7 +1102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -1105,7 +1117,7 @@ void (empty response body)
 
 <a name="contentstatusidget"></a>
 # **ContentStatusIdGet**
-> void ContentStatusIdGet (int? id)
+> string ContentStatusIdGet (int? id)
 
 Content Status
 
@@ -1137,7 +1149,8 @@ namespace Example
             try
             {
                 // Content Status
-                apiInstance.ContentStatusIdGet(id);
+                string result = apiInstance.ContentStatusIdGet(id);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -1156,7 +1169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

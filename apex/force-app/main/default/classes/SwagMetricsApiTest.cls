@@ -14,12 +14,18 @@ private class SwagMetricsApiTest {
 
         SwagClient client;
         SwagMetricsApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagMetricsApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMetricsDealsOnChainGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMetricsDealsOnChainGet();
+        System.assertEquals(expectedResponse, response);
     }
 }

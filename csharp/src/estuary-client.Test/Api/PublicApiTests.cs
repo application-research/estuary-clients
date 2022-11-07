@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -71,8 +72,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cid = null;
-            //instance.PublicByCidCidGet(cid);
-            
+            //var response = instance.PublicByCidCidGet(cid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -82,8 +83,8 @@ namespace estuary-client.Test
         public void PublicInfoGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicInfoGet();
-            
+            //var response = instance.PublicInfoGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -93,8 +94,8 @@ namespace estuary-client.Test
         public void PublicMetricsDealsOnChainGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicMetricsDealsOnChainGet();
-            
+            //var response = instance.PublicMetricsDealsOnChainGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -106,8 +107,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //string ignoreFailed = null;
-            //instance.PublicMinersDealsMinerGet(miner, ignoreFailed);
-            
+            //var response = instance.PublicMinersDealsMinerGet(miner, ignoreFailed);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -118,8 +119,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
-            //instance.PublicMinersFailuresMinerGet(miner);
-            
+            //var response = instance.PublicMinersFailuresMinerGet(miner);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -129,8 +130,8 @@ namespace estuary-client.Test
         public void PublicMinersGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicMinersGet();
-            
+            //var response = instance.PublicMinersGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -141,8 +142,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
-            //instance.PublicMinersStatsMinerGet(miner);
-            
+            //var response = instance.PublicMinersStatsMinerGet(miner);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -174,8 +175,8 @@ namespace estuary-client.Test
         public void PublicStatsGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicStatsGet();
-            
+            //var response = instance.PublicStatsGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

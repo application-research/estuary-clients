@@ -56,12 +56,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
-            var body = ;  // List<string> | Peer ids
+            var peerIds = ;  // List<bool?> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                apiInstance.AdminPeeringPeersDelete(body);
+                string result = apiInstance.AdminPeeringPeersDelete(peerIds);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -122,12 +123,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**DealStatusByProposalPropcidGet**](docs/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**DealStatusMinerPropcidGet**](docs/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**DealTransferInProgressGet**](docs/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**DealTransferStatusPost**](docs/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**DealsFailuresGet**](docs/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**DealsMakeMinerPost**](docs/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**DealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**PublicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**PublicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**DealTransferStatusPost**](docs/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**PublicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -174,12 +175,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [estuary-client.Model.CollectionsCollection](docs/CollectionsCollection.md)
+ - [estuary-client.Model.MainChannelIDParam](docs/MainChannelIDParam.md)
  - [estuary-client.Model.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [estuary-client.Model.MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [estuary-client.Model.MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [estuary-client.Model.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [estuary-client.Model.MainImportDealBody](docs/MainImportDealBody.md)
- - [estuary-client.Model.MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [estuary-client.Model.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [estuary-client.Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [estuary-client.Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [estuary-client.Model.UtilContentCreateBody](docs/UtilContentCreateBody.md)

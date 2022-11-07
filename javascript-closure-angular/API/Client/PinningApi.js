@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.PinningApi');
 
+goog.require('API.Client.TypesIpfsPin');
 goog.require('API.Client.util.HttpError');
 
 /**
@@ -47,7 +48,7 @@ API.Client.PinningApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * List all pin status objects
  * This endpoint lists all pin status objects
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PinningApi.prototype.pinningPinsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -79,7 +80,7 @@ API.Client.PinningApi.prototype.pinningPinsGet = function(opt_extraHttpRequestPa
  * This endpoint deletes a pinned object.
  * @param {!string} pinid Pin ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PinningApi.prototype.pinningPinsPinidDelete = function(pinid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -116,7 +117,7 @@ API.Client.PinningApi.prototype.pinningPinsPinidDelete = function(pinid, opt_ext
  * This endpoint returns a pin status object.
  * @param {!string} pinid cid
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PinningApi.prototype.pinningPinsPinidGet = function(pinid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -153,7 +154,7 @@ API.Client.PinningApi.prototype.pinningPinsPinidGet = function(pinid, opt_extraH
  * This endpoint replaces a pinned object.
  * @param {!string} pinid Pin ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PinningApi.prototype.pinningPinsPinidPost = function(pinid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -188,36 +189,30 @@ API.Client.PinningApi.prototype.pinningPinsPinidPost = function(pinid, opt_extra
 /**
  * Add and pin object
  * This endpoint adds a pin to the IPFS daemon.
- * @param {!string} cid cid
- * @param {!string} name name
+ * @param {!TypesIpfsPin} pin Pin Body {cid:cid, name:name}
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
-API.Client.PinningApi.prototype.pinningPinsPost = function(cid, name, opt_extraHttpRequestParams) {
+API.Client.PinningApi.prototype.pinningPinsPost = function(pin, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/pinning/pins'
-      .replace('{' + 'cid' + '}', String(cid))
-      .replace('{' + 'name' + '}', String(name));
+  var path = this.basePath_ + '/pinning/pins';
 
   /** @type {!Object} */
   var queryParameters = {};
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'cid' is set
-  if (!cid) {
-    throw new Error('Missing required parameter cid when calling pinningPinsPost');
-  }
-  // verify required parameter 'name' is set
-  if (!name) {
-    throw new Error('Missing required parameter name when calling pinningPinsPost');
+  // verify required parameter 'pin' is set
+  if (!pin) {
+    throw new Error('Missing required parameter pin when calling pinningPinsPost');
   }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
     url: path,
     json: true,
-            params: queryParameters,
+    data: pin,
+        params: queryParameters,
     headers: headerParams
   };
 

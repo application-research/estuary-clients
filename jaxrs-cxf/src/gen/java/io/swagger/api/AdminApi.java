@@ -1,6 +1,7 @@
 package io.swagger.api;
 
 import java.util.List;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,8 +40,11 @@ public interface AdminApi  {
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
     @ApiOperation(value = "Remove peers on Peering Service", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringPeersDelete(@Valid List<String> body);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringPeersDelete(@Valid List<Boolean> peerIds);
 
     /**
      * List all Peering peers
@@ -52,8 +56,11 @@ public interface AdminApi  {
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
     @ApiOperation(value = "List all Peering peers", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringPeersGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringPeersGet();
 
     /**
      * Add peers on Peering Service
@@ -65,8 +72,11 @@ public interface AdminApi  {
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
     @ApiOperation(value = "Add peers on Peering Service", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringPeersPost();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringPeersPost();
 
     /**
      * Start Peering
@@ -78,8 +88,11 @@ public interface AdminApi  {
     @Path("/admin/peering/start")
     @Produces({ "application/json" })
     @ApiOperation(value = "Start Peering", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringStartPost();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringStartPost();
 
     /**
      * Check Peering Status
@@ -91,8 +104,11 @@ public interface AdminApi  {
     @Path("/admin/peering/status")
     @Produces({ "application/json" })
     @ApiOperation(value = "Check Peering Status", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringStatusGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringStatusGet();
 
     /**
      * Stop Peering
@@ -104,8 +120,11 @@ public interface AdminApi  {
     @Path("/admin/peering/stop")
     @Produces({ "application/json" })
     @ApiOperation(value = "Stop Peering", tags={ "admin", "peering", "peers",  })
-    @ApiResponses(value = {  })
-    public void adminPeeringStopPost();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminPeeringStopPost();
 
     /**
      * Get systems(estuary/shuttle) config
@@ -117,8 +136,11 @@ public interface AdminApi  {
     @Path("/admin/system/config")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get systems(estuary/shuttle) config", tags={ "admin",  })
-    @ApiResponses(value = {  })
-    public void adminSystemConfigGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminSystemConfigGet();
 
     /**
      * Get all users
@@ -130,7 +152,10 @@ public interface AdminApi  {
     @Path("/admin/users")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all users", tags={ "admin" })
-    @ApiResponses(value = {  })
-    public void adminUsersGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminUsersGet();
 }
 

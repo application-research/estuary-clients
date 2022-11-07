@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -19,10 +20,10 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
     /**
     * Net Addrs
     * This endpoint is used to get net addrs
-    * @return kotlin.Array<kotlin.String>
+    * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun netAddrsGet() : kotlin.Array<kotlin.String> {
+    fun netAddrsGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -38,13 +39,13 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.Array<kotlin.String>>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -57,9 +58,10 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
     * Get all miners
     * This endpoint returns all miners
     * @param miner Filter by miner 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersFailuresMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersFailuresMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -75,13 +77,13 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -93,9 +95,10 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
     /**
     * Get all miners
     * This endpoint returns all miners
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -111,13 +114,13 @@ class NetApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(b
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

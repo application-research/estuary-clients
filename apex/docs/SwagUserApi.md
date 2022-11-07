@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> List&lt;SwagMainGetApiKeysResp&gt; userApiKeysGet()
+> List&lt;List&lt;SwagMainGetApiKeysResp&gt;&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -30,7 +30,7 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    List<SwagMainGetApiKeysResp> result = api.userApiKeysGet();
+    List<List<SwagMainGetApiKeysResp>> result = api.userApiKeysGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;SwagMainGetApiKeysResp&gt;**](SwagMainGetApiKeysResp.md)
+[**List&lt;List&lt;SwagMainGetApiKeysResp&gt;&gt;**](List.md)
 
 ### Authorization
 
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 <a name="userApiKeysKeyDelete"></a>
 # **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+> String userApiKeysKeyDelete(key)
 
 Revoke a User API Key.
 
@@ -76,7 +76,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.userApiKeysKeyDelete(params);
+    String result = api.userApiKeysKeyDelete(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -90,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -136,7 +137,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **String**| Permissions -- currently unused | [optional]
 
 ### Return type
@@ -196,7 +197,7 @@ This endpoint does not need any parameter.
 
 <a name="userStatsGet"></a>
 # **userStatsGet**
-> SwagMainUserStatsResponse userStatsGet()
+> String userStatsGet()
 
 Create API keys for a user
 
@@ -213,7 +214,7 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    SwagMainUserStatsResponse result = api.userStatsGet();
+    String result = api.userStatsGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -225,7 +226,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SwagMainUserStatsResponse**](SwagMainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

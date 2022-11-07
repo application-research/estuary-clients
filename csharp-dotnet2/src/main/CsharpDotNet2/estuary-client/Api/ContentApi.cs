@@ -17,15 +17,15 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="filename">Filename</param>
-        /// <returns></returns>
-        void ContentAddCarPost (string body, string ignoreDupes, string filename);
+        /// <returns>string</returns>
+        string ContentAddCarPost (string body, string ignoreDupes, string filename);
         /// <summary>
         /// Add IPFS object This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
         /// </summary>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
-        /// <returns></returns>
-        void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes);
+        /// <returns>string</returns>
+        string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes);
         /// <summary>
         /// Add new content This endpoint is used to upload new content.
         /// </summary>
@@ -50,34 +50,34 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns></returns>
-        void ContentAllDealsGet (string begin, string duration, string all);
+        /// <returns>string</returns>
+        string ContentAllDealsGet (string begin, string duration, string all);
         /// <summary>
         /// Get content bandwidth This endpoint returns content bandwidth
         /// </summary>
         /// <param name="content">Content ID</param>
-        /// <returns></returns>
-        void ContentBwUsageContentGet (string content);
+        /// <returns>string</returns>
+        string ContentBwUsageContentGet (string content);
         /// <summary>
         /// Add a new content This endpoint adds a new content
         /// </summary>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
-        /// <returns></returns>
-        void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes);
+        /// <returns>string</returns>
+        string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes);
         /// <summary>
         /// Content with deals This endpoint lists all content with deals
         /// </summary>
         /// <param name="limit">Limit</param>
         /// <param name="offset">Offset</param>
-        /// <returns></returns>
-        void ContentDealsGet (int? limit, int? offset);
+        /// <returns>string</returns>
+        string ContentDealsGet (int? limit, int? offset);
         /// <summary>
         /// Ensure Replication This endpoint ensures that the content is replicated to the specified number of providers
         /// </summary>
         /// <param name="datacid">Data CID</param>
-        /// <returns></returns>
-        void ContentEnsureReplicationDatacidGet (string datacid);
+        /// <returns>string</returns>
+        string ContentEnsureReplicationDatacidGet (string datacid);
         /// <summary>
         /// List all failures for a content This endpoint returns all failures for a content
         /// </summary>
@@ -88,43 +88,43 @@ namespace estuary-client.Api
         /// Content This endpoint returns a content by its ID
         /// </summary>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        void ContentIdGet (int? id);
+        /// <returns>string</returns>
+        string ContentIdGet (int? id);
         /// <summary>
         /// Import a deal This endpoint imports a deal into the shuttle.
         /// </summary>
         /// <param name="body">Import a deal</param>
-        /// <returns></returns>
-        void ContentImportdealPost (MainImportDealBody body);
+        /// <returns>string</returns>
+        string ContentImportdealPost (MainImportDealBody body);
         /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>
-        List<string> ContentListGet ();
+        /// <returns>string</returns>
+        string ContentListGet ();
         /// <summary>
         /// Read content This endpoint reads content from the blockstore
         /// </summary>
         /// <param name="cont">CID</param>
-        /// <returns></returns>
-        void ContentReadContGet (string cont);
+        /// <returns>string</returns>
+        string ContentReadContGet (string cont);
         /// <summary>
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
-        /// <returns></returns>
-        void ContentStagingZonesGet ();
+        /// <returns>string</returns>
+        string ContentStagingZonesGet ();
         /// <summary>
         /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
         /// </summary>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns></returns>
-        void ContentStatsGet (string limit, string offset);
+        /// <returns>string</returns>
+        string ContentStatsGet (string limit, string offset);
         /// <summary>
         /// Content Status This endpoint returns the status of a content
         /// </summary>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        void ContentStatusIdGet (int? id);
+        /// <returns>string</returns>
+        string ContentStatusIdGet (int? id);
     }
   
     /// <summary>
@@ -186,8 +186,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param> 
         /// <param name="ignoreDupes">Ignore Dupes</param> 
         /// <param name="filename">Filename</param> 
-        /// <returns></returns>            
-        public void ContentAddCarPost (string body, string ignoreDupes, string filename)
+        /// <returns>string</returns>            
+        public string ContentAddCarPost (string body, string ignoreDupes, string filename)
         {
             
             // verify the required parameter 'body' is set
@@ -218,7 +218,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddCarPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -226,8 +226,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="body">IPFS Body</param> 
         /// <param name="ignoreDupes">Ignore Dupes</param> 
-        /// <returns></returns>            
-        public void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
+        /// <returns>string</returns>            
+        public string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
         {
             
             // verify the required parameter 'body' is set
@@ -257,7 +257,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddIpfsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -352,8 +352,8 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         /// <param name="begin">Begin</param> 
         /// <param name="duration">Duration</param> 
         /// <param name="all">All</param> 
-        /// <returns></returns>            
-        public void ContentAllDealsGet (string begin, string duration, string all)
+        /// <returns>string</returns>            
+        public string ContentAllDealsGet (string begin, string duration, string all)
         {
             
             // verify the required parameter 'begin' is set
@@ -390,15 +390,15 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAllDealsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get content bandwidth This endpoint returns content bandwidth
         /// </summary>
         /// <param name="content">Content ID</param> 
-        /// <returns></returns>            
-        public void ContentBwUsageContentGet (string content)
+        /// <returns>string</returns>            
+        public string ContentBwUsageContentGet (string content)
         {
             
             // verify the required parameter 'content' is set
@@ -427,7 +427,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentBwUsageContentGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -435,8 +435,8 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         /// </summary>
         /// <param name="req">Content</param> 
         /// <param name="ignoreDupes">Ignore Dupes</param> 
-        /// <returns></returns>            
-        public void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes)
+        /// <returns>string</returns>            
+        public string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes)
         {
             
             // verify the required parameter 'req' is set
@@ -466,7 +466,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentCreatePost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -474,8 +474,8 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         /// </summary>
         /// <param name="limit">Limit</param> 
         /// <param name="offset">Offset</param> 
-        /// <returns></returns>            
-        public void ContentDealsGet (int? limit, int? offset)
+        /// <returns>string</returns>            
+        public string ContentDealsGet (int? limit, int? offset)
         {
             
     
@@ -502,15 +502,15 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentDealsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Ensure Replication This endpoint ensures that the content is replicated to the specified number of providers
         /// </summary>
         /// <param name="datacid">Data CID</param> 
-        /// <returns></returns>            
-        public void ContentEnsureReplicationDatacidGet (string datacid)
+        /// <returns>string</returns>            
+        public string ContentEnsureReplicationDatacidGet (string datacid)
         {
             
             // verify the required parameter 'datacid' is set
@@ -539,7 +539,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentEnsureReplicationDatacidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -583,8 +583,8 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         /// Content This endpoint returns a content by its ID
         /// </summary>
         /// <param name="id">Content ID</param> 
-        /// <returns></returns>            
-        public void ContentIdGet (int? id)
+        /// <returns>string</returns>            
+        public string ContentIdGet (int? id)
         {
             
             // verify the required parameter 'id' is set
@@ -613,15 +613,15 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Import a deal This endpoint imports a deal into the shuttle.
         /// </summary>
         /// <param name="body">Import a deal</param> 
-        /// <returns></returns>            
-        public void ContentImportdealPost (MainImportDealBody body)
+        /// <returns>string</returns>            
+        public string ContentImportdealPost (MainImportDealBody body)
         {
             
             // verify the required parameter 'body' is set
@@ -650,14 +650,14 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentImportdealPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>            
-        public List<string> ContentListGet ()
+        /// <returns>string</returns>            
+        public string ContentListGet ()
         {
             
     
@@ -682,15 +682,15 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentListGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Read content This endpoint reads content from the blockstore
         /// </summary>
         /// <param name="cont">CID</param> 
-        /// <returns></returns>            
-        public void ContentReadContGet (string cont)
+        /// <returns>string</returns>            
+        public string ContentReadContGet (string cont)
         {
             
             // verify the required parameter 'cont' is set
@@ -719,14 +719,14 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentReadContGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
-        /// <returns></returns>            
-        public void ContentStagingZonesGet ()
+        /// <returns>string</returns>            
+        public string ContentStagingZonesGet ()
         {
             
     
@@ -751,7 +751,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -759,8 +759,8 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         /// </summary>
         /// <param name="limit">limit</param> 
         /// <param name="offset">offset</param> 
-        /// <returns></returns>            
-        public void ContentStatsGet (string limit, string offset)
+        /// <returns>string</returns>            
+        public string ContentStatsGet (string limit, string offset)
         {
             
             // verify the required parameter 'limit' is set
@@ -793,15 +793,15 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentStatsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Content Status This endpoint returns the status of a content
         /// </summary>
         /// <param name="id">Content ID</param> 
-        /// <returns></returns>            
-        public void ContentStatusIdGet (int? id)
+        /// <returns>string</returns>            
+        public string ContentStatusIdGet (int? id)
         {
             
             // verify the required parameter 'id' is set
@@ -830,7 +830,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentStatusIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

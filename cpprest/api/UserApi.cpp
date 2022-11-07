@@ -36,7 +36,7 @@ UserApi::~UserApi()
 {
 }
 
-pplx::task<std::vector<std::shared_ptr<Main.getApiKeysResp>>> UserApi::userApiKeysGet()
+pplx::task<std::vector<std::vector<std::shared_ptr<Main.getApiKeysResp>>>> UserApi::userApiKeysGet()
 {
 
 
@@ -136,7 +136,7 @@ pplx::task<std::vector<std::shared_ptr<Main.getApiKeysResp>>> UserApi::userApiKe
     })
     .then([=](utility::string_t response)
     {
-        std::vector<std::shared_ptr<Main.getApiKeysResp>> result;
+        std::vector<std::vector<std::shared_ptr<Main.getApiKeysResp>>> result;
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -144,7 +144,7 @@ pplx::task<std::vector<std::shared_ptr<Main.getApiKeysResp>>> UserApi::userApiKe
 
             for( auto& item : json.as_array() )
             {
-                std::shared_ptr<Main.getApiKeysResp> itemObj(new Main.getApiKeysResp());
+                std::vector<std::shared_ptr<Main.getApiKeysResp>> itemObj(std::vector<std::shared_ptr<Main.getApiKeysResp>>());
                 itemObj->fromJson(item);
                 result.push_back(itemObj);
                 
@@ -164,7 +164,7 @@ pplx::task<std::vector<std::shared_ptr<Main.getApiKeysResp>>> UserApi::userApiKe
         return result;
     });
 }
-pplx::task<void> UserApi::userApiKeysKeyDelete(utility::string_t key)
+pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t key)
 {
 
 
@@ -185,7 +185,7 @@ pplx::task<void> UserApi::userApiKeysKeyDelete(utility::string_t key)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -196,6 +196,11 @@ pplx::task<void> UserApi::userApiKeysKeyDelete(utility::string_t key)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -265,7 +270,30 @@ pplx::task<void> UserApi::userApiKeysKeyDelete(utility::string_t key)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling userApiKeysKeyDelete: unsupported response type"));
+        }
+
+        return result;
     });
 }
 pplx::task<std::shared_ptr<Main.getApiKeysResp>> UserApi::userApiKeysPost(boost::optional<utility::string_t> expiry, boost::optional<utility::string_t> perms)
@@ -528,7 +556,7 @@ pplx::task<utility::string_t> UserApi::userExportGet()
         return result;
     });
 }
-pplx::task<std::shared_ptr<Main.userStatsResponse>> UserApi::userStatsGet()
+pplx::task<utility::string_t> UserApi::userStatsGet()
 {
 
 
@@ -548,7 +576,7 @@ pplx::task<std::shared_ptr<Main.userStatsResponse>> UserApi::userStatsGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -559,6 +587,11 @@ pplx::task<std::shared_ptr<Main.userStatsResponse>> UserApi::userStatsGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -628,13 +661,18 @@ pplx::task<std::shared_ptr<Main.userStatsResponse>> UserApi::userStatsGet()
     })
     .then([=](utility::string_t response)
     {
-        std::shared_ptr<Main.userStatsResponse> result(new Main.userStatsResponse());
+        utility::string_t result(utility::conversions::to_string_t(""));
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            result->fromJson(json);
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {

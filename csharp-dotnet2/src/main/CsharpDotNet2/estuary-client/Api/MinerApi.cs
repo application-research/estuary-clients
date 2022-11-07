@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -15,14 +16,14 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed</param>
-        /// <returns></returns>
-        void PublicMinersDealsMinerGet (string miner, string ignoreFailed);
+        /// <returns>string</returns>
+        string PublicMinersDealsMinerGet (string miner, string ignoreFailed);
         /// <summary>
         /// Get miner stats This endpoint returns miner stats
         /// </summary>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        void PublicMinersStatsMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersStatsMinerGet (string miner);
     }
   
     /// <summary>
@@ -83,8 +84,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
         /// <param name="ignoreFailed">Ignore Failed</param> 
-        /// <returns></returns>            
-        public void PublicMinersDealsMinerGet (string miner, string ignoreFailed)
+        /// <returns>string</returns>            
+        public string PublicMinersDealsMinerGet (string miner, string ignoreFailed)
         {
             
             // verify the required parameter 'miner' is set
@@ -114,15 +115,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersDealsMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get miner stats This endpoint returns miner stats
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
-        /// <returns></returns>            
-        public void PublicMinersStatsMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string PublicMinersStatsMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -151,7 +152,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersStatsMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

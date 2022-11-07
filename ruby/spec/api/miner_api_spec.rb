@@ -38,7 +38,7 @@ describe 'MinerApi' do
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_failed Ignore Failed
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_deals_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -50,7 +50,7 @@ describe 'MinerApi' do
   # This endpoint returns miner stats
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_stats_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

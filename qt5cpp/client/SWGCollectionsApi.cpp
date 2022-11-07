@@ -185,12 +185,16 @@ SWGCollectionsApi::collectionsColuuidDeleteCallback(SWGHttpRequestWorker * worke
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit collectionsColuuidDeleteSignal();
+        emit collectionsColuuidDeleteSignal(output);
     } else {
-        emit collectionsColuuidDeleteSignalE(error_type, error_str);
+        emit collectionsColuuidDeleteSignalE(output, error_type, error_str);
         emit collectionsColuuidDeleteSignalEFull(worker, error_type, error_str);
     }
 }
@@ -306,17 +310,10 @@ SWGCollectionsApi::collectionsColuuidPostCallback(SWGHttpRequestWorker * worker)
         msg = "Error: " + worker->error_str;
     }
 
-    QMap<QString, QString*>* output = new QMap<QString, QString*>();
     QString json(worker->response);
-    QByteArray array (json.toStdString().c_str());
-    QJsonDocument doc = QJsonDocument::fromJson(array);
-    QJsonObject obj = doc.object();
-
-    foreach(QString key, obj.keys()) {
-        QString val;
-        setValue(&val, obj[key], "QString", QString());
-        output->insert(key, val);
-    }
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
@@ -390,12 +387,16 @@ SWGCollectionsApi::collectionsFsAddPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit collectionsFsAddPostSignal();
+        emit collectionsFsAddPostSignal(output);
     } else {
-        emit collectionsFsAddPostSignalE(error_type, error_str);
+        emit collectionsFsAddPostSignalE(output, error_type, error_str);
         emit collectionsFsAddPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -439,19 +440,19 @@ SWGCollectionsApi::collectionsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    QList<SWGCollections.Collection*>* output = new QList<SWGCollections.Collection*>();
+    QList<QList<SWGCollections.Collection*>*>* output = new QList<QList<SWGCollections.Collection*>*>();
     QString json(worker->response);
     QByteArray array (json.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonArray jsonArray = doc.array();
-    auto wrapper = new SWGQObjectWrapper<QList<SWGCollections.Collection*>*> (output);
+    auto wrapper = new SWGQObjectWrapper<QList<QList<SWGCollections.Collection*>*>*> (output);
     wrapper->deleteLater();
     foreach(QJsonValue obj, jsonArray) {
-        SWGCollections.Collection* o = new SWGCollections.Collection();
+        QList* o = new QList();
         QJsonObject jv = obj.toObject();
         QJsonObject * ptr = (QJsonObject*)&jv;
         o->fromJsonObject(*ptr);
-        auto objwrapper = new SWGQObjectWrapper<SWGCollections.Collection*> (o);
+        auto objwrapper = new SWGQObjectWrapper<QList*> (o);
         objwrapper->deleteLater();
         output->append(o);
     }

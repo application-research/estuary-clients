@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	content_add_car_post (body: STRING_32; ignore_dupes: STRING_32; filename: STRING_32)
+	content_add_car_post (body: STRING_32; ignore_dupes: STRING_32; filename: STRING_32): detachable STRING_32
 			-- Add Car object
 			-- This endpoint is used to add a car object to the network. The object can be a file or a directory.
 			-- 
@@ -35,6 +35,7 @@ feature -- API Access
 			-- argument: filename Filename (optional)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -54,13 +55,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY; ignore_dupes: STRING_32)
+	content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY; ignore_dupes: STRING_32): detachable STRING_32
 			-- Add IPFS object
 			-- This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 			-- 
@@ -69,6 +74,7 @@ feature -- API Access
 			-- argument: ignore_dupes Ignore Dupes (optional)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -87,9 +93,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
@@ -187,7 +197,7 @@ feature -- API Access
 			end
 		end	
 
-	content_all_deals_get (begin: STRING_32; duration: STRING_32; var_all: STRING_32)
+	content_all_deals_get (begin: STRING_32; duration: STRING_32; var_all: STRING_32): detachable STRING_32
 			-- Get all deals for a user
 			-- This endpoint is used to get all deals for a user
 			-- 
@@ -198,6 +208,7 @@ feature -- API Access
 			-- argument: var_all All (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -218,19 +229,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_bw_usage_content_get (content: STRING_32)
+	content_bw_usage_content_get (content: STRING_32): detachable STRING_32
 			-- Get content bandwidth
 			-- This endpoint returns content bandwidth
 			-- 
 			-- argument: content Content ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -249,13 +265,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_create_post (req: UTIL_CONTENT_CREATE_BODY; ignore_dupes: STRING_32)
+	content_create_post (req: UTIL_CONTENT_CREATE_BODY; ignore_dupes: STRING_32): detachable STRING_32
 			-- Add a new content
 			-- This endpoint adds a new content
 			-- 
@@ -264,6 +284,7 @@ feature -- API Access
 			-- argument: ignore_dupes Ignore Dupes (optional)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -282,13 +303,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_deals_get (limit: INTEGER_32; offset: INTEGER_32)
+	content_deals_get (limit: INTEGER_32; offset: INTEGER_32): detachable STRING_32
 			-- Content with deals
 			-- This endpoint lists all content with deals
 			-- 
@@ -297,6 +322,7 @@ feature -- API Access
 			-- argument: offset Offset (optional)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -316,19 +342,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_ensure_replication_datacid_get (datacid: STRING_32)
+	content_ensure_replication_datacid_get (datacid: STRING_32): detachable STRING_32
 			-- Ensure Replication
 			-- This endpoint ensures that the content is replicated to the specified number of providers
 			-- 
 			-- argument: datacid Data CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -347,9 +378,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
@@ -389,13 +424,14 @@ feature -- API Access
 			end
 		end	
 
-	content_id_get (id: INTEGER_32)
+	content_id_get (id: INTEGER_32): detachable STRING_32
 			-- Content
 			-- This endpoint returns a content by its ID
 			-- 
 			-- argument: id Content ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -414,19 +450,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_importdeal_post (body: MAIN_IMPORT_DEAL_BODY)
+	content_importdeal_post (body: MAIN_IMPORT_DEAL_BODY): detachable STRING_32
 			-- Import a deal
 			-- This endpoint imports a deal into the shuttle.
 			-- 
 			-- argument: body Import a deal (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -444,18 +485,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_list_get : detachable LIST [STRING_32]
+	content_list_get : detachable STRING_32
 			-- List all pinned content
 			-- This endpoint lists all content
 			-- 
 			-- 
-			-- Result LIST [STRING_32]
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -476,20 +521,21 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { LIST [STRING_32] } l_response.data ({ LIST [STRING_32] }) as l_data then
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_read_cont_get (cont: STRING_32)
+	content_read_cont_get (cont: STRING_32): detachable STRING_32
 			-- Read content
 			-- This endpoint reads content from the blockstore
 			-- 
 			-- argument: cont CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -508,17 +554,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_staging_zones_get 
+	content_staging_zones_get : detachable STRING_32
 			-- Get staging zone for user
 			-- This endpoint is used to get staging zone for user.
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -536,13 +587,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_stats_get (limit: STRING_32; offset: STRING_32)
+	content_stats_get (limit: STRING_32; offset: STRING_32): detachable STRING_32
 			-- Get content statistics
 			-- This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 			-- 
@@ -551,6 +606,7 @@ feature -- API Access
 			-- argument: offset offset (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -570,19 +626,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	content_status_id_get (id: INTEGER_32)
+	content_status_id_get (id: INTEGER_32): detachable STRING_32
 			-- Content Status
 			-- This endpoint returns the status of a content
 			-- 
 			-- argument: id Content ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -601,9 +662,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

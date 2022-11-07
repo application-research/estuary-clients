@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -13,7 +14,7 @@ class PeersApi {
     String basePath = "https://api.estuary.tech"
     String versionPath = "/api/v1"
 
-    def adminPeeringPeersDelete ( List<String> body, Closure onSuccess, Closure onFailure)  {
+    def adminPeeringPeersDelete ( List<Boolean> peerIds, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/admin/peering/peers"
 
@@ -22,8 +23,8 @@ class PeersApi {
         def headerParams = [:]
     
         // verify required params are set
-        if (body == null) {
-            throw new RuntimeException("missing required params body")
+        if (peerIds == null) {
+            throw new RuntimeException("missing required params peerIds")
         }
 
         
@@ -32,7 +33,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "DELETE", "",
-                    null )
+                    String.class )
                     
     }
     def adminPeeringPeersGet ( Closure onSuccess, Closure onFailure)  {
@@ -50,7 +51,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def adminPeeringPeersPost ( Closure onSuccess, Closure onFailure)  {
@@ -68,7 +69,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def adminPeeringStartPost ( Closure onSuccess, Closure onFailure)  {
@@ -86,7 +87,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def adminPeeringStatusGet ( Closure onSuccess, Closure onFailure)  {
@@ -104,7 +105,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def adminPeeringStopPost ( Closure onSuccess, Closure onFailure)  {
@@ -122,7 +123,7 @@ class PeersApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
 }

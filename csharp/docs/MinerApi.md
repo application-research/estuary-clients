@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicminersdealsminerget"></a>
 # **PublicMinersDealsMinerGet**
-> void PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
+> string PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
 
 Get all miners deals
 
@@ -42,7 +42,8 @@ namespace Example
             try
             {
                 // Get all miners deals
-                apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
+                string result = apiInstance.PublicMinersDealsMinerGet(miner, ignoreFailed);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -77,7 +78,7 @@ void (empty response body)
 
 <a name="publicminersstatsminerget"></a>
 # **PublicMinersStatsMinerGet**
-> void PublicMinersStatsMinerGet (string miner)
+> string PublicMinersStatsMinerGet (string miner)
 
 Get miner stats
 
@@ -108,7 +109,8 @@ namespace Example
             try
             {
                 // Get miner stats
-                apiInstance.PublicMinersStatsMinerGet(miner);
+                string result = apiInstance.PublicMinersStatsMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -127,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

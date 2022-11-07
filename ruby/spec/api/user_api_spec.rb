@@ -36,7 +36,7 @@ describe 'UserApi' do
   # Get API keys for a user
   # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
   # @param [Hash] opts the optional parameters
-  # @return [Array<MainGetApiKeysResp>]
+  # @return [Array<Array<MainGetApiKeysResp>>]
   describe 'user_api_keys_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'UserApi' do
   # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
   # @param key Key
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'user_api_keys_key_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'UserApi' do
   # Create API keys for a user
   # This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   # @option opts [String] :perms Permissions -- currently unused
   # @return [MainGetApiKeysResp]
   describe 'user_api_keys_post test' do
@@ -83,7 +83,7 @@ describe 'UserApi' do
   # Create API keys for a user
   # This endpoint is used to create API keys for a user.
   # @param [Hash] opts the optional parameters
-  # @return [MainUserStatsResponse]
+  # @return [String]
   describe 'user_stats_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

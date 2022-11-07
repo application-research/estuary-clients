@@ -139,17 +139,17 @@ module SwaggerClient
     # This endpoint is used to delete an existing collection.
     # @param coluuid Collection ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def collections_coluuid_delete(coluuid, opts = {})
-      collections_coluuid_delete_with_http_info(coluuid, opts)
-      nil
+      data, _status_code, _headers = collections_coluuid_delete_with_http_info(coluuid, opts)
+      data
     end
 
     # Deletes a collection
     # This endpoint is used to delete an existing collection.
     # @param coluuid Collection ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def collections_coluuid_delete_with_http_info(coluuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_delete ...'
@@ -178,7 +178,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_coluuid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -244,7 +245,7 @@ module SwaggerClient
     # @param coluuid coluuid
     # @param content_i_ds Content IDs to add to collection
     # @param [Hash] opts the optional parameters
-    # @return [Hash<String, String>]
+    # @return [String]
     def collections_coluuid_post(coluuid, content_i_ds, opts = {})
       data, _status_code, _headers = collections_coluuid_post_with_http_info(coluuid, content_i_ds, opts)
       data
@@ -255,7 +256,7 @@ module SwaggerClient
     # @param coluuid coluuid
     # @param content_i_ds Content IDs to add to collection
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Hash<String, String>, Fixnum, Hash)>] Hash<String, String> data, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def collections_coluuid_post_with_http_info(coluuid, content_i_ds, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_post ...'
@@ -293,7 +294,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Hash<String, String>')
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_coluuid_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -305,10 +306,10 @@ module SwaggerClient
     # @param content Content
     # @param path Path to file
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def collections_fs_add_post(coluuid, content, path, opts = {})
-      collections_fs_add_post_with_http_info(coluuid, content, path, opts)
-      nil
+      data, _status_code, _headers = collections_fs_add_post_with_http_info(coluuid, content, path, opts)
+      data
     end
 
     # Add a file to a collection
@@ -317,7 +318,7 @@ module SwaggerClient
     # @param content Content
     # @param path Path to file
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def collections_fs_add_post_with_http_info(coluuid, content, path, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_fs_add_post ...'
@@ -359,7 +360,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_fs_add_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -368,7 +370,7 @@ module SwaggerClient
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<CollectionsCollection>]
+    # @return [Array<Array<CollectionsCollection>>]
     def collections_get(opts = {})
       data, _status_code, _headers = collections_get_with_http_info(opts)
       data
@@ -377,7 +379,7 @@ module SwaggerClient
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<CollectionsCollection>, Fixnum, Hash)>] Array<CollectionsCollection> data, response status code and response headers
+    # @return [Array<(Array<Array<CollectionsCollection>>, Fixnum, Hash)>] Array<Array<CollectionsCollection>> data, response status code and response headers
     def collections_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_get ...'
@@ -405,7 +407,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Array<CollectionsCollection>')
+        :return_type => 'Array<Array<CollectionsCollection>>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CollectionsApi#collections_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

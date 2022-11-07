@@ -1,6 +1,8 @@
 package io.swagger.api;
 
+import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,8 +41,11 @@ public interface DealsApi  {
     @Path("/deal/estimate")
     @Produces({ "application/json" })
     @ApiOperation(value = "Estimate the cost of a deal", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealEstimatePost(@Valid MainEstimateDealBody body);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealEstimatePost(@Valid MainEstimateDealBody body);
 
     /**
      * Get Deal Info
@@ -52,8 +57,11 @@ public interface DealsApi  {
     @Path("/deal/info/{dealid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Deal Info", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealInfoDealidGet(@PathParam("dealid") Integer dealid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealInfoDealidGet(@PathParam("dealid") Integer dealid);
 
     /**
      * Get Proposal
@@ -65,8 +73,11 @@ public interface DealsApi  {
     @Path("/deal/proposal/{propcid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Proposal", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealProposalPropcidGet(@PathParam("propcid") String propcid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealProposalPropcidGet(@PathParam("propcid") String propcid);
 
     /**
      * Query Ask
@@ -78,8 +89,11 @@ public interface DealsApi  {
     @Path("/deal/query/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Query Ask", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealQueryMinerGet(@PathParam("miner") String miner);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealQueryMinerGet(@PathParam("miner") String miner);
 
     /**
      * Get Deal Status by PropCid
@@ -91,8 +105,11 @@ public interface DealsApi  {
     @Path("/deal/status-by-proposal/{propcid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Deal Status by PropCid", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealStatusByProposalPropcidGet(@PathParam("propcid") String propcid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealStatusByProposalPropcidGet(@PathParam("propcid") String propcid);
 
     /**
      * Deal Status
@@ -104,8 +121,11 @@ public interface DealsApi  {
     @Path("/deal/status/{miner}/{propcid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Deal Status", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealStatusMinerPropcidGet(@PathParam("miner") String miner, @PathParam("propcid") String propcid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealStatusMinerPropcidGet(@PathParam("miner") String miner, @PathParam("propcid") String propcid);
 
     /**
      * Transfer In Progress
@@ -117,8 +137,27 @@ public interface DealsApi  {
     @Path("/deal/transfer/in-progress")
     @Produces({ "application/json" })
     @ApiOperation(value = "Transfer In Progress", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealTransferInProgressGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealTransferInProgressGet();
+
+    /**
+     * Transfer Status
+     *
+     * This endpoint returns the status of a transfer
+     *
+     */
+    @POST
+    @Path("/deal/transfer/status")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Transfer Status", tags={ "deals",  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealTransferStatusPost(@Valid MainChannelIDParam chanid);
 
     /**
      * Get storage failures for user
@@ -130,8 +169,11 @@ public interface DealsApi  {
     @Path("/deals/failures")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get storage failures for user", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealsFailuresGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealsFailuresGet();
 
     /**
      * Make Deal
@@ -143,8 +185,11 @@ public interface DealsApi  {
     @Path("/deals/make/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Make Deal", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealsMakeMinerPost(@PathParam("miner") String miner, @Valid String dealRequest);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealsMakeMinerPost(@PathParam("miner") String miner, @Valid String dealRequest);
 
     /**
      * Get Deal Status
@@ -156,8 +201,11 @@ public interface DealsApi  {
     @Path("/deals/status/{deal}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Deal Status", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void dealsStatusDealGet(@PathParam("deal") Integer deal);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String dealsStatusDealGet(@PathParam("deal") Integer deal);
 
     /**
      * Get storage failures
@@ -169,8 +217,11 @@ public interface DealsApi  {
     @Path("/public/deals/failures")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get storage failures", tags={ "deals",  })
-    @ApiResponses(value = {  })
-    public void publicDealsFailuresGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicDealsFailuresGet();
 
     /**
      * Query Ask
@@ -182,7 +233,10 @@ public interface DealsApi  {
     @Path("/public/miners/storage/query/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Query Ask", tags={ "deals" })
-    @ApiResponses(value = {  })
-    public void publicMinersStorageQueryMinerGet(@PathParam("miner") String miner);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersStorageQueryMinerGet(@PathParam("miner") String miner);
 }
 

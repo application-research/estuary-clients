@@ -13,6 +13,8 @@
 
 module Request.Metrics exposing (publicMetricsDealsOnChainGet)
 
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
 
@@ -25,13 +27,13 @@ basePath =
 {-
    This endpoint is used to get deal metrics
 -}
-publicMetricsDealsOnChainGet : Http.Request 
+publicMetricsDealsOnChainGet : Http.Request String
 publicMetricsDealsOnChainGet =
     { method = "GET"
     , url = basePath ++ "/public/metrics/deals-on-chain"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

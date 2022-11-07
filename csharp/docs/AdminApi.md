@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**
-> void AdminPeeringPeersDelete (List<string> body)
+> string AdminPeeringPeersDelete (List<bool?> peerIds)
 
 Remove peers on Peering Service
 
@@ -42,12 +42,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
-            var body = ;  // List<string> | Peer ids
+            var peerIds = ;  // List<bool?> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                apiInstance.AdminPeeringPeersDelete(body);
+                string result = apiInstance.AdminPeeringPeersDelete(peerIds);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -62,11 +63,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;string&gt;**| Peer ids | 
+ **peerIds** | **List&lt;bool?&gt;**| Peer ids | 
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -81,7 +82,7 @@ void (empty response body)
 
 <a name="adminpeeringpeersget"></a>
 # **AdminPeeringPeersGet**
-> void AdminPeeringPeersGet ()
+> string AdminPeeringPeersGet ()
 
 List all Peering peers
 
@@ -111,7 +112,8 @@ namespace Example
             try
             {
                 // List all Peering peers
-                apiInstance.AdminPeeringPeersGet();
+                string result = apiInstance.AdminPeeringPeersGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -127,7 +129,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -142,7 +144,7 @@ void (empty response body)
 
 <a name="adminpeeringpeerspost"></a>
 # **AdminPeeringPeersPost**
-> void AdminPeeringPeersPost ()
+> string AdminPeeringPeersPost ()
 
 Add peers on Peering Service
 
@@ -172,7 +174,8 @@ namespace Example
             try
             {
                 // Add peers on Peering Service
-                apiInstance.AdminPeeringPeersPost();
+                string result = apiInstance.AdminPeeringPeersPost();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -188,7 +191,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -203,7 +206,7 @@ void (empty response body)
 
 <a name="adminpeeringstartpost"></a>
 # **AdminPeeringStartPost**
-> void AdminPeeringStartPost ()
+> string AdminPeeringStartPost ()
 
 Start Peering
 
@@ -233,7 +236,8 @@ namespace Example
             try
             {
                 // Start Peering
-                apiInstance.AdminPeeringStartPost();
+                string result = apiInstance.AdminPeeringStartPost();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -249,7 +253,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -264,7 +268,7 @@ void (empty response body)
 
 <a name="adminpeeringstatusget"></a>
 # **AdminPeeringStatusGet**
-> void AdminPeeringStatusGet ()
+> string AdminPeeringStatusGet ()
 
 Check Peering Status
 
@@ -294,7 +298,8 @@ namespace Example
             try
             {
                 // Check Peering Status
-                apiInstance.AdminPeeringStatusGet();
+                string result = apiInstance.AdminPeeringStatusGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -310,7 +315,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -325,7 +330,7 @@ void (empty response body)
 
 <a name="adminpeeringstoppost"></a>
 # **AdminPeeringStopPost**
-> void AdminPeeringStopPost ()
+> string AdminPeeringStopPost ()
 
 Stop Peering
 
@@ -355,7 +360,8 @@ namespace Example
             try
             {
                 // Stop Peering
-                apiInstance.AdminPeeringStopPost();
+                string result = apiInstance.AdminPeeringStopPost();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -371,7 +377,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -386,7 +392,7 @@ void (empty response body)
 
 <a name="adminsystemconfigget"></a>
 # **AdminSystemConfigGet**
-> void AdminSystemConfigGet ()
+> string AdminSystemConfigGet ()
 
 Get systems(estuary/shuttle) config
 
@@ -416,7 +422,8 @@ namespace Example
             try
             {
                 // Get systems(estuary/shuttle) config
-                apiInstance.AdminSystemConfigGet();
+                string result = apiInstance.AdminSystemConfigGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -432,7 +439,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -447,7 +454,7 @@ void (empty response body)
 
 <a name="adminusersget"></a>
 # **AdminUsersGet**
-> void AdminUsersGet ()
+> string AdminUsersGet ()
 
 Get all users
 
@@ -477,7 +484,8 @@ namespace Example
             try
             {
                 // Get all users
-                apiInstance.AdminUsersGet();
+                string result = apiInstance.AdminUsersGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -493,7 +501,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

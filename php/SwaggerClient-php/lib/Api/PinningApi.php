@@ -95,11 +95,12 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function pinningPinsGet()
     {
-        $this->pinningPinsGetWithHttpInfo();
+        list($response) = $this->pinningPinsGetWithHttpInfo();
+        return $response;
     }
 
     /**
@@ -110,11 +111,11 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinningPinsGetWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsGetRequest();
 
         try {
@@ -145,10 +146,32 @@ class PinningApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -208,14 +231,28 @@ class PinningApi
      */
     public function pinningPinsGetAsyncWithHttpInfo()
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsGetRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -338,11 +375,12 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function pinningPinsPinidDelete($pinid)
     {
-        $this->pinningPinsPinidDeleteWithHttpInfo($pinid);
+        list($response) = $this->pinningPinsPinidDeleteWithHttpInfo($pinid);
+        return $response;
     }
 
     /**
@@ -354,11 +392,11 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinningPinsPinidDeleteWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidDeleteRequest($pinid);
 
         try {
@@ -389,10 +427,48 @@ class PinningApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -430,14 +506,28 @@ class PinningApi
      */
     public function pinningPinsPinidDeleteAsyncWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidDeleteRequest($pinid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -575,11 +665,12 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function pinningPinsPinidGet($pinid)
     {
-        $this->pinningPinsPinidGetWithHttpInfo($pinid);
+        list($response) = $this->pinningPinsPinidGetWithHttpInfo($pinid);
+        return $response;
     }
 
     /**
@@ -591,11 +682,11 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinningPinsPinidGetWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidGetRequest($pinid);
 
         try {
@@ -626,10 +717,48 @@ class PinningApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -667,14 +796,28 @@ class PinningApi
      */
     public function pinningPinsPinidGetAsyncWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidGetRequest($pinid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -812,11 +955,12 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function pinningPinsPinidPost($pinid)
     {
-        $this->pinningPinsPinidPostWithHttpInfo($pinid);
+        list($response) = $this->pinningPinsPinidPostWithHttpInfo($pinid);
+        return $response;
     }
 
     /**
@@ -828,11 +972,11 @@ class PinningApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinningPinsPinidPostWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidPostRequest($pinid);
 
         try {
@@ -863,10 +1007,48 @@ class PinningApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -904,14 +1086,28 @@ class PinningApi
      */
     public function pinningPinsPinidPostAsyncWithHttpInfo($pinid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->pinningPinsPinidPostRequest($pinid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1045,16 +1241,16 @@ class PinningApi
      *
      * Add and pin object
      *
-     * @param  string $cid cid (required)
-     * @param  string $name name (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
-    public function pinningPinsPost($cid, $name)
+    public function pinningPinsPost($pin)
     {
-        $this->pinningPinsPostWithHttpInfo($cid, $name);
+        list($response) = $this->pinningPinsPostWithHttpInfo($pin);
+        return $response;
     }
 
     /**
@@ -1062,17 +1258,16 @@ class PinningApi
      *
      * Add and pin object
      *
-     * @param  string $cid cid (required)
-     * @param  string $name name (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pinningPinsPostWithHttpInfo($cid, $name)
+    public function pinningPinsPostWithHttpInfo($pin)
     {
-        $returnType = '';
-        $request = $this->pinningPinsPostRequest($cid, $name);
+        $returnType = 'string';
+        $request = $this->pinningPinsPostRequest($pin);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1102,10 +1297,48 @@ class PinningApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1116,15 +1349,14 @@ class PinningApi
      *
      * Add and pin object
      *
-     * @param  string $cid cid (required)
-     * @param  string $name name (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPostAsync($cid, $name)
+    public function pinningPinsPostAsync($pin)
     {
-        return $this->pinningPinsPostAsyncWithHttpInfo($cid, $name)
+        return $this->pinningPinsPostAsyncWithHttpInfo($pin)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1137,22 +1369,35 @@ class PinningApi
      *
      * Add and pin object
      *
-     * @param  string $cid cid (required)
-     * @param  string $name name (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPostAsyncWithHttpInfo($cid, $name)
+    public function pinningPinsPostAsyncWithHttpInfo($pin)
     {
-        $returnType = '';
-        $request = $this->pinningPinsPostRequest($cid, $name);
+        $returnType = 'string';
+        $request = $this->pinningPinsPostRequest($pin);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1174,24 +1419,17 @@ class PinningApi
     /**
      * Create request for operation 'pinningPinsPost'
      *
-     * @param  string $cid cid (required)
-     * @param  string $name name (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $pin Pin Body {cid:cid, name:name} (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function pinningPinsPostRequest($cid, $name)
+    protected function pinningPinsPostRequest($pin)
     {
-        // verify the required parameter 'cid' is set
-        if ($cid === null || (is_array($cid) && count($cid) === 0)) {
+        // verify the required parameter 'pin' is set
+        if ($pin === null || (is_array($pin) && count($pin) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $cid when calling pinningPinsPost'
-            );
-        }
-        // verify the required parameter 'name' is set
-        if ($name === null || (is_array($name) && count($name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $name when calling pinningPinsPost'
+                'Missing the required parameter $pin when calling pinningPinsPost'
             );
         }
 
@@ -1203,25 +1441,12 @@ class PinningApi
         $multipart = false;
 
 
-        // path params
-        if ($cid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'cid' . '}',
-                ObjectSerializer::toPathValue($cid),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'name' . '}',
-                ObjectSerializer::toPathValue($name),
-                $resourcePath
-            );
-        }
 
         // body params
         $_tempBody = null;
+        if (isset($pin)) {
+            $_tempBody = $pin;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(

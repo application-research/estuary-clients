@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **admin_autoretrieve_init_post**
-> admin_autoretrieve_init_post(addresses, pub_key)
+> String admin_autoretrieve_init_post(addresses, pub_key)
 
 Register autoretrieve server
 
@@ -37,7 +37,8 @@ pub_key = 'pub_key_example' # String | Autoretrieve's public key
 
 begin
   #Register autoretrieve server
-  api_instance.admin_autoretrieve_init_post(addresses, pub_key)
+  result = api_instance.admin_autoretrieve_init_post(addresses, pub_key)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AutoretrieveApi->admin_autoretrieve_init_post: #{e}"
 end
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ nil (empty response body)
 
 
 # **admin_autoretrieve_list_get**
-> admin_autoretrieve_list_get
+> String admin_autoretrieve_list_get
 
 List autoretrieve servers
 
@@ -88,7 +89,8 @@ api_instance = SwaggerClient::AutoretrieveApi.new
 
 begin
   #List autoretrieve servers
-  api_instance.admin_autoretrieve_list_get
+  result = api_instance.admin_autoretrieve_list_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AutoretrieveApi->admin_autoretrieve_list_get: #{e}"
 end
@@ -99,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -113,7 +115,7 @@ nil (empty response body)
 
 
 # **autoretrieve_heartbeat_post**
-> autoretrieve_heartbeat_post(token)
+> String autoretrieve_heartbeat_post(token)
 
 Marks autoretrieve server as up
 
@@ -138,7 +140,8 @@ token = 'token_example' # String | Autoretrieve's auth token
 
 begin
   #Marks autoretrieve server as up
-  api_instance.autoretrieve_heartbeat_post(token)
+  result = api_instance.autoretrieve_heartbeat_post(token)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AutoretrieveApi->autoretrieve_heartbeat_post: #{e}"
 end
@@ -152,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

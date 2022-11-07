@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **user_api_keys_get**
-> list[MainGetApiKeysResp] user_api_keys_get()
+> list[list[MainGetApiKeysResp]] user_api_keys_get()
 
 Get API keys for a user
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[MainGetApiKeysResp]**](MainGetApiKeysResp.md)
+**list[list[MainGetApiKeysResp]]**
 
 ### Authorization
 
@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_key_delete**
-> user_api_keys_key_delete(key)
+> str user_api_keys_key_delete(key)
 
 Revoke a User API Key.
 
@@ -88,7 +88,8 @@ key = 'key_example' # str | Key
 
 try:
     # Revoke a User API Key.
-    api_instance.user_api_keys_key_delete(key)
+    api_response = api_instance.user_api_keys_key_delete(key)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserApi->user_api_keys_key_delete: %s\n" % e)
 ```
@@ -101,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -137,7 +138,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary-client.UserApi(estuary-client.ApiClient(configuration))
-expiry = 'expiry_example' # str | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+expiry = 'expiry_example' # str | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 perms = 'perms_example' # str | Permissions -- currently unused (optional)
 
 try:
@@ -152,7 +153,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **str**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **str**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **str**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -221,7 +222,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_stats_get**
-> MainUserStatsResponse user_stats_get()
+> str user_stats_get()
 
 Create API keys for a user
 
@@ -257,7 +258,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**str**
 
 ### Authorization
 

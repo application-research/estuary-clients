@@ -48,7 +48,7 @@ def collections_coluuid_delete(coluuid):  # noqa: E501
     :param coluuid: Collection ID
     :type coluuid: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -78,7 +78,7 @@ def collections_coluuid_post(coluuid, contentIDs):  # noqa: E501
     :param contentIDs: Content IDs to add to collection
     :type contentIDs: List[]
 
-    :rtype: Dict[str, str]
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -95,7 +95,7 @@ def collections_fs_add_post(coluuid, content, path):  # noqa: E501
     :param path: Path to file
     :type path: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -106,7 +106,7 @@ def collections_get():  # noqa: E501
     This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user. # noqa: E501
 
 
-    :rtype: List[CollectionsCollection]
+    :rtype: List[List[CollectionsCollection]]
     """
     return 'do some magic!'
 

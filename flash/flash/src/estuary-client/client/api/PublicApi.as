@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -35,7 +36,7 @@ public class PublicApi extends SwaggerApi {
 
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_by_cid_cid_get (cid: String): String {
         // create path and map variables
@@ -59,13 +60,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_by_cid_cid_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_info_get (): String {
         // create path and map variables
@@ -85,13 +86,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_info_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_metrics_deals_on_chain_get (): String {
         // create path and map variables
@@ -111,13 +112,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_metrics_deals_on_chain_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_deals_miner_get (miner: String, ignoreFailed: String): String {
         // create path and map variables
@@ -147,13 +148,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_deals_miner_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_failures_miner_get (miner: String): String {
         // create path and map variables
@@ -177,13 +178,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_failures_miner_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_get (): String {
         // create path and map variables
@@ -203,13 +204,13 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_stats_miner_get (miner: String): String {
         // create path and map variables
@@ -233,7 +234,7 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_stats_miner_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
@@ -291,7 +292,7 @@ public class PublicApi extends SwaggerApi {
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_stats_get (): String {
         // create path and map variables
@@ -311,7 +312,7 @@ public class PublicApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_stats_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

@@ -27,7 +27,9 @@ object PinningApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def pinningPinsGet(host: String): Task[Unit] = {
+  def pinningPinsGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins"
     
     val httpMethod = Method.GET
@@ -41,12 +43,14 @@ object PinningApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidDelete(host: String, pinid: String): Task[Unit] = {
+  def pinningPinsPinidDelete(host: String, pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.DELETE
@@ -60,12 +64,14 @@ object PinningApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidGet(host: String, pinid: String): Task[Unit] = {
+  def pinningPinsPinidGet(host: String, pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.GET
@@ -79,12 +85,14 @@ object PinningApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidPost(host: String, pinid: String): Task[Unit] = {
+  def pinningPinsPinidPost(host: String, pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.POST
@@ -98,13 +106,15 @@ object PinningApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPost(host: String, cid: String, name: String): Task[Unit] = {
-    val path = "/pinning/pins".replaceAll("\\{" + "cid" + "\\}",escape(cid.toString)).replaceAll("\\{" + "name" + "\\}",escape(name.toString))
+  def pinningPinsPost(host: String, pin: IpfsPin): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
+    val path = "/pinning/pins"
     
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -116,8 +126,8 @@ object PinningApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(pin)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -129,7 +139,9 @@ class HttpServicePinningApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def pinningPinsGet(): Task[Unit] = {
+  def pinningPinsGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins"
     
     val httpMethod = Method.GET
@@ -143,12 +155,14 @@ class HttpServicePinningApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidDelete(pinid: String): Task[Unit] = {
+  def pinningPinsPinidDelete(pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.DELETE
@@ -162,12 +176,14 @@ class HttpServicePinningApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidGet(pinid: String): Task[Unit] = {
+  def pinningPinsPinidGet(pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.GET
@@ -181,12 +197,14 @@ class HttpServicePinningApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPinidPost(pinid: String): Task[Unit] = {
+  def pinningPinsPinidPost(pinid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/pinning/pins/{pinid}".replaceAll("\\{" + "pinid" + "\\}",escape(pinid.toString))
     
     val httpMethod = Method.POST
@@ -200,13 +218,15 @@ class HttpServicePinningApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def pinningPinsPost(cid: String, name: String): Task[Unit] = {
-    val path = "/pinning/pins".replaceAll("\\{" + "cid" + "\\}",escape(cid.toString)).replaceAll("\\{" + "name" + "\\}",escape(name.toString))
+  def pinningPinsPost(pin: IpfsPin): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
+    val path = "/pinning/pins"
     
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -218,8 +238,8 @@ class HttpServicePinningApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(pin)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

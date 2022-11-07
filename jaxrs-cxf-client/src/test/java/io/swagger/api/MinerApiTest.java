@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -82,8 +83,8 @@ public class MinerApiTest {
     public void publicMinersDealsMinerGetTest() {
         String miner = null;
         String ignoreFailed = null;
-        //api.publicMinersDealsMinerGet(miner, ignoreFailed);
-        
+        //String response = api.publicMinersDealsMinerGet(miner, ignoreFailed);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -100,8 +101,8 @@ public class MinerApiTest {
     @Test
     public void publicMinersStatsMinerGetTest() {
         String miner = null;
-        //api.publicMinersStatsMinerGet(miner);
-        
+        //String response = api.publicMinersStatsMinerGet(miner);
+        //assertNotNull(response);
         // TODO: test validations
         
         

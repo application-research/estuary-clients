@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.MinerApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -48,7 +49,7 @@ API.Client.MinerApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * @param {!string} miner Filter by miner
  * @param {!string=} opt_ignoreFailed Ignore Failed
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.MinerApi.prototype.publicMinersDealsMinerGet = function(miner, opt_ignoreFailed, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -89,7 +90,7 @@ API.Client.MinerApi.prototype.publicMinersDealsMinerGet = function(miner, opt_ig
  * This endpoint returns miner stats
  * @param {!string} miner Filter by miner
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.MinerApi.prototype.publicMinersStatsMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */

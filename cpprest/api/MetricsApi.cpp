@@ -36,7 +36,7 @@ MetricsApi::~MetricsApi()
 {
 }
 
-pplx::task<void> MetricsApi::publicMetricsDealsOnChainGet()
+pplx::task<utility::string_t> MetricsApi::publicMetricsDealsOnChainGet()
 {
 
 
@@ -56,7 +56,7 @@ pplx::task<void> MetricsApi::publicMetricsDealsOnChainGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -67,6 +67,11 @@ pplx::task<void> MetricsApi::publicMetricsDealsOnChainGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -136,7 +141,30 @@ pplx::task<void> MetricsApi::publicMetricsDealsOnChainGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling publicMetricsDealsOnChainGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

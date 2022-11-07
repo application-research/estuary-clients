@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -27,7 +28,7 @@ class NetApi {
         // Also still TODO: form params, body param
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
-                    "GET", "array",
+                    "GET", "",
                     String.class )
                     
     }
@@ -50,7 +51,7 @@ class NetApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersGet ( Closure onSuccess, Closure onFailure)  {
@@ -68,7 +69,7 @@ class NetApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicNetAddrsGet ( Closure onSuccess, Closure onFailure)  {

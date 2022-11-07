@@ -37,11 +37,11 @@ impl<C: hyper::client::Connect> CollectionsApiClient<C> {
 pub trait CollectionsApi {
     fn collections_coluuid_commit_post(&self, coluuid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_coluuid_contents_delete(&self, coluuid: &str, contentid: &str, body: ::models::MainDeleteContentFromCollectionBody) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn collections_coluuid_delete(&self, coluuid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn collections_coluuid_delete(&self, coluuid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_coluuid_get(&self, coluuid: &str, dir: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = ::std::collections::HashMap<String, String>, Error = Error<serde_json::Value>>>;
-    fn collections_fs_add_post(&self, coluuid: &str, content: &str, path: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn collections_get(&self, ) -> Box<Future<Item = Vec<::models::CollectionsCollection>, Error = Error<serde_json::Value>>>;
+    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn collections_fs_add_post(&self, coluuid: &str, content: &str, path: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn collections_get(&self, ) -> Box<Future<Item = Vec<Vec<::models::CollectionsCollection>>, Error = Error<serde_json::Value>>>;
     fn collections_post(&self, body: ::models::MainCreateCollectionBody) -> Box<Future<Item = ::models::CollectionsCollection, Error = Error<serde_json::Value>>>;
 }
 
@@ -183,7 +183,7 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
         )
     }
 
-    fn collections_coluuid_delete(&self, coluuid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn collections_coluuid_delete(&self, coluuid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -242,7 +242,10 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
@@ -313,7 +316,7 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
         )
     }
 
-    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = ::std::collections::HashMap<String, String>, Error = Error<serde_json::Value>>> {
+    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -377,13 +380,13 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::std::collections::HashMap<String, String>, _> = serde_json::from_slice(&body);
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn collections_fs_add_post(&self, coluuid: &str, content: &str, path: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn collections_fs_add_post(&self, coluuid: &str, content: &str, path: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -445,11 +448,14 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn collections_get(&self, ) -> Box<Future<Item = Vec<::models::CollectionsCollection>, Error = Error<serde_json::Value>>> {
+    fn collections_get(&self, ) -> Box<Future<Item = Vec<Vec<::models::CollectionsCollection>>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -509,7 +515,7 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<Vec<::models::CollectionsCollection>, _> = serde_json::from_slice(&body);
+                let parsed: Result<Vec<Vec<::models::CollectionsCollection>>, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

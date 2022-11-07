@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **publicByCidCidGet**
-> publicByCidCidGet(cid)
+> String publicByCidCidGet(cid)
 
 Get Content by Cid
 
@@ -40,7 +40,8 @@ var api_instance = new PublicApi();
 var cid = cid_example; // String | Cid
 
 try { 
-    api_instance.publicByCidCidGet(cid);
+    var result = api_instance.publicByCidCidGet(cid);
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicByCidCidGet: $e\n");
 }
@@ -54,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -68,7 +69,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicInfoGet**
-> publicInfoGet()
+> String publicInfoGet()
 
 Get public node info
 
@@ -85,7 +86,8 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 
 try { 
-    api_instance.publicInfoGet();
+    var result = api_instance.publicInfoGet();
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicInfoGet: $e\n");
 }
@@ -96,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -110,7 +112,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -127,7 +129,8 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 
 try { 
-    api_instance.publicMetricsDealsOnChainGet();
+    var result = api_instance.publicMetricsDealsOnChainGet();
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicMetricsDealsOnChainGet: $e\n");
 }
@@ -138,7 +141,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -152,7 +155,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -171,7 +174,8 @@ var miner = miner_example; // String | Filter by miner
 var ignoreFailed = ignoreFailed_example; // String | Ignore Failed
 
 try { 
-    api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    var result = api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicMinersDealsMinerGet: $e\n");
 }
@@ -186,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -200,7 +204,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -218,7 +222,8 @@ var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
 
 try { 
-    api_instance.publicMinersFailuresMinerGet(miner);
+    var result = api_instance.publicMinersFailuresMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicMinersFailuresMinerGet: $e\n");
 }
@@ -232,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -246,7 +251,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersGet**
-> publicMinersGet()
+> String publicMinersGet()
 
 Get all miners
 
@@ -263,7 +268,8 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 
 try { 
-    api_instance.publicMinersGet();
+    var result = api_instance.publicMinersGet();
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicMinersGet: $e\n");
 }
@@ -274,7 +280,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -288,7 +294,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -306,7 +312,8 @@ var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
 
 try { 
-    api_instance.publicMinersStatsMinerGet(miner);
+    var result = api_instance.publicMinersStatsMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicMinersStatsMinerGet: $e\n");
 }
@@ -320,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -420,7 +427,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicStatsGet**
-> publicStatsGet()
+> String publicStatsGet()
 
 Public stats
 
@@ -437,7 +444,8 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 
 try { 
-    api_instance.publicStatsGet();
+    var result = api_instance.publicStatsGet();
+    print(result);
 } catch (e) {
     print("Exception when calling PublicApi->publicStatsGet: $e\n");
 }
@@ -448,7 +456,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

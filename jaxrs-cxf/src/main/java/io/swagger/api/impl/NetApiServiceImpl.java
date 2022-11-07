@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,7 +29,7 @@ public class NetApiServiceImpl implements NetApi {
      * This endpoint is used to get net addrs
      *
      */
-    public List<String> netAddrsGet() {
+    public String netAddrsGet() {
         // TODO: Implement...
         
         return null;

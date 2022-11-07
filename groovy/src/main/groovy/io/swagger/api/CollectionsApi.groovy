@@ -8,7 +8,6 @@ import io.swagger.api.ApiUtils
 import io.swagger.model.CollectionsCollection
 import io.swagger.model.MainCreateCollectionBody
 import io.swagger.model.MainDeleteContentFromCollectionBody
-import io.swagger.model.Map
 import io.swagger.model.UtilHttpError
 
 import java.util.*;
@@ -89,7 +88,7 @@ class CollectionsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "DELETE", "",
-                    null )
+                    String.class )
                     
     }
     def collectionsColuuidGet ( String coluuid, String dir, Closure onSuccess, Closure onFailure)  {
@@ -138,7 +137,7 @@ class CollectionsApi {
         // Also still TODO: form params, body param
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
-                    "POST", "map",
+                    "POST", "",
                     String.class )
                     
     }
@@ -175,7 +174,7 @@ if (!"null".equals(String.valueOf(path)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def collectionsGet ( Closure onSuccess, Closure onFailure)  {
@@ -193,7 +192,7 @@ if (!"null".equals(String.valueOf(path)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "array",
-                    CollectionsCollection.class )
+                    List.class )
                     
     }
     def collectionsPost ( MainCreateCollectionBody body, Closure onSuccess, Closure onFailure)  {

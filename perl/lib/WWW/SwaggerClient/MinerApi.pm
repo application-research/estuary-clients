@@ -71,10 +71,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'public_miners_deals_miner_get' } = { 
     	summary => 'Get all miners deals',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_miners_deals_miner_get {
     my ($self, %args) = @_;
@@ -116,10 +116,14 @@ sub public_miners_deals_miner_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -139,10 +143,10 @@ sub public_miners_deals_miner_get {
     __PACKAGE__->method_documentation->{ 'public_miners_stats_miner_get' } = { 
     	summary => 'Get miner stats',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_miners_stats_miner_get {
     my ($self, %args) = @_;
@@ -179,10 +183,14 @@ sub public_miners_stats_miner_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

@@ -70,11 +70,8 @@ function Invoke-PinningApiPinningPinsPost {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [String]
-        ${cid},
-        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
-        [String]
-        ${name}
+        [estuary-client.Model.TypesIpfsPin]
+        ${pin}
     )
 
     Process {
@@ -82,8 +79,7 @@ function Invoke-PinningApiPinningPinsPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:PinningApi.PinningPinsPost(
-            ${cid},
-            ${name}
+            ${pin}
         )
     }
 }

@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **net_addrs_get**
-> net_addrs_get : detachable LIST [STRING_32]
+> net_addrs_get : detachable STRING_32
 	
 
 Net Addrs
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**LIST [STRING_32]**](STRING_32.md)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get (miner: STRING_32 )
+> public_miners_failures_miner_get (miner: STRING_32 ): detachable STRING_32
 	
 
 Get all miners
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get 
+> public_miners_get : detachable STRING_32
 	
 
 Get all miners
@@ -82,7 +82,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, ignoreDupes, filename)
+> String contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -41,7 +41,8 @@ String body = "body_example"; // String | Car
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String filename = "filename_example"; // String | Filename
 try {
-    apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+    String result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddCarPost");
     e.printStackTrace();
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -71,7 +72,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -86,7 +87,8 @@ ContentApi apiInstance = new ContentApi();
 UtilContentAddIpfsBody body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
     e.printStackTrace();
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -213,7 +215,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAllDealsGet"></a>
 # **contentAllDealsGet**
-> contentAllDealsGet(begin, duration, all)
+> String contentAllDealsGet(begin, duration, all)
 
 Get all deals for a user
 
@@ -229,7 +231,8 @@ String begin = "begin_example"; // String | Begin
 String duration = "duration_example"; // String | Duration
 String all = "all_example"; // String | All
 try {
-    apiInstance.contentAllDealsGet(begin, duration, all);
+    String result = apiInstance.contentAllDealsGet(begin, duration, all);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAllDealsGet");
     e.printStackTrace();
@@ -246,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -259,7 +262,7 @@ null (empty response body)
 
 <a name="contentBwUsageContentGet"></a>
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+> String contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -273,7 +276,8 @@ This endpoint returns content bandwidth
 ContentApi apiInstance = new ContentApi();
 String content = "content_example"; // String | Content ID
 try {
-    apiInstance.contentBwUsageContentGet(content);
+    String result = apiInstance.contentBwUsageContentGet(content);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentBwUsageContentGet");
     e.printStackTrace();
@@ -288,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -301,7 +305,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(req, ignoreDupes)
+> String contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -316,7 +320,8 @@ ContentApi apiInstance = new ContentApi();
 UtilContentCreateBody req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    apiInstance.contentCreatePost(req, ignoreDupes);
+    String result = apiInstance.contentCreatePost(req, ignoreDupes);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentCreatePost");
     e.printStackTrace();
@@ -332,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -345,7 +350,7 @@ null (empty response body)
 
 <a name="contentDealsGet"></a>
 # **contentDealsGet**
-> contentDealsGet(limit, offset)
+> String contentDealsGet(limit, offset)
 
 Content with deals
 
@@ -360,7 +365,8 @@ ContentApi apiInstance = new ContentApi();
 Integer limit = 56; // Integer | Limit
 Integer offset = 56; // Integer | Offset
 try {
-    apiInstance.contentDealsGet(limit, offset);
+    String result = apiInstance.contentDealsGet(limit, offset);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentDealsGet");
     e.printStackTrace();
@@ -376,7 +382,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -389,7 +395,7 @@ null (empty response body)
 
 <a name="contentEnsureReplicationDatacidGet"></a>
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+> String contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -403,7 +409,8 @@ This endpoint ensures that the content is replicated to the specified number of 
 ContentApi apiInstance = new ContentApi();
 String datacid = "datacid_example"; // String | Data CID
 try {
-    apiInstance.contentEnsureReplicationDatacidGet(datacid);
+    String result = apiInstance.contentEnsureReplicationDatacidGet(datacid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentEnsureReplicationDatacidGet");
     e.printStackTrace();
@@ -418,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -474,7 +481,7 @@ Name | Type | Description  | Notes
 
 <a name="contentIdGet"></a>
 # **contentIdGet**
-> contentIdGet(id)
+> String contentIdGet(id)
 
 Content
 
@@ -488,7 +495,8 @@ This endpoint returns a content by its ID
 ContentApi apiInstance = new ContentApi();
 Integer id = 56; // Integer | Content ID
 try {
-    apiInstance.contentIdGet(id);
+    String result = apiInstance.contentIdGet(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentIdGet");
     e.printStackTrace();
@@ -503,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -516,7 +524,7 @@ null (empty response body)
 
 <a name="contentImportdealPost"></a>
 # **contentImportdealPost**
-> contentImportdealPost(body)
+> String contentImportdealPost(body)
 
 Import a deal
 
@@ -530,7 +538,8 @@ This endpoint imports a deal into the shuttle.
 ContentApi apiInstance = new ContentApi();
 MainImportDealBody body = new MainImportDealBody(); // MainImportDealBody | Import a deal
 try {
-    apiInstance.contentImportdealPost(body);
+    String result = apiInstance.contentImportdealPost(body);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentImportdealPost");
     e.printStackTrace();
@@ -545,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -558,7 +567,7 @@ null (empty response body)
 
 <a name="contentListGet"></a>
 # **contentListGet**
-> List&lt;String&gt; contentListGet()
+> String contentListGet()
 
 List all pinned content
 
@@ -571,7 +580,7 @@ This endpoint lists all content
 
 ContentApi apiInstance = new ContentApi();
 try {
-    List<String> result = apiInstance.contentListGet();
+    String result = apiInstance.contentListGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentListGet");
@@ -584,7 +593,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -597,7 +606,7 @@ This endpoint does not need any parameter.
 
 <a name="contentReadContGet"></a>
 # **contentReadContGet**
-> contentReadContGet(cont)
+> String contentReadContGet(cont)
 
 Read content
 
@@ -611,7 +620,8 @@ This endpoint reads content from the blockstore
 ContentApi apiInstance = new ContentApi();
 String cont = "cont_example"; // String | CID
 try {
-    apiInstance.contentReadContGet(cont);
+    String result = apiInstance.contentReadContGet(cont);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentReadContGet");
     e.printStackTrace();
@@ -626,7 +636,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -639,7 +649,7 @@ null (empty response body)
 
 <a name="contentStagingZonesGet"></a>
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> String contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -652,7 +662,8 @@ This endpoint is used to get staging zone for user.
 
 ContentApi apiInstance = new ContentApi();
 try {
-    apiInstance.contentStagingZonesGet();
+    String result = apiInstance.contentStagingZonesGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStagingZonesGet");
     e.printStackTrace();
@@ -664,7 +675,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -677,7 +688,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(limit, offset)
+> String contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -692,7 +703,8 @@ ContentApi apiInstance = new ContentApi();
 String limit = "limit_example"; // String | limit
 String offset = "offset_example"; // String | offset
 try {
-    apiInstance.contentStatsGet(limit, offset);
+    String result = apiInstance.contentStatsGet(limit, offset);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStatsGet");
     e.printStackTrace();
@@ -708,7 +720,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -721,7 +733,7 @@ null (empty response body)
 
 <a name="contentStatusIdGet"></a>
 # **contentStatusIdGet**
-> contentStatusIdGet(id)
+> String contentStatusIdGet(id)
 
 Content Status
 
@@ -735,7 +747,8 @@ This endpoint returns the status of a content
 ContentApi apiInstance = new ContentApi();
 Integer id = 56; // Integer | Content ID
 try {
-    apiInstance.contentStatusIdGet(id);
+    String result = apiInstance.contentStatusIdGet(id);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentStatusIdGet");
     e.printStackTrace();
@@ -750,7 +763,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

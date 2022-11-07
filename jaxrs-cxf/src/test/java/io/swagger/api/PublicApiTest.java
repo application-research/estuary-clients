@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -81,8 +82,8 @@ public class PublicApiTest {
     @Test
     public void publicByCidCidGetTest() {
         String cid = null;
-        //api.publicByCidCidGet(cid);
-        
+        //String response = api.publicByCidCidGet(cid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -98,8 +99,8 @@ public class PublicApiTest {
      */
     @Test
     public void publicInfoGetTest() {
-        //api.publicInfoGet();
-        
+        //String response = api.publicInfoGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -115,8 +116,8 @@ public class PublicApiTest {
      */
     @Test
     public void publicMetricsDealsOnChainGetTest() {
-        //api.publicMetricsDealsOnChainGet();
-        
+        //String response = api.publicMetricsDealsOnChainGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -134,8 +135,8 @@ public class PublicApiTest {
     public void publicMinersDealsMinerGetTest() {
         String miner = null;
         String ignoreFailed = null;
-        //api.publicMinersDealsMinerGet(miner, ignoreFailed);
-        
+        //String response = api.publicMinersDealsMinerGet(miner, ignoreFailed);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -152,8 +153,8 @@ public class PublicApiTest {
     @Test
     public void publicMinersFailuresMinerGetTest() {
         String miner = null;
-        //api.publicMinersFailuresMinerGet(miner);
-        
+        //String response = api.publicMinersFailuresMinerGet(miner);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -169,8 +170,8 @@ public class PublicApiTest {
      */
     @Test
     public void publicMinersGetTest() {
-        //api.publicMinersGet();
-        
+        //String response = api.publicMinersGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -187,8 +188,8 @@ public class PublicApiTest {
     @Test
     public void publicMinersStatsMinerGetTest() {
         String miner = null;
-        //api.publicMinersStatsMinerGet(miner);
-        
+        //String response = api.publicMinersStatsMinerGet(miner);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -238,8 +239,8 @@ public class PublicApiTest {
      */
     @Test
     public void publicStatsGetTest() {
-        //api.publicStatsGet();
-        
+        //String response = api.publicStatsGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         

@@ -5,7 +5,9 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
+import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.UtilHttpError;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:53:06.813Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-07T20:05:55.877Z")
 public class DealApiServiceImpl implements DealApiService {
       @Override
       public Response dealEstimatePost(MainEstimateDealBody body, SecurityContext securityContext) {
@@ -54,7 +56,7 @@ public class DealApiServiceImpl implements DealApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response dealTransferStatusPost(SecurityContext securityContext) {
+      public Response dealTransferStatusPost(MainChannelIDParam chanid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> [MainGetApiKeysResp] userApiKeysGet()
+> [[MainGetApiKeysResp]] userApiKeysGet()
 
 Get API keys for a user
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MainGetApiKeysResp]**](MainGetApiKeysResp.md)
+**[[MainGetApiKeysResp]]**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 <a name="userApiKeysKeyDelete"></a>
 # **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+> 'String' userApiKeysKeyDelete(key)
 
 Revoke a User API Key.
 
@@ -86,7 +86,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.userApiKeysKeyDelete(key, callback);
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -133,7 +133,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 var apiInstance = new EstuaryClient.UserApi();
 
 var opts = { 
-  'expiry': "expiry_example", // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  'expiry': "expiry_example", // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   'perms': "perms_example" // String | Permissions -- currently unused
 };
 
@@ -151,7 +151,7 @@ apiInstance.userApiKeysPost(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -216,7 +216,7 @@ This endpoint does not need any parameter.
 
 <a name="userStatsGet"></a>
 # **userStatsGet**
-> MainUserStatsResponse userStatsGet()
+> 'String' userStatsGet()
 
 Create API keys for a user
 
@@ -250,7 +250,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**'String'**
 
 ### Authorization
 

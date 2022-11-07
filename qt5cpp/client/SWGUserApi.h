@@ -15,9 +15,9 @@
 
 #include "SWGHttpRequest.h"
 
+#include <QList>
 #include <QString>
 #include "SWGMain.getApiKeysResp.h"
-#include "SWGMain.userStatsResponse.h"
 #include "SWGUtil.HttpError.h"
 
 #include <QObject>
@@ -50,17 +50,17 @@ private:
     void userStatsGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void userApiKeysGetSignal(QList<SWGMain.getApiKeysResp*>* summary);
-    void userApiKeysKeyDeleteSignal();
+    void userApiKeysGetSignal(QList<QList<SWGMain.getApiKeysResp*>*>* summary);
+    void userApiKeysKeyDeleteSignal(QString* summary);
     void userApiKeysPostSignal(SWGMain.getApiKeysResp* summary);
     void userExportGetSignal(QString* summary);
-    void userStatsGetSignal(SWGMain.userStatsResponse* summary);
+    void userStatsGetSignal(QString* summary);
     
-    void userApiKeysGetSignalE(QList<SWGMain.getApiKeysResp*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void userApiKeysKeyDeleteSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void userApiKeysGetSignalE(QList<QList<SWGMain.getApiKeysResp*>*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void userApiKeysKeyDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void userApiKeysPostSignalE(SWGMain.getApiKeysResp* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void userExportGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void userStatsGetSignalE(SWGMain.userStatsResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void userStatsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void userApiKeysGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void userApiKeysKeyDeleteSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

@@ -63,7 +63,7 @@ describe 'CollectionsApi' do
   # This endpoint is used to delete an existing collection.
   # @param coluuid Collection ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'collections_coluuid_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -89,7 +89,7 @@ describe 'CollectionsApi' do
   # @param coluuid coluuid
   # @param content_i_ds Content IDs to add to collection
   # @param [Hash] opts the optional parameters
-  # @return [Hash<String, String>]
+  # @return [String]
   describe 'collections_coluuid_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -103,7 +103,7 @@ describe 'CollectionsApi' do
   # @param content Content
   # @param path Path to file
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'collections_fs_add_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -114,7 +114,7 @@ describe 'CollectionsApi' do
   # List all collections
   # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
   # @param [Hash] opts the optional parameters
-  # @return [Array<CollectionsCollection>]
+  # @return [Array<Array<CollectionsCollection>>]
   describe 'collections_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

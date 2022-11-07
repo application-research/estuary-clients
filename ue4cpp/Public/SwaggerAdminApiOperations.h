@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerAdminApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -30,16 +31,17 @@ public:
 	FString ComputePath() const final;
     
 	/* Peer ids */
-	TArray<FString> Body;
+	TArray<bool> PeerIds;
 };
 
 class SWAGGER_API SwaggerAdminApi::AdminPeeringPeersDeleteResponse : public Response
 {
 public:
     virtual ~AdminPeeringPeersDeleteResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* List all Peering peers
@@ -59,9 +61,10 @@ class SWAGGER_API SwaggerAdminApi::AdminPeeringPeersGetResponse : public Respons
 {
 public:
     virtual ~AdminPeeringPeersGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Add peers on Peering Service
@@ -81,9 +84,10 @@ class SWAGGER_API SwaggerAdminApi::AdminPeeringPeersPostResponse : public Respon
 {
 public:
     virtual ~AdminPeeringPeersPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Start Peering
@@ -103,9 +107,10 @@ class SWAGGER_API SwaggerAdminApi::AdminPeeringStartPostResponse : public Respon
 {
 public:
     virtual ~AdminPeeringStartPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Check Peering Status
@@ -125,9 +130,10 @@ class SWAGGER_API SwaggerAdminApi::AdminPeeringStatusGetResponse : public Respon
 {
 public:
     virtual ~AdminPeeringStatusGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Stop Peering
@@ -147,9 +153,10 @@ class SWAGGER_API SwaggerAdminApi::AdminPeeringStopPostResponse : public Respons
 {
 public:
     virtual ~AdminPeeringStopPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get systems(estuary/shuttle) config
@@ -169,9 +176,10 @@ class SWAGGER_API SwaggerAdminApi::AdminSystemConfigGetResponse : public Respons
 {
 public:
     virtual ~AdminSystemConfigGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get all users
@@ -191,9 +199,10 @@ class SWAGGER_API SwaggerAdminApi::AdminUsersGetResponse : public Response
 {
 public:
     virtual ~AdminUsersGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

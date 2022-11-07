@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **userApiKeysGet**
 ```objc
 -(NSURLSessionTask*) userApiKeysGetWithCompletionHandler: 
-        (void (^)(NSArray<SWGMainGetApiKeysResp>* output, NSError* error)) handler;
+        (void (^)(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error)) handler;
 ```
 
 Get API keys for a user
@@ -36,7 +36,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Get API keys for a user
 [apiInstance userApiKeysGetWithCompletionHandler: 
-          ^(NSArray<SWGMainGetApiKeysResp>* output, NSError* error) {
+          ^(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NSArray<SWGMainGetApiKeysResp>***](SWGMainGetApiKeysResp.md)
+[**NSArray<NSArray<SWGMainGetApiKeysResp>*>***](NSArray.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 # **userApiKeysKeyDelete**
 ```objc
 -(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Revoke a User API Key.
@@ -90,7 +90,10 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Revoke a User API Key.
 [apiInstance userApiKeysKeyDeleteWithKey:key
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGUserApi->userApiKeysKeyDelete: %@", error);
                         }
@@ -105,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -139,7 +142,7 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* expiry = @"expiry_example"; // Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+NSString* expiry = @"expiry_example"; // Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 NSString* perms = @"perms_example"; // Permissions -- currently unused (optional)
 
 SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
@@ -161,7 +164,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **NSString***| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **NSString***| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **NSString***| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -235,7 +238,7 @@ This endpoint does not need any parameter.
 # **userStatsGet**
 ```objc
 -(NSURLSessionTask*) userStatsGetWithCompletionHandler: 
-        (void (^)(SWGMainUserStatsResponse* output, NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Create API keys for a user
@@ -257,7 +260,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Create API keys for a user
 [apiInstance userStatsGetWithCompletionHandler: 
-          ^(SWGMainUserStatsResponse* output, NSError* error) {
+          ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -272,7 +275,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SWGMainUserStatsResponse***](SWGMainUserStatsResponse.md)
+**NSString***
 
 ### Authorization
 

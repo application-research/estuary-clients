@@ -27,7 +27,9 @@ object MetricsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def publicMetricsDealsOnChainGet(host: String): Task[Unit] = {
+  def publicMetricsDealsOnChainGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/metrics/deals-on-chain"
     
     val httpMethod = Method.GET
@@ -41,7 +43,7 @@ object MetricsApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -53,7 +55,9 @@ class HttpServiceMetricsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def publicMetricsDealsOnChainGet(): Task[Unit] = {
+  def publicMetricsDealsOnChainGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/metrics/deals-on-chain"
     
     val httpMethod = Method.GET
@@ -67,7 +71,7 @@ class HttpServiceMetricsApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

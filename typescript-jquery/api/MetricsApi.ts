@@ -50,7 +50,7 @@ export class MetricsApi {
      * This endpoint is used to get deal metrics
      * @summary Get deal metrics
      */
-    public publicMetricsDealsOnChainGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMetricsDealsOnChainGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/metrics/deals-on-chain';
 
         let queryParameters: any = {};
@@ -93,7 +93,7 @@ export class MetricsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

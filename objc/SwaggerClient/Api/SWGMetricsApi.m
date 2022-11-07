@@ -1,6 +1,7 @@
 #import "SWGMetricsApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGMetricsApi ()
@@ -51,10 +52,10 @@ NSInteger kSWGMetricsApiMissingParamErrorCode = 234513;
 ///
 /// Get deal metrics
 /// This endpoint is used to get deal metrics
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/metrics/deals-on-chain"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -92,10 +93,10 @@ NSInteger kSWGMetricsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

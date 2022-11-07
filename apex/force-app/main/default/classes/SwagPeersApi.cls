@@ -28,36 +28,38 @@ public class SwagPeersApi {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids (required)
+     * @param peerIds Peer ids (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringPeersDelete(Map<String, Object> params) {
-        client.assertNotNull(params.get('body'), 'body');
+    public String adminPeeringPeersDelete(Map<String, Object> params) {
+        client.assertNotNull(params.get('peerIds'), 'peerIds');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'DELETE', '/admin/peering/peers',
-            (List<String>) params.get('body'),
+            (List<Boolean>) params.get('peerIds'),
             query, form,
             new Map<String, Object>(),
             new Map<String, Object>(),
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * List all Peering peers
      * This endpoint can be used to list all peers on Peering Service
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringPeersGet() {
+    public String adminPeeringPeersGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/admin/peering/peers', '',
             query, form,
             new Map<String, Object>(),
@@ -65,19 +67,20 @@ public class SwagPeersApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringPeersPost() {
+    public String adminPeeringPeersPost() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/admin/peering/peers', '',
             query, form,
             new Map<String, Object>(),
@@ -85,19 +88,20 @@ public class SwagPeersApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Start Peering
      * This endpoint can be used to start the Peering Service
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringStartPost() {
+    public String adminPeeringStartPost() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/admin/peering/start', '',
             query, form,
             new Map<String, Object>(),
@@ -105,19 +109,20 @@ public class SwagPeersApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Check Peering Status
      * This endpoint can be used to check the Peering status
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringStatusGet() {
+    public String adminPeeringStatusGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/admin/peering/status', '',
             query, form,
             new Map<String, Object>(),
@@ -125,19 +130,20 @@ public class SwagPeersApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Stop Peering
      * This endpoint can be used to stop the Peering Service
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminPeeringStopPost() {
+    public String adminPeeringStopPost() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/admin/peering/stop', '',
             query, form,
             new Map<String, Object>(),
@@ -145,7 +151,7 @@ public class SwagPeersApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

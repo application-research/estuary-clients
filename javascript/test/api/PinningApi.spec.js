@@ -37,7 +37,7 @@
     describe('PinningApi', function() {
       describe('pinningPinsGet', function() {
         it('should call pinningPinsGet successfully', function(done) {
-          // TODO: uncomment pinningPinsGet call
+          // TODO: uncomment pinningPinsGet call and complete the assertions
           /*
 
           instance.pinningPinsGet(function(error, data, response) {
@@ -45,6 +45,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -55,7 +58,7 @@
       });
       describe('pinningPinsPinidDelete', function() {
         it('should call pinningPinsPinidDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for pinningPinsPinidDelete call
+          // TODO: uncomment, update parameter values for pinningPinsPinidDelete call and complete the assertions
           /*
           var pinid = "pinid_example";
 
@@ -64,6 +67,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -74,7 +80,7 @@
       });
       describe('pinningPinsPinidGet', function() {
         it('should call pinningPinsPinidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for pinningPinsPinidGet call
+          // TODO: uncomment, update parameter values for pinningPinsPinidGet call and complete the assertions
           /*
           var pinid = "pinid_example";
 
@@ -83,6 +89,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -93,7 +102,7 @@
       });
       describe('pinningPinsPinidPost', function() {
         it('should call pinningPinsPinidPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for pinningPinsPinidPost call
+          // TODO: uncomment, update parameter values for pinningPinsPinidPost call and complete the assertions
           /*
           var pinid = "pinid_example";
 
@@ -102,6 +111,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -112,16 +124,22 @@
       });
       describe('pinningPinsPost', function() {
         it('should call pinningPinsPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for pinningPinsPost call
+          // TODO: uncomment, update parameter values for pinningPinsPost call and complete the assertions
           /*
-          var cid = "cid_example";
-          var name = "name_example";
+          var pin = new EstuaryClient.TypesIpfsPin();
+          pin.cid = "";
+          pin.meta = ;
+          pin.name = "";
+          pin.origins = [""];
 
-          instance.pinningPinsPost(cid, name, function(error, data, response) {
+          instance.pinningPinsPost(pin, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

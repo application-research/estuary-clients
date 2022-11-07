@@ -5,7 +5,9 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Main.ChannelIDParam.h"
 #include "Main.estimateDealBody.h"
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -34,8 +36,8 @@ public:
  */
 bool dealEstimatePostSync(char * accessToken,
 	Main.estimateDealBody body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Estimate the cost of a deal. *Asynchronous*
  *
@@ -47,8 +49,8 @@ bool dealEstimatePostSync(char * accessToken,
  */
 bool dealEstimatePostAsync(char * accessToken,
 	Main.estimateDealBody body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Deal Info. *Synchronous*
@@ -61,8 +63,8 @@ bool dealEstimatePostAsync(char * accessToken,
  */
 bool dealInfoDealidGetSync(char * accessToken,
 	int dealid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Deal Info. *Asynchronous*
  *
@@ -74,8 +76,8 @@ bool dealInfoDealidGetSync(char * accessToken,
  */
 bool dealInfoDealidGetAsync(char * accessToken,
 	int dealid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Proposal. *Synchronous*
@@ -88,8 +90,8 @@ bool dealInfoDealidGetAsync(char * accessToken,
  */
 bool dealProposalPropcidGetSync(char * accessToken,
 	std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Proposal. *Asynchronous*
  *
@@ -101,8 +103,8 @@ bool dealProposalPropcidGetSync(char * accessToken,
  */
 bool dealProposalPropcidGetAsync(char * accessToken,
 	std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Query Ask. *Synchronous*
@@ -115,8 +117,8 @@ bool dealProposalPropcidGetAsync(char * accessToken,
  */
 bool dealQueryMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Query Ask. *Asynchronous*
  *
@@ -128,8 +130,8 @@ bool dealQueryMinerGetSync(char * accessToken,
  */
 bool dealQueryMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Deal Status by PropCid. *Synchronous*
@@ -142,8 +144,8 @@ bool dealQueryMinerGetAsync(char * accessToken,
  */
 bool dealStatusByProposalPropcidGetSync(char * accessToken,
 	std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Deal Status by PropCid. *Asynchronous*
  *
@@ -155,8 +157,8 @@ bool dealStatusByProposalPropcidGetSync(char * accessToken,
  */
 bool dealStatusByProposalPropcidGetAsync(char * accessToken,
 	std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Deal Status. *Synchronous*
@@ -170,8 +172,8 @@ bool dealStatusByProposalPropcidGetAsync(char * accessToken,
  */
 bool dealStatusMinerPropcidGetSync(char * accessToken,
 	std::string miner, std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Deal Status. *Asynchronous*
  *
@@ -184,8 +186,8 @@ bool dealStatusMinerPropcidGetSync(char * accessToken,
  */
 bool dealStatusMinerPropcidGetAsync(char * accessToken,
 	std::string miner, std::string propcid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Transfer In Progress. *Synchronous*
@@ -197,8 +199,8 @@ bool dealStatusMinerPropcidGetAsync(char * accessToken,
  */
 bool dealTransferInProgressGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Transfer In Progress. *Asynchronous*
  *
@@ -209,8 +211,35 @@ bool dealTransferInProgressGetSync(char * accessToken,
  */
 bool dealTransferInProgressGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
+
+
+/*! \brief Transfer Status. *Synchronous*
+ *
+ * This endpoint returns the status of a transfer
+ * \param chanid Channel ID *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool dealTransferStatusPostSync(char * accessToken,
+	Main.ChannelIDParam chanid, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
+
+/*! \brief Transfer Status. *Asynchronous*
+ *
+ * This endpoint returns the status of a transfer
+ * \param chanid Channel ID *Required*
+ * \param handler The callback function to be invoked on completion. *Required*
+ * \param accessToken The Authorization token. *Required*
+ * \param userData The user data to be passed to the callback function.
+ */
+bool dealTransferStatusPostAsync(char * accessToken,
+	Main.ChannelIDParam chanid, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get storage failures for user. *Synchronous*
@@ -222,8 +251,8 @@ bool dealTransferInProgressGetAsync(char * accessToken,
  */
 bool dealsFailuresGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get storage failures for user. *Asynchronous*
  *
@@ -234,8 +263,8 @@ bool dealsFailuresGetSync(char * accessToken,
  */
 bool dealsFailuresGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Make Deal. *Synchronous*
@@ -249,8 +278,8 @@ bool dealsFailuresGetAsync(char * accessToken,
  */
 bool dealsMakeMinerPostSync(char * accessToken,
 	std::string miner, std::string dealRequest, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Make Deal. *Asynchronous*
  *
@@ -263,8 +292,8 @@ bool dealsMakeMinerPostSync(char * accessToken,
  */
 bool dealsMakeMinerPostAsync(char * accessToken,
 	std::string miner, std::string dealRequest, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get Deal Status. *Synchronous*
@@ -277,8 +306,8 @@ bool dealsMakeMinerPostAsync(char * accessToken,
  */
 bool dealsStatusDealGetSync(char * accessToken,
 	int deal, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Deal Status. *Asynchronous*
  *
@@ -290,8 +319,8 @@ bool dealsStatusDealGetSync(char * accessToken,
  */
 bool dealsStatusDealGetAsync(char * accessToken,
 	int deal, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get storage failures. *Synchronous*
@@ -303,8 +332,8 @@ bool dealsStatusDealGetAsync(char * accessToken,
  */
 bool publicDealsFailuresGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get storage failures. *Asynchronous*
  *
@@ -315,8 +344,8 @@ bool publicDealsFailuresGetSync(char * accessToken,
  */
 bool publicDealsFailuresGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Query Ask. *Synchronous*
@@ -329,8 +358,8 @@ bool publicDealsFailuresGetAsync(char * accessToken,
  */
 bool publicMinersStorageQueryMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Query Ask. *Asynchronous*
  *
@@ -342,8 +371,8 @@ bool publicMinersStorageQueryMinerGetSync(char * accessToken,
  */
 bool publicMinersStorageQueryMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

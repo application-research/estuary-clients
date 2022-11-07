@@ -23,8 +23,8 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import java.util.*;
 import io.swagger.client.model.MainGetApiKeysResp;
-import io.swagger.client.model.MainUserStatsResponse;
 import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
@@ -60,9 +60,9 @@ public class UserApi {
   /**
   * Get API keys for a user
   * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-   * @return List<MainGetApiKeysResp>
+   * @return List<List<MainGetApiKeysResp>>
   */
-  public List<MainGetApiKeysResp> userApiKeysGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<List<MainGetApiKeysResp>> userApiKeysGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -92,7 +92,7 @@ public class UserApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (List<MainGetApiKeysResp>) ApiInvoker.deserialize(localVarResponse, "array", MainGetApiKeysResp.class);
+         return (List<List<MainGetApiKeysResp>>) ApiInvoker.deserialize(localVarResponse, "array", List.class);
       } else {
          return null;
       }
@@ -118,7 +118,7 @@ public class UserApi {
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
 
   */
-  public void userApiKeysGet (final Response.Listener<List<MainGetApiKeysResp>> responseListener, final Response.ErrorListener errorListener) {
+  public void userApiKeysGet (final Response.Listener<List<List<MainGetApiKeysResp>>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -158,7 +158,7 @@ public class UserApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((List<MainGetApiKeysResp>) ApiInvoker.deserialize(localVarResponse,  "array", MainGetApiKeysResp.class));
+              responseListener.onResponse((List<List<MainGetApiKeysResp>>) ApiInvoker.deserialize(localVarResponse,  "array", List.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -177,9 +177,9 @@ public class UserApi {
   * Revoke a User API Key.
   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
    * @param key Key
-   * @return void
+   * @return String
   */
-  public void userApiKeysKeyDelete (String key) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String userApiKeysKeyDelete (String key) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'key' is set
     if (key == null) {
@@ -214,9 +214,9 @@ public class UserApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "DELETE", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -284,7 +284,11 @@ public class UserApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -299,7 +303,7 @@ public class UserApi {
   /**
   * Create API keys for a user
   * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
    * @param perms Permissions -- currently unused
    * @return MainGetApiKeysResp
   */
@@ -359,7 +363,7 @@ public class UserApi {
       /**
    * Create API keys for a user
    * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h   * @param perms Permissions -- currently unused
+   * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h   * @param perms Permissions -- currently unused
   */
   public void userApiKeysPost (String expiry, String perms, final Response.Listener<MainGetApiKeysResp> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
@@ -537,9 +541,9 @@ public class UserApi {
   /**
   * Create API keys for a user
   * This endpoint is used to create API keys for a user.
-   * @return MainUserStatsResponse
+   * @return String
   */
-  public MainUserStatsResponse userStatsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String userStatsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -569,7 +573,7 @@ public class UserApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (MainUserStatsResponse) ApiInvoker.deserialize(localVarResponse, "", MainUserStatsResponse.class);
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
          return null;
       }
@@ -595,7 +599,7 @@ public class UserApi {
    * This endpoint is used to create API keys for a user.
 
   */
-  public void userStatsGet (final Response.Listener<MainUserStatsResponse> responseListener, final Response.ErrorListener errorListener) {
+  public void userStatsGet (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -635,7 +639,7 @@ public class UserApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((MainUserStatsResponse) ApiInvoker.deserialize(localVarResponse,  "", MainUserStatsResponse.class));
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

@@ -4,6 +4,7 @@ import 'package:jaguar_serializer/jaguar_serializer.dart';
 import 'package:jaguar_serializer/src/repo/repo.dart';
 import 'dart:async';
 
+import 'package:swagger/model/util_http_error.dart';
 
 
 part 'metrics_api.jretro.dart';
@@ -19,7 +20,7 @@ class MetricsApi extends _$MetricsApiClient implements ApiClient {
     ///
     /// This endpoint is used to get deal metrics
     @GetReq(path: "/public/metrics/deals-on-chain", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> publicMetricsDealsOnChainGet(
+    Future<String> publicMetricsDealsOnChainGet(
     );
 
 

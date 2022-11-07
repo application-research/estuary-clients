@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using estuary-client.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -30,8 +31,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get deal metrics
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void PublicMetricsDealsOnChainGet ();
+        /// <returns>string</returns>
+        string PublicMetricsDealsOnChainGet ();
 
         /// <summary>
         /// Get deal metrics
@@ -40,8 +41,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get deal metrics
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PublicMetricsDealsOnChainGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> PublicMetricsDealsOnChainGetWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -51,8 +52,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get deal metrics
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PublicMetricsDealsOnChainGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> PublicMetricsDealsOnChainGetAsync ();
 
         /// <summary>
         /// Get deal metrics
@@ -61,8 +62,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get deal metrics
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PublicMetricsDealsOnChainGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> PublicMetricsDealsOnChainGetAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
@@ -167,18 +168,19 @@ namespace estuary-client.Api
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void PublicMetricsDealsOnChainGet ()
+        /// <returns>string</returns>
+        public string PublicMetricsDealsOnChainGet ()
         {
-             PublicMetricsDealsOnChainGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = PublicMetricsDealsOnChainGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PublicMetricsDealsOnChainGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > PublicMetricsDealsOnChainGetWithHttpInfo ()
         {
 
             var localVarPath = "/public/metrics/deals-on-chain";
@@ -222,19 +224,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PublicMetricsDealsOnChainGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> PublicMetricsDealsOnChainGetAsync ()
         {
-             await PublicMetricsDealsOnChainGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await PublicMetricsDealsOnChainGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -242,8 +245,8 @@ namespace estuary-client.Api
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PublicMetricsDealsOnChainGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicMetricsDealsOnChainGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/public/metrics/deals-on-chain";
@@ -287,9 +290,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

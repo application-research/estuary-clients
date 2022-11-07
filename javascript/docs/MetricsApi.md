@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> 'String' publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -32,7 +32,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMetricsDealsOnChainGet(callback);
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

@@ -35,14 +35,14 @@ impl<C: hyper::client::Connect> AutoretrieveApiClient<C> {
 }
 
 pub trait AutoretrieveApi {
-    fn admin_autoretrieve_init_post(&self, addresses: &str, pub_key: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_autoretrieve_list_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn autoretrieve_heartbeat_post(&self, token: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn admin_autoretrieve_init_post(&self, addresses: &str, pub_key: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_autoretrieve_list_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn autoretrieve_heartbeat_post(&self, token: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>AutoretrieveApi for AutoretrieveApiClient<C> {
-    fn admin_autoretrieve_init_post(&self, addresses: &str, pub_key: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_autoretrieve_init_post(&self, addresses: &str, pub_key: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -83,14 +83,6 @@ impl<C: hyper::client::Connect>AutoretrieveApi for AutoretrieveApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
-        let serialized = serde_json::to_string(&addresses).unwrap();
-        req.headers_mut().set(hyper::header::ContentType::json());
-        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
-        req.set_body(serialized);
-        let serialized = serde_json::to_string(&pub_key).unwrap();
-        req.headers_mut().set(hyper::header::ContentType::json());
-        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
-        req.set_body(serialized);
 
         // send request
         Box::new(
@@ -109,11 +101,14 @@ impl<C: hyper::client::Connect>AutoretrieveApi for AutoretrieveApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_autoretrieve_list_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_autoretrieve_list_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -172,11 +167,14 @@ impl<C: hyper::client::Connect>AutoretrieveApi for AutoretrieveApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn autoretrieve_heartbeat_post(&self, token: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn autoretrieve_heartbeat_post(&self, token: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -239,7 +237,10 @@ impl<C: hyper::client::Connect>AutoretrieveApi for AutoretrieveApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

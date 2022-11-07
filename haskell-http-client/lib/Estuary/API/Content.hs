@@ -67,13 +67,11 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentAddCarPost 
-  :: (Consumes ContentAddCarPost contentType, MimeRender contentType BodyText)
+  :: (Consumes ContentAddCarPost contentType, MimeRender contentType Body2)
   => ContentType contentType -- ^ request content-type ('MimeType')
-  -> BodyText -- ^ "body" -  Car
-  -> EstuaryRequest ContentAddCarPost contentType res MimeJSON
+  -> Body2 -- ^ "body" -  Car
+  -> EstuaryRequest ContentAddCarPost contentType Text MimeJSON
 contentAddCarPost _ body =
   _mkRequest "POST" ["/content/add-car"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -82,7 +80,7 @@ contentAddCarPost _ body =
 data ContentAddCarPost 
 
 -- | /Body Param/ "body" - Car
-instance HasBodyParam ContentAddCarPost BodyText 
+instance HasBodyParam ContentAddCarPost Body2 
 
 -- | /Optional Param/ "ignore-dupes" - Ignore Dupes
 instance HasOptionalParam ContentAddCarPost IgnoreDupes where
@@ -107,13 +105,11 @@ instance Produces ContentAddCarPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentAddIpfsPost 
   :: (Consumes ContentAddIpfsPost contentType, MimeRender contentType UtilContentAddIpfsBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> UtilContentAddIpfsBody -- ^ "body" -  IPFS Body
-  -> EstuaryRequest ContentAddIpfsPost contentType res MimeJSON
+  -> EstuaryRequest ContentAddIpfsPost contentType Text MimeJSON
 contentAddIpfsPost _ body =
   _mkRequest "POST" ["/content/add-ipfs"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -222,13 +218,11 @@ instance Produces ContentAggregatedContentGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentAllDealsGet 
   :: Begin -- ^ "begin" -  Begin
   -> Duration -- ^ "duration" -  Duration
   -> All -- ^ "all" -  All
-  -> EstuaryRequest ContentAllDealsGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentAllDealsGet MimeNoContent Text MimeJSON
 contentAllDealsGet (Begin begin) (Duration duration) (All all) =
   _mkRequest "GET" ["/content/all-deals"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -251,11 +245,9 @@ instance Produces ContentAllDealsGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentBwUsageContentGet 
   :: Content -- ^ "content" -  Content ID
-  -> EstuaryRequest ContentBwUsageContentGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentBwUsageContentGet MimeNoContent Text MimeJSON
 contentBwUsageContentGet (Content content) =
   _mkRequest "GET" ["/content/bw-usage/",toPath content]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -275,13 +267,11 @@ instance Produces ContentBwUsageContentGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentCreatePost 
   :: (Consumes ContentCreatePost contentType, MimeRender contentType UtilContentCreateBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> UtilContentCreateBody -- ^ "req" -  Content
-  -> EstuaryRequest ContentCreatePost contentType res MimeJSON
+  -> EstuaryRequest ContentCreatePost contentType Text MimeJSON
 contentCreatePost _ req =
   _mkRequest "POST" ["/content/create"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -310,10 +300,8 @@ instance Produces ContentCreatePost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentDealsGet 
-  :: EstuaryRequest ContentDealsGet MimeNoContent res MimeJSON
+  :: EstuaryRequest ContentDealsGet MimeNoContent Text MimeJSON
 contentDealsGet =
   _mkRequest "GET" ["/content/deals"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -343,11 +331,9 @@ instance Produces ContentDealsGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentEnsureReplicationDatacidGet 
   :: Datacid -- ^ "datacid" -  Data CID
-  -> EstuaryRequest ContentEnsureReplicationDatacidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentEnsureReplicationDatacidGet MimeNoContent Text MimeJSON
 contentEnsureReplicationDatacidGet (Datacid datacid) =
   _mkRequest "GET" ["/content/ensure-replication/",toPath datacid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -389,11 +375,9 @@ instance Produces ContentFailuresContentGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentIdGet 
   :: Id -- ^ "id" -  Content ID
-  -> EstuaryRequest ContentIdGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentIdGet MimeNoContent Text MimeJSON
 contentIdGet (Id id) =
   _mkRequest "GET" ["/content/",toPath id]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -413,13 +397,11 @@ instance Produces ContentIdGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentImportdealPost 
   :: (Consumes ContentImportdealPost contentType, MimeRender contentType MainImportDealBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> MainImportDealBody -- ^ "body" -  Import a deal
-  -> EstuaryRequest ContentImportdealPost contentType res MimeJSON
+  -> EstuaryRequest ContentImportdealPost contentType Text MimeJSON
 contentImportdealPost _ body =
   _mkRequest "POST" ["/content/importdeal"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -444,7 +426,7 @@ instance Produces ContentImportdealPost MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 contentListGet 
-  :: EstuaryRequest ContentListGet MimeNoContent [Text] MimeJSON
+  :: EstuaryRequest ContentListGet MimeNoContent Text MimeJSON
 contentListGet =
   _mkRequest "GET" ["/content/list"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -464,11 +446,9 @@ instance Produces ContentListGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentReadContGet 
   :: Cont -- ^ "cont" -  CID
-  -> EstuaryRequest ContentReadContGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentReadContGet MimeNoContent Text MimeJSON
 contentReadContGet (Cont cont) =
   _mkRequest "GET" ["/content/read/",toPath cont]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -488,10 +468,8 @@ instance Produces ContentReadContGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentStagingZonesGet 
-  :: EstuaryRequest ContentStagingZonesGet MimeNoContent res MimeJSON
+  :: EstuaryRequest ContentStagingZonesGet MimeNoContent Text MimeJSON
 contentStagingZonesGet =
   _mkRequest "GET" ["/content/staging-zones"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -511,12 +489,10 @@ instance Produces ContentStagingZonesGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentStatsGet 
   :: LimitText -- ^ "limit" -  limit
   -> OffsetText -- ^ "offset" -  offset
-  -> EstuaryRequest ContentStatsGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentStatsGet MimeNoContent Text MimeJSON
 contentStatsGet (LimitText limit) (OffsetText offset) =
   _mkRequest "GET" ["/content/stats"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -538,11 +514,9 @@ instance Produces ContentStatsGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 contentStatusIdGet 
   :: Id -- ^ "id" -  Content ID
-  -> EstuaryRequest ContentStatusIdGet MimeNoContent res MimeJSON
+  -> EstuaryRequest ContentStatusIdGet MimeNoContent Text MimeJSON
 contentStatusIdGet (Id id) =
   _mkRequest "GET" ["/content/status/",toPath id]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

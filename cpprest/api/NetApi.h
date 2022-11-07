@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -44,7 +45,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get net addrs
     /// </remarks>
-    pplx::task<std::vector<utility::string_t>> netAddrsGet(
+    pplx::task<utility::string_t> netAddrsGet(
     );
     /// <summary>
     /// Get all miners
@@ -53,7 +54,7 @@ public:
     /// This endpoint returns all miners
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
-    pplx::task<void> publicMinersFailuresMinerGet(
+    pplx::task<utility::string_t> publicMinersFailuresMinerGet(
         utility::string_t miner
     );
     /// <summary>
@@ -62,7 +63,7 @@ public:
     /// <remarks>
     /// This endpoint returns all miners
     /// </remarks>
-    pplx::task<void> publicMinersGet(
+    pplx::task<utility::string_t> publicMinersGet(
     );
     /// <summary>
     /// Net Addrs

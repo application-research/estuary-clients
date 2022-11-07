@@ -60,20 +60,20 @@ private:
 signals:
     void collectionsColuuidCommitPostSignal(QString* summary);
     void collectionsColuuidContentsDeleteSignal(QString* summary);
-    void collectionsColuuidDeleteSignal();
+    void collectionsColuuidDeleteSignal(QString* summary);
     void collectionsColuuidGetSignal(QString* summary);
-    void collectionsColuuidPostSignal(QMap<QString, QString*>* summary);
-    void collectionsFsAddPostSignal();
-    void collectionsGetSignal(QList<SWGCollections.Collection*>* summary);
+    void collectionsColuuidPostSignal(QString* summary);
+    void collectionsFsAddPostSignal(QString* summary);
+    void collectionsGetSignal(QList<QList<SWGCollections.Collection*>*>* summary);
     void collectionsPostSignal(SWGCollections.Collection* summary);
     
     void collectionsColuuidCommitPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void collectionsColuuidContentsDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void collectionsColuuidDeleteSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void collectionsColuuidDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void collectionsColuuidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void collectionsColuuidPostSignalE(QMap<QString, QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void collectionsFsAddPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void collectionsGetSignalE(QList<SWGCollections.Collection*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void collectionsColuuidPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void collectionsFsAddPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void collectionsGetSignalE(QList<QList<SWGCollections.Collection*>*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void collectionsPostSignalE(SWGCollections.Collection* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void collectionsColuuidCommitPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerPublicApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -37,9 +38,10 @@ class SWAGGER_API SwaggerPublicApi::PublicByCidCidGetResponse : public Response
 {
 public:
     virtual ~PublicByCidCidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get public node info
@@ -59,9 +61,10 @@ class SWAGGER_API SwaggerPublicApi::PublicInfoGetResponse : public Response
 {
 public:
     virtual ~PublicInfoGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get deal metrics
@@ -81,9 +84,10 @@ class SWAGGER_API SwaggerPublicApi::PublicMetricsDealsOnChainGetResponse : publi
 {
 public:
     virtual ~PublicMetricsDealsOnChainGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get all miners deals
@@ -107,9 +111,10 @@ class SWAGGER_API SwaggerPublicApi::PublicMinersDealsMinerGetResponse : public R
 {
 public:
     virtual ~PublicMinersDealsMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get all miners
@@ -131,9 +136,10 @@ class SWAGGER_API SwaggerPublicApi::PublicMinersFailuresMinerGetResponse : publi
 {
 public:
     virtual ~PublicMinersFailuresMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get all miners
@@ -153,9 +159,10 @@ class SWAGGER_API SwaggerPublicApi::PublicMinersGetResponse : public Response
 {
 public:
     virtual ~PublicMinersGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get miner stats
@@ -177,9 +184,10 @@ class SWAGGER_API SwaggerPublicApi::PublicMinersStatsMinerGetResponse : public R
 {
 public:
     virtual ~PublicMinersStatsMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Net Addrs
@@ -245,9 +253,10 @@ class SWAGGER_API SwaggerPublicApi::PublicStatsGetResponse : public Response
 {
 public:
     virtual ~PublicStatsGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

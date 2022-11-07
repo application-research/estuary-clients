@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **user_api_keys_get**
-> ARRAY[MainGetApiKeysResp] user_api_keys_get()
+> ARRAY[ARRAY[MainGetApiKeysResp]] user_api_keys_get()
 
 Get API keys for a user
 
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ARRAY[MainGetApiKeysResp]**](MainGetApiKeysResp.md)
+**ARRAY[ARRAY[MainGetApiKeysResp]]**
 
 ### Authorization
 
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_key_delete**
-> user_api_keys_key_delete(key => $key)
+> string user_api_keys_key_delete(key => $key)
 
 Revoke a User API Key.
 
@@ -85,7 +85,8 @@ my $api_instance = WWW::SwaggerClient::UserApi->new(
 my $key = 'key_example'; # string | Key
 
 eval { 
-    $api_instance->user_api_keys_key_delete(key => $key);
+    my $result = $api_instance->user_api_keys_key_delete(key => $key);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling UserApi->user_api_keys_key_delete: $@\n";
@@ -100,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -132,7 +133,7 @@ my $api_instance = WWW::SwaggerClient::UserApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $expiry = 'expiry_example'; # string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+my $expiry = 'expiry_example'; # string | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 my $perms = 'perms_example'; # string | Permissions -- currently unused
 
 eval { 
@@ -148,7 +149,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **string**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -214,7 +215,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_stats_get**
-> MainUserStatsResponse user_stats_get()
+> string user_stats_get()
 
 Create API keys for a user
 
@@ -247,7 +248,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**string**
 
 ### Authorization
 

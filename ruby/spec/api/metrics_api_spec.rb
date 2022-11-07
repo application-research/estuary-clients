@@ -36,7 +36,7 @@ describe 'MetricsApi' do
   # Get deal metrics
   # This endpoint is used to get deal metrics
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_metrics_deals_on_chain_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -34,7 +35,7 @@ class MinerApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersStatsMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
@@ -56,7 +57,7 @@ class MinerApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
 }

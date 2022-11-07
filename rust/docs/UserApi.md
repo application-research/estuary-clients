@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **user_api_keys_get**
-> Vec<::models::MainGetApiKeysResp> user_api_keys_get(ctx, )
+> Vec<Vec<::models::MainGetApiKeysResp>> user_api_keys_get(ctx, )
 Get API keys for a user
 
 This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
@@ -22,7 +22,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Vec<::models::MainGetApiKeysResp>**](main.getApiKeysResp.md)
+[**Vec<Vec<::models::MainGetApiKeysResp>>**](array.md)
 
 ### Authorization
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_api_keys_key_delete**
-> user_api_keys_key_delete(ctx, key)
+> String user_api_keys_key_delete(ctx, key)
 Revoke a User API Key.
 
 This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -81,7 +81,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | 
  **perms** | **String**| Permissions -- currently unused | 
 
 ### Return type
@@ -124,7 +124,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_stats_get**
-> ::models::MainUserStatsResponse user_stats_get(ctx, )
+> String user_stats_get(ctx, )
 Create API keys for a user
 
 This endpoint is used to create API keys for a user.
@@ -134,7 +134,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**::models::MainUserStatsResponse**](main.userStatsResponse.md)
+**String**
 
 ### Authorization
 

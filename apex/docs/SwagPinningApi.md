@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> pinningPinsGet()
+> String pinningPinsGet()
 
 List all pin status objects
 
@@ -30,7 +30,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.pinningPinsGet();
+    String result = api.pinningPinsGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -41,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -54,7 +55,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete(pinid)
+> String pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -75,7 +76,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.pinningPinsPinidDelete(params);
+    String result = api.pinningPinsPinidDelete(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -89,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -102,7 +104,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+> String pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -123,7 +125,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.pinningPinsPinidGet(params);
+    String result = api.pinningPinsPinidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -137,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -150,7 +153,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid)
 
 Replace a pinned object
 
@@ -171,7 +174,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.pinningPinsPinidPost(params);
+    String result = api.pinningPinsPinidPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -185,7 +189,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -198,7 +202,7 @@ null (empty response body)
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> pinningPinsPost(cid, name)
+> String pinningPinsPost(pin)
 
 Add and pin object
 
@@ -214,13 +218,13 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'cid' => 'cid_example',
-    'name' => 'name_example'
+    'pin' => SwagTypesIpfsPin.getExample()
 };
 
 try {
     // cross your fingers
-    api.pinningPinsPost(params);
+    String result = api.pinningPinsPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -230,12 +234,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid |
- **name** | **String**| name |
+ **pin** | [**SwagTypesIpfsPin**](SwagTypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

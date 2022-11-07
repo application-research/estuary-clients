@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **net_addrs_get**
-> Array&lt;String&gt; net_addrs_get
+> String net_addrs_get
 
 Net Addrs
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner)
+> String public_miners_failures_miner_get(miner)
 
 Get all miners
 
@@ -85,7 +85,8 @@ miner = 'miner_example' # String | Filter by miner
 
 begin
   #Get all miners
-  api_instance.public_miners_failures_miner_get(miner)
+  result = api_instance.public_miners_failures_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling NetApi->public_miners_failures_miner_get: #{e}"
 end
@@ -99,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -113,7 +114,7 @@ nil (empty response body)
 
 
 # **public_miners_get**
-> public_miners_get
+> String public_miners_get
 
 Get all miners
 
@@ -135,7 +136,8 @@ api_instance = SwaggerClient::NetApi.new
 
 begin
   #Get all miners
-  api_instance.public_miners_get
+  result = api_instance.public_miners_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling NetApi->public_miners_get: #{e}"
 end
@@ -146,7 +148,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

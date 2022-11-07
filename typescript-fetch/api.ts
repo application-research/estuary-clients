@@ -125,6 +125,32 @@ export interface CollectionsCollection {
 /**
  * 
  * @export
+ * @interface MainChannelIDParam
+ */
+export interface MainChannelIDParam {
+    /**
+     * 
+     * @type {number}
+     * @memberof MainChannelIDParam
+     */
+    id?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof MainChannelIDParam
+     */
+    initiator?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MainChannelIDParam
+     */
+    responder?: string;
+}
+
+/**
+ * 
+ * @export
  * @interface MainCreateCollectionBody
  */
 export interface MainCreateCollectionBody {
@@ -249,21 +275,33 @@ export interface MainImportDealBody {
 /**
  * 
  * @export
- * @interface MainUserStatsResponse
+ * @interface TypesIpfsPin
  */
-export interface MainUserStatsResponse {
+export interface TypesIpfsPin {
     /**
      * 
-     * @type {number}
-     * @memberof MainUserStatsResponse
+     * @type {string}
+     * @memberof TypesIpfsPin
      */
-    numPins?: number;
+    cid?: string;
     /**
      * 
-     * @type {number}
-     * @memberof MainUserStatsResponse
+     * @type {any}
+     * @memberof TypesIpfsPin
      */
-    totalSize?: number;
+    meta?: any;
+    /**
+     * 
+     * @type {string}
+     * @memberof TypesIpfsPin
+     */
+    name?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TypesIpfsPin
+     */
+    origins?: Array<string>;
 }
 
 /**
@@ -416,14 +454,14 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options: any = {}): FetchArgs {
+            // verify required parameter 'peerIds' is not null or undefined
+            if (peerIds === null || peerIds === undefined) {
+                throw new RequiredError('peerIds','Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
             }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -445,8 +483,8 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(peerIds || {}) : (peerIds || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -682,16 +720,16 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersDelete(peerIds, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -704,12 +742,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -722,12 +760,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -740,12 +778,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringStartPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -758,12 +796,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringStatusGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -776,12 +814,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringStopPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -794,12 +832,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminSystemConfigGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminSystemConfigGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminSystemConfigGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -812,12 +850,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminUsersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminUsersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminUsersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -836,12 +874,12 @@ export const AdminApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any) {
-            return AdminApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+            return AdminApiFp(configuration).adminPeeringPeersDelete(peerIds, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -919,13 +957,13 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param {Array<string>} body Peer ids
+     * @param {Array<boolean>} peerIds Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
-        return AdminApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+        return AdminApiFp(this.configuration).adminPeeringPeersDelete(peerIds, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1035,6 +1073,7 @@ export const AutoretrieveApiFetchParamCreator = function (configuration?: Config
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+            const localVarFormParams = new url.URLSearchParams();
 
             // authentication bearerAuth required
             if (configuration && configuration.apiKey) {
@@ -1044,14 +1083,21 @@ export const AutoretrieveApiFetchParamCreator = function (configuration?: Config
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
+            if (addresses !== undefined) {
+                localVarFormParams.set('addresses', addresses as any);
+            }
+
+            if (pubKey !== undefined) {
+                localVarFormParams.set('pubKey', pubKey as any);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(pubKey || {}) : (pubKey || "");
+            localVarRequestOptions.body = localVarFormParams.toString();
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1146,12 +1192,12 @@ export const AutoretrieveApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminAutoretrieveInitPost(addresses: string, pubKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminAutoretrieveInitPost(addresses: string, pubKey: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AutoretrieveApiFetchParamCreator(configuration).adminAutoretrieveInitPost(addresses, pubKey, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -1164,12 +1210,12 @@ export const AutoretrieveApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminAutoretrieveListGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminAutoretrieveListGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AutoretrieveApiFetchParamCreator(configuration).adminAutoretrieveListGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -1183,12 +1229,12 @@ export const AutoretrieveApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        autoretrieveHeartbeatPost(token: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        autoretrieveHeartbeatPost(token: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AutoretrieveApiFetchParamCreator(configuration).autoretrieveHeartbeatPost(token, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -1687,12 +1733,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidDelete(coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        collectionsColuuidDelete(coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidDelete(coluuid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -1727,7 +1773,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
+        collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(coluuid, contentIDs, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1748,12 +1794,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsFsAddPost(coluuid: string, content: string, path: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        collectionsFsAddPost(coluuid: string, content: string, path: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsFsAddPost(coluuid, content, path, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -1766,7 +1812,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CollectionsCollection>> {
+        collectionsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Array<CollectionsCollection>>> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -2751,12 +2797,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2771,12 +2817,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2836,12 +2882,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAllDealsGet(begin: string, duration: string, all: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentAllDealsGet(begin: string, duration: string, all: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAllDealsGet(begin, duration, all, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2855,12 +2901,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentBwUsageContentGet(content: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentBwUsageContentGet(content: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentBwUsageContentGet(content, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2875,12 +2921,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentCreatePost(req, ignoreDupes, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2895,12 +2941,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentDealsGet(limit?: number, offset?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentDealsGet(limit?: number, offset?: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentDealsGet(limit, offset, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2914,12 +2960,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentEnsureReplicationDatacidGet(datacid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentEnsureReplicationDatacidGet(datacid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentEnsureReplicationDatacidGet(datacid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2952,12 +2998,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentIdGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentIdGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentIdGet(id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2971,12 +3017,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentImportdealPost(body: MainImportDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentImportdealPost(body: MainImportDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentImportdealPost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -2989,7 +3035,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentListGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<string>> {
+        contentListGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentListGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -3008,12 +3054,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentReadContGet(cont: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentReadContGet(cont: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentReadContGet(cont, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -3026,12 +3072,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStagingZonesGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentStagingZonesGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStagingZonesGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -3046,12 +3092,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStatsGet(limit: string, offset: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentStatsGet(limit: string, offset: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStatsGet(limit, offset, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -3065,12 +3111,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentStatusIdGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        contentStatusIdGet(id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStatusIdGet(id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -3765,6 +3811,46 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
             };
         },
         /**
+         * This endpoint returns the status of a transfer
+         * @summary Transfer Status
+         * @param {MainChannelIDParam} chanid Channel ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(chanid: MainChannelIDParam, options: any = {}): FetchArgs {
+            // verify required parameter 'chanid' is not null or undefined
+            if (chanid === null || chanid === undefined) {
+                throw new RequiredError('chanid','Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+            }
+            const localVarPath = `/deal/transfer/status`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MainChannelIDParam" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(chanid || {}) : (chanid || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint returns a list of storage failures for user
          * @summary Get storage failures for user
          * @param {*} [options] Override http request option.
@@ -3962,12 +4048,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealEstimatePost(body: MainEstimateDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealEstimatePost(body: MainEstimateDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealEstimatePost(body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -3981,12 +4067,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealInfoDealidGet(dealid: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealInfoDealidGet(dealid: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealInfoDealidGet(dealid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4000,12 +4086,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealProposalPropcidGet(propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealProposalPropcidGet(propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealProposalPropcidGet(propcid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4019,12 +4105,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealQueryMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealQueryMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealQueryMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4038,12 +4124,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealStatusByProposalPropcidGet(propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealStatusByProposalPropcidGet(propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealStatusByProposalPropcidGet(propcid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4058,12 +4144,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealStatusMinerPropcidGet(miner: string, propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealStatusMinerPropcidGet(miner: string, propcid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealStatusMinerPropcidGet(miner, propcid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4076,12 +4162,31 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealTransferInProgressGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealTransferInProgressGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealTransferInProgressGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns the status of a transfer
+         * @summary Transfer Status
+         * @param {MainChannelIDParam} chanid Channel ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(chanid: MainChannelIDParam, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealTransferStatusPost(chanid, options);
+            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4094,12 +4199,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealsFailuresGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealsFailuresGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealsFailuresGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4114,12 +4219,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealsMakeMinerPost(miner: string, dealRequest: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealsMakeMinerPost(miner: string, dealRequest: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealsMakeMinerPost(miner, dealRequest, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4133,12 +4238,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealsStatusDealGet(deal: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        dealsStatusDealGet(deal: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealsStatusDealGet(deal, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4151,12 +4256,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicDealsFailuresGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicDealsFailuresGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).publicDealsFailuresGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4170,12 +4275,12 @@ export const DealsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersStorageQueryMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersStorageQueryMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).publicMinersStorageQueryMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4260,6 +4365,16 @@ export const DealsApiFactory = function (configuration?: Configuration, fetch?: 
          */
         dealTransferInProgressGet(options?: any) {
             return DealsApiFp(configuration).dealTransferInProgressGet(options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns the status of a transfer
+         * @summary Transfer Status
+         * @param {MainChannelIDParam} chanid Channel ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        dealTransferStatusPost(chanid: MainChannelIDParam, options?: any) {
+            return DealsApiFp(configuration).dealTransferStatusPost(chanid, options)(fetch, basePath);
         },
         /**
          * This endpoint returns a list of storage failures for user
@@ -4405,6 +4520,18 @@ export class DealsApi extends BaseAPI {
     }
 
     /**
+     * This endpoint returns the status of a transfer
+     * @summary Transfer Status
+     * @param {MainChannelIDParam} chanid Channel ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DealsApi
+     */
+    public dealTransferStatusPost(chanid: MainChannelIDParam, options?: any) {
+        return DealsApiFp(this.configuration).dealTransferStatusPost(chanid, options)(this.fetch, this.basePath);
+    }
+
+    /**
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      * @param {*} [options] Override http request option.
@@ -4466,107 +4593,6 @@ export class DealsApi extends BaseAPI {
 }
 
 /**
- * DefaultApi - fetch parameter creator
- * @export
- */
-export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options: any = {}): FetchArgs {
-            const localVarPath = `/deal/transfer/status`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * DefaultApi - functional programming interface
- * @export
- */
-export const DefaultApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).dealTransferStatusPost(options);
-            return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response;
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * DefaultApi - factory interface
- * @export
- */
-export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        dealTransferStatusPost(options?: any) {
-            return DefaultApiFp(configuration).dealTransferStatusPost(options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
- */
-export class DefaultApi extends BaseAPI {
-    /**
-     * 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public dealTransferStatusPost(options?: any) {
-        return DefaultApiFp(this.configuration).dealTransferStatusPost(options)(this.fetch, this.basePath);
-    }
-
-}
-
-/**
  * MetricsApi - fetch parameter creator
  * @export
  */
@@ -4618,12 +4644,12 @@ export const MetricsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMetricsDealsOnChainGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMetricsDealsOnChainGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = MetricsApiFetchParamCreator(configuration).publicMetricsDealsOnChainGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4773,12 +4799,12 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -4792,12 +4818,12 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersStatsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersStatsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).publicMinersStatsMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5053,7 +5079,7 @@ export const NetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        netAddrsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<string>> {
+        netAddrsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = NetApiFetchParamCreator(configuration).netAddrsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -5072,12 +5098,12 @@ export const NetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersFailuresMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersFailuresMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = NetApiFetchParamCreator(configuration).publicMinersFailuresMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5090,12 +5116,12 @@ export const NetApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = NetApiFetchParamCreator(configuration).publicMinersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5270,14 +5296,14 @@ export const PeeringApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options: any = {}): FetchArgs {
+            // verify required parameter 'peerIds' is not null or undefined
+            if (peerIds === null || peerIds === undefined) {
+                throw new RequiredError('peerIds','Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
             }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -5299,8 +5325,8 @@ export const PeeringApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(peerIds || {}) : (peerIds || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5474,16 +5500,16 @@ export const PeeringApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersDelete(peerIds, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5496,12 +5522,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5514,12 +5540,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5532,12 +5558,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStartPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5550,12 +5576,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStatusGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5568,12 +5594,12 @@ export const PeeringApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStopPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5592,12 +5618,12 @@ export const PeeringApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any) {
-            return PeeringApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+            return PeeringApiFp(configuration).adminPeeringPeersDelete(peerIds, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -5657,13 +5683,13 @@ export class PeeringApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param {Array<string>} body Peer ids
+     * @param {Array<boolean>} peerIds Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PeeringApi
      */
-    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+        return PeeringApiFp(this.configuration).adminPeeringPeersDelete(peerIds, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -5732,14 +5758,14 @@ export const PeersApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options: any = {}): FetchArgs {
+            // verify required parameter 'peerIds' is not null or undefined
+            if (peerIds === null || peerIds === undefined) {
+                throw new RequiredError('peerIds','Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
             }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -5761,8 +5787,8 @@ export const PeersApiFetchParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(peerIds || {}) : (peerIds || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -5936,16 +5962,16 @@ export const PeersApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersDelete(peerIds, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5958,12 +5984,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5976,12 +6002,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -5994,12 +6020,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStartPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6012,12 +6038,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStatusGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6030,12 +6056,12 @@ export const PeersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStopPost(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6054,12 +6080,12 @@ export const PeersApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<string>} body Peer ids
+         * @param {Array<boolean>} peerIds Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<string>, options?: any) {
-            return PeersApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
+        adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+            return PeersApiFp(configuration).adminPeeringPeersDelete(peerIds, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to list all peers on Peering Service
@@ -6119,13 +6145,13 @@ export class PeersApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param {Array<string>} body Peer ids
+     * @param {Array<boolean>} peerIds Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PeersApi
      */
-    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, options?: any) {
+        return PeersApiFp(this.configuration).adminPeeringPeersDelete(peerIds, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -6336,23 +6362,16 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {string} cid cid
-         * @param {string} name name
+         * @param {TypesIpfsPin} pin Pin Body {cid:cid, name:name}
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(cid: string, name: string, options: any = {}): FetchArgs {
-            // verify required parameter 'cid' is not null or undefined
-            if (cid === null || cid === undefined) {
-                throw new RequiredError('cid','Required parameter cid was null or undefined when calling pinningPinsPost.');
+        pinningPinsPost(pin: TypesIpfsPin, options: any = {}): FetchArgs {
+            // verify required parameter 'pin' is not null or undefined
+            if (pin === null || pin === undefined) {
+                throw new RequiredError('pin','Required parameter pin was null or undefined when calling pinningPinsPost.');
             }
-            // verify required parameter 'name' is not null or undefined
-            if (name === null || name === undefined) {
-                throw new RequiredError('name','Required parameter name was null or undefined when calling pinningPinsPost.');
-            }
-            const localVarPath = `/pinning/pins`
-                .replace(`{${"cid"}}`, encodeURIComponent(String(cid)))
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+            const localVarPath = `/pinning/pins`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -6366,10 +6385,14 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(pin || {}) : (pin || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6391,12 +6414,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6410,12 +6433,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidDelete(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        pinningPinsPinidDelete(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidDelete(pinid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6429,12 +6452,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidGet(pinid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6448,12 +6471,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        pinningPinsPinidPost(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(pinid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6463,17 +6486,16 @@ export const PinningApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {string} cid cid
-         * @param {string} name name
+         * @param {TypesIpfsPin} pin Pin Body {cid:cid, name:name}
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(cid: string, name: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(cid, name, options);
+        pinningPinsPost(pin: TypesIpfsPin, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(pin, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6531,13 +6553,12 @@ export const PinningApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {string} cid cid
-         * @param {string} name name
+         * @param {TypesIpfsPin} pin Pin Body {cid:cid, name:name}
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(cid: string, name: string, options?: any) {
-            return PinningApiFp(configuration).pinningPinsPost(cid, name, options)(fetch, basePath);
+        pinningPinsPost(pin: TypesIpfsPin, options?: any) {
+            return PinningApiFp(configuration).pinningPinsPost(pin, options)(fetch, basePath);
         },
     };
 };
@@ -6599,14 +6620,13 @@ export class PinningApi extends BaseAPI {
     /**
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
-     * @param {string} cid cid
-     * @param {string} name name
+     * @param {TypesIpfsPin} pin Pin Body {cid:cid, name:name}
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPost(cid: string, name: string, options?: any) {
-        return PinningApiFp(this.configuration).pinningPinsPost(cid, name, options)(this.fetch, this.basePath);
+    public pinningPinsPost(pin: TypesIpfsPin, options?: any) {
+        return PinningApiFp(this.configuration).pinningPinsPost(pin, options)(this.fetch, this.basePath);
     }
 
 }
@@ -6972,12 +6992,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicByCidCidGet(cid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicByCidCidGet(cid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicByCidCidGet(cid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -6990,12 +7010,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicInfoGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicInfoGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicInfoGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7008,12 +7028,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMetricsDealsOnChainGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMetricsDealsOnChainGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMetricsDealsOnChainGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7028,12 +7048,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersDealsMinerGet(miner, ignoreFailed, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7047,12 +7067,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersFailuresMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersFailuresMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersFailuresMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7065,12 +7085,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7084,12 +7104,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicMinersStatsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicMinersStatsMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicMinersStatsMinerGet(miner, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7138,12 +7158,12 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicStatsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        publicStatsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicStatsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7458,7 +7478,7 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
-         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
          * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7573,7 +7593,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<MainGetApiKeysResp>> {
+        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Array<MainGetApiKeysResp>>> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7592,12 +7612,12 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysKeyDelete(key: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+        userApiKeysKeyDelete(key: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysKeyDelete(key, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response;
+                        return response.json();
                     } else {
                         throw response;
                     }
@@ -7607,7 +7627,7 @@ export const UserApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
-         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
          * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7648,7 +7668,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userStatsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<MainUserStatsResponse> {
+        userStatsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userStatsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7691,7 +7711,7 @@ export const UserApiFactory = function (configuration?: Configuration, fetch?: F
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
          * @summary Create API keys for a user
-         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+         * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
          * @param {string} [perms] Permissions -- currently unused
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7753,7 +7773,7 @@ export class UserApi extends BaseAPI {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param {string} [expiry] Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param {string} [perms] Permissions -- currently unused
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

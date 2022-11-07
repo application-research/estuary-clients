@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerMinerApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -39,9 +40,10 @@ class SWAGGER_API SwaggerMinerApi::PublicMinersDealsMinerGetResponse : public Re
 {
 public:
     virtual ~PublicMinersDealsMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get miner stats
@@ -63,9 +65,10 @@ class SWAGGER_API SwaggerMinerApi::PublicMinersStatsMinerGetResponse : public Re
 {
 public:
     virtual ~PublicMinersStatsMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

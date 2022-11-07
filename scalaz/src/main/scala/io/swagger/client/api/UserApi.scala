@@ -27,8 +27,8 @@ object UserApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def userApiKeysGet(host: String): Task[List[GetApiKeysResp]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[GetApiKeysResp]] = jsonOf[List[GetApiKeysResp]]
+  def userApiKeysGet(host: String): Task[List[List[GetApiKeysResp]]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[List[GetApiKeysResp]]] = jsonOf[List[List[GetApiKeysResp]]]
 
     val path = "/user/api-keys"
     
@@ -43,12 +43,14 @@ object UserApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[GetApiKeysResp]](req)
+      resp          <- client.expect[List[List[GetApiKeysResp]]](req)
 
     } yield resp
   }
   
-  def userApiKeysKeyDelete(host: String, key: String): Task[Unit] = {
+  def userApiKeysKeyDelete(host: String, key: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/user/api-keys/{key}".replaceAll("\\{" + "key" + "\\}",escape(key.toString))
     
     val httpMethod = Method.DELETE
@@ -62,7 +64,7 @@ object UserApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -109,8 +111,8 @@ object UserApi {
     } yield resp
   }
   
-  def userStatsGet(host: String): Task[UserStatsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserStatsResponse] = jsonOf[UserStatsResponse]
+  def userStatsGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/user/stats"
     
@@ -125,7 +127,7 @@ object UserApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserStatsResponse](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -137,8 +139,8 @@ class HttpServiceUserApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def userApiKeysGet(): Task[List[GetApiKeysResp]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[GetApiKeysResp]] = jsonOf[List[GetApiKeysResp]]
+  def userApiKeysGet(): Task[List[List[GetApiKeysResp]]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[List[GetApiKeysResp]]] = jsonOf[List[List[GetApiKeysResp]]]
 
     val path = "/user/api-keys"
     
@@ -153,12 +155,14 @@ class HttpServiceUserApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[GetApiKeysResp]](req)
+      resp          <- client.expect[List[List[GetApiKeysResp]]](req)
 
     } yield resp
   }
   
-  def userApiKeysKeyDelete(key: String): Task[Unit] = {
+  def userApiKeysKeyDelete(key: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/user/api-keys/{key}".replaceAll("\\{" + "key" + "\\}",escape(key.toString))
     
     val httpMethod = Method.DELETE
@@ -172,7 +176,7 @@ class HttpServiceUserApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -219,8 +223,8 @@ class HttpServiceUserApi(service: HttpService) {
     } yield resp
   }
   
-  def userStatsGet(): Task[UserStatsResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[UserStatsResponse] = jsonOf[UserStatsResponse]
+  def userStatsGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/user/stats"
     
@@ -235,7 +239,7 @@ class HttpServiceUserApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[UserStatsResponse](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

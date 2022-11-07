@@ -28,6 +28,7 @@ import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
 import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -65,9 +66,9 @@ public class ContentApi {
    * @param body Car
    * @param ignoreDupes Ignore Dupes
    * @param filename Filename
-   * @return void
+   * @return String
   */
-  public void contentAddCarPost (String body, String ignoreDupes, String filename) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentAddCarPost (String body, String ignoreDupes, String filename) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -104,9 +105,9 @@ public class ContentApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -176,7 +177,11 @@ public class ContentApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -193,9 +198,9 @@ public class ContentApi {
   * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    * @param body IPFS Body
    * @param ignoreDupes Ignore Dupes
-   * @return void
+   * @return String
   */
-  public void contentAddIpfsPost (UtilContentAddIpfsBody body, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentAddIpfsPost (UtilContentAddIpfsBody body, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -231,9 +236,9 @@ public class ContentApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -302,7 +307,11 @@ public class ContentApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -608,9 +617,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
    * @param begin Begin
    * @param duration Duration
    * @param all All
-   * @return void
+   * @return String
   */
-  public void contentAllDealsGet (String begin, String duration, String all) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentAllDealsGet (String begin, String duration, String all) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'begin' is set
     if (begin == null) {
@@ -658,9 +667,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -741,7 +750,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -757,9 +770,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Get content bandwidth
   * This endpoint returns content bandwidth
    * @param content Content ID
-   * @return void
+   * @return String
   */
-  public void contentBwUsageContentGet (String content) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentBwUsageContentGet (String content) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'content' is set
     if (content == null) {
@@ -794,9 +807,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -864,7 +877,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -881,9 +898,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * This endpoint adds a new content
    * @param req Content
    * @param ignoreDupes Ignore Dupes
-   * @return void
+   * @return String
   */
-  public void contentCreatePost (UtilContentCreateBody req, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentCreatePost (UtilContentCreateBody req, String ignoreDupes) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = req;
     // verify the required parameter 'req' is set
     if (req == null) {
@@ -919,9 +936,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -990,7 +1007,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1007,9 +1028,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * This endpoint lists all content with deals
    * @param limit Limit
    * @param offset Offset
-   * @return void
+   * @return String
   */
-  public void contentDealsGet (Integer limit, Integer offset) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentDealsGet (Integer limit, Integer offset) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -1041,9 +1062,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1108,7 +1129,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1124,9 +1149,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Ensure Replication
   * This endpoint ensures that the content is replicated to the specified number of providers
    * @param datacid Data CID
-   * @return void
+   * @return String
   */
-  public void contentEnsureReplicationDatacidGet (String datacid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentEnsureReplicationDatacidGet (String datacid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'datacid' is set
     if (datacid == null) {
@@ -1161,9 +1186,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1231,7 +1256,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1374,9 +1403,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Content
   * This endpoint returns a content by its ID
    * @param id Content ID
-   * @return void
+   * @return String
   */
-  public void contentIdGet (Integer id) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentIdGet (Integer id) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -1411,9 +1440,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1481,7 +1510,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1497,9 +1530,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Import a deal
   * This endpoint imports a deal into the shuttle.
    * @param body Import a deal
-   * @return void
+   * @return String
   */
-  public void contentImportdealPost (MainImportDealBody body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentImportdealPost (MainImportDealBody body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -1534,9 +1567,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1604,7 +1637,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1619,9 +1656,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   /**
   * List all pinned content
   * This endpoint lists all content
-   * @return List<String>
+   * @return String
   */
-  public List<String> contentListGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentListGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -1651,7 +1688,7 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (List<String>) ApiInvoker.deserialize(localVarResponse, "array", String.class);
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
          return null;
       }
@@ -1677,7 +1714,7 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
    * This endpoint lists all content
 
   */
-  public void contentListGet (final Response.Listener<List<String>> responseListener, final Response.ErrorListener errorListener) {
+  public void contentListGet (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -1717,7 +1754,7 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((List<String>) ApiInvoker.deserialize(localVarResponse,  "array", String.class));
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -1736,9 +1773,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Read content
   * This endpoint reads content from the blockstore
    * @param cont CID
-   * @return void
+   * @return String
   */
-  public void contentReadContGet (String cont) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentReadContGet (String cont) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'cont' is set
     if (cont == null) {
@@ -1773,9 +1810,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1843,7 +1880,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1858,9 +1899,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   /**
   * Get staging zone for user
   * This endpoint is used to get staging zone for user.
-   * @return void
+   * @return String
   */
-  public void contentStagingZonesGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentStagingZonesGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -1890,9 +1931,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1955,7 +1996,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1972,9 +2017,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    * @param limit limit
    * @param offset offset
-   * @return void
+   * @return String
   */
-  public void contentStatsGet (String limit, String offset) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentStatsGet (String limit, String offset) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'limit' is set
     if (limit == null) {
@@ -2016,9 +2061,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -2093,7 +2138,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -2109,9 +2158,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
   * Content Status
   * This endpoint returns the status of a content
    * @param id Content ID
-   * @return void
+   * @return String
   */
-  public void contentStatusIdGet (Integer id) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String contentStatusIdGet (Integer id) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'id' is set
     if (id == null) {
@@ -2146,9 +2195,9 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -2216,7 +2265,11 @@ formParams.put("filename", ApiInvoker.parameterToString(filename));
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

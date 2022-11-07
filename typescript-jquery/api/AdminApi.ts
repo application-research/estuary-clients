@@ -49,16 +49,16 @@ export class AdminApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      */
-    public adminPeeringPeersDelete(body: Array<string>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        // verify required parameter 'peerIds' is not null or undefined
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
 
@@ -87,7 +87,7 @@ export class AdminApi {
             processData: false
         };
 
-        requestOptions.data = JSON.stringify(body);
+        requestOptions.data = JSON.stringify(peerIds);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }
@@ -102,7 +102,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -114,7 +114,7 @@ export class AdminApi {
      * This endpoint can be used to list all peers on Peering Service
      * @summary List all Peering peers
      */
-    public adminPeeringPeersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringPeersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
@@ -157,7 +157,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -169,7 +169,7 @@ export class AdminApi {
      * This endpoint can be used to add a Peer from the Peering Service
      * @summary Add peers on Peering Service
      */
-    public adminPeeringPeersPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringPeersPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
@@ -212,7 +212,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -224,7 +224,7 @@ export class AdminApi {
      * This endpoint can be used to start the Peering Service
      * @summary Start Peering
      */
-    public adminPeeringStartPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringStartPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/start';
 
         let queryParameters: any = {};
@@ -267,7 +267,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -279,7 +279,7 @@ export class AdminApi {
      * This endpoint can be used to check the Peering status
      * @summary Check Peering Status
      */
-    public adminPeeringStatusGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringStatusGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/status';
 
         let queryParameters: any = {};
@@ -322,7 +322,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -334,7 +334,7 @@ export class AdminApi {
      * This endpoint can be used to stop the Peering Service
      * @summary Stop Peering
      */
-    public adminPeeringStopPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminPeeringStopPost(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/peering/stop';
 
         let queryParameters: any = {};
@@ -377,7 +377,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -389,7 +389,7 @@ export class AdminApi {
      * This endpoint is used to get system configs.
      * @summary Get systems(estuary/shuttle) config
      */
-    public adminSystemConfigGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminSystemConfigGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/system/config';
 
         let queryParameters: any = {};
@@ -432,7 +432,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -444,7 +444,7 @@ export class AdminApi {
      * This endpoint is used to get all users.
      * @summary Get all users
      */
-    public adminUsersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminUsersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/users';
 
         let queryParameters: any = {};
@@ -487,7 +487,7 @@ export class AdminApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

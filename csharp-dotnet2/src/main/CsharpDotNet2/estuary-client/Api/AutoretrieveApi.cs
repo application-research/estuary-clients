@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -15,19 +16,19 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-        /// <returns></returns>
-        void AdminAutoretrieveInitPost (string addresses, string pubKey);
+        /// <returns>string</returns>
+        string AdminAutoretrieveInitPost (string addresses, string pubKey);
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
-        /// <returns></returns>
-        void AdminAutoretrieveListGet ();
+        /// <returns>string</returns>
+        string AdminAutoretrieveListGet ();
         /// <summary>
         /// Marks autoretrieve server as up This endpoint updates the lastConnection field for autoretrieve
         /// </summary>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
-        /// <returns></returns>
-        void AutoretrieveHeartbeatPost (string token);
+        /// <returns>string</returns>
+        string AutoretrieveHeartbeatPost (string token);
     }
   
     /// <summary>
@@ -88,8 +89,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param> 
         /// <param name="pubKey">Autoretrieve&#39;s public key</param> 
-        /// <returns></returns>            
-        public void AdminAutoretrieveInitPost (string addresses, string pubKey)
+        /// <returns>string</returns>            
+        public string AdminAutoretrieveInitPost (string addresses, string pubKey)
         {
             
             // verify the required parameter 'addresses' is set
@@ -108,8 +109,9 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(pubKey); // http body (model) parameter
-    
+                                    if (addresses != null) formParams.Add("addresses", ApiClient.ParameterToString(addresses)); // form parameter
+if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)); // form parameter
+                
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -121,14 +123,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminAutoretrieveInitPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
-        /// <returns></returns>            
-        public void AdminAutoretrieveListGet ()
+        /// <returns>string</returns>            
+        public string AdminAutoretrieveListGet ()
         {
             
     
@@ -153,15 +155,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminAutoretrieveListGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Marks autoretrieve server as up This endpoint updates the lastConnection field for autoretrieve
         /// </summary>
         /// <param name="token">Autoretrieve&#39;s auth token</param> 
-        /// <returns></returns>            
-        public void AutoretrieveHeartbeatPost (string token)
+        /// <returns>string</returns>            
+        public string AutoretrieveHeartbeatPost (string token)
         {
             
             // verify the required parameter 'token' is set
@@ -190,7 +192,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AutoretrieveHeartbeatPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

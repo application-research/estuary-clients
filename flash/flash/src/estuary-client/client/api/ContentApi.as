@@ -11,6 +11,7 @@ import estuary-client.client.model.MainImportDealBody;
 import estuary-client.client.model.UtilContentAddIpfsBody;
 import estuary-client.client.model.UtilContentAddResponse;
 import estuary-client.client.model.UtilContentCreateBody;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -47,7 +48,7 @@ public class ContentApi extends SwaggerApi {
 
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_add_car_post (body: String, ignoreDupes: String, filename: String): String {
         // create path and map variables
@@ -83,13 +84,13 @@ if("null" != String(filename))
         token.requestId = requestId;
         token.completionEventType = "content_add_car_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_add_ipfs_post (body: UtilContentAddIpfsBody, ignoreDupes: String): String {
         // create path and map variables
@@ -119,7 +120,7 @@ if("null" != String(filename))
         token.requestId = requestId;
         token.completionEventType = "content_add_ipfs_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
@@ -219,7 +220,7 @@ if("null" != String(dir))
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_all_deals_get (begin: String, duration: String, all: String): String {
         // create path and map variables
@@ -257,13 +258,13 @@ if("null" != String(all))
         token.requestId = requestId;
         token.completionEventType = "content_all_deals_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_bw_usage_content_get (content: String): String {
         // create path and map variables
@@ -287,13 +288,13 @@ if("null" != String(all))
         token.requestId = requestId;
         token.completionEventType = "content_bw_usage_content_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_create_post (req: UtilContentCreateBody, ignoreDupes: String): String {
         // create path and map variables
@@ -323,13 +324,13 @@ if("null" != String(all))
         token.requestId = requestId;
         token.completionEventType = "content_create_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_deals_get (limit: Number, offset: Number): String {
         // create path and map variables
@@ -361,13 +362,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_deals_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_ensure_replication_datacid_get (datacid: String): String {
         // create path and map variables
@@ -391,7 +392,7 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_ensure_replication_datacid_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
@@ -427,7 +428,7 @@ if("null" != String(offset))
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_id_get (id: Number): String {
         // create path and map variables
@@ -451,13 +452,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_id_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_importdeal_post (body: MainImportDealBody): String {
         // create path and map variables
@@ -481,13 +482,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_importdeal_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns Array 
+     * Returns String 
      */
     public function content_list_get (): String {
         // create path and map variables
@@ -507,13 +508,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_list_get";
 
-        token.returnType = Array;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_read_cont_get (cont: String): String {
         // create path and map variables
@@ -537,13 +538,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_read_cont_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_staging_zones_get (): String {
         // create path and map variables
@@ -563,13 +564,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_staging_zones_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_stats_get (limit: String, offset: String): String {
         // create path and map variables
@@ -601,13 +602,13 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_stats_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function content_status_id_get (id: Number): String {
         // create path and map variables
@@ -631,7 +632,7 @@ if("null" != String(offset))
         token.requestId = requestId;
         token.completionEventType = "content_status_id_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

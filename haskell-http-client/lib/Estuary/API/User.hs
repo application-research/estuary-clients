@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 userApiKeysGet 
-  :: EstuaryRequest UserApiKeysGet MimeNoContent [MainGetApiKeysResp] MimeJSON
+  :: EstuaryRequest UserApiKeysGet MimeNoContent [[MainGetApiKeysResp]] MimeJSON
 userApiKeysGet =
   _mkRequest "GET" ["/user/api-keys"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -88,11 +88,9 @@ instance Produces UserApiKeysGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 userApiKeysKeyDelete 
   :: Key -- ^ "key" -  Key
-  -> EstuaryRequest UserApiKeysKeyDelete MimeNoContent res MimeJSON
+  -> EstuaryRequest UserApiKeysKeyDelete MimeNoContent Text MimeJSON
 userApiKeysKeyDelete (Key key) =
   _mkRequest "DELETE" ["/user/api-keys/",toPath key]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -120,7 +118,7 @@ userApiKeysPost =
 
 data UserApiKeysPost  
 
--- | /Optional Param/ "expiry" - Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+-- | /Optional Param/ "expiry" - Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 instance HasOptionalParam UserApiKeysPost Expiry where
   applyOptionalParam req (Expiry xs) =
     req `setQuery` toQuery ("expiry", Just xs)
@@ -165,7 +163,7 @@ instance Produces UserExportGet MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 userStatsGet 
-  :: EstuaryRequest UserStatsGet MimeNoContent MainUserStatsResponse MimeJSON
+  :: EstuaryRequest UserStatsGet MimeNoContent Text MimeJSON
 userStatsGet =
   _mkRequest "GET" ["/user/stats"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

@@ -15,7 +15,6 @@
 #include "SwaggerUserApi.h"
 
 #include "SwaggerMain_getApiKeysResp.h"
-#include "SwaggerMain_userStatsResponse.h"
 #include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
@@ -41,7 +40,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<SwaggerMain_getApiKeysResp> Content;
+    TArray<TArray<SwaggerMain_getApiKeysResp>> Content;
 };
 
 /* Revoke a User API Key.
@@ -63,9 +62,10 @@ class SWAGGER_API SwaggerUserApi::UserApiKeysKeyDeleteResponse : public Response
 {
 public:
     virtual ~UserApiKeysKeyDeleteResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Create API keys for a user
@@ -79,7 +79,7 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h */
+	/* Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h */
 	TOptional<FString> Expiry;
 	/* Permissions -- currently unused */
 	TOptional<FString> Perms;
@@ -138,7 +138,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    SwaggerMain_userStatsResponse Content;
+    FString Content;
 };
 
 }

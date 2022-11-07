@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**array[Main.getApiKeysResp]**](Main.getApiKeysResp.md)
+**array[array[Main.getApiKeysResp]]**
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -87,7 +87,7 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **string** | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **string** | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **string** | Permissions -- currently unused | [optional]
 
 ### Return type
@@ -150,7 +150,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Main.userStatsResponse**](Main.userStatsResponse.md)
+**string**
 
 ### Authorization
 

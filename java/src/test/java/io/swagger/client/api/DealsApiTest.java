@@ -13,7 +13,9 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.MainChannelIDParam;
 import io.swagger.client.model.MainEstimateDealBody;
+import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -43,7 +45,7 @@ public class DealsApiTest {
     @Test
     public void dealEstimatePostTest() throws Exception {
         MainEstimateDealBody body = null;
-        api.dealEstimatePost(body);
+        String response = api.dealEstimatePost(body);
 
         // TODO: test validations
     }
@@ -59,7 +61,7 @@ public class DealsApiTest {
     @Test
     public void dealInfoDealidGetTest() throws Exception {
         Integer dealid = null;
-        api.dealInfoDealidGet(dealid);
+        String response = api.dealInfoDealidGet(dealid);
 
         // TODO: test validations
     }
@@ -75,7 +77,7 @@ public class DealsApiTest {
     @Test
     public void dealProposalPropcidGetTest() throws Exception {
         String propcid = null;
-        api.dealProposalPropcidGet(propcid);
+        String response = api.dealProposalPropcidGet(propcid);
 
         // TODO: test validations
     }
@@ -91,7 +93,7 @@ public class DealsApiTest {
     @Test
     public void dealQueryMinerGetTest() throws Exception {
         String miner = null;
-        api.dealQueryMinerGet(miner);
+        String response = api.dealQueryMinerGet(miner);
 
         // TODO: test validations
     }
@@ -107,7 +109,7 @@ public class DealsApiTest {
     @Test
     public void dealStatusByProposalPropcidGetTest() throws Exception {
         String propcid = null;
-        api.dealStatusByProposalPropcidGet(propcid);
+        String response = api.dealStatusByProposalPropcidGet(propcid);
 
         // TODO: test validations
     }
@@ -124,7 +126,7 @@ public class DealsApiTest {
     public void dealStatusMinerPropcidGetTest() throws Exception {
         String miner = null;
         String propcid = null;
-        api.dealStatusMinerPropcidGet(miner, propcid);
+        String response = api.dealStatusMinerPropcidGet(miner, propcid);
 
         // TODO: test validations
     }
@@ -139,7 +141,23 @@ public class DealsApiTest {
      */
     @Test
     public void dealTransferInProgressGetTest() throws Exception {
-        api.dealTransferInProgressGet();
+        String response = api.dealTransferInProgressGet();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Transfer Status
+     *
+     * This endpoint returns the status of a transfer
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void dealTransferStatusPostTest() throws Exception {
+        MainChannelIDParam chanid = null;
+        String response = api.dealTransferStatusPost(chanid);
 
         // TODO: test validations
     }
@@ -154,7 +172,7 @@ public class DealsApiTest {
      */
     @Test
     public void dealsFailuresGetTest() throws Exception {
-        api.dealsFailuresGet();
+        String response = api.dealsFailuresGet();
 
         // TODO: test validations
     }
@@ -171,7 +189,7 @@ public class DealsApiTest {
     public void dealsMakeMinerPostTest() throws Exception {
         String miner = null;
         String dealRequest = null;
-        api.dealsMakeMinerPost(miner, dealRequest);
+        String response = api.dealsMakeMinerPost(miner, dealRequest);
 
         // TODO: test validations
     }
@@ -187,7 +205,7 @@ public class DealsApiTest {
     @Test
     public void dealsStatusDealGetTest() throws Exception {
         Integer deal = null;
-        api.dealsStatusDealGet(deal);
+        String response = api.dealsStatusDealGet(deal);
 
         // TODO: test validations
     }
@@ -202,7 +220,7 @@ public class DealsApiTest {
      */
     @Test
     public void publicDealsFailuresGetTest() throws Exception {
-        api.publicDealsFailuresGet();
+        String response = api.publicDealsFailuresGet();
 
         // TODO: test validations
     }
@@ -218,7 +236,7 @@ public class DealsApiTest {
     @Test
     public void publicMinersStorageQueryMinerGetTest() throws Exception {
         String miner = null;
-        api.publicMinersStorageQueryMinerGet(miner);
+        String response = api.publicMinersStorageQueryMinerGet(miner);
 
         // TODO: test validations
     }

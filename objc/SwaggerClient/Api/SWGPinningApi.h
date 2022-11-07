@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGTypesIpfsPin.h"
 #import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
@@ -27,13 +28,14 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 /// This endpoint lists all pin status objects
 ///
 /// 
+///  code:200 message:"OK",
 ///  code:400 message:"Bad Request",
 ///  code:404 message:"Not Found",
 ///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) pinningPinsGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Delete a pinned object
@@ -41,10 +43,13 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 ///
 /// @param pinid Pin ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) pinningPinsPinidDeleteWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get a pin status object
@@ -52,10 +57,13 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 ///
 /// @param pinid cid
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) pinningPinsPinidGetWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Replace a pinned object
@@ -63,23 +71,27 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 ///
 /// @param pinid Pin ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) pinningPinsPinidPostWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add and pin object
 /// This endpoint adds a pin to the IPFS daemon.
 ///
-/// @param cid cid
-/// @param name name
+/// @param pin Pin Body {cid:cid, name:name}
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
--(NSURLSessionTask*) pinningPinsPostWithCid: (NSString*) cid
-    name: (NSString*) name
-    completionHandler: (void (^)(NSError* error)) handler;
+/// @return NSString*
+-(NSURLSessionTask*) pinningPinsPostWithPin: (SWGTypesIpfsPin*) pin
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 

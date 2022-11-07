@@ -30,7 +30,7 @@ export class NetApi {
      * This endpoint is used to get net addrs
      * @summary Net Addrs
      */
-    public netAddrsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
+    public netAddrsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/net/addrs';
 
         let queryParameters: any = {};
@@ -53,7 +53,7 @@ export class NetApi {
      * @summary Get all miners
      * @param miner Filter by miner
      */
-    public publicMinersFailuresMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersFailuresMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/failures/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -81,7 +81,7 @@ export class NetApi {
      * This endpoint returns all miners
      * @summary Get all miners
      */
-    public publicMinersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners';
 
         let queryParameters: any = {};

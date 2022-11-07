@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> String adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -40,9 +40,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 AdminApi apiInstance = new AdminApi();
-List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
+List<Boolean> peerIds = Arrays.asList(new List<Boolean>()); // List<Boolean> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete(body);
+    String result = apiInstance.adminPeeringPeersDelete(peerIds);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersDelete");
     e.printStackTrace();
@@ -53,11 +54,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| Peer ids |
+ **peerIds** | **List&lt;Boolean&gt;**| Peer ids |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -70,7 +71,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersGet"></a>
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -95,7 +96,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringPeersGet();
+    String result = apiInstance.adminPeeringPeersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersGet");
     e.printStackTrace();
@@ -107,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -120,7 +122,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -145,7 +147,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringPeersPost();
+    String result = apiInstance.adminPeeringPeersPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
     e.printStackTrace();
@@ -157,7 +160,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -170,7 +173,7 @@ null (empty response body)
 
 <a name="adminPeeringStartPost"></a>
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> String adminPeeringStartPost()
 
 Start Peering
 
@@ -195,7 +198,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStartPost();
+    String result = apiInstance.adminPeeringStartPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStartPost");
     e.printStackTrace();
@@ -207,7 +211,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -220,7 +224,7 @@ null (empty response body)
 
 <a name="adminPeeringStatusGet"></a>
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -245,7 +249,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStatusGet();
+    String result = apiInstance.adminPeeringStatusGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStatusGet");
     e.printStackTrace();
@@ -257,7 +262,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -270,7 +275,7 @@ null (empty response body)
 
 <a name="adminPeeringStopPost"></a>
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> String adminPeeringStopPost()
 
 Stop Peering
 
@@ -295,7 +300,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminPeeringStopPost();
+    String result = apiInstance.adminPeeringStopPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringStopPost");
     e.printStackTrace();
@@ -307,7 +313,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -320,7 +326,7 @@ null (empty response body)
 
 <a name="adminSystemConfigGet"></a>
 # **adminSystemConfigGet**
-> adminSystemConfigGet()
+> String adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -345,7 +351,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminSystemConfigGet();
+    String result = apiInstance.adminSystemConfigGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminSystemConfigGet");
     e.printStackTrace();
@@ -357,7 +364,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -370,7 +377,7 @@ null (empty response body)
 
 <a name="adminUsersGet"></a>
 # **adminUsersGet**
-> adminUsersGet()
+> String adminUsersGet()
 
 Get all users
 
@@ -395,7 +402,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 AdminApi apiInstance = new AdminApi();
 try {
-    apiInstance.adminUsersGet();
+    String result = apiInstance.adminUsersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminUsersGet");
     e.printStackTrace();
@@ -407,7 +415,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

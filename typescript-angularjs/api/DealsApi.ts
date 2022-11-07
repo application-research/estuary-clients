@@ -31,7 +31,7 @@ export class DealsApi {
      * @summary Estimate the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      */
-    public dealEstimatePost (body: models.MainEstimateDealBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealEstimatePost (body: models.MainEstimateDealBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/estimate';
 
         let queryParameters: any = {};
@@ -60,7 +60,7 @@ export class DealsApi {
      * @summary Get Deal Info
      * @param dealid Deal ID
      */
-    public dealInfoDealidGet (dealid: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealInfoDealidGet (dealid: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/info/{dealid}'
             .replace('{' + 'dealid' + '}', encodeURIComponent(String(dealid)));
 
@@ -89,7 +89,7 @@ export class DealsApi {
      * @summary Get Proposal
      * @param propcid Proposal CID
      */
-    public dealProposalPropcidGet (propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealProposalPropcidGet (propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/proposal/{propcid}'
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
 
@@ -118,7 +118,7 @@ export class DealsApi {
      * @summary Query Ask
      * @param miner CID
      */
-    public dealQueryMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealQueryMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/query/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -147,7 +147,7 @@ export class DealsApi {
      * @summary Get Deal Status by PropCid
      * @param propcid PropCid
      */
-    public dealStatusByProposalPropcidGet (propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealStatusByProposalPropcidGet (propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/status-by-proposal/{propcid}'
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
 
@@ -177,7 +177,7 @@ export class DealsApi {
      * @param miner Miner
      * @param propcid Proposal CID
      */
-    public dealStatusMinerPropcidGet (miner: string, propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealStatusMinerPropcidGet (miner: string, propcid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/status/{miner}/{propcid}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)))
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
@@ -211,7 +211,7 @@ export class DealsApi {
      * This endpoint returns the in-progress transfers
      * @summary Transfer In Progress
      */
-    public dealTransferInProgressGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealTransferInProgressGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deal/transfer/in-progress';
 
         let queryParameters: any = {};
@@ -230,10 +230,39 @@ export class DealsApi {
         return this.$http(httpRequestParams);
     }
     /**
+     * This endpoint returns the status of a transfer
+     * @summary Transfer Status
+     * @param chanid Channel ID
+     */
+    public dealTransferStatusPost (chanid: models.MainChannelIDParam, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+        const localVarPath = this.basePath + '/deal/transfer/status';
+
+        let queryParameters: any = {};
+        let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        // verify required parameter 'chanid' is not null or undefined
+        if (chanid === null || chanid === undefined) {
+            throw new Error('Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+        }
+
+        let httpRequestParams: ng.IRequestConfig = {
+            method: 'POST',
+            url: localVarPath,
+            data: chanid,
+            params: queryParameters,
+            headers: headerParams
+        };
+
+        if (extraHttpRequestParams) {
+            httpRequestParams = (<any>Object).assign(httpRequestParams, extraHttpRequestParams);
+        }
+
+        return this.$http(httpRequestParams);
+    }
+    /**
      * This endpoint returns a list of storage failures for user
      * @summary Get storage failures for user
      */
-    public dealsFailuresGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealsFailuresGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deals/failures';
 
         let queryParameters: any = {};
@@ -257,7 +286,7 @@ export class DealsApi {
      * @param miner Miner
      * @param dealRequest Deal Request
      */
-    public dealsMakeMinerPost (miner: string, dealRequest: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealsMakeMinerPost (miner: string, dealRequest: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deals/make/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -292,7 +321,7 @@ export class DealsApi {
      * @summary Get Deal Status
      * @param deal Deal ID
      */
-    public dealsStatusDealGet (deal: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public dealsStatusDealGet (deal: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/deals/status/{deal}'
             .replace('{' + 'deal' + '}', encodeURIComponent(String(deal)));
 
@@ -320,7 +349,7 @@ export class DealsApi {
      * This endpoint returns a list of storage failures
      * @summary Get storage failures
      */
-    public publicDealsFailuresGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicDealsFailuresGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/deals/failures';
 
         let queryParameters: any = {};
@@ -343,7 +372,7 @@ export class DealsApi {
      * @summary Query Ask
      * @param miner CID
      */
-    public publicMinersStorageQueryMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersStorageQueryMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/storage/query/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 

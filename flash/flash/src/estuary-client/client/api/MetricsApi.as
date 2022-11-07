@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -26,7 +27,7 @@ public class MetricsApi extends SwaggerApi {
 
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_metrics_deals_on_chain_get (): String {
         // create path and map variables
@@ -46,7 +47,7 @@ public class MetricsApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_metrics_deals_on_chain_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

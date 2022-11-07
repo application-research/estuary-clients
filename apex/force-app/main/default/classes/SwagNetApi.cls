@@ -28,14 +28,14 @@ public class SwagNetApi {
     /**
      * Net Addrs
      * This endpoint is used to get net addrs
-     * @return List<String>
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public List<String> netAddrsGet() {
+    public String netAddrsGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (List<String>) client.invoke(
+        return (String) client.invoke(
             'GET', '/net/addrs', '',
             query, form,
             new Map<String, Object>(),
@@ -43,21 +43,22 @@ public class SwagNetApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            List<String>.class
+            String.class
         );
     }
     /**
      * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersFailuresMinerGet(Map<String, Object> params) {
+    public String publicMinersFailuresMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/failures/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -67,19 +68,20 @@ public class SwagNetApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get all miners
      * This endpoint returns all miners
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersGet() {
+    public String publicMinersGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners', '',
             query, form,
             new Map<String, Object>(),
@@ -87,7 +89,7 @@ public class SwagNetApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**

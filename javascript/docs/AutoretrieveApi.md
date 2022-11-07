@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="adminAutoretrieveInitPost"></a>
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost(addresses, pubKey)
+> 'String' adminAutoretrieveInitPost(addresses, pubKey)
 
 Register autoretrieve server
 
@@ -39,7 +39,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminAutoretrieveInitPost(addresses, pubKey, callback);
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -67,7 +67,7 @@ null (empty response body)
 
 <a name="adminAutoretrieveListGet"></a>
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> 'String' adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -90,7 +90,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminAutoretrieveListGet(callback);
@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -114,7 +114,7 @@ null (empty response body)
 
 <a name="autoretrieveHeartbeatPost"></a>
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost(token)
+> 'String' autoretrieveHeartbeatPost(token)
 
 Marks autoretrieve server as up
 
@@ -140,7 +140,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.autoretrieveHeartbeatPost(token, callback);
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

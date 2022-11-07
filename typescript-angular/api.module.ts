@@ -8,7 +8,6 @@ import { AutoretrieveService } from './api/autoretrieve.service';
 import { CollectionsService } from './api/collections.service';
 import { ContentService } from './api/content.service';
 import { DealsService } from './api/deals.service';
-import { DefaultService } from './api/default.service';
 import { MetricsService } from './api/metrics.service';
 import { MinerService } from './api/miner.service';
 import { NetService } from './api/net.service';
@@ -28,7 +27,6 @@ import { UserService } from './api/user.service';
     CollectionsService,
     ContentService,
     DealsService,
-    DefaultService,
     MetricsService,
     MinerService,
     NetService,

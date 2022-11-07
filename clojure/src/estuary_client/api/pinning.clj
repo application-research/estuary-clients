@@ -84,13 +84,14 @@
 (defn pinning-pins-post-with-http-info
   "Add and pin object
   This endpoint adds a pin to the IPFS daemon."
-  [cid name ]
-  (check-required-params cid name)
+  [pin ]
+  (check-required-params pin)
   (call-api "/pinning/pins" :post
-            {:path-params   {"cid" cid "name" name }
+            {:path-params   {}
              :header-params {}
              :query-params  {}
              :form-params   {}
+             :body-param    pin
              :content-types []
              :accepts       ["application/json"]
              :auth-names    ["bearerAuth"]}))
@@ -98,6 +99,6 @@
 (defn pinning-pins-post
   "Add and pin object
   This endpoint adds a pin to the IPFS daemon."
-  [cid name ]
-  (:data (pinning-pins-post-with-http-info cid name)))
+  [pin ]
+  (:data (pinning-pins-post-with-http-info pin)))
 

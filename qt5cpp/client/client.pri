@@ -3,12 +3,13 @@ QT += network
 HEADERS += \
 # Models
     $${PWD}/SWGCollections.Collection.h \
+    $${PWD}/SWGMain.ChannelIDParam.h \
     $${PWD}/SWGMain.createCollectionBody.h \
     $${PWD}/SWGMain.deleteContentFromCollectionBody.h \
     $${PWD}/SWGMain.estimateDealBody.h \
     $${PWD}/SWGMain.getApiKeysResp.h \
     $${PWD}/SWGMain.importDealBody.h \
-    $${PWD}/SWGMain.userStatsResponse.h \
+    $${PWD}/SWGTypes.IpfsPin.h \
     $${PWD}/SWGUtil.ContentAddIpfsBody.h \
     $${PWD}/SWGUtil.ContentAddResponse.h \
     $${PWD}/SWGUtil.ContentCreateBody.h \
@@ -19,7 +20,6 @@ HEADERS += \
     $${PWD}/SWGCollectionsApi.h \
     $${PWD}/SWGContentApi.h \
     $${PWD}/SWGDealsApi.h \
-    $${PWD}/SWGDefaultApi.h \
     $${PWD}/SWGMetricsApi.h \
     $${PWD}/SWGMinerApi.h \
     $${PWD}/SWGNetApi.h \
@@ -38,12 +38,13 @@ HEADERS += \
 SOURCES += \
 # Models
     $${PWD}/SWGCollections.Collection.cpp \
+    $${PWD}/SWGMain.ChannelIDParam.cpp \
     $${PWD}/SWGMain.createCollectionBody.cpp \
     $${PWD}/SWGMain.deleteContentFromCollectionBody.cpp \
     $${PWD}/SWGMain.estimateDealBody.cpp \
     $${PWD}/SWGMain.getApiKeysResp.cpp \
     $${PWD}/SWGMain.importDealBody.cpp \
-    $${PWD}/SWGMain.userStatsResponse.cpp \
+    $${PWD}/SWGTypes.IpfsPin.cpp \
     $${PWD}/SWGUtil.ContentAddIpfsBody.cpp \
     $${PWD}/SWGUtil.ContentAddResponse.cpp \
     $${PWD}/SWGUtil.ContentCreateBody.cpp \
@@ -54,7 +55,6 @@ SOURCES += \
     $${PWD}/SWGCollectionsApi.cpp \
     $${PWD}/SWGContentApi.cpp \
     $${PWD}/SWGDealsApi.cpp \
-    $${PWD}/SWGDefaultApi.cpp \
     $${PWD}/SWGMetricsApi.cpp \
     $${PWD}/SWGMinerApi.cpp \
     $${PWD}/SWGNetApi.cpp \

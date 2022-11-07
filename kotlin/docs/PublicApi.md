@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="publicByCidCidGet"></a>
 # **publicByCidCidGet**
-> publicByCidCidGet(cid)
+> kotlin.String publicByCidCidGet(cid)
 
 Get Content by Cid
 
@@ -33,7 +33,8 @@ This endpoint returns the content associated with a CID
 val apiInstance = PublicApi()
 val cid : kotlin.String = cid_example // kotlin.String | Cid
 try {
-    apiInstance.publicByCidCidGet(cid)
+    val result : kotlin.String = apiInstance.publicByCidCidGet(cid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicByCidCidGet")
     e.printStackTrace()
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -64,7 +65,7 @@ null (empty response body)
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> publicInfoGet()
+> kotlin.String publicInfoGet()
 
 Get public node info
 
@@ -78,7 +79,8 @@ This endpoint returns information about the node
 
 val apiInstance = PublicApi()
 try {
-    apiInstance.publicInfoGet()
+    val result : kotlin.String = apiInstance.publicInfoGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicInfoGet")
     e.printStackTrace()
@@ -93,7 +95,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -106,7 +108,7 @@ null (empty response body)
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> kotlin.String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -120,7 +122,8 @@ This endpoint is used to get deal metrics
 
 val apiInstance = PublicApi()
 try {
-    apiInstance.publicMetricsDealsOnChainGet()
+    val result : kotlin.String = apiInstance.publicMetricsDealsOnChainGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMetricsDealsOnChainGet")
     e.printStackTrace()
@@ -135,7 +138,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -148,7 +151,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> kotlin.String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -164,7 +167,8 @@ val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 val ignoreFailed : kotlin.String = ignoreFailed_example // kotlin.String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
+    val result : kotlin.String = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMinersDealsMinerGet")
     e.printStackTrace()
@@ -183,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -196,7 +200,7 @@ null (empty response body)
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> kotlin.String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -211,7 +215,8 @@ This endpoint returns all miners
 val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner)
+    val result : kotlin.String = apiInstance.publicMinersFailuresMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMinersFailuresMinerGet")
     e.printStackTrace()
@@ -229,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -242,7 +247,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> kotlin.String publicMinersGet()
 
 Get all miners
 
@@ -256,7 +261,8 @@ This endpoint returns all miners
 
 val apiInstance = PublicApi()
 try {
-    apiInstance.publicMinersGet()
+    val result : kotlin.String = apiInstance.publicMinersGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMinersGet")
     e.printStackTrace()
@@ -271,7 +277,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -284,7 +290,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> kotlin.String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -299,7 +305,8 @@ This endpoint returns miner stats
 val apiInstance = PublicApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner)
+    val result : kotlin.String = apiInstance.publicMinersStatsMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicMinersStatsMinerGet")
     e.printStackTrace()
@@ -317,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -416,7 +423,7 @@ This endpoint does not need any parameter.
 
 <a name="publicStatsGet"></a>
 # **publicStatsGet**
-> publicStatsGet()
+> kotlin.String publicStatsGet()
 
 Public stats
 
@@ -430,7 +437,8 @@ This endpoint is used to get public stats.
 
 val apiInstance = PublicApi()
 try {
-    apiInstance.publicStatsGet()
+    val result : kotlin.String = apiInstance.publicStatsGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicStatsGet")
     e.printStackTrace()
@@ -445,7 +453,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

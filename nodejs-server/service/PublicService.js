@@ -6,11 +6,20 @@
  * This endpoint returns the content associated with a CID
  *
  * cid String Cid
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicBy_cidCidGET = function(cid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -19,11 +28,20 @@ exports.publicBy_cidCidGET = function(cid) {
  * Get public node info
  * This endpoint returns information about the node
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicInfoGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -32,11 +50,20 @@ exports.publicInfoGET = function() {
  * Get deal metrics
  * This endpoint is used to get deal metrics
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMetricsDeals_on_chainGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -47,11 +74,20 @@ exports.publicMetricsDeals_on_chainGET = function() {
  *
  * miner String Filter by miner
  * ignoreFailed String Ignore Failed (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -61,11 +97,20 @@ exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
  * This endpoint returns all miners
  *
  * miner String Filter by miner
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersFailuresMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -74,11 +119,20 @@ exports.publicMinersFailuresMinerGET = function(miner) {
  * Get all miners
  * This endpoint returns all miners
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -88,11 +142,20 @@ exports.publicMinersGET = function() {
  * This endpoint returns miner stats
  *
  * miner String Filter by miner
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersStatsMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -139,11 +202,20 @@ exports.publicNetPeersGET = function() {
  * Public stats
  * This endpoint is used to get public stats.
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicStatsGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

@@ -2,7 +2,6 @@
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
 #import "SWGMainGetApiKeysResp.h"
-#import "SWGMainUserStatsResponse.h"
 #import "SWGUtilHttpError.h"
 
 
@@ -54,10 +53,10 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 ///
 /// Get API keys for a user
 /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-///  @returns NSArray<SWGMainGetApiKeysResp>*
+///  @returns NSArray<NSArray<SWGMainGetApiKeysResp>*>*
 ///
 -(NSURLSessionTask*) userApiKeysGetWithCompletionHandler: 
-    (void (^)(NSArray<SWGMainGetApiKeysResp>* output, NSError* error)) handler {
+    (void (^)(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/api-keys"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -95,10 +94,10 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<SWGMainGetApiKeysResp>*"
+                              responseType: @"NSArray<NSArray<SWGMainGetApiKeysResp>*>*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<SWGMainGetApiKeysResp>*)data, error);
+                                    handler((NSArray<NSArray<SWGMainGetApiKeysResp>*>*)data, error);
                                 }
                             }];
 }
@@ -108,17 +107,17 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
 ///  @param key Key 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
     if (key == nil) {
         NSParameterAssert(key);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"key"] };
             NSError* error = [NSError errorWithDomain:kSWGUserApiErrorDomain code:kSWGUserApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -163,10 +162,10 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -174,7 +173,7 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 ///
 /// Create API keys for a user
 /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-///  @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+///  @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 ///
 ///  @param perms Permissions -- currently unused (optional)
 ///
@@ -289,10 +288,10 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 ///
 /// Create API keys for a user
 /// This endpoint is used to create API keys for a user.
-///  @returns SWGMainUserStatsResponse*
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) userStatsGetWithCompletionHandler: 
-    (void (^)(SWGMainUserStatsResponse* output, NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/stats"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -330,10 +329,10 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGMainUserStatsResponse*"
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGMainUserStatsResponse*)data, error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

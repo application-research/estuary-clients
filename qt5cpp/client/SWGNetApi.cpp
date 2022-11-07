@@ -68,22 +68,10 @@ SWGNetApi::netAddrsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    QList<QString*>* output = new QList<QString*>();
     QString json(worker->response);
-    QByteArray array (json.toStdString().c_str());
-    QJsonDocument doc = QJsonDocument::fromJson(array);
-    QJsonArray jsonArray = doc.array();
-    auto wrapper = new SWGQObjectWrapper<QList<QString*>*> (output);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
     wrapper->deleteLater();
-    foreach(QJsonValue obj, jsonArray) {
-        QString* o = new QString();
-        QJsonObject jv = obj.toObject();
-        QJsonObject * ptr = (QJsonObject*)&jv;
-        o->fromJsonObject(*ptr);
-        auto objwrapper = new SWGQObjectWrapper<QString*> (o);
-        objwrapper->deleteLater();
-        output->append(o);
-    }
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
@@ -135,12 +123,16 @@ SWGNetApi::publicMinersFailuresMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersFailuresMinerGetSignal();
+        emit publicMinersFailuresMinerGetSignal(output);
     } else {
-        emit publicMinersFailuresMinerGetSignalE(error_type, error_str);
+        emit publicMinersFailuresMinerGetSignalE(output, error_type, error_str);
         emit publicMinersFailuresMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -184,12 +176,16 @@ SWGNetApi::publicMinersGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersGetSignal();
+        emit publicMinersGetSignal(output);
     } else {
-        emit publicMinersGetSignalE(error_type, error_str);
+        emit publicMinersGetSignalE(output, error_type, error_str);
         emit publicMinersGetSignalEFull(worker, error_type, error_str);
     }
 }

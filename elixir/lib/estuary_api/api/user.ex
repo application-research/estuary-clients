@@ -22,17 +22,17 @@ defmodule EstuaryAPI.Api.User do
 
   ## Returns
 
-  {:ok, [%MainGetApiKeysResp{}, ...]} on success
+  {:ok, [%List{}, ...]} on success
   {:error, info} on failure
   """
-  @spec user_api_keys_get(Tesla.Env.client, keyword()) :: {:ok, list(EstuaryAPI.Model.MainGetApiKeysResp.t)} | {:error, Tesla.Env.t}
+  @spec user_api_keys_get(Tesla.Env.client, keyword()) :: {:ok, list(List.t)} | {:error, Tesla.Env.t}
   def user_api_keys_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/user/api-keys")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode([%EstuaryAPI.Model.MainGetApiKeysResp{}])
+    |> decode([%EstuaryAPI.Model.List{}])
   end
 
   @doc """
@@ -47,10 +47,10 @@ defmodule EstuaryAPI.Api.User do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec user_api_keys_key_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec user_api_keys_key_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def user_api_keys_key_delete(connection, key, _opts \\ []) do
     %{}
     |> method(:delete)
@@ -68,7 +68,7 @@ defmodule EstuaryAPI.Api.User do
 
   - connection (EstuaryAPI.Connection): Connection to server
   - opts (KeywordList): [optional] Optional parameters
-    - :expiry (String.t): Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+    - :expiry (String.t): Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     - :perms (String.t): Permissions -- currently unused
 
   ## Returns
@@ -126,16 +126,16 @@ defmodule EstuaryAPI.Api.User do
 
   ## Returns
 
-  {:ok, %EstuaryAPI.Model.MainUserStatsResponse{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec user_stats_get(Tesla.Env.client, keyword()) :: {:ok, EstuaryAPI.Model.MainUserStatsResponse.t} | {:error, Tesla.Env.t}
+  @spec user_stats_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def user_stats_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/user/stats")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode(%EstuaryAPI.Model.MainUserStatsResponse{})
+    |> decode(false)
   end
 end

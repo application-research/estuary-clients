@@ -10,7 +10,7 @@ class NetApi {
   /// Net Addrs
   ///
   /// This endpoint is used to get net addrs
-  Future<List<String>> netAddrsGet() async {
+  Future<String> netAddrsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -51,7 +51,7 @@ class NetApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-        (apiClient.deserialize(response.body, 'List<String>') as List).map((item) => item as String).toList();
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
     }
@@ -59,7 +59,7 @@ class NetApi {
   /// Get all miners
   ///
   /// This endpoint returns all miners
-  Future publicMinersFailuresMinerGet(String miner) async {
+  Future<String> publicMinersFailuresMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -103,15 +103,15 @@ class NetApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get all miners
   ///
   /// This endpoint returns all miners
-  Future publicMinersGet() async {
+  Future<String> publicMinersGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,9 +152,9 @@ class NetApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Net Addrs

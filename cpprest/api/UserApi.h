@@ -23,8 +23,8 @@
 #include "../ApiClient.h"
 
 #include "Main.getApiKeysResp.h"
-#include "Main.userStatsResponse.h"
 #include "Util.HttpError.h"
+#include <vector>
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -47,7 +47,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     /// </remarks>
-    pplx::task<std::vector<std::shared_ptr<Main.getApiKeysResp>>> userApiKeysGet(
+    pplx::task<std::vector<std::vector<std::shared_ptr<Main.getApiKeysResp>>>> userApiKeysGet(
     );
     /// <summary>
     /// Revoke a User API Key.
@@ -56,7 +56,7 @@ public:
     /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
     /// </remarks>
     /// <param name="key">Key</param>
-    pplx::task<void> userApiKeysKeyDelete(
+    pplx::task<utility::string_t> userApiKeysKeyDelete(
         utility::string_t key
     );
     /// <summary>
@@ -65,7 +65,7 @@ public:
     /// <remarks>
     /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     /// </remarks>
-    /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)</param>
+    /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
     /// <param name="perms">Permissions -- currently unused (optional)</param>
     pplx::task<std::shared_ptr<Main.getApiKeysResp>> userApiKeysPost(
         boost::optional<utility::string_t> expiry,
@@ -85,7 +85,7 @@ public:
     /// <remarks>
     /// This endpoint is used to create API keys for a user.
     /// </remarks>
-    pplx::task<std::shared_ptr<Main.userStatsResponse>> userStatsGet(
+    pplx::task<utility::string_t> userStatsGet(
     );
 
 protected:

@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	public_miners_deals_miner_get (miner: STRING_32; ignore_failed: STRING_32)
+	public_miners_deals_miner_get (miner: STRING_32; ignore_failed: STRING_32): detachable STRING_32
 			-- Get all miners deals
 			-- This endpoint returns all miners deals
 			-- 
@@ -33,6 +33,7 @@ feature -- API Access
 			-- argument: ignore_failed Ignore Failed (optional)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -52,19 +53,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	public_miners_stats_miner_get (miner: STRING_32)
+	public_miners_stats_miner_get (miner: STRING_32): detachable STRING_32
 			-- Get miner stats
 			-- This endpoint returns miner stats
 			-- 
 			-- argument: miner Filter by miner (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -83,9 +89,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

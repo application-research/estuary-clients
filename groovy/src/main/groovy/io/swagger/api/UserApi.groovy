@@ -6,7 +6,6 @@ import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
 import io.swagger.model.MainGetApiKeysResp
-import io.swagger.model.MainUserStatsResponse
 import io.swagger.model.UtilHttpError
 
 import java.util.*;
@@ -31,7 +30,7 @@ class UserApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "array",
-                    MainGetApiKeysResp.class )
+                    List.class )
                     
     }
     def userApiKeysKeyDelete ( String key, Closure onSuccess, Closure onFailure)  {
@@ -53,7 +52,7 @@ class UserApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "DELETE", "",
-                    null )
+                    String.class )
                     
     }
     def userApiKeysPost ( String expiry, String perms, Closure onSuccess, Closure onFailure)  {
@@ -111,7 +110,7 @@ if (!"null".equals(String.valueOf(perms)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    MainUserStatsResponse.class )
+                    String.class )
                     
     }
 }

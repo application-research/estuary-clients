@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.TypesIpfsPin
 import io.swagger.model.UtilHttpError
 
 import java.util.*;
@@ -29,7 +30,7 @@ class PinningApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def pinningPinsPinidDelete ( String pinid, Closure onSuccess, Closure onFailure)  {
@@ -51,7 +52,7 @@ class PinningApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "DELETE", "",
-                    null )
+                    String.class )
                     
     }
     def pinningPinsPinidGet ( String pinid, Closure onSuccess, Closure onFailure)  {
@@ -73,7 +74,7 @@ class PinningApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def pinningPinsPinidPost ( String pinid, Closure onSuccess, Closure onFailure)  {
@@ -95,10 +96,10 @@ class PinningApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
-    def pinningPinsPost ( String cid, String name, Closure onSuccess, Closure onFailure)  {
+    def pinningPinsPost ( TypesIpfsPin pin, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/pinning/pins"
 
@@ -107,12 +108,8 @@ class PinningApi {
         def headerParams = [:]
     
         // verify required params are set
-        if (cid == null) {
-            throw new RuntimeException("missing required params cid")
-        }
-        // verify required params are set
-        if (name == null) {
-            throw new RuntimeException("missing required params name")
+        if (pin == null) {
+            throw new RuntimeException("missing required params pin")
         }
 
         
@@ -121,7 +118,7 @@ class PinningApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
 }

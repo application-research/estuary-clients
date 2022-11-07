@@ -17,7 +17,7 @@ Feature | HTTP request | Description
 
 
 # **public_by_cid_cid_get**
-> public_by_cid_cid_get (cid: STRING_32 )
+> public_by_cid_cid_get (cid: STRING_32 ): detachable STRING_32
 	
 
 Get Content by Cid
@@ -33,7 +33,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_info_get**
-> public_info_get 
+> public_info_get : detachable STRING_32
 	
 
 Get public node info
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get 
+> public_metrics_deals_on_chain_get : detachable STRING_32
 	
 
 Get deal metrics
@@ -87,7 +87,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get (miner: STRING_32 ; ignore_failed:  detachable STRING_32 )
+> public_miners_deals_miner_get (miner: STRING_32 ; ignore_failed:  detachable STRING_32 ): detachable STRING_32
 	
 
 Get all miners deals
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get (miner: STRING_32 )
+> public_miners_failures_miner_get (miner: STRING_32 ): detachable STRING_32
 	
 
 Get all miners
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get 
+> public_miners_get : detachable STRING_32
 	
 
 Get all miners
@@ -175,7 +175,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -189,7 +189,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get (miner: STRING_32 )
+> public_miners_stats_miner_get (miner: STRING_32 ): detachable STRING_32
 	
 
 Get miner stats
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -273,7 +273,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_stats_get**
-> public_stats_get 
+> public_stats_get : detachable STRING_32
 	
 
 Public stats
@@ -286,7 +286,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

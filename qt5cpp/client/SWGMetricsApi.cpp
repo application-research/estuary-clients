@@ -68,12 +68,16 @@ SWGMetricsApi::publicMetricsDealsOnChainGetCallback(SWGHttpRequestWorker * worke
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMetricsDealsOnChainGetSignal();
+        emit publicMetricsDealsOnChainGetSignal(output);
     } else {
-        emit publicMetricsDealsOnChainGetSignalE(error_type, error_str);
+        emit publicMetricsDealsOnChainGetSignalE(output, error_type, error_str);
         emit publicMetricsDealsOnChainGetSignalEFull(worker, error_type, error_str);
     }
 }

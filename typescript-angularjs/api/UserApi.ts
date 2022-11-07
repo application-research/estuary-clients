@@ -30,7 +30,7 @@ export class UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      * @summary Get API keys for a user
      */
-    public userApiKeysGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.MainGetApiKeysResp>> {
+    public userApiKeysGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<Array<models.MainGetApiKeysResp>>> {
         const localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
@@ -53,7 +53,7 @@ export class UserApi {
      * @summary Revoke a User API Key.
      * @param key Key
      */
-    public userApiKeysKeyDelete (key: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public userApiKeysKeyDelete (key: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/user/api-keys/{key}'
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
@@ -80,7 +80,7 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      */
     public userApiKeysPost (expiry?: string, perms?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainGetApiKeysResp> {
@@ -135,7 +135,7 @@ export class UserApi {
      * This endpoint is used to create API keys for a user.
      * @summary Create API keys for a user
      */
-    public userStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainUserStatsResponse> {
+    public userStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/user/stats';
 
         let queryParameters: any = {};

@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -59,10 +60,10 @@ public class AutoretrieveApi {
   * This endpoint registers a new autoretrieve server
    * @param addresses Autoretrieve&#39;s comma-separated list of addresses
    * @param pubKey Autoretrieve&#39;s public key
-   * @return void
+   * @return String
   */
-  public void adminAutoretrieveInitPost (String addresses, String pubKey) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = pubKey;
+  public String adminAutoretrieveInitPost (String addresses, String pubKey) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
     // verify the required parameter 'addresses' is set
     if (addresses == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'addresses' when calling adminAutoretrieveInitPost",
@@ -90,10 +91,18 @@ public class AutoretrieveApi {
     if (contentType.startsWith("multipart/form-data")) {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      if (addresses != null) {
+        localVarBuilder.addTextBody("addresses", ApiInvoker.parameterToString(addresses), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      if (pubKey != null) {
+        localVarBuilder.addTextBody("pubKey", ApiInvoker.parameterToString(pubKey), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
+      formParams.put("addresses", ApiInvoker.parameterToString(addresses));
+      formParams.put("pubKey", ApiInvoker.parameterToString(pubKey));
     }
 
     String[] authNames = new String[] { "bearerAuth" };
@@ -101,9 +110,9 @@ public class AutoretrieveApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -128,7 +137,7 @@ public class AutoretrieveApi {
    * @param addresses Autoretrieve&#39;s comma-separated list of addresses   * @param pubKey Autoretrieve&#39;s public key
   */
   public void adminAutoretrieveInitPost (String addresses, String pubKey, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = pubKey;
+    Object postBody = null;
 
     // verify the required parameter 'addresses' is set
     if (addresses == null) {
@@ -162,12 +171,22 @@ public class AutoretrieveApi {
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
+      if (addresses != null) {
+        localVarBuilder.addTextBody("addresses", ApiInvoker.parameterToString(addresses), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      
+      if (pubKey != null) {
+        localVarBuilder.addTextBody("pubKey", ApiInvoker.parameterToString(pubKey), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      
 
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
-          }
+      formParams.put("addresses", ApiInvoker.parameterToString(addresses));
+formParams.put("pubKey", ApiInvoker.parameterToString(pubKey));
+    }
 
     String[] authNames = new String[] { "bearerAuth" };
 
@@ -176,7 +195,11 @@ public class AutoretrieveApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -191,9 +214,9 @@ public class AutoretrieveApi {
   /**
   * List autoretrieve servers
   * This endpoint lists all registered autoretrieve servers
-   * @return void
+   * @return String
   */
-  public void adminAutoretrieveListGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminAutoretrieveListGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -223,9 +246,9 @@ public class AutoretrieveApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -288,7 +311,11 @@ public class AutoretrieveApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -304,9 +331,9 @@ public class AutoretrieveApi {
   * Marks autoretrieve server as up
   * This endpoint updates the lastConnection field for autoretrieve
    * @param token Autoretrieve&#39;s auth token
-   * @return void
+   * @return String
   */
-  public void autoretrieveHeartbeatPost (String token) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String autoretrieveHeartbeatPost (String token) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'token' is set
     if (token == null) {
@@ -342,9 +369,9 @@ public class AutoretrieveApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -413,7 +440,11 @@ public class AutoretrieveApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

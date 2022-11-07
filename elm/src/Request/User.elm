@@ -13,7 +13,6 @@
 
 module Request.User exposing (userApiKeysGet, userApiKeysKeyDelete, userApiKeysPost, userExportGet, userStatsGet)
 
-import Data.MainUserStatsResponse exposing (MainUserStatsResponse, mainUserStatsResponseDecoder)
 import Data.MainGetApiKeysResp exposing (MainGetApiKeysResp, mainGetApiKeysRespDecoder)
 import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
 import Data.String exposing (Decode.string, String)
@@ -45,13 +44,13 @@ userApiKeysGet =
 {-
    This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
 -}
-userApiKeysKeyDelete : String -> Http.Request 
+userApiKeysKeyDelete : String -> Http.Request String
 userApiKeysKeyDelete key =
     { method = "DELETE"
     , url = basePath ++ "/user/api-keys/" ++ key
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -93,13 +92,13 @@ userExportGet =
 {-
    This endpoint is used to create API keys for a user.
 -}
-userStatsGet : Http.Request MainUserStatsResponse
+userStatsGet : Http.Request String
 userStatsGet =
     { method = "GET"
     , url = basePath ++ "/user/stats"
     , headers = []
     , body = Http.emptyBody
-    , expect = Http.expectJson mainUserStatsResponseDecoder
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

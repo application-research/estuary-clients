@@ -50,7 +50,7 @@ export class UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      * @summary Get API keys for a user
      */
-    public userApiKeysGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<models.MainGetApiKeysResp>;  }> {
+    public userApiKeysGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<Array<models.MainGetApiKeysResp>>;  }> {
         let localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
@@ -93,7 +93,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<models.MainGetApiKeysResp>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: Array<Array<models.MainGetApiKeysResp>>, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -106,7 +106,7 @@ export class UserApi {
      * @summary Revoke a User API Key.
      * @param key Key
      */
-    public userApiKeysKeyDelete(key: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public userApiKeysKeyDelete(key: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/user/api-keys/{key}'.replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
         let queryParameters: any = {};
@@ -154,7 +154,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -165,7 +165,7 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      */
     public userApiKeysPost(expiry?: string, perms?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainGetApiKeysResp;  }> {
@@ -284,7 +284,7 @@ export class UserApi {
      * This endpoint is used to create API keys for a user.
      * @summary Create API keys for a user
      */
-    public userStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainUserStatsResponse;  }> {
+    public userStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/user/stats';
 
         let queryParameters: any = {};
@@ -327,7 +327,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: models.MainUserStatsResponse, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

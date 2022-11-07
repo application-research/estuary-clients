@@ -6,7 +6,6 @@ from flask import json
 from six import BytesIO
 
 from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp  # noqa: E501
-from estuary-client.models.main_user_stats_response import MainUserStatsResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 

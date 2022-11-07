@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -59,9 +60,9 @@ public class MinerApi {
   * This endpoint returns all miners deals
    * @param miner Filter by miner
    * @param ignoreFailed Ignore Failed
-   * @return void
+   * @return String
   */
-  public void publicMinersDealsMinerGet (String miner, String ignoreFailed) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersDealsMinerGet (String miner, String ignoreFailed) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -97,9 +98,9 @@ public class MinerApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -168,7 +169,11 @@ public class MinerApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -184,9 +189,9 @@ public class MinerApi {
   * Get miner stats
   * This endpoint returns miner stats
    * @param miner Filter by miner
-   * @return void
+   * @return String
   */
-  public void publicMinersStatsMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersStatsMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -221,9 +226,9 @@ public class MinerApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -291,7 +296,11 @@ public class MinerApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

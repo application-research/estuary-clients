@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.MinerApi = factory(root.EstuaryClient.ApiClient);
+    root.EstuaryClient.MinerApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,7 +51,7 @@
      * Callback function to receive the result of the publicMinersDealsMinerGet operation.
      * @callback module:api/MinerApi~publicMinersDealsMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -62,6 +62,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.ignoreFailed Ignore Failed
      * @param {module:api/MinerApi~publicMinersDealsMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicMinersDealsMinerGet = function(miner, opts, callback) {
       opts = opts || {};
@@ -89,7 +90,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/miners/deals/{miner}', 'GET',
@@ -102,7 +103,7 @@
      * Callback function to receive the result of the publicMinersStatsMinerGet operation.
      * @callback module:api/MinerApi~publicMinersStatsMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -111,6 +112,7 @@
      * This endpoint returns miner stats
      * @param {String} miner Filter by miner
      * @param {module:api/MinerApi~publicMinersStatsMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicMinersStatsMinerGet = function(miner, callback) {
       var postBody = null;
@@ -136,7 +138,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/miners/stats/{miner}', 'GET',

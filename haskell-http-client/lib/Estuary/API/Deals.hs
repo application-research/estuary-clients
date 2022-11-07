@@ -67,13 +67,11 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealEstimatePost 
   :: (Consumes DealEstimatePost contentType, MimeRender contentType MainEstimateDealBody)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> MainEstimateDealBody -- ^ "body" -  The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
-  -> EstuaryRequest DealEstimatePost contentType res MimeJSON
+  -> EstuaryRequest DealEstimatePost contentType Text MimeJSON
 dealEstimatePost _ body =
   _mkRequest "POST" ["/deal/estimate"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -97,11 +95,9 @@ instance Produces DealEstimatePost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealInfoDealidGet 
   :: Dealid -- ^ "dealid" -  Deal ID
-  -> EstuaryRequest DealInfoDealidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealInfoDealidGet MimeNoContent Text MimeJSON
 dealInfoDealidGet (Dealid dealid) =
   _mkRequest "GET" ["/deal/info/",toPath dealid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -121,11 +117,9 @@ instance Produces DealInfoDealidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealProposalPropcidGet 
   :: Propcid -- ^ "propcid" -  Proposal CID
-  -> EstuaryRequest DealProposalPropcidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealProposalPropcidGet MimeNoContent Text MimeJSON
 dealProposalPropcidGet (Propcid propcid) =
   _mkRequest "GET" ["/deal/proposal/",toPath propcid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -145,11 +139,9 @@ instance Produces DealProposalPropcidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealQueryMinerGet 
   :: Miner -- ^ "miner" -  CID
-  -> EstuaryRequest DealQueryMinerGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealQueryMinerGet MimeNoContent Text MimeJSON
 dealQueryMinerGet (Miner miner) =
   _mkRequest "GET" ["/deal/query/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -169,11 +161,9 @@ instance Produces DealQueryMinerGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealStatusByProposalPropcidGet 
   :: Propcid -- ^ "propcid" -  PropCid
-  -> EstuaryRequest DealStatusByProposalPropcidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealStatusByProposalPropcidGet MimeNoContent Text MimeJSON
 dealStatusByProposalPropcidGet (Propcid propcid) =
   _mkRequest "GET" ["/deal/status-by-proposal/",toPath propcid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -193,12 +183,10 @@ instance Produces DealStatusByProposalPropcidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealStatusMinerPropcidGet 
   :: Miner -- ^ "miner" -  Miner
   -> Propcid -- ^ "propcid" -  Proposal CID
-  -> EstuaryRequest DealStatusMinerPropcidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealStatusMinerPropcidGet MimeNoContent Text MimeJSON
 dealStatusMinerPropcidGet (Miner miner) (Propcid propcid) =
   _mkRequest "GET" ["/deal/status/",toPath miner,"/",toPath propcid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -218,10 +206,8 @@ instance Produces DealStatusMinerPropcidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealTransferInProgressGet 
-  :: EstuaryRequest DealTransferInProgressGet MimeNoContent res MimeJSON
+  :: EstuaryRequest DealTransferInProgressGet MimeNoContent Text MimeJSON
 dealTransferInProgressGet =
   _mkRequest "GET" ["/deal/transfer/in-progress"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -229,6 +215,34 @@ dealTransferInProgressGet =
 data DealTransferInProgressGet  
 -- | @application/json@
 instance Produces DealTransferInProgressGet MimeJSON
+
+
+-- *** dealTransferStatusPost
+
+-- | @POST \/deal\/transfer\/status@
+-- 
+-- Transfer Status
+-- 
+-- This endpoint returns the status of a transfer
+-- 
+-- AuthMethod: 'AuthApiKeyBearerAuth'
+-- 
+dealTransferStatusPost 
+  :: (Consumes DealTransferStatusPost contentType, MimeRender contentType MainChannelIDParam)
+  => ContentType contentType -- ^ request content-type ('MimeType')
+  -> MainChannelIDParam -- ^ "chanid" -  Channel ID
+  -> EstuaryRequest DealTransferStatusPost contentType Text MimeJSON
+dealTransferStatusPost _ chanid =
+  _mkRequest "POST" ["/deal/transfer/status"]
+    `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+    `setBodyParam` chanid
+
+data DealTransferStatusPost 
+
+-- | /Body Param/ "chanid" - Channel ID
+instance HasBodyParam DealTransferStatusPost MainChannelIDParam 
+-- | @application/json@
+instance Produces DealTransferStatusPost MimeJSON
 
 
 -- *** dealsFailuresGet
@@ -241,10 +255,8 @@ instance Produces DealTransferInProgressGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealsFailuresGet 
-  :: EstuaryRequest DealsFailuresGet MimeNoContent res MimeJSON
+  :: EstuaryRequest DealsFailuresGet MimeNoContent Text MimeJSON
 dealsFailuresGet =
   _mkRequest "GET" ["/deals/failures"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -264,14 +276,12 @@ instance Produces DealsFailuresGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealsMakeMinerPost 
   :: (Consumes DealsMakeMinerPost contentType, MimeRender contentType DealRequest2)
   => ContentType contentType -- ^ request content-type ('MimeType')
   -> Miner -- ^ "miner" -  Miner
   -> DealRequest2 -- ^ "dealRequest" -  Deal Request
-  -> EstuaryRequest DealsMakeMinerPost contentType res MimeJSON
+  -> EstuaryRequest DealsMakeMinerPost contentType Text MimeJSON
 dealsMakeMinerPost _ (Miner miner) dealRequest =
   _mkRequest "POST" ["/deals/make/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -295,11 +305,9 @@ instance Produces DealsMakeMinerPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 dealsStatusDealGet 
   :: Deal -- ^ "deal" -  Deal ID
-  -> EstuaryRequest DealsStatusDealGet MimeNoContent res MimeJSON
+  -> EstuaryRequest DealsStatusDealGet MimeNoContent Text MimeJSON
 dealsStatusDealGet (Deal deal) =
   _mkRequest "GET" ["/deals/status/",toPath deal]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -319,10 +327,8 @@ instance Produces DealsStatusDealGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicDealsFailuresGet 
-  :: EstuaryRequest PublicDealsFailuresGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicDealsFailuresGet MimeNoContent Text MimeJSON
 publicDealsFailuresGet =
   _mkRequest "GET" ["/public/deals/failures"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -342,11 +348,9 @@ instance Produces PublicDealsFailuresGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersStorageQueryMinerGet 
   :: Miner -- ^ "miner" -  CID
-  -> EstuaryRequest PublicMinersStorageQueryMinerGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicMinersStorageQueryMinerGet MimeNoContent Text MimeJSON
 publicMinersStorageQueryMinerGet (Miner miner) =
   _mkRequest "GET" ["/public/miners/storage/query/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

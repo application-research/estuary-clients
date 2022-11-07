@@ -24,7 +24,7 @@ inherit
 feature -- API Access
 
 
-	admin_autoretrieve_init_post (addresses: STRING_32; pub_key: STRING_32)
+	admin_autoretrieve_init_post (addresses: STRING_32; pub_key: STRING_32): detachable STRING_32
 			-- Register autoretrieve server
 			-- This endpoint registers a new autoretrieve server
 			-- 
@@ -33,6 +33,7 @@ feature -- API Access
 			-- argument: pub_key Autoretrieve&#39;s public key (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -41,26 +42,37 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			l_request.set_body(pub_key)
+			
 			l_path := "/admin/autoretrieve/init"
 
+			if attached addresses as l_addresses then
+				l_request.add_form(l_addresses,"addresses");
+			end
+			if attached pub_key as l_pub_key then
+				l_request.add_form(l_pub_key,"pubKey");
+			end
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
 				l_request.add_header(l_accept,"Accept");
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_autoretrieve_list_get 
+	admin_autoretrieve_list_get : detachable STRING_32
 			-- List autoretrieve servers
 			-- This endpoint lists all registered autoretrieve servers
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -78,19 +90,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	autoretrieve_heartbeat_post (token: STRING_32)
+	autoretrieve_heartbeat_post (token: STRING_32): detachable STRING_32
 			-- Marks autoretrieve server as up
 			-- This endpoint updates the lastConnection field for autoretrieve
 			-- 
 			-- argument: token Autoretrieve&#39;s auth token (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -111,9 +128,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

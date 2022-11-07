@@ -22,10 +22,10 @@ defmodule EstuaryAPI.Api.Metrics do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_metrics_deals_on_chain_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_metrics_deals_on_chain_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_metrics_deals_on_chain_get(connection, _opts \\ []) do
     %{}
     |> method(:get)

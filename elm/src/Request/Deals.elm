@@ -11,10 +11,12 @@
 -}
 
 
-module Request.Deals exposing (dealEstimatePost, dealInfoDealidGet, dealProposalPropcidGet, dealQueryMinerGet, dealStatusByProposalPropcidGet, dealStatusMinerPropcidGet, dealTransferInProgressGet, dealsFailuresGet, dealsMakeMinerPost, dealsStatusDealGet, publicDealsFailuresGet, publicMinersStorageQueryMinerGet)
+module Request.Deals exposing (dealEstimatePost, dealInfoDealidGet, dealProposalPropcidGet, dealQueryMinerGet, dealStatusByProposalPropcidGet, dealStatusMinerPropcidGet, dealTransferInProgressGet, dealTransferStatusPost, dealsFailuresGet, dealsMakeMinerPost, dealsStatusDealGet, publicDealsFailuresGet, publicMinersStorageQueryMinerGet)
 
 import Data.MainEstimateDealBody exposing (MainEstimateDealBody, mainEstimateDealBodyEncoder)
-import Data.String exposing (Encode.string, String)
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, Encode.string, String)
+import Data.MainChannelIDParam exposing (MainChannelIDParam, mainChannelIDParamEncoder)
 import Http
 import Json.Decode as Decode
 
@@ -27,13 +29,13 @@ basePath =
 {-
    This endpoint estimates the cost of a deal
 -}
-dealEstimatePost : MainEstimateDealBody -> Http.Request 
+dealEstimatePost : MainEstimateDealBody -> Http.Request String
 dealEstimatePost model =
     { method = "POST"
     , url = basePath ++ "/deal/estimate"
     , headers = []
     , body = Http.jsonBody <| mainEstimateDealBodyEncoder model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -43,13 +45,13 @@ dealEstimatePost model =
 {-
    This endpoint returns the deal info for a deal
 -}
-dealInfoDealidGet : Int -> Http.Request 
+dealInfoDealidGet : Int -> Http.Request String
 dealInfoDealidGet dealid =
     { method = "GET"
     , url = basePath ++ "/deal/info/" ++ toString dealid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -59,13 +61,13 @@ dealInfoDealidGet dealid =
 {-
    This endpoint returns the proposal for a deal
 -}
-dealProposalPropcidGet : String -> Http.Request 
+dealProposalPropcidGet : String -> Http.Request String
 dealProposalPropcidGet propcid =
     { method = "GET"
     , url = basePath ++ "/deal/proposal/" ++ propcid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -75,13 +77,13 @@ dealProposalPropcidGet propcid =
 {-
    This endpoint returns the ask for a given CID
 -}
-dealQueryMinerGet : String -> Http.Request 
+dealQueryMinerGet : String -> Http.Request String
 dealQueryMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/deal/query/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -91,13 +93,13 @@ dealQueryMinerGet miner =
 {-
    Get Deal Status by PropCid
 -}
-dealStatusByProposalPropcidGet : String -> Http.Request 
+dealStatusByProposalPropcidGet : String -> Http.Request String
 dealStatusByProposalPropcidGet propcid =
     { method = "GET"
     , url = basePath ++ "/deal/status-by-proposal/" ++ propcid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -107,13 +109,13 @@ dealStatusByProposalPropcidGet propcid =
 {-
    This endpoint returns the status of a deal
 -}
-dealStatusMinerPropcidGet : String -> String -> Http.Request 
+dealStatusMinerPropcidGet : String -> String -> Http.Request String
 dealStatusMinerPropcidGet miner propcid =
     { method = "GET"
     , url = basePath ++ "/deal/status/" ++ miner ++ "/" ++ propcid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -123,13 +125,29 @@ dealStatusMinerPropcidGet miner propcid =
 {-
    This endpoint returns the in-progress transfers
 -}
-dealTransferInProgressGet : Http.Request 
+dealTransferInProgressGet : Http.Request String
 dealTransferInProgressGet =
     { method = "GET"
     , url = basePath ++ "/deal/transfer/in-progress"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
+    , timeout = Just 30000
+    , withCredentials = False
+    }
+        |> Http.request
+
+
+{-
+   This endpoint returns the status of a transfer
+-}
+dealTransferStatusPost : MainChannelIDParam -> Http.Request String
+dealTransferStatusPost model =
+    { method = "POST"
+    , url = basePath ++ "/deal/transfer/status"
+    , headers = []
+    , body = Http.jsonBody <| mainChannelIDParamEncoder model
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -139,13 +157,13 @@ dealTransferInProgressGet =
 {-
    This endpoint returns a list of storage failures for user
 -}
-dealsFailuresGet : Http.Request 
+dealsFailuresGet : Http.Request String
 dealsFailuresGet =
     { method = "GET"
     , url = basePath ++ "/deals/failures"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -155,13 +173,13 @@ dealsFailuresGet =
 {-
    This endpoint makes a deal for a given content and miner
 -}
-dealsMakeMinerPost : String -> String -> Http.Request 
+dealsMakeMinerPost : String -> String -> Http.Request String
 dealsMakeMinerPost miner model =
     { method = "POST"
     , url = basePath ++ "/deals/make/" ++ miner
     , headers = []
     , body = Http.jsonBody <| Encode.string model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -171,13 +189,13 @@ dealsMakeMinerPost miner model =
 {-
    This endpoint returns the status of a deal
 -}
-dealsStatusDealGet : Int -> Http.Request 
+dealsStatusDealGet : Int -> Http.Request String
 dealsStatusDealGet deal =
     { method = "GET"
     , url = basePath ++ "/deals/status/" ++ toString deal
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -187,13 +205,13 @@ dealsStatusDealGet deal =
 {-
    This endpoint returns a list of storage failures
 -}
-publicDealsFailuresGet : Http.Request 
+publicDealsFailuresGet : Http.Request String
 publicDealsFailuresGet =
     { method = "GET"
     , url = basePath ++ "/public/deals/failures"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -203,13 +221,13 @@ publicDealsFailuresGet =
 {-
    This endpoint returns the ask for a given CID
 -}
-publicMinersStorageQueryMinerGet : String -> Http.Request 
+publicMinersStorageQueryMinerGet : String -> Http.Request String
 publicMinersStorageQueryMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/storage/query/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

@@ -67,11 +67,9 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicByCidCidGet 
   :: Cid -- ^ "cid" -  Cid
-  -> EstuaryRequest PublicByCidCidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicByCidCidGet MimeNoContent Text MimeJSON
 publicByCidCidGet (Cid cid) =
   _mkRequest "GET" ["/public/by-cid/",toPath cid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -91,10 +89,8 @@ instance Produces PublicByCidCidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicInfoGet 
-  :: EstuaryRequest PublicInfoGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicInfoGet MimeNoContent Text MimeJSON
 publicInfoGet =
   _mkRequest "GET" ["/public/info"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -114,10 +110,8 @@ instance Produces PublicInfoGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMetricsDealsOnChainGet 
-  :: EstuaryRequest PublicMetricsDealsOnChainGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicMetricsDealsOnChainGet MimeNoContent Text MimeJSON
 publicMetricsDealsOnChainGet =
   _mkRequest "GET" ["/public/metrics/deals-on-chain"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -137,11 +131,9 @@ instance Produces PublicMetricsDealsOnChainGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersDealsMinerGet 
   :: Miner -- ^ "miner" -  Filter by miner
-  -> EstuaryRequest PublicMinersDealsMinerGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicMinersDealsMinerGet MimeNoContent Text MimeJSON
 publicMinersDealsMinerGet (Miner miner) =
   _mkRequest "GET" ["/public/miners/deals/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -166,11 +158,9 @@ instance Produces PublicMinersDealsMinerGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersFailuresMinerGet 
   :: Miner -- ^ "miner" -  Filter by miner
-  -> EstuaryRequest PublicMinersFailuresMinerGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicMinersFailuresMinerGet MimeNoContent Text MimeJSON
 publicMinersFailuresMinerGet (Miner miner) =
   _mkRequest "GET" ["/public/miners/failures/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -190,10 +180,8 @@ instance Produces PublicMinersFailuresMinerGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersGet 
-  :: EstuaryRequest PublicMinersGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicMinersGet MimeNoContent Text MimeJSON
 publicMinersGet =
   _mkRequest "GET" ["/public/miners"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -213,11 +201,9 @@ instance Produces PublicMinersGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersStatsMinerGet 
   :: Miner -- ^ "miner" -  Filter by miner
-  -> EstuaryRequest PublicMinersStatsMinerGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicMinersStatsMinerGet MimeNoContent Text MimeJSON
 publicMinersStatsMinerGet (Miner miner) =
   _mkRequest "GET" ["/public/miners/stats/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -279,10 +265,8 @@ instance Produces PublicNetPeersGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicStatsGet 
-  :: EstuaryRequest PublicStatsGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicStatsGet MimeNoContent Text MimeJSON
 publicStatsGet =
   _mkRequest "GET" ["/public/stats"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

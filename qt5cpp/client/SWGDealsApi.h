@@ -16,7 +16,9 @@
 #include "SWGHttpRequest.h"
 
 #include <QString>
+#include "SWGMain.ChannelIDParam.h"
 #include "SWGMain.estimateDealBody.h"
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -41,6 +43,7 @@ public:
     void dealStatusByProposalPropcidGet(QString* propcid);
     void dealStatusMinerPropcidGet(QString* miner, QString* propcid);
     void dealTransferInProgressGet();
+    void dealTransferStatusPost(SWGMain.ChannelIDParam& chanid);
     void dealsFailuresGet();
     void dealsMakeMinerPost(QString* miner, QString*& deal_request);
     void dealsStatusDealGet(qint32 deal);
@@ -55,6 +58,7 @@ private:
     void dealStatusByProposalPropcidGetCallback (SWGHttpRequestWorker * worker);
     void dealStatusMinerPropcidGetCallback (SWGHttpRequestWorker * worker);
     void dealTransferInProgressGetCallback (SWGHttpRequestWorker * worker);
+    void dealTransferStatusPostCallback (SWGHttpRequestWorker * worker);
     void dealsFailuresGetCallback (SWGHttpRequestWorker * worker);
     void dealsMakeMinerPostCallback (SWGHttpRequestWorker * worker);
     void dealsStatusDealGetCallback (SWGHttpRequestWorker * worker);
@@ -62,31 +66,33 @@ private:
     void publicMinersStorageQueryMinerGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void dealEstimatePostSignal();
-    void dealInfoDealidGetSignal();
-    void dealProposalPropcidGetSignal();
-    void dealQueryMinerGetSignal();
-    void dealStatusByProposalPropcidGetSignal();
-    void dealStatusMinerPropcidGetSignal();
-    void dealTransferInProgressGetSignal();
-    void dealsFailuresGetSignal();
-    void dealsMakeMinerPostSignal();
-    void dealsStatusDealGetSignal();
-    void publicDealsFailuresGetSignal();
-    void publicMinersStorageQueryMinerGetSignal();
+    void dealEstimatePostSignal(QString* summary);
+    void dealInfoDealidGetSignal(QString* summary);
+    void dealProposalPropcidGetSignal(QString* summary);
+    void dealQueryMinerGetSignal(QString* summary);
+    void dealStatusByProposalPropcidGetSignal(QString* summary);
+    void dealStatusMinerPropcidGetSignal(QString* summary);
+    void dealTransferInProgressGetSignal(QString* summary);
+    void dealTransferStatusPostSignal(QString* summary);
+    void dealsFailuresGetSignal(QString* summary);
+    void dealsMakeMinerPostSignal(QString* summary);
+    void dealsStatusDealGetSignal(QString* summary);
+    void publicDealsFailuresGetSignal(QString* summary);
+    void publicMinersStorageQueryMinerGetSignal(QString* summary);
     
-    void dealEstimatePostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealInfoDealidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealProposalPropcidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealQueryMinerGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealStatusByProposalPropcidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealStatusMinerPropcidGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealTransferInProgressGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealsFailuresGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealsMakeMinerPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void dealsStatusDealGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void publicDealsFailuresGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void publicMinersStorageQueryMinerGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealEstimatePostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealInfoDealidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealProposalPropcidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealQueryMinerGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealStatusByProposalPropcidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealStatusMinerPropcidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealTransferInProgressGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealTransferStatusPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealsFailuresGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealsMakeMinerPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealsStatusDealGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicDealsFailuresGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMinersStorageQueryMinerGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void dealEstimatePostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealInfoDealidGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
@@ -95,6 +101,7 @@ signals:
     void dealStatusByProposalPropcidGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealStatusMinerPropcidGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealTransferInProgressGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+    void dealTransferStatusPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealsFailuresGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealsMakeMinerPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void dealsStatusDealGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

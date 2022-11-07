@@ -110,10 +110,27 @@ void SwaggerUserApi::UserApiKeysKeyDeleteRequest::SetupHttpRequest(const TShared
 	}
 }
 
+void SwaggerUserApi::UserApiKeysKeyDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerUserApi::UserApiKeysKeyDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerUserApi::UserApiKeysPostRequest::ComputePath() const
@@ -221,6 +238,12 @@ void SwaggerUserApi::UserExportGetResponse::SetHttpResponseCode(EHttpResponseCod
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -266,6 +289,12 @@ void SwaggerUserApi::UserStatsGetResponse::SetHttpResponseCode(EHttpResponseCode
 	case 200:
 	default:
 		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
 		break;
 	}
 }

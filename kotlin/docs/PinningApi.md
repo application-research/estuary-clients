@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> pinningPinsGet()
+> kotlin.String pinningPinsGet()
 
 List all pin status objects
 
@@ -27,7 +27,8 @@ This endpoint lists all pin status objects
 
 val apiInstance = PinningApi()
 try {
-    apiInstance.pinningPinsGet()
+    val result : kotlin.String = apiInstance.pinningPinsGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsGet")
     e.printStackTrace()
@@ -42,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -55,7 +56,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete(pinid)
+> kotlin.String pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -70,7 +71,8 @@ This endpoint deletes a pinned object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
 try {
-    apiInstance.pinningPinsPinidDelete(pinid)
+    val result : kotlin.String = apiInstance.pinningPinsPinidDelete(pinid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidDelete")
     e.printStackTrace()
@@ -88,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -101,7 +103,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+> kotlin.String pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -116,7 +118,8 @@ This endpoint returns a pin status object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | cid
 try {
-    apiInstance.pinningPinsPinidGet(pinid)
+    val result : kotlin.String = apiInstance.pinningPinsPinidGet(pinid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidGet")
     e.printStackTrace()
@@ -134,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -147,7 +150,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+> kotlin.String pinningPinsPinidPost(pinid)
 
 Replace a pinned object
 
@@ -162,7 +165,8 @@ This endpoint replaces a pinned object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
 try {
-    apiInstance.pinningPinsPinidPost(pinid)
+    val result : kotlin.String = apiInstance.pinningPinsPinidPost(pinid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidPost")
     e.printStackTrace()
@@ -180,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -193,7 +197,7 @@ null (empty response body)
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> pinningPinsPost(cid, name)
+> kotlin.String pinningPinsPost(pin)
 
 Add and pin object
 
@@ -206,10 +210,10 @@ This endpoint adds a pin to the IPFS daemon.
 //import estuary-client.models.*
 
 val apiInstance = PinningApi()
-val cid : kotlin.String = cid_example // kotlin.String | cid
-val name : kotlin.String = name_example // kotlin.String | name
+val pin : TypesIpfsPin =  // TypesIpfsPin | Pin Body {cid:cid, name:name}
 try {
-    apiInstance.pinningPinsPost(cid, name)
+    val result : kotlin.String = apiInstance.pinningPinsPost(pin)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPost")
     e.printStackTrace()
@@ -223,12 +227,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **kotlin.String**| cid |
- **name** | **kotlin.String**| name |
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

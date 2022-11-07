@@ -11,7 +11,9 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.MainChannelIDParam
 import estuary-client.models.MainestimateDealBody
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -21,9 +23,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Estimate the cost of a deal
     * This endpoint estimates the cost of a deal
     * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealEstimatePost(body: MainestimateDealBody) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealEstimatePost(body: MainestimateDealBody) : kotlin.String {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -39,13 +42,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -58,9 +61,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Get Deal Info
     * This endpoint returns the deal info for a deal
     * @param dealid Deal ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealInfoDealidGet(dealid: kotlin.Int) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealInfoDealidGet(dealid: kotlin.Int) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -76,13 +80,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -95,9 +99,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Get Proposal
     * This endpoint returns the proposal for a deal
     * @param propcid Proposal CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealProposalPropcidGet(propcid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealProposalPropcidGet(propcid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -113,13 +118,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -132,9 +137,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Query Ask
     * This endpoint returns the ask for a given CID
     * @param miner CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealQueryMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealQueryMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -150,13 +156,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -169,9 +175,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Get Deal Status by PropCid
     * Get Deal Status by PropCid
     * @param propcid PropCid 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealStatusByProposalPropcidGet(propcid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealStatusByProposalPropcidGet(propcid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -187,13 +194,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -207,9 +214,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * This endpoint returns the status of a deal
     * @param miner Miner 
     * @param propcid Proposal CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealStatusMinerPropcidGet(miner: kotlin.String, propcid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealStatusMinerPropcidGet(miner: kotlin.String, propcid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -225,13 +233,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -243,9 +251,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Transfer In Progress
     * This endpoint returns the in-progress transfers
-    * @return void
+    * @return kotlin.String
     */
-    fun dealTransferInProgressGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealTransferInProgressGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -261,13 +270,51 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+            else -> throw kotlin.IllegalStateException("Undefined ResponseType.")
+        }
+    }
+
+    /**
+    * Transfer Status
+    * This endpoint returns the status of a transfer
+    * @param chanid Channel ID 
+    * @return kotlin.String
+    */
+    @Suppress("UNCHECKED_CAST")
+    fun dealTransferStatusPost(chanid: MainChannelIDParam) : kotlin.String {
+        val localVariableBody: kotlin.Any? = chanid
+        val localVariableQuery: MultiValueMap = mapOf()
+        
+        val contentHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
+        val acceptsHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf("Accept" to "application/json")
+        val localVariableHeaders: kotlin.collections.MutableMap<kotlin.String,kotlin.String> = mutableMapOf()
+        localVariableHeaders.putAll(contentHeaders)
+        localVariableHeaders.putAll(acceptsHeaders)
+        
+        val localVariableConfig = RequestConfig(
+            RequestMethod.POST,
+            "/deal/transfer/status",
+            query = localVariableQuery,
+            headers = localVariableHeaders
+        )
+        val response = request<kotlin.String>(
+            localVariableConfig,
+            localVariableBody
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -279,9 +326,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Get storage failures for user
     * This endpoint returns a list of storage failures for user
-    * @return void
+    * @return kotlin.String
     */
-    fun dealsFailuresGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealsFailuresGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -297,13 +345,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -317,9 +365,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * This endpoint makes a deal for a given content and miner
     * @param miner Miner 
     * @param dealRequest Deal Request 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealsMakeMinerPost(miner: kotlin.String, dealRequest: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealsMakeMinerPost(miner: kotlin.String, dealRequest: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = dealRequest
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -335,13 +384,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -354,9 +403,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Get Deal Status
     * This endpoint returns the status of a deal
     * @param deal Deal ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun dealsStatusDealGet(deal: kotlin.Int) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun dealsStatusDealGet(deal: kotlin.Int) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -372,13 +422,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -390,9 +440,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Get storage failures
     * This endpoint returns a list of storage failures
-    * @return void
+    * @return kotlin.String
     */
-    fun publicDealsFailuresGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicDealsFailuresGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -408,13 +459,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -427,9 +478,10 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Query Ask
     * This endpoint returns the ask for a given CID
     * @param miner CID 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersStorageQueryMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersStorageQueryMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -445,13 +497,13 @@ class DealsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

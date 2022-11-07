@@ -51,21 +51,48 @@ static gpointer __AutoretrieveManagerthreadFunc(gpointer data)
 static bool adminAutoretrieveInitPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool adminAutoretrieveInitPostProcessor(MemoryStruct_s p_chunk, long code
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminAutoretrieveInitPostHelper(char * accessToken,
 	std::string addresses, std::string pubKey, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -102,24 +129,6 @@ static bool adminAutoretrieveInitPostHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
-
-	if (isprimitive("std::string")) {
-		node = converttoJson(&addresses, "std::string", "");
-	}
-	
-
-	char *jsonStr1 =  json_to_string(node, false);
-	mBody.append(jsonStr1);
-	g_free(static_cast<gpointer>(jsonStr1));
-
-	if (isprimitive("std::string")) {
-		node = converttoJson(&pubKey, "std::string", "");
-	}
-	
-
-	char *jsonStr1 =  json_to_string(node, false);
-	mBody.append(jsonStr1);
-	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/admin/autoretrieve/init");
 	int pos;
@@ -172,8 +181,8 @@ static bool adminAutoretrieveInitPostHelper(char * accessToken,
 
 bool AutoretrieveManager::adminAutoretrieveInitPostAsync(char * accessToken,
 	std::string addresses, std::string pubKey, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminAutoretrieveInitPostHelper(accessToken,
 	addresses, pubKey, 
@@ -182,8 +191,8 @@ bool AutoretrieveManager::adminAutoretrieveInitPostAsync(char * accessToken,
 
 bool AutoretrieveManager::adminAutoretrieveInitPostSync(char * accessToken,
 	std::string addresses, std::string pubKey, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminAutoretrieveInitPostHelper(accessToken,
 	addresses, pubKey, 
@@ -193,21 +202,48 @@ bool AutoretrieveManager::adminAutoretrieveInitPostSync(char * accessToken,
 static bool adminAutoretrieveListGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -218,15 +254,15 @@ static bool adminAutoretrieveListGetProcessor(MemoryStruct_s p_chunk, long code,
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminAutoretrieveListGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -296,8 +332,8 @@ static bool adminAutoretrieveListGetHelper(char * accessToken,
 
 bool AutoretrieveManager::adminAutoretrieveListGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminAutoretrieveListGetHelper(accessToken,
 	
@@ -306,8 +342,8 @@ bool AutoretrieveManager::adminAutoretrieveListGetAsync(char * accessToken,
 
 bool AutoretrieveManager::adminAutoretrieveListGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminAutoretrieveListGetHelper(accessToken,
 	
@@ -317,21 +353,48 @@ bool AutoretrieveManager::adminAutoretrieveListGetSync(char * accessToken,
 static bool autoretrieveHeartbeatPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -342,15 +405,15 @@ static bool autoretrieveHeartbeatPostProcessor(MemoryStruct_s p_chunk, long code
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool autoretrieveHeartbeatPostHelper(char * accessToken,
 	std::string token, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -426,8 +489,8 @@ static bool autoretrieveHeartbeatPostHelper(char * accessToken,
 
 bool AutoretrieveManager::autoretrieveHeartbeatPostAsync(char * accessToken,
 	std::string token, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return autoretrieveHeartbeatPostHelper(accessToken,
 	token, 
@@ -436,8 +499,8 @@ bool AutoretrieveManager::autoretrieveHeartbeatPostAsync(char * accessToken,
 
 bool AutoretrieveManager::autoretrieveHeartbeatPostSync(char * accessToken,
 	std::string token, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return autoretrieveHeartbeatPostHelper(accessToken,
 	token, 

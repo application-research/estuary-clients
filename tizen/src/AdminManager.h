@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Util.HttpError.h"
 #include <list>
 #include "Error.h"
 
@@ -27,28 +28,28 @@ public:
 /*! \brief Remove peers on Peering Service. *Synchronous*
  *
  * This endpoint can be used to remove a Peer from the Peering Service
- * \param body Peer ids *Required*
+ * \param peerIds Peer ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool adminPeeringPeersDeleteSync(char * accessToken,
-	std::list<> body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	std::list<> peerIds, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Remove peers on Peering Service. *Asynchronous*
  *
  * This endpoint can be used to remove a Peer from the Peering Service
- * \param body Peer ids *Required*
+ * \param peerIds Peer ids *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool adminPeeringPeersDeleteAsync(char * accessToken,
-	std::list<> body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	std::list<> peerIds, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief List all Peering peers. *Synchronous*
@@ -60,8 +61,8 @@ bool adminPeeringPeersDeleteAsync(char * accessToken,
  */
 bool adminPeeringPeersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief List all Peering peers. *Asynchronous*
  *
@@ -72,8 +73,8 @@ bool adminPeeringPeersGetSync(char * accessToken,
  */
 bool adminPeeringPeersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add peers on Peering Service. *Synchronous*
@@ -85,8 +86,8 @@ bool adminPeeringPeersGetAsync(char * accessToken,
  */
 bool adminPeeringPeersPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add peers on Peering Service. *Asynchronous*
  *
@@ -97,8 +98,8 @@ bool adminPeeringPeersPostSync(char * accessToken,
  */
 bool adminPeeringPeersPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Start Peering. *Synchronous*
@@ -110,8 +111,8 @@ bool adminPeeringPeersPostAsync(char * accessToken,
  */
 bool adminPeeringStartPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Start Peering. *Asynchronous*
  *
@@ -122,8 +123,8 @@ bool adminPeeringStartPostSync(char * accessToken,
  */
 bool adminPeeringStartPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Check Peering Status. *Synchronous*
@@ -135,8 +136,8 @@ bool adminPeeringStartPostAsync(char * accessToken,
  */
 bool adminPeeringStatusGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Check Peering Status. *Asynchronous*
  *
@@ -147,8 +148,8 @@ bool adminPeeringStatusGetSync(char * accessToken,
  */
 bool adminPeeringStatusGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Stop Peering. *Synchronous*
@@ -160,8 +161,8 @@ bool adminPeeringStatusGetAsync(char * accessToken,
  */
 bool adminPeeringStopPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Stop Peering. *Asynchronous*
  *
@@ -172,8 +173,8 @@ bool adminPeeringStopPostSync(char * accessToken,
  */
 bool adminPeeringStopPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get systems(estuary/shuttle) config. *Synchronous*
@@ -185,8 +186,8 @@ bool adminPeeringStopPostAsync(char * accessToken,
  */
 bool adminSystemConfigGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get systems(estuary/shuttle) config. *Asynchronous*
  *
@@ -197,8 +198,8 @@ bool adminSystemConfigGetSync(char * accessToken,
  */
 bool adminSystemConfigGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get all users. *Synchronous*
@@ -210,8 +211,8 @@ bool adminSystemConfigGetAsync(char * accessToken,
  */
 bool adminUsersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all users. *Asynchronous*
  *
@@ -222,8 +223,8 @@ bool adminUsersGetSync(char * accessToken,
  */
 bool adminUsersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

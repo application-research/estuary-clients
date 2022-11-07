@@ -56,6 +56,10 @@ void SwaggerPinningApi::PinningPinsGetResponse::SetHttpResponseCode(EHttpRespons
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
 	case 400:
 		SetResponseString(TEXT("Bad Request"));
 		break;
@@ -70,7 +74,7 @@ void SwaggerPinningApi::PinningPinsGetResponse::SetHttpResponseCode(EHttpRespons
 
 bool SwaggerPinningApi::PinningPinsGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPinningApi::PinningPinsPinidDeleteRequest::ComputePath() const
@@ -106,10 +110,27 @@ void SwaggerPinningApi::PinningPinsPinidDeleteRequest::SetupHttpRequest(const TS
 	}
 }
 
+void SwaggerPinningApi::PinningPinsPinidDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPinningApi::PinningPinsPinidDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPinningApi::PinningPinsPinidGetRequest::ComputePath() const
@@ -145,10 +166,27 @@ void SwaggerPinningApi::PinningPinsPinidGetRequest::SetupHttpRequest(const TShar
 	}
 }
 
+void SwaggerPinningApi::PinningPinsPinidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPinningApi::PinningPinsPinidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPinningApi::PinningPinsPinidPostRequest::ComputePath() const
@@ -184,20 +222,32 @@ void SwaggerPinningApi::PinningPinsPinidPostRequest::SetupHttpRequest(const TSha
 	}
 }
 
+void SwaggerPinningApi::PinningPinsPinidPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPinningApi::PinningPinsPinidPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPinningApi::PinningPinsPostRequest::ComputePath() const
 {
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("cid"), ToStringFormatArg(Cid) },
-	{ TEXT("name"), ToStringFormatArg(Name) } };
-
-	FString Path = FString::Format(TEXT("/pinning/pins"), PathParams);
-	
+	FString Path(TEXT("/pinning/pins"));
 	return Path;
 }
 
@@ -211,12 +261,23 @@ void SwaggerPinningApi::PinningPinsPostRequest::SetupHttpRequest(const TSharedRe
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, Pin);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (pin) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (pin) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -224,10 +285,27 @@ void SwaggerPinningApi::PinningPinsPostRequest::SetupHttpRequest(const TSharedRe
 	}
 }
 
+void SwaggerPinningApi::PinningPinsPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPinningApi::PinningPinsPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

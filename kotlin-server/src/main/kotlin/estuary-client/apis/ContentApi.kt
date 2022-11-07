@@ -43,6 +43,7 @@ import estuary-client.models.MainimportDealBody
 import estuary-client.models.UtilContentAddIpfsBody
 import estuary-client.models.UtilContentAddResponse
 import estuary-client.models.UtilContentCreateBody
+import estuary-client.models.UtilHttpError
 
 fun Route.ContentApi() {
     val gson = Gson()
@@ -55,7 +56,17 @@ fun Route.ContentApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -88,7 +99,17 @@ fun Route.ContentApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -201,7 +222,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -232,7 +263,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -264,7 +305,17 @@ fun Route.ContentApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -296,7 +347,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -327,7 +388,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -399,7 +470,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -431,7 +512,17 @@ fun Route.ContentApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -464,7 +555,10 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{}"""
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -501,7 +595,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -532,7 +636,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -563,7 +677,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -594,7 +718,17 @@ fun Route.ContentApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {

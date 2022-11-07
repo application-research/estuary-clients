@@ -30,7 +30,7 @@ SWGAutoretrieveApi::SWGAutoretrieveApi(QString host, QString basePath) {
 }
 
 void
-SWGAutoretrieveApi::adminAutoretrieveInitPost(QString*& addresses, QString*& pub_key) {
+SWGAutoretrieveApi::adminAutoretrieveInitPost(QString* addresses, QString* pub_key) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/admin/autoretrieve/init");
 
@@ -39,14 +39,14 @@ SWGAutoretrieveApi::adminAutoretrieveInitPost(QString*& addresses, QString*& pub
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
     SWGHttpRequestInput input(fullPath, "POST");
 
+    if (addresses != nullptr) {
+        input.add_var("addresses", *addresses);
+    }
+    if (pub_key != nullptr) {
+        input.add_var("pubKey", *pub_key);
+    }
 
-    
-    QString output(*addresses);
-    input.request_body.append(output);
-        
-    QString output(*pub_key);
-    input.request_body.append(output);
-    
+
 
 
     foreach(QString key, this->defaultHeaders.keys()) {
@@ -74,12 +74,16 @@ SWGAutoretrieveApi::adminAutoretrieveInitPostCallback(SWGHttpRequestWorker * wor
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminAutoretrieveInitPostSignal();
+        emit adminAutoretrieveInitPostSignal(output);
     } else {
-        emit adminAutoretrieveInitPostSignalE(error_type, error_str);
+        emit adminAutoretrieveInitPostSignalE(output, error_type, error_str);
         emit adminAutoretrieveInitPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -123,12 +127,16 @@ SWGAutoretrieveApi::adminAutoretrieveListGetCallback(SWGHttpRequestWorker * work
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminAutoretrieveListGetSignal();
+        emit adminAutoretrieveListGetSignal(output);
     } else {
-        emit adminAutoretrieveListGetSignalE(error_type, error_str);
+        emit adminAutoretrieveListGetSignalE(output, error_type, error_str);
         emit adminAutoretrieveListGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -175,12 +183,16 @@ SWGAutoretrieveApi::autoretrieveHeartbeatPostCallback(SWGHttpRequestWorker * wor
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit autoretrieveHeartbeatPostSignal();
+        emit autoretrieveHeartbeatPostSignal(output);
     } else {
-        emit autoretrieveHeartbeatPostSignalE(error_type, error_str);
+        emit autoretrieveHeartbeatPostSignalE(output, error_type, error_str);
         emit autoretrieveHeartbeatPostSignalEFull(worker, error_type, error_str);
     }
 }

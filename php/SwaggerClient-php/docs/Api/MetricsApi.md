@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> string publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -32,7 +32,8 @@ $apiInstance = new Swagger\Client\Api\MetricsApi(
 );
 
 try {
-    $apiInstance->publicMetricsDealsOnChainGet();
+    $result = $apiInstance->publicMetricsDealsOnChainGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->publicMetricsDealsOnChainGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -44,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

@@ -109,12 +109,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | **dealStatusByProposalPropcidGet** | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | **dealStatusMinerPropcidGet** | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | **dealTransferInProgressGet** | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | **dealTransferStatusPost** | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | **dealsFailuresGet** | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | **dealsMakeMinerPost** | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | **dealsStatusDealGet** | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | **publicDealsFailuresGet** | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | **publicMinersStorageQueryMinerGet** | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | **dealTransferStatusPost** | **POST** /deal/transfer/status | 
 *MetricsApi* | **publicMetricsDealsOnChainGet** | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | **publicMinersDealsMinerGet** | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | **publicMinersStatsMinerGet** | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -160,12 +160,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [CollectionsCollection](CollectionsCollection.md)
+ - [MainChannelIDParam](MainChannelIDParam.md)
  - [MainCreateCollectionBody](MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](MainEstimateDealBody.md)
  - [MainGetApiKeysResp](MainGetApiKeysResp.md)
  - [MainImportDealBody](MainImportDealBody.md)
- - [MainUserStatsResponse](MainUserStatsResponse.md)
+ - [TypesIpfsPin](TypesIpfsPin.md)
  - [UtilContentAddIpfsBody](UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](UtilContentAddResponse.md)
  - [UtilContentCreateBody](UtilContentCreateBody.md)

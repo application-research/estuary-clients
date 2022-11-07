@@ -72,7 +72,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.UserApiKeysGet();
-            //Assert.IsInstanceOf<List<MainGetApiKeysResp>> (response, "response is List<MainGetApiKeysResp>");
+            //Assert.IsInstanceOf<List<List<MainGetApiKeysResp>>> (response, "response is List<List<MainGetApiKeysResp>>");
         }
         
         /// <summary>
@@ -83,8 +83,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string key = null;
-            //instance.UserApiKeysKeyDelete(key);
-            
+            //var response = instance.UserApiKeysKeyDelete(key);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -119,7 +119,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.UserStatsGet();
-            //Assert.IsInstanceOf<MainUserStatsResponse> (response, "response is MainUserStatsResponse");
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

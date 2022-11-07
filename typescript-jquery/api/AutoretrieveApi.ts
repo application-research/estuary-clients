@@ -52,11 +52,14 @@ export class AutoretrieveApi {
      * @param addresses Autoretrieve&#39;s comma-separated list of addresses
      * @param pubKey Autoretrieve&#39;s public key
      */
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/autoretrieve/init';
 
         let queryParameters: any = {};
         let headerParams: any = {};
+        let formParams = new FormData();
+        let reqHasFile = false;
+
         // verify required parameter 'addresses' is not null or undefined
         if (addresses === null || addresses === undefined) {
             throw new Error('Required parameter addresses was null or undefined when calling adminAutoretrieveInitPost.');
@@ -69,6 +72,12 @@ export class AutoretrieveApi {
 
 
         localVarPath = localVarPath + "?" + $.param(queryParameters);
+        if (addresses !== null && addresses !== undefined) {
+            formParams.append('addresses', <any>addresses);
+        }
+        if (pubKey !== null && pubKey !== undefined) {
+            formParams.append('pubKey', <any>pubKey);
+        }
         // to determine the Content-Type header
         let consumes: string[] = [
         ];
@@ -83,8 +92,10 @@ export class AutoretrieveApi {
             headerParams['Authorization'] = this.configuration.apiKey;
         }
 
+        if (!reqHasFile) {
+            headerParams['Content-Type'] = 'application/x-www-form-urlencoded';
+        }
 
-        headerParams['Content-Type'] = 'application/json';
 
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
@@ -93,9 +104,12 @@ export class AutoretrieveApi {
             processData: false
         };
 
-        requestOptions.data = JSON.stringify(pubKey);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
+        }
+        requestOptions.data = formParams;
+        if (reqHasFile) {
+            requestOptions.contentType = false;
         }
 
         if (extraJQueryAjaxSettings) {
@@ -108,7 +122,7 @@ export class AutoretrieveApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -120,7 +134,7 @@ export class AutoretrieveApi {
      * This endpoint lists all registered autoretrieve servers
      * @summary List autoretrieve servers
      */
-    public adminAutoretrieveListGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public adminAutoretrieveListGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/admin/autoretrieve/list';
 
         let queryParameters: any = {};
@@ -163,7 +177,7 @@ export class AutoretrieveApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -176,7 +190,7 @@ export class AutoretrieveApi {
      * @summary Marks autoretrieve server as up
      * @param token Autoretrieve&#39;s auth token
      */
-    public autoretrieveHeartbeatPost(token: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public autoretrieveHeartbeatPost(token: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/autoretrieve/heartbeat';
 
         let queryParameters: any = {};
@@ -226,7 +240,7 @@ export class AutoretrieveApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

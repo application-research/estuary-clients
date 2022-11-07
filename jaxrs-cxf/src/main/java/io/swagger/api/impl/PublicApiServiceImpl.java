@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,10 +29,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns the content associated with a CID
      *
      */
-    public void publicByCidCidGet(String cid) {
+    public String publicByCidCidGet(String cid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -40,10 +41,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns information about the node
      *
      */
-    public void publicInfoGet() {
+    public String publicInfoGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -52,10 +53,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint is used to get deal metrics
      *
      */
-    public void publicMetricsDealsOnChainGet() {
+    public String publicMetricsDealsOnChainGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -64,10 +65,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns all miners deals
      *
      */
-    public void publicMinersDealsMinerGet(String miner, String ignoreFailed) {
+    public String publicMinersDealsMinerGet(String miner, String ignoreFailed) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -76,10 +77,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns all miners
      *
      */
-    public void publicMinersFailuresMinerGet(String miner) {
+    public String publicMinersFailuresMinerGet(String miner) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -88,10 +89,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns all miners
      *
      */
-    public void publicMinersGet() {
+    public String publicMinersGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -100,10 +101,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns miner stats
      *
      */
-    public void publicMinersStatsMinerGet(String miner) {
+    public String publicMinersStatsMinerGet(String miner) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -136,10 +137,10 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint is used to get public stats.
      *
      */
-    public void publicStatsGet() {
+    public String publicStatsGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

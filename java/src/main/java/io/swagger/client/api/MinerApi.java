@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -125,10 +126,12 @@ public class MinerApi {
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
      * @param ignoreFailed Ignore Failed (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersDealsMinerGet(String miner, String ignoreFailed) throws ApiException {
-        publicMinersDealsMinerGetWithHttpInfo(miner, ignoreFailed);
+    public String publicMinersDealsMinerGet(String miner, String ignoreFailed) throws ApiException {
+        ApiResponse<String> resp = publicMinersDealsMinerGetWithHttpInfo(miner, ignoreFailed);
+        return resp.getData();
     }
 
     /**
@@ -136,12 +139,13 @@ public class MinerApi {
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
      * @param ignoreFailed Ignore Failed (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersDealsMinerGetWithHttpInfo(String miner, String ignoreFailed) throws ApiException {
+    public ApiResponse<String> publicMinersDealsMinerGetWithHttpInfo(String miner, String ignoreFailed) throws ApiException {
         com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, ignoreFailed, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -153,7 +157,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersDealsMinerGetAsync(String miner, String ignoreFailed, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersDealsMinerGetAsync(String miner, String ignoreFailed, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,7 +179,8 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = publicMinersDealsMinerGetValidateBeforeCall(miner, ignoreFailed, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -246,22 +251,25 @@ public class MinerApi {
      * Get miner stats
      * This endpoint returns miner stats
      * @param miner Filter by miner (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersStatsMinerGet(String miner) throws ApiException {
-        publicMinersStatsMinerGetWithHttpInfo(miner);
+    public String publicMinersStatsMinerGet(String miner) throws ApiException {
+        ApiResponse<String> resp = publicMinersStatsMinerGetWithHttpInfo(miner);
+        return resp.getData();
     }
 
     /**
      * Get miner stats
      * This endpoint returns miner stats
      * @param miner Filter by miner (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersStatsMinerGetWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<String> publicMinersStatsMinerGetWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = publicMinersStatsMinerGetValidateBeforeCall(miner, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -272,7 +280,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersStatsMinerGetAsync(String miner, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersStatsMinerGetAsync(String miner, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -294,7 +302,8 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = publicMinersStatsMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

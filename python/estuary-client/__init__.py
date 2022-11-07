@@ -22,7 +22,6 @@ from estuary-client.api.autoretrieve_api import AutoretrieveApi
 from estuary-client.api.collections_api import CollectionsApi
 from estuary-client.api.content_api import ContentApi
 from estuary-client.api.deals_api import DealsApi
-from estuary-client.api.default_api import DefaultApi
 from estuary-client.api.metrics_api import MetricsApi
 from estuary-client.api.miner_api import MinerApi
 from estuary-client.api.net_api import NetApi
@@ -36,12 +35,13 @@ from estuary-client.api_client import ApiClient
 from estuary-client.configuration import Configuration
 # import models into sdk package
 from estuary-client.models.collections_collection import CollectionsCollection
+from estuary-client.models.main_channel_id_param import MainChannelIDParam
 from estuary-client.models.main_create_collection_body import MainCreateCollectionBody
 from estuary-client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody
 from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody
 from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp
 from estuary-client.models.main_import_deal_body import MainImportDealBody
-from estuary-client.models.main_user_stats_response import MainUserStatsResponse
+from estuary-client.models.types_ipfs_pin import TypesIpfsPin
 from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody
 from estuary-client.models.util_content_add_response import UtilContentAddResponse
 from estuary-client.models.util_content_create_body import UtilContentCreateBody

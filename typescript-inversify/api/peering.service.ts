@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -35,14 +36,14 @@ export class PeeringService {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      
      */
-    public adminPeeringPeersDelete(body: Array<string>, observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringPeersDelete(body: Array<string>, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public adminPeeringPeersDelete(body: Array<string>, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!body){
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!peerIds){
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         // authentication (bearerAuth) required
@@ -52,7 +53,7 @@ export class PeeringService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/admin/peering/peers`, body as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/admin/peering/peers`, peerIds as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -65,8 +66,8 @@ export class PeeringService {
      * This endpoint can be used to list all peers on Peering Service
      
      */
-    public adminPeeringPeersGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringPeersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringPeersGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringPeersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminPeeringPeersGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -74,7 +75,7 @@ export class PeeringService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/peering/peers` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/peering/peers` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -87,8 +88,8 @@ export class PeeringService {
      * This endpoint can be used to add a Peer from the Peering Service
      
      */
-    public adminPeeringPeersPost(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringPeersPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringPeersPost(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringPeersPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminPeeringPeersPost(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -96,7 +97,7 @@ export class PeeringService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/peers` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/peers` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -109,8 +110,8 @@ export class PeeringService {
      * This endpoint can be used to start the Peering Service
      
      */
-    public adminPeeringStartPost(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringStartPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringStartPost(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringStartPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminPeeringStartPost(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -118,7 +119,7 @@ export class PeeringService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/start` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/start` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -131,8 +132,8 @@ export class PeeringService {
      * This endpoint can be used to check the Peering status
      
      */
-    public adminPeeringStatusGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringStatusGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringStatusGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringStatusGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminPeeringStatusGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -140,7 +141,7 @@ export class PeeringService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/peering/status` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/peering/status` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -153,8 +154,8 @@ export class PeeringService {
      * This endpoint can be used to stop the Peering Service
      
      */
-    public adminPeeringStopPost(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminPeeringStopPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminPeeringStopPost(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminPeeringStopPost(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminPeeringStopPost(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -162,7 +163,7 @@ export class PeeringService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/stop` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/peering/stop` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

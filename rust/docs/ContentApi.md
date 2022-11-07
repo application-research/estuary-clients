@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post(ctx, body, optional)
+> String content_add_car_post(ctx, body, optional)
 Add Car object
 
 This endpoint is used to add a car object to the network. The object can be a file or a directory.
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(ctx, body, optional)
+> String content_add_ipfs_post(ctx, body, optional)
 Add IPFS object
 
 This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_all_deals_get**
-> content_all_deals_get(ctx, begin, duration, all)
+> String content_all_deals_get(ctx, begin, duration, all)
 Get all deals for a user
 
 This endpoint is used to get all deals for a user
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_bw_usage_content_get**
-> content_bw_usage_content_get(ctx, content)
+> String content_bw_usage_content_get(ctx, content)
 Get content bandwidth
 
 This endpoint returns content bandwidth
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post(ctx, req, optional)
+> String content_create_post(ctx, req, optional)
 Add a new content
 
 This endpoint adds a new content
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_deals_get**
-> content_deals_get(ctx, optional)
+> String content_deals_get(ctx, optional)
 Content with deals
 
 This endpoint lists all content with deals
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get(ctx, datacid)
+> String content_ensure_replication_datacid_get(ctx, datacid)
 Ensure Replication
 
 This endpoint ensures that the content is replicated to the specified number of providers
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_id_get**
-> content_id_get(ctx, id)
+> String content_id_get(ctx, id)
 Content
 
 This endpoint returns a content by its ID
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_importdeal_post**
-> content_importdeal_post(ctx, body)
+> String content_importdeal_post(ctx, body)
 Import a deal
 
 This endpoint imports a deal into the shuttle.
@@ -398,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_list_get**
-> Vec<String> content_list_get(ctx, )
+> String content_list_get(ctx, )
 List all pinned content
 
 This endpoint lists all content
@@ -422,7 +422,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Vec<String>**
+**String**
 
 ### Authorization
 
@@ -436,7 +436,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_read_cont_get**
-> content_read_cont_get(ctx, cont)
+> String content_read_cont_get(ctx, cont)
 Read content
 
 This endpoint reads content from the blockstore
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_staging_zones_get**
-> content_staging_zones_get(ctx, )
+> String content_staging_zones_get(ctx, )
 Get staging zone for user
 
 This endpoint is used to get staging zone for user.
@@ -474,7 +474,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -488,7 +488,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get(ctx, limit, offset)
+> String content_stats_get(ctx, limit, offset)
 Get content statistics
 
 This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
@@ -503,7 +503,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -517,7 +517,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_status_id_get**
-> content_status_id_get(ctx, id)
+> String content_status_id_get(ctx, id)
 Content Status
 
 This endpoint returns the status of a content
@@ -531,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

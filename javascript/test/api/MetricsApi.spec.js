@@ -37,7 +37,7 @@
     describe('MetricsApi', function() {
       describe('publicMetricsDealsOnChainGet', function() {
         it('should call publicMetricsDealsOnChainGet successfully', function(done) {
-          // TODO: uncomment publicMetricsDealsOnChainGet call
+          // TODO: uncomment publicMetricsDealsOnChainGet call and complete the assertions
           /*
 
           instance.publicMetricsDealsOnChainGet(function(error, data, response) {
@@ -45,6 +45,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

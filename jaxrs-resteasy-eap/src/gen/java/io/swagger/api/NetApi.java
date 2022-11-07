@@ -5,6 +5,7 @@ import io.swagger.model.*;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
+import io.swagger.model.UtilHttpError;
 
 import java.util.List;
 import java.util.Map;
@@ -21,17 +22,21 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the net API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-10-25T22:53:12.944Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-07T20:06:03.798Z")
 public interface NetApi  {
    
     @GET
     @Path("/addrs")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Net Addrs", notes = "This endpoint is used to get net addrs", response = String.class, responseContainer = "List", authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Net Addrs", notes = "This endpoint is used to get net addrs", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "net", })
     @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List") })
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response netAddrsGet(@Context SecurityContext securityContext);
 }

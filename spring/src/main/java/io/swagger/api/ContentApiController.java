@@ -5,6 +5,7 @@ import org.springframework.core.io.Resource;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
+import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:53:50.942Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
 
 @Controller
 public class ContentApiController implements ContentApi {
@@ -41,14 +42,32 @@ public class ContentApiController implements ContentApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> contentAddCarPost(@ApiParam(value = "Car" ,required=true )  @Valid @RequestBody String body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@ApiParam(value = "Filename") @Valid @RequestParam(value = "filename", required = false) String filename) {
+    public ResponseEntity<String> contentAddCarPost(@ApiParam(value = "Car" ,required=true )  @Valid @RequestBody String body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@ApiParam(value = "Filename") @Valid @RequestParam(value = "filename", required = false) String filename) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true )  @Valid @RequestBody UtilContentAddIpfsBody body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
+    public ResponseEntity<String> contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true )  @Valid @RequestBody UtilContentAddIpfsBody body,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<UtilContentAddResponse> contentAddPost(@ApiParam(value = "File to upload") @Valid @RequestPart(value="data", required=true) MultipartFile data,@ApiParam(value = "Filenam to use for upload") @RequestParam(value="filename", required=false)  String filename,@ApiParam(value = "Collection UUID") @Valid @RequestParam(value = "coluuid", required = false) String coluuid,@ApiParam(value = "Replication value") @Valid @RequestParam(value = "replication", required = false) Integer replication,@ApiParam(value = "Ignore Dupes true/false") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@ApiParam(value = "Lazy Provide true/false") @Valid @RequestParam(value = "lazy-provide", required = false) String lazyProvide,@ApiParam(value = "Directory") @Valid @RequestParam(value = "dir", required = false) String dir) {
@@ -79,29 +98,74 @@ public class ContentApiController implements ContentApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentAllDealsGet(@NotNull @ApiParam(value = "Begin", required = true) @Valid @RequestParam(value = "begin", required = true) String begin,@NotNull @ApiParam(value = "Duration", required = true) @Valid @RequestParam(value = "duration", required = true) String duration,@NotNull @ApiParam(value = "All", required = true) @Valid @RequestParam(value = "all", required = true) String all) {
+    public ResponseEntity<String> contentAllDealsGet(@NotNull @ApiParam(value = "Begin", required = true) @Valid @RequestParam(value = "begin", required = true) String begin,@NotNull @ApiParam(value = "Duration", required = true) @Valid @RequestParam(value = "duration", required = true) String duration,@NotNull @ApiParam(value = "All", required = true) @Valid @RequestParam(value = "all", required = true) String all) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentBwUsageContentGet(@ApiParam(value = "Content ID",required=true) @PathVariable("content") String content) {
+    public ResponseEntity<String> contentBwUsageContentGet(@ApiParam(value = "Content ID",required=true) @PathVariable("content") String content) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentCreatePost(@ApiParam(value = "Content" ,required=true )  @Valid @RequestBody UtilContentCreateBody req,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
+    public ResponseEntity<String> contentCreatePost(@ApiParam(value = "Content" ,required=true )  @Valid @RequestBody UtilContentCreateBody req,@ApiParam(value = "Ignore Dupes") @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentDealsGet(@ApiParam(value = "Limit") @Valid @RequestParam(value = "limit", required = false) Integer limit,@ApiParam(value = "Offset") @Valid @RequestParam(value = "offset", required = false) Integer offset) {
+    public ResponseEntity<String> contentDealsGet(@ApiParam(value = "Limit") @Valid @RequestParam(value = "limit", required = false) Integer limit,@ApiParam(value = "Offset") @Valid @RequestParam(value = "offset", required = false) Integer offset) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentEnsureReplicationDatacidGet(@ApiParam(value = "Data CID",required=true) @PathVariable("datacid") String datacid) {
+    public ResponseEntity<String> contentEnsureReplicationDatacidGet(@ApiParam(value = "Data CID",required=true) @PathVariable("datacid") String datacid) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> contentFailuresContentGet(@ApiParam(value = "Content ID",required=true) @PathVariable("content") String content) {
@@ -118,48 +182,102 @@ public class ContentApiController implements ContentApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentIdGet(@ApiParam(value = "Content ID",required=true) @PathVariable("id") Integer id) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<Void> contentImportdealPost(@ApiParam(value = "Import a deal" ,required=true )  @Valid @RequestBody MainImportDealBody body) {
-        String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
-    }
-
-    public ResponseEntity<List<String>> contentListGet() {
+    public ResponseEntity<String> contentIdGet(@ApiParam(value = "Content ID",required=true) @PathVariable("id") Integer id) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<String>>(objectMapper.readValue("{}", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<String>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<String>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentReadContGet(@ApiParam(value = "CID",required=true) @PathVariable("cont") String cont) {
+    public ResponseEntity<String> contentImportdealPost(@ApiParam(value = "Import a deal" ,required=true )  @Valid @RequestBody MainImportDealBody body) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentStagingZonesGet() {
+    public ResponseEntity<String> contentListGet() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentStatsGet(@NotNull @ApiParam(value = "limit", required = true) @Valid @RequestParam(value = "limit", required = true) String limit,@NotNull @ApiParam(value = "offset", required = true) @Valid @RequestParam(value = "offset", required = true) String offset) {
+    public ResponseEntity<String> contentReadContGet(@ApiParam(value = "CID",required=true) @PathVariable("cont") String cont) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> contentStatusIdGet(@ApiParam(value = "Content ID",required=true) @PathVariable("id") Integer id) {
+    public ResponseEntity<String> contentStagingZonesGet() {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<String> contentStatsGet(@NotNull @ApiParam(value = "limit", required = true) @Valid @RequestParam(value = "limit", required = true) String limit,@NotNull @ApiParam(value = "offset", required = true) @Valid @RequestParam(value = "offset", required = true) String offset) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<String> contentStatusIdGet(@ApiParam(value = "Content ID",required=true) @PathVariable("id") Integer id) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("{  \"bytes\": [],  \"empty\": true}", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

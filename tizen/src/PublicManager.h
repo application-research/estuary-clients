@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -33,8 +34,8 @@ public:
  */
 bool publicByCidCidGetSync(char * accessToken,
 	std::string cid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get Content by Cid. *Asynchronous*
  *
@@ -46,8 +47,8 @@ bool publicByCidCidGetSync(char * accessToken,
  */
 bool publicByCidCidGetAsync(char * accessToken,
 	std::string cid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get public node info. *Synchronous*
@@ -59,8 +60,8 @@ bool publicByCidCidGetAsync(char * accessToken,
  */
 bool publicInfoGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get public node info. *Asynchronous*
  *
@@ -71,8 +72,8 @@ bool publicInfoGetSync(char * accessToken,
  */
 bool publicInfoGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get deal metrics. *Synchronous*
@@ -84,8 +85,8 @@ bool publicInfoGetAsync(char * accessToken,
  */
 bool publicMetricsDealsOnChainGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get deal metrics. *Asynchronous*
  *
@@ -96,8 +97,8 @@ bool publicMetricsDealsOnChainGetSync(char * accessToken,
  */
 bool publicMetricsDealsOnChainGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get all miners deals. *Synchronous*
@@ -111,8 +112,8 @@ bool publicMetricsDealsOnChainGetAsync(char * accessToken,
  */
 bool publicMinersDealsMinerGetSync(char * accessToken,
 	std::string miner, std::string ignoreFailed, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all miners deals. *Asynchronous*
  *
@@ -125,8 +126,8 @@ bool publicMinersDealsMinerGetSync(char * accessToken,
  */
 bool publicMinersDealsMinerGetAsync(char * accessToken,
 	std::string miner, std::string ignoreFailed, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get all miners. *Synchronous*
@@ -139,8 +140,8 @@ bool publicMinersDealsMinerGetAsync(char * accessToken,
  */
 bool publicMinersFailuresMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all miners. *Asynchronous*
  *
@@ -152,8 +153,8 @@ bool publicMinersFailuresMinerGetSync(char * accessToken,
  */
 bool publicMinersFailuresMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get all miners. *Synchronous*
@@ -165,8 +166,8 @@ bool publicMinersFailuresMinerGetAsync(char * accessToken,
  */
 bool publicMinersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all miners. *Asynchronous*
  *
@@ -177,8 +178,8 @@ bool publicMinersGetSync(char * accessToken,
  */
 bool publicMinersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get miner stats. *Synchronous*
@@ -191,8 +192,8 @@ bool publicMinersGetAsync(char * accessToken,
  */
 bool publicMinersStatsMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get miner stats. *Asynchronous*
  *
@@ -204,8 +205,8 @@ bool publicMinersStatsMinerGetSync(char * accessToken,
  */
 bool publicMinersStatsMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Net Addrs. *Synchronous*
@@ -267,8 +268,8 @@ bool publicNetPeersGetAsync(char * accessToken,
  */
 bool publicStatsGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Public stats. *Asynchronous*
  *
@@ -279,8 +280,8 @@ bool publicStatsGetSync(char * accessToken,
  */
 bool publicStatsGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

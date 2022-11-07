@@ -65,10 +65,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'deal_estimate_post' } = { 
     	summary => 'Estimate the cost of a deal',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_estimate_post {
     my ($self, %args) = @_;
@@ -103,10 +103,14 @@ sub deal_estimate_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -126,10 +130,10 @@ sub deal_estimate_post {
     __PACKAGE__->method_documentation->{ 'deal_info_dealid_get' } = { 
     	summary => 'Get Deal Info',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_info_dealid_get {
     my ($self, %args) = @_;
@@ -166,10 +170,14 @@ sub deal_info_dealid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -189,10 +197,10 @@ sub deal_info_dealid_get {
     __PACKAGE__->method_documentation->{ 'deal_proposal_propcid_get' } = { 
     	summary => 'Get Proposal',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_proposal_propcid_get {
     my ($self, %args) = @_;
@@ -229,10 +237,14 @@ sub deal_proposal_propcid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -252,10 +264,10 @@ sub deal_proposal_propcid_get {
     __PACKAGE__->method_documentation->{ 'deal_query_miner_get' } = { 
     	summary => 'Query Ask',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_query_miner_get {
     my ($self, %args) = @_;
@@ -292,10 +304,14 @@ sub deal_query_miner_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -315,10 +331,10 @@ sub deal_query_miner_get {
     __PACKAGE__->method_documentation->{ 'deal_status_by_proposal_propcid_get' } = { 
     	summary => 'Get Deal Status by PropCid',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_status_by_proposal_propcid_get {
     my ($self, %args) = @_;
@@ -355,10 +371,14 @@ sub deal_status_by_proposal_propcid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -384,10 +404,10 @@ sub deal_status_by_proposal_propcid_get {
     __PACKAGE__->method_documentation->{ 'deal_status_miner_propcid_get' } = { 
     	summary => 'Deal Status',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_status_miner_propcid_get {
     my ($self, %args) = @_;
@@ -436,10 +456,14 @@ sub deal_status_miner_propcid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -453,10 +477,10 @@ sub deal_status_miner_propcid_get {
     __PACKAGE__->method_documentation->{ 'deal_transfer_in_progress_get' } = { 
     	summary => 'Transfer In Progress',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deal_transfer_in_progress_get {
     my ($self, %args) = @_;
@@ -481,10 +505,79 @@ sub deal_transfer_in_progress_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
+}
+
+#
+# deal_transfer_status_post
+#
+# Transfer Status
+# 
+# @param MainChannelIDParam $chanid Channel ID (required)
+{
+    my $params = {
+    'chanid' => {
+        data_type => 'MainChannelIDParam',
+        description => 'Channel ID',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'deal_transfer_status_post' } = { 
+    	summary => 'Transfer Status',
+        params => $params,
+        returns => 'string',
+        };
+}
+# @return string
+#
+sub deal_transfer_status_post {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'chanid' is set
+    unless (exists $args{'chanid'}) {
+      croak("Missing the required parameter 'chanid' when calling deal_transfer_status_post");
+    }
+
+    # parse inputs
+    my $_resource_path = '/deal/transfer/status';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'chanid'}) {
+        $_body_data = $args{'chanid'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(bearerAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -498,10 +591,10 @@ sub deal_transfer_in_progress_get {
     __PACKAGE__->method_documentation->{ 'deals_failures_get' } = { 
     	summary => 'Get storage failures for user',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deals_failures_get {
     my ($self, %args) = @_;
@@ -526,10 +619,14 @@ sub deals_failures_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -555,10 +652,10 @@ sub deals_failures_get {
     __PACKAGE__->method_documentation->{ 'deals_make_miner_post' } = { 
     	summary => 'Make Deal',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deals_make_miner_post {
     my ($self, %args) = @_;
@@ -605,10 +702,14 @@ sub deals_make_miner_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -628,10 +729,10 @@ sub deals_make_miner_post {
     __PACKAGE__->method_documentation->{ 'deals_status_deal_get' } = { 
     	summary => 'Get Deal Status',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub deals_status_deal_get {
     my ($self, %args) = @_;
@@ -668,10 +769,14 @@ sub deals_status_deal_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -685,10 +790,10 @@ sub deals_status_deal_get {
     __PACKAGE__->method_documentation->{ 'public_deals_failures_get' } = { 
     	summary => 'Get storage failures',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_deals_failures_get {
     my ($self, %args) = @_;
@@ -713,10 +818,14 @@ sub public_deals_failures_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -736,10 +845,10 @@ sub public_deals_failures_get {
     __PACKAGE__->method_documentation->{ 'public_miners_storage_query_miner_get' } = { 
     	summary => 'Query Ask',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_miners_storage_query_miner_get {
     my ($self, %args) = @_;
@@ -776,10 +885,14 @@ sub public_miners_storage_query_miner_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

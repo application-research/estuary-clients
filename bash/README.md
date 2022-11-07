@@ -137,12 +137,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -188,12 +188,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Collections.Collection](docs/Collections.Collection.md)
+ - [Main.ChannelIDParam](docs/Main.ChannelIDParam.md)
  - [Main.createCollectionBody](docs/Main.createCollectionBody.md)
  - [Main.deleteContentFromCollectionBody](docs/Main.deleteContentFromCollectionBody.md)
  - [Main.estimateDealBody](docs/Main.estimateDealBody.md)
  - [Main.getApiKeysResp](docs/Main.getApiKeysResp.md)
  - [Main.importDealBody](docs/Main.importDealBody.md)
- - [Main.userStatsResponse](docs/Main.userStatsResponse.md)
+ - [Types.IpfsPin](docs/Types.IpfsPin.md)
  - [Util.ContentAddIpfsBody](docs/Util.ContentAddIpfsBody.md)
  - [Util.ContentAddResponse](docs/Util.ContentAddResponse.md)
  - [Util.ContentCreateBody](docs/Util.ContentCreateBody.md)

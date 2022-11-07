@@ -6,6 +6,7 @@ import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -33,10 +34,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      */
-    public void contentAddCarPost(String body, String ignoreDupes, String filename) {
+    public String contentAddCarPost(String body, String ignoreDupes, String filename) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -45,10 +46,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      *
      */
-    public void contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) {
+    public String contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -81,10 +82,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to get all deals for a user
      *
      */
-    public void contentAllDealsGet(String begin, String duration, String all) {
+    public String contentAllDealsGet(String begin, String duration, String all) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -93,10 +94,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint returns content bandwidth
      *
      */
-    public void contentBwUsageContentGet(String content) {
+    public String contentBwUsageContentGet(String content) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -105,10 +106,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint adds a new content
      *
      */
-    public void contentCreatePost(UtilContentCreateBody req, String ignoreDupes) {
+    public String contentCreatePost(UtilContentCreateBody req, String ignoreDupes) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -117,10 +118,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint lists all content with deals
      *
      */
-    public void contentDealsGet(Integer limit, Integer offset) {
+    public String contentDealsGet(Integer limit, Integer offset) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -129,10 +130,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint ensures that the content is replicated to the specified number of providers
      *
      */
-    public void contentEnsureReplicationDatacidGet(String datacid) {
+    public String contentEnsureReplicationDatacidGet(String datacid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -153,10 +154,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint returns a content by its ID
      *
      */
-    public void contentIdGet(Integer id) {
+    public String contentIdGet(Integer id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -165,10 +166,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint imports a deal into the shuttle.
      *
      */
-    public void contentImportdealPost(MainImportDealBody body) {
+    public String contentImportdealPost(MainImportDealBody body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -177,7 +178,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint lists all content
      *
      */
-    public List<String> contentListGet() {
+    public String contentListGet() {
         // TODO: Implement...
         
         return null;
@@ -189,10 +190,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint reads content from the blockstore
      *
      */
-    public void contentReadContGet(String cont) {
+    public String contentReadContGet(String cont) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -201,10 +202,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to get staging zone for user.
      *
      */
-    public void contentStagingZonesGet() {
+    public String contentStagingZonesGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -213,10 +214,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      *
      */
-    public void contentStatsGet(String limit, String offset) {
+    public String contentStatsGet(String limit, String offset) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -225,10 +226,10 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint returns the status of a content
      *
      */
-    public void contentStatusIdGet(Integer id) {
+    public String contentStatusIdGet(Integer id) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

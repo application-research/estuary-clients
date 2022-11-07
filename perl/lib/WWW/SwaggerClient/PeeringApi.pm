@@ -53,11 +53,11 @@ sub new {
 #
 # Remove peers on Peering Service
 # 
-# @param ARRAY[string] $body Peer ids (required)
+# @param ARRAY[boolean] $peer_ids Peer ids (required)
 {
     my $params = {
-    'body' => {
-        data_type => 'ARRAY[string]',
+    'peer_ids' => {
+        data_type => 'ARRAY[boolean]',
         description => 'Peer ids',
         required => '1',
     },
@@ -65,17 +65,17 @@ sub new {
     __PACKAGE__->method_documentation->{ 'admin_peering_peers_delete' } = { 
     	summary => 'Remove peers on Peering Service',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_peers_delete {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'body' is set
-    unless (exists $args{'body'}) {
-      croak("Missing the required parameter 'body' when calling admin_peering_peers_delete");
+    # verify the required parameter 'peer_ids' is set
+    unless (exists $args{'peer_ids'}) {
+      croak("Missing the required parameter 'peer_ids' when calling admin_peering_peers_delete");
     }
 
     # parse inputs
@@ -95,18 +95,22 @@ sub admin_peering_peers_delete {
 
     my $_body_data;
     # body params
-    if ( exists $args{'body'}) {
-        $_body_data = $args{'body'};
+    if ( exists $args{'peer_ids'}) {
+        $_body_data = $args{'peer_ids'};
     }
 
     # authentication setting, if any
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -120,10 +124,10 @@ sub admin_peering_peers_delete {
     __PACKAGE__->method_documentation->{ 'admin_peering_peers_get' } = { 
     	summary => 'List all Peering peers',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_peers_get {
     my ($self, %args) = @_;
@@ -148,10 +152,14 @@ sub admin_peering_peers_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -165,10 +173,10 @@ sub admin_peering_peers_get {
     __PACKAGE__->method_documentation->{ 'admin_peering_peers_post' } = { 
     	summary => 'Add peers on Peering Service',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_peers_post {
     my ($self, %args) = @_;
@@ -193,10 +201,14 @@ sub admin_peering_peers_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -210,10 +222,10 @@ sub admin_peering_peers_post {
     __PACKAGE__->method_documentation->{ 'admin_peering_start_post' } = { 
     	summary => 'Start Peering',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_start_post {
     my ($self, %args) = @_;
@@ -238,10 +250,14 @@ sub admin_peering_start_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -255,10 +271,10 @@ sub admin_peering_start_post {
     __PACKAGE__->method_documentation->{ 'admin_peering_status_get' } = { 
     	summary => 'Check Peering Status',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_status_get {
     my ($self, %args) = @_;
@@ -283,10 +299,14 @@ sub admin_peering_status_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -300,10 +320,10 @@ sub admin_peering_status_get {
     __PACKAGE__->method_documentation->{ 'admin_peering_stop_post' } = { 
     	summary => 'Stop Peering',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_peering_stop_post {
     my ($self, %args) = @_;
@@ -328,10 +348,14 @@ sub admin_peering_stop_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,40 +21,49 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:53:50.942Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
 
 @Validated
 @Api(value = "deals", description = "the deals API")
 @RequestMapping(value = "")
 public interface DealsApi {
 
-    @ApiOperation(value = "Get storage failures for user", nickname = "dealsFailuresGet", notes = "This endpoint returns a list of storage failures for user", authorizations = {
+    @ApiOperation(value = "Get storage failures for user", nickname = "dealsFailuresGet", notes = "This endpoint returns a list of storage failures for user", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "deals", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/deals/failures",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> dealsFailuresGet();
+    ResponseEntity<String> dealsFailuresGet();
 
 
-    @ApiOperation(value = "Make Deal", nickname = "dealsMakeMinerPost", notes = "This endpoint makes a deal for a given content and miner", authorizations = {
+    @ApiOperation(value = "Make Deal", nickname = "dealsMakeMinerPost", notes = "This endpoint makes a deal for a given content and miner", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "deals", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/deals/make/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<Void> dealsMakeMinerPost(@ApiParam(value = "Miner",required=true) @PathVariable("miner") String miner,@ApiParam(value = "Deal Request" ,required=true )  @Valid @RequestBody String dealRequest);
+    ResponseEntity<String> dealsMakeMinerPost(@ApiParam(value = "Miner",required=true) @PathVariable("miner") String miner,@ApiParam(value = "Deal Request" ,required=true )  @Valid @RequestBody String dealRequest);
 
 
-    @ApiOperation(value = "Get Deal Status", nickname = "dealsStatusDealGet", notes = "This endpoint returns the status of a deal", authorizations = {
+    @ApiOperation(value = "Get Deal Status", nickname = "dealsStatusDealGet", notes = "This endpoint returns the status of a deal", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "deals", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/deals/status/{deal}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> dealsStatusDealGet(@ApiParam(value = "Deal ID",required=true) @PathVariable("deal") Integer deal);
+    ResponseEntity<String> dealsStatusDealGet(@ApiParam(value = "Deal ID",required=true) @PathVariable("deal") Integer deal);
 
 }

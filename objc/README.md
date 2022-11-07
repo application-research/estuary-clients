@@ -43,12 +43,13 @@ Import the following:
 #import <SwaggerClient/SWGDefaultConfiguration.h>
 // load models
 #import <SwaggerClient/SWGCollectionsCollection.h>
+#import <SwaggerClient/SWGMainChannelIDParam.h>
 #import <SwaggerClient/SWGMainCreateCollectionBody.h>
 #import <SwaggerClient/SWGMainDeleteContentFromCollectionBody.h>
 #import <SwaggerClient/SWGMainEstimateDealBody.h>
 #import <SwaggerClient/SWGMainGetApiKeysResp.h>
 #import <SwaggerClient/SWGMainImportDealBody.h>
-#import <SwaggerClient/SWGMainUserStatsResponse.h>
+#import <SwaggerClient/SWGTypesIpfsPin.h>
 #import <SwaggerClient/SWGUtilContentAddIpfsBody.h>
 #import <SwaggerClient/SWGUtilContentAddResponse.h>
 #import <SwaggerClient/SWGUtilContentCreateBody.h>
@@ -59,7 +60,6 @@ Import the following:
 #import <SwaggerClient/SWGCollectionsApi.h>
 #import <SwaggerClient/SWGContentApi.h>
 #import <SwaggerClient/SWGDealsApi.h>
-#import <SwaggerClient/SWGDefaultApi.h>
 #import <SwaggerClient/SWGMetricsApi.h>
 #import <SwaggerClient/SWGMinerApi.h>
 #import <SwaggerClient/SWGNetApi.h>
@@ -89,13 +89,16 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSArray<NSString*>* *body = @[[[NSArray<NSString> alloc] init]]; // Peer ids
+NSArray<NSNumber*>* *peerIds = @[[[NSArray<NSNumber> alloc] init]]; // Peer ids
 
 SWGAdminApi *apiInstance = [[SWGAdminApi alloc] init];
 
 // Remove peers on Peering Service
-[apiInstance adminPeeringPeersDeleteWithBody:body
-              completionHandler: ^(NSError* error) {
+[apiInstance adminPeeringPeersDeleteWithPeerIds:peerIds
+              completionHandler: ^(NSString* output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -152,12 +155,12 @@ Class | Method | HTTP request | Description
 *SWGDealsApi* | [**dealStatusByProposalPropcidGet**](docs/SWGDealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *SWGDealsApi* | [**dealStatusMinerPropcidGet**](docs/SWGDealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *SWGDealsApi* | [**dealTransferInProgressGet**](docs/SWGDealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*SWGDealsApi* | [**dealTransferStatusPost**](docs/SWGDealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *SWGDealsApi* | [**dealsFailuresGet**](docs/SWGDealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *SWGDealsApi* | [**dealsMakeMinerPost**](docs/SWGDealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *SWGDealsApi* | [**dealsStatusDealGet**](docs/SWGDealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *SWGDealsApi* | [**publicDealsFailuresGet**](docs/SWGDealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *SWGDealsApi* | [**publicMinersStorageQueryMinerGet**](docs/SWGDealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*SWGDefaultApi* | [**dealTransferStatusPost**](docs/SWGDefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *SWGMetricsApi* | [**publicMetricsDealsOnChainGet**](docs/SWGMetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SWGMinerApi* | [**publicMinersDealsMinerGet**](docs/SWGMinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SWGMinerApi* | [**publicMinersStatsMinerGet**](docs/SWGMinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -203,12 +206,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [SWGCollectionsCollection](docs/SWGCollectionsCollection.md)
+ - [SWGMainChannelIDParam](docs/SWGMainChannelIDParam.md)
  - [SWGMainCreateCollectionBody](docs/SWGMainCreateCollectionBody.md)
  - [SWGMainDeleteContentFromCollectionBody](docs/SWGMainDeleteContentFromCollectionBody.md)
  - [SWGMainEstimateDealBody](docs/SWGMainEstimateDealBody.md)
  - [SWGMainGetApiKeysResp](docs/SWGMainGetApiKeysResp.md)
  - [SWGMainImportDealBody](docs/SWGMainImportDealBody.md)
- - [SWGMainUserStatsResponse](docs/SWGMainUserStatsResponse.md)
+ - [SWGTypesIpfsPin](docs/SWGTypesIpfsPin.md)
  - [SWGUtilContentAddIpfsBody](docs/SWGUtilContentAddIpfsBody.md)
  - [SWGUtilContentAddResponse](docs/SWGUtilContentAddResponse.md)
  - [SWGUtilContentCreateBody](docs/SWGUtilContentCreateBody.md)

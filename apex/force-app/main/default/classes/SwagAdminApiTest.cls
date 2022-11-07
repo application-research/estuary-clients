@@ -13,18 +13,24 @@ private class SwagAdminApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'body' => new List<String>{'aeiou'}
+            'peerIds' => new List<Boolean>{true}
         };
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringPeersDelete(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringPeersDelete(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -41,13 +47,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringPeersGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringPeersGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -64,13 +76,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringPeersPost();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringPeersPost();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -87,13 +105,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringStartPost();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringStartPost();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -110,13 +134,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringStatusGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringStatusGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -133,13 +163,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminPeeringStopPost();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminPeeringStopPost();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -156,13 +192,19 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminSystemConfigGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminSystemConfigGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -179,12 +221,18 @@ private class SwagAdminApiTest {
 
         SwagClient client;
         SwagAdminApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAdminApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminUsersGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminUsersGet();
+        System.assertEquals(expectedResponse, response);
     }
 }

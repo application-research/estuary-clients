@@ -137,7 +137,7 @@ API.Client.CollectionsApi.prototype.collectionsColuuidContentsDelete = function(
  * This endpoint is used to delete an existing collection.
  * @param {!string} coluuid Collection ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.CollectionsApi.prototype.collectionsColuuidDelete = function(coluuid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -217,7 +217,7 @@ API.Client.CollectionsApi.prototype.collectionsColuuidGet = function(coluuid, op
  * @param {!string} coluuid coluuid
  * @param {!Array<!number>} contentIDs Content IDs to add to collection
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Object<!string, string>>}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.CollectionsApi.prototype.collectionsColuuidPost = function(coluuid, contentIDs, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -261,7 +261,7 @@ API.Client.CollectionsApi.prototype.collectionsColuuidPost = function(coluuid, c
  * @param {!string} content Content
  * @param {!string} path Path to file
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.CollectionsApi.prototype.collectionsFsAddPost = function(coluuid, content, path, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -316,7 +316,7 @@ API.Client.CollectionsApi.prototype.collectionsFsAddPost = function(coluuid, con
  * List all collections
  * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Array<!API.Client.collections.Collection>>}
+ * @return {!angular.$q.Promise<!Array<!Array<!API.Client.collections.Collection>>>}
  */
 API.Client.CollectionsApi.prototype.collectionsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

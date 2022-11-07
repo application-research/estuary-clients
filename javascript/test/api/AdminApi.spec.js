@@ -37,15 +37,18 @@
     describe('AdminApi', function() {
       describe('adminPeeringPeersDelete', function() {
         it('should call adminPeeringPeersDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for adminPeeringPeersDelete call
+          // TODO: uncomment, update parameter values for adminPeeringPeersDelete call and complete the assertions
           /*
-          var body = [new EstuaryClient.[String]()];
+          var peerIds = [new EstuaryClient.[Boolean]()];
 
-          instance.adminPeeringPeersDelete(body, function(error, data, response) {
+          instance.adminPeeringPeersDelete(peerIds, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -56,7 +59,7 @@
       });
       describe('adminPeeringPeersGet', function() {
         it('should call adminPeeringPeersGet successfully', function(done) {
-          // TODO: uncomment adminPeeringPeersGet call
+          // TODO: uncomment adminPeeringPeersGet call and complete the assertions
           /*
 
           instance.adminPeeringPeersGet(function(error, data, response) {
@@ -64,6 +67,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -74,7 +80,7 @@
       });
       describe('adminPeeringPeersPost', function() {
         it('should call adminPeeringPeersPost successfully', function(done) {
-          // TODO: uncomment adminPeeringPeersPost call
+          // TODO: uncomment adminPeeringPeersPost call and complete the assertions
           /*
 
           instance.adminPeeringPeersPost(function(error, data, response) {
@@ -82,6 +88,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -92,7 +101,7 @@
       });
       describe('adminPeeringStartPost', function() {
         it('should call adminPeeringStartPost successfully', function(done) {
-          // TODO: uncomment adminPeeringStartPost call
+          // TODO: uncomment adminPeeringStartPost call and complete the assertions
           /*
 
           instance.adminPeeringStartPost(function(error, data, response) {
@@ -100,6 +109,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -110,7 +122,7 @@
       });
       describe('adminPeeringStatusGet', function() {
         it('should call adminPeeringStatusGet successfully', function(done) {
-          // TODO: uncomment adminPeeringStatusGet call
+          // TODO: uncomment adminPeeringStatusGet call and complete the assertions
           /*
 
           instance.adminPeeringStatusGet(function(error, data, response) {
@@ -118,6 +130,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -128,7 +143,7 @@
       });
       describe('adminPeeringStopPost', function() {
         it('should call adminPeeringStopPost successfully', function(done) {
-          // TODO: uncomment adminPeeringStopPost call
+          // TODO: uncomment adminPeeringStopPost call and complete the assertions
           /*
 
           instance.adminPeeringStopPost(function(error, data, response) {
@@ -136,6 +151,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -146,7 +164,7 @@
       });
       describe('adminSystemConfigGet', function() {
         it('should call adminSystemConfigGet successfully', function(done) {
-          // TODO: uncomment adminSystemConfigGet call
+          // TODO: uncomment adminSystemConfigGet call and complete the assertions
           /*
 
           instance.adminSystemConfigGet(function(error, data, response) {
@@ -154,6 +172,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -164,7 +185,7 @@
       });
       describe('adminUsersGet', function() {
         it('should call adminUsersGet successfully', function(done) {
-          // TODO: uncomment adminUsersGet call
+          // TODO: uncomment adminUsersGet call and complete the assertions
           /*
 
           instance.adminUsersGet(function(error, data, response) {
@@ -172,6 +193,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

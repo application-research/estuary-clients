@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -13,19 +14,19 @@ namespace estuary-client.Api
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>
-        List<string> NetAddrsGet ();
+        /// <returns>string</returns>
+        string NetAddrsGet ();
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        void PublicMinersFailuresMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersFailuresMinerGet (string miner);
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <returns></returns>
-        void PublicMinersGet ();
+        /// <returns>string</returns>
+        string PublicMinersGet ();
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
@@ -94,8 +95,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>            
-        public List<string> NetAddrsGet ()
+        /// <returns>string</returns>            
+        public string NetAddrsGet ()
         {
             
     
@@ -120,15 +121,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling NetAddrsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<string>) ApiClient.Deserialize(response.Content, typeof(List<string>), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
-        /// <returns></returns>            
-        public void PublicMinersFailuresMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string PublicMinersFailuresMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -157,14 +158,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersFailuresMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <returns></returns>            
-        public void PublicMinersGet ()
+        /// <returns>string</returns>            
+        public string PublicMinersGet ()
         {
             
     
@@ -189,7 +190,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>

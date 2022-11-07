@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -46,7 +47,7 @@ public:
     /// </remarks>
     /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
     /// <param name="pubKey">Autoretrieve&#39;s public key</param>
-    pplx::task<void> adminAutoretrieveInitPost(
+    pplx::task<utility::string_t> adminAutoretrieveInitPost(
         utility::string_t addresses,
         utility::string_t pubKey
     );
@@ -56,7 +57,7 @@ public:
     /// <remarks>
     /// This endpoint lists all registered autoretrieve servers
     /// </remarks>
-    pplx::task<void> adminAutoretrieveListGet(
+    pplx::task<utility::string_t> adminAutoretrieveListGet(
     );
     /// <summary>
     /// Marks autoretrieve server as up
@@ -65,7 +66,7 @@ public:
     /// This endpoint updates the lastConnection field for autoretrieve
     /// </remarks>
     /// <param name="token">Autoretrieve&#39;s auth token</param>
-    pplx::task<void> autoretrieveHeartbeatPost(
+    pplx::task<utility::string_t> autoretrieveHeartbeatPost(
         utility::string_t token
     );
 

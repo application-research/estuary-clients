@@ -9,6 +9,7 @@
 #include "Util.ContentAddIpfsBody.h"
 #include "Util.ContentAddResponse.h"
 #include "Util.ContentCreateBody.h"
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -39,8 +40,8 @@ public:
  */
 bool contentAddCarPostSync(char * accessToken,
 	std::string body, std::string ignoreDupes, std::string filename, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add Car object. *Asynchronous*
  *
@@ -54,8 +55,8 @@ bool contentAddCarPostSync(char * accessToken,
  */
 bool contentAddCarPostAsync(char * accessToken,
 	std::string body, std::string ignoreDupes, std::string filename, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add IPFS object. *Synchronous*
@@ -69,8 +70,8 @@ bool contentAddCarPostAsync(char * accessToken,
  */
 bool contentAddIpfsPostSync(char * accessToken,
 	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add IPFS object. *Asynchronous*
  *
@@ -83,8 +84,8 @@ bool contentAddIpfsPostSync(char * accessToken,
  */
 bool contentAddIpfsPostAsync(char * accessToken,
 	Util.ContentAddIpfsBody body, std::string ignoreDupes, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add new content. *Synchronous*
@@ -165,8 +166,8 @@ bool contentAggregatedContentGetAsync(char * accessToken,
  */
 bool contentAllDealsGetSync(char * accessToken,
 	std::string begin, std::string duration, std::string all, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all deals for a user. *Asynchronous*
  *
@@ -180,8 +181,8 @@ bool contentAllDealsGetSync(char * accessToken,
  */
 bool contentAllDealsGetAsync(char * accessToken,
 	std::string begin, std::string duration, std::string all, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get content bandwidth. *Synchronous*
@@ -194,8 +195,8 @@ bool contentAllDealsGetAsync(char * accessToken,
  */
 bool contentBwUsageContentGetSync(char * accessToken,
 	std::string content, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get content bandwidth. *Asynchronous*
  *
@@ -207,8 +208,8 @@ bool contentBwUsageContentGetSync(char * accessToken,
  */
 bool contentBwUsageContentGetAsync(char * accessToken,
 	std::string content, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add a new content. *Synchronous*
@@ -222,8 +223,8 @@ bool contentBwUsageContentGetAsync(char * accessToken,
  */
 bool contentCreatePostSync(char * accessToken,
 	Util.ContentCreateBody req, std::string ignoreDupes, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add a new content. *Asynchronous*
  *
@@ -236,8 +237,8 @@ bool contentCreatePostSync(char * accessToken,
  */
 bool contentCreatePostAsync(char * accessToken,
 	Util.ContentCreateBody req, std::string ignoreDupes, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Content with deals. *Synchronous*
@@ -251,8 +252,8 @@ bool contentCreatePostAsync(char * accessToken,
  */
 bool contentDealsGetSync(char * accessToken,
 	int limit, int offset, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Content with deals. *Asynchronous*
  *
@@ -265,8 +266,8 @@ bool contentDealsGetSync(char * accessToken,
  */
 bool contentDealsGetAsync(char * accessToken,
 	int limit, int offset, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Ensure Replication. *Synchronous*
@@ -279,8 +280,8 @@ bool contentDealsGetAsync(char * accessToken,
  */
 bool contentEnsureReplicationDatacidGetSync(char * accessToken,
 	std::string datacid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Ensure Replication. *Asynchronous*
  *
@@ -292,8 +293,8 @@ bool contentEnsureReplicationDatacidGetSync(char * accessToken,
  */
 bool contentEnsureReplicationDatacidGetAsync(char * accessToken,
 	std::string datacid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief List all failures for a content. *Synchronous*
@@ -333,8 +334,8 @@ bool contentFailuresContentGetAsync(char * accessToken,
  */
 bool contentIdGetSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Content. *Asynchronous*
  *
@@ -346,8 +347,8 @@ bool contentIdGetSync(char * accessToken,
  */
 bool contentIdGetAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Import a deal. *Synchronous*
@@ -360,8 +361,8 @@ bool contentIdGetAsync(char * accessToken,
  */
 bool contentImportdealPostSync(char * accessToken,
 	Main.importDealBody body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Import a deal. *Asynchronous*
  *
@@ -373,8 +374,8 @@ bool contentImportdealPostSync(char * accessToken,
  */
 bool contentImportdealPostAsync(char * accessToken,
 	Main.importDealBody body, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief List all pinned content. *Synchronous*
@@ -386,7 +387,7 @@ bool contentImportdealPostAsync(char * accessToken,
  */
 bool contentListGetSync(char * accessToken,
 	
-	void(* handler)(std::list<std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
 /*! \brief List all pinned content. *Asynchronous*
@@ -398,7 +399,7 @@ bool contentListGetSync(char * accessToken,
  */
 bool contentListGetAsync(char * accessToken,
 	
-	void(* handler)(std::list<std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
 
@@ -412,8 +413,8 @@ bool contentListGetAsync(char * accessToken,
  */
 bool contentReadContGetSync(char * accessToken,
 	std::string cont, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Read content. *Asynchronous*
  *
@@ -425,8 +426,8 @@ bool contentReadContGetSync(char * accessToken,
  */
 bool contentReadContGetAsync(char * accessToken,
 	std::string cont, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get staging zone for user. *Synchronous*
@@ -438,8 +439,8 @@ bool contentReadContGetAsync(char * accessToken,
  */
 bool contentStagingZonesGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get staging zone for user. *Asynchronous*
  *
@@ -450,8 +451,8 @@ bool contentStagingZonesGetSync(char * accessToken,
  */
 bool contentStagingZonesGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get content statistics. *Synchronous*
@@ -465,8 +466,8 @@ bool contentStagingZonesGetAsync(char * accessToken,
  */
 bool contentStatsGetSync(char * accessToken,
 	std::string limit, std::string offset, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get content statistics. *Asynchronous*
  *
@@ -479,8 +480,8 @@ bool contentStatsGetSync(char * accessToken,
  */
 bool contentStatsGetAsync(char * accessToken,
 	std::string limit, std::string offset, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Content Status. *Synchronous*
@@ -493,8 +494,8 @@ bool contentStatsGetAsync(char * accessToken,
  */
 bool contentStatusIdGetSync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Content Status. *Asynchronous*
  *
@@ -506,8 +507,8 @@ bool contentStatusIdGetSync(char * accessToken,
  */
 bool contentStatusIdGetAsync(char * accessToken,
 	int id, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

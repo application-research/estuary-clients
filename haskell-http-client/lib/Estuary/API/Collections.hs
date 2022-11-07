@@ -120,9 +120,10 @@ instance Produces CollectionsColuuidContentsDelete MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsColuuidDelete 
-  :: Coluuid -- ^ "coluuid" -  Collection ID
-  -> EstuaryRequest CollectionsColuuidDelete MimeNoContent NoContent MimeNoContent
-collectionsColuuidDelete (Coluuid coluuid) =
+  :: Accept accept -- ^ request accept ('MimeType')
+  -> Coluuid -- ^ "coluuid" -  Collection ID
+  -> EstuaryRequest CollectionsColuuidDelete MimeNoContent Text accept
+collectionsColuuidDelete  _ (Coluuid coluuid) =
   _mkRequest "DELETE" ["/collections/",toPath coluuid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 
@@ -169,7 +170,7 @@ collectionsColuuidPost
   :: (Consumes CollectionsColuuidPost MimeJSON, MimeRender MimeJSON ContentIDs)
   => Coluuid -- ^ "coluuid" -  coluuid
   -> ContentIDs -- ^ "contentIDs" -  Content IDs to add to collection
-  -> EstuaryRequest CollectionsColuuidPost MimeJSON ((Map.Map String Text)) MimeJSON
+  -> EstuaryRequest CollectionsColuuidPost MimeJSON Text MimeJSON
 collectionsColuuidPost (Coluuid coluuid) contentIDs =
   _mkRequest "POST" ["/collections/",toPath coluuid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -197,13 +198,11 @@ instance Produces CollectionsColuuidPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 collectionsFsAddPost 
   :: Coluuid -- ^ "coluuid" -  Collection ID
   -> Content -- ^ "content" -  Content
   -> Path -- ^ "path" -  Path to file
-  -> EstuaryRequest CollectionsFsAddPost MimeNoContent res MimeJSON
+  -> EstuaryRequest CollectionsFsAddPost MimeNoContent Text MimeJSON
 collectionsFsAddPost (Coluuid coluuid) (Content content) (Path path) =
   _mkRequest "POST" ["/collections/fs/add"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -227,7 +226,7 @@ instance Produces CollectionsFsAddPost MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsGet 
-  :: EstuaryRequest CollectionsGet MimeNoContent [CollectionsCollection] MimeJSON
+  :: EstuaryRequest CollectionsGet MimeNoContent [[CollectionsCollection]] MimeJSON
 collectionsGet =
   _mkRequest "GET" ["/collections/"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

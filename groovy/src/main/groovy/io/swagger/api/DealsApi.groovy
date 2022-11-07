@@ -5,7 +5,9 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.MainChannelIDParam
 import io.swagger.model.MainEstimateDealBody
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -33,7 +35,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def dealInfoDealidGet ( Integer dealid, Closure onSuccess, Closure onFailure)  {
@@ -55,7 +57,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealProposalPropcidGet ( String propcid, Closure onSuccess, Closure onFailure)  {
@@ -77,7 +79,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealQueryMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
@@ -99,7 +101,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealStatusByProposalPropcidGet ( String propcid, Closure onSuccess, Closure onFailure)  {
@@ -121,7 +123,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealStatusMinerPropcidGet ( String miner, String propcid, Closure onSuccess, Closure onFailure)  {
@@ -147,7 +149,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealTransferInProgressGet ( Closure onSuccess, Closure onFailure)  {
@@ -165,7 +167,29 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
+                    
+    }
+    def dealTransferStatusPost ( MainChannelIDParam chanid, Closure onSuccess, Closure onFailure)  {
+        // create path and map path parameters (TODO)
+        String resourcePath = "/deal/transfer/status"
+
+        // query params
+        def queryParams = [:]
+        def headerParams = [:]
+    
+        // verify required params are set
+        if (chanid == null) {
+            throw new RuntimeException("missing required params chanid")
+        }
+
+        
+
+        // Also still TODO: form params, body param
+
+        invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
+                    "POST", "",
+                    String.class )
                     
     }
     def dealsFailuresGet ( Closure onSuccess, Closure onFailure)  {
@@ -183,7 +207,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def dealsMakeMinerPost ( String miner, String dealRequest, Closure onSuccess, Closure onFailure)  {
@@ -209,7 +233,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def dealsStatusDealGet ( Integer deal, Closure onSuccess, Closure onFailure)  {
@@ -231,7 +255,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicDealsFailuresGet ( Closure onSuccess, Closure onFailure)  {
@@ -249,7 +273,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersStorageQueryMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
@@ -271,7 +295,7 @@ class DealsApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
 }

@@ -23,7 +23,9 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.MainChannelIDParam;
 import io.swagger.client.model.MainEstimateDealBody;
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -59,9 +61,9 @@ public class DealsApi {
   * Estimate the cost of a deal
   * This endpoint estimates the cost of a deal
    * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
-   * @return void
+   * @return String
   */
-  public void dealEstimatePost (MainEstimateDealBody body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealEstimatePost (MainEstimateDealBody body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
     // verify the required parameter 'body' is set
     if (body == null) {
@@ -96,9 +98,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -166,7 +168,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -182,9 +188,9 @@ public class DealsApi {
   * Get Deal Info
   * This endpoint returns the deal info for a deal
    * @param dealid Deal ID
-   * @return void
+   * @return String
   */
-  public void dealInfoDealidGet (Integer dealid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealInfoDealidGet (Integer dealid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'dealid' is set
     if (dealid == null) {
@@ -219,9 +225,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -289,7 +295,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -305,9 +315,9 @@ public class DealsApi {
   * Get Proposal
   * This endpoint returns the proposal for a deal
    * @param propcid Proposal CID
-   * @return void
+   * @return String
   */
-  public void dealProposalPropcidGet (String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealProposalPropcidGet (String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'propcid' is set
     if (propcid == null) {
@@ -342,9 +352,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -412,7 +422,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -428,9 +442,9 @@ public class DealsApi {
   * Query Ask
   * This endpoint returns the ask for a given CID
    * @param miner CID
-   * @return void
+   * @return String
   */
-  public void dealQueryMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealQueryMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -465,9 +479,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -535,7 +549,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -551,9 +569,9 @@ public class DealsApi {
   * Get Deal Status by PropCid
   * Get Deal Status by PropCid
    * @param propcid PropCid
-   * @return void
+   * @return String
   */
-  public void dealStatusByProposalPropcidGet (String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealStatusByProposalPropcidGet (String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'propcid' is set
     if (propcid == null) {
@@ -588,9 +606,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -658,7 +676,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -675,9 +697,9 @@ public class DealsApi {
   * This endpoint returns the status of a deal
    * @param miner Miner
    * @param propcid Proposal CID
-   * @return void
+   * @return String
   */
-  public void dealStatusMinerPropcidGet (String miner, String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealStatusMinerPropcidGet (String miner, String propcid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -717,9 +739,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -792,7 +814,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -807,9 +833,9 @@ public class DealsApi {
   /**
   * Transfer In Progress
   * This endpoint returns the in-progress transfers
-   * @return void
+   * @return String
   */
-  public void dealTransferInProgressGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealTransferInProgressGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -839,9 +865,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -904,7 +930,138 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Transfer Status
+  * This endpoint returns the status of a transfer
+   * @param chanid Channel ID
+   * @return String
+  */
+  public String dealTransferStatusPost (MainChannelIDParam chanid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = chanid;
+    // verify the required parameter 'chanid' is set
+    if (chanid == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'chanid' when calling dealTransferStatusPost",
+        new ApiException(400, "Missing the required parameter 'chanid' when calling dealTransferStatusPost"));
+    }
+
+    // create path and map variables
+    String path = "/deal/transfer/status";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "bearerAuth" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Transfer Status
+   * This endpoint returns the status of a transfer
+   * @param chanid Channel ID
+  */
+  public void dealTransferStatusPost (MainChannelIDParam chanid, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = chanid;
+
+    // verify the required parameter 'chanid' is set
+    if (chanid == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'chanid' when calling dealTransferStatusPost",
+        new ApiException(400, "Missing the required parameter 'chanid' when calling dealTransferStatusPost"));
+    }
+
+    // create path and map variables
+    String path = "/deal/transfer/status".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "bearerAuth" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -919,9 +1076,9 @@ public class DealsApi {
   /**
   * Get storage failures for user
   * This endpoint returns a list of storage failures for user
-   * @return void
+   * @return String
   */
-  public void dealsFailuresGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealsFailuresGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -951,9 +1108,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1016,7 +1173,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1033,9 +1194,9 @@ public class DealsApi {
   * This endpoint makes a deal for a given content and miner
    * @param miner Miner
    * @param dealRequest Deal Request
-   * @return void
+   * @return String
   */
-  public void dealsMakeMinerPost (String miner, String dealRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealsMakeMinerPost (String miner, String dealRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = dealRequest;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -1075,9 +1236,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1150,7 +1311,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1166,9 +1331,9 @@ public class DealsApi {
   * Get Deal Status
   * This endpoint returns the status of a deal
    * @param deal Deal ID
-   * @return void
+   * @return String
   */
-  public void dealsStatusDealGet (Integer deal) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String dealsStatusDealGet (Integer deal) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'deal' is set
     if (deal == null) {
@@ -1203,9 +1368,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1273,7 +1438,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1288,9 +1457,9 @@ public class DealsApi {
   /**
   * Get storage failures
   * This endpoint returns a list of storage failures
-   * @return void
+   * @return String
   */
-  public void publicDealsFailuresGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicDealsFailuresGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -1320,9 +1489,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1385,7 +1554,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1401,9 +1574,9 @@ public class DealsApi {
   * Query Ask
   * This endpoint returns the ask for a given CID
    * @param miner CID
-   * @return void
+   * @return String
   */
-  public void publicMinersStorageQueryMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersStorageQueryMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -1438,9 +1611,9 @@ public class DealsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1508,7 +1681,11 @@ public class DealsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

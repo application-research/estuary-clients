@@ -13,6 +13,8 @@
 
 module Request.Miner exposing (publicMinersDealsMinerGet, publicMinersStatsMinerGet)
 
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
 
@@ -25,13 +27,13 @@ basePath =
 {-
    This endpoint returns all miners deals
 -}
-publicMinersDealsMinerGet : String -> Http.Request 
+publicMinersDealsMinerGet : String -> Http.Request String
 publicMinersDealsMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/deals/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -41,13 +43,13 @@ publicMinersDealsMinerGet miner =
 {-
    This endpoint returns miner stats
 -}
-publicMinersStatsMinerGet : String -> Http.Request 
+publicMinersStatsMinerGet : String -> Http.Request String
 publicMinersStatsMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/stats/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

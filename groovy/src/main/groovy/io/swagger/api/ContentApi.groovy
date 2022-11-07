@@ -10,6 +10,7 @@ import io.swagger.model.MainImportDealBody
 import io.swagger.model.UtilContentAddIpfsBody
 import io.swagger.model.UtilContentAddResponse
 import io.swagger.model.UtilContentCreateBody
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -41,7 +42,7 @@ if (!"null".equals(String.valueOf(filename)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def contentAddIpfsPost ( UtilContentAddIpfsBody body, String ignoreDupes, Closure onSuccess, Closure onFailure)  {
@@ -65,7 +66,7 @@ if (!"null".equals(String.valueOf(filename)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def contentAddPost ( File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, Closure onSuccess, Closure onFailure)  {
@@ -155,7 +156,7 @@ if (!"null".equals(String.valueOf(all)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentBwUsageContentGet ( String content, Closure onSuccess, Closure onFailure)  {
@@ -177,7 +178,7 @@ if (!"null".equals(String.valueOf(all)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentCreatePost ( UtilContentCreateBody req, String ignoreDupes, Closure onSuccess, Closure onFailure)  {
@@ -201,7 +202,7 @@ if (!"null".equals(String.valueOf(all)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def contentDealsGet ( Integer limit, Integer offset, Closure onSuccess, Closure onFailure)  {
@@ -223,7 +224,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentEnsureReplicationDatacidGet ( String datacid, Closure onSuccess, Closure onFailure)  {
@@ -245,7 +246,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentFailuresContentGet ( String content, Closure onSuccess, Closure onFailure)  {
@@ -289,7 +290,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentImportdealPost ( MainImportDealBody body, Closure onSuccess, Closure onFailure)  {
@@ -311,7 +312,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def contentListGet ( Closure onSuccess, Closure onFailure)  {
@@ -328,7 +329,7 @@ if (!"null".equals(String.valueOf(offset)))
         // Also still TODO: form params, body param
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
-                    "GET", "array",
+                    "GET", "",
                     String.class )
                     
     }
@@ -351,7 +352,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentStagingZonesGet ( Closure onSuccess, Closure onFailure)  {
@@ -369,7 +370,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentStatsGet ( String limit, String offset, Closure onSuccess, Closure onFailure)  {
@@ -399,7 +400,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def contentStatusIdGet ( Integer id, Closure onSuccess, Closure onFailure)  {
@@ -421,7 +422,7 @@ if (!"null".equals(String.valueOf(offset)))
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
 }

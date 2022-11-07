@@ -36,7 +36,7 @@ MinerApi::~MinerApi()
 {
 }
 
-pplx::task<void> MinerApi::publicMinersDealsMinerGet(utility::string_t miner, boost::optional<utility::string_t> ignoreFailed)
+pplx::task<utility::string_t> MinerApi::publicMinersDealsMinerGet(utility::string_t miner, boost::optional<utility::string_t> ignoreFailed)
 {
 
 
@@ -57,7 +57,7 @@ pplx::task<void> MinerApi::publicMinersDealsMinerGet(utility::string_t miner, bo
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -68,6 +68,11 @@ pplx::task<void> MinerApi::publicMinersDealsMinerGet(utility::string_t miner, bo
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -141,10 +146,33 @@ pplx::task<void> MinerApi::publicMinersDealsMinerGet(utility::string_t miner, bo
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling publicMinersDealsMinerGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> MinerApi::publicMinersStatsMinerGet(utility::string_t miner)
+pplx::task<utility::string_t> MinerApi::publicMinersStatsMinerGet(utility::string_t miner)
 {
 
 
@@ -165,7 +193,7 @@ pplx::task<void> MinerApi::publicMinersStatsMinerGet(utility::string_t miner)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -176,6 +204,11 @@ pplx::task<void> MinerApi::publicMinersStatsMinerGet(utility::string_t miner)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -245,7 +278,30 @@ pplx::task<void> MinerApi::publicMinersStatsMinerGet(utility::string_t miner)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling publicMinersStatsMinerGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

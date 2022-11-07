@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, ignoreDupes, filename)
+> kotlin.String contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -42,7 +42,8 @@ val body : kotlin.String = body_example // kotlin.String | Car
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 val filename : kotlin.String = filename_example // kotlin.String | Filename
 try {
-    apiInstance.contentAddCarPost(body, ignoreDupes, filename)
+    val result : kotlin.String = apiInstance.contentAddCarPost(body, ignoreDupes, filename)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddCarPost")
     e.printStackTrace()
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -75,7 +76,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body, ignoreDupes)
+> kotlin.String contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -91,7 +92,8 @@ val apiInstance = ContentApi()
 val body : UtilContentAddIpfsBody =  // UtilContentAddIpfsBody | IPFS Body
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 try {
-    apiInstance.contentAddIpfsPost(body, ignoreDupes)
+    val result : kotlin.String = apiInstance.contentAddIpfsPost(body, ignoreDupes)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddIpfsPost")
     e.printStackTrace()
@@ -110,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -229,7 +231,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAllDealsGet"></a>
 # **contentAllDealsGet**
-> contentAllDealsGet(begin, duration, all)
+> kotlin.String contentAllDealsGet(begin, duration, all)
 
 Get all deals for a user
 
@@ -246,7 +248,8 @@ val begin : kotlin.String = begin_example // kotlin.String | Begin
 val duration : kotlin.String = duration_example // kotlin.String | Duration
 val all : kotlin.String = all_example // kotlin.String | All
 try {
-    apiInstance.contentAllDealsGet(begin, duration, all)
+    val result : kotlin.String = apiInstance.contentAllDealsGet(begin, duration, all)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAllDealsGet")
     e.printStackTrace()
@@ -266,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -279,7 +282,7 @@ null (empty response body)
 
 <a name="contentBwUsageContentGet"></a>
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+> kotlin.String contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -294,7 +297,8 @@ This endpoint returns content bandwidth
 val apiInstance = ContentApi()
 val content : kotlin.String = content_example // kotlin.String | Content ID
 try {
-    apiInstance.contentBwUsageContentGet(content)
+    val result : kotlin.String = apiInstance.contentBwUsageContentGet(content)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentBwUsageContentGet")
     e.printStackTrace()
@@ -312,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -325,7 +329,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(req, ignoreDupes)
+> kotlin.String contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -341,7 +345,8 @@ val apiInstance = ContentApi()
 val req : UtilContentCreateBody =  // UtilContentCreateBody | Content
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 try {
-    apiInstance.contentCreatePost(req, ignoreDupes)
+    val result : kotlin.String = apiInstance.contentCreatePost(req, ignoreDupes)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentCreatePost")
     e.printStackTrace()
@@ -360,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -373,7 +378,7 @@ null (empty response body)
 
 <a name="contentDealsGet"></a>
 # **contentDealsGet**
-> contentDealsGet(limit, offset)
+> kotlin.String contentDealsGet(limit, offset)
 
 Content with deals
 
@@ -389,7 +394,8 @@ val apiInstance = ContentApi()
 val limit : kotlin.Int = 56 // kotlin.Int | Limit
 val offset : kotlin.Int = 56 // kotlin.Int | Offset
 try {
-    apiInstance.contentDealsGet(limit, offset)
+    val result : kotlin.String = apiInstance.contentDealsGet(limit, offset)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentDealsGet")
     e.printStackTrace()
@@ -408,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -421,7 +427,7 @@ null (empty response body)
 
 <a name="contentEnsureReplicationDatacidGet"></a>
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+> kotlin.String contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -436,7 +442,8 @@ This endpoint ensures that the content is replicated to the specified number of 
 val apiInstance = ContentApi()
 val datacid : kotlin.String = datacid_example // kotlin.String | Data CID
 try {
-    apiInstance.contentEnsureReplicationDatacidGet(datacid)
+    val result : kotlin.String = apiInstance.contentEnsureReplicationDatacidGet(datacid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentEnsureReplicationDatacidGet")
     e.printStackTrace()
@@ -454,7 +461,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -514,7 +521,7 @@ Name | Type | Description  | Notes
 
 <a name="contentIdGet"></a>
 # **contentIdGet**
-> contentIdGet(id)
+> kotlin.String contentIdGet(id)
 
 Content
 
@@ -529,7 +536,8 @@ This endpoint returns a content by its ID
 val apiInstance = ContentApi()
 val id : kotlin.Int = 56 // kotlin.Int | Content ID
 try {
-    apiInstance.contentIdGet(id)
+    val result : kotlin.String = apiInstance.contentIdGet(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentIdGet")
     e.printStackTrace()
@@ -547,7 +555,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -560,7 +568,7 @@ null (empty response body)
 
 <a name="contentImportdealPost"></a>
 # **contentImportdealPost**
-> contentImportdealPost(body)
+> kotlin.String contentImportdealPost(body)
 
 Import a deal
 
@@ -575,7 +583,8 @@ This endpoint imports a deal into the shuttle.
 val apiInstance = ContentApi()
 val body : MainimportDealBody =  // MainimportDealBody | Import a deal
 try {
-    apiInstance.contentImportdealPost(body)
+    val result : kotlin.String = apiInstance.contentImportdealPost(body)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentImportdealPost")
     e.printStackTrace()
@@ -593,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -606,7 +615,7 @@ null (empty response body)
 
 <a name="contentListGet"></a>
 # **contentListGet**
-> kotlin.Array&lt;kotlin.String&gt; contentListGet()
+> kotlin.String contentListGet()
 
 List all pinned content
 
@@ -620,7 +629,7 @@ This endpoint lists all content
 
 val apiInstance = ContentApi()
 try {
-    val result : kotlin.Array<kotlin.String> = apiInstance.contentListGet()
+    val result : kotlin.String = apiInstance.contentListGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentListGet")
@@ -636,7 +645,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.Array&lt;kotlin.String&gt;**
+**kotlin.String**
 
 ### Authorization
 
@@ -649,7 +658,7 @@ This endpoint does not need any parameter.
 
 <a name="contentReadContGet"></a>
 # **contentReadContGet**
-> contentReadContGet(cont)
+> kotlin.String contentReadContGet(cont)
 
 Read content
 
@@ -664,7 +673,8 @@ This endpoint reads content from the blockstore
 val apiInstance = ContentApi()
 val cont : kotlin.String = cont_example // kotlin.String | CID
 try {
-    apiInstance.contentReadContGet(cont)
+    val result : kotlin.String = apiInstance.contentReadContGet(cont)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentReadContGet")
     e.printStackTrace()
@@ -682,7 +692,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -695,7 +705,7 @@ null (empty response body)
 
 <a name="contentStagingZonesGet"></a>
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> kotlin.String contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -709,7 +719,8 @@ This endpoint is used to get staging zone for user.
 
 val apiInstance = ContentApi()
 try {
-    apiInstance.contentStagingZonesGet()
+    val result : kotlin.String = apiInstance.contentStagingZonesGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentStagingZonesGet")
     e.printStackTrace()
@@ -724,7 +735,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -737,7 +748,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(limit, offset)
+> kotlin.String contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -753,7 +764,8 @@ val apiInstance = ContentApi()
 val limit : kotlin.String = limit_example // kotlin.String | limit
 val offset : kotlin.String = offset_example // kotlin.String | offset
 try {
-    apiInstance.contentStatsGet(limit, offset)
+    val result : kotlin.String = apiInstance.contentStatsGet(limit, offset)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentStatsGet")
     e.printStackTrace()
@@ -772,7 +784,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -785,7 +797,7 @@ null (empty response body)
 
 <a name="contentStatusIdGet"></a>
 # **contentStatusIdGet**
-> contentStatusIdGet(id)
+> kotlin.String contentStatusIdGet(id)
 
 Content Status
 
@@ -800,7 +812,8 @@ This endpoint returns the status of a content
 val apiInstance = ContentApi()
 val id : kotlin.Int = 56 // kotlin.Int | Content ID
 try {
-    apiInstance.contentStatusIdGet(id)
+    val result : kotlin.String = apiInstance.contentStatusIdGet(id)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentStatusIdGet")
     e.printStackTrace()
@@ -818,7 +831,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

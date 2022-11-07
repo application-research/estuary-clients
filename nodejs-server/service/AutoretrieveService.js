@@ -7,11 +7,20 @@
  *
  * addresses String Autoretrieve's comma-separated list of addresses
  * pubKey String Autoretrieve's public key
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminAutoretrieveInitPOST = function(addresses,pubKey) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -20,11 +29,20 @@ exports.adminAutoretrieveInitPOST = function(addresses,pubKey) {
  * List autoretrieve servers
  * This endpoint lists all registered autoretrieve servers
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminAutoretrieveListGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -34,11 +52,20 @@ exports.adminAutoretrieveListGET = function() {
  * This endpoint updates the lastConnection field for autoretrieve
  *
  * token String Autoretrieve's auth token
- * no response value expected for this operation
+ * returns String
  **/
 exports.autoretrieveHeartbeatPOST = function(token) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

@@ -38,7 +38,7 @@ describe 'AutoretrieveApi' do
   # @param addresses Autoretrieve&#39;s comma-separated list of addresses
   # @param pub_key Autoretrieve&#39;s public key
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_autoretrieve_init_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'AutoretrieveApi' do
   # List autoretrieve servers
   # This endpoint lists all registered autoretrieve servers
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_autoretrieve_list_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -61,7 +61,7 @@ describe 'AutoretrieveApi' do
   # This endpoint updates the lastConnection field for autoretrieve
   # @param token Autoretrieve&#39;s auth token
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'autoretrieve_heartbeat_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

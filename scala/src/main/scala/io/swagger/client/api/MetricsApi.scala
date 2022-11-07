@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -82,9 +83,9 @@ class MetricsApi(
    * Get deal metrics
    * This endpoint is used to get deal metrics
    *
-   * @return void
+   * @return String
    */
-  def publicMetricsDealsOnChainGet() = {
+  def publicMetricsDealsOnChainGet(): Option[String] = {
     val await = Try(Await.result(publicMetricsDealsOnChainGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -96,9 +97,9 @@ class MetricsApi(
    * Get deal metrics asynchronously
    * This endpoint is used to get deal metrics
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMetricsDealsOnChainGetAsync() = {
+  def publicMetricsDealsOnChainGetAsync(): Future[String] = {
       helper.publicMetricsDealsOnChainGet()
   }
 
@@ -106,7 +107,7 @@ class MetricsApi(
 
 class MetricsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def publicMetricsDealsOnChainGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMetricsDealsOnChainGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/metrics/deals-on-chain"))
 

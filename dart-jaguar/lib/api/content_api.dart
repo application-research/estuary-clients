@@ -8,6 +8,7 @@ import 'package:swagger/model/util_content_add_ipfs_body.dart';
 import 'package:swagger/model/util_content_add_response.dart';
 import 'package:swagger/model/main_import_deal_body.dart';
 import 'package:swagger/model/util_content_create_body.dart';
+import 'package:swagger/model/util_http_error.dart';
 
 
 part 'content_api.jretro.dart';
@@ -23,7 +24,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
     @PostReq(path: "/content/add-car", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentAddCarPost(
+    Future<String> contentAddCarPost(
         
         @QueryParam("ignore-dupes") String ignoreDupes, 
         
@@ -36,7 +37,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     @PostReq(path: "/content/add-ipfs", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentAddIpfsPost(
+    Future<String> contentAddIpfsPost(
         
         @QueryParam("ignore-dupes") String ignoreDupes
         ,
@@ -76,7 +77,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint is used to get all deals for a user
     @GetReq(path: "/content/all-deals", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentAllDealsGet(
+    Future<String> contentAllDealsGet(
         
         @QueryParam("begin") String begin, 
         
@@ -89,7 +90,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint returns content bandwidth
     @GetReq(path: "/content/bw-usage/:content", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentBwUsageContentGet(
+    Future<String> contentBwUsageContentGet(
             @PathParam("content") String content
     );
 
@@ -97,7 +98,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint adds a new content
     @PostReq(path: "/content/create", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentCreatePost(
+    Future<String> contentCreatePost(
         
         @QueryParam("ignore-dupes") String ignoreDupes
         ,
@@ -108,7 +109,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint lists all content with deals
     @GetReq(path: "/content/deals", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentDealsGet(
+    Future<String> contentDealsGet(
         
         @QueryParam("limit") int limit, 
         
@@ -119,7 +120,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint ensures that the content is replicated to the specified number of providers
     @GetReq(path: "/content/ensure-replication/:datacid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentEnsureReplicationDatacidGet(
+    Future<String> contentEnsureReplicationDatacidGet(
             @PathParam("datacid") String datacid
     );
 
@@ -135,7 +136,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint returns a content by its ID
     @GetReq(path: "/content/:id", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentIdGet(
+    Future<String> contentIdGet(
             @PathParam("id") int id
     );
 
@@ -143,7 +144,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint imports a deal into the shuttle.
     @PostReq(path: "/content/importdeal", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentImportdealPost(
+    Future<String> contentImportdealPost(
         
         @AsJson() MainImportDealBody body
     );
@@ -152,14 +153,14 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint lists all content
     @GetReq(path: "/content/list", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<List<String>> contentListGet(
+    Future<String> contentListGet(
     );
 
     /// Read content
     ///
     /// This endpoint reads content from the blockstore
     @GetReq(path: "/content/read/:cont", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentReadContGet(
+    Future<String> contentReadContGet(
             @PathParam("cont") String cont
     );
 
@@ -167,14 +168,14 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint is used to get staging zone for user.
     @GetReq(path: "/content/staging-zones", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentStagingZonesGet(
+    Future<String> contentStagingZonesGet(
     );
 
     /// Get content statistics
     ///
     /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
     @GetReq(path: "/content/stats", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentStatsGet(
+    Future<String> contentStatsGet(
         
         @QueryParam("limit") String limit, 
         
@@ -185,7 +186,7 @@ class ContentApi extends _$ContentApiClient implements ApiClient {
     ///
     /// This endpoint returns the status of a content
     @GetReq(path: "/content/status/:id", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> contentStatusIdGet(
+    Future<String> contentStatusIdGet(
             @PathParam("id") int id
     );
 

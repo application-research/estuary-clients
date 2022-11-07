@@ -85,7 +85,7 @@
       });
       describe('collectionsColuuidDelete', function() {
         it('should call collectionsColuuidDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for collectionsColuuidDelete call
+          // TODO: uncomment, update parameter values for collectionsColuuidDelete call and complete the assertions
           /*
           var coluuid = "coluuid_example";
 
@@ -94,6 +94,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -139,14 +142,8 @@
               return;
             }
             // TODO: update response assertions
-            let dataCtr = data;
-            expect(dataCtr).to.be.an(Object);
-            expect(dataCtr).to.not.be.empty();
-            for (let p in dataCtr) {
-              let data = dataCtr[p];
-              expect(data).to.be.a('string');
-              // expect(data).to.be(null);
-            }
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -157,7 +154,7 @@
       });
       describe('collectionsFsAddPost', function() {
         it('should call collectionsFsAddPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for collectionsFsAddPost call
+          // TODO: uncomment, update parameter values for collectionsFsAddPost call and complete the assertions
           /*
           var coluuid = "coluuid_example";
           var content = "content_example";
@@ -168,6 +165,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -192,19 +192,8 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryClient.CollectionsCollection);
-              expect(data.cid).to.be.a('string');
-              expect(data.cid).to.be("");
-              expect(data.createdAt).to.be.a('string');
-              expect(data.createdAt).to.be("");
-              expect(data.description).to.be.a('string');
-              expect(data.description).to.be("");
-              expect(data.name).to.be.a('string');
-              expect(data.name).to.be("");
-              expect(data.userId).to.be.a('number');
-              expect(data.userId).to.be(0);
-              expect(data.uuid).to.be.a('string');
-              expect(data.uuid).to.be("");
+              expect(data).to.be.a(Array);
+              // expect(data).to.be(null);
             }
 
             done();

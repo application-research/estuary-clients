@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,101 +21,128 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-10-25T22:53:50.942Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
 
 @Validated
 @Api(value = "public", description = "the public API")
 @RequestMapping(value = "")
 public interface PublicApi {
 
-    @ApiOperation(value = "Get Content by Cid", nickname = "publicByCidCidGet", notes = "This endpoint returns the content associated with a CID", authorizations = {
+    @ApiOperation(value = "Get Content by Cid", nickname = "publicByCidCidGet", notes = "This endpoint returns the content associated with a CID", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/by-cid/{cid}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicByCidCidGet(@ApiParam(value = "Cid",required=true) @PathVariable("cid") String cid);
+    ResponseEntity<String> publicByCidCidGet(@ApiParam(value = "Cid",required=true) @PathVariable("cid") String cid);
 
 
-    @ApiOperation(value = "Get storage failures", nickname = "publicDealsFailuresGet", notes = "This endpoint returns a list of storage failures", authorizations = {
+    @ApiOperation(value = "Get storage failures", nickname = "publicDealsFailuresGet", notes = "This endpoint returns a list of storage failures", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "deals", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/deals/failures",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicDealsFailuresGet();
+    ResponseEntity<String> publicDealsFailuresGet();
 
 
-    @ApiOperation(value = "Get public node info", nickname = "publicInfoGet", notes = "This endpoint returns information about the node", authorizations = {
+    @ApiOperation(value = "Get public node info", nickname = "publicInfoGet", notes = "This endpoint returns information about the node", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/info",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicInfoGet();
+    ResponseEntity<String> publicInfoGet();
 
 
-    @ApiOperation(value = "Get deal metrics", nickname = "publicMetricsDealsOnChainGet", notes = "This endpoint is used to get deal metrics", authorizations = {
+    @ApiOperation(value = "Get deal metrics", nickname = "publicMetricsDealsOnChainGet", notes = "This endpoint is used to get deal metrics", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","metrics", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/metrics/deals-on-chain",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMetricsDealsOnChainGet();
+    ResponseEntity<String> publicMetricsDealsOnChainGet();
 
 
-    @ApiOperation(value = "Get all miners deals", nickname = "publicMinersDealsMinerGet", notes = "This endpoint returns all miners deals", authorizations = {
+    @ApiOperation(value = "Get all miners deals", nickname = "publicMinersDealsMinerGet", notes = "This endpoint returns all miners deals", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","miner", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/miners/deals/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner,@ApiParam(value = "Ignore Failed") @Valid @RequestParam(value = "ignore-failed", required = false) String ignoreFailed);
+    ResponseEntity<String> publicMinersDealsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner,@ApiParam(value = "Ignore Failed") @Valid @RequestParam(value = "ignore-failed", required = false) String ignoreFailed);
 
 
-    @ApiOperation(value = "Get all miners", nickname = "publicMinersFailuresMinerGet", notes = "This endpoint returns all miners", authorizations = {
+    @ApiOperation(value = "Get all miners", nickname = "publicMinersFailuresMinerGet", notes = "This endpoint returns all miners", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","net", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/miners/failures/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersFailuresMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner);
+    ResponseEntity<String> publicMinersFailuresMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner);
 
 
-    @ApiOperation(value = "Get all miners", nickname = "publicMinersGet", notes = "This endpoint returns all miners", authorizations = {
+    @ApiOperation(value = "Get all miners", nickname = "publicMinersGet", notes = "This endpoint returns all miners", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","net", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/miners",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersGet();
+    ResponseEntity<String> publicMinersGet();
 
 
-    @ApiOperation(value = "Get miner stats", nickname = "publicMinersStatsMinerGet", notes = "This endpoint returns miner stats", authorizations = {
+    @ApiOperation(value = "Get miner stats", nickname = "publicMinersStatsMinerGet", notes = "This endpoint returns miner stats", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","miner", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/miners/stats/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersStatsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner);
+    ResponseEntity<String> publicMinersStatsMinerGet(@ApiParam(value = "Filter by miner",required=true) @PathVariable("miner") String miner);
 
 
-    @ApiOperation(value = "Query Ask", nickname = "publicMinersStorageQueryMinerGet", notes = "This endpoint returns the ask for a given CID", authorizations = {
+    @ApiOperation(value = "Query Ask", nickname = "publicMinersStorageQueryMinerGet", notes = "This endpoint returns the ask for a given CID", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "deals", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/miners/storage/query/{miner}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicMinersStorageQueryMinerGet(@ApiParam(value = "CID",required=true) @PathVariable("miner") String miner);
+    ResponseEntity<String> publicMinersStorageQueryMinerGet(@ApiParam(value = "CID",required=true) @PathVariable("miner") String miner);
 
 
     @ApiOperation(value = "Net Addrs", nickname = "publicNetAddrsGet", notes = "This endpoint is used to get net addrs", response = String.class, responseContainer = "List", authorizations = {
@@ -132,20 +160,25 @@ public interface PublicApi {
         @Authorization(value = "bearerAuth")
     }, tags={ "public","net", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/net/peers",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<List<String>> publicNetPeersGet();
 
 
-    @ApiOperation(value = "Public stats", nickname = "publicStatsGet", notes = "This endpoint is used to get public stats.", authorizations = {
+    @ApiOperation(value = "Public stats", nickname = "publicStatsGet", notes = "This endpoint is used to get public stats.", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "public", })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/public/stats",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Void> publicStatsGet();
+    ResponseEntity<String> publicStatsGet();
 
 }

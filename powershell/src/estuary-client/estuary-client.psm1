@@ -31,9 +31,6 @@ $Script:ContentApi= New-Object -TypeName estuary-client.Api.ContentApi -Argument
 'Creating object: estuary-client.Api.DealsApi' | Write-Verbose
 $Script:DealsApi= New-Object -TypeName estuary-client.Api.DealsApi -ArgumentList @($null)
 
-'Creating object: estuary-client.Api.DefaultApi' | Write-Verbose
-$Script:DefaultApi= New-Object -TypeName estuary-client.Api.DefaultApi -ArgumentList @($null)
-
 'Creating object: estuary-client.Api.MetricsApi' | Write-Verbose
 $Script:MetricsApi= New-Object -TypeName estuary-client.Api.MetricsApi -ArgumentList @($null)
 

@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
 #include <vector>
 #include <cpprest/details/basic_types.h>
 
@@ -45,9 +46,9 @@ public:
     /// <remarks>
     /// This endpoint can be used to remove a Peer from the Peering Service
     /// </remarks>
-    /// <param name="body">Peer ids</param>
-    pplx::task<void> adminPeeringPeersDelete(
-        std::vector<utility::string_t> body
+    /// <param name="peerIds">Peer ids</param>
+    pplx::task<utility::string_t> adminPeeringPeersDelete(
+        std::vector<bool> peerIds
     );
     /// <summary>
     /// List all Peering peers
@@ -55,7 +56,7 @@ public:
     /// <remarks>
     /// This endpoint can be used to list all peers on Peering Service
     /// </remarks>
-    pplx::task<void> adminPeeringPeersGet(
+    pplx::task<utility::string_t> adminPeeringPeersGet(
     );
     /// <summary>
     /// Add peers on Peering Service
@@ -63,7 +64,7 @@ public:
     /// <remarks>
     /// This endpoint can be used to add a Peer from the Peering Service
     /// </remarks>
-    pplx::task<void> adminPeeringPeersPost(
+    pplx::task<utility::string_t> adminPeeringPeersPost(
     );
     /// <summary>
     /// Start Peering
@@ -71,7 +72,7 @@ public:
     /// <remarks>
     /// This endpoint can be used to start the Peering Service
     /// </remarks>
-    pplx::task<void> adminPeeringStartPost(
+    pplx::task<utility::string_t> adminPeeringStartPost(
     );
     /// <summary>
     /// Check Peering Status
@@ -79,7 +80,7 @@ public:
     /// <remarks>
     /// This endpoint can be used to check the Peering status
     /// </remarks>
-    pplx::task<void> adminPeeringStatusGet(
+    pplx::task<utility::string_t> adminPeeringStatusGet(
     );
     /// <summary>
     /// Stop Peering
@@ -87,7 +88,7 @@ public:
     /// <remarks>
     /// This endpoint can be used to stop the Peering Service
     /// </remarks>
-    pplx::task<void> adminPeeringStopPost(
+    pplx::task<utility::string_t> adminPeeringStopPost(
     );
 
 protected:

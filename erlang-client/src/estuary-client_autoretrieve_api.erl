@@ -8,11 +8,11 @@
 
 %% @doc Register autoretrieve server
 %% This endpoint registers a new autoretrieve server
--spec admin_autoretrieve_init_post(ctx:ctx(), binary(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec admin_autoretrieve_init_post(ctx:ctx(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 admin_autoretrieve_init_post(Ctx, Addresses, PubKey) ->
     admin_autoretrieve_init_post(Ctx, Addresses, PubKey, #{}).
 
--spec admin_autoretrieve_init_post(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec admin_autoretrieve_init_post(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 admin_autoretrieve_init_post(Ctx, Addresses, PubKey, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -21,7 +21,7 @@ admin_autoretrieve_init_post(Ctx, Addresses, PubKey, Optional) ->
     Path = ["/admin/autoretrieve/init"],
     QS = [],
     Headers = [],
-    Body1 = AddressesPubKey,
+    Body1 = {form, [{<<"addresses">>, Addresses}, {<<"pubKey">>, PubKey}]++estuary-client_utils:optional_params([], _OptionalParams)},
     ContentTypeHeader = estuary-client_utils:select_header_content_type([]),
     Opts = maps:get(hackney_opts, Optional, []),
 
@@ -29,11 +29,11 @@ admin_autoretrieve_init_post(Ctx, Addresses, PubKey, Optional) ->
 
 %% @doc List autoretrieve servers
 %% This endpoint lists all registered autoretrieve servers
--spec admin_autoretrieve_list_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec admin_autoretrieve_list_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 admin_autoretrieve_list_get(Ctx) ->
     admin_autoretrieve_list_get(Ctx, #{}).
 
--spec admin_autoretrieve_list_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec admin_autoretrieve_list_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 admin_autoretrieve_list_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -50,11 +50,11 @@ admin_autoretrieve_list_get(Ctx, Optional) ->
 
 %% @doc Marks autoretrieve server as up
 %% This endpoint updates the lastConnection field for autoretrieve
--spec autoretrieve_heartbeat_post(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec autoretrieve_heartbeat_post(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 autoretrieve_heartbeat_post(Ctx, Token) ->
     autoretrieve_heartbeat_post(Ctx, Token, #{}).
 
--spec autoretrieve_heartbeat_post(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec autoretrieve_heartbeat_post(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 autoretrieve_heartbeat_post(Ctx, Token, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

@@ -15,9 +15,9 @@ public class PinningAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func pinningPinsGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         pinningPinsGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -29,10 +29,14 @@ public class PinningAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func pinningPinsGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/pinning/pins"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -42,7 +46,7 @@ public class PinningAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -53,9 +57,9 @@ public class PinningAPI: APIBase {
      - parameter pinid: (path) Pin ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsPinidDelete(pinid pinid: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func pinningPinsPinidDelete(pinid pinid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         pinningPinsPinidDeleteWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -67,12 +71,16 @@ public class PinningAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter pinid: (path) Pin ID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsPinidDeleteWithRequestBuilder(pinid pinid: String) -> RequestBuilder<Void> {
+    public class func pinningPinsPinidDeleteWithRequestBuilder(pinid pinid: String) -> RequestBuilder<String> {
         var path = "/pinning/pins/{pinid}"
         path = path.stringByReplacingOccurrencesOfString("{pinid}", withString: "\(pinid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -83,7 +91,7 @@ public class PinningAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -94,9 +102,9 @@ public class PinningAPI: APIBase {
      - parameter pinid: (path) cid 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsPinidGet(pinid pinid: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func pinningPinsPinidGet(pinid pinid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         pinningPinsPinidGetWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -108,12 +116,16 @@ public class PinningAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter pinid: (path) cid 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsPinidGetWithRequestBuilder(pinid pinid: String) -> RequestBuilder<Void> {
+    public class func pinningPinsPinidGetWithRequestBuilder(pinid pinid: String) -> RequestBuilder<String> {
         var path = "/pinning/pins/{pinid}"
         path = path.stringByReplacingOccurrencesOfString("{pinid}", withString: "\(pinid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -124,7 +136,7 @@ public class PinningAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -135,9 +147,9 @@ public class PinningAPI: APIBase {
      - parameter pinid: (path) Pin ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsPinidPost(pinid pinid: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func pinningPinsPinidPost(pinid pinid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         pinningPinsPinidPostWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -149,12 +161,16 @@ public class PinningAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter pinid: (path) Pin ID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsPinidPostWithRequestBuilder(pinid pinid: String) -> RequestBuilder<Void> {
+    public class func pinningPinsPinidPostWithRequestBuilder(pinid pinid: String) -> RequestBuilder<String> {
         var path = "/pinning/pins/{pinid}"
         path = path.stringByReplacingOccurrencesOfString("{pinid}", withString: "\(pinid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -165,7 +181,7 @@ public class PinningAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -173,13 +189,12 @@ public class PinningAPI: APIBase {
     /**
      Add and pin object
      
-     - parameter cid: (path) cid 
-     - parameter name: (path) name 
+     - parameter pin: (body) Pin Body {cid:cid, name:name} 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsPost(cid cid: String, name: String, completion: ((error: ErrorType?) -> Void)) {
-        pinningPinsPostWithRequestBuilder(cid: cid, name: name).execute { (response, error) -> Void in
-            completion(error: error);
+    public class func pinningPinsPost(pin pin: TypesIpfsPin, completion: ((data: String?, error: ErrorType?) -> Void)) {
+        pinningPinsPostWithRequestBuilder(pin: pin).execute { (response, error) -> Void in
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -191,25 +206,23 @@ public class PinningAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
-     - parameter cid: (path) cid 
-     - parameter name: (path) name 
+     - parameter pin: (body) Pin Body {cid:cid, name:name} 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsPostWithRequestBuilder(cid cid: String, name: String) -> RequestBuilder<Void> {
-        var path = "/pinning/pins"
-        path = path.stringByReplacingOccurrencesOfString("{cid}", withString: "\(cid)", options: .LiteralSearch, range: nil)
-        path = path.stringByReplacingOccurrencesOfString("{name}", withString: "\(name)", options: .LiteralSearch, range: nil)
+    public class func pinningPinsPostWithRequestBuilder(pin pin: TypesIpfsPin) -> RequestBuilder<String> {
+        let path = "/pinning/pins"
         let URLString = estuary-clientAPI.basePath + path
-
-        let nillableParameters: [String:AnyObject?] = [:]
- 
-        let parameters = APIHelper.rejectNil(nillableParameters)
+        let parameters = pin.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: true)
     }

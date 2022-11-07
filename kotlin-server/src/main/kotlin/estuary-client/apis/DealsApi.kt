@@ -39,7 +39,9 @@ import estuary-client.infrastructure.apiKeyAuth
 // see https://github.com/ktorio/ktor/issues/288
 import estuary-client.delete
 
+import estuary-client.models.MainChannelIDParam
 import estuary-client.models.MainestimateDealBody
+import estuary-client.models.UtilHttpError
 
 fun Route.DealsApi() {
     val gson = Gson()
@@ -52,7 +54,17 @@ fun Route.DealsApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -84,7 +96,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -115,7 +137,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -146,7 +178,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -177,7 +219,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -208,7 +260,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -239,7 +301,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -264,13 +336,66 @@ fun Route.DealsApi() {
         }
     }
 
+    route("/deal/transfer/status") {
+        post {
+            val principal = call.authentication.principal<ApiPrincipal>()
+            
+            if (principal == null) {
+                call.respond(HttpStatusCode.Unauthorized)
+            } else {
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
+            }
+        }
+    }
+    .apply {
+      // TODO: ktor doesn't allow different authentication registrations for endpoints sharing the same path but different methods.
+      //       It could be the authentication block is being abused here. Until this is resolved, swallow duplicate exceptions.
+
+        try {
+            authentication {
+                // "Implement API key auth (bearerAuth) for parameter name 'Authorization'."
+                apiKeyAuth("Authorization", "header") {
+                    // TODO: "Verify key here , accessible as it.value"
+                    if (it.value == "keyboardcat") {
+                         ApiPrincipal(it)
+                    } else {
+                        null
+                    }
+                }
+            }
+        } catch(e: io.ktor.application.DuplicateApplicationFeatureException){
+            application.environment.log.warn("authentication block for '/deal/transfer/status' is duplicated in code. " +
+            "Generated endpoints may need to be merged under a 'route' entry.")
+        }
+    }
+
     get<Paths.dealsFailuresGet> {  it: Paths.dealsFailuresGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -302,7 +427,17 @@ fun Route.DealsApi() {
             if (principal == null) {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
-                call.respond(HttpStatusCode.NotImplemented)
+                val exampleContentType = "application/json"
+                val exampleContentString = """{
+                  "bytes": [],
+                  "empty": true
+                }"""
+                
+                when(exampleContentType) {
+                    "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                    "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                    else -> call.respondText(exampleContentString)
+                }
             }
         }
     }
@@ -334,7 +469,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -365,7 +510,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -396,7 +551,17 @@ fun Route.DealsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {

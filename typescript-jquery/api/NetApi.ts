@@ -50,7 +50,7 @@ export class NetApi {
      * This endpoint is used to get net addrs
      * @summary Net Addrs
      */
-    public netAddrsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<string>;  }> {
+    public netAddrsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/net/addrs';
 
         let queryParameters: any = {};
@@ -93,7 +93,7 @@ export class NetApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<string>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -106,7 +106,7 @@ export class NetApi {
      * @summary Get all miners
      * @param miner Filter by miner
      */
-    public publicMinersFailuresMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersFailuresMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/failures/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -154,7 +154,7 @@ export class NetApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -166,7 +166,7 @@ export class NetApi {
      * This endpoint returns all miners
      * @summary Get all miners
      */
-    public publicMinersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners';
 
         let queryParameters: any = {};
@@ -209,7 +209,7 @@ export class NetApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

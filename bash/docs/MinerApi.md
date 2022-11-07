@@ -28,7 +28,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 

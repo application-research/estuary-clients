@@ -30,7 +30,7 @@ export class MetricsApi {
      * This endpoint is used to get deal metrics
      * @summary Get deal metrics
      */
-    public publicMetricsDealsOnChainGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMetricsDealsOnChainGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/metrics/deals-on-chain';
 
         let queryParameters: any = {};

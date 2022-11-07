@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.PublicApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -47,7 +48,7 @@ API.Client.PublicApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * This endpoint returns the content associated with a CID
  * @param {!string} cid Cid
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicByCidCidGet = function(cid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -83,7 +84,7 @@ API.Client.PublicApi.prototype.publicByCidCidGet = function(cid, opt_extraHttpRe
  * Get public node info
  * This endpoint returns information about the node
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicInfoGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -114,7 +115,7 @@ API.Client.PublicApi.prototype.publicInfoGet = function(opt_extraHttpRequestPara
  * Get deal metrics
  * This endpoint is used to get deal metrics
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicMetricsDealsOnChainGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -147,7 +148,7 @@ API.Client.PublicApi.prototype.publicMetricsDealsOnChainGet = function(opt_extra
  * @param {!string} miner Filter by miner
  * @param {!string=} opt_ignoreFailed Ignore Failed
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicMinersDealsMinerGet = function(miner, opt_ignoreFailed, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -188,7 +189,7 @@ API.Client.PublicApi.prototype.publicMinersDealsMinerGet = function(miner, opt_i
  * This endpoint returns all miners
  * @param {!string} miner Filter by miner
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicMinersFailuresMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -224,7 +225,7 @@ API.Client.PublicApi.prototype.publicMinersFailuresMinerGet = function(miner, op
  * Get all miners
  * This endpoint returns all miners
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicMinersGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -256,7 +257,7 @@ API.Client.PublicApi.prototype.publicMinersGet = function(opt_extraHttpRequestPa
  * This endpoint returns miner stats
  * @param {!string} miner Filter by miner
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicMinersStatsMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -354,7 +355,7 @@ API.Client.PublicApi.prototype.publicNetPeersGet = function(opt_extraHttpRequest
  * Public stats
  * This endpoint is used to get public stats.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.PublicApi.prototype.publicStatsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

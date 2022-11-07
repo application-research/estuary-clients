@@ -55,11 +55,11 @@ collections_coluuid_contents_delete(Ctx, Coluuid, Contentid, Body, Optional) ->
 
 %% @doc Deletes a collection
 %% This endpoint is used to delete an existing collection.
--spec collections_coluuid_delete(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_coluuid_delete(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_coluuid_delete(Ctx, Coluuid) ->
     collections_coluuid_delete(Ctx, Coluuid, #{}).
 
--spec collections_coluuid_delete(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_coluuid_delete(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_coluuid_delete(Ctx, Coluuid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -97,11 +97,11 @@ collections_coluuid_get(Ctx, Coluuid, Optional) ->
 
 %% @doc Add contents to a collection
 %% This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
--spec collections_coluuid_post(ctx:ctx(), binary(), list()) -> {ok, maps:map(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_coluuid_post(ctx:ctx(), binary(), list()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_coluuid_post(Ctx, Coluuid, ContentIDs) ->
     collections_coluuid_post(Ctx, Coluuid, ContentIDs, #{}).
 
--spec collections_coluuid_post(ctx:ctx(), binary(), list(), maps:map()) -> {ok, maps:map(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_coluuid_post(ctx:ctx(), binary(), list(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_coluuid_post(Ctx, Coluuid, ContentIDs, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -118,11 +118,11 @@ collections_coluuid_post(Ctx, Coluuid, ContentIDs, Optional) ->
 
 %% @doc Add a file to a collection
 %% This endpoint adds a file to a collection
--spec collections_fs_add_post(ctx:ctx(), binary(), binary(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_fs_add_post(ctx:ctx(), binary(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_fs_add_post(Ctx, Coluuid, Content, Path) ->
     collections_fs_add_post(Ctx, Coluuid, Content, Path, #{}).
 
--spec collections_fs_add_post(ctx:ctx(), binary(), binary(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_fs_add_post(ctx:ctx(), binary(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_fs_add_post(Ctx, Coluuid, Content, Path, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -139,11 +139,11 @@ collections_fs_add_post(Ctx, Coluuid, Content, Path, Optional) ->
 
 %% @doc List all collections
 %% This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
--spec collections_get(ctx:ctx()) -> {ok, [estuary-client_collections_collection:estuary-client_collections_collection()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_get(ctx:ctx()) -> {ok, [list()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_get(Ctx) ->
     collections_get(Ctx, #{}).
 
--spec collections_get(ctx:ctx(), maps:map()) -> {ok, [estuary-client_collections_collection:estuary-client_collections_collection()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec collections_get(ctx:ctx(), maps:map()) -> {ok, [list()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 collections_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

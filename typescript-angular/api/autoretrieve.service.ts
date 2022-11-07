@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,9 +64,9 @@ export class AutoretrieveService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (addresses === null || addresses === undefined) {
@@ -95,13 +96,27 @@ export class AutoretrieveService {
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
+
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): void | HttpParams; };
+        let useForm = false;
+        let convertFormParamsToString = false;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/admin/autoretrieve/init`,
-            pubKey,
+        if (addresses !== undefined) {
+            formParams = formParams.append('addresses', <any>addresses) || formParams;
+        }
+        if (pubKey !== undefined) {
+            formParams = formParams.append('pubKey', <any>pubKey) || formParams;
+        }
+
+        return this.httpClient.post<string>(`${this.basePath}/admin/autoretrieve/init`,
+            convertFormParamsToString ? formParams.toString() : formParams,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -117,9 +132,9 @@ export class AutoretrieveService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminAutoretrieveListGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminAutoretrieveListGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminAutoretrieveListGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminAutoretrieveListGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminAutoretrieveListGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminAutoretrieveListGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminAutoretrieveListGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -142,7 +157,7 @@ export class AutoretrieveService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/admin/autoretrieve/list`,
+        return this.httpClient.get<string>(`${this.basePath}/admin/autoretrieve/list`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -159,9 +174,9 @@ export class AutoretrieveService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public autoretrieveHeartbeatPost(token: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public autoretrieveHeartbeatPost(token: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public autoretrieveHeartbeatPost(token: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public autoretrieveHeartbeatPost(token: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public autoretrieveHeartbeatPost(token: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public autoretrieveHeartbeatPost(token: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public autoretrieveHeartbeatPost(token: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (token === null || token === undefined) {
@@ -191,7 +206,7 @@ export class AutoretrieveService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.post<any>(`${this.basePath}/autoretrieve/heartbeat`,
+        return this.httpClient.post<string>(`${this.basePath}/autoretrieve/heartbeat`,
             null,
             {
                 withCredentials: this.configuration.withCredentials,

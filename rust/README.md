@@ -65,12 +65,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**deal_status_by_proposal_propcid_get**](docs/DealsApi.md#deal_status_by_proposal_propcid_get) | **Get** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**deal_status_miner_propcid_get**](docs/DealsApi.md#deal_status_miner_propcid_get) | **Get** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**deal_transfer_in_progress_get**](docs/DealsApi.md#deal_transfer_in_progress_get) | **Get** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**deal_transfer_status_post**](docs/DealsApi.md#deal_transfer_status_post) | **Post** /deal/transfer/status | Transfer Status
 *DealsApi* | [**deals_failures_get**](docs/DealsApi.md#deals_failures_get) | **Get** /deals/failures | Get storage failures for user
 *DealsApi* | [**deals_make_miner_post**](docs/DealsApi.md#deals_make_miner_post) | **Post** /deals/make/{miner} | Make Deal
 *DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **Get** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **Get** /public/deals/failures | Get storage failures
 *DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **Get** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**deal_transfer_status_post**](docs/DefaultApi.md#deal_transfer_status_post) | **Post** /deal/transfer/status | 
 *MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **Get** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **Get** /public/miners/stats/{miner} | Get miner stats
@@ -116,12 +116,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CollectionsCollection](docs/CollectionsCollection.md)
+ - [MainChannelIdParam](docs/MainChannelIdParam.md)
  - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/MainImportDealBody.md)
- - [MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)

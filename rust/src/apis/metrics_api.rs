@@ -35,12 +35,12 @@ impl<C: hyper::client::Connect> MetricsApiClient<C> {
 }
 
 pub trait MetricsApi {
-    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>MetricsApi for MetricsApiClient<C> {
-    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -99,7 +99,10 @@ impl<C: hyper::client::Connect>MetricsApi for MetricsApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

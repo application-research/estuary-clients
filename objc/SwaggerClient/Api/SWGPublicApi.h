@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -27,30 +28,39 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 ///
 /// @param cid Cid
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicByCidCidGetWithCid: (NSString*) cid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get public node info
 /// This endpoint returns information about the node
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicInfoGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get deal metrics
 /// This endpoint is used to get deal metrics
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get all miners deals
@@ -59,11 +69,14 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 /// @param miner Filter by miner
 /// @param ignoreFailed Ignore Failed (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get all miners
@@ -71,20 +84,26 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 ///
 /// @param miner Filter by miner
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get all miners
 /// This endpoint returns all miners
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get miner stats
@@ -92,10 +111,13 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 ///
 /// @param miner Filter by miner
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Net Addrs
@@ -113,7 +135,9 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 /// This endpoint is used to get net peers
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSArray<NSString*>*
 -(NSURLSessionTask*) publicNetPeersGetWithCompletionHandler: 
@@ -124,10 +148,13 @@ extern NSInteger kSWGPublicApiMissingParamErrorCode;
 /// This endpoint is used to get public stats.
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicStatsGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 

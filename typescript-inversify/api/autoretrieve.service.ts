@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -39,8 +40,8 @@ export class AutoretrieveService {
      * @param pubKey Autoretrieve&#39;s public key
      
      */
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminAutoretrieveInitPost(addresses: string, pubKey: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!addresses){
             throw new Error('Required parameter addresses was null or undefined when calling adminAutoretrieveInitPost.');
@@ -55,9 +56,17 @@ export class AutoretrieveService {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
-        headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/autoretrieve/init`, pubKey as any, headers);
+        let formData: FormData = new FormData();
+        headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+        if (addresses !== undefined) {
+            formData.append('addresses', <any>addresses);
+        }
+        if (pubKey !== undefined) {
+            formData.append('pubKey', <any>pubKey);
+        }
+
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/admin/autoretrieve/init` as any, body, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -70,8 +79,8 @@ export class AutoretrieveService {
      * This endpoint lists all registered autoretrieve servers
      
      */
-    public adminAutoretrieveListGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public adminAutoretrieveListGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public adminAutoretrieveListGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public adminAutoretrieveListGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public adminAutoretrieveListGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -79,7 +88,7 @@ export class AutoretrieveService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/autoretrieve/list` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/admin/autoretrieve/list` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -93,8 +102,8 @@ export class AutoretrieveService {
      * @param token Autoretrieve&#39;s auth token
      
      */
-    public autoretrieveHeartbeatPost(token: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public autoretrieveHeartbeatPost(token: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public autoretrieveHeartbeatPost(token: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public autoretrieveHeartbeatPost(token: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public autoretrieveHeartbeatPost(token: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!token){
             throw new Error('Required parameter token was null or undefined when calling autoretrieveHeartbeatPost.');
@@ -110,7 +119,7 @@ export class AutoretrieveService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/autoretrieve/heartbeat` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/autoretrieve/heartbeat` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

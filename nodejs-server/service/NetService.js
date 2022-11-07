@@ -5,12 +5,15 @@
  * Net Addrs
  * This endpoint is used to get net addrs
  *
- * returns List
+ * returns String
  **/
 exports.netAddrsGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -25,11 +28,20 @@ exports.netAddrsGET = function() {
  * This endpoint returns all miners
  *
  * miner String Filter by miner
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersFailuresMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -38,11 +50,20 @@ exports.publicMinersFailuresMinerGET = function(miner) {
  * Get all miners
  * This endpoint returns all miners
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

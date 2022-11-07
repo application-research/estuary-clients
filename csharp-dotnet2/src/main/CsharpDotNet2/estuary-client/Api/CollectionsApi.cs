@@ -29,8 +29,8 @@ namespace estuary-client.Api
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns></returns>
-        void CollectionsColuuidDelete (string coluuid);
+        /// <returns>string</returns>
+        string CollectionsColuuidDelete (string coluuid);
         /// <summary>
         /// Get contents in a collection This endpoint is used to get contents in a collection. If no colpath query param is passed
         /// </summary>
@@ -43,21 +43,21 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs);
+        /// <returns>string</returns>
+        string CollectionsColuuidPost (string coluuid, List<int?> contentIDs);
         /// <summary>
         /// Add a file to a collection This endpoint adds a file to a collection
         /// </summary>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns></returns>
-        void CollectionsFsAddPost (string coluuid, string content, string path);
+        /// <returns>string</returns>
+        string CollectionsFsAddPost (string coluuid, string content, string path);
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
-        /// <returns>List&lt;CollectionsCollection&gt;</returns>
-        List<CollectionsCollection> CollectionsGet ();
+        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        List<List<CollectionsCollection>> CollectionsGet ();
         /// <summary>
         /// Create a new collection This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
         /// </summary>
@@ -207,8 +207,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
         /// <param name="coluuid">Collection ID</param> 
-        /// <returns></returns>            
-        public void CollectionsColuuidDelete (string coluuid)
+        /// <returns>string</returns>            
+        public string CollectionsColuuidDelete (string coluuid)
         {
             
             // verify the required parameter 'coluuid' is set
@@ -237,7 +237,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsColuuidDelete: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -284,8 +284,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// </summary>
         /// <param name="coluuid">coluuid</param> 
         /// <param name="contentIDs">Content IDs to add to collection</param> 
-        /// <returns>Dictionary&lt;string, string&gt;</returns>            
-        public Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
+        /// <returns>string</returns>            
+        public string CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
         {
             
             // verify the required parameter 'coluuid' is set
@@ -318,7 +318,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsColuuidPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Dictionary<string, string>) ApiClient.Deserialize(response.Content, typeof(Dictionary<string, string>), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -327,8 +327,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <param name="coluuid">Collection ID</param> 
         /// <param name="content">Content</param> 
         /// <param name="path">Path to file</param> 
-        /// <returns></returns>            
-        public void CollectionsFsAddPost (string coluuid, string content, string path)
+        /// <returns>string</returns>            
+        public string CollectionsFsAddPost (string coluuid, string content, string path)
         {
             
             // verify the required parameter 'coluuid' is set
@@ -365,14 +365,14 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsFsAddPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
-        /// <returns>List&lt;CollectionsCollection&gt;</returns>            
-        public List<CollectionsCollection> CollectionsGet ()
+        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>            
+        public List<List<CollectionsCollection>> CollectionsGet ()
         {
             
     
@@ -397,7 +397,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<CollectionsCollection>) ApiClient.Deserialize(response.Content, typeof(List<CollectionsCollection>), response.Headers);
+            return (List<List<CollectionsCollection>>) ApiClient.Deserialize(response.Content, typeof(List<List<CollectionsCollection>>), response.Headers);
         }
     
         /// <summary>

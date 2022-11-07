@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **public_by_cid_cid_get**
-> public_by_cid_cid_get(cid)
+> str public_by_cid_cid_get(cid)
 
 Get Content by Cid
 
@@ -43,7 +43,8 @@ cid = 'cid_example' # str | Cid
 
 try:
     # Get Content by Cid
-    api_instance.public_by_cid_cid_get(cid)
+    api_response = api_instance.public_by_cid_cid_get(cid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_by_cid_cid_get: %s\n" % e)
 ```
@@ -56,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -70,7 +71,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_info_get**
-> public_info_get()
+> str public_info_get()
 
 Get public node info
 
@@ -95,7 +96,8 @@ api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get public node info
-    api_instance.public_info_get()
+    api_response = api_instance.public_info_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_info_get: %s\n" % e)
 ```
@@ -105,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -119,7 +121,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get()
+> str public_metrics_deals_on_chain_get()
 
 Get deal metrics
 
@@ -144,7 +146,8 @@ api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get deal metrics
-    api_instance.public_metrics_deals_on_chain_get()
+    api_response = api_instance.public_metrics_deals_on_chain_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_metrics_deals_on_chain_get: %s\n" % e)
 ```
@@ -154,7 +157,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -168,7 +171,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+> str public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
 
 Get all miners deals
 
@@ -195,7 +198,8 @@ ignore_failed = 'ignore_failed_example' # str | Ignore Failed (optional)
 
 try:
     # Get all miners deals
-    api_instance.public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+    api_response = api_instance.public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_miners_deals_miner_get: %s\n" % e)
 ```
@@ -209,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -223,7 +227,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner)
+> str public_miners_failures_miner_get(miner)
 
 Get all miners
 
@@ -249,7 +253,8 @@ miner = 'miner_example' # str | Filter by miner
 
 try:
     # Get all miners
-    api_instance.public_miners_failures_miner_get(miner)
+    api_response = api_instance.public_miners_failures_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_miners_failures_miner_get: %s\n" % e)
 ```
@@ -262,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -276,7 +281,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get()
+> str public_miners_get()
 
 Get all miners
 
@@ -301,7 +306,8 @@ api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get all miners
-    api_instance.public_miners_get()
+    api_response = api_instance.public_miners_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_miners_get: %s\n" % e)
 ```
@@ -311,7 +317,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -325,7 +331,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner)
+> str public_miners_stats_miner_get(miner)
 
 Get miner stats
 
@@ -351,7 +357,8 @@ miner = 'miner_example' # str | Filter by miner
 
 try:
     # Get miner stats
-    api_instance.public_miners_stats_miner_get(miner)
+    api_response = api_instance.public_miners_stats_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_miners_stats_miner_get: %s\n" % e)
 ```
@@ -364,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -478,7 +485,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_stats_get**
-> public_stats_get()
+> str public_stats_get()
 
 Public stats
 
@@ -503,7 +510,8 @@ api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
 
 try:
     # Public stats
-    api_instance.public_stats_get()
+    api_response = api_instance.public_stats_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PublicApi->public_stats_get: %s\n" % e)
 ```
@@ -513,7 +521,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

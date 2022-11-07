@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'net_addrs_get' } = { 
     	summary => 'Net Addrs',
         params => $params,
-        returns => 'ARRAY[string]',
+        returns => 'string',
         };
 }
-# @return ARRAY[string]
+# @return string
 #
 sub net_addrs_get {
     my ($self, %args) = @_;
@@ -93,7 +93,7 @@ sub net_addrs_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[string]', $response);
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
 }
 
@@ -114,10 +114,10 @@ sub net_addrs_get {
     __PACKAGE__->method_documentation->{ 'public_miners_failures_miner_get' } = { 
     	summary => 'Get all miners',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_miners_failures_miner_get {
     my ($self, %args) = @_;
@@ -154,10 +154,14 @@ sub public_miners_failures_miner_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -171,10 +175,10 @@ sub public_miners_failures_miner_get {
     __PACKAGE__->method_documentation->{ 'public_miners_get' } = { 
     	summary => 'Get all miners',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub public_miners_get {
     my ($self, %args) = @_;
@@ -199,10 +203,14 @@ sub public_miners_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #

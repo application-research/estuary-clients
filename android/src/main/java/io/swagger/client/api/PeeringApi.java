@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import java.util.*;
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -58,15 +59,15 @@ public class PeeringApi {
   /**
   * Remove peers on Peering Service
   * This endpoint can be used to remove a Peer from the Peering Service
-   * @param body Peer ids
-   * @return void
+   * @param peerIds Peer ids
+   * @return String
   */
-  public void adminPeeringPeersDelete (List<String> body) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = body;
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling adminPeeringPeersDelete",
-        new ApiException(400, "Missing the required parameter 'body' when calling adminPeeringPeersDelete"));
+  public String adminPeeringPeersDelete (List<Boolean> peerIds) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = peerIds;
+    // verify the required parameter 'peerIds' is set
+    if (peerIds == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete",
+        new ApiException(400, "Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete"));
     }
 
     // create path and map variables
@@ -96,9 +97,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "DELETE", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -120,15 +121,15 @@ public class PeeringApi {
       /**
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
-   * @param body Peer ids
+   * @param peerIds Peer ids
   */
-  public void adminPeeringPeersDelete (List<String> body, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = body;
+  public void adminPeeringPeersDelete (List<Boolean> peerIds, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = peerIds;
 
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling adminPeeringPeersDelete",
-        new ApiException(400, "Missing the required parameter 'body' when calling adminPeeringPeersDelete"));
+    // verify the required parameter 'peerIds' is set
+    if (peerIds == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete",
+        new ApiException(400, "Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete"));
     }
 
     // create path and map variables
@@ -166,7 +167,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -181,9 +186,9 @@ public class PeeringApi {
   /**
   * List all Peering peers
   * This endpoint can be used to list all peers on Peering Service
-   * @return void
+   * @return String
   */
-  public void adminPeeringPeersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminPeeringPeersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -213,9 +218,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -278,7 +283,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -293,9 +302,9 @@ public class PeeringApi {
   /**
   * Add peers on Peering Service
   * This endpoint can be used to add a Peer from the Peering Service
-   * @return void
+   * @return String
   */
-  public void adminPeeringPeersPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminPeeringPeersPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -325,9 +334,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -390,7 +399,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -405,9 +418,9 @@ public class PeeringApi {
   /**
   * Start Peering
   * This endpoint can be used to start the Peering Service
-   * @return void
+   * @return String
   */
-  public void adminPeeringStartPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminPeeringStartPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -437,9 +450,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -502,7 +515,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -517,9 +534,9 @@ public class PeeringApi {
   /**
   * Check Peering Status
   * This endpoint can be used to check the Peering status
-   * @return void
+   * @return String
   */
-  public void adminPeeringStatusGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminPeeringStatusGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -549,9 +566,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -614,7 +631,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -629,9 +650,9 @@ public class PeeringApi {
   /**
   * Stop Peering
   * This endpoint can be used to stop the Peering Service
-   * @return void
+   * @return String
   */
-  public void adminPeeringStopPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String adminPeeringStopPost () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -661,9 +682,9 @@ public class PeeringApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -726,7 +747,11 @@ public class PeeringApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'user_api_keys_get' } = { 
     	summary => 'Get API keys for a user',
         params => $params,
-        returns => 'ARRAY[MainGetApiKeysResp]',
+        returns => 'ARRAY[ARRAY[MainGetApiKeysResp]]',
         };
 }
-# @return ARRAY[MainGetApiKeysResp]
+# @return ARRAY[ARRAY[MainGetApiKeysResp]]
 #
 sub user_api_keys_get {
     my ($self, %args) = @_;
@@ -93,7 +93,7 @@ sub user_api_keys_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[MainGetApiKeysResp]', $response);
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[ARRAY[MainGetApiKeysResp]]', $response);
     return $_response_object;
 }
 
@@ -114,10 +114,10 @@ sub user_api_keys_get {
     __PACKAGE__->method_documentation->{ 'user_api_keys_key_delete' } = { 
     	summary => 'Revoke a User API Key.',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub user_api_keys_key_delete {
     my ($self, %args) = @_;
@@ -154,10 +154,14 @@ sub user_api_keys_key_delete {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -165,13 +169,13 @@ sub user_api_keys_key_delete {
 #
 # Create API keys for a user
 # 
-# @param string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+# @param string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 # @param string $perms Permissions -- currently unused (optional)
 {
     my $params = {
     'expiry' => {
         data_type => 'string',
-        description => 'Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h',
+        description => 'Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h',
         required => '0',
     },
     'perms' => {
@@ -291,10 +295,10 @@ sub user_export_get {
     __PACKAGE__->method_documentation->{ 'user_stats_get' } = { 
     	summary => 'Create API keys for a user',
         params => $params,
-        returns => 'MainUserStatsResponse',
+        returns => 'string',
         };
 }
-# @return MainUserStatsResponse
+# @return string
 #
 sub user_stats_get {
     my ($self, %args) = @_;
@@ -325,7 +329,7 @@ sub user_stats_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainUserStatsResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
 }
 

@@ -26,19 +26,29 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "addresses"
+      - name: "addresses"
+        in: "formData"
         description: "Autoretrieve's comma-separated list of addresses"
         required: true
-        schema:
-          type: "string"
-      - in: "body"
-        name: "pubKey"
+        type: "string"
+      - name: "pubKey"
+        in: "formData"
         description: "Autoretrieve's public key"
         required: true
-        schema:
-          type: "string"
-      responses: {}
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Autoretrieve"
   /admin/autoretrieve/list:
     get:
@@ -50,7 +60,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Autoretrieve"
   /admin/peering/peers:
     get:
@@ -64,7 +86,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
     post:
       tags:
@@ -77,7 +111,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
     delete:
       tags:
@@ -91,14 +137,26 @@ paths:
       - "application/json"
       parameters:
       - in: "body"
-        name: "body"
+        name: "peerIds"
         description: "Peer ids"
         required: true
         schema:
           type: "array"
           items:
+            type: "boolean"
+      responses:
+        "200":
+          description: "OK"
+          schema:
             type: "string"
-      responses: {}
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /admin/peering/start:
     post:
@@ -112,7 +170,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /admin/peering/status:
     get:
@@ -126,7 +196,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /admin/peering/stop:
     post:
@@ -140,7 +222,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /admin/system/config:
     get:
@@ -152,7 +246,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /admin/users:
     get:
@@ -164,7 +270,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Admin"
   /autoretrieve/heartbeat:
     post:
@@ -181,7 +299,19 @@ paths:
         description: "Autoretrieve's auth token"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Autoretrieve"
   /collections/:
     get:
@@ -201,7 +331,9 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/collections.Collection"
+              type: "array"
+              items:
+                $ref: "#/definitions/collections.Collection"
         "400":
           description: "Bad Request"
           schema:
@@ -275,7 +407,19 @@ paths:
         description: "Path to file"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
   /collections/{coluuid}:
     get:
@@ -303,6 +447,14 @@ paths:
           description: "OK"
           schema:
             type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
     post:
       tags:
@@ -333,9 +485,15 @@ paths:
         "200":
           description: "OK"
           schema:
-            type: "object"
-            additionalProperties:
-              type: "string"
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
     delete:
       tags:
@@ -349,7 +507,19 @@ paths:
         description: "Collection ID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
   /collections/{coluuid}/commit:
     post:
@@ -372,6 +542,14 @@ paths:
           description: "OK"
           schema:
             type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
   /collections/{coluuid}/contents:
     delete:
@@ -409,6 +587,10 @@ paths:
             type: "string"
         "400":
           description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
           schema:
             $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Collections"
@@ -464,6 +646,14 @@ paths:
           description: "OK"
           schema:
             $ref: "#/definitions/util.ContentAddResponse"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/add-car:
     post:
@@ -492,7 +682,19 @@ paths:
         description: "Filename"
         required: false
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/add-ipfs:
     post:
@@ -516,7 +718,19 @@ paths:
         description: "Ignore Dupes"
         required: false
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/aggregated/{content}:
     get:
@@ -538,6 +752,14 @@ paths:
           description: "OK"
           schema:
             type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/all-deals:
     get:
@@ -564,7 +786,19 @@ paths:
         description: "All"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/bw-usage/{content}:
     get:
@@ -581,7 +815,19 @@ paths:
         description: "Content ID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/create:
     post:
@@ -604,7 +850,19 @@ paths:
         description: "Ignore Dupes"
         required: false
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/deals:
     get:
@@ -626,7 +884,19 @@ paths:
         description: "Offset"
         required: false
         type: "integer"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/ensure-replication/{datacid}:
     get:
@@ -644,7 +914,19 @@ paths:
         description: "Data CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/failures/{content}:
     get:
@@ -666,6 +948,14 @@ paths:
           description: "OK"
           schema:
             type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/importdeal:
     post:
@@ -683,7 +973,19 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/main.importDealBody"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/list:
     get:
@@ -699,9 +1001,15 @@ paths:
         "200":
           description: "OK"
           schema:
-            type: "array"
-            items:
-              type: "string"
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/read/{cont}:
     get:
@@ -718,7 +1026,19 @@ paths:
         description: "CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/staging-zones:
     get:
@@ -730,7 +1050,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/stats:
     get:
@@ -755,7 +1087,19 @@ paths:
         description: "offset"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/status/{id}:
     get:
@@ -772,7 +1116,19 @@ paths:
         description: "Content ID"
         required: true
         type: "integer"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /content/{id}:
     get:
@@ -789,7 +1145,19 @@ paths:
         description: "Content ID"
         required: true
         type: "integer"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Content"
   /deal/estimate:
     post:
@@ -808,7 +1176,19 @@ paths:
         required: true
         schema:
           $ref: "#/definitions/main.estimateDealBody"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/info/{dealid}:
     get:
@@ -825,7 +1205,19 @@ paths:
         description: "Deal ID"
         required: true
         type: "integer"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/proposal/{propcid}:
     get:
@@ -842,7 +1234,19 @@ paths:
         description: "Proposal CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/query/{miner}:
     get:
@@ -859,7 +1263,19 @@ paths:
         description: "CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/status-by-proposal/{propcid}:
     get:
@@ -876,7 +1292,19 @@ paths:
         description: "PropCid"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/status/{miner}/{propcid}:
     get:
@@ -898,7 +1326,19 @@ paths:
         description: "Proposal CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/transfer/in-progress:
     get:
@@ -910,14 +1350,50 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deal/transfer/status:
     post:
+      tags:
+      - "deals"
+      summary: "Transfer Status"
+      description: "This endpoint returns the status of a transfer"
       operationId: "dealTransferStatusPOST"
-      parameters: []
-      responses: {}
-      x-swagger-router-controller: "Default"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "chanid"
+        description: "Channel ID"
+        required: true
+        schema:
+          $ref: "#/definitions/main.ChannelIDParam"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+      x-swagger-router-controller: "Deals"
   /deals/failures:
     get:
       tags:
@@ -928,7 +1404,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deals/make/{miner}:
     post:
@@ -951,7 +1439,19 @@ paths:
         required: true
         schema:
           type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /deals/status/{deal}:
     get:
@@ -968,7 +1468,19 @@ paths:
         description: "Deal ID"
         required: true
         type: "integer"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /net/addrs:
     get:
@@ -984,9 +1496,15 @@ paths:
         "200":
           description: "OK"
           schema:
-            type: "array"
-            items:
-              type: "string"
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Net"
   /pinning/pins:
     get:
@@ -999,6 +1517,10 @@ paths:
       - "application/json"
       parameters: []
       responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
         "400":
           description: "Bad Request"
           schema:
@@ -1021,17 +1543,25 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "cid"
-        in: "path"
-        description: "cid"
+      - in: "body"
+        name: "pin"
+        description: "Pin Body {cid:cid, name:name}"
         required: true
-        type: "string"
-      - name: "name"
-        in: "path"
-        description: "name"
-        required: true
-        type: "string"
-      responses: {}
+        schema:
+          $ref: "#/definitions/types.IpfsPin"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Pinning"
   /pinning/pins/{pinid}:
     get:
@@ -1048,7 +1578,19 @@ paths:
         description: "cid"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Pinning"
     post:
       tags:
@@ -1064,7 +1606,19 @@ paths:
         description: "Pin ID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Pinning"
     delete:
       tags:
@@ -1080,7 +1634,19 @@ paths:
         description: "Pin ID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Pinning"
   /public/by-cid/{cid}:
     get:
@@ -1097,7 +1663,19 @@ paths:
         description: "Cid"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/deals/failures:
     get:
@@ -1109,7 +1687,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /public/info:
     get:
@@ -1121,7 +1711,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/metrics/deals-on-chain:
     get:
@@ -1134,7 +1736,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/miners:
     get:
@@ -1147,7 +1761,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/miners/deals/{miner}:
     get:
@@ -1170,7 +1796,19 @@ paths:
         description: "Ignore Failed"
         required: false
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/miners/failures/{miner}:
     get:
@@ -1188,7 +1826,19 @@ paths:
         description: "Filter by miner"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/miners/stats/{miner}:
     get:
@@ -1206,7 +1856,19 @@ paths:
         description: "Filter by miner"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/miners/storage/query/{miner}:
     get:
@@ -1223,7 +1885,19 @@ paths:
         description: "CID"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Deals"
   /public/net/addrs:
     get:
@@ -1262,6 +1936,14 @@ paths:
             type: "array"
             items:
               type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /public/stats:
     get:
@@ -1273,7 +1955,19 @@ paths:
       produces:
       - "application/json"
       parameters: []
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "Public"
   /user/api-keys:
     get:
@@ -1293,7 +1987,9 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/main.getApiKeysResp"
+              type: "array"
+              items:
+                $ref: "#/definitions/main.getApiKeysResp"
         "400":
           description: "Bad Request"
           schema:
@@ -1320,7 +2016,7 @@ paths:
       - name: "expiry"
         in: "query"
         description: "Expiration - Expiration - Valid time units are ns, us (or µ\
-          s), ms, s, m, h. for example 300h"
+          s),  ms,  s,  m,  h.  for  example  300h"
         required: false
         type: "string"
       - name: "perms"
@@ -1364,7 +2060,19 @@ paths:
         description: "Key"
         required: true
         type: "string"
-      responses: {}
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "User"
   /user/export:
     get:
@@ -1381,6 +2089,14 @@ paths:
           description: "OK"
           schema:
             type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "User"
   /user/stats:
     get:
@@ -1396,7 +2112,15 @@ paths:
         "200":
           description: "OK"
           schema:
-            $ref: "#/definitions/main.userStatsResponse"
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "User"
 securityDefinitions:
   bearerAuth:
@@ -1426,6 +2150,15 @@ definitions:
       userId: 0
       uuid: "uuid"
       cid: "cid"
+  main.ChannelIDParam:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      initiator:
+        type: "string"
+      responder:
+        type: "string"
   main.createCollectionBody:
     type: "object"
     properties:
@@ -1474,16 +2207,20 @@ definitions:
         type: "string"
       name:
         type: "string"
-  main.userStatsResponse:
+  types.IpfsPin:
     type: "object"
     properties:
-      numPins:
-        type: "integer"
-      totalSize:
-        type: "integer"
-    example:
-      totalSize: 6
-      numPins: 0
+      cid:
+        type: "string"
+      meta:
+        type: "object"
+        properties: {}
+      name:
+        type: "string"
+      origins:
+        type: "array"
+        items:
+          type: "string"
   util.ContentAddIpfsBody:
     type: "object"
     properties:

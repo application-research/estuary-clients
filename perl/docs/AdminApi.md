@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete(body => $body)
+> string admin_peering_peers_delete(peer_ids => $peer_ids)
 
 Remove peers on Peering Service
 
@@ -38,10 +38,11 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $body = [WWW::SwaggerClient::Object::ARRAY[string]->new()]; # ARRAY[string] | Peer ids
+my $peer_ids = [WWW::SwaggerClient::Object::ARRAY[boolean]->new()]; # ARRAY[boolean] | Peer ids
 
 eval { 
-    $api_instance->admin_peering_peers_delete(body => $body);
+    my $result = $api_instance->admin_peering_peers_delete(peer_ids => $peer_ids);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_peers_delete: $@\n";
@@ -52,11 +53,11 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **ARRAY[string]**| Peer ids | 
+ **peer_ids** | **ARRAY[boolean]**| Peer ids | 
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -70,7 +71,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_get**
-> admin_peering_peers_get()
+> string admin_peering_peers_get()
 
 List all Peering peers
 
@@ -90,7 +91,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_peering_peers_get();
+    my $result = $api_instance->admin_peering_peers_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_peers_get: $@\n";
@@ -102,7 +104,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -116,7 +118,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_post**
-> admin_peering_peers_post()
+> string admin_peering_peers_post()
 
 Add peers on Peering Service
 
@@ -136,7 +138,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_peering_peers_post();
+    my $result = $api_instance->admin_peering_peers_post();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_peers_post: $@\n";
@@ -148,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -162,7 +165,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_start_post**
-> admin_peering_start_post()
+> string admin_peering_start_post()
 
 Start Peering
 
@@ -182,7 +185,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_peering_start_post();
+    my $result = $api_instance->admin_peering_start_post();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_start_post: $@\n";
@@ -194,7 +198,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -208,7 +212,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_status_get**
-> admin_peering_status_get()
+> string admin_peering_status_get()
 
 Check Peering Status
 
@@ -228,7 +232,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_peering_status_get();
+    my $result = $api_instance->admin_peering_status_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_status_get: $@\n";
@@ -240,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -254,7 +259,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_stop_post**
-> admin_peering_stop_post()
+> string admin_peering_stop_post()
 
 Stop Peering
 
@@ -274,7 +279,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_peering_stop_post();
+    my $result = $api_instance->admin_peering_stop_post();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_peering_stop_post: $@\n";
@@ -286,7 +292,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -300,7 +306,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_system_config_get**
-> admin_system_config_get()
+> string admin_system_config_get()
 
 Get systems(estuary/shuttle) config
 
@@ -320,7 +326,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_system_config_get();
+    my $result = $api_instance->admin_system_config_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_system_config_get: $@\n";
@@ -332,7 +339,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -346,7 +353,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_users_get**
-> admin_users_get()
+> string admin_users_get()
 
 Get all users
 
@@ -366,7 +373,8 @@ my $api_instance = WWW::SwaggerClient::AdminApi->new(
 
 
 eval { 
-    $api_instance->admin_users_get();
+    my $result = $api_instance->admin_users_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AdminApi->admin_users_get: $@\n";
@@ -378,7 +386,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

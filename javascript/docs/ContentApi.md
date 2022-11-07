@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, opts)
+> 'String' contentAddCarPost(body, opts)
 
 Add Car object
 
@@ -55,7 +55,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentAddCarPost(body, opts, callback);
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -84,7 +84,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body, opts)
+> 'String' contentAddIpfsPost(body, opts)
 
 Add IPFS object
 
@@ -113,7 +113,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentAddIpfsPost(body, opts, callback);
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAllDealsGet"></a>
 # **contentAllDealsGet**
-> contentAllDealsGet(begin, duration, all)
+> 'String' contentAllDealsGet(begin, duration, all)
 
 Get all deals for a user
 
@@ -291,7 +291,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentAllDealsGet(begin, duration, all, callback);
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -320,7 +320,7 @@ null (empty response body)
 
 <a name="contentBwUsageContentGet"></a>
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+> 'String' contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -346,7 +346,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentBwUsageContentGet(content, callback);
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -373,7 +373,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(req, opts)
+> 'String' contentCreatePost(req, opts)
 
 Add a new content
 
@@ -402,7 +402,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentCreatePost(req, opts, callback);
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -430,7 +430,7 @@ null (empty response body)
 
 <a name="contentDealsGet"></a>
 # **contentDealsGet**
-> contentDealsGet(opts)
+> 'String' contentDealsGet(opts)
 
 Content with deals
 
@@ -458,7 +458,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentDealsGet(opts, callback);
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -486,7 +486,7 @@ null (empty response body)
 
 <a name="contentEnsureReplicationDatacidGet"></a>
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+> 'String' contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -512,7 +512,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentEnsureReplicationDatacidGet(datacid, callback);
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 
 <a name="contentIdGet"></a>
 # **contentIdGet**
-> contentIdGet(id)
+> 'String' contentIdGet(id)
 
 Content
 
@@ -618,7 +618,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentIdGet(id, callback);
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -645,7 +645,7 @@ null (empty response body)
 
 <a name="contentImportdealPost"></a>
 # **contentImportdealPost**
-> contentImportdealPost(body)
+> 'String' contentImportdealPost(body)
 
 Import a deal
 
@@ -671,7 +671,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentImportdealPost(body, callback);
@@ -685,7 +685,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -698,7 +698,7 @@ null (empty response body)
 
 <a name="contentListGet"></a>
 # **contentListGet**
-> ['String'] contentListGet()
+> 'String' contentListGet()
 
 List all pinned content
 
@@ -732,7 +732,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**['String']**
+**'String'**
 
 ### Authorization
 
@@ -745,7 +745,7 @@ This endpoint does not need any parameter.
 
 <a name="contentReadContGet"></a>
 # **contentReadContGet**
-> contentReadContGet(cont)
+> 'String' contentReadContGet(cont)
 
 Read content
 
@@ -771,7 +771,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentReadContGet(cont, callback);
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -798,7 +798,7 @@ null (empty response body)
 
 <a name="contentStagingZonesGet"></a>
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> 'String' contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -821,7 +821,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentStagingZonesGet(callback);
@@ -832,7 +832,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -845,7 +845,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(limit, offset)
+> 'String' contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -873,7 +873,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentStatsGet(limit, offset, callback);
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -901,7 +901,7 @@ null (empty response body)
 
 <a name="contentStatusIdGet"></a>
 # **contentStatusIdGet**
-> contentStatusIdGet(id)
+> 'String' contentStatusIdGet(id)
 
 Content Status
 
@@ -927,7 +927,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.contentStatusIdGet(id, callback);
@@ -941,7 +941,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

@@ -10,8 +10,8 @@ class AutoretrieveApi {
   /// Register autoretrieve server
   ///
   /// This endpoint registers a new autoretrieve server
-  Future adminAutoretrieveInitPost(String addresses, String pubKey) async {
-    Object postBody = pubKey;
+  Future<String> adminAutoretrieveInitPost(String addresses, String pubKey) async {
+    Object postBody = null;
 
     // verify required params are set
     if(addresses == null) {
@@ -38,11 +38,25 @@ class AutoretrieveApi {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
       
+      if (addresses != null) {
+        hasFields = true;
+        mp.fields['addresses'] = parameterToString(addresses);
+      }
+      
+      if (pubKey != null) {
+        hasFields = true;
+        mp.fields['pubKey'] = parameterToString(pubKey);
+      }
+      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+      if (addresses != null)
+        formParams['addresses'] = parameterToString(addresses);
+if (pubKey != null)
+        formParams['pubKey'] = parameterToString(pubKey);
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'POST',
@@ -57,15 +71,15 @@ class AutoretrieveApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List autoretrieve servers
   ///
   /// This endpoint lists all registered autoretrieve servers
-  Future adminAutoretrieveListGet() async {
+  Future<String> adminAutoretrieveListGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -106,15 +120,15 @@ class AutoretrieveApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Marks autoretrieve server as up
   ///
   /// This endpoint updates the lastConnection field for autoretrieve
-  Future autoretrieveHeartbeatPost(String token) async {
+  Future<String> autoretrieveHeartbeatPost(String token) async {
     Object postBody = null;
 
     // verify required params are set
@@ -159,9 +173,9 @@ class AutoretrieveApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

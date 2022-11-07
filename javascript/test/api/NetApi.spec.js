@@ -46,14 +46,8 @@
               return;
             }
             // TODO: update response assertions
-            let dataCtr = data;
-            expect(dataCtr).to.be.an(Array);
-            expect(dataCtr).to.not.be.empty();
-            for (let p in dataCtr) {
-              let data = dataCtr[p];
-              expect(data).to.be.a('string');
-              // expect(data).to.be(null);
-            }
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -64,7 +58,7 @@
       });
       describe('publicMinersFailuresMinerGet', function() {
         it('should call publicMinersFailuresMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -73,6 +67,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -83,7 +80,7 @@
       });
       describe('publicMinersGet', function() {
         it('should call publicMinersGet successfully', function(done) {
-          // TODO: uncomment publicMinersGet call
+          // TODO: uncomment publicMinersGet call and complete the assertions
           /*
 
           instance.publicMinersGet(function(error, data, response) {
@@ -91,6 +88,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

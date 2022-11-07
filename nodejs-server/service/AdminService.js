@@ -5,12 +5,21 @@
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
  *
- * body List Peer ids
- * no response value expected for this operation
+ * peerIds List Peer ids
+ * returns String
  **/
-exports.adminPeeringPeersDELETE = function(body) {
+exports.adminPeeringPeersDELETE = function(peerIds) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -19,11 +28,20 @@ exports.adminPeeringPeersDELETE = function(body) {
  * List all Peering peers
  * This endpoint can be used to list all peers on Peering Service
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminPeeringPeersGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -32,11 +50,20 @@ exports.adminPeeringPeersGET = function() {
  * Add peers on Peering Service
  * This endpoint can be used to add a Peer from the Peering Service
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminPeeringPeersPOST = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -45,11 +72,20 @@ exports.adminPeeringPeersPOST = function() {
  * Start Peering
  * This endpoint can be used to start the Peering Service
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminPeeringStartPOST = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -58,11 +94,20 @@ exports.adminPeeringStartPOST = function() {
  * Check Peering Status
  * This endpoint can be used to check the Peering status
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminPeeringStatusGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -71,11 +116,20 @@ exports.adminPeeringStatusGET = function() {
  * Stop Peering
  * This endpoint can be used to stop the Peering Service
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminPeeringStopPOST = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -84,11 +138,20 @@ exports.adminPeeringStopPOST = function() {
  * Get systems(estuary/shuttle) config
  * This endpoint is used to get system configs.
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminSystemConfigGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -97,11 +160,20 @@ exports.adminSystemConfigGET = function() {
  * Get all users
  * This endpoint is used to get all users.
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.adminUsersGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

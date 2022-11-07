@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userapikeysget"></a>
 # **UserApiKeysGet**
-> List<MainGetApiKeysResp> UserApiKeysGet ()
+> List<List<MainGetApiKeysResp>> UserApiKeysGet ()
 
 Get API keys for a user
 
@@ -44,7 +44,7 @@ namespace Example
             try
             {
                 // Get API keys for a user
-                List&lt;MainGetApiKeysResp&gt; result = apiInstance.UserApiKeysGet();
+                List&lt;List&lt;MainGetApiKeysResp&gt;&gt; result = apiInstance.UserApiKeysGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -61,7 +61,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<MainGetApiKeysResp>**](MainGetApiKeysResp.md)
+**List<List<MainGetApiKeysResp>>**
 
 ### Authorization
 
@@ -76,7 +76,7 @@ This endpoint does not need any parameter.
 
 <a name="userapikeyskeydelete"></a>
 # **UserApiKeysKeyDelete**
-> void UserApiKeysKeyDelete (string key)
+> string UserApiKeysKeyDelete (string key)
 
 Revoke a User API Key.
 
@@ -108,7 +108,8 @@ namespace Example
             try
             {
                 // Revoke a User API Key.
-                apiInstance.UserApiKeysKeyDelete(key);
+                string result = apiInstance.UserApiKeysKeyDelete(key);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -127,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -169,7 +170,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserApi();
-            var expiry = expiry_example;  // string | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional) 
+            var expiry = expiry_example;  // string | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional) 
             var perms = perms_example;  // string | Permissions - - currently unused (optional) 
 
             try
@@ -191,7 +192,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **string**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **string**| Permissions - - currently unused | [optional] 
 
 ### Return type
@@ -274,7 +275,7 @@ This endpoint does not need any parameter.
 
 <a name="userstatsget"></a>
 # **UserStatsGet**
-> MainUserStatsResponse UserStatsGet ()
+> string UserStatsGet ()
 
 Create API keys for a user
 
@@ -305,7 +306,7 @@ namespace Example
             try
             {
                 // Create API keys for a user
-                MainUserStatsResponse result = apiInstance.UserStatsGet();
+                string result = apiInstance.UserStatsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -322,7 +323,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**string**
 
 ### Authorization
 

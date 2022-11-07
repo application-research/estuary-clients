@@ -10,7 +10,7 @@ class UserApi {
   /// Get API keys for a user
   ///
   /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-  Future<List<MainGetApiKeysResp>> userApiKeysGet() async {
+  Future<List<List<MainGetApiKeysResp>>> userApiKeysGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -51,7 +51,7 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-        (apiClient.deserialize(response.body, 'List<MainGetApiKeysResp>') as List).map((item) => item as MainGetApiKeysResp).toList();
+        (apiClient.deserialize(response.body, 'List<List<MainGetApiKeysResp>>') as List).map((item) => item as List).toList();
     } else {
       return null;
     }
@@ -59,7 +59,7 @@ class UserApi {
   /// Revoke a User API Key.
   ///
   /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-  Future userApiKeysKeyDelete(String key) async {
+  Future<String> userApiKeysKeyDelete(String key) async {
     Object postBody = null;
 
     // verify required params are set
@@ -103,9 +103,9 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Create API keys for a user
@@ -215,7 +215,7 @@ class UserApi {
   /// Create API keys for a user
   ///
   /// This endpoint is used to create API keys for a user.
-  Future<MainUserStatsResponse> userStatsGet() async {
+  Future<String> userStatsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -256,7 +256,7 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          apiClient.deserialize(response.body, 'MainUserStatsResponse') as MainUserStatsResponse ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
     }

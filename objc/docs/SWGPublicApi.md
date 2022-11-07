@@ -19,7 +19,7 @@ Method | HTTP request | Description
 # **publicByCidCidGet**
 ```objc
 -(NSURLSessionTask*) publicByCidCidGetWithCid: (NSString*) cid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get Content by Cid
@@ -42,7 +42,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get Content by Cid
 [apiInstance publicByCidCidGetWithCid:cid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicByCidCidGet: %@", error);
                         }
@@ -57,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -73,7 +76,7 @@ void (empty response body)
 # **publicInfoGet**
 ```objc
 -(NSURLSessionTask*) publicInfoGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get public node info
@@ -95,7 +98,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get public node info
 [apiInstance publicInfoGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicInfoGet: %@", error);
                         }
@@ -107,7 +113,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -123,7 +129,7 @@ void (empty response body)
 # **publicMetricsDealsOnChainGet**
 ```objc
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get deal metrics
@@ -145,7 +151,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get deal metrics
 [apiInstance publicMetricsDealsOnChainGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMetricsDealsOnChainGet: %@", error);
                         }
@@ -157,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -174,7 +183,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners deals
@@ -199,7 +208,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 // Get all miners deals
 [apiInstance publicMinersDealsMinerGetWithMiner:miner
               ignoreFailed:ignoreFailed
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMinersDealsMinerGet: %@", error);
                         }
@@ -215,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -231,7 +243,7 @@ void (empty response body)
 # **publicMinersFailuresMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners
@@ -254,7 +266,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get all miners
 [apiInstance publicMinersFailuresMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMinersFailuresMinerGet: %@", error);
                         }
@@ -269,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -285,7 +300,7 @@ void (empty response body)
 # **publicMinersGet**
 ```objc
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners
@@ -307,7 +322,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get all miners
 [apiInstance publicMinersGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMinersGet: %@", error);
                         }
@@ -319,7 +337,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -335,7 +353,7 @@ void (empty response body)
 # **publicMinersStatsMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get miner stats
@@ -358,7 +376,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Get miner stats
 [apiInstance publicMinersStatsMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicMinersStatsMinerGet: %@", error);
                         }
@@ -373,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -495,7 +516,7 @@ This endpoint does not need any parameter.
 # **publicStatsGet**
 ```objc
 -(NSURLSessionTask*) publicStatsGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Public stats
@@ -517,7 +538,10 @@ SWGPublicApi*apiInstance = [[SWGPublicApi alloc] init];
 
 // Public stats
 [apiInstance publicStatsGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGPublicApi->publicStatsGet: %@", error);
                         }
@@ -529,7 +553,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

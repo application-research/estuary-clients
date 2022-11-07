@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -82,11 +83,11 @@ class AdminApi(
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
    *
-   * @param body Peer ids 
-   * @return void
+   * @param peerIds Peer ids 
+   * @return String
    */
-  def adminPeeringPeersDelete(body: List[String]) = {
-    val await = Try(Await.result(adminPeeringPeersDeleteAsync(body), Duration.Inf))
+  def adminPeeringPeersDelete(peerIds: List[Boolean]): Option[String] = {
+    val await = Try(Await.result(adminPeeringPeersDeleteAsync(peerIds), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -97,20 +98,20 @@ class AdminApi(
    * Remove peers on Peering Service asynchronously
    * This endpoint can be used to remove a Peer from the Peering Service
    *
-   * @param body Peer ids 
-   * @return Future(void)
+   * @param peerIds Peer ids 
+   * @return Future(String)
    */
-  def adminPeeringPeersDeleteAsync(body: List[String]) = {
-      helper.adminPeeringPeersDelete(body)
+  def adminPeeringPeersDeleteAsync(peerIds: List[Boolean]): Future[String] = {
+      helper.adminPeeringPeersDelete(peerIds)
   }
 
   /**
    * List all Peering peers
    * This endpoint can be used to list all peers on Peering Service
    *
-   * @return void
+   * @return String
    */
-  def adminPeeringPeersGet() = {
+  def adminPeeringPeersGet(): Option[String] = {
     val await = Try(Await.result(adminPeeringPeersGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -122,9 +123,9 @@ class AdminApi(
    * List all Peering peers asynchronously
    * This endpoint can be used to list all peers on Peering Service
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminPeeringPeersGetAsync() = {
+  def adminPeeringPeersGetAsync(): Future[String] = {
       helper.adminPeeringPeersGet()
   }
 
@@ -132,9 +133,9 @@ class AdminApi(
    * Add peers on Peering Service
    * This endpoint can be used to add a Peer from the Peering Service
    *
-   * @return void
+   * @return String
    */
-  def adminPeeringPeersPost() = {
+  def adminPeeringPeersPost(): Option[String] = {
     val await = Try(Await.result(adminPeeringPeersPostAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -146,9 +147,9 @@ class AdminApi(
    * Add peers on Peering Service asynchronously
    * This endpoint can be used to add a Peer from the Peering Service
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminPeeringPeersPostAsync() = {
+  def adminPeeringPeersPostAsync(): Future[String] = {
       helper.adminPeeringPeersPost()
   }
 
@@ -156,9 +157,9 @@ class AdminApi(
    * Start Peering
    * This endpoint can be used to start the Peering Service
    *
-   * @return void
+   * @return String
    */
-  def adminPeeringStartPost() = {
+  def adminPeeringStartPost(): Option[String] = {
     val await = Try(Await.result(adminPeeringStartPostAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -170,9 +171,9 @@ class AdminApi(
    * Start Peering asynchronously
    * This endpoint can be used to start the Peering Service
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminPeeringStartPostAsync() = {
+  def adminPeeringStartPostAsync(): Future[String] = {
       helper.adminPeeringStartPost()
   }
 
@@ -180,9 +181,9 @@ class AdminApi(
    * Check Peering Status
    * This endpoint can be used to check the Peering status
    *
-   * @return void
+   * @return String
    */
-  def adminPeeringStatusGet() = {
+  def adminPeeringStatusGet(): Option[String] = {
     val await = Try(Await.result(adminPeeringStatusGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -194,9 +195,9 @@ class AdminApi(
    * Check Peering Status asynchronously
    * This endpoint can be used to check the Peering status
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminPeeringStatusGetAsync() = {
+  def adminPeeringStatusGetAsync(): Future[String] = {
       helper.adminPeeringStatusGet()
   }
 
@@ -204,9 +205,9 @@ class AdminApi(
    * Stop Peering
    * This endpoint can be used to stop the Peering Service
    *
-   * @return void
+   * @return String
    */
-  def adminPeeringStopPost() = {
+  def adminPeeringStopPost(): Option[String] = {
     val await = Try(Await.result(adminPeeringStopPostAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -218,9 +219,9 @@ class AdminApi(
    * Stop Peering asynchronously
    * This endpoint can be used to stop the Peering Service
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminPeeringStopPostAsync() = {
+  def adminPeeringStopPostAsync(): Future[String] = {
       helper.adminPeeringStopPost()
   }
 
@@ -228,9 +229,9 @@ class AdminApi(
    * Get systems(estuary/shuttle) config
    * This endpoint is used to get system configs.
    *
-   * @return void
+   * @return String
    */
-  def adminSystemConfigGet() = {
+  def adminSystemConfigGet(): Option[String] = {
     val await = Try(Await.result(adminSystemConfigGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -242,9 +243,9 @@ class AdminApi(
    * Get systems(estuary/shuttle) config asynchronously
    * This endpoint is used to get system configs.
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminSystemConfigGetAsync() = {
+  def adminSystemConfigGetAsync(): Future[String] = {
       helper.adminSystemConfigGet()
   }
 
@@ -252,9 +253,9 @@ class AdminApi(
    * Get all users
    * This endpoint is used to get all users.
    *
-   * @return void
+   * @return String
    */
-  def adminUsersGet() = {
+  def adminUsersGet(): Option[String] = {
     val await = Try(Await.result(adminUsersGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -266,9 +267,9 @@ class AdminApi(
    * Get all users asynchronously
    * This endpoint is used to get all users.
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminUsersGetAsync() = {
+  def adminUsersGetAsync(): Future[String] = {
       helper.adminUsersGet()
   }
 
@@ -276,7 +277,7 @@ class AdminApi(
 
 class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def adminPeeringPeersDelete(body: List[String])(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[List[String]]): Future[Unit] = {
+  def adminPeeringPeersDelete(peerIds: List[Boolean])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Boolean]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -285,13 +286,13 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val headerParams = new mutable.HashMap[String, String]
 
 
-    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(peerIds))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
   }
 
-  def adminPeeringPeersGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringPeersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -306,7 +307,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminPeeringPeersPost()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringPeersPost()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -321,7 +322,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminPeeringStartPost()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringStartPost()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/start"))
 
@@ -336,7 +337,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminPeeringStatusGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringStatusGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/status"))
 
@@ -351,7 +352,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminPeeringStopPost()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminPeeringStopPost()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/stop"))
 
@@ -366,7 +367,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminSystemConfigGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminSystemConfigGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/system/config"))
 
@@ -381,7 +382,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminUsersGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminUsersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/users"))
 

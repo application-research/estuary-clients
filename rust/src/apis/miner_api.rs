@@ -35,13 +35,13 @@ impl<C: hyper::client::Connect> MinerApiClient<C> {
 }
 
 pub trait MinerApi {
-    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>MinerApi for MinerApiClient<C> {
-    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -101,11 +101,14 @@ impl<C: hyper::client::Connect>MinerApi for MinerApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -164,7 +167,10 @@ impl<C: hyper::client::Connect>MinerApi for MinerApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

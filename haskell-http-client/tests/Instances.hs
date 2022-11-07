@@ -99,6 +99,13 @@ instance Arbitrary CollectionsCollection where
       <*> arbitrary -- collectionsCollectionUserId :: Maybe Int
       <*> arbitrary -- collectionsCollectionUuid :: Maybe Text
     
+instance Arbitrary MainChannelIDParam where
+  arbitrary =
+    MainChannelIDParam
+      <$> arbitrary -- mainChannelIDParamId :: Maybe Int
+      <*> arbitrary -- mainChannelIDParamInitiator :: Maybe Text
+      <*> arbitrary -- mainChannelIDParamResponder :: Maybe Text
+    
 instance Arbitrary MainCreateCollectionBody where
   arbitrary =
     MainCreateCollectionBody
@@ -133,11 +140,13 @@ instance Arbitrary MainImportDealBody where
       <*> arbitrary -- mainImportDealBodyDir :: Maybe Text
       <*> arbitrary -- mainImportDealBodyName :: Maybe Text
     
-instance Arbitrary MainUserStatsResponse where
+instance Arbitrary TypesIpfsPin where
   arbitrary =
-    MainUserStatsResponse
-      <$> arbitrary -- mainUserStatsResponseNumPins :: Maybe Int
-      <*> arbitrary -- mainUserStatsResponseTotalSize :: Maybe Int
+    TypesIpfsPin
+      <$> arbitrary -- typesIpfsPinCid :: Maybe Text
+      <*> arbitrary -- typesIpfsPinMeta :: Maybe A.Value
+      <*> arbitrary -- typesIpfsPinName :: Maybe Text
+      <*> arbitrary -- typesIpfsPinOrigins :: Maybe [Text]
     
 instance Arbitrary UtilContentAddIpfsBody where
   arbitrary =

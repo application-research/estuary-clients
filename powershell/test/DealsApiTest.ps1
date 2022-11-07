@@ -59,6 +59,14 @@ Describe 'estuary-client DealsApi' {
     }
 
     Context 'DealsApi' {
+        It 'Invoke-DealsApiDealTransferStatusPost' {
+            $ret = Invoke-PetApiGetPetById -chanid "TEST_VALUE"
+            #$ret | Should BeOfType estuary-client.Model.ModelNameHere
+            #$ret.property | Should Be 0
+        }
+    }
+
+    Context 'DealsApi' {
         It 'Invoke-DealsApiDealsFailuresGet' {
             $ret = Invoke-PetApiGetPetById
             #$ret | Should BeOfType estuary-client.Model.ModelNameHere

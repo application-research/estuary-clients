@@ -6,6 +6,7 @@ import io.swagger.api.PinningApiService;
 import io.swagger.annotations.ApiParam;
 import io.swagger.jaxrs.*;
 
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -26,7 +27,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the pinning API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-10-25T22:53:11.261Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-07T20:06:01.579Z")
 public class PinningApi  {
 
     @Inject PinningApiService service;
@@ -35,10 +36,12 @@ public class PinningApi  {
     @Path("/pins")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "List all pin status objects", notes = "This endpoint lists all pin status objects", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "List all pin status objects", notes = "This endpoint lists all pin status objects", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
         @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         
         @io.swagger.annotations.ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
@@ -52,10 +55,15 @@ public class PinningApi  {
     @Path("/pins/{pinid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Delete a pinned object", notes = "This endpoint deletes a pinned object.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Delete a pinned object", notes = "This endpoint deletes a pinned object.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
-    @io.swagger.annotations.ApiResponses(value = {  })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response pinningPinsPinidDelete( @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.pinningPinsPinidDelete(pinid,securityContext);
@@ -64,10 +72,15 @@ public class PinningApi  {
     @Path("/pins/{pinid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get a pin status object", notes = "This endpoint returns a pin status object.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Get a pin status object", notes = "This endpoint returns a pin status object.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
-    @io.swagger.annotations.ApiResponses(value = {  })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response pinningPinsPinidGet( @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.pinningPinsPinidGet(pinid,securityContext);
@@ -76,10 +89,15 @@ public class PinningApi  {
     @Path("/pins/{pinid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Replace a pinned object", notes = "This endpoint replaces a pinned object.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Replace a pinned object", notes = "This endpoint replaces a pinned object.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
-    @io.swagger.annotations.ApiResponses(value = {  })
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response pinningPinsPinidPost( @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.pinningPinsPinidPost(pinid,securityContext);
@@ -88,12 +106,17 @@ public class PinningApi  {
     @Path("/pins")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Add and pin object", notes = "This endpoint adds a pin to the IPFS daemon.", response = Void.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Add and pin object", notes = "This endpoint adds a pin to the IPFS daemon.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
-    @io.swagger.annotations.ApiResponses(value = {  })
-    public Response pinningPinsPost( @PathParam("cid") String cid, @PathParam("name") String name,@Context SecurityContext securityContext)
+    @io.swagger.annotations.ApiResponses(value = { 
+        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        
+        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public Response pinningPinsPost(@ApiParam(value = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin pin,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.pinningPinsPost(cid,name,securityContext);
+        return service.pinningPinsPost(pin,securityContext);
     }
 }

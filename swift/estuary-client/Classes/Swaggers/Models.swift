@@ -169,6 +169,21 @@ class Decoders {
             }
 
 
+            // Decoder for [MainChannelIDParam]
+            Decoders.addDecoder(clazz: [MainChannelIDParam].self) { (source: AnyObject) -> [MainChannelIDParam] in
+                return Decoders.decode(clazz: [MainChannelIDParam].self, source: source)
+            }
+            // Decoder for MainChannelIDParam
+            Decoders.addDecoder(clazz: MainChannelIDParam.self) { (source: AnyObject) -> MainChannelIDParam in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = MainChannelIDParam()
+                instance.id = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["id"])
+                instance.initiator = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["initiator"])
+                instance.responder = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["responder"])
+                return instance
+            }
+
+
             // Decoder for [MainCreateCollectionBody]
             Decoders.addDecoder(clazz: [MainCreateCollectionBody].self) { (source: AnyObject) -> [MainCreateCollectionBody] in
                 return Decoders.decode(clazz: [MainCreateCollectionBody].self, source: source)
@@ -243,16 +258,18 @@ class Decoders {
             }
 
 
-            // Decoder for [MainUserStatsResponse]
-            Decoders.addDecoder(clazz: [MainUserStatsResponse].self) { (source: AnyObject) -> [MainUserStatsResponse] in
-                return Decoders.decode(clazz: [MainUserStatsResponse].self, source: source)
+            // Decoder for [TypesIpfsPin]
+            Decoders.addDecoder(clazz: [TypesIpfsPin].self) { (source: AnyObject) -> [TypesIpfsPin] in
+                return Decoders.decode(clazz: [TypesIpfsPin].self, source: source)
             }
-            // Decoder for MainUserStatsResponse
-            Decoders.addDecoder(clazz: MainUserStatsResponse.self) { (source: AnyObject) -> MainUserStatsResponse in
+            // Decoder for TypesIpfsPin
+            Decoders.addDecoder(clazz: TypesIpfsPin.self) { (source: AnyObject) -> TypesIpfsPin in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = MainUserStatsResponse()
-                instance.numPins = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["numPins"])
-                instance.totalSize = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["totalSize"])
+                let instance = TypesIpfsPin()
+                instance.cid = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["cid"])
+                instance.meta = Decoders.decodeOptional(clazz: AnyObject.self, source: sourceDictionary["meta"])
+                instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
+                instance.origins = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["origins"])
                 return instance
             }
 

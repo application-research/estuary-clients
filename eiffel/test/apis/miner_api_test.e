@@ -18,13 +18,14 @@ feature -- Test routines
             -- 
             -- This endpoint returns all miners deals 
         local
+            l_response: STRING_32
             l_miner: STRING_32
             l_ignore_failed: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_miner
                       
-            -- api.public_miners_deals_miner_get(l_miner, l_ignore_failed)
+            -- l_response := api.public_miners_deals_miner_get(l_miner, l_ignore_failed)
             assert ("not_implemented", False)
         end
     
@@ -33,12 +34,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns miner stats 
         local
+            l_response: STRING_32
             l_miner: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_miner
                       
-            -- api.public_miners_stats_miner_get(l_miner)
+            -- l_response := api.public_miners_stats_miner_get(l_miner)
             assert ("not_implemented", False)
         end
 

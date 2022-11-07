@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> pinningPinsGet()
+> String pinningPinsGet()
 
 List all pin status objects
 
@@ -26,7 +26,8 @@ This endpoint lists all pin status objects
 
 PinningApi apiInstance = new PinningApi();
 try {
-    apiInstance.pinningPinsGet();
+    String result = apiInstance.pinningPinsGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsGet");
     e.printStackTrace();
@@ -38,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -51,7 +52,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete(pinid)
+> String pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -65,7 +66,8 @@ This endpoint deletes a pinned object.
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | Pin ID
 try {
-    apiInstance.pinningPinsPinidDelete(pinid);
+    String result = apiInstance.pinningPinsPinidDelete(pinid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidDelete");
     e.printStackTrace();
@@ -80,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -93,7 +95,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+> String pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -107,7 +109,8 @@ This endpoint returns a pin status object.
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | cid
 try {
-    apiInstance.pinningPinsPinidGet(pinid);
+    String result = apiInstance.pinningPinsPinidGet(pinid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
     e.printStackTrace();
@@ -122,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -135,7 +138,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid)
 
 Replace a pinned object
 
@@ -149,7 +152,8 @@ This endpoint replaces a pinned object.
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | Pin ID
 try {
-    apiInstance.pinningPinsPinidPost(pinid);
+    String result = apiInstance.pinningPinsPinidPost(pinid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
     e.printStackTrace();
@@ -164,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -177,7 +181,7 @@ null (empty response body)
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> pinningPinsPost(cid, name)
+> String pinningPinsPost(pin)
 
 Add and pin object
 
@@ -189,10 +193,10 @@ This endpoint adds a pin to the IPFS daemon.
 //import io.swagger.client.api.PinningApi;
 
 PinningApi apiInstance = new PinningApi();
-String cid = "cid_example"; // String | cid
-String name = "name_example"; // String | name
+TypesIpfsPin pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 try {
-    apiInstance.pinningPinsPost(cid, name);
+    String result = apiInstance.pinningPinsPost(pin);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPost");
     e.printStackTrace();
@@ -203,12 +207,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid |
- **name** | **String**| name |
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Types.IpfsPin.h"
 #include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
@@ -45,7 +46,7 @@ public:
     /// <remarks>
     /// This endpoint lists all pin status objects
     /// </remarks>
-    pplx::task<void> pinningPinsGet(
+    pplx::task<utility::string_t> pinningPinsGet(
     );
     /// <summary>
     /// Delete a pinned object
@@ -54,7 +55,7 @@ public:
     /// This endpoint deletes a pinned object.
     /// </remarks>
     /// <param name="pinid">Pin ID</param>
-    pplx::task<void> pinningPinsPinidDelete(
+    pplx::task<utility::string_t> pinningPinsPinidDelete(
         utility::string_t pinid
     );
     /// <summary>
@@ -64,7 +65,7 @@ public:
     /// This endpoint returns a pin status object.
     /// </remarks>
     /// <param name="pinid">cid</param>
-    pplx::task<void> pinningPinsPinidGet(
+    pplx::task<utility::string_t> pinningPinsPinidGet(
         utility::string_t pinid
     );
     /// <summary>
@@ -74,7 +75,7 @@ public:
     /// This endpoint replaces a pinned object.
     /// </remarks>
     /// <param name="pinid">Pin ID</param>
-    pplx::task<void> pinningPinsPinidPost(
+    pplx::task<utility::string_t> pinningPinsPinidPost(
         utility::string_t pinid
     );
     /// <summary>
@@ -83,11 +84,9 @@ public:
     /// <remarks>
     /// This endpoint adds a pin to the IPFS daemon.
     /// </remarks>
-    /// <param name="cid">cid</param>
-    /// <param name="name">name</param>
-    pplx::task<void> pinningPinsPost(
-        utility::string_t cid,
-        utility::string_t name
+    /// <param name="pin">Pin Body {cid:cid, name:name}</param>
+    pplx::task<utility::string_t> pinningPinsPost(
+        std::shared_ptr<Types.IpfsPin> pin
     );
 
 protected:

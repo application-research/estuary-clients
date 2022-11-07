@@ -31,9 +31,10 @@ public class SwagContentApi {
      * @param body Car (required)
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentAddCarPost(Map<String, Object> params) {
+    public String contentAddCarPost(Map<String, Object> params) {
         client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
 
@@ -43,7 +44,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/content/add-car',
             (String) params.get('body'),
             query, form,
@@ -52,7 +53,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -60,9 +61,10 @@ public class SwagContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentAddIpfsPost(Map<String, Object> params) {
+    public String contentAddIpfsPost(Map<String, Object> params) {
         client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
 
@@ -71,7 +73,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/content/add-ipfs',
             (SwagUtilContentAddIpfsBody) params.get('body'),
             query, form,
@@ -80,7 +82,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -155,9 +157,10 @@ public class SwagContentApi {
      * @param r_begin Begin (required)
      * @param duration Duration (required)
      * @param all All (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentAllDealsGet(Map<String, Object> params) {
+    public String contentAllDealsGet(Map<String, Object> params) {
         client.assertNotNull(params.get('r_begin'), 'r_begin');
         client.assertNotNull(params.get('duration'), 'duration');
         client.assertNotNull(params.get('all'), 'all');
@@ -170,7 +173,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/all-deals', '',
             query, form,
             new Map<String, Object>(),
@@ -178,21 +181,22 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get content bandwidth
      * This endpoint returns content bandwidth
      * @param content Content ID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentBwUsageContentGet(Map<String, Object> params) {
+    public String contentBwUsageContentGet(Map<String, Object> params) {
         client.assertNotNull(params.get('content'), 'content');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/bw-usage/{content}', '',
             query, form,
             new Map<String, Object>{
@@ -202,7 +206,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -210,9 +214,10 @@ public class SwagContentApi {
      * This endpoint adds a new content
      * @param req Content (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentCreatePost(Map<String, Object> params) {
+    public String contentCreatePost(Map<String, Object> params) {
         client.assertNotNull(params.get('req'), 'req');
         List<Swagger.Param> query = new List<Swagger.Param>();
 
@@ -221,7 +226,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/content/create',
             (SwagUtilContentCreateBody) params.get('req'),
             query, form,
@@ -230,7 +235,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -238,9 +243,10 @@ public class SwagContentApi {
      * This endpoint lists all content with deals
      * @param r_limit Limit (optional)
      * @param offset Offset (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentDealsGet(Map<String, Object> params) {
+    public String contentDealsGet(Map<String, Object> params) {
         List<Swagger.Param> query = new List<Swagger.Param>();
 
         // cast query params to verify their expected type
@@ -249,7 +255,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/deals', '',
             query, form,
             new Map<String, Object>(),
@@ -257,21 +263,22 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Ensure Replication
      * This endpoint ensures that the content is replicated to the specified number of providers
      * @param datacid Data CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentEnsureReplicationDatacidGet(Map<String, Object> params) {
+    public String contentEnsureReplicationDatacidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('datacid'), 'datacid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/ensure-replication/{datacid}', '',
             query, form,
             new Map<String, Object>{
@@ -281,7 +288,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -313,14 +320,15 @@ public class SwagContentApi {
      * Content
      * This endpoint returns a content by its ID
      * @param id Content ID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentIdGet(Map<String, Object> params) {
+    public String contentIdGet(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -330,21 +338,22 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Import a deal
      * This endpoint imports a deal into the shuttle.
      * @param body Import a deal (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentImportdealPost(Map<String, Object> params) {
+    public String contentImportdealPost(Map<String, Object> params) {
         client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/content/importdeal',
             (SwagMainImportDealBody) params.get('body'),
             query, form,
@@ -353,20 +362,20 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * List all pinned content
      * This endpoint lists all content
-     * @return List<String>
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public List<String> contentListGet() {
+    public String contentListGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (List<String>) client.invoke(
+        return (String) client.invoke(
             'GET', '/content/list', '',
             query, form,
             new Map<String, Object>(),
@@ -374,21 +383,22 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            List<String>.class
+            String.class
         );
     }
     /**
      * Read content
      * This endpoint reads content from the blockstore
      * @param cont CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentReadContGet(Map<String, Object> params) {
+    public String contentReadContGet(Map<String, Object> params) {
         client.assertNotNull(params.get('cont'), 'cont');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/read/{cont}', '',
             query, form,
             new Map<String, Object>{
@@ -398,19 +408,20 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get staging zone for user
      * This endpoint is used to get staging zone for user.
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentStagingZonesGet() {
+    public String contentStagingZonesGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/staging-zones', '',
             query, form,
             new Map<String, Object>(),
@@ -418,7 +429,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -426,9 +437,10 @@ public class SwagContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param r_limit limit (required)
      * @param offset offset (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentStatsGet(Map<String, Object> params) {
+    public String contentStatsGet(Map<String, Object> params) {
         client.assertNotNull(params.get('r_limit'), 'r_limit');
         client.assertNotNull(params.get('offset'), 'offset');
         List<Swagger.Param> query = new List<Swagger.Param>();
@@ -439,7 +451,7 @@ public class SwagContentApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/stats', '',
             query, form,
             new Map<String, Object>(),
@@ -447,21 +459,22 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Content Status
      * This endpoint returns the status of a content
      * @param id Content ID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void contentStatusIdGet(Map<String, Object> params) {
+    public String contentStatusIdGet(Map<String, Object> params) {
         client.assertNotNull(params.get('id'), 'id');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/content/status/{id}', '',
             query, form,
             new Map<String, Object>{
@@ -471,7 +484,7 @@ public class SwagContentApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed)
+> string public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed)
 
 Get all miners deals
 
@@ -36,7 +36,8 @@ my $miner = 'miner_example'; # string | Filter by miner
 my $ignore_failed = 'ignore_failed_example'; # string | Ignore Failed
 
 eval { 
-    $api_instance->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
+    my $result = $api_instance->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling MinerApi->public_miners_deals_miner_get: $@\n";
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner => $miner)
+> string public_miners_stats_miner_get(miner => $miner)
 
 Get miner stats
 
@@ -87,7 +88,8 @@ my $api_instance = WWW::SwaggerClient::MinerApi->new(
 my $miner = 'miner_example'; # string | Filter by miner
 
 eval { 
-    $api_instance->public_miners_stats_miner_get(miner => $miner);
+    my $result = $api_instance->public_miners_stats_miner_get(miner => $miner);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling MinerApi->public_miners_stats_miner_get: $@\n";
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

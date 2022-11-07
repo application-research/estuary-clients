@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionscoluuiddelete"></a>
 # **CollectionsColuuidDelete**
-> void CollectionsColuuidDelete (string coluuid)
+> string CollectionsColuuidDelete (string coluuid)
 
 Deletes a collection
 
@@ -183,7 +183,8 @@ namespace Example
             try
             {
                 // Deletes a collection
-                apiInstance.CollectionsColuuidDelete(coluuid);
+                string result = apiInstance.CollectionsColuuidDelete(coluuid);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -202,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -285,7 +286,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionscoluuidpost"></a>
 # **CollectionsColuuidPost**
-> Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
+> string CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
 
 Add contents to a collection
 
@@ -317,7 +318,7 @@ namespace Example
             try
             {
                 // Add contents to a collection
-                Dictionary&lt;string, string&gt; result = apiInstance.CollectionsColuuidPost(coluuid, contentIDs);
+                string result = apiInstance.CollectionsColuuidPost(coluuid, contentIDs);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -338,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, string>**
+**string**
 
 ### Authorization
 
@@ -353,7 +354,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsfsaddpost"></a>
 # **CollectionsFsAddPost**
-> void CollectionsFsAddPost (string coluuid, string content, string path)
+> string CollectionsFsAddPost (string coluuid, string content, string path)
 
 Add a file to a collection
 
@@ -386,7 +387,8 @@ namespace Example
             try
             {
                 // Add a file to a collection
-                apiInstance.CollectionsFsAddPost(coluuid, content, path);
+                string result = apiInstance.CollectionsFsAddPost(coluuid, content, path);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -407,7 +409,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -422,7 +424,7 @@ void (empty response body)
 
 <a name="collectionsget"></a>
 # **CollectionsGet**
-> List<CollectionsCollection> CollectionsGet ()
+> List<List<CollectionsCollection>> CollectionsGet ()
 
 List all collections
 
@@ -452,7 +454,7 @@ namespace Example
             try
             {
                 // List all collections
-                List&lt;CollectionsCollection&gt; result = apiInstance.CollectionsGet();
+                List&lt;List&lt;CollectionsCollection&gt;&gt; result = apiInstance.CollectionsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -469,7 +471,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<CollectionsCollection>**](CollectionsCollection.md)
+**List<List<CollectionsCollection>>**
 
 ### Authorization
 

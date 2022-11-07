@@ -4,6 +4,7 @@ import 'package:jaguar_serializer/jaguar_serializer.dart';
 import 'package:jaguar_serializer/src/repo/repo.dart';
 import 'dart:async';
 
+import 'package:swagger/model/util_http_error.dart';
 
 
 part 'miner_api.jretro.dart';
@@ -19,7 +20,7 @@ class MinerApi extends _$MinerApiClient implements ApiClient {
     ///
     /// This endpoint returns all miners deals
     @GetReq(path: "/public/miners/deals/:miner", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> publicMinersDealsMinerGet(
+    Future<String> publicMinersDealsMinerGet(
             @PathParam("miner") String miner
         ,
         @QueryParam("ignore-failed") String ignoreFailed
@@ -29,7 +30,7 @@ class MinerApi extends _$MinerApiClient implements ApiClient {
     ///
     /// This endpoint returns miner stats
     @GetReq(path: "/public/miners/stats/:miner", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> publicMinersStatsMinerGet(
+    Future<String> publicMinersStatsMinerGet(
             @PathParam("miner") String miner
     );
 

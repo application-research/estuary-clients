@@ -18,6 +18,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to add a car object to the network. The object can be a file or a directory. 
         local
+            l_response: STRING_32
             l_body: STRING_32
             l_ignore_dupes: STRING_32
             l_filename: STRING_32
@@ -25,7 +26,7 @@ feature -- Test routines
             -- TODO: Initialize required params.
             -- l_body
                       
-            -- api.content_add_car_post(l_body, l_ignore_dupes, l_filename)
+            -- l_response := api.content_add_car_post(l_body, l_ignore_dupes, l_filename)
             assert ("not_implemented", False)
         end
     
@@ -34,13 +35,14 @@ feature -- Test routines
             -- 
             -- This endpoint is used to add an IPFS object to the network. The object can be a file or a directory. 
         local
+            l_response: STRING_32
             l_body: UTIL_CONTENT_ADD_IPFS_BODY
             l_ignore_dupes: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_body
                       
-            -- api.content_add_ipfs_post(l_body, l_ignore_dupes)
+            -- l_response := api.content_add_ipfs_post(l_body, l_ignore_dupes)
             assert ("not_implemented", False)
         end
     
@@ -85,6 +87,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get all deals for a user 
         local
+            l_response: STRING_32
             l_begin: STRING_32
             l_duration: STRING_32
             l_var_all: STRING_32
@@ -94,7 +97,7 @@ feature -- Test routines
             -- l_duration
             -- l_var_all
                       
-            -- api.content_all_deals_get(l_begin, l_duration, l_var_all)
+            -- l_response := api.content_all_deals_get(l_begin, l_duration, l_var_all)
             assert ("not_implemented", False)
         end
     
@@ -103,12 +106,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns content bandwidth 
         local
+            l_response: STRING_32
             l_content: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_content
                       
-            -- api.content_bw_usage_content_get(l_content)
+            -- l_response := api.content_bw_usage_content_get(l_content)
             assert ("not_implemented", False)
         end
     
@@ -117,13 +121,14 @@ feature -- Test routines
             -- 
             -- This endpoint adds a new content 
         local
+            l_response: STRING_32
             l_req: UTIL_CONTENT_CREATE_BODY
             l_ignore_dupes: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_req
                       
-            -- api.content_create_post(l_req, l_ignore_dupes)
+            -- l_response := api.content_create_post(l_req, l_ignore_dupes)
             assert ("not_implemented", False)
         end
     
@@ -132,12 +137,13 @@ feature -- Test routines
             -- 
             -- This endpoint lists all content with deals 
         local
+            l_response: STRING_32
             l_limit: INTEGER_32
             l_offset: INTEGER_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.content_deals_get(l_limit, l_offset)
+            -- l_response := api.content_deals_get(l_limit, l_offset)
             assert ("not_implemented", False)
         end
     
@@ -146,12 +152,13 @@ feature -- Test routines
             -- 
             -- This endpoint ensures that the content is replicated to the specified number of providers 
         local
+            l_response: STRING_32
             l_datacid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_datacid
                       
-            -- api.content_ensure_replication_datacid_get(l_datacid)
+            -- l_response := api.content_ensure_replication_datacid_get(l_datacid)
             assert ("not_implemented", False)
         end
     
@@ -175,12 +182,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns a content by its ID 
         local
+            l_response: STRING_32
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
                       
-            -- api.content_id_get(l_id)
+            -- l_response := api.content_id_get(l_id)
             assert ("not_implemented", False)
         end
     
@@ -189,12 +197,13 @@ feature -- Test routines
             -- 
             -- This endpoint imports a deal into the shuttle. 
         local
+            l_response: STRING_32
             l_body: MAIN_IMPORT_DEAL_BODY
         do
             -- TODO: Initialize required params.
             -- l_body
                       
-            -- api.content_importdeal_post(l_body)
+            -- l_response := api.content_importdeal_post(l_body)
             assert ("not_implemented", False)
         end
     
@@ -203,7 +212,7 @@ feature -- Test routines
             -- 
             -- This endpoint lists all content 
         local
-            l_response: LIST [STRING_32]
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
@@ -216,12 +225,13 @@ feature -- Test routines
             -- 
             -- This endpoint reads content from the blockstore 
         local
+            l_response: STRING_32
             l_cont: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_cont
                       
-            -- api.content_read_cont_get(l_cont)
+            -- l_response := api.content_read_cont_get(l_cont)
             assert ("not_implemented", False)
         end
     
@@ -230,10 +240,11 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get staging zone for user. 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.content_staging_zones_get
+            -- l_response := api.content_staging_zones_get
             assert ("not_implemented", False)
         end
     
@@ -242,6 +253,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten 
         local
+            l_response: STRING_32
             l_limit: STRING_32
             l_offset: STRING_32
         do
@@ -249,7 +261,7 @@ feature -- Test routines
             -- l_limit
             -- l_offset
                       
-            -- api.content_stats_get(l_limit, l_offset)
+            -- l_response := api.content_stats_get(l_limit, l_offset)
             assert ("not_implemented", False)
         end
     
@@ -258,12 +270,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns the status of a content 
         local
+            l_response: STRING_32
             l_id: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_id
                       
-            -- api.content_status_id_get(l_id)
+            -- l_response := api.content_status_id_get(l_id)
             assert ("not_implemented", False)
         end
 

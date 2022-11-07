@@ -18,12 +18,13 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to remove a Peer from the Peering Service 
         local
-            l_body: LIST [STRING_32]
+            l_response: STRING_32
+            l_peer_ids: LIST [BOOLEAN]
         do
             -- TODO: Initialize required params.
-            -- create {ARRAYED_LIST [STRING_32]} l_body.make (2)
+            -- create {ARRAYED_LIST [BOOLEAN]} l_peer_ids.make (2)
                       
-            -- api.admin_peering_peers_delete(l_body)
+            -- l_response := api.admin_peering_peers_delete(l_peer_ids)
             assert ("not_implemented", False)
         end
     
@@ -32,10 +33,11 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to list all peers on Peering Service 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_peering_peers_get
+            -- l_response := api.admin_peering_peers_get
             assert ("not_implemented", False)
         end
     
@@ -44,10 +46,11 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to add a Peer from the Peering Service 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_peering_peers_post
+            -- l_response := api.admin_peering_peers_post
             assert ("not_implemented", False)
         end
     
@@ -56,10 +59,11 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to start the Peering Service 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_peering_start_post
+            -- l_response := api.admin_peering_start_post
             assert ("not_implemented", False)
         end
     
@@ -68,10 +72,11 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to check the Peering status 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_peering_status_get
+            -- l_response := api.admin_peering_status_get
             assert ("not_implemented", False)
         end
     
@@ -80,10 +85,11 @@ feature -- Test routines
             -- 
             -- This endpoint can be used to stop the Peering Service 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_peering_stop_post
+            -- l_response := api.admin_peering_stop_post
             assert ("not_implemented", False)
         end
     
@@ -92,10 +98,11 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get system configs. 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_system_config_get
+            -- l_response := api.admin_system_config_get
             assert ("not_implemented", False)
         end
     
@@ -104,10 +111,11 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get all users. 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.admin_users_get
+            -- l_response := api.admin_users_get
             assert ("not_implemented", False)
         end
 

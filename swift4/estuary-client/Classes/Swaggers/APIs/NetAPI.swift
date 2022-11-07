@@ -16,7 +16,7 @@ open class NetAPI {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func netAddrsGet(completion: @escaping ((_ data: [String]?,_ error: Error?) -> Void)) {
+    open class func netAddrsGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         netAddrsGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -30,18 +30,21 @@ open class NetAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={}}]
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<[String]> 
+     - returns: RequestBuilder<String> 
      */
-    open class func netAddrsGetWithRequestBuilder() -> RequestBuilder<[String]> {
+    open class func netAddrsGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/net/addrs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -52,13 +55,9 @@ open class NetAPI {
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func publicMinersFailuresMinerGet(miner: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func publicMinersFailuresMinerGet(miner: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         publicMinersFailuresMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -70,12 +69,16 @@ open class NetAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func publicMinersFailuresMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<Void> {
+    open class func publicMinersFailuresMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<String> {
         var path = "/public/miners/failures/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -85,7 +88,7 @@ open class NetAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -95,13 +98,9 @@ open class NetAPI {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func publicMinersGet(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func publicMinersGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         publicMinersGetWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -113,17 +112,21 @@ open class NetAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func publicMinersGetWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func publicMinersGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/miners"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

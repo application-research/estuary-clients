@@ -66,8 +66,8 @@ import qualified Prelude as P
 -- * Parameter newtypes
 
 
--- ** Addresses2
-newtype Addresses2 = Addresses2 { unAddresses2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
+-- ** Addresses
+newtype Addresses = Addresses { unAddresses :: Text } deriving (P.Eq, P.Show)
 
 -- ** All
 newtype All = All { unAll :: Text } deriving (P.Eq, P.Show)
@@ -75,11 +75,8 @@ newtype All = All { unAll :: Text } deriving (P.Eq, P.Show)
 -- ** Begin
 newtype Begin = Begin { unBegin :: Text } deriving (P.Eq, P.Show)
 
--- ** Body
-newtype Body = Body { unBody :: [Text] } deriving (P.Eq, P.Show, A.ToJSON)
-
--- ** BodyText
-newtype BodyText = BodyText { unBodyText :: Text } deriving (P.Eq, P.Show, A.ToJSON)
+-- ** Body2
+newtype Body2 = Body2 { unBody2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
 
 -- ** Cid
 newtype Cid = Cid { unCid :: Text } deriving (P.Eq, P.Show)
@@ -147,9 +144,6 @@ newtype LimitText = LimitText { unLimitText :: Text } deriving (P.Eq, P.Show)
 -- ** Miner
 newtype Miner = Miner { unMiner :: Text } deriving (P.Eq, P.Show)
 
--- ** Name
-newtype Name = Name { unName :: Text } deriving (P.Eq, P.Show)
-
 -- ** Offset
 newtype Offset = Offset { unOffset :: Int } deriving (P.Eq, P.Show)
 
@@ -162,6 +156,9 @@ newtype ParamData = ParamData { unParamData :: FilePath } deriving (P.Eq, P.Show
 -- ** Path
 newtype Path = Path { unPath :: Text } deriving (P.Eq, P.Show)
 
+-- ** PeerIds
+newtype PeerIds = PeerIds { unPeerIds :: [Bool] } deriving (P.Eq, P.Show, A.ToJSON)
+
 -- ** Perms
 newtype Perms = Perms { unPerms :: Text } deriving (P.Eq, P.Show)
 
@@ -171,8 +168,8 @@ newtype Pinid = Pinid { unPinid :: Text } deriving (P.Eq, P.Show)
 -- ** Propcid
 newtype Propcid = Propcid { unPropcid :: Text } deriving (P.Eq, P.Show)
 
--- ** PubKey2
-newtype PubKey2 = PubKey2 { unPubKey2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
+-- ** PubKey
+newtype PubKey = PubKey { unPubKey :: Text } deriving (P.Eq, P.Show)
 
 -- ** Replication
 newtype Replication = Replication { unReplication :: Int } deriving (P.Eq, P.Show)
@@ -229,6 +226,42 @@ mkCollectionsCollection =
   , collectionsCollectionName = Nothing
   , collectionsCollectionUserId = Nothing
   , collectionsCollectionUuid = Nothing
+  }
+
+-- ** MainChannelIDParam
+-- | MainChannelIDParam
+data MainChannelIDParam = MainChannelIDParam
+  { mainChannelIDParamId :: !(Maybe Int) -- ^ "id"
+  , mainChannelIDParamInitiator :: !(Maybe Text) -- ^ "initiator"
+  , mainChannelIDParamResponder :: !(Maybe Text) -- ^ "responder"
+  } deriving (P.Show, P.Eq, P.Typeable)
+
+-- | FromJSON MainChannelIDParam
+instance A.FromJSON MainChannelIDParam where
+  parseJSON = A.withObject "MainChannelIDParam" $ \o ->
+    MainChannelIDParam
+      <$> (o .:? "id")
+      <*> (o .:? "initiator")
+      <*> (o .:? "responder")
+
+-- | ToJSON MainChannelIDParam
+instance A.ToJSON MainChannelIDParam where
+  toJSON MainChannelIDParam {..} =
+   _omitNulls
+      [ "id" .= mainChannelIDParamId
+      , "initiator" .= mainChannelIDParamInitiator
+      , "responder" .= mainChannelIDParamResponder
+      ]
+
+
+-- | Construct a value of type 'MainChannelIDParam' (by applying it's required fields, if any)
+mkMainChannelIDParam
+  :: MainChannelIDParam
+mkMainChannelIDParam =
+  MainChannelIDParam
+  { mainChannelIDParamId = Nothing
+  , mainChannelIDParamInitiator = Nothing
+  , mainChannelIDParamResponder = Nothing
   }
 
 -- ** MainCreateCollectionBody
@@ -407,36 +440,44 @@ mkMainImportDealBody =
   , mainImportDealBodyName = Nothing
   }
 
--- ** MainUserStatsResponse
--- | MainUserStatsResponse
-data MainUserStatsResponse = MainUserStatsResponse
-  { mainUserStatsResponseNumPins :: !(Maybe Int) -- ^ "numPins"
-  , mainUserStatsResponseTotalSize :: !(Maybe Int) -- ^ "totalSize"
+-- ** TypesIpfsPin
+-- | TypesIpfsPin
+data TypesIpfsPin = TypesIpfsPin
+  { typesIpfsPinCid :: !(Maybe Text) -- ^ "cid"
+  , typesIpfsPinMeta :: !(Maybe A.Value) -- ^ "meta"
+  , typesIpfsPinName :: !(Maybe Text) -- ^ "name"
+  , typesIpfsPinOrigins :: !(Maybe [Text]) -- ^ "origins"
   } deriving (P.Show, P.Eq, P.Typeable)
 
--- | FromJSON MainUserStatsResponse
-instance A.FromJSON MainUserStatsResponse where
-  parseJSON = A.withObject "MainUserStatsResponse" $ \o ->
-    MainUserStatsResponse
-      <$> (o .:? "numPins")
-      <*> (o .:? "totalSize")
+-- | FromJSON TypesIpfsPin
+instance A.FromJSON TypesIpfsPin where
+  parseJSON = A.withObject "TypesIpfsPin" $ \o ->
+    TypesIpfsPin
+      <$> (o .:? "cid")
+      <*> (o .:? "meta")
+      <*> (o .:? "name")
+      <*> (o .:? "origins")
 
--- | ToJSON MainUserStatsResponse
-instance A.ToJSON MainUserStatsResponse where
-  toJSON MainUserStatsResponse {..} =
+-- | ToJSON TypesIpfsPin
+instance A.ToJSON TypesIpfsPin where
+  toJSON TypesIpfsPin {..} =
    _omitNulls
-      [ "numPins" .= mainUserStatsResponseNumPins
-      , "totalSize" .= mainUserStatsResponseTotalSize
+      [ "cid" .= typesIpfsPinCid
+      , "meta" .= typesIpfsPinMeta
+      , "name" .= typesIpfsPinName
+      , "origins" .= typesIpfsPinOrigins
       ]
 
 
--- | Construct a value of type 'MainUserStatsResponse' (by applying it's required fields, if any)
-mkMainUserStatsResponse
-  :: MainUserStatsResponse
-mkMainUserStatsResponse =
-  MainUserStatsResponse
-  { mainUserStatsResponseNumPins = Nothing
-  , mainUserStatsResponseTotalSize = Nothing
+-- | Construct a value of type 'TypesIpfsPin' (by applying it's required fields, if any)
+mkTypesIpfsPin
+  :: TypesIpfsPin
+mkTypesIpfsPin =
+  TypesIpfsPin
+  { typesIpfsPinCid = Nothing
+  , typesIpfsPinMeta = Nothing
+  , typesIpfsPinName = Nothing
+  , typesIpfsPinOrigins = Nothing
   }
 
 -- ** UtilContentAddIpfsBody

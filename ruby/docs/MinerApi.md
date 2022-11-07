@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner, opts)
+> String public_miners_deals_miner_get(miner, opts)
 
 Get all miners deals
 
@@ -37,7 +37,8 @@ opts = {
 
 begin
   #Get all miners deals
-  api_instance.public_miners_deals_miner_get(miner, opts)
+  result = api_instance.public_miners_deals_miner_get(miner, opts)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MinerApi->public_miners_deals_miner_get: #{e}"
 end
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ nil (empty response body)
 
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner)
+> String public_miners_stats_miner_get(miner)
 
 Get miner stats
 
@@ -91,7 +92,8 @@ miner = 'miner_example' # String | Filter by miner
 
 begin
   #Get miner stats
-  api_instance.public_miners_stats_miner_get(miner)
+  result = api_instance.public_miners_stats_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MinerApi->public_miners_stats_miner_get: #{e}"
 end
@@ -105,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

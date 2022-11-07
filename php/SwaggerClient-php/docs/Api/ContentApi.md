@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 
 # **contentAddCarPost**
-> contentAddCarPost($body, $ignore_dupes, $filename)
+> string contentAddCarPost($body, $ignore_dupes, $filename)
 
 Add Car object
 
@@ -51,7 +51,8 @@ $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 $filename = "filename_example"; // string | Filename
 
 try {
-    $apiInstance->contentAddCarPost($body, $ignore_dupes, $filename);
+    $result = $apiInstance->contentAddCarPost($body, $ignore_dupes, $filename);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -68,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -82,7 +83,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddIpfsPost**
-> contentAddIpfsPost($body, $ignore_dupes)
+> string contentAddIpfsPost($body, $ignore_dupes)
 
 Add IPFS object
 
@@ -108,7 +109,8 @@ $body = new \Swagger\Client\Model\UtilContentAddIpfsBody(); // \Swagger\Client\M
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
-    $apiInstance->contentAddIpfsPost($body, $ignore_dupes);
+    $result = $apiInstance->contentAddIpfsPost($body, $ignore_dupes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddIpfsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -124,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -260,7 +262,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAllDealsGet**
-> contentAllDealsGet($begin, $duration, $all)
+> string contentAllDealsGet($begin, $duration, $all)
 
 Get all deals for a user
 
@@ -287,7 +289,8 @@ $duration = "duration_example"; // string | Duration
 $all = "all_example"; // string | All
 
 try {
-    $apiInstance->contentAllDealsGet($begin, $duration, $all);
+    $result = $apiInstance->contentAllDealsGet($begin, $duration, $all);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAllDealsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -304,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -318,7 +321,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet($content)
+> string contentBwUsageContentGet($content)
 
 Get content bandwidth
 
@@ -343,7 +346,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $content = "content_example"; // string | Content ID
 
 try {
-    $apiInstance->contentBwUsageContentGet($content);
+    $result = $apiInstance->contentBwUsageContentGet($content);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentBwUsageContentGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -358,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -372,7 +376,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentCreatePost**
-> contentCreatePost($req, $ignore_dupes)
+> string contentCreatePost($req, $ignore_dupes)
 
 Add a new content
 
@@ -398,7 +402,8 @@ $req = new \Swagger\Client\Model\UtilContentCreateBody(); // \Swagger\Client\Mod
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
-    $apiInstance->contentCreatePost($req, $ignore_dupes);
+    $result = $apiInstance->contentCreatePost($req, $ignore_dupes);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentCreatePost: ', $e->getMessage(), PHP_EOL;
 }
@@ -414,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -428,7 +433,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentDealsGet**
-> contentDealsGet($limit, $offset)
+> string contentDealsGet($limit, $offset)
 
 Content with deals
 
@@ -454,7 +459,8 @@ $limit = 56; // int | Limit
 $offset = 56; // int | Offset
 
 try {
-    $apiInstance->contentDealsGet($limit, $offset);
+    $result = $apiInstance->contentDealsGet($limit, $offset);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentDealsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -470,7 +476,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -484,7 +490,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet($datacid)
+> string contentEnsureReplicationDatacidGet($datacid)
 
 Ensure Replication
 
@@ -509,7 +515,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $datacid = "datacid_example"; // string | Data CID
 
 try {
-    $apiInstance->contentEnsureReplicationDatacidGet($datacid);
+    $result = $apiInstance->contentEnsureReplicationDatacidGet($datacid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentEnsureReplicationDatacidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -524,7 +531,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -593,7 +600,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentIdGet**
-> contentIdGet($id)
+> string contentIdGet($id)
 
 Content
 
@@ -618,7 +625,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $id = 56; // int | Content ID
 
 try {
-    $apiInstance->contentIdGet($id);
+    $result = $apiInstance->contentIdGet($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentIdGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -633,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -647,7 +655,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentImportdealPost**
-> contentImportdealPost($body)
+> string contentImportdealPost($body)
 
 Import a deal
 
@@ -672,7 +680,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $body = new \Swagger\Client\Model\MainImportDealBody(); // \Swagger\Client\Model\MainImportDealBody | Import a deal
 
 try {
-    $apiInstance->contentImportdealPost($body);
+    $result = $apiInstance->contentImportdealPost($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentImportdealPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -687,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -701,7 +710,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentListGet**
-> string[] contentListGet()
+> string contentListGet()
 
 List all pinned content
 
@@ -738,7 +747,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string[]**
+**string**
 
 ### Authorization
 
@@ -752,7 +761,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentReadContGet**
-> contentReadContGet($cont)
+> string contentReadContGet($cont)
 
 Read content
 
@@ -777,7 +786,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $cont = "cont_example"; // string | CID
 
 try {
-    $apiInstance->contentReadContGet($cont);
+    $result = $apiInstance->contentReadContGet($cont);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentReadContGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -792,7 +802,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -806,7 +816,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> string contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -830,7 +840,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 );
 
 try {
-    $apiInstance->contentStagingZonesGet();
+    $result = $apiInstance->contentStagingZonesGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentStagingZonesGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -842,7 +853,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -856,7 +867,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentStatsGet**
-> contentStatsGet($limit, $offset)
+> string contentStatsGet($limit, $offset)
 
 Get content statistics
 
@@ -882,7 +893,8 @@ $limit = "limit_example"; // string | limit
 $offset = "offset_example"; // string | offset
 
 try {
-    $apiInstance->contentStatsGet($limit, $offset);
+    $result = $apiInstance->contentStatsGet($limit, $offset);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentStatsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -898,7 +910,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -912,7 +924,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentStatusIdGet**
-> contentStatusIdGet($id)
+> string contentStatusIdGet($id)
 
 Content Status
 
@@ -937,7 +949,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 $id = 56; // int | Content ID
 
 try {
-    $apiInstance->contentStatusIdGet($id);
+    $result = $apiInstance->contentStatusIdGet($id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentStatusIdGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -952,7 +965,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

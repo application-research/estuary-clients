@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get
+> String public_metrics_deals_on_chain_get
 
 Get deal metrics
 
@@ -30,7 +30,8 @@ api_instance = SwaggerClient::MetricsApi.new
 
 begin
   #Get deal metrics
-  api_instance.public_metrics_deals_on_chain_get
+  result = api_instance.public_metrics_deals_on_chain_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling MetricsApi->public_metrics_deals_on_chain_get: #{e}"
 end
@@ -41,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

@@ -30,7 +30,7 @@ SWGPeersApi::SWGPeersApi(QString host, QString basePath) {
 }
 
 void
-SWGPeersApi::adminPeeringPeersDelete(QList<QString*>*& body) {
+SWGPeersApi::adminPeeringPeersDelete(QList<bool>*& peer_ids) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/admin/peering/peers");
 
@@ -40,10 +40,10 @@ SWGPeersApi::adminPeeringPeersDelete(QList<QString*>*& body) {
     SWGHttpRequestInput input(fullPath, "DELETE");
 
 
-    QJsonObject body_jobj;
-    toJsonArray((QList<void*>*)body, body_jobj, QString("body"), QString("SWGUser*"));
+    QJsonObject peer_ids_jobj;
+    toJsonArray((QList<void*>*)peer_ids, peer_ids_jobj, QString("body"), QString("SWGUser*"));
 
-    QJsonDocument doc(body_jobj);
+    QJsonDocument doc(peer_ids_jobj);
     QByteArray bytes = doc.toJson();
 
     input.request_body.append(bytes);
@@ -75,12 +75,16 @@ SWGPeersApi::adminPeeringPeersDeleteCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringPeersDeleteSignal();
+        emit adminPeeringPeersDeleteSignal(output);
     } else {
-        emit adminPeeringPeersDeleteSignalE(error_type, error_str);
+        emit adminPeeringPeersDeleteSignalE(output, error_type, error_str);
         emit adminPeeringPeersDeleteSignalEFull(worker, error_type, error_str);
     }
 }
@@ -124,12 +128,16 @@ SWGPeersApi::adminPeeringPeersGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringPeersGetSignal();
+        emit adminPeeringPeersGetSignal(output);
     } else {
-        emit adminPeeringPeersGetSignalE(error_type, error_str);
+        emit adminPeeringPeersGetSignalE(output, error_type, error_str);
         emit adminPeeringPeersGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -173,12 +181,16 @@ SWGPeersApi::adminPeeringPeersPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringPeersPostSignal();
+        emit adminPeeringPeersPostSignal(output);
     } else {
-        emit adminPeeringPeersPostSignalE(error_type, error_str);
+        emit adminPeeringPeersPostSignalE(output, error_type, error_str);
         emit adminPeeringPeersPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -222,12 +234,16 @@ SWGPeersApi::adminPeeringStartPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringStartPostSignal();
+        emit adminPeeringStartPostSignal(output);
     } else {
-        emit adminPeeringStartPostSignalE(error_type, error_str);
+        emit adminPeeringStartPostSignalE(output, error_type, error_str);
         emit adminPeeringStartPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -271,12 +287,16 @@ SWGPeersApi::adminPeeringStatusGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringStatusGetSignal();
+        emit adminPeeringStatusGetSignal(output);
     } else {
-        emit adminPeeringStatusGetSignalE(error_type, error_str);
+        emit adminPeeringStatusGetSignalE(output, error_type, error_str);
         emit adminPeeringStatusGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -320,12 +340,16 @@ SWGPeersApi::adminPeeringStopPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit adminPeeringStopPostSignal();
+        emit adminPeeringStopPostSignal(output);
     } else {
-        emit adminPeeringStopPostSignalE(error_type, error_str);
+        emit adminPeeringStopPostSignalE(output, error_type, error_str);
         emit adminPeeringStopPostSignalEFull(worker, error_type, error_str);
     }
 }

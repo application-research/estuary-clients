@@ -143,9 +143,9 @@ class CollectionsApi(
    * This endpoint is used to delete an existing collection.
    *
    * @param coluuid Collection ID 
-   * @return void
+   * @return String
    */
-  def collectionsColuuidDelete(coluuid: String) = {
+  def collectionsColuuidDelete(coluuid: String): Option[String] = {
     val await = Try(Await.result(collectionsColuuidDeleteAsync(coluuid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -158,9 +158,9 @@ class CollectionsApi(
    * This endpoint is used to delete an existing collection.
    *
    * @param coluuid Collection ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def collectionsColuuidDeleteAsync(coluuid: String) = {
+  def collectionsColuuidDeleteAsync(coluuid: String): Future[String] = {
       helper.collectionsColuuidDelete(coluuid)
   }
 
@@ -198,9 +198,9 @@ class CollectionsApi(
    *
    * @param coluuid coluuid 
    * @param contentIDs Content IDs to add to collection 
-   * @return Map[String, String]
+   * @return String
    */
-  def collectionsColuuidPost(coluuid: String, contentIDs: List[Integer]): Option[Map[String, String]] = {
+  def collectionsColuuidPost(coluuid: String, contentIDs: List[Integer]): Option[String] = {
     val await = Try(Await.result(collectionsColuuidPostAsync(coluuid, contentIDs), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -214,9 +214,9 @@ class CollectionsApi(
    *
    * @param coluuid coluuid 
    * @param contentIDs Content IDs to add to collection 
-   * @return Future(Map[String, String])
+   * @return Future(String)
    */
-  def collectionsColuuidPostAsync(coluuid: String, contentIDs: List[Integer]): Future[Map[String, String]] = {
+  def collectionsColuuidPostAsync(coluuid: String, contentIDs: List[Integer]): Future[String] = {
       helper.collectionsColuuidPost(coluuid, contentIDs)
   }
 
@@ -227,9 +227,9 @@ class CollectionsApi(
    * @param coluuid Collection ID 
    * @param content Content 
    * @param `path` Path to file 
-   * @return void
+   * @return String
    */
-  def collectionsFsAddPost(coluuid: String, content: String, `path`: String) = {
+  def collectionsFsAddPost(coluuid: String, content: String, `path`: String): Option[String] = {
     val await = Try(Await.result(collectionsFsAddPostAsync(coluuid, content, `path`), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -244,9 +244,9 @@ class CollectionsApi(
    * @param coluuid Collection ID 
    * @param content Content 
    * @param `path` Path to file 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def collectionsFsAddPostAsync(coluuid: String, content: String, `path`: String) = {
+  def collectionsFsAddPostAsync(coluuid: String, content: String, `path`: String): Future[String] = {
       helper.collectionsFsAddPost(coluuid, content, `path`)
   }
 
@@ -254,9 +254,9 @@ class CollectionsApi(
    * List all collections
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @return List[Collection]
+   * @return List[List[Collection]]
    */
-  def collectionsGet(): Option[List[Collection]] = {
+  def collectionsGet(): Option[List[List[Collection]]] = {
     val await = Try(Await.result(collectionsGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -268,9 +268,9 @@ class CollectionsApi(
    * List all collections asynchronously
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @return Future(List[Collection])
+   * @return Future(List[List[Collection]])
    */
-  def collectionsGetAsync(): Future[List[Collection]] = {
+  def collectionsGetAsync(): Future[List[List[Collection]]] = {
       helper.collectionsGet()
   }
 
@@ -346,7 +346,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def collectionsColuuidDelete(coluuid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def collectionsColuuidDelete(coluuid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
       replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
@@ -389,7 +389,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
   }
 
   def collectionsColuuidPost(coluuid: String,
-    contentIDs: List[Integer])(implicit reader: ClientResponseReader[Map[String, String]], writer: RequestWriter[List[Integer]]): Future[Map[String, String]] = {
+    contentIDs: List[Integer])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Integer]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
       replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
@@ -410,7 +410,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
   def collectionsFsAddPost(coluuid: String,
     content: String,
-    `path`: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    `path`: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/fs/add"))
 
@@ -434,7 +434,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def collectionsGet()(implicit reader: ClientResponseReader[List[Collection]]): Future[List[Collection]] = {
+  def collectionsGet()(implicit reader: ClientResponseReader[List[List[Collection]]]): Future[List[List[Collection]]] = {
     // create path and map variables
     val path = (addFmt("/collections/"))
 

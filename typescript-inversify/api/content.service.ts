@@ -24,6 +24,7 @@ import { MainImportDealBody } from '../model/mainImportDealBody';
 import { UtilContentAddIpfsBody } from '../model/utilContentAddIpfsBody';
 import { UtilContentAddResponse } from '../model/utilContentAddResponse';
 import { UtilContentCreateBody } from '../model/utilContentCreateBody';
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -44,8 +45,8 @@ export class ContentService {
      * @param filename Filename
      
      */
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
@@ -66,7 +67,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-car?${queryParameters.join('&')}`, body as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-car?${queryParameters.join('&')}`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -81,8 +82,8 @@ export class ContentService {
      * @param ignoreDupes Ignore Dupes
      
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -100,7 +101,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-ipfs?${queryParameters.join('&')}`, body as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/add-ipfs?${queryParameters.join('&')}`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -202,8 +203,8 @@ export class ContentService {
      * @param all All
      
      */
-    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentAllDealsGet(begin: string, duration: string, all: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!begin){
             throw new Error('Required parameter begin was null or undefined when calling contentAllDealsGet.');
@@ -234,7 +235,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/all-deals?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/all-deals?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -248,8 +249,8 @@ export class ContentService {
      * @param content Content ID
      
      */
-    public contentBwUsageContentGet(content: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentBwUsageContentGet(content: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentBwUsageContentGet(content: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentBwUsageContentGet(content: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentBwUsageContentGet(content: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!content){
             throw new Error('Required parameter content was null or undefined when calling contentBwUsageContentGet.');
@@ -261,7 +262,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/bw-usage/${encodeURIComponent(String(content))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/bw-usage/${encodeURIComponent(String(content))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -276,8 +277,8 @@ export class ContentService {
      * @param ignoreDupes Ignore Dupes
      
      */
-    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!req){
             throw new Error('Required parameter req was null or undefined when calling contentCreatePost.');
@@ -295,7 +296,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/create?${queryParameters.join('&')}`, req as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/create?${queryParameters.join('&')}`, req as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -310,8 +311,8 @@ export class ContentService {
      * @param offset Offset
      
      */
-    public contentDealsGet(limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentDealsGet(limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentDealsGet(limit?: number, offset?: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentDealsGet(limit?: number, offset?: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentDealsGet(limit?: number, offset?: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         let queryParameters: string[] = [];
         if (limit !== undefined) {
@@ -327,7 +328,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/deals?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/deals?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -341,8 +342,8 @@ export class ContentService {
      * @param datacid Data CID
      
      */
-    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentEnsureReplicationDatacidGet(datacid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!datacid){
             throw new Error('Required parameter datacid was null or undefined when calling contentEnsureReplicationDatacidGet.');
@@ -354,7 +355,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/ensure-replication/${encodeURIComponent(String(datacid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/ensure-replication/${encodeURIComponent(String(datacid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -395,8 +396,8 @@ export class ContentService {
      * @param id Content ID
      
      */
-    public contentIdGet(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentIdGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentIdGet(id: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentIdGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentIdGet(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!id){
             throw new Error('Required parameter id was null or undefined when calling contentIdGet.');
@@ -408,7 +409,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/${encodeURIComponent(String(id))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/${encodeURIComponent(String(id))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -422,8 +423,8 @@ export class ContentService {
      * @param body Import a deal
      
      */
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentImportdealPost(body: MainImportDealBody, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentImportdealPost(body: MainImportDealBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentImportdealPost(body: MainImportDealBody, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling contentImportdealPost.');
@@ -436,7 +437,7 @@ export class ContentService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/importdeal`, body as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/content/importdeal`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -449,8 +450,8 @@ export class ContentService {
      * This endpoint lists all content
      
      */
-    public contentListGet(observe?: 'body', headers?: Headers): Observable<Array<string>>;
-    public contentListGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<string>>>;
+    public contentListGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public contentListGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentListGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -458,7 +459,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<string>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/list` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/list` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -472,8 +473,8 @@ export class ContentService {
      * @param cont CID
      
      */
-    public contentReadContGet(cont: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentReadContGet(cont: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentReadContGet(cont: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentReadContGet(cont: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentReadContGet(cont: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!cont){
             throw new Error('Required parameter cont was null or undefined when calling contentReadContGet.');
@@ -485,7 +486,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/read/${encodeURIComponent(String(cont))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/read/${encodeURIComponent(String(cont))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -498,8 +499,8 @@ export class ContentService {
      * This endpoint is used to get staging zone for user.
      
      */
-    public contentStagingZonesGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public contentStagingZonesGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentStagingZonesGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public contentStagingZonesGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentStagingZonesGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -507,7 +508,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/staging-zones` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/staging-zones` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -522,8 +523,8 @@ export class ContentService {
      * @param offset offset
      
      */
-    public contentStatsGet(limit: string, offset: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentStatsGet(limit: string, offset: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentStatsGet(limit: string, offset: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!limit){
             throw new Error('Required parameter limit was null or undefined when calling contentStatsGet.');
@@ -547,7 +548,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/stats?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/stats?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -561,8 +562,8 @@ export class ContentService {
      * @param id Content ID
      
      */
-    public contentStatusIdGet(id: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public contentStatusIdGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public contentStatusIdGet(id: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public contentStatusIdGet(id: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public contentStatusIdGet(id: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!id){
             throw new Error('Required parameter id was null or undefined when calling contentStatusIdGet.');
@@ -574,7 +575,7 @@ export class ContentService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/status/${encodeURIComponent(String(id))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/content/status/${encodeURIComponent(String(id))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

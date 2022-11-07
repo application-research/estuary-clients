@@ -43,7 +43,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[MainGetApiKeysResp]
+        :return: list[list[MainGetApiKeysResp]]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -64,7 +64,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[MainGetApiKeysResp]
+        :return: list[list[MainGetApiKeysResp]]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -112,7 +112,7 @@ class UserApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[MainGetApiKeysResp]',  # noqa: E501
+            response_type='list[list[MainGetApiKeysResp]]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -131,7 +131,7 @@ class UserApi(object):
 
         :param async_req bool
         :param str key: Key (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -153,7 +153,7 @@ class UserApi(object):
 
         :param async_req bool
         :param str key: Key (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -207,7 +207,7 @@ class UserApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -225,7 +225,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+        :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
         :param str perms: Permissions -- currently unused
         :return: MainGetApiKeysResp
                  If the method is called asynchronously,
@@ -248,7 +248,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+        :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
         :param str perms: Permissions -- currently unused
         :return: MainGetApiKeysResp
                  If the method is called asynchronously,
@@ -407,7 +407,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: MainUserStatsResponse
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -428,7 +428,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: MainUserStatsResponse
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -476,7 +476,7 @@ class UserApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MainUserStatsResponse',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

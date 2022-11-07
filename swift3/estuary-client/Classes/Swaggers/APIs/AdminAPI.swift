@@ -12,12 +12,12 @@ import Alamofire
 open class AdminAPI: APIBase {
     /**
      Remove peers on Peering Service
-     - parameter body: (body) Peer ids 
+     - parameter peerIds: (body) Peer ids 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringPeersDelete(body: [String], completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        adminPeeringPeersDeleteWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(error)
+    open class func adminPeeringPeersDelete(peerIds: [Bool], completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        adminPeeringPeersDeleteWithRequestBuilder(peerIds: peerIds).execute { (response, error) -> Void in
+            completion(response?.body, error)
         }
     }
 
@@ -29,17 +29,21 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - parameter body: (body) Peer ids 
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - parameter peerIds: (body) Peer ids 
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringPeersDeleteWithRequestBuilder(body: [String]) -> RequestBuilder<Void> {
+    open class func adminPeeringPeersDeleteWithRequestBuilder(peerIds: [Bool]) -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = body.encodeToJSON()
+        let parameters = peerIds.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -48,9 +52,9 @@ open class AdminAPI: APIBase {
      List all Peering peers
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringPeersGet(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminPeeringPeersGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminPeeringPeersGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -62,16 +66,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringPeersGetWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminPeeringPeersGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -80,9 +88,9 @@ open class AdminAPI: APIBase {
      Add peers on Peering Service
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringPeersPost(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminPeeringPeersPost(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminPeeringPeersPostWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -94,16 +102,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringPeersPostWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminPeeringPeersPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -112,9 +124,9 @@ open class AdminAPI: APIBase {
      Start Peering
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringStartPost(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminPeeringStartPost(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminPeeringStartPostWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -126,16 +138,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringStartPostWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminPeeringStartPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/start"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -144,9 +160,9 @@ open class AdminAPI: APIBase {
      Check Peering Status
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringStatusGet(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminPeeringStatusGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminPeeringStatusGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -158,16 +174,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringStatusGetWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminPeeringStatusGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/status"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -176,9 +196,9 @@ open class AdminAPI: APIBase {
      Stop Peering
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringStopPost(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminPeeringStopPost(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminPeeringStopPostWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -190,16 +210,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringStopPostWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminPeeringStopPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/stop"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -208,9 +232,9 @@ open class AdminAPI: APIBase {
      Get systems(estuary/shuttle) config
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminSystemConfigGet(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminSystemConfigGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminSystemConfigGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -222,16 +246,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminSystemConfigGetWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminSystemConfigGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/system/config"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -240,9 +268,9 @@ open class AdminAPI: APIBase {
      Get all users
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminUsersGet(completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func adminUsersGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         adminUsersGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -254,16 +282,20 @@ open class AdminAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - returns: RequestBuilder<Void> 
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
+     - returns: RequestBuilder<String> 
      */
-    open class func adminUsersGetWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func adminUsersGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/users"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

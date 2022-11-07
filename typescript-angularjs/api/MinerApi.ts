@@ -32,7 +32,7 @@ export class MinerApi {
      * @param miner Filter by miner
      * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/deals/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -65,7 +65,7 @@ export class MinerApi {
      * @summary Get miner stats
      * @param miner Filter by miner
      */
-    public publicMinersStatsMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersStatsMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/stats/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 

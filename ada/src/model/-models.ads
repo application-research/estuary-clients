@@ -74,35 +74,6 @@ package .Models is
 
 
 
-   type Main_userStatsResponse_Type is
-     record
-       Num_Pins : Swagger.Nullable_Integer;
-       Total_Size : Swagger.Nullable_Integer;
-     end record;
-
-   package Main_userStatsResponse_Type_Vectors is
-      new Ada.Containers.Vectors (Index_Type   => Positive,
-                                  Element_Type => Main_userStatsResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Main_userStatsResponse_Type);
-
-   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
-                        Name  : in String;
-                        Value : in Main_userStatsResponse_Type_Vectors.Vector);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Main_userStatsResponse_Type);
-
-   procedure Deserialize (From  : in Swagger.Value_Type;
-                          Name  : in String;
-                          Value : out Main_userStatsResponse_Type_Vectors.Vector);
-
-
-
-
    type Main_getApiKeysResp_Type is
      record
        Expiry : Swagger.Nullable_UString;
@@ -157,6 +128,36 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : out Main_deleteContentFromCollectionBody_Type_Vectors.Vector);
+
+
+
+
+   type Main_ChannelIDParam_Type is
+     record
+       Id : Swagger.Nullable_Integer;
+       Initiator : Swagger.Nullable_UString;
+       Responder : Swagger.Nullable_UString;
+     end record;
+
+   package Main_ChannelIDParam_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Main_ChannelIDParam_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_ChannelIDParam_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Main_ChannelIDParam_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_ChannelIDParam_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Main_ChannelIDParam_Type_Vectors.Vector);
 
 
 
@@ -346,6 +347,37 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : out Util_ContentCreateBody_Type_Vectors.Vector);
+
+
+
+
+   type Types_IpfsPin_Type is
+     record
+       Cid : Swagger.Nullable_UString;
+       Meta : Swagger.Object;
+       Name : Swagger.Nullable_UString;
+       Origins : Swagger.Nullable_UString_Vectors.Vector;
+     end record;
+
+   package Types_IpfsPin_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Types_IpfsPin_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPin_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPin_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPin_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPin_Type_Vectors.Vector);
 
 
 

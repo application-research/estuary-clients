@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -14,42 +15,42 @@ namespace estuary-client.Api
         /// Get Content by Cid This endpoint returns the content associated with a CID
         /// </summary>
         /// <param name="cid">Cid</param>
-        /// <returns></returns>
-        void PublicByCidCidGet (string cid);
+        /// <returns>string</returns>
+        string PublicByCidCidGet (string cid);
         /// <summary>
         /// Get public node info This endpoint returns information about the node
         /// </summary>
-        /// <returns></returns>
-        void PublicInfoGet ();
+        /// <returns>string</returns>
+        string PublicInfoGet ();
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
-        /// <returns></returns>
-        void PublicMetricsDealsOnChainGet ();
+        /// <returns>string</returns>
+        string PublicMetricsDealsOnChainGet ();
         /// <summary>
         /// Get all miners deals This endpoint returns all miners deals
         /// </summary>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed</param>
-        /// <returns></returns>
-        void PublicMinersDealsMinerGet (string miner, string ignoreFailed);
+        /// <returns>string</returns>
+        string PublicMinersDealsMinerGet (string miner, string ignoreFailed);
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        void PublicMinersFailuresMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersFailuresMinerGet (string miner);
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <returns></returns>
-        void PublicMinersGet ();
+        /// <returns>string</returns>
+        string PublicMinersGet ();
         /// <summary>
         /// Get miner stats This endpoint returns miner stats
         /// </summary>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        void PublicMinersStatsMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersStatsMinerGet (string miner);
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
@@ -63,8 +64,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Public stats This endpoint is used to get public stats.
         /// </summary>
-        /// <returns></returns>
-        void PublicStatsGet ();
+        /// <returns>string</returns>
+        string PublicStatsGet ();
     }
   
     /// <summary>
@@ -124,8 +125,8 @@ namespace estuary-client.Api
         /// Get Content by Cid This endpoint returns the content associated with a CID
         /// </summary>
         /// <param name="cid">Cid</param> 
-        /// <returns></returns>            
-        public void PublicByCidCidGet (string cid)
+        /// <returns>string</returns>            
+        public string PublicByCidCidGet (string cid)
         {
             
             // verify the required parameter 'cid' is set
@@ -154,14 +155,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicByCidCidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get public node info This endpoint returns information about the node
         /// </summary>
-        /// <returns></returns>            
-        public void PublicInfoGet ()
+        /// <returns>string</returns>            
+        public string PublicInfoGet ()
         {
             
     
@@ -186,14 +187,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicInfoGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
-        /// <returns></returns>            
-        public void PublicMetricsDealsOnChainGet ()
+        /// <returns>string</returns>            
+        public string PublicMetricsDealsOnChainGet ()
         {
             
     
@@ -218,7 +219,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMetricsDealsOnChainGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -226,8 +227,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
         /// <param name="ignoreFailed">Ignore Failed</param> 
-        /// <returns></returns>            
-        public void PublicMinersDealsMinerGet (string miner, string ignoreFailed)
+        /// <returns>string</returns>            
+        public string PublicMinersDealsMinerGet (string miner, string ignoreFailed)
         {
             
             // verify the required parameter 'miner' is set
@@ -257,15 +258,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersDealsMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
-        /// <returns></returns>            
-        public void PublicMinersFailuresMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string PublicMinersFailuresMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -294,14 +295,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersFailuresMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <returns></returns>            
-        public void PublicMinersGet ()
+        /// <returns>string</returns>            
+        public string PublicMinersGet ()
         {
             
     
@@ -326,15 +327,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get miner stats This endpoint returns miner stats
         /// </summary>
         /// <param name="miner">Filter by miner</param> 
-        /// <returns></returns>            
-        public void PublicMinersStatsMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string PublicMinersStatsMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -363,7 +364,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersStatsMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -433,8 +434,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Public stats This endpoint is used to get public stats.
         /// </summary>
-        /// <returns></returns>            
-        public void PublicStatsGet ()
+        /// <returns>string</returns>            
+        public string PublicStatsGet ()
         {
             
     
@@ -459,7 +460,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicStatsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

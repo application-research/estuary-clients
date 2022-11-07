@@ -23,10 +23,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_by_cid_cid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_by_cid_cid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_by_cid_cid_get(connection, cid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -47,10 +47,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_info_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_info_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_info_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -71,10 +71,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_metrics_deals_on_chain_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_metrics_deals_on_chain_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_metrics_deals_on_chain_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -97,10 +97,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_deals_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_deals_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_deals_miner_get(connection, miner, opts \\ []) do
     optional_params = %{
       :"ignore-failed" => :query
@@ -126,10 +126,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_failures_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_failures_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_failures_miner_get(connection, miner, _opts \\ []) do
     %{}
     |> method(:get)
@@ -150,10 +150,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -175,10 +175,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_stats_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_stats_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_stats_miner_get(connection, miner, _opts \\ []) do
     %{}
     |> method(:get)
@@ -247,10 +247,10 @@ defmodule EstuaryAPI.Api.Public do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_stats_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_stats_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_stats_get(connection, _opts \\ []) do
     %{}
     |> method(:get)

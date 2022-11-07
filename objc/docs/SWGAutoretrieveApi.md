@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) adminAutoretrieveInitPostWithAddresses: (NSString*) addresses
     pubKey: (NSString*) pubKey
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Register autoretrieve server
@@ -30,15 +30,18 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* addresses = addresses_example; // Autoretrieve's comma-separated list of addresses
-NSString* pubKey = pubKey_example; // Autoretrieve's public key
+NSString* addresses = @"addresses_example"; // Autoretrieve's comma-separated list of addresses
+NSString* pubKey = @"pubKey_example"; // Autoretrieve's public key
 
 SWGAutoretrieveApi*apiInstance = [[SWGAutoretrieveApi alloc] init];
 
 // Register autoretrieve server
 [apiInstance adminAutoretrieveInitPostWithAddresses:addresses
               pubKey:pubKey
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAutoretrieveApi->adminAutoretrieveInitPost: %@", error);
                         }
@@ -54,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -70,7 +73,7 @@ void (empty response body)
 # **adminAutoretrieveListGet**
 ```objc
 -(NSURLSessionTask*) adminAutoretrieveListGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 List autoretrieve servers
@@ -92,7 +95,10 @@ SWGAutoretrieveApi*apiInstance = [[SWGAutoretrieveApi alloc] init];
 
 // List autoretrieve servers
 [apiInstance adminAutoretrieveListGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAutoretrieveApi->adminAutoretrieveListGet: %@", error);
                         }
@@ -104,7 +110,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -120,7 +126,7 @@ void (empty response body)
 # **autoretrieveHeartbeatPost**
 ```objc
 -(NSURLSessionTask*) autoretrieveHeartbeatPostWithToken: (NSString*) token
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Marks autoretrieve server as up
@@ -143,7 +149,10 @@ SWGAutoretrieveApi*apiInstance = [[SWGAutoretrieveApi alloc] init];
 
 // Marks autoretrieve server as up
 [apiInstance autoretrieveHeartbeatPostWithToken:token
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAutoretrieveApi->autoretrieveHeartbeatPost: %@", error);
                         }
@@ -158,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

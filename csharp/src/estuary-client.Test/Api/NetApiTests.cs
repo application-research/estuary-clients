@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -71,7 +72,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.NetAddrsGet();
-            //Assert.IsInstanceOf<List<string>> (response, "response is List<string>");
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -82,8 +83,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
-            //instance.PublicMinersFailuresMinerGet(miner);
-            
+            //var response = instance.PublicMinersFailuresMinerGet(miner);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -93,8 +94,8 @@ namespace estuary-client.Test
         public void PublicMinersGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicMinersGet();
-            
+            //var response = instance.PublicMinersGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>

@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -61,9 +62,9 @@ export class MetricsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMetricsDealsOnChainGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMetricsDealsOnChainGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMetricsDealsOnChainGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMetricsDealsOnChainGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMetricsDealsOnChainGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMetricsDealsOnChainGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMetricsDealsOnChainGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -86,7 +87,7 @@ export class MetricsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/metrics/deals-on-chain`,
+        return this.httpClient.get<string>(`${this.basePath}/public/metrics/deals-on-chain`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

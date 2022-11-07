@@ -39,6 +39,7 @@ import estuary-client.infrastructure.apiKeyAuth
 // see https://github.com/ktorio/ktor/issues/288
 import estuary-client.delete
 
+import estuary-client.models.UtilHttpError
 
 fun Route.MetricsApi() {
     val gson = Gson()
@@ -50,7 +51,17 @@ fun Route.MetricsApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {

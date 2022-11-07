@@ -41,14 +41,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserApiKeysGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<MainGetApiKeysResp>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<List<MainGetApiKeysResp>>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserApiKeysGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<MainGetApiKeysResp>));
+            // return StatusCode(200, default(List<List<MainGetApiKeysResp>>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -63,8 +63,8 @@ namespace estuary-client.Controllers
             exampleJson = "{}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<MainGetApiKeysResp>>(exampleJson)
-            : default(List<MainGetApiKeysResp>);
+            ? JsonConvert.DeserializeObject<List<List<MainGetApiKeysResp>>>(exampleJson)
+            : default(List<List<MainGetApiKeysResp>>);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -74,22 +74,43 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</remarks>
         /// <param name="key">Key</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpDelete]
         [Route("//user/api-keys/{key}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserApiKeysKeyDelete")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserApiKeysKeyDelete([FromRoute][Required]string key)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
         /// Create API keys for a user
         /// </summary>
         /// <remarks>This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.</remarks>
-        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h</param>
+        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param>
         /// <param name="perms">Permissions - - currently unused</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
@@ -133,16 +154,26 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint is used to get API keys for a user.</remarks>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//user/export")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserExportGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserExportGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -159,23 +190,33 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint is used to create API keys for a user.</remarks>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//user/stats")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserStatsGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(MainUserStatsResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserStatsGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MainUserStatsResponse));
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\"empty\": false}";
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<MainUserStatsResponse>(exampleJson)
-            : default(MainUserStatsResponse);
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

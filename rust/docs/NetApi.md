@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **net_addrs_get**
-> Vec<String> net_addrs_get(ctx, )
+> String net_addrs_get(ctx, )
 Net Addrs
 
 This endpoint is used to get net addrs
@@ -22,7 +22,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Vec<String>**
+**String**
 
 ### Authorization
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(ctx, miner)
+> String public_miners_failures_miner_get(ctx, miner)
 Get all miners
 
 This endpoint returns all miners
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get(ctx, )
+> String public_miners_get(ctx, )
 Get all miners
 
 This endpoint returns all miners
@@ -74,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

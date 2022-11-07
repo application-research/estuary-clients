@@ -71,12 +71,16 @@ SWGDealsApi::dealEstimatePostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealEstimatePostSignal();
+        emit dealEstimatePostSignal(output);
     } else {
-        emit dealEstimatePostSignalE(error_type, error_str);
+        emit dealEstimatePostSignalE(output, error_type, error_str);
         emit dealEstimatePostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -122,12 +126,16 @@ SWGDealsApi::dealInfoDealidGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealInfoDealidGetSignal();
+        emit dealInfoDealidGetSignal(output);
     } else {
-        emit dealInfoDealidGetSignalE(error_type, error_str);
+        emit dealInfoDealidGetSignalE(output, error_type, error_str);
         emit dealInfoDealidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -173,12 +181,16 @@ SWGDealsApi::dealProposalPropcidGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealProposalPropcidGetSignal();
+        emit dealProposalPropcidGetSignal(output);
     } else {
-        emit dealProposalPropcidGetSignalE(error_type, error_str);
+        emit dealProposalPropcidGetSignalE(output, error_type, error_str);
         emit dealProposalPropcidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -224,12 +236,16 @@ SWGDealsApi::dealQueryMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealQueryMinerGetSignal();
+        emit dealQueryMinerGetSignal(output);
     } else {
-        emit dealQueryMinerGetSignalE(error_type, error_str);
+        emit dealQueryMinerGetSignalE(output, error_type, error_str);
         emit dealQueryMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -275,12 +291,16 @@ SWGDealsApi::dealStatusByProposalPropcidGetCallback(SWGHttpRequestWorker * worke
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealStatusByProposalPropcidGetSignal();
+        emit dealStatusByProposalPropcidGetSignal(output);
     } else {
-        emit dealStatusByProposalPropcidGetSignalE(error_type, error_str);
+        emit dealStatusByProposalPropcidGetSignalE(output, error_type, error_str);
         emit dealStatusByProposalPropcidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -328,12 +348,16 @@ SWGDealsApi::dealStatusMinerPropcidGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealStatusMinerPropcidGetSignal();
+        emit dealStatusMinerPropcidGetSignal(output);
     } else {
-        emit dealStatusMinerPropcidGetSignalE(error_type, error_str);
+        emit dealStatusMinerPropcidGetSignalE(output, error_type, error_str);
         emit dealStatusMinerPropcidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -377,13 +401,73 @@ SWGDealsApi::dealTransferInProgressGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealTransferInProgressGetSignal();
+        emit dealTransferInProgressGetSignal(output);
     } else {
-        emit dealTransferInProgressGetSignalE(error_type, error_str);
+        emit dealTransferInProgressGetSignalE(output, error_type, error_str);
         emit dealTransferInProgressGetSignalEFull(worker, error_type, error_str);
+    }
+}
+
+void
+SWGDealsApi::dealTransferStatusPost(SWGMain.ChannelIDParam& chanid) {
+    QString fullPath;
+    fullPath.append(this->host).append(this->basePath).append("/deal/transfer/status");
+
+
+
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "POST");
+
+
+    
+    QString output = chanid.asJson();
+    input.request_body.append(output);
+    
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
+
+    connect(worker,
+            &SWGHttpRequestWorker::on_execution_finished,
+            this,
+            &SWGDealsApi::dealTransferStatusPostCallback);
+
+    worker->execute(&input);
+}
+
+void
+SWGDealsApi::dealTransferStatusPostCallback(SWGHttpRequestWorker * worker) {
+    QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        msg = QString("Success! %1 bytes").arg(worker->response.length());
+    }
+    else {
+        msg = "Error: " + worker->error_str;
+    }
+
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit dealTransferStatusPostSignal(output);
+    } else {
+        emit dealTransferStatusPostSignalE(output, error_type, error_str);
+        emit dealTransferStatusPostSignalEFull(worker, error_type, error_str);
     }
 }
 
@@ -426,12 +510,16 @@ SWGDealsApi::dealsFailuresGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealsFailuresGetSignal();
+        emit dealsFailuresGetSignal(output);
     } else {
-        emit dealsFailuresGetSignalE(error_type, error_str);
+        emit dealsFailuresGetSignalE(output, error_type, error_str);
         emit dealsFailuresGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -480,12 +568,16 @@ SWGDealsApi::dealsMakeMinerPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealsMakeMinerPostSignal();
+        emit dealsMakeMinerPostSignal(output);
     } else {
-        emit dealsMakeMinerPostSignalE(error_type, error_str);
+        emit dealsMakeMinerPostSignalE(output, error_type, error_str);
         emit dealsMakeMinerPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -531,12 +623,16 @@ SWGDealsApi::dealsStatusDealGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit dealsStatusDealGetSignal();
+        emit dealsStatusDealGetSignal(output);
     } else {
-        emit dealsStatusDealGetSignalE(error_type, error_str);
+        emit dealsStatusDealGetSignalE(output, error_type, error_str);
         emit dealsStatusDealGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -580,12 +676,16 @@ SWGDealsApi::publicDealsFailuresGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicDealsFailuresGetSignal();
+        emit publicDealsFailuresGetSignal(output);
     } else {
-        emit publicDealsFailuresGetSignalE(error_type, error_str);
+        emit publicDealsFailuresGetSignalE(output, error_type, error_str);
         emit publicDealsFailuresGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -631,12 +731,16 @@ SWGDealsApi::publicMinersStorageQueryMinerGetCallback(SWGHttpRequestWorker * wor
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersStorageQueryMinerGetSignal();
+        emit publicMinersStorageQueryMinerGetSignal(output);
     } else {
-        emit publicMinersStorageQueryMinerGetSignalE(error_type, error_str);
+        emit publicMinersStorageQueryMinerGetSignalE(output, error_type, error_str);
         emit publicMinersStorageQueryMinerGetSignalEFull(worker, error_type, error_str);
     }
 }

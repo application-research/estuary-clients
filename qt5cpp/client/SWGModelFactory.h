@@ -16,12 +16,13 @@
 #include "SWGObject.h"
 
 #include "SWGCollections.Collection.h"
+#include "SWGMain.ChannelIDParam.h"
 #include "SWGMain.createCollectionBody.h"
 #include "SWGMain.deleteContentFromCollectionBody.h"
 #include "SWGMain.estimateDealBody.h"
 #include "SWGMain.getApiKeysResp.h"
 #include "SWGMain.importDealBody.h"
-#include "SWGMain.userStatsResponse.h"
+#include "SWGTypes.IpfsPin.h"
 #include "SWGUtil.ContentAddIpfsBody.h"
 #include "SWGUtil.ContentAddResponse.h"
 #include "SWGUtil.ContentCreateBody.h"
@@ -32,6 +33,9 @@ namespace Swagger {
   inline void* create(QString type) {
     if(QString("SWGCollections.Collection").compare(type) == 0) {
       return new SWGCollections.Collection();
+    }
+    if(QString("SWGMain.ChannelIDParam").compare(type) == 0) {
+      return new SWGMain.ChannelIDParam();
     }
     if(QString("SWGMain.createCollectionBody").compare(type) == 0) {
       return new SWGMain.createCollectionBody();
@@ -48,8 +52,8 @@ namespace Swagger {
     if(QString("SWGMain.importDealBody").compare(type) == 0) {
       return new SWGMain.importDealBody();
     }
-    if(QString("SWGMain.userStatsResponse").compare(type) == 0) {
-      return new SWGMain.userStatsResponse();
+    if(QString("SWGTypes.IpfsPin").compare(type) == 0) {
+      return new SWGTypes.IpfsPin();
     }
     if(QString("SWGUtil.ContentAddIpfsBody").compare(type) == 0) {
       return new SWGUtil.ContentAddIpfsBody();

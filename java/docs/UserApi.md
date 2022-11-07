@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> List&lt;MainGetApiKeysResp&gt; userApiKeysGet()
+> List&lt;List&lt;MainGetApiKeysResp&gt;&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -38,7 +38,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    List<MainGetApiKeysResp> result = apiInstance.userApiKeysGet();
+    List<List<MainGetApiKeysResp>> result = apiInstance.userApiKeysGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;MainGetApiKeysResp&gt;**](MainGetApiKeysResp.md)
+[**List&lt;List&lt;MainGetApiKeysResp&gt;&gt;**](List.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 
 <a name="userApiKeysKeyDelete"></a>
 # **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+> String userApiKeysKeyDelete(key)
 
 Revoke a User API Key.
 
@@ -90,7 +90,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 UserApi apiInstance = new UserApi();
 String key = "key_example"; // String | Key
 try {
-    apiInstance.userApiKeysKeyDelete(key);
+    String result = apiInstance.userApiKeysKeyDelete(key);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysKeyDelete");
     e.printStackTrace();
@@ -105,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -142,7 +143,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 UserApi apiInstance = new UserApi();
-String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+String expiry = "expiry_example"; // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 String perms = "perms_example"; // String | Permissions -- currently unused
 try {
     MainGetApiKeysResp result = apiInstance.userApiKeysPost(expiry, perms);
@@ -157,7 +158,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **String**| Permissions -- currently unused | [optional]
 
 ### Return type
@@ -226,7 +227,7 @@ This endpoint does not need any parameter.
 
 <a name="userStatsGet"></a>
 # **userStatsGet**
-> MainUserStatsResponse userStatsGet()
+> String userStatsGet()
 
 Create API keys for a user
 
@@ -251,7 +252,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    MainUserStatsResponse result = apiInstance.userStatsGet();
+    String result = apiInstance.userStatsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userStatsGet");
@@ -264,7 +265,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

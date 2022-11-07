@@ -33,9 +33,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers
@@ -306,9 +306,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers
@@ -325,9 +325,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers

@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidDelete**
-> CollectionsColuuidDelete(ctx, coluuid)
+> string CollectionsColuuidDelete(ctx, coluuid)
 Deletes a collection
 
 This endpoint is used to delete an existing collection.
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidPost**
-> map[string]string CollectionsColuuidPost(ctx, coluuid, contentIDs)
+> string CollectionsColuuidPost(ctx, coluuid, contentIDs)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+**string**
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsFsAddPost**
-> CollectionsFsAddPost(ctx, coluuid, content, path)
+> string CollectionsFsAddPost(ctx, coluuid, content, path)
 Add a file to a collection
 
 This endpoint adds a file to a collection
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsGet**
-> []CollectionsCollection CollectionsGet(ctx, )
+> [][]CollectionsCollection CollectionsGet(ctx, )
 List all collections
 
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
@@ -207,7 +207,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]CollectionsCollection**](collections.Collection.md)
+[**[][]CollectionsCollection**](array.md)
 
 ### Authorization
 

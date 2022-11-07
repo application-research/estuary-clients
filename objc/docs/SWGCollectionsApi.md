@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 # **collectionsColuuidDelete**
 ```objc
 -(NSURLSessionTask*) collectionsColuuidDeleteWithColuuid: (NSString*) coluuid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Deletes a collection
@@ -162,7 +162,10 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 // Deletes a collection
 [apiInstance collectionsColuuidDeleteWithColuuid:coluuid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGCollectionsApi->collectionsColuuidDelete: %@", error);
                         }
@@ -177,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -255,7 +258,7 @@ Name | Type | Description  | Notes
 ```objc
 -(NSURLSessionTask*) collectionsColuuidPostWithColuuid: (NSString*) coluuid
     contentIDs: (NSArray<NSNumber*>*) contentIDs
-        completionHandler: (void (^)(NSDictionary<NSString*, NSString*>* output, NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add contents to a collection
@@ -280,7 +283,7 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 // Add contents to a collection
 [apiInstance collectionsColuuidPostWithColuuid:coluuid
               contentIDs:contentIDs
-          completionHandler: ^(NSDictionary<NSString*, NSString*>* output, NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -299,7 +302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**NSDictionary<NSString*, NSString*>***
+**NSString***
 
 ### Authorization
 
@@ -317,7 +320,7 @@ Name | Type | Description  | Notes
 -(NSURLSessionTask*) collectionsFsAddPostWithColuuid: (NSString*) coluuid
     content: (NSString*) content
     path: (NSString*) path
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add a file to a collection
@@ -344,7 +347,10 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 [apiInstance collectionsFsAddPostWithColuuid:coluuid
               content:content
               path:path
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGCollectionsApi->collectionsFsAddPost: %@", error);
                         }
@@ -361,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -377,7 +383,7 @@ void (empty response body)
 # **collectionsGet**
 ```objc
 -(NSURLSessionTask*) collectionsGetWithCompletionHandler: 
-        (void (^)(NSArray<SWGCollectionsCollection>* output, NSError* error)) handler;
+        (void (^)(NSArray<NSArray<SWGCollectionsCollection>*>* output, NSError* error)) handler;
 ```
 
 List all collections
@@ -399,7 +405,7 @@ SWGCollectionsApi*apiInstance = [[SWGCollectionsApi alloc] init];
 
 // List all collections
 [apiInstance collectionsGetWithCompletionHandler: 
-          ^(NSArray<SWGCollectionsCollection>* output, NSError* error) {
+          ^(NSArray<NSArray<SWGCollectionsCollection>*>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -414,7 +420,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NSArray<SWGCollectionsCollection>***](SWGCollectionsCollection.md)
+[**NSArray<NSArray<SWGCollectionsCollection>*>***](NSArray.md)
 
 ### Authorization
 

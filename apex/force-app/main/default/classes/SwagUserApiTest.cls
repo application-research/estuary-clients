@@ -14,8 +14,8 @@ private class SwagUserApiTest {
 
         SwagClient client;
         SwagUserApi api;
-        List<SwagMainGetApiKeysResp> response;
-        List<SwagMainGetApiKeysResp> expectedResponse;
+        List<List<SwagMainGetApiKeysResp>> response;
+        List<List<SwagMainGetApiKeysResp>> expectedResponse;
 
         client = new SwagClient();
         api = new SwagUserApi(client);
@@ -24,8 +24,8 @@ private class SwagUserApiTest {
 
         res.setHeader('Content-Type', 'application/json');
         res.setBody('{}');
-        expectedResponse = new List<SwagMainGetApiKeysResp>{SwagMainGetApiKeysResp.getExample()};
-        response = (List<SwagMainGetApiKeysResp>) api.userApiKeysGet();
+        expectedResponse = new List<List<SwagMainGetApiKeysResp>>{new List<SwagMainGetApiKeysResp>{SwagMainGetApiKeysResp.getExample()}};
+        response = (List<List<SwagMainGetApiKeysResp>>) api.userApiKeysGet();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -47,13 +47,19 @@ private class SwagUserApiTest {
 
         SwagClient client;
         SwagUserApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagUserApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.userApiKeysKeyDelete(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.userApiKeysKeyDelete(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -133,8 +139,8 @@ private class SwagUserApiTest {
 
         SwagClient client;
         SwagUserApi api;
-        SwagMainUserStatsResponse response;
-        SwagMainUserStatsResponse expectedResponse;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagUserApi(client);
@@ -142,9 +148,9 @@ private class SwagUserApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{"empty": false}');
-        expectedResponse = SwagMainUserStatsResponse.getExample();
-        response = (SwagMainUserStatsResponse) api.userStatsGet();
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.userStatsGet();
         System.assertEquals(expectedResponse, response);
     }
 }

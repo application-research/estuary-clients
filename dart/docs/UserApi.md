@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **userApiKeysGet**
-> List<MainGetApiKeysResp> userApiKeysGet()
+> List<List<MainGetApiKeysResp>> userApiKeysGet()
 
 Get API keys for a user
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<MainGetApiKeysResp>**](MainGetApiKeysResp.md)
+[**List<List<MainGetApiKeysResp>>**](List.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+> String userApiKeysKeyDelete(key)
 
 Revoke a User API Key.
 
@@ -78,7 +78,8 @@ var api_instance = new UserApi();
 var key = key_example; // String | Key
 
 try { 
-    api_instance.userApiKeysKeyDelete(key);
+    var result = api_instance.userApiKeysKeyDelete(key);
+    print(result);
 } catch (e) {
     print("Exception when calling UserApi->userApiKeysKeyDelete: $e\n");
 }
@@ -92,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -121,7 +122,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new UserApi();
-var expiry = expiry_example; // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+var expiry = expiry_example; // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 var perms = perms_example; // String | Permissions -- currently unused
 
 try { 
@@ -136,7 +137,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -198,7 +199,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userStatsGet**
-> MainUserStatsResponse userStatsGet()
+> String userStatsGet()
 
 Create API keys for a user
 
@@ -227,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

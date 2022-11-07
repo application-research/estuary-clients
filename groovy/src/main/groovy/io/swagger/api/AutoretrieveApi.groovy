@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -36,7 +37,7 @@ class AutoretrieveApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
     def adminAutoretrieveListGet ( Closure onSuccess, Closure onFailure)  {
@@ -54,7 +55,7 @@ class AutoretrieveApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def autoretrieveHeartbeatPost ( String token, Closure onSuccess, Closure onFailure)  {
@@ -77,7 +78,7 @@ class AutoretrieveApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "POST", "",
-                    null )
+                    String.class )
                     
     }
 }

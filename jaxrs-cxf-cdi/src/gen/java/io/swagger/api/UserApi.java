@@ -1,7 +1,7 @@
 package io.swagger.api;
 
+import java.util.List;
 import io.swagger.model.MainGetApiKeysResp;
-import io.swagger.model.MainUserStatsResponse;
 import io.swagger.model.UtilHttpError;
 import io.swagger.api.UserApiService;
 
@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 @Api(description = "the user API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-10-25T22:53:06.813Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-07T20:05:55.877Z")
 
 public class UserApi  {
 
@@ -40,11 +40,11 @@ public class UserApi  {
     @Path("/api-keys")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get API keys for a user", notes = "This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.", response = MainGetApiKeysResp.class, responseContainer = "List", authorizations = {
+    @ApiOperation(value = "Get API keys for a user", notes = "This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.", response = List.class, responseContainer = "List", authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "User",  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainGetApiKeysResp.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = List.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
@@ -56,10 +56,13 @@ public class UserApi  {
     @Path("/api-keys/{key}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.", response = Void.class, authorizations = {
+    @ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "User",  })
-    @ApiResponses(value = {  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response userApiKeysKeyDelete(@ApiParam(value = "Key",required=true) @PathParam("key") String key) {
         return delegate.userApiKeysKeyDelete(key, securityContext);
     }
@@ -76,7 +79,7 @@ public class UserApi  {
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response userApiKeysPost( @ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h")  @QueryParam("expiry") String expiry,  @ApiParam(value = "Permissions -- currently unused")  @QueryParam("perms") String perms) {
+    public Response userApiKeysPost( @ApiParam(value = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h")  @QueryParam("expiry") String expiry,  @ApiParam(value = "Permissions -- currently unused")  @QueryParam("perms") String perms) {
         return delegate.userApiKeysPost(expiry, perms, securityContext);
     }
 
@@ -88,7 +91,9 @@ public class UserApi  {
         @Authorization(value = "bearerAuth")
     }, tags={ "User",  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response userExportGet() {
         return delegate.userExportGet(securityContext);
     }
@@ -97,11 +102,13 @@ public class UserApi  {
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create API keys for a user", notes = "This endpoint is used to create API keys for a user.", response = MainUserStatsResponse.class, authorizations = {
+    @ApiOperation(value = "Create API keys for a user", notes = "This endpoint is used to create API keys for a user.", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainUserStatsResponse.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public Response userStatsGet() {
         return delegate.userStatsGet(securityContext);
     }

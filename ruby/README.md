@@ -65,12 +65,13 @@ end
 
 api_instance = SwaggerClient::AdminApi.new
 
-body = [SwaggerClient::Array<String>.new] # Array<String> | Peer ids
+peer_ids = [SwaggerClient::Array<BOOLEAN>.new] # Array<BOOLEAN> | Peer ids
 
 
 begin
   #Remove peers on Peering Service
-  api_instance.admin_peering_peers_delete(body)
+  result = api_instance.admin_peering_peers_delete(peer_ids)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_delete: #{e}"
 end
@@ -126,12 +127,12 @@ Class | Method | HTTP request | Description
 *SwaggerClient::DealsApi* | [**deal_status_by_proposal_propcid_get**](docs/DealsApi.md#deal_status_by_proposal_propcid_get) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *SwaggerClient::DealsApi* | [**deal_status_miner_propcid_get**](docs/DealsApi.md#deal_status_miner_propcid_get) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *SwaggerClient::DealsApi* | [**deal_transfer_in_progress_get**](docs/DealsApi.md#deal_transfer_in_progress_get) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*SwaggerClient::DealsApi* | [**deal_transfer_status_post**](docs/DealsApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | Transfer Status
 *SwaggerClient::DealsApi* | [**deals_failures_get**](docs/DealsApi.md#deals_failures_get) | **GET** /deals/failures | Get storage failures for user
 *SwaggerClient::DealsApi* | [**deals_make_miner_post**](docs/DealsApi.md#deals_make_miner_post) | **POST** /deals/make/{miner} | Make Deal
 *SwaggerClient::DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 *SwaggerClient::DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 *SwaggerClient::DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*SwaggerClient::DefaultApi* | [**deal_transfer_status_post**](docs/DefaultApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | 
 *SwaggerClient::MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SwaggerClient::MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -177,12 +178,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [SwaggerClient::CollectionsCollection](docs/CollectionsCollection.md)
+ - [SwaggerClient::MainChannelIDParam](docs/MainChannelIDParam.md)
  - [SwaggerClient::MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [SwaggerClient::MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [SwaggerClient::MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [SwaggerClient::MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [SwaggerClient::MainImportDealBody](docs/MainImportDealBody.md)
- - [SwaggerClient::MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
  - [SwaggerClient::UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [SwaggerClient::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [SwaggerClient::UtilContentCreateBody](docs/UtilContentCreateBody.md)

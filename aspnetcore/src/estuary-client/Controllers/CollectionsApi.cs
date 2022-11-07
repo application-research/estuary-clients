@@ -34,16 +34,26 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.</remarks>
         /// <param name="coluuid">coluuid</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//collections/{coluuid}/commit")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsColuuidCommitPost")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidCommitPost([FromRoute][Required]string coluuid)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -64,6 +74,7 @@ namespace estuary-client.Controllers
         /// <param name="body">Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpDelete]
         [Route("//collections/{coluuid}/contents")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
@@ -71,6 +82,7 @@ namespace estuary-client.Controllers
         [SwaggerOperation("CollectionsColuuidContentsDelete")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidContentsDelete([FromRoute][Required]string coluuid, [FromRoute][Required]string contentid, [FromBody]MainDeleteContentFromCollectionBody body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
@@ -78,6 +90,9 @@ namespace estuary-client.Controllers
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -94,15 +109,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint is used to delete an existing collection.</remarks>
         /// <param name="coluuid">Collection ID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpDelete]
         [Route("//collections/{coluuid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsColuuidDelete")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidDelete([FromRoute][Required]string coluuid)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -112,16 +148,26 @@ namespace estuary-client.Controllers
         /// <param name="coluuid">coluuid</param>
         /// <param name="dir">Directory</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//collections/{coluuid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsColuuidGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidGet([FromRoute][Required]string coluuid, [FromQuery]string dir)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -140,23 +186,33 @@ namespace estuary-client.Controllers
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//collections/{coluuid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsColuuidPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(Dictionary<string, string>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidPost([FromRoute][Required]string coluuid, [FromBody]List<int?> contentIDs)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Dictionary<string, string>));
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\"empty\": false}";
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Dictionary<string, string>>(exampleJson)
-            : default(Dictionary<string, string>);
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -168,15 +224,36 @@ namespace estuary-client.Controllers
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//collections/fs/add")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsFsAddPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsFsAddPost([FromQuery][Required()]string coluuid, [FromQuery][Required()]string content, [FromQuery][Required()]string path)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -192,14 +269,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<CollectionsCollection>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<List<CollectionsCollection>>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<CollectionsCollection>));
+            // return StatusCode(200, default(List<List<CollectionsCollection>>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -214,8 +291,8 @@ namespace estuary-client.Controllers
             exampleJson = "{}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<CollectionsCollection>>(exampleJson)
-            : default(List<CollectionsCollection>);
+            ? JsonConvert.DeserializeObject<List<List<CollectionsCollection>>>(exampleJson)
+            : default(List<List<CollectionsCollection>>);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

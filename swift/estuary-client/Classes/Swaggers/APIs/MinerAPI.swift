@@ -17,9 +17,9 @@ public class MinerAPI: APIBase {
      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersDealsMinerGet(miner miner: String, ignoreFailed: String? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersDealsMinerGet(miner miner: String, ignoreFailed: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersDealsMinerGetWithRequestBuilder(miner: miner, ignoreFailed: ignoreFailed).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -31,13 +31,17 @@ public class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersDealsMinerGetWithRequestBuilder(miner miner: String, ignoreFailed: String? = nil) -> RequestBuilder<Void> {
+    public class func publicMinersDealsMinerGetWithRequestBuilder(miner miner: String, ignoreFailed: String? = nil) -> RequestBuilder<String> {
         var path = "/public/miners/deals/{miner}"
         path = path.stringByReplacingOccurrencesOfString("{miner}", withString: "\(miner)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -50,7 +54,7 @@ public class MinerAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -61,9 +65,9 @@ public class MinerAPI: APIBase {
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersStatsMinerGet(miner miner: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersStatsMinerGet(miner miner: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersStatsMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -75,12 +79,16 @@ public class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersStatsMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<Void> {
+    public class func publicMinersStatsMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<String> {
         var path = "/public/miners/stats/{miner}"
         path = path.stringByReplacingOccurrencesOfString("{miner}", withString: "\(miner)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -91,7 +99,7 @@ public class MinerAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }

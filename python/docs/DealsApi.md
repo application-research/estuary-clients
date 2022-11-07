@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deal_status_by_proposal_propcid_get**](DealsApi.md#deal_status_by_proposal_propcid_get) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**deal_status_miner_propcid_get**](DealsApi.md#deal_status_miner_propcid_get) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**deal_transfer_in_progress_get**](DealsApi.md#deal_transfer_in_progress_get) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**deal_transfer_status_post**](DealsApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | Transfer Status
 [**deals_failures_get**](DealsApi.md#deals_failures_get) | **GET** /deals/failures | Get storage failures for user
 [**deals_make_miner_post**](DealsApi.md#deals_make_miner_post) | **POST** /deals/make/{miner} | Make Deal
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **deal_estimate_post**
-> deal_estimate_post(body)
+> str deal_estimate_post(body)
 
 Estimate the cost of a deal
 
@@ -45,7 +46,8 @@ body = estuary-client.MainEstimateDealBody() # MainEstimateDealBody | The size o
 
 try:
     # Estimate the cost of a deal
-    api_instance.deal_estimate_post(body)
+    api_response = api_instance.deal_estimate_post(body)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_estimate_post: %s\n" % e)
 ```
@@ -58,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -72,7 +74,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_info_dealid_get**
-> deal_info_dealid_get(dealid)
+> str deal_info_dealid_get(dealid)
 
 Get Deal Info
 
@@ -98,7 +100,8 @@ dealid = 56 # int | Deal ID
 
 try:
     # Get Deal Info
-    api_instance.deal_info_dealid_get(dealid)
+    api_response = api_instance.deal_info_dealid_get(dealid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_info_dealid_get: %s\n" % e)
 ```
@@ -111,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -125,7 +128,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_proposal_propcid_get**
-> deal_proposal_propcid_get(propcid)
+> str deal_proposal_propcid_get(propcid)
 
 Get Proposal
 
@@ -151,7 +154,8 @@ propcid = 'propcid_example' # str | Proposal CID
 
 try:
     # Get Proposal
-    api_instance.deal_proposal_propcid_get(propcid)
+    api_response = api_instance.deal_proposal_propcid_get(propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_proposal_propcid_get: %s\n" % e)
 ```
@@ -164,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -178,7 +182,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_query_miner_get**
-> deal_query_miner_get(miner)
+> str deal_query_miner_get(miner)
 
 Query Ask
 
@@ -204,7 +208,8 @@ miner = 'miner_example' # str | CID
 
 try:
     # Query Ask
-    api_instance.deal_query_miner_get(miner)
+    api_response = api_instance.deal_query_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_query_miner_get: %s\n" % e)
 ```
@@ -217,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -231,7 +236,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_status_by_proposal_propcid_get**
-> deal_status_by_proposal_propcid_get(propcid)
+> str deal_status_by_proposal_propcid_get(propcid)
 
 Get Deal Status by PropCid
 
@@ -257,7 +262,8 @@ propcid = 'propcid_example' # str | PropCid
 
 try:
     # Get Deal Status by PropCid
-    api_instance.deal_status_by_proposal_propcid_get(propcid)
+    api_response = api_instance.deal_status_by_proposal_propcid_get(propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_status_by_proposal_propcid_get: %s\n" % e)
 ```
@@ -270,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -284,7 +290,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_status_miner_propcid_get**
-> deal_status_miner_propcid_get(miner, propcid)
+> str deal_status_miner_propcid_get(miner, propcid)
 
 Deal Status
 
@@ -311,7 +317,8 @@ propcid = 'propcid_example' # str | Proposal CID
 
 try:
     # Deal Status
-    api_instance.deal_status_miner_propcid_get(miner, propcid)
+    api_response = api_instance.deal_status_miner_propcid_get(miner, propcid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_status_miner_propcid_get: %s\n" % e)
 ```
@@ -325,7 +332,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -339,7 +346,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_transfer_in_progress_get**
-> deal_transfer_in_progress_get()
+> str deal_transfer_in_progress_get()
 
 Transfer In Progress
 
@@ -364,7 +371,8 @@ api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
 
 try:
     # Transfer In Progress
-    api_instance.deal_transfer_in_progress_get()
+    api_response = api_instance.deal_transfer_in_progress_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_transfer_in_progress_get: %s\n" % e)
 ```
@@ -374,7 +382,61 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deal_transfer_status_post**
+> str deal_transfer_status_post(chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary-client
+from estuary-client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary-client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
+chanid = estuary-client.MainChannelIDParam() # MainChannelIDParam | Channel ID
+
+try:
+    # Transfer Status
+    api_response = api_instance.deal_transfer_status_post(chanid)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DealsApi->deal_transfer_status_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**str**
 
 ### Authorization
 
@@ -388,7 +450,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deals_failures_get**
-> deals_failures_get()
+> str deals_failures_get()
 
 Get storage failures for user
 
@@ -413,7 +475,8 @@ api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get storage failures for user
-    api_instance.deals_failures_get()
+    api_response = api_instance.deals_failures_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_failures_get: %s\n" % e)
 ```
@@ -423,7 +486,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -437,7 +500,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deals_make_miner_post**
-> deals_make_miner_post(miner, deal_request)
+> str deals_make_miner_post(miner, deal_request)
 
 Make Deal
 
@@ -464,7 +527,8 @@ deal_request = 'deal_request_example' # str | Deal Request
 
 try:
     # Make Deal
-    api_instance.deals_make_miner_post(miner, deal_request)
+    api_response = api_instance.deals_make_miner_post(miner, deal_request)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_make_miner_post: %s\n" % e)
 ```
@@ -478,7 +542,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -492,7 +556,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deals_status_deal_get**
-> deals_status_deal_get(deal)
+> str deals_status_deal_get(deal)
 
 Get Deal Status
 
@@ -518,7 +582,8 @@ deal = 56 # int | Deal ID
 
 try:
     # Get Deal Status
-    api_instance.deals_status_deal_get(deal)
+    api_response = api_instance.deals_status_deal_get(deal)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_status_deal_get: %s\n" % e)
 ```
@@ -531,7 +596,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -545,7 +610,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_deals_failures_get**
-> public_deals_failures_get()
+> str public_deals_failures_get()
 
 Get storage failures
 
@@ -570,7 +635,8 @@ api_instance = estuary-client.DealsApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get storage failures
-    api_instance.public_deals_failures_get()
+    api_response = api_instance.public_deals_failures_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->public_deals_failures_get: %s\n" % e)
 ```
@@ -580,7 +646,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -594,7 +660,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_storage_query_miner_get**
-> public_miners_storage_query_miner_get(miner)
+> str public_miners_storage_query_miner_get(miner)
 
 Query Ask
 
@@ -620,7 +686,8 @@ miner = 'miner_example' # str | CID
 
 try:
     # Query Ask
-    api_instance.public_miners_storage_query_miner_get(miner)
+    api_response = api_instance.public_miners_storage_query_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->public_miners_storage_query_miner_get: %s\n" % e)
 ```
@@ -633,7 +700,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

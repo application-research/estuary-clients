@@ -76,10 +76,10 @@ defmodule EstuaryAPI.Api.Collections do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec collections_coluuid_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec collections_coluuid_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def collections_coluuid_delete(connection, coluuid, _opts \\ []) do
     %{}
     |> method(:delete)
@@ -132,10 +132,10 @@ defmodule EstuaryAPI.Api.Collections do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec collections_coluuid_post(Tesla.Env.client, String.t, list(Integer.t), keyword()) :: {:ok, map()} | {:error, Tesla.Env.t}
+  @spec collections_coluuid_post(Tesla.Env.client, String.t, list(Integer.t), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def collections_coluuid_post(connection, coluuid, content_i_ds, _opts \\ []) do
     %{}
     |> method(:post)
@@ -143,7 +143,7 @@ defmodule EstuaryAPI.Api.Collections do
     |> add_param(:body, :"contentIDs", content_i_ds)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode()
+    |> decode(false)
   end
 
   @doc """
@@ -160,10 +160,10 @@ defmodule EstuaryAPI.Api.Collections do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec collections_fs_add_post(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec collections_fs_add_post(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def collections_fs_add_post(connection, coluuid, content, path, _opts \\ []) do
     %{}
     |> method(:post)
@@ -187,17 +187,17 @@ defmodule EstuaryAPI.Api.Collections do
 
   ## Returns
 
-  {:ok, [%CollectionsCollection{}, ...]} on success
+  {:ok, [%List{}, ...]} on success
   {:error, info} on failure
   """
-  @spec collections_get(Tesla.Env.client, keyword()) :: {:ok, list(EstuaryAPI.Model.CollectionsCollection.t)} | {:error, Tesla.Env.t}
+  @spec collections_get(Tesla.Env.client, keyword()) :: {:ok, list(List.t)} | {:error, Tesla.Env.t}
   def collections_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/collections/")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode([%EstuaryAPI.Model.CollectionsCollection{}])
+    |> decode([%EstuaryAPI.Model.List{}])
   end
 
   @doc """

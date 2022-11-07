@@ -27,6 +27,7 @@
 #include "Util.ContentAddIpfsBody.h"
 #include "Util.ContentAddResponse.h"
 #include "Util.ContentCreateBody.h"
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -52,7 +53,7 @@ public:
     /// <param name="body">Car</param>
     /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
     /// <param name="filename">Filename (optional)</param>
-    pplx::task<void> contentAddCarPost(
+    pplx::task<utility::string_t> contentAddCarPost(
         utility::string_t body,
         boost::optional<utility::string_t> ignoreDupes,
         boost::optional<utility::string_t> filename
@@ -65,7 +66,7 @@ public:
     /// </remarks>
     /// <param name="body">IPFS Body</param>
     /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-    pplx::task<void> contentAddIpfsPost(
+    pplx::task<utility::string_t> contentAddIpfsPost(
         std::shared_ptr<Util.ContentAddIpfsBody> body,
         boost::optional<utility::string_t> ignoreDupes
     );
@@ -110,7 +111,7 @@ public:
     /// <param name="begin">Begin</param>
     /// <param name="duration">Duration</param>
     /// <param name="all">All</param>
-    pplx::task<void> contentAllDealsGet(
+    pplx::task<utility::string_t> contentAllDealsGet(
         utility::string_t begin,
         utility::string_t duration,
         utility::string_t all
@@ -122,7 +123,7 @@ public:
     /// This endpoint returns content bandwidth
     /// </remarks>
     /// <param name="content">Content ID</param>
-    pplx::task<void> contentBwUsageContentGet(
+    pplx::task<utility::string_t> contentBwUsageContentGet(
         utility::string_t content
     );
     /// <summary>
@@ -133,7 +134,7 @@ public:
     /// </remarks>
     /// <param name="req">Content</param>
     /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-    pplx::task<void> contentCreatePost(
+    pplx::task<utility::string_t> contentCreatePost(
         std::shared_ptr<Util.ContentCreateBody> req,
         boost::optional<utility::string_t> ignoreDupes
     );
@@ -145,7 +146,7 @@ public:
     /// </remarks>
     /// <param name="limit">Limit (optional)</param>
     /// <param name="offset">Offset (optional)</param>
-    pplx::task<void> contentDealsGet(
+    pplx::task<utility::string_t> contentDealsGet(
         boost::optional<int32_t> limit,
         boost::optional<int32_t> offset
     );
@@ -156,7 +157,7 @@ public:
     /// This endpoint ensures that the content is replicated to the specified number of providers
     /// </remarks>
     /// <param name="datacid">Data CID</param>
-    pplx::task<void> contentEnsureReplicationDatacidGet(
+    pplx::task<utility::string_t> contentEnsureReplicationDatacidGet(
         utility::string_t datacid
     );
     /// <summary>
@@ -176,7 +177,7 @@ public:
     /// This endpoint returns a content by its ID
     /// </remarks>
     /// <param name="id">Content ID</param>
-    pplx::task<void> contentIdGet(
+    pplx::task<utility::string_t> contentIdGet(
         int32_t id
     );
     /// <summary>
@@ -186,7 +187,7 @@ public:
     /// This endpoint imports a deal into the shuttle.
     /// </remarks>
     /// <param name="body">Import a deal</param>
-    pplx::task<void> contentImportdealPost(
+    pplx::task<utility::string_t> contentImportdealPost(
         std::shared_ptr<Main.importDealBody> body
     );
     /// <summary>
@@ -195,7 +196,7 @@ public:
     /// <remarks>
     /// This endpoint lists all content
     /// </remarks>
-    pplx::task<std::vector<utility::string_t>> contentListGet(
+    pplx::task<utility::string_t> contentListGet(
     );
     /// <summary>
     /// Read content
@@ -204,7 +205,7 @@ public:
     /// This endpoint reads content from the blockstore
     /// </remarks>
     /// <param name="cont">CID</param>
-    pplx::task<void> contentReadContGet(
+    pplx::task<utility::string_t> contentReadContGet(
         utility::string_t cont
     );
     /// <summary>
@@ -213,7 +214,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get staging zone for user.
     /// </remarks>
-    pplx::task<void> contentStagingZonesGet(
+    pplx::task<utility::string_t> contentStagingZonesGet(
     );
     /// <summary>
     /// Get content statistics
@@ -223,7 +224,7 @@ public:
     /// </remarks>
     /// <param name="limit">limit</param>
     /// <param name="offset">offset</param>
-    pplx::task<void> contentStatsGet(
+    pplx::task<utility::string_t> contentStatsGet(
         utility::string_t limit,
         utility::string_t offset
     );
@@ -234,7 +235,7 @@ public:
     /// This endpoint returns the status of a content
     /// </remarks>
     /// <param name="id">Content ID</param>
-    pplx::task<void> contentStatusIdGet(
+    pplx::task<utility::string_t> contentStatusIdGet(
         int32_t id
     );
 

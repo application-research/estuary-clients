@@ -35,17 +35,17 @@ impl<C: hyper::client::Connect> PeersApiClient<C> {
 }
 
 pub trait PeersApi {
-    fn admin_peering_peers_delete(&self, body: Vec<String>) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_peering_peers_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_peering_peers_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_peering_start_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_peering_status_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn admin_peering_stop_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn admin_peering_peers_delete(&self, peer_ids: Vec<bool>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_peering_peers_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_peering_peers_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_peering_start_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_peering_status_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn admin_peering_stop_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
-    fn admin_peering_peers_delete(&self, body: Vec<String>) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_peers_delete(&self, peer_ids: Vec<bool>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -86,7 +86,7 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
-        let serialized = serde_json::to_string(&body).unwrap();
+        let serialized = serde_json::to_string(&peer_ids).unwrap();
         req.headers_mut().set(hyper::header::ContentType::json());
         req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
         req.set_body(serialized);
@@ -108,11 +108,14 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_peering_peers_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_peers_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -171,11 +174,14 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_peering_peers_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_peers_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -234,11 +240,14 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_peering_start_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_start_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -297,11 +306,14 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_peering_status_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_status_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -360,11 +372,14 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn admin_peering_stop_post(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn admin_peering_stop_post(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -423,7 +438,10 @@ impl<C: hyper::client::Connect>PeersApi for PeersApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

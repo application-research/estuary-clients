@@ -24,12 +24,12 @@ inherit
 feature -- API Access
 
 
-	net_addrs_get : detachable LIST [STRING_32]
+	net_addrs_get : detachable STRING_32
 			-- Net Addrs
 			-- This endpoint is used to get net addrs
 			-- 
 			-- 
-			-- Result LIST [STRING_32]
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -50,20 +50,21 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { LIST [STRING_32] } l_response.data ({ LIST [STRING_32] }) as l_data then
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	public_miners_failures_miner_get (miner: STRING_32)
+	public_miners_failures_miner_get (miner: STRING_32): detachable STRING_32
 			-- Get all miners
 			-- This endpoint returns all miners
 			-- 
 			-- argument: miner Filter by miner (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -82,17 +83,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	public_miners_get 
+	public_miners_get : detachable STRING_32
 			-- Get all miners
 			-- This endpoint returns all miners
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -110,9 +116,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

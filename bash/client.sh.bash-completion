@@ -111,12 +111,12 @@ _()
     operations["dealStatusByProposalPropcidGet"]=1
     operations["dealStatusMinerPropcidGet"]=1
     operations["dealTransferInProgressGet"]=1
+    operations["dealTransferStatusPost"]=1
     operations["dealsFailuresGet"]=1
     operations["dealsMakeMinerPost"]=1
     operations["dealsStatusDealGet"]=1
     operations["publicDealsFailuresGet"]=1
     operations["publicMinersStorageQueryMinerGet"]=1
-    operations["dealTransferStatusPost"]=1
     operations["publicMetricsDealsOnChainGet"]=1
     operations["publicMinersDealsMinerGet"]=1
     operations["publicMinersStatsMinerGet"]=1
@@ -204,12 +204,12 @@ _()
     operation_parameters["dealStatusByProposalPropcidGet"]="propcid= "
     operation_parameters["dealStatusMinerPropcidGet"]="miner= propcid= "
     operation_parameters["dealTransferInProgressGet"]=""
+    operation_parameters["dealTransferStatusPost"]=""
     operation_parameters["dealsFailuresGet"]=""
     operation_parameters["dealsMakeMinerPost"]="miner= "
     operation_parameters["dealsStatusDealGet"]="deal= "
     operation_parameters["publicDealsFailuresGet"]=""
     operation_parameters["publicMinersStorageQueryMinerGet"]="miner= "
-    operation_parameters["dealTransferStatusPost"]=""
     operation_parameters["publicMetricsDealsOnChainGet"]=""
     operation_parameters["publicMinersDealsMinerGet"]="miner= ignore-failed= "
     operation_parameters["publicMinersStatsMinerGet"]="miner= "
@@ -234,7 +234,7 @@ _()
     operation_parameters["pinningPinsPinidDelete"]="pinid= "
     operation_parameters["pinningPinsPinidGet"]="pinid= "
     operation_parameters["pinningPinsPinidPost"]="pinid= "
-    operation_parameters["pinningPinsPost"]="cid= name= "
+    operation_parameters["pinningPinsPost"]=""
     operation_parameters["publicByCidCidGet"]="cid= "
     operation_parameters["publicInfoGet"]=""
     operation_parameters["publicMetricsDealsOnChainGet"]=""

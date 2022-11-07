@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> kotlin.String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -23,7 +23,8 @@ This endpoint is used to get deal metrics
 
 val apiInstance = MetricsApi()
 try {
-    apiInstance.publicMetricsDealsOnChainGet()
+    val result : kotlin.String = apiInstance.publicMetricsDealsOnChainGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling MetricsApi#publicMetricsDealsOnChainGet")
     e.printStackTrace()
@@ -38,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

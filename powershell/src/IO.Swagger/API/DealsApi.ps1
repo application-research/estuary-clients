@@ -124,6 +124,24 @@ function Invoke-DealsApiDealTransferInProgressGet {
     }
 }
 
+function Invoke-DealsApiDealTransferStatusPost {
+    [CmdletBinding()]
+    Param (
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [estuary-client.Model.MainChannelIDParam]
+        ${chanid}
+    )
+
+    Process {
+        'Calling method: DealsApi-DealTransferStatusPost' | Write-Verbose
+        $PSBoundParameters | Out-DebugParameter | Write-Debug
+
+        $Script:DealsApi.DealTransferStatusPost(
+            ${chanid}
+        )
+    }
+}
+
 function Invoke-DealsApiDealsFailuresGet {
     [CmdletBinding()]
     Param (

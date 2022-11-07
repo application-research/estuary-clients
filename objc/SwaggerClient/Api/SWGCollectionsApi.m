@@ -225,17 +225,17 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
 /// This endpoint is used to delete an existing collection.
 ///  @param coluuid Collection ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) collectionsColuuidDeleteWithColuuid: (NSString*) coluuid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'coluuid' is set
     if (coluuid == nil) {
         NSParameterAssert(coluuid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"coluuid"] };
             NSError* error = [NSError errorWithDomain:kSWGCollectionsApiErrorDomain code:kSWGCollectionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -280,10 +280,10 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -369,11 +369,11 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
 ///
 ///  @param contentIDs Content IDs to add to collection 
 ///
-///  @returns NSDictionary<NSString*, NSString*>*
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) collectionsColuuidPostWithColuuid: (NSString*) coluuid
     contentIDs: (NSArray<NSNumber*>*) contentIDs
-    completionHandler: (void (^)(NSDictionary<NSString*, NSString*>* output, NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'coluuid' is set
     if (coluuid == nil) {
         NSParameterAssert(coluuid);
@@ -437,10 +437,10 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSDictionary<NSString*, NSString*>*"
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSDictionary<NSString*, NSString*>*)data, error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -454,19 +454,19 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
 ///
 ///  @param path Path to file 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) collectionsFsAddPostWithColuuid: (NSString*) coluuid
     content: (NSString*) content
     path: (NSString*) path
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'coluuid' is set
     if (coluuid == nil) {
         NSParameterAssert(coluuid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"coluuid"] };
             NSError* error = [NSError errorWithDomain:kSWGCollectionsApiErrorDomain code:kSWGCollectionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -477,7 +477,7 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"content"] };
             NSError* error = [NSError errorWithDomain:kSWGCollectionsApiErrorDomain code:kSWGCollectionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -488,7 +488,7 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"path"] };
             NSError* error = [NSError errorWithDomain:kSWGCollectionsApiErrorDomain code:kSWGCollectionsApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -539,10 +539,10 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -550,10 +550,10 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
 ///
 /// List all collections
 /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-///  @returns NSArray<SWGCollectionsCollection>*
+///  @returns NSArray<NSArray<SWGCollectionsCollection>*>*
 ///
 -(NSURLSessionTask*) collectionsGetWithCompletionHandler: 
-    (void (^)(NSArray<SWGCollectionsCollection>* output, NSError* error)) handler {
+    (void (^)(NSArray<NSArray<SWGCollectionsCollection>*>* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/collections/"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -591,10 +591,10 @@ NSInteger kSWGCollectionsApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<SWGCollectionsCollection>*"
+                              responseType: @"NSArray<NSArray<SWGCollectionsCollection>*>*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<SWGCollectionsCollection>*)data, error);
+                                    handler((NSArray<NSArray<SWGCollectionsCollection>*>*)data, error);
                                 }
                             }];
 }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **net_addrs_get**
-> list[str] net_addrs_get()
+> str net_addrs_get()
 
 Net Addrs
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[str]**
+**str**
 
 ### Authorization
 
@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner)
+> str public_miners_failures_miner_get(miner)
 
 Get all miners
 
@@ -88,7 +88,8 @@ miner = 'miner_example' # str | Filter by miner
 
 try:
     # Get all miners
-    api_instance.public_miners_failures_miner_get(miner)
+    api_response = api_instance.public_miners_failures_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling NetApi->public_miners_failures_miner_get: %s\n" % e)
 ```
@@ -101,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -115,7 +116,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get()
+> str public_miners_get()
 
 Get all miners
 
@@ -140,7 +141,8 @@ api_instance = estuary-client.NetApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get all miners
-    api_instance.public_miners_get()
+    api_response = api_instance.public_miners_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling NetApi->public_miners_get: %s\n" % e)
 ```
@@ -150,7 +152,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

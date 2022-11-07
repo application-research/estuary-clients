@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **Get** /deal/status-by-proposal/:propcid | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **Get** /deal/status/:miner/:propcid | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **Get** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **Post** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **Get** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **Post** /deals/make/:miner | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **Get** /deals/status/:deal | Get Deal Status
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 
 
 # **dealEstimatePost**
-> dealEstimatePost(body)
+> String dealEstimatePost(body)
 
 Estimate the cost of a deal
 
@@ -42,7 +43,8 @@ var api_instance = new DealsApi();
 var body = new MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try { 
-    api_instance.dealEstimatePost(body);
+    var result = api_instance.dealEstimatePost(body);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealEstimatePost: $e\n");
 }
@@ -56,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -70,7 +72,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealInfoDealidGet**
-> dealInfoDealidGet(dealid)
+> String dealInfoDealidGet(dealid)
 
 Get Deal Info
 
@@ -88,7 +90,8 @@ var api_instance = new DealsApi();
 var dealid = 56; // int | Deal ID
 
 try { 
-    api_instance.dealInfoDealidGet(dealid);
+    var result = api_instance.dealInfoDealidGet(dealid);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealInfoDealidGet: $e\n");
 }
@@ -102,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -116,7 +119,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealProposalPropcidGet**
-> dealProposalPropcidGet(propcid)
+> String dealProposalPropcidGet(propcid)
 
 Get Proposal
 
@@ -134,7 +137,8 @@ var api_instance = new DealsApi();
 var propcid = propcid_example; // String | Proposal CID
 
 try { 
-    api_instance.dealProposalPropcidGet(propcid);
+    var result = api_instance.dealProposalPropcidGet(propcid);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealProposalPropcidGet: $e\n");
 }
@@ -148,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -162,7 +166,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealQueryMinerGet**
-> dealQueryMinerGet(miner)
+> String dealQueryMinerGet(miner)
 
 Query Ask
 
@@ -180,7 +184,8 @@ var api_instance = new DealsApi();
 var miner = miner_example; // String | CID
 
 try { 
-    api_instance.dealQueryMinerGet(miner);
+    var result = api_instance.dealQueryMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealQueryMinerGet: $e\n");
 }
@@ -194,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -208,7 +213,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealStatusByProposalPropcidGet**
-> dealStatusByProposalPropcidGet(propcid)
+> String dealStatusByProposalPropcidGet(propcid)
 
 Get Deal Status by PropCid
 
@@ -226,7 +231,8 @@ var api_instance = new DealsApi();
 var propcid = propcid_example; // String | PropCid
 
 try { 
-    api_instance.dealStatusByProposalPropcidGet(propcid);
+    var result = api_instance.dealStatusByProposalPropcidGet(propcid);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealStatusByProposalPropcidGet: $e\n");
 }
@@ -240,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -254,7 +260,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealStatusMinerPropcidGet**
-> dealStatusMinerPropcidGet(miner, propcid)
+> String dealStatusMinerPropcidGet(miner, propcid)
 
 Deal Status
 
@@ -273,7 +279,8 @@ var miner = miner_example; // String | Miner
 var propcid = propcid_example; // String | Proposal CID
 
 try { 
-    api_instance.dealStatusMinerPropcidGet(miner, propcid);
+    var result = api_instance.dealStatusMinerPropcidGet(miner, propcid);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealStatusMinerPropcidGet: $e\n");
 }
@@ -288,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -302,7 +309,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealTransferInProgressGet**
-> dealTransferInProgressGet()
+> String dealTransferInProgressGet()
 
 Transfer In Progress
 
@@ -319,7 +326,8 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 
 try { 
-    api_instance.dealTransferInProgressGet();
+    var result = api_instance.dealTransferInProgressGet();
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealTransferInProgressGet: $e\n");
 }
@@ -330,7 +338,54 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **dealTransferStatusPost**
+> String dealTransferStatusPost(chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example 
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new DealsApi();
+var chanid = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+
+try { 
+    var result = api_instance.dealTransferStatusPost(chanid);
+    print(result);
+} catch (e) {
+    print("Exception when calling DealsApi->dealTransferStatusPost: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**String**
 
 ### Authorization
 
@@ -344,7 +399,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealsFailuresGet**
-> dealsFailuresGet()
+> String dealsFailuresGet()
 
 Get storage failures for user
 
@@ -361,7 +416,8 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 
 try { 
-    api_instance.dealsFailuresGet();
+    var result = api_instance.dealsFailuresGet();
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealsFailuresGet: $e\n");
 }
@@ -372,7 +428,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -386,7 +442,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealsMakeMinerPost**
-> dealsMakeMinerPost(miner, dealRequest)
+> String dealsMakeMinerPost(miner, dealRequest)
 
 Make Deal
 
@@ -405,7 +461,8 @@ var miner = miner_example; // String | Miner
 var dealRequest = new String(); // String | Deal Request
 
 try { 
-    api_instance.dealsMakeMinerPost(miner, dealRequest);
+    var result = api_instance.dealsMakeMinerPost(miner, dealRequest);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealsMakeMinerPost: $e\n");
 }
@@ -420,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -434,7 +491,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealsStatusDealGet**
-> dealsStatusDealGet(deal)
+> String dealsStatusDealGet(deal)
 
 Get Deal Status
 
@@ -452,7 +509,8 @@ var api_instance = new DealsApi();
 var deal = 56; // int | Deal ID
 
 try { 
-    api_instance.dealsStatusDealGet(deal);
+    var result = api_instance.dealsStatusDealGet(deal);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealsStatusDealGet: $e\n");
 }
@@ -466,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -480,7 +538,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicDealsFailuresGet**
-> publicDealsFailuresGet()
+> String publicDealsFailuresGet()
 
 Get storage failures
 
@@ -497,7 +555,8 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 
 try { 
-    api_instance.publicDealsFailuresGet();
+    var result = api_instance.publicDealsFailuresGet();
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->publicDealsFailuresGet: $e\n");
 }
@@ -508,7 +567,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -522,7 +581,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersStorageQueryMinerGet**
-> publicMinersStorageQueryMinerGet(miner)
+> String publicMinersStorageQueryMinerGet(miner)
 
 Query Ask
 
@@ -540,7 +599,8 @@ var api_instance = new DealsApi();
 var miner = miner_example; // String | CID
 
 try { 
-    api_instance.publicMinersStorageQueryMinerGet(miner);
+    var result = api_instance.publicMinersStorageQueryMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling DealsApi->publicMinersStorageQueryMinerGet: $e\n");
 }
@@ -554,7 +614,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

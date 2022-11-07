@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **user_api_keys_get**
-> Array&lt;MainGetApiKeysResp&gt; user_api_keys_get
+> Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt; user_api_keys_get
 
 Get API keys for a user
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Array&lt;MainGetApiKeysResp&gt;**](MainGetApiKeysResp.md)
+**Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt;**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 
 # **user_api_keys_key_delete**
-> user_api_keys_key_delete(key)
+> String user_api_keys_key_delete(key)
 
 Revoke a User API Key.
 
@@ -85,7 +85,8 @@ key = 'key_example' # String | Key
 
 begin
   #Revoke a User API Key.
-  api_instance.user_api_keys_key_delete(key)
+  result = api_instance.user_api_keys_key_delete(key)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling UserApi->user_api_keys_key_delete: #{e}"
 end
@@ -99,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -134,7 +135,7 @@ end
 api_instance = SwaggerClient::UserApi.new
 
 opts = { 
-  expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   perms: 'perms_example' # String | Permissions -- currently unused
 }
 
@@ -151,7 +152,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -218,7 +219,7 @@ This endpoint does not need any parameter.
 
 
 # **user_stats_get**
-> MainUserStatsResponse user_stats_get
+> String user_stats_get
 
 Create API keys for a user
 
@@ -252,7 +253,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

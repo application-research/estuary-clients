@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **admin_autoretrieve_init_post**
-> admin_autoretrieve_init_post(ctx, addresses, pub_key)
+> String admin_autoretrieve_init_post(ctx, addresses, pub_key)
 Register autoretrieve server
 
 This endpoint registers a new autoretrieve server
@@ -25,7 +25,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_autoretrieve_list_get**
-> admin_autoretrieve_list_get(ctx, )
+> String admin_autoretrieve_list_get(ctx, )
 List autoretrieve servers
 
 This endpoint lists all registered autoretrieve servers
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **autoretrieve_heartbeat_post**
-> autoretrieve_heartbeat_post(ctx, token)
+> String autoretrieve_heartbeat_post(ctx, token)
 Marks autoretrieve server as up
 
 This endpoint updates the lastConnection field for autoretrieve
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

@@ -53,7 +53,7 @@ export class ContentApi {
      * @param ignoreDupes Ignore Dupes
      * @param filename Filename
      */
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/add-car';
 
         let queryParameters: any = {};
@@ -110,7 +110,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -124,7 +124,7 @@ export class ContentApi {
      * @param body IPFS Body
      * @param ignoreDupes Ignore Dupes
      */
-    public contentAddIpfsPost(body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentAddIpfsPost(body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/add-ipfs';
 
         let queryParameters: any = {};
@@ -178,7 +178,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -353,7 +353,7 @@ export class ContentApi {
      * @param duration Duration
      * @param all All
      */
-    public contentAllDealsGet(begin: string, duration: string, all: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentAllDealsGet(begin: string, duration: string, all: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/all-deals';
 
         let queryParameters: any = {};
@@ -420,7 +420,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -433,7 +433,7 @@ export class ContentApi {
      * @summary Get content bandwidth
      * @param content Content ID
      */
-    public contentBwUsageContentGet(content: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentBwUsageContentGet(content: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/bw-usage/{content}'.replace('{' + 'content' + '}', encodeURIComponent(String(content)));
 
         let queryParameters: any = {};
@@ -481,7 +481,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -495,7 +495,7 @@ export class ContentApi {
      * @param req Content
      * @param ignoreDupes Ignore Dupes
      */
-    public contentCreatePost(req: models.UtilContentCreateBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentCreatePost(req: models.UtilContentCreateBody, ignoreDupes?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/create';
 
         let queryParameters: any = {};
@@ -549,7 +549,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -563,7 +563,7 @@ export class ContentApi {
      * @param limit Limit
      * @param offset Offset
      */
-    public contentDealsGet(limit?: number, offset?: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentDealsGet(limit?: number, offset?: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/deals';
 
         let queryParameters: any = {};
@@ -612,7 +612,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -625,7 +625,7 @@ export class ContentApi {
      * @summary Ensure Replication
      * @param datacid Data CID
      */
-    public contentEnsureReplicationDatacidGet(datacid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentEnsureReplicationDatacidGet(datacid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/ensure-replication/{datacid}'.replace('{' + 'datacid' + '}', encodeURIComponent(String(datacid)));
 
         let queryParameters: any = {};
@@ -673,7 +673,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -747,7 +747,7 @@ export class ContentApi {
      * @summary Content
      * @param id Content ID
      */
-    public contentIdGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentIdGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         let queryParameters: any = {};
@@ -795,7 +795,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -808,7 +808,7 @@ export class ContentApi {
      * @summary Import a deal
      * @param body Import a deal
      */
-    public contentImportdealPost(body: models.MainImportDealBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentImportdealPost(body: models.MainImportDealBody, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/importdeal';
 
         let queryParameters: any = {};
@@ -859,7 +859,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -871,7 +871,7 @@ export class ContentApi {
      * This endpoint lists all content
      * @summary List all pinned content
      */
-    public contentListGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<string>;  }> {
+    public contentListGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/list';
 
         let queryParameters: any = {};
@@ -914,7 +914,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<string>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -927,7 +927,7 @@ export class ContentApi {
      * @summary Read content
      * @param cont CID
      */
-    public contentReadContGet(cont: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentReadContGet(cont: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/read/{cont}'.replace('{' + 'cont' + '}', encodeURIComponent(String(cont)));
 
         let queryParameters: any = {};
@@ -975,7 +975,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -987,7 +987,7 @@ export class ContentApi {
      * This endpoint is used to get staging zone for user.
      * @summary Get staging zone for user
      */
-    public contentStagingZonesGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentStagingZonesGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/staging-zones';
 
         let queryParameters: any = {};
@@ -1030,7 +1030,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -1044,7 +1044,7 @@ export class ContentApi {
      * @param limit limit
      * @param offset offset
      */
-    public contentStatsGet(limit: string, offset: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentStatsGet(limit: string, offset: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/stats';
 
         let queryParameters: any = {};
@@ -1103,7 +1103,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -1116,7 +1116,7 @@ export class ContentApi {
      * @summary Content Status
      * @param id Content ID
      */
-    public contentStatusIdGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public contentStatusIdGet(id: number, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/content/status/{id}'.replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
         let queryParameters: any = {};
@@ -1164,7 +1164,7 @@ export class ContentApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

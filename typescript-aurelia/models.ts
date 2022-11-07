@@ -19,6 +19,12 @@ export interface CollectionsCollection {
   uuid?: string;
 }
 
+export interface MainChannelIDParam {
+  id?: number;
+  initiator?: string;
+  responder?: string;
+}
+
 export interface MainCreateCollectionBody {
   description?: string;
   name?: string;
@@ -48,9 +54,11 @@ export interface MainImportDealBody {
   name?: string;
 }
 
-export interface MainUserStatsResponse {
-  numPins?: number;
-  totalSize?: number;
+export interface TypesIpfsPin {
+  cid?: string;
+  meta?: any;
+  name?: string;
+  origins?: Array<string>;
 }
 
 export interface UtilContentAddIpfsBody {

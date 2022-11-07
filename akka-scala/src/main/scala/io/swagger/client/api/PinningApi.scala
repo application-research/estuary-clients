@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.TypesIpfsPin
 import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
@@ -22,6 +23,7 @@ object PinningApi {
    * This endpoint lists all pin status objects
    * 
    * Expected answers:
+   *   code 200 : String (OK)
    *   code 400 : UtilHttpError (Bad Request)
    *   code 404 : UtilHttpError (Not Found)
    *   code 500 : UtilHttpError (Internal Server Error)
@@ -29,9 +31,10 @@ object PinningApi {
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def pinningPinsGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/pinning/pins", "application/json")
+  def pinningPinsGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/pinning/pins", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
       .withErrorResponse[UtilHttpError](400)
       .withErrorResponse[UtilHttpError](404)
       .withErrorResponse[UtilHttpError](500)
@@ -39,60 +42,82 @@ object PinningApi {
    * This endpoint deletes a pinned object.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param pinid Pin ID
    */
-  def pinningPinsPinidDelete(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
+  def pinningPinsPinidDelete(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.DELETE, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("pinid", pinid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns a pin status object.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param pinid cid
    */
-  def pinningPinsPinidGet(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
+  def pinningPinsPinidGet(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("pinid", pinid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint replaces a pinned object.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param pinid Pin ID
    */
-  def pinningPinsPinidPost(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
+  def pinningPinsPinidPost(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("pinid", pinid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint adds a pin to the IPFS daemon.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
-   * @param cid cid
-   * @param name name
+   * @param pin Pin Body {cid:cid, name:name}
    */
-  def pinningPinsPost(cid: String, name: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/pinning/pins", "application/json")
+  def pinningPinsPost(pin: TypesIpfsPin)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/pinning/pins", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("cid", cid)
-      .withPathParam("name", name)
+      .withBody(pin)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

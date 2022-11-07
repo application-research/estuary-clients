@@ -16,6 +16,7 @@ import io.swagger.client.model.MainImportDealBody
 import io.swagger.client.model.UtilContentAddIpfsBody
 import io.swagger.client.model.UtilContentAddResponse
 import io.swagger.client.model.UtilContentCreateBody
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -26,6 +27,9 @@ object ContentApi {
    * This endpoint is used to add a car object to the network. The object can be a file or a directory.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -34,16 +38,22 @@ object ContentApi {
    * @param ignoreDupes Ignore Dupes
    * @param filename Filename
    */
-  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/add-car", "application/json")
+  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/content/add-car", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
       .withQueryParam("ignore-dupes", ignoreDupes)
       .withQueryParam("filename", filename)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -51,16 +61,21 @@ object ContentApi {
    * @param body IPFS Body
    * @param ignoreDupes Ignore Dupes
    */
-  def contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/add-ipfs", "application/json")
+  def contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/content/add-ipfs", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
       .withQueryParam("ignore-dupes", ignoreDupes)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to upload new content.
    * 
    * Expected answers:
    *   code 200 : UtilContentAddResponse (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -84,11 +99,15 @@ object ContentApi {
       .withQueryParam("lazy-provide", lazyProvide)
       .withQueryParam("dir", dir)
       .withSuccessResponse[UtilContentAddResponse](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns aggregated content stats
    * 
    * Expected answers:
    *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -100,10 +119,15 @@ object ContentApi {
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("content", content)
       .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get all deals for a user
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -112,30 +136,42 @@ object ContentApi {
    * @param duration Duration
    * @param all All
    */
-  def contentAllDealsGet(begin: String, duration: String, all: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/all-deals", "application/json")
+  def contentAllDealsGet(begin: String, duration: String, all: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/all-deals", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("begin", begin)
       .withQueryParam("duration", duration)
       .withQueryParam("all", all)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns content bandwidth
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param content Content ID
    */
-  def contentBwUsageContentGet(content: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/bw-usage/{content}", "application/json")
+  def contentBwUsageContentGet(content: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/bw-usage/{content}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("content", content)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint adds a new content
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -143,15 +179,21 @@ object ContentApi {
    * @param req Content
    * @param ignoreDupes Ignore Dupes
    */
-  def contentCreatePost(req: UtilContentCreateBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/create", "application/json")
+  def contentCreatePost(req: UtilContentCreateBody, ignoreDupes: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/content/create", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(req)
       .withQueryParam("ignore-dupes", ignoreDupes)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint lists all content with deals
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -159,30 +201,41 @@ object ContentApi {
    * @param limit Limit
    * @param offset Offset
    */
-  def contentDealsGet(limit: Option[Int] = None, offset: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/deals", "application/json")
+  def contentDealsGet(limit: Option[Int] = None, offset: Option[Int] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/deals", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("limit", limit)
       .withQueryParam("offset", offset)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint ensures that the content is replicated to the specified number of providers
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param datacid Data CID
    */
-  def contentEnsureReplicationDatacidGet(datacid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/ensure-replication/{datacid}", "application/json")
+  def contentEnsureReplicationDatacidGet(datacid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/ensure-replication/{datacid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("datacid", datacid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns all failures for a content
    * 
    * Expected answers:
    *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -194,76 +247,109 @@ object ContentApi {
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("content", content)
       .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns a content by its ID
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param id Content ID
    */
-  def contentIdGet(id: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/{id}", "application/json")
+  def contentIdGet(id: Int)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint imports a deal into the shuttle.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param body Import a deal
    */
-  def contentImportdealPost(body: MainImportDealBody)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/content/importdeal", "application/json")
+  def contentImportdealPost(body: MainImportDealBody)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/content/importdeal", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withBody(body)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint lists all content
    * 
    * Expected answers:
-   *   code 200 : Seq[String] (OK)
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def contentListGet()(implicit apiKey: ApiKeyValue): ApiRequest[Seq[String]] =
-    ApiRequest[Seq[String]](ApiMethods.GET, "https://api.estuary.tech", "/content/list", "application/json")
+  def contentListGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/list", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withSuccessResponse[Seq[String]](200)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint reads content from the blockstore
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param cont CID
    */
-  def contentReadContGet(cont: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/read/{cont}", "application/json")
+  def contentReadContGet(cont: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/read/{cont}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("cont", cont)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get staging zone for user.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def contentStagingZonesGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/staging-zones", "application/json")
+  def contentStagingZonesGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/staging-zones", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -271,25 +357,34 @@ object ContentApi {
    * @param limit limit
    * @param offset offset
    */
-  def contentStatsGet(limit: String, offset: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/stats", "application/json")
+  def contentStatsGet(limit: String, offset: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/stats", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("limit", limit)
       .withQueryParam("offset", offset)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns the status of a content
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param id Content ID
    */
-  def contentStatusIdGet(id: Int)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/content/status/{id}", "application/json")
+  def contentStatusIdGet(id: Int)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/content/status/{id}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("id", id)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

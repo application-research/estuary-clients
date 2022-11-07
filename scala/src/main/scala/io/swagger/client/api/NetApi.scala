@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -82,9 +83,9 @@ class NetApi(
    * Net Addrs
    * This endpoint is used to get net addrs
    *
-   * @return List[String]
+   * @return String
    */
-  def netAddrsGet(): Option[List[String]] = {
+  def netAddrsGet(): Option[String] = {
     val await = Try(Await.result(netAddrsGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -96,9 +97,9 @@ class NetApi(
    * Net Addrs asynchronously
    * This endpoint is used to get net addrs
    *
-   * @return Future(List[String])
+   * @return Future(String)
    */
-  def netAddrsGetAsync(): Future[List[String]] = {
+  def netAddrsGetAsync(): Future[String] = {
       helper.netAddrsGet()
   }
 
@@ -107,9 +108,9 @@ class NetApi(
    * This endpoint returns all miners
    *
    * @param miner Filter by miner 
-   * @return void
+   * @return String
    */
-  def publicMinersFailuresMinerGet(miner: String) = {
+  def publicMinersFailuresMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(publicMinersFailuresMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -122,9 +123,9 @@ class NetApi(
    * This endpoint returns all miners
    *
    * @param miner Filter by miner 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersFailuresMinerGetAsync(miner: String) = {
+  def publicMinersFailuresMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersFailuresMinerGet(miner)
   }
 
@@ -132,9 +133,9 @@ class NetApi(
    * Get all miners
    * This endpoint returns all miners
    *
-   * @return void
+   * @return String
    */
-  def publicMinersGet() = {
+  def publicMinersGet(): Option[String] = {
     val await = Try(Await.result(publicMinersGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -146,9 +147,9 @@ class NetApi(
    * Get all miners asynchronously
    * This endpoint returns all miners
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersGetAsync() = {
+  def publicMinersGetAsync(): Future[String] = {
       helper.publicMinersGet()
   }
 
@@ -204,7 +205,7 @@ class NetApi(
 
 class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def netAddrsGet()(implicit reader: ClientResponseReader[List[String]]): Future[List[String]] = {
+  def netAddrsGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/net/addrs"))
 
@@ -219,7 +220,7 @@ class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     }
   }
 
-  def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/failures/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -237,7 +238,7 @@ class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     }
   }
 
-  def publicMinersGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners"))
 

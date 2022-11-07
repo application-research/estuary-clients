@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -57,9 +58,9 @@ public class NetApi {
   /**
   * Net Addrs
   * This endpoint is used to get net addrs
-   * @return List<String>
+   * @return String
   */
-  public List<String> netAddrsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String netAddrsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -89,7 +90,7 @@ public class NetApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (List<String>) ApiInvoker.deserialize(localVarResponse, "array", String.class);
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
          return null;
       }
@@ -115,7 +116,7 @@ public class NetApi {
    * This endpoint is used to get net addrs
 
   */
-  public void netAddrsGet (final Response.Listener<List<String>> responseListener, final Response.ErrorListener errorListener) {
+  public void netAddrsGet (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -155,7 +156,7 @@ public class NetApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((List<String>) ApiInvoker.deserialize(localVarResponse,  "array", String.class));
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -174,9 +175,9 @@ public class NetApi {
   * Get all miners
   * This endpoint returns all miners
    * @param miner Filter by miner
-   * @return void
+   * @return String
   */
-  public void publicMinersFailuresMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersFailuresMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -211,9 +212,9 @@ public class NetApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -281,7 +282,11 @@ public class NetApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -296,9 +301,9 @@ public class NetApi {
   /**
   * Get all miners
   * This endpoint returns all miners
-   * @return void
+   * @return String
   */
-  public void publicMinersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -328,9 +333,9 @@ public class NetApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -393,7 +398,11 @@ public class NetApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

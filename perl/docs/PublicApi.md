@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **public_by_cid_cid_get**
-> public_by_cid_cid_get(cid => $cid)
+> string public_by_cid_cid_get(cid => $cid)
 
 Get Content by Cid
 
@@ -43,7 +43,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 my $cid = 'cid_example'; # string | Cid
 
 eval { 
-    $api_instance->public_by_cid_cid_get(cid => $cid);
+    my $result = $api_instance->public_by_cid_cid_get(cid => $cid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_by_cid_cid_get: $@\n";
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -72,7 +73,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_info_get**
-> public_info_get()
+> string public_info_get()
 
 Get public node info
 
@@ -92,7 +93,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 
 
 eval { 
-    $api_instance->public_info_get();
+    my $result = $api_instance->public_info_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_info_get: $@\n";
@@ -104,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -118,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get()
+> string public_metrics_deals_on_chain_get()
 
 Get deal metrics
 
@@ -138,7 +140,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 
 
 eval { 
-    $api_instance->public_metrics_deals_on_chain_get();
+    my $result = $api_instance->public_metrics_deals_on_chain_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_metrics_deals_on_chain_get: $@\n";
@@ -150,7 +153,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -164,7 +167,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed)
+> string public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed)
 
 Get all miners deals
 
@@ -186,7 +189,8 @@ my $miner = 'miner_example'; # string | Filter by miner
 my $ignore_failed = 'ignore_failed_example'; # string | Ignore Failed
 
 eval { 
-    $api_instance->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
+    my $result = $api_instance->public_miners_deals_miner_get(miner => $miner, ignore_failed => $ignore_failed);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_miners_deals_miner_get: $@\n";
@@ -202,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -216,7 +220,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner => $miner)
+> string public_miners_failures_miner_get(miner => $miner)
 
 Get all miners
 
@@ -237,7 +241,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 my $miner = 'miner_example'; # string | Filter by miner
 
 eval { 
-    $api_instance->public_miners_failures_miner_get(miner => $miner);
+    my $result = $api_instance->public_miners_failures_miner_get(miner => $miner);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_miners_failures_miner_get: $@\n";
@@ -252,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -266,7 +271,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get()
+> string public_miners_get()
 
 Get all miners
 
@@ -286,7 +291,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 
 
 eval { 
-    $api_instance->public_miners_get();
+    my $result = $api_instance->public_miners_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_miners_get: $@\n";
@@ -298,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -312,7 +318,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner => $miner)
+> string public_miners_stats_miner_get(miner => $miner)
 
 Get miner stats
 
@@ -333,7 +339,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 my $miner = 'miner_example'; # string | Filter by miner
 
 eval { 
-    $api_instance->public_miners_stats_miner_get(miner => $miner);
+    my $result = $api_instance->public_miners_stats_miner_get(miner => $miner);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_miners_stats_miner_get: $@\n";
@@ -348,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -456,7 +463,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_stats_get**
-> public_stats_get()
+> string public_stats_get()
 
 Public stats
 
@@ -476,7 +483,8 @@ my $api_instance = WWW::SwaggerClient::PublicApi->new(
 
 
 eval { 
-    $api_instance->public_stats_get();
+    my $result = $api_instance->public_stats_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PublicApi->public_stats_get: $@\n";
@@ -488,7 +496,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

@@ -55,10 +55,27 @@ void SwaggerPublicApi::PublicByCidCidGetRequest::SetupHttpRequest(const TSharedR
 	}
 }
 
+void SwaggerPublicApi::PublicByCidCidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicByCidCidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicInfoGetRequest::ComputePath() const
@@ -90,10 +107,27 @@ void SwaggerPublicApi::PublicInfoGetRequest::SetupHttpRequest(const TSharedRef<I
 	}
 }
 
+void SwaggerPublicApi::PublicInfoGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicInfoGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicMetricsDealsOnChainGetRequest::ComputePath() const
@@ -125,10 +159,27 @@ void SwaggerPublicApi::PublicMetricsDealsOnChainGetRequest::SetupHttpRequest(con
 	}
 }
 
+void SwaggerPublicApi::PublicMetricsDealsOnChainGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicMetricsDealsOnChainGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicMinersDealsMinerGetRequest::ComputePath() const
@@ -172,10 +223,27 @@ void SwaggerPublicApi::PublicMinersDealsMinerGetRequest::SetupHttpRequest(const 
 	}
 }
 
+void SwaggerPublicApi::PublicMinersDealsMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicMinersDealsMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicMinersFailuresMinerGetRequest::ComputePath() const
@@ -211,10 +279,27 @@ void SwaggerPublicApi::PublicMinersFailuresMinerGetRequest::SetupHttpRequest(con
 	}
 }
 
+void SwaggerPublicApi::PublicMinersFailuresMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicMinersFailuresMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicMinersGetRequest::ComputePath() const
@@ -246,10 +331,27 @@ void SwaggerPublicApi::PublicMinersGetRequest::SetupHttpRequest(const TSharedRef
 	}
 }
 
+void SwaggerPublicApi::PublicMinersGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicMinersGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicMinersStatsMinerGetRequest::ComputePath() const
@@ -285,10 +387,27 @@ void SwaggerPublicApi::PublicMinersStatsMinerGetRequest::SetupHttpRequest(const 
 	}
 }
 
+void SwaggerPublicApi::PublicMinersStatsMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicMinersStatsMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerPublicApi::PublicNetAddrsGetRequest::ComputePath() const
@@ -375,6 +494,12 @@ void SwaggerPublicApi::PublicNetPeersGetResponse::SetHttpResponseCode(EHttpRespo
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -412,10 +537,27 @@ void SwaggerPublicApi::PublicStatsGetRequest::SetupHttpRequest(const TSharedRef<
 	}
 }
 
+void SwaggerPublicApi::PublicStatsGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerPublicApi::PublicStatsGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }
