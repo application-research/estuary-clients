@@ -1,4 +1,4 @@
-# estuary-client.PinningApi
+# estuary_client.PinningApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -22,18 +22,18 @@ This endpoint lists all pin status objects
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 
 try:
     # List all pin status objects
@@ -72,18 +72,18 @@ This endpoint deletes a pinned object.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 pinid = 'pinid_example' # str | Pin ID
 
 try:
@@ -126,18 +126,18 @@ This endpoint returns a pin status object.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 pinid = 'pinid_example' # str | cid
 
 try:
@@ -180,18 +180,18 @@ This endpoint replaces a pinned object.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 pinid = 'pinid_example' # str | Pin ID
 
 try:
@@ -234,19 +234,19 @@ This endpoint adds a pin to the IPFS daemon.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
-pin = estuary-client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
+api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
+pin = estuary_client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try:
     # Add and pin object

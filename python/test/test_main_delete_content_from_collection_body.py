@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestMainDeleteContentFromCollectionBody(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestMainDeleteContentFromCollectionBody(unittest.TestCase):
     def testMainDeleteContentFromCollectionBody(self):
         """Test MainDeleteContentFromCollectionBody"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = estuary-client.models.main_delete_content_from_collection_body.MainDeleteContentFromCollectionBody()  # noqa: E501
+        # model = estuary_client.models.main_delete_content_from_collection_body.MainDeleteContentFromCollectionBody()  # noqa: E501
         pass
 
 

@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestMainChannelIDParam(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestMainChannelIDParam(unittest.TestCase):
     def testMainChannelIDParam(self):
         """Test MainChannelIDParam"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = estuary-client.models.main_channel_id_param.MainChannelIDParam()  # noqa: E501
+        # model = estuary_client.models.main_channel_id_param.MainChannelIDParam()  # noqa: E501
         pass
 
 

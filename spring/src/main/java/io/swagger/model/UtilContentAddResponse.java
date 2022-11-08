@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * UtilContentAddResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T00:37:33.715Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T02:39:48.174Z")
 
 
 public class UtilContentAddResponse   {

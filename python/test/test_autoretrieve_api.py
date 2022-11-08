@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.api.autoretrieve_api import AutoretrieveApi  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.api.autoretrieve_api import AutoretrieveApi  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestAutoretrieveApi(unittest.TestCase):
     """AutoretrieveApi unit test stubs"""
 
     def setUp(self):
-        self.api = estuary-client.api.autoretrieve_api.AutoretrieveApi()  # noqa: E501
+        self.api = estuary_client.api.autoretrieve_api.AutoretrieveApi()  # noqa: E501
 
     def tearDown(self):
         pass

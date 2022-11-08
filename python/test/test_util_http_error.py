@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.models.util_http_error import UtilHttpError  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestUtilHttpError(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestUtilHttpError(unittest.TestCase):
     def testUtilHttpError(self):
         """Test UtilHttpError"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = estuary-client.models.util_http_error.UtilHttpError()  # noqa: E501
+        # model = estuary_client.models.util_http_error.UtilHttpError()  # noqa: E501
         pass
 
 

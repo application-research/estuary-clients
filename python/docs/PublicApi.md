@@ -1,4 +1,4 @@
-# estuary-client.PublicApi
+# estuary_client.PublicApi
 
 All URIs are relative to *https://api.estuary.tech*
 
@@ -27,18 +27,18 @@ This endpoint returns the content associated with a CID
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 cid = 'cid_example' # str | Cid
 
 try:
@@ -81,18 +81,18 @@ This endpoint returns information about the node
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get public node info
@@ -131,18 +131,18 @@ This endpoint is used to get deal metrics
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get deal metrics
@@ -181,18 +181,18 @@ This endpoint returns all miners deals
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Filter by miner
 ignore_failed = 'ignore_failed_example' # str | Ignore Failed (optional)
 
@@ -237,18 +237,18 @@ This endpoint returns all miners
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Filter by miner
 
 try:
@@ -291,18 +291,18 @@ This endpoint returns all miners
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Get all miners
@@ -341,18 +341,18 @@ This endpoint returns miner stats
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 miner = 'miner_example' # str | Filter by miner
 
 try:
@@ -395,18 +395,18 @@ This endpoint is used to get net addrs
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Net Addrs
@@ -445,18 +445,18 @@ This endpoint is used to get net peers
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Net Peers
@@ -495,18 +495,18 @@ This endpoint is used to get public stats.
 ```python
 from __future__ import print_function
 import time
-import estuary-client
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: bearerAuth
-configuration = estuary-client.Configuration()
+configuration = estuary_client.Configuration()
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['Authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = estuary-client.PublicApi(estuary-client.ApiClient(configuration))
+api_instance = estuary_client.PublicApi(estuary_client.ApiClient(configuration))
 
 try:
     # Public stats
