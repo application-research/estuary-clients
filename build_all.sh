@@ -6,6 +6,6 @@ apk add make || true # can remove when https://github.com/application-research/e
 
 #download swagger.json from github and exit early if its identical to swagger.json in the repo
 make -B swagger.json
-git status swagger.json | grep modified && make -j -k || true
+git status swagger.json | grep modified && make -j -k -B || true
 
 cp -rv file_overrides/* .
