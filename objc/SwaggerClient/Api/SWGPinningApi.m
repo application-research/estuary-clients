@@ -243,15 +243,38 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 /// This endpoint replaces a pinned object.
 ///  @param pinid Pin ID 
 ///
+///  @param cid CID of new pin 
+///
+///  @param name Name (filename) of new pin (optional)
+///
+///  @param origins Origins of new pin (optional)
+///
+///  @param meta Meta information of new pin (optional)
+///
 ///  @returns NSString*
 ///
 -(NSURLSessionTask*) pinningPinsPinidPostWithPinid: (NSString*) pinid
+    cid: (NSString*) cid
+    name: (NSString*) name
+    origins: (NSString*) origins
+    meta: (NSString*) meta
     completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'pinid' is set
     if (pinid == nil) {
         NSParameterAssert(pinid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinid"] };
+            NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
+            handler(nil, error);
+        }
+        return nil;
+    }
+
+    // verify the required parameter 'cid' is set
+    if (cid == nil) {
+        NSParameterAssert(cid);
+        if(handler) {
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cid"] };
             NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
@@ -286,6 +309,7 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = meta;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"

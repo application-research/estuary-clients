@@ -71,7 +71,11 @@ describe 'PinningApi' do
   # Replace a pinned object
   # This endpoint replaces a pinned object.
   # @param pinid Pin ID
+  # @param cid CID of new pin
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :name Name (filename) of new pin
+  # @option opts [String] :origins Origins of new pin
+  # @option opts [String] :meta Meta information of new pin
   # @return [String]
   describe 'pinning_pins_pinid_post test' do
     it 'should work' do

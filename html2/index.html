@@ -31117,8 +31117,12 @@ public class PinningApiExample {
 
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | Pin ID
+        String cid = cid_example; // String | CID of new pin
+        String name = name_example; // String | Name (filename) of new pin
+        String origins = origins_example; // String | Origins of new pin
+        String meta = meta_example; // String | Meta information of new pin
         try {
-            'String' result = apiInstance.pinningPinsPinidPost(pinid);
+            'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31136,8 +31140,12 @@ public class PinningApiExample {
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | Pin ID
+        String cid = cid_example; // String | CID of new pin
+        String name = name_example; // String | Name (filename) of new pin
+        String origins = origins_example; // String | Origins of new pin
+        String meta = meta_example; // String | Meta information of new pin
         try {
-            'String' result = apiInstance.pinningPinsPinidPost(pinid);
+            'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31159,11 +31167,19 @@ public class PinningApiExample {
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 String *pinid = pinid_example; // Pin ID
+String *cid = cid_example; // CID of new pin
+String *name = name_example; // Name (filename) of new pin (optional)
+String *origins = origins_example; // Origins of new pin (optional)
+String *meta = meta_example; // Meta information of new pin (optional)
 
 PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Replace a pinned object
 [apiInstance pinningPinsPinidPostWith:pinid
+    cid:cid
+    name:name
+    origins:origins
+    meta:meta
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -31189,6 +31205,13 @@ var api = new EstuaryApi.PinningApi()
 
 var pinid = pinid_example; // {String} Pin ID
 
+var cid = cid_example; // {String} CID of new pin
+
+var opts = { 
+  'name': name_example, // {String} Name (filename) of new pin
+  'origins': origins_example, // {String} Origins of new pin
+  'meta': meta_example // {String} Meta information of new pin
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -31197,7 +31220,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.pinningPinsPinidPost(pinid, callback);
+api.pinningPinsPinidPost(pinid, cid, opts, callback);
 </code></pre>
                             </div>
 
@@ -31225,11 +31248,15 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var pinid = pinid_example;  // String | Pin ID
+            var cid = cid_example;  // String | CID of new pin
+            var name = name_example;  // String | Name (filename) of new pin (optional) 
+            var origins = origins_example;  // String | Origins of new pin (optional) 
+            var meta = meta_example;  // String | Meta information of new pin (optional) 
 
             try
             {
                 // Replace a pinned object
-                'String' result = apiInstance.pinningPinsPinidPost(pinid);
+                'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31253,9 +31280,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 
 $api_instance = new Swagger\Client\Api\PinningApi();
 $pinid = pinid_example; // String | Pin ID
+$cid = cid_example; // String | CID of new pin
+$name = name_example; // String | Name (filename) of new pin
+$origins = origins_example; // String | Origins of new pin
+$meta = meta_example; // String | Meta information of new pin
 
 try {
-    $result = $api_instance->pinningPinsPinidPost($pinid);
+    $result = $api_instance->pinningPinsPinidPost($pinid, $cid, $name, $origins, $meta);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidPost: ', $e->getMessage(), PHP_EOL;
@@ -31275,9 +31306,13 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 
 my $api_instance = WWW::SwaggerClient::PinningApi->new();
 my $pinid = pinid_example; # String | Pin ID
+my $cid = WWW::SwaggerClient::Object::String->new(); # String | CID of new pin
+my $name = WWW::SwaggerClient::Object::String->new(); # String | Name (filename) of new pin
+my $origins = WWW::SwaggerClient::Object::String->new(); # String | Origins of new pin
+my $meta = WWW::SwaggerClient::Object::String->new(); # String | Meta information of new pin
 
 eval { 
-    my $result = $api_instance->pinningPinsPinidPost(pinid => $pinid);
+    my $result = $api_instance->pinningPinsPinidPost(pinid => $pinid, cid => $cid, name => $name, origins => $origins, meta => $meta);
     print Dumper($result);
 };
 if ($@) {
@@ -31300,10 +31335,14 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = swagger_client.PinningApi()
 pinid = pinid_example # String | Pin ID
+cid = cid_example # String | CID of new pin
+name = name_example # String | Name (filename) of new pin (optional)
+origins = origins_example # String | Origins of new pin (optional)
+meta = meta_example # String | Meta information of new pin (optional)
 
 try: 
     # Replace a pinned object
-    api_response = api_instance.pinning_pins_pinid_post(pinid)
+    api_response = api_instance.pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinningPinsPinidPost: %s\n" % e)</code></pre>
@@ -31344,6 +31383,153 @@ except ApiException as e:
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">cid <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "cid",
+  "description" : "CID of new pin",
+  "required" : true,
+  "schema" : {
+    "type" : "string"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_pinningPinsPinidPost_cid');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_pinningPinsPinidPost_cid"></div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">name </td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "name",
+  "description" : "Name (filename) of new pin",
+  "required" : false,
+  "schema" : {
+    "type" : "string"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_pinningPinsPinidPost_name');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_pinningPinsPinidPost_name"></div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">origins </td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "origins",
+  "description" : "Origins of new pin",
+  "required" : false,
+  "schema" : {
+    "type" : "string"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_pinningPinsPinidPost_origins');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_pinningPinsPinidPost_origins"></div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">meta </td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "meta",
+  "description" : "Meta information of new pin",
+  "required" : false,
+  "schema" : {
+    "type" : "string"
+  }
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_pinningPinsPinidPost_meta');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_pinningPinsPinidPost_meta"></div>
+</td>
+</tr>
+
+                            </table>
 
 
 

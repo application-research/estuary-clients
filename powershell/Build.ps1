@@ -58,7 +58,7 @@ $Manifest = @{
     Description = 'estuary-client - the PowerShell module for Estuary API'
 
     RootModule = 'estuary-client.psm1'
-    Guid = '{8763F186-FB42-47DB-850A-78739F9CC422}' # Has to be static, otherwise each new build will be considered different module
+    Guid = '{2BF2A98B-0A1D-4E44-94F3-8D061C71CC75}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '3.0'
 

@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> kotlin.String pinningPinsPinidPost(pinid)
+> kotlin.String pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -164,8 +164,12 @@ This endpoint replaces a pinned object.
 
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
+val cid : kotlin.String = cid_example // kotlin.String | CID of new pin
+val name : kotlin.String = name_example // kotlin.String | Name (filename) of new pin
+val origins : kotlin.String = origins_example // kotlin.String | Origins of new pin
+val meta : kotlin.String = meta_example // kotlin.String | Meta information of new pin
 try {
-    val result : kotlin.String = apiInstance.pinningPinsPinidPost(pinid)
+    val result : kotlin.String = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidPost")
@@ -181,6 +185,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **kotlin.String**| Pin ID |
+ **cid** | **kotlin.String**| CID of new pin |
+ **name** | **kotlin.String**| Name (filename) of new pin | [optional]
+ **origins** | **kotlin.String**| Origins of new pin | [optional]
+ **meta** | **kotlin.String**| Meta information of new pin | [optional]
 
 ### Return type
 

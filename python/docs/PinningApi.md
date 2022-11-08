@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> str pinning_pins_pinid_post(pinid)
+> str pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
 
 Replace a pinned object
 
@@ -193,10 +193,14 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 pinid = 'pinid_example' # str | Pin ID
+cid = 'cid_example' # str | CID of new pin
+name = 'name_example' # str | Name (filename) of new pin (optional)
+origins = 'origins_example' # str | Origins of new pin (optional)
+meta = 'meta_example' # str | Meta information of new pin (optional)
 
 try:
     # Replace a pinned object
-    api_response = api_instance.pinning_pins_pinid_post(pinid)
+    api_response = api_instance.pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_post: %s\n" % e)
@@ -207,6 +211,10 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **str**| Pin ID | 
+ **cid** | **str**| CID of new pin | 
+ **name** | **str**| Name (filename) of new pin | [optional] 
+ **origins** | **str**| Origins of new pin | [optional] 
+ **meta** | **str**| Meta information of new pin | [optional] 
 
 ### Return type
 

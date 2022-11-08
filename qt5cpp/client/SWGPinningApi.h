@@ -38,7 +38,7 @@ public:
     void pinningPinsGet();
     void pinningPinsPinidDelete(QString* pinid);
     void pinningPinsPinidGet(QString* pinid);
-    void pinningPinsPinidPost(QString* pinid);
+    void pinningPinsPinidPost(QString* pinid, QString*& cid, QString*& name, QString*& origins, QString*& meta);
     void pinningPinsPost(SWGTypes.IpfsPin& pin);
     
 private:

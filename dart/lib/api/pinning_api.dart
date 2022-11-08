@@ -163,12 +163,15 @@ class PinningApi {
   /// Replace a pinned object
   ///
   /// This endpoint replaces a pinned object.
-  Future<String> pinningPinsPinidPost(String pinid) async {
-    Object postBody = null;
+  Future<String> pinningPinsPinidPost(String pinid, String cid, { String name, String origins, String meta }) async {
+    Object postBody = meta;
 
     // verify required params are set
     if(pinid == null) {
      throw new ApiException(400, "Missing required param: pinid");
+    }
+    if(cid == null) {
+     throw new ApiException(400, "Missing required param: cid");
     }
 
     // create path and map variables

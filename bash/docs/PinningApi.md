@@ -120,6 +120,10 @@ This endpoint replaces a pinned object.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string** | Pin ID |
+ **cid** | **string** | CID of new pin |
+ **name** | **string** | Name (filename) of new pin | [optional]
+ **origins** | **string** | Origins of new pin | [optional]
+ **meta** | **string** | Meta information of new pin | [optional]
 
 ### Return type
 

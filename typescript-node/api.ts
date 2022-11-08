@@ -5209,9 +5209,13 @@ export class PinningApi {
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
      * @param pinid Pin ID
+     * @param cid CID of new pin
+     * @param name Name (filename) of new pin
+     * @param origins Origins of new pin
+     * @param meta Meta information of new pin
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidPost (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsPinidPost (pinid: string, cid: string, name?: string, origins?: string, meta?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5221,6 +5225,11 @@ export class PinningApi {
         // verify required parameter 'pinid' is not null or undefined
         if (pinid === null || pinid === undefined) {
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
+        }
+
+        // verify required parameter 'cid' is not null or undefined
+        if (cid === null || cid === undefined) {
+            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -5234,6 +5243,7 @@ export class PinningApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
+            body: ObjectSerializer.serialize(meta, "string")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);

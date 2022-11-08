@@ -14,7 +14,7 @@
 module Request.Pinning exposing (pinningPinsGet, pinningPinsPinidDelete, pinningPinsPinidGet, pinningPinsPinidPost, pinningPinsPost)
 
 import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
-import Data.String exposing (Decode.string, String)
+import Data.String exposing (Decode.string, Encode.string, String)
 import Data.TypesIpfsPin exposing (TypesIpfsPin, typesIpfsPinEncoder)
 import Http
 import Json.Decode as Decode
@@ -76,12 +76,12 @@ pinningPinsPinidGet pinid =
 {-
    This endpoint replaces a pinned object.
 -}
-pinningPinsPinidPost : String -> Http.Request String
-pinningPinsPinidPost pinid =
+pinningPinsPinidPost : String -> String -> Http.Request String
+pinningPinsPinidPost pinid model =
     { method = "POST"
     , url = basePath ++ "/pinning/pins/" ++ pinid
     , headers = []
-    , body = Http.emptyBody
+    , body = Http.jsonBody <| Encode.string model
     , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False

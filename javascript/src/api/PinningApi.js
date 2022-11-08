@@ -196,15 +196,26 @@
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param {String} pinid Pin ID
+     * @param {String} cid CID of new pin
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.name Name (filename) of new pin
+     * @param {String} opts.origins Origins of new pin
+     * @param {String} opts.meta Meta information of new pin
      * @param {module:api/PinningApi~pinningPinsPinidPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'String'}
      */
-    this.pinningPinsPinidPost = function(pinid, callback) {
-      var postBody = null;
+    this.pinningPinsPinidPost = function(pinid, cid, opts, callback) {
+      opts = opts || {};
+      var postBody = opts['meta'];
 
       // verify the required parameter 'pinid' is set
       if (pinid === undefined || pinid === null) {
         throw new Error("Missing the required parameter 'pinid' when calling pinningPinsPinidPost");
+      }
+
+      // verify the required parameter 'cid' is set
+      if (cid === undefined || cid === null) {
+        throw new Error("Missing the required parameter 'cid' when calling pinningPinsPinidPost");
       }
 
 

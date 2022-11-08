@@ -75,8 +75,16 @@ public:
     /// This endpoint replaces a pinned object.
     /// </remarks>
     /// <param name="pinid">Pin ID</param>
+    /// <param name="cid">CID of new pin</param>
+    /// <param name="name">Name (filename) of new pin (optional)</param>
+    /// <param name="origins">Origins of new pin (optional)</param>
+    /// <param name="meta">Meta information of new pin (optional)</param>
     pplx::task<utility::string_t> pinningPinsPinidPost(
-        utility::string_t pinid
+        utility::string_t pinid,
+        utility::string_t cid,
+        boost::optional<utility::string_t> name,
+        boost::optional<utility::string_t> origins,
+        boost::optional<utility::string_t> meta
     );
     /// <summary>
     /// Add and pin object

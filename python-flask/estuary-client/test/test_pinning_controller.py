@@ -51,9 +51,12 @@ class TestPinningController(BaseTestCase):
 
         Replace a pinned object
         """
+        meta = 'meta_example'
         response = self.client.open(
             '//pinning/pins/{pinid}'.format(pinid='pinid_example'),
-            method='POST')
+            method='POST',
+            data=json.dumps(meta),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

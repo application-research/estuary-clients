@@ -172,25 +172,37 @@ module SwaggerClient
     # Replace a pinned object
     # This endpoint replaces a pinned object.
     # @param pinid Pin ID
+    # @param cid CID of new pin
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :name Name (filename) of new pin
+    # @option opts [String] :origins Origins of new pin
+    # @option opts [String] :meta Meta information of new pin
     # @return [String]
-    def pinning_pins_pinid_post(pinid, opts = {})
-      data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(pinid, opts)
+    def pinning_pins_pinid_post(pinid, cid, opts = {})
+      data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(pinid, cid, opts)
       data
     end
 
     # Replace a pinned object
     # This endpoint replaces a pinned object.
     # @param pinid Pin ID
+    # @param cid CID of new pin
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :name Name (filename) of new pin
+    # @option opts [String] :origins Origins of new pin
+    # @option opts [String] :meta Meta information of new pin
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def pinning_pins_pinid_post_with_http_info(pinid, opts = {})
+    def pinning_pins_pinid_post_with_http_info(pinid, cid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_post ...'
       end
       # verify the required parameter 'pinid' is set
       if @api_client.config.client_side_validation && pinid.nil?
         fail ArgumentError, "Missing the required parameter 'pinid' when calling PinningApi.pinning_pins_pinid_post"
+      end
+      # verify the required parameter 'cid' is set
+      if @api_client.config.client_side_validation && cid.nil?
+        fail ArgumentError, "Missing the required parameter 'cid' when calling PinningApi.pinning_pins_pinid_post"
       end
       # resource path
       local_var_path = '/pinning/pins/{pinid}'.sub('{' + 'pinid' + '}', pinid.to_s)
@@ -207,7 +219,7 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(opts[:'meta'])
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,

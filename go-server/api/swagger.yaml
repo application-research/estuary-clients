@@ -1576,6 +1576,37 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "Pinid"
+      - in: "body"
+        name: "cid"
+        description: "CID of new pin"
+        required: true
+        schema:
+          type: "string"
+        x-exportParamName: "Cid"
+      - in: "body"
+        name: "name"
+        description: "Name (filename) of new pin"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "Name"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "origins"
+        description: "Origins of new pin"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "Origins"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "meta"
+        description: "Meta information of new pin"
+        required: false
+        schema:
+          type: "string"
+        x-exportParamName: "Meta"
+        x-optionalDataType: "String"
       responses:
         "200":
           description: "OK"

@@ -227,8 +227,12 @@ export class PinningApi {
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
      * @param pinid Pin ID
+     * @param cid CID of new pin
+     * @param name Name (filename) of new pin
+     * @param origins Origins of new pin
+     * @param meta Meta information of new pin
      */
-    public pinningPinsPinidPost(pinid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/pinning/pins/{pinid}'.replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
 
         let queryParameters: any = {};
@@ -236,6 +240,11 @@ export class PinningApi {
         // verify required parameter 'pinid' is not null or undefined
         if (pinid === null || pinid === undefined) {
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
+        }
+
+        // verify required parameter 'cid' is not null or undefined
+        if (cid === null || cid === undefined) {
+            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
         }
 
 
@@ -255,6 +264,8 @@ export class PinningApi {
         }
 
 
+        headerParams['Content-Type'] = 'application/json';
+
         let requestOptions: JQueryAjaxSettings = {
             url: localVarPath,
             type: 'POST',
@@ -262,6 +273,7 @@ export class PinningApi {
             processData: false
         };
 
+        requestOptions.data = JSON.stringify(meta);
         if (headerParams['Content-Type']) {
             requestOptions.contentType = headerParams['Content-Type'];
         }

@@ -193,7 +193,7 @@ function pinning_api:pinning_pins_pinid_get(pinid)
 	end
 end
 
-function pinning_api:pinning_pins_pinid_post(pinid)
+function pinning_api:pinning_pins_pinid_post(pinid, cid, name, origins, meta)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -207,6 +207,14 @@ function pinning_api:pinning_pins_pinid_post(pinid)
 	-- ref: https://github.com/swagger-api/swagger-codegen/pull/6252#issuecomment-321199879
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(cid))
+
+	req:set_body(dkjson.encode(name))
+
+	req:set_body(dkjson.encode(origins))
+
+	req:set_body(dkjson.encode(meta))
 
 	-- api key in headers 'Authorization'
 	if self.api_key['Authorization'] then

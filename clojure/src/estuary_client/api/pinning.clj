@@ -64,22 +64,25 @@
 (defn pinning-pins-pinid-post-with-http-info
   "Replace a pinned object
   This endpoint replaces a pinned object."
-  [pinid ]
-  (check-required-params pinid)
-  (call-api "/pinning/pins/{pinid}" :post
-            {:path-params   {"pinid" pinid }
-             :header-params {}
-             :query-params  {}
-             :form-params   {}
-             :content-types []
-             :accepts       ["application/json"]
-             :auth-names    ["bearerAuth"]}))
+  ([pinid cid ] (pinning-pins-pinid-post-with-http-info pinid cid nil))
+  ([pinid cid {:keys [name origins meta ]}]
+   (check-required-params pinid cid)
+   (call-api "/pinning/pins/{pinid}" :post
+             {:path-params   {"pinid" pinid }
+              :header-params {}
+              :query-params  {}
+              :form-params   {}
+              :body-param    meta
+              :content-types []
+              :accepts       ["application/json"]
+              :auth-names    ["bearerAuth"]})))
 
 (defn pinning-pins-pinid-post
   "Replace a pinned object
   This endpoint replaces a pinned object."
-  [pinid ]
-  (:data (pinning-pins-pinid-post-with-http-info pinid)))
+  ([pinid cid ] (pinning-pins-pinid-post pinid cid nil))
+  ([pinid cid optional-params]
+   (:data (pinning-pins-pinid-post-with-http-info pinid cid optional-params))))
 
 (defn pinning-pins-post-with-http-info
   "Add and pin object

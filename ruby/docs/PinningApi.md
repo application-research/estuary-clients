@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_pinid_post**
-> String pinning_pins_pinid_post(pinid)
+> String pinning_pins_pinid_post(pinid, cid, opts)
 
 Replace a pinned object
 
@@ -190,10 +190,17 @@ api_instance = SwaggerClient::PinningApi.new
 
 pinid = 'pinid_example' # String | Pin ID
 
+cid = 'cid_example' # String | CID of new pin
+
+opts = { 
+  name: 'name_example', # String | Name (filename) of new pin
+  origins: 'origins_example', # String | Origins of new pin
+  meta: 'meta_example' # String | Meta information of new pin
+}
 
 begin
   #Replace a pinned object
-  result = api_instance.pinning_pins_pinid_post(pinid)
+  result = api_instance.pinning_pins_pinid_post(pinid, cid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
@@ -205,6 +212,10 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID | 
+ **cid** | **String**| CID of new pin | 
+ **name** | **String**| Name (filename) of new pin | [optional] 
+ **origins** | **String**| Origins of new pin | [optional] 
+ **meta** | **String**| Meta information of new pin | [optional] 
 
 ### Return type
 

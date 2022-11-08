@@ -91,7 +91,11 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidPostTest() throws Exception {
         String pinid = null;
-        String response = api.pinningPinsPinidPost(pinid);
+        String cid = null;
+        String name = null;
+        String origins = null;
+        String meta = null;
+        String response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
 
         // TODO: test validations
     }

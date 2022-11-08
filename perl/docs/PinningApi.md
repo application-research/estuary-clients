@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> string pinning_pins_pinid_post(pinid => $pinid)
+> string pinning_pins_pinid_post(pinid => $pinid, cid => $cid, name => $name, origins => $origins, meta => $meta)
 
 Replace a pinned object
 
@@ -185,9 +185,13 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
 );
 
 my $pinid = 'pinid_example'; # string | Pin ID
+my $cid = WWW::SwaggerClient::Object::string->new(); # string | CID of new pin
+my $name = WWW::SwaggerClient::Object::string->new(); # string | Name (filename) of new pin
+my $origins = WWW::SwaggerClient::Object::string->new(); # string | Origins of new pin
+my $meta = WWW::SwaggerClient::Object::string->new(); # string | Meta information of new pin
 
 eval { 
-    my $result = $api_instance->pinning_pins_pinid_post(pinid => $pinid);
+    my $result = $api_instance->pinning_pins_pinid_post(pinid => $pinid, cid => $cid, name => $name, origins => $origins, meta => $meta);
     print Dumper($result);
 };
 if ($@) {
@@ -200,6 +204,10 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID | 
+ **cid** | **string**| CID of new pin | 
+ **name** | **string**| Name (filename) of new pin | [optional] 
+ **origins** | **string**| Origins of new pin | [optional] 
+ **meta** | **string**| Meta information of new pin | [optional] 
 
 ### Return type
 

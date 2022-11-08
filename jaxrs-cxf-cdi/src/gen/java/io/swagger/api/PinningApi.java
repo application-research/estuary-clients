@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 @Api(description = "the pinning API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-08T04:05:51.658Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-08T11:06:02.144Z")
 
 public class PinningApi  {
 
@@ -92,8 +92,8 @@ public class PinningApi  {
         @ApiResponse(code = 200, message = "OK", response = String.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathParam("pinid") String pinid) {
-        return delegate.pinningPinsPinidPost(pinid, securityContext);
+    public Response pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathParam("pinid") String pinid, @ApiParam(value = "CID of new pin" ,required=true) String cid, @ApiParam(value = "Name (filename) of new pin" ) String name, @ApiParam(value = "Origins of new pin" ) String origins, @ApiParam(value = "Meta information of new pin" ) String meta) {
+        return delegate.pinningPinsPinidPost(pinid, cid, name, origins, meta, securityContext);
     }
 
     @POST

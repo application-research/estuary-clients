@@ -43,13 +43,21 @@ def pinning_pins_pinid_get(pinid):  # noqa: E501
     return 'do some magic!'
 
 
-def pinning_pins_pinid_post(pinid):  # noqa: E501
+def pinning_pins_pinid_post(pinid, cid, name=None, origins=None, meta=None):  # noqa: E501
     """Replace a pinned object
 
     This endpoint replaces a pinned object. # noqa: E501
 
     :param pinid: Pin ID
     :type pinid: str
+    :param cid: CID of new pin
+    :type cid: str
+    :param name: Name (filename) of new pin
+    :type name: str
+    :param origins: Origins of new pin
+    :type origins: str
+    :param meta: Meta information of new pin
+    :type meta: str
 
     :rtype: str
     """

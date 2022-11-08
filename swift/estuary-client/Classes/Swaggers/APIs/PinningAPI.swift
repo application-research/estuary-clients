@@ -145,10 +145,14 @@ public class PinningAPI: APIBase {
      Replace a pinned object
      
      - parameter pinid: (path) Pin ID 
+     - parameter cid: (body) CID of new pin 
+     - parameter name: (body) Name (filename) of new pin (optional)
+     - parameter origins: (body) Origins of new pin (optional)
+     - parameter meta: (body) Meta information of new pin (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func pinningPinsPinidPost(pinid pinid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
-        pinningPinsPinidPostWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
+    public class func pinningPinsPinidPost(pinid pinid: String, cid: String, name: String? = nil, origins: String? = nil, meta: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
+        pinningPinsPinidPostWithRequestBuilder(pinid: pinid, cid: cid, name: name, origins: origins, meta: meta).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
     }
@@ -167,17 +171,18 @@ public class PinningAPI: APIBase {
 }}]
      
      - parameter pinid: (path) Pin ID 
+     - parameter cid: (body) CID of new pin 
+     - parameter name: (body) Name (filename) of new pin (optional)
+     - parameter origins: (body) Origins of new pin (optional)
+     - parameter meta: (body) Meta information of new pin (optional)
 
      - returns: RequestBuilder<String> 
      */
-    public class func pinningPinsPinidPostWithRequestBuilder(pinid pinid: String) -> RequestBuilder<String> {
+    public class func pinningPinsPinidPostWithRequestBuilder(pinid pinid: String, cid: String, name: String? = nil, origins: String? = nil, meta: String? = nil) -> RequestBuilder<String> {
         var path = "/pinning/pins/{pinid}"
         path = path.stringByReplacingOccurrencesOfString("{pinid}", withString: "\(pinid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
-
-        let nillableParameters: [String:AnyObject?] = [:]
- 
-        let parameters = APIHelper.rejectNil(nillableParameters)
+        let parameters = meta?.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  

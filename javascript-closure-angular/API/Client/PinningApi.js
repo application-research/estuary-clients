@@ -153,10 +153,14 @@ API.Client.PinningApi.prototype.pinningPinsPinidGet = function(pinid, opt_extraH
  * Replace a pinned object
  * This endpoint replaces a pinned object.
  * @param {!string} pinid Pin ID
+ * @param {!string} cid CID of new pin
+ * @param {!string=} opt_name Name (filename) of new pin
+ * @param {!string=} opt_origins Origins of new pin
+ * @param {!string=} opt_meta Meta information of new pin
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!string>}
  */
-API.Client.PinningApi.prototype.pinningPinsPinidPost = function(pinid, opt_extraHttpRequestParams) {
+API.Client.PinningApi.prototype.pinningPinsPinidPost = function(pinid, cid, opt_name, opt_origins, opt_meta, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/pinning/pins/{pinid}'
       .replace('{' + 'pinid' + '}', String(pinid));
@@ -170,12 +174,17 @@ API.Client.PinningApi.prototype.pinningPinsPinidPost = function(pinid, opt_extra
   if (!pinid) {
     throw new Error('Missing required parameter pinid when calling pinningPinsPinidPost');
   }
+  // verify required parameter 'cid' is set
+  if (!cid) {
+    throw new Error('Missing required parameter cid when calling pinningPinsPinidPost');
+  }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
     url: path,
     json: true,
-            params: queryParameters,
+    data: opt_meta,
+        params: queryParameters,
     headers: headerParams
   };
 

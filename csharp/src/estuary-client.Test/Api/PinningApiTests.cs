@@ -107,7 +107,11 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string pinid = null;
-            //var response = instance.PinningPinsPinidPost(pinid);
+            //string cid = null;
+            //string name = null;
+            //string origins = null;
+            //string meta = null;
+            //var response = instance.PinningPinsPinidPost(pinid, cid, name, origins, meta);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         

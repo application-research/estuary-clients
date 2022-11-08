@@ -78,8 +78,8 @@ newtype Begin = Begin { unBegin :: Text } deriving (P.Eq, P.Show)
 -- ** Body2
 newtype Body2 = Body2 { unBody2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
 
--- ** Cid
-newtype Cid = Cid { unCid :: Text } deriving (P.Eq, P.Show)
+-- ** Cid2
+newtype Cid2 = Cid2 { unCid2 :: Text } deriving (P.Eq, P.Show)
 
 -- ** Coluuid
 newtype Coluuid = Coluuid { unColuuid :: Text } deriving (P.Eq, P.Show)
@@ -141,14 +141,23 @@ newtype Limit = Limit { unLimit :: Int } deriving (P.Eq, P.Show)
 -- ** LimitText
 newtype LimitText = LimitText { unLimitText :: Text } deriving (P.Eq, P.Show)
 
+-- ** Meta2
+newtype Meta2 = Meta2 { unMeta2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
+
 -- ** Miner
 newtype Miner = Miner { unMiner :: Text } deriving (P.Eq, P.Show)
+
+-- ** Name2
+newtype Name2 = Name2 { unName2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
 
 -- ** Offset
 newtype Offset = Offset { unOffset :: Int } deriving (P.Eq, P.Show)
 
 -- ** OffsetText
 newtype OffsetText = OffsetText { unOffsetText :: Text } deriving (P.Eq, P.Show)
+
+-- ** Origins2
+newtype Origins2 = Origins2 { unOrigins2 :: Text } deriving (P.Eq, P.Show, A.ToJSON)
 
 -- ** ParamData
 newtype ParamData = ParamData { unParamData :: FilePath } deriving (P.Eq, P.Show)

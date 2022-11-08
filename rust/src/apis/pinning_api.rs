@@ -38,7 +38,7 @@ pub trait PinningApi {
     fn pinning_pins_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
@@ -242,7 +242,7 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
         )
     }
 
-    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -283,6 +283,22 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
+        let serialized = serde_json::to_string(&cid).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+        let serialized = serde_json::to_string(&name).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+        let serialized = serde_json::to_string(&origins).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
+        let serialized = serde_json::to_string(&meta).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
 
         // send request
         Box::new(

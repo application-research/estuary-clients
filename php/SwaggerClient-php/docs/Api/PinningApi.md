@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidPost**
-> string pinningPinsPinidPost($pinid)
+> string pinningPinsPinidPost($pinid, $cid, $name, $origins, $meta)
 
 Replace a pinned object
 
@@ -196,9 +196,13 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     $config
 );
 $pinid = "pinid_example"; // string | Pin ID
+$cid = "cid_example"; // string | CID of new pin
+$name = "name_example"; // string | Name (filename) of new pin
+$origins = "origins_example"; // string | Origins of new pin
+$meta = "meta_example"; // string | Meta information of new pin
 
 try {
-    $result = $apiInstance->pinningPinsPinidPost($pinid);
+    $result = $apiInstance->pinningPinsPinidPost($pinid, $cid, $name, $origins, $meta);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidPost: ', $e->getMessage(), PHP_EOL;
@@ -211,6 +215,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID |
+ **cid** | **string**| CID of new pin |
+ **name** | **string**| Name (filename) of new pin | [optional]
+ **origins** | **string**| Origins of new pin | [optional]
+ **meta** | **string**| Meta information of new pin | [optional]
 
 ### Return type
 

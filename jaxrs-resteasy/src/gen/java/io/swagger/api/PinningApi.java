@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the pinning API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T04:05:41.478Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T11:05:54.210Z")
 public class PinningApi  {
 
     @Inject PinningApiService service;
@@ -98,9 +98,9 @@ public class PinningApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         
         @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response pinningPinsPinidPost( @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
+    public Response pinningPinsPinidPost( @PathParam("pinid") String pinid,@ApiParam(value = "CID of new pin" ,required=true) String cid,@ApiParam(value = "Name (filename) of new pin" ) String name,@ApiParam(value = "Origins of new pin" ) String origins,@ApiParam(value = "Meta information of new pin" ) String meta,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.pinningPinsPinidPost(pinid,securityContext);
+        return service.pinningPinsPinidPost(pinid,cid,name,origins,meta,securityContext);
     }
     @POST
     @Path("/pins")

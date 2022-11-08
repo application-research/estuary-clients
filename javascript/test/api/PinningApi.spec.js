@@ -105,8 +105,13 @@
           // TODO: uncomment, update parameter values for pinningPinsPinidPost call and complete the assertions
           /*
           var pinid = "pinid_example";
+          var cid = "cid_example";
+          var opts = {};
+          opts.name = "name_example";
+          opts.origins = "origins_example";
+          opts.meta = "meta_example";
 
-          instance.pinningPinsPinidPost(pinid, function(error, data, response) {
+          instance.pinningPinsPinidPost(pinid, cid, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

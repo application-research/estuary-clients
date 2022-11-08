@@ -114,13 +114,21 @@ export class PinningService {
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param pinid Pin ID
+     * @param cid CID of new pin
+     * @param name Name (filename) of new pin
+     * @param origins Origins of new pin
+     * @param meta Meta information of new pin
      
      */
-    public pinningPinsPinidPost(pinid: string, observe?: 'body', headers?: Headers): Observable<string>;
-    public pinningPinsPinidPost(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
-    public pinningPinsPinidPost(pinid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!pinid){
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
+        }
+
+        if (!cid){
+            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
         }
 
         // authentication (bearerAuth) required
@@ -128,8 +136,9 @@ export class PinningService {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`, meta as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

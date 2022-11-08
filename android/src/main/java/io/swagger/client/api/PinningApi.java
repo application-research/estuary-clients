@@ -430,14 +430,23 @@ public class PinningApi {
   * Replace a pinned object
   * This endpoint replaces a pinned object.
    * @param pinid Pin ID
+   * @param cid CID of new pin
+   * @param name Name (filename) of new pin
+   * @param origins Origins of new pin
+   * @param meta Meta information of new pin
    * @return String
   */
-  public String pinningPinsPinidPost (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
+  public String pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = meta;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'pinid' when calling pinningPinsPinidPost",
         new ApiException(400, "Missing the required parameter 'pinid' when calling pinningPinsPinidPost"));
+    }
+    // verify the required parameter 'cid' is set
+    if (cid == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cid' when calling pinningPinsPinidPost",
+        new ApiException(400, "Missing the required parameter 'cid' when calling pinningPinsPinidPost"));
     }
 
     // create path and map variables
@@ -491,15 +500,20 @@ public class PinningApi {
       /**
    * Replace a pinned object
    * This endpoint replaces a pinned object.
-   * @param pinid Pin ID
+   * @param pinid Pin ID   * @param cid CID of new pin   * @param name Name (filename) of new pin   * @param origins Origins of new pin   * @param meta Meta information of new pin
   */
-  public void pinningPinsPinidPost (String pinid, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
+  public void pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = meta;
 
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'pinid' when calling pinningPinsPinidPost",
         new ApiException(400, "Missing the required parameter 'pinid' when calling pinningPinsPinidPost"));
+    }
+    // verify the required parameter 'cid' is set
+    if (cid == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cid' when calling pinningPinsPinidPost",
+        new ApiException(400, "Missing the required parameter 'cid' when calling pinningPinsPinidPost"));
     }
 
     // create path and map variables

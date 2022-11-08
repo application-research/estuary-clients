@@ -579,7 +579,7 @@ static bool pinningPinsPinidPostProcessor(MemoryStruct_s p_chunk, long code, cha
 }
 
 static bool pinningPinsPinidPostHelper(char * accessToken,
-	std::string pinid, 
+	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -599,6 +599,42 @@ static bool pinningPinsPinidPostHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("std::string")) {
+		node = converttoJson(&cid, "std::string", "");
+	}
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	if (isprimitive("std::string")) {
+		node = converttoJson(&name, "std::string", "");
+	}
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	if (isprimitive("std::string")) {
+		node = converttoJson(&origins, "std::string", "");
+	}
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	if (isprimitive("std::string")) {
+		node = converttoJson(&meta, "std::string", "");
+	}
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/pinning/pins/{pinid}");
 	int pos;
@@ -656,22 +692,22 @@ static bool pinningPinsPinidPostHelper(char * accessToken,
 
 
 bool PinningManager::pinningPinsPinidPostAsync(char * accessToken,
-	std::string pinid, 
+	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidPostHelper(accessToken,
-	pinid, 
+	pinid, cid, name, origins, meta, 
 	handler, userData, true);
 }
 
 bool PinningManager::pinningPinsPinidPostSync(char * accessToken,
-	std::string pinid, 
+	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidPostHelper(accessToken,
-	pinid, 
+	pinid, cid, name, origins, meta, 
 	handler, userData, false);
 }
 

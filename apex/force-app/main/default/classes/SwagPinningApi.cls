@@ -100,16 +100,22 @@ public class SwagPinningApi {
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param pinid Pin ID (required)
+     * @param cid CID of new pin (required)
+     * @param name Name (filename) of new pin (optional)
+     * @param origins Origins of new pin (optional)
+     * @param meta Meta information of new pin (optional)
      * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
     public String pinningPinsPinidPost(Map<String, Object> params) {
         client.assertNotNull(params.get('pinid'), 'pinid');
+        client.assertNotNull(params.get('cid'), 'cid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         return (String) client.invoke(
-            'POST', '/pinning/pins/{pinid}', '',
+            'POST', '/pinning/pins/{pinid}',
+            (String) params.get('meta'),
             query, form,
             new Map<String, Object>{
                 'pinid' => (String) params.get('pinid')

@@ -90,10 +90,15 @@ object PinningApi {
    *   bearerAuth (apiKey)
    * 
    * @param pinid Pin ID
+   * @param cid CID of new pin
+   * @param name Name (filename) of new pin
+   * @param origins Origins of new pin
+   * @param meta Meta information of new pin
    */
-  def pinningPinsPinidPost(pinid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+  def pinningPinsPinidPost(pinid: String, cid: String, name: Option[String] = None, origins: Option[String] = None, meta: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
     ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/pinning/pins/{pinid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withBody(meta)
       .withPathParam("pinid", pinid)
       .withSuccessResponse[String](200)
       .withErrorResponse[UtilHttpError](400)

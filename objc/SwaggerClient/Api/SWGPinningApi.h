@@ -70,6 +70,10 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 /// This endpoint replaces a pinned object.
 ///
 /// @param pinid Pin ID
+/// @param cid CID of new pin
+/// @param name Name (filename) of new pin (optional)
+/// @param origins Origins of new pin (optional)
+/// @param meta Meta information of new pin (optional)
 /// 
 ///  code:200 message:"OK",
 ///  code:400 message:"Bad Request",
@@ -77,6 +81,10 @@ extern NSInteger kSWGPinningApiMissingParamErrorCode;
 ///
 /// @return NSString*
 -(NSURLSessionTask*) pinningPinsPinidPostWithPinid: (NSString*) pinid
+    cid: (NSString*) cid
+    name: (NSString*) name
+    origins: (NSString*) origins
+    meta: (NSString*) meta
     completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 

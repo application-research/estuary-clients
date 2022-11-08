@@ -17,6 +17,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -406,10 +407,22 @@ PinningApiService Replace a pinned object
 This endpoint replaces a pinned object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param pinid Pin ID
+ * @param cid CID of new pin
+ * @param optional nil or *PinningApiPinningPinsPinidPostOpts - Optional Parameters:
+     * @param "Name" (optional.String) -  Name (filename) of new pin
+     * @param "Origins" (optional.String) -  Origins of new pin
+     * @param "Meta" (optional.String) -  Meta information of new pin
 
 @return string
 */
-func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid string) (string, *http.Response, error) {
+
+type PinningApiPinningPinsPinidPostOpts struct { 
+	Name optional.String
+	Origins optional.String
+	Meta optional.String
+}
+
+func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid string, cid string, localVarOptionals *PinningApiPinningPinsPinidPostOpts) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -442,6 +455,23 @@ func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid stri
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &cid
+	// body params
+	if localVarOptionals != nil && localVarOptionals.Name.IsSet() {
+		localVarPostBody = &localVarOptionals.Name.Value()
+		
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.Origins.IsSet() {
+		localVarPostBody = &localVarOptionals.Origins.Value()
+		
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.Meta.IsSet() {
+		localVarPostBody = &localVarOptionals.Meta.Value()
+		
 	}
 	if ctx != nil {
 		// API Key Authentication

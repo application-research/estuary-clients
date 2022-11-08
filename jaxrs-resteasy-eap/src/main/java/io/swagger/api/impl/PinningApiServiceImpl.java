@@ -14,7 +14,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-08T04:05:39.854Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-08T11:05:53.706Z")
 public class PinningApiServiceImpl implements PinningApi {
       public Response pinningPinsGet(SecurityContext securityContext) {
       // do some magic!
@@ -28,7 +28,7 @@ public class PinningApiServiceImpl implements PinningApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response pinningPinsPinidPost(String pinid,SecurityContext securityContext) {
+      public Response pinningPinsPinidPost(String pinid,String cid,String name,String origins,String meta,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

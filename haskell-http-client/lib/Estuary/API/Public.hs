@@ -68,9 +68,9 @@ import qualified Prelude as P
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 publicByCidCidGet 
-  :: Cid -- ^ "cid" -  Cid
+  :: Cid2 -- ^ "cid" -  Cid
   -> EstuaryRequest PublicByCidCidGet MimeNoContent Text MimeJSON
-publicByCidCidGet (Cid cid) =
+publicByCidCidGet (Cid2 cid) =
   _mkRequest "GET" ["/public/by-cid/",toPath cid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 

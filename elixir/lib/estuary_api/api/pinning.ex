@@ -93,18 +93,29 @@ defmodule EstuaryAPI.Api.Pinning do
 
   - connection (EstuaryAPI.Connection): Connection to server
   - pinid (String.t): Pin ID
+  - cid (String.t): CID of new pin
   - opts (KeywordList): [optional] Optional parameters
+    - :name (String.t): Name (filename) of new pin
+    - :origins (String.t): Origins of new pin
+    - :meta (String.t): Meta information of new pin
 
   ## Returns
 
   {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_pinid_post(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
-  def pinning_pins_pinid_post(connection, pinid, _opts \\ []) do
+  @spec pinning_pins_pinid_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def pinning_pins_pinid_post(connection, pinid, cid, opts \\ []) do
+    optional_params = %{
+      :"name" => :body,
+      :"origins" => :body,
+      :"meta" => :body
+    }
     %{}
     |> method(:post)
     |> url("/pinning/pins/#{pinid}")
+    |> add_param(:body, :"cid", cid)
+    |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

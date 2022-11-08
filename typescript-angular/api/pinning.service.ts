@@ -194,17 +194,28 @@ export class PinningService {
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param pinid Pin ID
+     * @param cid CID of new pin
+     * @param name Name (filename) of new pin
+     * @param origins Origins of new pin
+     * @param meta Meta information of new pin
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidPost(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsPinidPost(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsPinidPost(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public pinningPinsPinidPost(pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pinid === null || pinid === undefined) {
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
         }
+
+        if (cid === null || cid === undefined) {
+            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
+        }
+
+
+
 
         let headers = this.defaultHeaders;
 
@@ -225,9 +236,13 @@ export class PinningService {
         // to determine the Content-Type header
         const consumes: string[] = [
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.post<string>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
-            null,
+            meta,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

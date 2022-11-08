@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T04:05:50.900Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T11:06:02.742Z")
 
 @Validated
 @Api(value = "pinning", description = "the pinning API")
@@ -79,7 +79,7 @@ public interface PinningApi {
     @RequestMapping(value = "/pinning/pins/{pinid}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid);
+    ResponseEntity<String> pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid,@ApiParam(value = "CID of new pin" ,required=true )  @Valid @RequestBody String cid,@ApiParam(value = "Name (filename) of new pin"  )  @Valid @RequestBody String name,@ApiParam(value = "Origins of new pin"  )  @Valid @RequestBody String origins,@ApiParam(value = "Meta information of new pin"  )  @Valid @RequestBody String meta);
 
 
     @ApiOperation(value = "Add and pin object", nickname = "pinningPinsPost", notes = "This endpoint adds a pin to the IPFS daemon.", response = String.class, authorizations = {

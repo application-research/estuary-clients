@@ -516,6 +516,10 @@ package .Clients is
    procedure Pinning_Pins_Pinid_Post
       (Client : in out Client_Type;
        Pinid : in Swagger.UString;
+       Cid : in Swagger.UString;
+       Name : in Swagger.Nullable_UString;
+       Origins : in Swagger.Nullable_UString;
+       Meta : in Swagger.Nullable_UString;
        Result : out Swagger.UString);
 
    --  Add and pin object

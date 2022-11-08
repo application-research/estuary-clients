@@ -106,6 +106,14 @@ public:
     
 	/* Pin ID */
 	FString Pinid;
+	/* CID of new pin */
+	FString Cid;
+	/* Name (filename) of new pin */
+	TOptional<FString> Name;
+	/* Origins of new pin */
+	TOptional<FString> Origins;
+	/* Meta information of new pin */
+	TOptional<FString> Meta;
 };
 
 class SWAGGER_API SwaggerPinningApi::PinningPinsPinidPostResponse : public Response

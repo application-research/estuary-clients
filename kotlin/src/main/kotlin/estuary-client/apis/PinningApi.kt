@@ -135,11 +135,15 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Replace a pinned object
     * This endpoint replaces a pinned object.
     * @param pinid Pin ID 
+    * @param cid CID of new pin 
+    * @param name Name (filename) of new pin (optional)
+    * @param origins Origins of new pin (optional)
+    * @param meta Meta information of new pin (optional)
     * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidPost(pinid: kotlin.String) : kotlin.String {
-        val localVariableBody: kotlin.Any? = null
+    fun pinningPinsPinidPost(pinid: kotlin.String, cid: kotlin.String, name: kotlin.String, origins: kotlin.String, meta: kotlin.String) : kotlin.String {
+        val localVariableBody: kotlin.Any? = cidnameoriginsmeta
         val localVariableQuery: MultiValueMap = mapOf()
         
         val contentHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()

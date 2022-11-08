@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> string PinningPinsPinidPost (string pinid)
+> string PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null)
 
 Replace a pinned object
 
@@ -234,11 +234,15 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var pinid = pinid_example;  // string | Pin ID
+            var cid = cid_example;  // string | CID of new pin
+            var name = name_example;  // string | Name (filename) of new pin (optional) 
+            var origins = origins_example;  // string | Origins of new pin (optional) 
+            var meta = meta_example;  // string | Meta information of new pin (optional) 
 
             try
             {
                 // Replace a pinned object
-                string result = apiInstance.PinningPinsPinidPost(pinid);
+                string result = apiInstance.PinningPinsPinidPost(pinid, cid, name, origins, meta);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -255,6 +259,10 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID | 
+ **cid** | **string**| CID of new pin | 
+ **name** | **string**| Name (filename) of new pin | [optional] 
+ **origins** | **string**| Origins of new pin | [optional] 
+ **meta** | **string**| Meta information of new pin | [optional] 
 
 ### Return type
 

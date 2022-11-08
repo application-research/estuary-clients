@@ -46,6 +46,8 @@ class PinningApi extends _$PinningApiClient implements ApiClient {
     @PostReq(path: "/pinning/pins/:pinid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
     Future<String> pinningPinsPinidPost(
             @PathParam("pinid") String pinid
+        ,
+        @AsJson() String meta
     );
 
     /// Add and pin object

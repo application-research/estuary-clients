@@ -32,8 +32,12 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin</param>
+        /// <param name="origins">Origins of new pin</param>
+        /// <param name="meta">Meta information of new pin</param>
         /// <returns>string</returns>
-        string PinningPinsPinidPost (string pinid);
+        string PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta);
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
@@ -205,12 +209,19 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <param name="pinid">Pin ID</param> 
+        /// <param name="cid">CID of new pin</param> 
+        /// <param name="name">Name (filename) of new pin</param> 
+        /// <param name="origins">Origins of new pin</param> 
+        /// <param name="meta">Meta information of new pin</param> 
         /// <returns>string</returns>            
-        public string PinningPinsPinidPost (string pinid)
+        public string PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta)
         {
             
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidPost");
+            
+            // verify the required parameter 'cid' is set
+            if (cid == null) throw new ApiException(400, "Missing required parameter 'cid' when calling PinningPinsPinidPost");
             
     
             var path = "/pinning/pins/{pinid}";
@@ -223,7 +234,8 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                                postBody = ApiClient.Serialize(meta); // http body (model) parameter
+    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

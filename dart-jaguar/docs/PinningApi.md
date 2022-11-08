@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> String pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -170,9 +170,13 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
+var cid = new String(); // String | CID of new pin
+var name = new String(); // String | Name (filename) of new pin
+var origins = new String(); // String | Origins of new pin
+var meta = new String(); // String | Meta information of new pin
 
 try { 
-    var result = api_instance.pinningPinsPinidPost(pinid);
+    var result = api_instance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
     print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidPost: $e\n");
@@ -184,6 +188,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID | 
+ **cid** | **String**| CID of new pin | 
+ **name** | **String**| Name (filename) of new pin | [optional] 
+ **origins** | **String**| Origins of new pin | [optional] 
+ **meta** | **String**| Meta information of new pin | [optional] 
 
 ### Return type
 

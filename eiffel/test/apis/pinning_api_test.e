@@ -63,11 +63,16 @@ feature -- Test routines
         local
             l_response: STRING_32
             l_pinid: STRING_32
+            l_cid: STRING_32
+            l_name: STRING_32
+            l_origins: STRING_32
+            l_meta: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_pinid
+            -- l_cid
                       
-            -- l_response := api.pinning_pins_pinid_post(l_pinid)
+            -- l_response := api.pinning_pins_pinid_post(l_pinid, l_cid, l_name, l_origins, l_meta)
             assert ("not_implemented", False)
         end
     

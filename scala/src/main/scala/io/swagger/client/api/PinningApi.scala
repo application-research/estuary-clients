@@ -161,10 +161,14 @@ class PinningApi(
    * This endpoint replaces a pinned object.
    *
    * @param pinid Pin ID 
+   * @param cid CID of new pin 
+   * @param name Name (filename) of new pin (optional)
+   * @param origins Origins of new pin (optional)
+   * @param meta Meta information of new pin (optional)
    * @return String
    */
-  def pinningPinsPinidPost(pinid: String): Option[String] = {
-    val await = Try(Await.result(pinningPinsPinidPostAsync(pinid), Duration.Inf))
+  def pinningPinsPinidPost(pinid: String, cid: String, name: Option[String] = None, origins: Option[String] = None, meta: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(pinningPinsPinidPostAsync(pinid, cid, name, origins, meta), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -176,10 +180,14 @@ class PinningApi(
    * This endpoint replaces a pinned object.
    *
    * @param pinid Pin ID 
+   * @param cid CID of new pin 
+   * @param name Name (filename) of new pin (optional)
+   * @param origins Origins of new pin (optional)
+   * @param meta Meta information of new pin (optional)
    * @return Future(String)
    */
-  def pinningPinsPinidPostAsync(pinid: String): Future[String] = {
-      helper.pinningPinsPinidPost(pinid)
+  def pinningPinsPinidPostAsync(pinid: String, cid: String, name: Option[String] = None, origins: Option[String] = None, meta: Option[String] = None): Future[String] = {
+      helper.pinningPinsPinidPost(pinid, cid, name, origins, meta)
   }
 
   /**
@@ -263,7 +271,12 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def pinningPinsPinidPost(pinid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+  def pinningPinsPinidPost(pinid: String,
+    cid: String,
+    name: Option[String] = None,
+    origins: Option[String] = None,
+    meta: Option[String] = None
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[String], writer: RequestWriter[Option[String]], writer: RequestWriter[Option[String]], writer: RequestWriter[Option[String]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/pinning/pins/{pinid}")
       replaceAll("\\{" + "pinid" + "\\}", pinid.toString))
@@ -274,8 +287,10 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (pinid == null) throw new Exception("Missing required parameter 'pinid' when calling PinningApi->pinningPinsPinidPost")
 
+    if (cid == null) throw new Exception("Missing required parameter 'cid' when calling PinningApi->pinningPinsPinidPost")
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(meta))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

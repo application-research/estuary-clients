@@ -110,8 +110,12 @@ export class PinningApi {
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
      * @param pinid Pin ID
+     * @param cid CID of new pin
+     * @param name Name (filename) of new pin
+     * @param origins Origins of new pin
+     * @param meta Meta information of new pin
      */
-    public pinningPinsPinidPost (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+    public pinningPinsPinidPost (pinid: string, cid: string, name?: string, origins?: string, meta?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
 
@@ -122,9 +126,15 @@ export class PinningApi {
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
         }
 
+        // verify required parameter 'cid' is not null or undefined
+        if (cid === null || cid === undefined) {
+            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
+        }
+
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,
+            data: meta,
             params: queryParameters,
             headers: headerParams
         };

@@ -28,7 +28,7 @@ Describe 'estuary-client PinningApi' {
 
     Context 'PinningApi' {
         It 'Invoke-PinningApiPinningPinsPinidPost' {
-            $ret = Invoke-PetApiGetPetById -pinid "TEST_VALUE"
+            $ret = Invoke-PetApiGetPetById -pinid "TEST_VALUE" -cid "TEST_VALUE" -name "TEST_VALUE" -origins "TEST_VALUE" -meta "TEST_VALUE"
             #$ret | Should BeOfType estuary-client.Model.ModelNameHere
             #$ret.property | Should Be 0
         }

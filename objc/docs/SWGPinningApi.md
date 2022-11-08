@@ -181,6 +181,10 @@ Name | Type | Description  | Notes
 # **pinningPinsPinidPost**
 ```objc
 -(NSURLSessionTask*) pinningPinsPinidPostWithPinid: (NSString*) pinid
+    cid: (NSString*) cid
+    name: (NSString*) name
+    origins: (NSString*) origins
+    meta: (NSString*) meta
         completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
@@ -199,11 +203,19 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 
 
 NSString* pinid = @"pinid_example"; // Pin ID
+NSString* cid = cid_example; // CID of new pin
+NSString* name = name_example; // Name (filename) of new pin (optional)
+NSString* origins = origins_example; // Origins of new pin (optional)
+NSString* meta = meta_example; // Meta information of new pin (optional)
 
 SWGPinningApi*apiInstance = [[SWGPinningApi alloc] init];
 
 // Replace a pinned object
 [apiInstance pinningPinsPinidPostWithPinid:pinid
+              cid:cid
+              name:name
+              origins:origins
+              meta:meta
           completionHandler: ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -219,6 +231,10 @@ SWGPinningApi*apiInstance = [[SWGPinningApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **NSString***| Pin ID | 
+ **cid** | **NSString***| CID of new pin | 
+ **name** | **NSString***| Name (filename) of new pin | [optional] 
+ **origins** | **NSString***| Origins of new pin | [optional] 
+ **meta** | **NSString***| Meta information of new pin | [optional] 
 
 ### Return type
 

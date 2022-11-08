@@ -131,10 +131,14 @@ open class PinningAPI: APIBase {
     /**
      Replace a pinned object
      - parameter pinid: (path) Pin ID 
+     - parameter cid: (body) CID of new pin 
+     - parameter name: (body) Name (filename) of new pin (optional)
+     - parameter origins: (body) Origins of new pin (optional)
+     - parameter meta: (body) Meta information of new pin (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPinidPost(pinid: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        pinningPinsPinidPostWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
+    open class func pinningPinsPinidPost(pinid: String, cid: String, name: String? = nil, origins: String? = nil, meta: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        pinningPinsPinidPostWithRequestBuilder(pinid: pinid, cid: cid, name: name, origins: origins, meta: meta).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -152,21 +156,25 @@ open class PinningAPI: APIBase {
   "empty": true
 }}]
      - parameter pinid: (path) Pin ID 
+     - parameter cid: (body) CID of new pin 
+     - parameter name: (body) Name (filename) of new pin (optional)
+     - parameter origins: (body) Origins of new pin (optional)
+     - parameter meta: (body) Meta information of new pin (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func pinningPinsPinidPostWithRequestBuilder(pinid: String) -> RequestBuilder<String> {
+    open class func pinningPinsPinidPostWithRequestBuilder(pinid: String, cid: String, name: String? = nil, origins: String? = nil, meta: String? = nil) -> RequestBuilder<String> {
         var path = "/pinning/pins/{pinid}"
         let pinidPreEscape = "\(pinid)"
         let pinidPostEscape = pinidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{pinid}", with: pinidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        
+        let parameters = meta?.encodeToJSON()
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**

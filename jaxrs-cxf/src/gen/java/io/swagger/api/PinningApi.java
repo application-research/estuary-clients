@@ -93,7 +93,7 @@ public interface PinningApi  {
         @ApiResponse(code = 200, message = "OK", response = String.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public String pinningPinsPinidPost(@PathParam("pinid") String pinid);
+    public String pinningPinsPinidPost(@PathParam("pinid") String pinid, @Valid String cid, @Valid String name, @Valid String origins, @Valid String meta);
 
     /**
      * Add and pin object

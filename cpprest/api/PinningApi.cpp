@@ -431,7 +431,7 @@ pplx::task<utility::string_t> PinningApi::pinningPinsPinidGet(utility::string_t 
         return result;
     });
 }
-pplx::task<utility::string_t> PinningApi::pinningPinsPinidPost(utility::string_t pinid)
+pplx::task<utility::string_t> PinningApi::pinningPinsPinidPost(utility::string_t pinid, utility::string_t cid, boost::optional<utility::string_t> name, boost::optional<utility::string_t> origins, boost::optional<utility::string_t> meta)
 {
 
 
@@ -486,11 +486,21 @@ pplx::task<utility::string_t> PinningApi::pinningPinsPinidPost(utility::string_t
     if ( consumeHttpContentTypes.size() == 0 || consumeHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("application/json");
+        web::json::value json;
+
+        json = ModelBase::toJson(meta);
+
+        httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
     else if( consumeHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != consumeHttpContentTypes.end() )
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+        std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
+        multipart->add(ModelBase::toHttpContent("meta", meta));
+
+        httpBody = multipart;
+        requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
     else
     {

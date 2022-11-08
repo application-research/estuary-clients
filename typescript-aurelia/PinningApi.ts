@@ -43,6 +43,10 @@ export interface IPinningPinsPinidGetParams {
  */
 export interface IPinningPinsPinidPostParams {
   pinid: string;
+  cid: string;
+  name?: string;
+  origins?: string;
+  meta?: string;
 }
 
 /**
@@ -159,10 +163,15 @@ export class PinningApi extends Api {
    * Replace a pinned object
    * This endpoint replaces a pinned object.
    * @param params.pinid Pin ID
+   * @param params.cid CID of new pin
+   * @param params.name Name (filename) of new pin
+   * @param params.origins Origins of new pin
+   * @param params.meta Meta information of new pin
    */
   async pinningPinsPinidPost(params: IPinningPinsPinidPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('pinningPinsPinidPost', params, 'pinid');
+    this.ensureParamIsSet('pinningPinsPinidPost', params, 'cid');
 
     // Create URL to call
     const url = `${this.basePath}/pinning/pins/{pinid}`
@@ -171,6 +180,9 @@ export class PinningApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
+      // Encode body parameter
+      .withHeader('content-type', 'application/json')
+      .withContent(JSON.stringify(params['meta'] || {}))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())

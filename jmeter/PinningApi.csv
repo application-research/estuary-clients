@@ -1,2 +1,2 @@
-testCase,httpStatusCode,pinid,pinid,pinid,pin
-Success,200,0,0,0,0
+testCase,httpStatusCode,pinid,pinid,pinid,cid,name,origins,meta,pin
+Success,200,0,0,0,0,0,0,0,0

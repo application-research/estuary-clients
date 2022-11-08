@@ -53,7 +53,19 @@ function Invoke-PinningApiPinningPinsPinidPost {
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]
-        ${pinid}
+        ${pinid},
+        [Parameter(Position = 1, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
+        [String]
+        ${cid},
+        [Parameter(Position = 2, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${name},
+        [Parameter(Position = 3, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${origins},
+        [Parameter(Position = 4, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $false)]
+        [String]
+        ${meta}
     )
 
     Process {
@@ -61,7 +73,11 @@ function Invoke-PinningApiPinningPinsPinidPost {
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
         $Script:PinningApi.PinningPinsPinidPost(
-            ${pinid}
+            ${pinid},
+            ${cid},
+            ${name},
+            ${origins},
+            ${meta}
         )
     }
 }

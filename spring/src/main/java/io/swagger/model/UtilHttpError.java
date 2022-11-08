@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * UtilHttpError
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T04:05:50.900Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T11:06:02.742Z")
 
 
 public class UtilHttpError   {

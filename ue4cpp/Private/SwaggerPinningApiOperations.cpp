@@ -209,12 +209,41 @@ void SwaggerPinningApi::PinningPinsPinidPostRequest::SetupHttpRequest(const TSha
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, Cid);
+		if (Name.IsSet())
+		{
+			WriteJsonValue(Writer, Name.GetValue());
+		}
+		if (Origins.IsSet())
+		{
+			WriteJsonValue(Writer, Origins.GetValue());
+		}
+		if (Meta.IsSet())
+		{
+			WriteJsonValue(Writer, Meta.GetValue());
+		}
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (cid) was ignored, not supported in multipart form"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (name) was ignored, not supported in multipart form"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (origins) was ignored, not supported in multipart form"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (meta) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (cid) was ignored, not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (name) was ignored, not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (origins) was ignored, not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (meta) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

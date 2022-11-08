@@ -129,11 +129,19 @@ feature -- API Access
 			end
 		end	
 
-	pinning_pins_pinid_post (pinid: STRING_32): detachable STRING_32
+	pinning_pins_pinid_post (pinid: STRING_32; cid: STRING_32; name: STRING_32; origins: STRING_32; meta: STRING_32): detachable STRING_32
 			-- Replace a pinned object
 			-- This endpoint replaces a pinned object.
 			-- 
 			-- argument: pinid Pin ID (required)
+			-- 
+			-- argument: cid CID of new pin (required)
+			-- 
+			-- argument: name Name (filename) of new pin (optional)
+			-- 
+			-- argument: origins Origins of new pin (optional)
+			-- 
+			-- argument: meta Meta information of new pin (optional)
 			-- 
 			-- 
 			-- Result STRING_32
@@ -145,7 +153,7 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			
+			l_request.set_body(meta)
 			l_path := "/pinning/pins/{pinid}"
 			l_path.replace_substring_all ("{"+"pinid"+"}", api_client.url_encode (pinid.out))
 

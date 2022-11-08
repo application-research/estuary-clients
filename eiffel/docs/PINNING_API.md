@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post (pinid: STRING_32 ): detachable STRING_32
+> pinning_pins_pinid_post (pinid: STRING_32 ; cid: STRING_32 ; name:  detachable STRING_32 ; origins:  detachable STRING_32 ; meta:  detachable STRING_32 ): detachable STRING_32
 	
 
 Replace a pinned object
@@ -112,6 +112,10 @@ This endpoint replaces a pinned object.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **STRING_32**| Pin ID | 
+ **cid** | **STRING_32**| CID of new pin | 
+ **name** | **STRING_32**| Name (filename) of new pin | [optional] 
+ **origins** | **STRING_32**| Origins of new pin | [optional] 
+ **meta** | **STRING_32**| Meta information of new pin | [optional] 
 
 ### Return type
 

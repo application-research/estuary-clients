@@ -93,8 +93,12 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>string</returns>
-        string PinningPinsPinidPost (string pinid);
+        string PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null);
 
         /// <summary>
         /// Replace a pinned object
@@ -104,8 +108,12 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsPinidPostWithHttpInfo (string pinid);
+        ApiResponse<string> PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -198,8 +206,12 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid);
+        System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null);
 
         /// <summary>
         /// Replace a pinned object
@@ -209,8 +221,12 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid);
+        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -754,10 +770,14 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>string</returns>
-        public string PinningPinsPinidPost (string pinid)
+        public string PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
-             ApiResponse<string> localVarResponse = PinningPinsPinidPostWithHttpInfo(pinid);
+             ApiResponse<string> localVarResponse = PinningPinsPinidPostWithHttpInfo(pinid, cid, name, origins, meta);
              return localVarResponse.Data;
         }
 
@@ -766,12 +786,19 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsPinidPostWithHttpInfo (string pinid)
+        public ApiResponse< string > PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
                 throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningApi->PinningPinsPinidPost");
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling PinningApi->PinningPinsPinidPost");
 
             var localVarPath = "/pinning/pins/{pinid}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -795,6 +822,14 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (pinid != null) localVarPathParams.Add("pinid", this.Configuration.ApiClient.ParameterToString(pinid)); // path parameter
+            if (meta != null && meta.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(meta); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = meta; // byte array
+            }
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -825,10 +860,14 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid)
+        public async System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
-             ApiResponse<string> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(pinid);
+             ApiResponse<string> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(pinid, cid, name, origins, meta);
              return localVarResponse.Data;
 
         }
@@ -838,12 +877,19 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin (optional)</param>
+        /// <param name="origins">Origins of new pin (optional)</param>
+        /// <param name="meta">Meta information of new pin (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
                 throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningApi->PinningPinsPinidPost");
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling PinningApi->PinningPinsPinidPost");
 
             var localVarPath = "/pinning/pins/{pinid}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -867,6 +913,14 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (pinid != null) localVarPathParams.Add("pinid", this.Configuration.ApiClient.ParameterToString(pinid)); // path parameter
+            if (meta != null && meta.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(meta); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = meta; // byte array
+            }
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))

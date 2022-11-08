@@ -66,7 +66,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint replaces a pinned object.
      *
      */
-    public String pinningPinsPinidPost(String pinid) {
+    public String pinningPinsPinidPost(String pinid, String cid, String name, String origins, String meta) {
         // TODO: Implement...
         
         return null;

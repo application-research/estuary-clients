@@ -148,6 +148,10 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint replaces a pinned object.</remarks>
         /// <param name="pinid">Pin ID</param>
+        /// <param name="cid">CID of new pin</param>
+        /// <param name="name">Name (filename) of new pin</param>
+        /// <param name="origins">Origins of new pin</param>
+        /// <param name="meta">Meta information of new pin</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -159,7 +163,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PinningPinsPinidPost([FromRoute][Required]string pinid)
+        public virtual IActionResult PinningPinsPinidPost([FromRoute][Required]string pinid, [FromBody]string cid, [FromBody]string name, [FromBody]string origins, [FromBody]string meta)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

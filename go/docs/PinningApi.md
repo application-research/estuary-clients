@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPinidPost**
-> string PinningPinsPinidPost(ctx, pinid)
+> string PinningPinsPinidPost(ctx, pinid, cid, optional)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -103,6 +103,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **pinid** | **string**| Pin ID | 
+  **cid** | **string**| CID of new pin | 
+ **optional** | ***PinningApiPinningPinsPinidPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PinningApiPinningPinsPinidPostOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **name** | **optional.String**| Name (filename) of new pin | 
+ **origins** | **optional.String**| Origins of new pin | 
+ **meta** | **optional.String**| Meta information of new pin | 
 
 ### Return type
 

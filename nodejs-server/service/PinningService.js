@@ -97,9 +97,13 @@ exports.pinningPinsPinidGET = function(pinid) {
  * This endpoint replaces a pinned object.
  *
  * pinid String Pin ID
+ * cid String CID of new pin
+ * name String Name (filename) of new pin (optional)
+ * origins String Origins of new pin (optional)
+ * meta String Meta information of new pin (optional)
  * returns String
  **/
-exports.pinningPinsPinidPOST = function(pinid) {
+exports.pinningPinsPinidPOST = function(pinid,cid,name,origins,meta) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {

@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 @Api(description = "the pinning API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T04:05:54.364Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T11:06:04.582Z")
 public class PinningApi {
 
     @GET
@@ -75,7 +75,7 @@ public class PinningApi {
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
     })
-    public Response pinningPinsPinidPost(@PathParam("pinid") @ApiParam("Pin ID") String pinid) {
+    public Response pinningPinsPinidPost(@PathParam("pinid") @ApiParam("Pin ID") String pinid,@Valid String cid,@Valid String name,@Valid String origins,@Valid String meta) {
         return Response.ok().entity("magic!").build();
     }
 

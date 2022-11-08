@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> String pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -151,8 +151,12 @@ This endpoint replaces a pinned object.
 
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | Pin ID
+String cid = "cid_example"; // String | CID of new pin
+String name = "name_example"; // String | Name (filename) of new pin
+String origins = "origins_example"; // String | Origins of new pin
+String meta = "meta_example"; // String | Meta information of new pin
 try {
-    String result = apiInstance.pinningPinsPinidPost(pinid);
+    String result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -165,6 +169,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID |
+ **cid** | **String**| CID of new pin |
+ **name** | **String**| Name (filename) of new pin | [optional]
+ **origins** | **String**| Origins of new pin | [optional]
+ **meta** | **String**| Meta information of new pin | [optional]
 
 ### Return type
 

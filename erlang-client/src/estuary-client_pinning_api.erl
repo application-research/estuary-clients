@@ -3,7 +3,7 @@
 -export([pinning_pins_get/1, pinning_pins_get/2,
          pinning_pins_pinid_delete/2, pinning_pins_pinid_delete/3,
          pinning_pins_pinid_get/2, pinning_pins_pinid_get/3,
-         pinning_pins_pinid_post/2, pinning_pins_pinid_post/3,
+         pinning_pins_pinid_post/6, pinning_pins_pinid_post/7,
          pinning_pins_post/2, pinning_pins_post/3]).
 
 -define(BASE_URL, "/").
@@ -73,12 +73,12 @@ pinning_pins_pinid_get(Ctx, Pinid, Optional) ->
 
 %% @doc Replace a pinned object
 %% This endpoint replaces a pinned object.
--spec pinning_pins_pinid_post(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
-pinning_pins_pinid_post(Ctx, Pinid) ->
-    pinning_pins_pinid_post(Ctx, Pinid, #{}).
+-spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+pinning_pins_pinid_post(Ctx, Pinid, Cid) ->
+    pinning_pins_pinid_post(Ctx, Pinid, Cid, #{}).
 
--spec pinning_pins_pinid_post(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
-pinning_pins_pinid_post(Ctx, Pinid, Optional) ->
+-spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+pinning_pins_pinid_post(Ctx, Pinid, Cid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
@@ -86,7 +86,7 @@ pinning_pins_pinid_post(Ctx, Pinid, Optional) ->
     Path = ["/pinning/pins/", Pinid, ""],
     QS = [],
     Headers = [],
-    Body1 = [],
+    Body1 = CidNameOriginsMeta,
     ContentTypeHeader = estuary-client_utils:select_header_content_type([]),
     Opts = maps:get(hackney_opts, Optional, []),
 

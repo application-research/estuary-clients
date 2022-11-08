@@ -128,10 +128,34 @@ PinningApi <- R6::R6Class(
       }
 
     },
-    pinning_pins_pinid_post = function(pinid, ...){
+    pinning_pins_pinid_post = function(pinid, cid, name, origins, meta, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`cid`)) {
+        body <- `cid`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      if (!missing(`name`)) {
+        body <- `name`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      if (!missing(`origins`)) {
+        body <- `origins`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      if (!missing(`meta`)) {
+        body <- `meta`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/pinning/pins/{pinid}"
       if (!missing(`pinid`)) {

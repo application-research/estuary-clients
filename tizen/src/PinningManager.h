@@ -108,12 +108,16 @@ bool pinningPinsPinidGetAsync(char * accessToken,
  *
  * This endpoint replaces a pinned object.
  * \param pinid Pin ID *Required*
+ * \param cid CID of new pin *Required*
+ * \param name Name (filename) of new pin
+ * \param origins Origins of new pin
+ * \param meta Meta information of new pin
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pinningPinsPinidPostSync(char * accessToken,
-	std::string pinid, 
+	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
@@ -121,12 +125,16 @@ bool pinningPinsPinidPostSync(char * accessToken,
  *
  * This endpoint replaces a pinned object.
  * \param pinid Pin ID *Required*
+ * \param cid CID of new pin *Required*
+ * \param name Name (filename) of new pin
+ * \param origins Origins of new pin
+ * \param meta Meta information of new pin
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pinningPinsPinidPostAsync(char * accessToken,
-	std::string pinid, 
+	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData);
 

@@ -108,7 +108,11 @@ private class SwagPinningApiTest {
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'pinid' => 'pinid_example'
+            'pinid' => 'pinid_example',
+            'cid' => 'cid_example',
+            'name' => 'name_example',
+            'origins' => 'origins_example',
+            'meta' => 'meta_example'
         };
 
         SwagClient client;

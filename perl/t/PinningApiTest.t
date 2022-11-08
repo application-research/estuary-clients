@@ -57,7 +57,11 @@ isa_ok($api, 'WWW::SwaggerClient::PinningApi');
 #
 {
     my $pinid = undef; # replace NULL with a proper value
-    my $result = $api->pinning_pins_pinid_post(pinid => $pinid);
+    my $cid = undef; # replace NULL with a proper value
+    my $name = undef; # replace NULL with a proper value
+    my $origins = undef; # replace NULL with a proper value
+    my $meta = undef; # replace NULL with a proper value
+    my $result = $api->pinning_pins_pinid_post(pinid => $pinid, cid => $cid, name => $name, origins => $origins, meta => $meta);
 }
 
 #

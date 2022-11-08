@@ -77,7 +77,7 @@ class PinningApi {
                     String.class )
                     
     }
-    def pinningPinsPinidPost ( String pinid, Closure onSuccess, Closure onFailure)  {
+    def pinningPinsPinidPost ( String pinid, String cid, String name, String origins, String meta, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
         String resourcePath = "/pinning/pins/{pinid}"
 
@@ -88,6 +88,10 @@ class PinningApi {
         // verify required params are set
         if (pinid == null) {
             throw new RuntimeException("missing required params pinid")
+        }
+        // verify required params are set
+        if (cid == null) {
+            throw new RuntimeException("missing required params cid")
         }
 
         

@@ -310,45 +310,53 @@ class PinningApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def pinning_pins_pinid_post(self, pinid, **kwargs):  # noqa: E501
+    def pinning_pins_pinid_post(self, pinid, cid, **kwargs):  # noqa: E501
         """Replace a pinned object  # noqa: E501
 
         This endpoint replaces a pinned object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pinning_pins_pinid_post(pinid, async_req=True)
+        >>> thread = api.pinning_pins_pinid_post(pinid, cid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str pinid: Pin ID (required)
+        :param str cid: CID of new pin (required)
+        :param str name: Name (filename) of new pin
+        :param str origins: Origins of new pin
+        :param str meta: Meta information of new pin
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.pinning_pins_pinid_post_with_http_info(pinid, **kwargs)  # noqa: E501
+            return self.pinning_pins_pinid_post_with_http_info(pinid, cid, **kwargs)  # noqa: E501
         else:
-            (data) = self.pinning_pins_pinid_post_with_http_info(pinid, **kwargs)  # noqa: E501
+            (data) = self.pinning_pins_pinid_post_with_http_info(pinid, cid, **kwargs)  # noqa: E501
             return data
 
-    def pinning_pins_pinid_post_with_http_info(self, pinid, **kwargs):  # noqa: E501
+    def pinning_pins_pinid_post_with_http_info(self, pinid, cid, **kwargs):  # noqa: E501
         """Replace a pinned object  # noqa: E501
 
         This endpoint replaces a pinned object.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pinning_pins_pinid_post_with_http_info(pinid, async_req=True)
+        >>> thread = api.pinning_pins_pinid_post_with_http_info(pinid, cid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str pinid: Pin ID (required)
+        :param str cid: CID of new pin (required)
+        :param str name: Name (filename) of new pin
+        :param str origins: Origins of new pin
+        :param str meta: Meta information of new pin
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['pinid']  # noqa: E501
+        all_params = ['pinid', 'cid', 'name', 'origins', 'meta']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -367,6 +375,10 @@ class PinningApi(object):
         if self.api_client.client_side_validation and ('pinid' not in params or
                                                        params['pinid'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `pinid` when calling `pinning_pins_pinid_post`")  # noqa: E501
+        # verify the required parameter 'cid' is set
+        if self.api_client.client_side_validation and ('cid' not in params or
+                                                       params['cid'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `cid` when calling `pinning_pins_pinid_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -382,6 +394,8 @@ class PinningApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'meta' in params:
+            body_params = params['meta']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

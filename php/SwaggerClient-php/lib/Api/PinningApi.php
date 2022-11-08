@@ -952,14 +952,18 @@ class PinningApi
      * Replace a pinned object
      *
      * @param  string $pinid Pin ID (required)
+     * @param  string $cid CID of new pin (required)
+     * @param  string $name Name (filename) of new pin (optional)
+     * @param  string $origins Origins of new pin (optional)
+     * @param  string $meta Meta information of new pin (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function pinningPinsPinidPost($pinid)
+    public function pinningPinsPinidPost($pinid, $cid, $name = null, $origins = null, $meta = null)
     {
-        list($response) = $this->pinningPinsPinidPostWithHttpInfo($pinid);
+        list($response) = $this->pinningPinsPinidPostWithHttpInfo($pinid, $cid, $name, $origins, $meta);
         return $response;
     }
 
@@ -969,15 +973,19 @@ class PinningApi
      * Replace a pinned object
      *
      * @param  string $pinid Pin ID (required)
+     * @param  string $cid CID of new pin (required)
+     * @param  string $name Name (filename) of new pin (optional)
+     * @param  string $origins Origins of new pin (optional)
+     * @param  string $meta Meta information of new pin (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pinningPinsPinidPostWithHttpInfo($pinid)
+    public function pinningPinsPinidPostWithHttpInfo($pinid, $cid, $name = null, $origins = null, $meta = null)
     {
         $returnType = 'string';
-        $request = $this->pinningPinsPinidPostRequest($pinid);
+        $request = $this->pinningPinsPinidPostRequest($pinid, $cid, $name, $origins, $meta);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1060,13 +1068,17 @@ class PinningApi
      * Replace a pinned object
      *
      * @param  string $pinid Pin ID (required)
+     * @param  string $cid CID of new pin (required)
+     * @param  string $name Name (filename) of new pin (optional)
+     * @param  string $origins Origins of new pin (optional)
+     * @param  string $meta Meta information of new pin (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPinidPostAsync($pinid)
+    public function pinningPinsPinidPostAsync($pinid, $cid, $name = null, $origins = null, $meta = null)
     {
-        return $this->pinningPinsPinidPostAsyncWithHttpInfo($pinid)
+        return $this->pinningPinsPinidPostAsyncWithHttpInfo($pinid, $cid, $name, $origins, $meta)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1080,14 +1092,18 @@ class PinningApi
      * Replace a pinned object
      *
      * @param  string $pinid Pin ID (required)
+     * @param  string $cid CID of new pin (required)
+     * @param  string $name Name (filename) of new pin (optional)
+     * @param  string $origins Origins of new pin (optional)
+     * @param  string $meta Meta information of new pin (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPinidPostAsyncWithHttpInfo($pinid)
+    public function pinningPinsPinidPostAsyncWithHttpInfo($pinid, $cid, $name = null, $origins = null, $meta = null)
     {
         $returnType = 'string';
-        $request = $this->pinningPinsPinidPostRequest($pinid);
+        $request = $this->pinningPinsPinidPostRequest($pinid, $cid, $name, $origins, $meta);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1130,16 +1146,26 @@ class PinningApi
      * Create request for operation 'pinningPinsPinidPost'
      *
      * @param  string $pinid Pin ID (required)
+     * @param  string $cid CID of new pin (required)
+     * @param  string $name Name (filename) of new pin (optional)
+     * @param  string $origins Origins of new pin (optional)
+     * @param  string $meta Meta information of new pin (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function pinningPinsPinidPostRequest($pinid)
+    protected function pinningPinsPinidPostRequest($pinid, $cid, $name = null, $origins = null, $meta = null)
     {
         // verify the required parameter 'pinid' is set
         if ($pinid === null || (is_array($pinid) && count($pinid) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $pinid when calling pinningPinsPinidPost'
+            );
+        }
+        // verify the required parameter 'cid' is set
+        if ($cid === null || (is_array($cid) && count($cid) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cid when calling pinningPinsPinidPost'
             );
         }
 
@@ -1162,6 +1188,18 @@ class PinningApi
 
         // body params
         $_tempBody = null;
+        if (isset($cid)) {
+            $_tempBody = $cid;
+        }
+        if (isset($name)) {
+            $_tempBody = $name;
+        }
+        if (isset($origins)) {
+            $_tempBody = $origins;
+        }
+        if (isset($meta)) {
+            $_tempBody = $meta;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(

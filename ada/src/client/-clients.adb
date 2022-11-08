@@ -1256,15 +1256,25 @@ package body .Clients is
    procedure Pinning_Pins_Pinid_Post
       (Client : in out Client_Type;
        Pinid : in Swagger.UString;
+       Cid : in Swagger.UString;
+       Name : in Swagger.Nullable_UString;
+       Origins : in Swagger.Nullable_UString;
+       Meta : in Swagger.Nullable_UString;
        Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
+      Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
+      Client.Initialize (Req, (1 => Swagger.Clients.APPLICATION_JSON));
+      .Models.Serialize (Req.Stream, "", Cid);
+      .Models.Serialize (Req.Stream, "", Name);
+      .Models.Serialize (Req.Stream, "", Origins);
+      .Models.Serialize (Req.Stream, "", Meta);
 
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
-      Client.Call (Swagger.Clients.POST, URI, Reply);
+      Client.Call (Swagger.Clients.POST, URI, Req, Reply);
       Swagger.Streams.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Post;
 

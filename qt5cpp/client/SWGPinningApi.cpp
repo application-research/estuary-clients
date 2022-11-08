@@ -193,7 +193,7 @@ SWGPinningApi::pinningPinsPinidGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGPinningApi::pinningPinsPinidPost(QString* pinid) {
+SWGPinningApi::pinningPinsPinidPost(QString* pinid, QString*& cid, QString*& name, QString*& origins, QString*& meta) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/pinning/pins/{pinid}");
 
@@ -205,7 +205,19 @@ SWGPinningApi::pinningPinsPinidPost(QString* pinid) {
     SWGHttpRequestInput input(fullPath, "POST");
 
 
-
+    
+    QString output(*cid);
+    input.request_body.append(output);
+        
+    QString output(*name);
+    input.request_body.append(output);
+        
+    QString output(*origins);
+    input.request_body.append(output);
+        
+    QString output(*meta);
+    input.request_body.append(output);
+    
 
 
     foreach(QString key, this->defaultHeaders.keys()) {

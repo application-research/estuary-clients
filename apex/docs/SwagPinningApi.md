@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> String pinningPinsPinidPost(pinid)
+> String pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -169,7 +169,11 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'pinid' => 'pinid_example'
+    'pinid' => 'pinid_example',
+    'cid' => 'cid_example',
+    'name' => 'name_example',
+    'origins' => 'origins_example',
+    'meta' => 'meta_example'
 };
 
 try {
@@ -186,6 +190,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID |
+ **cid** | **String**| CID of new pin |
+ **name** | **String**| Name (filename) of new pin | [optional]
+ **origins** | **String**| Origins of new pin | [optional]
+ **meta** | **String**| Meta information of new pin | [optional]
 
 ### Return type
 

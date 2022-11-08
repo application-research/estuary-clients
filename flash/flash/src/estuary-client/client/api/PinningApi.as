@@ -120,7 +120,7 @@ public class PinningApi extends SwaggerApi {
     /*
      * Returns String 
      */
-    public function pinning_pins_pinid_post (pinid: String): String {
+    public function pinning_pins_pinid_post (pinid: String, cid: String, name: String, origins: String, meta: String): String {
         // create path and map variables
         var path: String = "/pinning/pins/{pinid}".replace(/{format}/g,"xml").replace("{" + "pinid" + "}", getApiInvoker().escapeString(pinid));
 
@@ -129,13 +129,29 @@ public class PinningApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, meta, headerParams);
 
         var requestId: String = getUniqueId();
 

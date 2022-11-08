@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> 'String' pinningPinsPinidPost(pinid)
+> 'String' pinningPinsPinidPost(pinid, cid, opts)
 
 Replace a pinned object
 
@@ -187,6 +187,13 @@ var apiInstance = new EstuaryClient.PinningApi();
 
 var pinid = "pinid_example"; // String | Pin ID
 
+var cid = "cid_example"; // String | CID of new pin
+
+var opts = { 
+  'name': "name_example", // String | Name (filename) of new pin
+  'origins': "origins_example", // String | Origins of new pin
+  'meta': "meta_example" // String | Meta information of new pin
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -195,7 +202,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.pinningPinsPinidPost(pinid, callback);
+apiInstance.pinningPinsPinidPost(pinid, cid, opts, callback);
 ```
 
 ### Parameters
@@ -203,6 +210,10 @@ apiInstance.pinningPinsPinidPost(pinid, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID | 
+ **cid** | **String**| CID of new pin | 
+ **name** | **String**| Name (filename) of new pin | [optional] 
+ **origins** | **String**| Origins of new pin | [optional] 
+ **meta** | **String**| Meta information of new pin | [optional] 
 
 ### Return type
 

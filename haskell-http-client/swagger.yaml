@@ -1503,6 +1503,30 @@ paths:
         description: "Pin ID"
         required: true
         type: "string"
+      - in: "body"
+        name: "cid"
+        description: "CID of new pin"
+        required: true
+        schema:
+          type: "string"
+      - in: "body"
+        name: "name"
+        description: "Name (filename) of new pin"
+        required: false
+        schema:
+          type: "string"
+      - in: "body"
+        name: "origins"
+        description: "Origins of new pin"
+        required: false
+        schema:
+          type: "string"
+      - in: "body"
+        name: "meta"
+        description: "Meta information of new pin"
+        required: false
+        schema:
+          type: "string"
       responses:
         "200":
           description: "OK"

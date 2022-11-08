@@ -6338,13 +6338,21 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
          * @param {string} pinid Pin ID
+         * @param {string} cid CID of new pin
+         * @param {string} [name] Name (filename) of new pin
+         * @param {string} [origins] Origins of new pin
+         * @param {string} [meta] Meta information of new pin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, options: any = {}): FetchArgs {
+        pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options: any = {}): FetchArgs {
             // verify required parameter 'pinid' is not null or undefined
             if (pinid === null || pinid === undefined) {
                 throw new RequiredError('pinid','Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
+            }
+            // verify required parameter 'cid' is not null or undefined
+            if (cid === null || cid === undefined) {
+                throw new RequiredError('cid','Required parameter cid was null or undefined when calling pinningPinsPinidPost.');
             }
             const localVarPath = `/pinning/pins/{pinid}`
                 .replace(`{${"pinid"}}`, encodeURIComponent(String(pinid)));
@@ -6361,10 +6369,14 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(meta || {}) : (meta || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -6480,11 +6492,15 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
          * @param {string} pinid Pin ID
+         * @param {string} cid CID of new pin
+         * @param {string} [name] Name (filename) of new pin
+         * @param {string} [origins] Origins of new pin
+         * @param {string} [meta] Meta information of new pin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(pinid, options);
+        pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(pinid, cid, name, origins, meta, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -6556,11 +6572,15 @@ export const PinningApiFactory = function (configuration?: Configuration, fetch?
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
          * @param {string} pinid Pin ID
+         * @param {string} cid CID of new pin
+         * @param {string} [name] Name (filename) of new pin
+         * @param {string} [origins] Origins of new pin
+         * @param {string} [meta] Meta information of new pin
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, options?: any) {
-            return PinningApiFp(configuration).pinningPinsPinidPost(pinid, options)(fetch, basePath);
+        pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options?: any) {
+            return PinningApiFp(configuration).pinningPinsPinidPost(pinid, cid, name, origins, meta, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a pin to the IPFS daemon.
@@ -6621,12 +6641,16 @@ export class PinningApi extends BaseAPI {
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
      * @param {string} pinid Pin ID
+     * @param {string} cid CID of new pin
+     * @param {string} [name] Name (filename) of new pin
+     * @param {string} [origins] Origins of new pin
+     * @param {string} [meta] Meta information of new pin
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPinidPost(pinid: string, options?: any) {
-        return PinningApiFp(this.configuration).pinningPinsPinidPost(pinid, options)(this.fetch, this.basePath);
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options?: any) {
+        return PinningApiFp(this.configuration).pinningPinsPinidPost(pinid, cid, name, origins, meta, options)(this.fetch, this.basePath);
     }
 
     /**
