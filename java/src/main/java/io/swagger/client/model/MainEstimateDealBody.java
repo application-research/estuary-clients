@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * MainEstimateDealBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-08T00:36:35.475Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-08T02:39:37.353Z")
 public class MainEstimateDealBody {
   @SerializedName("durationBlks")
   private Integer durationBlks = null;

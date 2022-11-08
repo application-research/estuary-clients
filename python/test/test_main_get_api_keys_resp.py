@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.models.main_get_api_keys_resp import MainGetApiKeysResp  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestMainGetApiKeysResp(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestMainGetApiKeysResp(unittest.TestCase):
     def testMainGetApiKeysResp(self):
         """Test MainGetApiKeysResp"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = estuary-client.models.main_get_api_keys_resp.MainGetApiKeysResp()  # noqa: E501
+        # model = estuary_client.models.main_get_api_keys_resp.MainGetApiKeysResp()  # noqa: E501
         pass
 
 

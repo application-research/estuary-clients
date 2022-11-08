@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestUtilContentCreateBody(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestUtilContentCreateBody(unittest.TestCase):
     def testUtilContentCreateBody(self):
         """Test UtilContentCreateBody"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = estuary-client.models.util_content_create_body.UtilContentCreateBody()  # noqa: E501
+        # model = estuary_client.models.util_content_create_body.UtilContentCreateBody()  # noqa: E501
         pass
 
 

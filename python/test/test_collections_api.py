@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import estuary-client
-from estuary-client.api.collections_api import CollectionsApi  # noqa: E501
-from estuary-client.rest import ApiException
+import estuary_client
+from estuary_client.api.collections_api import CollectionsApi  # noqa: E501
+from estuary_client.rest import ApiException
 
 
 class TestCollectionsApi(unittest.TestCase):
     """CollectionsApi unit test stubs"""
 
     def setUp(self):
-        self.api = estuary-client.api.collections_api.CollectionsApi()  # noqa: E501
+        self.api = estuary_client.api.collections_api.CollectionsApi()  # noqa: E501
 
     def tearDown(self):
         pass
