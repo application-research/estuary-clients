@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Types.IpfsPin.h"
 #include "Util.HttpError.h"
 #include "Error.h"
 
@@ -33,8 +34,8 @@ public:
  */
 bool pinningPinsGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief List all pin status objects. *Asynchronous*
  *
@@ -45,8 +46,8 @@ bool pinningPinsGetSync(char * accessToken,
  */
 bool pinningPinsGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Delete a pinned object. *Synchronous*
@@ -59,8 +60,8 @@ bool pinningPinsGetAsync(char * accessToken,
  */
 bool pinningPinsPinidDeleteSync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Delete a pinned object. *Asynchronous*
  *
@@ -72,8 +73,8 @@ bool pinningPinsPinidDeleteSync(char * accessToken,
  */
 bool pinningPinsPinidDeleteAsync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get a pin status object. *Synchronous*
@@ -86,8 +87,8 @@ bool pinningPinsPinidDeleteAsync(char * accessToken,
  */
 bool pinningPinsPinidGetSync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get a pin status object. *Asynchronous*
  *
@@ -99,8 +100,8 @@ bool pinningPinsPinidGetSync(char * accessToken,
  */
 bool pinningPinsPinidGetAsync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Replace a pinned object. *Synchronous*
@@ -113,8 +114,8 @@ bool pinningPinsPinidGetAsync(char * accessToken,
  */
 bool pinningPinsPinidPostSync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Replace a pinned object. *Asynchronous*
  *
@@ -126,37 +127,35 @@ bool pinningPinsPinidPostSync(char * accessToken,
  */
 bool pinningPinsPinidPostAsync(char * accessToken,
 	std::string pinid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Add and pin object. *Synchronous*
  *
  * This endpoint adds a pin to the IPFS daemon.
- * \param cid cid *Required*
- * \param name name *Required*
+ * \param pin Pin Body {cid:cid, name:name} *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pinningPinsPostSync(char * accessToken,
-	std::string cid, std::string name, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	Types.IpfsPin pin, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add and pin object. *Asynchronous*
  *
  * This endpoint adds a pin to the IPFS daemon.
- * \param cid cid *Required*
- * \param name name *Required*
+ * \param pin Pin Body {cid:cid, name:name} *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool pinningPinsPostAsync(char * accessToken,
-	std::string cid, std::string name, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	Types.IpfsPin pin, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

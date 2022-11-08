@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get()
+> str pinning_pins_get()
 
 List all pin status objects
 
@@ -37,7 +37,8 @@ api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration)
 
 try:
     # List all pin status objects
-    api_instance.pinning_pins_get()
+    api_response = api_instance.pinning_pins_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_get: %s\n" % e)
 ```
@@ -47,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -61,7 +62,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete(pinid)
+> str pinning_pins_pinid_delete(pinid)
 
 Delete a pinned object
 
@@ -87,7 +88,8 @@ pinid = 'pinid_example' # str | Pin ID
 
 try:
     # Delete a pinned object
-    api_instance.pinning_pins_pinid_delete(pinid)
+    api_response = api_instance.pinning_pins_pinid_delete(pinid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_delete: %s\n" % e)
 ```
@@ -100,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -114,7 +116,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get(pinid)
+> str pinning_pins_pinid_get(pinid)
 
 Get a pin status object
 
@@ -140,7 +142,8 @@ pinid = 'pinid_example' # str | cid
 
 try:
     # Get a pin status object
-    api_instance.pinning_pins_pinid_get(pinid)
+    api_response = api_instance.pinning_pins_pinid_get(pinid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_get: %s\n" % e)
 ```
@@ -153,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -167,7 +170,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post(pinid)
+> str pinning_pins_pinid_post(pinid)
 
 Replace a pinned object
 
@@ -193,7 +196,8 @@ pinid = 'pinid_example' # str | Pin ID
 
 try:
     # Replace a pinned object
-    api_instance.pinning_pins_pinid_post(pinid)
+    api_response = api_instance.pinning_pins_pinid_post(pinid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_post: %s\n" % e)
 ```
@@ -206,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -220,7 +224,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> pinning_pins_post(cid, name)
+> str pinning_pins_post(pin)
 
 Add and pin object
 
@@ -242,12 +246,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary-client.PinningApi(estuary-client.ApiClient(configuration))
-cid = 'cid_example' # str | cid
-name = 'name_example' # str | name
+pin = estuary-client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try:
     # Add and pin object
-    api_instance.pinning_pins_post(cid, name)
+    api_response = api_instance.pinning_pins_post(pin)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_post: %s\n" % e)
 ```
@@ -256,12 +260,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **str**| cid | 
- **name** | **str**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

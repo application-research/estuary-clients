@@ -21,13 +21,13 @@
   []
   (:data (user-api-keys-get-with-http-info)))
 
-(defn user-api-keys-key-delete-with-http-info
+(defn user-api-keys-key-or-hash-delete-with-http-info
   "Revoke a User API Key.
-  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user."
-  [key ]
-  (check-required-params key)
-  (call-api "/user/api-keys/{key}" :delete
-            {:path-params   {"key" key }
+  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable."
+  [key-or-hash ]
+  (check-required-params key-or-hash)
+  (call-api "/user/api-keys/{key_or_hash}" :delete
+            {:path-params   {"key_or_hash" key-or-hash }
              :header-params {}
              :query-params  {}
              :form-params   {}
@@ -35,11 +35,11 @@
              :accepts       ["application/json"]
              :auth-names    ["bearerAuth"]}))
 
-(defn user-api-keys-key-delete
+(defn user-api-keys-key-or-hash-delete
   "Revoke a User API Key.
-  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user."
-  [key ]
-  (:data (user-api-keys-key-delete-with-http-info key)))
+  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable."
+  [key-or-hash ]
+  (:data (user-api-keys-key-or-hash-delete-with-http-info key-or-hash)))
 
 (defn user-api-keys-post-with-http-info
   "Create API keys for a user

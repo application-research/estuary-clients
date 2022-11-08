@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -58,9 +59,9 @@ public class PublicApi {
   * Get Content by Cid
   * This endpoint returns the content associated with a CID
    * @param cid Cid
-   * @return void
+   * @return String
   */
-  public void publicByCidCidGet (String cid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicByCidCidGet (String cid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'cid' is set
     if (cid == null) {
@@ -95,9 +96,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -165,7 +166,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -180,9 +185,9 @@ public class PublicApi {
   /**
   * Get public node info
   * This endpoint returns information about the node
-   * @return void
+   * @return String
   */
-  public void publicInfoGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicInfoGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -212,9 +217,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -277,7 +282,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -292,9 +301,9 @@ public class PublicApi {
   /**
   * Get deal metrics
   * This endpoint is used to get deal metrics
-   * @return void
+   * @return String
   */
-  public void publicMetricsDealsOnChainGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMetricsDealsOnChainGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -324,9 +333,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -389,7 +398,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -406,9 +419,9 @@ public class PublicApi {
   * This endpoint returns all miners deals
    * @param miner Filter by miner
    * @param ignoreFailed Ignore Failed
-   * @return void
+   * @return String
   */
-  public void publicMinersDealsMinerGet (String miner, String ignoreFailed) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersDealsMinerGet (String miner, String ignoreFailed) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -444,9 +457,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -515,7 +528,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -531,9 +548,9 @@ public class PublicApi {
   * Get all miners
   * This endpoint returns all miners
    * @param miner Filter by miner
-   * @return void
+   * @return String
   */
-  public void publicMinersFailuresMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersFailuresMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -568,9 +585,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -638,7 +655,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -653,9 +674,9 @@ public class PublicApi {
   /**
   * Get all miners
   * This endpoint returns all miners
-   * @return void
+   * @return String
   */
-  public void publicMinersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -685,9 +706,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -750,7 +771,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -766,9 +791,9 @@ public class PublicApi {
   * Get miner stats
   * This endpoint returns miner stats
    * @param miner Filter by miner
-   * @return void
+   * @return String
   */
-  public void publicMinersStatsMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicMinersStatsMinerGet (String miner) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'miner' is set
     if (miner == null) {
@@ -803,9 +828,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -873,7 +898,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -1120,9 +1149,9 @@ public class PublicApi {
   /**
   * Public stats
   * This endpoint is used to get public stats.
-   * @return void
+   * @return String
   */
-  public void publicStatsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String publicStatsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -1152,9 +1181,9 @@ public class PublicApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -1217,7 +1246,11 @@ public class PublicApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MainImportDealBody', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody'], factory);
+    define(['ApiClient', 'model/MainImportDealBody', 'model/UtilContentAddIpfsBody', 'model/UtilContentAddResponse', 'model/UtilContentCreateBody', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/MainImportDealBody'), require('../model/UtilContentAddIpfsBody'), require('../model/UtilContentAddResponse'), require('../model/UtilContentCreateBody'));
+    module.exports = factory(require('../ApiClient'), require('../model/MainImportDealBody'), require('../model/UtilContentAddIpfsBody'), require('../model/UtilContentAddResponse'), require('../model/UtilContentCreateBody'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.ContentApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainImportDealBody, root.EstuaryClient.UtilContentAddIpfsBody, root.EstuaryClient.UtilContentAddResponse, root.EstuaryClient.UtilContentCreateBody);
+    root.EstuaryClient.ContentApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainImportDealBody, root.EstuaryClient.UtilContentAddIpfsBody, root.EstuaryClient.UtilContentAddResponse, root.EstuaryClient.UtilContentCreateBody, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient, MainImportDealBody, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody) {
+}(this, function(ApiClient, MainImportDealBody, UtilContentAddIpfsBody, UtilContentAddResponse, UtilContentCreateBody, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,7 +51,7 @@
      * Callback function to receive the result of the contentAddCarPost operation.
      * @callback module:api/ContentApi~contentAddCarPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -63,6 +63,7 @@
      * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {String} opts.filename Filename
      * @param {module:api/ContentApi~contentAddCarPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentAddCarPost = function(body, opts, callback) {
       opts = opts || {};
@@ -90,7 +91,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/add-car', 'POST',
@@ -103,7 +104,7 @@
      * Callback function to receive the result of the contentAddIpfsPost operation.
      * @callback module:api/ContentApi~contentAddIpfsPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -114,6 +115,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {module:api/ContentApi~contentAddIpfsPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentAddIpfsPost = function(body, opts, callback) {
       opts = opts || {};
@@ -140,7 +142,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/add-ipfs', 'POST',
@@ -263,7 +265,7 @@
      * Callback function to receive the result of the contentAllDealsGet operation.
      * @callback module:api/ContentApi~contentAllDealsGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -274,6 +276,7 @@
      * @param {String} duration Duration
      * @param {String} all All
      * @param {module:api/ContentApi~contentAllDealsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentAllDealsGet = function(begin, duration, all, callback) {
       var postBody = null;
@@ -311,7 +314,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/all-deals', 'GET',
@@ -324,7 +327,7 @@
      * Callback function to receive the result of the contentBwUsageContentGet operation.
      * @callback module:api/ContentApi~contentBwUsageContentGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -333,6 +336,7 @@
      * This endpoint returns content bandwidth
      * @param {String} content Content ID
      * @param {module:api/ContentApi~contentBwUsageContentGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentBwUsageContentGet = function(content, callback) {
       var postBody = null;
@@ -358,7 +362,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/bw-usage/{content}', 'GET',
@@ -371,7 +375,7 @@
      * Callback function to receive the result of the contentCreatePost operation.
      * @callback module:api/ContentApi~contentCreatePostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -382,6 +386,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {module:api/ContentApi~contentCreatePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentCreatePost = function(req, opts, callback) {
       opts = opts || {};
@@ -408,7 +413,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/create', 'POST',
@@ -421,7 +426,7 @@
      * Callback function to receive the result of the contentDealsGet operation.
      * @callback module:api/ContentApi~contentDealsGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -432,6 +437,7 @@
      * @param {Number} opts.limit Limit
      * @param {Number} opts.offset Offset
      * @param {module:api/ContentApi~contentDealsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentDealsGet = function(opts, callback) {
       opts = opts || {};
@@ -454,7 +460,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/deals', 'GET',
@@ -467,7 +473,7 @@
      * Callback function to receive the result of the contentEnsureReplicationDatacidGet operation.
      * @callback module:api/ContentApi~contentEnsureReplicationDatacidGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -476,6 +482,7 @@
      * This endpoint ensures that the content is replicated to the specified number of providers
      * @param {String} datacid Data CID
      * @param {module:api/ContentApi~contentEnsureReplicationDatacidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentEnsureReplicationDatacidGet = function(datacid, callback) {
       var postBody = null;
@@ -501,7 +508,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/ensure-replication/{datacid}', 'GET',
@@ -562,7 +569,7 @@
      * Callback function to receive the result of the contentIdGet operation.
      * @callback module:api/ContentApi~contentIdGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -571,6 +578,7 @@
      * This endpoint returns a content by its ID
      * @param {Number} id Content ID
      * @param {module:api/ContentApi~contentIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentIdGet = function(id, callback) {
       var postBody = null;
@@ -596,7 +604,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/{id}', 'GET',
@@ -609,7 +617,7 @@
      * Callback function to receive the result of the contentImportdealPost operation.
      * @callback module:api/ContentApi~contentImportdealPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -618,6 +626,7 @@
      * This endpoint imports a deal into the shuttle.
      * @param {module:model/MainImportDealBody} body Import a deal
      * @param {module:api/ContentApi~contentImportdealPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentImportdealPost = function(body, callback) {
       var postBody = body;
@@ -642,7 +651,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/importdeal', 'POST',
@@ -655,7 +664,7 @@
      * Callback function to receive the result of the contentListGet operation.
      * @callback module:api/ContentApi~contentListGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<'String'>} data The data returned by the service call.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -663,7 +672,7 @@
      * List all pinned content
      * This endpoint lists all content
      * @param {module:api/ContentApi~contentListGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<'String'>}
+     * data is of type: {@link 'String'}
      */
     this.contentListGet = function(callback) {
       var postBody = null;
@@ -683,7 +692,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ['String'];
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/list', 'GET',
@@ -696,7 +705,7 @@
      * Callback function to receive the result of the contentReadContGet operation.
      * @callback module:api/ContentApi~contentReadContGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -705,6 +714,7 @@
      * This endpoint reads content from the blockstore
      * @param {String} cont CID
      * @param {module:api/ContentApi~contentReadContGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentReadContGet = function(cont, callback) {
       var postBody = null;
@@ -730,7 +740,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/read/{cont}', 'GET',
@@ -743,7 +753,7 @@
      * Callback function to receive the result of the contentStagingZonesGet operation.
      * @callback module:api/ContentApi~contentStagingZonesGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -751,6 +761,7 @@
      * Get staging zone for user
      * This endpoint is used to get staging zone for user.
      * @param {module:api/ContentApi~contentStagingZonesGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentStagingZonesGet = function(callback) {
       var postBody = null;
@@ -770,7 +781,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/staging-zones', 'GET',
@@ -783,7 +794,7 @@
      * Callback function to receive the result of the contentStatsGet operation.
      * @callback module:api/ContentApi~contentStatsGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -793,6 +804,7 @@
      * @param {String} limit limit
      * @param {String} offset offset
      * @param {module:api/ContentApi~contentStatsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentStatsGet = function(limit, offset, callback) {
       var postBody = null;
@@ -824,7 +836,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/stats', 'GET',
@@ -837,7 +849,7 @@
      * Callback function to receive the result of the contentStatusIdGet operation.
      * @callback module:api/ContentApi~contentStatusIdGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -846,6 +858,7 @@
      * This endpoint returns the status of a content
      * @param {Number} id Content ID
      * @param {module:api/ContentApi~contentStatusIdGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.contentStatusIdGet = function(id, callback) {
       var postBody = null;
@@ -871,7 +884,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/status/{id}', 'GET',

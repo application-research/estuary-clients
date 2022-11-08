@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deal_status_by_proposal_propcid_get**](DealsApi.md#deal_status_by_proposal_propcid_get) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**deal_status_miner_propcid_get**](DealsApi.md#deal_status_miner_propcid_get) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**deal_transfer_in_progress_get**](DealsApi.md#deal_transfer_in_progress_get) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**deal_transfer_status_post**](DealsApi.md#deal_transfer_status_post) | **POST** /deal/transfer/status | Transfer Status
 [**deals_failures_get**](DealsApi.md#deals_failures_get) | **GET** /deals/failures | Get storage failures for user
 [**deals_make_miner_post**](DealsApi.md#deals_make_miner_post) | **POST** /deals/make/{miner} | Make Deal
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **deal_estimate_post**
-> deal_estimate_post(body)
+> String deal_estimate_post(body)
 
 Estimate the cost of a deal
 
@@ -44,7 +45,8 @@ body = SwaggerClient::MainEstimateDealBody.new # MainEstimateDealBody | The size
 
 begin
   #Estimate the cost of a deal
-  api_instance.deal_estimate_post(body)
+  result = api_instance.deal_estimate_post(body)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_estimate_post: #{e}"
 end
@@ -58,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -72,7 +74,7 @@ nil (empty response body)
 
 
 # **deal_info_dealid_get**
-> deal_info_dealid_get(dealid)
+> String deal_info_dealid_get(dealid)
 
 Get Deal Info
 
@@ -97,7 +99,8 @@ dealid = 56 # Integer | Deal ID
 
 begin
   #Get Deal Info
-  api_instance.deal_info_dealid_get(dealid)
+  result = api_instance.deal_info_dealid_get(dealid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_info_dealid_get: #{e}"
 end
@@ -111,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -125,7 +128,7 @@ nil (empty response body)
 
 
 # **deal_proposal_propcid_get**
-> deal_proposal_propcid_get(propcid)
+> String deal_proposal_propcid_get(propcid)
 
 Get Proposal
 
@@ -150,7 +153,8 @@ propcid = 'propcid_example' # String | Proposal CID
 
 begin
   #Get Proposal
-  api_instance.deal_proposal_propcid_get(propcid)
+  result = api_instance.deal_proposal_propcid_get(propcid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_proposal_propcid_get: #{e}"
 end
@@ -164,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -178,7 +182,7 @@ nil (empty response body)
 
 
 # **deal_query_miner_get**
-> deal_query_miner_get(miner)
+> String deal_query_miner_get(miner)
 
 Query Ask
 
@@ -203,7 +207,8 @@ miner = 'miner_example' # String | CID
 
 begin
   #Query Ask
-  api_instance.deal_query_miner_get(miner)
+  result = api_instance.deal_query_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_query_miner_get: #{e}"
 end
@@ -217,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -231,7 +236,7 @@ nil (empty response body)
 
 
 # **deal_status_by_proposal_propcid_get**
-> deal_status_by_proposal_propcid_get(propcid)
+> String deal_status_by_proposal_propcid_get(propcid)
 
 Get Deal Status by PropCid
 
@@ -256,7 +261,8 @@ propcid = 'propcid_example' # String | PropCid
 
 begin
   #Get Deal Status by PropCid
-  api_instance.deal_status_by_proposal_propcid_get(propcid)
+  result = api_instance.deal_status_by_proposal_propcid_get(propcid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_status_by_proposal_propcid_get: #{e}"
 end
@@ -270,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -284,7 +290,7 @@ nil (empty response body)
 
 
 # **deal_status_miner_propcid_get**
-> deal_status_miner_propcid_get(miner, propcid)
+> String deal_status_miner_propcid_get(miner, propcid)
 
 Deal Status
 
@@ -311,7 +317,8 @@ propcid = 'propcid_example' # String | Proposal CID
 
 begin
   #Deal Status
-  api_instance.deal_status_miner_propcid_get(miner, propcid)
+  result = api_instance.deal_status_miner_propcid_get(miner, propcid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_status_miner_propcid_get: #{e}"
 end
@@ -326,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -340,7 +347,7 @@ nil (empty response body)
 
 
 # **deal_transfer_in_progress_get**
-> deal_transfer_in_progress_get
+> String deal_transfer_in_progress_get
 
 Transfer In Progress
 
@@ -362,7 +369,8 @@ api_instance = SwaggerClient::DealsApi.new
 
 begin
   #Transfer In Progress
-  api_instance.deal_transfer_in_progress_get
+  result = api_instance.deal_transfer_in_progress_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_transfer_in_progress_get: #{e}"
 end
@@ -373,7 +381,61 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **deal_transfer_status_post**
+> String deal_transfer_status_post(chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::DealsApi.new
+
+chanid = SwaggerClient::MainChannelIDParam.new # MainChannelIDParam | Channel ID
+
+
+begin
+  #Transfer Status
+  result = api_instance.deal_transfer_status_post(chanid)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling DealsApi->deal_transfer_status_post: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**String**
 
 ### Authorization
 
@@ -387,7 +449,7 @@ nil (empty response body)
 
 
 # **deals_failures_get**
-> deals_failures_get
+> String deals_failures_get
 
 Get storage failures for user
 
@@ -409,7 +471,8 @@ api_instance = SwaggerClient::DealsApi.new
 
 begin
   #Get storage failures for user
-  api_instance.deals_failures_get
+  result = api_instance.deals_failures_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deals_failures_get: #{e}"
 end
@@ -420,7 +483,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -434,7 +497,7 @@ nil (empty response body)
 
 
 # **deals_make_miner_post**
-> deals_make_miner_post(miner, deal_request)
+> String deals_make_miner_post(miner, deal_request)
 
 Make Deal
 
@@ -461,7 +524,8 @@ deal_request = 'deal_request_example' # String | Deal Request
 
 begin
   #Make Deal
-  api_instance.deals_make_miner_post(miner, deal_request)
+  result = api_instance.deals_make_miner_post(miner, deal_request)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deals_make_miner_post: #{e}"
 end
@@ -476,7 +540,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -490,7 +554,7 @@ nil (empty response body)
 
 
 # **deals_status_deal_get**
-> deals_status_deal_get(deal)
+> String deals_status_deal_get(deal)
 
 Get Deal Status
 
@@ -515,7 +579,8 @@ deal = 56 # Integer | Deal ID
 
 begin
   #Get Deal Status
-  api_instance.deals_status_deal_get(deal)
+  result = api_instance.deals_status_deal_get(deal)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deals_status_deal_get: #{e}"
 end
@@ -529,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -543,7 +608,7 @@ nil (empty response body)
 
 
 # **public_deals_failures_get**
-> public_deals_failures_get
+> String public_deals_failures_get
 
 Get storage failures
 
@@ -565,7 +630,8 @@ api_instance = SwaggerClient::DealsApi.new
 
 begin
   #Get storage failures
-  api_instance.public_deals_failures_get
+  result = api_instance.public_deals_failures_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->public_deals_failures_get: #{e}"
 end
@@ -576,7 +642,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -590,7 +656,7 @@ nil (empty response body)
 
 
 # **public_miners_storage_query_miner_get**
-> public_miners_storage_query_miner_get(miner)
+> String public_miners_storage_query_miner_get(miner)
 
 Query Ask
 
@@ -615,7 +681,8 @@ miner = 'miner_example' # String | CID
 
 begin
   #Query Ask
-  api_instance.public_miners_storage_query_miner_get(miner)
+  result = api_instance.public_miners_storage_query_miner_get(miner)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->public_miners_storage_query_miner_get: #{e}"
 end
@@ -629,7 +696,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

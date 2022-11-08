@@ -28,13 +28,14 @@ public class SwagMetricsApi {
     /**
      * Get deal metrics
      * This endpoint is used to get deal metrics
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMetricsDealsOnChainGet() {
+    public String publicMetricsDealsOnChainGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/metrics/deals-on-chain', '',
             query, form,
             new Map<String, Object>(),
@@ -42,7 +43,7 @@ public class SwagMetricsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

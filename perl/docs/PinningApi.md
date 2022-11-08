@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get()
+> string pinning_pins_get()
 
 List all pin status objects
 
@@ -37,7 +37,8 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
 
 
 eval { 
-    $api_instance->pinning_pins_get();
+    my $result = $api_instance->pinning_pins_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinning_pins_get: $@\n";
@@ -49,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -63,7 +64,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete(pinid => $pinid)
+> string pinning_pins_pinid_delete(pinid => $pinid)
 
 Delete a pinned object
 
@@ -84,7 +85,8 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
 my $pinid = 'pinid_example'; # string | Pin ID
 
 eval { 
-    $api_instance->pinning_pins_pinid_delete(pinid => $pinid);
+    my $result = $api_instance->pinning_pins_pinid_delete(pinid => $pinid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinning_pins_pinid_delete: $@\n";
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -113,7 +115,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get(pinid => $pinid)
+> string pinning_pins_pinid_get(pinid => $pinid)
 
 Get a pin status object
 
@@ -134,7 +136,8 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
 my $pinid = 'pinid_example'; # string | cid
 
 eval { 
-    $api_instance->pinning_pins_pinid_get(pinid => $pinid);
+    my $result = $api_instance->pinning_pins_pinid_get(pinid => $pinid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinning_pins_pinid_get: $@\n";
@@ -149,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -163,7 +166,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post(pinid => $pinid)
+> string pinning_pins_pinid_post(pinid => $pinid)
 
 Replace a pinned object
 
@@ -184,7 +187,8 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
 my $pinid = 'pinid_example'; # string | Pin ID
 
 eval { 
-    $api_instance->pinning_pins_pinid_post(pinid => $pinid);
+    my $result = $api_instance->pinning_pins_pinid_post(pinid => $pinid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinning_pins_pinid_post: $@\n";
@@ -199,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -213,7 +217,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> pinning_pins_post(cid => $cid, name => $name)
+> string pinning_pins_post(pin => $pin)
 
 Add and pin object
 
@@ -231,11 +235,11 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $cid = 'cid_example'; # string | cid
-my $name = 'name_example'; # string | name
+my $pin = WWW::SwaggerClient::Object::TypesIpfsPin->new(); # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 eval { 
-    $api_instance->pinning_pins_post(cid => $cid, name => $name);
+    my $result = $api_instance->pinning_pins_post(pin => $pin);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinning_pins_post: $@\n";
@@ -246,12 +250,11 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **string**| cid | 
- **name** | **string**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

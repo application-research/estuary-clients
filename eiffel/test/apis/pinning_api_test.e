@@ -18,10 +18,11 @@ feature -- Test routines
             -- 
             -- This endpoint lists all pin status objects 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.pinning_pins_get
+            -- l_response := api.pinning_pins_get
             assert ("not_implemented", False)
         end
     
@@ -30,12 +31,13 @@ feature -- Test routines
             -- 
             -- This endpoint deletes a pinned object. 
         local
+            l_response: STRING_32
             l_pinid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_pinid
                       
-            -- api.pinning_pins_pinid_delete(l_pinid)
+            -- l_response := api.pinning_pins_pinid_delete(l_pinid)
             assert ("not_implemented", False)
         end
     
@@ -44,12 +46,13 @@ feature -- Test routines
             -- 
             -- This endpoint returns a pin status object. 
         local
+            l_response: STRING_32
             l_pinid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_pinid
                       
-            -- api.pinning_pins_pinid_get(l_pinid)
+            -- l_response := api.pinning_pins_pinid_get(l_pinid)
             assert ("not_implemented", False)
         end
     
@@ -58,12 +61,13 @@ feature -- Test routines
             -- 
             -- This endpoint replaces a pinned object. 
         local
+            l_response: STRING_32
             l_pinid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_pinid
                       
-            -- api.pinning_pins_pinid_post(l_pinid)
+            -- l_response := api.pinning_pins_pinid_post(l_pinid)
             assert ("not_implemented", False)
         end
     
@@ -72,14 +76,13 @@ feature -- Test routines
             -- 
             -- This endpoint adds a pin to the IPFS daemon. 
         local
-            l_cid: STRING_32
-            l_name: STRING_32
+            l_response: STRING_32
+            l_pin: TYPES_IPFS_PIN
         do
             -- TODO: Initialize required params.
-            -- l_cid
-            -- l_name
+            -- l_pin
                       
-            -- api.pinning_pins_post(l_cid, l_name)
+            -- l_response := api.pinning_pins_post(l_pin)
             assert ("not_implemented", False)
         end
 

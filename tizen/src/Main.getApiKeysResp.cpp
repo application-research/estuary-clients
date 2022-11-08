@@ -28,7 +28,13 @@ Main.getApiKeysResp::__init()
 	//expiry = std::string();
 	//
 	//
+	//label = std::string();
+	//
+	//
 	//token = std::string();
+	//
+	//
+	//tokenHash = std::string();
 	//
 }
 
@@ -40,10 +46,20 @@ Main.getApiKeysResp::__cleanup()
 	//delete expiry;
 	//expiry = NULL;
 	//}
+	//if(label != NULL) {
+	//
+	//delete label;
+	//label = NULL;
+	//}
 	//if(token != NULL) {
 	//
 	//delete token;
 	//token = NULL;
+	//}
+	//if(tokenHash != NULL) {
+	//
+	//delete tokenHash;
+	//tokenHash = NULL;
 	//}
 	//
 }
@@ -64,6 +80,17 @@ Main.getApiKeysResp::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *labelKey = "label";
+	node = json_object_get_member(pJsonObject, labelKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&label, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *tokenKey = "token";
 	node = json_object_get_member(pJsonObject, tokenKey);
 	if (node !=NULL) {
@@ -71,6 +98,17 @@ Main.getApiKeysResp::fromJson(char* jsonStr)
 
 		if (isprimitive("std::string")) {
 			jsonToValue(&token, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *tokenHashKey = "tokenHash";
+	node = json_object_get_member(pJsonObject, tokenHashKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&tokenHash, node, "std::string", "");
 		} else {
 			
 		}
@@ -97,6 +135,15 @@ Main.getApiKeysResp::toJson()
 	const gchar *expiryKey = "expiry";
 	json_object_set_member(pJsonObject, expiryKey, node);
 	if (isprimitive("std::string")) {
+		std::string obj = getLabel();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *labelKey = "label";
+	json_object_set_member(pJsonObject, labelKey, node);
+	if (isprimitive("std::string")) {
 		std::string obj = getToken();
 		node = converttoJson(&obj, "std::string", "");
 	}
@@ -105,6 +152,15 @@ Main.getApiKeysResp::toJson()
 	}
 	const gchar *tokenKey = "token";
 	json_object_set_member(pJsonObject, tokenKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getTokenHash();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *tokenHashKey = "tokenHash";
+	json_object_set_member(pJsonObject, tokenHashKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -126,6 +182,18 @@ Main.getApiKeysResp::setExpiry(std::string  expiry)
 }
 
 std::string
+Main.getApiKeysResp::getLabel()
+{
+	return label;
+}
+
+void
+Main.getApiKeysResp::setLabel(std::string  label)
+{
+	this->label = label;
+}
+
+std::string
 Main.getApiKeysResp::getToken()
 {
 	return token;
@@ -135,6 +203,18 @@ void
 Main.getApiKeysResp::setToken(std::string  token)
 {
 	this->token = token;
+}
+
+std::string
+Main.getApiKeysResp::getTokenHash()
+{
+	return tokenHash;
+}
+
+void
+Main.getApiKeysResp::setTokenHash(std::string  tokenHash)
+{
+	this->tokenHash = tokenHash;
 }
 
 

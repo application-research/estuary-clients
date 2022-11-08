@@ -107,8 +107,8 @@ export class CollectionsService {
      * @param coluuid Collection ID
      
      */
-    public collectionsColuuidDelete(coluuid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public collectionsColuuidDelete(coluuid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public collectionsColuuidDelete(coluuid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public collectionsColuuidDelete(coluuid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public collectionsColuuidDelete(coluuid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!coluuid){
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidDelete.');
@@ -120,7 +120,7 @@ export class CollectionsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -168,8 +168,8 @@ export class CollectionsService {
      * @param contentIDs Content IDs to add to collection
      
      */
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'body', headers?: Headers): Observable<{ [key: string]: string; }>;
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'response', headers?: Headers): Observable<HttpResponse<{ [key: string]: string; }>>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'body', headers?: Headers): Observable<string>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!coluuid){
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
@@ -186,7 +186,7 @@ export class CollectionsService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<{ [key: string]: string; }>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}`, contentIDs as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/${encodeURIComponent(String(coluuid))}`, contentIDs as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -202,8 +202,8 @@ export class CollectionsService {
      * @param path Path to file
      
      */
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public collectionsFsAddPost(coluuid: string, content: string, path: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!coluuid){
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsFsAddPost.');
@@ -234,7 +234,7 @@ export class CollectionsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/fs/add?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/collections/fs/add?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -247,8 +247,8 @@ export class CollectionsService {
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      
      */
-    public collectionsGet(observe?: 'body', headers?: Headers): Observable<Array<CollectionsCollection>>;
-    public collectionsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<CollectionsCollection>>>;
+    public collectionsGet(observe?: 'body', headers?: Headers): Observable<Array<Array<CollectionsCollection>>>;
+    public collectionsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<Array<CollectionsCollection>>>>;
     public collectionsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -256,7 +256,7 @@ export class CollectionsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<CollectionsCollection>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/collections/` as any, headers);
+        const response: Observable<HttpResponse<Array<Array<CollectionsCollection>>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/collections/` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

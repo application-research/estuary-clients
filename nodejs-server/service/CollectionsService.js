@@ -54,11 +54,20 @@ exports.collectionsColuuidContentsDELETE = function(coluuid,contentid,body) {
  * This endpoint is used to delete an existing collection.
  *
  * coluuid String Collection ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.collectionsColuuidDELETE = function(coluuid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -93,12 +102,15 @@ exports.collectionsColuuidGET = function(coluuid,dir) {
  *
  * coluuid String coluuid
  * contentIDs List Content IDs to add to collection
- * returns Map
+ * returns String
  **/
 exports.collectionsColuuidPOST = function(coluuid,contentIDs) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {"empty": false};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -115,11 +127,20 @@ exports.collectionsColuuidPOST = function(coluuid,contentIDs) {
  * coluuid String Collection ID
  * content String Content
  * path String Path to file
- * no response value expected for this operation
+ * returns String
  **/
 exports.collectionsFsAddPOST = function(coluuid,content,path) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

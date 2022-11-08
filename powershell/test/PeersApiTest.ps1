@@ -4,7 +4,7 @@
 Describe 'estuary-client PeersApi' {
     Context 'PeersApi' {
         It 'Invoke-PeersApiAdminPeeringPeersDelete' {
-            $ret = Invoke-PetApiGetPetById -body "TEST_VALUE"
+            $ret = Invoke-PetApiGetPetById -peerIds "TEST_VALUE"
             #$ret | Should BeOfType estuary-client.Model.ModelNameHere
             #$ret.property | Should Be 0
         }

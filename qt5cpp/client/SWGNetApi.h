@@ -16,6 +16,7 @@
 #include "SWGHttpRequest.h"
 
 #include <QString>
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -47,15 +48,15 @@ private:
     void publicNetPeersGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void netAddrsGetSignal(QList<QString*>* summary);
-    void publicMinersFailuresMinerGetSignal();
-    void publicMinersGetSignal();
+    void netAddrsGetSignal(QString* summary);
+    void publicMinersFailuresMinerGetSignal(QString* summary);
+    void publicMinersGetSignal(QString* summary);
     void publicNetAddrsGetSignal(QList<QString*>* summary);
     void publicNetPeersGetSignal(QList<QString*>* summary);
     
-    void netAddrsGetSignalE(QList<QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void publicMinersFailuresMinerGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void publicMinersGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void netAddrsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMinersFailuresMinerGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMinersGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void publicNetAddrsGetSignalE(QList<QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void publicNetPeersGetSignalE(QList<QString*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     

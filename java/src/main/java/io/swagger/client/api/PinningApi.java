@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.TypesIpfsPin;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -114,21 +115,24 @@ public class PinningApi {
     /**
      * List all pin status objects
      * This endpoint lists all pin status objects
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void pinningPinsGet() throws ApiException {
-        pinningPinsGetWithHttpInfo();
+    public String pinningPinsGet() throws ApiException {
+        ApiResponse<String> resp = pinningPinsGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * List all pin status objects
      * This endpoint lists all pin status objects
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> pinningPinsGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> pinningPinsGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = pinningPinsGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -138,7 +142,7 @@ public class PinningApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -160,7 +164,8 @@ public class PinningApi {
         }
 
         com.squareup.okhttp.Call call = pinningPinsGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -231,22 +236,25 @@ public class PinningApi {
      * Delete a pinned object
      * This endpoint deletes a pinned object.
      * @param pinid Pin ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void pinningPinsPinidDelete(String pinid) throws ApiException {
-        pinningPinsPinidDeleteWithHttpInfo(pinid);
+    public String pinningPinsPinidDelete(String pinid) throws ApiException {
+        ApiResponse<String> resp = pinningPinsPinidDeleteWithHttpInfo(pinid);
+        return resp.getData();
     }
 
     /**
      * Delete a pinned object
      * This endpoint deletes a pinned object.
      * @param pinid Pin ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> pinningPinsPinidDeleteWithHttpInfo(String pinid) throws ApiException {
+    public ApiResponse<String> pinningPinsPinidDeleteWithHttpInfo(String pinid) throws ApiException {
         com.squareup.okhttp.Call call = pinningPinsPinidDeleteValidateBeforeCall(pinid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -257,7 +265,7 @@ public class PinningApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPinidDeleteAsync(String pinid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPinidDeleteAsync(String pinid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -279,7 +287,8 @@ public class PinningApi {
         }
 
         com.squareup.okhttp.Call call = pinningPinsPinidDeleteValidateBeforeCall(pinid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -350,22 +359,25 @@ public class PinningApi {
      * Get a pin status object
      * This endpoint returns a pin status object.
      * @param pinid cid (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void pinningPinsPinidGet(String pinid) throws ApiException {
-        pinningPinsPinidGetWithHttpInfo(pinid);
+    public String pinningPinsPinidGet(String pinid) throws ApiException {
+        ApiResponse<String> resp = pinningPinsPinidGetWithHttpInfo(pinid);
+        return resp.getData();
     }
 
     /**
      * Get a pin status object
      * This endpoint returns a pin status object.
      * @param pinid cid (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> pinningPinsPinidGetWithHttpInfo(String pinid) throws ApiException {
+    public ApiResponse<String> pinningPinsPinidGetWithHttpInfo(String pinid) throws ApiException {
         com.squareup.okhttp.Call call = pinningPinsPinidGetValidateBeforeCall(pinid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -376,7 +388,7 @@ public class PinningApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPinidGetAsync(String pinid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPinidGetAsync(String pinid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -398,7 +410,8 @@ public class PinningApi {
         }
 
         com.squareup.okhttp.Call call = pinningPinsPinidGetValidateBeforeCall(pinid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -469,22 +482,25 @@ public class PinningApi {
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param pinid Pin ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void pinningPinsPinidPost(String pinid) throws ApiException {
-        pinningPinsPinidPostWithHttpInfo(pinid);
+    public String pinningPinsPinidPost(String pinid) throws ApiException {
+        ApiResponse<String> resp = pinningPinsPinidPostWithHttpInfo(pinid);
+        return resp.getData();
     }
 
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
      * @param pinid Pin ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> pinningPinsPinidPostWithHttpInfo(String pinid) throws ApiException {
+    public ApiResponse<String> pinningPinsPinidPostWithHttpInfo(String pinid) throws ApiException {
         com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(pinid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -495,7 +511,7 @@ public class PinningApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPinidPostAsync(String pinid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPinidPostAsync(String pinid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -517,25 +533,23 @@ public class PinningApi {
         }
 
         com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(pinid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for pinningPinsPost
-     * @param cid cid (required)
-     * @param name name (required)
+     * @param pin Pin Body {cid:cid, name:name} (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPostCall(String cid, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call pinningPinsPostCall(TypesIpfsPin pin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = pin;
 
         // create path and map variables
-        String localVarPath = "/pinning/pins"
-            .replaceAll("\\{" + "cid" + "\\}", apiClient.escapeString(cid.toString()))
-            .replaceAll("\\{" + "name" + "\\}", apiClient.escapeString(name.toString()));
+        String localVarPath = "/pinning/pins";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -573,20 +587,15 @@ public class PinningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call pinningPinsPostValidateBeforeCall(String cid, String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call pinningPinsPostValidateBeforeCall(TypesIpfsPin pin, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'cid' is set
-        if (cid == null) {
-            throw new ApiException("Missing the required parameter 'cid' when calling pinningPinsPost(Async)");
-        }
-        
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling pinningPinsPost(Async)");
+        // verify the required parameter 'pin' is set
+        if (pin == null) {
+            throw new ApiException("Missing the required parameter 'pin' when calling pinningPinsPost(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = pinningPinsPostCall(cid, name, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = pinningPinsPostCall(pin, progressListener, progressRequestListener);
         return call;
 
     }
@@ -594,37 +603,37 @@ public class PinningApi {
     /**
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
-     * @param cid cid (required)
-     * @param name name (required)
+     * @param pin Pin Body {cid:cid, name:name} (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void pinningPinsPost(String cid, String name) throws ApiException {
-        pinningPinsPostWithHttpInfo(cid, name);
+    public String pinningPinsPost(TypesIpfsPin pin) throws ApiException {
+        ApiResponse<String> resp = pinningPinsPostWithHttpInfo(pin);
+        return resp.getData();
     }
 
     /**
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
-     * @param cid cid (required)
-     * @param name name (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param pin Pin Body {cid:cid, name:name} (required)
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> pinningPinsPostWithHttpInfo(String cid, String name) throws ApiException {
-        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(cid, name, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<String> pinningPinsPostWithHttpInfo(TypesIpfsPin pin) throws ApiException {
+        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(pin, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Add and pin object (asynchronously)
      * This endpoint adds a pin to the IPFS daemon.
-     * @param cid cid (required)
-     * @param name name (required)
+     * @param pin Pin Body {cid:cid, name:name} (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPostAsync(String cid, String name, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPostAsync(TypesIpfsPin pin, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -645,8 +654,9 @@ public class PinningApi {
             };
         }
 
-        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(cid, name, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(pin, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

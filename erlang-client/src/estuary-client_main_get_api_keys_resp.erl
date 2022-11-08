@@ -6,12 +6,18 @@
 
 -type estuary-client_main_get_api_keys_resp() ::
     #{ 'expiry' => binary(),
-       'token' => binary()
+       'label' => binary(),
+       'token' => binary(),
+       'tokenHash' => binary()
      }.
 
 encode(#{ 'expiry' := Expiry,
-          'token' := Token
+          'label' := Label,
+          'token' := Token,
+          'tokenHash' := TokenHash
         }) ->
     #{ 'expiry' => Expiry,
-       'token' => Token
+       'label' => Label,
+       'token' => Token,
+       'tokenHash' => TokenHash
      }.

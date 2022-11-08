@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -84,9 +85,9 @@ class MinerApi(
    *
    * @param miner Filter by miner 
    * @param ignoreFailed Ignore Failed (optional)
-   * @return void
+   * @return String
    */
-  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None) = {
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None): Option[String] = {
     val await = Try(Await.result(publicMinersDealsMinerGetAsync(miner, ignoreFailed), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -100,9 +101,9 @@ class MinerApi(
    *
    * @param miner Filter by miner 
    * @param ignoreFailed Ignore Failed (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersDealsMinerGetAsync(miner: String, ignoreFailed: Option[String] = None) = {
+  def publicMinersDealsMinerGetAsync(miner: String, ignoreFailed: Option[String] = None): Future[String] = {
       helper.publicMinersDealsMinerGet(miner, ignoreFailed)
   }
 
@@ -111,9 +112,9 @@ class MinerApi(
    * This endpoint returns miner stats
    *
    * @param miner Filter by miner 
-   * @return void
+   * @return String
    */
-  def publicMinersStatsMinerGet(miner: String) = {
+  def publicMinersStatsMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(publicMinersStatsMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -126,9 +127,9 @@ class MinerApi(
    * This endpoint returns miner stats
    *
    * @param miner Filter by miner 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersStatsMinerGetAsync(miner: String) = {
+  def publicMinersStatsMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersStatsMinerGet(miner)
   }
 
@@ -138,7 +139,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
 
   def publicMinersDealsMinerGet(miner: String,
     ignoreFailed: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/deals/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -160,7 +161,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def publicMinersStatsMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersStatsMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/stats/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))

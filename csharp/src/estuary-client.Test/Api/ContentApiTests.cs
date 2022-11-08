@@ -74,8 +74,8 @@ namespace estuary-client.Test
             //string body = null;
             //string ignoreDupes = null;
             //string filename = null;
-            //instance.ContentAddCarPost(body, ignoreDupes, filename);
-            
+            //var response = instance.ContentAddCarPost(body, ignoreDupes, filename);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -87,8 +87,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //UtilContentAddIpfsBody body = null;
             //string ignoreDupes = null;
-            //instance.ContentAddIpfsPost(body, ignoreDupes);
-            
+            //var response = instance.ContentAddIpfsPost(body, ignoreDupes);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -131,8 +131,8 @@ namespace estuary-client.Test
             //string begin = null;
             //string duration = null;
             //string all = null;
-            //instance.ContentAllDealsGet(begin, duration, all);
-            
+            //var response = instance.ContentAllDealsGet(begin, duration, all);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -143,8 +143,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string content = null;
-            //instance.ContentBwUsageContentGet(content);
-            
+            //var response = instance.ContentBwUsageContentGet(content);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -156,8 +156,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //UtilContentCreateBody req = null;
             //string ignoreDupes = null;
-            //instance.ContentCreatePost(req, ignoreDupes);
-            
+            //var response = instance.ContentCreatePost(req, ignoreDupes);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -169,8 +169,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? limit = null;
             //int? offset = null;
-            //instance.ContentDealsGet(limit, offset);
-            
+            //var response = instance.ContentDealsGet(limit, offset);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -181,8 +181,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string datacid = null;
-            //instance.ContentEnsureReplicationDatacidGet(datacid);
-            
+            //var response = instance.ContentEnsureReplicationDatacidGet(datacid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -205,8 +205,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.ContentIdGet(id);
-            
+            //var response = instance.ContentIdGet(id);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -217,8 +217,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //MainImportDealBody body = null;
-            //instance.ContentImportdealPost(body);
-            
+            //var response = instance.ContentImportdealPost(body);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -229,7 +229,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.ContentListGet();
-            //Assert.IsInstanceOf<List<string>> (response, "response is List<string>");
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -240,8 +240,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string cont = null;
-            //instance.ContentReadContGet(cont);
-            
+            //var response = instance.ContentReadContGet(cont);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -251,8 +251,8 @@ namespace estuary-client.Test
         public void ContentStagingZonesGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.ContentStagingZonesGet();
-            
+            //var response = instance.ContentStagingZonesGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -264,8 +264,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string limit = null;
             //string offset = null;
-            //instance.ContentStatsGet(limit, offset);
-            
+            //var response = instance.ContentStatsGet(limit, offset);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -276,8 +276,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //instance.ContentStatusIdGet(id);
-            
+            //var response = instance.ContentStatusIdGet(id);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

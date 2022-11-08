@@ -13,13 +13,13 @@ public class AutoretrieveAPI: APIBase {
     /**
      Register autoretrieve server
      
-     - parameter addresses: (body) Autoretrieve&#39;s comma-separated list of addresses 
-     - parameter pubKey: (body) Autoretrieve&#39;s public key 
+     - parameter addresses: (form) Autoretrieve&#39;s comma-separated list of addresses 
+     - parameter pubKey: (form) Autoretrieve&#39;s public key 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func adminAutoretrieveInitPost(addresses addresses: String, pubKey: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func adminAutoretrieveInitPost(addresses addresses: String, pubKey: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         adminAutoretrieveInitPostWithRequestBuilder(addresses: addresses, pubKey: pubKey).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -31,22 +31,32 @@ public class AutoretrieveAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
-     - parameter addresses: (body) Autoretrieve&#39;s comma-separated list of addresses 
-     - parameter pubKey: (body) Autoretrieve&#39;s public key 
+     - parameter addresses: (form) Autoretrieve&#39;s comma-separated list of addresses 
+     - parameter pubKey: (form) Autoretrieve&#39;s public key 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func adminAutoretrieveInitPostWithRequestBuilder(addresses addresses: String, pubKey: String) -> RequestBuilder<Void> {
+    public class func adminAutoretrieveInitPostWithRequestBuilder(addresses addresses: String, pubKey: String) -> RequestBuilder<String> {
         let path = "/admin/autoretrieve/init"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = pubKey.encodeToJSON() as? [String:AnyObject]
+
+        let nillableParameters: [String:AnyObject?] = [
+            "addresses": addresses,
+            "pubKey": pubKey
+        ]
+ 
+        let parameters = APIHelper.rejectNil(nillableParameters)
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: true)
+        return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
 
     /**
@@ -54,9 +64,9 @@ public class AutoretrieveAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func adminAutoretrieveListGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func adminAutoretrieveListGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         adminAutoretrieveListGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -68,10 +78,14 @@ public class AutoretrieveAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func adminAutoretrieveListGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func adminAutoretrieveListGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/autoretrieve/list"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -81,7 +95,7 @@ public class AutoretrieveAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -92,9 +106,9 @@ public class AutoretrieveAPI: APIBase {
      - parameter token: (header) Autoretrieve&#39;s auth token 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func autoretrieveHeartbeatPost(token token: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func autoretrieveHeartbeatPost(token token: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         autoretrieveHeartbeatPostWithRequestBuilder(token: token).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -106,12 +120,16 @@ public class AutoretrieveAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter token: (header) Autoretrieve&#39;s auth token 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func autoretrieveHeartbeatPostWithRequestBuilder(token token: String) -> RequestBuilder<Void> {
+    public class func autoretrieveHeartbeatPostWithRequestBuilder(token token: String) -> RequestBuilder<String> {
         let path = "/autoretrieve/heartbeat"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -125,7 +143,7 @@ public class AutoretrieveAPI: APIBase {
         ]
         let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: true, headers: headerParameters)
     }

@@ -34,28 +34,38 @@ class MainGetApiKeysResp(object):
     """
     swagger_types = {
         'expiry': 'str',
-        'token': 'str'
+        'label': 'str',
+        'token': 'str',
+        'token_hash': 'str'
     }
 
     attribute_map = {
         'expiry': 'expiry',
-        'token': 'token'
+        'label': 'label',
+        'token': 'token',
+        'token_hash': 'tokenHash'
     }
 
-    def __init__(self, expiry=None, token=None, _configuration=None):  # noqa: E501
+    def __init__(self, expiry=None, label=None, token=None, token_hash=None, _configuration=None):  # noqa: E501
         """MainGetApiKeysResp - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._expiry = None
+        self._label = None
         self._token = None
+        self._token_hash = None
         self.discriminator = None
 
         if expiry is not None:
             self.expiry = expiry
+        if label is not None:
+            self.label = label
         if token is not None:
             self.token = token
+        if token_hash is not None:
+            self.token_hash = token_hash
 
     @property
     def expiry(self):
@@ -79,6 +89,27 @@ class MainGetApiKeysResp(object):
         self._expiry = expiry
 
     @property
+    def label(self):
+        """Gets the label of this MainGetApiKeysResp.  # noqa: E501
+
+
+        :return: The label of this MainGetApiKeysResp.  # noqa: E501
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label):
+        """Sets the label of this MainGetApiKeysResp.
+
+
+        :param label: The label of this MainGetApiKeysResp.  # noqa: E501
+        :type: str
+        """
+
+        self._label = label
+
+    @property
     def token(self):
         """Gets the token of this MainGetApiKeysResp.  # noqa: E501
 
@@ -98,6 +129,27 @@ class MainGetApiKeysResp(object):
         """
 
         self._token = token
+
+    @property
+    def token_hash(self):
+        """Gets the token_hash of this MainGetApiKeysResp.  # noqa: E501
+
+
+        :return: The token_hash of this MainGetApiKeysResp.  # noqa: E501
+        :rtype: str
+        """
+        return self._token_hash
+
+    @token_hash.setter
+    def token_hash(self, token_hash):
+        """Sets the token_hash of this MainGetApiKeysResp.
+
+
+        :param token_hash: The token_hash of this MainGetApiKeysResp.  # noqa: E501
+        :type: str
+        """
+
+        self._token_hash = token_hash
 
     def to_dict(self):
         """Returns the model properties as a dict"""

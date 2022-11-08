@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> kotlin.String adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -29,9 +29,10 @@ This endpoint can be used to remove a Peer from the Peering Service
 //import estuary-client.models.*
 
 val apiInstance = AdminApi()
-val body : kotlin.Array<kotlin.String> =  // kotlin.Array<kotlin.String> | Peer ids
+val peerIds : kotlin.Array<kotlin.Boolean> =  // kotlin.Array<kotlin.Boolean> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete(body)
+    val result : kotlin.String = apiInstance.adminPeeringPeersDelete(peerIds)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringPeersDelete")
     e.printStackTrace()
@@ -45,11 +46,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **kotlin.Array&lt;kotlin.String&gt;**| Peer ids |
+ **peerIds** | **kotlin.Array&lt;kotlin.Boolean&gt;**| Peer ids |
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -62,7 +63,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersGet"></a>
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> kotlin.String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -76,7 +77,8 @@ This endpoint can be used to list all peers on Peering Service
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminPeeringPeersGet()
+    val result : kotlin.String = apiInstance.adminPeeringPeersGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringPeersGet")
     e.printStackTrace()
@@ -91,7 +93,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -104,7 +106,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> kotlin.String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -118,7 +120,8 @@ This endpoint can be used to add a Peer from the Peering Service
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminPeeringPeersPost()
+    val result : kotlin.String = apiInstance.adminPeeringPeersPost()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringPeersPost")
     e.printStackTrace()
@@ -133,7 +136,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -146,7 +149,7 @@ null (empty response body)
 
 <a name="adminPeeringStartPost"></a>
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> kotlin.String adminPeeringStartPost()
 
 Start Peering
 
@@ -160,7 +163,8 @@ This endpoint can be used to start the Peering Service
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminPeeringStartPost()
+    val result : kotlin.String = apiInstance.adminPeeringStartPost()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringStartPost")
     e.printStackTrace()
@@ -175,7 +179,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -188,7 +192,7 @@ null (empty response body)
 
 <a name="adminPeeringStatusGet"></a>
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> kotlin.String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -202,7 +206,8 @@ This endpoint can be used to check the Peering status
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminPeeringStatusGet()
+    val result : kotlin.String = apiInstance.adminPeeringStatusGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringStatusGet")
     e.printStackTrace()
@@ -217,7 +222,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -230,7 +235,7 @@ null (empty response body)
 
 <a name="adminPeeringStopPost"></a>
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> kotlin.String adminPeeringStopPost()
 
 Stop Peering
 
@@ -244,7 +249,8 @@ This endpoint can be used to stop the Peering Service
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminPeeringStopPost()
+    val result : kotlin.String = apiInstance.adminPeeringStopPost()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringStopPost")
     e.printStackTrace()
@@ -259,7 +265,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -272,7 +278,7 @@ null (empty response body)
 
 <a name="adminSystemConfigGet"></a>
 # **adminSystemConfigGet**
-> adminSystemConfigGet()
+> kotlin.String adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -286,7 +292,8 @@ This endpoint is used to get system configs.
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminSystemConfigGet()
+    val result : kotlin.String = apiInstance.adminSystemConfigGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminSystemConfigGet")
     e.printStackTrace()
@@ -301,7 +308,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -314,7 +321,7 @@ null (empty response body)
 
 <a name="adminUsersGet"></a>
 # **adminUsersGet**
-> adminUsersGet()
+> kotlin.String adminUsersGet()
 
 Get all users
 
@@ -328,7 +335,8 @@ This endpoint is used to get all users.
 
 val apiInstance = AdminApi()
 try {
-    apiInstance.adminUsersGet()
+    val result : kotlin.String = apiInstance.adminUsersGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminUsersGet")
     e.printStackTrace()
@@ -343,7 +351,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

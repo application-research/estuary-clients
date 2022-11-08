@@ -15,9 +15,9 @@ public class MetricsAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMetricsDealsOnChainGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMetricsDealsOnChainGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMetricsDealsOnChainGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -29,10 +29,14 @@ public class MetricsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMetricsDealsOnChainGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func publicMetricsDealsOnChainGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/metrics/deals-on-chain"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -42,7 +46,7 @@ public class MetricsAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }

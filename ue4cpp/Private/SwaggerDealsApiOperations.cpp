@@ -62,10 +62,27 @@ void SwaggerDealsApi::DealEstimatePostRequest::SetupHttpRequest(const TSharedRef
 	}
 }
 
+void SwaggerDealsApi::DealEstimatePostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealEstimatePostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealInfoDealidGetRequest::ComputePath() const
@@ -101,10 +118,27 @@ void SwaggerDealsApi::DealInfoDealidGetRequest::SetupHttpRequest(const TSharedRe
 	}
 }
 
+void SwaggerDealsApi::DealInfoDealidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealInfoDealidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealProposalPropcidGetRequest::ComputePath() const
@@ -140,10 +174,27 @@ void SwaggerDealsApi::DealProposalPropcidGetRequest::SetupHttpRequest(const TSha
 	}
 }
 
+void SwaggerDealsApi::DealProposalPropcidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealProposalPropcidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealQueryMinerGetRequest::ComputePath() const
@@ -179,10 +230,27 @@ void SwaggerDealsApi::DealQueryMinerGetRequest::SetupHttpRequest(const TSharedRe
 	}
 }
 
+void SwaggerDealsApi::DealQueryMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealQueryMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealStatusByProposalPropcidGetRequest::ComputePath() const
@@ -218,10 +286,27 @@ void SwaggerDealsApi::DealStatusByProposalPropcidGetRequest::SetupHttpRequest(co
 	}
 }
 
+void SwaggerDealsApi::DealStatusByProposalPropcidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealStatusByProposalPropcidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealStatusMinerPropcidGetRequest::ComputePath() const
@@ -258,10 +343,27 @@ void SwaggerDealsApi::DealStatusMinerPropcidGetRequest::SetupHttpRequest(const T
 	}
 }
 
+void SwaggerDealsApi::DealStatusMinerPropcidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealStatusMinerPropcidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealTransferInProgressGetRequest::ComputePath() const
@@ -293,10 +395,90 @@ void SwaggerDealsApi::DealTransferInProgressGetRequest::SetupHttpRequest(const T
 	}
 }
 
+void SwaggerDealsApi::DealTransferInProgressGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealTransferInProgressGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString SwaggerDealsApi::DealTransferStatusPostRequest::ComputePath() const
+{
+	FString Path(TEXT("/deal/transfer/status"));
+	return Path;
+}
+
+void SwaggerDealsApi::DealTransferStatusPostRequest::SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("POST"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, Chanid);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (chanid) was ignored, not supported in multipart form"));
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (chanid) was ignored, not supported in urlencoded requests"));
+	}
+	else
+	{
+		UE_LOG(LogSwagger, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void SwaggerDealsApi::DealTransferStatusPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
+
+bool SwaggerDealsApi::DealTransferStatusPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealsFailuresGetRequest::ComputePath() const
@@ -328,10 +510,27 @@ void SwaggerDealsApi::DealsFailuresGetRequest::SetupHttpRequest(const TSharedRef
 	}
 }
 
+void SwaggerDealsApi::DealsFailuresGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealsFailuresGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealsMakeMinerPostRequest::ComputePath() const
@@ -378,10 +577,27 @@ void SwaggerDealsApi::DealsMakeMinerPostRequest::SetupHttpRequest(const TSharedR
 	}
 }
 
+void SwaggerDealsApi::DealsMakeMinerPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealsMakeMinerPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::DealsStatusDealGetRequest::ComputePath() const
@@ -417,10 +633,27 @@ void SwaggerDealsApi::DealsStatusDealGetRequest::SetupHttpRequest(const TSharedR
 	}
 }
 
+void SwaggerDealsApi::DealsStatusDealGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::DealsStatusDealGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::PublicDealsFailuresGetRequest::ComputePath() const
@@ -452,10 +685,27 @@ void SwaggerDealsApi::PublicDealsFailuresGetRequest::SetupHttpRequest(const TSha
 	}
 }
 
+void SwaggerDealsApi::PublicDealsFailuresGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::PublicDealsFailuresGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerDealsApi::PublicMinersStorageQueryMinerGetRequest::ComputePath() const
@@ -491,10 +741,27 @@ void SwaggerDealsApi::PublicMinersStorageQueryMinerGetRequest::SetupHttpRequest(
 	}
 }
 
+void SwaggerDealsApi::PublicMinersStorageQueryMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerDealsApi::PublicMinersStorageQueryMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

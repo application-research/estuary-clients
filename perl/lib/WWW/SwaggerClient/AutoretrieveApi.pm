@@ -71,10 +71,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'admin_autoretrieve_init_post' } = { 
     	summary => 'Register autoretrieve server',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_autoretrieve_init_post {
     my ($self, %args) = @_;
@@ -104,25 +104,29 @@ sub admin_autoretrieve_init_post {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # form params
+    if ( exists $args{'addresses'} ) {
+                $form_params->{'addresses'} = $self->{api_client}->to_form_value($args{'addresses'});
+    }
+    
+    # form params
+    if ( exists $args{'pub_key'} ) {
+                $form_params->{'pubKey'} = $self->{api_client}->to_form_value($args{'pub_key'});
+    }
+    
     my $_body_data;
-    # body params
-    if ( exists $args{'addresses'}) {
-        $_body_data = $args{'addresses'};
-    }
-
-    # body params
-    if ( exists $args{'pub_key'}) {
-        $_body_data = $args{'pub_key'};
-    }
-
     # authentication setting, if any
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -136,10 +140,10 @@ sub admin_autoretrieve_init_post {
     __PACKAGE__->method_documentation->{ 'admin_autoretrieve_list_get' } = { 
     	summary => 'List autoretrieve servers',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub admin_autoretrieve_list_get {
     my ($self, %args) = @_;
@@ -164,10 +168,14 @@ sub admin_autoretrieve_list_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -187,10 +195,10 @@ sub admin_autoretrieve_list_get {
     __PACKAGE__->method_documentation->{ 'autoretrieve_heartbeat_post' } = { 
     	summary => 'Marks autoretrieve server as up',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub autoretrieve_heartbeat_post {
     my ($self, %args) = @_;
@@ -225,10 +233,14 @@ sub autoretrieve_heartbeat_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
 
@@ -16,12 +17,12 @@ class TestAutoretrieveController(BaseTestCase):
 
         Register autoretrieve server
         """
-        pubKey = 'pubKey_example'
+        data = dict(addresses='addresses_example',
+                    pubKey='pubKey_example')
         response = self.client.open(
             '//admin/autoretrieve/init',
             method='POST',
-            data=json.dumps(pubKey),
-            content_type='application/json')
+            data=data)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

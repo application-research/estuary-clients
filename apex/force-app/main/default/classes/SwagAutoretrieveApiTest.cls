@@ -19,13 +19,19 @@ private class SwagAutoretrieveApiTest {
 
         SwagClient client;
         SwagAutoretrieveApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAutoretrieveApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminAutoretrieveInitPost(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminAutoretrieveInitPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -42,13 +48,19 @@ private class SwagAutoretrieveApiTest {
 
         SwagClient client;
         SwagAutoretrieveApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAutoretrieveApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.adminAutoretrieveListGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.adminAutoretrieveListGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -69,12 +81,18 @@ private class SwagAutoretrieveApiTest {
 
         SwagClient client;
         SwagAutoretrieveApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagAutoretrieveApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.autoretrieveHeartbeatPost(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.autoretrieveHeartbeatPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 }

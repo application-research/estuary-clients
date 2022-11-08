@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
 [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> kotlin.Array&lt;MaingetApiKeysResp&gt; userApiKeysGet()
+> kotlin.Array&lt;kotlin.Array&lt;MaingetApiKeysResp&gt;&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -27,7 +27,7 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 
 val apiInstance = UserApi()
 try {
-    val result : kotlin.Array<MaingetApiKeysResp> = apiInstance.userApiKeysGet()
+    val result : kotlin.Array<kotlin.Array<MaingetApiKeysResp>> = apiInstance.userApiKeysGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userApiKeysGet")
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**kotlin.Array&lt;MaingetApiKeysResp&gt;**](MaingetApiKeysResp.md)
+**kotlin.Array&lt;kotlin.Array&lt;MaingetApiKeysResp&gt;&gt;**
 
 ### Authorization
 
@@ -54,13 +54,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysKeyDelete"></a>
-# **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+<a name="userApiKeysKeyOrHashDelete"></a>
+# **userApiKeysKeyOrHashDelete**
+> kotlin.String userApiKeysKeyOrHashDelete(keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```kotlin
@@ -69,14 +69,15 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 //import estuary-client.models.*
 
 val apiInstance = UserApi()
-val key : kotlin.String = key_example // kotlin.String | Key
+val keyOrHash : kotlin.String = keyOrHash_example // kotlin.String | Key or Hash
 try {
-    apiInstance.userApiKeysKeyDelete(key)
+    val result : kotlin.String = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash)
+    println(result)
 } catch (e: ClientException) {
-    println("4xx response calling UserApi#userApiKeysKeyDelete")
+    println("4xx response calling UserApi#userApiKeysKeyOrHashDelete")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling UserApi#userApiKeysKeyDelete")
+    println("5xx response calling UserApi#userApiKeysKeyOrHashDelete")
     e.printStackTrace()
 }
 ```
@@ -85,11 +86,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **kotlin.String**| Key |
+ **keyOrHash** | **kotlin.String**| Key or Hash |
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -115,7 +116,7 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 //import estuary-client.models.*
 
 val apiInstance = UserApi()
-val expiry : kotlin.String = expiry_example // kotlin.String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+val expiry : kotlin.String = expiry_example // kotlin.String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 val perms : kotlin.String = perms_example // kotlin.String | Permissions -- currently unused
 try {
     val result : MaingetApiKeysResp = apiInstance.userApiKeysPost(expiry, perms)
@@ -133,7 +134,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **kotlin.String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional]
+ **expiry** | **kotlin.String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional]
  **perms** | **kotlin.String**| Permissions -- currently unused | [optional]
 
 ### Return type
@@ -194,7 +195,7 @@ This endpoint does not need any parameter.
 
 <a name="userStatsGet"></a>
 # **userStatsGet**
-> MainuserStatsResponse userStatsGet()
+> kotlin.String userStatsGet()
 
 Create API keys for a user
 
@@ -208,7 +209,7 @@ This endpoint is used to create API keys for a user.
 
 val apiInstance = UserApi()
 try {
-    val result : MainuserStatsResponse = apiInstance.userStatsGet()
+    val result : kotlin.String = apiInstance.userStatsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userStatsGet")
@@ -224,7 +225,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainuserStatsResponse**](MainuserStatsResponse.md)
+**kotlin.String**
 
 ### Authorization
 

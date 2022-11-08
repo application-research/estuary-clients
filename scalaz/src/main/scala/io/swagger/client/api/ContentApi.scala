@@ -27,7 +27,9 @@ object ContentApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def contentAddCarPost(host: String, body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddCarPost(host: String, body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/add-car"
     
     val httpMethod = Method.POST
@@ -41,12 +43,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentAddIpfsPost(host: String, body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddIpfsPost(host: String, body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/add-ipfs"
     
     val httpMethod = Method.POST
@@ -60,7 +64,7 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -107,7 +111,9 @@ object ContentApi {
     } yield resp
   }
   
-  def contentAllDealsGet(host: String, begin: String, duration: String, all: String)(implicit beginQuery: QueryParam[String], durationQuery: QueryParam[String], allQuery: QueryParam[String]): Task[Unit] = {
+  def contentAllDealsGet(host: String, begin: String, duration: String, all: String)(implicit beginQuery: QueryParam[String], durationQuery: QueryParam[String], allQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/all-deals"
     
     val httpMethod = Method.GET
@@ -121,12 +127,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentBwUsageContentGet(host: String, content: String): Task[Unit] = {
+  def contentBwUsageContentGet(host: String, content: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/bw-usage/{content}".replaceAll("\\{" + "content" + "\\}",escape(content.toString))
     
     val httpMethod = Method.GET
@@ -140,12 +148,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentCreatePost(host: String, req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
+  def contentCreatePost(host: String, req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/create"
     
     val httpMethod = Method.POST
@@ -159,12 +169,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(req)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentDealsGet(host: String, limit: Integer, offset: Integer)(implicit limitQuery: QueryParam[Integer], offsetQuery: QueryParam[Integer]): Task[Unit] = {
+  def contentDealsGet(host: String, limit: Integer, offset: Integer)(implicit limitQuery: QueryParam[Integer], offsetQuery: QueryParam[Integer]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/deals"
     
     val httpMethod = Method.GET
@@ -178,12 +190,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentEnsureReplicationDatacidGet(host: String, datacid: String): Task[Unit] = {
+  def contentEnsureReplicationDatacidGet(host: String, datacid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/ensure-replication/{datacid}".replaceAll("\\{" + "datacid" + "\\}",escape(datacid.toString))
     
     val httpMethod = Method.GET
@@ -197,7 +211,7 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -223,7 +237,9 @@ object ContentApi {
     } yield resp
   }
   
-  def contentIdGet(host: String, id: Integer): Task[Unit] = {
+  def contentIdGet(host: String, id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
     
     val httpMethod = Method.GET
@@ -237,12 +253,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentImportdealPost(host: String, body: ImportDealBody): Task[Unit] = {
+  def contentImportdealPost(host: String, body: ImportDealBody): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/importdeal"
     
     val httpMethod = Method.POST
@@ -256,13 +274,13 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentListGet(host: String): Task[List[String]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+  def contentListGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/content/list"
     
@@ -277,12 +295,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[String]](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentReadContGet(host: String, cont: String): Task[Unit] = {
+  def contentReadContGet(host: String, cont: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/read/{cont}".replaceAll("\\{" + "cont" + "\\}",escape(cont.toString))
     
     val httpMethod = Method.GET
@@ -296,12 +316,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStagingZonesGet(host: String): Task[Unit] = {
+  def contentStagingZonesGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/staging-zones"
     
     val httpMethod = Method.GET
@@ -315,12 +337,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStatsGet(host: String, limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[Unit] = {
+  def contentStatsGet(host: String, limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/stats"
     
     val httpMethod = Method.GET
@@ -334,12 +358,14 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStatusIdGet(host: String, id: Integer): Task[Unit] = {
+  def contentStatusIdGet(host: String, id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/status/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
     
     val httpMethod = Method.GET
@@ -353,7 +379,7 @@ object ContentApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -365,7 +391,9 @@ class HttpServiceContentApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def contentAddCarPost(body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddCarPost(body: String, ignoreDupes: String, filename: String)(implicit ignoreDupesQuery: QueryParam[String], filenameQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/add-car"
     
     val httpMethod = Method.POST
@@ -379,12 +407,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
+  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/add-ipfs"
     
     val httpMethod = Method.POST
@@ -398,7 +428,7 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -445,7 +475,9 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentAllDealsGet(begin: String, duration: String, all: String)(implicit beginQuery: QueryParam[String], durationQuery: QueryParam[String], allQuery: QueryParam[String]): Task[Unit] = {
+  def contentAllDealsGet(begin: String, duration: String, all: String)(implicit beginQuery: QueryParam[String], durationQuery: QueryParam[String], allQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/all-deals"
     
     val httpMethod = Method.GET
@@ -459,12 +491,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentBwUsageContentGet(content: String): Task[Unit] = {
+  def contentBwUsageContentGet(content: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/bw-usage/{content}".replaceAll("\\{" + "content" + "\\}",escape(content.toString))
     
     val httpMethod = Method.GET
@@ -478,12 +512,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentCreatePost(req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[Unit] = {
+  def contentCreatePost(req: ContentCreateBody, ignoreDupes: String)(implicit ignoreDupesQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/create"
     
     val httpMethod = Method.POST
@@ -497,12 +533,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(req)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentDealsGet(limit: Integer, offset: Integer)(implicit limitQuery: QueryParam[Integer], offsetQuery: QueryParam[Integer]): Task[Unit] = {
+  def contentDealsGet(limit: Integer, offset: Integer)(implicit limitQuery: QueryParam[Integer], offsetQuery: QueryParam[Integer]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/deals"
     
     val httpMethod = Method.GET
@@ -516,12 +554,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentEnsureReplicationDatacidGet(datacid: String): Task[Unit] = {
+  def contentEnsureReplicationDatacidGet(datacid: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/ensure-replication/{datacid}".replaceAll("\\{" + "datacid" + "\\}",escape(datacid.toString))
     
     val httpMethod = Method.GET
@@ -535,7 +575,7 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -561,7 +601,9 @@ class HttpServiceContentApi(service: HttpService) {
     } yield resp
   }
   
-  def contentIdGet(id: Integer): Task[Unit] = {
+  def contentIdGet(id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
     
     val httpMethod = Method.GET
@@ -575,12 +617,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentImportdealPost(body: ImportDealBody): Task[Unit] = {
+  def contentImportdealPost(body: ImportDealBody): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/importdeal"
     
     val httpMethod = Method.POST
@@ -594,13 +638,13 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentListGet(): Task[List[String]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+  def contentListGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/content/list"
     
@@ -615,12 +659,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[String]](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentReadContGet(cont: String): Task[Unit] = {
+  def contentReadContGet(cont: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/read/{cont}".replaceAll("\\{" + "cont" + "\\}",escape(cont.toString))
     
     val httpMethod = Method.GET
@@ -634,12 +680,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStagingZonesGet(): Task[Unit] = {
+  def contentStagingZonesGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/staging-zones"
     
     val httpMethod = Method.GET
@@ -653,12 +701,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStatsGet(limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[Unit] = {
+  def contentStatsGet(limit: String, offset: String)(implicit limitQuery: QueryParam[String], offsetQuery: QueryParam[String]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/stats"
     
     val httpMethod = Method.GET
@@ -672,12 +722,14 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def contentStatusIdGet(id: Integer): Task[Unit] = {
+  def contentStatusIdGet(id: Integer): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/content/status/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
     
     val httpMethod = Method.GET
@@ -691,7 +743,7 @@ class HttpServiceContentApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

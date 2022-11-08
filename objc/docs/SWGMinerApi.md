@@ -12,7 +12,7 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners deals
@@ -37,7 +37,10 @@ SWGMinerApi*apiInstance = [[SWGMinerApi alloc] init];
 // Get all miners deals
 [apiInstance publicMinersDealsMinerGetWithMiner:miner
               ignoreFailed:ignoreFailed
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGMinerApi->publicMinersDealsMinerGet: %@", error);
                         }
@@ -53,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -69,7 +72,7 @@ void (empty response body)
 # **publicMinersStatsMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get miner stats
@@ -92,7 +95,10 @@ SWGMinerApi*apiInstance = [[SWGMinerApi alloc] init];
 
 // Get miner stats
 [apiInstance publicMinersStatsMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGMinerApi->publicMinersStatsMinerGet: %@", error);
                         }
@@ -107,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

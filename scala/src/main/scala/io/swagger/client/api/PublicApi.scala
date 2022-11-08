@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -83,9 +84,9 @@ class PublicApi(
    * This endpoint returns the content associated with a CID
    *
    * @param cid Cid 
-   * @return void
+   * @return String
    */
-  def publicByCidCidGet(cid: String) = {
+  def publicByCidCidGet(cid: String): Option[String] = {
     val await = Try(Await.result(publicByCidCidGetAsync(cid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -98,9 +99,9 @@ class PublicApi(
    * This endpoint returns the content associated with a CID
    *
    * @param cid Cid 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicByCidCidGetAsync(cid: String) = {
+  def publicByCidCidGetAsync(cid: String): Future[String] = {
       helper.publicByCidCidGet(cid)
   }
 
@@ -108,9 +109,9 @@ class PublicApi(
    * Get public node info
    * This endpoint returns information about the node
    *
-   * @return void
+   * @return String
    */
-  def publicInfoGet() = {
+  def publicInfoGet(): Option[String] = {
     val await = Try(Await.result(publicInfoGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -122,9 +123,9 @@ class PublicApi(
    * Get public node info asynchronously
    * This endpoint returns information about the node
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicInfoGetAsync() = {
+  def publicInfoGetAsync(): Future[String] = {
       helper.publicInfoGet()
   }
 
@@ -132,9 +133,9 @@ class PublicApi(
    * Get deal metrics
    * This endpoint is used to get deal metrics
    *
-   * @return void
+   * @return String
    */
-  def publicMetricsDealsOnChainGet() = {
+  def publicMetricsDealsOnChainGet(): Option[String] = {
     val await = Try(Await.result(publicMetricsDealsOnChainGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -146,9 +147,9 @@ class PublicApi(
    * Get deal metrics asynchronously
    * This endpoint is used to get deal metrics
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMetricsDealsOnChainGetAsync() = {
+  def publicMetricsDealsOnChainGetAsync(): Future[String] = {
       helper.publicMetricsDealsOnChainGet()
   }
 
@@ -158,9 +159,9 @@ class PublicApi(
    *
    * @param miner Filter by miner 
    * @param ignoreFailed Ignore Failed (optional)
-   * @return void
+   * @return String
    */
-  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None) = {
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None): Option[String] = {
     val await = Try(Await.result(publicMinersDealsMinerGetAsync(miner, ignoreFailed), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -174,9 +175,9 @@ class PublicApi(
    *
    * @param miner Filter by miner 
    * @param ignoreFailed Ignore Failed (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersDealsMinerGetAsync(miner: String, ignoreFailed: Option[String] = None) = {
+  def publicMinersDealsMinerGetAsync(miner: String, ignoreFailed: Option[String] = None): Future[String] = {
       helper.publicMinersDealsMinerGet(miner, ignoreFailed)
   }
 
@@ -185,9 +186,9 @@ class PublicApi(
    * This endpoint returns all miners
    *
    * @param miner Filter by miner 
-   * @return void
+   * @return String
    */
-  def publicMinersFailuresMinerGet(miner: String) = {
+  def publicMinersFailuresMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(publicMinersFailuresMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -200,9 +201,9 @@ class PublicApi(
    * This endpoint returns all miners
    *
    * @param miner Filter by miner 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersFailuresMinerGetAsync(miner: String) = {
+  def publicMinersFailuresMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersFailuresMinerGet(miner)
   }
 
@@ -210,9 +211,9 @@ class PublicApi(
    * Get all miners
    * This endpoint returns all miners
    *
-   * @return void
+   * @return String
    */
-  def publicMinersGet() = {
+  def publicMinersGet(): Option[String] = {
     val await = Try(Await.result(publicMinersGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -224,9 +225,9 @@ class PublicApi(
    * Get all miners asynchronously
    * This endpoint returns all miners
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersGetAsync() = {
+  def publicMinersGetAsync(): Future[String] = {
       helper.publicMinersGet()
   }
 
@@ -235,9 +236,9 @@ class PublicApi(
    * This endpoint returns miner stats
    *
    * @param miner Filter by miner 
-   * @return void
+   * @return String
    */
-  def publicMinersStatsMinerGet(miner: String) = {
+  def publicMinersStatsMinerGet(miner: String): Option[String] = {
     val await = Try(Await.result(publicMinersStatsMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -250,9 +251,9 @@ class PublicApi(
    * This endpoint returns miner stats
    *
    * @param miner Filter by miner 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicMinersStatsMinerGetAsync(miner: String) = {
+  def publicMinersStatsMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersStatsMinerGet(miner)
   }
 
@@ -308,9 +309,9 @@ class PublicApi(
    * Public stats
    * This endpoint is used to get public stats.
    *
-   * @return void
+   * @return String
    */
-  def publicStatsGet() = {
+  def publicStatsGet(): Option[String] = {
     val await = Try(Await.result(publicStatsGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -322,9 +323,9 @@ class PublicApi(
    * Public stats asynchronously
    * This endpoint is used to get public stats.
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def publicStatsGetAsync() = {
+  def publicStatsGetAsync(): Future[String] = {
       helper.publicStatsGet()
   }
 
@@ -332,7 +333,7 @@ class PublicApi(
 
 class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def publicByCidCidGet(cid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicByCidCidGet(cid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/by-cid/{cid}")
       replaceAll("\\{" + "cid" + "\\}", cid.toString))
@@ -350,7 +351,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicInfoGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicInfoGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/info"))
 
@@ -365,7 +366,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicMetricsDealsOnChainGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMetricsDealsOnChainGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/metrics/deals-on-chain"))
 
@@ -382,7 +383,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
 
   def publicMinersDealsMinerGet(miner: String,
     ignoreFailed: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/deals/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -404,7 +405,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/failures/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -422,7 +423,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicMinersGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners"))
 
@@ -437,7 +438,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicMinersStatsMinerGet(miner: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicMinersStatsMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/stats/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -485,7 +486,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicStatsGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def publicStatsGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/stats"))
 

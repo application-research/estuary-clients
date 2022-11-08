@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> String adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -35,10 +35,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
-var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
+var peerIds = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
 
 try { 
-    api_instance.adminPeeringPeersDelete(body);
+    var result = api_instance.adminPeeringPeersDelete(peerIds);
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersDelete: $e\n");
 }
@@ -48,11 +49,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| Peer ids | 
+ **peerIds** | **List&lt;bool&gt;**| Peer ids | 
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -83,7 +84,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminPeeringPeersGet();
+    var result = api_instance.adminPeeringPeersGet();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersGet: $e\n");
 }
@@ -94,7 +96,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -108,7 +110,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -125,7 +127,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminPeeringPeersPost();
+    var result = api_instance.adminPeeringPeersPost();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersPost: $e\n");
 }
@@ -136,7 +139,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -150,7 +153,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> String adminPeeringStartPost()
 
 Start Peering
 
@@ -167,7 +170,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminPeeringStartPost();
+    var result = api_instance.adminPeeringStartPost();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringStartPost: $e\n");
 }
@@ -178,7 +182,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -192,7 +196,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -209,7 +213,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminPeeringStatusGet();
+    var result = api_instance.adminPeeringStatusGet();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringStatusGet: $e\n");
 }
@@ -220,7 +225,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -234,7 +239,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> String adminPeeringStopPost()
 
 Stop Peering
 
@@ -251,7 +256,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminPeeringStopPost();
+    var result = api_instance.adminPeeringStopPost();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringStopPost: $e\n");
 }
@@ -262,7 +268,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -276,7 +282,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminSystemConfigGet**
-> adminSystemConfigGet()
+> String adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -293,7 +299,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminSystemConfigGet();
+    var result = api_instance.adminSystemConfigGet();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminSystemConfigGet: $e\n");
 }
@@ -304,7 +311,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -318,7 +325,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminUsersGet**
-> adminUsersGet()
+> String adminUsersGet()
 
 Get all users
 
@@ -335,7 +342,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AdminApi();
 
 try { 
-    api_instance.adminUsersGet();
+    var result = api_instance.adminUsersGet();
+    print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminUsersGet: $e\n");
 }
@@ -346,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

@@ -67,10 +67,8 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMetricsDealsOnChainGet0 
-  :: EstuaryRequest PublicMetricsDealsOnChainGet0 MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicMetricsDealsOnChainGet0 MimeNoContent Text MimeJSON
 publicMetricsDealsOnChainGet0 =
   _mkRequest "GET" ["/public/metrics/deals-on-chain"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

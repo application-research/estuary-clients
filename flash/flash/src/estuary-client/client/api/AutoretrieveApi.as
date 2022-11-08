@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -28,7 +29,7 @@ public class AutoretrieveApi extends SwaggerApi {
 
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_autoretrieve_init_post (addresses: String, pubKey: String): String {
         // create path and map variables
@@ -49,20 +50,20 @@ public class AutoretrieveApi extends SwaggerApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, pubKey, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
         token.completionEventType = "admin_autoretrieve_init_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_autoretrieve_list_get (): String {
         // create path and map variables
@@ -82,13 +83,13 @@ public class AutoretrieveApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_autoretrieve_list_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function autoretrieve_heartbeat_post (token: String): String {
         // create path and map variables
@@ -113,7 +114,7 @@ public class AutoretrieveApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "autoretrieve_heartbeat_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

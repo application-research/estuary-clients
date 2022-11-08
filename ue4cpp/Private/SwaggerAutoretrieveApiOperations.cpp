@@ -38,26 +38,25 @@ void SwaggerAutoretrieveApi::AdminAutoretrieveInitPostRequest::SetupHttpRequest(
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
-		// Body parameters
-		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
-
-		WriteJsonValue(Writer, Addresses);
-		WriteJsonValue(Writer, PubKey);
-		Writer->Close();
-
-		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
-		HttpRequest->SetContentAsString(JsonBody);
+		UE_LOG(LogSwagger, Error, TEXT("Form parameter (addresses) was ignored, cannot be used in JsonBody"));
+		UE_LOG(LogSwagger, Error, TEXT("Form parameter (pubKey) was ignored, cannot be used in JsonBody"));
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (addresses) was ignored, not supported in multipart form"));
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (pubKey) was ignored, not supported in multipart form"));
+		HttpMultipartFormData FormData;
+		FormData.AddStringPart(TEXT("addresses"), *ToUrlString(Addresses));
+		FormData.AddStringPart(TEXT("pubKey"), *ToUrlString(PubKey));
+
+		FormData.SetupHttpRequest(HttpRequest);
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (addresses) was ignored, not supported in urlencoded requests"));
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (pubKey) was ignored, not supported in urlencoded requests"));
+		TArray<FString> FormParams;
+		FormParams.Add(FString(TEXT("addresses=")) + ToUrlString(Addresses));
+		FormParams.Add(FString(TEXT("pubKey=")) + ToUrlString(PubKey));
+		
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/x-www-form-urlencoded; charset=utf-8"));
+		HttpRequest->SetContentAsString(FString::Join(FormParams, TEXT("&")));
 	}
 	else
 	{
@@ -65,10 +64,27 @@ void SwaggerAutoretrieveApi::AdminAutoretrieveInitPostRequest::SetupHttpRequest(
 	}
 }
 
+void SwaggerAutoretrieveApi::AdminAutoretrieveInitPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAutoretrieveApi::AdminAutoretrieveInitPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAutoretrieveApi::AdminAutoretrieveListGetRequest::ComputePath() const
@@ -100,10 +116,27 @@ void SwaggerAutoretrieveApi::AdminAutoretrieveListGetRequest::SetupHttpRequest(c
 	}
 }
 
+void SwaggerAutoretrieveApi::AdminAutoretrieveListGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAutoretrieveApi::AdminAutoretrieveListGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAutoretrieveApi::AutoretrieveHeartbeatPostRequest::ComputePath() const
@@ -138,10 +171,27 @@ void SwaggerAutoretrieveApi::AutoretrieveHeartbeatPostRequest::SetupHttpRequest(
 	}
 }
 
+void SwaggerAutoretrieveApi::AutoretrieveHeartbeatPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAutoretrieveApi::AutoretrieveHeartbeatPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

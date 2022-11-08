@@ -46,7 +46,7 @@ class ContentApi(object):
         :param str body: Car (required)
         :param str ignore_dupes: Ignore Dupes
         :param str filename: Filename
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -70,7 +70,7 @@ class ContentApi(object):
         :param str body: Car (required)
         :param str ignore_dupes: Ignore Dupes
         :param str filename: Filename
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -128,7 +128,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -148,7 +148,7 @@ class ContentApi(object):
         :param async_req bool
         :param UtilContentAddIpfsBody body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -171,7 +171,7 @@ class ContentApi(object):
         :param async_req bool
         :param UtilContentAddIpfsBody body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -227,7 +227,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -466,7 +466,7 @@ class ContentApi(object):
         :param str begin: Begin (required)
         :param str duration: Duration (required)
         :param str all: All (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -490,7 +490,7 @@ class ContentApi(object):
         :param str begin: Begin (required)
         :param str duration: Duration (required)
         :param str all: All (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -556,7 +556,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -575,7 +575,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str content: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -597,7 +597,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str content: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -651,7 +651,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -671,7 +671,7 @@ class ContentApi(object):
         :param async_req bool
         :param UtilContentCreateBody req: Content (required)
         :param str ignore_dupes: Ignore Dupes
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -694,7 +694,7 @@ class ContentApi(object):
         :param async_req bool
         :param UtilContentCreateBody req: Content (required)
         :param str ignore_dupes: Ignore Dupes
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -750,7 +750,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -770,7 +770,7 @@ class ContentApi(object):
         :param async_req bool
         :param int limit: Limit
         :param int offset: Offset
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -793,7 +793,7 @@ class ContentApi(object):
         :param async_req bool
         :param int limit: Limit
         :param int offset: Offset
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -845,7 +845,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -864,7 +864,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str datacid: Data CID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -886,7 +886,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str datacid: Data CID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -940,7 +940,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1054,7 +1054,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param int id: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1076,7 +1076,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param int id: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1130,7 +1130,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1149,7 +1149,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param MainImportDealBody body: Import a deal (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1171,7 +1171,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param MainImportDealBody body: Import a deal (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1225,7 +1225,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1243,7 +1243,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[str]
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1264,7 +1264,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[str]
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1312,7 +1312,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[str]',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1331,7 +1331,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str cont: CID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1353,7 +1353,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param str cont: CID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1407,7 +1407,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1425,7 +1425,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1446,7 +1446,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1494,7 +1494,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1514,7 +1514,7 @@ class ContentApi(object):
         :param async_req bool
         :param str limit: limit (required)
         :param str offset: offset (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1537,7 +1537,7 @@ class ContentApi(object):
         :param async_req bool
         :param str limit: limit (required)
         :param str offset: offset (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1597,7 +1597,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1616,7 +1616,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param int id: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1638,7 +1638,7 @@ class ContentApi(object):
 
         :param async_req bool
         :param int id: Content ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1692,7 +1692,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

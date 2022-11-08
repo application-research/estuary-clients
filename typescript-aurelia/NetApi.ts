@@ -68,7 +68,7 @@ export class NetApi extends Api {
    * Net Addrs
    * This endpoint is used to get net addrs
    */
-  async netAddrsGet(): Promise<Array<string>> {
+  async netAddrsGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -96,7 +96,7 @@ export class NetApi extends Api {
    * This endpoint returns all miners
    * @param params.miner Filter by miner
    */
-  async publicMinersFailuresMinerGet(params: IPublicMinersFailuresMinerGetParams): Promise<any> {
+  async publicMinersFailuresMinerGet(params: IPublicMinersFailuresMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersFailuresMinerGet', params, 'miner');
 
@@ -125,7 +125,7 @@ export class NetApi extends Api {
    * Get all miners
    * This endpoint returns all miners
    */
-  async publicMinersGet(): Promise<any> {
+  async publicMinersGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call

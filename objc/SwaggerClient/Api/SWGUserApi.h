@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
 #import "SWGMainGetApiKeysResp.h"
-#import "SWGMainUserStatsResponse.h"
 #import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
@@ -34,26 +33,29 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 ///  code:404 message:"Not Found",
 ///  code:500 message:"Internal Server Error"
 ///
-/// @return NSArray<SWGMainGetApiKeysResp>*
+/// @return NSArray<NSArray<SWGMainGetApiKeysResp>*>*
 -(NSURLSessionTask*) userApiKeysGetWithCompletionHandler: 
-    (void (^)(NSArray<SWGMainGetApiKeysResp>* output, NSError* error)) handler;
+    (void (^)(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error)) handler;
 
 
 /// Revoke a User API Key.
-/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 ///
-/// @param key Key
+/// @param keyOrHash Key or Hash
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
--(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
-    completionHandler: (void (^)(NSError* error)) handler;
+/// @return NSString*
+-(NSURLSessionTask*) userApiKeysKeyOrHashDeleteWithKeyOrHash: (NSString*) keyOrHash
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Create API keys for a user
 /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
 ///
-/// @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+/// @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 /// @param perms Permissions -- currently unused (optional)
 /// 
 ///  code:200 message:"OK",
@@ -71,7 +73,9 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 /// This endpoint is used to get API keys for a user.
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) userExportGetWithCompletionHandler: 
@@ -82,11 +86,13 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 /// This endpoint is used to create API keys for a user.
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return SWGMainUserStatsResponse*
+/// @return NSString*
 -(NSURLSessionTask*) userStatsGetWithCompletionHandler: 
-    (void (^)(SWGMainUserStatsResponse* output, NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 

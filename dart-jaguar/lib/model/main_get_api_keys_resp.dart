@@ -6,7 +6,11 @@ class MainGetApiKeysResp {
   
   final String expiry;
   
+  final String label;
+  
   final String token;
+  
+  final String tokenHash;
   
 
   MainGetApiKeysResp(
@@ -14,14 +18,16 @@ class MainGetApiKeysResp {
 
 {
      this.expiry = null,  
-     this.token = null 
+     this.label = null,  
+     this.token = null,  
+     this.tokenHash = null 
     
     }
   );
 
   @override
   String toString() {
-    return 'MainGetApiKeysResp[expiry=$expiry, token=$token, ]';
+    return 'MainGetApiKeysResp[expiry=$expiry, label=$label, token=$token, tokenHash=$tokenHash, ]';
   }
 }
 

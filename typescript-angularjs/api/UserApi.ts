@@ -30,7 +30,7 @@ export class UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      * @summary Get API keys for a user
      */
-    public userApiKeysGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.MainGetApiKeysResp>> {
+    public userApiKeysGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<Array<models.MainGetApiKeysResp>>> {
         const localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
@@ -49,19 +49,19 @@ export class UserApi {
         return this.$http(httpRequestParams);
     }
     /**
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      * @summary Revoke a User API Key.
-     * @param key Key
+     * @param keyOrHash Key or Hash
      */
-    public userApiKeysKeyDelete (key: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
-        const localVarPath = this.basePath + '/user/api-keys/{key}'
-            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+    public userApiKeysKeyOrHashDelete (keyOrHash: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+        const localVarPath = this.basePath + '/user/api-keys/{key_or_hash}'
+            .replace('{' + 'key_or_hash' + '}', encodeURIComponent(String(keyOrHash)));
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'key' is not null or undefined
-        if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        // verify required parameter 'keyOrHash' is not null or undefined
+        if (keyOrHash === null || keyOrHash === undefined) {
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {
@@ -80,7 +80,7 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      */
     public userApiKeysPost (expiry?: string, perms?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainGetApiKeysResp> {
@@ -135,7 +135,7 @@ export class UserApi {
      * This endpoint is used to create API keys for a user.
      * @summary Create API keys for a user
      */
-    public userStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.MainUserStatsResponse> {
+    public userStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/user/stats';
 
         let queryParameters: any = {};

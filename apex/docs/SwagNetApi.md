@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="netAddrsGet"></a>
 # **netAddrsGet**
-> List&lt;String&gt; netAddrsGet()
+> String netAddrsGet()
 
 Net Addrs
 
@@ -30,7 +30,7 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    List<String> result = api.netAddrsGet();
+    String result = api.netAddrsGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -76,7 +76,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.publicMinersFailuresMinerGet(params);
+    String result = api.publicMinersFailuresMinerGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -90,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -103,7 +104,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> String publicMinersGet()
 
 Get all miners
 
@@ -120,7 +121,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.publicMinersGet();
+    String result = api.publicMinersGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -131,7 +133,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

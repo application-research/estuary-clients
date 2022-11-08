@@ -29,22 +29,22 @@ export class PeeringApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      */
-    public adminPeeringPeersDelete (body: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringPeersDelete (peerIds: Array<boolean>, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        // verify required parameter 'peerIds' is not null or undefined
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {
             method: 'DELETE',
             url: localVarPath,
-            data: body,
+            data: peerIds,
             params: queryParameters,
             headers: headerParams
         };
@@ -59,7 +59,7 @@ export class PeeringApi {
      * This endpoint can be used to list all peers on Peering Service
      * @summary List all Peering peers
      */
-    public adminPeeringPeersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringPeersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
@@ -81,7 +81,7 @@ export class PeeringApi {
      * This endpoint can be used to add a Peer from the Peering Service
      * @summary Add peers on Peering Service
      */
-    public adminPeeringPeersPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringPeersPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/peers';
 
         let queryParameters: any = {};
@@ -103,7 +103,7 @@ export class PeeringApi {
      * This endpoint can be used to start the Peering Service
      * @summary Start Peering
      */
-    public adminPeeringStartPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringStartPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/start';
 
         let queryParameters: any = {};
@@ -125,7 +125,7 @@ export class PeeringApi {
      * This endpoint can be used to check the Peering status
      * @summary Check Peering Status
      */
-    public adminPeeringStatusGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringStatusGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/status';
 
         let queryParameters: any = {};
@@ -147,7 +147,7 @@ export class PeeringApi {
      * This endpoint can be used to stop the Peering Service
      * @summary Stop Peering
      */
-    public adminPeeringStopPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public adminPeeringStopPost (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/admin/peering/stop';
 
         let queryParameters: any = {};

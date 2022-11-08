@@ -120,7 +120,7 @@ class CollectionsApi {
   /// Deletes a collection
   ///
   /// This endpoint is used to delete an existing collection.
-  Future collectionsColuuidDelete(String coluuid) async {
+  Future<String> collectionsColuuidDelete(String coluuid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -164,9 +164,9 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get contents in a collection
@@ -227,7 +227,7 @@ class CollectionsApi {
   /// Add contents to a collection
   ///
   /// This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-  Future<Map<String, String>> collectionsColuuidPost(String coluuid, List<int> contentIDs) async {
+  Future<String> collectionsColuuidPost(String coluuid, List<int> contentIDs) async {
     Object postBody = contentIDs;
 
     // verify required params are set
@@ -274,7 +274,7 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          new Map<String, String>.from(apiClient.deserialize(response.body, 'Map<String, String>')) ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
     }
@@ -282,7 +282,7 @@ class CollectionsApi {
   /// Add a file to a collection
   ///
   /// This endpoint adds a file to a collection
-  Future collectionsFsAddPost(String coluuid, String content, String path) async {
+  Future<String> collectionsFsAddPost(String coluuid, String content, String path) async {
     Object postBody = null;
 
     // verify required params are set
@@ -335,15 +335,15 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List all collections
   ///
   /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-  Future<List<CollectionsCollection>> collectionsGet() async {
+  Future<List<List<CollectionsCollection>>> collectionsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -384,7 +384,7 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-        (apiClient.deserialize(response.body, 'List<CollectionsCollection>') as List).map((item) => item as CollectionsCollection).toList();
+        (apiClient.deserialize(response.body, 'List<List<CollectionsCollection>>') as List).map((item) => item as List).toList();
     } else {
       return null;
     }

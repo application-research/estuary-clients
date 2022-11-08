@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -34,8 +35,8 @@ public:
  */
 bool adminAutoretrieveInitPostSync(char * accessToken,
 	std::string addresses, std::string pubKey, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Register autoretrieve server. *Asynchronous*
  *
@@ -48,8 +49,8 @@ bool adminAutoretrieveInitPostSync(char * accessToken,
  */
 bool adminAutoretrieveInitPostAsync(char * accessToken,
 	std::string addresses, std::string pubKey, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief List autoretrieve servers. *Synchronous*
@@ -61,8 +62,8 @@ bool adminAutoretrieveInitPostAsync(char * accessToken,
  */
 bool adminAutoretrieveListGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief List autoretrieve servers. *Asynchronous*
  *
@@ -73,8 +74,8 @@ bool adminAutoretrieveListGetSync(char * accessToken,
  */
 bool adminAutoretrieveListGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Marks autoretrieve server as up. *Synchronous*
@@ -87,8 +88,8 @@ bool adminAutoretrieveListGetAsync(char * accessToken,
  */
 bool autoretrieveHeartbeatPostSync(char * accessToken,
 	std::string token, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Marks autoretrieve server as up. *Asynchronous*
  *
@@ -100,8 +101,8 @@ bool autoretrieveHeartbeatPostSync(char * accessToken,
  */
 bool autoretrieveHeartbeatPostAsync(char * accessToken,
 	std::string token, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

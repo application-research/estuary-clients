@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get 
+> pinning_pins_get : detachable STRING_32
 	
 
 List all pin status objects
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete (pinid: STRING_32 )
+> pinning_pins_pinid_delete (pinid: STRING_32 ): detachable STRING_32
 	
 
 Delete a pinned object
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get (pinid: STRING_32 )
+> pinning_pins_pinid_get (pinid: STRING_32 ): detachable STRING_32
 	
 
 Get a pin status object
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post (pinid: STRING_32 )
+> pinning_pins_pinid_post (pinid: STRING_32 ): detachable STRING_32
 	
 
 Replace a pinned object
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> pinning_pins_post (cid: STRING_32 ; name: STRING_32 )
+> pinning_pins_post (pin: TYPES_IPFS_PIN ): detachable STRING_32
 	
 
 Add and pin object
@@ -141,12 +141,11 @@ This endpoint adds a pin to the IPFS daemon.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **STRING_32**| cid | 
- **name** | **STRING_32**| name | 
+ **pin** | [**TYPES_IPFS_PIN**](TYPES_IPFS_PIN.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.AutoretrieveApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -48,7 +49,7 @@ API.Client.AutoretrieveApi.$inject = ['$http', '$httpParamSerializer', '$injecto
  * @param {!string} addresses Autoretrieve&#39;s comma-separated list of addresses
  * @param {!string} pubKey Autoretrieve&#39;s public key
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AutoretrieveApi.prototype.adminAutoretrieveInitPost = function(addresses, pubKey, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -59,6 +60,9 @@ API.Client.AutoretrieveApi.prototype.adminAutoretrieveInitPost = function(addres
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
+  /** @type {!Object} */
+  var formParams = {};
+
   // verify required parameter 'addresses' is set
   if (!addresses) {
     throw new Error('Missing required parameter addresses when calling adminAutoretrieveInitPost');
@@ -67,13 +71,19 @@ API.Client.AutoretrieveApi.prototype.adminAutoretrieveInitPost = function(addres
   if (!pubKey) {
     throw new Error('Missing required parameter pubKey when calling adminAutoretrieveInitPost');
   }
+  headerParams['Content-Type'] = 'application/x-www-form-urlencoded';
+
+  formParams['addresses'] = addresses;
+
+  formParams['pubKey'] = pubKey;
+
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'POST',
     url: path,
-    json: true,
-    data: pubKey,
-        params: queryParameters,
+    json: false,
+        data: this.httpParamSerializer(formParams),
+    params: queryParameters,
     headers: headerParams
   };
 
@@ -88,7 +98,7 @@ API.Client.AutoretrieveApi.prototype.adminAutoretrieveInitPost = function(addres
  * List autoretrieve servers
  * This endpoint lists all registered autoretrieve servers
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AutoretrieveApi.prototype.adminAutoretrieveListGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -120,7 +130,7 @@ API.Client.AutoretrieveApi.prototype.adminAutoretrieveListGet = function(opt_ext
  * This endpoint updates the lastConnection field for autoretrieve
  * @param {!string} token Autoretrieve&#39;s auth token
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AutoretrieveApi.prototype.autoretrieveHeartbeatPost = function(token, opt_extraHttpRequestParams) {
   /** @const {string} */

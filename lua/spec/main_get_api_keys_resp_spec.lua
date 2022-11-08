@@ -23,8 +23,22 @@ describe("main_get_api_keys_resp", function()
     end)
   end)
 
+  -- unit tests for the property 'label'
+  describe("property label test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for the property 'token'
   describe("property token test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for the property 'token_hash'
+  describe("property token_hash test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

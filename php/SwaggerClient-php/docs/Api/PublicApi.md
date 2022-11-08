@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **publicByCidCidGet**
-> publicByCidCidGet($cid)
+> string publicByCidCidGet($cid)
 
 Get Content by Cid
 
@@ -42,7 +42,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 $cid = "cid_example"; // string | Cid
 
 try {
-    $apiInstance->publicByCidCidGet($cid);
+    $result = $apiInstance->publicByCidCidGet($cid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicByCidCidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -57,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -71,7 +72,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicInfoGet**
-> publicInfoGet()
+> string publicInfoGet()
 
 Get public node info
 
@@ -95,7 +96,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 );
 
 try {
-    $apiInstance->publicInfoGet();
+    $result = $apiInstance->publicInfoGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicInfoGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -107,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -121,7 +123,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> string publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -145,7 +147,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 );
 
 try {
-    $apiInstance->publicMetricsDealsOnChainGet();
+    $result = $apiInstance->publicMetricsDealsOnChainGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMetricsDealsOnChainGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -157,7 +160,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -171,7 +174,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet($miner, $ignore_failed)
+> string publicMinersDealsMinerGet($miner, $ignore_failed)
 
 Get all miners deals
 
@@ -197,7 +200,8 @@ $miner = "miner_example"; // string | Filter by miner
 $ignore_failed = "ignore_failed_example"; // string | Ignore Failed
 
 try {
-    $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
+    $result = $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMinersDealsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -213,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -227,7 +231,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet($miner)
+> string publicMinersFailuresMinerGet($miner)
 
 Get all miners
 
@@ -252,7 +256,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 $miner = "miner_example"; // string | Filter by miner
 
 try {
-    $apiInstance->publicMinersFailuresMinerGet($miner);
+    $result = $apiInstance->publicMinersFailuresMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMinersFailuresMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -267,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -281,7 +286,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersGet**
-> publicMinersGet()
+> string publicMinersGet()
 
 Get all miners
 
@@ -305,7 +310,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 );
 
 try {
-    $apiInstance->publicMinersGet();
+    $result = $apiInstance->publicMinersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMinersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -317,7 +323,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -331,7 +337,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet($miner)
+> string publicMinersStatsMinerGet($miner)
 
 Get miner stats
 
@@ -356,7 +362,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 $miner = "miner_example"; // string | Filter by miner
 
 try {
-    $apiInstance->publicMinersStatsMinerGet($miner);
+    $result = $apiInstance->publicMinersStatsMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicMinersStatsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -371,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -487,7 +494,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicStatsGet**
-> publicStatsGet()
+> string publicStatsGet()
 
 Public stats
 
@@ -511,7 +518,8 @@ $apiInstance = new Swagger\Client\Api\PublicApi(
 );
 
 try {
-    $apiInstance->publicStatsGet();
+    $result = $apiInstance->publicStatsGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PublicApi->publicStatsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -523,7 +531,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

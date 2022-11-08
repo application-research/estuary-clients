@@ -23,6 +23,7 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.TypesIpfsPin;
 import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
@@ -58,9 +59,9 @@ public class PinningApi {
   /**
   * List all pin status objects
   * This endpoint lists all pin status objects
-   * @return void
+   * @return String
   */
-  public void pinningPinsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String pinningPinsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -90,9 +91,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -155,7 +156,11 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -171,9 +176,9 @@ public class PinningApi {
   * Delete a pinned object
   * This endpoint deletes a pinned object.
    * @param pinid Pin ID
-   * @return void
+   * @return String
   */
-  public void pinningPinsPinidDelete (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String pinningPinsPinidDelete (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -208,9 +213,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "DELETE", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -278,7 +283,11 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -294,9 +303,9 @@ public class PinningApi {
   * Get a pin status object
   * This endpoint returns a pin status object.
    * @param pinid cid
-   * @return void
+   * @return String
   */
-  public void pinningPinsPinidGet (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String pinningPinsPinidGet (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -331,9 +340,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -401,7 +410,11 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -417,9 +430,9 @@ public class PinningApi {
   * Replace a pinned object
   * This endpoint replaces a pinned object.
    * @param pinid Pin ID
-   * @return void
+   * @return String
   */
-  public void pinningPinsPinidPost (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String pinningPinsPinidPost (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -454,9 +467,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -524,7 +537,11 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -539,25 +556,19 @@ public class PinningApi {
   /**
   * Add and pin object
   * This endpoint adds a pin to the IPFS daemon.
-   * @param cid cid
-   * @param name name
-   * @return void
+   * @param pin Pin Body {cid:cid, name:name}
+   * @return String
   */
-  public void pinningPinsPost (String cid, String name) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'cid' is set
-    if (cid == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'cid' when calling pinningPinsPost",
-        new ApiException(400, "Missing the required parameter 'cid' when calling pinningPinsPost"));
-    }
-    // verify the required parameter 'name' is set
-    if (name == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling pinningPinsPost",
-        new ApiException(400, "Missing the required parameter 'name' when calling pinningPinsPost"));
+  public String pinningPinsPost (TypesIpfsPin pin) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = pin;
+    // verify the required parameter 'pin' is set
+    if (pin == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'pin' when calling pinningPinsPost",
+        new ApiException(400, "Missing the required parameter 'pin' when calling pinningPinsPost"));
     }
 
     // create path and map variables
-    String path = "/pinning/pins".replaceAll("\\{" + "cid" + "\\}", apiInvoker.escapeString(cid.toString())).replaceAll("\\{" + "name" + "\\}", apiInvoker.escapeString(name.toString()));
+    String path = "/pinning/pins";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -583,9 +594,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -607,24 +618,19 @@ public class PinningApi {
       /**
    * Add and pin object
    * This endpoint adds a pin to the IPFS daemon.
-   * @param cid cid   * @param name name
+   * @param pin Pin Body {cid:cid, name:name}
   */
-  public void pinningPinsPost (String cid, String name, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
+  public void pinningPinsPost (TypesIpfsPin pin, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = pin;
 
-    // verify the required parameter 'cid' is set
-    if (cid == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'cid' when calling pinningPinsPost",
-        new ApiException(400, "Missing the required parameter 'cid' when calling pinningPinsPost"));
-    }
-    // verify the required parameter 'name' is set
-    if (name == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'name' when calling pinningPinsPost",
-        new ApiException(400, "Missing the required parameter 'name' when calling pinningPinsPost"));
+    // verify the required parameter 'pin' is set
+    if (pin == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'pin' when calling pinningPinsPost",
+        new ApiException(400, "Missing the required parameter 'pin' when calling pinningPinsPost"));
     }
 
     // create path and map variables
-    String path = "/pinning/pins".replaceAll("\\{format\\}","json").replaceAll("\\{" + "cid" + "\\}", apiInvoker.escapeString(cid.toString())).replaceAll("\\{" + "name" + "\\}", apiInvoker.escapeString(name.toString()));
+    String path = "/pinning/pins".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -658,7 +664,11 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

@@ -36,8 +36,8 @@ class TestUserApi(unittest.TestCase):
         """
         pass
 
-    def test_user_api_keys_key_delete(self):
-        """Test case for user_api_keys_key_delete
+    def test_user_api_keys_key_or_hash_delete(self):
+        """Test case for user_api_keys_key_or_hash_delete
 
         Revoke a User API Key.  # noqa: E501
         """

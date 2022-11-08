@@ -13,6 +13,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -41,8 +42,8 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() throws Exception {
-        List<String> body = null;
-        api.adminPeeringPeersDelete(body);
+        List<Boolean> peerIds = null;
+        String response = api.adminPeeringPeersDelete(peerIds);
 
         // TODO: test validations
     }
@@ -57,7 +58,7 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringPeersGetTest() throws Exception {
-        api.adminPeeringPeersGet();
+        String response = api.adminPeeringPeersGet();
 
         // TODO: test validations
     }
@@ -72,7 +73,7 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringPeersPostTest() throws Exception {
-        api.adminPeeringPeersPost();
+        String response = api.adminPeeringPeersPost();
 
         // TODO: test validations
     }
@@ -87,7 +88,7 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringStartPostTest() throws Exception {
-        api.adminPeeringStartPost();
+        String response = api.adminPeeringStartPost();
 
         // TODO: test validations
     }
@@ -102,7 +103,7 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringStatusGetTest() throws Exception {
-        api.adminPeeringStatusGet();
+        String response = api.adminPeeringStatusGet();
 
         // TODO: test validations
     }
@@ -117,7 +118,7 @@ public class PeeringApiTest {
      */
     @Test
     public void adminPeeringStopPostTest() throws Exception {
-        api.adminPeeringStopPost();
+        String response = api.adminPeeringStopPost();
 
         // TODO: test validations
     }

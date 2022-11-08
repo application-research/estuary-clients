@@ -29,7 +29,9 @@ public:
 	void WriteJson(JsonWriter& Writer) const final;
 
 	TOptional<FString> Expiry;
+	TOptional<FString> Label;
 	TOptional<FString> Token;
+	TOptional<FString> TokenHash;
 };
 
 }

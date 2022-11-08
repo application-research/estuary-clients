@@ -5,6 +5,7 @@ import static groovyx.net.http.ContentType.*
 import static groovyx.net.http.Method.*
 import io.swagger.api.ApiUtils
 
+import io.swagger.model.UtilHttpError
 
 import java.util.*;
 
@@ -32,7 +33,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicInfoGet ( Closure onSuccess, Closure onFailure)  {
@@ -50,7 +51,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMetricsDealsOnChainGet ( Closure onSuccess, Closure onFailure)  {
@@ -68,7 +69,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersDealsMinerGet ( String miner, String ignoreFailed, Closure onSuccess, Closure onFailure)  {
@@ -92,7 +93,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersFailuresMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
@@ -114,7 +115,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersGet ( Closure onSuccess, Closure onFailure)  {
@@ -132,7 +133,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicMinersStatsMinerGet ( String miner, Closure onSuccess, Closure onFailure)  {
@@ -154,7 +155,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
     def publicNetAddrsGet ( Closure onSuccess, Closure onFailure)  {
@@ -208,7 +209,7 @@ class PublicApi {
 
         invokeApi(onSuccess, onFailure, basePath, versionPath, resourcePath, queryParams, headerParams,
                     "GET", "",
-                    null )
+                    String.class )
                     
     }
 }

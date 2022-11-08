@@ -322,7 +322,7 @@ boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conve
         return result;
     });
 }
-pplx::task<void> CollectionsApi::collectionsColuuidDelete(utility::string_t coluuid)
+pplx::task<utility::string_t> CollectionsApi::collectionsColuuidDelete(utility::string_t coluuid)
 {
 
 
@@ -342,7 +342,7 @@ pplx::task<void> CollectionsApi::collectionsColuuidDelete(utility::string_t colu
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -353,6 +353,11 @@ pplx::task<void> CollectionsApi::collectionsColuuidDelete(utility::string_t colu
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -422,7 +427,30 @@ pplx::task<void> CollectionsApi::collectionsColuuidDelete(utility::string_t colu
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling collectionsColuuidDelete: unsupported response type"));
+        }
+
+        return result;
     });
 }
 pplx::task<utility::string_t> CollectionsApi::collectionsColuuidGet(utility::string_t coluuid, boost::optional<utility::string_t> dir)
@@ -561,7 +589,7 @@ pplx::task<utility::string_t> CollectionsApi::collectionsColuuidGet(utility::str
         return result;
     });
 }
-pplx::task<std::map<utility::string_t, utility::string_t>> CollectionsApi::collectionsColuuidPost(utility::string_t coluuid, std::vector<int32_t> contentIDs)
+pplx::task<utility::string_t> CollectionsApi::collectionsColuuidPost(utility::string_t coluuid, std::vector<int32_t> contentIDs)
 {
 
 
@@ -582,7 +610,7 @@ pplx::task<std::map<utility::string_t, utility::string_t>> CollectionsApi::colle
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -593,6 +621,11 @@ pplx::task<std::map<utility::string_t, utility::string_t>> CollectionsApi::colle
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -673,18 +706,18 @@ pplx::task<std::map<utility::string_t, utility::string_t>> CollectionsApi::colle
     })
     .then([=](utility::string_t response)
     {
-        std::map<utility::string_t, utility::string_t> result;
+        utility::string_t result(utility::conversions::to_string_t(""));
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_object() )
-            {
-                result[item.first] = ModelBase::stringFromJson(item.second);
-                
-            }
+            result = ModelBase::stringFromJson(json);
             
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -699,7 +732,7 @@ pplx::task<std::map<utility::string_t, utility::string_t>> CollectionsApi::colle
         return result;
     });
 }
-pplx::task<void> CollectionsApi::collectionsFsAddPost(utility::string_t coluuid, utility::string_t content, utility::string_t path)
+pplx::task<utility::string_t> CollectionsApi::collectionsFsAddPost(utility::string_t coluuid, utility::string_t content, utility::string_t path)
 {
 
 
@@ -719,7 +752,7 @@ pplx::task<void> CollectionsApi::collectionsFsAddPost(utility::string_t coluuid,
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -730,6 +763,11 @@ pplx::task<void> CollectionsApi::collectionsFsAddPost(utility::string_t coluuid,
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -808,10 +846,33 @@ pplx::task<void> CollectionsApi::collectionsFsAddPost(utility::string_t coluuid,
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling collectionsFsAddPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<std::vector<std::shared_ptr<Collections.Collection>>> CollectionsApi::collectionsGet()
+pplx::task<std::vector<std::vector<std::shared_ptr<Collections.Collection>>>> CollectionsApi::collectionsGet()
 {
 
 
@@ -911,7 +972,7 @@ pplx::task<std::vector<std::shared_ptr<Collections.Collection>>> CollectionsApi:
     })
     .then([=](utility::string_t response)
     {
-        std::vector<std::shared_ptr<Collections.Collection>> result;
+        std::vector<std::vector<std::shared_ptr<Collections.Collection>>> result;
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -919,7 +980,7 @@ pplx::task<std::vector<std::shared_ptr<Collections.Collection>>> CollectionsApi:
 
             for( auto& item : json.as_array() )
             {
-                std::shared_ptr<Collections.Collection> itemObj(new Collections.Collection());
+                std::vector<std::shared_ptr<Collections.Collection>> itemObj(std::vector<std::shared_ptr<Collections.Collection>>());
                 itemObj->fromJson(item);
                 result.push_back(itemObj);
                 

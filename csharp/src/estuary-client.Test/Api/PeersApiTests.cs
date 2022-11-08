@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -70,9 +71,9 @@ namespace estuary-client.Test
         public void AdminPeeringPeersDeleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //List<string> body = null;
-            //instance.AdminPeeringPeersDelete(body);
-            
+            //List<bool?> peerIds = null;
+            //var response = instance.AdminPeeringPeersDelete(peerIds);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -82,8 +83,8 @@ namespace estuary-client.Test
         public void AdminPeeringPeersGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminPeeringPeersGet();
-            
+            //var response = instance.AdminPeeringPeersGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -93,8 +94,8 @@ namespace estuary-client.Test
         public void AdminPeeringPeersPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminPeeringPeersPost();
-            
+            //var response = instance.AdminPeeringPeersPost();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -104,8 +105,8 @@ namespace estuary-client.Test
         public void AdminPeeringStartPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminPeeringStartPost();
-            
+            //var response = instance.AdminPeeringStartPost();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -115,8 +116,8 @@ namespace estuary-client.Test
         public void AdminPeeringStatusGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminPeeringStatusGet();
-            
+            //var response = instance.AdminPeeringStatusGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -126,8 +127,8 @@ namespace estuary-client.Test
         public void AdminPeeringStopPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminPeeringStopPost();
-            
+            //var response = instance.AdminPeeringStopPost();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

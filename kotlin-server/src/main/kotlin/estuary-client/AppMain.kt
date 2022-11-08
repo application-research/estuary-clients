@@ -45,7 +45,6 @@ fun Application.main() {
         CollectionsApi()
         ContentApi()
         DealsApi()
-        DefaultApi()
         MetricsApi()
         MinerApi()
         NetApi()

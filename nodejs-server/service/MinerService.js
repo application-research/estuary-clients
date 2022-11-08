@@ -7,11 +7,20 @@
  *
  * miner String Filter by miner
  * ignoreFailed String Ignore Failed (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -21,11 +30,20 @@ exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
  * This endpoint returns miner stats
  *
  * miner String Filter by miner
- * no response value expected for this operation
+ * returns String
  **/
 exports.publicMinersStatsMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

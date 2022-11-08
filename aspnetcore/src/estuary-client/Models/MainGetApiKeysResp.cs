@@ -35,11 +35,25 @@ namespace estuary-client.Models
         public string Expiry { get; set; }
 
         /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+
+        [DataMember(Name="label")]
+        public string Label { get; set; }
+
+        /// <summary>
         /// Gets or Sets Token
         /// </summary>
 
         [DataMember(Name="token")]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TokenHash
+        /// </summary>
+
+        [DataMember(Name="tokenHash")]
+        public string TokenHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,7 +64,9 @@ namespace estuary-client.Models
             var sb = new StringBuilder();
             sb.Append("class MainGetApiKeysResp {\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,9 +109,19 @@ namespace estuary-client.Models
                     Expiry.Equals(other.Expiry)
                 ) && 
                 (
+                    Label == other.Label ||
+                    Label != null &&
+                    Label.Equals(other.Label)
+                ) && 
+                (
                     Token == other.Token ||
                     Token != null &&
                     Token.Equals(other.Token)
+                ) && 
+                (
+                    TokenHash == other.TokenHash ||
+                    TokenHash != null &&
+                    TokenHash.Equals(other.TokenHash)
                 );
         }
 
@@ -111,8 +137,12 @@ namespace estuary-client.Models
                 // Suitable nullity checks etc, of course :)
                     if (Expiry != null)
                     hashCode = hashCode * 59 + Expiry.GetHashCode();
+                    if (Label != null)
+                    hashCode = hashCode * 59 + Label.GetHashCode();
                     if (Token != null)
                     hashCode = hashCode * 59 + Token.GetHashCode();
+                    if (TokenHash != null)
+                    hashCode = hashCode * 59 + TokenHash.GetHashCode();
                 return hashCode;
             }
         }

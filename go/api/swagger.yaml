@@ -18,91 +18,254 @@ paths:
   /admin/autoretrieve/init:
     post:
       tags:
-      - autoretrieve
-      summary: Register autoretrieve server
-      description: This endpoint registers a new autoretrieve server
-      requestBody:
-        description: Autoretrieve's public key
-        content:
-          '*/*':
-            schema:
-              type: string
+      - "autoretrieve"
+      summary: "Register autoretrieve server"
+      description: "This endpoint registers a new autoretrieve server"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "addresses"
+        in: "formData"
+        description: "Autoretrieve's comma-separated list of addresses"
         required: true
-      x-codegen-request-body-name: pubKey
+        type: "string"
+        x-exportParamName: "Addresses"
+      - name: "pubKey"
+        in: "formData"
+        description: "Autoretrieve's public key"
+        required: true
+        type: "string"
+        x-exportParamName: "PubKey"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/autoretrieve/list:
     get:
       tags:
-      - autoretrieve
-      summary: List autoretrieve servers
-      description: This endpoint lists all registered autoretrieve servers
+      - "autoretrieve"
+      summary: "List autoretrieve servers"
+      description: "This endpoint lists all registered autoretrieve servers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/peering/peers:
     get:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: List all Peering peers
-      description: This endpoint can be used to list all peers on Peering Service
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "List all Peering peers"
+      description: "This endpoint can be used to list all peers on Peering Service"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     post:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: Add peers on Peering Service
-      description: This endpoint can be used to add a Peer from the Peering Service
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "Add peers on Peering Service"
+      description: "This endpoint can be used to add a Peer from the Peering Service"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     delete:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: Remove peers on Peering Service
-      description: This endpoint can be used to remove a Peer from the Peering Service
-      requestBody:
-        description: Peer ids
-        content:
-          '*/*':
-            schema:
-              type: array
-              items:
-                type: string
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "Remove peers on Peering Service"
+      description: "This endpoint can be used to remove a Peer from the Peering Service"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "peerIds"
+        description: "Peer ids"
         required: true
-      x-codegen-request-body-name: body
+        schema:
+          type: "array"
+          items:
+            type: "boolean"
+        x-exportParamName: "PeerIds"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/peering/start:
     post:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: Start Peering
-      description: This endpoint can be used to start the Peering Service
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "Start Peering"
+      description: "This endpoint can be used to start the Peering Service"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/peering/status:
     get:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: Check Peering Status
-      description: This endpoint can be used to check the Peering status
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "Check Peering Status"
+      description: "This endpoint can be used to check the Peering status"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/peering/stop:
     post:
       tags:
-      - admin
-      - peering
-      - peers
-      summary: Stop Peering
-      description: This endpoint can be used to stop the Peering Service
+      - "admin"
+      - "peering"
+      - "peers"
+      summary: "Stop Peering"
+      description: "This endpoint can be used to stop the Peering Service"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/system/config:
     get:
       tags:
-      - admin
-      summary: Get systems(estuary/shuttle) config
-      description: This endpoint is used to get system configs.
+      - "admin"
+      summary: "Get systems(estuary/shuttle) config"
+      description: "This endpoint is used to get system configs."
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /admin/users:
     get:
       tags:
-      - admin
-      summary: Get all users
-      description: This endpoint is used to get all users.
+      - "admin"
+      summary: "Get all users"
+      description: "This endpoint is used to get all users."
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /autoretrieve/heartbeat:
     post:
       tags:
@@ -114,10 +277,21 @@ paths:
         in: header
         description: Autoretrieve's auth token
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /collections/:
     get:
       tags:
@@ -128,14 +302,13 @@ paths:
         \ This endpoint provides a way to list all collections to the user."
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/collections.Collection'
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              type: "array"
+              items:
+                $ref: "#/definitions/collections.Collection"
         "400":
           description: Bad Request
           content:
@@ -221,10 +394,21 @@ paths:
         in: query
         description: Path to file
         required: true
-        style: form
-        explode: true
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Path"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /collections/{coluuid}:
     get:
       tags:
@@ -251,12 +435,17 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     post:
       tags:
       - collections
@@ -283,15 +472,17 @@ paths:
         required: true
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                additionalProperties:
-                  type: string
-                x-content-type: application/json
-      x-codegen-request-body-name: contentIDs
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     delete:
       tags:
       - collections
@@ -302,10 +493,21 @@ paths:
         in: path
         description: Collection ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Coluuid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /collections/{coluuid}/commit:
     post:
       tags:
@@ -324,12 +526,17 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /collections/{coluuid}/contents:
     delete:
       tags:
@@ -372,12 +579,13 @@ paths:
                 type: string
                 x-content-type: application/json
         "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-      x-codegen-request-body-name: body
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/add:
     post:
       tags:
@@ -433,11 +641,17 @@ paths:
         required: true
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.ContentAddResponse'
+          description: "OK"
+          schema:
+            $ref: "#/definitions/util.ContentAddResponse"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/add-car:
     post:
       tags:
@@ -458,18 +672,22 @@ paths:
         in: query
         description: Filename
         required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        description: Car
-        content:
-          '*/*':
-            schema:
-              type: string
-        required: true
-      x-codegen-request-body-name: body
+        type: "string"
+        x-exportParamName: "Filename"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/add-ipfs:
     post:
       tags:
@@ -482,18 +700,22 @@ paths:
         in: query
         description: Ignore Dupes
         required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        description: IPFS Body
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/util.ContentAddIpfsBody'
-        required: true
-      x-codegen-request-body-name: body
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/aggregated/{content}:
     get:
       tags:
@@ -511,12 +733,17 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/all-deals:
     get:
       tags:
@@ -544,25 +771,49 @@ paths:
         in: query
         description: All
         required: true
-        style: form
-        explode: true
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "All"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/bw-usage/{content}:
     get:
       tags:
-      - content
-      summary: Get content bandwidth
-      description: This endpoint returns content bandwidth
+      - "content"
+      summary: "Get content bandwidth"
+      description: "This endpoint returns content bandwidth"
+      produces:
+      - "application/json"
       parameters:
       - name: content
         in: path
         description: Content ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Content"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/create:
     post:
       tags:
@@ -574,18 +825,22 @@ paths:
         in: query
         description: Ignore Dupes
         required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        description: Content
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/util.ContentCreateBody'
-        required: true
-      x-codegen-request-body-name: req
+        type: "string"
+        x-exportParamName: "IgnoreDupes"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/deals:
     get:
       tags:
@@ -605,10 +860,22 @@ paths:
         in: query
         description: Offset
         required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
+        type: "integer"
+        x-exportParamName: "Offset"
+        x-optionalDataType: "Int32"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/ensure-replication/{datacid}:
     get:
       tags:
@@ -621,10 +888,21 @@ paths:
         in: path
         description: Data CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Datacid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/failures/{content}:
     get:
       tags:
@@ -642,12 +920,17 @@ paths:
           type: string
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/importdeal:
     post:
       tags:
@@ -661,7 +944,22 @@ paths:
             schema:
               $ref: '#/components/schemas/main.importDealBody'
         required: true
-      x-codegen-request-body-name: body
+        schema:
+          $ref: "#/definitions/main.importDealBody"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/list:
     get:
       tags:
@@ -670,14 +968,17 @@ paths:
       description: This endpoint lists all content
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/read/{cont}:
     get:
       tags:
@@ -689,16 +990,43 @@ paths:
         in: path
         description: CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Cont"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/staging-zones:
     get:
       tags:
-      - content
-      summary: Get staging zone for user
-      description: This endpoint is used to get staging zone for user.
+      - "content"
+      summary: "Get staging zone for user"
+      description: "This endpoint is used to get staging zone for user."
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/stats:
     get:
       tags:
@@ -721,10 +1049,21 @@ paths:
         in: query
         description: offset
         required: true
-        style: form
-        explode: true
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Offset"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/status/{id}:
     get:
       tags:
@@ -736,10 +1075,21 @@ paths:
         in: path
         description: Content ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
+        type: "integer"
+        x-exportParamName: "Id"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /content/{id}:
     get:
       tags:
@@ -751,10 +1101,21 @@ paths:
         in: path
         description: Content ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
+        type: "integer"
+        x-exportParamName: "Id"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/estimate:
     post:
       tags:
@@ -769,7 +1130,22 @@ paths:
             schema:
               $ref: '#/components/schemas/main.estimateDealBody'
         required: true
-      x-codegen-request-body-name: body
+        schema:
+          $ref: "#/definitions/main.estimateDealBody"
+        x-exportParamName: "Body"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/info/{dealid}:
     get:
       tags:
@@ -781,10 +1157,21 @@ paths:
         in: path
         description: Deal ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
+        type: "integer"
+        x-exportParamName: "Dealid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/proposal/{propcid}:
     get:
       tags:
@@ -796,10 +1183,21 @@ paths:
         in: path
         description: Proposal CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Propcid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/query/{miner}:
     get:
       tags:
@@ -811,10 +1209,21 @@ paths:
         in: path
         description: CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Miner"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/status-by-proposal/{propcid}:
     get:
       tags:
@@ -826,10 +1235,21 @@ paths:
         in: path
         description: PropCid
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Propcid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/status/{miner}/{propcid}:
     get:
       tags:
@@ -849,24 +1269,94 @@ paths:
         in: path
         description: Proposal CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Propcid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/transfer/in-progress:
     get:
       tags:
-      - deals
-      summary: Transfer In Progress
-      description: This endpoint returns the in-progress transfers
+      - "deals"
+      summary: "Transfer In Progress"
+      description: "This endpoint returns the in-progress transfers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deal/transfer/status:
-    post: {}
+    post:
+      tags:
+      - "deals"
+      summary: "Transfer Status"
+      description: "This endpoint returns the status of a transfer"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "chanid"
+        description: "Channel ID"
+        required: true
+        schema:
+          $ref: "#/definitions/main.ChannelIDParam"
+        x-exportParamName: "Chanid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deals/failures:
     get:
       tags:
-      - deals
-      summary: Get storage failures for user
-      description: This endpoint returns a list of storage failures for user
+      - "deals"
+      summary: "Get storage failures for user"
+      description: "This endpoint returns a list of storage failures for user"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deals/make/{miner}:
     post:
       tags:
@@ -881,15 +1371,21 @@ paths:
         style: simple
         explode: false
         schema:
-          type: string
-      requestBody:
-        description: Deal Request
-        content:
-          '*/*':
-            schema:
-              type: string
-        required: true
-      x-codegen-request-body-name: dealRequest
+          type: "string"
+        x-exportParamName: "DealRequest"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /deals/status/{deal}:
     get:
       tags:
@@ -901,10 +1397,21 @@ paths:
         in: path
         description: Deal ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
+        type: "integer"
+        x-exportParamName: "Deal"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /net/addrs:
     get:
       tags:
@@ -913,14 +1420,17 @@ paths:
       description: This endpoint is used to get net addrs
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /pinning/pins:
     get:
       tags:
@@ -928,6 +1438,10 @@ paths:
       summary: List all pin status objects
       description: This endpoint lists all pin status objects
       responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
         "400":
           description: Bad Request
           content:
@@ -952,22 +1466,26 @@ paths:
       summary: Add and pin object
       description: This endpoint adds a pin to the IPFS daemon.
       parameters:
-      - name: cid
-        in: path
-        description: cid
+      - in: "body"
+        name: "pin"
+        description: "Pin Body {cid:cid, name:name}"
         required: true
-        style: simple
-        explode: false
         schema:
-          type: string
-      - name: name
-        in: path
-        description: name
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+          $ref: "#/definitions/types.IpfsPin"
+        x-exportParamName: "Pin"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /pinning/pins/{pinid}:
     get:
       tags:
@@ -979,10 +1497,21 @@ paths:
         in: path
         description: cid
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Pinid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     post:
       tags:
       - pinning
@@ -993,10 +1522,21 @@ paths:
         in: path
         description: Pin ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Pinid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
     delete:
       tags:
       - pinning
@@ -1007,10 +1547,21 @@ paths:
         in: path
         description: Pin ID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Pinid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/by-cid/{cid}:
     get:
       tags:
@@ -1022,36 +1573,111 @@ paths:
         in: path
         description: Cid
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Cid"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/deals/failures:
     get:
       tags:
-      - deals
-      summary: Get storage failures
-      description: This endpoint returns a list of storage failures
+      - "deals"
+      summary: "Get storage failures"
+      description: "This endpoint returns a list of storage failures"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/info:
     get:
       tags:
-      - public
-      summary: Get public node info
-      description: This endpoint returns information about the node
+      - "public"
+      summary: "Get public node info"
+      description: "This endpoint returns information about the node"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/metrics/deals-on-chain:
     get:
       tags:
-      - public
-      - metrics
-      summary: Get deal metrics
-      description: This endpoint is used to get deal metrics
+      - "public"
+      - "metrics"
+      summary: "Get deal metrics"
+      description: "This endpoint is used to get deal metrics"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/miners:
     get:
       tags:
-      - public
-      - net
-      summary: Get all miners
-      description: This endpoint returns all miners
+      - "public"
+      - "net"
+      summary: "Get all miners"
+      description: "This endpoint returns all miners"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/miners/deals/{miner}:
     get:
       tags:
@@ -1072,10 +1698,22 @@ paths:
         in: query
         description: Ignore Failed
         required: false
-        style: form
-        explode: true
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "IgnoreFailed"
+        x-optionalDataType: "String"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/miners/failures/{miner}:
     get:
       tags:
@@ -1088,10 +1726,21 @@ paths:
         in: path
         description: Filter by miner
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Miner"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/miners/stats/{miner}:
     get:
       tags:
@@ -1104,10 +1753,21 @@ paths:
         in: path
         description: Filter by miner
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Miner"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/miners/storage/query/{miner}:
     get:
       tags:
@@ -1119,10 +1779,21 @@ paths:
         in: path
         description: CID
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "Miner"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/net/addrs:
     get:
       tags:
@@ -1149,20 +1820,41 @@ paths:
       description: This endpoint is used to get net peers
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /public/stats:
     get:
       tags:
-      - public
-      summary: Public stats
-      description: This endpoint is used to get public stats.
+      - "public"
+      summary: "Public stats"
+      description: "This endpoint is used to get public stats."
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /user/api-keys:
     get:
       tags:
@@ -1173,14 +1865,13 @@ paths:
         \ used to retrieve all available API keys for a given user."
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/main.getApiKeysResp'
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              type: "array"
+              items:
+                $ref: "#/definitions/main.getApiKeysResp"
         "400":
           description: Bad Request
           content:
@@ -1209,7 +1900,7 @@ paths:
       - name: expiry
         in: query
         description: "Expiration - Expiration - Valid time units are ns, us (or µ\
-          s), ms, s, m, h. for example 300h"
+          s),  ms,  s,  m,  h.  for  example  300h"
         required: false
         style: form
         explode: true
@@ -1243,29 +1934,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-  /user/api-keys/{key}:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+  /user/api-keys/{key_or_hash}:
     delete:
       tags:
       - User
       summary: Revoke a User API Key.
       description: "This endpoint is used to revoke a user API key. In estuary, every\
         \ user is assigned with an API key, this API key is generated and issued for\
-        \ each user and is primarily use to access all estuary features. This endpoint\
-        \ can be used to revoke the API key thats assigned to the user."
+        \ each user and is primarily used to access all estuary features. This endpoint\
+        \ can be used to revoke the API key that's assigned to the user. Revoked API\
+        \ keys are completely deleted and are not recoverable."
+      produces:
+      - "application/json"
       parameters:
-      - name: key
-        in: path
-        description: Key
+      - name: "key_or_hash"
+        in: "path"
+        description: "Key or Hash"
         required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        type: "string"
+        x-exportParamName: "KeyOrHash"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /user/export:
     get:
       tags:
@@ -1274,12 +1977,17 @@ paths:
       description: This endpoint is used to get API keys for a user.
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
   /user/stats:
     get:
       tags:
@@ -1288,167 +1996,178 @@ paths:
       description: This endpoint is used to create API keys for a user.
       responses:
         "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/main.userStatsResponse'
-components:
-  schemas:
-    collections.Collection:
-      type: object
-      properties:
-        cid:
-          type: string
-        createdAt:
-          type: string
-        description:
-          type: string
-        name:
-          type: string
-        userId:
-          type: integer
-        uuid:
-          type: string
-      example:
-        createdAt: createdAt
-        name: name
-        description: description
-        userId: 0
-        uuid: uuid
-        cid: cid
-    main.createCollectionBody:
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-    main.deleteContentFromCollectionBody:
-      type: object
-      properties:
-        by:
-          type: string
-        value:
-          type: string
-    main.estimateDealBody:
-      type: object
-      properties:
-        durationBlks:
-          type: integer
-        replication:
-          type: integer
-        size:
-          type: integer
-        verified:
-          type: boolean
-    main.getApiKeysResp:
-      type: object
-      properties:
-        expiry:
-          type: string
-        token:
-          type: string
-      example:
-        expiry: expiry
-        token: token
-    main.importDealBody:
-      type: object
-      properties:
-        coluuid:
-          type: string
-        dealIDs:
-          type: array
-          items:
-            type: integer
-        dir:
-          type: string
-        name:
-          type: string
-    main.userStatsResponse:
-      type: object
-      properties:
-        numPins:
-          type: integer
-        totalSize:
-          type: integer
-      example:
-        totalSize: 6
-        numPins: 0
-    util.ContentAddIpfsBody:
-      type: object
-      properties:
-        coluuid:
-          type: string
-        dir:
-          type: string
-        filename:
-          type: string
-        peers:
-          type: array
-          items:
-            type: string
-        root:
-          type: string
-    util.ContentAddResponse:
-      type: object
-      properties:
-        cid:
-          type: string
-        estuaryId:
-          type: integer
-        providers:
-          type: array
-          items:
-            type: string
-        retrieval_url:
-          type: string
-      example:
-        retrieval_url: retrieval_url
-        estuaryId: 0
-        providers:
-        - providers
-        - providers
-        cid: cid
-    util.ContentCreateBody:
-      type: object
-      properties:
-        coluuid:
-          type: string
-        dir:
-          type: string
-        location:
-          type: string
-        name:
-          type: string
-        root:
-          type: string
-        type:
-          type: integer
-    util.HttpError:
-      type: object
-      properties:
-        code:
-          type: integer
-        details:
-          type: string
-        reason:
-          type: string
-    content_add_body:
-      required:
-      - data
-      type: object
-      properties:
-        data:
-          type: string
-          description: File to upload
-          format: binary
-        filename:
-          type: string
-          description: Filenam to use for upload
-  securitySchemes:
-    bearerAuth:
-      type: apiKey
-      name: Authorization
-      in: header
-x-original-swagger-version: "2.0"
+          description: "OK"
+          schema:
+            type: "string"
+        "400":
+          description: "Bad Request"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+        "500":
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/util.HttpError"
+securityDefinitions:
+  bearerAuth:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+definitions:
+  collections.Collection:
+    type: "object"
+    properties:
+      cid:
+        type: "string"
+      createdAt:
+        type: "string"
+      description:
+        type: "string"
+      name:
+        type: "string"
+      userId:
+        type: "integer"
+      uuid:
+        type: "string"
+    example:
+      createdAt: "createdAt"
+      name: "name"
+      description: "description"
+      userId: 0
+      uuid: "uuid"
+      cid: "cid"
+  main.ChannelIDParam:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      initiator:
+        type: "string"
+      responder:
+        type: "string"
+  main.createCollectionBody:
+    type: "object"
+    properties:
+      description:
+        type: "string"
+      name:
+        type: "string"
+  main.deleteContentFromCollectionBody:
+    type: "object"
+    properties:
+      by:
+        type: "string"
+      value:
+        type: "string"
+  main.estimateDealBody:
+    type: "object"
+    properties:
+      durationBlks:
+        type: "integer"
+      replication:
+        type: "integer"
+      size:
+        type: "integer"
+      verified:
+        type: "boolean"
+  main.getApiKeysResp:
+    type: "object"
+    properties:
+      expiry:
+        type: "string"
+      label:
+        type: "string"
+      token:
+        type: "string"
+      tokenHash:
+        type: "string"
+    example:
+      expiry: "expiry"
+      label: "label"
+      tokenHash: "tokenHash"
+      token: "token"
+  main.importDealBody:
+    type: "object"
+    properties:
+      coluuid:
+        type: "string"
+      dealIDs:
+        type: "array"
+        items:
+          type: "integer"
+      dir:
+        type: "string"
+      name:
+        type: "string"
+  types.IpfsPin:
+    type: "object"
+    properties:
+      cid:
+        type: "string"
+      meta:
+        type: "object"
+        properties: {}
+      name:
+        type: "string"
+      origins:
+        type: "array"
+        items:
+          type: "string"
+  util.ContentAddIpfsBody:
+    type: "object"
+    properties:
+      coluuid:
+        type: "string"
+      dir:
+        type: "string"
+      filename:
+        type: "string"
+      peers:
+        type: "array"
+        items:
+          type: "string"
+      root:
+        type: "string"
+  util.ContentAddResponse:
+    type: "object"
+    properties:
+      cid:
+        type: "string"
+      estuaryId:
+        type: "integer"
+      providers:
+        type: "array"
+        items:
+          type: "string"
+      retrieval_url:
+        type: "string"
+    example:
+      retrieval_url: "retrieval_url"
+      estuaryId: 0
+      providers:
+      - "providers"
+      - "providers"
+      cid: "cid"
+  util.ContentCreateBody:
+    type: "object"
+    properties:
+      coluuid:
+        type: "string"
+      dir:
+        type: "string"
+      location:
+        type: "string"
+      name:
+        type: "string"
+      root:
+        type: "string"
+      type:
+        type: "integer"
+  util.HttpError:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+      details:
+        type: "string"
+      reason:
+        type: "string"

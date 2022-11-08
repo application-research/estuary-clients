@@ -44,7 +44,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str cid: Cid (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -66,7 +66,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str cid: Cid (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -120,7 +120,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -138,7 +138,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -159,7 +159,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -207,7 +207,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -225,7 +225,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -246,7 +246,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -294,7 +294,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -314,7 +314,7 @@ class PublicApi(object):
         :param async_req bool
         :param str miner: Filter by miner (required)
         :param str ignore_failed: Ignore Failed
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -337,7 +337,7 @@ class PublicApi(object):
         :param async_req bool
         :param str miner: Filter by miner (required)
         :param str ignore_failed: Ignore Failed
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -393,7 +393,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -412,7 +412,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str miner: Filter by miner (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -434,7 +434,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str miner: Filter by miner (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -488,7 +488,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -506,7 +506,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -527,7 +527,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -575,7 +575,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -594,7 +594,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str miner: Filter by miner (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -616,7 +616,7 @@ class PublicApi(object):
 
         :param async_req bool
         :param str miner: Filter by miner (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -670,7 +670,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -862,7 +862,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -883,7 +883,7 @@ class PublicApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -931,7 +931,7 @@ class PublicApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

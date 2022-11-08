@@ -3,6 +3,7 @@
 #import "SWGUtilContentAddIpfsBody.h"
 #import "SWGUtilContentAddResponse.h"
 #import "SWGUtilContentCreateBody.h"
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -33,12 +34,15 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param ignoreDupes Ignore Dupes (optional)
 /// @param filename Filename (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentAddCarPostWithBody: (NSString*) body
     ignoreDupes: (NSString*) ignoreDupes
     filename: (NSString*) filename
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add IPFS object
@@ -47,11 +51,14 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param body IPFS Body
 /// @param ignoreDupes Ignore Dupes (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentAddIpfsPostWithBody: (SWGUtilContentAddIpfsBody*) body
     ignoreDupes: (NSString*) ignoreDupes
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add new content
@@ -65,7 +72,9 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param lazyProvide Lazy Provide true/false (optional)
 /// @param dir Directory (optional)
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return SWGUtilContentAddResponse*
 -(NSURLSessionTask*) contentAddPostWithData: (NSURL*) data
@@ -83,7 +92,9 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param content Content ID
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) contentAggregatedContentGetWithContent: (NSString*) content
@@ -97,12 +108,15 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param duration Duration
 /// @param all All
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentAllDealsGetWithBegin: (NSString*) begin
     duration: (NSString*) duration
     all: (NSString*) all
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get content bandwidth
@@ -110,10 +124,13 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param content Content ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentBwUsageContentGetWithContent: (NSString*) content
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add a new content
@@ -122,11 +139,14 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param req Content
 /// @param ignoreDupes Ignore Dupes (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentCreatePostWithReq: (SWGUtilContentCreateBody*) req
     ignoreDupes: (NSString*) ignoreDupes
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Content with deals
@@ -135,11 +155,14 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param limit Limit (optional)
 /// @param offset Offset (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentDealsGetWithLimit: (NSNumber*) limit
     offset: (NSNumber*) offset
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Ensure Replication
@@ -147,10 +170,13 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param datacid Data CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentEnsureReplicationDatacidGetWithDatacid: (NSString*) datacid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// List all failures for a content
@@ -158,7 +184,9 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param content Content ID
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) contentFailuresContentGetWithContent: (NSString*) content
@@ -170,10 +198,13 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param _id Content ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentIdGetWithId: (NSNumber*) _id
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Import a deal
@@ -181,21 +212,26 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param body Import a deal
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentImportdealPostWithBody: (SWGMainImportDealBody*) body
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// List all pinned content
 /// This endpoint lists all content
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return NSArray<NSString*>*
+/// @return NSString*
 -(NSURLSessionTask*) contentListGetWithCompletionHandler: 
-    (void (^)(NSArray<NSString*>* output, NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Read content
@@ -203,20 +239,26 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param cont CID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentReadContGetWithCont: (NSString*) cont
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get staging zone for user
 /// This endpoint is used to get staging zone for user.
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentStagingZonesGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get content statistics
@@ -225,11 +267,14 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 /// @param limit limit
 /// @param offset offset
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentStatsGetWithLimit: (NSString*) limit
     offset: (NSString*) offset
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Content Status
@@ -237,10 +282,13 @@ extern NSInteger kSWGContentApiMissingParamErrorCode;
 ///
 /// @param _id Content ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) contentStatusIdGetWithId: (NSNumber*) _id
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 

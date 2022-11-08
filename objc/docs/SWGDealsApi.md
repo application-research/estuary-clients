@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](SWGDealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](SWGDealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](SWGDealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](SWGDealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](SWGDealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](SWGDealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](SWGDealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
@@ -21,7 +22,7 @@ Method | HTTP request | Description
 # **dealEstimatePost**
 ```objc
 -(NSURLSessionTask*) dealEstimatePostWithBody: (SWGMainEstimateDealBody*) body
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Estimate the cost of a deal
@@ -44,7 +45,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Estimate the cost of a deal
 [apiInstance dealEstimatePostWithBody:body
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealEstimatePost: %@", error);
                         }
@@ -59,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -75,7 +79,7 @@ void (empty response body)
 # **dealInfoDealidGet**
 ```objc
 -(NSURLSessionTask*) dealInfoDealidGetWithDealid: (NSNumber*) dealid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get Deal Info
@@ -98,7 +102,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get Deal Info
 [apiInstance dealInfoDealidGetWithDealid:dealid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealInfoDealidGet: %@", error);
                         }
@@ -113,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -129,7 +136,7 @@ void (empty response body)
 # **dealProposalPropcidGet**
 ```objc
 -(NSURLSessionTask*) dealProposalPropcidGetWithPropcid: (NSString*) propcid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get Proposal
@@ -152,7 +159,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get Proposal
 [apiInstance dealProposalPropcidGetWithPropcid:propcid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealProposalPropcidGet: %@", error);
                         }
@@ -167,7 +177,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -183,7 +193,7 @@ void (empty response body)
 # **dealQueryMinerGet**
 ```objc
 -(NSURLSessionTask*) dealQueryMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Query Ask
@@ -206,7 +216,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Query Ask
 [apiInstance dealQueryMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealQueryMinerGet: %@", error);
                         }
@@ -221,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -237,7 +250,7 @@ void (empty response body)
 # **dealStatusByProposalPropcidGet**
 ```objc
 -(NSURLSessionTask*) dealStatusByProposalPropcidGetWithPropcid: (NSString*) propcid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get Deal Status by PropCid
@@ -260,7 +273,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get Deal Status by PropCid
 [apiInstance dealStatusByProposalPropcidGetWithPropcid:propcid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealStatusByProposalPropcidGet: %@", error);
                         }
@@ -275,7 +291,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -292,7 +308,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) dealStatusMinerPropcidGetWithMiner: (NSString*) miner
     propcid: (NSString*) propcid
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Deal Status
@@ -317,7 +333,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 // Deal Status
 [apiInstance dealStatusMinerPropcidGetWithMiner:miner
               propcid:propcid
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealStatusMinerPropcidGet: %@", error);
                         }
@@ -333,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -349,7 +368,7 @@ void (empty response body)
 # **dealTransferInProgressGet**
 ```objc
 -(NSURLSessionTask*) dealTransferInProgressGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Transfer In Progress
@@ -371,7 +390,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Transfer In Progress
 [apiInstance dealTransferInProgressGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealTransferInProgressGet: %@", error);
                         }
@@ -383,7 +405,64 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **dealTransferStatusPost**
+```objc
+-(NSURLSessionTask*) dealTransferStatusPostWithChanid: (SWGMainChannelIDParam*) chanid
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
+```
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example 
+```objc
+SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+
+
+SWGMainChannelIDParam* chanid = [[SWGMainChannelIDParam alloc] init]; // Channel ID
+
+SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
+
+// Transfer Status
+[apiInstance dealTransferStatusPostWithChanid:chanid
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
+                        if (error) {
+                            NSLog(@"Error calling SWGDealsApi->dealTransferStatusPost: %@", error);
+                        }
+                    }];
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**SWGMainChannelIDParam***](SWGMainChannelIDParam.md)| Channel ID | 
+
+### Return type
+
+**NSString***
 
 ### Authorization
 
@@ -399,7 +478,7 @@ void (empty response body)
 # **dealsFailuresGet**
 ```objc
 -(NSURLSessionTask*) dealsFailuresGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get storage failures for user
@@ -421,7 +500,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get storage failures for user
 [apiInstance dealsFailuresGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealsFailuresGet: %@", error);
                         }
@@ -433,7 +515,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -450,7 +532,7 @@ void (empty response body)
 ```objc
 -(NSURLSessionTask*) dealsMakeMinerPostWithMiner: (NSString*) miner
     dealRequest: (NSString*) dealRequest
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Make Deal
@@ -475,7 +557,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 // Make Deal
 [apiInstance dealsMakeMinerPostWithMiner:miner
               dealRequest:dealRequest
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealsMakeMinerPost: %@", error);
                         }
@@ -491,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -507,7 +592,7 @@ void (empty response body)
 # **dealsStatusDealGet**
 ```objc
 -(NSURLSessionTask*) dealsStatusDealGetWithDeal: (NSNumber*) deal
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get Deal Status
@@ -530,7 +615,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get Deal Status
 [apiInstance dealsStatusDealGetWithDeal:deal
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->dealsStatusDealGet: %@", error);
                         }
@@ -545,7 +633,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -561,7 +649,7 @@ void (empty response body)
 # **publicDealsFailuresGet**
 ```objc
 -(NSURLSessionTask*) publicDealsFailuresGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get storage failures
@@ -583,7 +671,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Get storage failures
 [apiInstance publicDealsFailuresGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->publicDealsFailuresGet: %@", error);
                         }
@@ -595,7 +686,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -611,7 +702,7 @@ void (empty response body)
 # **publicMinersStorageQueryMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersStorageQueryMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Query Ask
@@ -634,7 +725,10 @@ SWGDealsApi*apiInstance = [[SWGDealsApi alloc] init];
 
 // Query Ask
 [apiInstance publicMinersStorageQueryMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGDealsApi->publicMinersStorageQueryMinerGet: %@", error);
                         }
@@ -649,7 +743,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

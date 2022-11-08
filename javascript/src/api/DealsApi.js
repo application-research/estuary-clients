@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MainEstimateDealBody'], factory);
+    define(['ApiClient', 'model/MainChannelIDParam', 'model/MainEstimateDealBody', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/MainEstimateDealBody'));
+    module.exports = factory(require('../ApiClient'), require('../model/MainChannelIDParam'), require('../model/MainEstimateDealBody'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.DealsApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainEstimateDealBody);
+    root.EstuaryClient.DealsApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.MainChannelIDParam, root.EstuaryClient.MainEstimateDealBody, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient, MainEstimateDealBody) {
+}(this, function(ApiClient, MainChannelIDParam, MainEstimateDealBody, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,7 +51,7 @@
      * Callback function to receive the result of the dealEstimatePost operation.
      * @callback module:api/DealsApi~dealEstimatePostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -60,6 +60,7 @@
      * This endpoint estimates the cost of a deal
      * @param {module:model/MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      * @param {module:api/DealsApi~dealEstimatePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealEstimatePost = function(body, callback) {
       var postBody = body;
@@ -84,7 +85,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/estimate', 'POST',
@@ -97,7 +98,7 @@
      * Callback function to receive the result of the dealInfoDealidGet operation.
      * @callback module:api/DealsApi~dealInfoDealidGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -106,6 +107,7 @@
      * This endpoint returns the deal info for a deal
      * @param {Number} dealid Deal ID
      * @param {module:api/DealsApi~dealInfoDealidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealInfoDealidGet = function(dealid, callback) {
       var postBody = null;
@@ -131,7 +133,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/info/{dealid}', 'GET',
@@ -144,7 +146,7 @@
      * Callback function to receive the result of the dealProposalPropcidGet operation.
      * @callback module:api/DealsApi~dealProposalPropcidGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -153,6 +155,7 @@
      * This endpoint returns the proposal for a deal
      * @param {String} propcid Proposal CID
      * @param {module:api/DealsApi~dealProposalPropcidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealProposalPropcidGet = function(propcid, callback) {
       var postBody = null;
@@ -178,7 +181,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/proposal/{propcid}', 'GET',
@@ -191,7 +194,7 @@
      * Callback function to receive the result of the dealQueryMinerGet operation.
      * @callback module:api/DealsApi~dealQueryMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -200,6 +203,7 @@
      * This endpoint returns the ask for a given CID
      * @param {String} miner CID
      * @param {module:api/DealsApi~dealQueryMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealQueryMinerGet = function(miner, callback) {
       var postBody = null;
@@ -225,7 +229,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/query/{miner}', 'GET',
@@ -238,7 +242,7 @@
      * Callback function to receive the result of the dealStatusByProposalPropcidGet operation.
      * @callback module:api/DealsApi~dealStatusByProposalPropcidGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -247,6 +251,7 @@
      * Get Deal Status by PropCid
      * @param {String} propcid PropCid
      * @param {module:api/DealsApi~dealStatusByProposalPropcidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealStatusByProposalPropcidGet = function(propcid, callback) {
       var postBody = null;
@@ -272,7 +277,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/status-by-proposal/{propcid}', 'GET',
@@ -285,7 +290,7 @@
      * Callback function to receive the result of the dealStatusMinerPropcidGet operation.
      * @callback module:api/DealsApi~dealStatusMinerPropcidGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -295,6 +300,7 @@
      * @param {String} miner Miner
      * @param {String} propcid Proposal CID
      * @param {module:api/DealsApi~dealStatusMinerPropcidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealStatusMinerPropcidGet = function(miner, propcid, callback) {
       var postBody = null;
@@ -326,7 +332,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/status/{miner}/{propcid}', 'GET',
@@ -339,7 +345,7 @@
      * Callback function to receive the result of the dealTransferInProgressGet operation.
      * @callback module:api/DealsApi~dealTransferInProgressGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -347,6 +353,7 @@
      * Transfer In Progress
      * This endpoint returns the in-progress transfers
      * @param {module:api/DealsApi~dealTransferInProgressGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealTransferInProgressGet = function(callback) {
       var postBody = null;
@@ -366,7 +373,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deal/transfer/in-progress', 'GET',
@@ -376,10 +383,57 @@
     }
 
     /**
+     * Callback function to receive the result of the dealTransferStatusPost operation.
+     * @callback module:api/DealsApi~dealTransferStatusPostCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param {module:model/MainChannelIDParam} chanid Channel ID
+     * @param {module:api/DealsApi~dealTransferStatusPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
+     */
+    this.dealTransferStatusPost = function(chanid, callback) {
+      var postBody = chanid;
+
+      // verify the required parameter 'chanid' is set
+      if (chanid === undefined || chanid === null) {
+        throw new Error("Missing the required parameter 'chanid' when calling dealTransferStatusPost");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['bearerAuth'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/deal/transfer/status', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the dealsFailuresGet operation.
      * @callback module:api/DealsApi~dealsFailuresGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -387,6 +441,7 @@
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
      * @param {module:api/DealsApi~dealsFailuresGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealsFailuresGet = function(callback) {
       var postBody = null;
@@ -406,7 +461,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deals/failures', 'GET',
@@ -419,7 +474,7 @@
      * Callback function to receive the result of the dealsMakeMinerPost operation.
      * @callback module:api/DealsApi~dealsMakeMinerPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -429,6 +484,7 @@
      * @param {String} miner Miner
      * @param {String} dealRequest Deal Request
      * @param {module:api/DealsApi~dealsMakeMinerPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealsMakeMinerPost = function(miner, dealRequest, callback) {
       var postBody = dealRequest;
@@ -459,7 +515,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deals/make/{miner}', 'POST',
@@ -472,7 +528,7 @@
      * Callback function to receive the result of the dealsStatusDealGet operation.
      * @callback module:api/DealsApi~dealsStatusDealGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -481,6 +537,7 @@
      * This endpoint returns the status of a deal
      * @param {Number} deal Deal ID
      * @param {module:api/DealsApi~dealsStatusDealGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.dealsStatusDealGet = function(deal, callback) {
       var postBody = null;
@@ -506,7 +563,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/deals/status/{deal}', 'GET',
@@ -519,7 +576,7 @@
      * Callback function to receive the result of the publicDealsFailuresGet operation.
      * @callback module:api/DealsApi~publicDealsFailuresGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -527,6 +584,7 @@
      * Get storage failures
      * This endpoint returns a list of storage failures
      * @param {module:api/DealsApi~publicDealsFailuresGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicDealsFailuresGet = function(callback) {
       var postBody = null;
@@ -546,7 +604,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/deals/failures', 'GET',
@@ -559,7 +617,7 @@
      * Callback function to receive the result of the publicMinersStorageQueryMinerGet operation.
      * @callback module:api/DealsApi~publicMinersStorageQueryMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -568,6 +626,7 @@
      * This endpoint returns the ask for a given CID
      * @param {String} miner CID
      * @param {module:api/DealsApi~publicMinersStorageQueryMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicMinersStorageQueryMinerGet = function(miner, callback) {
       var postBody = null;
@@ -593,7 +652,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/miners/storage/query/{miner}', 'GET',

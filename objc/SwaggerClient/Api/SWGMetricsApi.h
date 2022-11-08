@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -26,10 +27,13 @@ extern NSInteger kSWGMetricsApiMissingParamErrorCode;
 /// This endpoint is used to get deal metrics
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 

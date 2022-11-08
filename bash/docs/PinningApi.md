@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -144,19 +144,18 @@ This endpoint adds a pin to the IPFS daemon.
 
 ### Example
 ```bash
- pinningPinsPost cid=value name=value
+ pinningPinsPost
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **string** | cid |
- **name** | **string** | name |
+ **pin** | [**Types.IpfsPin**](Types.IpfsPin.md) | Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 

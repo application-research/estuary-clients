@@ -1,7 +1,9 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,10 +31,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint estimates the cost of a deal
      *
      */
-    public void dealEstimatePost(MainEstimateDealBody body) {
+    public String dealEstimatePost(MainEstimateDealBody body) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -41,10 +43,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the deal info for a deal
      *
      */
-    public void dealInfoDealidGet(Integer dealid) {
+    public String dealInfoDealidGet(Integer dealid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -53,10 +55,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the proposal for a deal
      *
      */
-    public void dealProposalPropcidGet(String propcid) {
+    public String dealProposalPropcidGet(String propcid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -65,10 +67,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the ask for a given CID
      *
      */
-    public void dealQueryMinerGet(String miner) {
+    public String dealQueryMinerGet(String miner) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -77,10 +79,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * Get Deal Status by PropCid
      *
      */
-    public void dealStatusByProposalPropcidGet(String propcid) {
+    public String dealStatusByProposalPropcidGet(String propcid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -89,10 +91,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the status of a deal
      *
      */
-    public void dealStatusMinerPropcidGet(String miner, String propcid) {
+    public String dealStatusMinerPropcidGet(String miner, String propcid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -101,10 +103,22 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the in-progress transfers
      *
      */
-    public void dealTransferInProgressGet() {
+    public String dealTransferInProgressGet() {
         // TODO: Implement...
         
+        return null;
+    }
+    
+    /**
+     * Transfer Status
+     *
+     * This endpoint returns the status of a transfer
+     *
+     */
+    public String dealTransferStatusPost(MainChannelIDParam chanid) {
+        // TODO: Implement...
         
+        return null;
     }
     
     /**
@@ -113,10 +127,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns a list of storage failures for user
      *
      */
-    public void dealsFailuresGet() {
+    public String dealsFailuresGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -125,10 +139,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint makes a deal for a given content and miner
      *
      */
-    public void dealsMakeMinerPost(String miner, String dealRequest) {
+    public String dealsMakeMinerPost(String miner, String dealRequest) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -137,10 +151,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the status of a deal
      *
      */
-    public void dealsStatusDealGet(Integer deal) {
+    public String dealsStatusDealGet(Integer deal) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -149,10 +163,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns a list of storage failures
      *
      */
-    public void publicDealsFailuresGet() {
+    public String publicDealsFailuresGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -161,10 +175,10 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the ask for a given CID
      *
      */
-    public void publicMinersStorageQueryMinerGet(String miner) {
+    public String publicMinersStorageQueryMinerGet(String miner) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

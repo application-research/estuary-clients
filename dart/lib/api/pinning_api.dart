@@ -10,7 +10,7 @@ class PinningApi {
   /// List all pin status objects
   ///
   /// This endpoint lists all pin status objects
-  Future pinningPinsGet() async {
+  Future<String> pinningPinsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -51,15 +51,15 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Delete a pinned object
   ///
   /// This endpoint deletes a pinned object.
-  Future pinningPinsPinidDelete(String pinid) async {
+  Future<String> pinningPinsPinidDelete(String pinid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -103,15 +103,15 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get a pin status object
   ///
   /// This endpoint returns a pin status object.
-  Future pinningPinsPinidGet(String pinid) async {
+  Future<String> pinningPinsPinidGet(String pinid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -155,15 +155,15 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Replace a pinned object
   ///
   /// This endpoint replaces a pinned object.
-  Future pinningPinsPinidPost(String pinid) async {
+  Future<String> pinningPinsPinidPost(String pinid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -207,27 +207,24 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add and pin object
   ///
   /// This endpoint adds a pin to the IPFS daemon.
-  Future pinningPinsPost(String cid, String name) async {
-    Object postBody = null;
+  Future<String> pinningPinsPost(TypesIpfsPin pin) async {
+    Object postBody = pin;
 
     // verify required params are set
-    if(cid == null) {
-     throw new ApiException(400, "Missing required param: cid");
-    }
-    if(name == null) {
-     throw new ApiException(400, "Missing required param: name");
+    if(pin == null) {
+     throw new ApiException(400, "Missing required param: pin");
     }
 
     // create path and map variables
-    String path = "/pinning/pins".replaceAll("{format}","json").replaceAll("{" + "cid" + "}", cid.toString()).replaceAll("{" + "name" + "}", name.toString());
+    String path = "/pinning/pins".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -262,9 +259,9 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

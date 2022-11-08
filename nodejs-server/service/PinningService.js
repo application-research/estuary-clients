@@ -5,11 +5,20 @@
  * List all pin status objects
  * This endpoint lists all pin status objects
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.pinningPinsGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -18,13 +27,21 @@ exports.pinningPinsGET = function() {
  * Add and pin object
  * This endpoint adds a pin to the IPFS daemon.
  *
- * cid String cid
- * name String name
- * no response value expected for this operation
+ * pin Types.IpfsPin Pin Body {cid:cid, name:name}
+ * returns String
  **/
-exports.pinningPinsPOST = function(cid,name) {
+exports.pinningPinsPOST = function(pin) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -34,11 +51,20 @@ exports.pinningPinsPOST = function(cid,name) {
  * This endpoint deletes a pinned object.
  *
  * pinid String Pin ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.pinningPinsPinidDELETE = function(pinid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -48,11 +74,20 @@ exports.pinningPinsPinidDELETE = function(pinid) {
  * This endpoint returns a pin status object.
  *
  * pinid String cid
- * no response value expected for this operation
+ * returns String
  **/
 exports.pinningPinsPinidGET = function(pinid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -62,11 +97,20 @@ exports.pinningPinsPinidGET = function(pinid) {
  * This endpoint replaces a pinned object.
  *
  * pinid String Pin ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.pinningPinsPinidPOST = function(pinid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

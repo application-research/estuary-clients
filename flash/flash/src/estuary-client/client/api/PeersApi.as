@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -31,9 +32,9 @@ public class PeersApi extends SwaggerApi {
 
 
     /*
-     * Returns void 
+     * Returns String 
      */
-    public function admin_peering_peers_delete (body: Array): String {
+    public function admin_peering_peers_delete (peerIds: Array): String {
         // create path and map variables
         var path: String = "/admin/peering/peers".replace(/{format}/g,"xml");
 
@@ -48,20 +49,20 @@ public class PeersApi extends SwaggerApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "DELETE", queryParams, body, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "DELETE", queryParams, peerIds, headerParams);
 
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
         token.completionEventType = "admin_peering_peers_delete";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_peering_peers_get (): String {
         // create path and map variables
@@ -81,13 +82,13 @@ public class PeersApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_peering_peers_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_peering_peers_post (): String {
         // create path and map variables
@@ -107,13 +108,13 @@ public class PeersApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_peering_peers_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_peering_start_post (): String {
         // create path and map variables
@@ -133,13 +134,13 @@ public class PeersApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_peering_start_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_peering_status_get (): String {
         // create path and map variables
@@ -159,13 +160,13 @@ public class PeersApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_peering_status_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function admin_peering_stop_post (): String {
         // create path and map variables
@@ -185,7 +186,7 @@ public class PeersApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "admin_peering_stop_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

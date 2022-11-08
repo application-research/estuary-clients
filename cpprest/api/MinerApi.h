@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -46,7 +47,7 @@ public:
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
     /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-    pplx::task<void> publicMinersDealsMinerGet(
+    pplx::task<utility::string_t> publicMinersDealsMinerGet(
         utility::string_t miner,
         boost::optional<utility::string_t> ignoreFailed
     );
@@ -57,7 +58,7 @@ public:
     /// This endpoint returns miner stats
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
-    pplx::task<void> publicMinersStatsMinerGet(
+    pplx::task<utility::string_t> publicMinersStatsMinerGet(
         utility::string_t miner
     );
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -26,7 +26,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.publicMetricsDealsOnChainGet();
+    String result = api.publicMetricsDealsOnChainGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -37,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

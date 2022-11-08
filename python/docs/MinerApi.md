@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+> str public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
 
 Get all miners deals
 
@@ -36,7 +36,8 @@ ignore_failed = 'ignore_failed_example' # str | Ignore Failed (optional)
 
 try:
     # Get all miners deals
-    api_instance.public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+    api_response = api_instance.public_miners_deals_miner_get(miner, ignore_failed=ignore_failed)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling MinerApi->public_miners_deals_miner_get: %s\n" % e)
 ```
@@ -50,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -64,7 +65,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(miner)
+> str public_miners_stats_miner_get(miner)
 
 Get miner stats
 
@@ -90,7 +91,8 @@ miner = 'miner_example' # str | Filter by miner
 
 try:
     # Get miner stats
-    api_instance.public_miners_stats_miner_get(miner)
+    api_response = api_instance.public_miners_stats_miner_get(miner)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling MinerApi->public_miners_stats_miner_get: %s\n" % e)
 ```
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

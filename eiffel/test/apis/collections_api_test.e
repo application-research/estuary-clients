@@ -52,12 +52,13 @@ feature -- Test routines
             -- 
             -- This endpoint is used to delete an existing collection. 
         local
+            l_response: STRING_32
             l_coluuid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_coluuid
                       
-            -- api.collections_coluuid_delete(l_coluuid)
+            -- l_response := api.collections_coluuid_delete(l_coluuid)
             assert ("not_implemented", False)
         end
     
@@ -82,7 +83,7 @@ feature -- Test routines
             -- 
             -- This endpoint adds already-pinned contents (that have ContentIDs) to a collection. 
         local
-            l_response: STRING_TABLE[STRING_32]
+            l_response: STRING_32
             l_coluuid: STRING_32
             l_content_ids: LIST [INTEGER_32]
         do
@@ -99,6 +100,7 @@ feature -- Test routines
             -- 
             -- This endpoint adds a file to a collection 
         local
+            l_response: STRING_32
             l_coluuid: STRING_32
             l_content: STRING_32
             l_path: STRING_32
@@ -108,7 +110,7 @@ feature -- Test routines
             -- l_content
             -- l_path
                       
-            -- api.collections_fs_add_post(l_coluuid, l_content, l_path)
+            -- l_response := api.collections_fs_add_post(l_coluuid, l_content, l_path)
             assert ("not_implemented", False)
         end
     
@@ -117,7 +119,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user. 
         local
-            l_response: LIST [COLLECTIONS_COLLECTION]
+            l_response: LIST [LIST [COLLECTIONS_COLLECTION]]
         do
             -- TODO: Initialize required params.
                       

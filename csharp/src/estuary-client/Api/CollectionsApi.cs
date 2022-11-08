@@ -78,8 +78,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns></returns>
-        void CollectionsColuuidDelete (string coluuid);
+        /// <returns>string</returns>
+        string CollectionsColuuidDelete (string coluuid);
 
         /// <summary>
         /// Deletes a collection
@@ -89,8 +89,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CollectionsColuuidDeleteWithHttpInfo (string coluuid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> CollectionsColuuidDeleteWithHttpInfo (string coluuid);
         /// <summary>
         /// Get contents in a collection
         /// </summary>
@@ -123,8 +123,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs);
+        /// <returns>string</returns>
+        string CollectionsColuuidPost (string coluuid, List<int?> contentIDs);
 
         /// <summary>
         /// Add contents to a collection
@@ -135,8 +135,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> CollectionsColuuidPostWithHttpInfo (string coluuid, List<int?> contentIDs);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> CollectionsColuuidPostWithHttpInfo (string coluuid, List<int?> contentIDs);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -147,8 +147,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns></returns>
-        void CollectionsFsAddPost (string coluuid, string content, string path);
+        /// <returns>string</returns>
+        string CollectionsFsAddPost (string coluuid, string content, string path);
 
         /// <summary>
         /// Add a file to a collection
@@ -160,8 +160,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path);
         /// <summary>
         /// List all collections
         /// </summary>
@@ -169,8 +169,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;CollectionsCollection&gt;</returns>
-        List<CollectionsCollection> CollectionsGet ();
+        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        List<List<CollectionsCollection>> CollectionsGet ();
 
         /// <summary>
         /// List all collections
@@ -179,8 +179,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;CollectionsCollection&gt;</returns>
-        ApiResponse<List<CollectionsCollection>> CollectionsGetWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        ApiResponse<List<List<CollectionsCollection>>> CollectionsGetWithHttpInfo ();
         /// <summary>
         /// Create a new collection
         /// </summary>
@@ -258,8 +258,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CollectionsColuuidDeleteAsync (string coluuid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> CollectionsColuuidDeleteAsync (string coluuid);
 
         /// <summary>
         /// Deletes a collection
@@ -269,8 +269,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CollectionsColuuidDeleteAsyncWithHttpInfo (string coluuid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidDeleteAsyncWithHttpInfo (string coluuid);
         /// <summary>
         /// Get contents in a collection
         /// </summary>
@@ -303,8 +303,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> CollectionsColuuidPostAsync (string coluuid, List<int?> contentIDs);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (string coluuid, List<int?> contentIDs);
 
         /// <summary>
         /// Add contents to a collection
@@ -315,8 +315,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> CollectionsColuuidPostAsyncWithHttpInfo (string coluuid, List<int?> contentIDs);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (string coluuid, List<int?> contentIDs);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -327,8 +327,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task CollectionsFsAddPostAsync (string coluuid, string content, string path);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string path);
 
         /// <summary>
         /// Add a file to a collection
@@ -340,8 +340,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path);
         /// <summary>
         /// List all collections
         /// </summary>
@@ -349,8 +349,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;CollectionsCollection&gt;</returns>
-        System.Threading.Tasks.Task<List<CollectionsCollection>> CollectionsGetAsync ();
+        /// <returns>Task of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        System.Threading.Tasks.Task<List<List<CollectionsCollection>>> CollectionsGetAsync ();
 
         /// <summary>
         /// List all collections
@@ -359,8 +359,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CollectionsCollection&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CollectionsCollection>>> CollectionsGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;List&lt;CollectionsCollection&gt;&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<List<CollectionsCollection>>>> CollectionsGetAsyncWithHttpInfo ();
         /// <summary>
         /// Create a new collection
         /// </summary>
@@ -811,10 +811,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns></returns>
-        public void CollectionsColuuidDelete (string coluuid)
+        /// <returns>string</returns>
+        public string CollectionsColuuidDelete (string coluuid)
         {
-             CollectionsColuuidDeleteWithHttpInfo(coluuid);
+             ApiResponse<string> localVarResponse = CollectionsColuuidDeleteWithHttpInfo(coluuid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -822,8 +823,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CollectionsColuuidDeleteWithHttpInfo (string coluuid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > CollectionsColuuidDeleteWithHttpInfo (string coluuid)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -870,9 +871,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -880,10 +881,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CollectionsColuuidDeleteAsync (string coluuid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> CollectionsColuuidDeleteAsync (string coluuid)
         {
-             await CollectionsColuuidDeleteAsyncWithHttpInfo(coluuid);
+             ApiResponse<string> localVarResponse = await CollectionsColuuidDeleteAsyncWithHttpInfo(coluuid);
+             return localVarResponse.Data;
 
         }
 
@@ -892,8 +894,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CollectionsColuuidDeleteAsyncWithHttpInfo (string coluuid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidDeleteAsyncWithHttpInfo (string coluuid)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -940,9 +942,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1100,10 +1102,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
+        /// <returns>string</returns>
+        public string CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = CollectionsColuuidPostWithHttpInfo(coluuid, contentIDs);
+             ApiResponse<string> localVarResponse = CollectionsColuuidPostWithHttpInfo(coluuid, contentIDs);
              return localVarResponse.Data;
         }
 
@@ -1113,8 +1115,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public ApiResponse< Dictionary<string, string> > CollectionsColuuidPostWithHttpInfo (string coluuid, List<int?> contentIDs)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > CollectionsColuuidPostWithHttpInfo (string coluuid, List<int?> contentIDs)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1174,9 +1176,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1185,10 +1187,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> CollectionsColuuidPostAsync (string coluuid, List<int?> contentIDs)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (string coluuid, List<int?> contentIDs)
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(coluuid, contentIDs);
+             ApiResponse<string> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(coluuid, contentIDs);
              return localVarResponse.Data;
 
         }
@@ -1199,8 +1201,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">coluuid</param>
         /// <param name="contentIDs">Content IDs to add to collection</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> CollectionsColuuidPostAsyncWithHttpInfo (string coluuid, List<int?> contentIDs)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (string coluuid, List<int?> contentIDs)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1260,9 +1262,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1272,10 +1274,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns></returns>
-        public void CollectionsFsAddPost (string coluuid, string content, string path)
+        /// <returns>string</returns>
+        public string CollectionsFsAddPost (string coluuid, string content, string path)
         {
-             CollectionsFsAddPostWithHttpInfo(coluuid, content, path);
+             ApiResponse<string> localVarResponse = CollectionsFsAddPostWithHttpInfo(coluuid, content, path);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1285,8 +1288,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1342,9 +1345,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1354,10 +1357,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task CollectionsFsAddPostAsync (string coluuid, string content, string path)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string path)
         {
-             await CollectionsFsAddPostAsyncWithHttpInfo(coluuid, content, path);
+             ApiResponse<string> localVarResponse = await CollectionsFsAddPostAsyncWithHttpInfo(coluuid, content, path);
+             return localVarResponse.Data;
 
         }
 
@@ -1368,8 +1372,8 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
         /// <param name="path">Path to file</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1425,19 +1429,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;CollectionsCollection&gt;</returns>
-        public List<CollectionsCollection> CollectionsGet ()
+        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        public List<List<CollectionsCollection>> CollectionsGet ()
         {
-             ApiResponse<List<CollectionsCollection>> localVarResponse = CollectionsGetWithHttpInfo();
+             ApiResponse<List<List<CollectionsCollection>>> localVarResponse = CollectionsGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -1445,8 +1449,8 @@ namespace estuary-client.Api
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;CollectionsCollection&gt;</returns>
-        public ApiResponse< List<CollectionsCollection> > CollectionsGetWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        public ApiResponse< List<List<CollectionsCollection>> > CollectionsGetWithHttpInfo ()
         {
 
             var localVarPath = "/collections/";
@@ -1490,19 +1494,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<CollectionsCollection>>(localVarStatusCode,
+            return new ApiResponse<List<List<CollectionsCollection>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CollectionsCollection>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CollectionsCollection>)));
+                (List<List<CollectionsCollection>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<CollectionsCollection>>)));
         }
 
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;CollectionsCollection&gt;</returns>
-        public async System.Threading.Tasks.Task<List<CollectionsCollection>> CollectionsGetAsync ()
+        /// <returns>Task of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
+        public async System.Threading.Tasks.Task<List<List<CollectionsCollection>>> CollectionsGetAsync ()
         {
-             ApiResponse<List<CollectionsCollection>> localVarResponse = await CollectionsGetAsyncWithHttpInfo();
+             ApiResponse<List<List<CollectionsCollection>>> localVarResponse = await CollectionsGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -1511,8 +1515,8 @@ namespace estuary-client.Api
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CollectionsCollection&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<CollectionsCollection>>> CollectionsGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;List&lt;CollectionsCollection&gt;&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<List<CollectionsCollection>>>> CollectionsGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/collections/";
@@ -1556,9 +1560,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<CollectionsCollection>>(localVarStatusCode,
+            return new ApiResponse<List<List<CollectionsCollection>>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CollectionsCollection>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CollectionsCollection>)));
+                (List<List<CollectionsCollection>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<CollectionsCollection>>)));
         }
 
         /// <summary>

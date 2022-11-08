@@ -10,7 +10,7 @@ class MinerApi {
   /// Get all miners deals
   ///
   /// This endpoint returns all miners deals
-  Future publicMinersDealsMinerGet(String miner, { String ignoreFailed }) async {
+  Future<String> publicMinersDealsMinerGet(String miner, { String ignoreFailed }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -57,15 +57,15 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get miner stats
   ///
   /// This endpoint returns miner stats
-  Future publicMinersStatsMinerGet(String miner) async {
+  Future<String> publicMinersStatsMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -109,9 +109,9 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

@@ -14,7 +14,6 @@
 package io.swagger.client.api;
 
 import io.swagger.client.model.MainGetApiKeysResp;
-import io.swagger.client.model.MainUserStatsResponse;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -44,7 +43,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() throws Exception {
-        List<MainGetApiKeysResp> response = api.userApiKeysGet();
+        List<List<MainGetApiKeysResp>> response = api.userApiKeysGet();
 
         // TODO: test validations
     }
@@ -52,15 +51,15 @@ public class UserApiTest {
     /**
      * Revoke a User API Key.
      *
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void userApiKeysKeyDeleteTest() throws Exception {
-        String key = null;
-        api.userApiKeysKeyDelete(key);
+    public void userApiKeysKeyOrHashDeleteTest() throws Exception {
+        String keyOrHash = null;
+        String response = api.userApiKeysKeyOrHashDelete(keyOrHash);
 
         // TODO: test validations
     }
@@ -107,7 +106,7 @@ public class UserApiTest {
      */
     @Test
     public void userStatsGetTest() throws Exception {
-        MainUserStatsResponse response = api.userStatsGet();
+        String response = api.userStatsGet();
 
         // TODO: test validations
     }

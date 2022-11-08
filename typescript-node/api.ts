@@ -183,6 +183,35 @@ export class CollectionsCollection {
     }
 }
 
+export class MainChannelIDParam {
+    'id'?: number;
+    'initiator'?: string;
+    'responder'?: string;
+
+    static discriminator: string | undefined = undefined;
+
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "number"
+        },
+        {
+            "name": "initiator",
+            "baseName": "initiator",
+            "type": "string"
+        },
+        {
+            "name": "responder",
+            "baseName": "responder",
+            "type": "string"
+        }    ];
+
+    static getAttributeTypeMap() {
+        return MainChannelIDParam.attributeTypeMap;
+    }
+}
+
 export class MainCreateCollectionBody {
     'description'?: string;
     'name'?: string;
@@ -266,7 +295,9 @@ export class MainEstimateDealBody {
 
 export class MainGetApiKeysResp {
     'expiry'?: string;
+    'label'?: string;
     'token'?: string;
+    'tokenHash'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -277,8 +308,18 @@ export class MainGetApiKeysResp {
             "type": "string"
         },
         {
+            "name": "label",
+            "baseName": "label",
+            "type": "string"
+        },
+        {
             "name": "token",
             "baseName": "token",
+            "type": "string"
+        },
+        {
+            "name": "tokenHash",
+            "baseName": "tokenHash",
             "type": "string"
         }    ];
 
@@ -322,26 +363,38 @@ export class MainImportDealBody {
     }
 }
 
-export class MainUserStatsResponse {
-    'numPins'?: number;
-    'totalSize'?: number;
+export class TypesIpfsPin {
+    'cid'?: string;
+    'meta'?: any;
+    'name'?: string;
+    'origins'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "numPins",
-            "baseName": "numPins",
-            "type": "number"
+            "name": "cid",
+            "baseName": "cid",
+            "type": "string"
         },
         {
-            "name": "totalSize",
-            "baseName": "totalSize",
-            "type": "number"
+            "name": "meta",
+            "baseName": "meta",
+            "type": "any"
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
+        },
+        {
+            "name": "origins",
+            "baseName": "origins",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {
-        return MainUserStatsResponse.attributeTypeMap;
+        return TypesIpfsPin.attributeTypeMap;
     }
 }
 
@@ -503,12 +556,13 @@ let enumsMap: {[index: string]: any} = {
 
 let typeMap: {[index: string]: any} = {
     "CollectionsCollection": CollectionsCollection,
+    "MainChannelIDParam": MainChannelIDParam,
     "MainCreateCollectionBody": MainCreateCollectionBody,
     "MainDeleteContentFromCollectionBody": MainDeleteContentFromCollectionBody,
     "MainEstimateDealBody": MainEstimateDealBody,
     "MainGetApiKeysResp": MainGetApiKeysResp,
     "MainImportDealBody": MainImportDealBody,
-    "MainUserStatsResponse": MainUserStatsResponse,
+    "TypesIpfsPin": TypesIpfsPin,
     "UtilContentAddIpfsBody": UtilContentAddIpfsBody,
     "UtilContentAddResponse": UtilContentAddResponse,
     "UtilContentCreateBody": UtilContentCreateBody,
@@ -616,18 +670,18 @@ export class AdminApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersDelete (body: Array<string>, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersDelete (peerIds: Array<boolean>, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        // verify required parameter 'peerIds' is not null or undefined
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -641,7 +695,7 @@ export class AdminApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "Array<string>")
+            body: ObjectSerializer.serialize(peerIds, "Array<boolean>")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
@@ -655,11 +709,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -674,7 +729,7 @@ export class AdminApi {
      * @summary List all Peering peers
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -704,11 +759,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -723,7 +779,7 @@ export class AdminApi {
      * @summary Add peers on Peering Service
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -753,11 +809,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -772,7 +829,7 @@ export class AdminApi {
      * @summary Start Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/start';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -802,11 +859,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -821,7 +879,7 @@ export class AdminApi {
      * @summary Check Peering Status
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -851,11 +909,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -870,7 +929,7 @@ export class AdminApi {
      * @summary Stop Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/stop';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -900,11 +959,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -919,7 +979,7 @@ export class AdminApi {
      * @summary Get systems(estuary/shuttle) config
      * @param {*} [options] Override http request options.
      */
-    public adminSystemConfigGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminSystemConfigGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/system/config';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -949,11 +1009,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -968,7 +1029,7 @@ export class AdminApi {
      * @summary Get all users
      * @param {*} [options] Override http request options.
      */
-    public adminUsersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminUsersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -998,11 +1059,12 @@ export class AdminApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1066,7 +1128,7 @@ export class AutoretrieveApi {
      * @param pubKey Autoretrieve&#39;s public key
      * @param {*} [options] Override http request options.
      */
-    public adminAutoretrieveInitPost (addresses: string, pubKey: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminAutoretrieveInitPost (addresses: string, pubKey: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/autoretrieve/init';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1086,6 +1148,14 @@ export class AutoretrieveApi {
 
         let localVarUseFormData = false;
 
+        if (addresses !== undefined) {
+            localVarFormParams['addresses'] = ObjectSerializer.serialize(addresses, "string");
+        }
+
+        if (pubKey !== undefined) {
+            localVarFormParams['pubKey'] = ObjectSerializer.serialize(pubKey, "string");
+        }
+
         let localVarRequestOptions: localVarRequest.Options = {
             method: 'POST',
             qs: localVarQueryParameters,
@@ -1093,7 +1163,6 @@ export class AutoretrieveApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(pubKey, "string")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
@@ -1107,11 +1176,12 @@ export class AutoretrieveApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1126,7 +1196,7 @@ export class AutoretrieveApi {
      * @summary List autoretrieve servers
      * @param {*} [options] Override http request options.
      */
-    public adminAutoretrieveListGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminAutoretrieveListGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/autoretrieve/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1156,11 +1226,12 @@ export class AutoretrieveApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1176,7 +1247,7 @@ export class AutoretrieveApi {
      * @param token Autoretrieve&#39;s auth token
      * @param {*} [options] Override http request options.
      */
-    public autoretrieveHeartbeatPost (token: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public autoretrieveHeartbeatPost (token: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/autoretrieve/heartbeat';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1212,11 +1283,12 @@ export class AutoretrieveApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1407,7 +1479,7 @@ export class CollectionsApi {
      * @param coluuid Collection ID
      * @param {*} [options] Override http request options.
      */
-    public collectionsColuuidDelete (coluuid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public collectionsColuuidDelete (coluuid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/collections/{coluuid}'
             .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
         let localVarQueryParameters: any = {};
@@ -1443,11 +1515,12 @@ export class CollectionsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1526,7 +1599,7 @@ export class CollectionsApi {
      * @param contentIDs Content IDs to add to collection
      * @param {*} [options] Override http request options.
      */
-    public collectionsColuuidPost (coluuid: string, contentIDs: Array<number>, options: any = {}) : Promise<{ response: http.ClientResponse; body: { [key: string]: string; };  }> {
+    public collectionsColuuidPost (coluuid: string, contentIDs: Array<number>, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/collections/{coluuid}'
             .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
         let localVarQueryParameters: any = {};
@@ -1568,12 +1641,12 @@ export class CollectionsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: { [key: string]: string; };  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "{ [key: string]: string; }");
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1591,7 +1664,7 @@ export class CollectionsApi {
      * @param path Path to file
      * @param {*} [options] Override http request options.
      */
-    public collectionsFsAddPost (coluuid: string, content: string, path: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public collectionsFsAddPost (coluuid: string, content: string, path: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/collections/fs/add';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1648,11 +1721,12 @@ export class CollectionsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1667,7 +1741,7 @@ export class CollectionsApi {
      * @summary List all collections
      * @param {*} [options] Override http request options.
      */
-    public collectionsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<CollectionsCollection>;  }> {
+    public collectionsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<Array<CollectionsCollection>>;  }> {
         const localVarPath = this.basePath + '/collections/';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1697,12 +1771,12 @@ export class CollectionsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: Array<CollectionsCollection>;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: Array<Array<CollectionsCollection>>;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "Array<CollectionsCollection>");
+                    body = ObjectSerializer.deserialize(body, "Array<Array<CollectionsCollection>>");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1824,7 +1898,7 @@ export class ContentApi {
      * @param filename Filename
      * @param {*} [options] Override http request options.
      */
-    public contentAddCarPost (body: string, ignoreDupes?: string, filename?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentAddCarPost (body: string, ignoreDupes?: string, filename?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/add-car';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1868,11 +1942,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -1889,7 +1964,7 @@ export class ContentApi {
      * @param ignoreDupes Ignore Dupes
      * @param {*} [options] Override http request options.
      */
-    public contentAddIpfsPost (body: UtilContentAddIpfsBody, ignoreDupes?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentAddIpfsPost (body: UtilContentAddIpfsBody, ignoreDupes?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/add-ipfs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -1929,11 +2004,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2099,7 +2175,7 @@ export class ContentApi {
      * @param all All
      * @param {*} [options] Override http request options.
      */
-    public contentAllDealsGet (begin: string, duration: string, all: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentAllDealsGet (begin: string, duration: string, all: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/all-deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2156,11 +2232,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2176,7 +2253,7 @@ export class ContentApi {
      * @param content Content ID
      * @param {*} [options] Override http request options.
      */
-    public contentBwUsageContentGet (content: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentBwUsageContentGet (content: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/bw-usage/{content}'
             .replace('{' + 'content' + '}', encodeURIComponent(String(content)));
         let localVarQueryParameters: any = {};
@@ -2212,11 +2289,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2233,7 +2311,7 @@ export class ContentApi {
      * @param ignoreDupes Ignore Dupes
      * @param {*} [options] Override http request options.
      */
-    public contentCreatePost (req: UtilContentCreateBody, ignoreDupes?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentCreatePost (req: UtilContentCreateBody, ignoreDupes?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/create';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2273,11 +2351,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2294,7 +2373,7 @@ export class ContentApi {
      * @param offset Offset
      * @param {*} [options] Override http request options.
      */
-    public contentDealsGet (limit?: number, offset?: number, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentDealsGet (limit?: number, offset?: number, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2332,11 +2411,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2352,7 +2432,7 @@ export class ContentApi {
      * @param datacid Data CID
      * @param {*} [options] Override http request options.
      */
-    public contentEnsureReplicationDatacidGet (datacid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentEnsureReplicationDatacidGet (datacid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/ensure-replication/{datacid}'
             .replace('{' + 'datacid' + '}', encodeURIComponent(String(datacid)));
         let localVarQueryParameters: any = {};
@@ -2388,11 +2468,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2465,7 +2546,7 @@ export class ContentApi {
      * @param id Content ID
      * @param {*} [options] Override http request options.
      */
-    public contentIdGet (id: number, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentIdGet (id: number, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -2501,11 +2582,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2521,7 +2603,7 @@ export class ContentApi {
      * @param body Import a deal
      * @param {*} [options] Override http request options.
      */
-    public contentImportdealPost (body: MainImportDealBody, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentImportdealPost (body: MainImportDealBody, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/importdeal';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2557,11 +2639,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2576,7 +2659,7 @@ export class ContentApi {
      * @summary List all pinned content
      * @param {*} [options] Override http request options.
      */
-    public contentListGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<string>;  }> {
+    public contentListGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2606,12 +2689,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: Array<string>;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "Array<string>");
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2627,7 +2710,7 @@ export class ContentApi {
      * @param cont CID
      * @param {*} [options] Override http request options.
      */
-    public contentReadContGet (cont: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentReadContGet (cont: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/read/{cont}'
             .replace('{' + 'cont' + '}', encodeURIComponent(String(cont)));
         let localVarQueryParameters: any = {};
@@ -2663,11 +2746,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2682,7 +2766,7 @@ export class ContentApi {
      * @summary Get staging zone for user
      * @param {*} [options] Override http request options.
      */
-    public contentStagingZonesGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentStagingZonesGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/staging-zones';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2712,11 +2796,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2733,7 +2818,7 @@ export class ContentApi {
      * @param offset offset
      * @param {*} [options] Override http request options.
      */
-    public contentStatsGet (limit: string, offset: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentStatsGet (limit: string, offset: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/stats';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2781,11 +2866,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2801,7 +2887,7 @@ export class ContentApi {
      * @param id Content ID
      * @param {*} [options] Override http request options.
      */
-    public contentStatusIdGet (id: number, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public contentStatusIdGet (id: number, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/content/status/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -2837,11 +2923,12 @@ export class ContentApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2904,7 +2991,7 @@ export class DealsApi {
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      * @param {*} [options] Override http request options.
      */
-    public dealEstimatePost (body: MainEstimateDealBody, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealEstimatePost (body: MainEstimateDealBody, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/estimate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -2940,11 +3027,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -2960,7 +3048,7 @@ export class DealsApi {
      * @param dealid Deal ID
      * @param {*} [options] Override http request options.
      */
-    public dealInfoDealidGet (dealid: number, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealInfoDealidGet (dealid: number, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/info/{dealid}'
             .replace('{' + 'dealid' + '}', encodeURIComponent(String(dealid)));
         let localVarQueryParameters: any = {};
@@ -2996,11 +3084,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3016,7 +3105,7 @@ export class DealsApi {
      * @param propcid Proposal CID
      * @param {*} [options] Override http request options.
      */
-    public dealProposalPropcidGet (propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealProposalPropcidGet (propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/proposal/{propcid}'
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
         let localVarQueryParameters: any = {};
@@ -3052,11 +3141,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3072,7 +3162,7 @@ export class DealsApi {
      * @param miner CID
      * @param {*} [options] Override http request options.
      */
-    public dealQueryMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealQueryMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/query/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -3108,11 +3198,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3128,7 +3219,7 @@ export class DealsApi {
      * @param propcid PropCid
      * @param {*} [options] Override http request options.
      */
-    public dealStatusByProposalPropcidGet (propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealStatusByProposalPropcidGet (propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/status-by-proposal/{propcid}'
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
         let localVarQueryParameters: any = {};
@@ -3164,11 +3255,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3185,7 +3277,7 @@ export class DealsApi {
      * @param propcid Proposal CID
      * @param {*} [options] Override http request options.
      */
-    public dealStatusMinerPropcidGet (miner: string, propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealStatusMinerPropcidGet (miner: string, propcid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/status/{miner}/{propcid}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)))
             .replace('{' + 'propcid' + '}', encodeURIComponent(String(propcid)));
@@ -3227,11 +3319,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3246,7 +3339,7 @@ export class DealsApi {
      * @summary Transfer In Progress
      * @param {*} [options] Override http request options.
      */
-    public dealTransferInProgressGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealTransferInProgressGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deal/transfer/in-progress';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -3276,11 +3369,69 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
+                    if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                        resolve({ response: response, body: body });
+                    } else {
+                        reject({ response: response, body: body });
+                    }
+                }
+            });
+        });
+    }
+    /**
+     * This endpoint returns the status of a transfer
+     * @summary Transfer Status
+     * @param chanid Channel ID
+     * @param {*} [options] Override http request options.
+     */
+    public dealTransferStatusPost (chanid: MainChannelIDParam, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+        const localVarPath = this.basePath + '/deal/transfer/status';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'chanid' is not null or undefined
+        if (chanid === null || chanid === undefined) {
+            throw new Error('Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(chanid, "MainChannelIDParam")
+        };
+
+        this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
+
+        this.authentications.default.applyToRequest(localVarRequestOptions);
+
+        if (Object.keys(localVarFormParams).length) {
+            if (localVarUseFormData) {
+                (<any>localVarRequestOptions).formData = localVarFormParams;
+            } else {
+                localVarRequestOptions.form = localVarFormParams;
+            }
+        }
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+            localVarRequest(localVarRequestOptions, (error, response, body) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3295,7 +3446,7 @@ export class DealsApi {
      * @summary Get storage failures for user
      * @param {*} [options] Override http request options.
      */
-    public dealsFailuresGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealsFailuresGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deals/failures';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -3325,11 +3476,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3346,7 +3498,7 @@ export class DealsApi {
      * @param dealRequest Deal Request
      * @param {*} [options] Override http request options.
      */
-    public dealsMakeMinerPost (miner: string, dealRequest: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealsMakeMinerPost (miner: string, dealRequest: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deals/make/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -3388,11 +3540,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3408,7 +3561,7 @@ export class DealsApi {
      * @param deal Deal ID
      * @param {*} [options] Override http request options.
      */
-    public dealsStatusDealGet (deal: number, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public dealsStatusDealGet (deal: number, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/deals/status/{deal}'
             .replace('{' + 'deal' + '}', encodeURIComponent(String(deal)));
         let localVarQueryParameters: any = {};
@@ -3444,11 +3597,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3463,7 +3617,7 @@ export class DealsApi {
      * @summary Get storage failures
      * @param {*} [options] Override http request options.
      */
-    public publicDealsFailuresGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicDealsFailuresGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/deals/failures';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -3493,11 +3647,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3513,7 +3668,7 @@ export class DealsApi {
      * @param miner CID
      * @param {*} [options] Override http request options.
      */
-    public publicMinersStorageQueryMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersStorageQueryMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/storage/query/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -3549,106 +3704,12 @@ export class DealsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                        resolve({ response: response, body: body });
-                    } else {
-                        reject({ response: response, body: body });
-                    }
-                }
-            });
-        });
-    }
-}
-export enum DefaultApiApiKeys {
-    bearerAuth,
-}
-
-export class DefaultApi {
-    protected _basePath = defaultBasePath;
-    protected defaultHeaders : any = {};
-    protected _useQuerystring : boolean = false;
-
-    protected authentications = {
-        'default': <Authentication>new VoidAuth(),
-        'bearerAuth': new ApiKeyAuth('header', 'Authorization'),
-    }
-
-    constructor(basePath?: string);
-    constructor(basePathOrUsername: string, password?: string, basePath?: string) {
-        if (password) {
-            if (basePath) {
-                this.basePath = basePath;
-            }
-        } else {
-            if (basePathOrUsername) {
-                this.basePath = basePathOrUsername
-            }
-        }
-    }
-
-    set useQuerystring(value: boolean) {
-        this._useQuerystring = value;
-    }
-
-    set basePath(basePath: string) {
-        this._basePath = basePath;
-    }
-
-    get basePath() {
-        return this._basePath;
-    }
-
-    public setDefaultAuthentication(auth: Authentication) {
-	this.authentications.default = auth;
-    }
-
-    public setApiKey(key: DefaultApiApiKeys, value: string) {
-        (this.authentications as any)[DefaultApiApiKeys[key]].apiKey = value;
-    }
-    /**
-     * 
-     * @param {*} [options] Override http request options.
-     */
-    public dealTransferStatusPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
-        const localVarPath = this.basePath + '/deal/transfer/status';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        let localVarFormParams: any = {};
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
-
-        this.authentications.default.applyToRequest(localVarRequestOptions);
-
-        if (Object.keys(localVarFormParams).length) {
-            if (localVarUseFormData) {
-                (<any>localVarRequestOptions).formData = localVarFormParams;
-            } else {
-                localVarRequestOptions.form = localVarFormParams;
-            }
-        }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
-            localVarRequest(localVarRequestOptions, (error, response, body) => {
-                if (error) {
-                    reject(error);
-                } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3710,7 +3771,7 @@ export class MetricsApi {
      * @summary Get deal metrics
      * @param {*} [options] Override http request options.
      */
-    public publicMetricsDealsOnChainGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMetricsDealsOnChainGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/metrics/deals-on-chain';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -3740,11 +3801,12 @@ export class MetricsApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3808,7 +3870,7 @@ export class MinerApi {
      * @param ignoreFailed Ignore Failed
      * @param {*} [options] Override http request options.
      */
-    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/deals/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -3848,11 +3910,12 @@ export class MinerApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3868,7 +3931,7 @@ export class MinerApi {
      * @param miner Filter by miner
      * @param {*} [options] Override http request options.
      */
-    public publicMinersStatsMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersStatsMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/stats/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -3904,11 +3967,12 @@ export class MinerApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -3970,7 +4034,7 @@ export class NetApi {
      * @summary Net Addrs
      * @param {*} [options] Override http request options.
      */
-    public netAddrsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<string>;  }> {
+    public netAddrsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/net/addrs';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4000,12 +4064,12 @@ export class NetApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: Array<string>;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "Array<string>");
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4021,7 +4085,7 @@ export class NetApi {
      * @param miner Filter by miner
      * @param {*} [options] Override http request options.
      */
-    public publicMinersFailuresMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersFailuresMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/failures/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -4057,11 +4121,12 @@ export class NetApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4076,7 +4141,7 @@ export class NetApi {
      * @summary Get all miners
      * @param {*} [options] Override http request options.
      */
-    public publicMinersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4106,11 +4171,12 @@ export class NetApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4270,18 +4336,18 @@ export class PeeringApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersDelete (body: Array<string>, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersDelete (peerIds: Array<boolean>, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        // verify required parameter 'peerIds' is not null or undefined
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -4295,7 +4361,7 @@ export class PeeringApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "Array<string>")
+            body: ObjectSerializer.serialize(peerIds, "Array<boolean>")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
@@ -4309,11 +4375,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4328,7 +4395,7 @@ export class PeeringApi {
      * @summary List all Peering peers
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4358,11 +4425,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4377,7 +4445,7 @@ export class PeeringApi {
      * @summary Add peers on Peering Service
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4407,11 +4475,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4426,7 +4495,7 @@ export class PeeringApi {
      * @summary Start Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/start';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4456,11 +4525,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4475,7 +4545,7 @@ export class PeeringApi {
      * @summary Check Peering Status
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4505,11 +4575,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4524,7 +4595,7 @@ export class PeeringApi {
      * @summary Stop Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/stop';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4554,11 +4625,12 @@ export class PeeringApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4618,18 +4690,18 @@ export class PeersApi {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersDelete (body: Array<string>, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersDelete (peerIds: Array<boolean>, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        // verify required parameter 'peerIds' is not null or undefined
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -4643,7 +4715,7 @@ export class PeersApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "Array<string>")
+            body: ObjectSerializer.serialize(peerIds, "Array<boolean>")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
@@ -4657,11 +4729,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4676,7 +4749,7 @@ export class PeersApi {
      * @summary List all Peering peers
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4706,11 +4779,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4725,7 +4799,7 @@ export class PeersApi {
      * @summary Add peers on Peering Service
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringPeersPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/peers';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4755,11 +4829,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4774,7 +4849,7 @@ export class PeersApi {
      * @summary Start Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStartPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/start';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4804,11 +4879,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4823,7 +4899,7 @@ export class PeersApi {
      * @summary Check Peering Status
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStatusGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4853,11 +4929,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4872,7 +4949,7 @@ export class PeersApi {
      * @summary Stop Peering
      * @param {*} [options] Override http request options.
      */
-    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public adminPeeringStopPost (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/admin/peering/stop';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4902,11 +4979,12 @@ export class PeersApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -4968,7 +5046,7 @@ export class PinningApi {
      * @summary List all pin status objects
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public pinningPinsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/pinning/pins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -4998,11 +5076,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5018,7 +5097,7 @@ export class PinningApi {
      * @param pinid Pin ID
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidDelete (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public pinningPinsPinidDelete (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5054,11 +5133,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5074,7 +5154,7 @@ export class PinningApi {
      * @param pinid cid
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidGet (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public pinningPinsPinidGet (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5110,11 +5190,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5130,7 +5211,7 @@ export class PinningApi {
      * @param pinid Pin ID
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidPost (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public pinningPinsPinidPost (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5166,11 +5247,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5183,26 +5265,18 @@ export class PinningApi {
     /**
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
-     * @param cid cid
-     * @param name name
+     * @param pin Pin Body {cid:cid, name:name}
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPost (cid: string, name: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
-        const localVarPath = this.basePath + '/pinning/pins'
-            .replace('{' + 'cid' + '}', encodeURIComponent(String(cid)))
-            .replace('{' + 'name' + '}', encodeURIComponent(String(name)));
+    public pinningPinsPost (pin: TypesIpfsPin, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+        const localVarPath = this.basePath + '/pinning/pins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let localVarFormParams: any = {};
 
-        // verify required parameter 'cid' is not null or undefined
-        if (cid === null || cid === undefined) {
-            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPost.');
-        }
-
-        // verify required parameter 'name' is not null or undefined
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling pinningPinsPost.');
+        // verify required parameter 'pin' is not null or undefined
+        if (pin === null || pin === undefined) {
+            throw new Error('Required parameter pin was null or undefined when calling pinningPinsPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -5216,6 +5290,7 @@ export class PinningApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
+            body: ObjectSerializer.serialize(pin, "TypesIpfsPin")
         };
 
         this.authentications.bearerAuth.applyToRequest(localVarRequestOptions);
@@ -5229,11 +5304,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5296,7 +5372,7 @@ export class PublicApi {
      * @param cid Cid
      * @param {*} [options] Override http request options.
      */
-    public publicByCidCidGet (cid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicByCidCidGet (cid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/by-cid/{cid}'
             .replace('{' + 'cid' + '}', encodeURIComponent(String(cid)));
         let localVarQueryParameters: any = {};
@@ -5332,11 +5408,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5351,7 +5428,7 @@ export class PublicApi {
      * @summary Get public node info
      * @param {*} [options] Override http request options.
      */
-    public publicInfoGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicInfoGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/info';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5381,11 +5458,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5400,7 +5478,7 @@ export class PublicApi {
      * @summary Get deal metrics
      * @param {*} [options] Override http request options.
      */
-    public publicMetricsDealsOnChainGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMetricsDealsOnChainGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/metrics/deals-on-chain';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5430,11 +5508,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5451,7 +5530,7 @@ export class PublicApi {
      * @param ignoreFailed Ignore Failed
      * @param {*} [options] Override http request options.
      */
-    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/deals/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -5491,11 +5570,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5511,7 +5591,7 @@ export class PublicApi {
      * @param miner Filter by miner
      * @param {*} [options] Override http request options.
      */
-    public publicMinersFailuresMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersFailuresMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/failures/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -5547,11 +5627,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5566,7 +5647,7 @@ export class PublicApi {
      * @summary Get all miners
      * @param {*} [options] Override http request options.
      */
-    public publicMinersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5596,11 +5677,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5616,7 +5698,7 @@ export class PublicApi {
      * @param miner Filter by miner
      * @param {*} [options] Override http request options.
      */
-    public publicMinersStatsMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicMinersStatsMinerGet (miner: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/miners/stats/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
         let localVarQueryParameters: any = {};
@@ -5652,11 +5734,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5771,7 +5854,7 @@ export class PublicApi {
      * @summary Public stats
      * @param {*} [options] Override http request options.
      */
-    public publicStatsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
+    public publicStatsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/public/stats';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5801,11 +5884,12 @@ export class PublicApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5867,7 +5951,7 @@ export class UserApi {
      * @summary Get API keys for a user
      * @param {*} [options] Override http request options.
      */
-    public userApiKeysGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<MainGetApiKeysResp>;  }> {
+    public userApiKeysGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: Array<Array<MainGetApiKeysResp>>;  }> {
         const localVarPath = this.basePath + '/user/api-keys';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5897,12 +5981,12 @@ export class UserApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: Array<MainGetApiKeysResp>;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: Array<Array<MainGetApiKeysResp>>;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "Array<MainGetApiKeysResp>");
+                    body = ObjectSerializer.deserialize(body, "Array<Array<MainGetApiKeysResp>>");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5913,21 +5997,21 @@ export class UserApi {
         });
     }
     /**
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      * @summary Revoke a User API Key.
-     * @param key Key
+     * @param keyOrHash Key or Hash
      * @param {*} [options] Override http request options.
      */
-    public userApiKeysKeyDelete (key: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
-        const localVarPath = this.basePath + '/user/api-keys/{key}'
-            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+    public userApiKeysKeyOrHashDelete (keyOrHash: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+        const localVarPath = this.basePath + '/user/api-keys/{key_or_hash}'
+            .replace('{' + 'key_or_hash' + '}', encodeURIComponent(String(keyOrHash)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
         let localVarFormParams: any = {};
 
-        // verify required parameter 'key' is not null or undefined
-        if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        // verify required parameter 'keyOrHash' is not null or undefined
+        if (keyOrHash === null || keyOrHash === undefined) {
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -5954,11 +6038,12 @@ export class UserApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5971,7 +6056,7 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      * @param {*} [options] Override http request options.
      */
@@ -6083,7 +6168,7 @@ export class UserApi {
      * @summary Create API keys for a user
      * @param {*} [options] Override http request options.
      */
-    public userStatsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: MainUserStatsResponse;  }> {
+    public userStatsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
         const localVarPath = this.basePath + '/user/stats';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -6113,12 +6198,12 @@ export class UserApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: MainUserStatsResponse;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "MainUserStatsResponse");
+                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {

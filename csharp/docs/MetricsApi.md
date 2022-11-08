@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="publicmetricsdealsonchainget"></a>
 # **PublicMetricsDealsOnChainGet**
-> void PublicMetricsDealsOnChainGet ()
+> string PublicMetricsDealsOnChainGet ()
 
 Get deal metrics
 
@@ -39,7 +39,8 @@ namespace Example
             try
             {
                 // Get deal metrics
-                apiInstance.PublicMetricsDealsOnChainGet();
+                string result = apiInstance.PublicMetricsDealsOnChainGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -55,7 +56,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

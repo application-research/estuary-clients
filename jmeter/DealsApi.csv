@@ -1,2 +1,2 @@
-testCase,httpStatusCode,body,dealid,propcid,miner,propcid,miner,propcid,miner,dealRequest,deal,miner
-Success,200,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,body,dealid,propcid,miner,propcid,miner,propcid,chanid,miner,dealRequest,deal,miner
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0

@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.MainGetApiKeysResp;
-import io.swagger.client.model.MainUserStatsResponse;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -116,23 +115,23 @@ public class UserApi {
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return List&lt;MainGetApiKeysResp&gt;
+     * @return List&lt;List&lt;MainGetApiKeysResp&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<MainGetApiKeysResp> userApiKeysGet() throws ApiException {
-        ApiResponse<List<MainGetApiKeysResp>> resp = userApiKeysGetWithHttpInfo();
+    public List<List<MainGetApiKeysResp>> userApiKeysGet() throws ApiException {
+        ApiResponse<List<List<MainGetApiKeysResp>>> resp = userApiKeysGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return ApiResponse&lt;List&lt;MainGetApiKeysResp&gt;&gt;
+     * @return ApiResponse&lt;List&lt;List&lt;MainGetApiKeysResp&gt;&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<MainGetApiKeysResp>> userApiKeysGetWithHttpInfo() throws ApiException {
+    public ApiResponse<List<List<MainGetApiKeysResp>>> userApiKeysGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<List<MainGetApiKeysResp>>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -143,7 +142,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<MainGetApiKeysResp>> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<List<MainGetApiKeysResp>>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -165,24 +164,24 @@ public class UserApi {
         }
 
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<List<MainGetApiKeysResp>>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for userApiKeysKeyDelete
-     * @param key Key (required)
+     * Build call for userApiKeysKeyOrHashDelete
+     * @param keyOrHash Key or Hash (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysKeyDeleteCall(String key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteCall(String keyOrHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/user/api-keys/{key}"
-            .replaceAll("\\{" + "key" + "\\}", apiClient.escapeString(key.toString()));
+        String localVarPath = "/user/api-keys/{key_or_hash}"
+            .replaceAll("\\{" + "key_or_hash" + "\\}", apiClient.escapeString(keyOrHash.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -220,50 +219,53 @@ public class UserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call userApiKeysKeyDeleteValidateBeforeCall(String key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteValidateBeforeCall(String keyOrHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'key' is set
-        if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling userApiKeysKeyDelete(Async)");
+        // verify the required parameter 'keyOrHash' is set
+        if (keyOrHash == null) {
+            throw new ApiException("Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteCall(key, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteCall(keyOrHash, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void userApiKeysKeyDelete(String key) throws ApiException {
-        userApiKeysKeyDeleteWithHttpInfo(key);
+    public String userApiKeysKeyOrHashDelete(String keyOrHash) throws ApiException {
+        ApiResponse<String> resp = userApiKeysKeyOrHashDeleteWithHttpInfo(keyOrHash);
+        return resp.getData();
     }
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
-     * @return ApiResponse&lt;Void&gt;
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> userApiKeysKeyDeleteWithHttpInfo(String key) throws ApiException {
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteValidateBeforeCall(key, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<String> userApiKeysKeyOrHashDeleteWithHttpInfo(String keyOrHash) throws ApiException {
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteValidateBeforeCall(keyOrHash, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Revoke a User API Key. (asynchronously)
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysKeyDeleteAsync(String key, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteAsync(String keyOrHash, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -284,13 +286,14 @@ public class UserApi {
             };
         }
 
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteValidateBeforeCall(key, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteValidateBeforeCall(keyOrHash, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for userApiKeysPost
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -354,7 +357,7 @@ public class UserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
      * @return MainGetApiKeysResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -367,7 +370,7 @@ public class UserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
      * @return ApiResponse&lt;MainGetApiKeysResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -381,7 +384,7 @@ public class UserApi {
     /**
      * Create API keys for a user (asynchronously)
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -586,23 +589,23 @@ public class UserApi {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user.
-     * @return MainUserStatsResponse
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MainUserStatsResponse userStatsGet() throws ApiException {
-        ApiResponse<MainUserStatsResponse> resp = userStatsGetWithHttpInfo();
+    public String userStatsGet() throws ApiException {
+        ApiResponse<String> resp = userStatsGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user.
-     * @return ApiResponse&lt;MainUserStatsResponse&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MainUserStatsResponse> userStatsGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> userStatsGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = userStatsGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<MainUserStatsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -613,7 +616,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userStatsGetAsync(final ApiCallback<MainUserStatsResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call userStatsGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -635,7 +638,7 @@ public class UserApi {
         }
 
         com.squareup.okhttp.Call call = userStatsGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MainUserStatsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

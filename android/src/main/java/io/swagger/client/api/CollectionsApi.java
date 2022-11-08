@@ -27,7 +27,6 @@ import io.swagger.client.model.CollectionsCollection;
 import java.util.*;
 import io.swagger.client.model.MainCreateCollectionBody;
 import io.swagger.client.model.MainDeleteContentFromCollectionBody;
-import java.util.Map;
 import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
@@ -340,9 +339,9 @@ public class CollectionsApi {
   * Deletes a collection
   * This endpoint is used to delete an existing collection.
    * @param coluuid Collection ID
-   * @return void
+   * @return String
   */
-  public void collectionsColuuidDelete (String coluuid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String collectionsColuuidDelete (String coluuid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'coluuid' is set
     if (coluuid == null) {
@@ -377,9 +376,9 @@ public class CollectionsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "DELETE", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -447,7 +446,11 @@ public class CollectionsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -594,9 +597,9 @@ public class CollectionsApi {
   * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    * @param coluuid coluuid
    * @param contentIDs Content IDs to add to collection
-   * @return Map<String, String>
+   * @return String
   */
-  public Map<String, String> collectionsColuuidPost (String coluuid, List<Integer> contentIDs) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String collectionsColuuidPost (String coluuid, List<Integer> contentIDs) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = contentIDs;
     // verify the required parameter 'coluuid' is set
     if (coluuid == null) {
@@ -637,7 +640,7 @@ public class CollectionsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (Map<String, String>) ApiInvoker.deserialize(localVarResponse, "map", String.class);
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
          return null;
       }
@@ -663,7 +666,7 @@ public class CollectionsApi {
    * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
    * @param coluuid coluuid   * @param contentIDs Content IDs to add to collection
   */
-  public void collectionsColuuidPost (String coluuid, List<Integer> contentIDs, final Response.Listener<Map<String, String>> responseListener, final Response.ErrorListener errorListener) {
+  public void collectionsColuuidPost (String coluuid, List<Integer> contentIDs, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = contentIDs;
 
     // verify the required parameter 'coluuid' is set
@@ -713,7 +716,7 @@ public class CollectionsApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((Map<String, String>) ApiInvoker.deserialize(localVarResponse,  "map", String.class));
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -734,9 +737,9 @@ public class CollectionsApi {
    * @param coluuid Collection ID
    * @param content Content
    * @param path Path to file
-   * @return void
+   * @return String
   */
-  public void collectionsFsAddPost (String coluuid, String content, String path) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String collectionsFsAddPost (String coluuid, String content, String path) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'coluuid' is set
     if (coluuid == null) {
@@ -784,9 +787,9 @@ public class CollectionsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return ;
+         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
       } else {
-         return ;
+         return null;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -867,7 +870,11 @@ public class CollectionsApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
+            try {
+              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override
@@ -882,9 +889,9 @@ public class CollectionsApi {
   /**
   * List all collections
   * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-   * @return List<CollectionsCollection>
+   * @return List<List<CollectionsCollection>>
   */
-  public List<CollectionsCollection> collectionsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<List<CollectionsCollection>> collectionsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -914,7 +921,7 @@ public class CollectionsApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (List<CollectionsCollection>) ApiInvoker.deserialize(localVarResponse, "array", CollectionsCollection.class);
+         return (List<List<CollectionsCollection>>) ApiInvoker.deserialize(localVarResponse, "array", List.class);
       } else {
          return null;
       }
@@ -940,7 +947,7 @@ public class CollectionsApi {
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
 
   */
-  public void collectionsGet (final Response.Listener<List<CollectionsCollection>> responseListener, final Response.ErrorListener errorListener) {
+  public void collectionsGet (final Response.Listener<List<List<CollectionsCollection>>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -980,7 +987,7 @@ public class CollectionsApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((List<CollectionsCollection>) ApiInvoker.deserialize(localVarResponse,  "array", CollectionsCollection.class));
+              responseListener.onResponse((List<List<CollectionsCollection>>) ApiInvoker.deserialize(localVarResponse,  "array", List.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

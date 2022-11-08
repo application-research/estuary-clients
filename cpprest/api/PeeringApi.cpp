@@ -36,7 +36,7 @@ PeeringApi::~PeeringApi()
 {
 }
 
-pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string_t> body)
+pplx::task<utility::string_t> PeeringApi::adminPeeringPeersDelete(std::vector<bool> peerIds)
 {
 
 
@@ -56,7 +56,7 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -67,6 +67,11 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -87,16 +92,8 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string
         requestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value json;
 
-        {
-            std::vector<web::json::value> jsonArray;
-            for( auto& item : body )
-            {
-                jsonArray.push_back( item.get() ? item->toJson() : web::json::value::null() );
-                
-            }
-            json = web::json::value::array(jsonArray);
-        }
-        
+        json = ModelBase::toJson(peerIds);
+
         httpBody = std::shared_ptr<IHttpBody>( new JsonBody( json ) );
     }
     // multipart formdata
@@ -104,16 +101,8 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string
     {
         requestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> multipart(new MultipartFormData);
-        {
-            std::vector<web::json::value> jsonArray;
-            for( auto& item : body )
-            {
-                jsonArray.push_back( item.get() ? item->toJson() : web::json::value::null() );
-                
-            }
-            multipart->add(ModelBase::toHttpContent(utility::conversions::to_string_t("body"), web::json::value::array(jsonArray), utility::conversions::to_string_t("application/json")));
-        }
-        
+        multipart->add(ModelBase::toHttpContent("peerIds", peerIds));
+
         httpBody = multipart;
         requestHttpContentType += utility::conversions::to_string_t("; boundary=") + multipart->getBoundary();
     }
@@ -162,10 +151,33 @@ pplx::task<void> PeeringApi::adminPeeringPeersDelete(std::vector<utility::string
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringPeersDelete: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PeeringApi::adminPeeringPeersGet()
+pplx::task<utility::string_t> PeeringApi::adminPeeringPeersGet()
 {
 
 
@@ -185,7 +197,7 @@ pplx::task<void> PeeringApi::adminPeeringPeersGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -196,6 +208,11 @@ pplx::task<void> PeeringApi::adminPeeringPeersGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -265,10 +282,33 @@ pplx::task<void> PeeringApi::adminPeeringPeersGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringPeersGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PeeringApi::adminPeeringPeersPost()
+pplx::task<utility::string_t> PeeringApi::adminPeeringPeersPost()
 {
 
 
@@ -288,7 +328,7 @@ pplx::task<void> PeeringApi::adminPeeringPeersPost()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -299,6 +339,11 @@ pplx::task<void> PeeringApi::adminPeeringPeersPost()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -368,10 +413,33 @@ pplx::task<void> PeeringApi::adminPeeringPeersPost()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringPeersPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PeeringApi::adminPeeringStartPost()
+pplx::task<utility::string_t> PeeringApi::adminPeeringStartPost()
 {
 
 
@@ -391,7 +459,7 @@ pplx::task<void> PeeringApi::adminPeeringStartPost()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -402,6 +470,11 @@ pplx::task<void> PeeringApi::adminPeeringStartPost()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -471,10 +544,33 @@ pplx::task<void> PeeringApi::adminPeeringStartPost()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringStartPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PeeringApi::adminPeeringStatusGet()
+pplx::task<utility::string_t> PeeringApi::adminPeeringStatusGet()
 {
 
 
@@ -494,7 +590,7 @@ pplx::task<void> PeeringApi::adminPeeringStatusGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -505,6 +601,11 @@ pplx::task<void> PeeringApi::adminPeeringStatusGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -574,10 +675,33 @@ pplx::task<void> PeeringApi::adminPeeringStatusGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringStatusGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> PeeringApi::adminPeeringStopPost()
+pplx::task<utility::string_t> PeeringApi::adminPeeringStopPost()
 {
 
 
@@ -597,7 +721,7 @@ pplx::task<void> PeeringApi::adminPeeringStopPost()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -608,6 +732,11 @@ pplx::task<void> PeeringApi::adminPeeringStopPost()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -677,7 +806,30 @@ pplx::task<void> PeeringApi::adminPeeringStopPost()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling adminPeeringStopPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

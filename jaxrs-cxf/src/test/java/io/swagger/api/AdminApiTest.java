@@ -26,6 +26,7 @@
 package io.swagger.api;
 
 import java.util.List;
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -81,9 +82,9 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        List<String> body = null;
-        //api.adminPeeringPeersDelete(body);
-        
+        List<Boolean> peerIds = null;
+        //String response = api.adminPeeringPeersDelete(peerIds);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -99,8 +100,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersGetTest() {
-        //api.adminPeeringPeersGet();
-        
+        //String response = api.adminPeeringPeersGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -116,8 +117,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersPostTest() {
-        //api.adminPeeringPeersPost();
-        
+        //String response = api.adminPeeringPeersPost();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -133,8 +134,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringStartPostTest() {
-        //api.adminPeeringStartPost();
-        
+        //String response = api.adminPeeringStartPost();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -150,8 +151,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringStatusGetTest() {
-        //api.adminPeeringStatusGet();
-        
+        //String response = api.adminPeeringStatusGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -167,8 +168,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringStopPostTest() {
-        //api.adminPeeringStopPost();
-        
+        //String response = api.adminPeeringStopPost();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -184,8 +185,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminSystemConfigGetTest() {
-        //api.adminSystemConfigGet();
-        
+        //String response = api.adminSystemConfigGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -201,8 +202,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminUsersGetTest() {
-        //api.adminUsersGet();
-        
+        //String response = api.adminUsersGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         

@@ -6,6 +6,7 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
 import mx.utils.UIDUtil;
@@ -30,7 +31,7 @@ public class NetApi extends SwaggerApi {
 
 
     /*
-     * Returns Array 
+     * Returns String 
      */
     public function net_addrs_get (): String {
         // create path and map variables
@@ -50,13 +51,13 @@ public class NetApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "net_addrs_get";
 
-        token.returnType = Array;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_failures_miner_get (miner: String): String {
         // create path and map variables
@@ -80,13 +81,13 @@ public class NetApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_failures_miner_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function public_miners_get (): String {
         // create path and map variables
@@ -106,7 +107,7 @@ public class NetApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "public_miners_get";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

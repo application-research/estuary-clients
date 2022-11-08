@@ -61,6 +61,10 @@ public class JsonUtil {
       return new TypeToken<List<CollectionsCollection>>(){}.getType();
     }
     
+    if ("MainChannelIDParam".equalsIgnoreCase(className)) {
+      return new TypeToken<List<MainChannelIDParam>>(){}.getType();
+    }
+    
     if ("MainCreateCollectionBody".equalsIgnoreCase(className)) {
       return new TypeToken<List<MainCreateCollectionBody>>(){}.getType();
     }
@@ -81,8 +85,8 @@ public class JsonUtil {
       return new TypeToken<List<MainImportDealBody>>(){}.getType();
     }
     
-    if ("MainUserStatsResponse".equalsIgnoreCase(className)) {
-      return new TypeToken<List<MainUserStatsResponse>>(){}.getType();
+    if ("TypesIpfsPin".equalsIgnoreCase(className)) {
+      return new TypeToken<List<TypesIpfsPin>>(){}.getType();
     }
     
     if ("UtilContentAddIpfsBody".equalsIgnoreCase(className)) {
@@ -111,6 +115,10 @@ public class JsonUtil {
       return new TypeToken<CollectionsCollection>(){}.getType();
     }
     
+    if ("MainChannelIDParam".equalsIgnoreCase(className)) {
+      return new TypeToken<MainChannelIDParam>(){}.getType();
+    }
+    
     if ("MainCreateCollectionBody".equalsIgnoreCase(className)) {
       return new TypeToken<MainCreateCollectionBody>(){}.getType();
     }
@@ -131,8 +139,8 @@ public class JsonUtil {
       return new TypeToken<MainImportDealBody>(){}.getType();
     }
     
-    if ("MainUserStatsResponse".equalsIgnoreCase(className)) {
-      return new TypeToken<MainUserStatsResponse>(){}.getType();
+    if ("TypesIpfsPin".equalsIgnoreCase(className)) {
+      return new TypeToken<TypesIpfsPin>(){}.getType();
     }
     
     if ("UtilContentAddIpfsBody".equalsIgnoreCase(className)) {

@@ -77,10 +77,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'content_add_car_post' } = { 
     	summary => 'Add Car object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_add_car_post {
     my ($self, %args) = @_;
@@ -125,10 +125,14 @@ sub content_add_car_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -154,10 +158,10 @@ sub content_add_car_post {
     __PACKAGE__->method_documentation->{ 'content_add_ipfs_post' } = { 
     	summary => 'Add IPFS object',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_add_ipfs_post {
     my ($self, %args) = @_;
@@ -197,10 +201,14 @@ sub content_add_ipfs_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -431,10 +439,10 @@ sub content_aggregated_content_get {
     __PACKAGE__->method_documentation->{ 'content_all_deals_get' } = { 
     	summary => 'Get all deals for a user',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_all_deals_get {
     my ($self, %args) = @_;
@@ -489,10 +497,14 @@ sub content_all_deals_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -512,10 +524,10 @@ sub content_all_deals_get {
     __PACKAGE__->method_documentation->{ 'content_bw_usage_content_get' } = { 
     	summary => 'Get content bandwidth',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_bw_usage_content_get {
     my ($self, %args) = @_;
@@ -552,10 +564,14 @@ sub content_bw_usage_content_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -581,10 +597,10 @@ sub content_bw_usage_content_get {
     __PACKAGE__->method_documentation->{ 'content_create_post' } = { 
     	summary => 'Add a new content',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_create_post {
     my ($self, %args) = @_;
@@ -624,10 +640,14 @@ sub content_create_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -653,10 +673,10 @@ sub content_create_post {
     __PACKAGE__->method_documentation->{ 'content_deals_get' } = { 
     	summary => 'Content with deals',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_deals_get {
     my ($self, %args) = @_;
@@ -691,10 +711,14 @@ sub content_deals_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -714,10 +738,10 @@ sub content_deals_get {
     __PACKAGE__->method_documentation->{ 'content_ensure_replication_datacid_get' } = { 
     	summary => 'Ensure Replication',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_ensure_replication_datacid_get {
     my ($self, %args) = @_;
@@ -754,10 +778,14 @@ sub content_ensure_replication_datacid_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -844,10 +872,10 @@ sub content_failures_content_get {
     __PACKAGE__->method_documentation->{ 'content_id_get' } = { 
     	summary => 'Content',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_id_get {
     my ($self, %args) = @_;
@@ -884,10 +912,14 @@ sub content_id_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -907,10 +939,10 @@ sub content_id_get {
     __PACKAGE__->method_documentation->{ 'content_importdeal_post' } = { 
     	summary => 'Import a deal',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_importdeal_post {
     my ($self, %args) = @_;
@@ -945,10 +977,14 @@ sub content_importdeal_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -962,10 +998,10 @@ sub content_importdeal_post {
     __PACKAGE__->method_documentation->{ 'content_list_get' } = { 
     	summary => 'List all pinned content',
         params => $params,
-        returns => 'ARRAY[string]',
+        returns => 'string',
         };
 }
-# @return ARRAY[string]
+# @return string
 #
 sub content_list_get {
     my ($self, %args) = @_;
@@ -996,7 +1032,7 @@ sub content_list_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[string]', $response);
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
 }
 
@@ -1017,10 +1053,10 @@ sub content_list_get {
     __PACKAGE__->method_documentation->{ 'content_read_cont_get' } = { 
     	summary => 'Read content',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_read_cont_get {
     my ($self, %args) = @_;
@@ -1057,10 +1093,14 @@ sub content_read_cont_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -1074,10 +1114,10 @@ sub content_read_cont_get {
     __PACKAGE__->method_documentation->{ 'content_staging_zones_get' } = { 
     	summary => 'Get staging zone for user',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_staging_zones_get {
     my ($self, %args) = @_;
@@ -1102,10 +1142,14 @@ sub content_staging_zones_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -1131,10 +1175,10 @@ sub content_staging_zones_get {
     __PACKAGE__->method_documentation->{ 'content_stats_get' } = { 
     	summary => 'Get content statistics',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_stats_get {
     my ($self, %args) = @_;
@@ -1179,10 +1223,14 @@ sub content_stats_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -1202,10 +1250,10 @@ sub content_stats_get {
     __PACKAGE__->method_documentation->{ 'content_status_id_get' } = { 
     	summary => 'Content Status',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub content_status_id_get {
     my ($self, %args) = @_;
@@ -1242,10 +1290,14 @@ sub content_status_id_get {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 1;

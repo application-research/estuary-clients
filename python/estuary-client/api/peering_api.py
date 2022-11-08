@@ -33,45 +33,45 @@ class PeeringApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def admin_peering_peers_delete(self, body, **kwargs):  # noqa: E501
+    def admin_peering_peers_delete(self, peer_ids, **kwargs):  # noqa: E501
         """Remove peers on Peering Service  # noqa: E501
 
         This endpoint can be used to remove a Peer from the Peering Service  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_peering_peers_delete(body, async_req=True)
+        >>> thread = api.admin_peering_peers_delete(peer_ids, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] body: Peer ids (required)
-        :return: None
+        :param list[bool] peer_ids: Peer ids (required)
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.admin_peering_peers_delete_with_http_info(body, **kwargs)  # noqa: E501
+            return self.admin_peering_peers_delete_with_http_info(peer_ids, **kwargs)  # noqa: E501
         else:
-            (data) = self.admin_peering_peers_delete_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.admin_peering_peers_delete_with_http_info(peer_ids, **kwargs)  # noqa: E501
             return data
 
-    def admin_peering_peers_delete_with_http_info(self, body, **kwargs):  # noqa: E501
+    def admin_peering_peers_delete_with_http_info(self, peer_ids, **kwargs):  # noqa: E501
         """Remove peers on Peering Service  # noqa: E501
 
         This endpoint can be used to remove a Peer from the Peering Service  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_peering_peers_delete_with_http_info(body, async_req=True)
+        >>> thread = api.admin_peering_peers_delete_with_http_info(peer_ids, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[str] body: Peer ids (required)
-        :return: None
+        :param list[bool] peer_ids: Peer ids (required)
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['peer_ids']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -86,10 +86,10 @@ class PeeringApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'body' is set
-        if self.api_client.client_side_validation and ('body' not in params or
-                                                       params['body'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `body` when calling `admin_peering_peers_delete`")  # noqa: E501
+        # verify the required parameter 'peer_ids' is set
+        if self.api_client.client_side_validation and ('peer_ids' not in params or
+                                                       params['peer_ids'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `peer_ids` when calling `admin_peering_peers_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -103,8 +103,8 @@ class PeeringApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
+        if 'peer_ids' in params:
+            body_params = params['peer_ids']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -120,7 +120,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -138,7 +138,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -159,7 +159,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -207,7 +207,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -225,7 +225,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -246,7 +246,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -294,7 +294,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -312,7 +312,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -333,7 +333,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -381,7 +381,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -399,7 +399,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -420,7 +420,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -468,7 +468,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -486,7 +486,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -507,7 +507,7 @@ class PeeringApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -555,7 +555,7 @@ class PeeringApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

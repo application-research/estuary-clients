@@ -39,8 +39,12 @@ void
 SWGMain.getApiKeysResp::init() {
     expiry = new QString("");
     m_expiry_isSet = false;
+    label = new QString("");
+    m_label_isSet = false;
     token = new QString("");
     m_token_isSet = false;
+    token_hash = new QString("");
+    m_token_hash_isSet = false;
 }
 
 void
@@ -48,8 +52,14 @@ SWGMain.getApiKeysResp::cleanup() {
     if(expiry != nullptr) { 
         delete expiry;
     }
+    if(label != nullptr) { 
+        delete label;
+    }
     if(token != nullptr) { 
         delete token;
+    }
+    if(token_hash != nullptr) { 
+        delete token_hash;
     }
 }
 
@@ -66,7 +76,11 @@ void
 SWGMain.getApiKeysResp::fromJsonObject(QJsonObject pJson) {
     ::Swagger::setValue(&expiry, pJson["expiry"], "QString", "QString");
     
+    ::Swagger::setValue(&label, pJson["label"], "QString", "QString");
+    
     ::Swagger::setValue(&token, pJson["token"], "QString", "QString");
+    
+    ::Swagger::setValue(&token_hash, pJson["tokenHash"], "QString", "QString");
     
 }
 
@@ -85,8 +99,14 @@ SWGMain.getApiKeysResp::asJsonObject() {
     if(expiry != nullptr && *expiry != QString("")){
         toJsonValue(QString("expiry"), expiry, obj, QString("QString"));
     }
+    if(label != nullptr && *label != QString("")){
+        toJsonValue(QString("label"), label, obj, QString("QString"));
+    }
     if(token != nullptr && *token != QString("")){
         toJsonValue(QString("token"), token, obj, QString("QString"));
+    }
+    if(token_hash != nullptr && *token_hash != QString("")){
+        toJsonValue(QString("tokenHash"), token_hash, obj, QString("QString"));
     }
 
     return obj;
@@ -103,6 +123,16 @@ SWGMain.getApiKeysResp::setExpiry(QString* expiry) {
 }
 
 QString*
+SWGMain.getApiKeysResp::getLabel() {
+    return label;
+}
+void
+SWGMain.getApiKeysResp::setLabel(QString* label) {
+    this->label = label;
+    this->m_label_isSet = true;
+}
+
+QString*
 SWGMain.getApiKeysResp::getToken() {
     return token;
 }
@@ -112,13 +142,25 @@ SWGMain.getApiKeysResp::setToken(QString* token) {
     this->m_token_isSet = true;
 }
 
+QString*
+SWGMain.getApiKeysResp::getTokenHash() {
+    return token_hash;
+}
+void
+SWGMain.getApiKeysResp::setTokenHash(QString* token_hash) {
+    this->token_hash = token_hash;
+    this->m_token_hash_isSet = true;
+}
+
 
 bool
 SWGMain.getApiKeysResp::isSet(){
     bool isObjectUpdated = false;
     do{
         if(expiry != nullptr && *expiry != QString("")){ isObjectUpdated = true; break;}
+        if(label != nullptr && *label != QString("")){ isObjectUpdated = true; break;}
         if(token != nullptr && *token != QString("")){ isObjectUpdated = true; break;}
+        if(token_hash != nullptr && *token_hash != QString("")){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

@@ -14,18 +14,18 @@ namespace estuary-client.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
-        List<MainGetApiKeysResp> UserApiKeysGet ();
+        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
+        List<List<MainGetApiKeysResp>> UserApiKeysGet ();
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
-        /// <param name="key">Key</param>
-        /// <returns></returns>
-        void UserApiKeysKeyDelete (string key);
+        /// <param name="keyOrHash">Key or Hash</param>
+        /// <returns>string</returns>
+        string UserApiKeysKeyOrHashDelete (string keyOrHash);
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
         /// </summary>
-        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h</param>
+        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param>
         /// <param name="perms">Permissions - - currently unused</param>
         /// <returns>MainGetApiKeysResp</returns>
         MainGetApiKeysResp UserApiKeysPost (string expiry, string perms);
@@ -37,8 +37,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user.
         /// </summary>
-        /// <returns>MainUserStatsResponse</returns>
-        MainUserStatsResponse UserStatsGet ();
+        /// <returns>string</returns>
+        string UserStatsGet ();
     }
   
     /// <summary>
@@ -97,8 +97,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>            
-        public List<MainGetApiKeysResp> UserApiKeysGet ()
+        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>            
+        public List<List<MainGetApiKeysResp>> UserApiKeysGet ()
         {
             
     
@@ -123,24 +123,24 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<MainGetApiKeysResp>) ApiClient.Deserialize(response.Content, typeof(List<MainGetApiKeysResp>), response.Headers);
+            return (List<List<MainGetApiKeysResp>>) ApiClient.Deserialize(response.Content, typeof(List<List<MainGetApiKeysResp>>), response.Headers);
         }
     
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
-        /// <param name="key">Key</param> 
-        /// <returns></returns>            
-        public void UserApiKeysKeyDelete (string key)
+        /// <param name="keyOrHash">Key or Hash</param> 
+        /// <returns>string</returns>            
+        public string UserApiKeysKeyOrHashDelete (string keyOrHash)
         {
             
-            // verify the required parameter 'key' is set
-            if (key == null) throw new ApiException(400, "Missing required parameter 'key' when calling UserApiKeysKeyDelete");
+            // verify the required parameter 'keyOrHash' is set
+            if (keyOrHash == null) throw new ApiException(400, "Missing required parameter 'keyOrHash' when calling UserApiKeysKeyOrHashDelete");
             
     
-            var path = "/user/api-keys/{key}";
+            var path = "/user/api-keys/{key_or_hash}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "key" + "}", ApiClient.ParameterToString(key));
+            path = path.Replace("{" + "key_or_hash" + "}", ApiClient.ParameterToString(keyOrHash));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -156,17 +156,17 @@ namespace estuary-client.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyDelete: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyOrHashDelete: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyDelete: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyOrHashDelete: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
         /// </summary>
-        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h</param> 
+        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param> 
         /// <param name="perms">Permissions - - currently unused</param> 
         /// <returns>MainGetApiKeysResp</returns>            
         public MainGetApiKeysResp UserApiKeysPost (string expiry, string perms)
@@ -234,8 +234,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user.
         /// </summary>
-        /// <returns>MainUserStatsResponse</returns>            
-        public MainUserStatsResponse UserStatsGet ()
+        /// <returns>string</returns>            
+        public string UserStatsGet ()
         {
             
     
@@ -260,7 +260,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UserStatsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (MainUserStatsResponse) ApiClient.Deserialize(response.Content, typeof(MainUserStatsResponse), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

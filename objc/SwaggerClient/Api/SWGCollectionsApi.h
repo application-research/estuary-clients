@@ -31,7 +31,9 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 ///
 /// @param coluuid coluuid
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) collectionsColuuidCommitPostWithColuuid: (NSString*) coluuid
@@ -46,7 +48,8 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 /// @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)
 /// 
 ///  code:200 message:"OK",
-///  code:400 message:"Bad Request"
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) collectionsColuuidContentsDeleteWithColuuid: (NSString*) coluuid
@@ -60,10 +63,13 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 ///
 /// @param coluuid Collection ID
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) collectionsColuuidDeleteWithColuuid: (NSString*) coluuid
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get contents in a collection
@@ -72,7 +78,9 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 /// @param coluuid coluuid
 /// @param dir Directory (optional)
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
 -(NSURLSessionTask*) collectionsColuuidGetWithColuuid: (NSString*) coluuid
@@ -86,12 +94,14 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 /// @param coluuid coluuid
 /// @param contentIDs Content IDs to add to collection
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return NSDictionary<NSString*, NSString*>*
+/// @return NSString*
 -(NSURLSessionTask*) collectionsColuuidPostWithColuuid: (NSString*) coluuid
     contentIDs: (NSArray<NSNumber*>*) contentIDs
-    completionHandler: (void (^)(NSDictionary<NSString*, NSString*>* output, NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add a file to a collection
@@ -101,12 +111,15 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 /// @param content Content
 /// @param path Path to file
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) collectionsFsAddPostWithColuuid: (NSString*) coluuid
     content: (NSString*) content
     path: (NSString*) path
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// List all collections
@@ -118,9 +131,9 @@ extern NSInteger kSWGCollectionsApiMissingParamErrorCode;
 ///  code:404 message:"Not Found",
 ///  code:500 message:"Internal Server Error"
 ///
-/// @return NSArray<SWGCollectionsCollection>*
+/// @return NSArray<NSArray<SWGCollectionsCollection>*>*
 -(NSURLSessionTask*) collectionsGetWithCompletionHandler: 
-    (void (^)(NSArray<SWGCollectionsCollection>* output, NSError* error)) handler;
+    (void (^)(NSArray<NSArray<SWGCollectionsCollection>*>* output, NSError* error)) handler;
 
 
 /// Create a new collection

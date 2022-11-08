@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class AutoretrieveApi {
      * @throws ApiException If fail to serialize the request body object
      */
     public com.squareup.okhttp.Call adminAutoretrieveInitPostCall(String addresses, String pubKey, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = pubKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/admin/autoretrieve/init";
@@ -74,6 +75,10 @@ public class AutoretrieveApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (addresses != null)
+        localVarFormParams.put("addresses", addresses);
+        if (pubKey != null)
+        localVarFormParams.put("pubKey", pubKey);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -127,10 +132,12 @@ public class AutoretrieveApi {
      * This endpoint registers a new autoretrieve server
      * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
      * @param pubKey Autoretrieve&#39;s public key (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminAutoretrieveInitPost(String addresses, String pubKey) throws ApiException {
-        adminAutoretrieveInitPostWithHttpInfo(addresses, pubKey);
+    public String adminAutoretrieveInitPost(String addresses, String pubKey) throws ApiException {
+        ApiResponse<String> resp = adminAutoretrieveInitPostWithHttpInfo(addresses, pubKey);
+        return resp.getData();
     }
 
     /**
@@ -138,12 +145,13 @@ public class AutoretrieveApi {
      * This endpoint registers a new autoretrieve server
      * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
      * @param pubKey Autoretrieve&#39;s public key (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminAutoretrieveInitPostWithHttpInfo(String addresses, String pubKey) throws ApiException {
+    public ApiResponse<String> adminAutoretrieveInitPostWithHttpInfo(String addresses, String pubKey) throws ApiException {
         com.squareup.okhttp.Call call = adminAutoretrieveInitPostValidateBeforeCall(addresses, pubKey, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -155,7 +163,7 @@ public class AutoretrieveApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminAutoretrieveInitPostAsync(String addresses, String pubKey, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminAutoretrieveInitPostAsync(String addresses, String pubKey, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -177,7 +185,8 @@ public class AutoretrieveApi {
         }
 
         com.squareup.okhttp.Call call = adminAutoretrieveInitPostValidateBeforeCall(addresses, pubKey, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -240,21 +249,24 @@ public class AutoretrieveApi {
     /**
      * List autoretrieve servers
      * This endpoint lists all registered autoretrieve servers
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminAutoretrieveListGet() throws ApiException {
-        adminAutoretrieveListGetWithHttpInfo();
+    public String adminAutoretrieveListGet() throws ApiException {
+        ApiResponse<String> resp = adminAutoretrieveListGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * List autoretrieve servers
      * This endpoint lists all registered autoretrieve servers
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminAutoretrieveListGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminAutoretrieveListGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminAutoretrieveListGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -264,7 +276,7 @@ public class AutoretrieveApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminAutoretrieveListGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminAutoretrieveListGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -286,7 +298,8 @@ public class AutoretrieveApi {
         }
 
         com.squareup.okhttp.Call call = adminAutoretrieveListGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -358,22 +371,25 @@ public class AutoretrieveApi {
      * Marks autoretrieve server as up
      * This endpoint updates the lastConnection field for autoretrieve
      * @param token Autoretrieve&#39;s auth token (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void autoretrieveHeartbeatPost(String token) throws ApiException {
-        autoretrieveHeartbeatPostWithHttpInfo(token);
+    public String autoretrieveHeartbeatPost(String token) throws ApiException {
+        ApiResponse<String> resp = autoretrieveHeartbeatPostWithHttpInfo(token);
+        return resp.getData();
     }
 
     /**
      * Marks autoretrieve server as up
      * This endpoint updates the lastConnection field for autoretrieve
      * @param token Autoretrieve&#39;s auth token (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> autoretrieveHeartbeatPostWithHttpInfo(String token) throws ApiException {
+    public ApiResponse<String> autoretrieveHeartbeatPostWithHttpInfo(String token) throws ApiException {
         com.squareup.okhttp.Call call = autoretrieveHeartbeatPostValidateBeforeCall(token, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -384,7 +400,7 @@ public class AutoretrieveApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call autoretrieveHeartbeatPostAsync(String token, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call autoretrieveHeartbeatPostAsync(String token, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -406,7 +422,8 @@ public class AutoretrieveApi {
         }
 
         com.squareup.okhttp.Call call = autoretrieveHeartbeatPostValidateBeforeCall(token, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

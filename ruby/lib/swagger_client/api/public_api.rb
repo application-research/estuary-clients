@@ -23,17 +23,17 @@ module SwaggerClient
     # This endpoint returns the content associated with a CID
     # @param cid Cid
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_by_cid_cid_get(cid, opts = {})
-      public_by_cid_cid_get_with_http_info(cid, opts)
-      nil
+      data, _status_code, _headers = public_by_cid_cid_get_with_http_info(cid, opts)
+      data
     end
 
     # Get Content by Cid
     # This endpoint returns the content associated with a CID
     # @param cid Cid
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_by_cid_cid_get_with_http_info(cid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_by_cid_cid_get ...'
@@ -64,7 +64,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_by_cid_cid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -73,16 +74,16 @@ module SwaggerClient
     # Get public node info
     # This endpoint returns information about the node
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_info_get(opts = {})
-      public_info_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_info_get_with_http_info(opts)
+      data
     end
 
     # Get public node info
     # This endpoint returns information about the node
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_info_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_info_get ...'
@@ -109,7 +110,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_info_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -118,16 +120,16 @@ module SwaggerClient
     # Get deal metrics
     # This endpoint is used to get deal metrics
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_metrics_deals_on_chain_get(opts = {})
-      public_metrics_deals_on_chain_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_metrics_deals_on_chain_get_with_http_info(opts)
+      data
     end
 
     # Get deal metrics
     # This endpoint is used to get deal metrics
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_metrics_deals_on_chain_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_metrics_deals_on_chain_get ...'
@@ -154,7 +156,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_metrics_deals_on_chain_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -165,10 +168,10 @@ module SwaggerClient
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_failed Ignore Failed
-    # @return [nil]
+    # @return [String]
     def public_miners_deals_miner_get(miner, opts = {})
-      public_miners_deals_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_deals_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get all miners deals
@@ -176,7 +179,7 @@ module SwaggerClient
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_failed Ignore Failed
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_deals_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_miners_deals_miner_get ...'
@@ -208,7 +211,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_miners_deals_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -218,17 +222,17 @@ module SwaggerClient
     # This endpoint returns all miners
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_failures_miner_get(miner, opts = {})
-      public_miners_failures_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_failures_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get all miners
     # This endpoint returns all miners
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_failures_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_miners_failures_miner_get ...'
@@ -259,7 +263,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_miners_failures_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -268,16 +273,16 @@ module SwaggerClient
     # Get all miners
     # This endpoint returns all miners
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_get(opts = {})
-      public_miners_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_miners_get_with_http_info(opts)
+      data
     end
 
     # Get all miners
     # This endpoint returns all miners
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_miners_get ...'
@@ -304,7 +309,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_miners_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -314,17 +320,17 @@ module SwaggerClient
     # This endpoint returns miner stats
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_stats_miner_get(miner, opts = {})
-      public_miners_stats_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_stats_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get miner stats
     # This endpoint returns miner stats
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_stats_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_miners_stats_miner_get ...'
@@ -355,7 +361,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_miners_stats_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -456,16 +463,16 @@ module SwaggerClient
     # Public stats
     # This endpoint is used to get public stats.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_stats_get(opts = {})
-      public_stats_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_stats_get_with_http_info(opts)
+      data
     end
 
     # Public stats
     # This endpoint is used to get public stats.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_stats_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_stats_get ...'
@@ -492,7 +499,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PublicApi#public_stats_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -10,7 +10,7 @@ class ContentApi {
   /// Add Car object
   ///
   /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
-  Future contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
+  Future<String> contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -60,15 +60,15 @@ class ContentApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add IPFS object
   ///
   /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
-  Future contentAddIpfsPost(UtilContentAddIpfsBody body, { String ignoreDupes }) async {
+  Future<String> contentAddIpfsPost(UtilContentAddIpfsBody body, { String ignoreDupes }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -115,9 +115,9 @@ class ContentApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add new content
@@ -256,7 +256,7 @@ if (filename != null)
   /// Get all deals for a user
   ///
   /// This endpoint is used to get all deals for a user
-  Future contentAllDealsGet(String begin, String duration, String all) async {
+  Future<String> contentAllDealsGet(String begin, String duration, String all) async {
     Object postBody = null;
 
     // verify required params are set
@@ -309,15 +309,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get content bandwidth
   ///
   /// This endpoint returns content bandwidth
-  Future contentBwUsageContentGet(String content) async {
+  Future<String> contentBwUsageContentGet(String content) async {
     Object postBody = null;
 
     // verify required params are set
@@ -361,15 +361,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add a new content
   ///
   /// This endpoint adds a new content
-  Future contentCreatePost(UtilContentCreateBody req, { String ignoreDupes }) async {
+  Future<String> contentCreatePost(UtilContentCreateBody req, { String ignoreDupes }) async {
     Object postBody = req;
 
     // verify required params are set
@@ -416,15 +416,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Content with deals
   ///
   /// This endpoint lists all content with deals
-  Future contentDealsGet({ int limit, int offset }) async {
+  Future<String> contentDealsGet({ int limit, int offset }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -471,15 +471,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Ensure Replication
   ///
   /// This endpoint ensures that the content is replicated to the specified number of providers
-  Future contentEnsureReplicationDatacidGet(String datacid) async {
+  Future<String> contentEnsureReplicationDatacidGet(String datacid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -523,9 +523,9 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List all failures for a content
@@ -583,7 +583,7 @@ if (filename != null)
   /// Content
   ///
   /// This endpoint returns a content by its ID
-  Future contentIdGet(int id) async {
+  Future<String> contentIdGet(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -627,15 +627,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Import a deal
   ///
   /// This endpoint imports a deal into the shuttle.
-  Future contentImportdealPost(MainImportDealBody body) async {
+  Future<String> contentImportdealPost(MainImportDealBody body) async {
     Object postBody = body;
 
     // verify required params are set
@@ -679,15 +679,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List all pinned content
   ///
   /// This endpoint lists all content
-  Future<List<String>> contentListGet() async {
+  Future<String> contentListGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -728,7 +728,7 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-        (apiClient.deserialize(response.body, 'List<String>') as List).map((item) => item as String).toList();
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
     }
@@ -736,7 +736,7 @@ if (filename != null)
   /// Read content
   ///
   /// This endpoint reads content from the blockstore
-  Future contentReadContGet(String cont) async {
+  Future<String> contentReadContGet(String cont) async {
     Object postBody = null;
 
     // verify required params are set
@@ -780,15 +780,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get staging zone for user
   ///
   /// This endpoint is used to get staging zone for user.
-  Future contentStagingZonesGet() async {
+  Future<String> contentStagingZonesGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -829,15 +829,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get content statistics
   ///
   /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
-  Future contentStatsGet(String limit, String offset) async {
+  Future<String> contentStatsGet(String limit, String offset) async {
     Object postBody = null;
 
     // verify required params are set
@@ -886,15 +886,15 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Content Status
   ///
   /// This endpoint returns the status of a content
-  Future contentStatusIdGet(int id) async {
+  Future<String> contentStatusIdGet(int id) async {
     Object postBody = null;
 
     // verify required params are set
@@ -938,9 +938,9 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

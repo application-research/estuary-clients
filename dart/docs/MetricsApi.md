@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -30,7 +30,8 @@ import 'package:swagger/api.dart';
 var api_instance = new MetricsApi();
 
 try { 
-    api_instance.publicMetricsDealsOnChainGet();
+    var result = api_instance.publicMetricsDealsOnChainGet();
+    print(result);
 } catch (e) {
     print("Exception when calling MetricsApi->publicMetricsDealsOnChainGet: $e\n");
 }
@@ -41,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

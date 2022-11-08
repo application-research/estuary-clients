@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -32,8 +33,8 @@ public:
  */
 bool publicMetricsDealsOnChainGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get deal metrics. *Asynchronous*
  *
@@ -44,8 +45,8 @@ bool publicMetricsDealsOnChainGetSync(char * accessToken,
  */
 bool publicMetricsDealsOnChainGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

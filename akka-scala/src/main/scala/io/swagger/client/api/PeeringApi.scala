@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -21,71 +22,107 @@ object PeeringApi {
    * This endpoint can be used to remove a Peer from the Peering Service
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
-   * @param body Peer ids
+   * @param peerIds Peer ids
    */
-  def adminPeeringPeersDelete(body: Seq[String])(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.DELETE, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
+  def adminPeeringPeersDelete(peerIds: Seq[Boolean])(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.DELETE, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(body)
+      .withBody(peerIds)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint can be used to list all peers on Peering Service
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminPeeringPeersGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
+  def adminPeeringPeersGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint can be used to add a Peer from the Peering Service
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminPeeringPeersPost()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
+  def adminPeeringPeersPost()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/peers", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint can be used to start the Peering Service
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminPeeringStartPost()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/start", "application/json")
+  def adminPeeringStartPost()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/start", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint can be used to check the Peering status
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminPeeringStatusGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/admin/peering/status", "application/json")
+  def adminPeeringStatusGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/admin/peering/status", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint can be used to stop the Peering Service
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminPeeringStopPost()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/stop", "application/json")
+  def adminPeeringStopPost()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/admin/peering/stop", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

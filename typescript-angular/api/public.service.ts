@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -62,9 +63,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicByCidCidGet(cid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicByCidCidGet(cid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicByCidCidGet(cid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicByCidCidGet(cid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicByCidCidGet(cid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicByCidCidGet(cid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicByCidCidGet(cid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (cid === null || cid === undefined) {
@@ -91,7 +92,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/by-cid/${encodeURIComponent(String(cid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/by-cid/${encodeURIComponent(String(cid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -107,9 +108,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicInfoGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicInfoGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicInfoGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicInfoGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicInfoGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicInfoGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicInfoGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -132,7 +133,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/info`,
+        return this.httpClient.get<string>(`${this.basePath}/public/info`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -148,9 +149,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMetricsDealsOnChainGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMetricsDealsOnChainGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMetricsDealsOnChainGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMetricsDealsOnChainGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMetricsDealsOnChainGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMetricsDealsOnChainGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMetricsDealsOnChainGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -173,7 +174,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/metrics/deals-on-chain`,
+        return this.httpClient.get<string>(`${this.basePath}/public/metrics/deals-on-chain`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -191,9 +192,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -226,7 +227,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -244,9 +245,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersFailuresMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -273,7 +274,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -289,9 +290,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -314,7 +315,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -331,9 +332,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersStatsMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersStatsMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -360,7 +361,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -458,9 +459,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicStatsGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicStatsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicStatsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicStatsGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicStatsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicStatsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicStatsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -483,7 +484,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/stats`,
+        return this.httpClient.get<string>(`${this.basePath}/public/stats`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

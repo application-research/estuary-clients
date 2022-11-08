@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 userApiKeysGet 
-  :: EstuaryRequest UserApiKeysGet MimeNoContent [MainGetApiKeysResp] MimeJSON
+  :: EstuaryRequest UserApiKeysGet MimeNoContent [[MainGetApiKeysResp]] MimeJSON
 userApiKeysGet =
   _mkRequest "GET" ["/user/api-keys"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -78,28 +78,26 @@ data UserApiKeysGet
 instance Produces UserApiKeysGet MimeJSON
 
 
--- *** userApiKeysKeyDelete
+-- *** userApiKeysKeyOrHashDelete
 
--- | @DELETE \/user\/api-keys\/{key}@
+-- | @DELETE \/user\/api-keys\/{key_or_hash}@
 -- 
 -- Revoke a User API Key.
 -- 
--- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+-- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
-userApiKeysKeyDelete 
-  :: Key -- ^ "key" -  Key
-  -> EstuaryRequest UserApiKeysKeyDelete MimeNoContent res MimeJSON
-userApiKeysKeyDelete (Key key) =
-  _mkRequest "DELETE" ["/user/api-keys/",toPath key]
+userApiKeysKeyOrHashDelete 
+  :: KeyOrHash -- ^ "keyOrHash" -  Key or Hash
+  -> EstuaryRequest UserApiKeysKeyOrHashDelete MimeNoContent Text MimeJSON
+userApiKeysKeyOrHashDelete (KeyOrHash keyOrHash) =
+  _mkRequest "DELETE" ["/user/api-keys/",toPath keyOrHash]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
 
-data UserApiKeysKeyDelete  
+data UserApiKeysKeyOrHashDelete  
 -- | @application/json@
-instance Produces UserApiKeysKeyDelete MimeJSON
+instance Produces UserApiKeysKeyOrHashDelete MimeJSON
 
 
 -- *** userApiKeysPost
@@ -120,7 +118,7 @@ userApiKeysPost =
 
 data UserApiKeysPost  
 
--- | /Optional Param/ "expiry" - Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+-- | /Optional Param/ "expiry" - Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 instance HasOptionalParam UserApiKeysPost Expiry where
   applyOptionalParam req (Expiry xs) =
     req `setQuery` toQuery ("expiry", Just xs)
@@ -165,7 +163,7 @@ instance Produces UserExportGet MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 userStatsGet 
-  :: EstuaryRequest UserStatsGet MimeNoContent MainUserStatsResponse MimeJSON
+  :: EstuaryRequest UserStatsGet MimeNoContent Text MimeJSON
 userStatsGet =
   _mkRequest "GET" ["/user/stats"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

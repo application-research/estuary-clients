@@ -25,10 +25,10 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @return [nil]
+    # @return [String]
     def content_add_car_post(body, opts = {})
-      content_add_car_post_with_http_info(body, opts)
-      nil
+      data, _status_code, _headers = content_add_car_post_with_http_info(body, opts)
+      data
     end
 
     # Add Car object
@@ -37,7 +37,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_add_car_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_car_post ...'
@@ -70,7 +70,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_add_car_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -81,10 +82,10 @@ module SwaggerClient
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
-    # @return [nil]
+    # @return [String]
     def content_add_ipfs_post(body, opts = {})
-      content_add_ipfs_post_with_http_info(body, opts)
-      nil
+      data, _status_code, _headers = content_add_ipfs_post_with_http_info(body, opts)
+      data
     end
 
     # Add IPFS object
@@ -92,7 +93,7 @@ module SwaggerClient
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_add_ipfs_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_ipfs_post ...'
@@ -124,7 +125,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_add_ipfs_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -261,10 +263,10 @@ module SwaggerClient
     # @param duration Duration
     # @param all All
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_all_deals_get(_begin, duration, all, opts = {})
-      content_all_deals_get_with_http_info(_begin, duration, all, opts)
-      nil
+      data, _status_code, _headers = content_all_deals_get_with_http_info(_begin, duration, all, opts)
+      data
     end
 
     # Get all deals for a user
@@ -273,7 +275,7 @@ module SwaggerClient
     # @param duration Duration
     # @param all All
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_all_deals_get_with_http_info(_begin, duration, all, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_all_deals_get ...'
@@ -315,7 +317,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_all_deals_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -325,17 +328,17 @@ module SwaggerClient
     # This endpoint returns content bandwidth
     # @param content Content ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_bw_usage_content_get(content, opts = {})
-      content_bw_usage_content_get_with_http_info(content, opts)
-      nil
+      data, _status_code, _headers = content_bw_usage_content_get_with_http_info(content, opts)
+      data
     end
 
     # Get content bandwidth
     # This endpoint returns content bandwidth
     # @param content Content ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_bw_usage_content_get_with_http_info(content, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_bw_usage_content_get ...'
@@ -366,7 +369,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_bw_usage_content_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -377,10 +381,10 @@ module SwaggerClient
     # @param req Content
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
-    # @return [nil]
+    # @return [String]
     def content_create_post(req, opts = {})
-      content_create_post_with_http_info(req, opts)
-      nil
+      data, _status_code, _headers = content_create_post_with_http_info(req, opts)
+      data
     end
 
     # Add a new content
@@ -388,7 +392,7 @@ module SwaggerClient
     # @param req Content
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_create_post_with_http_info(req, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_create_post ...'
@@ -420,7 +424,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_create_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -431,10 +436,10 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit Limit
     # @option opts [Integer] :offset Offset
-    # @return [nil]
+    # @return [String]
     def content_deals_get(opts = {})
-      content_deals_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = content_deals_get_with_http_info(opts)
+      data
     end
 
     # Content with deals
@@ -442,7 +447,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit Limit
     # @option opts [Integer] :offset Offset
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_deals_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_deals_get ...'
@@ -471,7 +476,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_deals_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -481,17 +487,17 @@ module SwaggerClient
     # This endpoint ensures that the content is replicated to the specified number of providers
     # @param datacid Data CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_ensure_replication_datacid_get(datacid, opts = {})
-      content_ensure_replication_datacid_get_with_http_info(datacid, opts)
-      nil
+      data, _status_code, _headers = content_ensure_replication_datacid_get_with_http_info(datacid, opts)
+      data
     end
 
     # Ensure Replication
     # This endpoint ensures that the content is replicated to the specified number of providers
     # @param datacid Data CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_ensure_replication_datacid_get_with_http_info(datacid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_ensure_replication_datacid_get ...'
@@ -522,7 +528,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_ensure_replication_datacid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -584,17 +591,17 @@ module SwaggerClient
     # This endpoint returns a content by its ID
     # @param id Content ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_id_get(id, opts = {})
-      content_id_get_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = content_id_get_with_http_info(id, opts)
+      data
     end
 
     # Content
     # This endpoint returns a content by its ID
     # @param id Content ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_id_get ...'
@@ -625,7 +632,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -635,17 +643,17 @@ module SwaggerClient
     # This endpoint imports a deal into the shuttle.
     # @param body Import a deal
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_importdeal_post(body, opts = {})
-      content_importdeal_post_with_http_info(body, opts)
-      nil
+      data, _status_code, _headers = content_importdeal_post_with_http_info(body, opts)
+      data
     end
 
     # Import a deal
     # This endpoint imports a deal into the shuttle.
     # @param body Import a deal
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_importdeal_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_importdeal_post ...'
@@ -676,7 +684,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_importdeal_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -685,7 +694,7 @@ module SwaggerClient
     # List all pinned content
     # This endpoint lists all content
     # @param [Hash] opts the optional parameters
-    # @return [Array<String>]
+    # @return [String]
     def content_list_get(opts = {})
       data, _status_code, _headers = content_list_get_with_http_info(opts)
       data
@@ -694,7 +703,7 @@ module SwaggerClient
     # List all pinned content
     # This endpoint lists all content
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<String>, Fixnum, Hash)>] Array<String> data, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_list_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_list_get ...'
@@ -722,7 +731,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Array<String>')
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_list_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -732,17 +741,17 @@ module SwaggerClient
     # This endpoint reads content from the blockstore
     # @param cont CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_read_cont_get(cont, opts = {})
-      content_read_cont_get_with_http_info(cont, opts)
-      nil
+      data, _status_code, _headers = content_read_cont_get_with_http_info(cont, opts)
+      data
     end
 
     # Read content
     # This endpoint reads content from the blockstore
     # @param cont CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_read_cont_get_with_http_info(cont, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_read_cont_get ...'
@@ -773,7 +782,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_read_cont_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -782,16 +792,16 @@ module SwaggerClient
     # Get staging zone for user
     # This endpoint is used to get staging zone for user.
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_staging_zones_get(opts = {})
-      content_staging_zones_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = content_staging_zones_get_with_http_info(opts)
+      data
     end
 
     # Get staging zone for user
     # This endpoint is used to get staging zone for user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_staging_zones_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_staging_zones_get ...'
@@ -818,7 +828,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_staging_zones_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -829,10 +840,10 @@ module SwaggerClient
     # @param limit limit
     # @param offset offset
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_stats_get(limit, offset, opts = {})
-      content_stats_get_with_http_info(limit, offset, opts)
-      nil
+      data, _status_code, _headers = content_stats_get_with_http_info(limit, offset, opts)
+      data
     end
 
     # Get content statistics
@@ -840,7 +851,7 @@ module SwaggerClient
     # @param limit limit
     # @param offset offset
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_stats_get_with_http_info(limit, offset, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_stats_get ...'
@@ -877,7 +888,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_stats_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -887,17 +899,17 @@ module SwaggerClient
     # This endpoint returns the status of a content
     # @param id Content ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def content_status_id_get(id, opts = {})
-      content_status_id_get_with_http_info(id, opts)
-      nil
+      data, _status_code, _headers = content_status_id_get_with_http_info(id, opts)
+      data
     end
 
     # Content Status
     # This endpoint returns the status of a content
     # @param id Content ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def content_status_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_status_id_get ...'
@@ -928,7 +940,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_status_id_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

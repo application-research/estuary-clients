@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> pinningPinsGet()
+> 'String' pinningPinsGet()
 
 List all pin status objects
 
@@ -36,7 +36,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.pinningPinsGet(callback);
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete(pinid)
+> 'String' pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -86,7 +86,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.pinningPinsPinidDelete(pinid, callback);
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -113,7 +113,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet(pinid)
+> 'String' pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -139,7 +139,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.pinningPinsPinidGet(pinid, callback);
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -166,7 +166,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost(pinid)
+> 'String' pinningPinsPinidPost(pinid)
 
 Replace a pinned object
 
@@ -192,7 +192,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.pinningPinsPinidPost(pinid, callback);
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -219,7 +219,7 @@ null (empty response body)
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> pinningPinsPost(cid, name)
+> 'String' pinningPinsPost(pin)
 
 Add and pin object
 
@@ -238,31 +238,28 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new EstuaryClient.PinningApi();
 
-var cid = "cid_example"; // String | cid
-
-var name = "name_example"; // String | name
+var pin = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.pinningPinsPost(cid, name, callback);
+apiInstance.pinningPinsPost(pin, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid | 
- **name** | **String**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

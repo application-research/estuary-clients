@@ -78,12 +78,16 @@ SWGMinerApi::publicMinersDealsMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersDealsMinerGetSignal();
+        emit publicMinersDealsMinerGetSignal(output);
     } else {
-        emit publicMinersDealsMinerGetSignalE(error_type, error_str);
+        emit publicMinersDealsMinerGetSignalE(output, error_type, error_str);
         emit publicMinersDealsMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -129,12 +133,16 @@ SWGMinerApi::publicMinersStatsMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersStatsMinerGetSignal();
+        emit publicMinersStatsMinerGetSignal(output);
     } else {
-        emit publicMinersStatsMinerGetSignalE(error_type, error_str);
+        emit publicMinersStatsMinerGetSignalE(output, error_type, error_str);
         emit publicMinersStatsMinerGetSignalEFull(worker, error_type, error_str);
     }
 }

@@ -24,13 +24,14 @@ inherit
 feature -- API Access
 
 
-	admin_peering_peers_delete (body: LIST [STRING_32])
+	admin_peering_peers_delete (peer_ids: LIST [BOOLEAN]): detachable STRING_32
 			-- Remove peers on Peering Service
 			-- This endpoint can be used to remove a Peer from the Peering Service
 			-- 
-			-- argument: body Peer ids (required)
+			-- argument: peer_ids Peer ids (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -39,7 +40,7 @@ feature -- API Access
 		do
 			reset_error
 			create l_request
-			l_request.set_body(body)
+			l_request.set_body(peer_ids)
 			l_path := "/admin/peering/peers"
 
 
@@ -48,17 +49,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_peering_peers_get 
+	admin_peering_peers_get : detachable STRING_32
 			-- List all Peering peers
 			-- This endpoint can be used to list all peers on Peering Service
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -76,17 +82,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_peering_peers_post 
+	admin_peering_peers_post : detachable STRING_32
 			-- Add peers on Peering Service
 			-- This endpoint can be used to add a Peer from the Peering Service
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -104,17 +115,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_peering_start_post 
+	admin_peering_start_post : detachable STRING_32
 			-- Start Peering
 			-- This endpoint can be used to start the Peering Service
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -132,17 +148,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_peering_status_get 
+	admin_peering_status_get : detachable STRING_32
 			-- Check Peering Status
 			-- This endpoint can be used to check the Peering status
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -160,17 +181,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_peering_stop_post 
+	admin_peering_stop_post : detachable STRING_32
 			-- Stop Peering
 			-- This endpoint can be used to stop the Peering Service
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -188,17 +214,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_system_config_get 
+	admin_system_config_get : detachable STRING_32
 			-- Get systems(estuary/shuttle) config
 			-- This endpoint is used to get system configs.
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -216,17 +247,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	admin_users_get 
+	admin_users_get : detachable STRING_32
 			-- Get all users
 			-- This endpoint is used to get all users.
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -244,9 +280,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

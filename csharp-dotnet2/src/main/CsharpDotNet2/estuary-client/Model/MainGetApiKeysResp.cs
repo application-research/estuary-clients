@@ -20,11 +20,25 @@ namespace estuary-client.Model {
     public string Expiry { get; set; }
 
     /// <summary>
+    /// Gets or Sets Label
+    /// </summary>
+    [DataMember(Name="label", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "label")]
+    public string Label { get; set; }
+
+    /// <summary>
     /// Gets or Sets Token
     /// </summary>
     [DataMember(Name="token", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "token")]
     public string Token { get; set; }
+
+    /// <summary>
+    /// Gets or Sets TokenHash
+    /// </summary>
+    [DataMember(Name="tokenHash", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "tokenHash")]
+    public string TokenHash { get; set; }
 
 
     /// <summary>
@@ -35,7 +49,9 @@ namespace estuary-client.Model {
       var sb = new StringBuilder();
       sb.Append("class MainGetApiKeysResp {\n");
       sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+      sb.Append("  Label: ").Append(Label).Append("\n");
       sb.Append("  Token: ").Append(Token).Append("\n");
+      sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

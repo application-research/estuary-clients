@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -26,11 +27,13 @@ extern NSInteger kSWGNetApiMissingParamErrorCode;
 /// This endpoint is used to get net addrs
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return NSArray<NSString*>*
+/// @return NSString*
 -(NSURLSessionTask*) netAddrsGetWithCompletionHandler: 
-    (void (^)(NSArray<NSString*>* output, NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get all miners
@@ -38,20 +41,26 @@ extern NSInteger kSWGNetApiMissingParamErrorCode;
 ///
 /// @param miner Filter by miner
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get all miners
 /// This endpoint returns all miners
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Net Addrs
@@ -69,7 +78,9 @@ extern NSInteger kSWGNetApiMissingParamErrorCode;
 /// This endpoint is used to get net peers
 ///
 /// 
-///  code:200 message:"OK"
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
 /// @return NSArray<NSString*>*
 -(NSURLSessionTask*) publicNetPeersGetWithCompletionHandler: 

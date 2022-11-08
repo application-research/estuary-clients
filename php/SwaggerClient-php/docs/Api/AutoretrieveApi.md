@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost($addresses, $pub_key)
+> string adminAutoretrieveInitPost($addresses, $pub_key)
 
 Register autoretrieve server
 
@@ -36,7 +36,8 @@ $addresses = "addresses_example"; // string | Autoretrieve's comma-separated lis
 $pub_key = "pub_key_example"; // string | Autoretrieve's public key
 
 try {
-    $apiInstance->adminAutoretrieveInitPost($addresses, $pub_key);
+    $result = $apiInstance->adminAutoretrieveInitPost($addresses, $pub_key);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutoretrieveApi->adminAutoretrieveInitPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> string adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -90,7 +91,8 @@ $apiInstance = new Swagger\Client\Api\AutoretrieveApi(
 );
 
 try {
-    $apiInstance->adminAutoretrieveListGet();
+    $result = $apiInstance->adminAutoretrieveListGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutoretrieveApi->adminAutoretrieveListGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -102,7 +104,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -116,7 +118,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost($token)
+> string autoretrieveHeartbeatPost($token)
 
 Marks autoretrieve server as up
 
@@ -141,7 +143,8 @@ $apiInstance = new Swagger\Client\Api\AutoretrieveApi(
 $token = "token_example"; // string | Autoretrieve's auth token
 
 try {
-    $apiInstance->autoretrieveHeartbeatPost($token);
+    $result = $apiInstance->autoretrieveHeartbeatPost($token);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AutoretrieveApi->autoretrieveHeartbeatPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -156,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

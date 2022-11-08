@@ -142,6 +142,16 @@ class DealsApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for dealTransferStatusPost
+     *
+     * Transfer Status.
+     *
+     */
+    public function testDealTransferStatusPost()
+    {
+    }
+
+    /**
      * Test case for dealsFailuresGet
      *
      * Get storage failures for user.

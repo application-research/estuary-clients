@@ -10,7 +10,6 @@
 #include "Main.deleteContentFromCollectionBody.h"
 #include "Util.HttpError.h"
 #include <list>
-#include <map>
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -97,8 +96,8 @@ bool collectionsColuuidContentsDeleteAsync(char * accessToken,
  */
 bool collectionsColuuidDeleteSync(char * accessToken,
 	std::string coluuid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Deletes a collection. *Asynchronous*
  *
@@ -110,8 +109,8 @@ bool collectionsColuuidDeleteSync(char * accessToken,
  */
 bool collectionsColuuidDeleteAsync(char * accessToken,
 	std::string coluuid, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get contents in a collection. *Synchronous*
@@ -154,7 +153,7 @@ bool collectionsColuuidGetAsync(char * accessToken,
  */
 bool collectionsColuuidPostSync(char * accessToken,
 	std::string coluuid, std::list<> contentIDs, 
-	void(* handler)(std::map<std::string,std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
 /*! \brief Add contents to a collection. *Asynchronous*
@@ -168,7 +167,7 @@ bool collectionsColuuidPostSync(char * accessToken,
  */
 bool collectionsColuuidPostAsync(char * accessToken,
 	std::string coluuid, std::list<> contentIDs, 
-	void(* handler)(std::map<std::string,std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
 
@@ -184,8 +183,8 @@ bool collectionsColuuidPostAsync(char * accessToken,
  */
 bool collectionsFsAddPostSync(char * accessToken,
 	std::string coluuid, std::string content, std::string path, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Add a file to a collection. *Asynchronous*
  *
@@ -199,8 +198,8 @@ bool collectionsFsAddPostSync(char * accessToken,
  */
 bool collectionsFsAddPostAsync(char * accessToken,
 	std::string coluuid, std::string content, std::string path, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief List all collections. *Synchronous*
@@ -212,7 +211,7 @@ bool collectionsFsAddPostAsync(char * accessToken,
  */
 bool collectionsGetSync(char * accessToken,
 	
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData);
 
 /*! \brief List all collections. *Asynchronous*
@@ -224,7 +223,7 @@ bool collectionsGetSync(char * accessToken,
  */
 bool collectionsGetAsync(char * accessToken,
 	
-	void(* handler)(std::list<Collections.Collection>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData);
 
 

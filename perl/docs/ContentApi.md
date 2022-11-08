@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename)
+> string content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename)
 
 Add Car object
 
@@ -52,7 +52,8 @@ my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 my $filename = 'filename_example'; # string | Filename
 
 eval { 
-    $api_instance->content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename);
+    my $result = $api_instance->content_add_car_post(body => $body, ignore_dupes => $ignore_dupes, filename => $filename);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_add_car_post: $@\n";
@@ -69,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -83,7 +84,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes)
+> string content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes)
 
 Add IPFS object
 
@@ -105,7 +106,8 @@ my $body = WWW::SwaggerClient::Object::UtilContentAddIpfsBody->new(); # UtilCont
 my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 
 eval { 
-    $api_instance->content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes);
+    my $result = $api_instance->content_add_ipfs_post(body => $body, ignore_dupes => $ignore_dupes);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_add_ipfs_post: $@\n";
@@ -121,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -249,7 +251,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_all_deals_get**
-> content_all_deals_get(begin => $begin, duration => $duration, all => $all)
+> string content_all_deals_get(begin => $begin, duration => $duration, all => $all)
 
 Get all deals for a user
 
@@ -272,7 +274,8 @@ my $duration = 'duration_example'; # string | Duration
 my $all = 'all_example'; # string | All
 
 eval { 
-    $api_instance->content_all_deals_get(begin => $begin, duration => $duration, all => $all);
+    my $result = $api_instance->content_all_deals_get(begin => $begin, duration => $duration, all => $all);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_all_deals_get: $@\n";
@@ -289,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -303,7 +306,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_bw_usage_content_get**
-> content_bw_usage_content_get(content => $content)
+> string content_bw_usage_content_get(content => $content)
 
 Get content bandwidth
 
@@ -324,7 +327,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $content = 'content_example'; # string | Content ID
 
 eval { 
-    $api_instance->content_bw_usage_content_get(content => $content);
+    my $result = $api_instance->content_bw_usage_content_get(content => $content);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_bw_usage_content_get: $@\n";
@@ -339,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -353,7 +357,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post(req => $req, ignore_dupes => $ignore_dupes)
+> string content_create_post(req => $req, ignore_dupes => $ignore_dupes)
 
 Add a new content
 
@@ -375,7 +379,8 @@ my $req = WWW::SwaggerClient::Object::UtilContentCreateBody->new(); # UtilConten
 my $ignore_dupes = 'ignore_dupes_example'; # string | Ignore Dupes
 
 eval { 
-    $api_instance->content_create_post(req => $req, ignore_dupes => $ignore_dupes);
+    my $result = $api_instance->content_create_post(req => $req, ignore_dupes => $ignore_dupes);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_create_post: $@\n";
@@ -391,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -405,7 +410,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_deals_get**
-> content_deals_get(limit => $limit, offset => $offset)
+> string content_deals_get(limit => $limit, offset => $offset)
 
 Content with deals
 
@@ -427,7 +432,8 @@ my $limit = 56; # int | Limit
 my $offset = 56; # int | Offset
 
 eval { 
-    $api_instance->content_deals_get(limit => $limit, offset => $offset);
+    my $result = $api_instance->content_deals_get(limit => $limit, offset => $offset);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_deals_get: $@\n";
@@ -443,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -457,7 +463,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get(datacid => $datacid)
+> string content_ensure_replication_datacid_get(datacid => $datacid)
 
 Ensure Replication
 
@@ -478,7 +484,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $datacid = 'datacid_example'; # string | Data CID
 
 eval { 
-    $api_instance->content_ensure_replication_datacid_get(datacid => $datacid);
+    my $result = $api_instance->content_ensure_replication_datacid_get(datacid => $datacid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_ensure_replication_datacid_get: $@\n";
@@ -493,7 +500,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -558,7 +565,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_id_get**
-> content_id_get(id => $id)
+> string content_id_get(id => $id)
 
 Content
 
@@ -579,7 +586,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $id = 56; # int | Content ID
 
 eval { 
-    $api_instance->content_id_get(id => $id);
+    my $result = $api_instance->content_id_get(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_id_get: $@\n";
@@ -594,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -608,7 +616,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_importdeal_post**
-> content_importdeal_post(body => $body)
+> string content_importdeal_post(body => $body)
 
 Import a deal
 
@@ -629,7 +637,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $body = WWW::SwaggerClient::Object::MainImportDealBody->new(); # MainImportDealBody | Import a deal
 
 eval { 
-    $api_instance->content_importdeal_post(body => $body);
+    my $result = $api_instance->content_importdeal_post(body => $body);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_importdeal_post: $@\n";
@@ -644,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -658,7 +667,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_list_get**
-> ARRAY[string] content_list_get()
+> string content_list_get()
 
 List all pinned content
 
@@ -691,7 +700,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**ARRAY[string]**
+**string**
 
 ### Authorization
 
@@ -705,7 +714,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_read_cont_get**
-> content_read_cont_get(cont => $cont)
+> string content_read_cont_get(cont => $cont)
 
 Read content
 
@@ -726,7 +735,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $cont = 'cont_example'; # string | CID
 
 eval { 
-    $api_instance->content_read_cont_get(cont => $cont);
+    my $result = $api_instance->content_read_cont_get(cont => $cont);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_read_cont_get: $@\n";
@@ -741,7 +751,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -755,7 +765,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_staging_zones_get**
-> content_staging_zones_get()
+> string content_staging_zones_get()
 
 Get staging zone for user
 
@@ -775,7 +785,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 
 
 eval { 
-    $api_instance->content_staging_zones_get();
+    my $result = $api_instance->content_staging_zones_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_staging_zones_get: $@\n";
@@ -787,7 +798,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -801,7 +812,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get(limit => $limit, offset => $offset)
+> string content_stats_get(limit => $limit, offset => $offset)
 
 Get content statistics
 
@@ -823,7 +834,8 @@ my $limit = 'limit_example'; # string | limit
 my $offset = 'offset_example'; # string | offset
 
 eval { 
-    $api_instance->content_stats_get(limit => $limit, offset => $offset);
+    my $result = $api_instance->content_stats_get(limit => $limit, offset => $offset);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_stats_get: $@\n";
@@ -839,7 +851,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -853,7 +865,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_status_id_get**
-> content_status_id_get(id => $id)
+> string content_status_id_get(id => $id)
 
 Content Status
 
@@ -874,7 +886,8 @@ my $api_instance = WWW::SwaggerClient::ContentApi->new(
 my $id = 56; # int | Content ID
 
 eval { 
-    $api_instance->content_status_id_get(id => $id);
+    my $result = $api_instance->content_status_id_get(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling ContentApi->content_status_id_get: $@\n";
@@ -889,7 +902,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

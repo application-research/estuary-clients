@@ -19,7 +19,6 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs/Observable';
 
 import { MainGetApiKeysResp } from '../model/mainGetApiKeysResp';
-import { MainUserStatsResponse } from '../model/mainUserStatsResponse';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -64,9 +63,9 @@ export class UserService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<MainGetApiKeysResp>>;
-    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MainGetApiKeysResp>>>;
-    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Array<MainGetApiKeysResp>>>>;
+    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Array<MainGetApiKeysResp>>>>;
     public userApiKeysGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -89,7 +88,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<MainGetApiKeysResp>>(`${this.basePath}/user/api-keys`,
+        return this.httpClient.get<Array<Array<MainGetApiKeysResp>>>(`${this.basePath}/user/api-keys`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -101,18 +100,18 @@ export class UserService {
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysKeyDelete(key: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public userApiKeysKeyDelete(key: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public userApiKeysKeyDelete(key: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public userApiKeysKeyDelete(key: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        if (keyOrHash === null || keyOrHash === undefined) {
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
         let headers = this.defaultHeaders;
@@ -135,7 +134,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<any>(`${this.basePath}/user/api-keys/${encodeURIComponent(String(key))}`,
+        return this.httpClient.delete<string>(`${this.basePath}/user/api-keys/${encodeURIComponent(String(keyOrHash))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -148,7 +147,7 @@ export class UserService {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -247,9 +246,9 @@ export class UserService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userStatsGet(observe?: 'body', reportProgress?: boolean): Observable<MainUserStatsResponse>;
-    public userStatsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MainUserStatsResponse>>;
-    public userStatsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MainUserStatsResponse>>;
+    public userStatsGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public userStatsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public userStatsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public userStatsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -272,7 +271,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<MainUserStatsResponse>(`${this.basePath}/user/stats`,
+        return this.httpClient.get<string>(`${this.basePath}/user/stats`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

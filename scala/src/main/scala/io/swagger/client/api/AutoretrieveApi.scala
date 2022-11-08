@@ -14,6 +14,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -84,9 +85,9 @@ class AutoretrieveApi(
    *
    * @param addresses Autoretrieve&#39;s comma-separated list of addresses 
    * @param pubKey Autoretrieve&#39;s public key 
-   * @return void
+   * @return String
    */
-  def adminAutoretrieveInitPost(addresses: String, pubKey: String) = {
+  def adminAutoretrieveInitPost(addresses: String, pubKey: String): Option[String] = {
     val await = Try(Await.result(adminAutoretrieveInitPostAsync(addresses, pubKey), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -100,9 +101,9 @@ class AutoretrieveApi(
    *
    * @param addresses Autoretrieve&#39;s comma-separated list of addresses 
    * @param pubKey Autoretrieve&#39;s public key 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminAutoretrieveInitPostAsync(addresses: String, pubKey: String) = {
+  def adminAutoretrieveInitPostAsync(addresses: String, pubKey: String): Future[String] = {
       helper.adminAutoretrieveInitPost(addresses, pubKey)
   }
 
@@ -110,9 +111,9 @@ class AutoretrieveApi(
    * List autoretrieve servers
    * This endpoint lists all registered autoretrieve servers
    *
-   * @return void
+   * @return String
    */
-  def adminAutoretrieveListGet() = {
+  def adminAutoretrieveListGet(): Option[String] = {
     val await = Try(Await.result(adminAutoretrieveListGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -124,9 +125,9 @@ class AutoretrieveApi(
    * List autoretrieve servers asynchronously
    * This endpoint lists all registered autoretrieve servers
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def adminAutoretrieveListGetAsync() = {
+  def adminAutoretrieveListGetAsync(): Future[String] = {
       helper.adminAutoretrieveListGet()
   }
 
@@ -135,9 +136,9 @@ class AutoretrieveApi(
    * This endpoint updates the lastConnection field for autoretrieve
    *
    * @param token Autoretrieve&#39;s auth token 
-   * @return void
+   * @return String
    */
-  def autoretrieveHeartbeatPost(token: String) = {
+  def autoretrieveHeartbeatPost(token: String): Option[String] = {
     val await = Try(Await.result(autoretrieveHeartbeatPostAsync(token), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -150,9 +151,9 @@ class AutoretrieveApi(
    * This endpoint updates the lastConnection field for autoretrieve
    *
    * @param token Autoretrieve&#39;s auth token 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def autoretrieveHeartbeatPostAsync(token: String) = {
+  def autoretrieveHeartbeatPostAsync(token: String): Future[String] = {
       helper.autoretrieveHeartbeatPost(token)
   }
 
@@ -161,7 +162,7 @@ class AutoretrieveApi(
 class AutoretrieveApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
   def adminAutoretrieveInitPost(addresses: String,
-    pubKey: String)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[String], writer: RequestWriter[String]): Future[Unit] = {
+    pubKey: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/autoretrieve/init"))
 
@@ -174,13 +175,13 @@ class AutoretrieveApiAsyncHelper(client: TransportClient, config: SwaggerConfig)
     if (pubKey == null) throw new Exception("Missing required parameter 'pubKey' when calling AutoretrieveApi->adminAutoretrieveInitPost")
 
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(pubKey))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
   }
 
-  def adminAutoretrieveListGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def adminAutoretrieveListGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/autoretrieve/list"))
 
@@ -195,7 +196,7 @@ class AutoretrieveApiAsyncHelper(client: TransportClient, config: SwaggerConfig)
     }
   }
 
-  def autoretrieveHeartbeatPost(token: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def autoretrieveHeartbeatPost(token: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/autoretrieve/heartbeat"))
 

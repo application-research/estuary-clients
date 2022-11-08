@@ -34,11 +34,15 @@ namespace estuary-client.Model
         /// Initializes a new instance of the <see cref="MainGetApiKeysResp" /> class.
         /// </summary>
         /// <param name="expiry">expiry.</param>
+        /// <param name="label">label.</param>
         /// <param name="token">token.</param>
-        public MainGetApiKeysResp(string expiry = default(string), string token = default(string))
+        /// <param name="tokenHash">tokenHash.</param>
+        public MainGetApiKeysResp(string expiry = default(string), string label = default(string), string token = default(string), string tokenHash = default(string))
         {
             this.Expiry = expiry;
+            this.Label = label;
             this.Token = token;
+            this.TokenHash = tokenHash;
         }
         
         /// <summary>
@@ -48,10 +52,22 @@ namespace estuary-client.Model
         public string Expiry { get; set; }
 
         /// <summary>
+        /// Gets or Sets Label
+        /// </summary>
+        [DataMember(Name="label", EmitDefaultValue=false)]
+        public string Label { get; set; }
+
+        /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public string Token { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TokenHash
+        /// </summary>
+        [DataMember(Name="tokenHash", EmitDefaultValue=false)]
+        public string TokenHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,7 +78,9 @@ namespace estuary-client.Model
             var sb = new StringBuilder();
             sb.Append("class MainGetApiKeysResp {\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
+            sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,9 +121,19 @@ namespace estuary-client.Model
                     this.Expiry.Equals(input.Expiry))
                 ) && 
                 (
+                    this.Label == input.Label ||
+                    (this.Label != null &&
+                    this.Label.Equals(input.Label))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
+                ) && 
+                (
+                    this.TokenHash == input.TokenHash ||
+                    (this.TokenHash != null &&
+                    this.TokenHash.Equals(input.TokenHash))
                 );
         }
 
@@ -120,8 +148,12 @@ namespace estuary-client.Model
                 int hashCode = 41;
                 if (this.Expiry != null)
                     hashCode = hashCode * 59 + this.Expiry.GetHashCode();
+                if (this.Label != null)
+                    hashCode = hashCode * 59 + this.Label.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
+                if (this.TokenHash != null)
+                    hashCode = hashCode * 59 + this.TokenHash.GetHashCode();
                 return hashCode;
             }
         }

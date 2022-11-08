@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **netAddrsGet**
 ```objc
 -(NSURLSessionTask*) netAddrsGetWithCompletionHandler: 
-        (void (^)(NSArray<NSString*>* output, NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Net Addrs
@@ -36,7 +36,7 @@ SWGNetApi*apiInstance = [[SWGNetApi alloc] init];
 
 // Net Addrs
 [apiInstance netAddrsGetWithCompletionHandler: 
-          ^(NSArray<NSString*>* output, NSError* error) {
+          ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**NSArray<NSString*>***
+**NSString***
 
 ### Authorization
 
@@ -67,7 +67,7 @@ This endpoint does not need any parameter.
 # **publicMinersFailuresMinerGet**
 ```objc
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-        completionHandler: (void (^)(NSError* error)) handler;
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners
@@ -90,7 +90,10 @@ SWGNetApi*apiInstance = [[SWGNetApi alloc] init];
 
 // Get all miners
 [apiInstance publicMinersFailuresMinerGetWithMiner:miner
-          completionHandler: ^(NSError* error) {
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGNetApi->publicMinersFailuresMinerGet: %@", error);
                         }
@@ -105,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -121,7 +124,7 @@ void (empty response body)
 # **publicMinersGet**
 ```objc
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all miners
@@ -143,7 +146,10 @@ SWGNetApi*apiInstance = [[SWGNetApi alloc] init];
 
 // Get all miners
 [apiInstance publicMinersGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGNetApi->publicMinersGet: %@", error);
                         }
@@ -155,7 +161,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

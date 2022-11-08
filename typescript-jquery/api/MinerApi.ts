@@ -52,7 +52,7 @@ export class MinerApi {
      * @param miner Filter by miner
      * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/deals/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -103,7 +103,7 @@ export class MinerApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -116,7 +116,7 @@ export class MinerApi {
      * @summary Get miner stats
      * @param miner Filter by miner
      */
-    public publicMinersStatsMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersStatsMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/stats/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -164,7 +164,7 @@ export class MinerApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -58,7 +58,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 

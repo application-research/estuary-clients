@@ -29,14 +29,15 @@ public class SwagDealsApi {
      * Estimate the cost of a deal
      * This endpoint estimates the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealEstimatePost(Map<String, Object> params) {
+    public String dealEstimatePost(Map<String, Object> params) {
         client.assertNotNull(params.get('body'), 'body');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/deal/estimate',
             (SwagMainEstimateDealBody) params.get('body'),
             query, form,
@@ -45,21 +46,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get Deal Info
      * This endpoint returns the deal info for a deal
      * @param dealid Deal ID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealInfoDealidGet(Map<String, Object> params) {
+    public String dealInfoDealidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('dealid'), 'dealid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/info/{dealid}', '',
             query, form,
             new Map<String, Object>{
@@ -69,21 +71,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get Proposal
      * This endpoint returns the proposal for a deal
      * @param propcid Proposal CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealProposalPropcidGet(Map<String, Object> params) {
+    public String dealProposalPropcidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('propcid'), 'propcid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/proposal/{propcid}', '',
             query, form,
             new Map<String, Object>{
@@ -93,21 +96,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealQueryMinerGet(Map<String, Object> params) {
+    public String dealQueryMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/query/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -117,21 +121,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get Deal Status by PropCid
      * Get Deal Status by PropCid
      * @param propcid PropCid (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealStatusByProposalPropcidGet(Map<String, Object> params) {
+    public String dealStatusByProposalPropcidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('propcid'), 'propcid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/status-by-proposal/{propcid}', '',
             query, form,
             new Map<String, Object>{
@@ -141,7 +146,7 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -149,15 +154,16 @@ public class SwagDealsApi {
      * This endpoint returns the status of a deal
      * @param miner Miner (required)
      * @param propcid Proposal CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealStatusMinerPropcidGet(Map<String, Object> params) {
+    public String dealStatusMinerPropcidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         client.assertNotNull(params.get('propcid'), 'propcid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/status/{miner}/{propcid}', '',
             query, form,
             new Map<String, Object>{
@@ -168,19 +174,20 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Transfer In Progress
      * This endpoint returns the in-progress transfers
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealTransferInProgressGet() {
+    public String dealTransferInProgressGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deal/transfer/in-progress', '',
             query, form,
             new Map<String, Object>(),
@@ -188,19 +195,44 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
+        );
+    }
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID (required)
+     * @return String
+     * @throws Swagger.ApiException if fails to make API call
+     */
+    public String dealTransferStatusPost(Map<String, Object> params) {
+        client.assertNotNull(params.get('chanid'), 'chanid');
+        List<Swagger.Param> query = new List<Swagger.Param>();
+        List<Swagger.Param> form = new List<Swagger.Param>();
+
+        return (String) client.invoke(
+            'POST', '/deal/transfer/status',
+            (SwagMainChannelIDParam) params.get('chanid'),
+            query, form,
+            new Map<String, Object>(),
+            new Map<String, Object>(),
+            new List<String>{ 'application/json' },
+            new List<String>{ 'application/json' },
+            new List<String> { 'bearerAuth' },
+            String.class
         );
     }
     /**
      * Get storage failures for user
      * This endpoint returns a list of storage failures for user
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealsFailuresGet() {
+    public String dealsFailuresGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deals/failures', '',
             query, form,
             new Map<String, Object>(),
@@ -208,7 +240,7 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
@@ -216,15 +248,16 @@ public class SwagDealsApi {
      * This endpoint makes a deal for a given content and miner
      * @param miner Miner (required)
      * @param dealRequest Deal Request (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealsMakeMinerPost(Map<String, Object> params) {
+    public String dealsMakeMinerPost(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         client.assertNotNull(params.get('dealRequest'), 'dealRequest');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/deals/make/{miner}',
             (String) params.get('dealRequest'),
             query, form,
@@ -235,21 +268,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get Deal Status
      * This endpoint returns the status of a deal
      * @param deal Deal ID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void dealsStatusDealGet(Map<String, Object> params) {
+    public String dealsStatusDealGet(Map<String, Object> params) {
         client.assertNotNull(params.get('deal'), 'deal');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/deals/status/{deal}', '',
             query, form,
             new Map<String, Object>{
@@ -259,19 +293,20 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get storage failures
      * This endpoint returns a list of storage failures
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicDealsFailuresGet() {
+    public String publicDealsFailuresGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/deals/failures', '',
             query, form,
             new Map<String, Object>(),
@@ -279,21 +314,22 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Query Ask
      * This endpoint returns the ask for a given CID
      * @param miner CID (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersStorageQueryMinerGet(Map<String, Object> params) {
+    public String publicMinersStorageQueryMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/storage/query/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -303,7 +339,7 @@ public class SwagDealsApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

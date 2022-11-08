@@ -78,12 +78,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -120,7 +120,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userexportget) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
@@ -130,12 +130,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [estuary-client.models.CollectionsCollection](docs/CollectionsCollection.md)
+ - [estuary-client.models.MainChannelIDParam](docs/MainChannelIDParam.md)
  - [estuary-client.models.MaincreateCollectionBody](docs/MaincreateCollectionBody.md)
  - [estuary-client.models.MaindeleteContentFromCollectionBody](docs/MaindeleteContentFromCollectionBody.md)
  - [estuary-client.models.MainestimateDealBody](docs/MainestimateDealBody.md)
  - [estuary-client.models.MaingetApiKeysResp](docs/MaingetApiKeysResp.md)
  - [estuary-client.models.MainimportDealBody](docs/MainimportDealBody.md)
- - [estuary-client.models.MainuserStatsResponse](docs/MainuserStatsResponse.md)
+ - [estuary-client.models.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [estuary-client.models.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [estuary-client.models.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [estuary-client.models.UtilContentCreateBody](docs/UtilContentCreateBody.md)

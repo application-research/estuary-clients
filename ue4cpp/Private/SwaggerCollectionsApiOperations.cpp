@@ -64,6 +64,12 @@ void SwaggerCollectionsApi::CollectionsColuuidCommitPostResponse::SetHttpRespons
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -129,6 +135,9 @@ void SwaggerCollectionsApi::CollectionsColuuidContentsDeleteResponse::SetHttpRes
 	case 400:
 		SetResponseString(TEXT("Bad Request"));
 		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -170,10 +179,27 @@ void SwaggerCollectionsApi::CollectionsColuuidDeleteRequest::SetupHttpRequest(co
 	}
 }
 
+void SwaggerCollectionsApi::CollectionsColuuidDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerCollectionsApi::CollectionsColuuidDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerCollectionsApi::CollectionsColuuidGetRequest::ComputePath() const
@@ -225,6 +251,12 @@ void SwaggerCollectionsApi::CollectionsColuuidGetResponse::SetHttpResponseCode(E
 	case 200:
 	default:
 		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
 		break;
 	}
 }
@@ -287,6 +319,12 @@ void SwaggerCollectionsApi::CollectionsColuuidPostResponse::SetHttpResponseCode(
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -331,10 +369,27 @@ void SwaggerCollectionsApi::CollectionsFsAddPostRequest::SetupHttpRequest(const 
 	}
 }
 
+void SwaggerCollectionsApi::CollectionsFsAddPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerCollectionsApi::CollectionsFsAddPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerCollectionsApi::CollectionsGetRequest::ComputePath() const

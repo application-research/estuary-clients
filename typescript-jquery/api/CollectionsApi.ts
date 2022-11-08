@@ -188,7 +188,7 @@ export class CollectionsApi {
      * @summary Deletes a collection
      * @param coluuid Collection ID
      */
-    public collectionsColuuidDelete(coluuid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public collectionsColuuidDelete(coluuid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/collections/{coluuid}'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
@@ -235,7 +235,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -314,7 +314,7 @@ export class CollectionsApi {
      * @param coluuid coluuid
      * @param contentIDs Content IDs to add to collection
      */
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: { [key: string]: string; };  }> {
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/collections/{coluuid}'.replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
         let queryParameters: any = {};
@@ -371,7 +371,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: { [key: string]: string; }, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -386,7 +386,7 @@ export class CollectionsApi {
      * @param content Content
      * @param path Path to file
      */
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/collections/fs/add';
 
         let queryParameters: any = {};
@@ -453,7 +453,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -465,7 +465,7 @@ export class CollectionsApi {
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @summary List all collections
      */
-    public collectionsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<models.CollectionsCollection>;  }> {
+    public collectionsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<Array<models.CollectionsCollection>>;  }> {
         let localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};
@@ -508,7 +508,7 @@ export class CollectionsApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<models.CollectionsCollection>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: Array<Array<models.CollectionsCollection>>, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

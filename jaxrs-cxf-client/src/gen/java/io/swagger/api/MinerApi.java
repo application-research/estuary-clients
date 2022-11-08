@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,8 +37,11 @@ public interface MinerApi  {
     @Path("/public/miners/deals/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all miners deals", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersDealsMinerGet(@PathParam("miner") String miner, @QueryParam("ignore-failed")String ignoreFailed);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersDealsMinerGet(@PathParam("miner") String miner, @QueryParam("ignore-failed")String ignoreFailed);
 
     /**
      * Get miner stats
@@ -49,7 +53,10 @@ public interface MinerApi  {
     @Path("/public/miners/stats/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get miner stats", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersStatsMinerGet(@PathParam("miner") String miner);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersStatsMinerGet(@PathParam("miner") String miner);
 }
 

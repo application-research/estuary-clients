@@ -18,10 +18,11 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get deal metrics 
         local
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       
-            -- api.public_metrics_deals_on_chain_get
+            -- l_response := api.public_metrics_deals_on_chain_get
             assert ("not_implemented", False)
         end
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -34,7 +34,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 MetricsApi apiInstance = new MetricsApi();
 try {
-    apiInstance.publicMetricsDealsOnChainGet();
+    String result = apiInstance.publicMetricsDealsOnChainGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MetricsApi#publicMetricsDealsOnChainGet");
     e.printStackTrace();
@@ -46,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

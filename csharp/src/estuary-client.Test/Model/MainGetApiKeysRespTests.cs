@@ -75,12 +75,28 @@ namespace estuary-client.Test
             // TODO unit test for the property 'Expiry'
         }
         /// <summary>
+        /// Test the property 'Label'
+        /// </summary>
+        [Test]
+        public void LabelTest()
+        {
+            // TODO unit test for the property 'Label'
+        }
+        /// <summary>
         /// Test the property 'Token'
         /// </summary>
         [Test]
         public void TokenTest()
         {
             // TODO unit test for the property 'Token'
+        }
+        /// <summary>
+        /// Test the property 'TokenHash'
+        /// </summary>
+        [Test]
+        public void TokenHashTest()
+        {
+            // TODO unit test for the property 'TokenHash'
         }
 
     }

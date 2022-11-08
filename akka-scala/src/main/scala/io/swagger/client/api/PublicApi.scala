@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -21,42 +22,63 @@ object PublicApi {
    * This endpoint returns the content associated with a CID
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param cid Cid
    */
-  def publicByCidCidGet(cid: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/by-cid/{cid}", "application/json")
+  def publicByCidCidGet(cid: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/by-cid/{cid}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("cid", cid)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns information about the node
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def publicInfoGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/info", "application/json")
+  def publicInfoGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/info", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get deal metrics
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def publicMetricsDealsOnChainGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/metrics/deals-on-chain", "application/json")
+  def publicMetricsDealsOnChainGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/metrics/deals-on-chain", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns all miners deals
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -64,50 +86,71 @@ object PublicApi {
    * @param miner Filter by miner
    * @param ignoreFailed Ignore Failed
    */
-  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/deals/{miner}", "application/json")
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/deals/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("ignore-failed", ignoreFailed)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns all miners
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param miner Filter by miner
    */
-  def publicMinersFailuresMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/failures/{miner}", "application/json")
+  def publicMinersFailuresMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/failures/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns all miners
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def publicMinersGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners", "application/json")
+  def publicMinersGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns miner stats
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param miner Filter by miner
    */
-  def publicMinersStatsMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/stats/{miner}", "application/json")
+  def publicMinersStatsMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/stats/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get net addrs
    * 
@@ -126,6 +169,8 @@ object PublicApi {
    * 
    * Expected answers:
    *   code 200 : Seq[String] (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -134,17 +179,25 @@ object PublicApi {
     ApiRequest[Seq[String]](ApiMethods.GET, "https://api.estuary.tech", "/public/net/peers", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withSuccessResponse[Seq[String]](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint is used to get public stats.
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def publicStatsGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/stats", "application/json")
+  def publicStatsGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/stats", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

@@ -84,9 +84,23 @@ class MainGetApiKeysRespTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "label"
+     */
+    public function testPropertyLabel()
+    {
+    }
+
+    /**
      * Test attribute "token"
      */
     public function testPropertyToken()
+    {
+    }
+
+    /**
+     * Test attribute "token_hash"
+     */
+    public function testPropertyTokenHash()
     {
     }
 }

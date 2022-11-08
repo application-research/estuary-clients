@@ -102,9 +102,10 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
     * Deletes a collection
     * This endpoint is used to delete an existing collection.
     * @param coluuid Collection ID 
-    * @return void
+    * @return kotlin.String
     */
-    fun collectionsColuuidDelete(coluuid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun collectionsColuuidDelete(coluuid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -120,13 +121,13 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -179,10 +180,10 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
     * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
     * @param coluuid coluuid 
     * @param contentIDs Content IDs to add to collection 
-    * @return kotlin.collections.Map<kotlin.String, kotlin.String>
+    * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidPost(coluuid: kotlin.String, contentIDs: kotlin.Array<kotlin.Int>) : kotlin.collections.Map<kotlin.String, kotlin.String> {
+    fun collectionsColuuidPost(coluuid: kotlin.String, contentIDs: kotlin.Array<kotlin.Int>) : kotlin.String {
         val localVariableBody: kotlin.Any? = contentIDs
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -198,13 +199,13 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.collections.Map<kotlin.String, kotlin.String>>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -219,9 +220,10 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
     * @param coluuid Collection ID 
     * @param content Content 
     * @param path Path to file 
-    * @return void
+    * @return kotlin.String
     */
-    fun collectionsFsAddPost(coluuid: kotlin.String, content: kotlin.String, path: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun collectionsFsAddPost(coluuid: kotlin.String, content: kotlin.String, path: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "content" to listOf("$content"), "path" to listOf("$path"))
         
@@ -237,13 +239,13 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -255,10 +257,10 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
     /**
     * List all collections
     * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-    * @return kotlin.Array<CollectionsCollection>
+    * @return kotlin.Array<kotlin.Array<CollectionsCollection>>
     */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsGet() : kotlin.Array<CollectionsCollection> {
+    fun collectionsGet() : kotlin.Array<kotlin.Array<CollectionsCollection>> {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -274,13 +276,13 @@ class CollectionsApi(basePath: kotlin.String = "https://api.estuary.tech") : Api
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.Array<CollectionsCollection>>(
+        val response = request<kotlin.Array<kotlin.Array<CollectionsCollection>>>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<CollectionsCollection>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.Array<CollectionsCollection>>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

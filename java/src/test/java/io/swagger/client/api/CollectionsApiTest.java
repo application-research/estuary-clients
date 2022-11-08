@@ -80,7 +80,7 @@ public class CollectionsApiTest {
     @Test
     public void collectionsColuuidDeleteTest() throws Exception {
         String coluuid = null;
-        api.collectionsColuuidDelete(coluuid);
+        String response = api.collectionsColuuidDelete(coluuid);
 
         // TODO: test validations
     }
@@ -114,7 +114,7 @@ public class CollectionsApiTest {
     public void collectionsColuuidPostTest() throws Exception {
         String coluuid = null;
         List<Integer> contentIDs = null;
-        Map<String, String> response = api.collectionsColuuidPost(coluuid, contentIDs);
+        String response = api.collectionsColuuidPost(coluuid, contentIDs);
 
         // TODO: test validations
     }
@@ -132,7 +132,7 @@ public class CollectionsApiTest {
         String coluuid = null;
         String content = null;
         String path = null;
-        api.collectionsFsAddPost(coluuid, content, path);
+        String response = api.collectionsFsAddPost(coluuid, content, path);
 
         // TODO: test validations
     }
@@ -147,7 +147,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() throws Exception {
-        List<CollectionsCollection> response = api.collectionsGet();
+        List<List<CollectionsCollection>> response = api.collectionsGet();
 
         // TODO: test validations
     }

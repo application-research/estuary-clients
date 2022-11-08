@@ -275,6 +275,32 @@ void SwaggerDealsApi::OnDealTransferInProgressGetResponse(FHttpRequestPtr HttpRe
 	Delegate.ExecuteIfBound(Response);
 }
 
+bool SwaggerDealsApi::DealTransferStatusPost(const DealTransferStatusPostRequest& Request, const FDealTransferStatusPostDelegate& Delegate /*= FDealTransferStatusPostDelegate()*/) const
+{
+	if (!IsValid())
+		return false;
+
+	TSharedRef<IHttpRequest> HttpRequest = FHttpModule::Get().CreateRequest();
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+	
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &SwaggerDealsApi::OnDealTransferStatusPostResponse, Delegate);
+	return HttpRequest->ProcessRequest();
+}
+
+void SwaggerDealsApi::OnDealTransferStatusPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDealTransferStatusPostDelegate Delegate) const
+{
+	DealTransferStatusPostResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 bool SwaggerDealsApi::DealsFailuresGet(const DealsFailuresGetRequest& Request, const FDealsFailuresGetDelegate& Delegate /*= FDealsFailuresGetDelegate()*/) const
 {
 	if (!IsValid())

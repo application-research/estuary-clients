@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete($body)
+> string adminPeeringPeersDelete($peer_ids)
 
 Remove peers on Peering Service
 
@@ -37,10 +37,11 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Swagger\Client\Model\string[]()); // string[] | Peer ids
+$peer_ids = array(new \Swagger\Client\Model\bool[]()); // bool[] | Peer ids
 
 try {
-    $apiInstance->adminPeeringPeersDelete($body);
+    $result = $apiInstance->adminPeeringPeersDelete($peer_ids);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -51,11 +52,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string[]**| Peer ids |
+ **peer_ids** | **bool[]**| Peer ids |
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -69,7 +70,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> string adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -93,7 +94,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringPeersGet();
+    $result = $apiInstance->adminPeeringPeersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -105,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -119,7 +121,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> string adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -143,7 +145,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -155,7 +158,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -169,7 +172,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> string adminPeeringStartPost()
 
 Start Peering
 
@@ -193,7 +196,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStartPost();
+    $result = $apiInstance->adminPeeringStartPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStartPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -205,7 +209,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -219,7 +223,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> string adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -243,7 +247,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStatusGet();
+    $result = $apiInstance->adminPeeringStatusGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStatusGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -255,7 +260,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -269,7 +274,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> string adminPeeringStopPost()
 
 Stop Peering
 
@@ -293,7 +298,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminPeeringStopPost();
+    $result = $apiInstance->adminPeeringStopPost();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringStopPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -305,7 +311,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -319,7 +325,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminSystemConfigGet**
-> adminSystemConfigGet()
+> string adminSystemConfigGet()
 
 Get systems(estuary/shuttle) config
 
@@ -343,7 +349,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminSystemConfigGet();
+    $result = $apiInstance->adminSystemConfigGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminSystemConfigGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -355,7 +362,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -369,7 +376,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminUsersGet**
-> adminUsersGet()
+> string adminUsersGet()
 
 Get all users
 
@@ -393,7 +400,8 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
 );
 
 try {
-    $apiInstance->adminUsersGet();
+    $result = $apiInstance->adminUsersGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminUsersGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -405,7 +413,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

@@ -105,7 +105,7 @@ public class CollectionsApi extends SwaggerApi {
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function collections_coluuid_delete (coluuid: String): String {
         // create path and map variables
@@ -129,7 +129,7 @@ public class CollectionsApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "collections_coluuid_delete";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }
@@ -171,7 +171,7 @@ public class CollectionsApi extends SwaggerApi {
     }
 
     /*
-     * Returns Dictionary 
+     * Returns String 
      */
     public function collections_coluuid_post (coluuid: String, contentIDs: Array): String {
         // create path and map variables
@@ -199,13 +199,13 @@ public class CollectionsApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "collections_coluuid_post";
 
-        token.returnType = Dictionary;
+        token.returnType = String;
         return requestId;
 
     }
 
     /*
-     * Returns void 
+     * Returns String 
      */
     public function collections_fs_add_post (coluuid: String, content: String, path: String): String {
         // create path and map variables
@@ -243,7 +243,7 @@ if("null" != String(path))
         token.requestId = requestId;
         token.completionEventType = "collections_fs_add_post";
 
-        token.returnType = null ;
+        token.returnType = String;
         return requestId;
 
     }

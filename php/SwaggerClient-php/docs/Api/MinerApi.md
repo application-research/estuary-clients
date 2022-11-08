@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet($miner, $ignore_failed)
+> string publicMinersDealsMinerGet($miner, $ignore_failed)
 
 Get all miners deals
 
@@ -35,7 +35,8 @@ $miner = "miner_example"; // string | Filter by miner
 $ignore_failed = "ignore_failed_example"; // string | Ignore Failed
 
 try {
-    $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
+    $result = $apiInstance->publicMinersDealsMinerGet($miner, $ignore_failed);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MinerApi->publicMinersDealsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -65,7 +66,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet($miner)
+> string publicMinersStatsMinerGet($miner)
 
 Get miner stats
 
@@ -90,7 +91,8 @@ $apiInstance = new Swagger\Client\Api\MinerApi(
 $miner = "miner_example"; // string | Filter by miner
 
 try {
-    $apiInstance->publicMinersStatsMinerGet($miner);
+    $result = $apiInstance->publicMinersStatsMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MinerApi->publicMinersStatsMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -105,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

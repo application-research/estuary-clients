@@ -24,10 +24,10 @@ module SwaggerClient
     # @param addresses Autoretrieve&#39;s comma-separated list of addresses
     # @param pub_key Autoretrieve&#39;s public key
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_autoretrieve_init_post(addresses, pub_key, opts = {})
-      admin_autoretrieve_init_post_with_http_info(addresses, pub_key, opts)
-      nil
+      data, _status_code, _headers = admin_autoretrieve_init_post_with_http_info(addresses, pub_key, opts)
+      data
     end
 
     # Register autoretrieve server
@@ -35,7 +35,7 @@ module SwaggerClient
     # @param addresses Autoretrieve&#39;s comma-separated list of addresses
     # @param pub_key Autoretrieve&#39;s public key
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_autoretrieve_init_post_with_http_info(addresses, pub_key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AutoretrieveApi.admin_autoretrieve_init_post ...'
@@ -61,16 +61,19 @@ module SwaggerClient
 
       # form parameters
       form_params = {}
+      form_params['addresses'] = addresses
+      form_params['pubKey'] = pub_key
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(pub_key)
+      post_body = nil
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoretrieveApi#admin_autoretrieve_init_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -79,16 +82,16 @@ module SwaggerClient
     # List autoretrieve servers
     # This endpoint lists all registered autoretrieve servers
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_autoretrieve_list_get(opts = {})
-      admin_autoretrieve_list_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_autoretrieve_list_get_with_http_info(opts)
+      data
     end
 
     # List autoretrieve servers
     # This endpoint lists all registered autoretrieve servers
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_autoretrieve_list_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AutoretrieveApi.admin_autoretrieve_list_get ...'
@@ -115,7 +118,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoretrieveApi#admin_autoretrieve_list_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -125,17 +129,17 @@ module SwaggerClient
     # This endpoint updates the lastConnection field for autoretrieve
     # @param token Autoretrieve&#39;s auth token
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def autoretrieve_heartbeat_post(token, opts = {})
-      autoretrieve_heartbeat_post_with_http_info(token, opts)
-      nil
+      data, _status_code, _headers = autoretrieve_heartbeat_post_with_http_info(token, opts)
+      data
     end
 
     # Marks autoretrieve server as up
     # This endpoint updates the lastConnection field for autoretrieve
     # @param token Autoretrieve&#39;s auth token
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def autoretrieve_heartbeat_post_with_http_info(token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AutoretrieveApi.autoretrieve_heartbeat_post ...'
@@ -167,7 +171,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutoretrieveApi#autoretrieve_heartbeat_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

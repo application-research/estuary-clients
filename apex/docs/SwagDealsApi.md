@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](SwagDealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](SwagDealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](SwagDealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](SwagDealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](SwagDealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](SwagDealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](SwagDealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -20,7 +21,7 @@ Method | HTTP request | Description
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
-> dealEstimatePost(body)
+> String dealEstimatePost(body)
 
 Estimate the cost of a deal
 
@@ -41,7 +42,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealEstimatePost(params);
+    String result = api.dealEstimatePost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -55,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -68,7 +70,7 @@ null (empty response body)
 
 <a name="dealInfoDealidGet"></a>
 # **dealInfoDealidGet**
-> dealInfoDealidGet(dealid)
+> String dealInfoDealidGet(dealid)
 
 Get Deal Info
 
@@ -89,7 +91,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealInfoDealidGet(params);
+    String result = api.dealInfoDealidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -103,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -116,7 +119,7 @@ null (empty response body)
 
 <a name="dealProposalPropcidGet"></a>
 # **dealProposalPropcidGet**
-> dealProposalPropcidGet(propcid)
+> String dealProposalPropcidGet(propcid)
 
 Get Proposal
 
@@ -137,7 +140,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealProposalPropcidGet(params);
+    String result = api.dealProposalPropcidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -151,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -164,7 +168,7 @@ null (empty response body)
 
 <a name="dealQueryMinerGet"></a>
 # **dealQueryMinerGet**
-> dealQueryMinerGet(miner)
+> String dealQueryMinerGet(miner)
 
 Query Ask
 
@@ -185,7 +189,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealQueryMinerGet(params);
+    String result = api.dealQueryMinerGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -199,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -212,7 +217,7 @@ null (empty response body)
 
 <a name="dealStatusByProposalPropcidGet"></a>
 # **dealStatusByProposalPropcidGet**
-> dealStatusByProposalPropcidGet(propcid)
+> String dealStatusByProposalPropcidGet(propcid)
 
 Get Deal Status by PropCid
 
@@ -233,7 +238,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealStatusByProposalPropcidGet(params);
+    String result = api.dealStatusByProposalPropcidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -247,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -260,7 +266,7 @@ null (empty response body)
 
 <a name="dealStatusMinerPropcidGet"></a>
 # **dealStatusMinerPropcidGet**
-> dealStatusMinerPropcidGet(miner, propcid)
+> String dealStatusMinerPropcidGet(miner, propcid)
 
 Deal Status
 
@@ -282,7 +288,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealStatusMinerPropcidGet(params);
+    String result = api.dealStatusMinerPropcidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -297,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -310,7 +317,7 @@ null (empty response body)
 
 <a name="dealTransferInProgressGet"></a>
 # **dealTransferInProgressGet**
-> dealTransferInProgressGet()
+> String dealTransferInProgressGet()
 
 Transfer In Progress
 
@@ -327,7 +334,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.dealTransferInProgressGet();
+    String result = api.dealTransferInProgressGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -338,7 +346,56 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="dealTransferStatusPost"></a>
+# **dealTransferStatusPost**
+> String dealTransferStatusPost(chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```java
+SwagDealsApi api = new SwagDealsApi();
+SwagClient client = api.getClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
+bearerAuth.setApiKey('YOUR API KEY');
+
+Map<String, Object> params = new Map<String, Object>{
+    'chanid' => SwagMainChannelIDParam.getExample()
+};
+
+try {
+    // cross your fingers
+    String result = api.dealTransferStatusPost(params);
+    System.debug(result);
+} catch (Swagger.ApiException e) {
+    // ...handle your exceptions
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**SwagMainChannelIDParam**](SwagMainChannelIDParam.md)| Channel ID |
+
+### Return type
+
+**String**
 
 ### Authorization
 
@@ -351,7 +408,7 @@ null (empty response body)
 
 <a name="dealsFailuresGet"></a>
 # **dealsFailuresGet**
-> dealsFailuresGet()
+> String dealsFailuresGet()
 
 Get storage failures for user
 
@@ -368,7 +425,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.dealsFailuresGet();
+    String result = api.dealsFailuresGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -379,7 +437,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -392,7 +450,7 @@ null (empty response body)
 
 <a name="dealsMakeMinerPost"></a>
 # **dealsMakeMinerPost**
-> dealsMakeMinerPost(miner, dealRequest)
+> String dealsMakeMinerPost(miner, dealRequest)
 
 Make Deal
 
@@ -414,7 +472,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealsMakeMinerPost(params);
+    String result = api.dealsMakeMinerPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -429,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -442,7 +501,7 @@ null (empty response body)
 
 <a name="dealsStatusDealGet"></a>
 # **dealsStatusDealGet**
-> dealsStatusDealGet(deal)
+> String dealsStatusDealGet(deal)
 
 Get Deal Status
 
@@ -463,7 +522,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.dealsStatusDealGet(params);
+    String result = api.dealsStatusDealGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -477,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -490,7 +550,7 @@ null (empty response body)
 
 <a name="publicDealsFailuresGet"></a>
 # **publicDealsFailuresGet**
-> publicDealsFailuresGet()
+> String publicDealsFailuresGet()
 
 Get storage failures
 
@@ -507,7 +567,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.publicDealsFailuresGet();
+    String result = api.publicDealsFailuresGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -518,7 +579,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -531,7 +592,7 @@ null (empty response body)
 
 <a name="publicMinersStorageQueryMinerGet"></a>
 # **publicMinersStorageQueryMinerGet**
-> publicMinersStorageQueryMinerGet(miner)
+> String publicMinersStorageQueryMinerGet(miner)
 
 Query Ask
 
@@ -552,7 +613,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.publicMinersStorageQueryMinerGet(params);
+    String result = api.publicMinersStorageQueryMinerGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -566,7 +628,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

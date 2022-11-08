@@ -98,8 +98,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string coluuid = null;
-            //instance.CollectionsColuuidDelete(coluuid);
-            
+            //var response = instance.CollectionsColuuidDelete(coluuid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -125,7 +125,7 @@ namespace estuary-client.Test
             //string coluuid = null;
             //List<int?> contentIDs = null;
             //var response = instance.CollectionsColuuidPost(coluuid, contentIDs);
-            //Assert.IsInstanceOf<Dictionary<string, string>> (response, "response is Dictionary<string, string>");
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -138,8 +138,8 @@ namespace estuary-client.Test
             //string coluuid = null;
             //string content = null;
             //string path = null;
-            //instance.CollectionsFsAddPost(coluuid, content, path);
-            
+            //var response = instance.CollectionsFsAddPost(coluuid, content, path);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -150,7 +150,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.CollectionsGet();
-            //Assert.IsInstanceOf<List<CollectionsCollection>> (response, "response is List<CollectionsCollection>");
+            //Assert.IsInstanceOf<List<List<CollectionsCollection>>> (response, "response is List<List<CollectionsCollection>>");
         }
         
         /// <summary>

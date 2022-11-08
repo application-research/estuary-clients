@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -55,14 +56,14 @@ public class AdminApi {
 
     /**
      * Build call for adminPeeringPeersDelete
-     * @param body Peer ids (required)
+     * @param peerIds Peer ids (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(List<String> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(List<Boolean> peerIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = peerIds;
 
         // create path and map variables
         String localVarPath = "/admin/peering/peers";
@@ -103,15 +104,15 @@ public class AdminApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(List<String> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(List<Boolean> peerIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling adminPeeringPeersDelete(Async)");
+        // verify the required parameter 'peerIds' is set
+        if (peerIds == null) {
+            throw new ApiException("Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(peerIds, progressListener, progressRequestListener);
         return call;
 
     }
@@ -119,34 +120,37 @@ public class AdminApi {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids (required)
+     * @param peerIds Peer ids (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringPeersDelete(List<String> body) throws ApiException {
-        adminPeeringPeersDeleteWithHttpInfo(body);
+    public String adminPeeringPeersDelete(List<Boolean> peerIds) throws ApiException {
+        ApiResponse<String> resp = adminPeeringPeersDeleteWithHttpInfo(peerIds);
+        return resp.getData();
     }
 
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param peerIds Peer ids (required)
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringPeersDeleteWithHttpInfo(List<String> body) throws ApiException {
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+    public ApiResponse<String> adminPeeringPeersDeleteWithHttpInfo(List<Boolean> peerIds) throws ApiException {
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(peerIds, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Remove peers on Peering Service (asynchronously)
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids (required)
+     * @param peerIds Peer ids (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(List<String> body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(List<Boolean> peerIds, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -167,8 +171,9 @@ public class AdminApi {
             };
         }
 
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(peerIds, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -231,21 +236,24 @@ public class AdminApi {
     /**
      * List all Peering peers
      * This endpoint can be used to list all peers on Peering Service
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringPeersGet() throws ApiException {
-        adminPeeringPeersGetWithHttpInfo();
+    public String adminPeeringPeersGet() throws ApiException {
+        ApiResponse<String> resp = adminPeeringPeersGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * List all Peering peers
      * This endpoint can be used to list all peers on Peering Service
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringPeersGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminPeeringPeersGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminPeeringPeersGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -255,7 +263,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringPeersGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -277,7 +285,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminPeeringPeersGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -340,21 +349,24 @@ public class AdminApi {
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringPeersPost() throws ApiException {
-        adminPeeringPeersPostWithHttpInfo();
+    public String adminPeeringPeersPost() throws ApiException {
+        ApiResponse<String> resp = adminPeeringPeersPostWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringPeersPostWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminPeeringPeersPostWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminPeeringPeersPostValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -364,7 +376,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersPostAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringPeersPostAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -386,7 +398,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminPeeringPeersPostValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -449,21 +462,24 @@ public class AdminApi {
     /**
      * Start Peering
      * This endpoint can be used to start the Peering Service
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringStartPost() throws ApiException {
-        adminPeeringStartPostWithHttpInfo();
+    public String adminPeeringStartPost() throws ApiException {
+        ApiResponse<String> resp = adminPeeringStartPostWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Start Peering
      * This endpoint can be used to start the Peering Service
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringStartPostWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminPeeringStartPostWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminPeeringStartPostValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -473,7 +489,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringStartPostAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringStartPostAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -495,7 +511,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminPeeringStartPostValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -558,21 +575,24 @@ public class AdminApi {
     /**
      * Check Peering Status
      * This endpoint can be used to check the Peering status
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringStatusGet() throws ApiException {
-        adminPeeringStatusGetWithHttpInfo();
+    public String adminPeeringStatusGet() throws ApiException {
+        ApiResponse<String> resp = adminPeeringStatusGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Check Peering Status
      * This endpoint can be used to check the Peering status
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringStatusGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminPeeringStatusGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminPeeringStatusGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -582,7 +602,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringStatusGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringStatusGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -604,7 +624,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminPeeringStatusGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -667,21 +688,24 @@ public class AdminApi {
     /**
      * Stop Peering
      * This endpoint can be used to stop the Peering Service
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminPeeringStopPost() throws ApiException {
-        adminPeeringStopPostWithHttpInfo();
+    public String adminPeeringStopPost() throws ApiException {
+        ApiResponse<String> resp = adminPeeringStopPostWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Stop Peering
      * This endpoint can be used to stop the Peering Service
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminPeeringStopPostWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminPeeringStopPostWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminPeeringStopPostValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -691,7 +715,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringStopPostAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringStopPostAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -713,7 +737,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminPeeringStopPostValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -776,21 +801,24 @@ public class AdminApi {
     /**
      * Get systems(estuary/shuttle) config
      * This endpoint is used to get system configs.
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminSystemConfigGet() throws ApiException {
-        adminSystemConfigGetWithHttpInfo();
+    public String adminSystemConfigGet() throws ApiException {
+        ApiResponse<String> resp = adminSystemConfigGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get systems(estuary/shuttle) config
      * This endpoint is used to get system configs.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminSystemConfigGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminSystemConfigGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminSystemConfigGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -800,7 +828,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminSystemConfigGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminSystemConfigGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -822,7 +850,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminSystemConfigGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -885,21 +914,24 @@ public class AdminApi {
     /**
      * Get all users
      * This endpoint is used to get all users.
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void adminUsersGet() throws ApiException {
-        adminUsersGetWithHttpInfo();
+    public String adminUsersGet() throws ApiException {
+        ApiResponse<String> resp = adminUsersGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get all users
      * This endpoint is used to get all users.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> adminUsersGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> adminUsersGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = adminUsersGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -909,7 +941,7 @@ public class AdminApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminUsersGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminUsersGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -931,7 +963,8 @@ public class AdminApi {
         }
 
         com.squareup.okhttp.Call call = adminUsersGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

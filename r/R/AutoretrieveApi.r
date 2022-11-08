@@ -47,17 +47,10 @@ AutoretrieveApi <- R6::R6Class(
       queryParams <- list()
       headerParams <- character()
 
-      if (!missing(`addresses`)) {
-        body <- `addresses`$toJSONString()
-      } else {
-        body <- NULL
-      }
-
-      if (!missing(`pub_key`)) {
-        body <- `pub_key`$toJSONString()
-      } else {
-        body <- NULL
-      }
+      body <- list(
+          "addresses" = addresses,
+          "pubKey" = pub_key
+      )
 
       urlPath <- "/admin/autoretrieve/init"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -68,7 +61,9 @@ AutoretrieveApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -90,7 +85,9 @@ AutoretrieveApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -116,7 +113,9 @@ AutoretrieveApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {

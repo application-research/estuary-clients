@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'user_api_keys_get' } = { 
     	summary => 'Get API keys for a user',
         params => $params,
-        returns => 'ARRAY[MainGetApiKeysResp]',
+        returns => 'ARRAY[ARRAY[MainGetApiKeysResp]]',
         };
 }
-# @return ARRAY[MainGetApiKeysResp]
+# @return ARRAY[ARRAY[MainGetApiKeysResp]]
 #
 sub user_api_keys_get {
     my ($self, %args) = @_;
@@ -93,42 +93,42 @@ sub user_api_keys_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[MainGetApiKeysResp]', $response);
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[ARRAY[MainGetApiKeysResp]]', $response);
     return $_response_object;
 }
 
 #
-# user_api_keys_key_delete
+# user_api_keys_key_or_hash_delete
 #
 # Revoke a User API Key.
 # 
-# @param string $key Key (required)
+# @param string $key_or_hash Key or Hash (required)
 {
     my $params = {
-    'key' => {
+    'key_or_hash' => {
         data_type => 'string',
-        description => 'Key',
+        description => 'Key or Hash',
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'user_api_keys_key_delete' } = { 
+    __PACKAGE__->method_documentation->{ 'user_api_keys_key_or_hash_delete' } = { 
     	summary => 'Revoke a User API Key.',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
-sub user_api_keys_key_delete {
+sub user_api_keys_key_or_hash_delete {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'key' is set
-    unless (exists $args{'key'}) {
-      croak("Missing the required parameter 'key' when calling user_api_keys_key_delete");
+    # verify the required parameter 'key_or_hash' is set
+    unless (exists $args{'key_or_hash'}) {
+      croak("Missing the required parameter 'key_or_hash' when calling user_api_keys_key_or_hash_delete");
     }
 
     # parse inputs
-    my $_resource_path = '/user/api-keys/{key}';
+    my $_resource_path = '/user/api-keys/{key_or_hash}';
 
     my $_method = 'DELETE';
     my $query_params = {};
@@ -143,9 +143,9 @@ sub user_api_keys_key_delete {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     # path params
-    if ( exists $args{'key'}) {
-        my $_base_variable = "{" . "key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'key'});
+    if ( exists $args{'key_or_hash'}) {
+        my $_base_variable = "{" . "key_or_hash" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'key_or_hash'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -154,10 +154,14 @@ sub user_api_keys_key_delete {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -165,13 +169,13 @@ sub user_api_keys_key_delete {
 #
 # Create API keys for a user
 # 
-# @param string $expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+# @param string $expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 # @param string $perms Permissions -- currently unused (optional)
 {
     my $params = {
     'expiry' => {
         data_type => 'string',
-        description => 'Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h',
+        description => 'Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h',
         required => '0',
     },
     'perms' => {
@@ -291,10 +295,10 @@ sub user_export_get {
     __PACKAGE__->method_documentation->{ 'user_stats_get' } = { 
     	summary => 'Create API keys for a user',
         params => $params,
-        returns => 'MainUserStatsResponse',
+        returns => 'string',
         };
 }
-# @return MainUserStatsResponse
+# @return string
 #
 sub user_stats_get {
     my ($self, %args) = @_;
@@ -325,7 +329,7 @@ sub user_stats_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainUserStatsResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
 }
 

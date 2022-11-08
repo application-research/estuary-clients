@@ -35,9 +35,9 @@ describe 'PeersApi' do
   # unit tests for admin_peering_peers_delete
   # Remove peers on Peering Service
   # This endpoint can be used to remove a Peer from the Peering Service
-  # @param body Peer ids
+  # @param peer_ids Peer ids
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_peers_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'PeersApi' do
   # List all Peering peers
   # This endpoint can be used to list all peers on Peering Service
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_peers_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'PeersApi' do
   # Add peers on Peering Service
   # This endpoint can be used to add a Peer from the Peering Service
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_peers_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -70,7 +70,7 @@ describe 'PeersApi' do
   # Start Peering
   # This endpoint can be used to start the Peering Service
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_start_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -81,7 +81,7 @@ describe 'PeersApi' do
   # Check Peering Status
   # This endpoint can be used to check the Peering status
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_status_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -92,7 +92,7 @@ describe 'PeersApi' do
   # Stop Peering
   # This endpoint can be used to stop the Peering Service
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'admin_peering_stop_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -74,7 +74,7 @@ public:
     /// This endpoint is used to delete an existing collection.
     /// </remarks>
     /// <param name="coluuid">Collection ID</param>
-    pplx::task<void> collectionsColuuidDelete(
+    pplx::task<utility::string_t> collectionsColuuidDelete(
         utility::string_t coluuid
     );
     /// <summary>
@@ -97,7 +97,7 @@ public:
     /// </remarks>
     /// <param name="coluuid">coluuid</param>
     /// <param name="contentIDs">Content IDs to add to collection</param>
-    pplx::task<std::map<utility::string_t, utility::string_t>> collectionsColuuidPost(
+    pplx::task<utility::string_t> collectionsColuuidPost(
         utility::string_t coluuid,
         std::vector<int32_t> contentIDs
     );
@@ -110,7 +110,7 @@ public:
     /// <param name="coluuid">Collection ID</param>
     /// <param name="content">Content</param>
     /// <param name="path">Path to file</param>
-    pplx::task<void> collectionsFsAddPost(
+    pplx::task<utility::string_t> collectionsFsAddPost(
         utility::string_t coluuid,
         utility::string_t content,
         utility::string_t path
@@ -121,7 +121,7 @@ public:
     /// <remarks>
     /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     /// </remarks>
-    pplx::task<std::vector<std::shared_ptr<Collections.Collection>>> collectionsGet(
+    pplx::task<std::vector<std::vector<std::shared_ptr<Collections.Collection>>>> collectionsGet(
     );
     /// <summary>
     /// Create a new collection

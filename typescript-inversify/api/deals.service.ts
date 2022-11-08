@@ -20,7 +20,9 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { MainChannelIDParam } from '../model/mainChannelIDParam';
 import { MainEstimateDealBody } from '../model/mainEstimateDealBody';
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -39,8 +41,8 @@ export class DealsService {
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      
      */
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealEstimatePost(body: MainEstimateDealBody, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!body){
             throw new Error('Required parameter body was null or undefined when calling dealEstimatePost.');
@@ -53,7 +55,7 @@ export class DealsService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deal/estimate`, body as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deal/estimate`, body as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -67,8 +69,8 @@ export class DealsService {
      * @param dealid Deal ID
      
      */
-    public dealInfoDealidGet(dealid: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealInfoDealidGet(dealid: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealInfoDealidGet(dealid: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealInfoDealidGet(dealid: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealInfoDealidGet(dealid: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!dealid){
             throw new Error('Required parameter dealid was null or undefined when calling dealInfoDealidGet.');
@@ -80,7 +82,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/info/${encodeURIComponent(String(dealid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/info/${encodeURIComponent(String(dealid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -94,8 +96,8 @@ export class DealsService {
      * @param propcid Proposal CID
      
      */
-    public dealProposalPropcidGet(propcid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealProposalPropcidGet(propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealProposalPropcidGet(propcid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealProposalPropcidGet(propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealProposalPropcidGet(propcid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!propcid){
             throw new Error('Required parameter propcid was null or undefined when calling dealProposalPropcidGet.');
@@ -107,7 +109,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/proposal/${encodeURIComponent(String(propcid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/proposal/${encodeURIComponent(String(propcid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -121,8 +123,8 @@ export class DealsService {
      * @param miner CID
      
      */
-    public dealQueryMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealQueryMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealQueryMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealQueryMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealQueryMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling dealQueryMinerGet.');
@@ -134,7 +136,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/query/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/query/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -148,8 +150,8 @@ export class DealsService {
      * @param propcid PropCid
      
      */
-    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealStatusByProposalPropcidGet(propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealStatusByProposalPropcidGet(propcid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!propcid){
             throw new Error('Required parameter propcid was null or undefined when calling dealStatusByProposalPropcidGet.');
@@ -161,7 +163,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/status-by-proposal/${encodeURIComponent(String(propcid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/status-by-proposal/${encodeURIComponent(String(propcid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -176,8 +178,8 @@ export class DealsService {
      * @param propcid Proposal CID
      
      */
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealStatusMinerPropcidGet(miner: string, propcid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealStatusMinerPropcidGet(miner: string, propcid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling dealStatusMinerPropcidGet.');
@@ -193,7 +195,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/status/${encodeURIComponent(String(miner))}/${encodeURIComponent(String(propcid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/status/${encodeURIComponent(String(miner))}/${encodeURIComponent(String(propcid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -206,8 +208,8 @@ export class DealsService {
      * This endpoint returns the in-progress transfers
      
      */
-    public dealTransferInProgressGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public dealTransferInProgressGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealTransferInProgressGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public dealTransferInProgressGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealTransferInProgressGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -215,7 +217,35 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/transfer/in-progress` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deal/transfer/in-progress` as any, headers);
+        if (observe === 'body') {
+               return response.map(httpResponse => httpResponse.response);
+        }
+        return response;
+    }
+
+
+    /**
+     * Transfer Status
+     * This endpoint returns the status of a transfer
+     * @param chanid Channel ID
+     
+     */
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public dealTransferStatusPost(chanid: MainChannelIDParam, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!chanid){
+            throw new Error('Required parameter chanid was null or undefined when calling dealTransferStatusPost.');
+        }
+
+        // authentication (bearerAuth) required
+        if (this.APIConfiguration.apiKeys['Authorization']) {
+            headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
+        }
+        headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
+
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deal/transfer/status`, chanid as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -228,8 +258,8 @@ export class DealsService {
      * This endpoint returns a list of storage failures for user
      
      */
-    public dealsFailuresGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public dealsFailuresGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealsFailuresGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public dealsFailuresGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealsFailuresGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -237,7 +267,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deals/failures` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deals/failures` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -252,8 +282,8 @@ export class DealsService {
      * @param dealRequest Deal Request
      
      */
-    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealsMakeMinerPost(miner: string, dealRequest: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealsMakeMinerPost(miner: string, dealRequest: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling dealsMakeMinerPost.');
@@ -270,7 +300,7 @@ export class DealsService {
         headers['Accept'] = 'application/json';
         headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deals/make/${encodeURIComponent(String(miner))}`, dealRequest as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/deals/make/${encodeURIComponent(String(miner))}`, dealRequest as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -284,8 +314,8 @@ export class DealsService {
      * @param deal Deal ID
      
      */
-    public dealsStatusDealGet(deal: number, observe?: 'body', headers?: Headers): Observable<any>;
-    public dealsStatusDealGet(deal: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public dealsStatusDealGet(deal: number, observe?: 'body', headers?: Headers): Observable<string>;
+    public dealsStatusDealGet(deal: number, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public dealsStatusDealGet(deal: number, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!deal){
             throw new Error('Required parameter deal was null or undefined when calling dealsStatusDealGet.');
@@ -297,7 +327,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deals/status/${encodeURIComponent(String(deal))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/deals/status/${encodeURIComponent(String(deal))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -310,8 +340,8 @@ export class DealsService {
      * This endpoint returns a list of storage failures
      
      */
-    public publicDealsFailuresGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicDealsFailuresGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicDealsFailuresGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicDealsFailuresGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicDealsFailuresGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -319,7 +349,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/deals/failures` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/deals/failures` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -333,8 +363,8 @@ export class DealsService {
      * @param miner CID
      
      */
-    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersStorageQueryMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersStorageQueryMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersStorageQueryMinerGet.');
@@ -346,7 +376,7 @@ export class DealsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/storage/query/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/storage/query/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

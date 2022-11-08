@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_delete**
-> collections_coluuid_delete (coluuid: STRING_32 )
+> collections_coluuid_delete (coluuid: STRING_32 ): detachable STRING_32
 	
 
 Deletes a collection
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> collections_coluuid_post (coluuid: STRING_32 ; content_ids: LIST [INTEGER_32] ): detachable STRING_TABLE[STRING_32]
+> collections_coluuid_post (coluuid: STRING_32 ; content_ids: LIST [INTEGER_32] ): detachable STRING_32
 	
 
 Add contents to a collection
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**STRING_TABLE[STRING_32]**](STRING_32.md)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_fs_add_post**
-> collections_fs_add_post (coluuid: STRING_32 ; content: STRING_32 ; path: STRING_32 )
+> collections_fs_add_post (coluuid: STRING_32 ; content: STRING_32 ; path: STRING_32 ): detachable STRING_32
 	
 
 Add a file to a collection
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> collections_get : detachable LIST [COLLECTIONS_COLLECTION]
+> collections_get : detachable LIST [LIST [COLLECTIONS_COLLECTION]]
 	
 
 List all collections
@@ -214,7 +214,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**LIST [COLLECTIONS_COLLECTION]**](collections.Collection.md)
+[**LIST [LIST [COLLECTIONS_COLLECTION]]**](LIST.md)
 
 ### Authorization
 

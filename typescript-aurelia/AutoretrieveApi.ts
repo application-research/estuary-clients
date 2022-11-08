@@ -60,7 +60,7 @@ export class AutoretrieveApi extends Api {
    * @param params.addresses Autoretrieve&#39;s comma-separated list of addresses
    * @param params.pubKey Autoretrieve&#39;s public key
    */
-  async adminAutoretrieveInitPost(params: IAdminAutoretrieveInitPostParams): Promise<any> {
+  async adminAutoretrieveInitPost(params: IAdminAutoretrieveInitPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('adminAutoretrieveInitPost', params, 'addresses');
     this.ensureParamIsSet('adminAutoretrieveInitPost', params, 'pubKey');
@@ -71,9 +71,12 @@ export class AutoretrieveApi extends Api {
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method
       .asPost()
-      // Encode body parameter
-      .withHeader('content-type', 'application/json')
-      .withContent(JSON.stringify(params['pubKey'] || {}))
+      // Encode form parameters
+      .withHeader('content-type', 'application/x-www-form-urlencoded')
+      .withContent(this.queryString({ 
+        'addresses': params['addresses'],
+        'pubKey': params['pubKey'],
+      }))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())
@@ -92,7 +95,7 @@ export class AutoretrieveApi extends Api {
    * List autoretrieve servers
    * This endpoint lists all registered autoretrieve servers
    */
-  async adminAutoretrieveListGet(): Promise<any> {
+  async adminAutoretrieveListGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -120,7 +123,7 @@ export class AutoretrieveApi extends Api {
    * This endpoint updates the lastConnection field for autoretrieve
    * @param params.token Autoretrieve&#39;s auth token
    */
-  async autoretrieveHeartbeatPost(params: IAutoretrieveHeartbeatPostParams): Promise<any> {
+  async autoretrieveHeartbeatPost(params: IAutoretrieveHeartbeatPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('autoretrieveHeartbeatPost', params, 'token');
 

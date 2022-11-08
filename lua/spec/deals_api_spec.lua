@@ -64,6 +64,13 @@ describe("deals_api", function()
     end)
   end)
 
+  -- unit tests for deal_transfer_status_post
+  describe("deal_transfer_status_post test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for deals_failures_get
   describe("deals_failures_get test", function()
     it("should work", function()

@@ -18,13 +18,9 @@ open class MinerAPI {
      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func publicMinersDealsMinerGet(miner: String, ignoreFailed: String? = nil, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func publicMinersDealsMinerGet(miner: String, ignoreFailed: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         publicMinersDealsMinerGetWithRequestBuilder(miner: miner, ignoreFailed: ignoreFailed).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -36,13 +32,17 @@ open class MinerAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func publicMinersDealsMinerGetWithRequestBuilder(miner: String, ignoreFailed: String? = nil) -> RequestBuilder<Void> {
+    open class func publicMinersDealsMinerGetWithRequestBuilder(miner: String, ignoreFailed: String? = nil) -> RequestBuilder<String> {
         var path = "/public/miners/deals/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -55,7 +55,7 @@ open class MinerAPI {
             "ignore-failed": ignoreFailed
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -66,13 +66,9 @@ open class MinerAPI {
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func publicMinersStatsMinerGet(miner: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+    open class func publicMinersStatsMinerGet(miner: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         publicMinersStatsMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+            completion(response?.body, error)
         }
     }
 
@@ -84,12 +80,16 @@ open class MinerAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func publicMinersStatsMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<Void> {
+    open class func publicMinersStatsMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<String> {
         var path = "/public/miners/stats/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -99,7 +99,7 @@ open class MinerAPI {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

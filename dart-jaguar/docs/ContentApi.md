@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 
 # **contentAddCarPost**
-> contentAddCarPost(body, ignoreDupes, filename)
+> String contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -49,7 +49,8 @@ var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 var filename = filename_example; // String | Filename
 
 try { 
-    api_instance.contentAddCarPost(body, ignoreDupes, filename);
+    var result = api_instance.contentAddCarPost(body, ignoreDupes, filename);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddCarPost: $e\n");
 }
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -79,7 +80,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -98,7 +99,8 @@ var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try { 
-    api_instance.contentAddIpfsPost(body, ignoreDupes);
+    var result = api_instance.contentAddIpfsPost(body, ignoreDupes);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddIpfsPost: $e\n");
 }
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -233,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAllDealsGet**
-> contentAllDealsGet(begin, duration, all)
+> String contentAllDealsGet(begin, duration, all)
 
 Get all deals for a user
 
@@ -253,7 +255,8 @@ var duration = duration_example; // String | Duration
 var all = all_example; // String | All
 
 try { 
-    api_instance.contentAllDealsGet(begin, duration, all);
+    var result = api_instance.contentAllDealsGet(begin, duration, all);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAllDealsGet: $e\n");
 }
@@ -269,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -283,7 +286,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+> String contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -301,7 +304,8 @@ var api_instance = new ContentApi();
 var content = content_example; // String | Content ID
 
 try { 
-    api_instance.contentBwUsageContentGet(content);
+    var result = api_instance.contentBwUsageContentGet(content);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentBwUsageContentGet: $e\n");
 }
@@ -315,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -329,7 +333,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentCreatePost**
-> contentCreatePost(req, ignoreDupes)
+> String contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -348,7 +352,8 @@ var req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try { 
-    api_instance.contentCreatePost(req, ignoreDupes);
+    var result = api_instance.contentCreatePost(req, ignoreDupes);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentCreatePost: $e\n");
 }
@@ -363,7 +368,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -377,7 +382,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentDealsGet**
-> contentDealsGet(limit, offset)
+> String contentDealsGet(limit, offset)
 
 Content with deals
 
@@ -396,7 +401,8 @@ var limit = 56; // int | Limit
 var offset = 56; // int | Offset
 
 try { 
-    api_instance.contentDealsGet(limit, offset);
+    var result = api_instance.contentDealsGet(limit, offset);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentDealsGet: $e\n");
 }
@@ -411,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -425,7 +431,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+> String contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -443,7 +449,8 @@ var api_instance = new ContentApi();
 var datacid = datacid_example; // String | Data CID
 
 try { 
-    api_instance.contentEnsureReplicationDatacidGet(datacid);
+    var result = api_instance.contentEnsureReplicationDatacidGet(datacid);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentEnsureReplicationDatacidGet: $e\n");
 }
@@ -457,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -518,7 +525,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentIdGet**
-> contentIdGet(id)
+> String contentIdGet(id)
 
 Content
 
@@ -536,7 +543,8 @@ var api_instance = new ContentApi();
 var id = 56; // int | Content ID
 
 try { 
-    api_instance.contentIdGet(id);
+    var result = api_instance.contentIdGet(id);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentIdGet: $e\n");
 }
@@ -550,7 +558,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -564,7 +572,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentImportdealPost**
-> contentImportdealPost(body)
+> String contentImportdealPost(body)
 
 Import a deal
 
@@ -582,7 +590,8 @@ var api_instance = new ContentApi();
 var body = new MainImportDealBody(); // MainImportDealBody | Import a deal
 
 try { 
-    api_instance.contentImportdealPost(body);
+    var result = api_instance.contentImportdealPost(body);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentImportdealPost: $e\n");
 }
@@ -596,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -610,7 +619,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentListGet**
-> List<String> contentListGet()
+> String contentListGet()
 
 List all pinned content
 
@@ -639,7 +648,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<String>**
+**String**
 
 ### Authorization
 
@@ -653,7 +662,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentReadContGet**
-> contentReadContGet(cont)
+> String contentReadContGet(cont)
 
 Read content
 
@@ -671,7 +680,8 @@ var api_instance = new ContentApi();
 var cont = cont_example; // String | CID
 
 try { 
-    api_instance.contentReadContGet(cont);
+    var result = api_instance.contentReadContGet(cont);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentReadContGet: $e\n");
 }
@@ -685,7 +695,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -699,7 +709,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> String contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -716,7 +726,8 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 
 try { 
-    api_instance.contentStagingZonesGet();
+    var result = api_instance.contentStagingZonesGet();
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentStagingZonesGet: $e\n");
 }
@@ -727,7 +738,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -741,7 +752,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentStatsGet**
-> contentStatsGet(limit, offset)
+> String contentStatsGet(limit, offset)
 
 Get content statistics
 
@@ -760,7 +771,8 @@ var limit = limit_example; // String | limit
 var offset = offset_example; // String | offset
 
 try { 
-    api_instance.contentStatsGet(limit, offset);
+    var result = api_instance.contentStatsGet(limit, offset);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentStatsGet: $e\n");
 }
@@ -775,7 +787,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -789,7 +801,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentStatusIdGet**
-> contentStatusIdGet(id)
+> String contentStatusIdGet(id)
 
 Content Status
 
@@ -807,7 +819,8 @@ var api_instance = new ContentApi();
 var id = 56; // int | Content ID
 
 try { 
-    api_instance.contentStatusIdGet(id);
+    var result = api_instance.contentStatusIdGet(id);
+    print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentStatusIdGet: $e\n");
 }
@@ -821,7 +834,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

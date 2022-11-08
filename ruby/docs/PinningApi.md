@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get
+> String pinning_pins_get
 
 List all pin status objects
 
@@ -34,7 +34,8 @@ api_instance = SwaggerClient::PinningApi.new
 
 begin
   #List all pin status objects
-  api_instance.pinning_pins_get
+  result = api_instance.pinning_pins_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_get: #{e}"
 end
@@ -45,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -59,7 +60,7 @@ nil (empty response body)
 
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete(pinid)
+> String pinning_pins_pinid_delete(pinid)
 
 Delete a pinned object
 
@@ -84,7 +85,8 @@ pinid = 'pinid_example' # String | Pin ID
 
 begin
   #Delete a pinned object
-  api_instance.pinning_pins_pinid_delete(pinid)
+  result = api_instance.pinning_pins_pinid_delete(pinid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_delete: #{e}"
 end
@@ -98,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -112,7 +114,7 @@ nil (empty response body)
 
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get(pinid)
+> String pinning_pins_pinid_get(pinid)
 
 Get a pin status object
 
@@ -137,7 +139,8 @@ pinid = 'pinid_example' # String | cid
 
 begin
   #Get a pin status object
-  api_instance.pinning_pins_pinid_get(pinid)
+  result = api_instance.pinning_pins_pinid_get(pinid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_get: #{e}"
 end
@@ -151,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -165,7 +168,7 @@ nil (empty response body)
 
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post(pinid)
+> String pinning_pins_pinid_post(pinid)
 
 Replace a pinned object
 
@@ -190,7 +193,8 @@ pinid = 'pinid_example' # String | Pin ID
 
 begin
   #Replace a pinned object
-  api_instance.pinning_pins_pinid_post(pinid)
+  result = api_instance.pinning_pins_pinid_post(pinid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
 end
@@ -204,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -218,7 +222,7 @@ nil (empty response body)
 
 
 # **pinning_pins_post**
-> pinning_pins_post(cid, name)
+> String pinning_pins_post(pin)
 
 Add and pin object
 
@@ -238,14 +242,13 @@ end
 
 api_instance = SwaggerClient::PinningApi.new
 
-cid = 'cid_example' # String | cid
-
-name = 'name_example' # String | name
+pin = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 
 begin
   #Add and pin object
-  api_instance.pinning_pins_post(cid, name)
+  result = api_instance.pinning_pins_post(pin)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_post: #{e}"
 end
@@ -255,12 +258,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **String**| cid | 
- **name** | **String**| name | 
+ **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

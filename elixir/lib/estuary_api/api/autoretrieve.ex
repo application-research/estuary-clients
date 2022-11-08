@@ -24,16 +24,16 @@ defmodule EstuaryAPI.Api.Autoretrieve do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_autoretrieve_init_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_autoretrieve_init_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_autoretrieve_init_post(connection, addresses, pub_key, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/admin/autoretrieve/init")
-    |> add_param(:body, :"addresses", addresses)
-    |> add_param(:body, :"pubKey", pub_key)
+    |> add_param(:form, :"addresses", addresses)
+    |> add_param(:form, :"pubKey", pub_key)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -50,10 +50,10 @@ defmodule EstuaryAPI.Api.Autoretrieve do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_autoretrieve_list_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_autoretrieve_list_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_autoretrieve_list_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -75,10 +75,10 @@ defmodule EstuaryAPI.Api.Autoretrieve do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec autoretrieve_heartbeat_post(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec autoretrieve_heartbeat_post(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def autoretrieve_heartbeat_post(connection, token, _opts \\ []) do
     %{}
     |> method(:post)

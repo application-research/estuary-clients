@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-10-25T22:52:57.283Z
+  - Build date: 2022-11-08T00:36:35.475Z
 
 This is the API for the Estuary application.
 
@@ -93,9 +93,10 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
+        List<Boolean> peerIds = Arrays.asList(new List<Boolean>()); // List<Boolean> | Peer ids
         try {
-            apiInstance.adminPeeringPeersDelete(body);
+            String result = apiInstance.adminPeeringPeersDelete(peerIds);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersDelete");
             e.printStackTrace();
@@ -154,12 +155,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs/DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs/DefaultApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -196,7 +197,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
@@ -205,12 +206,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [CollectionsCollection](docs/CollectionsCollection.md)
+ - [MainChannelIDParam](docs/MainChannelIDParam.md)
  - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/MainImportDealBody.md)
- - [MainUserStatsResponse](docs/MainUserStatsResponse.md)
+ - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)

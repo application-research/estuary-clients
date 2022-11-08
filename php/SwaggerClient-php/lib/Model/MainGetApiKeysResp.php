@@ -58,7 +58,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'expiry' => 'string',
-        'token' => 'string'
+        'label' => 'string',
+        'token' => 'string',
+        'token_hash' => 'string'
     ];
 
     /**
@@ -68,7 +70,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'expiry' => null,
-        'token' => null
+        'label' => null,
+        'token' => null,
+        'token_hash' => null
     ];
 
     /**
@@ -99,7 +103,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'expiry' => 'expiry',
-        'token' => 'token'
+        'label' => 'label',
+        'token' => 'token',
+        'token_hash' => 'tokenHash'
     ];
 
     /**
@@ -109,7 +115,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'expiry' => 'setExpiry',
-        'token' => 'setToken'
+        'label' => 'setLabel',
+        'token' => 'setToken',
+        'token_hash' => 'setTokenHash'
     ];
 
     /**
@@ -119,7 +127,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'expiry' => 'getExpiry',
-        'token' => 'getToken'
+        'label' => 'getLabel',
+        'token' => 'getToken',
+        'token_hash' => 'getTokenHash'
     ];
 
     /**
@@ -183,7 +193,9 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['expiry'] = isset($data['expiry']) ? $data['expiry'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['token'] = isset($data['token']) ? $data['token'] : null;
+        $this->container['token_hash'] = isset($data['token_hash']) ? $data['token_hash'] : null;
     }
 
     /**
@@ -235,6 +247,30 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     *
+     * @param string $label label
+     *
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
      * Gets token
      *
      * @return string
@@ -254,6 +290,30 @@ class MainGetApiKeysResp implements ModelInterface, ArrayAccess
     public function setToken($token)
     {
         $this->container['token'] = $token;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_hash
+     *
+     * @return string
+     */
+    public function getTokenHash()
+    {
+        return $this->container['token_hash'];
+    }
+
+    /**
+     * Sets token_hash
+     *
+     * @param string $token_hash token_hash
+     *
+     * @return $this
+     */
+    public function setTokenHash($token_hash)
+    {
+        $this->container['token_hash'] = $token_hash;
 
         return $this;
     }

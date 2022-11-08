@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.NetApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -46,7 +47,7 @@ API.Client.NetApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Net Addrs
  * This endpoint is used to get net addrs
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Array<!string>>}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.NetApi.prototype.netAddrsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -78,7 +79,7 @@ API.Client.NetApi.prototype.netAddrsGet = function(opt_extraHttpRequestParams) {
  * This endpoint returns all miners
  * @param {!string} miner Filter by miner
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.NetApi.prototype.publicMinersFailuresMinerGet = function(miner, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -114,7 +115,7 @@ API.Client.NetApi.prototype.publicMinersFailuresMinerGet = function(miner, opt_e
  * Get all miners
  * This endpoint returns all miners
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.NetApi.prototype.publicMinersGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

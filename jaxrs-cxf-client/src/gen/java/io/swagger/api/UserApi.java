@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.MainGetApiKeysResp;
-import io.swagger.model.MainUserStatsResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -40,24 +39,27 @@ public interface UserApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get API keys for a user", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainGetApiKeysResp.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "OK", response = List.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public List<MainGetApiKeysResp> userApiKeysGet();
+    public List<List<MainGetApiKeysResp>> userApiKeysGet();
 
     /**
      * Revoke a User API Key.
      *
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      *
      */
     @DELETE
-    @Path("/user/api-keys/{key}")
+    @Path("/user/api-keys/{key_or_hash}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Revoke a User API Key.", tags={  })
-    @ApiResponses(value = {  })
-    public void userApiKeysKeyDelete(@PathParam("key") String key);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String userApiKeysKeyOrHashDelete(@PathParam("key_or_hash") String keyOrHash);
 
     /**
      * Create API keys for a user
@@ -87,7 +89,9 @@ public interface UserApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Export user data", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String userExportGet();
 
     /**
@@ -101,7 +105,9 @@ public interface UserApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Create API keys for a user", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = MainUserStatsResponse.class) })
-    public MainUserStatsResponse userStatsGet();
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String userStatsGet();
 }
 

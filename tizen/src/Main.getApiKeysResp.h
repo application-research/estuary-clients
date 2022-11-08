@@ -54,15 +54,31 @@ public:
 	void setExpiry(std::string  expiry);
 	/*! \brief Get 
 	 */
+	std::string getLabel();
+
+	/*! \brief Set 
+	 */
+	void setLabel(std::string  label);
+	/*! \brief Get 
+	 */
 	std::string getToken();
 
 	/*! \brief Set 
 	 */
 	void setToken(std::string  token);
+	/*! \brief Get 
+	 */
+	std::string getTokenHash();
+
+	/*! \brief Set 
+	 */
+	void setTokenHash(std::string  tokenHash);
 
 private:
 	std::string expiry;
+	std::string label;
 	std::string token;
+	std::string tokenHash;
 	void __init();
 	void __cleanup();
 

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](SWGUserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](SWGUserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](SWGUserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](SWGUserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](SWGUserApi.md#userexportget) | **GET** /user/export | Export user data
 [**userStatsGet**](SWGUserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 # **userApiKeysGet**
 ```objc
 -(NSURLSessionTask*) userApiKeysGetWithCompletionHandler: 
-        (void (^)(NSArray<SWGMainGetApiKeysResp>* output, NSError* error)) handler;
+        (void (^)(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error)) handler;
 ```
 
 Get API keys for a user
@@ -36,7 +36,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Get API keys for a user
 [apiInstance userApiKeysGetWithCompletionHandler: 
-          ^(NSArray<SWGMainGetApiKeysResp>* output, NSError* error) {
+          ^(NSArray<NSArray<SWGMainGetApiKeysResp>*>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**NSArray<SWGMainGetApiKeysResp>***](SWGMainGetApiKeysResp.md)
+[**NSArray<NSArray<SWGMainGetApiKeysResp>*>***](NSArray.md)
 
 ### Authorization
 
@@ -64,15 +64,15 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userApiKeysKeyDelete**
+# **userApiKeysKeyOrHashDelete**
 ```objc
--(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
-        completionHandler: (void (^)(NSError* error)) handler;
+-(NSURLSessionTask*) userApiKeysKeyOrHashDeleteWithKeyOrHash: (NSString*) keyOrHash
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example 
 ```objc
@@ -84,15 +84,18 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* key = @"key_example"; // Key
+NSString* keyOrHash = @"keyOrHash_example"; // Key or Hash
 
 SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Revoke a User API Key.
-[apiInstance userApiKeysKeyDeleteWithKey:key
-          completionHandler: ^(NSError* error) {
+[apiInstance userApiKeysKeyOrHashDeleteWithKeyOrHash:keyOrHash
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
-                            NSLog(@"Error calling SWGUserApi->userApiKeysKeyDelete: %@", error);
+                            NSLog(@"Error calling SWGUserApi->userApiKeysKeyOrHashDelete: %@", error);
                         }
                     }];
 ```
@@ -101,11 +104,11 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **NSString***| Key | 
+ **keyOrHash** | **NSString***| Key or Hash | 
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -139,7 +142,7 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* expiry = @"expiry_example"; // Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+NSString* expiry = @"expiry_example"; // Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
 NSString* perms = @"perms_example"; // Permissions -- currently unused (optional)
 
 SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
@@ -161,7 +164,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **NSString***| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **NSString***| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **NSString***| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -235,7 +238,7 @@ This endpoint does not need any parameter.
 # **userStatsGet**
 ```objc
 -(NSURLSessionTask*) userStatsGetWithCompletionHandler: 
-        (void (^)(SWGMainUserStatsResponse* output, NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Create API keys for a user
@@ -257,7 +260,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Create API keys for a user
 [apiInstance userStatsGetWithCompletionHandler: 
-          ^(SWGMainUserStatsResponse* output, NSError* error) {
+          ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -272,7 +275,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SWGMainUserStatsResponse***](SWGMainUserStatsResponse.md)
+**NSString***
 
 ### Authorization
 

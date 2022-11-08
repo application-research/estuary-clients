@@ -142,6 +142,27 @@
   []
   (:data (deal-transfer-in-progress-get-with-http-info)))
 
+(defn deal-transfer-status-post-with-http-info
+  "Transfer Status
+  This endpoint returns the status of a transfer"
+  [chanid ]
+  (check-required-params chanid)
+  (call-api "/deal/transfer/status" :post
+            {:path-params   {}
+             :header-params {}
+             :query-params  {}
+             :form-params   {}
+             :body-param    chanid
+             :content-types []
+             :accepts       ["application/json"]
+             :auth-names    ["bearerAuth"]}))
+
+(defn deal-transfer-status-post
+  "Transfer Status
+  This endpoint returns the status of a transfer"
+  [chanid ]
+  (:data (deal-transfer-status-post-with-http-info chanid)))
+
 (defn deals-failures-get-with-http-info
   "Get storage failures for user
   This endpoint returns a list of storage failures for user"

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
 [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> [MainGetApiKeysResp] userApiKeysGet()
+> [[MainGetApiKeysResp]] userApiKeysGet()
 
 Get API keys for a user
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[MainGetApiKeysResp]**](MainGetApiKeysResp.md)
+**[[MainGetApiKeysResp]]**
 
 ### Authorization
 
@@ -58,13 +58,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysKeyDelete"></a>
-# **userApiKeysKeyDelete**
-> userApiKeysKeyDelete(key)
+<a name="userApiKeysKeyOrHashDelete"></a>
+# **userApiKeysKeyOrHashDelete**
+> 'String' userApiKeysKeyOrHashDelete(keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```javascript
@@ -79,28 +79,28 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new EstuaryClient.UserApi();
 
-var key = "key_example"; // String | Key
+var keyOrHash = "keyOrHash_example"; // String | Key or Hash
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.userApiKeysKeyDelete(key, callback);
+apiInstance.userApiKeysKeyOrHashDelete(keyOrHash, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **String**| Key | 
+ **keyOrHash** | **String**| Key or Hash | 
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -133,7 +133,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 var apiInstance = new EstuaryClient.UserApi();
 
 var opts = { 
-  'expiry': "expiry_example", // String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  'expiry': "expiry_example", // String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   'perms': "perms_example" // String | Permissions -- currently unused
 };
 
@@ -151,7 +151,7 @@ apiInstance.userApiKeysPost(opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -216,7 +216,7 @@ This endpoint does not need any parameter.
 
 <a name="userStatsGet"></a>
 # **userStatsGet**
-> MainUserStatsResponse userStatsGet()
+> 'String' userStatsGet()
 
 Create API keys for a user
 
@@ -250,7 +250,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**'String'**
 
 ### Authorization
 

@@ -33,9 +33,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers
@@ -306,9 +306,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers
@@ -325,9 +325,9 @@ object Paths {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
+     * @param peerIds Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val peerIds: kotlin.Array<kotlin.Boolean>)
 
     /**
      * List all Peering peers
@@ -434,10 +434,10 @@ object Paths {
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key 
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash 
      */
-    @Location("/user/api-keys/{key}") class userApiKeysKeyDelete(val key: kotlin.String)
+    @Location("/user/api-keys/{key_or_hash}") class userApiKeysKeyOrHashDelete(val keyOrHash: kotlin.String)
 
     /**
      * Export user data

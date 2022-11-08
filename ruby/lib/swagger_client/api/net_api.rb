@@ -22,7 +22,7 @@ module SwaggerClient
     # Net Addrs
     # This endpoint is used to get net addrs
     # @param [Hash] opts the optional parameters
-    # @return [Array<String>]
+    # @return [String]
     def net_addrs_get(opts = {})
       data, _status_code, _headers = net_addrs_get_with_http_info(opts)
       data
@@ -31,7 +31,7 @@ module SwaggerClient
     # Net Addrs
     # This endpoint is used to get net addrs
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<String>, Fixnum, Hash)>] Array<String> data, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def net_addrs_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: NetApi.net_addrs_get ...'
@@ -59,7 +59,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Array<String>')
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: NetApi#net_addrs_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -69,17 +69,17 @@ module SwaggerClient
     # This endpoint returns all miners
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_failures_miner_get(miner, opts = {})
-      public_miners_failures_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_failures_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get all miners
     # This endpoint returns all miners
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_failures_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: NetApi.public_miners_failures_miner_get ...'
@@ -110,7 +110,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: NetApi#public_miners_failures_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -119,16 +120,16 @@ module SwaggerClient
     # Get all miners
     # This endpoint returns all miners
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_get(opts = {})
-      public_miners_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_miners_get_with_http_info(opts)
+      data
     end
 
     # Get all miners
     # This endpoint returns all miners
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: NetApi.public_miners_get ...'
@@ -155,7 +156,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: NetApi#public_miners_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

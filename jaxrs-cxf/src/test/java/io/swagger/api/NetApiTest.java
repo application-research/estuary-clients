@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -80,7 +81,7 @@ public class NetApiTest {
      */
     @Test
     public void netAddrsGetTest() {
-        //List<String> response = api.netAddrsGet();
+        //String response = api.netAddrsGet();
         //assertNotNull(response);
         // TODO: test validations
         

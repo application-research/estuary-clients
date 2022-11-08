@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+> String collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -139,7 +139,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.collectionsColuuidDelete(params);
+    String result = api.collectionsColuuidDelete(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -153,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -217,7 +218,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> Map&lt;String, String&gt; collectionsColuuidPost(coluuid, contentIDs)
+> String collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -239,7 +240,7 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    Map<String, String> result = api.collectionsColuuidPost(params);
+    String result = api.collectionsColuuidPost(params);
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -255,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Map&lt;String, String&gt;**
+**String**
 
 ### Authorization
 
@@ -268,7 +269,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -291,7 +292,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.collectionsFsAddPost(params);
+    String result = api.collectionsFsAddPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -307,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -320,7 +322,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> List&lt;SwagCollectionsCollection&gt; collectionsGet()
+> List&lt;List&lt;SwagCollectionsCollection&gt;&gt; collectionsGet()
 
 List all collections
 
@@ -337,7 +339,7 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    List<SwagCollectionsCollection> result = api.collectionsGet();
+    List<List<SwagCollectionsCollection>> result = api.collectionsGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -349,7 +351,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;SwagCollectionsCollection&gt;**](SwagCollectionsCollection.md)
+[**List&lt;List&lt;SwagCollectionsCollection&gt;&gt;**](List.md)
 
 ### Authorization
 

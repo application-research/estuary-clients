@@ -10,12 +10,12 @@ class PeersApi {
   /// Remove peers on Peering Service
   ///
   /// This endpoint can be used to remove a Peer from the Peering Service
-  Future adminPeeringPeersDelete(List<String> body) async {
-    Object postBody = body;
+  Future<String> adminPeeringPeersDelete(List<bool> peerIds) async {
+    Object postBody = peerIds;
 
     // verify required params are set
-    if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
+    if(peerIds == null) {
+     throw new ApiException(400, "Missing required param: peerIds");
     }
 
     // create path and map variables
@@ -54,15 +54,15 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// List all Peering peers
   ///
   /// This endpoint can be used to list all peers on Peering Service
-  Future adminPeeringPeersGet() async {
+  Future<String> adminPeeringPeersGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -103,15 +103,15 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Add peers on Peering Service
   ///
   /// This endpoint can be used to add a Peer from the Peering Service
-  Future adminPeeringPeersPost() async {
+  Future<String> adminPeeringPeersPost() async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,15 +152,15 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Start Peering
   ///
   /// This endpoint can be used to start the Peering Service
-  Future adminPeeringStartPost() async {
+  Future<String> adminPeeringStartPost() async {
     Object postBody = null;
 
     // verify required params are set
@@ -201,15 +201,15 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Check Peering Status
   ///
   /// This endpoint can be used to check the Peering status
-  Future adminPeeringStatusGet() async {
+  Future<String> adminPeeringStatusGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -250,15 +250,15 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Stop Peering
   ///
   /// This endpoint can be used to stop the Peering Service
-  Future adminPeeringStopPost() async {
+  Future<String> adminPeeringStopPost() async {
     Object postBody = null;
 
     // verify required params are set
@@ -299,9 +299,9 @@ class PeersApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

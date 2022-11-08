@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[String, string]**
+**string**
 
 ### Authorization
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-(empty response body)
+**string**
 
 ### Authorization
 
@@ -228,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**array[Collections.Collection]**](Collections.Collection.md)
+**array[array[Collections.Collection]]**
 
 ### Authorization
 

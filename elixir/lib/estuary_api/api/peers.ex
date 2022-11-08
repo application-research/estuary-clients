@@ -18,20 +18,20 @@ defmodule EstuaryAPI.Api.Peers do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - body ([String.t]): Peer ids
+  - peer_ids ([boolean()]): Peer ids
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_peers_delete(Tesla.Env.client, list(String.t), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def admin_peering_peers_delete(connection, body, _opts \\ []) do
+  @spec admin_peering_peers_delete(Tesla.Env.client, list(Boolean.t), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def admin_peering_peers_delete(connection, peer_ids, _opts \\ []) do
     %{}
     |> method(:delete)
     |> url("/admin/peering/peers")
-    |> add_param(:body, :"body", body)
+    |> add_param(:body, :"peerIds", peer_ids)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -48,10 +48,10 @@ defmodule EstuaryAPI.Api.Peers do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_peers_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_peering_peers_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_peering_peers_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -72,10 +72,10 @@ defmodule EstuaryAPI.Api.Peers do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_peers_post(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_peering_peers_post(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_peering_peers_post(connection, _opts \\ []) do
     %{}
     |> method(:post)
@@ -96,10 +96,10 @@ defmodule EstuaryAPI.Api.Peers do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_start_post(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_peering_start_post(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_peering_start_post(connection, _opts \\ []) do
     %{}
     |> method(:post)
@@ -120,10 +120,10 @@ defmodule EstuaryAPI.Api.Peers do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_status_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_peering_status_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_peering_status_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -144,10 +144,10 @@ defmodule EstuaryAPI.Api.Peers do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec admin_peering_stop_post(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec admin_peering_stop_post(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def admin_peering_stop_post(connection, _opts \\ []) do
     %{}
     |> method(:post)

@@ -15,7 +15,6 @@
 goog.provide('API.Client.UserApi');
 
 goog.require('API.Client.main.getApiKeysResp');
-goog.require('API.Client.main.userStatsResponse');
 goog.require('API.Client.util.HttpError');
 
 /**
@@ -49,7 +48,7 @@ API.Client.UserApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Get API keys for a user
  * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Array<!API.Client.main.getApiKeysResp>>}
+ * @return {!angular.$q.Promise<!Array<!Array<!API.Client.main.getApiKeysResp>>>}
  */
 API.Client.UserApi.prototype.userApiKeysGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -78,24 +77,24 @@ API.Client.UserApi.prototype.userApiKeysGet = function(opt_extraHttpRequestParam
 
 /**
  * Revoke a User API Key.
- * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
- * @param {!string} key Key
+ * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+ * @param {!string} keyOrHash Key or Hash
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
-API.Client.UserApi.prototype.userApiKeysKeyDelete = function(key, opt_extraHttpRequestParams) {
+API.Client.UserApi.prototype.userApiKeysKeyOrHashDelete = function(keyOrHash, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/user/api-keys/{key}'
-      .replace('{' + 'key' + '}', String(key));
+  var path = this.basePath_ + '/user/api-keys/{key_or_hash}'
+      .replace('{' + 'key_or_hash' + '}', String(keyOrHash));
 
   /** @type {!Object} */
   var queryParameters = {};
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'key' is set
-  if (!key) {
-    throw new Error('Missing required parameter key when calling userApiKeysKeyDelete');
+  // verify required parameter 'keyOrHash' is set
+  if (!keyOrHash) {
+    throw new Error('Missing required parameter keyOrHash when calling userApiKeysKeyOrHashDelete');
   }
   /** @type {!Object} */
   var httpRequestParams = {
@@ -116,7 +115,7 @@ API.Client.UserApi.prototype.userApiKeysKeyDelete = function(key, opt_extraHttpR
 /**
  * Create API keys for a user
  * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
- * @param {!string=} opt_expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+ * @param {!string=} opt_expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
  * @param {!string=} opt_perms Permissions -- currently unused
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!API.Client.main.getApiKeysResp>}
@@ -189,7 +188,7 @@ API.Client.UserApi.prototype.userExportGet = function(opt_extraHttpRequestParams
  * Create API keys for a user
  * This endpoint is used to create API keys for a user.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!API.Client.main.userStatsResponse>}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.UserApi.prototype.userStatsGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

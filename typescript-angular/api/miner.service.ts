@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -63,9 +64,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -98,7 +99,7 @@ export class MinerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -116,9 +117,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicMinersStatsMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public publicMinersStatsMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -145,7 +146,7 @@ export class MinerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.get<string>(`${this.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

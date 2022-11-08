@@ -37,7 +37,7 @@ describe 'DealsApi' do
   # This endpoint estimates the cost of a deal
   # @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_estimate_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -49,7 +49,7 @@ describe 'DealsApi' do
   # This endpoint returns the deal info for a deal
   # @param dealid Deal ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_info_dealid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -61,7 +61,7 @@ describe 'DealsApi' do
   # This endpoint returns the proposal for a deal
   # @param propcid Proposal CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_proposal_propcid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -73,7 +73,7 @@ describe 'DealsApi' do
   # This endpoint returns the ask for a given CID
   # @param miner CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_query_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -85,7 +85,7 @@ describe 'DealsApi' do
   # Get Deal Status by PropCid
   # @param propcid PropCid
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_status_by_proposal_propcid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -98,7 +98,7 @@ describe 'DealsApi' do
   # @param miner Miner
   # @param propcid Proposal CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_status_miner_propcid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -109,8 +109,20 @@ describe 'DealsApi' do
   # Transfer In Progress
   # This endpoint returns the in-progress transfers
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deal_transfer_in_progress_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for deal_transfer_status_post
+  # Transfer Status
+  # This endpoint returns the status of a transfer
+  # @param chanid Channel ID
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'deal_transfer_status_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -120,7 +132,7 @@ describe 'DealsApi' do
   # Get storage failures for user
   # This endpoint returns a list of storage failures for user
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deals_failures_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -133,7 +145,7 @@ describe 'DealsApi' do
   # @param miner Miner
   # @param deal_request Deal Request
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deals_make_miner_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -145,7 +157,7 @@ describe 'DealsApi' do
   # This endpoint returns the status of a deal
   # @param deal Deal ID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'deals_status_deal_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -156,7 +168,7 @@ describe 'DealsApi' do
   # Get storage failures
   # This endpoint returns a list of storage failures
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_deals_failures_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -168,7 +180,7 @@ describe 'DealsApi' do
   # This endpoint returns the ask for a given CID
   # @param miner CID
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_storage_query_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

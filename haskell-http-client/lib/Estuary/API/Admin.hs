@@ -67,22 +67,20 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringPeersDelete 
-  :: (Consumes AdminPeeringPeersDelete contentType, MimeRender contentType Body)
+  :: (Consumes AdminPeeringPeersDelete contentType, MimeRender contentType PeerIds)
   => ContentType contentType -- ^ request content-type ('MimeType')
-  -> Body -- ^ "body" -  Peer ids
-  -> EstuaryRequest AdminPeeringPeersDelete contentType res MimeJSON
-adminPeeringPeersDelete _ body =
+  -> PeerIds -- ^ "peerIds" -  Peer ids
+  -> EstuaryRequest AdminPeeringPeersDelete contentType Text MimeJSON
+adminPeeringPeersDelete _ peerIds =
   _mkRequest "DELETE" ["/admin/peering/peers"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `setBodyParam` body
+    `setBodyParam` peerIds
 
 data AdminPeeringPeersDelete 
 
--- | /Body Param/ "body" - Peer ids
-instance HasBodyParam AdminPeeringPeersDelete Body 
+-- | /Body Param/ "peerIds" - Peer ids
+instance HasBodyParam AdminPeeringPeersDelete PeerIds 
 -- | @application/json@
 instance Produces AdminPeeringPeersDelete MimeJSON
 
@@ -97,10 +95,8 @@ instance Produces AdminPeeringPeersDelete MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringPeersGet 
-  :: EstuaryRequest AdminPeeringPeersGet MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminPeeringPeersGet MimeNoContent Text MimeJSON
 adminPeeringPeersGet =
   _mkRequest "GET" ["/admin/peering/peers"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -120,10 +116,8 @@ instance Produces AdminPeeringPeersGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringPeersPost 
-  :: EstuaryRequest AdminPeeringPeersPost MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminPeeringPeersPost MimeNoContent Text MimeJSON
 adminPeeringPeersPost =
   _mkRequest "POST" ["/admin/peering/peers"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -143,10 +137,8 @@ instance Produces AdminPeeringPeersPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringStartPost 
-  :: EstuaryRequest AdminPeeringStartPost MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminPeeringStartPost MimeNoContent Text MimeJSON
 adminPeeringStartPost =
   _mkRequest "POST" ["/admin/peering/start"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -166,10 +158,8 @@ instance Produces AdminPeeringStartPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringStatusGet 
-  :: EstuaryRequest AdminPeeringStatusGet MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminPeeringStatusGet MimeNoContent Text MimeJSON
 adminPeeringStatusGet =
   _mkRequest "GET" ["/admin/peering/status"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -189,10 +179,8 @@ instance Produces AdminPeeringStatusGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminPeeringStopPost 
-  :: EstuaryRequest AdminPeeringStopPost MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminPeeringStopPost MimeNoContent Text MimeJSON
 adminPeeringStopPost =
   _mkRequest "POST" ["/admin/peering/stop"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -212,10 +200,8 @@ instance Produces AdminPeeringStopPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminSystemConfigGet 
-  :: EstuaryRequest AdminSystemConfigGet MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminSystemConfigGet MimeNoContent Text MimeJSON
 adminSystemConfigGet =
   _mkRequest "GET" ["/admin/system/config"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -235,10 +221,8 @@ instance Produces AdminSystemConfigGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 adminUsersGet 
-  :: EstuaryRequest AdminUsersGet MimeNoContent res MimeJSON
+  :: EstuaryRequest AdminUsersGet MimeNoContent Text MimeJSON
 adminUsersGet =
   _mkRequest "GET" ["/admin/users"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

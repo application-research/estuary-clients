@@ -16,8 +16,8 @@ Method | HTTP request | Description
 
 # **adminPeeringPeersDelete**
 ```objc
--(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
-        completionHandler: (void (^)(NSError* error)) handler;
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithPeerIds: (NSArray<NSNumber*>*) peerIds
+        completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Remove peers on Peering Service
@@ -34,13 +34,16 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSArray<NSString*>* body = @[[[NSArray<NSString> alloc] init]]; // Peer ids
+NSArray<NSNumber*>* peerIds = @[[[NSArray<NSNumber> alloc] init]]; // Peer ids
 
 SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Remove peers on Peering Service
-[apiInstance adminPeeringPeersDeleteWithBody:body
-          completionHandler: ^(NSError* error) {
+[apiInstance adminPeeringPeersDeleteWithPeerIds:peerIds
+          completionHandler: ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringPeersDelete: %@", error);
                         }
@@ -51,11 +54,11 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **NSArray&lt;NSString*&gt;***| Peer ids | 
+ **peerIds** | **NSArray&lt;NSNumber*&gt;***| Peer ids | 
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -71,7 +74,7 @@ void (empty response body)
 # **adminPeeringPeersGet**
 ```objc
 -(NSURLSessionTask*) adminPeeringPeersGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 List all Peering peers
@@ -93,7 +96,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // List all Peering peers
 [apiInstance adminPeeringPeersGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringPeersGet: %@", error);
                         }
@@ -105,7 +111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -121,7 +127,7 @@ void (empty response body)
 # **adminPeeringPeersPost**
 ```objc
 -(NSURLSessionTask*) adminPeeringPeersPostWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Add peers on Peering Service
@@ -143,7 +149,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Add peers on Peering Service
 [apiInstance adminPeeringPeersPostWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringPeersPost: %@", error);
                         }
@@ -155,7 +164,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -171,7 +180,7 @@ void (empty response body)
 # **adminPeeringStartPost**
 ```objc
 -(NSURLSessionTask*) adminPeeringStartPostWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Start Peering
@@ -193,7 +202,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Start Peering
 [apiInstance adminPeeringStartPostWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringStartPost: %@", error);
                         }
@@ -205,7 +217,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -221,7 +233,7 @@ void (empty response body)
 # **adminPeeringStatusGet**
 ```objc
 -(NSURLSessionTask*) adminPeeringStatusGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Check Peering Status
@@ -243,7 +255,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Check Peering Status
 [apiInstance adminPeeringStatusGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringStatusGet: %@", error);
                         }
@@ -255,7 +270,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -271,7 +286,7 @@ void (empty response body)
 # **adminPeeringStopPost**
 ```objc
 -(NSURLSessionTask*) adminPeeringStopPostWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Stop Peering
@@ -293,7 +308,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Stop Peering
 [apiInstance adminPeeringStopPostWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminPeeringStopPost: %@", error);
                         }
@@ -305,7 +323,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -321,7 +339,7 @@ void (empty response body)
 # **adminSystemConfigGet**
 ```objc
 -(NSURLSessionTask*) adminSystemConfigGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get systems(estuary/shuttle) config
@@ -343,7 +361,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Get systems(estuary/shuttle) config
 [apiInstance adminSystemConfigGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminSystemConfigGet: %@", error);
                         }
@@ -355,7 +376,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 
@@ -371,7 +392,7 @@ void (empty response body)
 # **adminUsersGet**
 ```objc
 -(NSURLSessionTask*) adminUsersGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get all users
@@ -393,7 +414,10 @@ SWGAdminApi*apiInstance = [[SWGAdminApi alloc] init];
 
 // Get all users
 [apiInstance adminUsersGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGAdminApi->adminUsersGet: %@", error);
                         }
@@ -405,7 +429,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

@@ -23,10 +23,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_estimate_post(Tesla.Env.client, EstuaryAPI.Model.MainEstimateDealBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_estimate_post(Tesla.Env.client, EstuaryAPI.Model.MainEstimateDealBody.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_estimate_post(connection, body, _opts \\ []) do
     %{}
     |> method(:post)
@@ -49,10 +49,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_info_dealid_get(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_info_dealid_get(Tesla.Env.client, integer(), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_info_dealid_get(connection, dealid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -74,10 +74,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_proposal_propcid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_proposal_propcid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_proposal_propcid_get(connection, propcid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -99,10 +99,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_query_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_query_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_query_miner_get(connection, miner, _opts \\ []) do
     %{}
     |> method(:get)
@@ -124,10 +124,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_status_by_proposal_propcid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_status_by_proposal_propcid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_status_by_proposal_propcid_get(connection, propcid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -150,10 +150,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_status_miner_propcid_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_status_miner_propcid_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_status_miner_propcid_get(connection, miner, propcid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -174,14 +174,40 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deal_transfer_in_progress_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deal_transfer_in_progress_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deal_transfer_in_progress_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/deal/transfer/in-progress")
+    |> Enum.into([])
+    |> (&Connection.request(connection, &1)).()
+    |> decode(false)
+  end
+
+  @doc """
+  Transfer Status
+  This endpoint returns the status of a transfer
+
+  ## Parameters
+
+  - connection (EstuaryAPI.Connection): Connection to server
+  - chanid (MainChannelIdParam): Channel ID
+  - opts (KeywordList): [optional] Optional parameters
+
+  ## Returns
+
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
+  {:error, info} on failure
+  """
+  @spec deal_transfer_status_post(Tesla.Env.client, EstuaryAPI.Model.MainChannelIdParam.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def deal_transfer_status_post(connection, chanid, _opts \\ []) do
+    %{}
+    |> method(:post)
+    |> url("/deal/transfer/status")
+    |> add_param(:body, :"chanid", chanid)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)
@@ -198,10 +224,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deals_failures_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deals_failures_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deals_failures_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -224,10 +250,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deals_make_miner_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deals_make_miner_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deals_make_miner_post(connection, miner, deal_request, _opts \\ []) do
     %{}
     |> method(:post)
@@ -250,10 +276,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec deals_status_deal_get(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec deals_status_deal_get(Tesla.Env.client, integer(), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def deals_status_deal_get(connection, deal, _opts \\ []) do
     %{}
     |> method(:get)
@@ -274,10 +300,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_deals_failures_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_deals_failures_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_deals_failures_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -299,10 +325,10 @@ defmodule EstuaryAPI.Api.Deals do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec public_miners_storage_query_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec public_miners_storage_query_miner_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def public_miners_storage_query_miner_get(connection, miner, _opts \\ []) do
     %{}
     |> method(:get)

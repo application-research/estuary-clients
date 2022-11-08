@@ -37,7 +37,7 @@
     describe('PublicApi', function() {
       describe('publicByCidCidGet', function() {
         it('should call publicByCidCidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicByCidCidGet call
+          // TODO: uncomment, update parameter values for publicByCidCidGet call and complete the assertions
           /*
           var cid = "cid_example";
 
@@ -46,6 +46,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -56,7 +59,7 @@
       });
       describe('publicInfoGet', function() {
         it('should call publicInfoGet successfully', function(done) {
-          // TODO: uncomment publicInfoGet call
+          // TODO: uncomment publicInfoGet call and complete the assertions
           /*
 
           instance.publicInfoGet(function(error, data, response) {
@@ -64,6 +67,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -74,7 +80,7 @@
       });
       describe('publicMetricsDealsOnChainGet', function() {
         it('should call publicMetricsDealsOnChainGet successfully', function(done) {
-          // TODO: uncomment publicMetricsDealsOnChainGet call
+          // TODO: uncomment publicMetricsDealsOnChainGet call and complete the assertions
           /*
 
           instance.publicMetricsDealsOnChainGet(function(error, data, response) {
@@ -82,6 +88,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -92,7 +101,7 @@
       });
       describe('publicMinersDealsMinerGet', function() {
         it('should call publicMinersDealsMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
           var opts = {};
@@ -103,6 +112,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -113,7 +125,7 @@
       });
       describe('publicMinersFailuresMinerGet', function() {
         it('should call publicMinersFailuresMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -122,6 +134,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -132,7 +147,7 @@
       });
       describe('publicMinersGet', function() {
         it('should call publicMinersGet successfully', function(done) {
-          // TODO: uncomment publicMinersGet call
+          // TODO: uncomment publicMinersGet call and complete the assertions
           /*
 
           instance.publicMinersGet(function(error, data, response) {
@@ -140,6 +155,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -150,7 +168,7 @@
       });
       describe('publicMinersStatsMinerGet', function() {
         it('should call publicMinersStatsMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersStatsMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersStatsMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -159,6 +177,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -223,7 +244,7 @@
       });
       describe('publicStatsGet', function() {
         it('should call publicStatsGet successfully', function(done) {
-          // TODO: uncomment publicStatsGet call
+          // TODO: uncomment publicStatsGet call and complete the assertions
           /*
 
           instance.publicStatsGet(function(error, data, response) {
@@ -231,6 +252,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

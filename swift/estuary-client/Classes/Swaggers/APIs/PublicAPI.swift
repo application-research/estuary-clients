@@ -16,9 +16,9 @@ public class PublicAPI: APIBase {
      - parameter cid: (path) Cid 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicByCidCidGet(cid cid: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicByCidCidGet(cid cid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicByCidCidGetWithRequestBuilder(cid: cid).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -30,12 +30,16 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter cid: (path) Cid 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicByCidCidGetWithRequestBuilder(cid cid: String) -> RequestBuilder<Void> {
+    public class func publicByCidCidGetWithRequestBuilder(cid cid: String) -> RequestBuilder<String> {
         var path = "/public/by-cid/{cid}"
         path = path.stringByReplacingOccurrencesOfString("{cid}", withString: "\(cid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -46,7 +50,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -56,9 +60,9 @@ public class PublicAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicInfoGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func publicInfoGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicInfoGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -70,10 +74,14 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicInfoGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func publicInfoGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/info"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -83,7 +91,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -93,9 +101,9 @@ public class PublicAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMetricsDealsOnChainGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMetricsDealsOnChainGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMetricsDealsOnChainGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -107,10 +115,14 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMetricsDealsOnChainGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func publicMetricsDealsOnChainGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/metrics/deals-on-chain"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -120,7 +132,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -132,9 +144,9 @@ public class PublicAPI: APIBase {
      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersDealsMinerGet(miner miner: String, ignoreFailed: String? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersDealsMinerGet(miner miner: String, ignoreFailed: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersDealsMinerGetWithRequestBuilder(miner: miner, ignoreFailed: ignoreFailed).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -146,13 +158,17 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersDealsMinerGetWithRequestBuilder(miner miner: String, ignoreFailed: String? = nil) -> RequestBuilder<Void> {
+    public class func publicMinersDealsMinerGetWithRequestBuilder(miner miner: String, ignoreFailed: String? = nil) -> RequestBuilder<String> {
         var path = "/public/miners/deals/{miner}"
         path = path.stringByReplacingOccurrencesOfString("{miner}", withString: "\(miner)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -165,7 +181,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -176,9 +192,9 @@ public class PublicAPI: APIBase {
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersFailuresMinerGet(miner miner: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersFailuresMinerGet(miner miner: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersFailuresMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -190,12 +206,16 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersFailuresMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<Void> {
+    public class func publicMinersFailuresMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<String> {
         var path = "/public/miners/failures/{miner}"
         path = path.stringByReplacingOccurrencesOfString("{miner}", withString: "\(miner)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -206,7 +226,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -216,9 +236,9 @@ public class PublicAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -230,10 +250,14 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func publicMinersGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/miners"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -243,7 +267,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -254,9 +278,9 @@ public class PublicAPI: APIBase {
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicMinersStatsMinerGet(miner miner: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func publicMinersStatsMinerGet(miner miner: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicMinersStatsMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -268,12 +292,16 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter miner: (path) Filter by miner 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicMinersStatsMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<Void> {
+    public class func publicMinersStatsMinerGetWithRequestBuilder(miner miner: String) -> RequestBuilder<String> {
         var path = "/public/miners/stats/{miner}"
         path = path.stringByReplacingOccurrencesOfString("{miner}", withString: "\(miner)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -284,7 +312,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -370,9 +398,9 @@ public class PublicAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func publicStatsGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func publicStatsGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         publicStatsGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -384,10 +412,14 @@ public class PublicAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func publicStatsGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func publicStatsGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/stats"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -397,7 +429,7 @@ public class PublicAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }

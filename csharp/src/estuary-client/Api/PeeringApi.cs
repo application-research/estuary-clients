@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using estuary-client.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -30,9 +31,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to remove a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns></returns>
-        void AdminPeeringPeersDelete (List<string> body);
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>string</returns>
+        string AdminPeeringPeersDelete (List<bool?> peerIds);
 
         /// <summary>
         /// Remove peers on Peering Service
@@ -41,9 +42,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to remove a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringPeersDeleteWithHttpInfo (List<string> body);
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringPeersDeleteWithHttpInfo (List<bool?> peerIds);
         /// <summary>
         /// List all Peering peers
         /// </summary>
@@ -51,8 +52,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to list all peers on Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminPeeringPeersGet ();
+        /// <returns>string</returns>
+        string AdminPeeringPeersGet ();
 
         /// <summary>
         /// List all Peering peers
@@ -61,8 +62,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to list all peers on Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringPeersGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringPeersGetWithHttpInfo ();
         /// <summary>
         /// Add peers on Peering Service
         /// </summary>
@@ -70,8 +71,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminPeeringPeersPost ();
+        /// <returns>string</returns>
+        string AdminPeeringPeersPost ();
 
         /// <summary>
         /// Add peers on Peering Service
@@ -80,8 +81,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringPeersPostWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringPeersPostWithHttpInfo ();
         /// <summary>
         /// Start Peering
         /// </summary>
@@ -89,8 +90,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to start the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminPeeringStartPost ();
+        /// <returns>string</returns>
+        string AdminPeeringStartPost ();
 
         /// <summary>
         /// Start Peering
@@ -99,8 +100,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to start the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringStartPostWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringStartPostWithHttpInfo ();
         /// <summary>
         /// Check Peering Status
         /// </summary>
@@ -108,8 +109,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to check the Peering status
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminPeeringStatusGet ();
+        /// <returns>string</returns>
+        string AdminPeeringStatusGet ();
 
         /// <summary>
         /// Check Peering Status
@@ -118,8 +119,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to check the Peering status
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringStatusGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringStatusGetWithHttpInfo ();
         /// <summary>
         /// Stop Peering
         /// </summary>
@@ -127,8 +128,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to stop the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void AdminPeeringStopPost ();
+        /// <returns>string</returns>
+        string AdminPeeringStopPost ();
 
         /// <summary>
         /// Stop Peering
@@ -137,8 +138,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to stop the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> AdminPeeringStopPostWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminPeeringStopPostWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -148,9 +149,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to remove a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringPeersDeleteAsync (List<string> body);
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<bool?> peerIds);
 
         /// <summary>
         /// Remove peers on Peering Service
@@ -159,9 +160,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to remove a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<string> body);
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<bool?> peerIds);
         /// <summary>
         /// List all Peering peers
         /// </summary>
@@ -169,8 +170,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to list all peers on Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringPeersGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringPeersGetAsync ();
 
         /// <summary>
         /// List all Peering peers
@@ -179,8 +180,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to list all peers on Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersGetAsyncWithHttpInfo ();
         /// <summary>
         /// Add peers on Peering Service
         /// </summary>
@@ -188,8 +189,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringPeersPostAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync ();
 
         /// <summary>
         /// Add peers on Peering Service
@@ -198,8 +199,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersPostAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo ();
         /// <summary>
         /// Start Peering
         /// </summary>
@@ -207,8 +208,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to start the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringStartPostAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringStartPostAsync ();
 
         /// <summary>
         /// Start Peering
@@ -217,8 +218,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to start the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStartPostAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStartPostAsyncWithHttpInfo ();
         /// <summary>
         /// Check Peering Status
         /// </summary>
@@ -226,8 +227,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to check the Peering status
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringStatusGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringStatusGetAsync ();
 
         /// <summary>
         /// Check Peering Status
@@ -236,8 +237,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to check the Peering status
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStatusGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStatusGetAsyncWithHttpInfo ();
         /// <summary>
         /// Stop Peering
         /// </summary>
@@ -245,8 +246,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to stop the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task AdminPeeringStopPostAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminPeeringStopPostAsync ();
 
         /// <summary>
         /// Stop Peering
@@ -255,8 +256,8 @@ namespace estuary-client.Api
         /// This endpoint can be used to stop the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStopPostAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStopPostAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
@@ -361,24 +362,25 @@ namespace estuary-client.Api
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns></returns>
-        public void AdminPeeringPeersDelete (List<string> body)
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>string</returns>
+        public string AdminPeeringPeersDelete (List<bool?> peerIds)
         {
-             AdminPeeringPeersDeleteWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = AdminPeeringPeersDeleteWithHttpInfo(peerIds);
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringPeersDeleteWithHttpInfo (List<string> body)
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringPeersDeleteWithHttpInfo (List<bool?> peerIds)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling PeeringApi->AdminPeeringPeersDelete");
+            // verify the required parameter 'peerIds' is set
+            if (peerIds == null)
+                throw new ApiException(400, "Missing required parameter 'peerIds' when calling PeeringApi->AdminPeeringPeersDelete");
 
             var localVarPath = "/admin/peering/peers";
             var localVarPathParams = new Dictionary<String, String>();
@@ -401,13 +403,13 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (body != null && body.GetType() != typeof(byte[]))
+            if (peerIds != null && peerIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(peerIds); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = body; // byte array
+                localVarPostBody = peerIds; // byte array
             }
 
             // authentication (bearerAuth) required
@@ -429,20 +431,21 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringPeersDeleteAsync (List<string> body)
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<bool?> peerIds)
         {
-             await AdminPeeringPeersDeleteAsyncWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = await AdminPeeringPeersDeleteAsyncWithHttpInfo(peerIds);
+             return localVarResponse.Data;
 
         }
 
@@ -450,13 +453,13 @@ namespace estuary-client.Api
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Peer ids</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<string> body)
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<bool?> peerIds)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling PeeringApi->AdminPeeringPeersDelete");
+            // verify the required parameter 'peerIds' is set
+            if (peerIds == null)
+                throw new ApiException(400, "Missing required parameter 'peerIds' when calling PeeringApi->AdminPeeringPeersDelete");
 
             var localVarPath = "/admin/peering/peers";
             var localVarPathParams = new Dictionary<String, String>();
@@ -479,13 +482,13 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (body != null && body.GetType() != typeof(byte[]))
+            if (peerIds != null && peerIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(peerIds); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = body; // byte array
+                localVarPostBody = peerIds; // byte array
             }
 
             // authentication (bearerAuth) required
@@ -507,27 +510,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminPeeringPeersGet ()
+        /// <returns>string</returns>
+        public string AdminPeeringPeersGet ()
         {
-             AdminPeeringPeersGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringPeersGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringPeersGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringPeersGetWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/peers";
@@ -571,19 +575,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringPeersGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringPeersGetAsync ()
         {
-             await AdminPeeringPeersGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringPeersGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -591,8 +596,8 @@ namespace estuary-client.Api
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/peers";
@@ -636,27 +641,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminPeeringPeersPost ()
+        /// <returns>string</returns>
+        public string AdminPeeringPeersPost ()
         {
-             AdminPeeringPeersPostWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringPeersPostWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringPeersPostWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringPeersPostWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/peers";
@@ -700,19 +706,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringPeersPostAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync ()
         {
-             await AdminPeeringPeersPostAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringPeersPostAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -720,8 +727,8 @@ namespace estuary-client.Api
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringPeersPostAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/peers";
@@ -765,27 +772,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminPeeringStartPost ()
+        /// <returns>string</returns>
+        public string AdminPeeringStartPost ()
         {
-             AdminPeeringStartPostWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringStartPostWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringStartPostWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringStartPostWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/start";
@@ -829,19 +837,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringStartPostAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringStartPostAsync ()
         {
-             await AdminPeeringStartPostAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringStartPostAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -849,8 +858,8 @@ namespace estuary-client.Api
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStartPostAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStartPostAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/start";
@@ -894,27 +903,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminPeeringStatusGet ()
+        /// <returns>string</returns>
+        public string AdminPeeringStatusGet ()
         {
-             AdminPeeringStatusGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringStatusGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringStatusGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringStatusGetWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/status";
@@ -958,19 +968,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringStatusGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringStatusGetAsync ()
         {
-             await AdminPeeringStatusGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringStatusGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -978,8 +989,8 @@ namespace estuary-client.Api
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStatusGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStatusGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/status";
@@ -1023,27 +1034,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void AdminPeeringStopPost ()
+        /// <returns>string</returns>
+        public string AdminPeeringStopPost ()
         {
-             AdminPeeringStopPostWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringStopPostWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> AdminPeeringStopPostWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminPeeringStopPostWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/stop";
@@ -1087,19 +1099,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task AdminPeeringStopPostAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminPeeringStopPostAsync ()
         {
-             await AdminPeeringStopPostAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringStopPostAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -1107,8 +1120,8 @@ namespace estuary-client.Api
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> AdminPeeringStopPostAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringStopPostAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/admin/peering/stop";
@@ -1152,9 +1165,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

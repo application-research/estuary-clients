@@ -19,10 +19,12 @@ local function cast_main_get_api_keys_resp(t)
 	return setmetatable(t, main_get_api_keys_resp_mt)
 end
 
-local function new_main_get_api_keys_resp(expiry, token)
+local function new_main_get_api_keys_resp(expiry, label, token, token_hash)
 	return cast_main_get_api_keys_resp({
 		["expiry"] = expiry;
+		["label"] = label;
 		["token"] = token;
+		["tokenHash"] = token_hash;
 	})
 end
 

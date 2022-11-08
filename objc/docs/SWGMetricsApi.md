@@ -10,7 +10,7 @@ Method | HTTP request | Description
 # **publicMetricsDealsOnChainGet**
 ```objc
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-        (void (^)(NSError* error)) handler;
+        (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Get deal metrics
@@ -32,7 +32,10 @@ SWGMetricsApi*apiInstance = [[SWGMetricsApi alloc] init];
 
 // Get deal metrics
 [apiInstance publicMetricsDealsOnChainGetWithCompletionHandler: 
-          ^(NSError* error) {
+          ^(NSString* output, NSError* error) {
+                        if (output) {
+                            NSLog(@"%@", output);
+                        }
                         if (error) {
                             NSLog(@"Error calling SWGMetricsApi->publicMetricsDealsOnChainGet: %@", error);
                         }
@@ -44,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**NSString***
 
 ### Authorization
 

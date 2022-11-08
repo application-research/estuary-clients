@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { TypesIpfsPin } from '../model/typesIpfsPin';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
@@ -38,8 +39,8 @@ export class PinningService {
      * This endpoint lists all pin status objects
      
      */
-    public pinningPinsGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public pinningPinsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public pinningPinsGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public pinningPinsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -47,7 +48,7 @@ export class PinningService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/pinning/pins` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/pinning/pins` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -61,8 +62,8 @@ export class PinningService {
      * @param pinid Pin ID
      
      */
-    public pinningPinsPinidDelete(pinid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public pinningPinsPinidDelete(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public pinningPinsPinidDelete(pinid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsPinidDelete(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public pinningPinsPinidDelete(pinid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!pinid){
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidDelete.');
@@ -74,7 +75,7 @@ export class PinningService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -88,8 +89,8 @@ export class PinningService {
      * @param pinid cid
      
      */
-    public pinningPinsPinidGet(pinid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public pinningPinsPinidGet(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public pinningPinsPinidGet(pinid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!pinid){
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidGet.');
@@ -101,7 +102,7 @@ export class PinningService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -115,8 +116,8 @@ export class PinningService {
      * @param pinid Pin ID
      
      */
-    public pinningPinsPinidPost(pinid: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public pinningPinsPinidPost(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public pinningPinsPinidPost(pinid: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsPinidPost(pinid: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public pinningPinsPinidPost(pinid: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!pinid){
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
@@ -128,7 +129,7 @@ export class PinningService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -139,19 +140,14 @@ export class PinningService {
     /**
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
-     * @param cid cid
-     * @param name name
+     * @param pin Pin Body {cid:cid, name:name}
      
      */
-    public pinningPinsPost(cid: string, name: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public pinningPinsPost(cid: string, name: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public pinningPinsPost(cid: string, name: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!cid){
-            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPost.');
-        }
-
-        if (!name){
-            throw new Error('Required parameter name was null or undefined when calling pinningPinsPost.');
+    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'body', headers?: Headers): Observable<string>;
+    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public pinningPinsPost(pin: TypesIpfsPin, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!pin){
+            throw new Error('Required parameter pin was null or undefined when calling pinningPinsPost.');
         }
 
         // authentication (bearerAuth) required
@@ -159,8 +155,9 @@ export class PinningService {
             headers['Authorization'] = this.APIConfiguration.apiKeys['Authorization'];
         }
         headers['Accept'] = 'application/json';
+        headers['Content-Type'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.post(`${this.APIConfiguration.basePath}/pinning/pins`, pin as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

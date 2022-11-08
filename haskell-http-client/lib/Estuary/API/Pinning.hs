@@ -67,10 +67,8 @@ import qualified Prelude as P
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 pinningPinsGet 
-  :: EstuaryRequest PinningPinsGet MimeNoContent res MimeJSON
+  :: EstuaryRequest PinningPinsGet MimeNoContent Text MimeJSON
 pinningPinsGet =
   _mkRequest "GET" ["/pinning/pins"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -90,11 +88,9 @@ instance Produces PinningPinsGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 pinningPinsPinidDelete 
   :: Pinid -- ^ "pinid" -  Pin ID
-  -> EstuaryRequest PinningPinsPinidDelete MimeNoContent res MimeJSON
+  -> EstuaryRequest PinningPinsPinidDelete MimeNoContent Text MimeJSON
 pinningPinsPinidDelete (Pinid pinid) =
   _mkRequest "DELETE" ["/pinning/pins/",toPath pinid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -114,11 +110,9 @@ instance Produces PinningPinsPinidDelete MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 pinningPinsPinidGet 
   :: Pinid -- ^ "pinid" -  cid
-  -> EstuaryRequest PinningPinsPinidGet MimeNoContent res MimeJSON
+  -> EstuaryRequest PinningPinsPinidGet MimeNoContent Text MimeJSON
 pinningPinsPinidGet (Pinid pinid) =
   _mkRequest "GET" ["/pinning/pins/",toPath pinid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -138,11 +132,9 @@ instance Produces PinningPinsPinidGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 pinningPinsPinidPost 
   :: Pinid -- ^ "pinid" -  Pin ID
-  -> EstuaryRequest PinningPinsPinidPost MimeNoContent res MimeJSON
+  -> EstuaryRequest PinningPinsPinidPost MimeNoContent Text MimeJSON
 pinningPinsPinidPost (Pinid pinid) =
   _mkRequest "POST" ["/pinning/pins/",toPath pinid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -162,17 +154,20 @@ instance Produces PinningPinsPinidPost MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 pinningPinsPost 
-  :: Cid -- ^ "cid" -  cid
-  -> Name -- ^ "name" -  name
-  -> EstuaryRequest PinningPinsPost MimeNoContent res MimeJSON
-pinningPinsPost (Cid cid) (Name name) =
+  :: (Consumes PinningPinsPost contentType, MimeRender contentType TypesIpfsPin)
+  => ContentType contentType -- ^ request content-type ('MimeType')
+  -> TypesIpfsPin -- ^ "pin" -  Pin Body {cid:cid, name:name}
+  -> EstuaryRequest PinningPinsPost contentType Text MimeJSON
+pinningPinsPost _ pin =
   _mkRequest "POST" ["/pinning/pins"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
+    `setBodyParam` pin
 
-data PinningPinsPost  
+data PinningPinsPost 
+
+-- | /Body Param/ "pin" - Pin Body {cid:cid, name:name}
+instance HasBodyParam PinningPinsPost TypesIpfsPin 
 -- | @application/json@
 instance Produces PinningPinsPost MimeJSON
 

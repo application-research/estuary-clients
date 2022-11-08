@@ -4,6 +4,7 @@ import 'package:jaguar_serializer/jaguar_serializer.dart';
 import 'package:jaguar_serializer/src/repo/repo.dart';
 import 'dart:async';
 
+import 'package:swagger/model/util_http_error.dart';
 
 
 part 'autoretrieve_api.jretro.dart';
@@ -19,7 +20,9 @@ class AutoretrieveApi extends _$AutoretrieveApiClient implements ApiClient {
     ///
     /// This endpoint registers a new autoretrieve server
     @PostReq(path: "/admin/autoretrieve/init", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> adminAutoretrieveInitPost(
+    Future<String> adminAutoretrieveInitPost(
+        
+        @AsJson() String addresses, 
         
         @AsJson() String pubKey
     );
@@ -28,14 +31,14 @@ class AutoretrieveApi extends _$AutoretrieveApiClient implements ApiClient {
     ///
     /// This endpoint lists all registered autoretrieve servers
     @GetReq(path: "/admin/autoretrieve/list", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> adminAutoretrieveListGet(
+    Future<String> adminAutoretrieveListGet(
     );
 
     /// Marks autoretrieve server as up
     ///
     /// This endpoint updates the lastConnection field for autoretrieve
     @PostReq(path: "/autoretrieve/heartbeat", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> autoretrieveHeartbeatPost(
+    Future<String> autoretrieveHeartbeatPost(
         
         @Header("token") String token
     );

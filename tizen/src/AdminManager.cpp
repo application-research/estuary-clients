@@ -51,21 +51,48 @@ static gpointer __AdminManagerthreadFunc(gpointer data)
 static bool adminPeeringPeersDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -76,15 +103,15 @@ static bool adminPeeringPeersDeleteProcessor(MemoryStruct_s p_chunk, long code, 
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringPeersDeleteHelper(char * accessToken,
-	std::list<> body, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	std::list<> peerIds, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -104,12 +131,12 @@ static bool adminPeeringPeersDeleteHelper(char * accessToken,
 	JsonArray* json_array;
 	//TODO: Map Container
 	if (isprimitive("")) {
-		node = converttoJson(&body, "", "array");
+		node = converttoJson(&peerIds, "", "array");
 	} else {
 		node = json_node_alloc();
 		json_array = json_array_new();
 		for (std::list
-			<>::iterator bodyIter = body.begin(); bodyIter != body.end(); ++bodyIter) {
+			<>::iterator bodyIter = peerIds.begin(); bodyIter != peerIds.end(); ++bodyIter) {
 			 itemAt = (*bodyIter);
 			char *jsonStr =  itemAt.toJson();
 			JsonNode *node_temp = json_from_string(jsonStr, NULL);
@@ -178,43 +205,70 @@ static bool adminPeeringPeersDeleteHelper(char * accessToken,
 
 
 bool AdminManager::adminPeeringPeersDeleteAsync(char * accessToken,
-	std::list<> body, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	std::list<> peerIds, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersDeleteHelper(accessToken,
-	body, 
+	peerIds, 
 	handler, userData, true);
 }
 
 bool AdminManager::adminPeeringPeersDeleteSync(char * accessToken,
-	std::list<> body, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	std::list<> peerIds, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersDeleteHelper(accessToken,
-	body, 
+	peerIds, 
 	handler, userData, false);
 }
 
 static bool adminPeeringPeersGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -225,15 +279,15 @@ static bool adminPeeringPeersGetProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringPeersGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -303,8 +357,8 @@ static bool adminPeeringPeersGetHelper(char * accessToken,
 
 bool AdminManager::adminPeeringPeersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersGetHelper(accessToken,
 	
@@ -313,8 +367,8 @@ bool AdminManager::adminPeeringPeersGetAsync(char * accessToken,
 
 bool AdminManager::adminPeeringPeersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersGetHelper(accessToken,
 	
@@ -324,21 +378,48 @@ bool AdminManager::adminPeeringPeersGetSync(char * accessToken,
 static bool adminPeeringPeersPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -349,15 +430,15 @@ static bool adminPeeringPeersPostProcessor(MemoryStruct_s p_chunk, long code, ch
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringPeersPostHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -427,8 +508,8 @@ static bool adminPeeringPeersPostHelper(char * accessToken,
 
 bool AdminManager::adminPeeringPeersPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersPostHelper(accessToken,
 	
@@ -437,8 +518,8 @@ bool AdminManager::adminPeeringPeersPostAsync(char * accessToken,
 
 bool AdminManager::adminPeeringPeersPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringPeersPostHelper(accessToken,
 	
@@ -448,21 +529,48 @@ bool AdminManager::adminPeeringPeersPostSync(char * accessToken,
 static bool adminPeeringStartPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -473,15 +581,15 @@ static bool adminPeeringStartPostProcessor(MemoryStruct_s p_chunk, long code, ch
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringStartPostHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -551,8 +659,8 @@ static bool adminPeeringStartPostHelper(char * accessToken,
 
 bool AdminManager::adminPeeringStartPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStartPostHelper(accessToken,
 	
@@ -561,8 +669,8 @@ bool AdminManager::adminPeeringStartPostAsync(char * accessToken,
 
 bool AdminManager::adminPeeringStartPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStartPostHelper(accessToken,
 	
@@ -572,21 +680,48 @@ bool AdminManager::adminPeeringStartPostSync(char * accessToken,
 static bool adminPeeringStatusGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -597,15 +732,15 @@ static bool adminPeeringStatusGetProcessor(MemoryStruct_s p_chunk, long code, ch
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringStatusGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -675,8 +810,8 @@ static bool adminPeeringStatusGetHelper(char * accessToken,
 
 bool AdminManager::adminPeeringStatusGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStatusGetHelper(accessToken,
 	
@@ -685,8 +820,8 @@ bool AdminManager::adminPeeringStatusGetAsync(char * accessToken,
 
 bool AdminManager::adminPeeringStatusGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStatusGetHelper(accessToken,
 	
@@ -696,21 +831,48 @@ bool AdminManager::adminPeeringStatusGetSync(char * accessToken,
 static bool adminPeeringStopPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -721,15 +883,15 @@ static bool adminPeeringStopPostProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminPeeringStopPostHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -799,8 +961,8 @@ static bool adminPeeringStopPostHelper(char * accessToken,
 
 bool AdminManager::adminPeeringStopPostAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStopPostHelper(accessToken,
 	
@@ -809,8 +971,8 @@ bool AdminManager::adminPeeringStopPostAsync(char * accessToken,
 
 bool AdminManager::adminPeeringStopPostSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminPeeringStopPostHelper(accessToken,
 	
@@ -820,21 +982,48 @@ bool AdminManager::adminPeeringStopPostSync(char * accessToken,
 static bool adminSystemConfigGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -845,15 +1034,15 @@ static bool adminSystemConfigGetProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminSystemConfigGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -923,8 +1112,8 @@ static bool adminSystemConfigGetHelper(char * accessToken,
 
 bool AdminManager::adminSystemConfigGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminSystemConfigGetHelper(accessToken,
 	
@@ -933,8 +1122,8 @@ bool AdminManager::adminSystemConfigGetAsync(char * accessToken,
 
 bool AdminManager::adminSystemConfigGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminSystemConfigGetHelper(accessToken,
 	
@@ -944,21 +1133,48 @@ bool AdminManager::adminSystemConfigGetSync(char * accessToken,
 static bool adminUsersGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -969,15 +1185,15 @@ static bool adminUsersGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool adminUsersGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1047,8 +1263,8 @@ static bool adminUsersGetHelper(char * accessToken,
 
 bool AdminManager::adminUsersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminUsersGetHelper(accessToken,
 	
@@ -1057,8 +1273,8 @@ bool AdminManager::adminUsersGetAsync(char * accessToken,
 
 bool AdminManager::adminUsersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return adminUsersGetHelper(accessToken,
 	

@@ -26,7 +26,11 @@ feature --Access
 
     expiry: detachable STRING_32 
       
+    label: detachable STRING_32 
+      
     token: detachable STRING_32 
+      
+    token_hash: detachable STRING_32 
       
 
 feature -- Change Element  
@@ -39,12 +43,28 @@ feature -- Change Element
         expiry_set: expiry = a_name		
       end
 
+    set_label (a_name: like label)
+        -- Set 'label' with 'a_name'.
+      do
+        label := a_name
+      ensure
+        label_set: label = a_name		
+      end
+
     set_token (a_name: like token)
         -- Set 'token' with 'a_name'.
       do
         token := a_name
       ensure
         token_set: token = a_name		
+      end
+
+    set_token_hash (a_name: like token_hash)
+        -- Set 'token_hash' with 'a_name'.
+      do
+        token_hash := a_name
+      ensure
+        token_hash_set: token_hash = a_name		
       end
 
 
@@ -60,9 +80,19 @@ feature -- Change Element
           Result.append (l_expiry.out)
           Result.append ("%N")    
         end  
+        if attached label as l_label then
+          Result.append ("%Nlabel:")
+          Result.append (l_label.out)
+          Result.append ("%N")    
+        end  
         if attached token as l_token then
           Result.append ("%Ntoken:")
           Result.append (l_token.out)
+          Result.append ("%N")    
+        end  
+        if attached token_hash as l_token_hash then
+          Result.append ("%Ntoken_hash:")
+          Result.append (l_token_hash.out)
           Result.append ("%N")    
         end  
       end

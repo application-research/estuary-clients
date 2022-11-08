@@ -15,5 +15,17 @@ API.Client.MainGetApiKeysResp.prototype.expiry;
  * @type {!string}
  * @export
  */
+API.Client.MainGetApiKeysResp.prototype.label;
+
+/**
+ * @type {!string}
+ * @export
+ */
 API.Client.MainGetApiKeysResp.prototype.token;
+
+/**
+ * @type {!string}
+ * @export
+ */
+API.Client.MainGetApiKeysResp.prototype.tokenHash;
 

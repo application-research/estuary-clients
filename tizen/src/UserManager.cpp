@@ -51,13 +51,13 @@ static gpointer __UserManagerthreadFunc(gpointer data)
 static bool userApiKeysGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<Main.getApiKeysResp>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<Main.getApiKeysResp>, Error, void* )> (voidHandler);
+	void(* handler)(std::list<std::list>, Error, void* )
+	= reinterpret_cast<void(*)(std::list<std::list>, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<Main.getApiKeysResp> out;
+	std::list<std::list> out;
 	
 
 	if (code >= 200 && code < 300) {
@@ -71,7 +71,7 @@ static bool userApiKeysGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 		for(guint i = 0; i < length; i++){
 			JsonNode* myJson = json_array_get_element (jsonarray, i);
 			char * singlenodestr = json_to_string(myJson, false);
-			Main.getApiKeysResp singlemodel;
+			std::list singlemodel;
 			singlemodel.fromJson(singlenodestr);
 			out.push_front(singlemodel);
 			g_free(static_cast<gpointer>(singlenodestr));
@@ -97,7 +97,7 @@ static bool userApiKeysGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool userApiKeysGetHelper(char * accessToken,
 	
-	void(* handler)(std::list<Main.getApiKeysResp>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -168,7 +168,7 @@ static bool userApiKeysGetHelper(char * accessToken,
 
 bool UserManager::userApiKeysGetAsync(char * accessToken,
 	
-	void(* handler)(std::list<Main.getApiKeysResp>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData)
 {
 	return userApiKeysGetHelper(accessToken,
@@ -178,7 +178,7 @@ bool UserManager::userApiKeysGetAsync(char * accessToken,
 
 bool UserManager::userApiKeysGetSync(char * accessToken,
 	
-	void(* handler)(std::list<Main.getApiKeysResp>, Error, void* )
+	void(* handler)(std::list<std::list>, Error, void* )
 	, void* userData)
 {
 	return userApiKeysGetHelper(accessToken,
@@ -186,24 +186,51 @@ bool UserManager::userApiKeysGetSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool userApiKeysKeyDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool userApiKeysKeyOrHashDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -214,15 +241,15 @@ static bool userApiKeysKeyDeleteProcessor(MemoryStruct_s p_chunk, long code, cha
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
-static bool userApiKeysKeyDeleteHelper(char * accessToken,
-	std::string key, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+static bool userApiKeysKeyOrHashDeleteHelper(char * accessToken,
+	std::string keyOrHash, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -241,15 +268,15 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/user/api-keys/{key}");
+	string url("/user/api-keys/{key_or_hash}");
 	int pos;
 
-	string s_key("{");
-	s_key.append("key");
-	s_key.append("}");
-	pos = url.find(s_key);
-	url.erase(pos, s_key.length());
-	url.insert(pos, stringify(&key, "std::string"));
+	string s_keyOrHash("{");
+	s_keyOrHash.append("key_or_hash");
+	s_keyOrHash.append("}");
+	pos = url.find(s_keyOrHash);
+	url.erase(pos, s_keyOrHash.length());
+	url.insert(pos, stringify(&keyOrHash, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -266,7 +293,7 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(UserManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = userApiKeysKeyDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = userApiKeysKeyOrHashDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -284,7 +311,7 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (UserManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userApiKeysKeyDeleteProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userApiKeysKeyOrHashDeleteProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -296,23 +323,23 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 
 
 
-bool UserManager::userApiKeysKeyDeleteAsync(char * accessToken,
-	std::string key, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+bool UserManager::userApiKeysKeyOrHashDeleteAsync(char * accessToken,
+	std::string keyOrHash, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
-	return userApiKeysKeyDeleteHelper(accessToken,
-	key, 
+	return userApiKeysKeyOrHashDeleteHelper(accessToken,
+	keyOrHash, 
 	handler, userData, true);
 }
 
-bool UserManager::userApiKeysKeyDeleteSync(char * accessToken,
-	std::string key, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+bool UserManager::userApiKeysKeyOrHashDeleteSync(char * accessToken,
+	std::string keyOrHash, 
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
-	return userApiKeysKeyDeleteHelper(accessToken,
-	key, 
+	return userApiKeysKeyOrHashDeleteHelper(accessToken,
+	keyOrHash, 
 	handler, userData, false);
 }
 
@@ -522,6 +549,16 @@ static bool userExportGetProcessor(MemoryStruct_s p_chunk, long code, char* erro
 			}
 		} else {
 			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
 		}
 		handler(out, error, userData);
 		return true;
@@ -635,14 +672,14 @@ bool UserManager::userExportGetSync(char * accessToken,
 static bool userStatsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(Main.userStatsResponse, Error, void* )
-	= reinterpret_cast<void(*)(Main.userStatsResponse, Error, void* )> (voidHandler);
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	Main.userStatsResponse out;
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -650,18 +687,23 @@ static bool userStatsGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 
 
-		if (isprimitive("Main.userStatsResponse")) {
+		if (isprimitive("std::string")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "Main.userStatsResponse", "Main.userStatsResponse");
+			jsonToValue(&out, pJson, "std::string", "std::string");
 			json_node_free(pJson);
 
-			if ("Main.userStatsResponse" == "std::string") {
+			if ("std::string" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -689,7 +731,7 @@ static bool userStatsGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 
 static bool userStatsGetHelper(char * accessToken,
 	
-	void(* handler)(Main.userStatsResponse, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -760,7 +802,7 @@ static bool userStatsGetHelper(char * accessToken,
 
 bool UserManager::userStatsGetAsync(char * accessToken,
 	
-	void(* handler)(Main.userStatsResponse, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return userStatsGetHelper(accessToken,
@@ -770,7 +812,7 @@ bool UserManager::userStatsGetAsync(char * accessToken,
 
 bool UserManager::userStatsGetSync(char * accessToken,
 	
-	void(* handler)(Main.userStatsResponse, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return userStatsGetHelper(accessToken,

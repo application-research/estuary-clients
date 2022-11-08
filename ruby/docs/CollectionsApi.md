@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_delete**
-> collections_coluuid_delete(coluuid)
+> String collections_coluuid_delete(coluuid)
 
 Deletes a collection
 
@@ -154,7 +154,8 @@ coluuid = 'coluuid_example' # String | Collection ID
 
 begin
   #Deletes a collection
-  api_instance.collections_coluuid_delete(coluuid)
+  result = api_instance.collections_coluuid_delete(coluuid)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_delete: #{e}"
 end
@@ -168,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -240,7 +241,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_post**
-> Hash&lt;String, String&gt; collections_coluuid_post(coluuid, content_i_ds)
+> String collections_coluuid_post(coluuid, content_i_ds)
 
 Add contents to a collection
 
@@ -283,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Hash&lt;String, String&gt;**
+**String**
 
 ### Authorization
 
@@ -297,7 +298,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_fs_add_post**
-> collections_fs_add_post(coluuid, content, path)
+> String collections_fs_add_post(coluuid, content, path)
 
 Add a file to a collection
 
@@ -326,7 +327,8 @@ path = 'path_example' # String | Path to file
 
 begin
   #Add a file to a collection
-  api_instance.collections_fs_add_post(coluuid, content, path)
+  result = api_instance.collections_fs_add_post(coluuid, content, path)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_fs_add_post: #{e}"
 end
@@ -342,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -356,7 +358,7 @@ nil (empty response body)
 
 
 # **collections_get**
-> Array&lt;CollectionsCollection&gt; collections_get
+> Array&lt;Array&lt;CollectionsCollection&gt;&gt; collections_get
 
 List all collections
 
@@ -390,7 +392,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
+**Array&lt;Array&lt;CollectionsCollection&gt;&gt;**
 
 ### Authorization
 

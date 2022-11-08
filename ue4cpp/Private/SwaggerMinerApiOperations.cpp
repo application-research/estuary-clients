@@ -63,10 +63,27 @@ void SwaggerMinerApi::PublicMinersDealsMinerGetRequest::SetupHttpRequest(const T
 	}
 }
 
+void SwaggerMinerApi::PublicMinersDealsMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerMinerApi::PublicMinersDealsMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerMinerApi::PublicMinersStatsMinerGetRequest::ComputePath() const
@@ -102,10 +119,27 @@ void SwaggerMinerApi::PublicMinersStatsMinerGetRequest::SetupHttpRequest(const T
 	}
 }
 
+void SwaggerMinerApi::PublicMinersStatsMinerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerMinerApi::PublicMinersStatsMinerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

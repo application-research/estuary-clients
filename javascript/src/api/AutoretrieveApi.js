@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.AutoretrieveApi = factory(root.EstuaryClient.ApiClient);
+    root.EstuaryClient.AutoretrieveApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,7 +51,7 @@
      * Callback function to receive the result of the adminAutoretrieveInitPost operation.
      * @callback module:api/AutoretrieveApi~adminAutoretrieveInitPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -61,9 +61,10 @@
      * @param {String} addresses Autoretrieve's comma-separated list of addresses
      * @param {String} pubKey Autoretrieve's public key
      * @param {module:api/AutoretrieveApi~adminAutoretrieveInitPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminAutoretrieveInitPost = function(addresses, pubKey, callback) {
-      var postBody = pubKey;
+      var postBody = null;
 
       // verify the required parameter 'addresses' is set
       if (addresses === undefined || addresses === null) {
@@ -85,12 +86,14 @@
       var headerParams = {
       };
       var formParams = {
+        'addresses': addresses,
+        'pubKey': pubKey
       };
 
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/autoretrieve/init', 'POST',
@@ -103,7 +106,7 @@
      * Callback function to receive the result of the adminAutoretrieveListGet operation.
      * @callback module:api/AutoretrieveApi~adminAutoretrieveListGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -111,6 +114,7 @@
      * List autoretrieve servers
      * This endpoint lists all registered autoretrieve servers
      * @param {module:api/AutoretrieveApi~adminAutoretrieveListGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminAutoretrieveListGet = function(callback) {
       var postBody = null;
@@ -130,7 +134,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/autoretrieve/list', 'GET',
@@ -143,7 +147,7 @@
      * Callback function to receive the result of the autoretrieveHeartbeatPost operation.
      * @callback module:api/AutoretrieveApi~autoretrieveHeartbeatPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -152,6 +156,7 @@
      * This endpoint updates the lastConnection field for autoretrieve
      * @param {String} token Autoretrieve's auth token
      * @param {module:api/AutoretrieveApi~autoretrieveHeartbeatPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.autoretrieveHeartbeatPost = function(token, callback) {
       var postBody = null;
@@ -177,7 +182,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/autoretrieve/heartbeat', 'POST',

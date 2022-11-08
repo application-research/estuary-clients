@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -70,8 +71,8 @@ namespace estuary-client.Test
         public void PublicMetricsDealsOnChainGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PublicMetricsDealsOnChainGet();
-            
+            //var response = instance.PublicMetricsDealsOnChainGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

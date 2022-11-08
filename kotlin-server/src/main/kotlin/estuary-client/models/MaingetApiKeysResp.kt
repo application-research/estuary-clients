@@ -15,11 +15,15 @@ package estuary-client.models
 /**
  * 
  * @param expiry 
+ * @param label 
  * @param token 
+ * @param tokenHash 
  */
 data class MaingetApiKeysResp (
     val expiry: kotlin.String? = null,
-    val token: kotlin.String? = null
+    val label: kotlin.String? = null,
+    val token: kotlin.String? = null,
+    val tokenHash: kotlin.String? = null
 ) {
 
 }

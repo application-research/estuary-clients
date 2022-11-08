@@ -16,13 +16,19 @@ module SwaggerClient
   class MainGetApiKeysResp
     attr_accessor :expiry
 
+    attr_accessor :label
+
     attr_accessor :token
+
+    attr_accessor :token_hash
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'expiry' => :'expiry',
-        :'token' => :'token'
+        :'label' => :'label',
+        :'token' => :'token',
+        :'token_hash' => :'tokenHash'
       }
     end
 
@@ -30,7 +36,9 @@ module SwaggerClient
     def self.swagger_types
       {
         :'expiry' => :'String',
-        :'token' => :'String'
+        :'label' => :'String',
+        :'token' => :'String',
+        :'token_hash' => :'String'
       }
     end
 
@@ -46,8 +54,16 @@ module SwaggerClient
         self.expiry = attributes[:'expiry']
       end
 
+      if attributes.has_key?(:'label')
+        self.label = attributes[:'label']
+      end
+
       if attributes.has_key?(:'token')
         self.token = attributes[:'token']
+      end
+
+      if attributes.has_key?(:'tokenHash')
+        self.token_hash = attributes[:'tokenHash']
       end
     end
 
@@ -70,7 +86,9 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           expiry == o.expiry &&
-          token == o.token
+          label == o.label &&
+          token == o.token &&
+          token_hash == o.token_hash
     end
 
     # @see the `==` method
@@ -82,7 +100,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [expiry, token].hash
+      [expiry, label, token, token_hash].hash
     end
 
     # Builds the object from hash

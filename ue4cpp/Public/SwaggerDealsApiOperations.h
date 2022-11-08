@@ -14,7 +14,9 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerDealsApi.h"
 
+#include "SwaggerMain_ChannelIDParam.h"
 #include "SwaggerMain_estimateDealBody.h"
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -38,9 +40,10 @@ class SWAGGER_API SwaggerDealsApi::DealEstimatePostResponse : public Response
 {
 public:
     virtual ~DealEstimatePostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get Deal Info
@@ -62,9 +65,10 @@ class SWAGGER_API SwaggerDealsApi::DealInfoDealidGetResponse : public Response
 {
 public:
     virtual ~DealInfoDealidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get Proposal
@@ -86,9 +90,10 @@ class SWAGGER_API SwaggerDealsApi::DealProposalPropcidGetResponse : public Respo
 {
 public:
     virtual ~DealProposalPropcidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Query Ask
@@ -110,9 +115,10 @@ class SWAGGER_API SwaggerDealsApi::DealQueryMinerGetResponse : public Response
 {
 public:
     virtual ~DealQueryMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get Deal Status by PropCid
@@ -134,9 +140,10 @@ class SWAGGER_API SwaggerDealsApi::DealStatusByProposalPropcidGetResponse : publ
 {
 public:
     virtual ~DealStatusByProposalPropcidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Deal Status
@@ -160,9 +167,10 @@ class SWAGGER_API SwaggerDealsApi::DealStatusMinerPropcidGetResponse : public Re
 {
 public:
     virtual ~DealStatusMinerPropcidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Transfer In Progress
@@ -182,9 +190,35 @@ class SWAGGER_API SwaggerDealsApi::DealTransferInProgressGetResponse : public Re
 {
 public:
     virtual ~DealTransferInProgressGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
+    FString Content;
+};
+
+/* Transfer Status
+ *
+ * This endpoint returns the status of a transfer
+*/
+class SWAGGER_API SwaggerDealsApi::DealTransferStatusPostRequest : public Request
+{
+public:
+    virtual ~DealTransferStatusPostRequest() {}
+	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
+	FString ComputePath() const final;
     
+	/* Channel ID */
+	SwaggerMain_ChannelIDParam Chanid;
+};
+
+class SWAGGER_API SwaggerDealsApi::DealTransferStatusPostResponse : public Response
+{
+public:
+    virtual ~DealTransferStatusPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
+	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
+    
+    FString Content;
 };
 
 /* Get storage failures for user
@@ -204,9 +238,10 @@ class SWAGGER_API SwaggerDealsApi::DealsFailuresGetResponse : public Response
 {
 public:
     virtual ~DealsFailuresGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Make Deal
@@ -230,9 +265,10 @@ class SWAGGER_API SwaggerDealsApi::DealsMakeMinerPostResponse : public Response
 {
 public:
     virtual ~DealsMakeMinerPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get Deal Status
@@ -254,9 +290,10 @@ class SWAGGER_API SwaggerDealsApi::DealsStatusDealGetResponse : public Response
 {
 public:
     virtual ~DealsStatusDealGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get storage failures
@@ -276,9 +313,10 @@ class SWAGGER_API SwaggerDealsApi::PublicDealsFailuresGetResponse : public Respo
 {
 public:
     virtual ~PublicDealsFailuresGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Query Ask
@@ -300,9 +338,10 @@ class SWAGGER_API SwaggerDealsApi::PublicMinersStorageQueryMinerGetResponse : pu
 {
 public:
     virtual ~PublicMinersStorageQueryMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

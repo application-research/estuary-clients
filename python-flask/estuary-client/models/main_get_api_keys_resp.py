@@ -15,26 +15,36 @@ class MainGetApiKeysResp(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, expiry: str=None, token: str=None):  # noqa: E501
+    def __init__(self, expiry: str=None, label: str=None, token: str=None, token_hash: str=None):  # noqa: E501
         """MainGetApiKeysResp - a model defined in Swagger
 
         :param expiry: The expiry of this MainGetApiKeysResp.  # noqa: E501
         :type expiry: str
+        :param label: The label of this MainGetApiKeysResp.  # noqa: E501
+        :type label: str
         :param token: The token of this MainGetApiKeysResp.  # noqa: E501
         :type token: str
+        :param token_hash: The token_hash of this MainGetApiKeysResp.  # noqa: E501
+        :type token_hash: str
         """
         self.swagger_types = {
             'expiry': str,
-            'token': str
+            'label': str,
+            'token': str,
+            'token_hash': str
         }
 
         self.attribute_map = {
             'expiry': 'expiry',
-            'token': 'token'
+            'label': 'label',
+            'token': 'token',
+            'token_hash': 'tokenHash'
         }
 
         self._expiry = expiry
+        self._label = label
         self._token = token
+        self._token_hash = token_hash
 
     @classmethod
     def from_dict(cls, dikt) -> 'MainGetApiKeysResp':
@@ -69,6 +79,27 @@ class MainGetApiKeysResp(Model):
         self._expiry = expiry
 
     @property
+    def label(self) -> str:
+        """Gets the label of this MainGetApiKeysResp.
+
+
+        :return: The label of this MainGetApiKeysResp.
+        :rtype: str
+        """
+        return self._label
+
+    @label.setter
+    def label(self, label: str):
+        """Sets the label of this MainGetApiKeysResp.
+
+
+        :param label: The label of this MainGetApiKeysResp.
+        :type label: str
+        """
+
+        self._label = label
+
+    @property
     def token(self) -> str:
         """Gets the token of this MainGetApiKeysResp.
 
@@ -88,3 +119,24 @@ class MainGetApiKeysResp(Model):
         """
 
         self._token = token
+
+    @property
+    def token_hash(self) -> str:
+        """Gets the token_hash of this MainGetApiKeysResp.
+
+
+        :return: The token_hash of this MainGetApiKeysResp.
+        :rtype: str
+        """
+        return self._token_hash
+
+    @token_hash.setter
+    def token_hash(self, token_hash: str):
+        """Sets the token_hash of this MainGetApiKeysResp.
+
+
+        :param token_hash: The token_hash of this MainGetApiKeysResp.
+        :type token_hash: str
+        """
+
+        self._token_hash = token_hash

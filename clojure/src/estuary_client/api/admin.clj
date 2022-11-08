@@ -5,14 +5,14 @@
 (defn admin-peering-peers-delete-with-http-info
   "Remove peers on Peering Service
   This endpoint can be used to remove a Peer from the Peering Service"
-  [body ]
-  (check-required-params body)
+  [peer-ids ]
+  (check-required-params peer-ids)
   (call-api "/admin/peering/peers" :delete
             {:path-params   {}
              :header-params {}
              :query-params  {}
              :form-params   {}
-             :body-param    body
+             :body-param    peer-ids
              :content-types []
              :accepts       ["application/json"]
              :auth-names    ["bearerAuth"]}))
@@ -20,8 +20,8 @@
 (defn admin-peering-peers-delete
   "Remove peers on Peering Service
   This endpoint can be used to remove a Peer from the Peering Service"
-  [body ]
-  (:data (admin-peering-peers-delete-with-http-info body)))
+  [peer-ids ]
+  (:data (admin-peering-peers-delete-with-http-info peer-ids)))
 
 (defn admin-peering-peers-get-with-http-info
   "List all Peering peers

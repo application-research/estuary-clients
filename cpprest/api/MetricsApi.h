@@ -22,6 +22,8 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
+#include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
 
@@ -43,7 +45,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get deal metrics
     /// </remarks>
-    pplx::task<void> publicMetricsDealsOnChainGet(
+    pplx::task<utility::string_t> publicMetricsDealsOnChainGet(
     );
 
 protected:

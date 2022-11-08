@@ -11,8 +11,8 @@ Describe 'estuary-client UserApi' {
     }
 
     Context 'UserApi' {
-        It 'Invoke-UserApiUserApiKeysKeyDelete' {
-            $ret = Invoke-PetApiGetPetById -key "TEST_VALUE"
+        It 'Invoke-UserApiUserApiKeysKeyOrHashDelete' {
+            $ret = Invoke-PetApiGetPetById -keyOrHash "TEST_VALUE"
             #$ret | Should BeOfType estuary-client.Model.ModelNameHere
             #$ret.property | Should Be 0
         }

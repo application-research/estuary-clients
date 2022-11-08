@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **admin_autoretrieve_init_post**
-> admin_autoretrieve_init_post(addresses, pub_key)
+> str admin_autoretrieve_init_post(addresses, pub_key)
 
 Register autoretrieve server
 
@@ -37,7 +37,8 @@ pub_key = 'pub_key_example' # str | Autoretrieve's public key
 
 try:
     # Register autoretrieve server
-    api_instance.admin_autoretrieve_init_post(addresses, pub_key)
+    api_response = api_instance.admin_autoretrieve_init_post(addresses, pub_key)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AutoretrieveApi->admin_autoretrieve_init_post: %s\n" % e)
 ```
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -65,7 +66,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_autoretrieve_list_get**
-> admin_autoretrieve_list_get()
+> str admin_autoretrieve_list_get()
 
 List autoretrieve servers
 
@@ -90,7 +91,8 @@ api_instance = estuary-client.AutoretrieveApi(estuary-client.ApiClient(configura
 
 try:
     # List autoretrieve servers
-    api_instance.admin_autoretrieve_list_get()
+    api_response = api_instance.admin_autoretrieve_list_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AutoretrieveApi->admin_autoretrieve_list_get: %s\n" % e)
 ```
@@ -100,7 +102,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -114,7 +116,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **autoretrieve_heartbeat_post**
-> autoretrieve_heartbeat_post(token)
+> str autoretrieve_heartbeat_post(token)
 
 Marks autoretrieve server as up
 
@@ -140,7 +142,8 @@ token = 'token_example' # str | Autoretrieve's auth token
 
 try:
     # Marks autoretrieve server as up
-    api_instance.autoretrieve_heartbeat_post(token)
+    api_response = api_instance.autoretrieve_heartbeat_post(token)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AutoretrieveApi->autoretrieve_heartbeat_post: %s\n" % e)
 ```
@@ -153,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

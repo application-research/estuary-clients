@@ -170,7 +170,7 @@ export class CollectionsApi extends Api {
    * This endpoint is used to delete an existing collection.
    * @param params.coluuid Collection ID
    */
-  async collectionsColuuidDelete(params: ICollectionsColuuidDeleteParams): Promise<any> {
+  async collectionsColuuidDelete(params: ICollectionsColuuidDeleteParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('collectionsColuuidDelete', params, 'coluuid');
 
@@ -236,7 +236,7 @@ export class CollectionsApi extends Api {
    * @param params.coluuid coluuid
    * @param params.contentIDs Content IDs to add to collection
    */
-  async collectionsColuuidPost(params: ICollectionsColuuidPostParams): Promise<{ [key: string]: string; }> {
+  async collectionsColuuidPost(params: ICollectionsColuuidPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('collectionsColuuidPost', params, 'coluuid');
     this.ensureParamIsSet('collectionsColuuidPost', params, 'contentIDs');
@@ -272,7 +272,7 @@ export class CollectionsApi extends Api {
    * @param params.content Content
    * @param params.path Path to file
    */
-  async collectionsFsAddPost(params: ICollectionsFsAddPostParams): Promise<any> {
+  async collectionsFsAddPost(params: ICollectionsFsAddPostParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('collectionsFsAddPost', params, 'coluuid');
     this.ensureParamIsSet('collectionsFsAddPost', params, 'content');
@@ -308,7 +308,7 @@ export class CollectionsApi extends Api {
    * List all collections
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    */
-  async collectionsGet(): Promise<Array<CollectionsCollection>> {
+  async collectionsGet(): Promise<Array<Array<CollectionsCollection>>> {
     // Verify required parameters are set
 
     // Create URL to call

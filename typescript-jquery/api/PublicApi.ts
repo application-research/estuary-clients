@@ -51,7 +51,7 @@ export class PublicApi {
      * @summary Get Content by Cid
      * @param cid Cid
      */
-    public publicByCidCidGet(cid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicByCidCidGet(cid: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/by-cid/{cid}'.replace('{' + 'cid' + '}', encodeURIComponent(String(cid)));
 
         let queryParameters: any = {};
@@ -99,7 +99,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -111,7 +111,7 @@ export class PublicApi {
      * This endpoint returns information about the node
      * @summary Get public node info
      */
-    public publicInfoGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicInfoGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/info';
 
         let queryParameters: any = {};
@@ -154,7 +154,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -166,7 +166,7 @@ export class PublicApi {
      * This endpoint is used to get deal metrics
      * @summary Get deal metrics
      */
-    public publicMetricsDealsOnChainGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMetricsDealsOnChainGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/metrics/deals-on-chain';
 
         let queryParameters: any = {};
@@ -209,7 +209,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -223,7 +223,7 @@ export class PublicApi {
      * @param miner Filter by miner
      * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/deals/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -274,7 +274,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -287,7 +287,7 @@ export class PublicApi {
      * @summary Get all miners
      * @param miner Filter by miner
      */
-    public publicMinersFailuresMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersFailuresMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/failures/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -335,7 +335,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -347,7 +347,7 @@ export class PublicApi {
      * This endpoint returns all miners
      * @summary Get all miners
      */
-    public publicMinersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners';
 
         let queryParameters: any = {};
@@ -390,7 +390,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -403,7 +403,7 @@ export class PublicApi {
      * @summary Get miner stats
      * @param miner Filter by miner
      */
-    public publicMinersStatsMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicMinersStatsMinerGet(miner: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/miners/stats/{miner}'.replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
         let queryParameters: any = {};
@@ -451,7 +451,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -573,7 +573,7 @@ export class PublicApi {
      * This endpoint is used to get public stats.
      * @summary Public stats
      */
-    public publicStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
+    public publicStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/public/stats';
 
         let queryParameters: any = {};
@@ -616,7 +616,7 @@ export class PublicApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

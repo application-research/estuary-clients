@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"expiry": @"expiry", @"token": @"token" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"expiry": @"expiry", @"label": @"label", @"token": @"token", @"tokenHash": @"tokenHash" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"expiry", @"token"];
+  NSArray *optionalProperties = @[@"expiry", @"label", @"token", @"tokenHash"];
   return [optionalProperties containsObject:propertyName];
 }
 

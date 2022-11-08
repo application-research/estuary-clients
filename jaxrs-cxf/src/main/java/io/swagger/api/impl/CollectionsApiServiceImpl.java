@@ -5,7 +5,6 @@ import io.swagger.model.CollectionsCollection;
 import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
-import java.util.Map;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -58,10 +57,10 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to delete an existing collection.
      *
      */
-    public void collectionsColuuidDelete(String coluuid) {
+    public String collectionsColuuidDelete(String coluuid) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -82,7 +81,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      *
      */
-    public Map<String, String> collectionsColuuidPost(String coluuid, List<Integer> contentIDs) {
+    public String collectionsColuuidPost(String coluuid, List<Integer> contentIDs) {
         // TODO: Implement...
         
         return null;
@@ -94,10 +93,10 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds a file to a collection
      *
      */
-    public void collectionsFsAddPost(String coluuid, String content, String path) {
+    public String collectionsFsAddPost(String coluuid, String content, String path) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -106,7 +105,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      *
      */
-    public List<CollectionsCollection> collectionsGet() {
+    public List<List<CollectionsCollection>> collectionsGet() {
         // TODO: Implement...
         
         return null;

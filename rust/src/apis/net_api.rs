@@ -35,16 +35,16 @@ impl<C: hyper::client::Connect> NetApiClient<C> {
 }
 
 pub trait NetApi {
-    fn net_addrs_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
-    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn net_addrs_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn public_net_addrs_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
     fn public_net_peers_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>NetApi for NetApiClient<C> {
-    fn net_addrs_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>> {
+    fn net_addrs_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -104,13 +104,13 @@ impl<C: hyper::client::Connect>NetApi for NetApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<Vec<String>, _> = serde_json::from_slice(&body);
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -169,11 +169,14 @@ impl<C: hyper::client::Connect>NetApi for NetApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -232,7 +235,10 @@ impl<C: hyper::client::Connect>NetApi for NetApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

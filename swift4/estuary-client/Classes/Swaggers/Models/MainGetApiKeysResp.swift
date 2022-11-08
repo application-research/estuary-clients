@@ -12,11 +12,15 @@ import Foundation
 public struct MainGetApiKeysResp: Codable {
 
     public var expiry: String?
+    public var label: String?
     public var token: String?
+    public var tokenHash: String?
 
-    public init(expiry: String?, token: String?) {
+    public init(expiry: String?, label: String?, token: String?, tokenHash: String?) {
         self.expiry = expiry
+        self.label = label
         self.token = token
+        self.tokenHash = tokenHash
     }
 
 

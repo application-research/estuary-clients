@@ -35,21 +35,21 @@ impl<C: hyper::client::Connect> PublicApiClient<C> {
 }
 
 pub trait PublicApi {
-    fn public_by_cid_cid_get(&self, cid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_info_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn public_by_cid_cid_get(&self, cid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_info_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn public_net_addrs_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
     fn public_net_peers_get(&self, ) -> Box<Future<Item = Vec<String>, Error = Error<serde_json::Value>>>;
-    fn public_stats_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn public_stats_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
-    fn public_by_cid_cid_get(&self, cid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_by_cid_cid_get(&self, cid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -108,11 +108,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_info_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_info_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -171,11 +174,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_metrics_deals_on_chain_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -234,11 +240,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_deals_miner_get(&self, miner: &str, ignore_failed: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -298,11 +307,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_failures_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -361,11 +373,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -424,11 +439,14 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_miners_stats_miner_get(&self, miner: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -487,7 +505,10 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
@@ -623,7 +644,7 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
         )
     }
 
-    fn public_stats_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn public_stats_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -682,7 +703,10 @@ impl<C: hyper::client::Connect>PublicApi for PublicApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

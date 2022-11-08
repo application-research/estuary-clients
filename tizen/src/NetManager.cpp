@@ -51,35 +51,48 @@ static gpointer __NetManagerthreadFunc(gpointer data)
 static bool netAddrsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::list<std::string>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<std::string>, Error, void* )> (voidHandler);
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
-	std::list<std::string> out;
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
 
-		pJson = json_from_string(data, NULL);
-		JsonArray * jsonarray = json_node_get_array (pJson);
-		guint length = json_array_get_length (jsonarray);
-		for(guint i = 0; i < length; i++){
-			JsonNode* myJson = json_array_get_element (jsonarray, i);
-			char * singlenodestr = json_to_string(myJson, false);
-			std::string singlemodel;
-			singlemodel.fromJson(singlenodestr);
-			out.push_front(singlemodel);
-			g_free(static_cast<gpointer>(singlenodestr));
-			json_node_free(myJson);
-		}
-		json_array_unref (jsonarray);
-		json_node_free(pJson);
 
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -97,7 +110,7 @@ static bool netAddrsGetProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 
 static bool netAddrsGetHelper(char * accessToken,
 	
-	void(* handler)(std::list<std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -168,7 +181,7 @@ static bool netAddrsGetHelper(char * accessToken,
 
 bool NetManager::netAddrsGetAsync(char * accessToken,
 	
-	void(* handler)(std::list<std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return netAddrsGetHelper(accessToken,
@@ -178,7 +191,7 @@ bool NetManager::netAddrsGetAsync(char * accessToken,
 
 bool NetManager::netAddrsGetSync(char * accessToken,
 	
-	void(* handler)(std::list<std::string>, Error, void* )
+	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
 	return netAddrsGetHelper(accessToken,
@@ -189,21 +202,48 @@ bool NetManager::netAddrsGetSync(char * accessToken,
 static bool publicMinersFailuresMinerGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -214,15 +254,15 @@ static bool publicMinersFailuresMinerGetProcessor(MemoryStruct_s p_chunk, long c
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool publicMinersFailuresMinerGetHelper(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -298,8 +338,8 @@ static bool publicMinersFailuresMinerGetHelper(char * accessToken,
 
 bool NetManager::publicMinersFailuresMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return publicMinersFailuresMinerGetHelper(accessToken,
 	miner, 
@@ -308,8 +348,8 @@ bool NetManager::publicMinersFailuresMinerGetAsync(char * accessToken,
 
 bool NetManager::publicMinersFailuresMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return publicMinersFailuresMinerGetHelper(accessToken,
 	miner, 
@@ -319,21 +359,48 @@ bool NetManager::publicMinersFailuresMinerGetSync(char * accessToken,
 static bool publicMinersGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(std::string, Error, void* )
+	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("std::string")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "std::string", "std::string");
+			json_node_free(pJson);
+
+			if ("std::string" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -344,15 +411,15 @@ static bool publicMinersGetProcessor(MemoryStruct_s p_chunk, long code, char* er
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
 static bool publicMinersGetHelper(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+	void(* handler)(std::string, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -422,8 +489,8 @@ static bool publicMinersGetHelper(char * accessToken,
 
 bool NetManager::publicMinersGetAsync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return publicMinersGetHelper(accessToken,
 	
@@ -432,8 +499,8 @@ bool NetManager::publicMinersGetAsync(char * accessToken,
 
 bool NetManager::publicMinersGetSync(char * accessToken,
 	
-	
-	void(* handler)(Error, void* ) , void* userData)
+	void(* handler)(std::string, Error, void* )
+	, void* userData)
 {
 	return publicMinersGetHelper(accessToken,
 	

@@ -13,9 +13,9 @@ module.exports.userApi_keysGET = function userApi_keysGET (req, res, next) {
     });
 };
 
-module.exports.userApi_keysKeyDELETE = function userApi_keysKeyDELETE (req, res, next) {
-  var key = req.swagger.params['key'].value;
-  User.userApi_keysKeyDELETE(key)
+module.exports.userApi_keysKey_or_hashDELETE = function userApi_keysKey_or_hashDELETE (req, res, next) {
+  var key_or_hash = req.swagger.params['key_or_hash'].value;
+  User.userApi_keysKey_or_hashDELETE(key_or_hash)
     .then(function (response) {
       utils.writeJson(res, response);
     })

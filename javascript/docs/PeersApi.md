@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> 'String' adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -33,28 +33,28 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 var apiInstance = new EstuaryClient.PeersApi();
 
-var body = [new EstuaryClient.[String]()]; // [String] | Peer ids
+var peerIds = [new EstuaryClient.[Boolean]()]; // [Boolean] | Peer ids
 
 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.adminPeeringPeersDelete(body, callback);
+apiInstance.adminPeeringPeersDelete(peerIds, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **[String]**| Peer ids | 
+ **peerIds** | **[Boolean]**| Peer ids | 
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -67,7 +67,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersGet"></a>
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> 'String' adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -90,7 +90,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminPeeringPeersGet(callback);
@@ -101,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -114,7 +114,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> 'String' adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -137,7 +137,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminPeeringPeersPost(callback);
@@ -148,7 +148,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -161,7 +161,7 @@ null (empty response body)
 
 <a name="adminPeeringStartPost"></a>
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> 'String' adminPeeringStartPost()
 
 Start Peering
 
@@ -184,7 +184,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminPeeringStartPost(callback);
@@ -195,7 +195,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -208,7 +208,7 @@ null (empty response body)
 
 <a name="adminPeeringStatusGet"></a>
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> 'String' adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -231,7 +231,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminPeeringStatusGet(callback);
@@ -242,7 +242,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -255,7 +255,7 @@ null (empty response body)
 
 <a name="adminPeeringStopPost"></a>
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> 'String' adminPeeringStopPost()
 
 Stop Peering
 
@@ -278,7 +278,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.adminPeeringStopPost(callback);
@@ -289,7 +289,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

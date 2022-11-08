@@ -19,6 +19,7 @@ using NUnit.Framework;
 
 using estuary-client.Client;
 using estuary-client.Api;
+using estuary-client.Model;
 
 namespace estuary-client.Test
 {
@@ -72,8 +73,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string addresses = null;
             //string pubKey = null;
-            //instance.AdminAutoretrieveInitPost(addresses, pubKey);
-            
+            //var response = instance.AdminAutoretrieveInitPost(addresses, pubKey);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -83,8 +84,8 @@ namespace estuary-client.Test
         public void AdminAutoretrieveListGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.AdminAutoretrieveListGet();
-            
+            //var response = instance.AdminAutoretrieveListGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
         /// <summary>
@@ -95,8 +96,8 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string token = null;
-            //instance.AutoretrieveHeartbeatPost(token);
-            
+            //var response = instance.AutoretrieveHeartbeatPost(token);
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         
     }

@@ -173,9 +173,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidDelete(coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public collectionsColuuidDelete(coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public collectionsColuuidDelete(coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public collectionsColuuidDelete(coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidDelete(coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidDelete(coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public collectionsColuuidDelete(coluuid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (coluuid === null || coluuid === undefined) {
@@ -201,7 +201,7 @@ export class CollectionsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<any>(`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
+        return this.httpClient.delete<string>(`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -273,9 +273,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: string; }>;
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: string; }>>;
-    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: string; }>>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public collectionsColuuidPost(coluuid: string, contentIDs: Array<number>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (coluuid === null || coluuid === undefined) {
@@ -311,7 +311,7 @@ export class CollectionsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<{ [key: string]: string; }>(`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
+        return this.httpClient.post<string>(`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
             contentIDs,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -331,9 +331,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public collectionsFsAddPost(coluuid: string, content: string, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (coluuid === null || coluuid === undefined) {
@@ -379,7 +379,7 @@ export class CollectionsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.post<any>(`${this.basePath}/collections/fs/add`,
+        return this.httpClient.post<string>(`${this.basePath}/collections/fs/add`,
             null,
             {
                 params: queryParameters,
@@ -397,9 +397,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<CollectionsCollection>>;
-    public collectionsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CollectionsCollection>>>;
-    public collectionsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CollectionsCollection>>>;
+    public collectionsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<Array<CollectionsCollection>>>;
+    public collectionsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Array<CollectionsCollection>>>>;
+    public collectionsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Array<CollectionsCollection>>>>;
     public collectionsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -422,7 +422,7 @@ export class CollectionsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<CollectionsCollection>>(`${this.basePath}/collections/`,
+        return this.httpClient.get<Array<Array<CollectionsCollection>>>(`${this.basePath}/collections/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete(body)
+> String admin_peering_peers_delete(peer_ids)
 
 Remove peers on Peering Service
 
@@ -33,12 +33,13 @@ end
 
 api_instance = SwaggerClient::PeeringApi.new
 
-body = [SwaggerClient::Array<String>.new] # Array<String> | Peer ids
+peer_ids = [SwaggerClient::Array<BOOLEAN>.new] # Array<BOOLEAN> | Peer ids
 
 
 begin
   #Remove peers on Peering Service
-  api_instance.admin_peering_peers_delete(body)
+  result = api_instance.admin_peering_peers_delete(peer_ids)
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_peers_delete: #{e}"
 end
@@ -48,11 +49,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Array&lt;String&gt;**| Peer ids | 
+ **peer_ids** | **Array&lt;BOOLEAN&gt;**| Peer ids | 
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ nil (empty response body)
 
 
 # **admin_peering_peers_get**
-> admin_peering_peers_get
+> String admin_peering_peers_get
 
 List all Peering peers
 
@@ -88,7 +89,8 @@ api_instance = SwaggerClient::PeeringApi.new
 
 begin
   #List all Peering peers
-  api_instance.admin_peering_peers_get
+  result = api_instance.admin_peering_peers_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_peers_get: #{e}"
 end
@@ -99,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -113,7 +115,7 @@ nil (empty response body)
 
 
 # **admin_peering_peers_post**
-> admin_peering_peers_post
+> String admin_peering_peers_post
 
 Add peers on Peering Service
 
@@ -135,7 +137,8 @@ api_instance = SwaggerClient::PeeringApi.new
 
 begin
   #Add peers on Peering Service
-  api_instance.admin_peering_peers_post
+  result = api_instance.admin_peering_peers_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_peers_post: #{e}"
 end
@@ -146,7 +149,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -160,7 +163,7 @@ nil (empty response body)
 
 
 # **admin_peering_start_post**
-> admin_peering_start_post
+> String admin_peering_start_post
 
 Start Peering
 
@@ -182,7 +185,8 @@ api_instance = SwaggerClient::PeeringApi.new
 
 begin
   #Start Peering
-  api_instance.admin_peering_start_post
+  result = api_instance.admin_peering_start_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_start_post: #{e}"
 end
@@ -193,7 +197,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -207,7 +211,7 @@ nil (empty response body)
 
 
 # **admin_peering_status_get**
-> admin_peering_status_get
+> String admin_peering_status_get
 
 Check Peering Status
 
@@ -229,7 +233,8 @@ api_instance = SwaggerClient::PeeringApi.new
 
 begin
   #Check Peering Status
-  api_instance.admin_peering_status_get
+  result = api_instance.admin_peering_status_get
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_status_get: #{e}"
 end
@@ -240,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -254,7 +259,7 @@ nil (empty response body)
 
 
 # **admin_peering_stop_post**
-> admin_peering_stop_post
+> String admin_peering_stop_post
 
 Stop Peering
 
@@ -276,7 +281,8 @@ api_instance = SwaggerClient::PeeringApi.new
 
 begin
   #Stop Peering
-  api_instance.admin_peering_stop_post
+  result = api_instance.admin_peering_stop_post
+  p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PeeringApi->admin_peering_stop_post: #{e}"
 end
@@ -287,7 +293,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 

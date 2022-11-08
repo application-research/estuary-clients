@@ -34,11 +34,20 @@ exports.contentAddPOST = function(data,filename,coluuid,replication,ignoreDupes,
  * body String Car
  * ignoreDupes String Ignore Dupes (optional)
  * filename String Filename (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -49,11 +58,20 @@ exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
  *
  * body Util.ContentAddIpfsBody IPFS Body
  * ignoreDupes String Ignore Dupes (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentAdd_ipfsPOST = function(body,ignoreDupes) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -88,11 +106,20 @@ exports.contentAggregatedContentGET = function(content) {
  * begin String Begin
  * duration String Duration
  * all String All
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentAll_dealsGET = function(begin,duration,all) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -102,11 +129,20 @@ exports.contentAll_dealsGET = function(begin,duration,all) {
  * This endpoint returns content bandwidth
  *
  * content String Content ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentBw_usageContentGET = function(content) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -117,11 +153,20 @@ exports.contentBw_usageContentGET = function(content) {
  *
  * req Util.ContentCreateBody Content
  * ignoreDupes String Ignore Dupes (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentCreatePOST = function(req,ignoreDupes) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -132,11 +177,20 @@ exports.contentCreatePOST = function(req,ignoreDupes) {
  *
  * limit Integer Limit (optional)
  * offset Integer Offset (optional)
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentDealsGET = function(limit,offset) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -146,11 +200,20 @@ exports.contentDealsGET = function(limit,offset) {
  * This endpoint ensures that the content is replicated to the specified number of providers
  *
  * datacid String Data CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentEnsure_replicationDatacidGET = function(datacid) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -183,11 +246,20 @@ exports.contentFailuresContentGET = function(content) {
  * This endpoint returns a content by its ID
  *
  * id Integer Content ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentIdGET = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -197,11 +269,20 @@ exports.contentIdGET = function(id) {
  * This endpoint imports a deal into the shuttle.
  *
  * body Main.importDealBody Import a deal
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentImportdealPOST = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -210,12 +291,15 @@ exports.contentImportdealPOST = function(body) {
  * List all pinned content
  * This endpoint lists all content
  *
- * returns List
+ * returns String
  **/
 exports.contentListGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -230,11 +314,20 @@ exports.contentListGET = function() {
  * This endpoint reads content from the blockstore
  *
  * cont String CID
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentReadContGET = function(cont) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -243,11 +336,20 @@ exports.contentReadContGET = function(cont) {
  * Get staging zone for user
  * This endpoint is used to get staging zone for user.
  *
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentStaging_zonesGET = function() {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -258,11 +360,20 @@ exports.contentStaging_zonesGET = function() {
  *
  * limit String limit
  * offset String offset
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentStatsGET = function(limit,offset) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 
@@ -272,11 +383,20 @@ exports.contentStatsGET = function(limit,offset) {
  * This endpoint returns the status of a content
  *
  * id Integer Content ID
- * no response value expected for this operation
+ * returns String
  **/
 exports.contentStatusIdGET = function(id) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    var examples = {};
+    examples['application/json'] = {
+  "bytes": [],
+  "empty": true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
   });
 }
 

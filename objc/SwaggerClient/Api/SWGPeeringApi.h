@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -25,62 +26,80 @@ extern NSInteger kSWGPeeringApiMissingParamErrorCode;
 /// Remove peers on Peering Service
 /// This endpoint can be used to remove a Peer from the Peering Service
 ///
-/// @param body Peer ids
+/// @param peerIds Peer ids
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
--(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
-    completionHandler: (void (^)(NSError* error)) handler;
+/// @return NSString*
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithPeerIds: (NSArray<NSNumber*>*) peerIds
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// List all Peering peers
 /// This endpoint can be used to list all peers on Peering Service
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminPeeringPeersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Add peers on Peering Service
 /// This endpoint can be used to add a Peer from the Peering Service
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminPeeringPeersPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Start Peering
 /// This endpoint can be used to start the Peering Service
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminPeeringStartPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Check Peering Status
 /// This endpoint can be used to check the Peering status
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminPeeringStatusGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Stop Peering
 /// This endpoint can be used to stop the Peering Service
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminPeeringStopPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 

@@ -68,10 +68,11 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Swagger\Client\Model\string[]()); // string[] | Peer ids
+$peer_ids = array(new \Swagger\Client\Model\bool[]()); // bool[] | Peer ids
 
 try {
-    $apiInstance->adminPeeringPeersDelete($body);
+    $result = $apiInstance->adminPeeringPeersDelete($peer_ids);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -128,12 +129,12 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealStatusByProposalPropcidGet**](docs/Api/DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 *DealsApi* | [**dealStatusMinerPropcidGet**](docs/Api/DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 *DealsApi* | [**dealTransferInProgressGet**](docs/Api/DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+*DealsApi* | [**dealTransferStatusPost**](docs/Api/DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
 *DealsApi* | [**dealsFailuresGet**](docs/Api/DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
 *DealsApi* | [**dealsMakeMinerPost**](docs/Api/DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
 *DealsApi* | [**dealsStatusDealGet**](docs/Api/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/Api/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/Api/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DefaultApi* | [**dealTransferStatusPost**](docs/Api/DefaultApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | 
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/Api/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
@@ -170,7 +171,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/Api/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/Api/PublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/Api/UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/Api/UserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/Api/UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/Api/UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/Api/UserApi.md#userexportget) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/Api/UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
@@ -179,12 +180,13 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CollectionsCollection](docs/Model/CollectionsCollection.md)
+ - [MainChannelIDParam](docs/Model/MainChannelIDParam.md)
  - [MainCreateCollectionBody](docs/Model/MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs/Model/MainDeleteContentFromCollectionBody.md)
  - [MainEstimateDealBody](docs/Model/MainEstimateDealBody.md)
  - [MainGetApiKeysResp](docs/Model/MainGetApiKeysResp.md)
  - [MainImportDealBody](docs/Model/MainImportDealBody.md)
- - [MainUserStatsResponse](docs/Model/MainUserStatsResponse.md)
+ - [TypesIpfsPin](docs/Model/TypesIpfsPin.md)
  - [UtilContentAddIpfsBody](docs/Model/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/Model/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/Model/UtilContentCreateBody.md)

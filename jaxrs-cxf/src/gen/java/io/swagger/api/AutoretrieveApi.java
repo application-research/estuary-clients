@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,8 +39,11 @@ public interface AutoretrieveApi  {
     @Path("/admin/autoretrieve/init")
     @Produces({ "application/json" })
     @ApiOperation(value = "Register autoretrieve server", tags={ "autoretrieve",  })
-    @ApiResponses(value = {  })
-    public void adminAutoretrieveInitPost(@Valid String addresses, @Valid String pubKey);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminAutoretrieveInitPost(@Multipart(value = "addresses")  String addresses, @Multipart(value = "pubKey")  String pubKey);
 
     /**
      * List autoretrieve servers
@@ -51,8 +55,11 @@ public interface AutoretrieveApi  {
     @Path("/admin/autoretrieve/list")
     @Produces({ "application/json" })
     @ApiOperation(value = "List autoretrieve servers", tags={ "autoretrieve",  })
-    @ApiResponses(value = {  })
-    public void adminAutoretrieveListGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String adminAutoretrieveListGet();
 
     /**
      * Marks autoretrieve server as up
@@ -64,7 +71,10 @@ public interface AutoretrieveApi  {
     @Path("/autoretrieve/heartbeat")
     @Produces({ "application/json" })
     @ApiOperation(value = "Marks autoretrieve server as up", tags={ "autoretrieve" })
-    @ApiResponses(value = {  })
-    public void autoretrieveHeartbeatPost(@HeaderParam("token") String token);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String autoretrieveHeartbeatPost(@HeaderParam("token") String token);
 }
 

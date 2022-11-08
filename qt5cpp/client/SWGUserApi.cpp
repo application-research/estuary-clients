@@ -68,19 +68,19 @@ SWGUserApi::userApiKeysGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    QList<SWGMain.getApiKeysResp*>* output = new QList<SWGMain.getApiKeysResp*>();
+    QList<QList<SWGMain.getApiKeysResp*>*>* output = new QList<QList<SWGMain.getApiKeysResp*>*>();
     QString json(worker->response);
     QByteArray array (json.toStdString().c_str());
     QJsonDocument doc = QJsonDocument::fromJson(array);
     QJsonArray jsonArray = doc.array();
-    auto wrapper = new SWGQObjectWrapper<QList<SWGMain.getApiKeysResp*>*> (output);
+    auto wrapper = new SWGQObjectWrapper<QList<QList<SWGMain.getApiKeysResp*>*>*> (output);
     wrapper->deleteLater();
     foreach(QJsonValue obj, jsonArray) {
-        SWGMain.getApiKeysResp* o = new SWGMain.getApiKeysResp();
+        QList* o = new QList();
         QJsonObject jv = obj.toObject();
         QJsonObject * ptr = (QJsonObject*)&jv;
         o->fromJsonObject(*ptr);
-        auto objwrapper = new SWGQObjectWrapper<SWGMain.getApiKeysResp*> (o);
+        auto objwrapper = new SWGQObjectWrapper<QList*> (o);
         objwrapper->deleteLater();
         output->append(o);
     }
@@ -95,12 +95,12 @@ SWGUserApi::userApiKeysGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGUserApi::userApiKeysKeyDelete(QString* key) {
+SWGUserApi::userApiKeysKeyOrHashDelete(QString* key_or_hash) {
     QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/user/api-keys/{key}");
+    fullPath.append(this->host).append(this->basePath).append("/user/api-keys/{key_or_hash}");
 
-    QString keyPathParam("{"); keyPathParam.append("key").append("}");
-    fullPath.replace(keyPathParam, stringValue(key));
+    QString key_or_hashPathParam("{"); key_or_hashPathParam.append("key_or_hash").append("}");
+    fullPath.replace(key_or_hashPathParam, stringValue(key_or_hash));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
@@ -117,13 +117,13 @@ SWGUserApi::userApiKeysKeyDelete(QString* key) {
     connect(worker,
             &SWGHttpRequestWorker::on_execution_finished,
             this,
-            &SWGUserApi::userApiKeysKeyDeleteCallback);
+            &SWGUserApi::userApiKeysKeyOrHashDeleteCallback);
 
     worker->execute(&input);
 }
 
 void
-SWGUserApi::userApiKeysKeyDeleteCallback(SWGHttpRequestWorker * worker) {
+SWGUserApi::userApiKeysKeyOrHashDeleteCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -135,13 +135,17 @@ SWGUserApi::userApiKeysKeyDeleteCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit userApiKeysKeyDeleteSignal();
+        emit userApiKeysKeyOrHashDeleteSignal(output);
     } else {
-        emit userApiKeysKeyDeleteSignalE(error_type, error_str);
-        emit userApiKeysKeyDeleteSignalEFull(worker, error_type, error_str);
+        emit userApiKeysKeyOrHashDeleteSignalE(output, error_type, error_str);
+        emit userApiKeysKeyOrHashDeleteSignalEFull(worker, error_type, error_str);
     }
 }
 
@@ -307,8 +311,8 @@ SWGUserApi::userStatsGetCallback(SWGHttpRequestWorker * worker) {
     }
 
     QString json(worker->response);
-    SWGMain.userStatsResponse* output = static_cast<SWGMain.userStatsResponse*>(create(json, QString("SWGMain.userStatsResponse")));
-    auto wrapper = new SWGQObjectWrapper<SWGMain.userStatsResponse*> (output);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
     wrapper->deleteLater();
     worker->deleteLater();
 

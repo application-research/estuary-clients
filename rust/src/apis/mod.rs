@@ -60,8 +60,6 @@ mod content_api;
 pub use self::content_api::{ ContentApi, ContentApiClient };
 mod deals_api;
 pub use self::deals_api::{ DealsApi, DealsApiClient };
-mod default_api;
-pub use self::default_api::{ DefaultApi, DefaultApiClient };
 mod metrics_api;
 pub use self::metrics_api::{ MetricsApi, MetricsApiClient };
 mod miner_api;

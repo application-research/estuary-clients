@@ -22,11 +22,11 @@
 
 %% @doc Add Car object
 %% This endpoint is used to add a car object to the network. The object can be a file or a directory.
--spec content_add_car_post(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_add_car_post(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_add_car_post(Ctx, Body) ->
     content_add_car_post(Ctx, Body, #{}).
 
--spec content_add_car_post(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_add_car_post(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_add_car_post(Ctx, Body, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -43,11 +43,11 @@ content_add_car_post(Ctx, Body, Optional) ->
 
 %% @doc Add IPFS object
 %% This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
--spec content_add_ipfs_post(ctx:ctx(), estuary-client_util_content_add_ipfs_body:estuary-client_util_content_add_ipfs_body()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_add_ipfs_post(ctx:ctx(), estuary-client_util_content_add_ipfs_body:estuary-client_util_content_add_ipfs_body()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_add_ipfs_post(Ctx, Body) ->
     content_add_ipfs_post(Ctx, Body, #{}).
 
--spec content_add_ipfs_post(ctx:ctx(), estuary-client_util_content_add_ipfs_body:estuary-client_util_content_add_ipfs_body(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_add_ipfs_post(ctx:ctx(), estuary-client_util_content_add_ipfs_body:estuary-client_util_content_add_ipfs_body(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_add_ipfs_post(Ctx, Body, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -106,11 +106,11 @@ content_aggregated_content_get(Ctx, Content, Optional) ->
 
 %% @doc Get all deals for a user
 %% This endpoint is used to get all deals for a user
--spec content_all_deals_get(ctx:ctx(), binary(), binary(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_all_deals_get(ctx:ctx(), binary(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_all_deals_get(Ctx, Begin_, Duration, All) ->
     content_all_deals_get(Ctx, Begin_, Duration, All, #{}).
 
--spec content_all_deals_get(ctx:ctx(), binary(), binary(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_all_deals_get(ctx:ctx(), binary(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_all_deals_get(Ctx, Begin_, Duration, All, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -127,11 +127,11 @@ content_all_deals_get(Ctx, Begin_, Duration, All, Optional) ->
 
 %% @doc Get content bandwidth
 %% This endpoint returns content bandwidth
--spec content_bw_usage_content_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_bw_usage_content_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_bw_usage_content_get(Ctx, Content) ->
     content_bw_usage_content_get(Ctx, Content, #{}).
 
--spec content_bw_usage_content_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_bw_usage_content_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_bw_usage_content_get(Ctx, Content, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -148,11 +148,11 @@ content_bw_usage_content_get(Ctx, Content, Optional) ->
 
 %% @doc Add a new content
 %% This endpoint adds a new content
--spec content_create_post(ctx:ctx(), estuary-client_util_content_create_body:estuary-client_util_content_create_body()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_create_post(ctx:ctx(), estuary-client_util_content_create_body:estuary-client_util_content_create_body()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_create_post(Ctx, Req) ->
     content_create_post(Ctx, Req, #{}).
 
--spec content_create_post(ctx:ctx(), estuary-client_util_content_create_body:estuary-client_util_content_create_body(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_create_post(ctx:ctx(), estuary-client_util_content_create_body:estuary-client_util_content_create_body(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_create_post(Ctx, Req, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -169,11 +169,11 @@ content_create_post(Ctx, Req, Optional) ->
 
 %% @doc Content with deals
 %% This endpoint lists all content with deals
--spec content_deals_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_deals_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_deals_get(Ctx) ->
     content_deals_get(Ctx, #{}).
 
--spec content_deals_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_deals_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_deals_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -190,11 +190,11 @@ content_deals_get(Ctx, Optional) ->
 
 %% @doc Ensure Replication
 %% This endpoint ensures that the content is replicated to the specified number of providers
--spec content_ensure_replication_datacid_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_ensure_replication_datacid_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_ensure_replication_datacid_get(Ctx, Datacid) ->
     content_ensure_replication_datacid_get(Ctx, Datacid, #{}).
 
--spec content_ensure_replication_datacid_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_ensure_replication_datacid_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_ensure_replication_datacid_get(Ctx, Datacid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -232,11 +232,11 @@ content_failures_content_get(Ctx, Content, Optional) ->
 
 %% @doc Content
 %% This endpoint returns a content by its ID
--spec content_id_get(ctx:ctx(), integer()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_id_get(ctx:ctx(), integer()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_id_get(Ctx, Id) ->
     content_id_get(Ctx, Id, #{}).
 
--spec content_id_get(ctx:ctx(), integer(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_id_get(ctx:ctx(), integer(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_id_get(Ctx, Id, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -253,11 +253,11 @@ content_id_get(Ctx, Id, Optional) ->
 
 %% @doc Import a deal
 %% This endpoint imports a deal into the shuttle.
--spec content_importdeal_post(ctx:ctx(), estuary-client_main_import_deal_body:estuary-client_main_import_deal_body()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_importdeal_post(ctx:ctx(), estuary-client_main_import_deal_body:estuary-client_main_import_deal_body()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_importdeal_post(Ctx, Body) ->
     content_importdeal_post(Ctx, Body, #{}).
 
--spec content_importdeal_post(ctx:ctx(), estuary-client_main_import_deal_body:estuary-client_main_import_deal_body(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_importdeal_post(ctx:ctx(), estuary-client_main_import_deal_body:estuary-client_main_import_deal_body(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_importdeal_post(Ctx, Body, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -274,11 +274,11 @@ content_importdeal_post(Ctx, Body, Optional) ->
 
 %% @doc List all pinned content
 %% This endpoint lists all content
--spec content_list_get(ctx:ctx()) -> {ok, [binary()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_list_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_list_get(Ctx) ->
     content_list_get(Ctx, #{}).
 
--spec content_list_get(ctx:ctx(), maps:map()) -> {ok, [binary()], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_list_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_list_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -295,11 +295,11 @@ content_list_get(Ctx, Optional) ->
 
 %% @doc Read content
 %% This endpoint reads content from the blockstore
--spec content_read_cont_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_read_cont_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_read_cont_get(Ctx, Cont) ->
     content_read_cont_get(Ctx, Cont, #{}).
 
--spec content_read_cont_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_read_cont_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_read_cont_get(Ctx, Cont, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -316,11 +316,11 @@ content_read_cont_get(Ctx, Cont, Optional) ->
 
 %% @doc Get staging zone for user
 %% This endpoint is used to get staging zone for user.
--spec content_staging_zones_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_staging_zones_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_staging_zones_get(Ctx) ->
     content_staging_zones_get(Ctx, #{}).
 
--spec content_staging_zones_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_staging_zones_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_staging_zones_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -337,11 +337,11 @@ content_staging_zones_get(Ctx, Optional) ->
 
 %% @doc Get content statistics
 %% This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
--spec content_stats_get(ctx:ctx(), binary(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_stats_get(ctx:ctx(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_stats_get(Ctx, Limit, Offset) ->
     content_stats_get(Ctx, Limit, Offset, #{}).
 
--spec content_stats_get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_stats_get(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_stats_get(Ctx, Limit, Offset, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -358,11 +358,11 @@ content_stats_get(Ctx, Limit, Offset, Optional) ->
 
 %% @doc Content Status
 %% This endpoint returns the status of a content
--spec content_status_id_get(ctx:ctx(), integer()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_status_id_get(ctx:ctx(), integer()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_status_id_get(Ctx, Id) ->
     content_status_id_get(Ctx, Id, #{}).
 
--spec content_status_id_get(ctx:ctx(), integer(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec content_status_id_get(ctx:ctx(), integer(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 content_status_id_get(Ctx, Id, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

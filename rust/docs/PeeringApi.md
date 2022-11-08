@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete(ctx, body)
+> String admin_peering_peers_delete(ctx, peer_ids)
 Remove peers on Peering Service
 
 This endpoint can be used to remove a Peer from the Peering Service
@@ -23,11 +23,11 @@ This endpoint can be used to remove a Peer from the Peering Service
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **body** | **Vec&lt;String&gt;**| Peer ids | 
+  **peer_ids** | **Vec&lt;bool&gt;**| Peer ids | 
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_get**
-> admin_peering_peers_get(ctx, )
+> String admin_peering_peers_get(ctx, )
 List all Peering peers
 
 This endpoint can be used to list all peers on Peering Service
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -65,7 +65,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_post**
-> admin_peering_peers_post(ctx, )
+> String admin_peering_peers_post(ctx, )
 Add peers on Peering Service
 
 This endpoint can be used to add a Peer from the Peering Service
@@ -75,7 +75,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_start_post**
-> admin_peering_start_post(ctx, )
+> String admin_peering_start_post(ctx, )
 Start Peering
 
 This endpoint can be used to start the Peering Service
@@ -99,7 +99,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -113,7 +113,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_status_get**
-> admin_peering_status_get(ctx, )
+> String admin_peering_status_get(ctx, )
 Check Peering Status
 
 This endpoint can be used to check the Peering status
@@ -123,7 +123,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -137,7 +137,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_stop_post**
-> admin_peering_stop_post(ctx, )
+> String admin_peering_stop_post(ctx, )
 Stop Peering
 
 This endpoint can be used to stop the Peering Service
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

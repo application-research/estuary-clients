@@ -21,7 +21,6 @@ import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
 import { MainGetApiKeysResp } from '../model/mainGetApiKeysResp';
-import { MainUserStatsResponse } from '../model/mainUserStatsResponse';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
@@ -40,8 +39,8 @@ export class UserService {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      
      */
-    public userApiKeysGet(observe?: 'body', headers?: Headers): Observable<Array<MainGetApiKeysResp>>;
-    public userApiKeysGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'body', headers?: Headers): Observable<Array<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<Array<MainGetApiKeysResp>>>>;
     public userApiKeysGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -49,7 +48,7 @@ export class UserService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<MainGetApiKeysResp>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/user/api-keys` as any, headers);
+        const response: Observable<HttpResponse<Array<Array<MainGetApiKeysResp>>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/user/api-keys` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -59,15 +58,15 @@ export class UserService {
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash
      
      */
-    public userApiKeysKeyDelete(key: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public userApiKeysKeyDelete(key: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
-    public userApiKeysKeyDelete(key: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
-        if (!key){
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
+        if (!keyOrHash){
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
         // authentication (bearerAuth) required
@@ -76,7 +75,7 @@ export class UserService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/user/api-keys/${encodeURIComponent(String(key))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.delete(`${this.APIConfiguration.basePath}/user/api-keys/${encodeURIComponent(String(keyOrHash))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -87,7 +86,7 @@ export class UserService {
     /**
      * Create API keys for a user
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      
      */
@@ -143,8 +142,8 @@ export class UserService {
      * This endpoint is used to create API keys for a user.
      
      */
-    public userStatsGet(observe?: 'body', headers?: Headers): Observable<MainUserStatsResponse>;
-    public userStatsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<MainUserStatsResponse>>;
+    public userStatsGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public userStatsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public userStatsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -152,7 +151,7 @@ export class UserService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<MainUserStatsResponse>> = this.httpClient.get(`${this.APIConfiguration.basePath}/user/stats` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/user/stats` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

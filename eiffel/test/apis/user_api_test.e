@@ -18,7 +18,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user. 
         local
-            l_response: LIST [MAIN_GET_API_KEYS_RESP]
+            l_response: LIST [LIST [MAIN_GET_API_KEYS_RESP]]
         do
             -- TODO: Initialize required params.
                       
@@ -26,17 +26,18 @@ feature -- Test routines
             assert ("not_implemented", False)
         end
     
-    test_user_api_keys_key_delete
+    test_user_api_keys_key_or_hash_delete
             -- Revoke a User API Key.
             -- 
-            -- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user. 
+            -- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable. 
         local
-            l_key: STRING_32
+            l_response: STRING_32
+            l_key_or_hash: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_key
+            -- l_key_or_hash
                       
-            -- api.user_api_keys_key_delete(l_key)
+            -- l_response := api.user_api_keys_key_or_hash_delete(l_key_or_hash)
             assert ("not_implemented", False)
         end
     
@@ -73,7 +74,7 @@ feature -- Test routines
             -- 
             -- This endpoint is used to create API keys for a user. 
         local
-            l_response: MAIN_USER_STATS_RESPONSE
+            l_response: STRING_32
         do
             -- TODO: Initialize required params.
                       

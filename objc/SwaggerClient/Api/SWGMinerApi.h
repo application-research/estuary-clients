@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -28,11 +29,14 @@ extern NSInteger kSWGMinerApiMissingParamErrorCode;
 /// @param miner Filter by miner
 /// @param ignoreFailed Ignore Failed (optional)
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Get miner stats
@@ -40,10 +44,13 @@ extern NSInteger kSWGMinerApiMissingParamErrorCode;
 ///
 /// @param miner Filter by miner
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 

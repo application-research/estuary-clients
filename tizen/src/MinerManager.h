@@ -5,6 +5,7 @@
 #include <cstring>
 #include <list>
 #include <glib.h>
+#include "Util.HttpError.h"
 #include "Error.h"
 
 /** \defgroup Operations API Endpoints
@@ -34,8 +35,8 @@ public:
  */
 bool publicMinersDealsMinerGetSync(char * accessToken,
 	std::string miner, std::string ignoreFailed, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get all miners deals. *Asynchronous*
  *
@@ -48,8 +49,8 @@ bool publicMinersDealsMinerGetSync(char * accessToken,
  */
 bool publicMinersDealsMinerGetAsync(char * accessToken,
 	std::string miner, std::string ignoreFailed, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 /*! \brief Get miner stats. *Synchronous*
@@ -62,8 +63,8 @@ bool publicMinersDealsMinerGetAsync(char * accessToken,
  */
 bool publicMinersStatsMinerGetSync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 /*! \brief Get miner stats. *Asynchronous*
  *
@@ -75,8 +76,8 @@ bool publicMinersStatsMinerGetSync(char * accessToken,
  */
 bool publicMinersStatsMinerGetAsync(char * accessToken,
 	std::string miner, 
-	
-	void(* handler)(Error, void* ) , void* userData);
+	void(* handler)(std::string, Error, void* )
+	, void* userData);
 
 
 

@@ -30,36 +30,41 @@ public class SwagAutoretrieveApi {
      * This endpoint registers a new autoretrieve server
      * @param addresses Autoretrieve\&#39;s comma-separated list of addresses (required)
      * @param pubKey Autoretrieve\&#39;s public key (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminAutoretrieveInitPost(Map<String, Object> params) {
+    public String adminAutoretrieveInitPost(Map<String, Object> params) {
         client.assertNotNull(params.get('addresses'), 'addresses');
         client.assertNotNull(params.get('pubKey'), 'pubKey');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
-            'POST', '/admin/autoretrieve/init',
-            (String) params.get('pubKey'),
+        // cast form params to verify their expected type
+        form.addAll(client.makeParam('addresses', (String) params.get('addresses')));
+        form.addAll(client.makeParam('pubKey', (String) params.get('pubKey')));
+
+        return (String) client.invoke(
+            'POST', '/admin/autoretrieve/init', '',
             query, form,
             new Map<String, Object>(),
             new Map<String, Object>(),
             new List<String>{ 'application/json' },
-            new List<String>{ 'application/json' },
+            new List<String>{ 'application/x-www-form-urlencoded' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * List autoretrieve servers
      * This endpoint lists all registered autoretrieve servers
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void adminAutoretrieveListGet() {
+    public String adminAutoretrieveListGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/admin/autoretrieve/list', '',
             query, form,
             new Map<String, Object>(),
@@ -67,21 +72,22 @@ public class SwagAutoretrieveApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Marks autoretrieve server as up
      * This endpoint updates the lastConnection field for autoretrieve
      * @param token Autoretrieve\&#39;s auth token (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void autoretrieveHeartbeatPost(Map<String, Object> params) {
+    public String autoretrieveHeartbeatPost(Map<String, Object> params) {
         client.assertNotNull(params.get('token'), 'token');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'POST', '/autoretrieve/heartbeat', '',
             query, form,
             new Map<String, Object>(),
@@ -91,7 +97,7 @@ public class SwagAutoretrieveApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

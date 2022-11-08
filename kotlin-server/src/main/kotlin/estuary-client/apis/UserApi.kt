@@ -40,7 +40,6 @@ import estuary-client.infrastructure.apiKeyAuth
 import estuary-client.delete
 
 import estuary-client.models.MaingetApiKeysResp
-import estuary-client.models.MainuserStatsResponse
 import estuary-client.models.UtilHttpError
 
 fun Route.UserApi() {
@@ -85,13 +84,23 @@ fun Route.UserApi() {
         }
     }
 
-    delete<Paths.userApiKeysKeyDelete> {  it: Paths.userApiKeysKeyDelete ->
+    delete<Paths.userApiKeysKeyOrHashDelete> {  it: Paths.userApiKeysKeyOrHashDelete ->
         val principal = call.authentication.principal<ApiPrincipal>()
         
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }
         }
     }
     .apply {
@@ -111,7 +120,7 @@ fun Route.UserApi() {
                 }
             }
         } catch(e: io.ktor.application.DuplicateApplicationFeatureException){
-            application.environment.log.warn("authentication block for '/user/api-keys/{key}' is duplicated in code. " +
+            application.environment.log.warn("authentication block for '/user/api-keys/{key_or_hash}' is duplicated in code. " +
             "Generated endpoints may need to be merged under a 'route' entry.")
         }
     }
@@ -204,7 +213,10 @@ fun Route.UserApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{"empty": false}"""
+            val exampleContentString = """{
+              "bytes": [],
+              "empty": true
+            }"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

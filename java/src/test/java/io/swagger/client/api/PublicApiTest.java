@@ -13,6 +13,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -42,7 +43,7 @@ public class PublicApiTest {
     @Test
     public void publicByCidCidGetTest() throws Exception {
         String cid = null;
-        api.publicByCidCidGet(cid);
+        String response = api.publicByCidCidGet(cid);
 
         // TODO: test validations
     }
@@ -57,7 +58,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicInfoGetTest() throws Exception {
-        api.publicInfoGet();
+        String response = api.publicInfoGet();
 
         // TODO: test validations
     }
@@ -72,7 +73,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicMetricsDealsOnChainGetTest() throws Exception {
-        api.publicMetricsDealsOnChainGet();
+        String response = api.publicMetricsDealsOnChainGet();
 
         // TODO: test validations
     }
@@ -89,7 +90,7 @@ public class PublicApiTest {
     public void publicMinersDealsMinerGetTest() throws Exception {
         String miner = null;
         String ignoreFailed = null;
-        api.publicMinersDealsMinerGet(miner, ignoreFailed);
+        String response = api.publicMinersDealsMinerGet(miner, ignoreFailed);
 
         // TODO: test validations
     }
@@ -105,7 +106,7 @@ public class PublicApiTest {
     @Test
     public void publicMinersFailuresMinerGetTest() throws Exception {
         String miner = null;
-        api.publicMinersFailuresMinerGet(miner);
+        String response = api.publicMinersFailuresMinerGet(miner);
 
         // TODO: test validations
     }
@@ -120,7 +121,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicMinersGetTest() throws Exception {
-        api.publicMinersGet();
+        String response = api.publicMinersGet();
 
         // TODO: test validations
     }
@@ -136,7 +137,7 @@ public class PublicApiTest {
     @Test
     public void publicMinersStatsMinerGetTest() throws Exception {
         String miner = null;
-        api.publicMinersStatsMinerGet(miner);
+        String response = api.publicMinersStatsMinerGet(miner);
 
         // TODO: test validations
     }
@@ -181,7 +182,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicStatsGetTest() throws Exception {
-        api.publicStatsGet();
+        String response = api.publicStatsGet();
 
         // TODO: test validations
     }

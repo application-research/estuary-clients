@@ -5,7 +5,9 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
 from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody  # noqa: E501
+from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
 
@@ -89,6 +91,20 @@ class TestDealsController(BaseTestCase):
         response = self.client.open(
             '//deal/transfer/in-progress',
             method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_deal_transfer_status_post(self):
+        """Test case for deal_transfer_status_post
+
+        Transfer Status
+        """
+        chanid = MainChannelIDParam()
+        response = self.client.open(
+            '//deal/transfer/status',
+            method='POST',
+            data=json.dumps(chanid),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

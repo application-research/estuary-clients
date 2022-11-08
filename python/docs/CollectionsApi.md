@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_delete**
-> collections_coluuid_delete(coluuid)
+> str collections_coluuid_delete(coluuid)
 
 Deletes a collection
 
@@ -153,7 +153,8 @@ coluuid = 'coluuid_example' # str | Collection ID
 
 try:
     # Deletes a collection
-    api_instance.collections_coluuid_delete(coluuid)
+    api_response = api_instance.collections_coluuid_delete(coluuid)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_delete: %s\n" % e)
 ```
@@ -166,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -236,7 +237,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> dict(str, str) collections_coluuid_post(coluuid, content_i_ds)
+> str collections_coluuid_post(coluuid, content_i_ds)
 
 Add contents to a collection
 
@@ -278,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**dict(str, str)**
+**str**
 
 ### Authorization
 
@@ -292,7 +293,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_fs_add_post**
-> collections_fs_add_post(coluuid, content, path)
+> str collections_fs_add_post(coluuid, content, path)
 
 Add a file to a collection
 
@@ -320,7 +321,8 @@ path = 'path_example' # str | Path to file
 
 try:
     # Add a file to a collection
-    api_instance.collections_fs_add_post(coluuid, content, path)
+    api_response = api_instance.collections_fs_add_post(coluuid, content, path)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_fs_add_post: %s\n" % e)
 ```
@@ -335,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -349,7 +351,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> list[CollectionsCollection] collections_get()
+> list[list[CollectionsCollection]] collections_get()
 
 List all collections
 
@@ -385,7 +387,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[CollectionsCollection]**](CollectionsCollection.md)
+**list[list[CollectionsCollection]]**
 
 ### Authorization
 

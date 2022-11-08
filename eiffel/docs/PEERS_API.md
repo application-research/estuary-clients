@@ -13,7 +13,7 @@ Feature | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete (body: LIST [STRING_32] )
+> admin_peering_peers_delete (peer_ids: LIST [BOOLEAN] ): detachable STRING_32
 	
 
 Remove peers on Peering Service
@@ -25,11 +25,11 @@ This endpoint can be used to remove a Peer from the Peering Service
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LIST [STRING_32]**](STRING_32.md)| Peer ids | 
+ **peer_ids** | **LIST [BOOLEAN]**| Peer ids | 
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_get**
-> admin_peering_peers_get 
+> admin_peering_peers_get : detachable STRING_32
 	
 
 List all Peering peers
@@ -56,7 +56,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_post**
-> admin_peering_peers_post 
+> admin_peering_peers_post : detachable STRING_32
 	
 
 Add peers on Peering Service
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_start_post**
-> admin_peering_start_post 
+> admin_peering_start_post : detachable STRING_32
 	
 
 Start Peering
@@ -110,7 +110,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_status_get**
-> admin_peering_status_get 
+> admin_peering_status_get : detachable STRING_32
 	
 
 Check Peering Status
@@ -137,7 +137,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_stop_post**
-> admin_peering_stop_post 
+> admin_peering_stop_post : detachable STRING_32
 	
 
 Stop Peering
@@ -164,7 +164,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

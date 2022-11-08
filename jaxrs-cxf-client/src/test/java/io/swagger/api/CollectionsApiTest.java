@@ -123,8 +123,8 @@ public class CollectionsApiTest {
     @Test
     public void collectionsColuuidDeleteTest() {
         String coluuid = null;
-        //api.collectionsColuuidDelete(coluuid);
-        
+        //String response = api.collectionsColuuidDelete(coluuid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -161,7 +161,7 @@ public class CollectionsApiTest {
     public void collectionsColuuidPostTest() {
         String coluuid = null;
         List<Integer> contentIDs = null;
-        //Map<String, String> response = api.collectionsColuuidPost(coluuid, contentIDs);
+        //String response = api.collectionsColuuidPost(coluuid, contentIDs);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -181,8 +181,8 @@ public class CollectionsApiTest {
         String coluuid = null;
         String content = null;
         String path = null;
-        //api.collectionsFsAddPost(coluuid, content, path);
-        
+        //String response = api.collectionsFsAddPost(coluuid, content, path);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -198,7 +198,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() {
-        //List<CollectionsCollection> response = api.collectionsGet();
+        //List<List<CollectionsCollection>> response = api.collectionsGet();
         //assertNotNull(response);
         // TODO: test validations
         

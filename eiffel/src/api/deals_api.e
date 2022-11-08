@@ -24,13 +24,14 @@ inherit
 feature -- API Access
 
 
-	deal_estimate_post (body: MAIN_ESTIMATE_DEAL_BODY)
+	deal_estimate_post (body: MAIN_ESTIMATE_DEAL_BODY): detachable STRING_32
 			-- Estimate the cost of a deal
 			-- This endpoint estimates the cost of a deal
 			-- 
 			-- argument: body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -48,19 +49,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_info_dealid_get (dealid: INTEGER_32)
+	deal_info_dealid_get (dealid: INTEGER_32): detachable STRING_32
 			-- Get Deal Info
 			-- This endpoint returns the deal info for a deal
 			-- 
 			-- argument: dealid Deal ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -79,19 +85,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_proposal_propcid_get (propcid: STRING_32)
+	deal_proposal_propcid_get (propcid: STRING_32): detachable STRING_32
 			-- Get Proposal
 			-- This endpoint returns the proposal for a deal
 			-- 
 			-- argument: propcid Proposal CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -110,19 +121,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_query_miner_get (miner: STRING_32)
+	deal_query_miner_get (miner: STRING_32): detachable STRING_32
 			-- Query Ask
 			-- This endpoint returns the ask for a given CID
 			-- 
 			-- argument: miner CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -141,19 +157,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_status_by_proposal_propcid_get (propcid: STRING_32)
+	deal_status_by_proposal_propcid_get (propcid: STRING_32): detachable STRING_32
 			-- Get Deal Status by PropCid
 			-- Get Deal Status by PropCid
 			-- 
 			-- argument: propcid PropCid (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -172,13 +193,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_status_miner_propcid_get (miner: STRING_32; propcid: STRING_32)
+	deal_status_miner_propcid_get (miner: STRING_32; propcid: STRING_32): detachable STRING_32
 			-- Deal Status
 			-- This endpoint returns the status of a deal
 			-- 
@@ -187,6 +212,7 @@ feature -- API Access
 			-- argument: propcid Proposal CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -206,17 +232,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deal_transfer_in_progress_get 
+	deal_transfer_in_progress_get : detachable STRING_32
 			-- Transfer In Progress
 			-- This endpoint returns the in-progress transfers
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -234,17 +265,57 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deals_failures_get 
+	deal_transfer_status_post (chanid: MAIN_CHANNEL_ID_PARAM): detachable STRING_32
+			-- Transfer Status
+			-- This endpoint returns the status of a transfer
+			-- 
+			-- argument: chanid Channel ID (required)
+			-- 
+			-- 
+			-- Result STRING_32
+		require
+		local
+  			l_path: STRING
+  			l_request: API_CLIENT_REQUEST
+  			l_response: API_CLIENT_RESPONSE
+		do
+			reset_error
+			create l_request
+			l_request.set_body(chanid)
+			l_path := "/deal/transfer/status"
+
+
+			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then
+				l_request.add_header(l_accept,"Accept");
+			end
+			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
+			l_request.set_auth_names (<<"bearerAuth">>)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
+			if l_response.has_error then
+				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
+			end
+		end	
+
+	deals_failures_get : detachable STRING_32
 			-- Get storage failures for user
 			-- This endpoint returns a list of storage failures for user
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -262,13 +333,17 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deals_make_miner_post (miner: STRING_32; deal_request: STRING_32)
+	deals_make_miner_post (miner: STRING_32; deal_request: STRING_32): detachable STRING_32
 			-- Make Deal
 			-- This endpoint makes a deal for a given content and miner
 			-- 
@@ -277,6 +352,7 @@ feature -- API Access
 			-- argument: deal_request Deal Request (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -295,19 +371,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Post", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	deals_status_deal_get (deal: INTEGER_32)
+	deals_status_deal_get (deal: INTEGER_32): detachable STRING_32
 			-- Get Deal Status
 			-- This endpoint returns the status of a deal
 			-- 
 			-- argument: deal Deal ID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -326,17 +407,22 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	public_deals_failures_get 
+	public_deals_failures_get : detachable STRING_32
 			-- Get storage failures
 			-- This endpoint returns a list of storage failures
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -354,19 +440,24 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	public_miners_storage_query_miner_get (miner: STRING_32)
+	public_miners_storage_query_miner_get (miner: STRING_32): detachable STRING_32
 			-- Query Ask
 			-- This endpoint returns the ask for a given CID
 			-- 
 			-- argument: miner CID (required)
 			-- 
 			-- 
+			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -385,9 +476,13 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Get", l_request, agent serializer, Void)
+			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
+			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+				Result := l_data
+			else
+				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 

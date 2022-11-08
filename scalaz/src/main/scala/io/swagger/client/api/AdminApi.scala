@@ -27,7 +27,9 @@ object AdminApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminPeeringPeersDelete(host: String, body: List[String]): Task[Unit] = {
+  def adminPeeringPeersDelete(host: String, peerIds: List[Boolean]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.DELETE
@@ -40,13 +42,15 @@ object AdminApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(peerIds)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringPeersGet(host: String): Task[Unit] = {
+  def adminPeeringPeersGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.GET
@@ -60,12 +64,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringPeersPost(host: String): Task[Unit] = {
+  def adminPeeringPeersPost(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.POST
@@ -79,12 +85,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStartPost(host: String): Task[Unit] = {
+  def adminPeeringStartPost(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/start"
     
     val httpMethod = Method.POST
@@ -98,12 +106,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStatusGet(host: String): Task[Unit] = {
+  def adminPeeringStatusGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/status"
     
     val httpMethod = Method.GET
@@ -117,12 +127,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStopPost(host: String): Task[Unit] = {
+  def adminPeeringStopPost(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/stop"
     
     val httpMethod = Method.POST
@@ -136,12 +148,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminSystemConfigGet(host: String): Task[Unit] = {
+  def adminSystemConfigGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/system/config"
     
     val httpMethod = Method.GET
@@ -155,12 +169,14 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminUsersGet(host: String): Task[Unit] = {
+  def adminUsersGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/users"
     
     val httpMethod = Method.GET
@@ -174,7 +190,7 @@ object AdminApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -186,7 +202,9 @@ class HttpServiceAdminApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminPeeringPeersDelete(body: List[String]): Task[Unit] = {
+  def adminPeeringPeersDelete(peerIds: List[Boolean]): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.DELETE
@@ -199,13 +217,15 @@ class HttpServiceAdminApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(body)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(peerIds)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringPeersGet(): Task[Unit] = {
+  def adminPeeringPeersGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.GET
@@ -219,12 +239,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringPeersPost(): Task[Unit] = {
+  def adminPeeringPeersPost(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/peers"
     
     val httpMethod = Method.POST
@@ -238,12 +260,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStartPost(): Task[Unit] = {
+  def adminPeeringStartPost(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/start"
     
     val httpMethod = Method.POST
@@ -257,12 +281,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStatusGet(): Task[Unit] = {
+  def adminPeeringStatusGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/status"
     
     val httpMethod = Method.GET
@@ -276,12 +302,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminPeeringStopPost(): Task[Unit] = {
+  def adminPeeringStopPost(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/peering/stop"
     
     val httpMethod = Method.POST
@@ -295,12 +323,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminSystemConfigGet(): Task[Unit] = {
+  def adminSystemConfigGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/system/config"
     
     val httpMethod = Method.GET
@@ -314,12 +344,14 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminUsersGet(): Task[Unit] = {
+  def adminUsersGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/users"
     
     val httpMethod = Method.GET
@@ -333,7 +365,7 @@ class HttpServiceAdminApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

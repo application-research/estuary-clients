@@ -22,16 +22,16 @@ module SwaggerClient
     # List all pin status objects
     # This endpoint lists all pin status objects
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def pinning_pins_get(opts = {})
-      pinning_pins_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = pinning_pins_get_with_http_info(opts)
+      data
     end
 
     # List all pin status objects
     # This endpoint lists all pin status objects
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def pinning_pins_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_get ...'
@@ -58,7 +58,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -68,17 +69,17 @@ module SwaggerClient
     # This endpoint deletes a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def pinning_pins_pinid_delete(pinid, opts = {})
-      pinning_pins_pinid_delete_with_http_info(pinid, opts)
-      nil
+      data, _status_code, _headers = pinning_pins_pinid_delete_with_http_info(pinid, opts)
+      data
     end
 
     # Delete a pinned object
     # This endpoint deletes a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def pinning_pins_pinid_delete_with_http_info(pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_delete ...'
@@ -109,7 +110,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -119,17 +121,17 @@ module SwaggerClient
     # This endpoint returns a pin status object.
     # @param pinid cid
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def pinning_pins_pinid_get(pinid, opts = {})
-      pinning_pins_pinid_get_with_http_info(pinid, opts)
-      nil
+      data, _status_code, _headers = pinning_pins_pinid_get_with_http_info(pinid, opts)
+      data
     end
 
     # Get a pin status object
     # This endpoint returns a pin status object.
     # @param pinid cid
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def pinning_pins_pinid_get_with_http_info(pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_get ...'
@@ -160,7 +162,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -170,17 +173,17 @@ module SwaggerClient
     # This endpoint replaces a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def pinning_pins_pinid_post(pinid, opts = {})
-      pinning_pins_pinid_post_with_http_info(pinid, opts)
-      nil
+      data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(pinid, opts)
+      data
     end
 
     # Replace a pinned object
     # This endpoint replaces a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def pinning_pins_pinid_post_with_http_info(pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_post ...'
@@ -211,7 +214,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -219,35 +223,29 @@ module SwaggerClient
     end
     # Add and pin object
     # This endpoint adds a pin to the IPFS daemon.
-    # @param cid cid
-    # @param name name
+    # @param pin Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def pinning_pins_post(cid, name, opts = {})
-      pinning_pins_post_with_http_info(cid, name, opts)
-      nil
+    # @return [String]
+    def pinning_pins_post(pin, opts = {})
+      data, _status_code, _headers = pinning_pins_post_with_http_info(pin, opts)
+      data
     end
 
     # Add and pin object
     # This endpoint adds a pin to the IPFS daemon.
-    # @param cid cid
-    # @param name name
+    # @param pin Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def pinning_pins_post_with_http_info(cid, name, opts = {})
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def pinning_pins_post_with_http_info(pin, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_post ...'
       end
-      # verify the required parameter 'cid' is set
-      if @api_client.config.client_side_validation && cid.nil?
-        fail ArgumentError, "Missing the required parameter 'cid' when calling PinningApi.pinning_pins_post"
-      end
-      # verify the required parameter 'name' is set
-      if @api_client.config.client_side_validation && name.nil?
-        fail ArgumentError, "Missing the required parameter 'name' when calling PinningApi.pinning_pins_post"
+      # verify the required parameter 'pin' is set
+      if @api_client.config.client_side_validation && pin.nil?
+        fail ArgumentError, "Missing the required parameter 'pin' when calling PinningApi.pinning_pins_post"
       end
       # resource path
-      local_var_path = '/pinning/pins'.sub('{' + 'cid' + '}', cid.to_s).sub('{' + 'name' + '}', name.to_s)
+      local_var_path = '/pinning/pins'
 
       # query parameters
       query_params = {}
@@ -261,14 +259,15 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = nil
+      post_body = @api_client.object_to_http_body(pin)
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

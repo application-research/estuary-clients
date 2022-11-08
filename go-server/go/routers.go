@@ -357,6 +357,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"DealTransferStatusPost",
+		strings.ToUpper("Post"),
+		"//deal/transfer/status",
+		DealTransferStatusPost,
+	},
+
+	Route{
 		"DealsFailuresGet",
 		strings.ToUpper("Get"),
 		"//deals/failures",
@@ -389,13 +396,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"//public/miners/storage/query/{miner}",
 		PublicMinersStorageQueryMinerGet,
-	},
-
-	Route{
-		"DealTransferStatusPost",
-		strings.ToUpper("Post"),
-		"//deal/transfer/status",
-		DealTransferStatusPost,
 	},
 
 	Route{
@@ -651,10 +651,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"UserApiKeysKeyDelete",
+		"UserApiKeysKeyOrHashDelete",
 		strings.ToUpper("Delete"),
-		"//user/api-keys/{key}",
-		UserApiKeysKeyDelete,
+		"//user/api-keys/{key_or_hash}",
+		UserApiKeysKeyOrHashDelete,
 	},
 
 	Route{

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="adminAutoretrieveInitPost"></a>
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost(addresses, pubKey)
+> kotlin.String adminAutoretrieveInitPost(addresses, pubKey)
 
 Register autoretrieve server
 
@@ -27,7 +27,8 @@ val apiInstance = AutoretrieveApi()
 val addresses : kotlin.String = addresses_example // kotlin.String | Autoretrieve's comma-separated list of addresses
 val pubKey : kotlin.String = pubKey_example // kotlin.String | Autoretrieve's public key
 try {
-    apiInstance.adminAutoretrieveInitPost(addresses, pubKey)
+    val result : kotlin.String = apiInstance.adminAutoretrieveInitPost(addresses, pubKey)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AutoretrieveApi#adminAutoretrieveInitPost")
     e.printStackTrace()
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -59,7 +60,7 @@ null (empty response body)
 
 <a name="adminAutoretrieveListGet"></a>
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> kotlin.String adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -73,7 +74,8 @@ This endpoint lists all registered autoretrieve servers
 
 val apiInstance = AutoretrieveApi()
 try {
-    apiInstance.adminAutoretrieveListGet()
+    val result : kotlin.String = apiInstance.adminAutoretrieveListGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AutoretrieveApi#adminAutoretrieveListGet")
     e.printStackTrace()
@@ -88,7 +90,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -101,7 +103,7 @@ null (empty response body)
 
 <a name="autoretrieveHeartbeatPost"></a>
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost(token)
+> kotlin.String autoretrieveHeartbeatPost(token)
 
 Marks autoretrieve server as up
 
@@ -116,7 +118,8 @@ This endpoint updates the lastConnection field for autoretrieve
 val apiInstance = AutoretrieveApi()
 val token : kotlin.String = token_example // kotlin.String | Autoretrieve's auth token
 try {
-    apiInstance.autoretrieveHeartbeatPost(token)
+    val result : kotlin.String = apiInstance.autoretrieveHeartbeatPost(token)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling AutoretrieveApi#autoretrieveHeartbeatPost")
     e.printStackTrace()
@@ -134,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

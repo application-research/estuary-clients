@@ -33,7 +33,7 @@ export class ContentApi {
      * @param ignoreDupes Ignore Dupes
      * @param filename Filename
      */
-    public contentAddCarPost (body: string, ignoreDupes?: string, filename?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentAddCarPost (body: string, ignoreDupes?: string, filename?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/add-car';
 
         let queryParameters: any = {};
@@ -71,7 +71,7 @@ export class ContentApi {
      * @param body IPFS Body
      * @param ignoreDupes Ignore Dupes
      */
-    public contentAddIpfsPost (body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentAddIpfsPost (body: models.UtilContentAddIpfsBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/add-ipfs';
 
         let queryParameters: any = {};
@@ -198,7 +198,7 @@ export class ContentApi {
      * @param duration Duration
      * @param all All
      */
-    public contentAllDealsGet (begin: string, duration: string, all: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentAllDealsGet (begin: string, duration: string, all: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/all-deals';
 
         let queryParameters: any = {};
@@ -248,7 +248,7 @@ export class ContentApi {
      * @summary Get content bandwidth
      * @param content Content ID
      */
-    public contentBwUsageContentGet (content: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentBwUsageContentGet (content: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/bw-usage/{content}'
             .replace('{' + 'content' + '}', encodeURIComponent(String(content)));
 
@@ -278,7 +278,7 @@ export class ContentApi {
      * @param req Content
      * @param ignoreDupes Ignore Dupes
      */
-    public contentCreatePost (req: models.UtilContentCreateBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentCreatePost (req: models.UtilContentCreateBody, ignoreDupes?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/create';
 
         let queryParameters: any = {};
@@ -312,7 +312,7 @@ export class ContentApi {
      * @param limit Limit
      * @param offset Offset
      */
-    public contentDealsGet (limit?: number, offset?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentDealsGet (limit?: number, offset?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/deals';
 
         let queryParameters: any = {};
@@ -343,7 +343,7 @@ export class ContentApi {
      * @summary Ensure Replication
      * @param datacid Data CID
      */
-    public contentEnsureReplicationDatacidGet (datacid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentEnsureReplicationDatacidGet (datacid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/ensure-replication/{datacid}'
             .replace('{' + 'datacid' + '}', encodeURIComponent(String(datacid)));
 
@@ -401,7 +401,7 @@ export class ContentApi {
      * @summary Content
      * @param id Content ID
      */
-    public contentIdGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentIdGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
@@ -430,7 +430,7 @@ export class ContentApi {
      * @summary Import a deal
      * @param body Import a deal
      */
-    public contentImportdealPost (body: models.MainImportDealBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentImportdealPost (body: models.MainImportDealBody, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/importdeal';
 
         let queryParameters: any = {};
@@ -458,7 +458,7 @@ export class ContentApi {
      * This endpoint lists all content
      * @summary List all pinned content
      */
-    public contentListGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
+    public contentListGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/list';
 
         let queryParameters: any = {};
@@ -481,7 +481,7 @@ export class ContentApi {
      * @summary Read content
      * @param cont CID
      */
-    public contentReadContGet (cont: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentReadContGet (cont: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/read/{cont}'
             .replace('{' + 'cont' + '}', encodeURIComponent(String(cont)));
 
@@ -509,7 +509,7 @@ export class ContentApi {
      * This endpoint is used to get staging zone for user.
      * @summary Get staging zone for user
      */
-    public contentStagingZonesGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentStagingZonesGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/staging-zones';
 
         let queryParameters: any = {};
@@ -533,7 +533,7 @@ export class ContentApi {
      * @param limit limit
      * @param offset offset
      */
-    public contentStatsGet (limit: string, offset: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentStatsGet (limit: string, offset: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/stats';
 
         let queryParameters: any = {};
@@ -574,7 +574,7 @@ export class ContentApi {
      * @summary Content Status
      * @param id Content ID
      */
-    public contentStatusIdGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public contentStatusIdGet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/content/status/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 

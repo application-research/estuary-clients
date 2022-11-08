@@ -10,7 +10,7 @@ Feature | HTTP request | Description
 
 
 # **admin_autoretrieve_init_post**
-> admin_autoretrieve_init_post (addresses: STRING_32 ; pub_key: STRING_32 )
+> admin_autoretrieve_init_post (addresses: STRING_32 ; pub_key: STRING_32 ): detachable STRING_32
 	
 
 Register autoretrieve server
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_autoretrieve_list_get**
-> admin_autoretrieve_list_get 
+> admin_autoretrieve_list_get : detachable STRING_32
 	
 
 List autoretrieve servers
@@ -54,7 +54,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **autoretrieve_heartbeat_post**
-> autoretrieve_heartbeat_post (token: STRING_32 )
+> autoretrieve_heartbeat_post (token: STRING_32 ): detachable STRING_32
 	
 
 Marks autoretrieve server as up
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

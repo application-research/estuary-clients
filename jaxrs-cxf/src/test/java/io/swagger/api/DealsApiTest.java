@@ -25,7 +25,9 @@
 
 package io.swagger.api;
 
+import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -82,8 +84,8 @@ public class DealsApiTest {
     @Test
     public void dealEstimatePostTest() {
         MainEstimateDealBody body = null;
-        //api.dealEstimatePost(body);
-        
+        //String response = api.dealEstimatePost(body);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -100,8 +102,8 @@ public class DealsApiTest {
     @Test
     public void dealInfoDealidGetTest() {
         Integer dealid = null;
-        //api.dealInfoDealidGet(dealid);
-        
+        //String response = api.dealInfoDealidGet(dealid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -118,8 +120,8 @@ public class DealsApiTest {
     @Test
     public void dealProposalPropcidGetTest() {
         String propcid = null;
-        //api.dealProposalPropcidGet(propcid);
-        
+        //String response = api.dealProposalPropcidGet(propcid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -136,8 +138,8 @@ public class DealsApiTest {
     @Test
     public void dealQueryMinerGetTest() {
         String miner = null;
-        //api.dealQueryMinerGet(miner);
-        
+        //String response = api.dealQueryMinerGet(miner);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -154,8 +156,8 @@ public class DealsApiTest {
     @Test
     public void dealStatusByProposalPropcidGetTest() {
         String propcid = null;
-        //api.dealStatusByProposalPropcidGet(propcid);
-        
+        //String response = api.dealStatusByProposalPropcidGet(propcid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -173,8 +175,8 @@ public class DealsApiTest {
     public void dealStatusMinerPropcidGetTest() {
         String miner = null;
         String propcid = null;
-        //api.dealStatusMinerPropcidGet(miner, propcid);
-        
+        //String response = api.dealStatusMinerPropcidGet(miner, propcid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -190,8 +192,26 @@ public class DealsApiTest {
      */
     @Test
     public void dealTransferInProgressGetTest() {
-        //api.dealTransferInProgressGet();
+        //String response = api.dealTransferInProgressGet();
+        //assertNotNull(response);
+        // TODO: test validations
         
+        
+    }
+    
+    /**
+     * Transfer Status
+     *
+     * This endpoint returns the status of a transfer
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void dealTransferStatusPostTest() {
+        MainChannelIDParam chanid = null;
+        //String response = api.dealTransferStatusPost(chanid);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -207,8 +227,8 @@ public class DealsApiTest {
      */
     @Test
     public void dealsFailuresGetTest() {
-        //api.dealsFailuresGet();
-        
+        //String response = api.dealsFailuresGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -226,8 +246,8 @@ public class DealsApiTest {
     public void dealsMakeMinerPostTest() {
         String miner = null;
         String dealRequest = null;
-        //api.dealsMakeMinerPost(miner, dealRequest);
-        
+        //String response = api.dealsMakeMinerPost(miner, dealRequest);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -244,8 +264,8 @@ public class DealsApiTest {
     @Test
     public void dealsStatusDealGetTest() {
         Integer deal = null;
-        //api.dealsStatusDealGet(deal);
-        
+        //String response = api.dealsStatusDealGet(deal);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -261,8 +281,8 @@ public class DealsApiTest {
      */
     @Test
     public void publicDealsFailuresGetTest() {
-        //api.publicDealsFailuresGet();
-        
+        //String response = api.publicDealsFailuresGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -279,8 +299,8 @@ public class DealsApiTest {
     @Test
     public void publicMinersStorageQueryMinerGetTest() {
         String miner = null;
-        //api.publicMinersStorageQueryMinerGet(miner);
-        
+        //String response = api.publicMinersStorageQueryMinerGet(miner);
+        //assertNotNull(response);
         // TODO: test validations
         
         

@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -37,8 +38,8 @@ export class MetricsService {
      * This endpoint is used to get deal metrics
      
      */
-    public publicMetricsDealsOnChainGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMetricsDealsOnChainGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMetricsDealsOnChainGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMetricsDealsOnChainGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMetricsDealsOnChainGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -46,7 +47,7 @@ export class MetricsService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/metrics/deals-on-chain` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/metrics/deals-on-chain` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

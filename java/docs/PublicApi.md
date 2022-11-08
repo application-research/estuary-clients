@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 <a name="publicByCidCidGet"></a>
 # **publicByCidCidGet**
-> publicByCidCidGet(cid)
+> String publicByCidCidGet(cid)
 
 Get Content by Cid
 
@@ -44,7 +44,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String cid = "cid_example"; // String | Cid
 try {
-    apiInstance.publicByCidCidGet(cid);
+    String result = apiInstance.publicByCidCidGet(cid);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicByCidCidGet");
     e.printStackTrace();
@@ -59,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -72,7 +73,7 @@ null (empty response body)
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> publicInfoGet()
+> String publicInfoGet()
 
 Get public node info
 
@@ -97,7 +98,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicInfoGet();
+    String result = apiInstance.publicInfoGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicInfoGet");
     e.printStackTrace();
@@ -109,7 +111,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -122,7 +124,7 @@ null (empty response body)
 
 <a name="publicMetricsDealsOnChainGet"></a>
 # **publicMetricsDealsOnChainGet**
-> publicMetricsDealsOnChainGet()
+> String publicMetricsDealsOnChainGet()
 
 Get deal metrics
 
@@ -147,7 +149,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicMetricsDealsOnChainGet();
+    String result = apiInstance.publicMetricsDealsOnChainGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMetricsDealsOnChainGet");
     e.printStackTrace();
@@ -159,7 +162,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -172,7 +175,7 @@ null (empty response body)
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -199,7 +202,8 @@ PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 String ignoreFailed = "ignoreFailed_example"; // String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    String result = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersDealsMinerGet");
     e.printStackTrace();
@@ -215,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -228,7 +232,7 @@ null (empty response body)
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -254,7 +258,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner);
+    String result = apiInstance.publicMinersFailuresMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersFailuresMinerGet");
     e.printStackTrace();
@@ -269,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -282,7 +287,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> String publicMinersGet()
 
 Get all miners
 
@@ -307,7 +312,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicMinersGet();
+    String result = apiInstance.publicMinersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersGet");
     e.printStackTrace();
@@ -319,7 +325,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -332,7 +338,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -358,7 +364,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 PublicApi apiInstance = new PublicApi();
 String miner = "miner_example"; // String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner);
+    String result = apiInstance.publicMinersStatsMinerGet(miner);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicMinersStatsMinerGet");
     e.printStackTrace();
@@ -373,7 +380,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -488,7 +495,7 @@ This endpoint does not need any parameter.
 
 <a name="publicStatsGet"></a>
 # **publicStatsGet**
-> publicStatsGet()
+> String publicStatsGet()
 
 Public stats
 
@@ -513,7 +520,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    apiInstance.publicStatsGet();
+    String result = apiInstance.publicStatsGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicStatsGet");
     e.printStackTrace();
@@ -525,7 +533,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

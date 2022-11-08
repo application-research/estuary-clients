@@ -68,12 +68,16 @@ SWGPinningApi::pinningPinsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsGetSignal();
+        emit pinningPinsGetSignal(output);
     } else {
-        emit pinningPinsGetSignalE(error_type, error_str);
+        emit pinningPinsGetSignalE(output, error_type, error_str);
         emit pinningPinsGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -119,12 +123,16 @@ SWGPinningApi::pinningPinsPinidDeleteCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsPinidDeleteSignal();
+        emit pinningPinsPinidDeleteSignal(output);
     } else {
-        emit pinningPinsPinidDeleteSignalE(error_type, error_str);
+        emit pinningPinsPinidDeleteSignalE(output, error_type, error_str);
         emit pinningPinsPinidDeleteSignalEFull(worker, error_type, error_str);
     }
 }
@@ -170,12 +178,16 @@ SWGPinningApi::pinningPinsPinidGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsPinidGetSignal();
+        emit pinningPinsPinidGetSignal(output);
     } else {
-        emit pinningPinsPinidGetSignalE(error_type, error_str);
+        emit pinningPinsPinidGetSignalE(output, error_type, error_str);
         emit pinningPinsPinidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -221,32 +233,35 @@ SWGPinningApi::pinningPinsPinidPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsPinidPostSignal();
+        emit pinningPinsPinidPostSignal(output);
     } else {
-        emit pinningPinsPinidPostSignalE(error_type, error_str);
+        emit pinningPinsPinidPostSignalE(output, error_type, error_str);
         emit pinningPinsPinidPostSignalEFull(worker, error_type, error_str);
     }
 }
 
 void
-SWGPinningApi::pinningPinsPost(QString* cid, QString* name) {
+SWGPinningApi::pinningPinsPost(SWGTypes.IpfsPin& pin) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/pinning/pins");
 
-    QString cidPathParam("{"); cidPathParam.append("cid").append("}");
-    fullPath.replace(cidPathParam, stringValue(cid));
-    QString namePathParam("{"); namePathParam.append("name").append("}");
-    fullPath.replace(namePathParam, stringValue(name));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
     SWGHttpRequestInput input(fullPath, "POST");
 
 
-
+    
+    QString output = pin.asJson();
+    input.request_body.append(output);
+    
 
 
     foreach(QString key, this->defaultHeaders.keys()) {
@@ -274,12 +289,16 @@ SWGPinningApi::pinningPinsPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsPostSignal();
+        emit pinningPinsPostSignal(output);
     } else {
-        emit pinningPinsPostSignalE(error_type, error_str);
+        emit pinningPinsPostSignalE(output, error_type, error_str);
         emit pinningPinsPostSignalEFull(worker, error_type, error_str);
     }
 }

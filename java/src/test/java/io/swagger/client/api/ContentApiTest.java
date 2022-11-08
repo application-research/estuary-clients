@@ -18,6 +18,7 @@ import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
 import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
+import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -49,7 +50,7 @@ public class ContentApiTest {
         String body = null;
         String ignoreDupes = null;
         String filename = null;
-        api.contentAddCarPost(body, ignoreDupes, filename);
+        String response = api.contentAddCarPost(body, ignoreDupes, filename);
 
         // TODO: test validations
     }
@@ -66,7 +67,7 @@ public class ContentApiTest {
     public void contentAddIpfsPostTest() throws Exception {
         UtilContentAddIpfsBody body = null;
         String ignoreDupes = null;
-        api.contentAddIpfsPost(body, ignoreDupes);
+        String response = api.contentAddIpfsPost(body, ignoreDupes);
 
         // TODO: test validations
     }
@@ -122,7 +123,7 @@ public class ContentApiTest {
         String begin = null;
         String duration = null;
         String all = null;
-        api.contentAllDealsGet(begin, duration, all);
+        String response = api.contentAllDealsGet(begin, duration, all);
 
         // TODO: test validations
     }
@@ -138,7 +139,7 @@ public class ContentApiTest {
     @Test
     public void contentBwUsageContentGetTest() throws Exception {
         String content = null;
-        api.contentBwUsageContentGet(content);
+        String response = api.contentBwUsageContentGet(content);
 
         // TODO: test validations
     }
@@ -155,7 +156,7 @@ public class ContentApiTest {
     public void contentCreatePostTest() throws Exception {
         UtilContentCreateBody req = null;
         String ignoreDupes = null;
-        api.contentCreatePost(req, ignoreDupes);
+        String response = api.contentCreatePost(req, ignoreDupes);
 
         // TODO: test validations
     }
@@ -172,7 +173,7 @@ public class ContentApiTest {
     public void contentDealsGetTest() throws Exception {
         Integer limit = null;
         Integer offset = null;
-        api.contentDealsGet(limit, offset);
+        String response = api.contentDealsGet(limit, offset);
 
         // TODO: test validations
     }
@@ -188,7 +189,7 @@ public class ContentApiTest {
     @Test
     public void contentEnsureReplicationDatacidGetTest() throws Exception {
         String datacid = null;
-        api.contentEnsureReplicationDatacidGet(datacid);
+        String response = api.contentEnsureReplicationDatacidGet(datacid);
 
         // TODO: test validations
     }
@@ -220,7 +221,7 @@ public class ContentApiTest {
     @Test
     public void contentIdGetTest() throws Exception {
         Integer id = null;
-        api.contentIdGet(id);
+        String response = api.contentIdGet(id);
 
         // TODO: test validations
     }
@@ -236,7 +237,7 @@ public class ContentApiTest {
     @Test
     public void contentImportdealPostTest() throws Exception {
         MainImportDealBody body = null;
-        api.contentImportdealPost(body);
+        String response = api.contentImportdealPost(body);
 
         // TODO: test validations
     }
@@ -251,7 +252,7 @@ public class ContentApiTest {
      */
     @Test
     public void contentListGetTest() throws Exception {
-        List<String> response = api.contentListGet();
+        String response = api.contentListGet();
 
         // TODO: test validations
     }
@@ -267,7 +268,7 @@ public class ContentApiTest {
     @Test
     public void contentReadContGetTest() throws Exception {
         String cont = null;
-        api.contentReadContGet(cont);
+        String response = api.contentReadContGet(cont);
 
         // TODO: test validations
     }
@@ -282,7 +283,7 @@ public class ContentApiTest {
      */
     @Test
     public void contentStagingZonesGetTest() throws Exception {
-        api.contentStagingZonesGet();
+        String response = api.contentStagingZonesGet();
 
         // TODO: test validations
     }
@@ -299,7 +300,7 @@ public class ContentApiTest {
     public void contentStatsGetTest() throws Exception {
         String limit = null;
         String offset = null;
-        api.contentStatsGet(limit, offset);
+        String response = api.contentStatsGet(limit, offset);
 
         // TODO: test validations
     }
@@ -315,7 +316,7 @@ public class ContentApiTest {
     @Test
     public void contentStatusIdGetTest() throws Exception {
         Integer id = null;
-        api.contentStatusIdGet(id);
+        String response = api.contentStatusIdGet(id);
 
         // TODO: test validations
     }

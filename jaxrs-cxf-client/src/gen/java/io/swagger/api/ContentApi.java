@@ -5,6 +5,7 @@ import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -41,8 +42,11 @@ public interface ContentApi  {
     @Path("/content/add-car")
     @Produces({ "application/json" })
     @ApiOperation(value = "Add Car object", tags={  })
-    @ApiResponses(value = {  })
-    public void contentAddCarPost(String body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("filename")String filename);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentAddCarPost(String body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("filename")String filename);
 
     /**
      * Add IPFS object
@@ -54,8 +58,11 @@ public interface ContentApi  {
     @Path("/content/add-ipfs")
     @Produces({ "application/json" })
     @ApiOperation(value = "Add IPFS object", tags={  })
-    @ApiResponses(value = {  })
-    public void contentAddIpfsPost(UtilContentAddIpfsBody body, @QueryParam("ignore-dupes")String ignoreDupes);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentAddIpfsPost(UtilContentAddIpfsBody body, @QueryParam("ignore-dupes")String ignoreDupes);
 
     /**
      * Add new content
@@ -69,7 +76,9 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Add new content", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class) })
+        @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename", required = false)  String filename, @QueryParam("coluuid")String coluuid, @QueryParam("replication")Integer replication, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("lazy-provide")String lazyProvide, @QueryParam("dir")String dir);
 
     /**
@@ -83,7 +92,9 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Get aggregated content stats", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String contentAggregatedContentGet(@PathParam("content") String content);
 
     /**
@@ -96,8 +107,11 @@ public interface ContentApi  {
     @Path("/content/all-deals")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all deals for a user", tags={  })
-    @ApiResponses(value = {  })
-    public void contentAllDealsGet(@QueryParam("begin")String begin, @QueryParam("duration")String duration, @QueryParam("all")String all);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentAllDealsGet(@QueryParam("begin")String begin, @QueryParam("duration")String duration, @QueryParam("all")String all);
 
     /**
      * Get content bandwidth
@@ -109,8 +123,11 @@ public interface ContentApi  {
     @Path("/content/bw-usage/{content}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get content bandwidth", tags={  })
-    @ApiResponses(value = {  })
-    public void contentBwUsageContentGet(@PathParam("content") String content);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentBwUsageContentGet(@PathParam("content") String content);
 
     /**
      * Add a new content
@@ -122,8 +139,11 @@ public interface ContentApi  {
     @Path("/content/create")
     @Produces({ "application/json" })
     @ApiOperation(value = "Add a new content", tags={  })
-    @ApiResponses(value = {  })
-    public void contentCreatePost(UtilContentCreateBody req, @QueryParam("ignore-dupes")String ignoreDupes);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentCreatePost(UtilContentCreateBody req, @QueryParam("ignore-dupes")String ignoreDupes);
 
     /**
      * Content with deals
@@ -135,8 +155,11 @@ public interface ContentApi  {
     @Path("/content/deals")
     @Produces({ "application/json" })
     @ApiOperation(value = "Content with deals", tags={  })
-    @ApiResponses(value = {  })
-    public void contentDealsGet(@QueryParam("limit")Integer limit, @QueryParam("offset")Integer offset);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentDealsGet(@QueryParam("limit")Integer limit, @QueryParam("offset")Integer offset);
 
     /**
      * Ensure Replication
@@ -148,8 +171,11 @@ public interface ContentApi  {
     @Path("/content/ensure-replication/{datacid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Ensure Replication", tags={  })
-    @ApiResponses(value = {  })
-    public void contentEnsureReplicationDatacidGet(@PathParam("datacid") String datacid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentEnsureReplicationDatacidGet(@PathParam("datacid") String datacid);
 
     /**
      * List all failures for a content
@@ -162,7 +188,9 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List all failures for a content", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class) })
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public String contentFailuresContentGet(@PathParam("content") String content);
 
     /**
@@ -175,8 +203,11 @@ public interface ContentApi  {
     @Path("/content/{id}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Content", tags={  })
-    @ApiResponses(value = {  })
-    public void contentIdGet(@PathParam("id") Integer id);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentIdGet(@PathParam("id") Integer id);
 
     /**
      * Import a deal
@@ -188,8 +219,11 @@ public interface ContentApi  {
     @Path("/content/importdeal")
     @Produces({ "application/json" })
     @ApiOperation(value = "Import a deal", tags={  })
-    @ApiResponses(value = {  })
-    public void contentImportdealPost(MainImportDealBody body);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentImportdealPost(MainImportDealBody body);
 
     /**
      * List all pinned content
@@ -202,8 +236,10 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "List all pinned content", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List") })
-    public List<String> contentListGet();
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentListGet();
 
     /**
      * Read content
@@ -215,8 +251,11 @@ public interface ContentApi  {
     @Path("/content/read/{cont}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Read content", tags={  })
-    @ApiResponses(value = {  })
-    public void contentReadContGet(@PathParam("cont") String cont);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentReadContGet(@PathParam("cont") String cont);
 
     /**
      * Get staging zone for user
@@ -228,8 +267,11 @@ public interface ContentApi  {
     @Path("/content/staging-zones")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get staging zone for user", tags={  })
-    @ApiResponses(value = {  })
-    public void contentStagingZonesGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentStagingZonesGet();
 
     /**
      * Get content statistics
@@ -241,8 +283,11 @@ public interface ContentApi  {
     @Path("/content/stats")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get content statistics", tags={  })
-    @ApiResponses(value = {  })
-    public void contentStatsGet(@QueryParam("limit")String limit, @QueryParam("offset")String offset);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentStatsGet(@QueryParam("limit")String limit, @QueryParam("offset")String offset);
 
     /**
      * Content Status
@@ -254,7 +299,10 @@ public interface ContentApi  {
     @Path("/content/status/{id}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Content Status", tags={  })
-    @ApiResponses(value = {  })
-    public void contentStatusIdGet(@PathParam("id") Integer id);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String contentStatusIdGet(@PathParam("id") Integer id);
 }
 

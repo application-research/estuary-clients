@@ -10,7 +10,7 @@ class PublicApi {
   /// Get Content by Cid
   ///
   /// This endpoint returns the content associated with a CID
-  Future publicByCidCidGet(String cid) async {
+  Future<String> publicByCidCidGet(String cid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -54,15 +54,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get public node info
   ///
   /// This endpoint returns information about the node
-  Future publicInfoGet() async {
+  Future<String> publicInfoGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -103,15 +103,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get deal metrics
   ///
   /// This endpoint is used to get deal metrics
-  Future publicMetricsDealsOnChainGet() async {
+  Future<String> publicMetricsDealsOnChainGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,15 +152,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get all miners deals
   ///
   /// This endpoint returns all miners deals
-  Future publicMinersDealsMinerGet(String miner, { String ignoreFailed }) async {
+  Future<String> publicMinersDealsMinerGet(String miner, { String ignoreFailed }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -207,15 +207,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get all miners
   ///
   /// This endpoint returns all miners
-  Future publicMinersFailuresMinerGet(String miner) async {
+  Future<String> publicMinersFailuresMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -259,15 +259,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get all miners
   ///
   /// This endpoint returns all miners
-  Future publicMinersGet() async {
+  Future<String> publicMinersGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -308,15 +308,15 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Get miner stats
   ///
   /// This endpoint returns miner stats
-  Future publicMinersStatsMinerGet(String miner) async {
+  Future<String> publicMinersStatsMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -360,9 +360,9 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
   /// Net Addrs
@@ -466,7 +466,7 @@ class PublicApi {
   /// Public stats
   ///
   /// This endpoint is used to get public stats.
-  Future publicStatsGet() async {
+  Future<String> publicStatsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -507,9 +507,9 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

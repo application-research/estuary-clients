@@ -18,9 +18,9 @@ public class ContentAPI: APIBase {
      - parameter filename: (query) Filename (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentAddCarPost(body body: String, ignoreDupes: String? = nil, filename: String? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentAddCarPost(body body: String, ignoreDupes: String? = nil, filename: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentAddCarPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, filename: filename).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -32,21 +32,25 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter body: (body) Car 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter filename: (query) Filename (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentAddCarPostWithRequestBuilder(body body: String, ignoreDupes: String? = nil, filename: String? = nil) -> RequestBuilder<Void> {
+    public class func contentAddCarPostWithRequestBuilder(body body: String, ignoreDupes: String? = nil, filename: String? = nil) -> RequestBuilder<String> {
         let path = "/content/add-car"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -58,9 +62,9 @@ public class ContentAPI: APIBase {
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentAddIpfsPost(body body: UtilContentAddIpfsBody, ignoreDupes: String? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentAddIpfsPost(body body: UtilContentAddIpfsBody, ignoreDupes: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentAddIpfsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -72,20 +76,24 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter body: (body) IPFS Body 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentAddIpfsPostWithRequestBuilder(body body: UtilContentAddIpfsBody, ignoreDupes: String? = nil) -> RequestBuilder<Void> {
+    public class func contentAddIpfsPostWithRequestBuilder(body body: UtilContentAddIpfsBody, ignoreDupes: String? = nil) -> RequestBuilder<String> {
         let path = "/content/add-ipfs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -202,9 +210,9 @@ public class ContentAPI: APIBase {
      - parameter all: (query) All 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentAllDealsGet(begin begin: String, duration: String, all: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentAllDealsGet(begin begin: String, duration: String, all: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentAllDealsGetWithRequestBuilder(begin: begin, duration: duration, all: all).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -216,14 +224,18 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter begin: (query) Begin 
      - parameter duration: (query) Duration 
      - parameter all: (query) All 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentAllDealsGetWithRequestBuilder(begin begin: String, duration: String, all: String) -> RequestBuilder<Void> {
+    public class func contentAllDealsGetWithRequestBuilder(begin begin: String, duration: String, all: String) -> RequestBuilder<String> {
         let path = "/content/all-deals"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -237,7 +249,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -248,9 +260,9 @@ public class ContentAPI: APIBase {
      - parameter content: (path) Content ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentBwUsageContentGet(content content: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentBwUsageContentGet(content content: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentBwUsageContentGetWithRequestBuilder(content: content).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -262,12 +274,16 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter content: (path) Content ID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentBwUsageContentGetWithRequestBuilder(content content: String) -> RequestBuilder<Void> {
+    public class func contentBwUsageContentGetWithRequestBuilder(content content: String) -> RequestBuilder<String> {
         var path = "/content/bw-usage/{content}"
         path = path.stringByReplacingOccurrencesOfString("{content}", withString: "\(content)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -278,7 +294,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -290,9 +306,9 @@ public class ContentAPI: APIBase {
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentCreatePost(req req: UtilContentCreateBody, ignoreDupes: String? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentCreatePost(req req: UtilContentCreateBody, ignoreDupes: String? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentCreatePostWithRequestBuilder(req: req, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -304,20 +320,24 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter req: (body) Content 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentCreatePostWithRequestBuilder(req req: UtilContentCreateBody, ignoreDupes: String? = nil) -> RequestBuilder<Void> {
+    public class func contentCreatePostWithRequestBuilder(req req: UtilContentCreateBody, ignoreDupes: String? = nil) -> RequestBuilder<String> {
         let path = "/content/create"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = req.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -329,9 +349,9 @@ public class ContentAPI: APIBase {
      - parameter offset: (query) Offset (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentDealsGet(limit limit: Int32? = nil, offset: Int32? = nil, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentDealsGet(limit limit: Int32? = nil, offset: Int32? = nil, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentDealsGetWithRequestBuilder(limit: limit, offset: offset).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -343,13 +363,17 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter limit: (query) Limit (optional)
      - parameter offset: (query) Offset (optional)
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentDealsGetWithRequestBuilder(limit limit: Int32? = nil, offset: Int32? = nil) -> RequestBuilder<Void> {
+    public class func contentDealsGetWithRequestBuilder(limit limit: Int32? = nil, offset: Int32? = nil) -> RequestBuilder<String> {
         let path = "/content/deals"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -362,7 +386,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -373,9 +397,9 @@ public class ContentAPI: APIBase {
      - parameter datacid: (path) Data CID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentEnsureReplicationDatacidGet(datacid datacid: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentEnsureReplicationDatacidGet(datacid datacid: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentEnsureReplicationDatacidGetWithRequestBuilder(datacid: datacid).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -387,12 +411,16 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter datacid: (path) Data CID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentEnsureReplicationDatacidGetWithRequestBuilder(datacid datacid: String) -> RequestBuilder<Void> {
+    public class func contentEnsureReplicationDatacidGetWithRequestBuilder(datacid datacid: String) -> RequestBuilder<String> {
         var path = "/content/ensure-replication/{datacid}"
         path = path.stringByReplacingOccurrencesOfString("{datacid}", withString: "\(datacid)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -403,7 +431,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -459,9 +487,9 @@ public class ContentAPI: APIBase {
      - parameter id: (path) Content ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentIdGet(id id: Int32, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentIdGet(id id: Int32, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentIdGetWithRequestBuilder(id: id).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -473,12 +501,16 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter id: (path) Content ID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentIdGetWithRequestBuilder(id id: Int32) -> RequestBuilder<Void> {
+    public class func contentIdGetWithRequestBuilder(id id: Int32) -> RequestBuilder<String> {
         var path = "/content/{id}"
         path = path.stringByReplacingOccurrencesOfString("{id}", withString: "\(id)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -489,7 +521,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -500,9 +532,9 @@ public class ContentAPI: APIBase {
      - parameter body: (body) Import a deal 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentImportdealPost(body body: MainImportDealBody, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentImportdealPost(body body: MainImportDealBody, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentImportdealPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -514,19 +546,23 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter body: (body) Import a deal 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentImportdealPostWithRequestBuilder(body body: MainImportDealBody) -> RequestBuilder<Void> {
+    public class func contentImportdealPostWithRequestBuilder(body body: MainImportDealBody) -> RequestBuilder<String> {
         let path = "/content/importdeal"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -536,7 +572,7 @@ public class ContentAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentListGet(completion: ((data: [String]?, error: ErrorType?) -> Void)) {
+    public class func contentListGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentListGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -550,11 +586,14 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={}}]
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<[String]> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentListGetWithRequestBuilder() -> RequestBuilder<[String]> {
+    public class func contentListGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/list"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -564,7 +603,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<[String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -575,9 +614,9 @@ public class ContentAPI: APIBase {
      - parameter cont: (path) CID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentReadContGet(cont cont: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentReadContGet(cont cont: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentReadContGetWithRequestBuilder(cont: cont).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -589,12 +628,16 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter cont: (path) CID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentReadContGetWithRequestBuilder(cont cont: String) -> RequestBuilder<Void> {
+    public class func contentReadContGetWithRequestBuilder(cont cont: String) -> RequestBuilder<String> {
         var path = "/content/read/{cont}"
         path = path.stringByReplacingOccurrencesOfString("{cont}", withString: "\(cont)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -605,7 +648,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -615,9 +658,9 @@ public class ContentAPI: APIBase {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentStagingZonesGet(completion: ((error: ErrorType?) -> Void)) {
+    public class func contentStagingZonesGet(completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentStagingZonesGetWithRequestBuilder().execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -629,10 +672,14 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentStagingZonesGetWithRequestBuilder() -> RequestBuilder<Void> {
+    public class func contentStagingZonesGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/staging-zones"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -642,7 +689,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }
@@ -654,9 +701,9 @@ public class ContentAPI: APIBase {
      - parameter offset: (query) offset 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentStatsGet(limit limit: String, offset: String, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentStatsGet(limit limit: String, offset: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentStatsGetWithRequestBuilder(limit: limit, offset: offset).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -668,13 +715,17 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter limit: (query) limit 
      - parameter offset: (query) offset 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentStatsGetWithRequestBuilder(limit limit: String, offset: String) -> RequestBuilder<Void> {
+    public class func contentStatsGetWithRequestBuilder(limit limit: String, offset: String) -> RequestBuilder<String> {
         let path = "/content/stats"
         let URLString = estuary-clientAPI.basePath + path
 
@@ -687,7 +738,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -698,9 +749,9 @@ public class ContentAPI: APIBase {
      - parameter id: (path) Content ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func contentStatusIdGet(id id: Int32, completion: ((error: ErrorType?) -> Void)) {
+    public class func contentStatusIdGet(id id: Int32, completion: ((data: String?, error: ErrorType?) -> Void)) {
         contentStatusIdGetWithRequestBuilder(id: id).execute { (response, error) -> Void in
-            completion(error: error);
+            completion(data: response?.body, error: error);
         }
     }
 
@@ -712,12 +763,16 @@ public class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
      - parameter id: (path) Content ID 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    public class func contentStatusIdGetWithRequestBuilder(id id: Int32) -> RequestBuilder<Void> {
+    public class func contentStatusIdGetWithRequestBuilder(id id: Int32) -> RequestBuilder<String> {
         var path = "/content/status/{id}"
         path = path.stringByReplacingOccurrencesOfString("{id}", withString: "\(id)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
@@ -728,7 +783,7 @@ public class ContentAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: true)
     }

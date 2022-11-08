@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="netAddrsGet"></a>
 # **netAddrsGet**
-> ['String'] netAddrsGet()
+> 'String' netAddrsGet()
 
 Net Addrs
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**['String']**
+**'String'**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> 'String' publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -86,7 +86,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersFailuresMinerGet(miner, callback);
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -113,7 +113,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> 'String' publicMinersGet()
 
 Get all miners
 
@@ -136,7 +136,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersGet(callback);
@@ -147,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

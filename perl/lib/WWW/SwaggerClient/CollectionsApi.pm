@@ -233,10 +233,10 @@ sub collections_coluuid_contents_delete {
     __PACKAGE__->method_documentation->{ 'collections_coluuid_delete' } = { 
     	summary => 'Deletes a collection',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub collections_coluuid_delete {
     my ($self, %args) = @_;
@@ -273,10 +273,14 @@ sub collections_coluuid_delete {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -380,10 +384,10 @@ sub collections_coluuid_get {
     __PACKAGE__->method_documentation->{ 'collections_coluuid_post' } = { 
     	summary => 'Add contents to a collection',
         params => $params,
-        returns => 'HASH[string,string]',
+        returns => 'string',
         };
 }
-# @return HASH[string,string]
+# @return string
 #
 sub collections_coluuid_post {
     my ($self, %args) = @_;
@@ -436,7 +440,7 @@ sub collections_coluuid_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HASH[string,string]', $response);
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
     return $_response_object;
 }
 
@@ -469,10 +473,10 @@ sub collections_coluuid_post {
     __PACKAGE__->method_documentation->{ 'collections_fs_add_post' } = { 
     	summary => 'Add a file to a collection',
         params => $params,
-        returns => undef,
+        returns => 'string',
         };
 }
-# @return void
+# @return string
 #
 sub collections_fs_add_post {
     my ($self, %args) = @_;
@@ -527,10 +531,14 @@ sub collections_fs_add_post {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
 }
 
 #
@@ -544,10 +552,10 @@ sub collections_fs_add_post {
     __PACKAGE__->method_documentation->{ 'collections_get' } = { 
     	summary => 'List all collections',
         params => $params,
-        returns => 'ARRAY[CollectionsCollection]',
+        returns => 'ARRAY[ARRAY[CollectionsCollection]]',
         };
 }
-# @return ARRAY[CollectionsCollection]
+# @return ARRAY[ARRAY[CollectionsCollection]]
 #
 sub collections_get {
     my ($self, %args) = @_;
@@ -578,7 +586,7 @@ sub collections_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[CollectionsCollection]', $response);
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[ARRAY[CollectionsCollection]]', $response);
     return $_response_object;
 }
 

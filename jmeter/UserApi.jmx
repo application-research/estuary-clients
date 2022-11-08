@@ -48,9 +48,9 @@
             <stringProp name="Argument.value">${__P(testData.userApiKeysGetFile,UserApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="testData.userApiKeysKeyDeleteFile" elementType="Argument">
-            <stringProp name="Argument.name">testData.userApiKeysKeyDeleteFile</stringProp>
-            <stringProp name="Argument.value">${__P(testData.userApiKeysKeyDeleteFile,UserApi.csv)}</stringProp>
+          <elementProp name="testData.userApiKeysKeyOrHashDeleteFile" elementType="Argument">
+            <stringProp name="Argument.name">testData.userApiKeysKeyOrHashDeleteFile</stringProp>
+            <stringProp name="Argument.value">${__P(testData.userApiKeysKeyOrHashDeleteFile,UserApi.csv)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="testData.userApiKeysPostFile" elementType="Argument">
@@ -151,7 +151,7 @@
         </ResponseAssertion>
         <hashTree/>
       </hashTree>
-<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - userApiKeysKeyDelete" enabled="true">
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - userApiKeysKeyOrHashDelete" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -171,7 +171,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="userApiKeysKeyDelete - ${testCase}" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="userApiKeysKeyOrHashDelete - ${testCase}" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
             </collectionProp>
@@ -182,7 +182,7 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">//user/api-keys/${key}</stringProp>
+          <stringProp name="HTTPSampler.path">//user/api-keys/${key_or_hash}</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -191,13 +191,13 @@
           <stringProp name="HTTPSampler.implementation"></stringProp>
           <boolProp name="HTTPSampler.monitor">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="TestPlan.comments">Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</stringProp>
+          <stringProp name="TestPlan.comments">Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.</stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - userApiKeysKeyDelete" enabled="true">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Load CSV Test Data - userApiKeysKeyOrHashDelete" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">${testData.userApiKeysKeyDeleteFile}</stringProp>
+            <stringProp name="filename">${testData.userApiKeysKeyOrHashDeleteFile}</stringProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.group</stringProp>

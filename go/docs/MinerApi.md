@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**PublicMinersStatsMinerGet**](MinerApi.md#PublicMinersStatsMinerGet) | **Get** /public/miners/stats/{miner} | Get miner stats
 
 # **PublicMinersDealsMinerGet**
-> PublicMinersDealsMinerGet(ctx, miner, optional)
+> string PublicMinersDealsMinerGet(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -30,7 +30,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersStatsMinerGet**
-> PublicMinersStatsMinerGet(ctx, miner)
+> string PublicMinersStatsMinerGet(ctx, miner)
 Get miner stats
 
 This endpoint returns miner stats
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

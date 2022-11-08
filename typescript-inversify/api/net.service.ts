@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -37,8 +38,8 @@ export class NetService {
      * This endpoint is used to get net addrs
      
      */
-    public netAddrsGet(observe?: 'body', headers?: Headers): Observable<Array<string>>;
-    public netAddrsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<Array<string>>>;
+    public netAddrsGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public netAddrsGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public netAddrsGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -46,7 +47,7 @@ export class NetService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<Array<string>>> = this.httpClient.get(`${this.APIConfiguration.basePath}/net/addrs` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/net/addrs` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -60,8 +61,8 @@ export class NetService {
      * @param miner Filter by miner
      
      */
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersFailuresMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersFailuresMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersFailuresMinerGet.');
@@ -73,7 +74,7 @@ export class NetService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -86,8 +87,8 @@ export class NetService {
      * This endpoint returns all miners
      
      */
-    public publicMinersGet(observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersGet(observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersGet(observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersGet(observe: any = 'body', headers: Headers = {}): Observable<any> {
         // authentication (bearerAuth) required
         if (this.APIConfiguration.apiKeys['Authorization']) {
@@ -95,7 +96,7 @@ export class NetService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

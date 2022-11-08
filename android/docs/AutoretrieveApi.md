@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="adminAutoretrieveInitPost"></a>
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost(addresses, pubKey)
+> String adminAutoretrieveInitPost(addresses, pubKey)
 
 Register autoretrieve server
 
@@ -26,7 +26,8 @@ AutoretrieveApi apiInstance = new AutoretrieveApi();
 String addresses = "addresses_example"; // String | Autoretrieve's comma-separated list of addresses
 String pubKey = "pubKey_example"; // String | Autoretrieve's public key
 try {
-    apiInstance.adminAutoretrieveInitPost(addresses, pubKey);
+    String result = apiInstance.adminAutoretrieveInitPost(addresses, pubKey);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AutoretrieveApi#adminAutoretrieveInitPost");
     e.printStackTrace();
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -55,7 +56,7 @@ null (empty response body)
 
 <a name="adminAutoretrieveListGet"></a>
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> String adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -68,7 +69,8 @@ This endpoint lists all registered autoretrieve servers
 
 AutoretrieveApi apiInstance = new AutoretrieveApi();
 try {
-    apiInstance.adminAutoretrieveListGet();
+    String result = apiInstance.adminAutoretrieveListGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AutoretrieveApi#adminAutoretrieveListGet");
     e.printStackTrace();
@@ -80,7 +82,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -93,7 +95,7 @@ null (empty response body)
 
 <a name="autoretrieveHeartbeatPost"></a>
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost(token)
+> String autoretrieveHeartbeatPost(token)
 
 Marks autoretrieve server as up
 
@@ -107,7 +109,8 @@ This endpoint updates the lastConnection field for autoretrieve
 AutoretrieveApi apiInstance = new AutoretrieveApi();
 String token = "token_example"; // String | Autoretrieve's auth token
 try {
-    apiInstance.autoretrieveHeartbeatPost(token);
+    String result = apiInstance.autoretrieveHeartbeatPost(token);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AutoretrieveApi#autoretrieveHeartbeatPost");
     e.printStackTrace();
@@ -122,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

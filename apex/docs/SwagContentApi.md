@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> contentAddCarPost(body, ignoreDupes, filename)
+> String contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -48,7 +48,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentAddCarPost(params);
+    String result = api.contentAddCarPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -77,7 +78,7 @@ null (empty response body)
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes)
 
 Add IPFS object
 
@@ -99,7 +100,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentAddIpfsPost(params);
+    String result = api.contentAddIpfsPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -114,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -237,7 +239,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAllDealsGet"></a>
 # **contentAllDealsGet**
-> contentAllDealsGet(r_begin, duration, all)
+> String contentAllDealsGet(r_begin, duration, all)
 
 Get all deals for a user
 
@@ -260,7 +262,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentAllDealsGet(params);
+    String result = api.contentAllDealsGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -276,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -289,7 +292,7 @@ null (empty response body)
 
 <a name="contentBwUsageContentGet"></a>
 # **contentBwUsageContentGet**
-> contentBwUsageContentGet(content)
+> String contentBwUsageContentGet(content)
 
 Get content bandwidth
 
@@ -310,7 +313,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentBwUsageContentGet(params);
+    String result = api.contentBwUsageContentGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -324,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -337,7 +341,7 @@ null (empty response body)
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> contentCreatePost(req, ignoreDupes)
+> String contentCreatePost(req, ignoreDupes)
 
 Add a new content
 
@@ -359,7 +363,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentCreatePost(params);
+    String result = api.contentCreatePost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -374,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -387,7 +392,7 @@ null (empty response body)
 
 <a name="contentDealsGet"></a>
 # **contentDealsGet**
-> contentDealsGet(r_limit, offset)
+> String contentDealsGet(r_limit, offset)
 
 Content with deals
 
@@ -409,7 +414,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentDealsGet(params);
+    String result = api.contentDealsGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -424,7 +430,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -437,7 +443,7 @@ null (empty response body)
 
 <a name="contentEnsureReplicationDatacidGet"></a>
 # **contentEnsureReplicationDatacidGet**
-> contentEnsureReplicationDatacidGet(datacid)
+> String contentEnsureReplicationDatacidGet(datacid)
 
 Ensure Replication
 
@@ -458,7 +464,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentEnsureReplicationDatacidGet(params);
+    String result = api.contentEnsureReplicationDatacidGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -472,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -534,7 +541,7 @@ Name | Type | Description  | Notes
 
 <a name="contentIdGet"></a>
 # **contentIdGet**
-> contentIdGet(id)
+> String contentIdGet(id)
 
 Content
 
@@ -555,7 +562,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentIdGet(params);
+    String result = api.contentIdGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -569,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -582,7 +590,7 @@ null (empty response body)
 
 <a name="contentImportdealPost"></a>
 # **contentImportdealPost**
-> contentImportdealPost(body)
+> String contentImportdealPost(body)
 
 Import a deal
 
@@ -603,7 +611,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentImportdealPost(params);
+    String result = api.contentImportdealPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -617,7 +626,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -630,7 +639,7 @@ null (empty response body)
 
 <a name="contentListGet"></a>
 # **contentListGet**
-> List&lt;String&gt; contentListGet()
+> String contentListGet()
 
 List all pinned content
 
@@ -647,7 +656,7 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    List<String> result = api.contentListGet();
+    String result = api.contentListGet();
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -659,7 +668,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List&lt;String&gt;**
+**String**
 
 ### Authorization
 
@@ -672,7 +681,7 @@ This endpoint does not need any parameter.
 
 <a name="contentReadContGet"></a>
 # **contentReadContGet**
-> contentReadContGet(cont)
+> String contentReadContGet(cont)
 
 Read content
 
@@ -693,7 +702,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentReadContGet(params);
+    String result = api.contentReadContGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -707,7 +717,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -720,7 +730,7 @@ null (empty response body)
 
 <a name="contentStagingZonesGet"></a>
 # **contentStagingZonesGet**
-> contentStagingZonesGet()
+> String contentStagingZonesGet()
 
 Get staging zone for user
 
@@ -737,7 +747,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.contentStagingZonesGet();
+    String result = api.contentStagingZonesGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -748,7 +759,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -761,7 +772,7 @@ null (empty response body)
 
 <a name="contentStatsGet"></a>
 # **contentStatsGet**
-> contentStatsGet(r_limit, offset)
+> String contentStatsGet(r_limit, offset)
 
 Get content statistics
 
@@ -783,7 +794,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentStatsGet(params);
+    String result = api.contentStatsGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -798,7 +810,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -811,7 +823,7 @@ null (empty response body)
 
 <a name="contentStatusIdGet"></a>
 # **contentStatusIdGet**
-> contentStatusIdGet(id)
+> String contentStatusIdGet(id)
 
 Content Status
 
@@ -832,7 +844,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.contentStatusIdGet(params);
+    String result = api.contentStatusIdGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -846,7 +859,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

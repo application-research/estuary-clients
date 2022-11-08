@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, opts)
+> 'String' publicMinersDealsMinerGet(miner, opts)
 
 Get all miners deals
 
@@ -39,7 +39,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersDealsMinerGet(miner, opts, callback);
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -67,7 +67,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> 'String' publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -93,7 +93,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.publicMinersStatsMinerGet(miner, callback);
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 

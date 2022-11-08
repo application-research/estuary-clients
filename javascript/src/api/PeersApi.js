@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.PeersApi = factory(root.EstuaryClient.ApiClient);
+    root.EstuaryClient.PeersApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,22 +51,23 @@
      * Callback function to receive the result of the adminPeeringPeersDelete operation.
      * @callback module:api/PeersApi~adminPeeringPeersDeleteCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param {Array.<module:model/String>} body Peer ids
+     * @param {Array.<module:model/Boolean>} peerIds Peer ids
      * @param {module:api/PeersApi~adminPeeringPeersDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
-    this.adminPeeringPeersDelete = function(body, callback) {
-      var postBody = body;
+    this.adminPeeringPeersDelete = function(peerIds, callback) {
+      var postBody = peerIds;
 
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling adminPeeringPeersDelete");
+      // verify the required parameter 'peerIds' is set
+      if (peerIds === undefined || peerIds === null) {
+        throw new Error("Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete");
       }
 
 
@@ -84,7 +85,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/peers', 'DELETE',
@@ -97,7 +98,7 @@
      * Callback function to receive the result of the adminPeeringPeersGet operation.
      * @callback module:api/PeersApi~adminPeeringPeersGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -105,6 +106,7 @@
      * List all Peering peers
      * This endpoint can be used to list all peers on Peering Service
      * @param {module:api/PeersApi~adminPeeringPeersGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminPeeringPeersGet = function(callback) {
       var postBody = null;
@@ -124,7 +126,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/peers', 'GET',
@@ -137,7 +139,7 @@
      * Callback function to receive the result of the adminPeeringPeersPost operation.
      * @callback module:api/PeersApi~adminPeeringPeersPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -145,6 +147,7 @@
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
      * @param {module:api/PeersApi~adminPeeringPeersPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminPeeringPeersPost = function(callback) {
       var postBody = null;
@@ -164,7 +167,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/peers', 'POST',
@@ -177,7 +180,7 @@
      * Callback function to receive the result of the adminPeeringStartPost operation.
      * @callback module:api/PeersApi~adminPeeringStartPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -185,6 +188,7 @@
      * Start Peering
      * This endpoint can be used to start the Peering Service
      * @param {module:api/PeersApi~adminPeeringStartPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminPeeringStartPost = function(callback) {
       var postBody = null;
@@ -204,7 +208,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/start', 'POST',
@@ -217,7 +221,7 @@
      * Callback function to receive the result of the adminPeeringStatusGet operation.
      * @callback module:api/PeersApi~adminPeeringStatusGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -225,6 +229,7 @@
      * Check Peering Status
      * This endpoint can be used to check the Peering status
      * @param {module:api/PeersApi~adminPeeringStatusGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminPeeringStatusGet = function(callback) {
       var postBody = null;
@@ -244,7 +249,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/status', 'GET',
@@ -257,7 +262,7 @@
      * Callback function to receive the result of the adminPeeringStopPost operation.
      * @callback module:api/PeersApi~adminPeeringStopPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -265,6 +270,7 @@
      * Stop Peering
      * This endpoint can be used to stop the Peering Service
      * @param {module:api/PeersApi~adminPeeringStopPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.adminPeeringStopPost = function(callback) {
       var postBody = null;
@@ -284,7 +290,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/admin/peering/stop', 'POST',

@@ -23,7 +23,9 @@ import Maybe exposing (map, withDefault)
 
 type alias MainGetApiKeysResp =
     { expiry : Maybe String
+    , label : Maybe String
     , token : Maybe String
+    , tokenHash : Maybe String
     }
 
 
@@ -31,7 +33,9 @@ mainGetApiKeysRespDecoder : Decoder MainGetApiKeysResp
 mainGetApiKeysRespDecoder =
     decode MainGetApiKeysResp
         |> optional "expiry" (Decode.nullable Decode.string) Nothing
+        |> optional "label" (Decode.nullable Decode.string) Nothing
         |> optional "token" (Decode.nullable Decode.string) Nothing
+        |> optional "tokenHash" (Decode.nullable Decode.string) Nothing
 
 
 
@@ -39,7 +43,9 @@ mainGetApiKeysRespEncoder : MainGetApiKeysResp -> Encode.Value
 mainGetApiKeysRespEncoder model =
     Encode.object
         [ ( "expiry", withDefault Encode.null (map Encode.string model.expiry) )
+        , ( "label", withDefault Encode.null (map Encode.string model.label) )
         , ( "token", withDefault Encode.null (map Encode.string model.token) )
+        , ( "tokenHash", withDefault Encode.null (map Encode.string model.tokenHash) )
         ]
 
 

@@ -10,5 +10,7 @@ package estuary_client
 
 type MainGetApiKeysResp struct {
 	Expiry string `json:"expiry,omitempty"`
+	Label string `json:"label,omitempty"`
 	Token string `json:"token,omitempty"`
+	TokenHash string `json:"tokenHash,omitempty"`
 }

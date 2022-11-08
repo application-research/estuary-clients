@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **public_by_cid_cid_get**
-> public_by_cid_cid_get(ctx, cid)
+> String public_by_cid_cid_get(ctx, cid)
 Get Content by Cid
 
 This endpoint returns the content associated with a CID
@@ -31,7 +31,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_info_get**
-> public_info_get(ctx, )
+> String public_info_get(ctx, )
 Get public node info
 
 This endpoint returns information about the node
@@ -55,7 +55,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -69,7 +69,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get(ctx, )
+> String public_metrics_deals_on_chain_get(ctx, )
 Get deal metrics
 
 This endpoint is used to get deal metrics
@@ -79,7 +79,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(ctx, miner, optional)
+> String public_miners_deals_miner_get(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(ctx, miner)
+> String public_miners_failures_miner_get(ctx, miner)
 Get all miners
 
 This endpoint returns all miners
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get(ctx, )
+> String public_miners_get(ctx, )
 Get all miners
 
 This endpoint returns all miners
@@ -168,7 +168,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -182,7 +182,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(ctx, miner)
+> String public_miners_stats_miner_get(ctx, miner)
 Get miner stats
 
 This endpoint returns miner stats
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -258,7 +258,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_stats_get**
-> public_stats_get(ctx, )
+> String public_stats_get(ctx, )
 Public stats
 
 This endpoint is used to get public stats.
@@ -268,7 +268,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

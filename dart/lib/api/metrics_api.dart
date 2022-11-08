@@ -10,7 +10,7 @@ class MetricsApi {
   /// Get deal metrics
   ///
   /// This endpoint is used to get deal metrics
-  Future publicMetricsDealsOnChainGet() async {
+  Future<String> publicMetricsDealsOnChainGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -51,9 +51,9 @@ class MetricsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return 
-          ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
-      return ;
+      return null;
     }
   }
 }

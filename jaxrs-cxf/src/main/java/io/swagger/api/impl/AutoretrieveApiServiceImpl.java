@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,10 +29,10 @@ public class AutoretrieveApiServiceImpl implements AutoretrieveApi {
      * This endpoint registers a new autoretrieve server
      *
      */
-    public void adminAutoretrieveInitPost(String addresses, String pubKey) {
+    public String adminAutoretrieveInitPost(String addresses, String pubKey) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -40,10 +41,10 @@ public class AutoretrieveApiServiceImpl implements AutoretrieveApi {
      * This endpoint lists all registered autoretrieve servers
      *
      */
-    public void adminAutoretrieveListGet() {
+    public String adminAutoretrieveListGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -52,10 +53,10 @@ public class AutoretrieveApiServiceImpl implements AutoretrieveApi {
      * This endpoint updates the lastConnection field for autoretrieve
      *
      */
-    public void autoretrieveHeartbeatPost(String token) {
+    public String autoretrieveHeartbeatPost(String token) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

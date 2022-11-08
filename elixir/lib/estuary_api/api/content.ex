@@ -25,10 +25,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_add_car_post(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_add_car_post(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_add_car_post(connection, body, opts \\ []) do
     optional_params = %{
       :"ignore-dupes" => :query,
@@ -57,10 +57,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_add_ipfs_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentAddIpfsBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_add_ipfs_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentAddIpfsBody.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_add_ipfs_post(connection, body, opts \\ []) do
     optional_params = %{
       :"ignore-dupes" => :query
@@ -155,10 +155,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_all_deals_get(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_all_deals_get(Tesla.Env.client, String.t, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_all_deals_get(connection, begin, duration, all, _opts \\ []) do
     %{}
     |> method(:get)
@@ -183,10 +183,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_bw_usage_content_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_bw_usage_content_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_bw_usage_content_get(connection, content, _opts \\ []) do
     %{}
     |> method(:get)
@@ -209,10 +209,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_create_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentCreateBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_create_post(Tesla.Env.client, EstuaryAPI.Model.UtilContentCreateBody.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_create_post(connection, req, opts \\ []) do
     optional_params = %{
       :"ignore-dupes" => :query
@@ -240,10 +240,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_deals_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_deals_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_deals_get(connection, opts \\ []) do
     optional_params = %{
       :"limit" => :query,
@@ -270,10 +270,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_ensure_replication_datacid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_ensure_replication_datacid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_ensure_replication_datacid_get(connection, datacid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -320,10 +320,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_id_get(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_id_get(Tesla.Env.client, integer(), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_id_get(connection, id, _opts \\ []) do
     %{}
     |> method(:get)
@@ -345,10 +345,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_importdeal_post(Tesla.Env.client, EstuaryAPI.Model.MainImportDealBody.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_importdeal_post(Tesla.Env.client, EstuaryAPI.Model.MainImportDealBody.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_importdeal_post(connection, body, _opts \\ []) do
     %{}
     |> method(:post)
@@ -370,17 +370,17 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, [%String{}, ...]} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_list_get(Tesla.Env.client, keyword()) :: {:ok, list(String.t)} | {:error, Tesla.Env.t}
+  @spec content_list_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_list_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
     |> url("/content/list")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
-    |> decode([%EstuaryAPI.Model.String{}])
+    |> decode(false)
   end
 
   @doc """
@@ -395,10 +395,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_read_cont_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_read_cont_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_read_cont_get(connection, cont, _opts \\ []) do
     %{}
     |> method(:get)
@@ -419,10 +419,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_staging_zones_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_staging_zones_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_staging_zones_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -445,10 +445,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_stats_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_stats_get(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_stats_get(connection, limit, offset, _opts \\ []) do
     %{}
     |> method(:get)
@@ -472,10 +472,10 @@ defmodule EstuaryAPI.Api.Content do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec content_status_id_get(Tesla.Env.client, integer(), keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec content_status_id_get(Tesla.Env.client, integer(), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def content_status_id_get(connection, id, _opts \\ []) do
     %{}
     |> method(:get)

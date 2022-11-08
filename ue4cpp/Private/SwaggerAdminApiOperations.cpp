@@ -42,7 +42,7 @@ void SwaggerAdminApi::AdminPeeringPeersDeleteRequest::SetupHttpRequest(const TSh
 		FString JsonBody;
 		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
 
-		WriteJsonValue(Writer, Body);
+		WriteJsonValue(Writer, PeerIds);
 		Writer->Close();
 
 		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
@@ -50,11 +50,11 @@ void SwaggerAdminApi::AdminPeeringPeersDeleteRequest::SetupHttpRequest(const TSh
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (body) was ignored, not supported in multipart form"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (peerIds) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
-		UE_LOG(LogSwagger, Error, TEXT("Body parameter (body) was ignored, not supported in urlencoded requests"));
+		UE_LOG(LogSwagger, Error, TEXT("Body parameter (peerIds) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -62,10 +62,27 @@ void SwaggerAdminApi::AdminPeeringPeersDeleteRequest::SetupHttpRequest(const TSh
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringPeersDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringPeersDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminPeeringPeersGetRequest::ComputePath() const
@@ -97,10 +114,27 @@ void SwaggerAdminApi::AdminPeeringPeersGetRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringPeersGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringPeersGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminPeeringPeersPostRequest::ComputePath() const
@@ -132,10 +166,27 @@ void SwaggerAdminApi::AdminPeeringPeersPostRequest::SetupHttpRequest(const TShar
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringPeersPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringPeersPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminPeeringStartPostRequest::ComputePath() const
@@ -167,10 +218,27 @@ void SwaggerAdminApi::AdminPeeringStartPostRequest::SetupHttpRequest(const TShar
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringStartPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringStartPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminPeeringStatusGetRequest::ComputePath() const
@@ -202,10 +270,27 @@ void SwaggerAdminApi::AdminPeeringStatusGetRequest::SetupHttpRequest(const TShar
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringStatusGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringStatusGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminPeeringStopPostRequest::ComputePath() const
@@ -237,10 +322,27 @@ void SwaggerAdminApi::AdminPeeringStopPostRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerAdminApi::AdminPeeringStopPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminPeeringStopPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminSystemConfigGetRequest::ComputePath() const
@@ -272,10 +374,27 @@ void SwaggerAdminApi::AdminSystemConfigGetRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerAdminApi::AdminSystemConfigGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminSystemConfigGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerAdminApi::AdminUsersGetRequest::ComputePath() const
@@ -307,10 +426,27 @@ void SwaggerAdminApi::AdminUsersGetRequest::SetupHttpRequest(const TSharedRef<IH
 	}
 }
 
+void SwaggerAdminApi::AdminUsersGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerAdminApi::AdminUsersGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

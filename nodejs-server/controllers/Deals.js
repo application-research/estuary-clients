@@ -80,6 +80,17 @@ module.exports.dealTransferIn_progressGET = function dealTransferIn_progressGET 
     });
 };
 
+module.exports.dealTransferStatusPOST = function dealTransferStatusPOST (req, res, next) {
+  var chanid = req.swagger.params['chanid'].value;
+  Deals.dealTransferStatusPOST(chanid)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.dealsFailuresGET = function dealsFailuresGET (req, res, next) {
   Deals.dealsFailuresGET()
     .then(function (response) {

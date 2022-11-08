@@ -14,8 +14,8 @@ private class SwagNetApiTest {
 
         SwagClient client;
         SwagNetApi api;
-        List<String> response;
-        List<String> expectedResponse;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagNetApi(client);
@@ -23,9 +23,9 @@ private class SwagNetApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{}');
-        expectedResponse = new List<String>{'aeiou'};
-        response = (List<String>) api.netAddrsGet();
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.netAddrsGet();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -47,13 +47,19 @@ private class SwagNetApiTest {
 
         SwagClient client;
         SwagNetApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagNetApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersFailuresMinerGet(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersFailuresMinerGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -70,13 +76,19 @@ private class SwagNetApiTest {
 
         SwagClient client;
         SwagNetApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagNetApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**

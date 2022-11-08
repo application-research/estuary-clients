@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **admin_peering_peers_delete**
-> admin_peering_peers_delete(body)
+> str admin_peering_peers_delete(peer_ids)
 
 Remove peers on Peering Service
 
@@ -37,11 +37,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
-body = [estuary-client.list[str]()] # list[str] | Peer ids
+peer_ids = [estuary-client.list[bool]()] # list[bool] | Peer ids
 
 try:
     # Remove peers on Peering Service
-    api_instance.admin_peering_peers_delete(body)
+    api_response = api_instance.admin_peering_peers_delete(peer_ids)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_peers_delete: %s\n" % e)
 ```
@@ -50,11 +51,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **list[str]**| Peer ids | 
+ **peer_ids** | **list[bool]**| Peer ids | 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -68,7 +69,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_get**
-> admin_peering_peers_get()
+> str admin_peering_peers_get()
 
 List all Peering peers
 
@@ -93,7 +94,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # List all Peering peers
-    api_instance.admin_peering_peers_get()
+    api_response = api_instance.admin_peering_peers_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_peers_get: %s\n" % e)
 ```
@@ -103,7 +105,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -117,7 +119,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_post**
-> admin_peering_peers_post()
+> str admin_peering_peers_post()
 
 Add peers on Peering Service
 
@@ -142,7 +144,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Add peers on Peering Service
-    api_instance.admin_peering_peers_post()
+    api_response = api_instance.admin_peering_peers_post()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_peers_post: %s\n" % e)
 ```
@@ -152,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -166,7 +169,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_start_post**
-> admin_peering_start_post()
+> str admin_peering_start_post()
 
 Start Peering
 
@@ -191,7 +194,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Start Peering
-    api_instance.admin_peering_start_post()
+    api_response = api_instance.admin_peering_start_post()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_start_post: %s\n" % e)
 ```
@@ -201,7 +205,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -215,7 +219,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_status_get**
-> admin_peering_status_get()
+> str admin_peering_status_get()
 
 Check Peering Status
 
@@ -240,7 +244,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Check Peering Status
-    api_instance.admin_peering_status_get()
+    api_response = api_instance.admin_peering_status_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_status_get: %s\n" % e)
 ```
@@ -250,7 +255,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -264,7 +269,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_stop_post**
-> admin_peering_stop_post()
+> str admin_peering_stop_post()
 
 Stop Peering
 
@@ -289,7 +294,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Stop Peering
-    api_instance.admin_peering_stop_post()
+    api_response = api_instance.admin_peering_stop_post()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_stop_post: %s\n" % e)
 ```
@@ -299,7 +305,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -313,7 +319,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_system_config_get**
-> admin_system_config_get()
+> str admin_system_config_get()
 
 Get systems(estuary/shuttle) config
 
@@ -338,7 +344,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get systems(estuary/shuttle) config
-    api_instance.admin_system_config_get()
+    api_response = api_instance.admin_system_config_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_system_config_get: %s\n" % e)
 ```
@@ -348,7 +355,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -362,7 +369,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_users_get**
-> admin_users_get()
+> str admin_users_get()
 
 Get all users
 
@@ -387,7 +394,8 @@ api_instance = estuary-client.AdminApi(estuary-client.ApiClient(configuration))
 
 try:
     # Get all users
-    api_instance.admin_users_get()
+    api_response = api_instance.admin_users_get()
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_users_get: %s\n" % e)
 ```
@@ -397,7 +405,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 

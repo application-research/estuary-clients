@@ -24,7 +24,7 @@ Feature | HTTP request | Description
 
 
 # **content_add_car_post**
-> content_add_car_post (body: STRING_32 ; ignore_dupes:  detachable STRING_32 ; filename:  detachable STRING_32 )
+> content_add_car_post (body: STRING_32 ; ignore_dupes:  detachable STRING_32 ; filename:  detachable STRING_32 ): detachable STRING_32
 	
 
 Add Car object
@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY ; ignore_dupes:  detachable STRING_32 )
+> content_add_ipfs_post (body: UTIL_CONTENT_ADD_IPFS_BODY ; ignore_dupes:  detachable STRING_32 ): detachable STRING_32
 	
 
 Add IPFS object
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_all_deals_get**
-> content_all_deals_get (begin: STRING_32 ; duration: STRING_32 ; var_all: STRING_32 )
+> content_all_deals_get (begin: STRING_32 ; duration: STRING_32 ; var_all: STRING_32 ): detachable STRING_32
 	
 
 Get all deals for a user
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_bw_usage_content_get**
-> content_bw_usage_content_get (content: STRING_32 )
+> content_bw_usage_content_get (content: STRING_32 ): detachable STRING_32
 	
 
 Get content bandwidth
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> content_create_post (req: UTIL_CONTENT_CREATE_BODY ; ignore_dupes:  detachable STRING_32 )
+> content_create_post (req: UTIL_CONTENT_CREATE_BODY ; ignore_dupes:  detachable STRING_32 ): detachable STRING_32
 	
 
 Add a new content
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_deals_get**
-> content_deals_get (limit:  detachable INTEGER_32 ; offset:  detachable INTEGER_32 )
+> content_deals_get (limit:  detachable INTEGER_32 ; offset:  detachable INTEGER_32 ): detachable STRING_32
 	
 
 Content with deals
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_ensure_replication_datacid_get**
-> content_ensure_replication_datacid_get (datacid: STRING_32 )
+> content_ensure_replication_datacid_get (datacid: STRING_32 ): detachable STRING_32
 	
 
 Ensure Replication
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -337,7 +337,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_id_get**
-> content_id_get (id: INTEGER_32 )
+> content_id_get (id: INTEGER_32 ): detachable STRING_32
 	
 
 Content
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_importdeal_post**
-> content_importdeal_post (body: MAIN_IMPORT_DEAL_BODY )
+> content_importdeal_post (body: MAIN_IMPORT_DEAL_BODY ): detachable STRING_32
 	
 
 Import a deal
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_list_get**
-> content_list_get : detachable LIST [STRING_32]
+> content_list_get : detachable STRING_32
 	
 
 List all pinned content
@@ -410,7 +410,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**LIST [STRING_32]**](STRING_32.md)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -424,7 +424,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_read_cont_get**
-> content_read_cont_get (cont: STRING_32 )
+> content_read_cont_get (cont: STRING_32 ): detachable STRING_32
 	
 
 Read content
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_staging_zones_get**
-> content_staging_zones_get 
+> content_staging_zones_get : detachable STRING_32
 	
 
 Get staging zone for user
@@ -467,7 +467,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -481,7 +481,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_stats_get**
-> content_stats_get (limit: STRING_32 ; offset: STRING_32 )
+> content_stats_get (limit: STRING_32 ; offset: STRING_32 ): detachable STRING_32
 	
 
 Get content statistics
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 
@@ -512,7 +512,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_status_id_get**
-> content_status_id_get (id: INTEGER_32 )
+> content_status_id_get (id: INTEGER_32 ): detachable STRING_32
 	
 
 Content Status
@@ -528,7 +528,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{empty response body)
+[**STRING_32**](STRING_32.md)
 
 ### Authorization
 

@@ -26,9 +26,17 @@ void SwaggerMain_getApiKeysResp::WriteJson(JsonWriter& Writer) const
 	{
 		Writer->WriteIdentifierPrefix(TEXT("expiry")); WriteJsonValue(Writer, Expiry.GetValue());	
 	}
+	if (Label.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("label")); WriteJsonValue(Writer, Label.GetValue());	
+	}
 	if (Token.IsSet())
 	{
 		Writer->WriteIdentifierPrefix(TEXT("token")); WriteJsonValue(Writer, Token.GetValue());	
+	}
+	if (TokenHash.IsSet())
+	{
+		Writer->WriteIdentifierPrefix(TEXT("tokenHash")); WriteJsonValue(Writer, TokenHash.GetValue());	
 	}
 	Writer->WriteObjectEnd();
 }
@@ -38,7 +46,9 @@ bool SwaggerMain_getApiKeysResp::FromJson(const TSharedPtr<FJsonObject>& JsonObj
 	bool ParseSuccess = true;
 
 	ParseSuccess &= TryGetJsonValue(JsonObject, TEXT("expiry"), Expiry);
+	ParseSuccess &= TryGetJsonValue(JsonObject, TEXT("label"), Label);
 	ParseSuccess &= TryGetJsonValue(JsonObject, TEXT("token"), Token);
+	ParseSuccess &= TryGetJsonValue(JsonObject, TEXT("tokenHash"), TokenHash);
 
 	return ParseSuccess;
 }

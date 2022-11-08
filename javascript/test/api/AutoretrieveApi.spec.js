@@ -37,7 +37,7 @@
     describe('AutoretrieveApi', function() {
       describe('adminAutoretrieveInitPost', function() {
         it('should call adminAutoretrieveInitPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for adminAutoretrieveInitPost call
+          // TODO: uncomment, update parameter values for adminAutoretrieveInitPost call and complete the assertions
           /*
           var addresses = "addresses_example";
           var pubKey = "pubKey_example";
@@ -47,6 +47,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -57,7 +60,7 @@
       });
       describe('adminAutoretrieveListGet', function() {
         it('should call adminAutoretrieveListGet successfully', function(done) {
-          // TODO: uncomment adminAutoretrieveListGet call
+          // TODO: uncomment adminAutoretrieveListGet call and complete the assertions
           /*
 
           instance.adminAutoretrieveListGet(function(error, data, response) {
@@ -65,6 +68,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -75,7 +81,7 @@
       });
       describe('autoretrieveHeartbeatPost', function() {
         it('should call autoretrieveHeartbeatPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for autoretrieveHeartbeatPost call
+          // TODO: uncomment, update parameter values for autoretrieveHeartbeatPost call and complete the assertions
           /*
           var token = "token_example";
 
@@ -84,6 +90,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

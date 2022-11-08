@@ -50,7 +50,7 @@ export class UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      * @summary Get API keys for a user
      */
-    public userApiKeysGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<models.MainGetApiKeysResp>;  }> {
+    public userApiKeysGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: Array<Array<models.MainGetApiKeysResp>>;  }> {
         let localVarPath = this.basePath + '/user/api-keys';
 
         let queryParameters: any = {};
@@ -93,7 +93,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: Array<models.MainGetApiKeysResp>, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: Array<Array<models.MainGetApiKeysResp>>, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -102,18 +102,18 @@ export class UserApi {
     }
 
     /**
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      * @summary Revoke a User API Key.
-     * @param key Key
+     * @param keyOrHash Key or Hash
      */
-    public userApiKeysKeyDelete(key: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body?: any;  }> {
-        let localVarPath = this.basePath + '/user/api-keys/{key}'.replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
+        let localVarPath = this.basePath + '/user/api-keys/{key_or_hash}'.replace('{' + 'key_or_hash' + '}', encodeURIComponent(String(keyOrHash)));
 
         let queryParameters: any = {};
         let headerParams: any = {};
-        // verify required parameter 'key' is not null or undefined
-        if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        // verify required parameter 'keyOrHash' is not null or undefined
+        if (keyOrHash === null || keyOrHash === undefined) {
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
 
@@ -154,7 +154,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: any, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)
@@ -165,7 +165,7 @@ export class UserApi {
     /**
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @summary Create API keys for a user
-     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+     * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param perms Permissions -- currently unused
      */
     public userApiKeysPost(expiry?: string, perms?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainGetApiKeysResp;  }> {
@@ -284,7 +284,7 @@ export class UserApi {
      * This endpoint is used to create API keys for a user.
      * @summary Create API keys for a user
      */
-    public userStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: models.MainUserStatsResponse;  }> {
+    public userStatsGet(extraJQueryAjaxSettings?: JQueryAjaxSettings): JQueryPromise<{ response: JQueryXHR; body: string;  }> {
         let localVarPath = this.basePath + '/user/stats';
 
         let queryParameters: any = {};
@@ -327,7 +327,7 @@ export class UserApi {
 
         let dfd = $.Deferred();
         $.ajax(requestOptions).then(
-            (data: models.MainUserStatsResponse, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve(jqXHR, data),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject(xhr, errorThrown)

@@ -25,6 +25,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -82,8 +83,8 @@ public class AutoretrieveApiTest {
     public void adminAutoretrieveInitPostTest() {
         String addresses = null;
         String pubKey = null;
-        //api.adminAutoretrieveInitPost(addresses, pubKey);
-        
+        //String response = api.adminAutoretrieveInitPost(addresses, pubKey);
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -99,8 +100,8 @@ public class AutoretrieveApiTest {
      */
     @Test
     public void adminAutoretrieveListGetTest() {
-        //api.adminAutoretrieveListGet();
-        
+        //String response = api.adminAutoretrieveListGet();
+        //assertNotNull(response);
         // TODO: test validations
         
         
@@ -117,8 +118,8 @@ public class AutoretrieveApiTest {
     @Test
     public void autoretrieveHeartbeatPostTest() {
         String token = null;
-        //api.autoretrieveHeartbeatPost(token);
-        
+        //String response = api.autoretrieveHeartbeatPost(token);
+        //assertNotNull(response);
         // TODO: test validations
         
         

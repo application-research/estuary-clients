@@ -31,7 +31,7 @@ export class PublicApi {
      * @summary Get Content by Cid
      * @param cid Cid
      */
-    public publicByCidCidGet (cid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicByCidCidGet (cid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/by-cid/{cid}'
             .replace('{' + 'cid' + '}', encodeURIComponent(String(cid)));
 
@@ -59,7 +59,7 @@ export class PublicApi {
      * This endpoint returns information about the node
      * @summary Get public node info
      */
-    public publicInfoGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicInfoGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/info';
 
         let queryParameters: any = {};
@@ -81,7 +81,7 @@ export class PublicApi {
      * This endpoint is used to get deal metrics
      * @summary Get deal metrics
      */
-    public publicMetricsDealsOnChainGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMetricsDealsOnChainGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/metrics/deals-on-chain';
 
         let queryParameters: any = {};
@@ -105,7 +105,7 @@ export class PublicApi {
      * @param miner Filter by miner
      * @param ignoreFailed Ignore Failed
      */
-    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersDealsMinerGet (miner: string, ignoreFailed?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/deals/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -138,7 +138,7 @@ export class PublicApi {
      * @summary Get all miners
      * @param miner Filter by miner
      */
-    public publicMinersFailuresMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersFailuresMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/failures/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -166,7 +166,7 @@ export class PublicApi {
      * This endpoint returns all miners
      * @summary Get all miners
      */
-    public publicMinersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners';
 
         let queryParameters: any = {};
@@ -189,7 +189,7 @@ export class PublicApi {
      * @summary Get miner stats
      * @param miner Filter by miner
      */
-    public publicMinersStatsMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicMinersStatsMinerGet (miner: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/miners/stats/{miner}'
             .replace('{' + 'miner' + '}', encodeURIComponent(String(miner)));
 
@@ -261,7 +261,7 @@ export class PublicApi {
      * This endpoint is used to get public stats.
      * @summary Public stats
      */
-    public publicStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public publicStatsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/public/stats';
 
         let queryParameters: any = {};

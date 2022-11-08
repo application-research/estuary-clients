@@ -51,11 +51,8 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
-              expect(data.expiry).to.be.a('string');
-              expect(data.expiry).to.be("");
-              expect(data.token).to.be.a('string');
-              expect(data.token).to.be("");
+              expect(data).to.be.a(Array);
+              // expect(data).to.be(null);
             }
 
             done();
@@ -65,17 +62,20 @@
           done();
         });
       });
-      describe('userApiKeysKeyDelete', function() {
-        it('should call userApiKeysKeyDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for userApiKeysKeyDelete call
+      describe('userApiKeysKeyOrHashDelete', function() {
+        it('should call userApiKeysKeyOrHashDelete successfully', function(done) {
+          // TODO: uncomment, update parameter values for userApiKeysKeyOrHashDelete call and complete the assertions
           /*
-          var key = "key_example";
+          var keyOrHash = "keyOrHash_example";
 
-          instance.userApiKeysKeyDelete(key, function(error, data, response) {
+          instance.userApiKeysKeyOrHashDelete(keyOrHash, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -101,8 +101,12 @@
             expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
             expect(data.expiry).to.be.a('string');
             expect(data.expiry).to.be("");
+            expect(data.label).to.be.a('string');
+            expect(data.label).to.be("");
             expect(data.token).to.be.a('string');
             expect(data.token).to.be("");
+            expect(data.tokenHash).to.be.a('string');
+            expect(data.tokenHash).to.be("");
 
             done();
           });
@@ -143,11 +147,8 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.MainUserStatsResponse);
-            expect(data.numPins).to.be.a('number');
-            expect(data.numPins).to.be(0);
-            expect(data.totalSize).to.be.a('number');
-            expect(data.totalSize).to.be(0);
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

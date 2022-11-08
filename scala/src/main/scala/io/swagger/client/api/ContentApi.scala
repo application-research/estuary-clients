@@ -18,6 +18,7 @@ import io.swagger.client.model.ContentAddIpfsBody
 import io.swagger.client.model.ContentAddResponse
 import io.swagger.client.model.ContentCreateBody
 import java.io.File
+import io.swagger.client.model.HttpError
 import io.swagger.client.model.ImportDealBody
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -90,9 +91,9 @@ class ContentApi(
    * @param body Car 
    * @param ignoreDupes Ignore Dupes (optional)
    * @param filename Filename (optional)
-   * @return void
+   * @return String
    */
-  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None) = {
+  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Option[String] = {
     val await = Try(Await.result(contentAddCarPostAsync(body, ignoreDupes, filename), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -107,9 +108,9 @@ class ContentApi(
    * @param body Car 
    * @param ignoreDupes Ignore Dupes (optional)
    * @param filename Filename (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentAddCarPostAsync(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None) = {
+  def contentAddCarPostAsync(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Future[String] = {
       helper.contentAddCarPost(body, ignoreDupes, filename)
   }
 
@@ -119,9 +120,9 @@ class ContentApi(
    *
    * @param body IPFS Body 
    * @param ignoreDupes Ignore Dupes (optional)
-   * @return void
+   * @return String
    */
-  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None) = {
+  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None): Option[String] = {
     val await = Try(Await.result(contentAddIpfsPostAsync(body, ignoreDupes), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -135,9 +136,9 @@ class ContentApi(
    *
    * @param body IPFS Body 
    * @param ignoreDupes Ignore Dupes (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentAddIpfsPostAsync(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None) = {
+  def contentAddIpfsPostAsync(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None): Future[String] = {
       helper.contentAddIpfsPost(body, ignoreDupes)
   }
 
@@ -212,9 +213,9 @@ class ContentApi(
    * @param begin Begin 
    * @param duration Duration 
    * @param all All 
-   * @return void
+   * @return String
    */
-  def contentAllDealsGet(begin: String, duration: String, all: String) = {
+  def contentAllDealsGet(begin: String, duration: String, all: String): Option[String] = {
     val await = Try(Await.result(contentAllDealsGetAsync(begin, duration, all), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -229,9 +230,9 @@ class ContentApi(
    * @param begin Begin 
    * @param duration Duration 
    * @param all All 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentAllDealsGetAsync(begin: String, duration: String, all: String) = {
+  def contentAllDealsGetAsync(begin: String, duration: String, all: String): Future[String] = {
       helper.contentAllDealsGet(begin, duration, all)
   }
 
@@ -240,9 +241,9 @@ class ContentApi(
    * This endpoint returns content bandwidth
    *
    * @param content Content ID 
-   * @return void
+   * @return String
    */
-  def contentBwUsageContentGet(content: String) = {
+  def contentBwUsageContentGet(content: String): Option[String] = {
     val await = Try(Await.result(contentBwUsageContentGetAsync(content), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -255,9 +256,9 @@ class ContentApi(
    * This endpoint returns content bandwidth
    *
    * @param content Content ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentBwUsageContentGetAsync(content: String) = {
+  def contentBwUsageContentGetAsync(content: String): Future[String] = {
       helper.contentBwUsageContentGet(content)
   }
 
@@ -267,9 +268,9 @@ class ContentApi(
    *
    * @param req Content 
    * @param ignoreDupes Ignore Dupes (optional)
-   * @return void
+   * @return String
    */
-  def contentCreatePost(req: ContentCreateBody, ignoreDupes: Option[String] = None) = {
+  def contentCreatePost(req: ContentCreateBody, ignoreDupes: Option[String] = None): Option[String] = {
     val await = Try(Await.result(contentCreatePostAsync(req, ignoreDupes), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -283,9 +284,9 @@ class ContentApi(
    *
    * @param req Content 
    * @param ignoreDupes Ignore Dupes (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentCreatePostAsync(req: ContentCreateBody, ignoreDupes: Option[String] = None) = {
+  def contentCreatePostAsync(req: ContentCreateBody, ignoreDupes: Option[String] = None): Future[String] = {
       helper.contentCreatePost(req, ignoreDupes)
   }
 
@@ -295,9 +296,9 @@ class ContentApi(
    *
    * @param limit Limit (optional)
    * @param offset Offset (optional)
-   * @return void
+   * @return String
    */
-  def contentDealsGet(limit: Option[Integer] = None, offset: Option[Integer] = None) = {
+  def contentDealsGet(limit: Option[Integer] = None, offset: Option[Integer] = None): Option[String] = {
     val await = Try(Await.result(contentDealsGetAsync(limit, offset), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -311,9 +312,9 @@ class ContentApi(
    *
    * @param limit Limit (optional)
    * @param offset Offset (optional)
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentDealsGetAsync(limit: Option[Integer] = None, offset: Option[Integer] = None) = {
+  def contentDealsGetAsync(limit: Option[Integer] = None, offset: Option[Integer] = None): Future[String] = {
       helper.contentDealsGet(limit, offset)
   }
 
@@ -322,9 +323,9 @@ class ContentApi(
    * This endpoint ensures that the content is replicated to the specified number of providers
    *
    * @param datacid Data CID 
-   * @return void
+   * @return String
    */
-  def contentEnsureReplicationDatacidGet(datacid: String) = {
+  def contentEnsureReplicationDatacidGet(datacid: String): Option[String] = {
     val await = Try(Await.result(contentEnsureReplicationDatacidGetAsync(datacid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -337,9 +338,9 @@ class ContentApi(
    * This endpoint ensures that the content is replicated to the specified number of providers
    *
    * @param datacid Data CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentEnsureReplicationDatacidGetAsync(datacid: String) = {
+  def contentEnsureReplicationDatacidGetAsync(datacid: String): Future[String] = {
       helper.contentEnsureReplicationDatacidGet(datacid)
   }
 
@@ -374,9 +375,9 @@ class ContentApi(
    * This endpoint returns a content by its ID
    *
    * @param id Content ID 
-   * @return void
+   * @return String
    */
-  def contentIdGet(id: Integer) = {
+  def contentIdGet(id: Integer): Option[String] = {
     val await = Try(Await.result(contentIdGetAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -389,9 +390,9 @@ class ContentApi(
    * This endpoint returns a content by its ID
    *
    * @param id Content ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentIdGetAsync(id: Integer) = {
+  def contentIdGetAsync(id: Integer): Future[String] = {
       helper.contentIdGet(id)
   }
 
@@ -400,9 +401,9 @@ class ContentApi(
    * This endpoint imports a deal into the shuttle.
    *
    * @param body Import a deal 
-   * @return void
+   * @return String
    */
-  def contentImportdealPost(body: ImportDealBody) = {
+  def contentImportdealPost(body: ImportDealBody): Option[String] = {
     val await = Try(Await.result(contentImportdealPostAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -415,9 +416,9 @@ class ContentApi(
    * This endpoint imports a deal into the shuttle.
    *
    * @param body Import a deal 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentImportdealPostAsync(body: ImportDealBody) = {
+  def contentImportdealPostAsync(body: ImportDealBody): Future[String] = {
       helper.contentImportdealPost(body)
   }
 
@@ -425,9 +426,9 @@ class ContentApi(
    * List all pinned content
    * This endpoint lists all content
    *
-   * @return List[String]
+   * @return String
    */
-  def contentListGet(): Option[List[String]] = {
+  def contentListGet(): Option[String] = {
     val await = Try(Await.result(contentListGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -439,9 +440,9 @@ class ContentApi(
    * List all pinned content asynchronously
    * This endpoint lists all content
    *
-   * @return Future(List[String])
+   * @return Future(String)
    */
-  def contentListGetAsync(): Future[List[String]] = {
+  def contentListGetAsync(): Future[String] = {
       helper.contentListGet()
   }
 
@@ -450,9 +451,9 @@ class ContentApi(
    * This endpoint reads content from the blockstore
    *
    * @param cont CID 
-   * @return void
+   * @return String
    */
-  def contentReadContGet(cont: String) = {
+  def contentReadContGet(cont: String): Option[String] = {
     val await = Try(Await.result(contentReadContGetAsync(cont), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -465,9 +466,9 @@ class ContentApi(
    * This endpoint reads content from the blockstore
    *
    * @param cont CID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentReadContGetAsync(cont: String) = {
+  def contentReadContGetAsync(cont: String): Future[String] = {
       helper.contentReadContGet(cont)
   }
 
@@ -475,9 +476,9 @@ class ContentApi(
    * Get staging zone for user
    * This endpoint is used to get staging zone for user.
    *
-   * @return void
+   * @return String
    */
-  def contentStagingZonesGet() = {
+  def contentStagingZonesGet(): Option[String] = {
     val await = Try(Await.result(contentStagingZonesGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -489,9 +490,9 @@ class ContentApi(
    * Get staging zone for user asynchronously
    * This endpoint is used to get staging zone for user.
    *
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentStagingZonesGetAsync() = {
+  def contentStagingZonesGetAsync(): Future[String] = {
       helper.contentStagingZonesGet()
   }
 
@@ -501,9 +502,9 @@ class ContentApi(
    *
    * @param limit limit 
    * @param offset offset 
-   * @return void
+   * @return String
    */
-  def contentStatsGet(limit: String, offset: String) = {
+  def contentStatsGet(limit: String, offset: String): Option[String] = {
     val await = Try(Await.result(contentStatsGetAsync(limit, offset), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -517,9 +518,9 @@ class ContentApi(
    *
    * @param limit limit 
    * @param offset offset 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentStatsGetAsync(limit: String, offset: String) = {
+  def contentStatsGetAsync(limit: String, offset: String): Future[String] = {
       helper.contentStatsGet(limit, offset)
   }
 
@@ -528,9 +529,9 @@ class ContentApi(
    * This endpoint returns the status of a content
    *
    * @param id Content ID 
-   * @return void
+   * @return String
    */
-  def contentStatusIdGet(id: Integer) = {
+  def contentStatusIdGet(id: Integer): Option[String] = {
     val await = Try(Await.result(contentStatusIdGetAsync(id), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -543,9 +544,9 @@ class ContentApi(
    * This endpoint returns the status of a content
    *
    * @param id Content ID 
-   * @return Future(void)
+   * @return Future(String)
    */
-  def contentStatusIdGetAsync(id: Integer) = {
+  def contentStatusIdGetAsync(id: Integer): Future[String] = {
       helper.contentStatusIdGet(id)
   }
 
@@ -556,7 +557,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def contentAddCarPost(body: String,
     ignoreDupes: Option[String] = None,
     filename: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[String]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/add-car"))
 
@@ -583,7 +584,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def contentAddIpfsPost(body: ContentAddIpfsBody,
     ignoreDupes: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[ContentAddIpfsBody]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[ContentAddIpfsBody]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/add-ipfs"))
 
@@ -666,7 +667,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def contentAllDealsGet(begin: String,
     duration: String,
-    all: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    all: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/all-deals"))
 
@@ -690,7 +691,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentBwUsageContentGet(content: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentBwUsageContentGet(content: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/bw-usage/{content}")
       replaceAll("\\{" + "content" + "\\}", content.toString))
@@ -710,7 +711,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def contentCreatePost(req: ContentCreateBody,
     ignoreDupes: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[ContentCreateBody]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[ContentCreateBody]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/create"))
 
@@ -732,7 +733,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
   def contentDealsGet(limit: Option[Integer] = None,
     offset: Option[Integer] = None
-    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    )(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/deals"))
 
@@ -755,7 +756,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentEnsureReplicationDatacidGet(datacid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentEnsureReplicationDatacidGet(datacid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/ensure-replication/{datacid}")
       replaceAll("\\{" + "datacid" + "\\}", datacid.toString))
@@ -791,7 +792,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentIdGet(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentIdGet(id: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))
@@ -807,7 +808,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentImportdealPost(body: ImportDealBody)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[ImportDealBody]): Future[Unit] = {
+  def contentImportdealPost(body: ImportDealBody)(implicit reader: ClientResponseReader[String], writer: RequestWriter[ImportDealBody]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/importdeal"))
 
@@ -823,7 +824,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentListGet()(implicit reader: ClientResponseReader[List[String]]): Future[List[String]] = {
+  def contentListGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/list"))
 
@@ -838,7 +839,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentReadContGet(cont: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentReadContGet(cont: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/read/{cont}")
       replaceAll("\\{" + "cont" + "\\}", cont.toString))
@@ -856,7 +857,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentStagingZonesGet()(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentStagingZonesGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/staging-zones"))
 
@@ -872,7 +873,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def contentStatsGet(limit: String,
-    offset: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    offset: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/stats"))
 
@@ -893,7 +894,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentStatusIdGet(id: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def contentStatusIdGet(id: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/status/{id}")
       replaceAll("\\{" + "id" + "\\}", id.toString))

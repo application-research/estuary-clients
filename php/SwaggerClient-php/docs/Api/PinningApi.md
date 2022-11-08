@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinningPinsGet**
-> pinningPinsGet()
+> string pinningPinsGet()
 
 List all pin status objects
 
@@ -36,7 +36,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 );
 
 try {
-    $apiInstance->pinningPinsGet();
+    $result = $apiInstance->pinningPinsGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -48,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -62,7 +63,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidDelete**
-> pinningPinsPinidDelete($pinid)
+> string pinningPinsPinidDelete($pinid)
 
 Delete a pinned object
 
@@ -87,7 +88,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 $pinid = "pinid_example"; // string | Pin ID
 
 try {
-    $apiInstance->pinningPinsPinidDelete($pinid);
+    $result = $apiInstance->pinningPinsPinidDelete($pinid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -116,7 +118,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidGet**
-> pinningPinsPinidGet($pinid)
+> string pinningPinsPinidGet($pinid)
 
 Get a pin status object
 
@@ -141,7 +143,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 $pinid = "pinid_example"; // string | cid
 
 try {
-    $apiInstance->pinningPinsPinidGet($pinid);
+    $result = $apiInstance->pinningPinsPinidGet($pinid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -156,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -170,7 +173,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidPost**
-> pinningPinsPinidPost($pinid)
+> string pinningPinsPinidPost($pinid)
 
 Replace a pinned object
 
@@ -195,7 +198,8 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 $pinid = "pinid_example"; // string | Pin ID
 
 try {
-    $apiInstance->pinningPinsPinidPost($pinid);
+    $result = $apiInstance->pinningPinsPinidPost($pinid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -210,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -224,7 +228,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPost**
-> pinningPinsPost($cid, $name)
+> string pinningPinsPost($pin)
 
 Add and pin object
 
@@ -246,11 +250,11 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cid = "cid_example"; // string | cid
-$name = "name_example"; // string | name
+$pin = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try {
-    $apiInstance->pinningPinsPost($cid, $name);
+    $result = $apiInstance->pinningPinsPost($pin);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -261,12 +265,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cid** | **string**| cid |
- **name** | **string**| name |
+ **pin** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

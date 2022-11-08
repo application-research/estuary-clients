@@ -40,6 +40,8 @@ class ApiClient {
           return value is double ? value : double.parse('$value');
         case 'CollectionsCollection':
           return new CollectionsCollection.fromJson(value);
+        case 'MainChannelIDParam':
+          return new MainChannelIDParam.fromJson(value);
         case 'MainCreateCollectionBody':
           return new MainCreateCollectionBody.fromJson(value);
         case 'MainDeleteContentFromCollectionBody':
@@ -50,8 +52,8 @@ class ApiClient {
           return new MainGetApiKeysResp.fromJson(value);
         case 'MainImportDealBody':
           return new MainImportDealBody.fromJson(value);
-        case 'MainUserStatsResponse':
-          return new MainUserStatsResponse.fromJson(value);
+        case 'TypesIpfsPin':
+          return new TypesIpfsPin.fromJson(value);
         case 'UtilContentAddIpfsBody':
           return new UtilContentAddIpfsBody.fromJson(value);
         case 'UtilContentAddResponse':

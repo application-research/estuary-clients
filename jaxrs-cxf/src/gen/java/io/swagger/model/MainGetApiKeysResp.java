@@ -19,7 +19,13 @@ public class MainGetApiKeysResp  {
   private String expiry = null;
 
   @ApiModelProperty(value = "")
+  private String label = null;
+
+  @ApiModelProperty(value = "")
   private String token = null;
+
+  @ApiModelProperty(value = "")
+  private String tokenHash = null;
  /**
    * Get expiry
    * @return expiry
@@ -35,6 +41,24 @@ public class MainGetApiKeysResp  {
 
   public MainGetApiKeysResp expiry(String expiry) {
     this.expiry = expiry;
+    return this;
+  }
+
+ /**
+   * Get label
+   * @return label
+  **/
+  @JsonProperty("label")
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+  public MainGetApiKeysResp label(String label) {
+    this.label = label;
     return this;
   }
 
@@ -56,6 +80,24 @@ public class MainGetApiKeysResp  {
     return this;
   }
 
+ /**
+   * Get tokenHash
+   * @return tokenHash
+  **/
+  @JsonProperty("tokenHash")
+  public String getTokenHash() {
+    return tokenHash;
+  }
+
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+  }
+
+  public MainGetApiKeysResp tokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -63,7 +105,9 @@ public class MainGetApiKeysResp  {
     sb.append("class MainGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");
     sb.append("}");
     return sb.toString();
   }

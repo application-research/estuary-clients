@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="adminAutoretrieveInitPost"></a>
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost(addresses, pubKey)
+> String adminAutoretrieveInitPost(addresses, pubKey)
 
 Register autoretrieve server
 
@@ -33,7 +33,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.adminAutoretrieveInitPost(params);
+    String result = api.adminAutoretrieveInitPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -48,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -56,12 +57,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 <a name="adminAutoretrieveListGet"></a>
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> String adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -78,7 +79,8 @@ bearerAuth.setApiKey('YOUR API KEY');
 
 try {
     // cross your fingers
-    api.adminAutoretrieveListGet();
+    String result = api.adminAutoretrieveListGet();
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -89,7 +91,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -102,7 +104,7 @@ null (empty response body)
 
 <a name="autoretrieveHeartbeatPost"></a>
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost(token)
+> String autoretrieveHeartbeatPost(token)
 
 Marks autoretrieve server as up
 
@@ -123,7 +125,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.autoretrieveHeartbeatPost(params);
+    String result = api.autoretrieveHeartbeatPost(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -137,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

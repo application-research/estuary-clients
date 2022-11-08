@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get()
+> string public_metrics_deals_on_chain_get()
 
 Get deal metrics
 
@@ -33,7 +33,8 @@ my $api_instance = WWW::SwaggerClient::MetricsApi->new(
 
 
 eval { 
-    $api_instance->public_metrics_deals_on_chain_get();
+    my $result = $api_instance->public_metrics_deals_on_chain_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling MetricsApi->public_metrics_deals_on_chain_get: $@\n";
@@ -45,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

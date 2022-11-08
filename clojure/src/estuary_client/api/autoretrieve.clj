@@ -11,8 +11,7 @@
             {:path-params   {}
              :header-params {}
              :query-params  {}
-             :form-params   {}
-             :body-param    pub-key
+             :form-params   {"addresses" addresses "pubKey" pub-key }
              :content-types []
              :accepts       ["application/json"]
              :auth-names    ["bearerAuth"]}))

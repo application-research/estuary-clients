@@ -22,6 +22,7 @@ import { MainImportDealBody } from '../model/mainImportDealBody';
 import { UtilContentAddIpfsBody } from '../model/utilContentAddIpfsBody';
 import { UtilContentAddResponse } from '../model/utilContentAddResponse';
 import { UtilContentCreateBody } from '../model/utilContentCreateBody';
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -68,9 +69,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -111,7 +112,7 @@ export class ContentService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/content/add-car`,
+        return this.httpClient.post<string>(`${this.basePath}/content/add-car`,
             body,
             {
                 params: queryParameters,
@@ -131,9 +132,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -170,7 +171,7 @@ export class ContentService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/content/add-ipfs`,
+        return this.httpClient.post<string>(`${this.basePath}/content/add-ipfs`,
             body,
             {
                 params: queryParameters,
@@ -336,9 +337,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentAllDealsGet(begin: string, duration: string, all: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentAllDealsGet(begin: string, duration: string, all: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (begin === null || begin === undefined) {
@@ -384,7 +385,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/all-deals`,
+        return this.httpClient.get<string>(`${this.basePath}/content/all-deals`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -402,9 +403,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentBwUsageContentGet(content: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentBwUsageContentGet(content: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentBwUsageContentGet(content: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentBwUsageContentGet(content: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentBwUsageContentGet(content: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentBwUsageContentGet(content: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentBwUsageContentGet(content: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (content === null || content === undefined) {
@@ -431,7 +432,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/bw-usage/${encodeURIComponent(String(content))}`,
+        return this.httpClient.get<string>(`${this.basePath}/content/bw-usage/${encodeURIComponent(String(content))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -449,9 +450,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentCreatePost(req: UtilContentCreateBody, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (req === null || req === undefined) {
@@ -488,7 +489,7 @@ export class ContentService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/content/create`,
+        return this.httpClient.post<string>(`${this.basePath}/content/create`,
             req,
             {
                 params: queryParameters,
@@ -508,9 +509,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentDealsGet(limit?: number, offset?: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentDealsGet(limit?: number, offset?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentDealsGet(limit?: number, offset?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentDealsGet(limit?: number, offset?: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentDealsGet(limit?: number, offset?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentDealsGet(limit?: number, offset?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentDealsGet(limit?: number, offset?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -543,7 +544,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/deals`,
+        return this.httpClient.get<string>(`${this.basePath}/content/deals`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -561,9 +562,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentEnsureReplicationDatacidGet(datacid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentEnsureReplicationDatacidGet(datacid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (datacid === null || datacid === undefined) {
@@ -590,7 +591,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/ensure-replication/${encodeURIComponent(String(datacid))}`,
+        return this.httpClient.get<string>(`${this.basePath}/content/ensure-replication/${encodeURIComponent(String(datacid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -653,9 +654,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -682,7 +683,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<string>(`${this.basePath}/content/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -699,9 +700,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentImportdealPost(body: MainImportDealBody, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentImportdealPost(body: MainImportDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentImportdealPost(body: MainImportDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentImportdealPost(body: MainImportDealBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -732,7 +733,7 @@ export class ContentService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<any>(`${this.basePath}/content/importdeal`,
+        return this.httpClient.post<string>(`${this.basePath}/content/importdeal`,
             body,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -749,9 +750,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentListGet(observe?: 'body', reportProgress?: boolean): Observable<Array<string>>;
-    public contentListGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<string>>>;
-    public contentListGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<string>>>;
+    public contentListGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentListGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentListGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentListGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -774,7 +775,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<Array<string>>(`${this.basePath}/content/list`,
+        return this.httpClient.get<string>(`${this.basePath}/content/list`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -791,9 +792,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentReadContGet(cont: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentReadContGet(cont: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentReadContGet(cont: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentReadContGet(cont: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentReadContGet(cont: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentReadContGet(cont: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentReadContGet(cont: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (cont === null || cont === undefined) {
@@ -820,7 +821,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/read/${encodeURIComponent(String(cont))}`,
+        return this.httpClient.get<string>(`${this.basePath}/content/read/${encodeURIComponent(String(cont))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -836,9 +837,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentStagingZonesGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentStagingZonesGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentStagingZonesGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentStagingZonesGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentStagingZonesGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentStagingZonesGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentStagingZonesGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -861,7 +862,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/staging-zones`,
+        return this.httpClient.get<string>(`${this.basePath}/content/staging-zones`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -879,9 +880,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentStatsGet(limit: string, offset: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentStatsGet(limit: string, offset: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentStatsGet(limit: string, offset: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentStatsGet(limit: string, offset: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentStatsGet(limit: string, offset: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (limit === null || limit === undefined) {
@@ -920,7 +921,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/stats`,
+        return this.httpClient.get<string>(`${this.basePath}/content/stats`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -938,9 +939,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentStatusIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public contentStatusIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public contentStatusIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public contentStatusIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentStatusIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentStatusIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public contentStatusIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (id === null || id === undefined) {
@@ -967,7 +968,7 @@ export class ContentService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/content/status/${encodeURIComponent(String(id))}`,
+        return this.httpClient.get<string>(`${this.basePath}/content/status/${encodeURIComponent(String(id))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

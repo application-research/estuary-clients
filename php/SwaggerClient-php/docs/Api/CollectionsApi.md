@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete($coluuid)
+> string collectionsColuuidDelete($coluuid)
 
 Deletes a collection
 
@@ -154,7 +154,8 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 $coluuid = "coluuid_example"; // string | Collection ID
 
 try {
-    $apiInstance->collectionsColuuidDelete($coluuid);
+    $result = $apiInstance->collectionsColuuidDelete($coluuid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -240,7 +241,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidPost**
-> map[string,string] collectionsColuuidPost($coluuid, $content_i_ds)
+> string collectionsColuuidPost($coluuid, $content_i_ds)
 
 Add contents to a collection
 
@@ -283,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string,string]**
+**string**
 
 ### Authorization
 
@@ -297,7 +298,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsFsAddPost**
-> collectionsFsAddPost($coluuid, $content, $path)
+> string collectionsFsAddPost($coluuid, $content, $path)
 
 Add a file to a collection
 
@@ -324,7 +325,8 @@ $content = "content_example"; // string | Content
 $path = "path_example"; // string | Path to file
 
 try {
-    $apiInstance->collectionsFsAddPost($coluuid, $content, $path);
+    $result = $apiInstance->collectionsFsAddPost($coluuid, $content, $path);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsFsAddPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -341,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -355,7 +357,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsGet**
-> \Swagger\Client\Model\CollectionsCollection[] collectionsGet()
+> \Swagger\Client\Model\CollectionsCollection[][] collectionsGet()
 
 List all collections
 
@@ -392,7 +394,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\CollectionsCollection[]**](../Model/CollectionsCollection.md)
+[**\Swagger\Client\Model\CollectionsCollection[][]**](../Model/array.md)
 
 ### Authorization
 

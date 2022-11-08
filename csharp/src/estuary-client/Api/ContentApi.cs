@@ -34,8 +34,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns></returns>
-        void ContentAddCarPost (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>string</returns>
+        string ContentAddCarPost (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
         /// Add Car object
@@ -47,8 +47,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -58,8 +58,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns></returns>
-        void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        /// <returns>string</returns>
+        string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null);
 
         /// <summary>
         /// Add IPFS object
@@ -70,8 +70,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -136,8 +136,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns></returns>
-        void ContentAllDealsGet (string begin, string duration, string all);
+        /// <returns>string</returns>
+        string ContentAllDealsGet (string begin, string duration, string all);
 
         /// <summary>
         /// Get all deals for a user
@@ -149,8 +149,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentAllDealsGetWithHttpInfo (string begin, string duration, string all);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentAllDealsGetWithHttpInfo (string begin, string duration, string all);
         /// <summary>
         /// Get content bandwidth
         /// </summary>
@@ -159,8 +159,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns></returns>
-        void ContentBwUsageContentGet (string content);
+        /// <returns>string</returns>
+        string ContentBwUsageContentGet (string content);
 
         /// <summary>
         /// Get content bandwidth
@@ -170,8 +170,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentBwUsageContentGetWithHttpInfo (string content);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentBwUsageContentGetWithHttpInfo (string content);
         /// <summary>
         /// Add a new content
         /// </summary>
@@ -181,8 +181,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns></returns>
-        void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null);
+        /// <returns>string</returns>
+        string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null);
 
         /// <summary>
         /// Add a new content
@@ -193,8 +193,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentCreatePostWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentCreatePostWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null);
         /// <summary>
         /// Content with deals
         /// </summary>
@@ -204,8 +204,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns></returns>
-        void ContentDealsGet (int? limit = null, int? offset = null);
+        /// <returns>string</returns>
+        string ContentDealsGet (int? limit = null, int? offset = null);
 
         /// <summary>
         /// Content with deals
@@ -216,8 +216,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentDealsGetWithHttpInfo (int? limit = null, int? offset = null);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentDealsGetWithHttpInfo (int? limit = null, int? offset = null);
         /// <summary>
         /// Ensure Replication
         /// </summary>
@@ -226,8 +226,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns></returns>
-        void ContentEnsureReplicationDatacidGet (string datacid);
+        /// <returns>string</returns>
+        string ContentEnsureReplicationDatacidGet (string datacid);
 
         /// <summary>
         /// Ensure Replication
@@ -237,8 +237,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentEnsureReplicationDatacidGetWithHttpInfo (string datacid);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentEnsureReplicationDatacidGetWithHttpInfo (string datacid);
         /// <summary>
         /// List all failures for a content
         /// </summary>
@@ -268,8 +268,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        void ContentIdGet (int? id);
+        /// <returns>string</returns>
+        string ContentIdGet (int? id);
 
         /// <summary>
         /// Content
@@ -279,8 +279,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentIdGetWithHttpInfo (int? id);
         /// <summary>
         /// Import a deal
         /// </summary>
@@ -289,8 +289,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns></returns>
-        void ContentImportdealPost (MainImportDealBody body);
+        /// <returns>string</returns>
+        string ContentImportdealPost (MainImportDealBody body);
 
         /// <summary>
         /// Import a deal
@@ -300,8 +300,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentImportdealPostWithHttpInfo (MainImportDealBody body);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentImportdealPostWithHttpInfo (MainImportDealBody body);
         /// <summary>
         /// List all pinned content
         /// </summary>
@@ -309,8 +309,8 @@ namespace estuary-client.Api
         /// This endpoint lists all content
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;string&gt;</returns>
-        List<string> ContentListGet ();
+        /// <returns>string</returns>
+        string ContentListGet ();
 
         /// <summary>
         /// List all pinned content
@@ -319,8 +319,8 @@ namespace estuary-client.Api
         /// This endpoint lists all content
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> ContentListGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentListGetWithHttpInfo ();
         /// <summary>
         /// Read content
         /// </summary>
@@ -329,8 +329,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns></returns>
-        void ContentReadContGet (string cont);
+        /// <returns>string</returns>
+        string ContentReadContGet (string cont);
 
         /// <summary>
         /// Read content
@@ -340,8 +340,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentReadContGetWithHttpInfo (string cont);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentReadContGetWithHttpInfo (string cont);
         /// <summary>
         /// Get staging zone for user
         /// </summary>
@@ -349,8 +349,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get staging zone for user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void ContentStagingZonesGet ();
+        /// <returns>string</returns>
+        string ContentStagingZonesGet ();
 
         /// <summary>
         /// Get staging zone for user
@@ -359,8 +359,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get staging zone for user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentStagingZonesGetWithHttpInfo ();
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentStagingZonesGetWithHttpInfo ();
         /// <summary>
         /// Get content statistics
         /// </summary>
@@ -370,8 +370,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns></returns>
-        void ContentStatsGet (string limit, string offset);
+        /// <returns>string</returns>
+        string ContentStatsGet (string limit, string offset);
 
         /// <summary>
         /// Get content statistics
@@ -382,8 +382,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentStatsGetWithHttpInfo (string limit, string offset);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentStatsGetWithHttpInfo (string limit, string offset);
         /// <summary>
         /// Content Status
         /// </summary>
@@ -392,8 +392,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        void ContentStatusIdGet (int? id);
+        /// <returns>string</returns>
+        string ContentStatusIdGet (int? id);
 
         /// <summary>
         /// Content Status
@@ -403,8 +403,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ContentStatusIdGetWithHttpInfo (int? id);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentStatusIdGetWithHttpInfo (int? id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -417,8 +417,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
         /// Add Car object
@@ -430,8 +430,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -441,8 +441,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null);
 
         /// <summary>
         /// Add IPFS object
@@ -453,8 +453,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -519,8 +519,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentAllDealsGetAsync (string begin, string duration, string all);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentAllDealsGetAsync (string begin, string duration, string all);
 
         /// <summary>
         /// Get all deals for a user
@@ -532,8 +532,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentAllDealsGetAsyncWithHttpInfo (string begin, string duration, string all);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAllDealsGetAsyncWithHttpInfo (string begin, string duration, string all);
         /// <summary>
         /// Get content bandwidth
         /// </summary>
@@ -542,8 +542,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentBwUsageContentGetAsync (string content);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentBwUsageContentGetAsync (string content);
 
         /// <summary>
         /// Get content bandwidth
@@ -553,8 +553,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentBwUsageContentGetAsyncWithHttpInfo (string content);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentBwUsageContentGetAsyncWithHttpInfo (string content);
         /// <summary>
         /// Add a new content
         /// </summary>
@@ -564,8 +564,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentCreatePostAsync (UtilContentCreateBody req, string ignoreDupes = null);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentCreatePostAsync (UtilContentCreateBody req, string ignoreDupes = null);
 
         /// <summary>
         /// Add a new content
@@ -576,8 +576,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentCreatePostAsyncWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentCreatePostAsyncWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null);
         /// <summary>
         /// Content with deals
         /// </summary>
@@ -587,8 +587,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentDealsGetAsync (int? limit = null, int? offset = null);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentDealsGetAsync (int? limit = null, int? offset = null);
 
         /// <summary>
         /// Content with deals
@@ -599,8 +599,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentDealsGetAsyncWithHttpInfo (int? limit = null, int? offset = null);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentDealsGetAsyncWithHttpInfo (int? limit = null, int? offset = null);
         /// <summary>
         /// Ensure Replication
         /// </summary>
@@ -609,8 +609,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentEnsureReplicationDatacidGetAsync (string datacid);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentEnsureReplicationDatacidGetAsync (string datacid);
 
         /// <summary>
         /// Ensure Replication
@@ -620,8 +620,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentEnsureReplicationDatacidGetAsyncWithHttpInfo (string datacid);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentEnsureReplicationDatacidGetAsyncWithHttpInfo (string datacid);
         /// <summary>
         /// List all failures for a content
         /// </summary>
@@ -651,8 +651,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentIdGetAsync (int? id);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentIdGetAsync (int? id);
 
         /// <summary>
         /// Content
@@ -662,8 +662,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
         /// Import a deal
         /// </summary>
@@ -672,8 +672,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentImportdealPostAsync (MainImportDealBody body);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentImportdealPostAsync (MainImportDealBody body);
 
         /// <summary>
         /// Import a deal
@@ -683,8 +683,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body);
         /// <summary>
         /// List all pinned content
         /// </summary>
@@ -692,8 +692,8 @@ namespace estuary-client.Api
         /// This endpoint lists all content
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> ContentListGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentListGetAsync ();
 
         /// <summary>
         /// List all pinned content
@@ -702,8 +702,8 @@ namespace estuary-client.Api
         /// This endpoint lists all content
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> ContentListGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentListGetAsyncWithHttpInfo ();
         /// <summary>
         /// Read content
         /// </summary>
@@ -712,8 +712,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentReadContGetAsync (string cont);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentReadContGetAsync (string cont);
 
         /// <summary>
         /// Read content
@@ -723,8 +723,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentReadContGetAsyncWithHttpInfo (string cont);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentReadContGetAsyncWithHttpInfo (string cont);
         /// <summary>
         /// Get staging zone for user
         /// </summary>
@@ -732,8 +732,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get staging zone for user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentStagingZonesGetAsync ();
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentStagingZonesGetAsync ();
 
         /// <summary>
         /// Get staging zone for user
@@ -742,8 +742,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get staging zone for user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentStagingZonesGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesGetAsyncWithHttpInfo ();
         /// <summary>
         /// Get content statistics
         /// </summary>
@@ -753,8 +753,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentStatsGetAsync (string limit, string offset);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentStatsGetAsync (string limit, string offset);
 
         /// <summary>
         /// Get content statistics
@@ -765,8 +765,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentStatsGetAsyncWithHttpInfo (string limit, string offset);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentStatsGetAsyncWithHttpInfo (string limit, string offset);
         /// <summary>
         /// Content Status
         /// </summary>
@@ -775,8 +775,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ContentStatusIdGetAsync (int? id);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentStatusIdGetAsync (int? id);
 
         /// <summary>
         /// Content Status
@@ -786,8 +786,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ContentStatusIdGetAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentStatusIdGetAsyncWithHttpInfo (int? id);
         #endregion Asynchronous Operations
     }
 
@@ -895,10 +895,11 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns></returns>
-        public void ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>string</returns>
+        public string ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
         {
-             ContentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+             ApiResponse<string> localVarResponse = ContentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -908,8 +909,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -966,9 +967,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -978,10 +979,11 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null)
         {
-             await ContentAddCarPostAsyncWithHttpInfo(body, ignoreDupes, filename);
+             ApiResponse<string> localVarResponse = await ContentAddCarPostAsyncWithHttpInfo(body, ignoreDupes, filename);
+             return localVarResponse.Data;
 
         }
 
@@ -992,8 +994,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1050,9 +1052,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1061,10 +1063,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns></returns>
-        public void ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        /// <returns>string</returns>
+        public string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null)
         {
-             ContentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+             ApiResponse<string> localVarResponse = ContentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1073,8 +1076,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1130,9 +1133,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1141,10 +1144,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null)
         {
-             await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes);
+             ApiResponse<string> localVarResponse = await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes);
+             return localVarResponse.Data;
 
         }
 
@@ -1154,8 +1158,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1211,9 +1215,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1547,10 +1551,11 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns></returns>
-        public void ContentAllDealsGet (string begin, string duration, string all)
+        /// <returns>string</returns>
+        public string ContentAllDealsGet (string begin, string duration, string all)
         {
-             ContentAllDealsGetWithHttpInfo(begin, duration, all);
+             ApiResponse<string> localVarResponse = ContentAllDealsGetWithHttpInfo(begin, duration, all);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1560,8 +1565,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentAllDealsGetWithHttpInfo (string begin, string duration, string all)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentAllDealsGetWithHttpInfo (string begin, string duration, string all)
         {
             // verify the required parameter 'begin' is set
             if (begin == null)
@@ -1617,9 +1622,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1629,10 +1634,11 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentAllDealsGetAsync (string begin, string duration, string all)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentAllDealsGetAsync (string begin, string duration, string all)
         {
-             await ContentAllDealsGetAsyncWithHttpInfo(begin, duration, all);
+             ApiResponse<string> localVarResponse = await ContentAllDealsGetAsyncWithHttpInfo(begin, duration, all);
+             return localVarResponse.Data;
 
         }
 
@@ -1643,8 +1649,8 @@ namespace estuary-client.Api
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentAllDealsGetAsyncWithHttpInfo (string begin, string duration, string all)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAllDealsGetAsyncWithHttpInfo (string begin, string duration, string all)
         {
             // verify the required parameter 'begin' is set
             if (begin == null)
@@ -1700,9 +1706,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1710,10 +1716,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns></returns>
-        public void ContentBwUsageContentGet (string content)
+        /// <returns>string</returns>
+        public string ContentBwUsageContentGet (string content)
         {
-             ContentBwUsageContentGetWithHttpInfo(content);
+             ApiResponse<string> localVarResponse = ContentBwUsageContentGetWithHttpInfo(content);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1721,8 +1728,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentBwUsageContentGetWithHttpInfo (string content)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentBwUsageContentGetWithHttpInfo (string content)
         {
             // verify the required parameter 'content' is set
             if (content == null)
@@ -1770,9 +1777,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1780,10 +1787,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentBwUsageContentGetAsync (string content)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentBwUsageContentGetAsync (string content)
         {
-             await ContentBwUsageContentGetAsyncWithHttpInfo(content);
+             ApiResponse<string> localVarResponse = await ContentBwUsageContentGetAsyncWithHttpInfo(content);
+             return localVarResponse.Data;
 
         }
 
@@ -1792,8 +1800,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="content">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentBwUsageContentGetAsyncWithHttpInfo (string content)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentBwUsageContentGetAsyncWithHttpInfo (string content)
         {
             // verify the required parameter 'content' is set
             if (content == null)
@@ -1841,9 +1849,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1852,10 +1860,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns></returns>
-        public void ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null)
+        /// <returns>string</returns>
+        public string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null)
         {
-             ContentCreatePostWithHttpInfo(req, ignoreDupes);
+             ApiResponse<string> localVarResponse = ContentCreatePostWithHttpInfo(req, ignoreDupes);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1864,8 +1873,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentCreatePostWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentCreatePostWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null)
         {
             // verify the required parameter 'req' is set
             if (req == null)
@@ -1921,9 +1930,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -1932,10 +1941,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentCreatePostAsync (UtilContentCreateBody req, string ignoreDupes = null)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentCreatePostAsync (UtilContentCreateBody req, string ignoreDupes = null)
         {
-             await ContentCreatePostAsyncWithHttpInfo(req, ignoreDupes);
+             ApiResponse<string> localVarResponse = await ContentCreatePostAsyncWithHttpInfo(req, ignoreDupes);
+             return localVarResponse.Data;
 
         }
 
@@ -1945,8 +1955,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentCreatePostAsyncWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentCreatePostAsyncWithHttpInfo (UtilContentCreateBody req, string ignoreDupes = null)
         {
             // verify the required parameter 'req' is set
             if (req == null)
@@ -2002,9 +2012,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2013,10 +2023,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns></returns>
-        public void ContentDealsGet (int? limit = null, int? offset = null)
+        /// <returns>string</returns>
+        public string ContentDealsGet (int? limit = null, int? offset = null)
         {
-             ContentDealsGetWithHttpInfo(limit, offset);
+             ApiResponse<string> localVarResponse = ContentDealsGetWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2025,8 +2036,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentDealsGetWithHttpInfo (int? limit = null, int? offset = null)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentDealsGetWithHttpInfo (int? limit = null, int? offset = null)
         {
 
             var localVarPath = "/content/deals";
@@ -2072,9 +2083,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2083,10 +2094,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentDealsGetAsync (int? limit = null, int? offset = null)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentDealsGetAsync (int? limit = null, int? offset = null)
         {
-             await ContentDealsGetAsyncWithHttpInfo(limit, offset);
+             ApiResponse<string> localVarResponse = await ContentDealsGetAsyncWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
 
         }
 
@@ -2096,8 +2108,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">Limit (optional)</param>
         /// <param name="offset">Offset (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentDealsGetAsyncWithHttpInfo (int? limit = null, int? offset = null)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentDealsGetAsyncWithHttpInfo (int? limit = null, int? offset = null)
         {
 
             var localVarPath = "/content/deals";
@@ -2143,9 +2155,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2153,10 +2165,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns></returns>
-        public void ContentEnsureReplicationDatacidGet (string datacid)
+        /// <returns>string</returns>
+        public string ContentEnsureReplicationDatacidGet (string datacid)
         {
-             ContentEnsureReplicationDatacidGetWithHttpInfo(datacid);
+             ApiResponse<string> localVarResponse = ContentEnsureReplicationDatacidGetWithHttpInfo(datacid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2164,8 +2177,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentEnsureReplicationDatacidGetWithHttpInfo (string datacid)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentEnsureReplicationDatacidGetWithHttpInfo (string datacid)
         {
             // verify the required parameter 'datacid' is set
             if (datacid == null)
@@ -2213,9 +2226,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2223,10 +2236,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentEnsureReplicationDatacidGetAsync (string datacid)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentEnsureReplicationDatacidGetAsync (string datacid)
         {
-             await ContentEnsureReplicationDatacidGetAsyncWithHttpInfo(datacid);
+             ApiResponse<string> localVarResponse = await ContentEnsureReplicationDatacidGetAsyncWithHttpInfo(datacid);
+             return localVarResponse.Data;
 
         }
 
@@ -2235,8 +2249,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="datacid">Data CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentEnsureReplicationDatacidGetAsyncWithHttpInfo (string datacid)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentEnsureReplicationDatacidGetAsyncWithHttpInfo (string datacid)
         {
             // verify the required parameter 'datacid' is set
             if (datacid == null)
@@ -2284,9 +2298,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2437,10 +2451,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        public void ContentIdGet (int? id)
+        /// <returns>string</returns>
+        public string ContentIdGet (int? id)
         {
-             ContentIdGetWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = ContentIdGetWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2448,8 +2463,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2497,9 +2512,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2507,10 +2522,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentIdGetAsync (int? id)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentIdGetAsync (int? id)
         {
-             await ContentIdGetAsyncWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = await ContentIdGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -2519,8 +2535,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2568,9 +2584,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2578,10 +2594,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns></returns>
-        public void ContentImportdealPost (MainImportDealBody body)
+        /// <returns>string</returns>
+        public string ContentImportdealPost (MainImportDealBody body)
         {
-             ContentImportdealPostWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = ContentImportdealPostWithHttpInfo(body);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2589,8 +2606,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentImportdealPostWithHttpInfo (MainImportDealBody body)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentImportdealPostWithHttpInfo (MainImportDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2645,9 +2662,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2655,10 +2672,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentImportdealPostAsync (MainImportDealBody body)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentImportdealPostAsync (MainImportDealBody body)
         {
-             await ContentImportdealPostAsyncWithHttpInfo(body);
+             ApiResponse<string> localVarResponse = await ContentImportdealPostAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
 
         }
 
@@ -2667,8 +2685,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Import a deal</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -2723,19 +2741,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;string&gt;</returns>
-        public List<string> ContentListGet ()
+        /// <returns>string</returns>
+        public string ContentListGet ()
         {
-             ApiResponse<List<string>> localVarResponse = ContentListGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = ContentListGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -2743,8 +2761,8 @@ namespace estuary-client.Api
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > ContentListGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentListGetWithHttpInfo ()
         {
 
             var localVarPath = "/content/list";
@@ -2788,19 +2806,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<string>>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> ContentListGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentListGetAsync ()
         {
-             ApiResponse<List<string>> localVarResponse = await ContentListGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await ContentListGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -2809,8 +2827,8 @@ namespace estuary-client.Api
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> ContentListGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentListGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/content/list";
@@ -2854,9 +2872,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<string>>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2864,10 +2882,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns></returns>
-        public void ContentReadContGet (string cont)
+        /// <returns>string</returns>
+        public string ContentReadContGet (string cont)
         {
-             ContentReadContGetWithHttpInfo(cont);
+             ApiResponse<string> localVarResponse = ContentReadContGetWithHttpInfo(cont);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2875,8 +2894,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentReadContGetWithHttpInfo (string cont)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentReadContGetWithHttpInfo (string cont)
         {
             // verify the required parameter 'cont' is set
             if (cont == null)
@@ -2924,9 +2943,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -2934,10 +2953,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentReadContGetAsync (string cont)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentReadContGetAsync (string cont)
         {
-             await ContentReadContGetAsyncWithHttpInfo(cont);
+             ApiResponse<string> localVarResponse = await ContentReadContGetAsyncWithHttpInfo(cont);
+             return localVarResponse.Data;
 
         }
 
@@ -2946,8 +2966,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cont">CID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentReadContGetAsyncWithHttpInfo (string cont)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentReadContGetAsyncWithHttpInfo (string cont)
         {
             // verify the required parameter 'cont' is set
             if (cont == null)
@@ -2995,27 +3015,28 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void ContentStagingZonesGet ()
+        /// <returns>string</returns>
+        public string ContentStagingZonesGet ()
         {
-             ContentStagingZonesGetWithHttpInfo();
+             ApiResponse<string> localVarResponse = ContentStagingZonesGetWithHttpInfo();
+             return localVarResponse.Data;
         }
 
         /// <summary>
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentStagingZonesGetWithHttpInfo ()
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentStagingZonesGetWithHttpInfo ()
         {
 
             var localVarPath = "/content/staging-zones";
@@ -3059,19 +3080,20 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentStagingZonesGetAsync ()
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentStagingZonesGetAsync ()
         {
-             await ContentStagingZonesGetAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await ContentStagingZonesGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
 
         }
 
@@ -3079,8 +3101,8 @@ namespace estuary-client.Api
         /// Get staging zone for user This endpoint is used to get staging zone for user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentStagingZonesGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/content/staging-zones";
@@ -3124,9 +3146,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3135,10 +3157,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns></returns>
-        public void ContentStatsGet (string limit, string offset)
+        /// <returns>string</returns>
+        public string ContentStatsGet (string limit, string offset)
         {
-             ContentStatsGetWithHttpInfo(limit, offset);
+             ApiResponse<string> localVarResponse = ContentStatsGetWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3147,8 +3170,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentStatsGetWithHttpInfo (string limit, string offset)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentStatsGetWithHttpInfo (string limit, string offset)
         {
             // verify the required parameter 'limit' is set
             if (limit == null)
@@ -3200,9 +3223,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3211,10 +3234,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentStatsGetAsync (string limit, string offset)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentStatsGetAsync (string limit, string offset)
         {
-             await ContentStatsGetAsyncWithHttpInfo(limit, offset);
+             ApiResponse<string> localVarResponse = await ContentStatsGetAsyncWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
 
         }
 
@@ -3224,8 +3248,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentStatsGetAsyncWithHttpInfo (string limit, string offset)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentStatsGetAsyncWithHttpInfo (string limit, string offset)
         {
             // verify the required parameter 'limit' is set
             if (limit == null)
@@ -3277,9 +3301,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3287,10 +3311,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns></returns>
-        public void ContentStatusIdGet (int? id)
+        /// <returns>string</returns>
+        public string ContentStatusIdGet (int? id)
         {
-             ContentStatusIdGetWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = ContentStatusIdGetWithHttpInfo(id);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -3298,8 +3323,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ContentStatusIdGetWithHttpInfo (int? id)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentStatusIdGetWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3347,9 +3372,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -3357,10 +3382,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ContentStatusIdGetAsync (int? id)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentStatusIdGetAsync (int? id)
         {
-             await ContentStatusIdGetAsyncWithHttpInfo(id);
+             ApiResponse<string> localVarResponse = await ContentStatusIdGetAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
 
         }
 
@@ -3369,8 +3395,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Content ID</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ContentStatusIdGetAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentStatusIdGetAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3418,9 +3444,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

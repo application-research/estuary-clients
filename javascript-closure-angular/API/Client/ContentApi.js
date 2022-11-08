@@ -18,6 +18,7 @@ goog.require('API.Client.MainImportDealBody');
 goog.require('API.Client.UtilContentAddIpfsBody');
 goog.require('API.Client.UtilContentCreateBody');
 goog.require('API.Client.util.ContentAddResponse');
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -53,7 +54,7 @@ API.Client.ContentApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!string=} opt_filename Filename
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_ignoreDupes, opt_filename, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -99,7 +100,7 @@ API.Client.ContentApi.prototype.contentAddCarPost = function(body, opt_ignoreDup
  * @param {!UtilContentAddIpfsBody} body IPFS Body
  * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentAddIpfsPost = function(body, opt_ignoreDupes, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -251,7 +252,7 @@ API.Client.ContentApi.prototype.contentAggregatedContentGet = function(content, 
  * @param {!string} duration Duration
  * @param {!string} all All
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentAllDealsGet = function(begin, duration, all, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -307,7 +308,7 @@ API.Client.ContentApi.prototype.contentAllDealsGet = function(begin, duration, a
  * This endpoint returns content bandwidth
  * @param {!string} content Content ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentBwUsageContentGet = function(content, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -345,7 +346,7 @@ API.Client.ContentApi.prototype.contentBwUsageContentGet = function(content, opt
  * @param {!UtilContentCreateBody} req Content
  * @param {!string=} opt_ignoreDupes Ignore Dupes
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentCreatePost = function(req, opt_ignoreDupes, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -387,7 +388,7 @@ API.Client.ContentApi.prototype.contentCreatePost = function(req, opt_ignoreDupe
  * @param {!number=} opt_limit Limit
  * @param {!number=} opt_offset Offset
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentDealsGet = function(opt_limit, opt_offset, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -427,7 +428,7 @@ API.Client.ContentApi.prototype.contentDealsGet = function(opt_limit, opt_offset
  * This endpoint ensures that the content is replicated to the specified number of providers
  * @param {!string} datacid Data CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentEnsureReplicationDatacidGet = function(datacid, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -501,7 +502,7 @@ API.Client.ContentApi.prototype.contentFailuresContentGet = function(content, op
  * This endpoint returns a content by its ID
  * @param {!number} id Content ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentIdGet = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -538,7 +539,7 @@ API.Client.ContentApi.prototype.contentIdGet = function(id, opt_extraHttpRequest
  * This endpoint imports a deal into the shuttle.
  * @param {!MainImportDealBody} body Import a deal
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentImportdealPost = function(body, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -574,7 +575,7 @@ API.Client.ContentApi.prototype.contentImportdealPost = function(body, opt_extra
  * List all pinned content
  * This endpoint lists all content
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise<!Array<!string>>}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentListGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -606,7 +607,7 @@ API.Client.ContentApi.prototype.contentListGet = function(opt_extraHttpRequestPa
  * This endpoint reads content from the blockstore
  * @param {!string} cont CID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentReadContGet = function(cont, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -642,7 +643,7 @@ API.Client.ContentApi.prototype.contentReadContGet = function(cont, opt_extraHtt
  * Get staging zone for user
  * This endpoint is used to get staging zone for user.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentStagingZonesGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -675,7 +676,7 @@ API.Client.ContentApi.prototype.contentStagingZonesGet = function(opt_extraHttpR
  * @param {!string} limit limit
  * @param {!string} offset offset
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentStatsGet = function(limit, offset, opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -723,7 +724,7 @@ API.Client.ContentApi.prototype.contentStatsGet = function(limit, offset, opt_ex
  * This endpoint returns the status of a content
  * @param {!number} id Content ID
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.ContentApi.prototype.contentStatusIdGet = function(id, opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **public_miners_deals_miner_get**
-> public_miners_deals_miner_get(ctx, miner, optional)
+> String public_miners_deals_miner_get(ctx, miner, optional)
 Get all miners deals
 
 This endpoint returns all miners deals
@@ -32,7 +32,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_stats_miner_get**
-> public_miners_stats_miner_get(ctx, miner)
+> String public_miners_stats_miner_get(ctx, miner)
 Get miner stats
 
 This endpoint returns miner stats
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

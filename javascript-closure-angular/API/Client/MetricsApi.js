@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.MetricsApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -46,7 +47,7 @@ API.Client.MetricsApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
  * Get deal metrics
  * This endpoint is used to get deal metrics
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.MetricsApi.prototype.publicMetricsDealsOnChainGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -20,7 +21,7 @@ Method | HTTP request | Description
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
-> dealEstimatePost(body)
+> kotlin.String dealEstimatePost(body)
 
 Estimate the cost of a deal
 
@@ -35,7 +36,8 @@ This endpoint estimates the cost of a deal
 val apiInstance = DealsApi()
 val body : MainestimateDealBody =  // MainestimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 try {
-    apiInstance.dealEstimatePost(body)
+    val result : kotlin.String = apiInstance.dealEstimatePost(body)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealEstimatePost")
     e.printStackTrace()
@@ -53,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -66,7 +68,7 @@ null (empty response body)
 
 <a name="dealInfoDealidGet"></a>
 # **dealInfoDealidGet**
-> dealInfoDealidGet(dealid)
+> kotlin.String dealInfoDealidGet(dealid)
 
 Get Deal Info
 
@@ -81,7 +83,8 @@ This endpoint returns the deal info for a deal
 val apiInstance = DealsApi()
 val dealid : kotlin.Int = 56 // kotlin.Int | Deal ID
 try {
-    apiInstance.dealInfoDealidGet(dealid)
+    val result : kotlin.String = apiInstance.dealInfoDealidGet(dealid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealInfoDealidGet")
     e.printStackTrace()
@@ -99,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -112,7 +115,7 @@ null (empty response body)
 
 <a name="dealProposalPropcidGet"></a>
 # **dealProposalPropcidGet**
-> dealProposalPropcidGet(propcid)
+> kotlin.String dealProposalPropcidGet(propcid)
 
 Get Proposal
 
@@ -127,7 +130,8 @@ This endpoint returns the proposal for a deal
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | Proposal CID
 try {
-    apiInstance.dealProposalPropcidGet(propcid)
+    val result : kotlin.String = apiInstance.dealProposalPropcidGet(propcid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealProposalPropcidGet")
     e.printStackTrace()
@@ -145,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -158,7 +162,7 @@ null (empty response body)
 
 <a name="dealQueryMinerGet"></a>
 # **dealQueryMinerGet**
-> dealQueryMinerGet(miner)
+> kotlin.String dealQueryMinerGet(miner)
 
 Query Ask
 
@@ -173,7 +177,8 @@ This endpoint returns the ask for a given CID
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID
 try {
-    apiInstance.dealQueryMinerGet(miner)
+    val result : kotlin.String = apiInstance.dealQueryMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealQueryMinerGet")
     e.printStackTrace()
@@ -191,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -204,7 +209,7 @@ null (empty response body)
 
 <a name="dealStatusByProposalPropcidGet"></a>
 # **dealStatusByProposalPropcidGet**
-> dealStatusByProposalPropcidGet(propcid)
+> kotlin.String dealStatusByProposalPropcidGet(propcid)
 
 Get Deal Status by PropCid
 
@@ -219,7 +224,8 @@ Get Deal Status by PropCid
 val apiInstance = DealsApi()
 val propcid : kotlin.String = propcid_example // kotlin.String | PropCid
 try {
-    apiInstance.dealStatusByProposalPropcidGet(propcid)
+    val result : kotlin.String = apiInstance.dealStatusByProposalPropcidGet(propcid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealStatusByProposalPropcidGet")
     e.printStackTrace()
@@ -237,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -250,7 +256,7 @@ null (empty response body)
 
 <a name="dealStatusMinerPropcidGet"></a>
 # **dealStatusMinerPropcidGet**
-> dealStatusMinerPropcidGet(miner, propcid)
+> kotlin.String dealStatusMinerPropcidGet(miner, propcid)
 
 Deal Status
 
@@ -266,7 +272,8 @@ val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
 val propcid : kotlin.String = propcid_example // kotlin.String | Proposal CID
 try {
-    apiInstance.dealStatusMinerPropcidGet(miner, propcid)
+    val result : kotlin.String = apiInstance.dealStatusMinerPropcidGet(miner, propcid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealStatusMinerPropcidGet")
     e.printStackTrace()
@@ -285,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -298,7 +305,7 @@ null (empty response body)
 
 <a name="dealTransferInProgressGet"></a>
 # **dealTransferInProgressGet**
-> dealTransferInProgressGet()
+> kotlin.String dealTransferInProgressGet()
 
 Transfer In Progress
 
@@ -312,7 +319,8 @@ This endpoint returns the in-progress transfers
 
 val apiInstance = DealsApi()
 try {
-    apiInstance.dealTransferInProgressGet()
+    val result : kotlin.String = apiInstance.dealTransferInProgressGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealTransferInProgressGet")
     e.printStackTrace()
@@ -327,7 +335,54 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="dealTransferStatusPost"></a>
+# **dealTransferStatusPost**
+> kotlin.String dealTransferStatusPost(chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import estuary-client.models.*
+
+val apiInstance = DealsApi()
+val chanid : MainChannelIDParam =  // MainChannelIDParam | Channel ID
+try {
+    val result : kotlin.String = apiInstance.dealTransferStatusPost(chanid)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling DealsApi#dealTransferStatusPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DealsApi#dealTransferStatusPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID |
+
+### Return type
+
+**kotlin.String**
 
 ### Authorization
 
@@ -340,7 +395,7 @@ null (empty response body)
 
 <a name="dealsFailuresGet"></a>
 # **dealsFailuresGet**
-> dealsFailuresGet()
+> kotlin.String dealsFailuresGet()
 
 Get storage failures for user
 
@@ -354,7 +409,8 @@ This endpoint returns a list of storage failures for user
 
 val apiInstance = DealsApi()
 try {
-    apiInstance.dealsFailuresGet()
+    val result : kotlin.String = apiInstance.dealsFailuresGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealsFailuresGet")
     e.printStackTrace()
@@ -369,7 +425,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -382,7 +438,7 @@ null (empty response body)
 
 <a name="dealsMakeMinerPost"></a>
 # **dealsMakeMinerPost**
-> dealsMakeMinerPost(miner, dealRequest)
+> kotlin.String dealsMakeMinerPost(miner, dealRequest)
 
 Make Deal
 
@@ -398,7 +454,8 @@ val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner
 val dealRequest : kotlin.String = dealRequest_example // kotlin.String | Deal Request
 try {
-    apiInstance.dealsMakeMinerPost(miner, dealRequest)
+    val result : kotlin.String = apiInstance.dealsMakeMinerPost(miner, dealRequest)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealsMakeMinerPost")
     e.printStackTrace()
@@ -417,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -430,7 +487,7 @@ null (empty response body)
 
 <a name="dealsStatusDealGet"></a>
 # **dealsStatusDealGet**
-> dealsStatusDealGet(deal)
+> kotlin.String dealsStatusDealGet(deal)
 
 Get Deal Status
 
@@ -445,7 +502,8 @@ This endpoint returns the status of a deal
 val apiInstance = DealsApi()
 val deal : kotlin.Int = 56 // kotlin.Int | Deal ID
 try {
-    apiInstance.dealsStatusDealGet(deal)
+    val result : kotlin.String = apiInstance.dealsStatusDealGet(deal)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#dealsStatusDealGet")
     e.printStackTrace()
@@ -463,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -476,7 +534,7 @@ null (empty response body)
 
 <a name="publicDealsFailuresGet"></a>
 # **publicDealsFailuresGet**
-> publicDealsFailuresGet()
+> kotlin.String publicDealsFailuresGet()
 
 Get storage failures
 
@@ -490,7 +548,8 @@ This endpoint returns a list of storage failures
 
 val apiInstance = DealsApi()
 try {
-    apiInstance.publicDealsFailuresGet()
+    val result : kotlin.String = apiInstance.publicDealsFailuresGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#publicDealsFailuresGet")
     e.printStackTrace()
@@ -505,7 +564,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -518,7 +577,7 @@ null (empty response body)
 
 <a name="publicMinersStorageQueryMinerGet"></a>
 # **publicMinersStorageQueryMinerGet**
-> publicMinersStorageQueryMinerGet(miner)
+> kotlin.String publicMinersStorageQueryMinerGet(miner)
 
 Query Ask
 
@@ -533,7 +592,8 @@ This endpoint returns the ask for a given CID
 val apiInstance = DealsApi()
 val miner : kotlin.String = miner_example // kotlin.String | CID
 try {
-    apiInstance.publicMinersStorageQueryMinerGet(miner)
+    val result : kotlin.String = apiInstance.publicMinersStorageQueryMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling DealsApi#publicMinersStorageQueryMinerGet")
     e.printStackTrace()
@@ -551,7 +611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

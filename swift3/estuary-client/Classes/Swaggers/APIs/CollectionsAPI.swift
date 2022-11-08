@@ -104,9 +104,9 @@ open class CollectionsAPI: APIBase {
      - parameter coluuid: (path) Collection ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsColuuidDelete(coluuid: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func collectionsColuuidDelete(coluuid: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         collectionsColuuidDeleteWithRequestBuilder(coluuid: coluuid).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -118,10 +118,14 @@ open class CollectionsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      - parameter coluuid: (path) Collection ID 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func collectionsColuuidDeleteWithRequestBuilder(coluuid: String) -> RequestBuilder<Void> {
+    open class func collectionsColuuidDeleteWithRequestBuilder(coluuid: String) -> RequestBuilder<String> {
         var path = "/collections/{coluuid}"
         let coluuidPreEscape = "\(coluuid)"
         let coluuidPostEscape = coluuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -131,7 +135,7 @@ open class CollectionsAPI: APIBase {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -188,7 +192,7 @@ open class CollectionsAPI: APIBase {
      - parameter contentIDs: (body) Content IDs to add to collection 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsColuuidPost(coluuid: String, contentIDs: [Int32], completion: @escaping ((_ data: [String:String]?, _ error: ErrorResponse?) -> Void)) {
+    open class func collectionsColuuidPost(coluuid: String, contentIDs: [Int32], completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         collectionsColuuidPostWithRequestBuilder(coluuid: coluuid, contentIDs: contentIDs).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -202,12 +206,15 @@ open class CollectionsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={"empty": false}}]
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      - parameter coluuid: (path) coluuid 
      - parameter contentIDs: (body) Content IDs to add to collection 
-     - returns: RequestBuilder<[String:String]> 
+     - returns: RequestBuilder<String> 
      */
-    open class func collectionsColuuidPostWithRequestBuilder(coluuid: String, contentIDs: [Int32]) -> RequestBuilder<[String:String]> {
+    open class func collectionsColuuidPostWithRequestBuilder(coluuid: String, contentIDs: [Int32]) -> RequestBuilder<String> {
         var path = "/collections/{coluuid}"
         let coluuidPreEscape = "\(coluuid)"
         let coluuidPostEscape = coluuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -217,7 +224,7 @@ open class CollectionsAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[String:String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -229,9 +236,9 @@ open class CollectionsAPI: APIBase {
      - parameter path: (query) Path to file 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsFsAddPost(coluuid: String, content: String, path: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+    open class func collectionsFsAddPost(coluuid: String, content: String, path: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         collectionsFsAddPostWithRequestBuilder(coluuid: coluuid, content: content, path: path).execute { (response, error) -> Void in
-            completion(error)
+            completion(response?.body, error)
         }
     }
 
@@ -243,12 +250,16 @@ open class CollectionsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      - parameter coluuid: (query) Collection ID 
      - parameter content: (query) Content 
      - parameter path: (query) Path to file 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func collectionsFsAddPostWithRequestBuilder(coluuid: String, content: String, path: String) -> RequestBuilder<Void> {
+    open class func collectionsFsAddPostWithRequestBuilder(coluuid: String, content: String, path: String) -> RequestBuilder<String> {
         let path = "/collections/fs/add"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -260,7 +271,7 @@ open class CollectionsAPI: APIBase {
             "path": path
         ])
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -269,7 +280,7 @@ open class CollectionsAPI: APIBase {
      List all collections
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsGet(completion: @escaping ((_ data: [CollectionsCollection]?, _ error: ErrorResponse?) -> Void)) {
+    open class func collectionsGet(completion: @escaping ((_ data: [[CollectionsCollection]]?, _ error: ErrorResponse?) -> Void)) {
         collectionsGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -284,16 +295,16 @@ open class CollectionsAPI: APIBase {
        - type: apiKey Authorization 
        - name: bearerAuth
      - examples: [{contentType=application/json, example={}}]
-     - returns: RequestBuilder<[CollectionsCollection]> 
+     - returns: RequestBuilder<[[CollectionsCollection]]> 
      */
-    open class func collectionsGetWithRequestBuilder() -> RequestBuilder<[CollectionsCollection]> {
+    open class func collectionsGetWithRequestBuilder() -> RequestBuilder<[[CollectionsCollection]]> {
         let path = "/collections/"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[CollectionsCollection]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[[CollectionsCollection]]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

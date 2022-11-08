@@ -15,6 +15,7 @@ module Request.Content exposing (contentAddCarPost, contentAddIpfsPost, contentA
 
 import Data.UtilContentCreateBody exposing (UtilContentCreateBody, utilContentCreateBodyEncoder)
 import Data.UtilContentAddIpfsBody exposing (UtilContentAddIpfsBody, utilContentAddIpfsBodyEncoder)
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
 import Data.UtilContentAddResponse exposing (UtilContentAddResponse, utilContentAddResponseDecoder)
 import Data.String exposing (Decode.string, Encode.string, String)
 import Data.MainImportDealBody exposing (MainImportDealBody, mainImportDealBodyEncoder)
@@ -30,13 +31,13 @@ basePath =
 {-
    This endpoint is used to add a car object to the network. The object can be a file or a directory.
 -}
-contentAddCarPost : String -> Http.Request 
+contentAddCarPost : String -> Http.Request String
 contentAddCarPost model =
     { method = "POST"
     , url = basePath ++ "/content/add-car"
     , headers = []
     , body = Http.jsonBody <| Encode.string model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -46,13 +47,13 @@ contentAddCarPost model =
 {-
    This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 -}
-contentAddIpfsPost : UtilContentAddIpfsBody -> Http.Request 
+contentAddIpfsPost : UtilContentAddIpfsBody -> Http.Request String
 contentAddIpfsPost model =
     { method = "POST"
     , url = basePath ++ "/content/add-ipfs"
     , headers = []
     , body = Http.jsonBody <| utilContentAddIpfsBodyEncoder model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -94,13 +95,13 @@ contentAggregatedContentGet content =
 {-
    This endpoint is used to get all deals for a user
 -}
-contentAllDealsGet : Http.Request 
+contentAllDealsGet : Http.Request String
 contentAllDealsGet =
     { method = "GET"
     , url = basePath ++ "/content/all-deals"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -110,13 +111,13 @@ contentAllDealsGet =
 {-
    This endpoint returns content bandwidth
 -}
-contentBwUsageContentGet : String -> Http.Request 
+contentBwUsageContentGet : String -> Http.Request String
 contentBwUsageContentGet content =
     { method = "GET"
     , url = basePath ++ "/content/bw-usage/" ++ content
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -126,13 +127,13 @@ contentBwUsageContentGet content =
 {-
    This endpoint adds a new content
 -}
-contentCreatePost : UtilContentCreateBody -> Http.Request 
+contentCreatePost : UtilContentCreateBody -> Http.Request String
 contentCreatePost model =
     { method = "POST"
     , url = basePath ++ "/content/create"
     , headers = []
     , body = Http.jsonBody <| utilContentCreateBodyEncoder model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -142,13 +143,13 @@ contentCreatePost model =
 {-
    This endpoint lists all content with deals
 -}
-contentDealsGet : Http.Request 
+contentDealsGet : Http.Request String
 contentDealsGet =
     { method = "GET"
     , url = basePath ++ "/content/deals"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -158,13 +159,13 @@ contentDealsGet =
 {-
    This endpoint ensures that the content is replicated to the specified number of providers
 -}
-contentEnsureReplicationDatacidGet : String -> Http.Request 
+contentEnsureReplicationDatacidGet : String -> Http.Request String
 contentEnsureReplicationDatacidGet datacid =
     { method = "GET"
     , url = basePath ++ "/content/ensure-replication/" ++ datacid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -190,13 +191,13 @@ contentFailuresContentGet content =
 {-
    This endpoint returns a content by its ID
 -}
-contentIdGet : Int -> Http.Request 
+contentIdGet : Int -> Http.Request String
 contentIdGet id =
     { method = "GET"
     , url = basePath ++ "/content/" ++ toString id
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -206,13 +207,13 @@ contentIdGet id =
 {-
    This endpoint imports a deal into the shuttle.
 -}
-contentImportdealPost : MainImportDealBody -> Http.Request 
+contentImportdealPost : MainImportDealBody -> Http.Request String
 contentImportdealPost model =
     { method = "POST"
     , url = basePath ++ "/content/importdeal"
     , headers = []
     , body = Http.jsonBody <| mainImportDealBodyEncoder model
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -222,13 +223,13 @@ contentImportdealPost model =
 {-
    This endpoint lists all content
 -}
-contentListGet : Http.Request (List String)
+contentListGet : Http.Request String
 contentListGet =
     { method = "GET"
     , url = basePath ++ "/content/list"
     , headers = []
     , body = Http.emptyBody
-    , expect = Http.expectJson (Decode.list Decode.string)
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -238,13 +239,13 @@ contentListGet =
 {-
    This endpoint reads content from the blockstore
 -}
-contentReadContGet : String -> Http.Request 
+contentReadContGet : String -> Http.Request String
 contentReadContGet cont =
     { method = "GET"
     , url = basePath ++ "/content/read/" ++ cont
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -254,13 +255,13 @@ contentReadContGet cont =
 {-
    This endpoint is used to get staging zone for user.
 -}
-contentStagingZonesGet : Http.Request 
+contentStagingZonesGet : Http.Request String
 contentStagingZonesGet =
     { method = "GET"
     , url = basePath ++ "/content/staging-zones"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -270,13 +271,13 @@ contentStagingZonesGet =
 {-
    This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 -}
-contentStatsGet : Http.Request 
+contentStatsGet : Http.Request String
 contentStatsGet =
     { method = "GET"
     , url = basePath ++ "/content/stats"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -286,13 +287,13 @@ contentStatsGet =
 {-
    This endpoint returns the status of a content
 -}
-contentStatusIdGet : Int -> Http.Request 
+contentStatusIdGet : Int -> Http.Request String
 contentStatusIdGet id =
     { method = "GET"
     , url = basePath ++ "/content/status/" ++ toString id
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

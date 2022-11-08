@@ -37,11 +37,11 @@ isa_ok($api, 'WWW::SwaggerClient::UserApi');
 }
 
 #
-# user_api_keys_key_delete test
+# user_api_keys_key_or_hash_delete test
 #
 {
-    my $key = undef; # replace NULL with a proper value
-    my $result = $api->user_api_keys_key_delete(key => $key);
+    my $key_or_hash = undef; # replace NULL with a proper value
+    my $result = $api->user_api_keys_key_or_hash_delete(key_or_hash => $key_or_hash);
 }
 
 #

@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -21,6 +22,9 @@ object MinerApi {
    * This endpoint returns all miners deals
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -28,25 +32,34 @@ object MinerApi {
    * @param miner Filter by miner
    * @param ignoreFailed Ignore Failed
    */
-  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/deals/{miner}", "application/json")
+  def publicMinersDealsMinerGet(miner: String, ignoreFailed: Option[String] = None)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/deals/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withQueryParam("ignore-failed", ignoreFailed)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint returns miner stats
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param miner Filter by miner
    */
-  def publicMinersStatsMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/stats/{miner}", "application/json")
+  def publicMinersStatsMinerGet(miner: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/public/miners/stats/{miner}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withPathParam("miner", miner)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="netAddrsGet"></a>
 # **netAddrsGet**
-> kotlin.Array&lt;kotlin.String&gt; netAddrsGet()
+> kotlin.String netAddrsGet()
 
 Net Addrs
 
@@ -27,7 +27,7 @@ This endpoint is used to get net addrs
 
 val apiInstance = NetApi()
 try {
-    val result : kotlin.Array<kotlin.String> = apiInstance.netAddrsGet()
+    val result : kotlin.String = apiInstance.netAddrsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling NetApi#netAddrsGet")
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.Array&lt;kotlin.String&gt;**
+**kotlin.String**
 
 ### Authorization
 
@@ -56,7 +56,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> kotlin.String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -71,7 +71,8 @@ This endpoint returns all miners
 val apiInstance = NetApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 try {
-    apiInstance.publicMinersFailuresMinerGet(miner)
+    val result : kotlin.String = apiInstance.publicMinersFailuresMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling NetApi#publicMinersFailuresMinerGet")
     e.printStackTrace()
@@ -89,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -102,7 +103,7 @@ null (empty response body)
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> publicMinersGet()
+> kotlin.String publicMinersGet()
 
 Get all miners
 
@@ -116,7 +117,8 @@ This endpoint returns all miners
 
 val apiInstance = NetApi()
 try {
-    apiInstance.publicMinersGet()
+    val result : kotlin.String = apiInstance.publicMinersGet()
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling NetApi#publicMinersGet")
     e.printStackTrace()
@@ -131,7 +133,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

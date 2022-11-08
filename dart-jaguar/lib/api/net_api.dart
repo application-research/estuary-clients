@@ -4,6 +4,7 @@ import 'package:jaguar_serializer/jaguar_serializer.dart';
 import 'package:jaguar_serializer/src/repo/repo.dart';
 import 'dart:async';
 
+import 'package:swagger/model/util_http_error.dart';
 
 
 part 'net_api.jretro.dart';
@@ -19,14 +20,14 @@ class NetApi extends _$NetApiClient implements ApiClient {
     ///
     /// This endpoint is used to get net addrs
     @GetReq(path: "/net/addrs", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<List<String>> netAddrsGet(
+    Future<String> netAddrsGet(
     );
 
     /// Get all miners
     ///
     /// This endpoint returns all miners
     @GetReq(path: "/public/miners/failures/:miner", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> publicMinersFailuresMinerGet(
+    Future<String> publicMinersFailuresMinerGet(
             @PathParam("miner") String miner
     );
 
@@ -34,7 +35,7 @@ class NetApi extends _$NetApiClient implements ApiClient {
     ///
     /// This endpoint returns all miners
     @GetReq(path: "/public/miners", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> publicMinersGet(
+    Future<String> publicMinersGet(
     );
 
     /// Net Addrs

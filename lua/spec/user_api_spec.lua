@@ -22,8 +22,8 @@ describe("user_api", function()
     end)
   end)
 
-  -- unit tests for user_api_keys_key_delete
-  describe("user_api_keys_key_delete test", function()
+  -- unit tests for user_api_keys_key_or_hash_delete
+  describe("user_api_keys_key_or_hash_delete test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

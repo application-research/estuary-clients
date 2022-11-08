@@ -36,7 +36,7 @@ describe 'NetApi' do
   # Net Addrs
   # This endpoint is used to get net addrs
   # @param [Hash] opts the optional parameters
-  # @return [Array<String>]
+  # @return [String]
   describe 'net_addrs_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'NetApi' do
   # This endpoint returns all miners
   # @param miner Filter by miner
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_failures_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'NetApi' do
   # Get all miners
   # This endpoint returns all miners
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [String]
   describe 'public_miners_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

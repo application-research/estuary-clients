@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **public_metrics_deals_on_chain_get**
-> public_metrics_deals_on_chain_get(ctx, )
+> String public_metrics_deals_on_chain_get(ctx, )
 Get deal metrics
 
 This endpoint is used to get deal metrics
@@ -18,7 +18,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

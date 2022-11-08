@@ -44,8 +44,14 @@ public:
     QString* getExpiry();
     void setExpiry(QString* expiry);
 
+    QString* getLabel();
+    void setLabel(QString* label);
+
     QString* getToken();
     void setToken(QString* token);
+
+    QString* getTokenHash();
+    void setTokenHash(QString* token_hash);
 
 
     virtual bool isSet() override;
@@ -54,8 +60,14 @@ private:
     QString* expiry;
     bool m_expiry_isSet;
 
+    QString* label;
+    bool m_label_isSet;
+
     QString* token;
     bool m_token_isSet;
+
+    QString* token_hash;
+    bool m_token_hash_isSet;
 
 };
 

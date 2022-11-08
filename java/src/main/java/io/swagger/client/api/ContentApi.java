@@ -32,6 +32,7 @@ import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
 import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -133,10 +134,12 @@ public class ContentApi {
      * @param body Car (required)
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentAddCarPost(String body, String ignoreDupes, String filename) throws ApiException {
-        contentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+    public String contentAddCarPost(String body, String ignoreDupes, String filename) throws ApiException {
+        ApiResponse<String> resp = contentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+        return resp.getData();
     }
 
     /**
@@ -145,12 +148,13 @@ public class ContentApi {
      * @param body Car (required)
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentAddCarPostWithHttpInfo(String body, String ignoreDupes, String filename) throws ApiException {
+    public ApiResponse<String> contentAddCarPostWithHttpInfo(String body, String ignoreDupes, String filename) throws ApiException {
         com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -163,7 +167,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddCarPostAsync(String body, String ignoreDupes, String filename, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddCarPostAsync(String body, String ignoreDupes, String filename, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -185,7 +189,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -259,10 +264,12 @@ public class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
-        contentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+    public String contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
+        ApiResponse<String> resp = contentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+        return resp.getData();
     }
 
     /**
@@ -270,12 +277,13 @@ public class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentAddIpfsPostWithHttpInfo(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
+    public ApiResponse<String> contentAddIpfsPostWithHttpInfo(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
         com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -287,7 +295,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddIpfsPostAsync(UtilContentAddIpfsBody body, String ignoreDupes, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddIpfsPostAsync(UtilContentAddIpfsBody body, String ignoreDupes, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -309,7 +317,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -682,10 +691,12 @@ public class ContentApi {
      * @param begin Begin (required)
      * @param duration Duration (required)
      * @param all All (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentAllDealsGet(String begin, String duration, String all) throws ApiException {
-        contentAllDealsGetWithHttpInfo(begin, duration, all);
+    public String contentAllDealsGet(String begin, String duration, String all) throws ApiException {
+        ApiResponse<String> resp = contentAllDealsGetWithHttpInfo(begin, duration, all);
+        return resp.getData();
     }
 
     /**
@@ -694,12 +705,13 @@ public class ContentApi {
      * @param begin Begin (required)
      * @param duration Duration (required)
      * @param all All (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentAllDealsGetWithHttpInfo(String begin, String duration, String all) throws ApiException {
+    public ApiResponse<String> contentAllDealsGetWithHttpInfo(String begin, String duration, String all) throws ApiException {
         com.squareup.okhttp.Call call = contentAllDealsGetValidateBeforeCall(begin, duration, all, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -712,7 +724,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAllDealsGetAsync(String begin, String duration, String all, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAllDealsGetAsync(String begin, String duration, String all, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -734,7 +746,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentAllDealsGetValidateBeforeCall(begin, duration, all, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -805,22 +818,25 @@ public class ContentApi {
      * Get content bandwidth
      * This endpoint returns content bandwidth
      * @param content Content ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentBwUsageContentGet(String content) throws ApiException {
-        contentBwUsageContentGetWithHttpInfo(content);
+    public String contentBwUsageContentGet(String content) throws ApiException {
+        ApiResponse<String> resp = contentBwUsageContentGetWithHttpInfo(content);
+        return resp.getData();
     }
 
     /**
      * Get content bandwidth
      * This endpoint returns content bandwidth
      * @param content Content ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentBwUsageContentGetWithHttpInfo(String content) throws ApiException {
+    public ApiResponse<String> contentBwUsageContentGetWithHttpInfo(String content) throws ApiException {
         com.squareup.okhttp.Call call = contentBwUsageContentGetValidateBeforeCall(content, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -831,7 +847,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentBwUsageContentGetAsync(String content, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentBwUsageContentGetAsync(String content, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -853,7 +869,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentBwUsageContentGetValidateBeforeCall(content, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -927,10 +944,12 @@ public class ContentApi {
      * This endpoint adds a new content
      * @param req Content (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentCreatePost(UtilContentCreateBody req, String ignoreDupes) throws ApiException {
-        contentCreatePostWithHttpInfo(req, ignoreDupes);
+    public String contentCreatePost(UtilContentCreateBody req, String ignoreDupes) throws ApiException {
+        ApiResponse<String> resp = contentCreatePostWithHttpInfo(req, ignoreDupes);
+        return resp.getData();
     }
 
     /**
@@ -938,12 +957,13 @@ public class ContentApi {
      * This endpoint adds a new content
      * @param req Content (required)
      * @param ignoreDupes Ignore Dupes (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentCreatePostWithHttpInfo(UtilContentCreateBody req, String ignoreDupes) throws ApiException {
+    public ApiResponse<String> contentCreatePostWithHttpInfo(UtilContentCreateBody req, String ignoreDupes) throws ApiException {
         com.squareup.okhttp.Call call = contentCreatePostValidateBeforeCall(req, ignoreDupes, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -955,7 +975,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentCreatePostAsync(UtilContentCreateBody req, String ignoreDupes, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentCreatePostAsync(UtilContentCreateBody req, String ignoreDupes, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -977,7 +997,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentCreatePostValidateBeforeCall(req, ignoreDupes, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1048,10 +1069,12 @@ public class ContentApi {
      * This endpoint lists all content with deals
      * @param limit Limit (optional)
      * @param offset Offset (optional)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentDealsGet(Integer limit, Integer offset) throws ApiException {
-        contentDealsGetWithHttpInfo(limit, offset);
+    public String contentDealsGet(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<String> resp = contentDealsGetWithHttpInfo(limit, offset);
+        return resp.getData();
     }
 
     /**
@@ -1059,12 +1082,13 @@ public class ContentApi {
      * This endpoint lists all content with deals
      * @param limit Limit (optional)
      * @param offset Offset (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentDealsGetWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+    public ApiResponse<String> contentDealsGetWithHttpInfo(Integer limit, Integer offset) throws ApiException {
         com.squareup.okhttp.Call call = contentDealsGetValidateBeforeCall(limit, offset, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1076,7 +1100,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentDealsGetAsync(Integer limit, Integer offset, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentDealsGetAsync(Integer limit, Integer offset, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1098,7 +1122,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentDealsGetValidateBeforeCall(limit, offset, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1169,22 +1194,25 @@ public class ContentApi {
      * Ensure Replication
      * This endpoint ensures that the content is replicated to the specified number of providers
      * @param datacid Data CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentEnsureReplicationDatacidGet(String datacid) throws ApiException {
-        contentEnsureReplicationDatacidGetWithHttpInfo(datacid);
+    public String contentEnsureReplicationDatacidGet(String datacid) throws ApiException {
+        ApiResponse<String> resp = contentEnsureReplicationDatacidGetWithHttpInfo(datacid);
+        return resp.getData();
     }
 
     /**
      * Ensure Replication
      * This endpoint ensures that the content is replicated to the specified number of providers
      * @param datacid Data CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentEnsureReplicationDatacidGetWithHttpInfo(String datacid) throws ApiException {
+    public ApiResponse<String> contentEnsureReplicationDatacidGetWithHttpInfo(String datacid) throws ApiException {
         com.squareup.okhttp.Call call = contentEnsureReplicationDatacidGetValidateBeforeCall(datacid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1195,7 +1223,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentEnsureReplicationDatacidGetAsync(String datacid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentEnsureReplicationDatacidGetAsync(String datacid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1217,7 +1245,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentEnsureReplicationDatacidGetValidateBeforeCall(datacid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1411,22 +1440,25 @@ public class ContentApi {
      * Content
      * This endpoint returns a content by its ID
      * @param id Content ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentIdGet(Integer id) throws ApiException {
-        contentIdGetWithHttpInfo(id);
+    public String contentIdGet(Integer id) throws ApiException {
+        ApiResponse<String> resp = contentIdGetWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Content
      * This endpoint returns a content by its ID
      * @param id Content ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentIdGetWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<String> contentIdGetWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = contentIdGetValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1437,7 +1469,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentIdGetAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentIdGetAsync(Integer id, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1459,7 +1491,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentIdGetValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1529,22 +1562,25 @@ public class ContentApi {
      * Import a deal
      * This endpoint imports a deal into the shuttle.
      * @param body Import a deal (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentImportdealPost(MainImportDealBody body) throws ApiException {
-        contentImportdealPostWithHttpInfo(body);
+    public String contentImportdealPost(MainImportDealBody body) throws ApiException {
+        ApiResponse<String> resp = contentImportdealPostWithHttpInfo(body);
+        return resp.getData();
     }
 
     /**
      * Import a deal
      * This endpoint imports a deal into the shuttle.
      * @param body Import a deal (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentImportdealPostWithHttpInfo(MainImportDealBody body) throws ApiException {
+    public ApiResponse<String> contentImportdealPostWithHttpInfo(MainImportDealBody body) throws ApiException {
         com.squareup.okhttp.Call call = contentImportdealPostValidateBeforeCall(body, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1555,7 +1591,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentImportdealPostAsync(MainImportDealBody body, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentImportdealPostAsync(MainImportDealBody body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1577,7 +1613,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentImportdealPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1640,23 +1677,23 @@ public class ContentApi {
     /**
      * List all pinned content
      * This endpoint lists all content
-     * @return List&lt;String&gt;
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<String> contentListGet() throws ApiException {
-        ApiResponse<List<String>> resp = contentListGetWithHttpInfo();
+    public String contentListGet() throws ApiException {
+        ApiResponse<String> resp = contentListGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * List all pinned content
      * This endpoint lists all content
-     * @return ApiResponse&lt;List&lt;String&gt;&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<String>> contentListGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> contentListGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = contentListGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1667,7 +1704,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentListGetAsync(final ApiCallback<List<String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentListGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1689,7 +1726,7 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentListGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1761,22 +1798,25 @@ public class ContentApi {
      * Read content
      * This endpoint reads content from the blockstore
      * @param cont CID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentReadContGet(String cont) throws ApiException {
-        contentReadContGetWithHttpInfo(cont);
+    public String contentReadContGet(String cont) throws ApiException {
+        ApiResponse<String> resp = contentReadContGetWithHttpInfo(cont);
+        return resp.getData();
     }
 
     /**
      * Read content
      * This endpoint reads content from the blockstore
      * @param cont CID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentReadContGetWithHttpInfo(String cont) throws ApiException {
+    public ApiResponse<String> contentReadContGetWithHttpInfo(String cont) throws ApiException {
         com.squareup.okhttp.Call call = contentReadContGetValidateBeforeCall(cont, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1787,7 +1827,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentReadContGetAsync(String cont, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentReadContGetAsync(String cont, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1809,7 +1849,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentReadContGetValidateBeforeCall(cont, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1872,21 +1913,24 @@ public class ContentApi {
     /**
      * Get staging zone for user
      * This endpoint is used to get staging zone for user.
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentStagingZonesGet() throws ApiException {
-        contentStagingZonesGetWithHttpInfo();
+    public String contentStagingZonesGet() throws ApiException {
+        ApiResponse<String> resp = contentStagingZonesGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get staging zone for user
      * This endpoint is used to get staging zone for user.
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentStagingZonesGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> contentStagingZonesGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = contentStagingZonesGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -1896,7 +1940,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentStagingZonesGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentStagingZonesGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1918,7 +1962,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentStagingZonesGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -1999,10 +2044,12 @@ public class ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param limit limit (required)
      * @param offset offset (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentStatsGet(String limit, String offset) throws ApiException {
-        contentStatsGetWithHttpInfo(limit, offset);
+    public String contentStatsGet(String limit, String offset) throws ApiException {
+        ApiResponse<String> resp = contentStatsGetWithHttpInfo(limit, offset);
+        return resp.getData();
     }
 
     /**
@@ -2010,12 +2057,13 @@ public class ContentApi {
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
      * @param limit limit (required)
      * @param offset offset (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentStatsGetWithHttpInfo(String limit, String offset) throws ApiException {
+    public ApiResponse<String> contentStatsGetWithHttpInfo(String limit, String offset) throws ApiException {
         com.squareup.okhttp.Call call = contentStatsGetValidateBeforeCall(limit, offset, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2027,7 +2075,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentStatsGetAsync(String limit, String offset, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentStatsGetAsync(String limit, String offset, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2049,7 +2097,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentStatsGetValidateBeforeCall(limit, offset, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -2120,22 +2169,25 @@ public class ContentApi {
      * Content Status
      * This endpoint returns the status of a content
      * @param id Content ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void contentStatusIdGet(Integer id) throws ApiException {
-        contentStatusIdGetWithHttpInfo(id);
+    public String contentStatusIdGet(Integer id) throws ApiException {
+        ApiResponse<String> resp = contentStatusIdGetWithHttpInfo(id);
+        return resp.getData();
     }
 
     /**
      * Content Status
      * This endpoint returns the status of a content
      * @param id Content ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> contentStatusIdGetWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<String> contentStatusIdGetWithHttpInfo(Integer id) throws ApiException {
         com.squareup.okhttp.Call call = contentStatusIdGetValidateBeforeCall(id, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -2146,7 +2198,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentStatusIdGetAsync(Integer id, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentStatusIdGetAsync(Integer id, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2168,7 +2220,8 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentStatusIdGetValidateBeforeCall(id, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

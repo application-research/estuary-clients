@@ -8,7 +8,11 @@ class MainGetApiKeysResp {
 
     String expiry = null
 
+    String label = null
+
     String token = null
+
+    String tokenHash = null
   
 
 }

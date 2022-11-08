@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerNetApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -38,7 +39,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<FString> Content;
+    FString Content;
 };
 
 /* Get all miners
@@ -60,9 +61,10 @@ class SWAGGER_API SwaggerNetApi::PublicMinersFailuresMinerGetResponse : public R
 {
 public:
     virtual ~PublicMinersFailuresMinerGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get all miners
@@ -82,9 +84,10 @@ class SWAGGER_API SwaggerNetApi::PublicMinersGetResponse : public Response
 {
 public:
     virtual ~PublicMinersGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Net Addrs

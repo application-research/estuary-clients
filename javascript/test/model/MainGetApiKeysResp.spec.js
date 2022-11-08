@@ -46,10 +46,22 @@
         // expect(instance.expiry).to.be(expectedValueLiteral);
       });
 
+      it('should have the property label (base name: "label")', function() {
+        // TODO: update the code to test the property label
+        expect(instance).to.have.property('label');
+        // expect(instance.label).to.be(expectedValueLiteral);
+      });
+
       it('should have the property token (base name: "token")', function() {
         // TODO: update the code to test the property token
         expect(instance).to.have.property('token');
         // expect(instance.token).to.be(expectedValueLiteral);
+      });
+
+      it('should have the property tokenHash (base name: "tokenHash")', function() {
+        // TODO: update the code to test the property tokenHash
+        expect(instance).to.have.property('tokenHash');
+        // expect(instance.tokenHash).to.be(expectedValueLiteral);
       });
 
     });

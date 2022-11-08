@@ -78,6 +78,13 @@ class TestDealsApi(unittest.TestCase):
         """
         pass
 
+    def test_deal_transfer_status_post(self):
+        """Test case for deal_transfer_status_post
+
+        Transfer Status  # noqa: E501
+        """
+        pass
+
     def test_deals_failures_get(self):
         """Test case for deals_failures_get
 

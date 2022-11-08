@@ -45,7 +45,7 @@ class AutoretrieveApi(object):
         :param async_req bool
         :param str addresses: Autoretrieve's comma-separated list of addresses (required)
         :param str pub_key: Autoretrieve's public key (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -68,7 +68,7 @@ class AutoretrieveApi(object):
         :param async_req bool
         :param str addresses: Autoretrieve's comma-separated list of addresses (required)
         :param str pub_key: Autoretrieve's public key (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -107,10 +107,12 @@ class AutoretrieveApi(object):
 
         form_params = []
         local_var_files = {}
+        if 'addresses' in params:
+            form_params.append(('addresses', params['addresses']))  # noqa: E501
+        if 'pub_key' in params:
+            form_params.append(('pubKey', params['pub_key']))  # noqa: E501
 
         body_params = None
-        if 'pub_key' in params:
-            body_params = params['pub_key']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -126,7 +128,7 @@ class AutoretrieveApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -144,7 +146,7 @@ class AutoretrieveApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -165,7 +167,7 @@ class AutoretrieveApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -213,7 +215,7 @@ class AutoretrieveApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -232,7 +234,7 @@ class AutoretrieveApi(object):
 
         :param async_req bool
         :param str token: Autoretrieve's auth token (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -254,7 +256,7 @@ class AutoretrieveApi(object):
 
         :param async_req bool
         :param str token: Autoretrieve's auth token (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -308,7 +310,7 @@ class AutoretrieveApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -113,21 +114,24 @@ public class MetricsApi {
     /**
      * Get deal metrics
      * This endpoint is used to get deal metrics
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMetricsDealsOnChainGet() throws ApiException {
-        publicMetricsDealsOnChainGetWithHttpInfo();
+    public String publicMetricsDealsOnChainGet() throws ApiException {
+        ApiResponse<String> resp = publicMetricsDealsOnChainGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get deal metrics
      * This endpoint is used to get deal metrics
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMetricsDealsOnChainGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> publicMetricsDealsOnChainGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = publicMetricsDealsOnChainGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -137,7 +141,7 @@ public class MetricsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMetricsDealsOnChainGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMetricsDealsOnChainGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -159,7 +163,8 @@ public class MetricsApi {
         }
 
         com.squareup.okhttp.Call call = publicMetricsDealsOnChainGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
 }

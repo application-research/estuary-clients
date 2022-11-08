@@ -1,6 +1,7 @@
 #import "SWGPinningApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGTypesIpfsPin.h"
 #import "SWGUtilHttpError.h"
 
 
@@ -52,10 +53,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 ///
 /// List all pin status objects
 /// This endpoint lists all pin status objects
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) pinningPinsGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/pinning/pins"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -93,10 +94,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -106,17 +107,17 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 /// This endpoint deletes a pinned object.
 ///  @param pinid Pin ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) pinningPinsPinidDeleteWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'pinid' is set
     if (pinid == nil) {
         NSParameterAssert(pinid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinid"] };
             NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -161,10 +162,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -174,17 +175,17 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 /// This endpoint returns a pin status object.
 ///  @param pinid cid 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) pinningPinsPinidGetWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'pinid' is set
     if (pinid == nil) {
         NSParameterAssert(pinid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinid"] };
             NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -229,10 +230,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -242,17 +243,17 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 /// This endpoint replaces a pinned object.
 ///  @param pinid Pin ID 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) pinningPinsPinidPostWithPinid: (NSString*) pinid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'pinid' is set
     if (pinid == nil) {
         NSParameterAssert(pinid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pinid"] };
             NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -297,10 +298,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -308,33 +309,19 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
 ///
 /// Add and pin object
 /// This endpoint adds a pin to the IPFS daemon.
-///  @param cid cid 
+///  @param pin Pin Body {cid:cid, name:name} 
 ///
-///  @param name name 
+///  @returns NSString*
 ///
-///  @returns void
-///
--(NSURLSessionTask*) pinningPinsPostWithCid: (NSString*) cid
-    name: (NSString*) name
-    completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'cid' is set
-    if (cid == nil) {
-        NSParameterAssert(cid);
+-(NSURLSessionTask*) pinningPinsPostWithPin: (SWGTypesIpfsPin*) pin
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
+    // verify the required parameter 'pin' is set
+    if (pin == nil) {
+        NSParameterAssert(pin);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cid"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pin"] };
             NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
-        }
-        return nil;
-    }
-
-    // verify the required parameter 'name' is set
-    if (name == nil) {
-        NSParameterAssert(name);
-        if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"name"] };
-            NSError* error = [NSError errorWithDomain:kSWGPinningApiErrorDomain code:kSWGPinningApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -342,12 +329,6 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/pinning/pins"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (cid != nil) {
-        pathParams[@"cid"] = cid;
-    }
-    if (name != nil) {
-        pathParams[@"name"] = name;
-    }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
@@ -370,6 +351,7 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
+    bodyParam = pin;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -382,10 +364,10 @@ NSInteger kSWGPinningApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

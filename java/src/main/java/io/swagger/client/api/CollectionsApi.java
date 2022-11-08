@@ -390,22 +390,25 @@ public class CollectionsApi {
      * Deletes a collection
      * This endpoint is used to delete an existing collection.
      * @param coluuid Collection ID (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void collectionsColuuidDelete(String coluuid) throws ApiException {
-        collectionsColuuidDeleteWithHttpInfo(coluuid);
+    public String collectionsColuuidDelete(String coluuid) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidDeleteWithHttpInfo(coluuid);
+        return resp.getData();
     }
 
     /**
      * Deletes a collection
      * This endpoint is used to delete an existing collection.
      * @param coluuid Collection ID (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> collectionsColuuidDeleteWithHttpInfo(String coluuid) throws ApiException {
+    public ApiResponse<String> collectionsColuuidDeleteWithHttpInfo(String coluuid) throws ApiException {
         com.squareup.okhttp.Call call = collectionsColuuidDeleteValidateBeforeCall(coluuid, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -416,7 +419,7 @@ public class CollectionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidDeleteAsync(String coluuid, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidDeleteAsync(String coluuid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -438,7 +441,8 @@ public class CollectionsApi {
         }
 
         com.squareup.okhttp.Call call = collectionsColuuidDeleteValidateBeforeCall(coluuid, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -645,11 +649,11 @@ public class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param coluuid coluuid (required)
      * @param contentIDs Content IDs to add to collection (required)
-     * @return Map&lt;String, String&gt;
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Map<String, String> collectionsColuuidPost(String coluuid, List<Integer> contentIDs) throws ApiException {
-        ApiResponse<Map<String, String>> resp = collectionsColuuidPostWithHttpInfo(coluuid, contentIDs);
+    public String collectionsColuuidPost(String coluuid, List<Integer> contentIDs) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(coluuid, contentIDs);
         return resp.getData();
     }
 
@@ -658,12 +662,12 @@ public class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param coluuid coluuid (required)
      * @param contentIDs Content IDs to add to collection (required)
-     * @return ApiResponse&lt;Map&lt;String, String&gt;&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Map<String, String>> collectionsColuuidPostWithHttpInfo(String coluuid, List<Integer> contentIDs) throws ApiException {
+    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(String coluuid, List<Integer> contentIDs) throws ApiException {
         com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(coluuid, contentIDs, null, null);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -676,7 +680,7 @@ public class CollectionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostAsync(String coluuid, List<Integer> contentIDs, final ApiCallback<Map<String, String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostAsync(String coluuid, List<Integer> contentIDs, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -698,7 +702,7 @@ public class CollectionsApi {
         }
 
         com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(coluuid, contentIDs, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -789,10 +793,12 @@ public class CollectionsApi {
      * @param coluuid Collection ID (required)
      * @param content Content (required)
      * @param path Path to file (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void collectionsFsAddPost(String coluuid, String content, String path) throws ApiException {
-        collectionsFsAddPostWithHttpInfo(coluuid, content, path);
+    public String collectionsFsAddPost(String coluuid, String content, String path) throws ApiException {
+        ApiResponse<String> resp = collectionsFsAddPostWithHttpInfo(coluuid, content, path);
+        return resp.getData();
     }
 
     /**
@@ -801,12 +807,13 @@ public class CollectionsApi {
      * @param coluuid Collection ID (required)
      * @param content Content (required)
      * @param path Path to file (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> collectionsFsAddPostWithHttpInfo(String coluuid, String content, String path) throws ApiException {
+    public ApiResponse<String> collectionsFsAddPostWithHttpInfo(String coluuid, String content, String path) throws ApiException {
         com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, path, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -819,7 +826,7 @@ public class CollectionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsFsAddPostAsync(String coluuid, String content, String path, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsFsAddPostAsync(String coluuid, String content, String path, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -841,7 +848,8 @@ public class CollectionsApi {
         }
 
         com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, path, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -904,23 +912,23 @@ public class CollectionsApi {
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @return List&lt;CollectionsCollection&gt;
+     * @return List&lt;List&lt;CollectionsCollection&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<CollectionsCollection> collectionsGet() throws ApiException {
-        ApiResponse<List<CollectionsCollection>> resp = collectionsGetWithHttpInfo();
+    public List<List<CollectionsCollection>> collectionsGet() throws ApiException {
+        ApiResponse<List<List<CollectionsCollection>>> resp = collectionsGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @return ApiResponse&lt;List&lt;CollectionsCollection&gt;&gt;
+     * @return ApiResponse&lt;List&lt;List&lt;CollectionsCollection&gt;&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<CollectionsCollection>> collectionsGetWithHttpInfo() throws ApiException {
+    public ApiResponse<List<List<CollectionsCollection>>> collectionsGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = collectionsGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<CollectionsCollection>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<List<CollectionsCollection>>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -931,7 +939,7 @@ public class CollectionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsGetAsync(final ApiCallback<List<CollectionsCollection>> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsGetAsync(final ApiCallback<List<List<CollectionsCollection>>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -953,7 +961,7 @@ public class CollectionsApi {
         }
 
         com.squareup.okhttp.Call call = collectionsGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<CollectionsCollection>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<List<CollectionsCollection>>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

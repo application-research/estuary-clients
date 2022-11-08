@@ -15,73 +15,79 @@ namespace estuary-client.Api
         /// Estimate the cost of a deal This endpoint estimates the cost of a deal
         /// </summary>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
-        /// <returns></returns>
-        void DealEstimatePost (MainEstimateDealBody body);
+        /// <returns>string</returns>
+        string DealEstimatePost (MainEstimateDealBody body);
         /// <summary>
         /// Get Deal Info This endpoint returns the deal info for a deal
         /// </summary>
         /// <param name="dealid">Deal ID</param>
-        /// <returns></returns>
-        void DealInfoDealidGet (int? dealid);
+        /// <returns>string</returns>
+        string DealInfoDealidGet (int? dealid);
         /// <summary>
         /// Get Proposal This endpoint returns the proposal for a deal
         /// </summary>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        void DealProposalPropcidGet (string propcid);
+        /// <returns>string</returns>
+        string DealProposalPropcidGet (string propcid);
         /// <summary>
         /// Query Ask This endpoint returns the ask for a given CID
         /// </summary>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        void DealQueryMinerGet (string miner);
+        /// <returns>string</returns>
+        string DealQueryMinerGet (string miner);
         /// <summary>
         /// Get Deal Status by PropCid Get Deal Status by PropCid
         /// </summary>
         /// <param name="propcid">PropCid</param>
-        /// <returns></returns>
-        void DealStatusByProposalPropcidGet (string propcid);
+        /// <returns>string</returns>
+        string DealStatusByProposalPropcidGet (string propcid);
         /// <summary>
         /// Deal Status This endpoint returns the status of a deal
         /// </summary>
         /// <param name="miner">Miner</param>
         /// <param name="propcid">Proposal CID</param>
-        /// <returns></returns>
-        void DealStatusMinerPropcidGet (string miner, string propcid);
+        /// <returns>string</returns>
+        string DealStatusMinerPropcidGet (string miner, string propcid);
         /// <summary>
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
-        /// <returns></returns>
-        void DealTransferInProgressGet ();
+        /// <returns>string</returns>
+        string DealTransferInProgressGet ();
+        /// <summary>
+        /// Transfer Status This endpoint returns the status of a transfer
+        /// </summary>
+        /// <param name="chanid">Channel ID</param>
+        /// <returns>string</returns>
+        string DealTransferStatusPost (MainChannelIDParam chanid);
         /// <summary>
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
-        /// <returns></returns>
-        void DealsFailuresGet ();
+        /// <returns>string</returns>
+        string DealsFailuresGet ();
         /// <summary>
         /// Make Deal This endpoint makes a deal for a given content and miner
         /// </summary>
         /// <param name="miner">Miner</param>
         /// <param name="dealRequest">Deal Request</param>
-        /// <returns></returns>
-        void DealsMakeMinerPost (string miner, string dealRequest);
+        /// <returns>string</returns>
+        string DealsMakeMinerPost (string miner, string dealRequest);
         /// <summary>
         /// Get Deal Status This endpoint returns the status of a deal
         /// </summary>
         /// <param name="deal">Deal ID</param>
-        /// <returns></returns>
-        void DealsStatusDealGet (int? deal);
+        /// <returns>string</returns>
+        string DealsStatusDealGet (int? deal);
         /// <summary>
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
-        /// <returns></returns>
-        void PublicDealsFailuresGet ();
+        /// <returns>string</returns>
+        string PublicDealsFailuresGet ();
         /// <summary>
         /// Query Ask This endpoint returns the ask for a given CID
         /// </summary>
         /// <param name="miner">CID</param>
-        /// <returns></returns>
-        void PublicMinersStorageQueryMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersStorageQueryMinerGet (string miner);
     }
   
     /// <summary>
@@ -141,8 +147,8 @@ namespace estuary-client.Api
         /// Estimate the cost of a deal This endpoint estimates the cost of a deal
         /// </summary>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param> 
-        /// <returns></returns>            
-        public void DealEstimatePost (MainEstimateDealBody body)
+        /// <returns>string</returns>            
+        public string DealEstimatePost (MainEstimateDealBody body)
         {
             
             // verify the required parameter 'body' is set
@@ -171,15 +177,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealEstimatePost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get Deal Info This endpoint returns the deal info for a deal
         /// </summary>
         /// <param name="dealid">Deal ID</param> 
-        /// <returns></returns>            
-        public void DealInfoDealidGet (int? dealid)
+        /// <returns>string</returns>            
+        public string DealInfoDealidGet (int? dealid)
         {
             
             // verify the required parameter 'dealid' is set
@@ -208,15 +214,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealInfoDealidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get Proposal This endpoint returns the proposal for a deal
         /// </summary>
         /// <param name="propcid">Proposal CID</param> 
-        /// <returns></returns>            
-        public void DealProposalPropcidGet (string propcid)
+        /// <returns>string</returns>            
+        public string DealProposalPropcidGet (string propcid)
         {
             
             // verify the required parameter 'propcid' is set
@@ -245,15 +251,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealProposalPropcidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Query Ask This endpoint returns the ask for a given CID
         /// </summary>
         /// <param name="miner">CID</param> 
-        /// <returns></returns>            
-        public void DealQueryMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string DealQueryMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -282,15 +288,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealQueryMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get Deal Status by PropCid Get Deal Status by PropCid
         /// </summary>
         /// <param name="propcid">PropCid</param> 
-        /// <returns></returns>            
-        public void DealStatusByProposalPropcidGet (string propcid)
+        /// <returns>string</returns>            
+        public string DealStatusByProposalPropcidGet (string propcid)
         {
             
             // verify the required parameter 'propcid' is set
@@ -319,7 +325,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealStatusByProposalPropcidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -327,8 +333,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <param name="miner">Miner</param> 
         /// <param name="propcid">Proposal CID</param> 
-        /// <returns></returns>            
-        public void DealStatusMinerPropcidGet (string miner, string propcid)
+        /// <returns>string</returns>            
+        public string DealStatusMinerPropcidGet (string miner, string propcid)
         {
             
             // verify the required parameter 'miner' is set
@@ -361,14 +367,14 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealStatusMinerPropcidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Transfer In Progress This endpoint returns the in-progress transfers
         /// </summary>
-        /// <returns></returns>            
-        public void DealTransferInProgressGet ()
+        /// <returns>string</returns>            
+        public string DealTransferInProgressGet ()
         {
             
     
@@ -393,14 +399,51 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealTransferInProgressGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Transfer Status This endpoint returns the status of a transfer
+        /// </summary>
+        /// <param name="chanid">Channel ID</param> 
+        /// <returns>string</returns>            
+        public string DealTransferStatusPost (MainChannelIDParam chanid)
+        {
+            
+            // verify the required parameter 'chanid' is set
+            if (chanid == null) throw new ApiException(400, "Missing required parameter 'chanid' when calling DealTransferStatusPost");
+            
+    
+            var path = "/deal/transfer/status";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                                postBody = ApiClient.Serialize(chanid); // http body (model) parameter
+    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling DealTransferStatusPost: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling DealTransferStatusPost: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
-        /// <returns></returns>            
-        public void DealsFailuresGet ()
+        /// <returns>string</returns>            
+        public string DealsFailuresGet ()
         {
             
     
@@ -425,7 +468,7 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealsFailuresGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -433,8 +476,8 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
         /// </summary>
         /// <param name="miner">Miner</param> 
         /// <param name="dealRequest">Deal Request</param> 
-        /// <returns></returns>            
-        public void DealsMakeMinerPost (string miner, string dealRequest)
+        /// <returns>string</returns>            
+        public string DealsMakeMinerPost (string miner, string dealRequest)
         {
             
             // verify the required parameter 'miner' is set
@@ -467,15 +510,15 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealsMakeMinerPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get Deal Status This endpoint returns the status of a deal
         /// </summary>
         /// <param name="deal">Deal ID</param> 
-        /// <returns></returns>            
-        public void DealsStatusDealGet (int? deal)
+        /// <returns>string</returns>            
+        public string DealsStatusDealGet (int? deal)
         {
             
             // verify the required parameter 'deal' is set
@@ -504,14 +547,14 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling DealsStatusDealGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Get storage failures This endpoint returns a list of storage failures
         /// </summary>
-        /// <returns></returns>            
-        public void PublicDealsFailuresGet ()
+        /// <returns>string</returns>            
+        public string PublicDealsFailuresGet ()
         {
             
     
@@ -536,15 +579,15 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicDealsFailuresGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Query Ask This endpoint returns the ask for a given CID
         /// </summary>
         /// <param name="miner">CID</param> 
-        /// <returns></returns>            
-        public void PublicMinersStorageQueryMinerGet (string miner)
+        /// <returns>string</returns>            
+        public string PublicMinersStorageQueryMinerGet (string miner)
         {
             
             // verify the required parameter 'miner' is set
@@ -573,7 +616,7 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersStorageQueryMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+> String collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -136,7 +136,8 @@ var api_instance = new CollectionsApi();
 var coluuid = coluuid_example; // String | Collection ID
 
 try { 
-    api_instance.collectionsColuuidDelete(coluuid);
+    var result = api_instance.collectionsColuuidDelete(coluuid);
+    print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidDelete: $e\n");
 }
@@ -150,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -213,7 +214,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidPost**
-> Map<String, String> collectionsColuuidPost(coluuid, contentIDs)
+> String collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -248,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Map<String, String>**
+**String**
 
 ### Authorization
 
@@ -262,7 +263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -282,7 +283,8 @@ var content = content_example; // String | Content
 var path = path_example; // String | Path to file
 
 try { 
-    api_instance.collectionsFsAddPost(coluuid, content, path);
+    var result = api_instance.collectionsFsAddPost(coluuid, content, path);
+    print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsFsAddPost: $e\n");
 }
@@ -298,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -312,7 +314,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsGet**
-> List<CollectionsCollection> collectionsGet()
+> List<List<CollectionsCollection>> collectionsGet()
 
 List all collections
 
@@ -341,7 +343,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<CollectionsCollection>**](CollectionsCollection.md)
+[**List<List<CollectionsCollection>>**](List.md)
 
 ### Authorization
 

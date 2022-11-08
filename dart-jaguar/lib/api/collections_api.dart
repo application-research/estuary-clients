@@ -42,7 +42,7 @@ class CollectionsApi extends _$CollectionsApiClient implements ApiClient {
     ///
     /// This endpoint is used to delete an existing collection.
     @DeleteReq(path: "/collections/:coluuid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> collectionsColuuidDelete(
+    Future<String> collectionsColuuidDelete(
             @PathParam("coluuid") String coluuid
     );
 
@@ -60,7 +60,7 @@ class CollectionsApi extends _$CollectionsApiClient implements ApiClient {
     ///
     /// This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
     @PostReq(path: "/collections/:coluuid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<Map<String, String>> collectionsColuuidPost(
+    Future<String> collectionsColuuidPost(
             @PathParam("coluuid") String coluuid
         ,
         @AsJson() List<int> contentIDs
@@ -70,7 +70,7 @@ class CollectionsApi extends _$CollectionsApiClient implements ApiClient {
     ///
     /// This endpoint adds a file to a collection
     @PostReq(path: "/collections/fs/add", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<void> collectionsFsAddPost(
+    Future<String> collectionsFsAddPost(
         
         @QueryParam("coluuid") String coluuid, 
         
@@ -83,7 +83,7 @@ class CollectionsApi extends _$CollectionsApiClient implements ApiClient {
     ///
     /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     @GetReq(path: "/collections/", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<List<CollectionsCollection>> collectionsGet(
+    Future<List<List<CollectionsCollection>>> collectionsGet(
     );
 
     /// Create a new collection

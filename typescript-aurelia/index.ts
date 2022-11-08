@@ -17,7 +17,6 @@ export { AutoretrieveApi } from './AutoretrieveApi';
 export { CollectionsApi } from './CollectionsApi';
 export { ContentApi } from './ContentApi';
 export { DealsApi } from './DealsApi';
-export { DefaultApi } from './DefaultApi';
 export { MetricsApi } from './MetricsApi';
 export { MinerApi } from './MinerApi';
 export { NetApi } from './NetApi';
@@ -28,12 +27,13 @@ export { PublicApi } from './PublicApi';
 export { UserApi } from './UserApi';
 export {
   CollectionsCollection,
+  MainChannelIDParam,
   MainCreateCollectionBody,
   MainDeleteContentFromCollectionBody,
   MainEstimateDealBody,
   MainGetApiKeysResp,
   MainImportDealBody,
-  MainUserStatsResponse,
+  TypesIpfsPin,
   UtilContentAddIpfsBody,
   UtilContentAddResponse,
   UtilContentCreateBody,

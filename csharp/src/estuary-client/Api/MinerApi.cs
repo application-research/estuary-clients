@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using estuary-client.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -32,8 +33,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns></returns>
-        void PublicMinersDealsMinerGet (string miner, string ignoreFailed = null);
+        /// <returns>string</returns>
+        string PublicMinersDealsMinerGet (string miner, string ignoreFailed = null);
 
         /// <summary>
         /// Get all miners deals
@@ -44,8 +45,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PublicMinersDealsMinerGetWithHttpInfo (string miner, string ignoreFailed = null);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> PublicMinersDealsMinerGetWithHttpInfo (string miner, string ignoreFailed = null);
         /// <summary>
         /// Get miner stats
         /// </summary>
@@ -54,8 +55,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        void PublicMinersStatsMinerGet (string miner);
+        /// <returns>string</returns>
+        string PublicMinersStatsMinerGet (string miner);
 
         /// <summary>
         /// Get miner stats
@@ -65,8 +66,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PublicMinersStatsMinerGetWithHttpInfo (string miner);
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> PublicMinersStatsMinerGetWithHttpInfo (string miner);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -78,8 +79,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PublicMinersDealsMinerGetAsync (string miner, string ignoreFailed = null);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> PublicMinersDealsMinerGetAsync (string miner, string ignoreFailed = null);
 
         /// <summary>
         /// Get all miners deals
@@ -90,8 +91,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersDealsMinerGetAsyncWithHttpInfo (string miner, string ignoreFailed = null);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersDealsMinerGetAsyncWithHttpInfo (string miner, string ignoreFailed = null);
         /// <summary>
         /// Get miner stats
         /// </summary>
@@ -100,8 +101,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PublicMinersStatsMinerGetAsync (string miner);
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> PublicMinersStatsMinerGetAsync (string miner);
 
         /// <summary>
         /// Get miner stats
@@ -111,8 +112,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersStatsMinerGetAsyncWithHttpInfo (string miner);
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersStatsMinerGetAsyncWithHttpInfo (string miner);
         #endregion Asynchronous Operations
     }
 
@@ -219,10 +220,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns></returns>
-        public void PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
+        /// <returns>string</returns>
+        public string PublicMinersDealsMinerGet (string miner, string ignoreFailed = null)
         {
-             PublicMinersDealsMinerGetWithHttpInfo(miner, ignoreFailed);
+             ApiResponse<string> localVarResponse = PublicMinersDealsMinerGetWithHttpInfo(miner, ignoreFailed);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -231,8 +233,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PublicMinersDealsMinerGetWithHttpInfo (string miner, string ignoreFailed = null)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > PublicMinersDealsMinerGetWithHttpInfo (string miner, string ignoreFailed = null)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -281,9 +283,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -292,10 +294,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PublicMinersDealsMinerGetAsync (string miner, string ignoreFailed = null)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> PublicMinersDealsMinerGetAsync (string miner, string ignoreFailed = null)
         {
-             await PublicMinersDealsMinerGetAsyncWithHttpInfo(miner, ignoreFailed);
+             ApiResponse<string> localVarResponse = await PublicMinersDealsMinerGetAsyncWithHttpInfo(miner, ignoreFailed);
+             return localVarResponse.Data;
 
         }
 
@@ -305,8 +308,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
         /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersDealsMinerGetAsyncWithHttpInfo (string miner, string ignoreFailed = null)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersDealsMinerGetAsyncWithHttpInfo (string miner, string ignoreFailed = null)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -355,9 +358,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -365,10 +368,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns></returns>
-        public void PublicMinersStatsMinerGet (string miner)
+        /// <returns>string</returns>
+        public string PublicMinersStatsMinerGet (string miner)
         {
-             PublicMinersStatsMinerGetWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = PublicMinersStatsMinerGetWithHttpInfo(miner);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -376,8 +380,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PublicMinersStatsMinerGetWithHttpInfo (string miner)
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > PublicMinersStatsMinerGetWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -425,9 +429,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>
@@ -435,10 +439,11 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PublicMinersStatsMinerGetAsync (string miner)
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> PublicMinersStatsMinerGetAsync (string miner)
         {
-             await PublicMinersStatsMinerGetAsyncWithHttpInfo(miner);
+             ApiResponse<string> localVarResponse = await PublicMinersStatsMinerGetAsyncWithHttpInfo(miner);
+             return localVarResponse.Data;
 
         }
 
@@ -447,8 +452,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Filter by miner</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PublicMinersStatsMinerGetAsyncWithHttpInfo (string miner)
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersStatsMinerGetAsyncWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -496,9 +501,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<string>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
     }

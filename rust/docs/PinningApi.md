@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get(ctx, )
+> String pinning_pins_get(ctx, )
 List all pin status objects
 
 This endpoint lists all pin status objects
@@ -22,7 +22,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete(ctx, pinid)
+> String pinning_pins_pinid_delete(ctx, pinid)
 Delete a pinned object
 
 This endpoint deletes a pinned object.
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get(ctx, pinid)
+> String pinning_pins_pinid_get(ctx, pinid)
 Get a pin status object
 
 This endpoint returns a pin status object.
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post(ctx, pinid)
+> String pinning_pins_pinid_post(ctx, pinid)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> pinning_pins_post(ctx, cid, name)
+> String pinning_pins_post(ctx, pin)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -130,12 +130,11 @@ This endpoint adds a pin to the IPFS daemon.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **cid** | **String**| cid | 
-  **name** | **String**| name | 
+  **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 

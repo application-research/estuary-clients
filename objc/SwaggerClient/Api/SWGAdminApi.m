@@ -1,6 +1,7 @@
 #import "SWGAdminApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGAdminApi ()
@@ -51,19 +52,19 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Remove peers on Peering Service
 /// This endpoint can be used to remove a Peer from the Peering Service
-///  @param body Peer ids 
+///  @param peerIds Peer ids 
 ///
-///  @returns void
+///  @returns NSString*
 ///
--(NSURLSessionTask*) adminPeeringPeersDeleteWithBody: (NSArray<NSString*>*) body
-    completionHandler: (void (^)(NSError* error)) handler {
-    // verify the required parameter 'body' is set
-    if (body == nil) {
-        NSParameterAssert(body);
+-(NSURLSessionTask*) adminPeeringPeersDeleteWithPeerIds: (NSArray<NSNumber*>*) peerIds
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
+    // verify the required parameter 'peerIds' is set
+    if (peerIds == nil) {
+        NSParameterAssert(peerIds);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"body"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"peerIds"] };
             NSError* error = [NSError errorWithDomain:kSWGAdminApiErrorDomain code:kSWGAdminApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -93,7 +94,7 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = body;
+    bodyParam = peerIds;
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"DELETE"
@@ -106,10 +107,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -117,10 +118,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// List all Peering peers
 /// This endpoint can be used to list all peers on Peering Service
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminPeeringPeersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/peers"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -158,10 +159,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -169,10 +170,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Add peers on Peering Service
 /// This endpoint can be used to add a Peer from the Peering Service
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminPeeringPeersPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/peers"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -210,10 +211,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -221,10 +222,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Start Peering
 /// This endpoint can be used to start the Peering Service
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminPeeringStartPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/start"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -262,10 +263,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -273,10 +274,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Check Peering Status
 /// This endpoint can be used to check the Peering status
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminPeeringStatusGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/status"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -314,10 +315,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -325,10 +326,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Stop Peering
 /// This endpoint can be used to stop the Peering Service
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminPeeringStopPostWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/peering/stop"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -366,10 +367,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -377,10 +378,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Get systems(estuary/shuttle) config
 /// This endpoint is used to get system configs.
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminSystemConfigGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/system/config"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -418,10 +419,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -429,10 +430,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
 ///
 /// Get all users
 /// This endpoint is used to get all users.
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminUsersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/users"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -470,10 +471,10 @@ NSInteger kSWGAdminApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

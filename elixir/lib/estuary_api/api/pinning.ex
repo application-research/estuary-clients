@@ -22,10 +22,10 @@ defmodule EstuaryAPI.Api.Pinning do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_get(Tesla.Env.client, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec pinning_pins_get(Tesla.Env.client, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def pinning_pins_get(connection, _opts \\ []) do
     %{}
     |> method(:get)
@@ -47,10 +47,10 @@ defmodule EstuaryAPI.Api.Pinning do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_pinid_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec pinning_pins_pinid_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def pinning_pins_pinid_delete(connection, pinid, _opts \\ []) do
     %{}
     |> method(:delete)
@@ -72,10 +72,10 @@ defmodule EstuaryAPI.Api.Pinning do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_pinid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec pinning_pins_pinid_get(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def pinning_pins_pinid_get(connection, pinid, _opts \\ []) do
     %{}
     |> method(:get)
@@ -97,10 +97,10 @@ defmodule EstuaryAPI.Api.Pinning do
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_pinid_post(Tesla.Env.client, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
+  @spec pinning_pins_pinid_post(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
   def pinning_pins_pinid_post(connection, pinid, _opts \\ []) do
     %{}
     |> method(:post)
@@ -117,20 +117,20 @@ defmodule EstuaryAPI.Api.Pinning do
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - cid (String.t): cid
-  - name (String.t): name
+  - pin (TypesIpfsPin): Pin Body {cid:cid, name:name}
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
 
-  {:ok, %{}} on success
+  {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec pinning_pins_post(Tesla.Env.client, String.t, String.t, keyword()) :: {:ok, nil} | {:error, Tesla.Env.t}
-  def pinning_pins_post(connection, cid, name, _opts \\ []) do
+  @spec pinning_pins_post(Tesla.Env.client, EstuaryAPI.Model.TypesIpfsPin.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def pinning_pins_post(connection, pin, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/pinning/pins")
+    |> add_param(:body, :"pin", pin)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

@@ -27,8 +27,8 @@ object NetApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def netAddrsGet(host: String): Task[List[String]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+  def netAddrsGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/net/addrs"
     
@@ -43,12 +43,14 @@ object NetApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[String]](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def publicMinersFailuresMinerGet(host: String, miner: String): Task[Unit] = {
+  def publicMinersFailuresMinerGet(host: String, miner: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/miners/failures/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -62,12 +64,14 @@ object NetApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def publicMinersGet(host: String): Task[Unit] = {
+  def publicMinersGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/miners"
     
     val httpMethod = Method.GET
@@ -81,7 +85,7 @@ object NetApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -135,8 +139,8 @@ class HttpServiceNetApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def netAddrsGet(): Task[List[String]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+  def netAddrsGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
     val path = "/net/addrs"
     
@@ -151,12 +155,14 @@ class HttpServiceNetApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[String]](req)
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def publicMinersFailuresMinerGet(miner: String): Task[Unit] = {
+  def publicMinersFailuresMinerGet(miner: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/miners/failures/{miner}".replaceAll("\\{" + "miner" + "\\}",escape(miner.toString))
     
     val httpMethod = Method.GET
@@ -170,12 +176,14 @@ class HttpServiceNetApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def publicMinersGet(): Task[Unit] = {
+  def publicMinersGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/public/miners"
     
     val httpMethod = Method.GET
@@ -189,7 +197,7 @@ class HttpServiceNetApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**PublicNetPeersGet**](NetApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
 
 # **NetAddrsGet**
-> []string NetAddrsGet(ctx, )
+> string NetAddrsGet(ctx, )
 Net Addrs
 
 This endpoint is used to get net addrs
@@ -21,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[]string**
+**string**
 
 ### Authorization
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersFailuresMinerGet**
-> PublicMinersFailuresMinerGet(ctx, miner)
+> string PublicMinersFailuresMinerGet(ctx, miner)
 Get all miners
 
 This endpoint returns all miners
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersGet**
-> PublicMinersGet(ctx, )
+> string PublicMinersGet(ctx, )
 Get all miners
 
 This endpoint returns all miners
@@ -73,7 +73,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 

@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_delete**
-> collections_coluuid_delete(coluuid => $coluuid)
+> string collections_coluuid_delete(coluuid => $coluuid)
 
 Deletes a collection
 
@@ -147,7 +147,8 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
 my $coluuid = 'coluuid_example'; # string | Collection ID
 
 eval { 
-    $api_instance->collections_coluuid_delete(coluuid => $coluuid);
+    my $result = $api_instance->collections_coluuid_delete(coluuid => $coluuid);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling CollectionsApi->collections_coluuid_delete: $@\n";
@@ -162,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -229,7 +230,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> HASH[string,string] collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds)
+> string collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds)
 
 Add contents to a collection
 
@@ -268,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**HASH[string,string]**
+**string**
 
 ### Authorization
 
@@ -282,7 +283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_fs_add_post**
-> collections_fs_add_post(coluuid => $coluuid, content => $content, path => $path)
+> string collections_fs_add_post(coluuid => $coluuid, content => $content, path => $path)
 
 Add a file to a collection
 
@@ -305,7 +306,8 @@ my $content = 'content_example'; # string | Content
 my $path = 'path_example'; # string | Path to file
 
 eval { 
-    $api_instance->collections_fs_add_post(coluuid => $coluuid, content => $content, path => $path);
+    my $result = $api_instance->collections_fs_add_post(coluuid => $coluuid, content => $content, path => $path);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling CollectionsApi->collections_fs_add_post: $@\n";
@@ -322,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -336,7 +338,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> ARRAY[CollectionsCollection] collections_get()
+> ARRAY[ARRAY[CollectionsCollection]] collections_get()
 
 List all collections
 
@@ -369,7 +371,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ARRAY[CollectionsCollection]**](CollectionsCollection.md)
+**ARRAY[ARRAY[CollectionsCollection]]**
 
 ### Authorization
 

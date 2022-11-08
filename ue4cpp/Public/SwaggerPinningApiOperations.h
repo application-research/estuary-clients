@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerPinningApi.h"
 
+#include "SwaggerTypes_IpfsPin.h"
 #include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
@@ -39,7 +40,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Delete a pinned object
@@ -61,9 +62,10 @@ class SWAGGER_API SwaggerPinningApi::PinningPinsPinidDeleteResponse : public Res
 {
 public:
     virtual ~PinningPinsPinidDeleteResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get a pin status object
@@ -85,9 +87,10 @@ class SWAGGER_API SwaggerPinningApi::PinningPinsPinidGetResponse : public Respon
 {
 public:
     virtual ~PinningPinsPinidGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Replace a pinned object
@@ -109,9 +112,10 @@ class SWAGGER_API SwaggerPinningApi::PinningPinsPinidPostResponse : public Respo
 {
 public:
     virtual ~PinningPinsPinidPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Add and pin object
@@ -125,19 +129,18 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* cid */
-	FString Cid;
-	/* name */
-	FString Name;
+	/* Pin Body {cid:cid, name:name} */
+	SwaggerTypes_IpfsPin Pin;
 };
 
 class SWAGGER_API SwaggerPinningApi::PinningPinsPostResponse : public Response
 {
 public:
     virtual ~PinningPinsPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

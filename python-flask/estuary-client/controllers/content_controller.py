@@ -5,6 +5,7 @@ from estuary-client.models.main_import_deal_body import MainImportDealBody  # no
 from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody  # noqa: E501
 from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
+from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
@@ -20,7 +21,7 @@ def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
     :param filename: Filename
     :type filename: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -35,7 +36,7 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     :param ignore_dupes: Ignore Dupes
     :type ignore_dupes: str
 
-    :rtype: None
+    :rtype: str
     """
     if connexion.request.is_json:
         body = UtilContentAddIpfsBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -92,7 +93,7 @@ def content_all_deals_get(begin, duration, all):  # noqa: E501
     :param all: All
     :type all: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -105,7 +106,7 @@ def content_bw_usage_content_get(content):  # noqa: E501
     :param content: Content ID
     :type content: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -120,7 +121,7 @@ def content_create_post(req, ignore_dupes=None):  # noqa: E501
     :param ignore_dupes: Ignore Dupes
     :type ignore_dupes: str
 
-    :rtype: None
+    :rtype: str
     """
     if connexion.request.is_json:
         req = UtilContentCreateBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -137,7 +138,7 @@ def content_deals_get(limit=None, offset=None):  # noqa: E501
     :param offset: Offset
     :type offset: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -150,7 +151,7 @@ def content_ensure_replication_datacid_get(datacid):  # noqa: E501
     :param datacid: Data CID
     :type datacid: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -176,7 +177,7 @@ def content_id_get(id):  # noqa: E501
     :param id: Content ID
     :type id: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -189,7 +190,7 @@ def content_importdeal_post(body):  # noqa: E501
     :param body: Import a deal
     :type body: dict | bytes
 
-    :rtype: None
+    :rtype: str
     """
     if connexion.request.is_json:
         body = MainImportDealBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -202,7 +203,7 @@ def content_list_get():  # noqa: E501
     This endpoint lists all content # noqa: E501
 
 
-    :rtype: List[str]
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -215,7 +216,7 @@ def content_read_cont_get(cont):  # noqa: E501
     :param cont: CID
     :type cont: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -226,7 +227,7 @@ def content_staging_zones_get():  # noqa: E501
     This endpoint is used to get staging zone for user. # noqa: E501
 
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -241,7 +242,7 @@ def content_stats_get(limit, offset):  # noqa: E501
     :param offset: offset
     :type offset: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -254,6 +255,6 @@ def content_status_id_get(id):  # noqa: E501
     :param id: Content ID
     :type id: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'

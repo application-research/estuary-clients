@@ -16,6 +16,7 @@
 #include "SWGHttpRequest.h"
 
 #include <QString>
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -33,7 +34,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void adminAutoretrieveInitPost(QString*& addresses, QString*& pub_key);
+    void adminAutoretrieveInitPost(QString* addresses, QString* pub_key);
     void adminAutoretrieveListGet();
     void autoretrieveHeartbeatPost(QString* token);
     
@@ -43,13 +44,13 @@ private:
     void autoretrieveHeartbeatPostCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void adminAutoretrieveInitPostSignal();
-    void adminAutoretrieveListGetSignal();
-    void autoretrieveHeartbeatPostSignal();
+    void adminAutoretrieveInitPostSignal(QString* summary);
+    void adminAutoretrieveListGetSignal(QString* summary);
+    void autoretrieveHeartbeatPostSignal(QString* summary);
     
-    void adminAutoretrieveInitPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminAutoretrieveListGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void autoretrieveHeartbeatPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminAutoretrieveInitPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminAutoretrieveListGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void autoretrieveHeartbeatPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void adminAutoretrieveInitPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void adminAutoretrieveListGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

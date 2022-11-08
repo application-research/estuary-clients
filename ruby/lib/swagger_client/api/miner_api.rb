@@ -24,10 +24,10 @@ module SwaggerClient
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_failed Ignore Failed
-    # @return [nil]
+    # @return [String]
     def public_miners_deals_miner_get(miner, opts = {})
-      public_miners_deals_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_deals_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get all miners deals
@@ -35,7 +35,7 @@ module SwaggerClient
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_failed Ignore Failed
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_deals_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.public_miners_deals_miner_get ...'
@@ -67,7 +67,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MinerApi#public_miners_deals_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -77,17 +78,17 @@ module SwaggerClient
     # This endpoint returns miner stats
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_stats_miner_get(miner, opts = {})
-      public_miners_stats_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_stats_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Get miner stats
     # This endpoint returns miner stats
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_stats_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.public_miners_stats_miner_get ...'
@@ -118,7 +119,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MinerApi#public_miners_stats_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

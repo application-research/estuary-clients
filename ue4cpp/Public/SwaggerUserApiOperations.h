@@ -15,7 +15,6 @@
 #include "SwaggerUserApi.h"
 
 #include "SwaggerMain_getApiKeysResp.h"
-#include "SwaggerMain_userStatsResponse.h"
 #include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
@@ -41,31 +40,32 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<SwaggerMain_getApiKeysResp> Content;
+    TArray<TArray<SwaggerMain_getApiKeysResp>> Content;
 };
 
 /* Revoke a User API Key.
  *
- * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+ * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 */
-class SWAGGER_API SwaggerUserApi::UserApiKeysKeyDeleteRequest : public Request
+class SWAGGER_API SwaggerUserApi::UserApiKeysKeyOrHashDeleteRequest : public Request
 {
 public:
-    virtual ~UserApiKeysKeyDeleteRequest() {}
+    virtual ~UserApiKeysKeyOrHashDeleteRequest() {}
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* Key */
-	FString Key;
+	/* Key or Hash */
+	FString KeyOrHash;
 };
 
-class SWAGGER_API SwaggerUserApi::UserApiKeysKeyDeleteResponse : public Response
+class SWAGGER_API SwaggerUserApi::UserApiKeysKeyOrHashDeleteResponse : public Response
 {
 public:
-    virtual ~UserApiKeysKeyDeleteResponse() {}
+    virtual ~UserApiKeysKeyOrHashDeleteResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Create API keys for a user
@@ -79,7 +79,7 @@ public:
 	void SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const final;
 	FString ComputePath() const final;
     
-	/* Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h */
+	/* Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h */
 	TOptional<FString> Expiry;
 	/* Permissions -- currently unused */
 	TOptional<FString> Perms;
@@ -138,7 +138,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    SwaggerMain_userStatsResponse Content;
+    FString Content;
 };
 
 }

@@ -15,11 +15,11 @@
 
 %% @doc Get Content by Cid
 %% This endpoint returns the content associated with a CID
--spec public_by_cid_cid_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_by_cid_cid_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_by_cid_cid_get(Ctx, Cid) ->
     public_by_cid_cid_get(Ctx, Cid, #{}).
 
--spec public_by_cid_cid_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_by_cid_cid_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_by_cid_cid_get(Ctx, Cid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -36,11 +36,11 @@ public_by_cid_cid_get(Ctx, Cid, Optional) ->
 
 %% @doc Get public node info
 %% This endpoint returns information about the node
--spec public_info_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_info_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_info_get(Ctx) ->
     public_info_get(Ctx, #{}).
 
--spec public_info_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_info_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_info_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -57,11 +57,11 @@ public_info_get(Ctx, Optional) ->
 
 %% @doc Get deal metrics
 %% This endpoint is used to get deal metrics
--spec public_metrics_deals_on_chain_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_metrics_deals_on_chain_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_metrics_deals_on_chain_get(Ctx) ->
     public_metrics_deals_on_chain_get(Ctx, #{}).
 
--spec public_metrics_deals_on_chain_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_metrics_deals_on_chain_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_metrics_deals_on_chain_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -78,11 +78,11 @@ public_metrics_deals_on_chain_get(Ctx, Optional) ->
 
 %% @doc Get all miners deals
 %% This endpoint returns all miners deals
--spec public_miners_deals_miner_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_deals_miner_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_deals_miner_get(Ctx, Miner) ->
     public_miners_deals_miner_get(Ctx, Miner, #{}).
 
--spec public_miners_deals_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_deals_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_deals_miner_get(Ctx, Miner, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -99,11 +99,11 @@ public_miners_deals_miner_get(Ctx, Miner, Optional) ->
 
 %% @doc Get all miners
 %% This endpoint returns all miners
--spec public_miners_failures_miner_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_failures_miner_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_failures_miner_get(Ctx, Miner) ->
     public_miners_failures_miner_get(Ctx, Miner, #{}).
 
--spec public_miners_failures_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_failures_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_failures_miner_get(Ctx, Miner, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -120,11 +120,11 @@ public_miners_failures_miner_get(Ctx, Miner, Optional) ->
 
 %% @doc Get all miners
 %% This endpoint returns all miners
--spec public_miners_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_get(Ctx) ->
     public_miners_get(Ctx, #{}).
 
--spec public_miners_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -141,11 +141,11 @@ public_miners_get(Ctx, Optional) ->
 
 %% @doc Get miner stats
 %% This endpoint returns miner stats
--spec public_miners_stats_miner_get(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_stats_miner_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_stats_miner_get(Ctx, Miner) ->
     public_miners_stats_miner_get(Ctx, Miner, #{}).
 
--spec public_miners_stats_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_miners_stats_miner_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_miners_stats_miner_get(Ctx, Miner, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -204,11 +204,11 @@ public_net_peers_get(Ctx, Optional) ->
 
 %% @doc Public stats
 %% This endpoint is used to get public stats.
--spec public_stats_get(ctx:ctx()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_stats_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_stats_get(Ctx) ->
     public_stats_get(Ctx, #{}).
 
--spec public_stats_get(ctx:ctx(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec public_stats_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 public_stats_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

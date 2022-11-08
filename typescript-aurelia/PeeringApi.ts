@@ -21,7 +21,7 @@ import {
  * adminPeeringPeersDelete - parameters interface
  */
 export interface IAdminPeeringPeersDeleteParams {
-  body: Array<string>;
+  peerIds: Array<boolean>;
 }
 
 /**
@@ -73,11 +73,11 @@ export class PeeringApi extends Api {
   /**
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
-   * @param params.body Peer ids
+   * @param params.peerIds Peer ids
    */
-  async adminPeeringPeersDelete(params: IAdminPeeringPeersDeleteParams): Promise<any> {
+  async adminPeeringPeersDelete(params: IAdminPeeringPeersDeleteParams): Promise<string> {
     // Verify required parameters are set
-    this.ensureParamIsSet('adminPeeringPeersDelete', params, 'body');
+    this.ensureParamIsSet('adminPeeringPeersDelete', params, 'peerIds');
 
     // Create URL to call
     const url = `${this.basePath}/admin/peering/peers`;
@@ -87,7 +87,7 @@ export class PeeringApi extends Api {
       .asDelete()
       // Encode body parameter
       .withHeader('content-type', 'application/json')
-      .withContent(JSON.stringify(params['body'] || {}))
+      .withContent(JSON.stringify(params['peerIds'] || {}))
 
       // Authentication 'bearerAuth' required
       .withHeader('Authorization', this.authStorage.getbearerAuth())
@@ -106,7 +106,7 @@ export class PeeringApi extends Api {
    * List all Peering peers
    * This endpoint can be used to list all peers on Peering Service
    */
-  async adminPeeringPeersGet(): Promise<any> {
+  async adminPeeringPeersGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -133,7 +133,7 @@ export class PeeringApi extends Api {
    * Add peers on Peering Service
    * This endpoint can be used to add a Peer from the Peering Service
    */
-  async adminPeeringPeersPost(): Promise<any> {
+  async adminPeeringPeersPost(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -160,7 +160,7 @@ export class PeeringApi extends Api {
    * Start Peering
    * This endpoint can be used to start the Peering Service
    */
-  async adminPeeringStartPost(): Promise<any> {
+  async adminPeeringStartPost(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -187,7 +187,7 @@ export class PeeringApi extends Api {
    * Check Peering Status
    * This endpoint can be used to check the Peering status
    */
-  async adminPeeringStatusGet(): Promise<any> {
+  async adminPeeringStatusGet(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -214,7 +214,7 @@ export class PeeringApi extends Api {
    * Stop Peering
    * This endpoint can be used to stop the Peering Service
    */
-  async adminPeeringStopPost(): Promise<any> {
+  async adminPeeringStopPost(): Promise<string> {
     // Verify required parameters are set
 
     // Create URL to call

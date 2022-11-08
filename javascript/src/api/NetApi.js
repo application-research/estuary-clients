@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/UtilHttpError'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/UtilHttpError'));
   } else {
     // Browser globals (root is window)
     if (!root.EstuaryClient) {
       root.EstuaryClient = {};
     }
-    root.EstuaryClient.NetApi = factory(root.EstuaryClient.ApiClient);
+    root.EstuaryClient.NetApi = factory(root.EstuaryClient.ApiClient, root.EstuaryClient.UtilHttpError);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, UtilHttpError) {
   'use strict';
 
   /**
@@ -51,7 +51,7 @@
      * Callback function to receive the result of the netAddrsGet operation.
      * @callback module:api/NetApi~netAddrsGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<'String'>} data The data returned by the service call.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -59,7 +59,7 @@
      * Net Addrs
      * This endpoint is used to get net addrs
      * @param {module:api/NetApi~netAddrsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<'String'>}
+     * data is of type: {@link 'String'}
      */
     this.netAddrsGet = function(callback) {
       var postBody = null;
@@ -79,7 +79,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ['String'];
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/net/addrs', 'GET',
@@ -92,7 +92,7 @@
      * Callback function to receive the result of the publicMinersFailuresMinerGet operation.
      * @callback module:api/NetApi~publicMinersFailuresMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -101,6 +101,7 @@
      * This endpoint returns all miners
      * @param {String} miner Filter by miner
      * @param {module:api/NetApi~publicMinersFailuresMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicMinersFailuresMinerGet = function(miner, callback) {
       var postBody = null;
@@ -126,7 +127,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/miners/failures/{miner}', 'GET',
@@ -139,7 +140,7 @@
      * Callback function to receive the result of the publicMinersGet operation.
      * @callback module:api/NetApi~publicMinersGetCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -147,6 +148,7 @@
      * Get all miners
      * This endpoint returns all miners
      * @param {module:api/NetApi~publicMinersGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.publicMinersGet = function(callback) {
       var postBody = null;
@@ -166,7 +168,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/public/miners', 'GET',

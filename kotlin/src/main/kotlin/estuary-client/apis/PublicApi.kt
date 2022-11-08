@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -20,9 +21,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     * Get Content by Cid
     * This endpoint returns the content associated with a CID
     * @param cid Cid 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicByCidCidGet(cid: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicByCidCidGet(cid: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -38,13 +40,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -56,9 +58,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     /**
     * Get public node info
     * This endpoint returns information about the node
-    * @return void
+    * @return kotlin.String
     */
-    fun publicInfoGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicInfoGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -74,13 +77,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -92,9 +95,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     /**
     * Get deal metrics
     * This endpoint is used to get deal metrics
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMetricsDealsOnChainGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMetricsDealsOnChainGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -110,13 +114,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -130,9 +134,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     * This endpoint returns all miners deals
     * @param miner Filter by miner 
     * @param ignoreFailed Ignore Failed (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersDealsMinerGet(miner: kotlin.String, ignoreFailed: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersDealsMinerGet(miner: kotlin.String, ignoreFailed: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("ignore-failed" to listOf("$ignoreFailed"))
         
@@ -148,13 +153,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -167,9 +172,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     * Get all miners
     * This endpoint returns all miners
     * @param miner Filter by miner 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersFailuresMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersFailuresMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -185,13 +191,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -203,9 +209,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     /**
     * Get all miners
     * This endpoint returns all miners
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -221,13 +228,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -240,9 +247,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     * Get miner stats
     * This endpoint returns miner stats
     * @param miner Filter by miner 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersStatsMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersStatsMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -258,13 +266,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -350,9 +358,10 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
     /**
     * Public stats
     * This endpoint is used to get public stats.
-    * @return void
+    * @return kotlin.String
     */
-    fun publicStatsGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicStatsGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -368,13 +377,13 @@ class PublicApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClien
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

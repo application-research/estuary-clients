@@ -37,7 +37,7 @@
     describe('ContentApi', function() {
       describe('contentAddCarPost', function() {
         it('should call contentAddCarPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentAddCarPost call
+          // TODO: uncomment, update parameter values for contentAddCarPost call and complete the assertions
           /*
           var body = "body_example";
           var opts = {};
@@ -49,6 +49,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -59,7 +62,7 @@
       });
       describe('contentAddIpfsPost', function() {
         it('should call contentAddIpfsPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentAddIpfsPost call
+          // TODO: uncomment, update parameter values for contentAddIpfsPost call and complete the assertions
           /*
           var body = new EstuaryClient.UtilContentAddIpfsBody();
           body.coluuid = "";
@@ -75,6 +78,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -151,7 +157,7 @@
       });
       describe('contentAllDealsGet', function() {
         it('should call contentAllDealsGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentAllDealsGet call
+          // TODO: uncomment, update parameter values for contentAllDealsGet call and complete the assertions
           /*
           var begin = "begin_example";
           var duration = "duration_example";
@@ -162,6 +168,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -172,7 +181,7 @@
       });
       describe('contentBwUsageContentGet', function() {
         it('should call contentBwUsageContentGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentBwUsageContentGet call
+          // TODO: uncomment, update parameter values for contentBwUsageContentGet call and complete the assertions
           /*
           var content = "content_example";
 
@@ -181,6 +190,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -191,7 +203,7 @@
       });
       describe('contentCreatePost', function() {
         it('should call contentCreatePost successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentCreatePost call
+          // TODO: uncomment, update parameter values for contentCreatePost call and complete the assertions
           /*
           var req = new EstuaryClient.UtilContentCreateBody();
           req.coluuid = "";
@@ -208,6 +220,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -218,7 +233,7 @@
       });
       describe('contentDealsGet', function() {
         it('should call contentDealsGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentDealsGet call
+          // TODO: uncomment, update parameter values for contentDealsGet call and complete the assertions
           /*
           var opts = {};
           opts.limit = 56;
@@ -229,6 +244,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -239,7 +257,7 @@
       });
       describe('contentEnsureReplicationDatacidGet', function() {
         it('should call contentEnsureReplicationDatacidGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentEnsureReplicationDatacidGet call
+          // TODO: uncomment, update parameter values for contentEnsureReplicationDatacidGet call and complete the assertions
           /*
           var datacid = "datacid_example";
 
@@ -248,6 +266,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -280,7 +301,7 @@
       });
       describe('contentIdGet', function() {
         it('should call contentIdGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentIdGet call
+          // TODO: uncomment, update parameter values for contentIdGet call and complete the assertions
           /*
           var id = 56;
 
@@ -289,6 +310,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -299,7 +323,7 @@
       });
       describe('contentImportdealPost', function() {
         it('should call contentImportdealPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentImportdealPost call
+          // TODO: uncomment, update parameter values for contentImportdealPost call and complete the assertions
           /*
           var body = new EstuaryClient.MainImportDealBody();
           body.coluuid = "";
@@ -312,6 +336,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -331,14 +358,8 @@
               return;
             }
             // TODO: update response assertions
-            let dataCtr = data;
-            expect(dataCtr).to.be.an(Array);
-            expect(dataCtr).to.not.be.empty();
-            for (let p in dataCtr) {
-              let data = dataCtr[p];
-              expect(data).to.be.a('string');
-              // expect(data).to.be(null);
-            }
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -349,7 +370,7 @@
       });
       describe('contentReadContGet', function() {
         it('should call contentReadContGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentReadContGet call
+          // TODO: uncomment, update parameter values for contentReadContGet call and complete the assertions
           /*
           var cont = "cont_example";
 
@@ -358,6 +379,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -368,7 +392,7 @@
       });
       describe('contentStagingZonesGet', function() {
         it('should call contentStagingZonesGet successfully', function(done) {
-          // TODO: uncomment contentStagingZonesGet call
+          // TODO: uncomment contentStagingZonesGet call and complete the assertions
           /*
 
           instance.contentStagingZonesGet(function(error, data, response) {
@@ -376,6 +400,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -386,7 +413,7 @@
       });
       describe('contentStatsGet', function() {
         it('should call contentStatsGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentStatsGet call
+          // TODO: uncomment, update parameter values for contentStatsGet call and complete the assertions
           /*
           var limit = "limit_example";
           var offset = "offset_example";
@@ -396,6 +423,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -406,7 +436,7 @@
       });
       describe('contentStatusIdGet', function() {
         it('should call contentStatusIdGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentStatusIdGet call
+          // TODO: uncomment, update parameter values for contentStatusIdGet call and complete the assertions
           /*
           var id = 56;
 
@@ -415,6 +445,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

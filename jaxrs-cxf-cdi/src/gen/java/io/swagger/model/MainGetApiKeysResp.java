@@ -16,7 +16,9 @@ import javax.xml.bind.annotation.*;
 public class MainGetApiKeysResp   {
   
   private String expiry = null;
+  private String label = null;
   private String token = null;
+  private String tokenHash = null;
 
   /**
    **/
@@ -37,6 +39,23 @@ public class MainGetApiKeysResp   {
 
   /**
    **/
+  public MainGetApiKeysResp label(String label) {
+    this.label = label;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("label")
+  public String getLabel() {
+    return label;
+  }
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+  /**
+   **/
   public MainGetApiKeysResp token(String token) {
     this.token = token;
     return this;
@@ -52,6 +71,23 @@ public class MainGetApiKeysResp   {
     this.token = token;
   }
 
+  /**
+   **/
+  public MainGetApiKeysResp tokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("tokenHash")
+  public String getTokenHash() {
+    return tokenHash;
+  }
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -63,12 +99,14 @@ public class MainGetApiKeysResp   {
     }
     MainGetApiKeysResp mainGetApiKeysResp = (MainGetApiKeysResp) o;
     return Objects.equals(expiry, mainGetApiKeysResp.expiry) &&
-        Objects.equals(token, mainGetApiKeysResp.token);
+        Objects.equals(label, mainGetApiKeysResp.label) &&
+        Objects.equals(token, mainGetApiKeysResp.token) &&
+        Objects.equals(tokenHash, mainGetApiKeysResp.tokenHash);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiry, token);
+    return Objects.hash(expiry, label, token, tokenHash);
   }
 
   @Override
@@ -77,7 +115,9 @@ public class MainGetApiKeysResp   {
     sb.append("class MainGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");
     sb.append("}");
     return sb.toString();
   }

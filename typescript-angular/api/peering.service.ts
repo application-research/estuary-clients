@@ -18,6 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -58,17 +59,17 @@ export class PeeringService {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids
+     * @param peerIds Peer ids
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersDelete(body: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringPeersDelete(body: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringPeersDelete(body: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public adminPeeringPeersDelete(body: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public adminPeeringPeersDelete(peerIds: Array<boolean>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
+        if (peerIds === null || peerIds === undefined) {
+            throw new Error('Required parameter peerIds was null or undefined when calling adminPeeringPeersDelete.');
         }
 
         let headers = this.defaultHeaders;
@@ -95,7 +96,7 @@ export class PeeringService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.delete<any>(`${this.basePath}/admin/peering/peers`,
+        return this.httpClient.delete<string>(`${this.basePath}/admin/peering/peers`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -111,9 +112,9 @@ export class PeeringService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringPeersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringPeersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringPeersGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringPeersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringPeersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminPeeringPeersGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -136,7 +137,7 @@ export class PeeringService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/admin/peering/peers`,
+        return this.httpClient.get<string>(`${this.basePath}/admin/peering/peers`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -152,9 +153,9 @@ export class PeeringService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersPost(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringPeersPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringPeersPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringPeersPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringPeersPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringPeersPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminPeeringPeersPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -177,7 +178,7 @@ export class PeeringService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.post<any>(`${this.basePath}/admin/peering/peers`,
+        return this.httpClient.post<string>(`${this.basePath}/admin/peering/peers`,
             null,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -194,9 +195,9 @@ export class PeeringService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringStartPost(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringStartPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringStartPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringStartPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringStartPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringStartPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminPeeringStartPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -219,7 +220,7 @@ export class PeeringService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.post<any>(`${this.basePath}/admin/peering/start`,
+        return this.httpClient.post<string>(`${this.basePath}/admin/peering/start`,
             null,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -236,9 +237,9 @@ export class PeeringService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringStatusGet(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringStatusGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringStatusGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringStatusGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringStatusGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringStatusGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminPeeringStatusGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -261,7 +262,7 @@ export class PeeringService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<any>(`${this.basePath}/admin/peering/status`,
+        return this.httpClient.get<string>(`${this.basePath}/admin/peering/status`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -277,9 +278,9 @@ export class PeeringService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringStopPost(observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public adminPeeringStopPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public adminPeeringStopPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public adminPeeringStopPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringStopPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringStopPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
     public adminPeeringStopPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -302,7 +303,7 @@ export class PeeringService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.post<any>(`${this.basePath}/admin/peering/stop`,
+        return this.httpClient.post<string>(`${this.basePath}/admin/peering/stop`,
             null,
             {
                 withCredentials: this.configuration.withCredentials,

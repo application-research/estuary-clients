@@ -23,8 +23,12 @@ Main.getApiKeysResp::Main.getApiKeysResp()
 {
     m_Expiry = utility::conversions::to_string_t("");
     m_ExpiryIsSet = false;
+    m_Label = utility::conversions::to_string_t("");
+    m_LabelIsSet = false;
     m_Token = utility::conversions::to_string_t("");
     m_TokenIsSet = false;
+    m_TokenHash = utility::conversions::to_string_t("");
+    m_TokenHashIsSet = false;
 }
 
 Main.getApiKeysResp::~Main.getApiKeysResp()
@@ -44,9 +48,17 @@ web::json::value Main.getApiKeysResp::toJson() const
     {
         val[utility::conversions::to_string_t("expiry")] = ModelBase::toJson(m_Expiry);
     }
+    if(m_LabelIsSet)
+    {
+        val[utility::conversions::to_string_t("label")] = ModelBase::toJson(m_Label);
+    }
     if(m_TokenIsSet)
     {
         val[utility::conversions::to_string_t("token")] = ModelBase::toJson(m_Token);
+    }
+    if(m_TokenHashIsSet)
+    {
+        val[utility::conversions::to_string_t("tokenHash")] = ModelBase::toJson(m_TokenHash);
     }
 
     return val;
@@ -62,12 +74,28 @@ void Main.getApiKeysResp::fromJson(web::json::value& val)
             setExpiry(ModelBase::stringFromJson(fieldValue));
         }
     }
+    if(val.has_field(utility::conversions::to_string_t("label")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("label")];
+        if(!fieldValue.is_null())
+        {
+            setLabel(ModelBase::stringFromJson(fieldValue));
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t("token")))
     {
         web::json::value& fieldValue = val[utility::conversions::to_string_t("token")];
         if(!fieldValue.is_null())
         {
             setToken(ModelBase::stringFromJson(fieldValue));
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t("tokenHash")))
+    {
+        web::json::value& fieldValue = val[utility::conversions::to_string_t("tokenHash")];
+        if(!fieldValue.is_null())
+        {
+            setTokenHash(ModelBase::stringFromJson(fieldValue));
         }
     }
 }
@@ -85,9 +113,19 @@ void Main.getApiKeysResp::toMultipart(std::shared_ptr<MultipartFormData> multipa
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("expiry"), m_Expiry));
         
     }
+    if(m_LabelIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("label"), m_Label));
+        
+    }
     if(m_TokenIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("token"), m_Token));
+        
+    }
+    if(m_TokenHashIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t("tokenHash"), m_TokenHash));
         
     }
 }
@@ -104,9 +142,17 @@ void Main.getApiKeysResp::fromMultiPart(std::shared_ptr<MultipartFormData> multi
     {
         setExpiry(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("expiry"))));
     }
+    if(multipart->hasContent(utility::conversions::to_string_t("label")))
+    {
+        setLabel(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("label"))));
+    }
     if(multipart->hasContent(utility::conversions::to_string_t("token")))
     {
         setToken(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("token"))));
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t("tokenHash")))
+    {
+        setTokenHash(ModelBase::stringFromHttpContent(multipart->getContent(utility::conversions::to_string_t("tokenHash"))));
     }
 }
 
@@ -131,6 +177,27 @@ void Main.getApiKeysResp::unsetExpiry()
     m_ExpiryIsSet = false;
 }
 
+utility::string_t Main.getApiKeysResp::getLabel() const
+{
+    return m_Label;
+}
+
+
+void Main.getApiKeysResp::setLabel(utility::string_t value)
+{
+    m_Label = value;
+    m_LabelIsSet = true;
+}
+bool Main.getApiKeysResp::labelIsSet() const
+{
+    return m_LabelIsSet;
+}
+
+void Main.getApiKeysResp::unsetLabel()
+{
+    m_LabelIsSet = false;
+}
+
 utility::string_t Main.getApiKeysResp::getToken() const
 {
     return m_Token;
@@ -150,6 +217,27 @@ bool Main.getApiKeysResp::tokenIsSet() const
 void Main.getApiKeysResp::unsetToken()
 {
     m_TokenIsSet = false;
+}
+
+utility::string_t Main.getApiKeysResp::getTokenHash() const
+{
+    return m_TokenHash;
+}
+
+
+void Main.getApiKeysResp::setTokenHash(utility::string_t value)
+{
+    m_TokenHash = value;
+    m_TokenHashIsSet = true;
+}
+bool Main.getApiKeysResp::tokenHashIsSet() const
+{
+    return m_TokenHashIsSet;
+}
+
+void Main.getApiKeysResp::unsetTokenHash()
+{
+    m_TokenHashIsSet = false;
 }
 
 }

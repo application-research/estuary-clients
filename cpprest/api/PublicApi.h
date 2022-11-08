@@ -22,6 +22,7 @@
 
 #include "../ApiClient.h"
 
+#include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
 #include <boost/optional.hpp>
@@ -45,7 +46,7 @@ public:
     /// This endpoint returns the content associated with a CID
     /// </remarks>
     /// <param name="cid">Cid</param>
-    pplx::task<void> publicByCidCidGet(
+    pplx::task<utility::string_t> publicByCidCidGet(
         utility::string_t cid
     );
     /// <summary>
@@ -54,7 +55,7 @@ public:
     /// <remarks>
     /// This endpoint returns information about the node
     /// </remarks>
-    pplx::task<void> publicInfoGet(
+    pplx::task<utility::string_t> publicInfoGet(
     );
     /// <summary>
     /// Get deal metrics
@@ -62,7 +63,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get deal metrics
     /// </remarks>
-    pplx::task<void> publicMetricsDealsOnChainGet(
+    pplx::task<utility::string_t> publicMetricsDealsOnChainGet(
     );
     /// <summary>
     /// Get all miners deals
@@ -72,7 +73,7 @@ public:
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
     /// <param name="ignoreFailed">Ignore Failed (optional)</param>
-    pplx::task<void> publicMinersDealsMinerGet(
+    pplx::task<utility::string_t> publicMinersDealsMinerGet(
         utility::string_t miner,
         boost::optional<utility::string_t> ignoreFailed
     );
@@ -83,7 +84,7 @@ public:
     /// This endpoint returns all miners
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
-    pplx::task<void> publicMinersFailuresMinerGet(
+    pplx::task<utility::string_t> publicMinersFailuresMinerGet(
         utility::string_t miner
     );
     /// <summary>
@@ -92,7 +93,7 @@ public:
     /// <remarks>
     /// This endpoint returns all miners
     /// </remarks>
-    pplx::task<void> publicMinersGet(
+    pplx::task<utility::string_t> publicMinersGet(
     );
     /// <summary>
     /// Get miner stats
@@ -101,7 +102,7 @@ public:
     /// This endpoint returns miner stats
     /// </remarks>
     /// <param name="miner">Filter by miner</param>
-    pplx::task<void> publicMinersStatsMinerGet(
+    pplx::task<utility::string_t> publicMinersStatsMinerGet(
         utility::string_t miner
     );
     /// <summary>
@@ -126,7 +127,7 @@ public:
     /// <remarks>
     /// This endpoint is used to get public stats.
     /// </remarks>
-    pplx::task<void> publicStatsGet(
+    pplx::task<utility::string_t> publicStatsGet(
     );
 
 protected:

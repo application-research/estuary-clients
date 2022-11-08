@@ -13,6 +13,7 @@
 
 module Request.Public exposing (publicByCidCidGet, publicInfoGet, publicMetricsDealsOnChainGet, publicMinersDealsMinerGet, publicMinersFailuresMinerGet, publicMinersGet, publicMinersStatsMinerGet, publicNetAddrsGet, publicNetPeersGet, publicStatsGet)
 
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
 import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
@@ -26,13 +27,13 @@ basePath =
 {-
    This endpoint returns the content associated with a CID
 -}
-publicByCidCidGet : String -> Http.Request 
+publicByCidCidGet : String -> Http.Request String
 publicByCidCidGet cid =
     { method = "GET"
     , url = basePath ++ "/public/by-cid/" ++ cid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -42,13 +43,13 @@ publicByCidCidGet cid =
 {-
    This endpoint returns information about the node
 -}
-publicInfoGet : Http.Request 
+publicInfoGet : Http.Request String
 publicInfoGet =
     { method = "GET"
     , url = basePath ++ "/public/info"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -58,13 +59,13 @@ publicInfoGet =
 {-
    This endpoint is used to get deal metrics
 -}
-publicMetricsDealsOnChainGet : Http.Request 
+publicMetricsDealsOnChainGet : Http.Request String
 publicMetricsDealsOnChainGet =
     { method = "GET"
     , url = basePath ++ "/public/metrics/deals-on-chain"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -74,13 +75,13 @@ publicMetricsDealsOnChainGet =
 {-
    This endpoint returns all miners deals
 -}
-publicMinersDealsMinerGet : String -> Http.Request 
+publicMinersDealsMinerGet : String -> Http.Request String
 publicMinersDealsMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/deals/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -90,13 +91,13 @@ publicMinersDealsMinerGet miner =
 {-
    This endpoint returns all miners
 -}
-publicMinersFailuresMinerGet : String -> Http.Request 
+publicMinersFailuresMinerGet : String -> Http.Request String
 publicMinersFailuresMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/failures/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -106,13 +107,13 @@ publicMinersFailuresMinerGet miner =
 {-
    This endpoint returns all miners
 -}
-publicMinersGet : Http.Request 
+publicMinersGet : Http.Request String
 publicMinersGet =
     { method = "GET"
     , url = basePath ++ "/public/miners"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -122,13 +123,13 @@ publicMinersGet =
 {-
    This endpoint returns miner stats
 -}
-publicMinersStatsMinerGet : String -> Http.Request 
+publicMinersStatsMinerGet : String -> Http.Request String
 publicMinersStatsMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/stats/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -170,13 +171,13 @@ publicNetPeersGet =
 {-
    This endpoint is used to get public stats.
 -}
-publicStatsGet : Http.Request 
+publicStatsGet : Http.Request String
 publicStatsGet =
     { method = "GET"
     , url = basePath ++ "/public/stats"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **net_addrs_get**
-> ARRAY[string] net_addrs_get()
+> string net_addrs_get()
 
 Net Addrs
 
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**ARRAY[string]**
+**string**
 
 ### Authorization
 
@@ -64,7 +64,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_failures_miner_get**
-> public_miners_failures_miner_get(miner => $miner)
+> string public_miners_failures_miner_get(miner => $miner)
 
 Get all miners
 
@@ -85,7 +85,8 @@ my $api_instance = WWW::SwaggerClient::NetApi->new(
 my $miner = 'miner_example'; # string | Filter by miner
 
 eval { 
-    $api_instance->public_miners_failures_miner_get(miner => $miner);
+    my $result = $api_instance->public_miners_failures_miner_get(miner => $miner);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling NetApi->public_miners_failures_miner_get: $@\n";
@@ -100,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -114,7 +115,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **public_miners_get**
-> public_miners_get()
+> string public_miners_get()
 
 Get all miners
 
@@ -134,7 +135,8 @@ my $api_instance = WWW::SwaggerClient::NetApi->new(
 
 
 eval { 
-    $api_instance->public_miners_get();
+    my $result = $api_instance->public_miners_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling NetApi->public_miners_get: $@\n";
@@ -146,7 +148,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

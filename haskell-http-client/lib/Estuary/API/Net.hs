@@ -68,7 +68,7 @@ import qualified Prelude as P
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 netAddrsGet 
-  :: EstuaryRequest NetAddrsGet MimeNoContent [Text] MimeJSON
+  :: EstuaryRequest NetAddrsGet MimeNoContent Text MimeJSON
 netAddrsGet =
   _mkRequest "GET" ["/net/addrs"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -88,11 +88,9 @@ instance Produces NetAddrsGet MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersFailuresMinerGet0 
   :: Miner -- ^ "miner" -  Filter by miner
-  -> EstuaryRequest PublicMinersFailuresMinerGet0 MimeNoContent res MimeJSON
+  -> EstuaryRequest PublicMinersFailuresMinerGet0 MimeNoContent Text MimeJSON
 publicMinersFailuresMinerGet0 (Miner miner) =
   _mkRequest "GET" ["/public/miners/failures/",toPath miner]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
@@ -112,10 +110,8 @@ instance Produces PublicMinersFailuresMinerGet0 MimeJSON
 -- 
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
--- Note: Has 'Produces' instances, but no response schema
--- 
 publicMinersGet0 
-  :: EstuaryRequest PublicMinersGet0 MimeNoContent res MimeJSON
+  :: EstuaryRequest PublicMinersGet0 MimeNoContent Text MimeJSON
 publicMinersGet0 =
   _mkRequest "GET" ["/public/miners"]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)

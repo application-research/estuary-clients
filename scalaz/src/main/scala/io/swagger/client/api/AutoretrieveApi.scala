@@ -27,7 +27,9 @@ object AutoretrieveApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminAutoretrieveInitPost(host: String, addresses: String, pubKey: String): Task[Unit] = {
+  def adminAutoretrieveInitPost(host: String, addresses: String, pubKey: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/autoretrieve/init"
     
     val httpMethod = Method.POST
@@ -40,13 +42,15 @@ object AutoretrieveApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(pubKey)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminAutoretrieveListGet(host: String): Task[Unit] = {
+  def adminAutoretrieveListGet(host: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/autoretrieve/list"
     
     val httpMethod = Method.GET
@@ -60,12 +64,14 @@ object AutoretrieveApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def autoretrieveHeartbeatPost(host: String, token: String): Task[Unit] = {
+  def autoretrieveHeartbeatPost(host: String, token: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/autoretrieve/heartbeat"
     
     val httpMethod = Method.POST
@@ -79,7 +85,7 @@ object AutoretrieveApi {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -91,7 +97,9 @@ class HttpServiceAutoretrieveApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def adminAutoretrieveInitPost(addresses: String, pubKey: String): Task[Unit] = {
+  def adminAutoretrieveInitPost(addresses: String, pubKey: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/autoretrieve/init"
     
     val httpMethod = Method.POST
@@ -104,13 +112,15 @@ class HttpServiceAutoretrieveApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(pubKey)
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def adminAutoretrieveListGet(): Task[Unit] = {
+  def adminAutoretrieveListGet(): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/admin/autoretrieve/list"
     
     val httpMethod = Method.GET
@@ -124,12 +134,14 @@ class HttpServiceAutoretrieveApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }
   
-  def autoretrieveHeartbeatPost(token: String): Task[Unit] = {
+  def autoretrieveHeartbeatPost(token: String): Task[String] = {
+    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
+
     val path = "/autoretrieve/heartbeat"
     
     val httpMethod = Method.POST
@@ -143,7 +155,7 @@ class HttpServiceAutoretrieveApi(service: HttpService) {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[String](req)
 
     } yield resp
   }

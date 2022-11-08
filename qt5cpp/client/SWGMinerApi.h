@@ -16,6 +16,7 @@
 #include "SWGHttpRequest.h"
 
 #include <QString>
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -41,11 +42,11 @@ private:
     void publicMinersStatsMinerGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void publicMinersDealsMinerGetSignal();
-    void publicMinersStatsMinerGetSignal();
+    void publicMinersDealsMinerGetSignal(QString* summary);
+    void publicMinersStatsMinerGetSignal(QString* summary);
     
-    void publicMinersDealsMinerGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void publicMinersStatsMinerGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMinersDealsMinerGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMinersStatsMinerGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void publicMinersDealsMinerGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void publicMinersStatsMinerGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

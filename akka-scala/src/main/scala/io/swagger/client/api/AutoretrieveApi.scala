@@ -11,6 +11,7 @@
  */
 package io.swagger.client.api
 
+import io.swagger.client.model.UtilHttpError
 import io.swagger.client.core._
 import io.swagger.client.core.CollectionFormats._
 import io.swagger.client.core.ApiKeyLocations._
@@ -21,6 +22,9 @@ object AutoretrieveApi {
    * This endpoint registers a new autoretrieve server
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
@@ -28,35 +32,51 @@ object AutoretrieveApi {
    * @param addresses Autoretrieve&#39;s comma-separated list of addresses
    * @param pubKey Autoretrieve&#39;s public key
    */
-  def adminAutoretrieveInitPost(addresses: String, pubKey: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/admin/autoretrieve/init", "application/json")
+  def adminAutoretrieveInitPost(addresses: String, pubKey: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/admin/autoretrieve/init", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withBody(pubKey)
+      .withFormParam("addresses", addresses)
+      .withFormParam("pubKey", pubKey)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint lists all registered autoretrieve servers
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    */
-  def adminAutoretrieveListGet()(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.GET, "https://api.estuary.tech", "/admin/autoretrieve/list", "application/json")
+  def adminAutoretrieveListGet()(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.GET, "https://api.estuary.tech", "/admin/autoretrieve/list", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
         /**
    * This endpoint updates the lastConnection field for autoretrieve
    * 
    * Expected answers:
+   *   code 200 : String (OK)
+   *   code 400 : UtilHttpError (Bad Request)
+   *   code 500 : UtilHttpError (Internal Server Error)
    * 
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
    * @param token Autoretrieve&#39;s auth token
    */
-  def autoretrieveHeartbeatPost(token: String)(implicit apiKey: ApiKeyValue): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://api.estuary.tech", "/autoretrieve/heartbeat", "application/json")
+  def autoretrieveHeartbeatPost(token: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.POST, "https://api.estuary.tech", "/autoretrieve/heartbeat", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
       .withHeaderParam("token", token)
+      .withSuccessResponse[String](200)
+      .withErrorResponse[UtilHttpError](400)
+      .withErrorResponse[UtilHttpError](500)
       
 
 }

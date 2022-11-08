@@ -143,6 +143,8 @@ Method | HTTP request | Description
 *dealStatusMinerPropcidGetASync* | *GET* /deal/status/{miner}/{propcid} | Deal Status.
 *dealTransferInProgressGetSync* | *GET* /deal/transfer/in-progress | Transfer In Progress.
 *dealTransferInProgressGetASync* | *GET* /deal/transfer/in-progress | Transfer In Progress.
+*dealTransferStatusPostSync* | *POST* /deal/transfer/status | Transfer Status.
+*dealTransferStatusPostASync* | *POST* /deal/transfer/status | Transfer Status.
 *dealsFailuresGetSync* | *GET* /deals/failures | Get storage failures for user.
 *dealsFailuresGetASync* | *GET* /deals/failures | Get storage failures for user.
 *dealsMakeMinerPostSync* | *POST* /deals/make/{miner} | Make Deal.
@@ -153,12 +155,6 @@ Method | HTTP request | Description
 *publicDealsFailuresGetASync* | *GET* /public/deals/failures | Get storage failures.
 *publicMinersStorageQueryMinerGetSync* | *GET* /public/miners/storage/query/{miner} | Query Ask.
 *publicMinersStorageQueryMinerGetASync* | *GET* /public/miners/storage/query/{miner} | Query Ask.
-
-### DefaultManager
-Method | HTTP request | Description
-------------- | ------------- | -------------
-*dealTransferStatusPostSync* | *POST* /deal/transfer/status | .
-*dealTransferStatusPostASync* | *POST* /deal/transfer/status | .
 
 ### MetricsManager
 Method | HTTP request | Description
@@ -263,8 +259,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 *userApiKeysGetSync* | *GET* /user/api-keys | Get API keys for a user.
 *userApiKeysGetASync* | *GET* /user/api-keys | Get API keys for a user.
-*userApiKeysKeyDeleteSync* | *DELETE* /user/api-keys/{key} | Revoke a User API Key..
-*userApiKeysKeyDeleteASync* | *DELETE* /user/api-keys/{key} | Revoke a User API Key..
+*userApiKeysKeyOrHashDeleteSync* | *DELETE* /user/api-keys/{key_or_hash} | Revoke a User API Key..
+*userApiKeysKeyOrHashDeleteASync* | *DELETE* /user/api-keys/{key_or_hash} | Revoke a User API Key..
 *userApiKeysPostSync* | *POST* /user/api-keys | Create API keys for a user.
 *userApiKeysPostASync* | *POST* /user/api-keys | Create API keys for a user.
 *userExportGetSync* | *GET* /user/export | Export user data.
@@ -277,12 +273,13 @@ Method | HTTP request | Description
 Class | Description
 ------------- | -------------
  *Collections.Collection* | 
+ *Main.ChannelIDParam* | 
  *Main.createCollectionBody* | 
  *Main.deleteContentFromCollectionBody* | 
  *Main.estimateDealBody* | 
  *Main.getApiKeysResp* | 
  *Main.importDealBody* | 
- *Main.userStatsResponse* | 
+ *Types.IpfsPin* | 
  *Util.ContentAddIpfsBody* | 
  *Util.ContentAddResponse* | 
  *Util.ContentCreateBody* | 

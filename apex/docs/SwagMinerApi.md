@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -32,7 +32,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.publicMinersDealsMinerGet(params);
+    String result = api.publicMinersDealsMinerGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -47,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -60,7 +61,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -81,7 +82,8 @@ Map<String, Object> params = new Map<String, Object>{
 
 try {
     // cross your fingers
-    api.publicMinersStatsMinerGet(params);
+    String result = api.publicMinersStatsMinerGet(params);
+    System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
 }
@@ -95,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

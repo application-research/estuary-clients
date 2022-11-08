@@ -1,6 +1,7 @@
 #import "SWGAutoretrieveApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGAutoretrieveApi ()
@@ -55,18 +56,18 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
 ///
 ///  @param pubKey Autoretrieve's public key 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminAutoretrieveInitPostWithAddresses: (NSString*) addresses
     pubKey: (NSString*) pubKey
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'addresses' is set
     if (addresses == nil) {
         NSParameterAssert(addresses);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"addresses"] };
             NSError* error = [NSError errorWithDomain:kSWGAutoretrieveApiErrorDomain code:kSWGAutoretrieveApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -77,7 +78,7 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"pubKey"] };
             NSError* error = [NSError errorWithDomain:kSWGAutoretrieveApiErrorDomain code:kSWGAutoretrieveApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -107,7 +108,12 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
     id bodyParam = nil;
     NSMutableDictionary *formParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *localVarFiles = [[NSMutableDictionary alloc] init];
-    bodyParam = pubKey;
+    if (addresses) {
+        formParams[@"addresses"] = addresses;
+    }
+    if (pubKey) {
+        formParams[@"pubKey"] = pubKey;
+    }
 
     return [self.apiClient requestWithPath: resourcePath
                                     method: @"POST"
@@ -120,10 +126,10 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -131,10 +137,10 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
 ///
 /// List autoretrieve servers
 /// This endpoint lists all registered autoretrieve servers
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) adminAutoretrieveListGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/admin/autoretrieve/list"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -172,10 +178,10 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -185,17 +191,17 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
 /// This endpoint updates the lastConnection field for autoretrieve
 ///  @param token Autoretrieve's auth token 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) autoretrieveHeartbeatPostWithToken: (NSString*) token
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'token' is set
     if (token == nil) {
         NSParameterAssert(token);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"token"] };
             NSError* error = [NSError errorWithDomain:kSWGAutoretrieveApiErrorDomain code:kSWGAutoretrieveApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -240,10 +246,10 @@ NSInteger kSWGAutoretrieveApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

@@ -35,16 +35,16 @@ impl<C: hyper::client::Connect> PinningApiClient<C> {
 }
 
 pub trait PinningApi {
-    fn pinning_pins_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
-    fn pinning_pins_post(&self, cid: &str, name: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn pinning_pins_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
-    fn pinning_pins_get(&self, ) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn pinning_pins_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -103,11 +103,14 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -166,11 +169,14 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -229,11 +235,14 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_post(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -292,11 +301,14 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 
-    fn pinning_pins_post(&self, cid: &str, name: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
+    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -318,7 +330,7 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/pinning/pins?{}", configuration.base_path, query_string, cid=cid, name=name);
+        let uri_str = format!("{}/pinning/pins?{}", configuration.base_path, query_string);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {
@@ -337,6 +349,10 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
+        let serialized = serde_json::to_string(&pin).unwrap();
+        req.headers_mut().set(hyper::header::ContentType::json());
+        req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
+        req.set_body(serialized);
 
         // send request
         Box::new(
@@ -355,7 +371,10 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|_| futures::future::ok(()))
+            .and_then(|body| {
+                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
         )
     }
 

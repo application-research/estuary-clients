@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "SWGUtilHttpError.h"
 #import "SWGApi.h"
 
 /**
@@ -28,21 +29,27 @@ extern NSInteger kSWGAutoretrieveApiMissingParamErrorCode;
 /// @param addresses Autoretrieve&#39;s comma-separated list of addresses
 /// @param pubKey Autoretrieve&#39;s public key
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminAutoretrieveInitPostWithAddresses: (NSString*) addresses
     pubKey: (NSString*) pubKey
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// List autoretrieve servers
 /// This endpoint lists all registered autoretrieve servers
 ///
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) adminAutoretrieveListGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler;
+    (void (^)(NSString* output, NSError* error)) handler;
 
 
 /// Marks autoretrieve server as up
@@ -50,10 +57,13 @@ extern NSInteger kSWGAutoretrieveApiMissingParamErrorCode;
 ///
 /// @param token Autoretrieve&#39;s auth token
 /// 
+///  code:200 message:"OK",
+///  code:400 message:"Bad Request",
+///  code:500 message:"Internal Server Error"
 ///
-/// @return void
+/// @return NSString*
 -(NSURLSessionTask*) autoretrieveHeartbeatPostWithToken: (NSString*) token
-    completionHandler: (void (^)(NSError* error)) handler;
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 
 

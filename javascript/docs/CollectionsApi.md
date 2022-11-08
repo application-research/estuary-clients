@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+> 'String' collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -154,7 +154,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.collectionsColuuidDelete(coluuid, callback);
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> {'String': 'String'} collectionsColuuidPost(coluuid, contentIDs)
+> 'String' collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{'String': 'String'}**
+**'String'**
 
 ### Authorization
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+> 'String' collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -324,7 +324,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 apiInstance.collectionsFsAddPost(coluuid, content, path, callback);
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**'String'**
 
 ### Authorization
 
@@ -353,7 +353,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> [CollectionsCollection] collectionsGet()
+> [[CollectionsCollection]] collectionsGet()
 
 List all collections
 
@@ -387,7 +387,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[CollectionsCollection]**](CollectionsCollection.md)
+**[[CollectionsCollection]]**
 
 ### Authorization
 

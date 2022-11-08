@@ -70,12 +70,16 @@ SWGPublicApi::publicByCidCidGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicByCidCidGetSignal();
+        emit publicByCidCidGetSignal(output);
     } else {
-        emit publicByCidCidGetSignalE(error_type, error_str);
+        emit publicByCidCidGetSignalE(output, error_type, error_str);
         emit publicByCidCidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -119,12 +123,16 @@ SWGPublicApi::publicInfoGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicInfoGetSignal();
+        emit publicInfoGetSignal(output);
     } else {
-        emit publicInfoGetSignalE(error_type, error_str);
+        emit publicInfoGetSignalE(output, error_type, error_str);
         emit publicInfoGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -168,12 +176,16 @@ SWGPublicApi::publicMetricsDealsOnChainGetCallback(SWGHttpRequestWorker * worker
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMetricsDealsOnChainGetSignal();
+        emit publicMetricsDealsOnChainGetSignal(output);
     } else {
-        emit publicMetricsDealsOnChainGetSignalE(error_type, error_str);
+        emit publicMetricsDealsOnChainGetSignalE(output, error_type, error_str);
         emit publicMetricsDealsOnChainGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -227,12 +239,16 @@ SWGPublicApi::publicMinersDealsMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersDealsMinerGetSignal();
+        emit publicMinersDealsMinerGetSignal(output);
     } else {
-        emit publicMinersDealsMinerGetSignalE(error_type, error_str);
+        emit publicMinersDealsMinerGetSignalE(output, error_type, error_str);
         emit publicMinersDealsMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -278,12 +294,16 @@ SWGPublicApi::publicMinersFailuresMinerGetCallback(SWGHttpRequestWorker * worker
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersFailuresMinerGetSignal();
+        emit publicMinersFailuresMinerGetSignal(output);
     } else {
-        emit publicMinersFailuresMinerGetSignalE(error_type, error_str);
+        emit publicMinersFailuresMinerGetSignalE(output, error_type, error_str);
         emit publicMinersFailuresMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -327,12 +347,16 @@ SWGPublicApi::publicMinersGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersGetSignal();
+        emit publicMinersGetSignal(output);
     } else {
-        emit publicMinersGetSignalE(error_type, error_str);
+        emit publicMinersGetSignalE(output, error_type, error_str);
         emit publicMinersGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -378,12 +402,16 @@ SWGPublicApi::publicMinersStatsMinerGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicMinersStatsMinerGetSignal();
+        emit publicMinersStatsMinerGetSignal(output);
     } else {
-        emit publicMinersStatsMinerGetSignalE(error_type, error_str);
+        emit publicMinersStatsMinerGetSignalE(output, error_type, error_str);
         emit publicMinersStatsMinerGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -557,12 +585,16 @@ SWGPublicApi::publicStatsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit publicStatsGetSignal();
+        emit publicStatsGetSignal(output);
     } else {
-        emit publicStatsGetSignalE(error_type, error_str);
+        emit publicStatsGetSignalE(output, error_type, error_str);
         emit publicStatsGetSignalEFull(worker, error_type, error_str);
     }
 }

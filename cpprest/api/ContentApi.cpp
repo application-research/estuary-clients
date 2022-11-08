@@ -36,7 +36,7 @@ ContentApi::~ContentApi()
 {
 }
 
-pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::optional<utility::string_t> ignoreDupes, boost::optional<utility::string_t> filename)
+pplx::task<utility::string_t> ContentApi::contentAddCarPost(utility::string_t body, boost::optional<utility::string_t> ignoreDupes, boost::optional<utility::string_t> filename)
 {
 
 
@@ -56,7 +56,7 @@ pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::op
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -67,6 +67,11 @@ pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::op
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -154,10 +159,33 @@ pplx::task<void> ContentApi::contentAddCarPost(utility::string_t body, boost::op
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentAddCarPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddIpfsBody> body, boost::optional<utility::string_t> ignoreDupes)
+pplx::task<utility::string_t> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddIpfsBody> body, boost::optional<utility::string_t> ignoreDupes)
 {
 
     // verify the required parameter 'body' is set
@@ -183,7 +211,7 @@ pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddI
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -194,6 +222,11 @@ pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddI
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -282,7 +315,30 @@ pplx::task<void> ContentApi::contentAddIpfsPost(std::shared_ptr<Util.ContentAddI
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentAddIpfsPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
 pplx::task<std::shared_ptr<Util.ContentAddResponse>> ContentApi::contentAddPost(std::shared_ptr<HttpContent> data, boost::optional<utility::string_t> filename, boost::optional<utility::string_t> coluuid, boost::optional<int32_t> replication, boost::optional<utility::string_t> ignoreDupes, boost::optional<utility::string_t> lazyProvide, boost::optional<utility::string_t> dir)
@@ -573,7 +629,7 @@ pplx::task<utility::string_t> ContentApi::contentAggregatedContentGet(utility::s
         return result;
     });
 }
-pplx::task<void> ContentApi::contentAllDealsGet(utility::string_t begin, utility::string_t duration, utility::string_t all)
+pplx::task<utility::string_t> ContentApi::contentAllDealsGet(utility::string_t begin, utility::string_t duration, utility::string_t all)
 {
 
 
@@ -593,7 +649,7 @@ pplx::task<void> ContentApi::contentAllDealsGet(utility::string_t begin, utility
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -604,6 +660,11 @@ pplx::task<void> ContentApi::contentAllDealsGet(utility::string_t begin, utility
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -682,10 +743,33 @@ pplx::task<void> ContentApi::contentAllDealsGet(utility::string_t begin, utility
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentAllDealsGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentBwUsageContentGet(utility::string_t content)
+pplx::task<utility::string_t> ContentApi::contentBwUsageContentGet(utility::string_t content)
 {
 
 
@@ -706,7 +790,7 @@ pplx::task<void> ContentApi::contentBwUsageContentGet(utility::string_t content)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -717,6 +801,11 @@ pplx::task<void> ContentApi::contentBwUsageContentGet(utility::string_t content)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -786,10 +875,33 @@ pplx::task<void> ContentApi::contentBwUsageContentGet(utility::string_t content)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentBwUsageContentGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreateBody> req, boost::optional<utility::string_t> ignoreDupes)
+pplx::task<utility::string_t> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreateBody> req, boost::optional<utility::string_t> ignoreDupes)
 {
 
     // verify the required parameter 'req' is set
@@ -815,7 +927,7 @@ pplx::task<void> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreat
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -826,6 +938,11 @@ pplx::task<void> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreat
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -914,10 +1031,33 @@ pplx::task<void> ContentApi::contentCreatePost(std::shared_ptr<Util.ContentCreat
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentCreatePost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentDealsGet(boost::optional<int32_t> limit, boost::optional<int32_t> offset)
+pplx::task<utility::string_t> ContentApi::contentDealsGet(boost::optional<int32_t> limit, boost::optional<int32_t> offset)
 {
 
 
@@ -937,7 +1077,7 @@ pplx::task<void> ContentApi::contentDealsGet(boost::optional<int32_t> limit, boo
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -948,6 +1088,11 @@ pplx::task<void> ContentApi::contentDealsGet(boost::optional<int32_t> limit, boo
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1025,10 +1170,33 @@ pplx::task<void> ContentApi::contentDealsGet(boost::optional<int32_t> limit, boo
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentDealsGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentEnsureReplicationDatacidGet(utility::string_t datacid)
+pplx::task<utility::string_t> ContentApi::contentEnsureReplicationDatacidGet(utility::string_t datacid)
 {
 
 
@@ -1049,7 +1217,7 @@ pplx::task<void> ContentApi::contentEnsureReplicationDatacidGet(utility::string_
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1060,6 +1228,11 @@ pplx::task<void> ContentApi::contentEnsureReplicationDatacidGet(utility::string_
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1129,7 +1302,30 @@ pplx::task<void> ContentApi::contentEnsureReplicationDatacidGet(utility::string_
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentEnsureReplicationDatacidGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
 pplx::task<utility::string_t> ContentApi::contentFailuresContentGet(utility::string_t content)
@@ -1264,7 +1460,7 @@ pplx::task<utility::string_t> ContentApi::contentFailuresContentGet(utility::str
         return result;
     });
 }
-pplx::task<void> ContentApi::contentIdGet(int32_t id)
+pplx::task<utility::string_t> ContentApi::contentIdGet(int32_t id)
 {
 
 
@@ -1285,7 +1481,7 @@ pplx::task<void> ContentApi::contentIdGet(int32_t id)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1296,6 +1492,11 @@ pplx::task<void> ContentApi::contentIdGet(int32_t id)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1365,10 +1566,33 @@ pplx::task<void> ContentApi::contentIdGet(int32_t id)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentIdGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDealBody> body)
+pplx::task<utility::string_t> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDealBody> body)
 {
 
     // verify the required parameter 'body' is set
@@ -1394,7 +1618,7 @@ pplx::task<void> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDe
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1405,6 +1629,11 @@ pplx::task<void> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDe
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1489,10 +1718,33 @@ pplx::task<void> ContentApi::contentImportdealPost(std::shared_ptr<Main.importDe
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentImportdealPost: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<std::vector<utility::string_t>> ContentApi::contentListGet()
+pplx::task<utility::string_t> ContentApi::contentListGet()
 {
 
 
@@ -1512,7 +1764,7 @@ pplx::task<std::vector<utility::string_t>> ContentApi::contentListGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1523,6 +1775,11 @@ pplx::task<std::vector<utility::string_t>> ContentApi::contentListGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1592,18 +1849,18 @@ pplx::task<std::vector<utility::string_t>> ContentApi::contentListGet()
     })
     .then([=](utility::string_t response)
     {
-        std::vector<utility::string_t> result;
+        utility::string_t result(utility::conversions::to_string_t(""));
 
         if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
             web::json::value json = web::json::value::parse(response);
 
-            for( auto& item : json.as_array() )
-            {
-                result.push_back(ModelBase::stringFromJson(item));
-                
-            }
+            result = ModelBase::stringFromJson(json);
             
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
         }
         // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
         // {
@@ -1618,7 +1875,7 @@ pplx::task<std::vector<utility::string_t>> ContentApi::contentListGet()
         return result;
     });
 }
-pplx::task<void> ContentApi::contentReadContGet(utility::string_t cont)
+pplx::task<utility::string_t> ContentApi::contentReadContGet(utility::string_t cont)
 {
 
 
@@ -1639,7 +1896,7 @@ pplx::task<void> ContentApi::contentReadContGet(utility::string_t cont)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1650,6 +1907,11 @@ pplx::task<void> ContentApi::contentReadContGet(utility::string_t cont)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1719,10 +1981,33 @@ pplx::task<void> ContentApi::contentReadContGet(utility::string_t cont)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentReadContGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentStagingZonesGet()
+pplx::task<utility::string_t> ContentApi::contentStagingZonesGet()
 {
 
 
@@ -1742,7 +2027,7 @@ pplx::task<void> ContentApi::contentStagingZonesGet()
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1753,6 +2038,11 @@ pplx::task<void> ContentApi::contentStagingZonesGet()
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1822,10 +2112,33 @@ pplx::task<void> ContentApi::contentStagingZonesGet()
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentStagingZonesGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit, utility::string_t offset)
+pplx::task<utility::string_t> ContentApi::contentStatsGet(utility::string_t limit, utility::string_t offset)
 {
 
 
@@ -1845,7 +2158,7 @@ pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit, utility::s
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1856,6 +2169,11 @@ pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit, utility::s
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -1931,10 +2249,33 @@ pplx::task<void> ContentApi::contentStatsGet(utility::string_t limit, utility::s
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentStatsGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
-pplx::task<void> ContentApi::contentStatusIdGet(int32_t id)
+pplx::task<utility::string_t> ContentApi::contentStatusIdGet(int32_t id)
 {
 
 
@@ -1955,7 +2296,7 @@ pplx::task<void> ContentApi::contentStatusIdGet(int32_t id)
     // use JSON if possible
     if ( responseHttpContentTypes.size() == 0 )
     {
-        responseHttpContentType = utility::conversions::to_string_t("application/json");
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     // JSON
     else if ( responseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != responseHttpContentTypes.end() )
@@ -1966,6 +2307,11 @@ pplx::task<void> ContentApi::contentStatusIdGet(int32_t id)
     else if( responseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != responseHttpContentTypes.end() )
     {
         responseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
+    }
+    // plain text
+    else if( responseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != responseHttpContentTypes.end() )
+    {
+        responseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -2035,7 +2381,30 @@ pplx::task<void> ContentApi::contentStatusIdGet(int32_t id)
     })
     .then([=](utility::string_t response)
     {
-        return void();
+        utility::string_t result(utility::conversions::to_string_t(""));
+
+        if(responseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value json = web::json::value::parse(response);
+
+            result = ModelBase::stringFromJson(json);
+            
+        }
+        else if(responseHttpContentType == utility::conversions::to_string_t("text/plain"))
+        {
+            result = response;
+        }
+        // else if(responseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling contentStatusIdGet: unsupported response type"));
+        }
+
+        return result;
     });
 }
 

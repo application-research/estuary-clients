@@ -34,30 +34,72 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint registers a new autoretrieve server</remarks>
         /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
         /// <param name="pubKey">Autoretrieve&#39;s public key</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//admin/autoretrieve/init")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AdminAutoretrieveInitPost")]
-        public virtual IActionResult AdminAutoretrieveInitPost([FromBody]string addresses, [FromBody]string pubKey)
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult AdminAutoretrieveInitPost([FromForm][Required()]string addresses, [FromForm][Required()]string pubKey)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
         /// List autoretrieve servers
         /// </summary>
         /// <remarks>This endpoint lists all registered autoretrieve servers</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//admin/autoretrieve/list")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AdminAutoretrieveListGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult AdminAutoretrieveListGet()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -65,15 +107,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint updates the lastConnection field for autoretrieve</remarks>
         /// <param name="token">Autoretrieve&#39;s auth token</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//autoretrieve/heartbeat")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AutoretrieveHeartbeatPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult AutoretrieveHeartbeatPost([FromHeader][Required()]string token)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
     }
 }

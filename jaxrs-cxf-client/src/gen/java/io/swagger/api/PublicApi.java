@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -36,8 +37,11 @@ public interface PublicApi  {
     @Path("/public/by-cid/{cid}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get Content by Cid", tags={  })
-    @ApiResponses(value = {  })
-    public void publicByCidCidGet(@PathParam("cid") String cid);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicByCidCidGet(@PathParam("cid") String cid);
 
     /**
      * Get public node info
@@ -49,8 +53,11 @@ public interface PublicApi  {
     @Path("/public/info")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get public node info", tags={  })
-    @ApiResponses(value = {  })
-    public void publicInfoGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicInfoGet();
 
     /**
      * Get deal metrics
@@ -62,8 +69,11 @@ public interface PublicApi  {
     @Path("/public/metrics/deals-on-chain")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get deal metrics", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMetricsDealsOnChainGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMetricsDealsOnChainGet();
 
     /**
      * Get all miners deals
@@ -75,8 +85,11 @@ public interface PublicApi  {
     @Path("/public/miners/deals/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all miners deals", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersDealsMinerGet(@PathParam("miner") String miner, @QueryParam("ignore-failed")String ignoreFailed);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersDealsMinerGet(@PathParam("miner") String miner, @QueryParam("ignore-failed")String ignoreFailed);
 
     /**
      * Get all miners
@@ -88,8 +101,11 @@ public interface PublicApi  {
     @Path("/public/miners/failures/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all miners", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersFailuresMinerGet(@PathParam("miner") String miner);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersFailuresMinerGet(@PathParam("miner") String miner);
 
     /**
      * Get all miners
@@ -101,8 +117,11 @@ public interface PublicApi  {
     @Path("/public/miners")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get all miners", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersGet();
 
     /**
      * Get miner stats
@@ -114,8 +133,11 @@ public interface PublicApi  {
     @Path("/public/miners/stats/{miner}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Get miner stats", tags={  })
-    @ApiResponses(value = {  })
-    public void publicMinersStatsMinerGet(@PathParam("miner") String miner);
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicMinersStatsMinerGet(@PathParam("miner") String miner);
 
     /**
      * Net Addrs
@@ -142,7 +164,9 @@ public interface PublicApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Net Peers", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     public List<String> publicNetPeersGet();
 
     /**
@@ -155,7 +179,10 @@ public interface PublicApi  {
     @Path("/public/stats")
     @Produces({ "application/json" })
     @ApiOperation(value = "Public stats", tags={  })
-    @ApiResponses(value = {  })
-    public void publicStatsGet();
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+    public String publicStatsGet();
 }
 

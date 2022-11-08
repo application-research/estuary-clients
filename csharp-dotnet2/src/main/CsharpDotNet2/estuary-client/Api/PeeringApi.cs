@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -13,34 +14,34 @@ namespace estuary-client.Api
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
-        /// <param name="body">Peer ids</param>
-        /// <returns></returns>
-        void AdminPeeringPeersDelete (List<string> body);
+        /// <param name="peerIds">Peer ids</param>
+        /// <returns>string</returns>
+        string AdminPeeringPeersDelete (List<bool?> peerIds);
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
-        /// <returns></returns>
-        void AdminPeeringPeersGet ();
+        /// <returns>string</returns>
+        string AdminPeeringPeersGet ();
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
-        /// <returns></returns>
-        void AdminPeeringPeersPost ();
+        /// <returns>string</returns>
+        string AdminPeeringPeersPost ();
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
-        /// <returns></returns>
-        void AdminPeeringStartPost ();
+        /// <returns>string</returns>
+        string AdminPeeringStartPost ();
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
-        /// <returns></returns>
-        void AdminPeeringStatusGet ();
+        /// <returns>string</returns>
+        string AdminPeeringStatusGet ();
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
-        /// <returns></returns>
-        void AdminPeeringStopPost ();
+        /// <returns>string</returns>
+        string AdminPeeringStopPost ();
     }
   
     /// <summary>
@@ -99,13 +100,13 @@ namespace estuary-client.Api
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
-        /// <param name="body">Peer ids</param> 
-        /// <returns></returns>            
-        public void AdminPeeringPeersDelete (List<string> body)
+        /// <param name="peerIds">Peer ids</param> 
+        /// <returns>string</returns>            
+        public string AdminPeeringPeersDelete (List<bool?> peerIds)
         {
             
-            // verify the required parameter 'body' is set
-            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling AdminPeeringPeersDelete");
+            // verify the required parameter 'peerIds' is set
+            if (peerIds == null) throw new ApiException(400, "Missing required parameter 'peerIds' when calling AdminPeeringPeersDelete");
             
     
             var path = "/admin/peering/peers";
@@ -117,7 +118,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(body); // http body (model) parameter
+                                                postBody = ApiClient.Serialize(peerIds); // http body (model) parameter
     
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
@@ -130,14 +131,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringPeersDelete: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
-        /// <returns></returns>            
-        public void AdminPeeringPeersGet ()
+        /// <returns>string</returns>            
+        public string AdminPeeringPeersGet ()
         {
             
     
@@ -162,14 +163,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringPeersGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
-        /// <returns></returns>            
-        public void AdminPeeringPeersPost ()
+        /// <returns>string</returns>            
+        public string AdminPeeringPeersPost ()
         {
             
     
@@ -194,14 +195,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringPeersPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
-        /// <returns></returns>            
-        public void AdminPeeringStartPost ()
+        /// <returns>string</returns>            
+        public string AdminPeeringStartPost ()
         {
             
     
@@ -226,14 +227,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringStartPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
-        /// <returns></returns>            
-        public void AdminPeeringStatusGet ()
+        /// <returns>string</returns>            
+        public string AdminPeeringStatusGet ()
         {
             
     
@@ -258,14 +259,14 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringStatusGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
-        /// <returns></returns>            
-        public void AdminPeeringStopPost ()
+        /// <returns>string</returns>            
+        public string AdminPeeringStopPost ()
         {
             
     
@@ -290,7 +291,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling AdminPeeringStopPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

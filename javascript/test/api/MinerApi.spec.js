@@ -37,7 +37,7 @@
     describe('MinerApi', function() {
       describe('publicMinersDealsMinerGet', function() {
         it('should call publicMinersDealsMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
           var opts = {};
@@ -48,6 +48,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });
@@ -58,7 +61,7 @@
       });
       describe('publicMinersStatsMinerGet', function() {
         it('should call publicMinersStatsMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersStatsMinerGet call
+          // TODO: uncomment, update parameter values for publicMinersStatsMinerGet call and complete the assertions
           /*
           var miner = "miner_example";
 
@@ -67,6 +70,9 @@
               done(error);
               return;
             }
+            // TODO: update response assertions
+            expect(data).to.be.a('string');
+            // expect(data).to.be(null);
 
             done();
           });

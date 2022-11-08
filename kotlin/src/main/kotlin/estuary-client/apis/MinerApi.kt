@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -21,9 +22,10 @@ class MinerApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * This endpoint returns all miners deals
     * @param miner Filter by miner 
     * @param ignoreFailed Ignore Failed (optional)
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersDealsMinerGet(miner: kotlin.String, ignoreFailed: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersDealsMinerGet(miner: kotlin.String, ignoreFailed: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf("ignore-failed" to listOf("$ignoreFailed"))
         
@@ -39,13 +41,13 @@ class MinerApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -58,9 +60,10 @@ class MinerApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     * Get miner stats
     * This endpoint returns miner stats
     * @param miner Filter by miner 
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMinersStatsMinerGet(miner: kotlin.String) : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMinersStatsMinerGet(miner: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -76,13 +79,13 @@ class MinerApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

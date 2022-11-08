@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> adminPeeringPeersDelete(body)
+> String adminPeeringPeersDelete(peerIds)
 
 Remove peers on Peering Service
 
@@ -26,9 +26,10 @@ This endpoint can be used to remove a Peer from the Peering Service
 //import io.swagger.client.api.PeersApi;
 
 PeersApi apiInstance = new PeersApi();
-List<String> body = Arrays.asList(new List<String>()); // List<String> | Peer ids
+List<Boolean> peerIds = Arrays.asList(new List<Boolean>()); // List<Boolean> | Peer ids
 try {
-    apiInstance.adminPeeringPeersDelete(body);
+    String result = apiInstance.adminPeeringPeersDelete(peerIds);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringPeersDelete");
     e.printStackTrace();
@@ -39,11 +40,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| Peer ids |
+ **peerIds** | **List&lt;Boolean&gt;**| Peer ids |
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -56,7 +57,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersGet"></a>
 # **adminPeeringPeersGet**
-> adminPeeringPeersGet()
+> String adminPeeringPeersGet()
 
 List all Peering peers
 
@@ -69,7 +70,8 @@ This endpoint can be used to list all peers on Peering Service
 
 PeersApi apiInstance = new PeersApi();
 try {
-    apiInstance.adminPeeringPeersGet();
+    String result = apiInstance.adminPeeringPeersGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringPeersGet");
     e.printStackTrace();
@@ -81,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -94,7 +96,7 @@ null (empty response body)
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> adminPeeringPeersPost()
+> String adminPeeringPeersPost()
 
 Add peers on Peering Service
 
@@ -107,7 +109,8 @@ This endpoint can be used to add a Peer from the Peering Service
 
 PeersApi apiInstance = new PeersApi();
 try {
-    apiInstance.adminPeeringPeersPost();
+    String result = apiInstance.adminPeeringPeersPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringPeersPost");
     e.printStackTrace();
@@ -119,7 +122,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -132,7 +135,7 @@ null (empty response body)
 
 <a name="adminPeeringStartPost"></a>
 # **adminPeeringStartPost**
-> adminPeeringStartPost()
+> String adminPeeringStartPost()
 
 Start Peering
 
@@ -145,7 +148,8 @@ This endpoint can be used to start the Peering Service
 
 PeersApi apiInstance = new PeersApi();
 try {
-    apiInstance.adminPeeringStartPost();
+    String result = apiInstance.adminPeeringStartPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringStartPost");
     e.printStackTrace();
@@ -157,7 +161,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -170,7 +174,7 @@ null (empty response body)
 
 <a name="adminPeeringStatusGet"></a>
 # **adminPeeringStatusGet**
-> adminPeeringStatusGet()
+> String adminPeeringStatusGet()
 
 Check Peering Status
 
@@ -183,7 +187,8 @@ This endpoint can be used to check the Peering status
 
 PeersApi apiInstance = new PeersApi();
 try {
-    apiInstance.adminPeeringStatusGet();
+    String result = apiInstance.adminPeeringStatusGet();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringStatusGet");
     e.printStackTrace();
@@ -195,7 +200,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 
@@ -208,7 +213,7 @@ null (empty response body)
 
 <a name="adminPeeringStopPost"></a>
 # **adminPeeringStopPost**
-> adminPeeringStopPost()
+> String adminPeeringStopPost()
 
 Stop Peering
 
@@ -221,7 +226,8 @@ This endpoint can be used to stop the Peering Service
 
 PeersApi apiInstance = new PeersApi();
 try {
-    apiInstance.adminPeeringStopPost();
+    String result = apiInstance.adminPeeringStopPost();
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeersApi#adminPeeringStopPost");
     e.printStackTrace();
@@ -233,7 +239,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+**String**
 
 ### Authorization
 

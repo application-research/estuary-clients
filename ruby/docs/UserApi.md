@@ -5,14 +5,14 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**user_api_keys_get**](UserApi.md#user_api_keys_get) | **GET** /user/api-keys | Get API keys for a user
-[**user_api_keys_key_delete**](UserApi.md#user_api_keys_key_delete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**user_api_keys_key_or_hash_delete**](UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **GET** /user/export | Export user data
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
 
 
 # **user_api_keys_get**
-> Array&lt;MainGetApiKeysResp&gt; user_api_keys_get
+> Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt; user_api_keys_get
 
 Get API keys for a user
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Array&lt;MainGetApiKeysResp&gt;**](MainGetApiKeysResp.md)
+**Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt;**
 
 ### Authorization
 
@@ -59,12 +59,12 @@ This endpoint does not need any parameter.
 
 
 
-# **user_api_keys_key_delete**
-> user_api_keys_key_delete(key)
+# **user_api_keys_key_or_hash_delete**
+> String user_api_keys_key_or_hash_delete(key_or_hash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```ruby
@@ -80,14 +80,15 @@ end
 
 api_instance = SwaggerClient::UserApi.new
 
-key = 'key_example' # String | Key
+key_or_hash = 'key_or_hash_example' # String | Key or Hash
 
 
 begin
   #Revoke a User API Key.
-  api_instance.user_api_keys_key_delete(key)
+  result = api_instance.user_api_keys_key_or_hash_delete(key_or_hash)
+  p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling UserApi->user_api_keys_key_delete: #{e}"
+  puts "Exception when calling UserApi->user_api_keys_key_or_hash_delete: #{e}"
 end
 ```
 
@@ -95,11 +96,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **String**| Key | 
+ **key_or_hash** | **String**| Key or Hash | 
 
 ### Return type
 
-nil (empty response body)
+**String**
 
 ### Authorization
 
@@ -134,7 +135,7 @@ end
 api_instance = SwaggerClient::UserApi.new
 
 opts = { 
-  expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h
+  expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   perms: 'perms_example' # String | Permissions -- currently unused
 }
 
@@ -151,7 +152,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h | [optional] 
+ **expiry** | **String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | [optional] 
  **perms** | **String**| Permissions -- currently unused | [optional] 
 
 ### Return type
@@ -218,7 +219,7 @@ This endpoint does not need any parameter.
 
 
 # **user_stats_get**
-> MainUserStatsResponse user_stats_get
+> String user_stats_get
 
 Create API keys for a user
 
@@ -252,7 +253,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainUserStatsResponse**](MainUserStatsResponse.md)
+**String**
 
 ### Authorization
 

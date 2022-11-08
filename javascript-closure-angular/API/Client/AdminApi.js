@@ -14,6 +14,7 @@
 
 goog.provide('API.Client.AdminApi');
 
+goog.require('API.Client.util.HttpError');
 
 /**
  * @constructor
@@ -45,11 +46,11 @@ API.Client.AdminApi.$inject = ['$http', '$httpParamSerializer', '$injector'];
 /**
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
- * @param {!Array<!string>} body Peer ids
+ * @param {!Array<!boolean>} peerIds Peer ids
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
-API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(body, opt_extraHttpRequestParams) {
+API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(peerIds, opt_extraHttpRequestParams) {
   /** @const {string} */
   var path = this.basePath_ + '/admin/peering/peers';
 
@@ -58,16 +59,16 @@ API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(body, opt_extra
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'body' is set
-  if (!body) {
-    throw new Error('Missing required parameter body when calling adminPeeringPeersDelete');
+  // verify required parameter 'peerIds' is set
+  if (!peerIds) {
+    throw new Error('Missing required parameter peerIds when calling adminPeeringPeersDelete');
   }
   /** @type {!Object} */
   var httpRequestParams = {
     method: 'DELETE',
     url: path,
     json: true,
-    data: body,
+    data: peerIds,
         params: queryParameters,
     headers: headerParams
   };
@@ -83,7 +84,7 @@ API.Client.AdminApi.prototype.adminPeeringPeersDelete = function(body, opt_extra
  * List all Peering peers
  * This endpoint can be used to list all peers on Peering Service
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminPeeringPeersGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -114,7 +115,7 @@ API.Client.AdminApi.prototype.adminPeeringPeersGet = function(opt_extraHttpReque
  * Add peers on Peering Service
  * This endpoint can be used to add a Peer from the Peering Service
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminPeeringPeersPost = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -145,7 +146,7 @@ API.Client.AdminApi.prototype.adminPeeringPeersPost = function(opt_extraHttpRequ
  * Start Peering
  * This endpoint can be used to start the Peering Service
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminPeeringStartPost = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -176,7 +177,7 @@ API.Client.AdminApi.prototype.adminPeeringStartPost = function(opt_extraHttpRequ
  * Check Peering Status
  * This endpoint can be used to check the Peering status
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminPeeringStatusGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -207,7 +208,7 @@ API.Client.AdminApi.prototype.adminPeeringStatusGet = function(opt_extraHttpRequ
  * Stop Peering
  * This endpoint can be used to stop the Peering Service
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminPeeringStopPost = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -238,7 +239,7 @@ API.Client.AdminApi.prototype.adminPeeringStopPost = function(opt_extraHttpReque
  * Get systems(estuary/shuttle) config
  * This endpoint is used to get system configs.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminSystemConfigGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */
@@ -269,7 +270,7 @@ API.Client.AdminApi.prototype.adminSystemConfigGet = function(opt_extraHttpReque
  * Get all users
  * This endpoint is used to get all users.
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
- * @return {!angular.$q.Promise}
+ * @return {!angular.$q.Promise<!string>}
  */
 API.Client.AdminApi.prototype.adminUsersGet = function(opt_extraHttpRequestParams) {
   /** @const {string} */

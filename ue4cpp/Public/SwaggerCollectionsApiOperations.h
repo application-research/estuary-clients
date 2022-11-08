@@ -95,9 +95,10 @@ class SWAGGER_API SwaggerCollectionsApi::CollectionsColuuidDeleteResponse : publ
 {
 public:
     virtual ~CollectionsColuuidDeleteResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Get contents in a collection
@@ -151,7 +152,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TMap<FString, FString> Content;
+    FString Content;
 };
 
 /* Add a file to a collection
@@ -177,9 +178,10 @@ class SWAGGER_API SwaggerCollectionsApi::CollectionsFsAddPostResponse : public R
 {
 public:
     virtual ~CollectionsFsAddPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* List all collections
@@ -202,7 +204,7 @@ public:
 	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    TArray<SwaggerCollections_Collection> Content;
+    TArray<TArray<SwaggerCollections_Collection>> Content;
 };
 
 /* Create a new collection

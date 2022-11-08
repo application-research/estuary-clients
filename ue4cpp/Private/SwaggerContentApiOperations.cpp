@@ -74,10 +74,27 @@ void SwaggerContentApi::ContentAddCarPostRequest::SetupHttpRequest(const TShared
 	}
 }
 
+void SwaggerContentApi::ContentAddCarPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentAddCarPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentAddIpfsPostRequest::ComputePath() const
@@ -128,10 +145,27 @@ void SwaggerContentApi::ContentAddIpfsPostRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerContentApi::ContentAddIpfsPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentAddIpfsPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentAddPostRequest::ComputePath() const
@@ -215,6 +249,12 @@ void SwaggerContentApi::ContentAddPostResponse::SetHttpResponseCode(EHttpRespons
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -265,6 +305,12 @@ void SwaggerContentApi::ContentAggregatedContentGetResponse::SetHttpResponseCode
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -309,10 +355,27 @@ void SwaggerContentApi::ContentAllDealsGetRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerContentApi::ContentAllDealsGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentAllDealsGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentBwUsageContentGetRequest::ComputePath() const
@@ -348,10 +411,27 @@ void SwaggerContentApi::ContentBwUsageContentGetRequest::SetupHttpRequest(const 
 	}
 }
 
+void SwaggerContentApi::ContentBwUsageContentGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentBwUsageContentGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentCreatePostRequest::ComputePath() const
@@ -402,10 +482,27 @@ void SwaggerContentApi::ContentCreatePostRequest::SetupHttpRequest(const TShared
 	}
 }
 
+void SwaggerContentApi::ContentCreatePostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentCreatePostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentDealsGetRequest::ComputePath() const
@@ -449,10 +546,27 @@ void SwaggerContentApi::ContentDealsGetRequest::SetupHttpRequest(const TSharedRe
 	}
 }
 
+void SwaggerContentApi::ContentDealsGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentDealsGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentEnsureReplicationDatacidGetRequest::ComputePath() const
@@ -488,10 +602,27 @@ void SwaggerContentApi::ContentEnsureReplicationDatacidGetRequest::SetupHttpRequ
 	}
 }
 
+void SwaggerContentApi::ContentEnsureReplicationDatacidGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentEnsureReplicationDatacidGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentFailuresContentGetRequest::ComputePath() const
@@ -536,6 +667,12 @@ void SwaggerContentApi::ContentFailuresContentGetResponse::SetHttpResponseCode(E
 	default:
 		SetResponseString(TEXT("OK"));
 		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
 	}
 }
 
@@ -577,10 +714,27 @@ void SwaggerContentApi::ContentIdGetRequest::SetupHttpRequest(const TSharedRef<I
 	}
 }
 
+void SwaggerContentApi::ContentIdGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentIdGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentImportdealPostRequest::ComputePath() const
@@ -623,10 +777,27 @@ void SwaggerContentApi::ContentImportdealPostRequest::SetupHttpRequest(const TSh
 	}
 }
 
+void SwaggerContentApi::ContentImportdealPostResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentImportdealPostResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentListGetRequest::ComputePath() const
@@ -666,6 +837,12 @@ void SwaggerContentApi::ContentListGetResponse::SetHttpResponseCode(EHttpRespons
 	case 200:
 	default:
 		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
 		break;
 	}
 }
@@ -708,10 +885,27 @@ void SwaggerContentApi::ContentReadContGetRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerContentApi::ContentReadContGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentReadContGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentStagingZonesGetRequest::ComputePath() const
@@ -743,10 +937,27 @@ void SwaggerContentApi::ContentStagingZonesGetRequest::SetupHttpRequest(const TS
 	}
 }
 
+void SwaggerContentApi::ContentStagingZonesGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentStagingZonesGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentStatsGetRequest::ComputePath() const
@@ -784,10 +995,27 @@ void SwaggerContentApi::ContentStatsGetRequest::SetupHttpRequest(const TSharedRe
 	}
 }
 
+void SwaggerContentApi::ContentStatsGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentStatsGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString SwaggerContentApi::ContentStatusIdGetRequest::ComputePath() const
@@ -823,10 +1051,27 @@ void SwaggerContentApi::ContentStatusIdGetRequest::SetupHttpRequest(const TShare
 	}
 }
 
+void SwaggerContentApi::ContentStatusIdGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+	default:
+		SetResponseString(TEXT("OK"));
+		break;
+	case 400:
+		SetResponseString(TEXT("Bad Request"));
+		break;
+	case 500:
+		SetResponseString(TEXT("Internal Server Error"));
+		break;
+	}
+}
 
 bool SwaggerContentApi::ContentStatusIdGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 }

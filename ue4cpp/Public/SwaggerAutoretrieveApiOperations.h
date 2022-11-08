@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerAutoretrieveApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -39,9 +40,10 @@ class SWAGGER_API SwaggerAutoretrieveApi::AdminAutoretrieveInitPostResponse : pu
 {
 public:
     virtual ~AdminAutoretrieveInitPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* List autoretrieve servers
@@ -61,9 +63,10 @@ class SWAGGER_API SwaggerAutoretrieveApi::AdminAutoretrieveListGetResponse : pub
 {
 public:
     virtual ~AdminAutoretrieveListGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 /* Marks autoretrieve server as up
@@ -85,9 +88,10 @@ class SWAGGER_API SwaggerAutoretrieveApi::AutoretrieveHeartbeatPostResponse : pu
 {
 public:
     virtual ~AutoretrieveHeartbeatPostResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

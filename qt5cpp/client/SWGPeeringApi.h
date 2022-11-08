@@ -17,6 +17,7 @@
 
 #include <QList>
 #include <QString>
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -34,7 +35,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void adminPeeringPeersDelete(QList<QString*>*& body);
+    void adminPeeringPeersDelete(QList<bool>*& peer_ids);
     void adminPeeringPeersGet();
     void adminPeeringPeersPost();
     void adminPeeringStartPost();
@@ -50,19 +51,19 @@ private:
     void adminPeeringStopPostCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void adminPeeringPeersDeleteSignal();
-    void adminPeeringPeersGetSignal();
-    void adminPeeringPeersPostSignal();
-    void adminPeeringStartPostSignal();
-    void adminPeeringStatusGetSignal();
-    void adminPeeringStopPostSignal();
+    void adminPeeringPeersDeleteSignal(QString* summary);
+    void adminPeeringPeersGetSignal(QString* summary);
+    void adminPeeringPeersPostSignal(QString* summary);
+    void adminPeeringStartPostSignal(QString* summary);
+    void adminPeeringStatusGetSignal(QString* summary);
+    void adminPeeringStopPostSignal(QString* summary);
     
-    void adminPeeringPeersDeleteSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminPeeringPeersGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminPeeringPeersPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminPeeringStartPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminPeeringStatusGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
-    void adminPeeringStopPostSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringPeersDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringPeersGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringPeersPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringStartPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringStatusGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void adminPeeringStopPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void adminPeeringPeersDeleteSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void adminPeeringPeersGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

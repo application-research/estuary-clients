@@ -21,26 +21,26 @@ module SwaggerClient
     end
     # Remove peers on Peering Service
     # This endpoint can be used to remove a Peer from the Peering Service
-    # @param body Peer ids
+    # @param peer_ids Peer ids
     # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def admin_peering_peers_delete(body, opts = {})
-      admin_peering_peers_delete_with_http_info(body, opts)
-      nil
+    # @return [String]
+    def admin_peering_peers_delete(peer_ids, opts = {})
+      data, _status_code, _headers = admin_peering_peers_delete_with_http_info(peer_ids, opts)
+      data
     end
 
     # Remove peers on Peering Service
     # This endpoint can be used to remove a Peer from the Peering Service
-    # @param body Peer ids
+    # @param peer_ids Peer ids
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def admin_peering_peers_delete_with_http_info(body, opts = {})
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def admin_peering_peers_delete_with_http_info(peer_ids, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_peers_delete ...'
       end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling PeersApi.admin_peering_peers_delete"
+      # verify the required parameter 'peer_ids' is set
+      if @api_client.config.client_side_validation && peer_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'peer_ids' when calling PeersApi.admin_peering_peers_delete"
       end
       # resource path
       local_var_path = '/admin/peering/peers'
@@ -57,14 +57,15 @@ module SwaggerClient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(body)
+      post_body = @api_client.object_to_http_body(peer_ids)
       auth_names = ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_peers_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -73,16 +74,16 @@ module SwaggerClient
     # List all Peering peers
     # This endpoint can be used to list all peers on Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_peering_peers_get(opts = {})
-      admin_peering_peers_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_peering_peers_get_with_http_info(opts)
+      data
     end
 
     # List all Peering peers
     # This endpoint can be used to list all peers on Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_peering_peers_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_peers_get ...'
@@ -109,7 +110,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_peers_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -118,16 +120,16 @@ module SwaggerClient
     # Add peers on Peering Service
     # This endpoint can be used to add a Peer from the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_peering_peers_post(opts = {})
-      admin_peering_peers_post_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_peering_peers_post_with_http_info(opts)
+      data
     end
 
     # Add peers on Peering Service
     # This endpoint can be used to add a Peer from the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_peering_peers_post_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_peers_post ...'
@@ -154,7 +156,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_peers_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -163,16 +166,16 @@ module SwaggerClient
     # Start Peering
     # This endpoint can be used to start the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_peering_start_post(opts = {})
-      admin_peering_start_post_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_peering_start_post_with_http_info(opts)
+      data
     end
 
     # Start Peering
     # This endpoint can be used to start the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_peering_start_post_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_start_post ...'
@@ -199,7 +202,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_start_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -208,16 +212,16 @@ module SwaggerClient
     # Check Peering Status
     # This endpoint can be used to check the Peering status
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_peering_status_get(opts = {})
-      admin_peering_status_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_peering_status_get_with_http_info(opts)
+      data
     end
 
     # Check Peering Status
     # This endpoint can be used to check the Peering status
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_peering_status_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_status_get ...'
@@ -244,7 +248,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_status_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -253,16 +258,16 @@ module SwaggerClient
     # Stop Peering
     # This endpoint can be used to stop the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def admin_peering_stop_post(opts = {})
-      admin_peering_stop_post_with_http_info(opts)
-      nil
+      data, _status_code, _headers = admin_peering_stop_post_with_http_info(opts)
+      data
     end
 
     # Stop Peering
     # This endpoint can be used to stop the Peering Service
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def admin_peering_stop_post_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PeersApi.admin_peering_stop_post ...'
@@ -289,7 +294,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PeersApi#admin_peering_stop_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

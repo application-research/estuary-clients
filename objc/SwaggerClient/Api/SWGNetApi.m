@@ -1,6 +1,7 @@
 #import "SWGNetApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGNetApi ()
@@ -51,10 +52,10 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
 ///
 /// Net Addrs
 /// This endpoint is used to get net addrs
-///  @returns NSArray<NSString*>*
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) netAddrsGetWithCompletionHandler: 
-    (void (^)(NSArray<NSString*>* output, NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/net/addrs"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -92,10 +93,10 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"NSArray<NSString*>*"
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((NSArray<NSString*>*)data, error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -105,17 +106,17 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
 /// This endpoint returns all miners
 ///  @param miner Filter by miner 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGNetApiErrorDomain code:kSWGNetApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -160,10 +161,10 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -171,10 +172,10 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
 ///
 /// Get all miners
 /// This endpoint returns all miners
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/miners"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -212,10 +213,10 @@ NSInteger kSWGNetApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

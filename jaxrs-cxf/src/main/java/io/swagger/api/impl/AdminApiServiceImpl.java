@@ -2,6 +2,7 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import java.util.List;
+import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,10 +30,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to remove a Peer from the Peering Service
      *
      */
-    public void adminPeeringPeersDelete(List<String> body) {
+    public String adminPeeringPeersDelete(List<Boolean> peerIds) {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -41,10 +42,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to list all peers on Peering Service
      *
      */
-    public void adminPeeringPeersGet() {
+    public String adminPeeringPeersGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -53,10 +54,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to add a Peer from the Peering Service
      *
      */
-    public void adminPeeringPeersPost() {
+    public String adminPeeringPeersPost() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -65,10 +66,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to start the Peering Service
      *
      */
-    public void adminPeeringStartPost() {
+    public String adminPeeringStartPost() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -77,10 +78,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to check the Peering status
      *
      */
-    public void adminPeeringStatusGet() {
+    public String adminPeeringStatusGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -89,10 +90,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to stop the Peering Service
      *
      */
-    public void adminPeeringStopPost() {
+    public String adminPeeringStopPost() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -101,10 +102,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint is used to get system configs.
      *
      */
-    public void adminSystemConfigGet() {
+    public String adminSystemConfigGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
     /**
@@ -113,10 +114,10 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint is used to get all users.
      *
      */
-    public void adminUsersGet() {
+    public String adminUsersGet() {
         // TODO: Implement...
         
-        
+        return null;
     }
     
 }

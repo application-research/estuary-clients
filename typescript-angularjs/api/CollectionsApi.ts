@@ -103,7 +103,7 @@ export class CollectionsApi {
      * @summary Deletes a collection
      * @param coluuid Collection ID
      */
-    public collectionsColuuidDelete (coluuid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public collectionsColuuidDelete (coluuid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/collections/{coluuid}'
             .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
@@ -167,7 +167,7 @@ export class CollectionsApi {
      * @param coluuid coluuid
      * @param contentIDs Content IDs to add to collection
      */
-    public collectionsColuuidPost (coluuid: string, contentIDs: Array<number>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{ [key: string]: string; }> {
+    public collectionsColuuidPost (coluuid: string, contentIDs: Array<number>, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/collections/{coluuid}'
             .replace('{' + 'coluuid' + '}', encodeURIComponent(String(coluuid)));
 
@@ -204,7 +204,7 @@ export class CollectionsApi {
      * @param content Content
      * @param path Path to file
      */
-    public collectionsFsAddPost (coluuid: string, content: string, path: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public collectionsFsAddPost (coluuid: string, content: string, path: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/collections/fs/add';
 
         let queryParameters: any = {};
@@ -253,7 +253,7 @@ export class CollectionsApi {
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @summary List all collections
      */
-    public collectionsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.CollectionsCollection>> {
+    public collectionsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<Array<models.CollectionsCollection>>> {
         const localVarPath = this.basePath + '/collections/';
 
         let queryParameters: any = {};

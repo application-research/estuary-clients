@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="publicMinersDealsMinerGet"></a>
 # **publicMinersDealsMinerGet**
-> publicMinersDealsMinerGet(miner, ignoreFailed)
+> kotlin.String publicMinersDealsMinerGet(miner, ignoreFailed)
 
 Get all miners deals
 
@@ -26,7 +26,8 @@ val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 val ignoreFailed : kotlin.String = ignoreFailed_example // kotlin.String | Ignore Failed
 try {
-    apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
+    val result : kotlin.String = apiInstance.publicMinersDealsMinerGet(miner, ignoreFailed)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#publicMinersDealsMinerGet")
     e.printStackTrace()
@@ -45,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -58,7 +59,7 @@ null (empty response body)
 
 <a name="publicMinersStatsMinerGet"></a>
 # **publicMinersStatsMinerGet**
-> publicMinersStatsMinerGet(miner)
+> kotlin.String publicMinersStatsMinerGet(miner)
 
 Get miner stats
 
@@ -73,7 +74,8 @@ This endpoint returns miner stats
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Filter by miner
 try {
-    apiInstance.publicMinersStatsMinerGet(miner)
+    val result : kotlin.String = apiInstance.publicMinersStatsMinerGet(miner)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#publicMinersStatsMinerGet")
     e.printStackTrace()
@@ -91,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 

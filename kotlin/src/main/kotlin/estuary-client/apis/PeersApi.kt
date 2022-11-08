@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -19,11 +20,12 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Remove peers on Peering Service
     * This endpoint can be used to remove a Peer from the Peering Service
-    * @param body Peer ids 
-    * @return void
+    * @param peerIds Peer ids 
+    * @return kotlin.String
     */
-    fun adminPeeringPeersDelete(body: kotlin.Array<kotlin.String>) : Unit {
-        val localVariableBody: kotlin.Any? = body
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringPeersDelete(peerIds: kotlin.Array<kotlin.Boolean>) : kotlin.String {
+        val localVariableBody: kotlin.Any? = peerIds
         val localVariableQuery: MultiValueMap = mapOf()
         
         val contentHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
@@ -38,13 +40,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -56,9 +58,10 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * List all Peering peers
     * This endpoint can be used to list all peers on Peering Service
-    * @return void
+    * @return kotlin.String
     */
-    fun adminPeeringPeersGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringPeersGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -74,13 +77,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -92,9 +95,10 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Add peers on Peering Service
     * This endpoint can be used to add a Peer from the Peering Service
-    * @return void
+    * @return kotlin.String
     */
-    fun adminPeeringPeersPost() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringPeersPost() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -110,13 +114,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -128,9 +132,10 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Start Peering
     * This endpoint can be used to start the Peering Service
-    * @return void
+    * @return kotlin.String
     */
-    fun adminPeeringStartPost() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringStartPost() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -146,13 +151,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -164,9 +169,10 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Check Peering Status
     * This endpoint can be used to check the Peering status
-    * @return void
+    * @return kotlin.String
     */
-    fun adminPeeringStatusGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringStatusGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -182,13 +188,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -200,9 +206,10 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
     /**
     * Stop Peering
     * This endpoint can be used to stop the Peering Service
-    * @return void
+    * @return kotlin.String
     */
-    fun adminPeeringStopPost() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun adminPeeringStopPost() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -218,13 +225,13 @@ class PeersApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

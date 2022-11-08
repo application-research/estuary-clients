@@ -87,12 +87,16 @@ SWGContentApi::contentAddCarPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentAddCarPostSignal();
+        emit contentAddCarPostSignal(output);
     } else {
-        emit contentAddCarPostSignalE(error_type, error_str);
+        emit contentAddCarPostSignalE(output, error_type, error_str);
         emit contentAddCarPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -147,12 +151,16 @@ SWGContentApi::contentAddIpfsPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentAddIpfsPostSignal();
+        emit contentAddIpfsPostSignal(output);
     } else {
-        emit contentAddIpfsPostSignalE(error_type, error_str);
+        emit contentAddIpfsPostSignalE(output, error_type, error_str);
         emit contentAddIpfsPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -374,12 +382,16 @@ SWGContentApi::contentAllDealsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentAllDealsGetSignal();
+        emit contentAllDealsGetSignal(output);
     } else {
-        emit contentAllDealsGetSignalE(error_type, error_str);
+        emit contentAllDealsGetSignalE(output, error_type, error_str);
         emit contentAllDealsGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -425,12 +437,16 @@ SWGContentApi::contentBwUsageContentGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentBwUsageContentGetSignal();
+        emit contentBwUsageContentGetSignal(output);
     } else {
-        emit contentBwUsageContentGetSignalE(error_type, error_str);
+        emit contentBwUsageContentGetSignalE(output, error_type, error_str);
         emit contentBwUsageContentGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -485,12 +501,16 @@ SWGContentApi::contentCreatePostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentCreatePostSignal();
+        emit contentCreatePostSignal(output);
     } else {
-        emit contentCreatePostSignalE(error_type, error_str);
+        emit contentCreatePostSignalE(output, error_type, error_str);
         emit contentCreatePostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -550,12 +570,16 @@ SWGContentApi::contentDealsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentDealsGetSignal();
+        emit contentDealsGetSignal(output);
     } else {
-        emit contentDealsGetSignalE(error_type, error_str);
+        emit contentDealsGetSignalE(output, error_type, error_str);
         emit contentDealsGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -601,12 +625,16 @@ SWGContentApi::contentEnsureReplicationDatacidGetCallback(SWGHttpRequestWorker *
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentEnsureReplicationDatacidGetSignal();
+        emit contentEnsureReplicationDatacidGetSignal(output);
     } else {
-        emit contentEnsureReplicationDatacidGetSignalE(error_type, error_str);
+        emit contentEnsureReplicationDatacidGetSignalE(output, error_type, error_str);
         emit contentEnsureReplicationDatacidGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -707,12 +735,16 @@ SWGContentApi::contentIdGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentIdGetSignal();
+        emit contentIdGetSignal(output);
     } else {
-        emit contentIdGetSignalE(error_type, error_str);
+        emit contentIdGetSignalE(output, error_type, error_str);
         emit contentIdGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -759,12 +791,16 @@ SWGContentApi::contentImportdealPostCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentImportdealPostSignal();
+        emit contentImportdealPostSignal(output);
     } else {
-        emit contentImportdealPostSignalE(error_type, error_str);
+        emit contentImportdealPostSignalE(output, error_type, error_str);
         emit contentImportdealPostSignalEFull(worker, error_type, error_str);
     }
 }
@@ -808,22 +844,10 @@ SWGContentApi::contentListGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    QList<QString*>* output = new QList<QString*>();
     QString json(worker->response);
-    QByteArray array (json.toStdString().c_str());
-    QJsonDocument doc = QJsonDocument::fromJson(array);
-    QJsonArray jsonArray = doc.array();
-    auto wrapper = new SWGQObjectWrapper<QList<QString*>*> (output);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
     wrapper->deleteLater();
-    foreach(QJsonValue obj, jsonArray) {
-        QString* o = new QString();
-        QJsonObject jv = obj.toObject();
-        QJsonObject * ptr = (QJsonObject*)&jv;
-        o->fromJsonObject(*ptr);
-        auto objwrapper = new SWGQObjectWrapper<QString*> (o);
-        objwrapper->deleteLater();
-        output->append(o);
-    }
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
@@ -875,12 +899,16 @@ SWGContentApi::contentReadContGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentReadContGetSignal();
+        emit contentReadContGetSignal(output);
     } else {
-        emit contentReadContGetSignalE(error_type, error_str);
+        emit contentReadContGetSignalE(output, error_type, error_str);
         emit contentReadContGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -924,12 +952,16 @@ SWGContentApi::contentStagingZonesGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentStagingZonesGetSignal();
+        emit contentStagingZonesGetSignal(output);
     } else {
-        emit contentStagingZonesGetSignalE(error_type, error_str);
+        emit contentStagingZonesGetSignalE(output, error_type, error_str);
         emit contentStagingZonesGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -989,12 +1021,16 @@ SWGContentApi::contentStatsGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentStatsGetSignal();
+        emit contentStatsGetSignal(output);
     } else {
-        emit contentStatsGetSignalE(error_type, error_str);
+        emit contentStatsGetSignalE(output, error_type, error_str);
         emit contentStatsGetSignalEFull(worker, error_type, error_str);
     }
 }
@@ -1040,12 +1076,16 @@ SWGContentApi::contentStatusIdGetCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
+    QString json(worker->response);
+    QString* output = static_cast<QString*>(create(json, QString("QString")));
+    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit contentStatusIdGetSignal();
+        emit contentStatusIdGetSignal(output);
     } else {
-        emit contentStatusIdGetSignalE(error_type, error_str);
+        emit contentStatusIdGetSignalE(output, error_type, error_str);
         emit contentStatusIdGetSignalEFull(worker, error_type, error_str);
     }
 }

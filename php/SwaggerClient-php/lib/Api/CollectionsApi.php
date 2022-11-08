@@ -174,6 +174,22 @@ class CollectionsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -460,6 +476,14 @@ class CollectionsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -685,11 +709,12 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function collectionsColuuidDelete($coluuid)
     {
-        $this->collectionsColuuidDeleteWithHttpInfo($coluuid);
+        list($response) = $this->collectionsColuuidDeleteWithHttpInfo($coluuid);
+        return $response;
     }
 
     /**
@@ -701,11 +726,11 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function collectionsColuuidDeleteWithHttpInfo($coluuid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->collectionsColuuidDeleteRequest($coluuid);
 
         try {
@@ -736,10 +761,48 @@ class CollectionsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -777,14 +840,28 @@ class CollectionsApi
      */
     public function collectionsColuuidDeleteAsyncWithHttpInfo($coluuid)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->collectionsColuuidDeleteRequest($coluuid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1002,6 +1079,22 @@ class CollectionsApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1206,7 +1299,7 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return map[string,string]
+     * @return string
      */
     public function collectionsColuuidPost($coluuid, $content_i_ds)
     {
@@ -1224,11 +1317,11 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function collectionsColuuidPostWithHttpInfo($coluuid, $content_i_ds)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'string';
         $request = $this->collectionsColuuidPostRequest($coluuid, $content_i_ds);
 
         try {
@@ -1280,7 +1373,23 @@ class CollectionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'map[string,string]',
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1324,7 +1433,7 @@ class CollectionsApi
      */
     public function collectionsColuuidPostAsyncWithHttpInfo($coluuid, $content_i_ds)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'string';
         $request = $this->collectionsColuuidPostRequest($coluuid, $content_i_ds);
 
         return $this->client
@@ -1495,11 +1604,12 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return string
      */
     public function collectionsFsAddPost($coluuid, $content, $path)
     {
-        $this->collectionsFsAddPostWithHttpInfo($coluuid, $content, $path);
+        list($response) = $this->collectionsFsAddPostWithHttpInfo($coluuid, $content, $path);
+        return $response;
     }
 
     /**
@@ -1513,11 +1623,11 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function collectionsFsAddPostWithHttpInfo($coluuid, $content, $path)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->collectionsFsAddPostRequest($coluuid, $content, $path);
 
         try {
@@ -1548,10 +1658,48 @@ class CollectionsApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1593,14 +1741,28 @@ class CollectionsApi
      */
     public function collectionsFsAddPostAsyncWithHttpInfo($coluuid, $content, $path)
     {
-        $returnType = '';
+        $returnType = 'string';
         $request = $this->collectionsFsAddPostRequest($coluuid, $content, $path);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1755,7 +1917,7 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\CollectionsCollection[]
+     * @return \Swagger\Client\Model\CollectionsCollection[][]
      */
     public function collectionsGet()
     {
@@ -1771,11 +1933,11 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\CollectionsCollection[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CollectionsCollection[][], HTTP status code, HTTP response headers (array of strings)
      */
     public function collectionsGetWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\CollectionsCollection[]';
+        $returnType = '\Swagger\Client\Model\CollectionsCollection[][]';
         $request = $this->collectionsGetRequest();
 
         try {
@@ -1827,7 +1989,7 @@ class CollectionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\CollectionsCollection[]',
+                        '\Swagger\Client\Model\CollectionsCollection[][]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1891,7 +2053,7 @@ class CollectionsApi
      */
     public function collectionsGetAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\CollectionsCollection[]';
+        $returnType = '\Swagger\Client\Model\CollectionsCollection[][]';
         $request = $this->collectionsGetRequest();
 
         return $this->client

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
+using estuary-client.Model;
 
 namespace estuary-client.Api
 {
@@ -13,8 +14,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
-        /// <returns></returns>
-        void PublicMetricsDealsOnChainGet ();
+        /// <returns>string</returns>
+        string PublicMetricsDealsOnChainGet ();
     }
   
     /// <summary>
@@ -73,8 +74,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
-        /// <returns></returns>            
-        public void PublicMetricsDealsOnChainGet ()
+        /// <returns>string</returns>            
+        public string PublicMetricsDealsOnChainGet ()
         {
             
     
@@ -99,7 +100,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMetricsDealsOnChainGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return;
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
     }

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **adminAutoretrieveInitPost**
-> adminAutoretrieveInitPost(addresses, pubKey)
+> String adminAutoretrieveInitPost(addresses, pubKey)
 
 Register autoretrieve server
 
@@ -30,11 +30,12 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AutoretrieveApi();
-var addresses = new String(); // String | Autoretrieve's comma-separated list of addresses
-var pubKey = new String(); // String | Autoretrieve's public key
+var addresses = addresses_example; // String | Autoretrieve's comma-separated list of addresses
+var pubKey = pubKey_example; // String | Autoretrieve's public key
 
 try { 
-    api_instance.adminAutoretrieveInitPost(addresses, pubKey);
+    var result = api_instance.adminAutoretrieveInitPost(addresses, pubKey);
+    print(result);
 } catch (e) {
     print("Exception when calling AutoretrieveApi->adminAutoretrieveInitPost: $e\n");
 }
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -63,7 +64,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminAutoretrieveListGet**
-> adminAutoretrieveListGet()
+> String adminAutoretrieveListGet()
 
 List autoretrieve servers
 
@@ -80,7 +81,8 @@ import 'package:swagger/api.dart';
 var api_instance = new AutoretrieveApi();
 
 try { 
-    api_instance.adminAutoretrieveListGet();
+    var result = api_instance.adminAutoretrieveListGet();
+    print(result);
 } catch (e) {
     print("Exception when calling AutoretrieveApi->adminAutoretrieveListGet: $e\n");
 }
@@ -91,7 +93,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -105,7 +107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **autoretrieveHeartbeatPost**
-> autoretrieveHeartbeatPost(token)
+> String autoretrieveHeartbeatPost(token)
 
 Marks autoretrieve server as up
 
@@ -123,7 +125,8 @@ var api_instance = new AutoretrieveApi();
 var token = token_example; // String | Autoretrieve's auth token
 
 try { 
-    api_instance.autoretrieveHeartbeatPost(token);
+    var result = api_instance.autoretrieveHeartbeatPost(token);
+    print(result);
 } catch (e) {
     print("Exception when calling AutoretrieveApi->autoretrieveHeartbeatPost: $e\n");
 }
@@ -137,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

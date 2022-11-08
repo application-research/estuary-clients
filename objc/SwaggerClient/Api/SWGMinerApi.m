@@ -1,6 +1,7 @@
 #import "SWGMinerApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGMinerApi ()
@@ -55,18 +56,18 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
 ///
 ///  @param ignoreFailed Ignore Failed (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGMinerApiErrorDomain code:kSWGMinerApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -114,10 +115,10 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -127,17 +128,17 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
 /// This endpoint returns miner stats
 ///  @param miner Filter by miner 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGMinerApiErrorDomain code:kSWGMinerApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -182,10 +183,10 @@ NSInteger kSWGMinerApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

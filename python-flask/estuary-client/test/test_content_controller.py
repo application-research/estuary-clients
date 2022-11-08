@@ -9,6 +9,7 @@ from estuary-client.models.main_import_deal_body import MainImportDealBody  # no
 from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody  # noqa: E501
 from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
+from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
 

@@ -18,13 +18,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicByCidCidGet(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicByCidCidGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -41,13 +47,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicInfoGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicInfoGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -64,13 +76,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMetricsDealsOnChainGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMetricsDealsOnChainGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -92,13 +110,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersDealsMinerGet(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersDealsMinerGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -119,13 +143,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersFailuresMinerGet(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersFailuresMinerGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -142,13 +172,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersGet();
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -169,13 +205,19 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicMinersStatsMinerGet(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicMinersStatsMinerGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -250,12 +292,18 @@ private class SwagPublicApiTest {
 
         SwagClient client;
         SwagPublicApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPublicApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.publicStatsGet();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.publicStatsGet();
+        System.assertEquals(expectedResponse, response);
     }
 }

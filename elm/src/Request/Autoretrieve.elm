@@ -13,7 +13,8 @@
 
 module Request.Autoretrieve exposing (adminAutoretrieveInitPost, adminAutoretrieveListGet, autoretrieveHeartbeatPost)
 
-import Data.String exposing (Encode.string, String)
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
 
@@ -26,13 +27,13 @@ basePath =
 {-
    This endpoint registers a new autoretrieve server
 -}
-adminAutoretrieveInitPost : String -> Http.Request 
-adminAutoretrieveInitPost model =
+adminAutoretrieveInitPost : Http.Request String
+adminAutoretrieveInitPost =
     { method = "POST"
     , url = basePath ++ "/admin/autoretrieve/init"
     , headers = []
-    , body = Http.jsonBody <| Encode.string model
-    , expect = 
+    , body = Http.emptyBody
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -42,13 +43,13 @@ adminAutoretrieveInitPost model =
 {-
    This endpoint lists all registered autoretrieve servers
 -}
-adminAutoretrieveListGet : Http.Request 
+adminAutoretrieveListGet : Http.Request String
 adminAutoretrieveListGet =
     { method = "GET"
     , url = basePath ++ "/admin/autoretrieve/list"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -58,13 +59,13 @@ adminAutoretrieveListGet =
 {-
    This endpoint updates the lastConnection field for autoretrieve
 -}
-autoretrieveHeartbeatPost : Http.Request 
+autoretrieveHeartbeatPost : Http.Request String
 autoretrieveHeartbeatPost =
     { method = "POST"
     , url = basePath ++ "/autoretrieve/heartbeat"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

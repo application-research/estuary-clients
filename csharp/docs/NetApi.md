@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="netaddrsget"></a>
 # **NetAddrsGet**
-> List<string> NetAddrsGet ()
+> string NetAddrsGet ()
 
 Net Addrs
 
@@ -43,7 +43,7 @@ namespace Example
             try
             {
                 // Net Addrs
-                List&lt;string&gt; result = apiInstance.NetAddrsGet();
+                string result = apiInstance.NetAddrsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<string>**
+**string**
 
 ### Authorization
 
@@ -75,7 +75,7 @@ This endpoint does not need any parameter.
 
 <a name="publicminersfailuresminerget"></a>
 # **PublicMinersFailuresMinerGet**
-> void PublicMinersFailuresMinerGet (string miner)
+> string PublicMinersFailuresMinerGet (string miner)
 
 Get all miners
 
@@ -106,7 +106,8 @@ namespace Example
             try
             {
                 // Get all miners
-                apiInstance.PublicMinersFailuresMinerGet(miner);
+                string result = apiInstance.PublicMinersFailuresMinerGet(miner);
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -125,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -140,7 +141,7 @@ void (empty response body)
 
 <a name="publicminersget"></a>
 # **PublicMinersGet**
-> void PublicMinersGet ()
+> string PublicMinersGet ()
 
 Get all miners
 
@@ -170,7 +171,8 @@ namespace Example
             try
             {
                 // Get all miners
-                apiInstance.PublicMinersGet();
+                string result = apiInstance.PublicMinersGet();
+                Debug.WriteLine(result);
             }
             catch (Exception e)
             {
@@ -186,7 +188,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

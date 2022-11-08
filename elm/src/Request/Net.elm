@@ -13,6 +13,7 @@
 
 module Request.Net exposing (netAddrsGet, publicMinersFailuresMinerGet, publicMinersGet, publicNetAddrsGet, publicNetPeersGet)
 
+import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
 import Data.String exposing (Decode.string, String)
 import Http
 import Json.Decode as Decode
@@ -26,13 +27,13 @@ basePath =
 {-
    This endpoint is used to get net addrs
 -}
-netAddrsGet : Http.Request (List String)
+netAddrsGet : Http.Request String
 netAddrsGet =
     { method = "GET"
     , url = basePath ++ "/net/addrs"
     , headers = []
     , body = Http.emptyBody
-    , expect = Http.expectJson (Decode.list Decode.string)
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -42,13 +43,13 @@ netAddrsGet =
 {-
    This endpoint returns all miners
 -}
-publicMinersFailuresMinerGet : String -> Http.Request 
+publicMinersFailuresMinerGet : String -> Http.Request String
 publicMinersFailuresMinerGet miner =
     { method = "GET"
     , url = basePath ++ "/public/miners/failures/" ++ miner
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -58,13 +59,13 @@ publicMinersFailuresMinerGet miner =
 {-
    This endpoint returns all miners
 -}
-publicMinersGet : Http.Request 
+publicMinersGet : Http.Request String
 publicMinersGet =
     { method = "GET"
     , url = basePath ++ "/public/miners"
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

@@ -86,13 +86,19 @@ private class SwagCollectionsApiTest {
 
         SwagClient client;
         SwagCollectionsApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagCollectionsApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.collectionsColuuidDelete(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.collectionsColuuidDelete(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -148,8 +154,8 @@ private class SwagCollectionsApiTest {
 
         SwagClient client;
         SwagCollectionsApi api;
-        Map<String, String> response;
-        Map<String, String> expectedResponse;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagCollectionsApi(client);
@@ -157,9 +163,9 @@ private class SwagCollectionsApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{"empty": false}');
-        expectedResponse = new Map<String, String>{'key'=>'aeiou'};
-        response = (Map<String, String>) api.collectionsColuuidPost(params);
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.collectionsColuuidPost(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -183,13 +189,19 @@ private class SwagCollectionsApiTest {
 
         SwagClient client;
         SwagCollectionsApi api;
+        String response;
+        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagCollectionsApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        api.collectionsFsAddPost(params);
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
+        expectedResponse = 'aeiou';
+        response = (String) api.collectionsFsAddPost(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -206,8 +218,8 @@ private class SwagCollectionsApiTest {
 
         SwagClient client;
         SwagCollectionsApi api;
-        List<SwagCollectionsCollection> response;
-        List<SwagCollectionsCollection> expectedResponse;
+        List<List<SwagCollectionsCollection>> response;
+        List<List<SwagCollectionsCollection>> expectedResponse;
 
         client = new SwagClient();
         api = new SwagCollectionsApi(client);
@@ -216,8 +228,8 @@ private class SwagCollectionsApiTest {
 
         res.setHeader('Content-Type', 'application/json');
         res.setBody('{}');
-        expectedResponse = new List<SwagCollectionsCollection>{SwagCollectionsCollection.getExample()};
-        response = (List<SwagCollectionsCollection>) api.collectionsGet();
+        expectedResponse = new List<List<SwagCollectionsCollection>>{new List<SwagCollectionsCollection>{SwagCollectionsCollection.getExample()}};
+        response = (List<List<SwagCollectionsCollection>>) api.collectionsGet();
         System.assertEquals(expectedResponse, response);
     }
 

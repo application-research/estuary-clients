@@ -160,7 +160,7 @@
      * Callback function to receive the result of the collectionsColuuidDelete operation.
      * @callback module:api/CollectionsApi~collectionsColuuidDeleteCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -169,6 +169,7 @@
      * This endpoint is used to delete an existing collection.
      * @param {String} coluuid Collection ID
      * @param {module:api/CollectionsApi~collectionsColuuidDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.collectionsColuuidDelete = function(coluuid, callback) {
       var postBody = null;
@@ -194,7 +195,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = [];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/collections/{coluuid}', 'DELETE',
@@ -259,7 +260,7 @@
      * Callback function to receive the result of the collectionsColuuidPost operation.
      * @callback module:api/CollectionsApi~collectionsColuuidPostCallback
      * @param {String} error Error message, if any.
-     * @param {Object.<String, {'String': 'String'}>} data The data returned by the service call.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -269,7 +270,7 @@
      * @param {String} coluuid coluuid
      * @param {Array.<module:model/Number>} contentIDs Content IDs to add to collection
      * @param {module:api/CollectionsApi~collectionsColuuidPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object.<String, {'String': 'String'}>}
+     * data is of type: {@link 'String'}
      */
     this.collectionsColuuidPost = function(coluuid, contentIDs, callback) {
       var postBody = contentIDs;
@@ -300,7 +301,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = {'String': 'String'};
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/collections/{coluuid}', 'POST',
@@ -313,7 +314,7 @@
      * Callback function to receive the result of the collectionsFsAddPost operation.
      * @callback module:api/CollectionsApi~collectionsFsAddPostCallback
      * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
+     * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -324,6 +325,7 @@
      * @param {String} content Content
      * @param {String} path Path to file
      * @param {module:api/CollectionsApi~collectionsFsAddPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link 'String'}
      */
     this.collectionsFsAddPost = function(coluuid, content, path, callback) {
       var postBody = null;
@@ -361,7 +363,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = null;
+      var returnType = 'String';
 
       return this.apiClient.callApi(
         '/collections/fs/add', 'POST',
@@ -374,7 +376,7 @@
      * Callback function to receive the result of the collectionsGet operation.
      * @callback module:api/CollectionsApi~collectionsGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/CollectionsCollection>} data The data returned by the service call.
+     * @param {Array.<[CollectionsCollection]>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -382,7 +384,7 @@
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      * @param {module:api/CollectionsApi~collectionsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/CollectionsCollection>}
+     * data is of type: {@link Array.<[CollectionsCollection]>}
      */
     this.collectionsGet = function(callback) {
       var postBody = null;
@@ -402,7 +404,7 @@
       var authNames = ['bearerAuth'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [CollectionsCollection];
+      var returnType = [[CollectionsCollection]];
 
       return this.apiClient.callApi(
         '/collections/', 'GET',

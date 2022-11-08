@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
 [**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
 [**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
 [**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
 [**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **dealEstimatePost**
-> dealEstimatePost($body)
+> string dealEstimatePost($body)
 
 Estimate the cost of a deal
 
@@ -44,7 +45,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $body = new \Swagger\Client\Model\MainEstimateDealBody(); // \Swagger\Client\Model\MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try {
-    $apiInstance->dealEstimatePost($body);
+    $result = $apiInstance->dealEstimatePost($body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealEstimatePost: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -73,7 +75,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealInfoDealidGet**
-> dealInfoDealidGet($dealid)
+> string dealInfoDealidGet($dealid)
 
 Get Deal Info
 
@@ -98,7 +100,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $dealid = 56; // int | Deal ID
 
 try {
-    $apiInstance->dealInfoDealidGet($dealid);
+    $result = $apiInstance->dealInfoDealidGet($dealid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealInfoDealidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -113,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -127,7 +130,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealProposalPropcidGet**
-> dealProposalPropcidGet($propcid)
+> string dealProposalPropcidGet($propcid)
 
 Get Proposal
 
@@ -152,7 +155,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $propcid = "propcid_example"; // string | Proposal CID
 
 try {
-    $apiInstance->dealProposalPropcidGet($propcid);
+    $result = $apiInstance->dealProposalPropcidGet($propcid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealProposalPropcidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -167,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -181,7 +185,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealQueryMinerGet**
-> dealQueryMinerGet($miner)
+> string dealQueryMinerGet($miner)
 
 Query Ask
 
@@ -206,7 +210,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $miner = "miner_example"; // string | CID
 
 try {
-    $apiInstance->dealQueryMinerGet($miner);
+    $result = $apiInstance->dealQueryMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealQueryMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -221,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -235,7 +240,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealStatusByProposalPropcidGet**
-> dealStatusByProposalPropcidGet($propcid)
+> string dealStatusByProposalPropcidGet($propcid)
 
 Get Deal Status by PropCid
 
@@ -260,7 +265,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $propcid = "propcid_example"; // string | PropCid
 
 try {
-    $apiInstance->dealStatusByProposalPropcidGet($propcid);
+    $result = $apiInstance->dealStatusByProposalPropcidGet($propcid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealStatusByProposalPropcidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -275,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -289,7 +295,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealStatusMinerPropcidGet**
-> dealStatusMinerPropcidGet($miner, $propcid)
+> string dealStatusMinerPropcidGet($miner, $propcid)
 
 Deal Status
 
@@ -315,7 +321,8 @@ $miner = "miner_example"; // string | Miner
 $propcid = "propcid_example"; // string | Proposal CID
 
 try {
-    $apiInstance->dealStatusMinerPropcidGet($miner, $propcid);
+    $result = $apiInstance->dealStatusMinerPropcidGet($miner, $propcid);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealStatusMinerPropcidGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -331,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -345,7 +352,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealTransferInProgressGet**
-> dealTransferInProgressGet()
+> string dealTransferInProgressGet()
 
 Transfer In Progress
 
@@ -369,7 +376,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 );
 
 try {
-    $apiInstance->dealTransferInProgressGet();
+    $result = $apiInstance->dealTransferInProgressGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealTransferInProgressGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -381,7 +389,62 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **dealTransferStatusPost**
+> string dealTransferStatusPost($chanid)
+
+Transfer Status
+
+This endpoint returns the status of a transfer
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\DealsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$chanid = new \Swagger\Client\Model\MainChannelIDParam(); // \Swagger\Client\Model\MainChannelIDParam | Channel ID
+
+try {
+    $result = $apiInstance->dealTransferStatusPost($chanid);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DealsApi->dealTransferStatusPost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chanid** | [**\Swagger\Client\Model\MainChannelIDParam**](../Model/MainChannelIDParam.md)| Channel ID |
+
+### Return type
+
+**string**
 
 ### Authorization
 
@@ -395,7 +458,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealsFailuresGet**
-> dealsFailuresGet()
+> string dealsFailuresGet()
 
 Get storage failures for user
 
@@ -419,7 +482,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 );
 
 try {
-    $apiInstance->dealsFailuresGet();
+    $result = $apiInstance->dealsFailuresGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealsFailuresGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -431,7 +495,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -445,7 +509,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealsMakeMinerPost**
-> dealsMakeMinerPost($miner, $deal_request)
+> string dealsMakeMinerPost($miner, $deal_request)
 
 Make Deal
 
@@ -471,7 +535,8 @@ $miner = "miner_example"; // string | Miner
 $deal_request = "deal_request_example"; // string | Deal Request
 
 try {
-    $apiInstance->dealsMakeMinerPost($miner, $deal_request);
+    $result = $apiInstance->dealsMakeMinerPost($miner, $deal_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealsMakeMinerPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -487,7 +552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -501,7 +566,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealsStatusDealGet**
-> dealsStatusDealGet($deal)
+> string dealsStatusDealGet($deal)
 
 Get Deal Status
 
@@ -526,7 +591,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $deal = 56; // int | Deal ID
 
 try {
-    $apiInstance->dealsStatusDealGet($deal);
+    $result = $apiInstance->dealsStatusDealGet($deal);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealsStatusDealGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -541,7 +607,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -555,7 +621,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicDealsFailuresGet**
-> publicDealsFailuresGet()
+> string publicDealsFailuresGet()
 
 Get storage failures
 
@@ -579,7 +645,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 );
 
 try {
-    $apiInstance->publicDealsFailuresGet();
+    $result = $apiInstance->publicDealsFailuresGet();
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->publicDealsFailuresGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -591,7 +658,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -605,7 +672,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **publicMinersStorageQueryMinerGet**
-> publicMinersStorageQueryMinerGet($miner)
+> string publicMinersStorageQueryMinerGet($miner)
 
 Query Ask
 
@@ -630,7 +697,8 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
 $miner = "miner_example"; // string | CID
 
 try {
-    $apiInstance->publicMinersStorageQueryMinerGet($miner);
+    $result = $apiInstance->publicMinersStorageQueryMinerGet($miner);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->publicMinersStorageQueryMinerGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -645,7 +713,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

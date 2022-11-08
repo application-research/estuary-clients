@@ -10,7 +10,6 @@ pub struct APIClient<C: hyper::client::Connect> {
   collections_api: Box<::apis::CollectionsApi>,
   content_api: Box<::apis::ContentApi>,
   deals_api: Box<::apis::DealsApi>,
-  default_api: Box<::apis::DefaultApi>,
   metrics_api: Box<::apis::MetricsApi>,
   miner_api: Box<::apis::MinerApi>,
   net_api: Box<::apis::NetApi>,
@@ -32,7 +31,6 @@ impl<C: hyper::client::Connect> APIClient<C> {
       collections_api: Box::new(::apis::CollectionsApiClient::new(rc.clone())),
       content_api: Box::new(::apis::ContentApiClient::new(rc.clone())),
       deals_api: Box::new(::apis::DealsApiClient::new(rc.clone())),
-      default_api: Box::new(::apis::DefaultApiClient::new(rc.clone())),
       metrics_api: Box::new(::apis::MetricsApiClient::new(rc.clone())),
       miner_api: Box::new(::apis::MinerApiClient::new(rc.clone())),
       net_api: Box::new(::apis::NetApiClient::new(rc.clone())),
@@ -62,10 +60,6 @@ impl<C: hyper::client::Connect> APIClient<C> {
 
   pub fn deals_api(&self) -> &::apis::DealsApi{
     self.deals_api.as_ref()
-  }
-
-  pub fn default_api(&self) -> &::apis::DefaultApi{
-    self.default_api.as_ref()
   }
 
   pub fn metrics_api(&self) -> &::apis::MetricsApi{

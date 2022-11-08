@@ -35,15 +35,36 @@ namespace estuary-client.Controllers
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="filename">Filename</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//content/add-car")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentAddCarPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentAddCarPost([FromBody]string body, [FromQuery]string ignoreDupes, [FromQuery]string filename)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -52,15 +73,36 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.</remarks>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//content/add-ipfs")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentAddIpfsPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentAddIpfsPost([FromBody]UtilContentAddIpfsBody body, [FromQuery]string ignoreDupes)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -75,16 +117,26 @@ namespace estuary-client.Controllers
         /// <param name="lazyProvide">Lazy Provide true/false</param>
         /// <param name="dir">Directory</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//content/add")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentAddPost")]
         [SwaggerResponse(statusCode: 200, type: typeof(UtilContentAddResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentAddPost([FromForm][Required()]System.IO.Stream data, [FromForm]string filename, [FromQuery]string coluuid, [FromQuery]int? replication, [FromQuery]string ignoreDupes, [FromQuery]string lazyProvide, [FromQuery]string dir)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(UtilContentAddResponse));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\"empty\": false}";
@@ -102,16 +154,26 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint returns aggregated content stats</remarks>
         /// <param name="content">Content ID</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/aggregated/{content}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentAggregatedContentGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentAggregatedContentGet([FromRoute][Required]string content)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -130,15 +192,36 @@ namespace estuary-client.Controllers
         /// <param name="begin">Begin</param>
         /// <param name="duration">Duration</param>
         /// <param name="all">All</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/all-deals")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentAllDealsGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentAllDealsGet([FromQuery][Required()]string begin, [FromQuery][Required()]string duration, [FromQuery][Required()]string all)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -146,15 +229,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint returns content bandwidth</remarks>
         /// <param name="content">Content ID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/bw-usage/{content}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentBwUsageContentGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentBwUsageContentGet([FromRoute][Required]string content)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -163,15 +267,36 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint adds a new content</remarks>
         /// <param name="req">Content</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//content/create")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentCreatePost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentCreatePost([FromBody]UtilContentCreateBody req, [FromQuery]string ignoreDupes)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -180,15 +305,36 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint lists all content with deals</remarks>
         /// <param name="limit">Limit</param>
         /// <param name="offset">Offset</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/deals")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentDealsGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentDealsGet([FromQuery]int? limit, [FromQuery]int? offset)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -196,15 +342,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint ensures that the content is replicated to the specified number of providers</remarks>
         /// <param name="datacid">Data CID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/ensure-replication/{datacid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentEnsureReplicationDatacidGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentEnsureReplicationDatacidGet([FromRoute][Required]string datacid)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -213,16 +380,26 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint returns all failures for a content</remarks>
         /// <param name="content">Content ID</param>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/failures/{content}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentFailuresContentGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentFailuresContentGet([FromRoute][Required]string content)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
             exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
@@ -239,15 +416,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint returns a content by its ID</remarks>
         /// <param name="id">Content ID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentIdGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentIdGet([FromRoute][Required]int? id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -255,15 +453,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint imports a deal into the shuttle.</remarks>
         /// <param name="body">Import a deal</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//content/importdeal")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentImportdealPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentImportdealPost([FromBody]MainImportDealBody body)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -271,23 +490,33 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint lists all content</remarks>
         /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/list")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentListGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<string>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentListGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<string>));
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{}";
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<string>>(exampleJson)
-            : default(List<string>);
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -297,30 +526,72 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint reads content from the blockstore</remarks>
         /// <param name="cont">CID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/read/{cont}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentReadContGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentReadContGet([FromRoute][Required]string cont)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
         /// Get staging zone for user
         /// </summary>
         /// <remarks>This endpoint is used to get staging zone for user.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/staging-zones")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentStagingZonesGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentStagingZonesGet()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -329,15 +600,36 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</remarks>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/stats")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentStatsGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentStatsGet([FromQuery][Required()]string limit, [FromQuery][Required()]string offset)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -345,15 +637,36 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint returns the status of a content</remarks>
         /// <param name="id">Content ID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//content/status/{id}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ContentStatusIdGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentStatusIdGet([FromRoute][Required]int? id)
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
     }
 }

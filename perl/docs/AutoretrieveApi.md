@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **admin_autoretrieve_init_post**
-> admin_autoretrieve_init_post(addresses => $addresses, pub_key => $pub_key)
+> string admin_autoretrieve_init_post(addresses => $addresses, pub_key => $pub_key)
 
 Register autoretrieve server
 
@@ -33,11 +33,12 @@ my $api_instance = WWW::SwaggerClient::AutoretrieveApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $addresses = WWW::SwaggerClient::Object::string->new(); # string | Autoretrieve's comma-separated list of addresses
-my $pub_key = WWW::SwaggerClient::Object::string->new(); # string | Autoretrieve's public key
+my $addresses = 'addresses_example'; # string | Autoretrieve's comma-separated list of addresses
+my $pub_key = 'pub_key_example'; # string | Autoretrieve's public key
 
 eval { 
-    $api_instance->admin_autoretrieve_init_post(addresses => $addresses, pub_key => $pub_key);
+    my $result = $api_instance->admin_autoretrieve_init_post(addresses => $addresses, pub_key => $pub_key);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AutoretrieveApi->admin_autoretrieve_init_post: $@\n";
@@ -53,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -67,7 +68,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_autoretrieve_list_get**
-> admin_autoretrieve_list_get()
+> string admin_autoretrieve_list_get()
 
 List autoretrieve servers
 
@@ -87,7 +88,8 @@ my $api_instance = WWW::SwaggerClient::AutoretrieveApi->new(
 
 
 eval { 
-    $api_instance->admin_autoretrieve_list_get();
+    my $result = $api_instance->admin_autoretrieve_list_get();
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AutoretrieveApi->admin_autoretrieve_list_get: $@\n";
@@ -99,7 +101,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 
@@ -113,7 +115,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **autoretrieve_heartbeat_post**
-> autoretrieve_heartbeat_post(token => $token)
+> string autoretrieve_heartbeat_post(token => $token)
 
 Marks autoretrieve server as up
 
@@ -134,7 +136,8 @@ my $api_instance = WWW::SwaggerClient::AutoretrieveApi->new(
 my $token = 'token_example'; # string | Autoretrieve's auth token
 
 eval { 
-    $api_instance->autoretrieve_heartbeat_post(token => $token);
+    my $result = $api_instance->autoretrieve_heartbeat_post(token => $token);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AutoretrieveApi->autoretrieve_heartbeat_post: $@\n";
@@ -149,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**string**
 
 ### Authorization
 

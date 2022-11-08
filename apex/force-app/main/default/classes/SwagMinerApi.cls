@@ -30,9 +30,10 @@ public class SwagMinerApi {
      * This endpoint returns all miners deals
      * @param miner Filter by miner (required)
      * @param ignoreFailed Ignore Failed (optional)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersDealsMinerGet(Map<String, Object> params) {
+    public String publicMinersDealsMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
 
@@ -41,7 +42,7 @@ public class SwagMinerApi {
 
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/deals/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -51,21 +52,22 @@ public class SwagMinerApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
     /**
      * Get miner stats
      * This endpoint returns miner stats
      * @param miner Filter by miner (required)
+     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public void publicMinersStatsMinerGet(Map<String, Object> params) {
+    public String publicMinersStatsMinerGet(Map<String, Object> params) {
         client.assertNotNull(params.get('miner'), 'miner');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        client.invoke(
+        return (String) client.invoke(
             'GET', '/public/miners/stats/{miner}', '',
             query, form,
             new Map<String, Object>{
@@ -75,7 +77,7 @@ public class SwagMinerApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            null
+            String.class
         );
     }
 }

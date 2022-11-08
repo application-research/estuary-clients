@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -113,23 +114,23 @@ public class NetApi {
     /**
      * Net Addrs
      * This endpoint is used to get net addrs
-     * @return List&lt;String&gt;
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<String> netAddrsGet() throws ApiException {
-        ApiResponse<List<String>> resp = netAddrsGetWithHttpInfo();
+    public String netAddrsGet() throws ApiException {
+        ApiResponse<String> resp = netAddrsGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Net Addrs
      * This endpoint is used to get net addrs
-     * @return ApiResponse&lt;List&lt;String&gt;&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<String>> netAddrsGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> netAddrsGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = netAddrsGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -140,7 +141,7 @@ public class NetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call netAddrsGetAsync(final ApiCallback<List<String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call netAddrsGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -162,7 +163,7 @@ public class NetApi {
         }
 
         com.squareup.okhttp.Call call = netAddrsGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -234,22 +235,25 @@ public class NetApi {
      * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner (required)
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersFailuresMinerGet(String miner) throws ApiException {
-        publicMinersFailuresMinerGetWithHttpInfo(miner);
+    public String publicMinersFailuresMinerGet(String miner) throws ApiException {
+        ApiResponse<String> resp = publicMinersFailuresMinerGetWithHttpInfo(miner);
+        return resp.getData();
     }
 
     /**
      * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersFailuresMinerGetWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<String> publicMinersFailuresMinerGetWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = publicMinersFailuresMinerGetValidateBeforeCall(miner, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -260,7 +264,7 @@ public class NetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersFailuresMinerGetAsync(String miner, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersFailuresMinerGetAsync(String miner, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -282,7 +286,8 @@ public class NetApi {
         }
 
         com.squareup.okhttp.Call call = publicMinersFailuresMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
@@ -345,21 +350,24 @@ public class NetApi {
     /**
      * Get all miners
      * This endpoint returns all miners
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void publicMinersGet() throws ApiException {
-        publicMinersGetWithHttpInfo();
+    public String publicMinersGet() throws ApiException {
+        ApiResponse<String> resp = publicMinersGetWithHttpInfo();
+        return resp.getData();
     }
 
     /**
      * Get all miners
      * This endpoint returns all miners
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> publicMinersGetWithHttpInfo() throws ApiException {
+    public ApiResponse<String> publicMinersGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = publicMinersGetValidateBeforeCall(null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -369,7 +377,7 @@ public class NetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicMinersGetAsync(final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicMinersGetAsync(final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -391,7 +399,8 @@ public class NetApi {
         }
 
         com.squareup.okhttp.Call call = publicMinersGetValidateBeforeCall(progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**

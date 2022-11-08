@@ -54,7 +54,7 @@ export class MinerApi extends Api {
    * @param params.miner Filter by miner
    * @param params.ignoreFailed Ignore Failed
    */
-  async publicMinersDealsMinerGet(params: IPublicMinersDealsMinerGetParams): Promise<any> {
+  async publicMinersDealsMinerGet(params: IPublicMinersDealsMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersDealsMinerGet', params, 'miner');
 
@@ -88,7 +88,7 @@ export class MinerApi extends Api {
    * This endpoint returns miner stats
    * @param params.miner Filter by miner
    */
-  async publicMinersStatsMinerGet(params: IPublicMinersStatsMinerGetParams): Promise<any> {
+  async publicMinersStatsMinerGet(params: IPublicMinersStatsMinerGetParams): Promise<string> {
     // Verify required parameters are set
     this.ensureParamIsSet('publicMinersStatsMinerGet', params, 'miner');
 

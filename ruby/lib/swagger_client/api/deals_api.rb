@@ -23,17 +23,17 @@ module SwaggerClient
     # This endpoint estimates the cost of a deal
     # @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_estimate_post(body, opts = {})
-      deal_estimate_post_with_http_info(body, opts)
-      nil
+      data, _status_code, _headers = deal_estimate_post_with_http_info(body, opts)
+      data
     end
 
     # Estimate the cost of a deal
     # This endpoint estimates the cost of a deal
     # @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_estimate_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_estimate_post ...'
@@ -64,7 +64,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_estimate_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -74,17 +75,17 @@ module SwaggerClient
     # This endpoint returns the deal info for a deal
     # @param dealid Deal ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_info_dealid_get(dealid, opts = {})
-      deal_info_dealid_get_with_http_info(dealid, opts)
-      nil
+      data, _status_code, _headers = deal_info_dealid_get_with_http_info(dealid, opts)
+      data
     end
 
     # Get Deal Info
     # This endpoint returns the deal info for a deal
     # @param dealid Deal ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_info_dealid_get_with_http_info(dealid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_info_dealid_get ...'
@@ -115,7 +116,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_info_dealid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -125,17 +127,17 @@ module SwaggerClient
     # This endpoint returns the proposal for a deal
     # @param propcid Proposal CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_proposal_propcid_get(propcid, opts = {})
-      deal_proposal_propcid_get_with_http_info(propcid, opts)
-      nil
+      data, _status_code, _headers = deal_proposal_propcid_get_with_http_info(propcid, opts)
+      data
     end
 
     # Get Proposal
     # This endpoint returns the proposal for a deal
     # @param propcid Proposal CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_proposal_propcid_get_with_http_info(propcid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_proposal_propcid_get ...'
@@ -166,7 +168,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_proposal_propcid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -176,17 +179,17 @@ module SwaggerClient
     # This endpoint returns the ask for a given CID
     # @param miner CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_query_miner_get(miner, opts = {})
-      deal_query_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = deal_query_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Query Ask
     # This endpoint returns the ask for a given CID
     # @param miner CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_query_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_query_miner_get ...'
@@ -217,7 +220,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_query_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -227,17 +231,17 @@ module SwaggerClient
     # Get Deal Status by PropCid
     # @param propcid PropCid
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_status_by_proposal_propcid_get(propcid, opts = {})
-      deal_status_by_proposal_propcid_get_with_http_info(propcid, opts)
-      nil
+      data, _status_code, _headers = deal_status_by_proposal_propcid_get_with_http_info(propcid, opts)
+      data
     end
 
     # Get Deal Status by PropCid
     # Get Deal Status by PropCid
     # @param propcid PropCid
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_status_by_proposal_propcid_get_with_http_info(propcid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_status_by_proposal_propcid_get ...'
@@ -268,7 +272,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_status_by_proposal_propcid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -279,10 +284,10 @@ module SwaggerClient
     # @param miner Miner
     # @param propcid Proposal CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_status_miner_propcid_get(miner, propcid, opts = {})
-      deal_status_miner_propcid_get_with_http_info(miner, propcid, opts)
-      nil
+      data, _status_code, _headers = deal_status_miner_propcid_get_with_http_info(miner, propcid, opts)
+      data
     end
 
     # Deal Status
@@ -290,7 +295,7 @@ module SwaggerClient
     # @param miner Miner
     # @param propcid Proposal CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_status_miner_propcid_get_with_http_info(miner, propcid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_status_miner_propcid_get ...'
@@ -325,7 +330,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_status_miner_propcid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -334,16 +340,16 @@ module SwaggerClient
     # Transfer In Progress
     # This endpoint returns the in-progress transfers
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deal_transfer_in_progress_get(opts = {})
-      deal_transfer_in_progress_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = deal_transfer_in_progress_get_with_http_info(opts)
+      data
     end
 
     # Transfer In Progress
     # This endpoint returns the in-progress transfers
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deal_transfer_in_progress_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deal_transfer_in_progress_get ...'
@@ -370,25 +376,78 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deal_transfer_in_progress_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Transfer Status
+    # This endpoint returns the status of a transfer
+    # @param chanid Channel ID
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def deal_transfer_status_post(chanid, opts = {})
+      data, _status_code, _headers = deal_transfer_status_post_with_http_info(chanid, opts)
+      data
+    end
+
+    # Transfer Status
+    # This endpoint returns the status of a transfer
+    # @param chanid Channel ID
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def deal_transfer_status_post_with_http_info(chanid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DealsApi.deal_transfer_status_post ...'
+      end
+      # verify the required parameter 'chanid' is set
+      if @api_client.config.client_side_validation && chanid.nil?
+        fail ArgumentError, "Missing the required parameter 'chanid' when calling DealsApi.deal_transfer_status_post"
+      end
+      # resource path
+      local_var_path = '/deal/transfer/status'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(chanid)
+      auth_names = ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DealsApi#deal_transfer_status_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
     # Get storage failures for user
     # This endpoint returns a list of storage failures for user
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deals_failures_get(opts = {})
-      deals_failures_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = deals_failures_get_with_http_info(opts)
+      data
     end
 
     # Get storage failures for user
     # This endpoint returns a list of storage failures for user
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deals_failures_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deals_failures_get ...'
@@ -415,7 +474,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deals_failures_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -426,10 +486,10 @@ module SwaggerClient
     # @param miner Miner
     # @param deal_request Deal Request
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deals_make_miner_post(miner, deal_request, opts = {})
-      deals_make_miner_post_with_http_info(miner, deal_request, opts)
-      nil
+      data, _status_code, _headers = deals_make_miner_post_with_http_info(miner, deal_request, opts)
+      data
     end
 
     # Make Deal
@@ -437,7 +497,7 @@ module SwaggerClient
     # @param miner Miner
     # @param deal_request Deal Request
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deals_make_miner_post_with_http_info(miner, deal_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deals_make_miner_post ...'
@@ -472,7 +532,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deals_make_miner_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -482,17 +543,17 @@ module SwaggerClient
     # This endpoint returns the status of a deal
     # @param deal Deal ID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def deals_status_deal_get(deal, opts = {})
-      deals_status_deal_get_with_http_info(deal, opts)
-      nil
+      data, _status_code, _headers = deals_status_deal_get_with_http_info(deal, opts)
+      data
     end
 
     # Get Deal Status
     # This endpoint returns the status of a deal
     # @param deal Deal ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def deals_status_deal_get_with_http_info(deal, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.deals_status_deal_get ...'
@@ -523,7 +584,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#deals_status_deal_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -532,16 +594,16 @@ module SwaggerClient
     # Get storage failures
     # This endpoint returns a list of storage failures
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_deals_failures_get(opts = {})
-      public_deals_failures_get_with_http_info(opts)
-      nil
+      data, _status_code, _headers = public_deals_failures_get_with_http_info(opts)
+      data
     end
 
     # Get storage failures
     # This endpoint returns a list of storage failures
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_deals_failures_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.public_deals_failures_get ...'
@@ -568,7 +630,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#public_deals_failures_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -578,17 +641,17 @@ module SwaggerClient
     # This endpoint returns the ask for a given CID
     # @param miner CID
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [String]
     def public_miners_storage_query_miner_get(miner, opts = {})
-      public_miners_storage_query_miner_get_with_http_info(miner, opts)
-      nil
+      data, _status_code, _headers = public_miners_storage_query_miner_get_with_http_info(miner, opts)
+      data
     end
 
     # Query Ask
     # This endpoint returns the ask for a given CID
     # @param miner CID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
     def public_miners_storage_query_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DealsApi.public_miners_storage_query_miner_get ...'
@@ -619,7 +682,8 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names)
+        :auth_names => auth_names,
+        :return_type => 'String')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DealsApi#public_miners_storage_query_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -1,7 +1,9 @@
 import connexion
 import six
 
+from estuary-client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
 from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody  # noqa: E501
+from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
@@ -13,7 +15,7 @@ def deal_estimate_post(body):  # noqa: E501
     :param body: The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
     :type body: dict | bytes
 
-    :rtype: None
+    :rtype: str
     """
     if connexion.request.is_json:
         body = MainEstimateDealBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -28,7 +30,7 @@ def deal_info_dealid_get(dealid):  # noqa: E501
     :param dealid: Deal ID
     :type dealid: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -41,7 +43,7 @@ def deal_proposal_propcid_get(propcid):  # noqa: E501
     :param propcid: Proposal CID
     :type propcid: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -54,7 +56,7 @@ def deal_query_miner_get(miner):  # noqa: E501
     :param miner: CID
     :type miner: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -67,7 +69,7 @@ def deal_status_by_proposal_propcid_get(propcid):  # noqa: E501
     :param propcid: PropCid
     :type propcid: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -82,7 +84,7 @@ def deal_status_miner_propcid_get(miner, propcid):  # noqa: E501
     :param propcid: Proposal CID
     :type propcid: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -93,8 +95,23 @@ def deal_transfer_in_progress_get():  # noqa: E501
     This endpoint returns the in-progress transfers # noqa: E501
 
 
-    :rtype: None
+    :rtype: str
     """
+    return 'do some magic!'
+
+
+def deal_transfer_status_post(chanid):  # noqa: E501
+    """Transfer Status
+
+    This endpoint returns the status of a transfer # noqa: E501
+
+    :param chanid: Channel ID
+    :type chanid: dict | bytes
+
+    :rtype: str
+    """
+    if connexion.request.is_json:
+        chanid = MainChannelIDParam.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -104,7 +121,7 @@ def deals_failures_get():  # noqa: E501
     This endpoint returns a list of storage failures for user # noqa: E501
 
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -119,7 +136,7 @@ def deals_make_miner_post(miner, dealRequest):  # noqa: E501
     :param dealRequest: Deal Request
     :type dealRequest: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -132,7 +149,7 @@ def deals_status_deal_get(deal):  # noqa: E501
     :param deal: Deal ID
     :type deal: int
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -143,7 +160,7 @@ def public_deals_failures_get():  # noqa: E501
     This endpoint returns a list of storage failures # noqa: E501
 
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -156,6 +173,6 @@ def public_miners_storage_query_miner_get(miner):  # noqa: E501
     :param miner: CID
     :type miner: str
 
-    :rtype: None
+    :rtype: str
     """
     return 'do some magic!'

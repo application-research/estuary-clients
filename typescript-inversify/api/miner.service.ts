@@ -20,6 +20,7 @@ import { IAPIConfiguration } from '../IAPIConfiguration';
 import { Headers } from '../Headers';
 import HttpResponse from '../HttpResponse';
 
+import { UtilHttpError } from '../model/utilHttpError';
 
 import { COLLECTION_FORMATS }  from '../variables';
 
@@ -39,8 +40,8 @@ export class MinerService {
      * @param ignoreFailed Ignore Failed
      
      */
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersDealsMinerGet(miner: string, ignoreFailed?: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersDealsMinerGet.');
@@ -57,7 +58,7 @@ export class MinerService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}?${queryParameters.join('&')}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/deals/${encodeURIComponent(String(miner))}?${queryParameters.join('&')}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }
@@ -71,8 +72,8 @@ export class MinerService {
      * @param miner Filter by miner
      
      */
-    public publicMinersStatsMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<any>;
-    public publicMinersStatsMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<any>>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'body', headers?: Headers): Observable<string>;
+    public publicMinersStatsMinerGet(miner: string, observe?: 'response', headers?: Headers): Observable<HttpResponse<string>>;
     public publicMinersStatsMinerGet(miner: string, observe: any = 'body', headers: Headers = {}): Observable<any> {
         if (!miner){
             throw new Error('Required parameter miner was null or undefined when calling publicMinersStatsMinerGet.');
@@ -84,7 +85,7 @@ export class MinerService {
         }
         headers['Accept'] = 'application/json';
 
-        const response: Observable<HttpResponse<any>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}` as any, headers);
+        const response: Observable<HttpResponse<string>> = this.httpClient.get(`${this.APIConfiguration.basePath}/public/miners/stats/${encodeURIComponent(String(miner))}` as any, headers);
         if (observe === 'body') {
                return response.map(httpResponse => httpResponse.response);
         }

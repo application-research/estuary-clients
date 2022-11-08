@@ -1,6 +1,7 @@
 #import "SWGPublicApi.h"
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
+#import "SWGUtilHttpError.h"
 
 
 @interface SWGPublicApi ()
@@ -53,17 +54,17 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 /// This endpoint returns the content associated with a CID
 ///  @param cid Cid 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicByCidCidGetWithCid: (NSString*) cid
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'cid' is set
     if (cid == nil) {
         NSParameterAssert(cid);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"cid"] };
             NSError* error = [NSError errorWithDomain:kSWGPublicApiErrorDomain code:kSWGPublicApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -108,10 +109,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -119,10 +120,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 ///
 /// Get public node info
 /// This endpoint returns information about the node
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicInfoGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/info"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -160,10 +161,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -171,10 +172,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 ///
 /// Get deal metrics
 /// This endpoint is used to get deal metrics
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMetricsDealsOnChainGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/metrics/deals-on-chain"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -212,10 +213,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -227,18 +228,18 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 ///
 ///  @param ignoreFailed Ignore Failed (optional)
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersDealsMinerGetWithMiner: (NSString*) miner
     ignoreFailed: (NSString*) ignoreFailed
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGPublicApiErrorDomain code:kSWGPublicApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -286,10 +287,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -299,17 +300,17 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 /// This endpoint returns all miners
 ///  @param miner Filter by miner 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersFailuresMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGPublicApiErrorDomain code:kSWGPublicApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -354,10 +355,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -365,10 +366,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 ///
 /// Get all miners
 /// This endpoint returns all miners
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/miners"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -406,10 +407,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -419,17 +420,17 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 /// This endpoint returns miner stats
 ///  @param miner Filter by miner 
 ///
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicMinersStatsMinerGetWithMiner: (NSString*) miner
-    completionHandler: (void (^)(NSError* error)) handler {
+    completionHandler: (void (^)(NSString* output, NSError* error)) handler {
     // verify the required parameter 'miner' is set
     if (miner == nil) {
         NSParameterAssert(miner);
         if(handler) {
             NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"miner"] };
             NSError* error = [NSError errorWithDomain:kSWGPublicApiErrorDomain code:kSWGPublicApiMissingParamErrorCode userInfo:userInfo];
-            handler(error);
+            handler(nil, error);
         }
         return nil;
     }
@@ -474,10 +475,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }
@@ -589,10 +590,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
 ///
 /// Public stats
 /// This endpoint is used to get public stats.
-///  @returns void
+///  @returns NSString*
 ///
 -(NSURLSessionTask*) publicStatsGetWithCompletionHandler: 
-    (void (^)(NSError* error)) handler {
+    (void (^)(NSString* output, NSError* error)) handler {
     NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/public/stats"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
@@ -630,10 +631,10 @@ NSInteger kSWGPublicApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: nil
+                              responseType: @"NSString*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler(error);
+                                    handler((NSString*)data, error);
                                 }
                             }];
 }

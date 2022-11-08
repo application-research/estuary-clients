@@ -11,6 +11,7 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
@@ -19,9 +20,10 @@ class MetricsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     /**
     * Get deal metrics
     * This endpoint is used to get deal metrics
-    * @return void
+    * @return kotlin.String
     */
-    fun publicMetricsDealsOnChainGet() : Unit {
+    @Suppress("UNCHECKED_CAST")
+    fun publicMetricsDealsOnChainGet() : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -37,13 +39,13 @@ class MetricsApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<Unit>(
+        val response = request<kotlin.String>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> Unit
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

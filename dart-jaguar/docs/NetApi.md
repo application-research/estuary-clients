@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **netAddrsGet**
-> List<String> netAddrsGet()
+> String netAddrsGet()
 
 Net Addrs
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<String>**
+**String**
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersFailuresMinerGet**
-> publicMinersFailuresMinerGet(miner)
+> String publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -78,7 +78,8 @@ var api_instance = new NetApi();
 var miner = miner_example; // String | Filter by miner
 
 try { 
-    api_instance.publicMinersFailuresMinerGet(miner);
+    var result = api_instance.publicMinersFailuresMinerGet(miner);
+    print(result);
 } catch (e) {
     print("Exception when calling NetApi->publicMinersFailuresMinerGet: $e\n");
 }
@@ -92,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 
@@ -106,7 +107,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **publicMinersGet**
-> publicMinersGet()
+> String publicMinersGet()
 
 Get all miners
 
@@ -123,7 +124,8 @@ import 'package:swagger/api.dart';
 var api_instance = new NetApi();
 
 try { 
-    api_instance.publicMinersGet();
+    var result = api_instance.publicMinersGet();
+    print(result);
 } catch (e) {
     print("Exception when calling NetApi->publicMinersGet: $e\n");
 }
@@ -134,7 +136,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-void (empty response body)
+**String**
 
 ### Authorization
 

@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_delete**
-> collections_coluuid_delete(ctx, coluuid)
+> String collections_coluuid_delete(ctx, coluuid)
 Deletes a collection
 
 This endpoint is used to delete an existing collection.
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> ::std::collections::HashMap<String, String> collections_coluuid_post(ctx, coluuid, content_i_ds)
+> String collections_coluuid_post(ctx, coluuid, content_i_ds)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**::std::collections::HashMap<String, String>**
+**String**
 
 ### Authorization
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_fs_add_post**
-> collections_fs_add_post(ctx, coluuid, content, path)
+> String collections_fs_add_post(ctx, coluuid, content, path)
 Add a file to a collection
 
 This endpoint adds a file to a collection
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**String**
 
 ### Authorization
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> Vec<::models::CollectionsCollection> collections_get(ctx, )
+> Vec<Vec<::models::CollectionsCollection>> collections_get(ctx, )
 List all collections
 
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
@@ -207,7 +207,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Vec<::models::CollectionsCollection>**](collections.Collection.md)
+[**Vec<Vec<::models::CollectionsCollection>>**](array.md)
 
 ### Authorization
 

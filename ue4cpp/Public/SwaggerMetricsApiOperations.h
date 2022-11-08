@@ -14,6 +14,7 @@
 #include "SwaggerBaseModel.h"
 #include "SwaggerMetricsApi.h"
 
+#include "SwaggerUtil_HttpError.h"
 
 namespace Swagger 
 {
@@ -35,9 +36,10 @@ class SWAGGER_API SwaggerMetricsApi::PublicMetricsDealsOnChainGetResponse : publ
 {
 public:
     virtual ~PublicMetricsDealsOnChainGetResponse() {}
+	void SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode) final;
 	bool FromJson(const TSharedPtr<FJsonValue>& JsonObject) final;
     
-    
+    FString Content;
 };
 
 }

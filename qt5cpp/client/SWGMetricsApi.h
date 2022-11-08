@@ -15,6 +15,8 @@
 
 #include "SWGHttpRequest.h"
 
+#include <QString>
+#include "SWGUtil.HttpError.h"
 
 #include <QObject>
 
@@ -38,9 +40,9 @@ private:
     void publicMetricsDealsOnChainGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void publicMetricsDealsOnChainGetSignal();
+    void publicMetricsDealsOnChainGetSignal(QString* summary);
     
-    void publicMetricsDealsOnChainGetSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void publicMetricsDealsOnChainGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void publicMetricsDealsOnChainGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     

@@ -14,6 +14,8 @@
 module Request.Pinning exposing (pinningPinsGet, pinningPinsPinidDelete, pinningPinsPinidGet, pinningPinsPinidPost, pinningPinsPost)
 
 import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
+import Data.String exposing (Decode.string, String)
+import Data.TypesIpfsPin exposing (TypesIpfsPin, typesIpfsPinEncoder)
 import Http
 import Json.Decode as Decode
 
@@ -26,13 +28,13 @@ basePath =
 {-
    This endpoint lists all pin status objects
 -}
-pinningPinsGet : Http.Request UtilHttpError
+pinningPinsGet : Http.Request String
 pinningPinsGet =
     { method = "GET"
     , url = basePath ++ "/pinning/pins"
     , headers = []
     , body = Http.emptyBody
-    , expect = Http.expectJson utilHttpErrorDecoder
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -42,13 +44,13 @@ pinningPinsGet =
 {-
    This endpoint deletes a pinned object.
 -}
-pinningPinsPinidDelete : String -> Http.Request 
+pinningPinsPinidDelete : String -> Http.Request String
 pinningPinsPinidDelete pinid =
     { method = "DELETE"
     , url = basePath ++ "/pinning/pins/" ++ pinid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -58,13 +60,13 @@ pinningPinsPinidDelete pinid =
 {-
    This endpoint returns a pin status object.
 -}
-pinningPinsPinidGet : String -> Http.Request 
+pinningPinsPinidGet : String -> Http.Request String
 pinningPinsPinidGet pinid =
     { method = "GET"
     , url = basePath ++ "/pinning/pins/" ++ pinid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -74,13 +76,13 @@ pinningPinsPinidGet pinid =
 {-
    This endpoint replaces a pinned object.
 -}
-pinningPinsPinidPost : String -> Http.Request 
+pinningPinsPinidPost : String -> Http.Request String
 pinningPinsPinidPost pinid =
     { method = "POST"
     , url = basePath ++ "/pinning/pins/" ++ pinid
     , headers = []
     , body = Http.emptyBody
-    , expect = 
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }
@@ -90,13 +92,13 @@ pinningPinsPinidPost pinid =
 {-
    This endpoint adds a pin to the IPFS daemon.
 -}
-pinningPinsPost : String -> String -> Http.Request 
-pinningPinsPost cid name =
+pinningPinsPost : TypesIpfsPin -> Http.Request String
+pinningPinsPost model =
     { method = "POST"
     , url = basePath ++ "/pinning/pins"
     , headers = []
-    , body = Http.emptyBody
-    , expect = 
+    , body = Http.jsonBody <| typesIpfsPinEncoder model
+    , expect = Http.expectJson Decode.string
     , timeout = Just 30000
     , withCredentials = False
     }

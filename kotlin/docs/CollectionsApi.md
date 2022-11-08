@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidDelete"></a>
 # **collectionsColuuidDelete**
-> collectionsColuuidDelete(coluuid)
+> kotlin.String collectionsColuuidDelete(coluuid)
 
 Deletes a collection
 
@@ -129,7 +129,8 @@ This endpoint is used to delete an existing collection.
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
 try {
-    apiInstance.collectionsColuuidDelete(coluuid)
+    val result : kotlin.String = apiInstance.collectionsColuuidDelete(coluuid)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidDelete")
     e.printStackTrace()
@@ -147,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -209,7 +210,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; collectionsColuuidPost(coluuid, contentIDs)
+> kotlin.String collectionsColuuidPost(coluuid, contentIDs)
 
 Add contents to a collection
 
@@ -225,7 +226,7 @@ val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
 val contentIDs : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
 try {
-    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.collectionsColuuidPost(coluuid, contentIDs)
+    val result : kotlin.String = apiInstance.collectionsColuuidPost(coluuid, contentIDs)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidPost")
@@ -245,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**
+**kotlin.String**
 
 ### Authorization
 
@@ -258,7 +259,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> collectionsFsAddPost(coluuid, content, path)
+> kotlin.String collectionsFsAddPost(coluuid, content, path)
 
 Add a file to a collection
 
@@ -275,7 +276,8 @@ val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
 val content : kotlin.String = content_example // kotlin.String | Content
 val path : kotlin.String = path_example // kotlin.String | Path to file
 try {
-    apiInstance.collectionsFsAddPost(coluuid, content, path)
+    val result : kotlin.String = apiInstance.collectionsFsAddPost(coluuid, content, path)
+    println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsFsAddPost")
     e.printStackTrace()
@@ -295,7 +297,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**kotlin.String**
 
 ### Authorization
 
@@ -308,7 +310,7 @@ null (empty response body)
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> kotlin.Array&lt;CollectionsCollection&gt; collectionsGet()
+> kotlin.Array&lt;kotlin.Array&lt;CollectionsCollection&gt;&gt; collectionsGet()
 
 List all collections
 
@@ -322,7 +324,7 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 val apiInstance = CollectionsApi()
 try {
-    val result : kotlin.Array<CollectionsCollection> = apiInstance.collectionsGet()
+    val result : kotlin.Array<kotlin.Array<CollectionsCollection>> = apiInstance.collectionsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsGet")
@@ -338,7 +340,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**kotlin.Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
+**kotlin.Array&lt;kotlin.Array&lt;CollectionsCollection&gt;&gt;**
 
 ### Authorization
 

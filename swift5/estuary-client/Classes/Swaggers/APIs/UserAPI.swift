@@ -16,7 +16,7 @@ open class UserAPI {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysGet(completion: @escaping ((_ data: [MainGetApiKeysResp]?,_ error: Error?) -> Void)) {
+    open class func userApiKeysGet(completion: @escaping ((_ data: [[MainGetApiKeysResp]]?,_ error: Error?) -> Void)) {
         userApiKeysGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -32,16 +32,16 @@ open class UserAPI {
        - name: bearerAuth
      - examples: [{contentType=application/json, example={}}]
 
-     - returns: RequestBuilder<[MainGetApiKeysResp]> 
+     - returns: RequestBuilder<[[MainGetApiKeysResp]]> 
      */
-    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[MainGetApiKeysResp]> {
+    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[[MainGetApiKeysResp]]> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[MainGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[[MainGetApiKeysResp]]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -49,43 +49,43 @@ open class UserAPI {
     /**
      Revoke a User API Key.
      
-     - parameter key: (path) Key 
+     - parameter keyOrHash: (path) Key or Hash 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysKeyDelete(key: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        userApiKeysKeyDeleteWithRequestBuilder(key: key).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+    open class func userApiKeysKeyOrHashDelete(keyOrHash: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        userApiKeysKeyOrHashDeleteWithRequestBuilder(keyOrHash: keyOrHash).execute { (response, error) -> Void in
+            completion(response?.body, error)
         }
     }
 
 
     /**
      Revoke a User API Key.
-     - DELETE /user/api-keys/{key}
-     - This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     - DELETE /user/api-keys/{key_or_hash}
+     - This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
      
-     - parameter key: (path) Key 
+     - parameter keyOrHash: (path) Key or Hash 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<String> 
      */
-    open class func userApiKeysKeyDeleteWithRequestBuilder(key: String) -> RequestBuilder<Void> {
-        var path = "/user/api-keys/{key}"
-        let keyPreEscape = "\(key)"
-        let keyPostEscape = keyPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{key}", with: keyPostEscape, options: .literal, range: nil)
+    open class func userApiKeysKeyOrHashDeleteWithRequestBuilder(keyOrHash: String) -> RequestBuilder<String> {
+        var path = "/user/api-keys/{key_or_hash}"
+        let keyOrHashPreEscape = "\(keyOrHash)"
+        let keyOrHashPostEscape = keyOrHashPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{key_or_hash}", with: keyOrHashPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -93,7 +93,7 @@ open class UserAPI {
     /**
      Create API keys for a user
      
-     - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      - parameter perms: (query) Permissions -- currently unused (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -113,7 +113,7 @@ open class UserAPI {
        - name: bearerAuth
      - examples: [{contentType=application/json, example={"empty": false}}]
      
-     - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs), ms, s, m, h. for example 300h (optional)
+     - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      - parameter perms: (query) Permissions -- currently unused (optional)
 
      - returns: RequestBuilder<MainGetApiKeysResp> 
@@ -177,7 +177,7 @@ open class UserAPI {
      
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userStatsGet(completion: @escaping ((_ data: MainUserStatsResponse?,_ error: Error?) -> Void)) {
+    open class func userStatsGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         userStatsGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -191,18 +191,21 @@ open class UserAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={"empty": false}}]
+     - examples: [{contentType=application/json, example={
+  "bytes": [],
+  "empty": true
+}}]
 
-     - returns: RequestBuilder<MainUserStatsResponse> 
+     - returns: RequestBuilder<String> 
      */
-    open class func userStatsGetWithRequestBuilder() -> RequestBuilder<MainUserStatsResponse> {
+    open class func userStatsGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/user/stats"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<MainUserStatsResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

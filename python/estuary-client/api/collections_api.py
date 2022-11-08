@@ -250,7 +250,7 @@ class CollectionsApi(object):
 
         :param async_req bool
         :param str coluuid: Collection ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -272,7 +272,7 @@ class CollectionsApi(object):
 
         :param async_req bool
         :param str coluuid: Collection ID (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -322,7 +322,7 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -441,7 +441,7 @@ class CollectionsApi(object):
         :param async_req bool
         :param str coluuid: coluuid (required)
         :param list[int] content_i_ds: Content IDs to add to collection (required)
-        :return: dict(str, str)
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -464,7 +464,7 @@ class CollectionsApi(object):
         :param async_req bool
         :param str coluuid: coluuid (required)
         :param list[int] content_i_ds: Content IDs to add to collection (required)
-        :return: dict(str, str)
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -528,7 +528,7 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='dict(str, str)',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -549,7 +549,7 @@ class CollectionsApi(object):
         :param str coluuid: Collection ID (required)
         :param str content: Content (required)
         :param str path: Path to file (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -573,7 +573,7 @@ class CollectionsApi(object):
         :param str coluuid: Collection ID (required)
         :param str content: Content (required)
         :param str path: Path to file (required)
-        :return: None
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -639,7 +639,7 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -657,7 +657,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[CollectionsCollection]
+        :return: list[list[CollectionsCollection]]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -678,7 +678,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[CollectionsCollection]
+        :return: list[list[CollectionsCollection]]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -726,7 +726,7 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[CollectionsCollection]',  # noqa: E501
+            response_type='list[list[CollectionsCollection]]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

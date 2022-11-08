@@ -30,7 +30,7 @@ export class PinningApi {
      * This endpoint lists all pin status objects
      * @summary List all pin status objects
      */
-    public pinningPinsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public pinningPinsGet (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/pinning/pins';
 
         let queryParameters: any = {};
@@ -53,7 +53,7 @@ export class PinningApi {
      * @summary Delete a pinned object
      * @param pinid Pin ID
      */
-    public pinningPinsPinidDelete (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public pinningPinsPinidDelete (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
 
@@ -82,7 +82,7 @@ export class PinningApi {
      * @summary Get a pin status object
      * @param pinid cid
      */
-    public pinningPinsPinidGet (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public pinningPinsPinidGet (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
 
@@ -111,7 +111,7 @@ export class PinningApi {
      * @summary Replace a pinned object
      * @param pinid Pin ID
      */
-    public pinningPinsPinidPost (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+    public pinningPinsPinidPost (pinid: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
 
@@ -138,29 +138,22 @@ export class PinningApi {
     /**
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
-     * @param cid cid
-     * @param name name
+     * @param pin Pin Body {cid:cid, name:name}
      */
-    public pinningPinsPost (cid: string, name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
-        const localVarPath = this.basePath + '/pinning/pins'
-            .replace('{' + 'cid' + '}', encodeURIComponent(String(cid)))
-            .replace('{' + 'name' + '}', encodeURIComponent(String(name)));
+    public pinningPinsPost (pin: models.TypesIpfsPin, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+        const localVarPath = this.basePath + '/pinning/pins';
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'cid' is not null or undefined
-        if (cid === null || cid === undefined) {
-            throw new Error('Required parameter cid was null or undefined when calling pinningPinsPost.');
-        }
-
-        // verify required parameter 'name' is not null or undefined
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling pinningPinsPost.');
+        // verify required parameter 'pin' is not null or undefined
+        if (pin === null || pin === undefined) {
+            throw new Error('Required parameter pin was null or undefined when calling pinningPinsPost.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,
+            data: pin,
             params: queryParameters,
             headers: headerParams
         };

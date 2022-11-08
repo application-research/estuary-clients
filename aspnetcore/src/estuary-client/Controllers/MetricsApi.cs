@@ -32,15 +32,36 @@ namespace estuary-client.Controllers
         /// Get deal metrics
         /// </summary>
         /// <remarks>This endpoint is used to get deal metrics</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//public/metrics/deals-on-chain")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PublicMetricsDealsOnChainGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PublicMetricsDealsOnChainGet()
         { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
 
-            throw new NotImplementedException();
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            string exampleJson = null;
+            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            
+            var example = exampleJson != null
+            ? JsonConvert.DeserializeObject<string>(exampleJson)
+            : default(string);
+            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
     }
 }
