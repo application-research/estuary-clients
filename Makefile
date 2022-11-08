@@ -20,12 +20,20 @@ swagger.json:
 		sed -e "s/SUBVERSION/$$(($$(cat subversion)+1))/g" | \
 		sed -e "s/PACKAGE-NAME/${PACKAGE_NAME}/g" > $@
 
-GO_PACKAGE_NAME=$(subst -,_,${PACKAGE_NAME})
+UNDERSCORE_PACKAGE_NAME=$(subst -,_,${PACKAGE_NAME})
+
 .INTERMEDIATE: go-config.json
 go-config.json: config.json.template subversion
 	cat $< | \
 		sed -e "s/SUBVERSION/$$(($$(cat subversion)+1))/g" | \
-		sed -e "s/PACKAGE-NAME/${GO_PACKAGE_NAME}/g"> $@
+		sed -e "s/PACKAGE-NAME/${UNDERSCORE_PACKAGE_NAME}/g"> $@
+
+.INTERMEDIATE: python-config.json
+python-config.json: config.json.template subversion
+	cat $< | \
+		sed -e "s/SUBVERSION/$$(($$(cat subversion)+1))/g" | \
+		sed -e "s/PACKAGE-NAME/${UNDERSCORE_PACKAGE_NAME}/g"> $@
+
 
 %/: swagger.json %-config.json
 	${SWAGGER} generate \
