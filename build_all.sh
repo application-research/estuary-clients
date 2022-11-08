@@ -8,4 +8,4 @@ apk add make || true # can remove when https://github.com/application-research/e
 make -B swagger.json
 git status swagger.json | grep modified && make -j -k || true
 
-cp -rv file_overrides .
+cp -rv file_overrides/* .
