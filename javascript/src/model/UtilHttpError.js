@@ -33,7 +33,7 @@
   /**
    * The UtilHttpError model module.
    * @module model/UtilHttpError
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

@@ -1,4 +1,4 @@
-(defproject estuary-client "1.0.1"
+(defproject estuary-client "1.0.3"
   :description "This is the API for the Estuary application."
   :url "https://docs.estuary.tech/feedback"
   :license {:name "Apache 2.0 Apache-2.0 OR MIT"

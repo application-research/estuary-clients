@@ -33,7 +33,7 @@
   /**
    * The MainChannelIDParam model module.
    * @module model/MainChannelIDParam
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

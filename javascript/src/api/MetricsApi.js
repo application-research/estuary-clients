@@ -33,7 +33,7 @@
   /**
    * Metrics service.
    * @module api/MetricsApi
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

@@ -33,7 +33,7 @@
   /**
    * Miner service.
    * @module api/MinerApi
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

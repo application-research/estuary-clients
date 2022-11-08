@@ -62,7 +62,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		BasePath:      "https://api.estuary.tech",
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "Swagger-Codegen/1.0.1/go",
+		UserAgent:     "Swagger-Codegen/1.0.3/go",
 	}
 	return cfg
 }

@@ -33,7 +33,7 @@
   /**
    * Net service.
    * @module api/NetApi
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

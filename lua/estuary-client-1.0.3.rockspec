@@ -1,5 +1,5 @@
 package = "estuary-client"
-version = "1.0.1"
+version = "1.0.3"
 source = {
 	url = "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
 }

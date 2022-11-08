@@ -47,7 +47,7 @@
 CollectionsApi <- R6::R6Class(
   'CollectionsApi',
   public = list(
-    userAgent = "Swagger-Codegen/1.0.1/r",
+    userAgent = "Swagger-Codegen/1.0.3/r",
     apiClient = NULL,
     initialize = function(apiClient){
       if (!missing(apiClient)) {

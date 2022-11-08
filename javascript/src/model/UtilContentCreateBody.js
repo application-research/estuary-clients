@@ -33,7 +33,7 @@
   /**
    * The UtilContentCreateBody model module.
    * @module model/UtilContentCreateBody
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

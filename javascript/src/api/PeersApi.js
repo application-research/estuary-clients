@@ -33,7 +33,7 @@
   /**
    * Peers service.
    * @module api/PeersApi
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

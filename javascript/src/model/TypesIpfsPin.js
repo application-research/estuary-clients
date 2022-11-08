@@ -33,7 +33,7 @@
   /**
    * The TypesIpfsPin model module.
    * @module model/TypesIpfsPin
-   * @version 1.0.1
+   * @version 1.0.3
    */
 
   /**

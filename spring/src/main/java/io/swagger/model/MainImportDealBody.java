@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * MainImportDealBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T02:39:48.174Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T04:05:50.900Z")
 
 
 public class MainImportDealBody   {
