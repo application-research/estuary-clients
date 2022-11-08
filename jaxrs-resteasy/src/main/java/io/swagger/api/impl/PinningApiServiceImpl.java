@@ -4,7 +4,9 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -17,7 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T11:05:54.210Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T19:38:18.956Z")
 public class PinningApiServiceImpl implements PinningApiService {
       public Response pinningPinsGet(SecurityContext securityContext)
       throws NotFoundException {

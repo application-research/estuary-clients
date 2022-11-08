@@ -353,6 +353,35 @@ package .Models is
 
 
 
+   type Types_IpfsListPinStatusResponse_Type is
+     record
+       Count : Swagger.Nullable_Integer;
+       Results : .Models.Types_IpfsPinStatusResponse_Type_Vectors.Vector;
+     end record;
+
+   package Types_IpfsListPinStatusResponse_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Types_IpfsListPinStatusResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsListPinStatusResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsListPinStatusResponse_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsListPinStatusResponse_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsListPinStatusResponse_Type_Vectors.Vector);
+
+
+
+
    type Types_IpfsPin_Type is
      record
        Cid : Swagger.Nullable_UString;
@@ -380,6 +409,39 @@ package .Models is
    procedure Deserialize (From  : in Swagger.Value_Type;
                           Name  : in String;
                           Value : out Types_IpfsPin_Type_Vectors.Vector);
+
+
+
+
+   type Types_IpfsPinStatusResponse_Type is
+     record
+       Created : Swagger.Nullable_UString;
+       Delegates : Swagger.Nullable_UString_Vectors.Vector;
+       Info : Swagger.Object;
+       Pin : .Models.Types_IpfsPin_Type;
+       Requestid : Swagger.Nullable_UString;
+       Status : Swagger.Nullable_UString;
+     end record;
+
+   package Types_IpfsPinStatusResponse_Type_Vectors is
+      new Ada.Containers.Vectors (Index_Type   => Positive,
+                                  Element_Type => Types_IpfsPinStatusResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPinStatusResponse_Type);
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPinStatusResponse_Type_Vectors.Vector);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPinStatusResponse_Type);
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPinStatusResponse_Type_Vectors.Vector);
 
 
 

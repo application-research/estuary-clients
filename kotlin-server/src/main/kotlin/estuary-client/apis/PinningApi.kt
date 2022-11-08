@@ -39,7 +39,9 @@ import estuary-client.infrastructure.apiKeyAuth
 // see https://github.com/ktorio/ktor/issues/288
 import estuary-client.delete
 
+import estuary-client.models.TypesIpfsListPinStatusResponse
 import estuary-client.models.TypesIpfsPin
+import estuary-client.models.TypesIpfsPinStatusResponse
 import estuary-client.models.UtilHttpError
 
 fun Route.PinningApi() {
@@ -53,10 +55,7 @@ fun Route.PinningApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{
-              "bytes": [],
-              "empty": true
-            }"""
+            val exampleContentString = """{"empty": false}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -93,17 +92,7 @@ fun Route.PinningApi() {
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-              "bytes": [],
-              "empty": true
-            }"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }
+            call.respond(HttpStatusCode.NotImplemented)
         }
     }
     .apply {
@@ -135,10 +124,7 @@ fun Route.PinningApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{
-              "bytes": [],
-              "empty": true
-            }"""
+            val exampleContentString = """{"empty": false}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -177,10 +163,7 @@ fun Route.PinningApi() {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
                 val exampleContentType = "application/json"
-                val exampleContentString = """{
-                  "bytes": [],
-                  "empty": true
-                }"""
+                val exampleContentString = """{"empty": false}"""
                 
                 when(exampleContentType) {
                     "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -220,10 +203,7 @@ fun Route.PinningApi() {
                 call.respond(HttpStatusCode.Unauthorized)
             } else {
                 val exampleContentType = "application/json"
-                val exampleContentString = """{
-                  "bytes": [],
-                  "empty": true
-                }"""
+                val exampleContentString = """{"empty": false}"""
                 
                 when(exampleContentType) {
                     "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

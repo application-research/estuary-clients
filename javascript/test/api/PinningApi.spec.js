@@ -46,8 +46,54 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a('string');
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.TypesIpfsListPinStatusResponse);
+            expect(data.count).to.be.a('number');
+            expect(data.count).to.be(0);
+            {
+              let dataCtr = data.results;
+              expect(dataCtr).to.be.an(Array);
+              expect(dataCtr).to.not.be.empty();
+              for (let p in dataCtr) {
+                let data = dataCtr[p];
+                expect(data).to.be.a(EstuaryClient.TypesIpfsPinStatusResponse);
+                expect(data.created).to.be.a('string');
+                expect(data.created).to.be("");
+                {
+                  let dataCtr = data.delegates;
+                  expect(dataCtr).to.be.an(Array);
+                  expect(dataCtr).to.not.be.empty();
+                  for (let p in dataCtr) {
+                    let data = dataCtr[p];
+                    expect(data).to.be.a('string');
+                    expect(data).to.be("");
+                  }
+                }
+                expect(data.info).to.be.a(Object);
+                expect(data.info).to.be();
+                expect(data.pin).to.be.a(EstuaryClient.TypesIpfsPin);
+                      expect(data.pin.cid).to.be.a('string');
+                  expect(data.pin.cid).to.be("");
+                  expect(data.pin.meta).to.be.a(Object);
+                  expect(data.pin.meta).to.be();
+                  expect(data.pin.name).to.be.a('string');
+                  expect(data.pin.name).to.be("");
+                  {
+                    let dataCtr = data.pin.origins;
+                    expect(dataCtr).to.be.an(Array);
+                    expect(dataCtr).to.not.be.empty();
+                    for (let p in dataCtr) {
+                      let data = dataCtr[p];
+                      expect(data).to.be.a('string');
+                      expect(data).to.be("");
+                    }
+                  }
+                expect(data.requestid).to.be.a('string');
+                expect(data.requestid).to.be("");
+                expect(data.status).to.be.a('string');
+                expect(data.status).to.be("");
+
+                      }
+            }
 
             done();
           });
@@ -58,7 +104,7 @@
       });
       describe('pinningPinsPinidDelete', function() {
         it('should call pinningPinsPinidDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for pinningPinsPinidDelete call and complete the assertions
+          // TODO: uncomment, update parameter values for pinningPinsPinidDelete call
           /*
           var pinid = "pinid_example";
 
@@ -67,9 +113,6 @@
               done(error);
               return;
             }
-            // TODO: update response assertions
-            expect(data).to.be.a('string');
-            // expect(data).to.be(null);
 
             done();
           });
@@ -90,8 +133,42 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a('string');
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.TypesIpfsPinStatusResponse);
+            expect(data.created).to.be.a('string');
+            expect(data.created).to.be("");
+            {
+              let dataCtr = data.delegates;
+              expect(dataCtr).to.be.an(Array);
+              expect(dataCtr).to.not.be.empty();
+              for (let p in dataCtr) {
+                let data = dataCtr[p];
+                expect(data).to.be.a('string');
+                expect(data).to.be("");
+              }
+            }
+            expect(data.info).to.be.a(Object);
+            expect(data.info).to.be();
+            expect(data.pin).to.be.a(EstuaryClient.TypesIpfsPin);
+                  expect(data.pin.cid).to.be.a('string');
+              expect(data.pin.cid).to.be("");
+              expect(data.pin.meta).to.be.a(Object);
+              expect(data.pin.meta).to.be();
+              expect(data.pin.name).to.be.a('string');
+              expect(data.pin.name).to.be("");
+              {
+                let dataCtr = data.pin.origins;
+                expect(dataCtr).to.be.an(Array);
+                expect(dataCtr).to.not.be.empty();
+                for (let p in dataCtr) {
+                  let data = dataCtr[p];
+                  expect(data).to.be.a('string');
+                  expect(data).to.be("");
+                }
+              }
+            expect(data.requestid).to.be.a('string');
+            expect(data.requestid).to.be("");
+            expect(data.status).to.be.a('string');
+            expect(data.status).to.be("");
 
             done();
           });
@@ -117,8 +194,42 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a('string');
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.TypesIpfsPinStatusResponse);
+            expect(data.created).to.be.a('string');
+            expect(data.created).to.be("");
+            {
+              let dataCtr = data.delegates;
+              expect(dataCtr).to.be.an(Array);
+              expect(dataCtr).to.not.be.empty();
+              for (let p in dataCtr) {
+                let data = dataCtr[p];
+                expect(data).to.be.a('string');
+                expect(data).to.be("");
+              }
+            }
+            expect(data.info).to.be.a(Object);
+            expect(data.info).to.be();
+            expect(data.pin).to.be.a(EstuaryClient.TypesIpfsPin);
+                  expect(data.pin.cid).to.be.a('string');
+              expect(data.pin.cid).to.be("");
+              expect(data.pin.meta).to.be.a(Object);
+              expect(data.pin.meta).to.be();
+              expect(data.pin.name).to.be.a('string');
+              expect(data.pin.name).to.be("");
+              {
+                let dataCtr = data.pin.origins;
+                expect(dataCtr).to.be.an(Array);
+                expect(dataCtr).to.not.be.empty();
+                for (let p in dataCtr) {
+                  let data = dataCtr[p];
+                  expect(data).to.be.a('string');
+                  expect(data).to.be("");
+                }
+              }
+            expect(data.requestid).to.be.a('string');
+            expect(data.requestid).to.be("");
+            expect(data.status).to.be.a('string');
+            expect(data.status).to.be("");
 
             done();
           });
@@ -143,8 +254,42 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a('string');
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.TypesIpfsPinStatusResponse);
+            expect(data.created).to.be.a('string');
+            expect(data.created).to.be("");
+            {
+              let dataCtr = data.delegates;
+              expect(dataCtr).to.be.an(Array);
+              expect(dataCtr).to.not.be.empty();
+              for (let p in dataCtr) {
+                let data = dataCtr[p];
+                expect(data).to.be.a('string');
+                expect(data).to.be("");
+              }
+            }
+            expect(data.info).to.be.a(Object);
+            expect(data.info).to.be();
+            expect(data.pin).to.be.a(EstuaryClient.TypesIpfsPin);
+                  expect(data.pin.cid).to.be.a('string');
+              expect(data.pin.cid).to.be("");
+              expect(data.pin.meta).to.be.a(Object);
+              expect(data.pin.meta).to.be();
+              expect(data.pin.name).to.be.a('string');
+              expect(data.pin.name).to.be("");
+              {
+                let dataCtr = data.pin.origins;
+                expect(dataCtr).to.be.an(Array);
+                expect(dataCtr).to.not.be.empty();
+                for (let p in dataCtr) {
+                  let data = dataCtr[p];
+                  expect(data).to.be.a('string');
+                  expect(data).to.be("");
+                }
+              }
+            expect(data.requestid).to.be.a('string');
+            expect(data.requestid).to.be("");
+            expect(data.status).to.be.a('string');
+            expect(data.status).to.be("");
 
             done();
           });

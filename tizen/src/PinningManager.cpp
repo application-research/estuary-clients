@@ -51,14 +51,14 @@ static gpointer __PinningManagerthreadFunc(gpointer data)
 static bool pinningPinsGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
+	void(* handler)(Types.IpfsListPinStatusResponse, Error, void* )
+	= reinterpret_cast<void(*)(Types.IpfsListPinStatusResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	std::string out;
+	Types.IpfsListPinStatusResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -66,12 +66,12 @@ static bool pinningPinsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 
 
-		if (isprimitive("std::string")) {
+		if (isprimitive("Types.IpfsListPinStatusResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
+			jsonToValue(&out, pJson, "Types.IpfsListPinStatusResponse", "Types.IpfsListPinStatusResponse");
 			json_node_free(pJson);
 
-			if ("std::string" == "std::string") {
+			if ("Types.IpfsListPinStatusResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -115,7 +115,7 @@ static bool pinningPinsGetProcessor(MemoryStruct_s p_chunk, long code, char* err
 
 static bool pinningPinsGetHelper(char * accessToken,
 	
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsListPinStatusResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -186,7 +186,7 @@ static bool pinningPinsGetHelper(char * accessToken,
 
 bool PinningManager::pinningPinsGetAsync(char * accessToken,
 	
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsListPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsGetHelper(accessToken,
@@ -196,7 +196,7 @@ bool PinningManager::pinningPinsGetAsync(char * accessToken,
 
 bool PinningManager::pinningPinsGetSync(char * accessToken,
 	
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsListPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsGetHelper(accessToken,
@@ -207,48 +207,21 @@ bool PinningManager::pinningPinsGetSync(char * accessToken,
 static bool pinningPinsPinidDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
 	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	std::string out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-
-
-		if (isprimitive("std::string")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
-			json_node_free(pJson);
-
-			if ("std::string" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
+		handler(error, userData);
 		return true;
-		//TODO: handle case where json parsing has an error
+
+
 
 	} else {
 		Error error;
@@ -259,15 +232,15 @@ static bool pinningPinsPinidDeleteProcessor(MemoryStruct_s p_chunk, long code, c
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		 handler(out, error, userData);
+		handler(error, userData);
 		return false;
-			}
+	}
 }
 
 static bool pinningPinsPinidDeleteHelper(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData, bool isAsync)
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -343,8 +316,8 @@ static bool pinningPinsPinidDeleteHelper(char * accessToken,
 
 bool PinningManager::pinningPinsPinidDeleteAsync(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
+	
+	void(* handler)(Error, void* ) , void* userData)
 {
 	return pinningPinsPinidDeleteHelper(accessToken,
 	pinid, 
@@ -353,8 +326,8 @@ bool PinningManager::pinningPinsPinidDeleteAsync(char * accessToken,
 
 bool PinningManager::pinningPinsPinidDeleteSync(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
+	
+	void(* handler)(Error, void* ) , void* userData)
 {
 	return pinningPinsPinidDeleteHelper(accessToken,
 	pinid, 
@@ -364,14 +337,14 @@ bool PinningManager::pinningPinsPinidDeleteSync(char * accessToken,
 static bool pinningPinsPinidGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
+	= reinterpret_cast<void(*)(Types.IpfsPinStatusResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	std::string out;
+	Types.IpfsPinStatusResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -379,18 +352,23 @@ static bool pinningPinsPinidGetProcessor(MemoryStruct_s p_chunk, long code, char
 
 
 
-		if (isprimitive("std::string")) {
+		if (isprimitive("Types.IpfsPinStatusResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
+			jsonToValue(&out, pJson, "Types.IpfsPinStatusResponse", "Types.IpfsPinStatusResponse");
 			json_node_free(pJson);
 
-			if ("std::string" == "std::string") {
+			if ("Types.IpfsPinStatusResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -423,7 +401,7 @@ static bool pinningPinsPinidGetProcessor(MemoryStruct_s p_chunk, long code, char
 
 static bool pinningPinsPinidGetHelper(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -500,7 +478,7 @@ static bool pinningPinsPinidGetHelper(char * accessToken,
 
 bool PinningManager::pinningPinsPinidGetAsync(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidGetHelper(accessToken,
@@ -510,7 +488,7 @@ bool PinningManager::pinningPinsPinidGetAsync(char * accessToken,
 
 bool PinningManager::pinningPinsPinidGetSync(char * accessToken,
 	std::string pinid, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidGetHelper(accessToken,
@@ -521,14 +499,14 @@ bool PinningManager::pinningPinsPinidGetSync(char * accessToken,
 static bool pinningPinsPinidPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
+	= reinterpret_cast<void(*)(Types.IpfsPinStatusResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	std::string out;
+	Types.IpfsPinStatusResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -536,18 +514,23 @@ static bool pinningPinsPinidPostProcessor(MemoryStruct_s p_chunk, long code, cha
 
 
 
-		if (isprimitive("std::string")) {
+		if (isprimitive("Types.IpfsPinStatusResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
+			jsonToValue(&out, pJson, "Types.IpfsPinStatusResponse", "Types.IpfsPinStatusResponse");
 			json_node_free(pJson);
 
-			if ("std::string" == "std::string") {
+			if ("Types.IpfsPinStatusResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
 				}
 			}
 		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
 			
 			out.fromJson(data);
 			char *jsonStr =  out.toJson();
@@ -580,7 +563,7 @@ static bool pinningPinsPinidPostProcessor(MemoryStruct_s p_chunk, long code, cha
 
 static bool pinningPinsPinidPostHelper(char * accessToken,
 	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -693,7 +676,7 @@ static bool pinningPinsPinidPostHelper(char * accessToken,
 
 bool PinningManager::pinningPinsPinidPostAsync(char * accessToken,
 	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidPostHelper(accessToken,
@@ -703,7 +686,7 @@ bool PinningManager::pinningPinsPinidPostAsync(char * accessToken,
 
 bool PinningManager::pinningPinsPinidPostSync(char * accessToken,
 	std::string pinid, std::string cid, std::string name, std::string origins, std::string meta, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPinidPostHelper(accessToken,
@@ -714,14 +697,14 @@ bool PinningManager::pinningPinsPinidPostSync(char * accessToken,
 static bool pinningPinsPostProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
+	= reinterpret_cast<void(*)(Types.IpfsPinStatusResponse, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	std::string out;
+	Types.IpfsPinStatusResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -729,12 +712,12 @@ static bool pinningPinsPostProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 
 
-		if (isprimitive("std::string")) {
+		if (isprimitive("Types.IpfsPinStatusResponse")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
+			jsonToValue(&out, pJson, "Types.IpfsPinStatusResponse", "Types.IpfsPinStatusResponse");
 			json_node_free(pJson);
 
-			if ("std::string" == "std::string") {
+			if ("Types.IpfsPinStatusResponse" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -773,7 +756,7 @@ static bool pinningPinsPostProcessor(MemoryStruct_s p_chunk, long code, char* er
 
 static bool pinningPinsPostHelper(char * accessToken,
 	Types.IpfsPin pin, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -857,7 +840,7 @@ static bool pinningPinsPostHelper(char * accessToken,
 
 bool PinningManager::pinningPinsPostAsync(char * accessToken,
 	Types.IpfsPin pin, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPostHelper(accessToken,
@@ -867,7 +850,7 @@ bool PinningManager::pinningPinsPostAsync(char * accessToken,
 
 bool PinningManager::pinningPinsPostSync(char * accessToken,
 	Types.IpfsPin pin, 
-	void(* handler)(std::string, Error, void* )
+	void(* handler)(Types.IpfsPinStatusResponse, Error, void* )
 	, void* userData)
 {
 	return pinningPinsPostHelper(accessToken,

@@ -28,14 +28,14 @@ public class SwagPinningApi {
     /**
      * List all pin status objects
      * This endpoint lists all pin status objects
-     * @return String
+     * @return SwagTypesIpfsListPinStatusResponse
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String pinningPinsGet() {
+    public SwagTypesIpfsListPinStatusResponse pinningPinsGet() {
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (String) client.invoke(
+        return (SwagTypesIpfsListPinStatusResponse) client.invoke(
             'GET', '/pinning/pins', '',
             query, form,
             new Map<String, Object>(),
@@ -43,22 +43,21 @@ public class SwagPinningApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            String.class
+            SwagTypesIpfsListPinStatusResponse.class
         );
     }
     /**
      * Delete a pinned object
      * This endpoint deletes a pinned object.
      * @param pinid Pin ID (required)
-     * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String pinningPinsPinidDelete(Map<String, Object> params) {
+    public void pinningPinsPinidDelete(Map<String, Object> params) {
         client.assertNotNull(params.get('pinid'), 'pinid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (String) client.invoke(
+        client.invoke(
             'DELETE', '/pinning/pins/{pinid}', '',
             query, form,
             new Map<String, Object>{
@@ -68,22 +67,22 @@ public class SwagPinningApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            String.class
+            null
         );
     }
     /**
      * Get a pin status object
      * This endpoint returns a pin status object.
      * @param pinid cid (required)
-     * @return String
+     * @return SwagTypesIpfsPinStatusResponse
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String pinningPinsPinidGet(Map<String, Object> params) {
+    public SwagTypesIpfsPinStatusResponse pinningPinsPinidGet(Map<String, Object> params) {
         client.assertNotNull(params.get('pinid'), 'pinid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (String) client.invoke(
+        return (SwagTypesIpfsPinStatusResponse) client.invoke(
             'GET', '/pinning/pins/{pinid}', '',
             query, form,
             new Map<String, Object>{
@@ -93,7 +92,7 @@ public class SwagPinningApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            String.class
+            SwagTypesIpfsPinStatusResponse.class
         );
     }
     /**
@@ -104,16 +103,16 @@ public class SwagPinningApi {
      * @param name Name (filename) of new pin (optional)
      * @param origins Origins of new pin (optional)
      * @param meta Meta information of new pin (optional)
-     * @return String
+     * @return SwagTypesIpfsPinStatusResponse
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String pinningPinsPinidPost(Map<String, Object> params) {
+    public SwagTypesIpfsPinStatusResponse pinningPinsPinidPost(Map<String, Object> params) {
         client.assertNotNull(params.get('pinid'), 'pinid');
         client.assertNotNull(params.get('cid'), 'cid');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (String) client.invoke(
+        return (SwagTypesIpfsPinStatusResponse) client.invoke(
             'POST', '/pinning/pins/{pinid}',
             (String) params.get('meta'),
             query, form,
@@ -124,22 +123,22 @@ public class SwagPinningApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            String.class
+            SwagTypesIpfsPinStatusResponse.class
         );
     }
     /**
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param pin Pin Body {cid:cid, name:name} (required)
-     * @return String
+     * @return SwagTypesIpfsPinStatusResponse
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String pinningPinsPost(Map<String, Object> params) {
+    public SwagTypesIpfsPinStatusResponse pinningPinsPost(Map<String, Object> params) {
         client.assertNotNull(params.get('pin'), 'pin');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
-        return (String) client.invoke(
+        return (SwagTypesIpfsPinStatusResponse) client.invoke(
             'POST', '/pinning/pins',
             (SwagTypesIpfsPin) params.get('pin'),
             query, form,
@@ -148,7 +147,7 @@ public class SwagPinningApi {
             new List<String>{ 'application/json' },
             new List<String>{ 'application/json' },
             new List<String> { 'bearerAuth' },
-            String.class
+            SwagTypesIpfsPinStatusResponse.class
         );
     }
 }

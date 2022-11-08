@@ -1206,7 +1206,7 @@ package body .Clients is
    --  This endpoint lists all pin status objects
    procedure Pinning_Pins_Get
       (Client : in out Client_Type;
-       Result : out Swagger.UString) is
+       Result : out .Models.Types_IpfsListPinStatusResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1214,24 +1214,21 @@ package body .Clients is
 
       URI.Set_Path ("/pinning/pins");
       Client.Call (Swagger.Clients.GET, URI, Reply);
-      Swagger.Streams.Deserialize (Reply, "", Result);
+      .Models.Deserialize (Reply, "", Result);
    end Pinning_Pins_Get;
 
    --  Delete a pinned object
    --  This endpoint deletes a pinned object.
    procedure Pinning_Pins_Pinid_Delete
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString;
-       Result : out Swagger.UString) is
+       Pinid : in Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
-      Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
-      Client.Call (Swagger.Clients.DELETE, URI, Reply);
-      Swagger.Streams.Deserialize (Reply, "", Result);
+      Client.Call (Swagger.Clients.DELETE, URI);
    end Pinning_Pins_Pinid_Delete;
 
    --  Get a pin status object
@@ -1239,7 +1236,7 @@ package body .Clients is
    procedure Pinning_Pins_Pinid_Get
       (Client : in out Client_Type;
        Pinid : in Swagger.UString;
-       Result : out Swagger.UString) is
+       Result : out .Models.Types_IpfsPinStatusResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
@@ -1248,7 +1245,7 @@ package body .Clients is
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
       Client.Call (Swagger.Clients.GET, URI, Reply);
-      Swagger.Streams.Deserialize (Reply, "", Result);
+      .Models.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Get;
 
    --  Replace a pinned object
@@ -1260,7 +1257,7 @@ package body .Clients is
        Name : in Swagger.Nullable_UString;
        Origins : in Swagger.Nullable_UString;
        Meta : in Swagger.Nullable_UString;
-       Result : out Swagger.UString) is
+       Result : out .Models.Types_IpfsPinStatusResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
@@ -1275,7 +1272,7 @@ package body .Clients is
       URI.Set_Path ("/pinning/pins/{pinid}");
       URI.Set_Path_Param ("pinid", Pinid);
       Client.Call (Swagger.Clients.POST, URI, Req, Reply);
-      Swagger.Streams.Deserialize (Reply, "", Result);
+      .Models.Deserialize (Reply, "", Result);
    end Pinning_Pins_Pinid_Post;
 
    --  Add and pin object
@@ -1283,7 +1280,7 @@ package body .Clients is
    procedure Pinning_Pins_Post
       (Client : in out Client_Type;
        Pin : in .Models.Types_IpfsPin_Type;
-       Result : out Swagger.UString) is
+       Result : out .Models.Types_IpfsPinStatusResponse_Type) is
       URI   : Swagger.Clients.URI_Type;
       Req   : Swagger.Clients.Request_Type;
       Reply : Swagger.Value_Type;
@@ -1294,7 +1291,7 @@ package body .Clients is
 
       URI.Set_Path ("/pinning/pins");
       Client.Call (Swagger.Clients.POST, URI, Req, Reply);
-      Swagger.Streams.Deserialize (Reply, "", Result);
+      .Models.Deserialize (Reply, "", Result);
    end Pinning_Pins_Post;
 
    --  Get Content by Cid

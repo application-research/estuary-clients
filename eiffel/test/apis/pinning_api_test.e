@@ -18,7 +18,7 @@ feature -- Test routines
             -- 
             -- This endpoint lists all pin status objects 
         local
-            l_response: STRING_32
+            l_response: TYPES_IPFS_LIST_PIN_STATUS_RESPONSE
         do
             -- TODO: Initialize required params.
                       
@@ -31,13 +31,12 @@ feature -- Test routines
             -- 
             -- This endpoint deletes a pinned object. 
         local
-            l_response: STRING_32
             l_pinid: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_pinid
                       
-            -- l_response := api.pinning_pins_pinid_delete(l_pinid)
+            -- api.pinning_pins_pinid_delete(l_pinid)
             assert ("not_implemented", False)
         end
     
@@ -46,7 +45,7 @@ feature -- Test routines
             -- 
             -- This endpoint returns a pin status object. 
         local
-            l_response: STRING_32
+            l_response: TYPES_IPFS_PIN_STATUS_RESPONSE
             l_pinid: STRING_32
         do
             -- TODO: Initialize required params.
@@ -61,7 +60,7 @@ feature -- Test routines
             -- 
             -- This endpoint replaces a pinned object. 
         local
-            l_response: STRING_32
+            l_response: TYPES_IPFS_PIN_STATUS_RESPONSE
             l_pinid: STRING_32
             l_cid: STRING_32
             l_name: STRING_32
@@ -81,7 +80,7 @@ feature -- Test routines
             -- 
             -- This endpoint adds a pin to the IPFS daemon. 
         local
-            l_response: STRING_32
+            l_response: TYPES_IPFS_PIN_STATUS_RESPONSE
             l_pin: TYPES_IPFS_PIN
         do
             -- TODO: Initialize required params.

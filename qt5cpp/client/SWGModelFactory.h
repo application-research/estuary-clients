@@ -22,7 +22,9 @@
 #include "SWGMain.estimateDealBody.h"
 #include "SWGMain.getApiKeysResp.h"
 #include "SWGMain.importDealBody.h"
+#include "SWGTypes.IpfsListPinStatusResponse.h"
 #include "SWGTypes.IpfsPin.h"
+#include "SWGTypes.IpfsPinStatusResponse.h"
 #include "SWGUtil.ContentAddIpfsBody.h"
 #include "SWGUtil.ContentAddResponse.h"
 #include "SWGUtil.ContentCreateBody.h"
@@ -52,8 +54,14 @@ namespace Swagger {
     if(QString("SWGMain.importDealBody").compare(type) == 0) {
       return new SWGMain.importDealBody();
     }
+    if(QString("SWGTypes.IpfsListPinStatusResponse").compare(type) == 0) {
+      return new SWGTypes.IpfsListPinStatusResponse();
+    }
     if(QString("SWGTypes.IpfsPin").compare(type) == 0) {
       return new SWGTypes.IpfsPin();
+    }
+    if(QString("SWGTypes.IpfsPinStatusResponse").compare(type) == 0) {
+      return new SWGTypes.IpfsPinStatusResponse();
     }
     if(QString("SWGUtil.ContentAddIpfsBody").compare(type) == 0) {
       return new SWGUtil.ContentAddIpfsBody();

@@ -22,7 +22,9 @@
 
 #include "../ApiClient.h"
 
+#include "Types.IpfsListPinStatusResponse.h"
 #include "Types.IpfsPin.h"
+#include "Types.IpfsPinStatusResponse.h"
 #include "Util.HttpError.h"
 #include <cpprest/details/basic_types.h>
 
@@ -46,7 +48,7 @@ public:
     /// <remarks>
     /// This endpoint lists all pin status objects
     /// </remarks>
-    pplx::task<utility::string_t> pinningPinsGet(
+    pplx::task<std::shared_ptr<Types.IpfsListPinStatusResponse>> pinningPinsGet(
     );
     /// <summary>
     /// Delete a pinned object
@@ -55,7 +57,7 @@ public:
     /// This endpoint deletes a pinned object.
     /// </remarks>
     /// <param name="pinid">Pin ID</param>
-    pplx::task<utility::string_t> pinningPinsPinidDelete(
+    pplx::task<void> pinningPinsPinidDelete(
         utility::string_t pinid
     );
     /// <summary>
@@ -65,7 +67,7 @@ public:
     /// This endpoint returns a pin status object.
     /// </remarks>
     /// <param name="pinid">cid</param>
-    pplx::task<utility::string_t> pinningPinsPinidGet(
+    pplx::task<std::shared_ptr<Types.IpfsPinStatusResponse>> pinningPinsPinidGet(
         utility::string_t pinid
     );
     /// <summary>
@@ -79,7 +81,7 @@ public:
     /// <param name="name">Name (filename) of new pin (optional)</param>
     /// <param name="origins">Origins of new pin (optional)</param>
     /// <param name="meta">Meta information of new pin (optional)</param>
-    pplx::task<utility::string_t> pinningPinsPinidPost(
+    pplx::task<std::shared_ptr<Types.IpfsPinStatusResponse>> pinningPinsPinidPost(
         utility::string_t pinid,
         utility::string_t cid,
         boost::optional<utility::string_t> name,
@@ -93,7 +95,7 @@ public:
     /// This endpoint adds a pin to the IPFS daemon.
     /// </remarks>
     /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-    pplx::task<utility::string_t> pinningPinsPost(
+    pplx::task<std::shared_ptr<Types.IpfsPinStatusResponse>> pinningPinsPost(
         std::shared_ptr<Types.IpfsPin> pin
     );
 

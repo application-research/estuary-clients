@@ -703,7 +703,9 @@ margin-bottom: 20px;
         defs["main.estimateDealBody"] = {"type":"object","properties":{"durationBlks":{"type":"integer"},"replication":{"type":"integer"},"size":{"type":"integer"},"verified":{"type":"boolean"}}};
         defs["main.getApiKeysResp"] = {"type":"object","properties":{"expiry":{"type":"string"},"label":{"type":"string"},"token":{"type":"string"},"tokenHash":{"type":"string"}}};
         defs["main.importDealBody"] = {"type":"object","properties":{"coluuid":{"type":"string"},"dealIDs":{"type":"array","items":{"type":"integer"}},"dir":{"type":"string"},"name":{"type":"string"}}};
+        defs["types.IpfsListPinStatusResponse"] = {"type":"object","properties":{"count":{"type":"integer"},"results":{"type":"array","items":{"$ref":"#/definitions/types.IpfsPinStatusResponse"}}}};
         defs["types.IpfsPin"] = {"type":"object","properties":{"cid":{"type":"string"},"meta":{"type":"object","properties":{}},"name":{"type":"string"},"origins":{"type":"array","items":{"type":"string"}}}};
+        defs["types.IpfsPinStatusResponse"] = {"type":"object","properties":{"created":{"type":"string"},"delegates":{"type":"array","items":{"type":"string"}},"info":{"type":"object","properties":{}},"pin":{"$ref":"#/definitions/types.IpfsPin"},"requestid":{"type":"string"},"status":{"type":"string"}}};
         defs["util.ContentAddIpfsBody"] = {"type":"object","properties":{"coluuid":{"type":"string"},"dir":{"type":"string"},"filename":{"type":"string"},"peers":{"type":"array","items":{"type":"string"}},"root":{"type":"string"}}};
         defs["util.ContentAddResponse"] = {"type":"object","properties":{"cid":{"type":"string"},"estuaryId":{"type":"integer"},"providers":{"type":"array","items":{"type":"string"}},"retrieval_url":{"type":"string"}}};
         defs["util.ContentCreateBody"] = {"type":"object","properties":{"coluuid":{"type":"string"},"dir":{"type":"string"},"location":{"type":"string"},"name":{"type":"string"},"root":{"type":"string"},"type":{"type":"integer"}}};
@@ -29857,7 +29859,7 @@ public class PinningApiExample {
 
         PinningApi apiInstance = new PinningApi();
         try {
-            'String' result = apiInstance.pinningPinsGet();
+            types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -29875,7 +29877,7 @@ public class PinningApiExample {
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
         try {
-            'String' result = apiInstance.pinningPinsGet();
+            types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -29901,7 +29903,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // List all pin status objects
 [apiInstance pinningPinsGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
+              ^(types.IpfsListPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -29962,7 +29964,7 @@ namespace Example
             try
             {
                 // List all pin status objects
-                'String' result = apiInstance.pinningPinsGet();
+                types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -30065,7 +30067,7 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "string"
+    "$ref" : "#/definitions/types.IpfsListPinStatusResponse"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -30131,49 +30133,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-pinningPinsGet-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 404 - Not Found </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsGet-404-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsGet-404-schema">
-                                  <div id='responses-pinningPinsGet-404-schema-404' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Not Found",
-  "schema" : {
-    "$ref" : "#/definitions/util.HttpError"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsGet-404-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsGet-404-schema-404');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-pinningPinsGet-404-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -30280,8 +30239,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | Pin ID
         try {
-            'String' result = apiInstance.pinningPinsPinidDelete(pinid);
-            System.out.println(result);
+            apiInstance.pinningPinsPinidDelete(pinid);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidDelete");
             e.printStackTrace();
@@ -30299,8 +30257,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | Pin ID
         try {
-            'String' result = apiInstance.pinningPinsPinidDelete(pinid);
-            System.out.println(result);
+            apiInstance.pinningPinsPinidDelete(pinid);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidDelete");
             e.printStackTrace();
@@ -30326,10 +30283,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Delete a pinned object
 [apiInstance pinningPinsPinidDeleteWith:pinid
-              completionHandler: ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
+              completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -30356,7 +30310,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 api.pinningPinsPinidDelete(pinid, callback);
@@ -30391,8 +30345,7 @@ namespace Example
             try
             {
                 // Delete a pinned object
-                'String' result = apiInstance.pinningPinsPinidDelete(pinid);
-                Debug.WriteLine(result);
+                apiInstance.pinningPinsPinidDelete(pinid);
             }
             catch (Exception e)
             {
@@ -30417,8 +30370,7 @@ $api_instance = new Swagger\Client\Api\PinningApi();
 $pinid = pinid_example; // String | Pin ID
 
 try {
-    $result = $api_instance->pinningPinsPinidDelete($pinid);
-    print_r($result);
+    $api_instance->pinningPinsPinidDelete($pinid);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -30439,8 +30391,7 @@ my $api_instance = WWW::SwaggerClient::PinningApi->new();
 my $pinid = pinid_example; # String | Pin ID
 
 eval { 
-    my $result = $api_instance->pinningPinsPinidDelete(pinid => $pinid);
-    print Dumper($result);
+    $api_instance->pinningPinsPinidDelete(pinid => $pinid);
 };
 if ($@) {
     warn "Exception when calling PinningApi->pinningPinsPinidDelete: $@\n";
@@ -30465,8 +30416,7 @@ pinid = pinid_example # String | Pin ID
 
 try: 
     # Delete a pinned object
-    api_response = api_instance.pinning_pins_pinid_delete(pinid)
-    pprint(api_response)
+    api_instance.pinning_pins_pinid_delete(pinid)
 except ApiException as e:
     print("Exception when calling PinningApi->pinningPinsPinidDelete: %s\n" % e)</code></pre>
                             </div>
@@ -30510,90 +30460,12 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 202 -  </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPinidDelete-200-schema">Schema</a>
-                                </li>
-
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPinidDelete-200-schema">
-                                  <div id='responses-pinningPinsPinidDelete-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "schema" : {
-    "type" : "string"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPinidDelete-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPinidDelete-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-pinningPinsPinidDelete-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPinidDelete-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPinidDelete-400-schema">
-                                  <div id='responses-pinningPinsPinidDelete-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "schema" : {
-    "$ref" : "#/definitions/util.HttpError"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPinidDelete-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPinidDelete-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-pinningPinsPinidDelete-400-schema-data' type='hidden' value=''></input>
-                                </div>
                             </div>
 
                             <h3> Status: 500 - Internal Server Error </h3>
@@ -30699,7 +30571,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | cid
         try {
-            'String' result = apiInstance.pinningPinsPinidGet(pinid);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -30718,7 +30590,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | cid
         try {
-            'String' result = apiInstance.pinningPinsPinidGet(pinid);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -30745,7 +30617,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Get a pin status object
 [apiInstance pinningPinsPinidGetWith:pinid
-              completionHandler: ^('String' output, NSError* error) {
+              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -30810,7 +30682,7 @@ namespace Example
             try
             {
                 // Get a pin status object
-                'String' result = apiInstance.pinningPinsPinidGet(pinid);
+                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -30946,7 +30818,7 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "OK",
   "schema" : {
-    "type" : "string"
+    "$ref" : "#/definitions/types.IpfsPinStatusResponse"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -30972,22 +30844,22 @@ except ApiException as e:
                                 </div>
                             </div>
 
-                            <h3> Status: 400 - Bad Request </h3>
+                            <h3> Status: 404 - Not Found </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPinidGet-400-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-pinningPinsPinidGet-404-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPinidGet-400-schema">
-                                  <div id='responses-pinningPinsPinidGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-pinningPinsPinidGet-404-schema">
+                                  <div id='responses-pinningPinsPinidGet-404-schema-404' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Bad Request",
+  "description" : "Not Found",
   "schema" : {
     "$ref" : "#/definitions/util.HttpError"
   }
@@ -31004,14 +30876,14 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPinidGet-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPinidGet-400-schema-400');
+                                        $('#responses-pinningPinsPinidGet-404-schema-data').val(stringify(schema));
+                                        var result = $('#responses-pinningPinsPinidGet-404-schema-404');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-pinningPinsPinidGet-400-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-pinningPinsPinidGet-404-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -31122,7 +30994,7 @@ public class PinningApiExample {
         String origins = origins_example; // String | Origins of new pin
         String meta = meta_example; // String | Meta information of new pin
         try {
-            'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31145,7 +31017,7 @@ public class PinningApiExample {
         String origins = origins_example; // String | Origins of new pin
         String meta = meta_example; // String | Meta information of new pin
         try {
-            'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31180,7 +31052,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
     name:name
     origins:origins
     meta:meta
-              completionHandler: ^('String' output, NSError* error) {
+              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -31256,7 +31128,7 @@ namespace Example
             try
             {
                 // Replace a pinned object
-                'String' result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31534,24 +31406,24 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 202 - Accepted </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPinidPost-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-pinningPinsPinidPost-202-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPinidPost-200-schema">
-                                  <div id='responses-pinningPinsPinidPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-pinningPinsPinidPost-202-schema">
+                                  <div id='responses-pinningPinsPinidPost-202-schema-202' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "OK",
+  "description" : "Accepted",
   "schema" : {
-    "type" : "string"
+    "$ref" : "#/definitions/types.IpfsPinStatusResponse"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -31566,33 +31438,33 @@ $(document).ready(function() {
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPinidPost-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPinidPost-200-schema-200');
+                                        $('#responses-pinningPinsPinidPost-202-schema-data').val(stringify(schema));
+                                        var result = $('#responses-pinningPinsPinidPost-202-schema-202');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-pinningPinsPinidPost-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-pinningPinsPinidPost-202-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
-                            <h3> Status: 400 - Bad Request </h3>
+                            <h3> Status: 404 - Not Found </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPinidPost-400-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-pinningPinsPinidPost-404-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPinidPost-400-schema">
-                                  <div id='responses-pinningPinsPinidPost-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-pinningPinsPinidPost-404-schema">
+                                  <div id='responses-pinningPinsPinidPost-404-schema-404' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "Bad Request",
+  "description" : "Not Found",
   "schema" : {
     "$ref" : "#/definitions/util.HttpError"
   }
@@ -31609,14 +31481,14 @@ $(document).ready(function() {
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPinidPost-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPinidPost-400-schema-400');
+                                        $('#responses-pinningPinsPinidPost-404-schema-data').val(stringify(schema));
+                                        var result = $('#responses-pinningPinsPinidPost-404-schema-404');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-pinningPinsPinidPost-400-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-pinningPinsPinidPost-404-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -31723,7 +31595,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         Types.IpfsPin pin = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
         try {
-            'String' result = apiInstance.pinningPinsPost(pin);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(pin);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -31742,7 +31614,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         Types.IpfsPin pin = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
         try {
-            'String' result = apiInstance.pinningPinsPost(pin);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(pin);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -31769,7 +31641,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Add and pin object
 [apiInstance pinningPinsPostWith:pin
-              completionHandler: ^('String' output, NSError* error) {
+              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -31834,7 +31706,7 @@ namespace Example
             try
             {
                 // Add and pin object
-                'String' result = apiInstance.pinningPinsPost(pin);
+                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(pin);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31965,24 +31837,24 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 202 - Accepted </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPost-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-pinningPinsPost-202-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPost-200-schema">
-                                  <div id='responses-pinningPinsPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-pinningPinsPost-202-schema">
+                                  <div id='responses-pinningPinsPost-202-schema-202' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "OK",
+  "description" : "Accepted",
   "schema" : {
-    "type" : "string"
+    "$ref" : "#/definitions/types.IpfsPinStatusResponse"
   }
 };
                                         var schema = schemaWrapper.schema;
@@ -31997,57 +31869,14 @@ $(document).ready(function() {
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPost-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPost-200-schema-200');
+                                        $('#responses-pinningPinsPost-202-schema-data').val(stringify(schema));
+                                        var result = $('#responses-pinningPinsPost-202-schema-202');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-pinningPinsPost-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-pinningPinsPost-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-pinningPinsPost-400-schema">
-                                  <div id='responses-pinningPinsPost-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "schema" : {
-    "$ref" : "#/definitions/util.HttpError"
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-pinningPinsPost-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-pinningPinsPost-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-pinningPinsPost-400-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-pinningPinsPost-202-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

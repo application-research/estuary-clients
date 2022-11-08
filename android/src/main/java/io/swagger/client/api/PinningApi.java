@@ -23,7 +23,9 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import io.swagger.client.model.TypesIpfsListPinStatusResponse;
 import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.TypesIpfsPinStatusResponse;
 import io.swagger.client.model.UtilHttpError;
 
 import org.apache.http.HttpEntity;
@@ -59,9 +61,9 @@ public class PinningApi {
   /**
   * List all pin status objects
   * This endpoint lists all pin status objects
-   * @return String
+   * @return TypesIpfsListPinStatusResponse
   */
-  public String pinningPinsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public TypesIpfsListPinStatusResponse pinningPinsGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
 
     // create path and map variables
@@ -91,7 +93,7 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+         return (TypesIpfsListPinStatusResponse) ApiInvoker.deserialize(localVarResponse, "", TypesIpfsListPinStatusResponse.class);
       } else {
          return null;
       }
@@ -117,7 +119,7 @@ public class PinningApi {
    * This endpoint lists all pin status objects
 
   */
-  public void pinningPinsGet (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void pinningPinsGet (final Response.Listener<TypesIpfsListPinStatusResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
 
@@ -157,7 +159,7 @@ public class PinningApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+              responseListener.onResponse((TypesIpfsListPinStatusResponse) ApiInvoker.deserialize(localVarResponse,  "", TypesIpfsListPinStatusResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -176,9 +178,9 @@ public class PinningApi {
   * Delete a pinned object
   * This endpoint deletes a pinned object.
    * @param pinid Pin ID
-   * @return String
+   * @return void
   */
-  public String pinningPinsPinidDelete (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void pinningPinsPinidDelete (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -213,9 +215,9 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "DELETE", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+         return ;
       } else {
-         return null;
+         return ;
       }
     } catch (ApiException ex) {
        throw ex;
@@ -283,11 +285,7 @@ public class PinningApi {
         new Response.Listener<String>() {
           @Override
           public void onResponse(String localVarResponse) {
-            try {
-              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
-            } catch (ApiException exception) {
-               errorListener.onErrorResponse(new VolleyError(exception));
-            }
+              responseListener.onResponse(localVarResponse);
           }
       }, new Response.ErrorListener() {
           @Override
@@ -303,9 +301,9 @@ public class PinningApi {
   * Get a pin status object
   * This endpoint returns a pin status object.
    * @param pinid cid
-   * @return String
+   * @return TypesIpfsPinStatusResponse
   */
-  public String pinningPinsPinidGet (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public TypesIpfsPinStatusResponse pinningPinsPinidGet (String pinid) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -340,7 +338,7 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+         return (TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse, "", TypesIpfsPinStatusResponse.class);
       } else {
          return null;
       }
@@ -366,7 +364,7 @@ public class PinningApi {
    * This endpoint returns a pin status object.
    * @param pinid cid
   */
-  public void pinningPinsPinidGet (String pinid, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void pinningPinsPinidGet (String pinid, final Response.Listener<TypesIpfsPinStatusResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'pinid' is set
@@ -411,7 +409,7 @@ public class PinningApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+              responseListener.onResponse((TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse,  "", TypesIpfsPinStatusResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -434,9 +432,9 @@ public class PinningApi {
    * @param name Name (filename) of new pin
    * @param origins Origins of new pin
    * @param meta Meta information of new pin
-   * @return String
+   * @return TypesIpfsPinStatusResponse
   */
-  public String pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public TypesIpfsPinStatusResponse pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = meta;
     // verify the required parameter 'pinid' is set
     if (pinid == null) {
@@ -476,7 +474,7 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+         return (TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse, "", TypesIpfsPinStatusResponse.class);
       } else {
          return null;
       }
@@ -502,7 +500,7 @@ public class PinningApi {
    * This endpoint replaces a pinned object.
    * @param pinid Pin ID   * @param cid CID of new pin   * @param name Name (filename) of new pin   * @param origins Origins of new pin   * @param meta Meta information of new pin
   */
-  public void pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void pinningPinsPinidPost (String pinid, String cid, String name, String origins, String meta, final Response.Listener<TypesIpfsPinStatusResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = meta;
 
     // verify the required parameter 'pinid' is set
@@ -552,7 +550,7 @@ public class PinningApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+              responseListener.onResponse((TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse,  "", TypesIpfsPinStatusResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }
@@ -571,9 +569,9 @@ public class PinningApi {
   * Add and pin object
   * This endpoint adds a pin to the IPFS daemon.
    * @param pin Pin Body {cid:cid, name:name}
-   * @return String
+   * @return TypesIpfsPinStatusResponse
   */
-  public String pinningPinsPost (TypesIpfsPin pin) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public TypesIpfsPinStatusResponse pinningPinsPost (TypesIpfsPin pin) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = pin;
     // verify the required parameter 'pin' is set
     if (pin == null) {
@@ -608,7 +606,7 @@ public class PinningApi {
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (String) ApiInvoker.deserialize(localVarResponse, "", String.class);
+         return (TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse, "", TypesIpfsPinStatusResponse.class);
       } else {
          return null;
       }
@@ -634,7 +632,7 @@ public class PinningApi {
    * This endpoint adds a pin to the IPFS daemon.
    * @param pin Pin Body {cid:cid, name:name}
   */
-  public void pinningPinsPost (TypesIpfsPin pin, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void pinningPinsPost (TypesIpfsPin pin, final Response.Listener<TypesIpfsPinStatusResponse> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = pin;
 
     // verify the required parameter 'pin' is set
@@ -679,7 +677,7 @@ public class PinningApi {
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((String) ApiInvoker.deserialize(localVarResponse,  "", String.class));
+              responseListener.onResponse((TypesIpfsPinStatusResponse) ApiInvoker.deserialize(localVarResponse,  "", TypesIpfsPinStatusResponse.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

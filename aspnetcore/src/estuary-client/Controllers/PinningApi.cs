@@ -34,37 +34,32 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint lists all pin status objects</remarks>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
-        /// <response code="404">Not Found</response>
         /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//pinning/pins")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(TypesIpfsListPinStatusResponse), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
-        [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            // return StatusCode(200, default(TypesIpfsListPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404, default(UtilHttpError));
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            exampleJson = "{\"empty\": false}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
+            ? JsonConvert.DeserializeObject<TypesIpfsListPinStatusResponse>(exampleJson)
+            : default(TypesIpfsListPinStatusResponse);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -74,36 +69,24 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint deletes a pinned object.</remarks>
         /// <param name="pinid">Pin ID</param>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
+        /// <response code="202"></response>
         /// <response code="500">Internal Server Error</response>
         [HttpDelete]
         [Route("//pinning/pins/{pinid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPinidDelete")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsPinidDelete([FromRoute][Required]string pinid)
         { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
+            //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(202);
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
 
-            string exampleJson = null;
-            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
-            
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
-            //TODO: Change the data returned
-            return new ObjectResult(example);
+
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -112,33 +95,33 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint returns a pin status object.</remarks>
         /// <param name="pinid">cid</param>
         /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
+        /// <response code="404">Not Found</response>
         /// <response code="500">Internal Server Error</response>
         [HttpGet]
         [Route("//pinning/pins/{pinid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPinidGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 200, type: typeof(TypesIpfsPinStatusResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsPinidGet([FromRoute][Required]string pinid)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            // return StatusCode(200, default(TypesIpfsPinStatusResponse));
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
+            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(404, default(UtilHttpError));
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            exampleJson = "{\"empty\": false}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
+            ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
+            : default(TypesIpfsPinStatusResponse);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -152,34 +135,34 @@ namespace estuary-client.Controllers
         /// <param name="name">Name (filename) of new pin</param>
         /// <param name="origins">Origins of new pin</param>
         /// <param name="meta">Meta information of new pin</param>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
+        /// <response code="202">Accepted</response>
+        /// <response code="404">Not Found</response>
         /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//pinning/pins/{pinid}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPinidPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
+        [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsPinidPost([FromRoute][Required]string pinid, [FromBody]string cid, [FromBody]string name, [FromBody]string origins, [FromBody]string meta)
         { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(202, default(TypesIpfsPinStatusResponse));
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
+            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(404, default(UtilHttpError));
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            exampleJson = "{\"empty\": false}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
+            ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
+            : default(TypesIpfsPinStatusResponse);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }
@@ -189,34 +172,29 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint adds a pin to the IPFS daemon.</remarks>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
+        /// <response code="202">Accepted</response>
         /// <response code="500">Internal Server Error</response>
         [HttpPost]
         [Route("//pinning/pins")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsPost([FromBody]TypesIpfsPin pin)
         { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
+            //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(202, default(TypesIpfsPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"bytes\": [],\n  \"empty\": true\n}";
+            exampleJson = "{\"empty\": false}";
             
             var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<string>(exampleJson)
-            : default(string);
+            ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
+            : default(TypesIpfsPinStatusResponse);
             //TODO: Change the data returned
             return new ObjectResult(example);
         }

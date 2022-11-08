@@ -279,7 +279,9 @@ Class | Description
  *Main.estimateDealBody* | 
  *Main.getApiKeysResp* | 
  *Main.importDealBody* | 
+ *Types.IpfsListPinStatusResponse* | 
  *Types.IpfsPin* | 
+ *Types.IpfsPinStatusResponse* | 
  *Util.ContentAddIpfsBody* | 
  *Util.ContentAddResponse* | 
  *Util.ContentCreateBody* | 

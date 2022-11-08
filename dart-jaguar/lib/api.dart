@@ -28,7 +28,9 @@ import 'package:swagger/model/main_delete_content_from_collection_body.dart';
 import 'package:swagger/model/main_estimate_deal_body.dart';
 import 'package:swagger/model/main_get_api_keys_resp.dart';
 import 'package:swagger/model/main_import_deal_body.dart';
+import 'package:swagger/model/types_ipfs_list_pin_status_response.dart';
 import 'package:swagger/model/types_ipfs_pin.dart';
+import 'package:swagger/model/types_ipfs_pin_status_response.dart';
 import 'package:swagger/model/util_content_add_ipfs_body.dart';
 import 'package:swagger/model/util_content_add_response.dart';
 import 'package:swagger/model/util_content_create_body.dart';
@@ -43,7 +45,9 @@ final jsonJaguarRepo = JsonRepo()
 ..add(MainEstimateDealBodySerializer())
 ..add(MainGetApiKeysRespSerializer())
 ..add(MainImportDealBodySerializer())
+..add(TypesIpfsListPinStatusResponseSerializer())
 ..add(TypesIpfsPinSerializer())
+..add(TypesIpfsPinStatusResponseSerializer())
 ..add(UtilContentAddIpfsBodySerializer())
 ..add(UtilContentAddResponseSerializer())
 ..add(UtilContentCreateBodySerializer())

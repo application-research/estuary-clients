@@ -11,7 +11,9 @@ MainDeleteContentFromCollectionBody : io.swagger.model.MainDeleteContentFromColl
 MainEstimateDealBody : io.swagger.model.MainEstimateDealBody
 MainGetApiKeysResp : io.swagger.model.MainGetApiKeysResp
 MainImportDealBody : io.swagger.model.MainImportDealBody
+TypesIpfsListPinStatusResponse : io.swagger.model.TypesIpfsListPinStatusResponse
 TypesIpfsPin : io.swagger.model.TypesIpfsPin
+TypesIpfsPinStatusResponse : io.swagger.model.TypesIpfsPinStatusResponse
 UtilContentAddIpfsBody : io.swagger.model.UtilContentAddIpfsBody
 UtilContentAddResponse : io.swagger.model.UtilContentAddResponse
 UtilContentCreateBody : io.swagger.model.UtilContentCreateBody

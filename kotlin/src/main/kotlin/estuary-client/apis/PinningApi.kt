@@ -11,7 +11,9 @@
 */
 package estuary-client.apis
 
+import estuary-client.models.TypesIpfsListPinStatusResponse
 import estuary-client.models.TypesIpfsPin
+import estuary-client.models.TypesIpfsPinStatusResponse
 import estuary-client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -21,10 +23,10 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     /**
     * List all pin status objects
     * This endpoint lists all pin status objects
-    * @return kotlin.String
+    * @return TypesIpfsListPinStatusResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsGet() : kotlin.String {
+    fun pinningPinsGet() : TypesIpfsListPinStatusResponse {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -40,13 +42,13 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
+        val response = request<TypesIpfsListPinStatusResponse>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as TypesIpfsListPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -59,10 +61,9 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Delete a pinned object
     * This endpoint deletes a pinned object.
     * @param pinid Pin ID 
-    * @return kotlin.String
+    * @return void
     */
-    @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidDelete(pinid: kotlin.String) : kotlin.String {
+    fun pinningPinsPinidDelete(pinid: kotlin.String) : Unit {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -78,13 +79,13 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
+        val response = request<Unit>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> Unit
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -97,10 +98,10 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Get a pin status object
     * This endpoint returns a pin status object.
     * @param pinid cid 
-    * @return kotlin.String
+    * @return TypesIpfsPinStatusResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidGet(pinid: kotlin.String) : kotlin.String {
+    fun pinningPinsPinidGet(pinid: kotlin.String) : TypesIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -116,13 +117,13 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
+        val response = request<TypesIpfsPinStatusResponse>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -139,10 +140,10 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * @param name Name (filename) of new pin (optional)
     * @param origins Origins of new pin (optional)
     * @param meta Meta information of new pin (optional)
-    * @return kotlin.String
+    * @return TypesIpfsPinStatusResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidPost(pinid: kotlin.String, cid: kotlin.String, name: kotlin.String, origins: kotlin.String, meta: kotlin.String) : kotlin.String {
+    fun pinningPinsPinidPost(pinid: kotlin.String, cid: kotlin.String, name: kotlin.String, origins: kotlin.String, meta: kotlin.String) : TypesIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = cidnameoriginsmeta
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -158,13 +159,13 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
+        val response = request<TypesIpfsPinStatusResponse>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -177,10 +178,10 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
     * Add and pin object
     * This endpoint adds a pin to the IPFS daemon.
     * @param pin Pin Body {cid:cid, name:name} 
-    * @return kotlin.String
+    * @return TypesIpfsPinStatusResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPost(pin: TypesIpfsPin) : kotlin.String {
+    fun pinningPinsPost(pin: TypesIpfsPin) : TypesIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = pin
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -196,13 +197,13 @@ class PinningApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClie
             query = localVariableQuery,
             headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
+        val response = request<TypesIpfsPinStatusResponse>(
             localVariableConfig,
             localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

@@ -14,8 +14,8 @@ private class SwagPinningApiTest {
 
         SwagClient client;
         SwagPinningApi api;
-        String response;
-        String expectedResponse;
+        SwagTypesIpfsListPinStatusResponse response;
+        SwagTypesIpfsListPinStatusResponse expectedResponse;
 
         client = new SwagClient();
         api = new SwagPinningApi(client);
@@ -23,9 +23,9 @@ private class SwagPinningApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
-        expectedResponse = 'aeiou';
-        response = (String) api.pinningPinsGet();
+        res.setBody('{"empty": false}');
+        expectedResponse = SwagTypesIpfsListPinStatusResponse.getExample();
+        response = (SwagTypesIpfsListPinStatusResponse) api.pinningPinsGet();
         System.assertEquals(expectedResponse, response);
     }
 
@@ -47,19 +47,13 @@ private class SwagPinningApiTest {
 
         SwagClient client;
         SwagPinningApi api;
-        String response;
-        String expectedResponse;
 
         client = new SwagClient();
         api = new SwagPinningApi(client);
         ((Swagger.ApiKeyAuth) client.getAuthentication('bearerAuth');
             client.setApiKey('foo-bar-api-key');
 
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
-        expectedResponse = 'aeiou';
-        response = (String) api.pinningPinsPinidDelete(params);
-        System.assertEquals(expectedResponse, response);
+        api.pinningPinsPinidDelete(params);
     }
 
     /**
@@ -80,8 +74,8 @@ private class SwagPinningApiTest {
 
         SwagClient client;
         SwagPinningApi api;
-        String response;
-        String expectedResponse;
+        SwagTypesIpfsPinStatusResponse response;
+        SwagTypesIpfsPinStatusResponse expectedResponse;
 
         client = new SwagClient();
         api = new SwagPinningApi(client);
@@ -89,9 +83,9 @@ private class SwagPinningApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
-        expectedResponse = 'aeiou';
-        response = (String) api.pinningPinsPinidGet(params);
+        res.setBody('{"empty": false}');
+        expectedResponse = SwagTypesIpfsPinStatusResponse.getExample();
+        response = (SwagTypesIpfsPinStatusResponse) api.pinningPinsPinidGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -117,8 +111,8 @@ private class SwagPinningApiTest {
 
         SwagClient client;
         SwagPinningApi api;
-        String response;
-        String expectedResponse;
+        SwagTypesIpfsPinStatusResponse response;
+        SwagTypesIpfsPinStatusResponse expectedResponse;
 
         client = new SwagClient();
         api = new SwagPinningApi(client);
@@ -126,9 +120,9 @@ private class SwagPinningApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
-        expectedResponse = 'aeiou';
-        response = (String) api.pinningPinsPinidPost(params);
+        res.setBody('{"empty": false}');
+        expectedResponse = SwagTypesIpfsPinStatusResponse.getExample();
+        response = (SwagTypesIpfsPinStatusResponse) api.pinningPinsPinidPost(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -150,8 +144,8 @@ private class SwagPinningApiTest {
 
         SwagClient client;
         SwagPinningApi api;
-        String response;
-        String expectedResponse;
+        SwagTypesIpfsPinStatusResponse response;
+        SwagTypesIpfsPinStatusResponse expectedResponse;
 
         client = new SwagClient();
         api = new SwagPinningApi(client);
@@ -159,9 +153,9 @@ private class SwagPinningApiTest {
             client.setApiKey('foo-bar-api-key');
 
         res.setHeader('Content-Type', 'application/json');
-        res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
-        expectedResponse = 'aeiou';
-        response = (String) api.pinningPinsPost(params);
+        res.setBody('{"empty": false}');
+        expectedResponse = SwagTypesIpfsPinStatusResponse.getExample();
+        response = (SwagTypesIpfsPinStatusResponse) api.pinningPinsPost(params);
         System.assertEquals(expectedResponse, response);
     }
 }

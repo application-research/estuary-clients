@@ -260,6 +260,20 @@ class Decoders {
             }
 
 
+            // Decoder for [TypesIpfsListPinStatusResponse]
+            Decoders.addDecoder(clazz: [TypesIpfsListPinStatusResponse].self) { (source: AnyObject) -> [TypesIpfsListPinStatusResponse] in
+                return Decoders.decode(clazz: [TypesIpfsListPinStatusResponse].self, source: source)
+            }
+            // Decoder for TypesIpfsListPinStatusResponse
+            Decoders.addDecoder(clazz: TypesIpfsListPinStatusResponse.self) { (source: AnyObject) -> TypesIpfsListPinStatusResponse in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = TypesIpfsListPinStatusResponse()
+                instance.count = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["count"])
+                instance.results = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["results"])
+                return instance
+            }
+
+
             // Decoder for [TypesIpfsPin]
             Decoders.addDecoder(clazz: [TypesIpfsPin].self) { (source: AnyObject) -> [TypesIpfsPin] in
                 return Decoders.decode(clazz: [TypesIpfsPin].self, source: source)
@@ -272,6 +286,24 @@ class Decoders {
                 instance.meta = Decoders.decodeOptional(clazz: AnyObject.self, source: sourceDictionary["meta"])
                 instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
                 instance.origins = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["origins"])
+                return instance
+            }
+
+
+            // Decoder for [TypesIpfsPinStatusResponse]
+            Decoders.addDecoder(clazz: [TypesIpfsPinStatusResponse].self) { (source: AnyObject) -> [TypesIpfsPinStatusResponse] in
+                return Decoders.decode(clazz: [TypesIpfsPinStatusResponse].self, source: source)
+            }
+            // Decoder for TypesIpfsPinStatusResponse
+            Decoders.addDecoder(clazz: TypesIpfsPinStatusResponse.self) { (source: AnyObject) -> TypesIpfsPinStatusResponse in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = TypesIpfsPinStatusResponse()
+                instance.created = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["created"])
+                instance.delegates = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["delegates"])
+                instance.info = Decoders.decodeOptional(clazz: AnyObject.self, source: sourceDictionary["info"])
+                instance.pin = Decoders.decodeOptional(clazz: TypesIpfsPin.self, source: sourceDictionary["pin"])
+                instance.requestid = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["requestid"])
+                instance.status = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["status"])
                 return instance
             }
 

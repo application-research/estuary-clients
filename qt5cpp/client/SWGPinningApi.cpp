@@ -69,8 +69,8 @@ SWGPinningApi::pinningPinsGetCallback(SWGHttpRequestWorker * worker) {
     }
 
     QString json(worker->response);
-    QString* output = static_cast<QString*>(create(json, QString("QString")));
-    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    SWGTypes.IpfsListPinStatusResponse* output = static_cast<SWGTypes.IpfsListPinStatusResponse*>(create(json, QString("SWGTypes.IpfsListPinStatusResponse")));
+    auto wrapper = new SWGQObjectWrapper<SWGTypes.IpfsListPinStatusResponse*> (output);
     wrapper->deleteLater();
     worker->deleteLater();
 
@@ -123,16 +123,12 @@ SWGPinningApi::pinningPinsPinidDeleteCallback(SWGHttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    QString json(worker->response);
-    QString* output = static_cast<QString*>(create(json, QString("QString")));
-    auto wrapper = new SWGQObjectWrapper<QString*> (output);
-    wrapper->deleteLater();
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit pinningPinsPinidDeleteSignal(output);
+        emit pinningPinsPinidDeleteSignal();
     } else {
-        emit pinningPinsPinidDeleteSignalE(output, error_type, error_str);
+        emit pinningPinsPinidDeleteSignalE(error_type, error_str);
         emit pinningPinsPinidDeleteSignalEFull(worker, error_type, error_str);
     }
 }
@@ -179,8 +175,8 @@ SWGPinningApi::pinningPinsPinidGetCallback(SWGHttpRequestWorker * worker) {
     }
 
     QString json(worker->response);
-    QString* output = static_cast<QString*>(create(json, QString("QString")));
-    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    SWGTypes.IpfsPinStatusResponse* output = static_cast<SWGTypes.IpfsPinStatusResponse*>(create(json, QString("SWGTypes.IpfsPinStatusResponse")));
+    auto wrapper = new SWGQObjectWrapper<SWGTypes.IpfsPinStatusResponse*> (output);
     wrapper->deleteLater();
     worker->deleteLater();
 
@@ -246,8 +242,8 @@ SWGPinningApi::pinningPinsPinidPostCallback(SWGHttpRequestWorker * worker) {
     }
 
     QString json(worker->response);
-    QString* output = static_cast<QString*>(create(json, QString("QString")));
-    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    SWGTypes.IpfsPinStatusResponse* output = static_cast<SWGTypes.IpfsPinStatusResponse*>(create(json, QString("SWGTypes.IpfsPinStatusResponse")));
+    auto wrapper = new SWGQObjectWrapper<SWGTypes.IpfsPinStatusResponse*> (output);
     wrapper->deleteLater();
     worker->deleteLater();
 
@@ -302,8 +298,8 @@ SWGPinningApi::pinningPinsPostCallback(SWGHttpRequestWorker * worker) {
     }
 
     QString json(worker->response);
-    QString* output = static_cast<QString*>(create(json, QString("QString")));
-    auto wrapper = new SWGQObjectWrapper<QString*> (output);
+    SWGTypes.IpfsPinStatusResponse* output = static_cast<SWGTypes.IpfsPinStatusResponse*>(create(json, QString("SWGTypes.IpfsPinStatusResponse")));
+    auto wrapper = new SWGQObjectWrapper<SWGTypes.IpfsPinStatusResponse*> (output);
     wrapper->deleteLater();
     worker->deleteLater();
 

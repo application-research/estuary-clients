@@ -12,7 +12,7 @@ Feature | HTTP request | Description
 
 
 # **pinning_pins_get**
-> pinning_pins_get : detachable STRING_32
+> pinning_pins_get : detachable TYPES_IPFS_LIST_PIN_STATUS_RESPONSE
 	
 
 List all pin status objects
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**STRING_32**](STRING_32.md)
+[**TYPES_IPFS_LIST_PIN_STATUS_RESPONSE**](types.IpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> pinning_pins_pinid_delete (pinid: STRING_32 ): detachable STRING_32
+> pinning_pins_pinid_delete (pinid: STRING_32 )
 	
 
 Delete a pinned object
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**STRING_32**](STRING_32.md)
+{empty response body)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> pinning_pins_pinid_get (pinid: STRING_32 ): detachable STRING_32
+> pinning_pins_pinid_get (pinid: STRING_32 ): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 	
 
 Get a pin status object
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**STRING_32**](STRING_32.md)
+[**TYPES_IPFS_PIN_STATUS_RESPONSE**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> pinning_pins_pinid_post (pinid: STRING_32 ; cid: STRING_32 ; name:  detachable STRING_32 ; origins:  detachable STRING_32 ; meta:  detachable STRING_32 ): detachable STRING_32
+> pinning_pins_pinid_post (pinid: STRING_32 ; cid: STRING_32 ; name:  detachable STRING_32 ; origins:  detachable STRING_32 ; meta:  detachable STRING_32 ): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 	
 
 Replace a pinned object
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**STRING_32**](STRING_32.md)
+[**TYPES_IPFS_PIN_STATUS_RESPONSE**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> pinning_pins_post (pin: TYPES_IPFS_PIN ): detachable STRING_32
+> pinning_pins_post (pin: TYPES_IPFS_PIN ): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 	
 
 Add and pin object
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**STRING_32**](STRING_32.md)
+[**TYPES_IPFS_PIN_STATUS_RESPONSE**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 

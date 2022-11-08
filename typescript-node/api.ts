@@ -363,6 +363,29 @@ export class MainImportDealBody {
     }
 }
 
+export class TypesIpfsListPinStatusResponse {
+    'count'?: number;
+    'results'?: Array<TypesIpfsPinStatusResponse>;
+
+    static discriminator: string | undefined = undefined;
+
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "count",
+            "baseName": "count",
+            "type": "number"
+        },
+        {
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<TypesIpfsPinStatusResponse>"
+        }    ];
+
+    static getAttributeTypeMap() {
+        return TypesIpfsListPinStatusResponse.attributeTypeMap;
+    }
+}
+
 export class TypesIpfsPin {
     'cid'?: string;
     'meta'?: any;
@@ -395,6 +418,53 @@ export class TypesIpfsPin {
 
     static getAttributeTypeMap() {
         return TypesIpfsPin.attributeTypeMap;
+    }
+}
+
+export class TypesIpfsPinStatusResponse {
+    'created'?: string;
+    'delegates'?: Array<string>;
+    'info'?: any;
+    'pin'?: TypesIpfsPin;
+    'requestid'?: string;
+    'status'?: string;
+
+    static discriminator: string | undefined = undefined;
+
+    static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
+        {
+            "name": "created",
+            "baseName": "created",
+            "type": "string"
+        },
+        {
+            "name": "delegates",
+            "baseName": "delegates",
+            "type": "Array<string>"
+        },
+        {
+            "name": "info",
+            "baseName": "info",
+            "type": "any"
+        },
+        {
+            "name": "pin",
+            "baseName": "pin",
+            "type": "TypesIpfsPin"
+        },
+        {
+            "name": "requestid",
+            "baseName": "requestid",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "string"
+        }    ];
+
+    static getAttributeTypeMap() {
+        return TypesIpfsPinStatusResponse.attributeTypeMap;
     }
 }
 
@@ -562,7 +632,9 @@ let typeMap: {[index: string]: any} = {
     "MainEstimateDealBody": MainEstimateDealBody,
     "MainGetApiKeysResp": MainGetApiKeysResp,
     "MainImportDealBody": MainImportDealBody,
+    "TypesIpfsListPinStatusResponse": TypesIpfsListPinStatusResponse,
     "TypesIpfsPin": TypesIpfsPin,
+    "TypesIpfsPinStatusResponse": TypesIpfsPinStatusResponse,
     "UtilContentAddIpfsBody": UtilContentAddIpfsBody,
     "UtilContentAddResponse": UtilContentAddResponse,
     "UtilContentCreateBody": UtilContentCreateBody,
@@ -5046,7 +5118,7 @@ export class PinningApi {
      * @summary List all pin status objects
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsGet (options: any = {}) : Promise<{ response: http.ClientResponse; body: TypesIpfsListPinStatusResponse;  }> {
         const localVarPath = this.basePath + '/pinning/pins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5076,12 +5148,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: TypesIpfsListPinStatusResponse;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "string");
+                    body = ObjectSerializer.deserialize(body, "TypesIpfsListPinStatusResponse");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5097,7 +5169,7 @@ export class PinningApi {
      * @param pinid Pin ID
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidDelete (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsPinidDelete (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body?: any;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5133,12 +5205,11 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body?: any;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "string");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5154,7 +5225,7 @@ export class PinningApi {
      * @param pinid cid
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidGet (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsPinidGet (pinid: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5190,12 +5261,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "string");
+                    body = ObjectSerializer.deserialize(body, "TypesIpfsPinStatusResponse");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5215,7 +5286,7 @@ export class PinningApi {
      * @param meta Meta information of new pin
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPinidPost (pinid: string, cid: string, name?: string, origins?: string, meta?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsPinidPost (pinid: string, cid: string, name?: string, origins?: string, meta?: string, options: any = {}) : Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }> {
         const localVarPath = this.basePath + '/pinning/pins/{pinid}'
             .replace('{' + 'pinid' + '}', encodeURIComponent(String(pinid)));
         let localVarQueryParameters: any = {};
@@ -5257,12 +5328,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "string");
+                    body = ObjectSerializer.deserialize(body, "TypesIpfsPinStatusResponse");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {
@@ -5278,7 +5349,7 @@ export class PinningApi {
      * @param pin Pin Body {cid:cid, name:name}
      * @param {*} [options] Override http request options.
      */
-    public pinningPinsPost (pin: TypesIpfsPin, options: any = {}) : Promise<{ response: http.ClientResponse; body: string;  }> {
+    public pinningPinsPost (pin: TypesIpfsPin, options: any = {}) : Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }> {
         const localVarPath = this.basePath + '/pinning/pins';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
@@ -5314,12 +5385,12 @@ export class PinningApi {
                 localVarRequestOptions.form = localVarFormParams;
             }
         }
-        return new Promise<{ response: http.ClientResponse; body: string;  }>((resolve, reject) => {
+        return new Promise<{ response: http.ClientResponse; body: TypesIpfsPinStatusResponse;  }>((resolve, reject) => {
             localVarRequest(localVarRequestOptions, (error, response, body) => {
                 if (error) {
                     reject(error);
                 } else {
-                    body = ObjectSerializer.deserialize(body, "string");
+                    body = ObjectSerializer.deserialize(body, "TypesIpfsPinStatusResponse");
                     if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                         resolve({ response: response, body: body });
                     } else {

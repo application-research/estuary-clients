@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> String pinning_pins_get(ctx, )
+> ::models::TypesIpfsListPinStatusResponse pinning_pins_get(ctx, )
 List all pin status objects
 
 This endpoint lists all pin status objects
@@ -22,7 +22,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**::models::TypesIpfsListPinStatusResponse**](types.IpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> String pinning_pins_pinid_delete(ctx, pinid)
+> pinning_pins_pinid_delete(ctx, pinid)
 Delete a pinned object
 
 This endpoint deletes a pinned object.
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+ (empty response body)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> String pinning_pins_pinid_get(ctx, pinid)
+> ::models::TypesIpfsPinStatusResponse pinning_pins_pinid_get(ctx, pinid)
 Get a pin status object
 
 This endpoint returns a pin status object.
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**::models::TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> String pinning_pins_pinid_post(ctx, pinid, cid, optional)
+> ::models::TypesIpfsPinStatusResponse pinning_pins_pinid_post(ctx, pinid, cid, optional)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**::models::TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> String pinning_pins_post(ctx, pin)
+> ::models::TypesIpfsPinStatusResponse pinning_pins_post(ctx, pin)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**::models::TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
 
 ### Authorization
 

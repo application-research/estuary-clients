@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T11:05:54.210Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T19:38:18.956Z")
 public class AdminApiServiceImpl implements AdminApiService {
       public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext)
       throws NotFoundException {

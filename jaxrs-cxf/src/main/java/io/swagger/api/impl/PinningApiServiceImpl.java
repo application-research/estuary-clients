@@ -1,7 +1,9 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -30,7 +32,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint lists all pin status objects
      *
      */
-    public String pinningPinsGet() {
+    public TypesIpfsListPinStatusResponse pinningPinsGet() {
         // TODO: Implement...
         
         return null;
@@ -42,10 +44,10 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint deletes a pinned object.
      *
      */
-    public String pinningPinsPinidDelete(String pinid) {
+    public void pinningPinsPinidDelete(String pinid) {
         // TODO: Implement...
         
-        return null;
+        
     }
     
     /**
@@ -54,7 +56,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint returns a pin status object.
      *
      */
-    public String pinningPinsPinidGet(String pinid) {
+    public TypesIpfsPinStatusResponse pinningPinsPinidGet(String pinid) {
         // TODO: Implement...
         
         return null;
@@ -66,7 +68,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint replaces a pinned object.
      *
      */
-    public String pinningPinsPinidPost(String pinid, String cid, String name, String origins, String meta) {
+    public TypesIpfsPinStatusResponse pinningPinsPinidPost(String pinid, String cid, String name, String origins, String meta) {
         // TODO: Implement...
         
         return null;
@@ -78,7 +80,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint adds a pin to the IPFS daemon.
      *
      */
-    public String pinningPinsPost(TypesIpfsPin pin) {
+    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin pin) {
         // TODO: Implement...
         
         return null;

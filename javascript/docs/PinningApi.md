@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> 'String' pinningPinsGet()
+> TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> 'String' pinningPinsPinidDelete(pinid)
+> pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -86,7 +86,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 apiInstance.pinningPinsPinidDelete(pinid, callback);
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+null (empty response body)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> 'String' pinningPinsPinidGet(pinid)
+> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> 'String' pinningPinsPinidPost(pinid, cid, opts)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, cid, opts)
 
 Replace a pinned object
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> 'String' pinningPinsPost(pin)
+> TypesIpfsPinStatusResponse pinningPinsPost(pin)
 
 Add and pin object
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinning_pins_get**
-> str pinning_pins_get()
+> TypesIpfsListPinStatusResponse pinning_pins_get()
 
 List all pin status objects
 
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**str**
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_delete**
-> str pinning_pins_pinid_delete(pinid)
+> pinning_pins_pinid_delete(pinid)
 
 Delete a pinned object
 
@@ -88,8 +88,7 @@ pinid = 'pinid_example' # str | Pin ID
 
 try:
     # Delete a pinned object
-    api_response = api_instance.pinning_pins_pinid_delete(pinid)
-    pprint(api_response)
+    api_instance.pinning_pins_pinid_delete(pinid)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_delete: %s\n" % e)
 ```
@@ -102,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+void (empty response body)
 
 ### Authorization
 
@@ -116,7 +115,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_get**
-> str pinning_pins_pinid_get(pinid)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_get(pinid)
 
 Get a pin status object
 
@@ -156,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -170,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> str pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
 
 Replace a pinned object
 
@@ -218,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -232,7 +231,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> str pinning_pins_post(pin)
+> TypesIpfsPinStatusResponse pinning_pins_post(pin)
 
 Add and pin object
 
@@ -272,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

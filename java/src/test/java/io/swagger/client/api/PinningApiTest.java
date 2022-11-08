@@ -13,7 +13,9 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.TypesIpfsListPinStatusResponse;
 import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.TypesIpfsPinStatusResponse;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -43,7 +45,7 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsGetTest() throws Exception {
-        String response = api.pinningPinsGet();
+        TypesIpfsListPinStatusResponse response = api.pinningPinsGet();
 
         // TODO: test validations
     }
@@ -59,7 +61,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidDeleteTest() throws Exception {
         String pinid = null;
-        String response = api.pinningPinsPinidDelete(pinid);
+        api.pinningPinsPinidDelete(pinid);
 
         // TODO: test validations
     }
@@ -75,7 +77,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidGetTest() throws Exception {
         String pinid = null;
-        String response = api.pinningPinsPinidGet(pinid);
+        TypesIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
 
         // TODO: test validations
     }
@@ -95,7 +97,7 @@ public class PinningApiTest {
         String name = null;
         String origins = null;
         String meta = null;
-        String response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
 
         // TODO: test validations
     }
@@ -111,7 +113,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPostTest() throws Exception {
         TypesIpfsPin pin = null;
-        String response = api.pinningPinsPost(pin);
+        TypesIpfsPinStatusResponse response = api.pinningPinsPost(pin);
 
         // TODO: test validations
     }

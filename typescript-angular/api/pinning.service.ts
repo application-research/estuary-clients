@@ -18,7 +18,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs/Observable';
 
+import { TypesIpfsListPinStatusResponse } from '../model/typesIpfsListPinStatusResponse';
 import { TypesIpfsPin } from '../model/typesIpfsPin';
+import { TypesIpfsPinStatusResponse } from '../model/typesIpfsPinStatusResponse';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -63,9 +65,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsGet(observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsListPinStatusResponse>;
+    public pinningPinsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsListPinStatusResponse>>;
+    public pinningPinsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsListPinStatusResponse>>;
     public pinningPinsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -88,7 +90,7 @@ export class PinningService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<string>(`${this.basePath}/pinning/pins`,
+        return this.httpClient.get<TypesIpfsListPinStatusResponse>(`${this.basePath}/pinning/pins`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -105,9 +107,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidDelete(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsPinidDelete(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsPinidDelete(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsPinidDelete(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public pinningPinsPinidDelete(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public pinningPinsPinidDelete(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
     public pinningPinsPinidDelete(pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pinid === null || pinid === undefined) {
@@ -134,7 +136,7 @@ export class PinningService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.delete<string>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
+        return this.httpClient.delete<any>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -151,9 +153,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidGet(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsPinidGet(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsPinidGet(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
     public pinningPinsPinidGet(pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pinid === null || pinid === undefined) {
@@ -180,7 +182,7 @@ export class PinningService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<string>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
+        return this.httpClient.get<TypesIpfsPinStatusResponse>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -201,9 +203,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
     public pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pinid === null || pinid === undefined) {
@@ -241,7 +243,7 @@ export class PinningService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<string>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
+        return this.httpClient.post<TypesIpfsPinStatusResponse>(`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
             meta,
             {
                 withCredentials: this.configuration.withCredentials,
@@ -259,9 +261,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
+    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPost(pin: TypesIpfsPin, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
     public pinningPinsPost(pin: TypesIpfsPin, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pin === null || pin === undefined) {
@@ -292,7 +294,7 @@ export class PinningService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<string>(`${this.basePath}/pinning/pins`,
+        return this.httpClient.post<TypesIpfsPinStatusResponse>(`${this.basePath}/pinning/pins`,
             pin,
             {
                 withCredentials: this.configuration.withCredentials,

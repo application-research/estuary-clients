@@ -287,6 +287,26 @@ export interface MainImportDealBody {
 /**
  * 
  * @export
+ * @interface TypesIpfsListPinStatusResponse
+ */
+export interface TypesIpfsListPinStatusResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof TypesIpfsListPinStatusResponse
+     */
+    count?: number;
+    /**
+     * 
+     * @type {Array<TypesIpfsPinStatusResponse>}
+     * @memberof TypesIpfsListPinStatusResponse
+     */
+    results?: Array<TypesIpfsPinStatusResponse>;
+}
+
+/**
+ * 
+ * @export
  * @interface TypesIpfsPin
  */
 export interface TypesIpfsPin {
@@ -314,6 +334,50 @@ export interface TypesIpfsPin {
      * @memberof TypesIpfsPin
      */
     origins?: Array<string>;
+}
+
+/**
+ * 
+ * @export
+ * @interface TypesIpfsPinStatusResponse
+ */
+export interface TypesIpfsPinStatusResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    created?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    delegates?: Array<string>;
+    /**
+     * 
+     * @type {any}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    info?: any;
+    /**
+     * 
+     * @type {TypesIpfsPin}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    pin?: TypesIpfsPin;
+    /**
+     * 
+     * @type {string}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    requestid?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    status?: string;
 }
 
 /**
@@ -6438,7 +6502,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsListPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsGet(options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6457,12 +6521,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidDelete(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        pinningPinsPinidDelete(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidDelete(pinid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
-                        return response.json();
+                        return response;
                     } else {
                         throw response;
                     }
@@ -6476,7 +6540,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidGet(pinid, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6499,7 +6563,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        pinningPinsPinidPost(pinid: string, cid: string, name?: string, origins?: string, meta?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(pinid, cid, name, origins, meta, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6518,7 +6582,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(pin: TypesIpfsPin, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        pinningPinsPost(pin: TypesIpfsPin, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(pin, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {

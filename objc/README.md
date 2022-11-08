@@ -49,7 +49,9 @@ Import the following:
 #import <SwaggerClient/SWGMainEstimateDealBody.h>
 #import <SwaggerClient/SWGMainGetApiKeysResp.h>
 #import <SwaggerClient/SWGMainImportDealBody.h>
+#import <SwaggerClient/SWGTypesIpfsListPinStatusResponse.h>
 #import <SwaggerClient/SWGTypesIpfsPin.h>
+#import <SwaggerClient/SWGTypesIpfsPinStatusResponse.h>
 #import <SwaggerClient/SWGUtilContentAddIpfsBody.h>
 #import <SwaggerClient/SWGUtilContentAddResponse.h>
 #import <SwaggerClient/SWGUtilContentCreateBody.h>
@@ -212,7 +214,9 @@ Class | Method | HTTP request | Description
  - [SWGMainEstimateDealBody](docs/SWGMainEstimateDealBody.md)
  - [SWGMainGetApiKeysResp](docs/SWGMainGetApiKeysResp.md)
  - [SWGMainImportDealBody](docs/SWGMainImportDealBody.md)
+ - [SWGTypesIpfsListPinStatusResponse](docs/SWGTypesIpfsListPinStatusResponse.md)
  - [SWGTypesIpfsPin](docs/SWGTypesIpfsPin.md)
+ - [SWGTypesIpfsPinStatusResponse](docs/SWGTypesIpfsPinStatusResponse.md)
  - [SWGUtilContentAddIpfsBody](docs/SWGUtilContentAddIpfsBody.md)
  - [SWGUtilContentAddResponse](docs/SWGUtilContentAddResponse.md)
  - [SWGUtilContentCreateBody](docs/SWGUtilContentCreateBody.md)

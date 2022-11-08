@@ -35,16 +35,16 @@ impl<C: hyper::client::Connect> PinningApiClient<C> {
 }
 
 pub trait PinningApi {
-    fn pinning_pins_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_get(&self, ) -> Box<Future<Item = ::models::TypesIpfsListPinStatusResponse, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>>;
+    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
-    fn pinning_pins_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_get(&self, ) -> Box<Future<Item = ::models::TypesIpfsListPinStatusResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -104,13 +104,13 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::TypesIpfsListPinStatusResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_delete(&self, pinid: &str) -> Box<Future<Item = (), Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -169,14 +169,11 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                     Err(Error::from((status, &*body)))
                 }
             })
-            .and_then(|body| {
-                let parsed: Result<String, _> = serde_json::from_slice(&body);
-                parsed.map_err(|e| Error::from(e))
-            })
+            .and_then(|_| futures::future::ok(()))
         )
     }
 
-    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_get(&self, pinid: &str) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -236,13 +233,13 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::TypesIpfsPinStatusResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_pinid_post(&self, pinid: &str, cid: &str, name: &str, origins: &str, meta: &str) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -318,13 +315,13 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::TypesIpfsPinStatusResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )
     }
 
-    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn pinning_pins_post(&self, pin: ::models::TypesIpfsPin) -> Box<Future<Item = ::models::TypesIpfsPinStatusResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -388,7 +385,7 @@ impl<C: hyper::client::Connect>PinningApi for PinningApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<String, _> = serde_json::from_slice(&body);
+                let parsed: Result<::models::TypesIpfsPinStatusResponse, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

@@ -247,7 +247,9 @@ use WWW::SwaggerClient::Object::MainDeleteContentFromCollectionBody;
 use WWW::SwaggerClient::Object::MainEstimateDealBody;
 use WWW::SwaggerClient::Object::MainGetApiKeysResp;
 use WWW::SwaggerClient::Object::MainImportDealBody;
+use WWW::SwaggerClient::Object::TypesIpfsListPinStatusResponse;
 use WWW::SwaggerClient::Object::TypesIpfsPin;
+use WWW::SwaggerClient::Object::TypesIpfsPinStatusResponse;
 use WWW::SwaggerClient::Object::UtilContentAddIpfsBody;
 use WWW::SwaggerClient::Object::UtilContentAddResponse;
 use WWW::SwaggerClient::Object::UtilContentCreateBody;
@@ -285,7 +287,9 @@ use WWW::SwaggerClient::Object::MainDeleteContentFromCollectionBody;
 use WWW::SwaggerClient::Object::MainEstimateDealBody;
 use WWW::SwaggerClient::Object::MainGetApiKeysResp;
 use WWW::SwaggerClient::Object::MainImportDealBody;
+use WWW::SwaggerClient::Object::TypesIpfsListPinStatusResponse;
 use WWW::SwaggerClient::Object::TypesIpfsPin;
+use WWW::SwaggerClient::Object::TypesIpfsPinStatusResponse;
 use WWW::SwaggerClient::Object::UtilContentAddIpfsBody;
 use WWW::SwaggerClient::Object::UtilContentAddResponse;
 use WWW::SwaggerClient::Object::UtilContentCreateBody;
@@ -420,7 +424,9 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::MainEstimateDealBody](docs/MainEstimateDealBody.md)
  - [WWW::SwaggerClient::Object::MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
  - [WWW::SwaggerClient::Object::MainImportDealBody](docs/MainImportDealBody.md)
+ - [WWW::SwaggerClient::Object::TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [WWW::SwaggerClient::Object::TypesIpfsPin](docs/TypesIpfsPin.md)
+ - [WWW::SwaggerClient::Object::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [WWW::SwaggerClient::Object::UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [WWW::SwaggerClient::Object::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [WWW::SwaggerClient::Object::UtilContentCreateBody](docs/UtilContentCreateBody.md)

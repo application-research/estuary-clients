@@ -5,7 +5,9 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
@@ -22,76 +24,73 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T11:06:02.742Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T19:38:28.201Z")
 
 @Validated
 @Api(value = "pinning", description = "the pinning API")
 @RequestMapping(value = "")
 public interface PinningApi {
 
-    @ApiOperation(value = "List all pin status objects", nickname = "pinningPinsGet", notes = "This endpoint lists all pin status objects", response = String.class, authorizations = {
+    @ApiOperation(value = "List all pin status objects", nickname = "pinningPinsGet", notes = "This endpoint lists all pin status objects", response = TypesIpfsListPinStatusResponse.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 200, message = "OK", response = TypesIpfsListPinStatusResponse.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/pinning/pins",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> pinningPinsGet();
+    ResponseEntity<TypesIpfsListPinStatusResponse> pinningPinsGet();
 
 
-    @ApiOperation(value = "Delete a pinned object", nickname = "pinningPinsPinidDelete", notes = "This endpoint deletes a pinned object.", response = String.class, authorizations = {
+    @ApiOperation(value = "Delete a pinned object", nickname = "pinningPinsPinidDelete", notes = "This endpoint deletes a pinned object.", authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 202, message = ""),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/pinning/pins/{pinid}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<String> pinningPinsPinidDelete(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid);
+    ResponseEntity<Void> pinningPinsPinidDelete(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid);
 
 
-    @ApiOperation(value = "Get a pin status object", nickname = "pinningPinsPinidGet", notes = "This endpoint returns a pin status object.", response = String.class, authorizations = {
+    @ApiOperation(value = "Get a pin status object", nickname = "pinningPinsPinidGet", notes = "This endpoint returns a pin status object.", response = TypesIpfsPinStatusResponse.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 200, message = "OK", response = TypesIpfsPinStatusResponse.class),
+        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/pinning/pins/{pinid}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> pinningPinsPinidGet(@ApiParam(value = "cid",required=true) @PathVariable("pinid") String pinid);
+    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidGet(@ApiParam(value = "cid",required=true) @PathVariable("pinid") String pinid);
 
 
-    @ApiOperation(value = "Replace a pinned object", nickname = "pinningPinsPinidPost", notes = "This endpoint replaces a pinned object.", response = String.class, authorizations = {
+    @ApiOperation(value = "Replace a pinned object", nickname = "pinningPinsPinidPost", notes = "This endpoint replaces a pinned object.", response = TypesIpfsPinStatusResponse.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 202, message = "Accepted", response = TypesIpfsPinStatusResponse.class),
+        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/pinning/pins/{pinid}",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid,@ApiParam(value = "CID of new pin" ,required=true )  @Valid @RequestBody String cid,@ApiParam(value = "Name (filename) of new pin"  )  @Valid @RequestBody String name,@ApiParam(value = "Origins of new pin"  )  @Valid @RequestBody String origins,@ApiParam(value = "Meta information of new pin"  )  @Valid @RequestBody String meta);
+    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@ApiParam(value = "Pin ID",required=true) @PathVariable("pinid") String pinid,@ApiParam(value = "CID of new pin" ,required=true )  @Valid @RequestBody String cid,@ApiParam(value = "Name (filename) of new pin"  )  @Valid @RequestBody String name,@ApiParam(value = "Origins of new pin"  )  @Valid @RequestBody String origins,@ApiParam(value = "Meta information of new pin"  )  @Valid @RequestBody String meta);
 
 
-    @ApiOperation(value = "Add and pin object", nickname = "pinningPinsPost", notes = "This endpoint adds a pin to the IPFS daemon.", response = String.class, authorizations = {
+    @ApiOperation(value = "Add and pin object", nickname = "pinningPinsPost", notes = "This endpoint adds a pin to the IPFS daemon.", response = TypesIpfsPinStatusResponse.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "pinning", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(code = 202, message = "Accepted", response = TypesIpfsPinStatusResponse.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
     @RequestMapping(value = "/pinning/pins",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> pinningPinsPost(@ApiParam(value = "Pin Body {cid:cid, name:name}" ,required=true )  @Valid @RequestBody TypesIpfsPin pin);
+    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@ApiParam(value = "Pin Body {cid:cid, name:name}" ,required=true )  @Valid @RequestBody TypesIpfsPin pin);
 
 }

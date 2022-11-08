@@ -52,8 +52,12 @@ class ApiClient {
           return new MainGetApiKeysResp.fromJson(value);
         case 'MainImportDealBody':
           return new MainImportDealBody.fromJson(value);
+        case 'TypesIpfsListPinStatusResponse':
+          return new TypesIpfsListPinStatusResponse.fromJson(value);
         case 'TypesIpfsPin':
           return new TypesIpfsPin.fromJson(value);
+        case 'TypesIpfsPinStatusResponse':
+          return new TypesIpfsPinStatusResponse.fromJson(value);
         case 'UtilContentAddIpfsBody':
           return new UtilContentAddIpfsBody.fromJson(value);
         case 'UtilContentAddResponse':

@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**Types.IpfsListPinStatusResponse**](Types.IpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+(empty response body)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**Types.IpfsPinStatusResponse**](Types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**Types.IpfsPinStatusResponse**](Types.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**Types.IpfsPinStatusResponse**](Types.IpfsPinStatusResponse.md)
 
 ### Authorization
 

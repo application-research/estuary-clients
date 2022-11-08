@@ -16,7 +16,9 @@
 #include "SWGHttpRequest.h"
 
 #include <QString>
+#include "SWGTypes.IpfsListPinStatusResponse.h"
 #include "SWGTypes.IpfsPin.h"
+#include "SWGTypes.IpfsPinStatusResponse.h"
 #include "SWGUtil.HttpError.h"
 
 #include <QObject>
@@ -49,17 +51,17 @@ private:
     void pinningPinsPostCallback (SWGHttpRequestWorker * worker);
     
 signals:
-    void pinningPinsGetSignal(QString* summary);
-    void pinningPinsPinidDeleteSignal(QString* summary);
-    void pinningPinsPinidGetSignal(QString* summary);
-    void pinningPinsPinidPostSignal(QString* summary);
-    void pinningPinsPostSignal(QString* summary);
+    void pinningPinsGetSignal(SWGTypes.IpfsListPinStatusResponse* summary);
+    void pinningPinsPinidDeleteSignal();
+    void pinningPinsPinidGetSignal(SWGTypes.IpfsPinStatusResponse* summary);
+    void pinningPinsPinidPostSignal(SWGTypes.IpfsPinStatusResponse* summary);
+    void pinningPinsPostSignal(SWGTypes.IpfsPinStatusResponse* summary);
     
-    void pinningPinsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void pinningPinsPinidDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void pinningPinsPinidGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void pinningPinsPinidPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void pinningPinsPostSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void pinningPinsGetSignalE(SWGTypes.IpfsListPinStatusResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void pinningPinsPinidDeleteSignalE(QNetworkReply::NetworkError error_type, QString& error_str);
+    void pinningPinsPinidGetSignalE(SWGTypes.IpfsPinStatusResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void pinningPinsPinidPostSignalE(SWGTypes.IpfsPinStatusResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void pinningPinsPostSignalE(SWGTypes.IpfsPinStatusResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void pinningPinsGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void pinningPinsPinidDeleteSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

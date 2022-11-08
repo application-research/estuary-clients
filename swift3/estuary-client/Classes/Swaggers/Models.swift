@@ -536,6 +536,32 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "MainImportDealBody", actual: "\(source)"))
             }
         }
+        // Decoder for [TypesIpfsListPinStatusResponse]
+        Decoders.addDecoder(clazz: [TypesIpfsListPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsListPinStatusResponse]> in
+            return Decoders.decode(clazz: [TypesIpfsListPinStatusResponse].self, source: source)
+        }
+
+        // Decoder for TypesIpfsListPinStatusResponse
+        Decoders.addDecoder(clazz: TypesIpfsListPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsListPinStatusResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? TypesIpfsListPinStatusResponse() : instance as! TypesIpfsListPinStatusResponse
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["count"] as AnyObject?) {
+                
+                case let .success(value): _result.count = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: [TypesIpfsPinStatusResponse].self, source: sourceDictionary["results"] as AnyObject?) {
+                
+                case let .success(value): _result.results = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "TypesIpfsListPinStatusResponse", actual: "\(source)"))
+            }
+        }
         // Decoder for [TypesIpfsPin]
         Decoders.addDecoder(clazz: [TypesIpfsPin].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsPin]> in
             return Decoders.decode(clazz: [TypesIpfsPin].self, source: source)
@@ -572,6 +598,56 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "TypesIpfsPin", actual: "\(source)"))
+            }
+        }
+        // Decoder for [TypesIpfsPinStatusResponse]
+        Decoders.addDecoder(clazz: [TypesIpfsPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsPinStatusResponse]> in
+            return Decoders.decode(clazz: [TypesIpfsPinStatusResponse].self, source: source)
+        }
+
+        // Decoder for TypesIpfsPinStatusResponse
+        Decoders.addDecoder(clazz: TypesIpfsPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsPinStatusResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? TypesIpfsPinStatusResponse() : instance as! TypesIpfsPinStatusResponse
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["created"] as AnyObject?) {
+                
+                case let .success(value): _result.created = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["delegates"] as AnyObject?) {
+                
+                case let .success(value): _result.delegates = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["info"] as AnyObject?) {
+                
+                case let .success(value): _result.info = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: TypesIpfsPin.self, source: sourceDictionary["pin"] as AnyObject?) {
+                
+                case let .success(value): _result.pin = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["requestid"] as AnyObject?) {
+                
+                case let .success(value): _result.requestid = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["status"] as AnyObject?) {
+                
+                case let .success(value): _result.status = value
+                case let .failure(error): break
+                
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "TypesIpfsPinStatusResponse", actual: "\(source)"))
             }
         }
         // Decoder for [UtilContentAddIpfsBody]

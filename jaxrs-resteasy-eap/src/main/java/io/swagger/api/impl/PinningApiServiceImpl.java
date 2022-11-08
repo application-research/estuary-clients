@@ -4,7 +4,9 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -14,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-08T11:05:53.706Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-08T19:38:20.184Z")
 public class PinningApiServiceImpl implements PinningApi {
       public Response pinningPinsGet(SecurityContext securityContext) {
       // do some magic!

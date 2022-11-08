@@ -22,7 +22,7 @@ module SwaggerClient
     # List all pin status objects
     # This endpoint lists all pin status objects
     # @param [Hash] opts the optional parameters
-    # @return [String]
+    # @return [TypesIpfsListPinStatusResponse]
     def pinning_pins_get(opts = {})
       data, _status_code, _headers = pinning_pins_get_with_http_info(opts)
       data
@@ -31,7 +31,7 @@ module SwaggerClient
     # List all pin status objects
     # This endpoint lists all pin status objects
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    # @return [Array<(TypesIpfsListPinStatusResponse, Fixnum, Hash)>] TypesIpfsListPinStatusResponse data, response status code and response headers
     def pinning_pins_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_get ...'
@@ -59,7 +59,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'String')
+        :return_type => 'TypesIpfsListPinStatusResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -69,17 +69,17 @@ module SwaggerClient
     # This endpoint deletes a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [String]
+    # @return [nil]
     def pinning_pins_pinid_delete(pinid, opts = {})
-      data, _status_code, _headers = pinning_pins_pinid_delete_with_http_info(pinid, opts)
-      data
+      pinning_pins_pinid_delete_with_http_info(pinid, opts)
+      nil
     end
 
     # Delete a pinned object
     # This endpoint deletes a pinned object.
     # @param pinid Pin ID
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def pinning_pins_pinid_delete_with_http_info(pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_delete ...'
@@ -110,8 +110,7 @@ module SwaggerClient
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'String')
+        :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -121,7 +120,7 @@ module SwaggerClient
     # This endpoint returns a pin status object.
     # @param pinid cid
     # @param [Hash] opts the optional parameters
-    # @return [String]
+    # @return [TypesIpfsPinStatusResponse]
     def pinning_pins_pinid_get(pinid, opts = {})
       data, _status_code, _headers = pinning_pins_pinid_get_with_http_info(pinid, opts)
       data
@@ -131,7 +130,7 @@ module SwaggerClient
     # This endpoint returns a pin status object.
     # @param pinid cid
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    # @return [Array<(TypesIpfsPinStatusResponse, Fixnum, Hash)>] TypesIpfsPinStatusResponse data, response status code and response headers
     def pinning_pins_pinid_get_with_http_info(pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_get ...'
@@ -163,7 +162,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'String')
+        :return_type => 'TypesIpfsPinStatusResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -177,7 +176,7 @@ module SwaggerClient
     # @option opts [String] :name Name (filename) of new pin
     # @option opts [String] :origins Origins of new pin
     # @option opts [String] :meta Meta information of new pin
-    # @return [String]
+    # @return [TypesIpfsPinStatusResponse]
     def pinning_pins_pinid_post(pinid, cid, opts = {})
       data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(pinid, cid, opts)
       data
@@ -191,7 +190,7 @@ module SwaggerClient
     # @option opts [String] :name Name (filename) of new pin
     # @option opts [String] :origins Origins of new pin
     # @option opts [String] :meta Meta information of new pin
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    # @return [Array<(TypesIpfsPinStatusResponse, Fixnum, Hash)>] TypesIpfsPinStatusResponse data, response status code and response headers
     def pinning_pins_pinid_post_with_http_info(pinid, cid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_post ...'
@@ -227,7 +226,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'String')
+        :return_type => 'TypesIpfsPinStatusResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_pinid_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -237,7 +236,7 @@ module SwaggerClient
     # This endpoint adds a pin to the IPFS daemon.
     # @param pin Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
-    # @return [String]
+    # @return [TypesIpfsPinStatusResponse]
     def pinning_pins_post(pin, opts = {})
       data, _status_code, _headers = pinning_pins_post_with_http_info(pin, opts)
       data
@@ -247,7 +246,7 @@ module SwaggerClient
     # This endpoint adds a pin to the IPFS daemon.
     # @param pin Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    # @return [Array<(TypesIpfsPinStatusResponse, Fixnum, Hash)>] TypesIpfsPinStatusResponse data, response status code and response headers
     def pinning_pins_post_with_http_info(pin, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_post ...'
@@ -279,7 +278,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'String')
+        :return_type => 'TypesIpfsPinStatusResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: PinningApi#pinning_pins_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **pinningPinsGet**
-> string pinningPinsGet()
+> \Swagger\Client\Model\TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\TypesIpfsListPinStatusResponse**](../Model/TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidDelete**
-> string pinningPinsPinidDelete($pinid)
+> pinningPinsPinidDelete($pinid)
 
 Delete a pinned object
 
@@ -88,8 +88,7 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
 $pinid = "pinid_example"; // string | Pin ID
 
 try {
-    $result = $apiInstance->pinningPinsPinidDelete($pinid);
-    print_r($result);
+    $apiInstance->pinningPinsPinidDelete($pinid);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidDelete: ', $e->getMessage(), PHP_EOL;
 }
@@ -104,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+void (empty response body)
 
 ### Authorization
 
@@ -118,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidGet**
-> string pinningPinsPinidGet($pinid)
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidGet($pinid)
 
 Get a pin status object
 
@@ -159,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -173,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidPost**
-> string pinningPinsPinidPost($pinid, $cid, $name, $origins, $meta)
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidPost($pinid, $cid, $name, $origins, $meta)
 
 Replace a pinned object
 
@@ -222,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -236,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPost**
-> string pinningPinsPost($pin)
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPost($pin)
 
 Add and pin object
 
@@ -277,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

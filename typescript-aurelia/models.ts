@@ -56,11 +56,25 @@ export interface MainImportDealBody {
   name?: string;
 }
 
+export interface TypesIpfsListPinStatusResponse {
+  count?: number;
+  results?: Array<TypesIpfsPinStatusResponse>;
+}
+
 export interface TypesIpfsPin {
   cid?: string;
   meta?: any;
   name?: string;
   origins?: Array<string>;
+}
+
+export interface TypesIpfsPinStatusResponse {
+  created?: string;
+  delegates?: Array<string>;
+  info?: any;
+  pin?: TypesIpfsPin;
+  requestid?: string;
+  status?: string;
 }
 
 export interface UtilContentAddIpfsBody {

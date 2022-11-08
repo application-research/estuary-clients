@@ -495,21 +495,20 @@ package .Clients is
    --  This endpoint lists all pin status objects
    procedure Pinning_Pins_Get
       (Client : in out Client_Type;
-       Result : out Swagger.UString);
+       Result : out .Models.Types_IpfsListPinStatusResponse_Type);
 
    --  Delete a pinned object
    --  This endpoint deletes a pinned object.
    procedure Pinning_Pins_Pinid_Delete
       (Client : in out Client_Type;
-       Pinid : in Swagger.UString;
-       Result : out Swagger.UString);
+       Pinid : in Swagger.UString);
 
    --  Get a pin status object
    --  This endpoint returns a pin status object.
    procedure Pinning_Pins_Pinid_Get
       (Client : in out Client_Type;
        Pinid : in Swagger.UString;
-       Result : out Swagger.UString);
+       Result : out .Models.Types_IpfsPinStatusResponse_Type);
 
    --  Replace a pinned object
    --  This endpoint replaces a pinned object.
@@ -520,14 +519,14 @@ package .Clients is
        Name : in Swagger.Nullable_UString;
        Origins : in Swagger.Nullable_UString;
        Meta : in Swagger.Nullable_UString;
-       Result : out Swagger.UString);
+       Result : out .Models.Types_IpfsPinStatusResponse_Type);
 
    --  Add and pin object
    --  This endpoint adds a pin to the IPFS daemon.
    procedure Pinning_Pins_Post
       (Client : in out Client_Type;
        Pin : in .Models.Types_IpfsPin_Type;
-       Result : out Swagger.UString);
+       Result : out .Models.Types_IpfsPinStatusResponse_Type);
 
    --  Get Content by Cid
    --  This endpoint returns the content associated with a CID

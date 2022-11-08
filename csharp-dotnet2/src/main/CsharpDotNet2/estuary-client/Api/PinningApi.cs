@@ -14,20 +14,20 @@ namespace estuary-client.Api
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
-        /// <returns>string</returns>
-        string PinningPinsGet ();
+        /// <returns>TypesIpfsListPinStatusResponse</returns>
+        TypesIpfsListPinStatusResponse PinningPinsGet ();
         /// <summary>
         /// Delete a pinned object This endpoint deletes a pinned object.
         /// </summary>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidDelete (string pinid);
+        /// <returns></returns>
+        void PinningPinsPinidDelete (string pinid);
         /// <summary>
         /// Get a pin status object This endpoint returns a pin status object.
         /// </summary>
         /// <param name="pinid">cid</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidGet (string pinid);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid);
         /// <summary>
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
@@ -36,14 +36,14 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin</param>
         /// <param name="origins">Origins of new pin</param>
         /// <param name="meta">Meta information of new pin</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta);
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>string</returns>
-        string PinningPinsPost (TypesIpfsPin pin);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin);
     }
   
     /// <summary>
@@ -102,8 +102,8 @@ namespace estuary-client.Api
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
-        /// <returns>string</returns>            
-        public string PinningPinsGet ()
+        /// <returns>TypesIpfsListPinStatusResponse</returns>            
+        public TypesIpfsListPinStatusResponse PinningPinsGet ()
         {
             
     
@@ -128,15 +128,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (TypesIpfsListPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsListPinStatusResponse), response.Headers);
         }
     
         /// <summary>
         /// Delete a pinned object This endpoint deletes a pinned object.
         /// </summary>
         /// <param name="pinid">Pin ID</param> 
-        /// <returns>string</returns>            
-        public string PinningPinsPinidDelete (string pinid)
+        /// <returns></returns>            
+        public void PinningPinsPinidDelete (string pinid)
         {
             
             // verify the required parameter 'pinid' is set
@@ -165,15 +165,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPinidDelete: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return;
         }
     
         /// <summary>
         /// Get a pin status object This endpoint returns a pin status object.
         /// </summary>
         /// <param name="pinid">cid</param> 
-        /// <returns>string</returns>            
-        public string PinningPinsPinidGet (string pinid)
+        /// <returns>TypesIpfsPinStatusResponse</returns>            
+        public TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
         {
             
             // verify the required parameter 'pinid' is set
@@ -202,7 +202,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPinidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
         }
     
         /// <summary>
@@ -213,8 +213,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin</param> 
         /// <param name="origins">Origins of new pin</param> 
         /// <param name="meta">Meta information of new pin</param> 
-        /// <returns>string</returns>            
-        public string PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta)
+        /// <returns>TypesIpfsPinStatusResponse</returns>            
+        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta)
         {
             
             // verify the required parameter 'pinid' is set
@@ -247,15 +247,15 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPinidPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
         }
     
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param> 
-        /// <returns>string</returns>            
-        public string PinningPinsPost (TypesIpfsPin pin)
+        /// <returns>TypesIpfsPinStatusResponse</returns>            
+        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin)
         {
             
             // verify the required parameter 'pin' is set
@@ -284,7 +284,7 @@ namespace estuary-client.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
         }
     
     }

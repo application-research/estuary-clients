@@ -59,10 +59,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'pinning_pins_get' } = { 
     	summary => 'List all pin status objects',
         params => $params,
-        returns => 'string',
+        returns => 'TypesIpfsListPinStatusResponse',
         };
 }
-# @return string
+# @return TypesIpfsListPinStatusResponse
 #
 sub pinning_pins_get {
     my ($self, %args) = @_;
@@ -93,7 +93,7 @@ sub pinning_pins_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    my $_response_object = $self->{api_client}->deserialize('TypesIpfsListPinStatusResponse', $response);
     return $_response_object;
 }
 
@@ -114,10 +114,10 @@ sub pinning_pins_get {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_delete' } = { 
     	summary => 'Delete a pinned object',
         params => $params,
-        returns => 'string',
+        returns => undef,
         };
 }
-# @return string
+# @return void
 #
 sub pinning_pins_pinid_delete {
     my ($self, %args) = @_;
@@ -154,14 +154,10 @@ sub pinning_pins_pinid_delete {
     my $auth_settings = [qw(bearerAuth )];
 
     # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+    $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
-    return $_response_object;
+    return;
 }
 
 #
@@ -181,10 +177,10 @@ sub pinning_pins_pinid_delete {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_get' } = { 
     	summary => 'Get a pin status object',
         params => $params,
-        returns => 'string',
+        returns => 'TypesIpfsPinStatusResponse',
         };
 }
-# @return string
+# @return TypesIpfsPinStatusResponse
 #
 sub pinning_pins_pinid_get {
     my ($self, %args) = @_;
@@ -227,7 +223,7 @@ sub pinning_pins_pinid_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    my $_response_object = $self->{api_client}->deserialize('TypesIpfsPinStatusResponse', $response);
     return $_response_object;
 }
 
@@ -272,10 +268,10 @@ sub pinning_pins_pinid_get {
     __PACKAGE__->method_documentation->{ 'pinning_pins_pinid_post' } = { 
     	summary => 'Replace a pinned object',
         params => $params,
-        returns => 'string',
+        returns => 'TypesIpfsPinStatusResponse',
         };
 }
-# @return string
+# @return TypesIpfsPinStatusResponse
 #
 sub pinning_pins_pinid_post {
     my ($self, %args) = @_;
@@ -343,7 +339,7 @@ sub pinning_pins_pinid_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    my $_response_object = $self->{api_client}->deserialize('TypesIpfsPinStatusResponse', $response);
     return $_response_object;
 }
 
@@ -364,10 +360,10 @@ sub pinning_pins_pinid_post {
     __PACKAGE__->method_documentation->{ 'pinning_pins_post' } = { 
     	summary => 'Add and pin object',
         params => $params,
-        returns => 'string',
+        returns => 'TypesIpfsPinStatusResponse',
         };
 }
-# @return string
+# @return TypesIpfsPinStatusResponse
 #
 sub pinning_pins_post {
     my ($self, %args) = @_;
@@ -408,7 +404,7 @@ sub pinning_pins_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    my $_response_object = $self->{api_client}->deserialize('TypesIpfsPinStatusResponse', $response);
     return $_response_object;
 }
 

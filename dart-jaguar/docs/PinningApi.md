@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **pinningPinsGet**
-> String pinningPinsGet()
+> TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidDelete**
-> String pinningPinsPinidDelete(pinid)
+> pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -78,8 +78,7 @@ var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
 
 try { 
-    var result = api_instance.pinningPinsPinidDelete(pinid);
-    print(result);
+    api_instance.pinningPinsPinidDelete(pinid);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidDelete: $e\n");
 }
@@ -93,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+void (empty response body)
 
 ### Authorization
 
@@ -107,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidGet**
-> String pinningPinsPinidGet(pinid)
+> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -140,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -154,7 +153,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> String pinningPinsPinidPost(pinid, cid, name, origins, meta)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -195,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -209,7 +208,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPost**
-> String pinningPinsPost(pin)
+> TypesIpfsPinStatusResponse pinningPinsPost(pin)
 
 Add and pin object
 
@@ -242,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

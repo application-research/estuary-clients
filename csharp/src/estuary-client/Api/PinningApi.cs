@@ -31,8 +31,8 @@ namespace estuary-client.Api
         /// This endpoint lists all pin status objects
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        string PinningPinsGet ();
+        /// <returns>TypesIpfsListPinStatusResponse</returns>
+        TypesIpfsListPinStatusResponse PinningPinsGet ();
 
         /// <summary>
         /// List all pin status objects
@@ -41,8 +41,8 @@ namespace estuary-client.Api
         /// This endpoint lists all pin status objects
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsGetWithHttpInfo ();
+        /// <returns>ApiResponse of TypesIpfsListPinStatusResponse</returns>
+        ApiResponse<TypesIpfsListPinStatusResponse> PinningPinsGetWithHttpInfo ();
         /// <summary>
         /// Delete a pinned object
         /// </summary>
@@ -51,8 +51,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidDelete (string pinid);
+        /// <returns></returns>
+        void PinningPinsPinidDelete (string pinid);
 
         /// <summary>
         /// Delete a pinned object
@@ -62,8 +62,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsPinidDeleteWithHttpInfo (string pinid);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PinningPinsPinidDeleteWithHttpInfo (string pinid);
         /// <summary>
         /// Get a pin status object
         /// </summary>
@@ -72,8 +72,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidGet (string pinid);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid);
 
         /// <summary>
         /// Get a pin status object
@@ -83,8 +83,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsPinidGetWithHttpInfo (string pinid);
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPinidGetWithHttpInfo (string pinid);
         /// <summary>
         /// Replace a pinned object
         /// </summary>
@@ -97,8 +97,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>string</returns>
-        string PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null);
 
         /// <summary>
         /// Replace a pinned object
@@ -112,8 +112,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -122,8 +122,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>string</returns>
-        string PinningPinsPost (TypesIpfsPin pin);
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin);
 
         /// <summary>
         /// Add and pin object
@@ -133,8 +133,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PinningPinsPostWithHttpInfo (TypesIpfsPin pin);
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPostWithHttpInfo (TypesIpfsPin pin);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -144,8 +144,8 @@ namespace estuary-client.Api
         /// This endpoint lists all pin status objects
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsGetAsync ();
+        /// <returns>Task of TypesIpfsListPinStatusResponse</returns>
+        System.Threading.Tasks.Task<TypesIpfsListPinStatusResponse> PinningPinsGetAsync ();
 
         /// <summary>
         /// List all pin status objects
@@ -154,8 +154,8 @@ namespace estuary-client.Api
         /// This endpoint lists all pin status objects
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (TypesIpfsListPinStatusResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsListPinStatusResponse>> PinningPinsGetAsyncWithHttpInfo ();
         /// <summary>
         /// Delete a pinned object
         /// </summary>
@@ -164,8 +164,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsPinidDeleteAsync (string pinid);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task PinningPinsPinidDeleteAsync (string pinid);
 
         /// <summary>
         /// Delete a pinned object
@@ -175,8 +175,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidDeleteAsyncWithHttpInfo (string pinid);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> PinningPinsPinidDeleteAsyncWithHttpInfo (string pinid);
         /// <summary>
         /// Get a pin status object
         /// </summary>
@@ -185,8 +185,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsPinidGetAsync (string pinid);
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidGetAsync (string pinid);
 
         /// <summary>
         /// Get a pin status object
@@ -196,8 +196,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidGetAsyncWithHttpInfo (string pinid);
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidGetAsyncWithHttpInfo (string pinid);
         /// <summary>
         /// Replace a pinned object
         /// </summary>
@@ -210,8 +210,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null);
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null);
 
         /// <summary>
         /// Replace a pinned object
@@ -225,8 +225,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -235,8 +235,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PinningPinsPostAsync (TypesIpfsPin pin);
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin pin);
 
         /// <summary>
         /// Add and pin object
@@ -246,8 +246,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin pin);
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin pin);
         #endregion Asynchronous Operations
     }
 
@@ -352,10 +352,10 @@ namespace estuary-client.Api
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        public string PinningPinsGet ()
+        /// <returns>TypesIpfsListPinStatusResponse</returns>
+        public TypesIpfsListPinStatusResponse PinningPinsGet ()
         {
-             ApiResponse<string> localVarResponse = PinningPinsGetWithHttpInfo();
+             ApiResponse<TypesIpfsListPinStatusResponse> localVarResponse = PinningPinsGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -363,8 +363,8 @@ namespace estuary-client.Api
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsGetWithHttpInfo ()
+        /// <returns>ApiResponse of TypesIpfsListPinStatusResponse</returns>
+        public ApiResponse< TypesIpfsListPinStatusResponse > PinningPinsGetWithHttpInfo ()
         {
 
             var localVarPath = "/pinning/pins";
@@ -408,19 +408,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsListPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsListPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsListPinStatusResponse)));
         }
 
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsGetAsync ()
+        /// <returns>Task of TypesIpfsListPinStatusResponse</returns>
+        public async System.Threading.Tasks.Task<TypesIpfsListPinStatusResponse> PinningPinsGetAsync ()
         {
-             ApiResponse<string> localVarResponse = await PinningPinsGetAsyncWithHttpInfo();
+             ApiResponse<TypesIpfsListPinStatusResponse> localVarResponse = await PinningPinsGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -429,8 +429,8 @@ namespace estuary-client.Api
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (TypesIpfsListPinStatusResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsListPinStatusResponse>> PinningPinsGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/pinning/pins";
@@ -474,9 +474,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsListPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsListPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsListPinStatusResponse)));
         }
 
         /// <summary>
@@ -484,11 +484,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>string</returns>
-        public string PinningPinsPinidDelete (string pinid)
+        /// <returns></returns>
+        public void PinningPinsPinidDelete (string pinid)
         {
-             ApiResponse<string> localVarResponse = PinningPinsPinidDeleteWithHttpInfo(pinid);
-             return localVarResponse.Data;
+             PinningPinsPinidDeleteWithHttpInfo(pinid);
         }
 
         /// <summary>
@@ -496,8 +495,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsPinidDeleteWithHttpInfo (string pinid)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> PinningPinsPinidDeleteWithHttpInfo (string pinid)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -545,9 +544,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                null);
         }
 
         /// <summary>
@@ -555,11 +554,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsPinidDeleteAsync (string pinid)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task PinningPinsPinidDeleteAsync (string pinid)
         {
-             ApiResponse<string> localVarResponse = await PinningPinsPinidDeleteAsyncWithHttpInfo(pinid);
-             return localVarResponse.Data;
+             await PinningPinsPinidDeleteAsyncWithHttpInfo(pinid);
 
         }
 
@@ -568,8 +566,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">Pin ID</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidDeleteAsyncWithHttpInfo (string pinid)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PinningPinsPinidDeleteAsyncWithHttpInfo (string pinid)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -617,9 +615,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                null);
         }
 
         /// <summary>
@@ -627,10 +625,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>string</returns>
-        public string PinningPinsPinidGet (string pinid)
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        public TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
         {
-             ApiResponse<string> localVarResponse = PinningPinsPinidGetWithHttpInfo(pinid);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPinidGetWithHttpInfo(pinid);
              return localVarResponse.Data;
         }
 
@@ -639,8 +637,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsPinidGetWithHttpInfo (string pinid)
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPinidGetWithHttpInfo (string pinid)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -688,9 +686,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
         /// <summary>
@@ -698,10 +696,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsPinidGetAsync (string pinid)
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidGetAsync (string pinid)
         {
-             ApiResponse<string> localVarResponse = await PinningPinsPinidGetAsyncWithHttpInfo(pinid);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPinidGetAsyncWithHttpInfo(pinid);
              return localVarResponse.Data;
 
         }
@@ -711,8 +709,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pinid">cid</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidGetAsyncWithHttpInfo (string pinid)
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidGetAsyncWithHttpInfo (string pinid)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -760,9 +758,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
         /// <summary>
@@ -774,10 +772,10 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>string</returns>
-        public string PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null)
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
-             ApiResponse<string> localVarResponse = PinningPinsPinidPostWithHttpInfo(pinid, cid, name, origins, meta);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPinidPostWithHttpInfo(pinid, cid, name, origins, meta);
              return localVarResponse.Data;
         }
 
@@ -790,8 +788,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPinidPostWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -850,9 +848,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
         /// <summary>
@@ -864,10 +862,10 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null)
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
-             ApiResponse<string> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(pinid, cid, name, origins, meta);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(pinid, cid, name, origins, meta);
              return localVarResponse.Data;
 
         }
@@ -881,8 +879,8 @@ namespace estuary-client.Api
         /// <param name="name">Name (filename) of new pin (optional)</param>
         /// <param name="origins">Origins of new pin (optional)</param>
         /// <param name="meta">Meta information of new pin (optional)</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string cid, string name = null, string origins = null, string meta = null)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null)
@@ -941,9 +939,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
         /// <summary>
@@ -951,10 +949,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>string</returns>
-        public string PinningPinsPost (TypesIpfsPin pin)
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin)
         {
-             ApiResponse<string> localVarResponse = PinningPinsPostWithHttpInfo(pin);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPostWithHttpInfo(pin);
              return localVarResponse.Data;
         }
 
@@ -963,8 +961,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PinningPinsPostWithHttpInfo (TypesIpfsPin pin)
+        /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
+        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPostWithHttpInfo (TypesIpfsPin pin)
         {
             // verify the required parameter 'pin' is set
             if (pin == null)
@@ -1019,9 +1017,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
         /// <summary>
@@ -1029,10 +1027,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PinningPinsPostAsync (TypesIpfsPin pin)
+        /// <returns>Task of TypesIpfsPinStatusResponse</returns>
+        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin pin)
         {
-             ApiResponse<string> localVarResponse = await PinningPinsPostAsyncWithHttpInfo(pin);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPostAsyncWithHttpInfo(pin);
              return localVarResponse.Data;
 
         }
@@ -1042,8 +1040,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="pin">Pin Body {cid:cid, name:name}</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin pin)
+        /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin pin)
         {
             // verify the required parameter 'pin' is set
             if (pin == null)
@@ -1098,9 +1096,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<TypesIpfsPinStatusResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (TypesIpfsPinStatusResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TypesIpfsPinStatusResponse)));
         }
 
     }

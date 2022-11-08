@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/admin")
 @Api(description = "the admin API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T11:06:04.582Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T19:38:29.307Z")
 public class AdminApi {
 
     @POST

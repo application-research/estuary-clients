@@ -10,10 +10,12 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-08T11:05:51.047Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-08T19:38:16.098Z")
 public class PinningController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map

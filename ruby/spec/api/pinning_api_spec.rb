@@ -36,7 +36,7 @@ describe 'PinningApi' do
   # List all pin status objects
   # This endpoint lists all pin status objects
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [TypesIpfsListPinStatusResponse]
   describe 'pinning_pins_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'PinningApi' do
   # This endpoint deletes a pinned object.
   # @param pinid Pin ID
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [nil]
   describe 'pinning_pins_pinid_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -60,7 +60,7 @@ describe 'PinningApi' do
   # This endpoint returns a pin status object.
   # @param pinid cid
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [TypesIpfsPinStatusResponse]
   describe 'pinning_pins_pinid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -76,7 +76,7 @@ describe 'PinningApi' do
   # @option opts [String] :name Name (filename) of new pin
   # @option opts [String] :origins Origins of new pin
   # @option opts [String] :meta Meta information of new pin
-  # @return [String]
+  # @return [TypesIpfsPinStatusResponse]
   describe 'pinning_pins_pinid_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -88,7 +88,7 @@ describe 'PinningApi' do
   # This endpoint adds a pin to the IPFS daemon.
   # @param pin Pin Body {cid:cid, name:name}
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [TypesIpfsPinStatusResponse]
   describe 'pinning_pins_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

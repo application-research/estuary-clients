@@ -10,7 +10,9 @@ from estuary-client.models.main_delete_content_from_collection_body import MainD
 from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody
 from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp
 from estuary-client.models.main_import_deal_body import MainImportDealBody
+from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsListPinStatusResponse
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin
+from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse
 from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody
 from estuary-client.models.util_content_add_response import UtilContentAddResponse
 from estuary-client.models.util_content_create_body import UtilContentCreateBody

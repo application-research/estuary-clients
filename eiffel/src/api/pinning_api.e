@@ -24,12 +24,12 @@ inherit
 feature -- API Access
 
 
-	pinning_pins_get : detachable STRING_32
+	pinning_pins_get : detachable TYPES_IPFS_LIST_PIN_STATUS_RESPONSE
 			-- List all pin status objects
 			-- This endpoint lists all pin status objects
 			-- 
 			-- 
-			-- Result STRING_32
+			-- Result TYPES_IPFS_LIST_PIN_STATUS_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -50,21 +50,20 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+			elseif attached { TYPES_IPFS_LIST_PIN_STATUS_RESPONSE } l_response.data ({ TYPES_IPFS_LIST_PIN_STATUS_RESPONSE }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	pinning_pins_pinid_delete (pinid: STRING_32): detachable STRING_32
+	pinning_pins_pinid_delete (pinid: STRING_32)
 			-- Delete a pinned object
 			-- This endpoint deletes a pinned object.
 			-- 
 			-- argument: pinid Pin ID (required)
 			-- 
 			-- 
-			-- Result STRING_32
 		require
 		local
   			l_path: STRING
@@ -83,24 +82,20 @@ feature -- API Access
 			end
 			l_request.add_header(api_client.select_header_content_type (<<>>),"Content-Type")
 			l_request.set_auth_names (<<"bearerAuth">>)
-			l_response := api_client.call_api (l_path, "Delete", l_request, Void, agent deserializer)
+			l_response := api_client.call_api (l_path, "Delete", l_request, agent serializer, Void)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
-				Result := l_data
-			else
-				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	pinning_pins_pinid_get (pinid: STRING_32): detachable STRING_32
+	pinning_pins_pinid_get (pinid: STRING_32): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 			-- Get a pin status object
 			-- This endpoint returns a pin status object.
 			-- 
 			-- argument: pinid cid (required)
 			-- 
 			-- 
-			-- Result STRING_32
+			-- Result TYPES_IPFS_PIN_STATUS_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -122,14 +117,14 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Get", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+			elseif attached { TYPES_IPFS_PIN_STATUS_RESPONSE } l_response.data ({ TYPES_IPFS_PIN_STATUS_RESPONSE }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	pinning_pins_pinid_post (pinid: STRING_32; cid: STRING_32; name: STRING_32; origins: STRING_32; meta: STRING_32): detachable STRING_32
+	pinning_pins_pinid_post (pinid: STRING_32; cid: STRING_32; name: STRING_32; origins: STRING_32; meta: STRING_32): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 			-- Replace a pinned object
 			-- This endpoint replaces a pinned object.
 			-- 
@@ -144,7 +139,7 @@ feature -- API Access
 			-- argument: meta Meta information of new pin (optional)
 			-- 
 			-- 
-			-- Result STRING_32
+			-- Result TYPES_IPFS_PIN_STATUS_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -166,21 +161,21 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+			elseif attached { TYPES_IPFS_PIN_STATUS_RESPONSE } l_response.data ({ TYPES_IPFS_PIN_STATUS_RESPONSE }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")
 			end
 		end	
 
-	pinning_pins_post (pin: TYPES_IPFS_PIN): detachable STRING_32
+	pinning_pins_post (pin: TYPES_IPFS_PIN): detachable TYPES_IPFS_PIN_STATUS_RESPONSE
 			-- Add and pin object
 			-- This endpoint adds a pin to the IPFS daemon.
 			-- 
 			-- argument: pin Pin Body {cid:cid, name:name} (required)
 			-- 
 			-- 
-			-- Result STRING_32
+			-- Result TYPES_IPFS_PIN_STATUS_RESPONSE
 		require
 		local
   			l_path: STRING
@@ -201,7 +196,7 @@ feature -- API Access
 			l_response := api_client.call_api (l_path, "Post", l_request, Void, agent deserializer)
 			if l_response.has_error then
 				last_error := l_response.error
-			elseif attached { STRING_32 } l_response.data ({ STRING_32 }) as l_data then
+			elseif attached { TYPES_IPFS_PIN_STATUS_RESPONSE } l_response.data ({ TYPES_IPFS_PIN_STATUS_RESPONSE }) as l_data then
 				Result := l_data
 			else
 				create last_error.make ("Unknown error: Status response [ " + l_response.status.out + "]")

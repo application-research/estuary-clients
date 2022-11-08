@@ -85,8 +85,16 @@ public class JsonUtil {
       return new TypeToken<List<MainImportDealBody>>(){}.getType();
     }
     
+    if ("TypesIpfsListPinStatusResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<TypesIpfsListPinStatusResponse>>(){}.getType();
+    }
+    
     if ("TypesIpfsPin".equalsIgnoreCase(className)) {
       return new TypeToken<List<TypesIpfsPin>>(){}.getType();
+    }
+    
+    if ("TypesIpfsPinStatusResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<List<TypesIpfsPinStatusResponse>>(){}.getType();
     }
     
     if ("UtilContentAddIpfsBody".equalsIgnoreCase(className)) {
@@ -139,8 +147,16 @@ public class JsonUtil {
       return new TypeToken<MainImportDealBody>(){}.getType();
     }
     
+    if ("TypesIpfsListPinStatusResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<TypesIpfsListPinStatusResponse>(){}.getType();
+    }
+    
     if ("TypesIpfsPin".equalsIgnoreCase(className)) {
       return new TypeToken<TypesIpfsPin>(){}.getType();
+    }
+    
+    if ("TypesIpfsPinStatusResponse".equalsIgnoreCase(className)) {
+      return new TypeToken<TypesIpfsPinStatusResponse>(){}.getType();
     }
     
     if ("UtilContentAddIpfsBody".equalsIgnoreCase(className)) {

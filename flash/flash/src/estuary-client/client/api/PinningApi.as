@@ -6,7 +6,9 @@ import io.swagger.exception.ApiError;
 import io.swagger.common.ApiUserCredentials;
 import io.swagger.event.Response;
 import io.swagger.common.SwaggerApi;
+import estuary-client.client.model.TypesIpfsListPinStatusResponse;
 import estuary-client.client.model.TypesIpfsPin;
+import estuary-client.client.model.TypesIpfsPinStatusResponse;
 import estuary-client.client.model.UtilHttpError;
 
 import mx.rpc.AsyncToken;
@@ -32,7 +34,7 @@ public class PinningApi extends SwaggerApi {
 
 
     /*
-     * Returns String 
+     * Returns TypesIpfsListPinStatusResponse 
      */
     public function pinning_pins_get (): String {
         // create path and map variables
@@ -52,13 +54,13 @@ public class PinningApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "pinning_pins_get";
 
-        token.returnType = String;
+        token.returnType = TypesIpfsListPinStatusResponse;
         return requestId;
 
     }
 
     /*
-     * Returns String 
+     * Returns void 
      */
     public function pinning_pins_pinid_delete (pinid: String): String {
         // create path and map variables
@@ -82,13 +84,13 @@ public class PinningApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "pinning_pins_pinid_delete";
 
-        token.returnType = String;
+        token.returnType = null ;
         return requestId;
 
     }
 
     /*
-     * Returns String 
+     * Returns TypesIpfsPinStatusResponse 
      */
     public function pinning_pins_pinid_get (pinid: String): String {
         // create path and map variables
@@ -112,13 +114,13 @@ public class PinningApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "pinning_pins_pinid_get";
 
-        token.returnType = String;
+        token.returnType = TypesIpfsPinStatusResponse;
         return requestId;
 
     }
 
     /*
-     * Returns String 
+     * Returns TypesIpfsPinStatusResponse 
      */
     public function pinning_pins_pinid_post (pinid: String, cid: String, name: String, origins: String, meta: String): String {
         // create path and map variables
@@ -158,13 +160,13 @@ public class PinningApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "pinning_pins_pinid_post";
 
-        token.returnType = String;
+        token.returnType = TypesIpfsPinStatusResponse;
         return requestId;
 
     }
 
     /*
-     * Returns String 
+     * Returns TypesIpfsPinStatusResponse 
      */
     public function pinning_pins_post (pin: TypesIpfsPin): String {
         // create path and map variables
@@ -188,7 +190,7 @@ public class PinningApi extends SwaggerApi {
         token.requestId = requestId;
         token.completionEventType = "pinning_pins_post";
 
-        token.returnType = String;
+        token.returnType = TypesIpfsPinStatusResponse;
         return requestId;
 
     }

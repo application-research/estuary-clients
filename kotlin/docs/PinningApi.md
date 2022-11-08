@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> kotlin.String pinningPinsGet()
+> TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -27,7 +27,7 @@ This endpoint lists all pin status objects
 
 val apiInstance = PinningApi()
 try {
-    val result : kotlin.String = apiInstance.pinningPinsGet()
+    val result : TypesIpfsListPinStatusResponse = apiInstance.pinningPinsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsGet")
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.String**
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -56,7 +56,7 @@ This endpoint does not need any parameter.
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> kotlin.String pinningPinsPinidDelete(pinid)
+> pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -71,8 +71,7 @@ This endpoint deletes a pinned object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
 try {
-    val result : kotlin.String = apiInstance.pinningPinsPinidDelete(pinid)
-    println(result)
+    apiInstance.pinningPinsPinidDelete(pinid)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidDelete")
     e.printStackTrace()
@@ -90,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+null (empty response body)
 
 ### Authorization
 
@@ -103,7 +102,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> kotlin.String pinningPinsPinidGet(pinid)
+> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -118,7 +117,7 @@ This endpoint returns a pin status object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | cid
 try {
-    val result : kotlin.String = apiInstance.pinningPinsPinidGet(pinid)
+    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidGet(pinid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidGet")
@@ -137,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -150,7 +149,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> kotlin.String pinningPinsPinidPost(pinid, cid, name, origins, meta)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -169,7 +168,7 @@ val name : kotlin.String = name_example // kotlin.String | Name (filename) of ne
 val origins : kotlin.String = origins_example // kotlin.String | Origins of new pin
 val meta : kotlin.String = meta_example // kotlin.String | Meta information of new pin
 try {
-    val result : kotlin.String = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta)
+    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidPost")
@@ -192,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -205,7 +204,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> kotlin.String pinningPinsPost(pin)
+> TypesIpfsPinStatusResponse pinningPinsPost(pin)
 
 Add and pin object
 
@@ -220,7 +219,7 @@ This endpoint adds a pin to the IPFS daemon.
 val apiInstance = PinningApi()
 val pin : TypesIpfsPin =  // TypesIpfsPin | Pin Body {cid:cid, name:name}
 try {
-    val result : kotlin.String = apiInstance.pinningPinsPost(pin)
+    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPost(pin)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPost")
@@ -239,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

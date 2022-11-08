@@ -15,7 +15,9 @@ import { HttpClient } from 'aurelia-http-client';
 import { Api } from './Api';
 import { AuthStorage } from './AuthStorage';
 import {
+  TypesIpfsListPinStatusResponse,
   TypesIpfsPin,
+  TypesIpfsPinStatusResponse,
 } from './models';
 
 /**
@@ -76,7 +78,7 @@ export class PinningApi extends Api {
    * List all pin status objects
    * This endpoint lists all pin status objects
    */
-  async pinningPinsGet(): Promise<string> {
+  async pinningPinsGet(): Promise<TypesIpfsListPinStatusResponse> {
     // Verify required parameters are set
 
     // Create URL to call
@@ -104,7 +106,7 @@ export class PinningApi extends Api {
    * This endpoint deletes a pinned object.
    * @param params.pinid Pin ID
    */
-  async pinningPinsPinidDelete(params: IPinningPinsPinidDeleteParams): Promise<string> {
+  async pinningPinsPinidDelete(params: IPinningPinsPinidDeleteParams): Promise<any> {
     // Verify required parameters are set
     this.ensureParamIsSet('pinningPinsPinidDelete', params, 'pinid');
 
@@ -134,7 +136,7 @@ export class PinningApi extends Api {
    * This endpoint returns a pin status object.
    * @param params.pinid cid
    */
-  async pinningPinsPinidGet(params: IPinningPinsPinidGetParams): Promise<string> {
+  async pinningPinsPinidGet(params: IPinningPinsPinidGetParams): Promise<TypesIpfsPinStatusResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('pinningPinsPinidGet', params, 'pinid');
 
@@ -168,7 +170,7 @@ export class PinningApi extends Api {
    * @param params.origins Origins of new pin
    * @param params.meta Meta information of new pin
    */
-  async pinningPinsPinidPost(params: IPinningPinsPinidPostParams): Promise<string> {
+  async pinningPinsPinidPost(params: IPinningPinsPinidPostParams): Promise<TypesIpfsPinStatusResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('pinningPinsPinidPost', params, 'pinid');
     this.ensureParamIsSet('pinningPinsPinidPost', params, 'cid');
@@ -202,7 +204,7 @@ export class PinningApi extends Api {
    * This endpoint adds a pin to the IPFS daemon.
    * @param params.pin Pin Body {cid:cid, name:name}
    */
-  async pinningPinsPost(params: IPinningPinsPostParams): Promise<string> {
+  async pinningPinsPost(params: IPinningPinsPostParams): Promise<TypesIpfsPinStatusResponse> {
     // Verify required parameters are set
     this.ensureParamIsSet('pinningPinsPost', params, 'pin');
 

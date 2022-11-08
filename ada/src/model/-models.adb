@@ -587,6 +587,54 @@ package body .Models is
 
    procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
                         Name  : in String;
+                        Value : in Types_IpfsListPinStatusResponse_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("count", Value.Count);
+      Serialize (Into, "results", Value.Results);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsListPinStatusResponse_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsListPinStatusResponse_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "count", Value.Count);
+      Deserialize (Object, "results", Value.Results);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsListPinStatusResponse_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : Types_IpfsListPinStatusResponse_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+
+
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
                         Value : in Types_IpfsPin_Type) is
    begin
       Into.Start_Entity (Name);
@@ -625,6 +673,62 @@ package body .Models is
                           Value : out Types_IpfsPin_Type_Vectors.Vector) is
       List : Swagger.Value_Array_Type;
       Item : Types_IpfsPin_Type;
+   begin
+      Value.Clear;
+      Swagger.Streams.Deserialize (From, Name, List);
+      for Data of List loop
+         Deserialize (Data, "", Item);
+         Value.Append (Item);
+      end loop;
+   end Deserialize;
+
+
+
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPinStatusResponse_Type) is
+   begin
+      Into.Start_Entity (Name);
+      Into.Write_Entity ("created", Value.Created);
+      Serialize (Into, "delegates", Value.Delegates);
+      Serialize (Into, "info", Value.Info);
+      Serialize (Into, "pin", Value.Pin);
+      Into.Write_Entity ("requestid", Value.Requestid);
+      Into.Write_Entity ("status", Value.Status);
+      Into.End_Entity (Name);
+   end Serialize;
+
+   procedure Serialize (Into  : in out Swagger.Streams.Output_Stream'Class;
+                        Name  : in String;
+                        Value : in Types_IpfsPinStatusResponse_Type_Vectors.Vector) is
+   begin
+      Into.Start_Array (Name);
+      for Item of Value loop
+         Serialize (Into, "", Item);
+      end loop;
+      Into.End_Array (Name);
+   end Serialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPinStatusResponse_Type) is
+      Object : Swagger.Value_Type;
+   begin
+      Swagger.Streams.Deserialize (From, Name, Object);
+      Swagger.Streams.Deserialize (Object, "created", Value.Created);
+      Swagger.Streams.Deserialize (Object, "delegates", Value.Delegates);
+      Deserialize (Object, "info", Value.Info);
+      Deserialize (Object, "pin", Value.Pin);
+      Swagger.Streams.Deserialize (Object, "requestid", Value.Requestid);
+      Swagger.Streams.Deserialize (Object, "status", Value.Status);
+   end Deserialize;
+
+   procedure Deserialize (From  : in Swagger.Value_Type;
+                          Name  : in String;
+                          Value : out Types_IpfsPinStatusResponse_Type_Vectors.Vector) is
+      List : Swagger.Value_Array_Type;
+      Item : Types_IpfsPinStatusResponse_Type;
    begin
       Value.Clear;
       Swagger.Streams.Deserialize (From, Name, List);

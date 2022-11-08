@@ -10,11 +10,11 @@
 
 %% @doc List all pin status objects
 %% This endpoint lists all pin status objects
--spec pinning_pins_get(ctx:ctx()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_get(ctx:ctx()) -> {ok, estuary-client_types_ipfs_list_pin_status_response:estuary-client_types_ipfs_list_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_get(Ctx) ->
     pinning_pins_get(Ctx, #{}).
 
--spec pinning_pins_get(ctx:ctx(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_get(ctx:ctx(), maps:map()) -> {ok, estuary-client_types_ipfs_list_pin_status_response:estuary-client_types_ipfs_list_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_get(Ctx, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -31,11 +31,11 @@ pinning_pins_get(Ctx, Optional) ->
 
 %% @doc Delete a pinned object
 %% This endpoint deletes a pinned object.
--spec pinning_pins_pinid_delete(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_delete(ctx:ctx(), binary()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_delete(Ctx, Pinid) ->
     pinning_pins_pinid_delete(Ctx, Pinid, #{}).
 
--spec pinning_pins_pinid_delete(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_delete(ctx:ctx(), binary(), maps:map()) -> {ok, [], estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_delete(Ctx, Pinid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -52,11 +52,11 @@ pinning_pins_pinid_delete(Ctx, Pinid, Optional) ->
 
 %% @doc Get a pin status object
 %% This endpoint returns a pin status object.
--spec pinning_pins_pinid_get(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_get(ctx:ctx(), binary()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_get(Ctx, Pinid) ->
     pinning_pins_pinid_get(Ctx, Pinid, #{}).
 
--spec pinning_pins_pinid_get(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_get(ctx:ctx(), binary(), maps:map()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_get(Ctx, Pinid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -73,11 +73,11 @@ pinning_pins_pinid_get(Ctx, Pinid, Optional) ->
 
 %% @doc Replace a pinned object
 %% This endpoint replaces a pinned object.
--spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_post(Ctx, Pinid, Cid) ->
     pinning_pins_pinid_post(Ctx, Pinid, Cid, #{}).
 
--spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_pinid_post(ctx:ctx(), binary(), binary(), maps:map()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_pinid_post(Ctx, Pinid, Cid, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
@@ -94,11 +94,11 @@ pinning_pins_pinid_post(Ctx, Pinid, Cid, Optional) ->
 
 %% @doc Add and pin object
 %% This endpoint adds a pin to the IPFS daemon.
--spec pinning_pins_post(ctx:ctx(), estuary-client_types_ipfs_pin:estuary-client_types_ipfs_pin()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_post(ctx:ctx(), estuary-client_types_ipfs_pin:estuary-client_types_ipfs_pin()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_post(Ctx, Pin) ->
     pinning_pins_post(Ctx, Pin, #{}).
 
--spec pinning_pins_post(ctx:ctx(), estuary-client_types_ipfs_pin:estuary-client_types_ipfs_pin(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+-spec pinning_pins_post(ctx:ctx(), estuary-client_types_ipfs_pin:estuary-client_types_ipfs_pin(), maps:map()) -> {ok, estuary-client_types_ipfs_pin_status_response:estuary-client_types_ipfs_pin_status_response(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
 pinning_pins_post(Ctx, Pin, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),

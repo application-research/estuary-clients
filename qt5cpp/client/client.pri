@@ -9,7 +9,9 @@ HEADERS += \
     $${PWD}/SWGMain.estimateDealBody.h \
     $${PWD}/SWGMain.getApiKeysResp.h \
     $${PWD}/SWGMain.importDealBody.h \
+    $${PWD}/SWGTypes.IpfsListPinStatusResponse.h \
     $${PWD}/SWGTypes.IpfsPin.h \
+    $${PWD}/SWGTypes.IpfsPinStatusResponse.h \
     $${PWD}/SWGUtil.ContentAddIpfsBody.h \
     $${PWD}/SWGUtil.ContentAddResponse.h \
     $${PWD}/SWGUtil.ContentCreateBody.h \
@@ -44,7 +46,9 @@ SOURCES += \
     $${PWD}/SWGMain.estimateDealBody.cpp \
     $${PWD}/SWGMain.getApiKeysResp.cpp \
     $${PWD}/SWGMain.importDealBody.cpp \
+    $${PWD}/SWGTypes.IpfsListPinStatusResponse.cpp \
     $${PWD}/SWGTypes.IpfsPin.cpp \
+    $${PWD}/SWGTypes.IpfsPinStatusResponse.cpp \
     $${PWD}/SWGUtil.ContentAddIpfsBody.cpp \
     $${PWD}/SWGUtil.ContentAddResponse.cpp \
     $${PWD}/SWGUtil.ContentCreateBody.cpp \

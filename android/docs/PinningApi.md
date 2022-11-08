@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> String pinningPinsGet()
+> TypesIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -26,7 +26,7 @@ This endpoint lists all pin status objects
 
 PinningApi apiInstance = new PinningApi();
 try {
-    String result = apiInstance.pinningPinsGet();
+    TypesIpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -39,7 +39,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 <a name="pinningPinsPinidDelete"></a>
 # **pinningPinsPinidDelete**
-> String pinningPinsPinidDelete(pinid)
+> pinningPinsPinidDelete(pinid)
 
 Delete a pinned object
 
@@ -66,8 +66,7 @@ This endpoint deletes a pinned object.
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | Pin ID
 try {
-    String result = apiInstance.pinningPinsPinidDelete(pinid);
-    System.out.println(result);
+    apiInstance.pinningPinsPinidDelete(pinid);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidDelete");
     e.printStackTrace();
@@ -82,7 +81,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+null (empty response body)
 
 ### Authorization
 
@@ -95,7 +94,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> String pinningPinsPinidGet(pinid)
+> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -109,7 +108,7 @@ This endpoint returns a pin status object.
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | cid
 try {
-    String result = apiInstance.pinningPinsPinidGet(pinid);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -125,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -138,7 +137,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> String pinningPinsPinidPost(pinid, cid, name, origins, meta)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, cid, name, origins, meta)
 
 Replace a pinned object
 
@@ -156,7 +155,7 @@ String name = "name_example"; // String | Name (filename) of new pin
 String origins = "origins_example"; // String | Origins of new pin
 String meta = "meta_example"; // String | Meta information of new pin
 try {
-    String result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -176,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -189,7 +188,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> String pinningPinsPost(pin)
+> TypesIpfsPinStatusResponse pinningPinsPost(pin)
 
 Add and pin object
 
@@ -203,7 +202,7 @@ This endpoint adds a pin to the IPFS daemon.
 PinningApi apiInstance = new PinningApi();
 TypesIpfsPin pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 try {
-    String result = apiInstance.pinningPinsPost(pin);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPost(pin);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -219,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
 
 ### Authorization
 

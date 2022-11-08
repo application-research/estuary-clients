@@ -5,6 +5,8 @@ import 'package:jaguar_serializer/src/repo/repo.dart';
 import 'dart:async';
 
 import 'package:swagger/model/types_ipfs_pin.dart';
+import 'package:swagger/model/types_ipfs_list_pin_status_response.dart';
+import 'package:swagger/model/types_ipfs_pin_status_response.dart';
 import 'package:swagger/model/util_http_error.dart';
 
 
@@ -21,14 +23,14 @@ class PinningApi extends _$PinningApiClient implements ApiClient {
     ///
     /// This endpoint lists all pin status objects
     @GetReq(path: "/pinning/pins", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<String> pinningPinsGet(
+    Future<TypesIpfsListPinStatusResponse> pinningPinsGet(
     );
 
     /// Delete a pinned object
     ///
     /// This endpoint deletes a pinned object.
     @DeleteReq(path: "/pinning/pins/:pinid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<String> pinningPinsPinidDelete(
+    Future<void> pinningPinsPinidDelete(
             @PathParam("pinid") String pinid
     );
 
@@ -36,7 +38,7 @@ class PinningApi extends _$PinningApiClient implements ApiClient {
     ///
     /// This endpoint returns a pin status object.
     @GetReq(path: "/pinning/pins/:pinid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<String> pinningPinsPinidGet(
+    Future<TypesIpfsPinStatusResponse> pinningPinsPinidGet(
             @PathParam("pinid") String pinid
     );
 
@@ -44,7 +46,7 @@ class PinningApi extends _$PinningApiClient implements ApiClient {
     ///
     /// This endpoint replaces a pinned object.
     @PostReq(path: "/pinning/pins/:pinid", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<String> pinningPinsPinidPost(
+    Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(
             @PathParam("pinid") String pinid
         ,
         @AsJson() String meta
@@ -54,7 +56,7 @@ class PinningApi extends _$PinningApiClient implements ApiClient {
     ///
     /// This endpoint adds a pin to the IPFS daemon.
     @PostReq(path: "/pinning/pins", metadata: {"auth": [ {"type": "apiKey", "name": "bearerAuth", "keyName": "Authorization", "where": "header" }]})
-    Future<String> pinningPinsPost(
+    Future<TypesIpfsPinStatusResponse> pinningPinsPost(
         
         @AsJson() TypesIpfsPin pin
     );

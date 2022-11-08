@@ -1493,13 +1493,9 @@ paths:
         "200":
           description: "OK"
           schema:
-            type: "string"
+            $ref: "#/definitions/types.IpfsListPinStatusResponse"
         "400":
           description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-        "404":
-          description: "Not Found"
           schema:
             $ref: "#/definitions/util.HttpError"
         "500":
@@ -1522,14 +1518,10 @@ paths:
           $ref: "#/definitions/types.IpfsPin"
         x-exportParamName: "Pin"
       responses:
-        "200":
-          description: "OK"
+        "202":
+          description: "Accepted"
           schema:
-            type: "string"
-        "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+            $ref: "#/definitions/types.IpfsPinStatusResponse"
         "500":
           description: "Internal Server Error"
           schema:
@@ -1553,9 +1545,9 @@ paths:
         "200":
           description: "OK"
           schema:
-            type: "string"
-        "400":
-          description: "Bad Request"
+            $ref: "#/definitions/types.IpfsPinStatusResponse"
+        "404":
+          description: "Not Found"
           schema:
             $ref: "#/definitions/util.HttpError"
         "500":
@@ -1608,12 +1600,12 @@ paths:
         x-exportParamName: "Meta"
         x-optionalDataType: "String"
       responses:
-        "200":
-          description: "OK"
+        "202":
+          description: "Accepted"
           schema:
-            type: "string"
-        "400":
-          description: "Bad Request"
+            $ref: "#/definitions/types.IpfsPinStatusResponse"
+        "404":
+          description: "Not Found"
           schema:
             $ref: "#/definitions/util.HttpError"
         "500":
@@ -1635,14 +1627,8 @@ paths:
         type: "string"
         x-exportParamName: "Pinid"
       responses:
-        "200":
-          description: "OK"
-          schema:
-            type: "string"
-        "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+        "202":
+          description: ""
         "500":
           description: "Internal Server Error"
           schema:
@@ -2191,6 +2177,46 @@ definitions:
         type: "string"
       name:
         type: "string"
+  types.IpfsListPinStatusResponse:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/types.IpfsPinStatusResponse"
+    example:
+      count: 0
+      results:
+      - pin:
+          meta: "{}"
+          name: "name"
+          origins:
+          - "origins"
+          - "origins"
+          cid: "cid"
+        created: "created"
+        requestid: "requestid"
+        delegates:
+        - "delegates"
+        - "delegates"
+        info: "{}"
+        status: "status"
+      - pin:
+          meta: "{}"
+          name: "name"
+          origins:
+          - "origins"
+          - "origins"
+          cid: "cid"
+        created: "created"
+        requestid: "requestid"
+        delegates:
+        - "delegates"
+        - "delegates"
+        info: "{}"
+        status: "status"
   types.IpfsPin:
     type: "object"
     properties:
@@ -2205,6 +2231,46 @@ definitions:
         type: "array"
         items:
           type: "string"
+    example:
+      meta: "{}"
+      name: "name"
+      origins:
+      - "origins"
+      - "origins"
+      cid: "cid"
+  types.IpfsPinStatusResponse:
+    type: "object"
+    properties:
+      created:
+        type: "string"
+      delegates:
+        type: "array"
+        items:
+          type: "string"
+      info:
+        type: "object"
+        properties: {}
+      pin:
+        $ref: "#/definitions/types.IpfsPin"
+      requestid:
+        type: "string"
+      status:
+        type: "string"
+    example:
+      pin:
+        meta: "{}"
+        name: "name"
+        origins:
+        - "origins"
+        - "origins"
+        cid: "cid"
+      created: "created"
+      requestid: "requestid"
+      delegates:
+      - "delegates"
+      - "delegates"
+      info: "{}"
+      status: "status"
   util.ContentAddIpfsBody:
     type: "object"
     properties:

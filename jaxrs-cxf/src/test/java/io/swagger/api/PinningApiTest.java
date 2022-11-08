@@ -25,7 +25,9 @@
 
 package io.swagger.api;
 
+import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -82,7 +84,7 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsGetTest() {
-        //String response = api.pinningPinsGet();
+        //TypesIpfsListPinStatusResponse response = api.pinningPinsGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -100,8 +102,8 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidDeleteTest() {
         String pinid = null;
-        //String response = api.pinningPinsPinidDelete(pinid);
-        //assertNotNull(response);
+        //api.pinningPinsPinidDelete(pinid);
+        
         // TODO: test validations
         
         
@@ -118,7 +120,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidGetTest() {
         String pinid = null;
-        //String response = api.pinningPinsPinidGet(pinid);
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -140,7 +142,7 @@ public class PinningApiTest {
         String name = null;
         String origins = null;
         String meta = null;
-        //String response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -158,7 +160,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPostTest() {
         TypesIpfsPin pin = null;
-        //String response = api.pinningPinsPost(pin);
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(pin);
         //assertNotNull(response);
         // TODO: test validations
         
