@@ -597,10 +597,10 @@ package .Clients is
        Result : out .Models.Main_getApiKeysResp_Type_Vectors.Vector_Vectors.Vector);
 
    --  Revoke a User API Key.
-   --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-   procedure User_Api_Keys_Key_Delete
+   --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   procedure User_Api_Keys_Key_Or_Hash_Delete
       (Client : in out Client_Type;
-       Key : in Swagger.UString;
+       Key_Or_Hash : in Swagger.UString;
        Result : out Swagger.UString);
 
    --  Create API keys for a user

@@ -169,19 +169,19 @@ public class UserApi {
         return call;
     }
     /**
-     * Build call for userApiKeysKeyDelete
-     * @param key Key (required)
+     * Build call for userApiKeysKeyOrHashDelete
+     * @param keyOrHash Key or Hash (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysKeyDeleteCall(String key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteCall(String keyOrHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/user/api-keys/{key}"
-            .replaceAll("\\{" + "key" + "\\}", apiClient.escapeString(key.toString()));
+        String localVarPath = "/user/api-keys/{key_or_hash}"
+            .replaceAll("\\{" + "key_or_hash" + "\\}", apiClient.escapeString(keyOrHash.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -219,53 +219,53 @@ public class UserApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call userApiKeysKeyDeleteValidateBeforeCall(String key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteValidateBeforeCall(String keyOrHash, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'key' is set
-        if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling userApiKeysKeyDelete(Async)");
+        // verify the required parameter 'keyOrHash' is set
+        if (keyOrHash == null) {
+            throw new ApiException("Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteCall(key, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteCall(keyOrHash, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String userApiKeysKeyDelete(String key) throws ApiException {
-        ApiResponse<String> resp = userApiKeysKeyDeleteWithHttpInfo(key);
+    public String userApiKeysKeyOrHashDelete(String keyOrHash) throws ApiException {
+        ApiResponse<String> resp = userApiKeysKeyOrHashDeleteWithHttpInfo(keyOrHash);
         return resp.getData();
     }
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> userApiKeysKeyDeleteWithHttpInfo(String key) throws ApiException {
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteValidateBeforeCall(key, null, null);
+    public ApiResponse<String> userApiKeysKeyOrHashDeleteWithHttpInfo(String keyOrHash) throws ApiException {
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteValidateBeforeCall(keyOrHash, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Revoke a User API Key. (asynchronously)
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysKeyDeleteAsync(String key, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysKeyOrHashDeleteAsync(String keyOrHash, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -286,7 +286,7 @@ public class UserApi {
             };
         }
 
-        com.squareup.okhttp.Call call = userApiKeysKeyDeleteValidateBeforeCall(key, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = userApiKeysKeyOrHashDeleteValidateBeforeCall(keyOrHash, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

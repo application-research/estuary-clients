@@ -11,7 +11,7 @@
 -}
 
 
-module Request.User exposing (userApiKeysGet, userApiKeysKeyDelete, userApiKeysPost, userExportGet, userStatsGet)
+module Request.User exposing (userApiKeysGet, userApiKeysKeyOrHashDelete, userApiKeysPost, userExportGet, userStatsGet)
 
 import Data.MainGetApiKeysResp exposing (MainGetApiKeysResp, mainGetApiKeysRespDecoder)
 import Data.UtilHttpError exposing (UtilHttpError, utilHttpErrorDecoder)
@@ -42,12 +42,12 @@ userApiKeysGet =
 
 
 {-
-   This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+   This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 -}
-userApiKeysKeyDelete : String -> Http.Request String
-userApiKeysKeyDelete key =
+userApiKeysKeyOrHashDelete : String -> Http.Request String
+userApiKeysKeyOrHashDelete keyOrHash =
     { method = "DELETE"
-    , url = basePath ++ "/user/api-keys/" ++ key
+    , url = basePath ++ "/user/api-keys/{key_or_hash}"
     , headers = []
     , body = Http.emptyBody
     , expect = Http.expectJson Decode.string

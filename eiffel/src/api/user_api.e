@@ -57,11 +57,11 @@ feature -- API Access
 			end
 		end	
 
-	user_api_keys_key_delete (key: STRING_32): detachable STRING_32
+	user_api_keys_key_or_hash_delete (key_or_hash: STRING_32): detachable STRING_32
 			-- Revoke a User API Key.
-			-- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+			-- This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 			-- 
-			-- argument: key Key (required)
+			-- argument: key_or_hash Key or Hash (required)
 			-- 
 			-- 
 			-- Result STRING_32
@@ -74,8 +74,8 @@ feature -- API Access
 			reset_error
 			create l_request
 			
-			l_path := "/user/api-keys/{key}"
-			l_path.replace_substring_all ("{"+"key"+"}", api_client.url_encode (key.out))
+			l_path := "/user/api-keys/{key_or_hash}"
+			l_path.replace_substring_all ("{"+"key_or_hash"+"}", api_client.url_encode (key_or_hash.out))
 
 
 			if attached {STRING} api_client.select_header_accept (<<"application/json">>)  as l_accept then

@@ -72,20 +72,20 @@ namespace estuary-client.Controllers
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
-        /// <remarks>This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</remarks>
-        /// <param name="key">Key</param>
+        /// <remarks>This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.</remarks>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
         [HttpDelete]
-        [Route("//user/api-keys/{key}")]
+        [Route("//user/api-keys/{key_or_hash}")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
-        [SwaggerOperation("UserApiKeysKeyDelete")]
+        [SwaggerOperation("UserApiKeysKeyOrHashDelete")]
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult UserApiKeysKeyDelete([FromRoute][Required]string key)
+        public virtual IActionResult UserApiKeysKeyOrHashDelete([FromRoute][Required]string keyOrHash)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

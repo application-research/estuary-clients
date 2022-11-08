@@ -29,8 +29,8 @@ public:
 
 	class UserApiKeysGetRequest;
 	class UserApiKeysGetResponse;
-	class UserApiKeysKeyDeleteRequest;
-	class UserApiKeysKeyDeleteResponse;
+	class UserApiKeysKeyOrHashDeleteRequest;
+	class UserApiKeysKeyOrHashDeleteResponse;
 	class UserApiKeysPostRequest;
 	class UserApiKeysPostResponse;
 	class UserExportGetRequest;
@@ -39,20 +39,20 @@ public:
 	class UserStatsGetResponse;
 	
     DECLARE_DELEGATE_OneParam(FUserApiKeysGetDelegate, const UserApiKeysGetResponse&);
-    DECLARE_DELEGATE_OneParam(FUserApiKeysKeyDeleteDelegate, const UserApiKeysKeyDeleteResponse&);
+    DECLARE_DELEGATE_OneParam(FUserApiKeysKeyOrHashDeleteDelegate, const UserApiKeysKeyOrHashDeleteResponse&);
     DECLARE_DELEGATE_OneParam(FUserApiKeysPostDelegate, const UserApiKeysPostResponse&);
     DECLARE_DELEGATE_OneParam(FUserExportGetDelegate, const UserExportGetResponse&);
     DECLARE_DELEGATE_OneParam(FUserStatsGetDelegate, const UserStatsGetResponse&);
     
     bool UserApiKeysGet(const UserApiKeysGetRequest& Request, const FUserApiKeysGetDelegate& Delegate = FUserApiKeysGetDelegate()) const;
-    bool UserApiKeysKeyDelete(const UserApiKeysKeyDeleteRequest& Request, const FUserApiKeysKeyDeleteDelegate& Delegate = FUserApiKeysKeyDeleteDelegate()) const;
+    bool UserApiKeysKeyOrHashDelete(const UserApiKeysKeyOrHashDeleteRequest& Request, const FUserApiKeysKeyOrHashDeleteDelegate& Delegate = FUserApiKeysKeyOrHashDeleteDelegate()) const;
     bool UserApiKeysPost(const UserApiKeysPostRequest& Request, const FUserApiKeysPostDelegate& Delegate = FUserApiKeysPostDelegate()) const;
     bool UserExportGet(const UserExportGetRequest& Request, const FUserExportGetDelegate& Delegate = FUserExportGetDelegate()) const;
     bool UserStatsGet(const UserStatsGetRequest& Request, const FUserStatsGetDelegate& Delegate = FUserStatsGetDelegate()) const;
     
 private:
     void OnUserApiKeysGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysGetDelegate Delegate) const;
-    void OnUserApiKeysKeyDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysKeyDeleteDelegate Delegate) const;
+    void OnUserApiKeysKeyOrHashDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysKeyOrHashDeleteDelegate Delegate) const;
     void OnUserApiKeysPostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysPostDelegate Delegate) const;
     void OnUserExportGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserExportGetDelegate Delegate) const;
     void OnUserStatsGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserStatsGetDelegate Delegate) const;

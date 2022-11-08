@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](SWGUserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](SWGUserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](SWGUserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](SWGUserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](SWGUserApi.md#userexportget) | **GET** /user/export | Export user data
 [**userStatsGet**](SWGUserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
@@ -64,15 +64,15 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **userApiKeysKeyDelete**
+# **userApiKeysKeyOrHashDelete**
 ```objc
--(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
+-(NSURLSessionTask*) userApiKeysKeyOrHashDeleteWithKeyOrHash: (NSString*) keyOrHash
         completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 ```
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example 
 ```objc
@@ -84,18 +84,18 @@ SWGDefaultConfiguration *apiConfig = [SWGDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
 
-NSString* key = @"key_example"; // Key
+NSString* keyOrHash = @"keyOrHash_example"; // Key or Hash
 
 SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 // Revoke a User API Key.
-[apiInstance userApiKeysKeyDeleteWithKey:key
+[apiInstance userApiKeysKeyOrHashDeleteWithKeyOrHash:keyOrHash
           completionHandler: ^(NSString* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
                         if (error) {
-                            NSLog(@"Error calling SWGUserApi->userApiKeysKeyDelete: %@", error);
+                            NSLog(@"Error calling SWGUserApi->userApiKeysKeyOrHashDelete: %@", error);
                         }
                     }];
 ```
@@ -104,7 +104,7 @@ SWGUserApi*apiInstance = [[SWGUserApi alloc] init];
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **NSString***| Key | 
+ **keyOrHash** | **NSString***| Key or Hash | 
 
 ### Return type
 

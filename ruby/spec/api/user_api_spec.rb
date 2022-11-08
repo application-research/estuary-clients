@@ -43,13 +43,13 @@ describe 'UserApi' do
     end
   end
 
-  # unit tests for user_api_keys_key_delete
+  # unit tests for user_api_keys_key_or_hash_delete
   # Revoke a User API Key.
-  # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-  # @param key Key
+  # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+  # @param key_or_hash Key or Hash
   # @param [Hash] opts the optional parameters
   # @return [String]
-  describe 'user_api_keys_key_delete test' do
+  describe 'user_api_keys_key_or_hash_delete test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

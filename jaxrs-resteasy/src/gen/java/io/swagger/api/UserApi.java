@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 
 
 @io.swagger.annotations.Api(description = "the user API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-07T20:06:01.579Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T00:36:50.717Z")
 public class UserApi  {
 
     @Inject UserApiService service;
@@ -53,10 +53,10 @@ public class UserApi  {
         return service.userApiKeysGet(securityContext);
     }
     @DELETE
-    @Path("/api-keys/{key}")
+    @Path("/api-keys/{key_or_hash}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.", response = String.class, authorizations = {
+    @io.swagger.annotations.ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "bearerAuth")
     }, tags={ "User", })
     @io.swagger.annotations.ApiResponses(value = { 
@@ -65,9 +65,9 @@ public class UserApi  {
         @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         
         @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response userApiKeysKeyDelete( @PathParam("key") String key,@Context SecurityContext securityContext)
+    public Response userApiKeysKeyOrHashDelete( @PathParam("key_or_hash") String keyOrHash,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.userApiKeysKeyDelete(key,securityContext);
+        return service.userApiKeysKeyOrHashDelete(keyOrHash,securityContext);
     }
     @POST
     @Path("/api-keys")

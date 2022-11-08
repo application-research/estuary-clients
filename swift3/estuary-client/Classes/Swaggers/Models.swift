@@ -475,9 +475,21 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["label"] as AnyObject?) {
+                
+                case let .success(value): _result.label = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["token"] as AnyObject?) {
                 
                 case let .success(value): _result.token = value
+                case let .failure(error): break
+                
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["tokenHash"] as AnyObject?) {
+                
+                case let .success(value): _result.tokenHash = value
                 case let .failure(error): break
                 
                 }

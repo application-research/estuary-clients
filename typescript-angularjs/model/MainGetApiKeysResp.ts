@@ -14,6 +14,8 @@ import * as models from './models';
 
 export interface MainGetApiKeysResp {
     "expiry"?: string;
+    "label"?: string;
     "token"?: string;
+    "tokenHash"?: string;
 }
 

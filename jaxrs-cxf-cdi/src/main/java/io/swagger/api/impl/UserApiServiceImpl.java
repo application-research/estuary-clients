@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-07T20:05:55.877Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-08T00:36:45.873Z")
 public class UserApiServiceImpl implements UserApiService {
       @Override
       public Response userApiKeysGet(SecurityContext securityContext) {
@@ -26,7 +26,7 @@ public class UserApiServiceImpl implements UserApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response userApiKeysKeyDelete(String key, SecurityContext securityContext) {
+      public Response userApiKeysKeyOrHashDelete(String keyOrHash, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

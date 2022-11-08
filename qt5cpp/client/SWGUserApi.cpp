@@ -95,12 +95,12 @@ SWGUserApi::userApiKeysGetCallback(SWGHttpRequestWorker * worker) {
 }
 
 void
-SWGUserApi::userApiKeysKeyDelete(QString* key) {
+SWGUserApi::userApiKeysKeyOrHashDelete(QString* key_or_hash) {
     QString fullPath;
-    fullPath.append(this->host).append(this->basePath).append("/user/api-keys/{key}");
+    fullPath.append(this->host).append(this->basePath).append("/user/api-keys/{key_or_hash}");
 
-    QString keyPathParam("{"); keyPathParam.append("key").append("}");
-    fullPath.replace(keyPathParam, stringValue(key));
+    QString key_or_hashPathParam("{"); key_or_hashPathParam.append("key_or_hash").append("}");
+    fullPath.replace(key_or_hashPathParam, stringValue(key_or_hash));
 
 
     SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
@@ -117,13 +117,13 @@ SWGUserApi::userApiKeysKeyDelete(QString* key) {
     connect(worker,
             &SWGHttpRequestWorker::on_execution_finished,
             this,
-            &SWGUserApi::userApiKeysKeyDeleteCallback);
+            &SWGUserApi::userApiKeysKeyOrHashDeleteCallback);
 
     worker->execute(&input);
 }
 
 void
-SWGUserApi::userApiKeysKeyDeleteCallback(SWGHttpRequestWorker * worker) {
+SWGUserApi::userApiKeysKeyOrHashDeleteCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -142,10 +142,10 @@ SWGUserApi::userApiKeysKeyDeleteCallback(SWGHttpRequestWorker * worker) {
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        emit userApiKeysKeyDeleteSignal(output);
+        emit userApiKeysKeyOrHashDeleteSignal(output);
     } else {
-        emit userApiKeysKeyDeleteSignalE(output, error_type, error_str);
-        emit userApiKeysKeyDeleteSignalEFull(worker, error_type, error_str);
+        emit userApiKeysKeyOrHashDeleteSignalE(output, error_type, error_str);
+        emit userApiKeysKeyOrHashDeleteSignalEFull(worker, error_type, error_str);
     }
 }
 

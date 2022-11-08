@@ -17,13 +17,13 @@ def user_api_keys_get():  # noqa: E501
     return 'do some magic!'
 
 
-def user_api_keys_key_delete(key):  # noqa: E501
+def user_api_keys_key_or_hash_delete(key_or_hash):  # noqa: E501
     """Revoke a User API Key.
 
-    This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user. # noqa: E501
+    This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable. # noqa: E501
 
-    :param key: Key
-    :type key: str
+    :param key_or_hash: Key or Hash
+    :type key_or_hash: str
 
     :rtype: str
     """

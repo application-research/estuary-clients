@@ -11,7 +11,9 @@ import GetApiKeysResp._
 
 case class GetApiKeysResp (
   expiry: Option[String],
-token: Option[String])
+label: Option[String],
+token: Option[String],
+tokenHash: Option[String])
 
 object GetApiKeysResp {
   import DateTimeCodecs._

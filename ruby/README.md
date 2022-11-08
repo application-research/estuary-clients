@@ -169,7 +169,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *SwaggerClient::PublicApi* | [**public_stats_get**](docs/PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
 *SwaggerClient::UserApi* | [**user_api_keys_get**](docs/UserApi.md#user_api_keys_get) | **GET** /user/api-keys | Get API keys for a user
-*SwaggerClient::UserApi* | [**user_api_keys_key_delete**](docs/UserApi.md#user_api_keys_key_delete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*SwaggerClient::UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SwaggerClient::UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *SwaggerClient::UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
 *SwaggerClient::UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user

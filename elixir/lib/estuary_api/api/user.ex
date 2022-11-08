@@ -37,12 +37,12 @@ defmodule EstuaryAPI.Api.User do
 
   @doc """
   Revoke a User API Key.
-  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
   ## Parameters
 
   - connection (EstuaryAPI.Connection): Connection to server
-  - key (String.t): Key
+  - key_or_hash (String.t): Key or Hash
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
@@ -50,11 +50,11 @@ defmodule EstuaryAPI.Api.User do
   {:ok, %EstuaryAPI.Model.String.t{}} on success
   {:error, info} on failure
   """
-  @spec user_api_keys_key_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
-  def user_api_keys_key_delete(connection, key, _opts \\ []) do
+  @spec user_api_keys_key_or_hash_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
+  def user_api_keys_key_or_hash_delete(connection, key_or_hash, _opts \\ []) do
     %{}
     |> method(:delete)
-    |> url("/user/api-keys/#{key}")
+    |> url("/user/api-keys/#{key_or_hash}")
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

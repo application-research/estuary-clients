@@ -84,7 +84,7 @@ fun Route.UserApi() {
         }
     }
 
-    delete<Paths.userApiKeysKeyDelete> {  it: Paths.userApiKeysKeyDelete ->
+    delete<Paths.userApiKeysKeyOrHashDelete> {  it: Paths.userApiKeysKeyOrHashDelete ->
         val principal = call.authentication.principal<ApiPrincipal>()
         
         if (principal == null) {
@@ -120,7 +120,7 @@ fun Route.UserApi() {
                 }
             }
         } catch(e: io.ktor.application.DuplicateApplicationFeatureException){
-            application.environment.log.warn("authentication block for '/user/api-keys/{key}' is duplicated in code. " +
+            application.environment.log.warn("authentication block for '/user/api-keys/{key_or_hash}' is duplicated in code. " +
             "Generated endpoints may need to be merged under a 'route' entry.")
         }
     }

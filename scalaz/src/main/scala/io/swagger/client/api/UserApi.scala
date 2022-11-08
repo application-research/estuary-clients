@@ -48,10 +48,10 @@ object UserApi {
     } yield resp
   }
   
-  def userApiKeysKeyDelete(host: String, key: String): Task[String] = {
+  def userApiKeysKeyOrHashDelete(host: String, keyOrHash: String): Task[String] = {
     implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
-    val path = "/user/api-keys/{key}".replaceAll("\\{" + "key" + "\\}",escape(key.toString))
+    val path = "/user/api-keys/{key_or_hash}".replaceAll("\\{" + "key_or_hash" + "\\}",escape(keyOrHash.toString))
     
     val httpMethod = Method.DELETE
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -160,10 +160,10 @@ class HttpServiceUserApi(service: HttpService) {
     } yield resp
   }
   
-  def userApiKeysKeyDelete(key: String): Task[String] = {
+  def userApiKeysKeyOrHashDelete(keyOrHash: String): Task[String] = {
     implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
 
-    val path = "/user/api-keys/{key}".replaceAll("\\{" + "key" + "\\}",escape(key.toString))
+    val path = "/user/api-keys/{key_or_hash}".replaceAll("\\{" + "key_or_hash" + "\\}",escape(keyOrHash.toString))
     
     val httpMethod = Method.DELETE
     val contentType = `Content-Type`(MediaType.`application/json`)

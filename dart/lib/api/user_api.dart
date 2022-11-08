@@ -58,17 +58,17 @@ class UserApi {
   }
   /// Revoke a User API Key.
   ///
-  /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-  Future<String> userApiKeysKeyDelete(String key) async {
+  /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+  Future<String> userApiKeysKeyOrHashDelete(String keyOrHash) async {
     Object postBody = null;
 
     // verify required params are set
-    if(key == null) {
-     throw new ApiException(400, "Missing required param: key");
+    if(keyOrHash == null) {
+     throw new ApiException(400, "Missing required param: keyOrHash");
     }
 
     // create path and map variables
-    String path = "/user/api-keys/{key}".replaceAll("{format}","json").replaceAll("{" + "key" + "}", key.toString());
+    String path = "/user/api-keys/{key_or_hash}".replaceAll("{format}","json").replaceAll("{" + "key_or_hash" + "}", keyOrHash.toString());
 
     // query params
     List<QueryParam> queryParams = [];

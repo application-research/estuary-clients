@@ -96,12 +96,12 @@ function user_api:user_api_keys_get()
 	end
 end
 
-function user_api:user_api_keys_key_delete(key)
+function user_api:user_api_keys_key_or_hash_delete(key_or_hash)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		path = string.format("%s/user/api-keys/%s",
-			self.basePath, key);
+			self.basePath, key_or_hash);
 	})
 
 	-- set HTTP verb

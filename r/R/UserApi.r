@@ -21,7 +21,7 @@
 #' user_api_keys_get Get API keys for a user
 #'
 #'
-#' user_api_keys_key_delete Revoke a User API Key.
+#' user_api_keys_key_or_hash_delete Revoke a User API Key.
 #'
 #'
 #' user_api_keys_post Create API keys for a user
@@ -72,14 +72,14 @@ UserApi <- R6::R6Class(
       }
 
     },
-    user_api_keys_key_delete = function(key, ...){
+    user_api_keys_key_or_hash_delete = function(key_or_hash, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      urlPath <- "/user/api-keys/{key}"
-      if (!missing(`key`)) {
-        urlPath <- gsub(paste0("\\{", "key", "\\}"), `key`, urlPath)
+      urlPath <- "/user/api-keys/{key_or_hash}"
+      if (!missing(`key_or_hash`)) {
+        urlPath <- gsub(paste0("\\{", "key_or_hash", "\\}"), `key_or_hash`, urlPath)
       }
 
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

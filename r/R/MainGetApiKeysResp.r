@@ -10,7 +10,9 @@
 #' MainGetApiKeysResp Class
 #'
 #' @field expiry 
+#' @field label 
 #' @field token 
+#' @field tokenHash 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -19,15 +21,25 @@ MainGetApiKeysResp <- R6::R6Class(
   'MainGetApiKeysResp',
   public = list(
     `expiry` = NULL,
+    `label` = NULL,
     `token` = NULL,
-    initialize = function(`expiry`, `token`){
+    `tokenHash` = NULL,
+    initialize = function(`expiry`, `label`, `token`, `tokenHash`){
       if (!missing(`expiry`)) {
         stopifnot(is.character(`expiry`), length(`expiry`) == 1)
         self$`expiry` <- `expiry`
       }
+      if (!missing(`label`)) {
+        stopifnot(is.character(`label`), length(`label`) == 1)
+        self$`label` <- `label`
+      }
       if (!missing(`token`)) {
         stopifnot(is.character(`token`), length(`token`) == 1)
         self$`token` <- `token`
+      }
+      if (!missing(`tokenHash`)) {
+        stopifnot(is.character(`tokenHash`), length(`tokenHash`) == 1)
+        self$`tokenHash` <- `tokenHash`
       }
     },
     toJSON = function() {
@@ -35,8 +47,14 @@ MainGetApiKeysResp <- R6::R6Class(
       if (!is.null(self$`expiry`)) {
         MainGetApiKeysRespObject[['expiry']] <- self$`expiry`
       }
+      if (!is.null(self$`label`)) {
+        MainGetApiKeysRespObject[['label']] <- self$`label`
+      }
       if (!is.null(self$`token`)) {
         MainGetApiKeysRespObject[['token']] <- self$`token`
+      }
+      if (!is.null(self$`tokenHash`)) {
+        MainGetApiKeysRespObject[['tokenHash']] <- self$`tokenHash`
       }
 
       MainGetApiKeysRespObject
@@ -46,24 +64,36 @@ MainGetApiKeysResp <- R6::R6Class(
       if (!is.null(MainGetApiKeysRespObject$`expiry`)) {
         self$`expiry` <- MainGetApiKeysRespObject$`expiry`
       }
+      if (!is.null(MainGetApiKeysRespObject$`label`)) {
+        self$`label` <- MainGetApiKeysRespObject$`label`
+      }
       if (!is.null(MainGetApiKeysRespObject$`token`)) {
         self$`token` <- MainGetApiKeysRespObject$`token`
+      }
+      if (!is.null(MainGetApiKeysRespObject$`tokenHash`)) {
+        self$`tokenHash` <- MainGetApiKeysRespObject$`tokenHash`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
            "expiry": %s,
-           "token": %s
+           "label": %s,
+           "token": %s,
+           "tokenHash": %s
         }',
         self$`expiry`,
-        self$`token`
+        self$`label`,
+        self$`token`,
+        self$`tokenHash`
       )
     },
     fromJSONString = function(MainGetApiKeysRespJson) {
       MainGetApiKeysRespObject <- jsonlite::fromJSON(MainGetApiKeysRespJson)
       self$`expiry` <- MainGetApiKeysRespObject$`expiry`
+      self$`label` <- MainGetApiKeysRespObject$`label`
       self$`token` <- MainGetApiKeysRespObject$`token`
+      self$`tokenHash` <- MainGetApiKeysRespObject$`tokenHash`
     }
   )
 )

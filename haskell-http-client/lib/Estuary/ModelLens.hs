@@ -148,10 +148,20 @@ mainGetApiKeysRespExpiryL :: Lens_' MainGetApiKeysResp (Maybe Text)
 mainGetApiKeysRespExpiryL f MainGetApiKeysResp{..} = (\mainGetApiKeysRespExpiry -> MainGetApiKeysResp { mainGetApiKeysRespExpiry, ..} ) <$> f mainGetApiKeysRespExpiry
 {-# INLINE mainGetApiKeysRespExpiryL #-}
 
+-- | 'mainGetApiKeysRespLabel' Lens
+mainGetApiKeysRespLabelL :: Lens_' MainGetApiKeysResp (Maybe Text)
+mainGetApiKeysRespLabelL f MainGetApiKeysResp{..} = (\mainGetApiKeysRespLabel -> MainGetApiKeysResp { mainGetApiKeysRespLabel, ..} ) <$> f mainGetApiKeysRespLabel
+{-# INLINE mainGetApiKeysRespLabelL #-}
+
 -- | 'mainGetApiKeysRespToken' Lens
 mainGetApiKeysRespTokenL :: Lens_' MainGetApiKeysResp (Maybe Text)
 mainGetApiKeysRespTokenL f MainGetApiKeysResp{..} = (\mainGetApiKeysRespToken -> MainGetApiKeysResp { mainGetApiKeysRespToken, ..} ) <$> f mainGetApiKeysRespToken
 {-# INLINE mainGetApiKeysRespTokenL #-}
+
+-- | 'mainGetApiKeysRespTokenHash' Lens
+mainGetApiKeysRespTokenHashL :: Lens_' MainGetApiKeysResp (Maybe Text)
+mainGetApiKeysRespTokenHashL f MainGetApiKeysResp{..} = (\mainGetApiKeysRespTokenHash -> MainGetApiKeysResp { mainGetApiKeysRespTokenHash, ..} ) <$> f mainGetApiKeysRespTokenHash
+{-# INLINE mainGetApiKeysRespTokenHashL #-}
 
 
 

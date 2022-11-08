@@ -77,17 +77,17 @@ bool SwaggerUserApi::UserApiKeysGetResponse::FromJson(const TSharedPtr<FJsonValu
 	return TryGetJsonValue(JsonValue, Content);
 }
 
-FString SwaggerUserApi::UserApiKeysKeyDeleteRequest::ComputePath() const
+FString SwaggerUserApi::UserApiKeysKeyOrHashDeleteRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("key"), ToStringFormatArg(Key) } };
+	{ TEXT("key_or_hash"), ToStringFormatArg(KeyOrHash) } };
 
-	FString Path = FString::Format(TEXT("/user/api-keys/{key}"), PathParams);
+	FString Path = FString::Format(TEXT("/user/api-keys/{key_or_hash}"), PathParams);
 	
 	return Path;
 }
 
-void SwaggerUserApi::UserApiKeysKeyDeleteRequest::SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const
+void SwaggerUserApi::UserApiKeysKeyOrHashDeleteRequest::SetupHttpRequest(const TSharedRef<IHttpRequest>& HttpRequest) const
 {
 	static const TArray<FString> Consumes = {  };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
@@ -110,7 +110,7 @@ void SwaggerUserApi::UserApiKeysKeyDeleteRequest::SetupHttpRequest(const TShared
 	}
 }
 
-void SwaggerUserApi::UserApiKeysKeyDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+void SwaggerUserApi::UserApiKeysKeyOrHashDeleteResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
 {
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
@@ -128,7 +128,7 @@ void SwaggerUserApi::UserApiKeysKeyDeleteResponse::SetHttpResponseCode(EHttpResp
 	}
 }
 
-bool SwaggerUserApi::UserApiKeysKeyDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+bool SwaggerUserApi::UserApiKeysKeyOrHashDeleteResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }

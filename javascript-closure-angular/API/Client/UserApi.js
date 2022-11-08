@@ -77,24 +77,24 @@ API.Client.UserApi.prototype.userApiKeysGet = function(opt_extraHttpRequestParam
 
 /**
  * Revoke a User API Key.
- * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
- * @param {!string} key Key
+ * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+ * @param {!string} keyOrHash Key or Hash
  * @param {!angular.$http.Config=} opt_extraHttpRequestParams Extra HTTP parameters to send.
  * @return {!angular.$q.Promise<!string>}
  */
-API.Client.UserApi.prototype.userApiKeysKeyDelete = function(key, opt_extraHttpRequestParams) {
+API.Client.UserApi.prototype.userApiKeysKeyOrHashDelete = function(keyOrHash, opt_extraHttpRequestParams) {
   /** @const {string} */
-  var path = this.basePath_ + '/user/api-keys/{key}'
-      .replace('{' + 'key' + '}', String(key));
+  var path = this.basePath_ + '/user/api-keys/{key_or_hash}'
+      .replace('{' + 'key_or_hash' + '}', String(keyOrHash));
 
   /** @type {!Object} */
   var queryParameters = {};
 
   /** @type {!Object} */
   var headerParams = angular.extend({}, this.defaultHeaders_);
-  // verify required parameter 'key' is set
-  if (!key) {
-    throw new Error('Missing required parameter key when calling userApiKeysKeyDelete');
+  // verify required parameter 'keyOrHash' is set
+  if (!keyOrHash) {
+    throw new Error('Missing required parameter keyOrHash when calling userApiKeysKeyOrHashDelete');
   }
   /** @type {!Object} */
   var httpRequestParams = {

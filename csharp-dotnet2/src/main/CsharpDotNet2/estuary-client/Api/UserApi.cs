@@ -17,11 +17,11 @@ namespace estuary-client.Api
         /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
         List<List<MainGetApiKeysResp>> UserApiKeysGet ();
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>string</returns>
-        string UserApiKeysKeyDelete (string key);
+        string UserApiKeysKeyOrHashDelete (string keyOrHash);
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
         /// </summary>
@@ -127,20 +127,20 @@ namespace estuary-client.Api
         }
     
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
-        /// <param name="key">Key</param> 
+        /// <param name="keyOrHash">Key or Hash</param> 
         /// <returns>string</returns>            
-        public string UserApiKeysKeyDelete (string key)
+        public string UserApiKeysKeyOrHashDelete (string keyOrHash)
         {
             
-            // verify the required parameter 'key' is set
-            if (key == null) throw new ApiException(400, "Missing required parameter 'key' when calling UserApiKeysKeyDelete");
+            // verify the required parameter 'keyOrHash' is set
+            if (keyOrHash == null) throw new ApiException(400, "Missing required parameter 'keyOrHash' when calling UserApiKeysKeyOrHashDelete");
             
     
-            var path = "/user/api-keys/{key}";
+            var path = "/user/api-keys/{key_or_hash}";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "key" + "}", ApiClient.ParameterToString(key));
+            path = path.Replace("{" + "key_or_hash" + "}", ApiClient.ParameterToString(keyOrHash));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
@@ -156,9 +156,9 @@ namespace estuary-client.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyDelete: " + response.Content, response.Content);
+                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyOrHashDelete: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyDelete: " + response.ErrorMessage, response.ErrorMessage);
+                throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysKeyOrHashDelete: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Feature | HTTP request | Description
 ------------- | ------------- | -------------
 [**user_api_keys_get**](USER_API.md#user_api_keys_get) | **Get** /user/api-keys | Get API keys for a user
-[**user_api_keys_key_delete**](USER_API.md#user_api_keys_key_delete) | **Delete** /user/api-keys/{key} | Revoke a User API Key.
+[**user_api_keys_key_or_hash_delete**](USER_API.md#user_api_keys_key_or_hash_delete) | **Delete** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**user_api_keys_post**](USER_API.md#user_api_keys_post) | **Post** /user/api-keys | Create API keys for a user
 [**user_export_get**](USER_API.md#user_export_get) | **Get** /user/export | Export user data
 [**user_stats_get**](USER_API.md#user_stats_get) | **Get** /user/stats | Create API keys for a user
@@ -38,20 +38,20 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_api_keys_key_delete**
-> user_api_keys_key_delete (key: STRING_32 ): detachable STRING_32
+# **user_api_keys_key_or_hash_delete**
+> user_api_keys_key_or_hash_delete (key_or_hash: STRING_32 ): detachable STRING_32
 	
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **STRING_32**| Key | 
+ **key_or_hash** | **STRING_32**| Key or Hash | 
 
 ### Return type
 

@@ -406,7 +406,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**public_stats_get**](docs/PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
 *UserApi* | [**user_api_keys_get**](docs/UserApi.md#user_api_keys_get) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**user_api_keys_key_delete**](docs/UserApi.md#user_api_keys_key_delete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
 *UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user

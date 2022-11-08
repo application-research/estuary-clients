@@ -63,16 +63,34 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::string_t getLabel() const;
+    bool labelIsSet() const;
+    void unsetLabel();
+    void setLabel(utility::string_t value);
+    /// <summary>
+    /// 
+    /// </summary>
     utility::string_t getToken() const;
     bool tokenIsSet() const;
     void unsetToken();
     void setToken(utility::string_t value);
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getTokenHash() const;
+    bool tokenHashIsSet() const;
+    void unsetTokenHash();
+    void setTokenHash(utility::string_t value);
 
 protected:
     utility::string_t m_Expiry;
     bool m_ExpiryIsSet;
+    utility::string_t m_Label;
+    bool m_LabelIsSet;
     utility::string_t m_Token;
     bool m_TokenIsSet;
+    utility::string_t m_TokenHash;
+    bool m_TokenHashIsSet;
 };
 
 }

@@ -1463,21 +1463,21 @@ package body .Clients is
    end User_Api_Keys_Get;
 
    --  Revoke a User API Key.
-   --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-   procedure User_Api_Keys_Key_Delete
+   --  This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   procedure User_Api_Keys_Key_Or_Hash_Delete
       (Client : in out Client_Type;
-       Key : in Swagger.UString;
+       Key_Or_Hash : in Swagger.UString;
        Result : out Swagger.UString) is
       URI   : Swagger.Clients.URI_Type;
       Reply : Swagger.Value_Type;
    begin
       Client.Set_Accept ((1 => Swagger.Clients.APPLICATION_JSON));
 
-      URI.Set_Path ("/user/api-keys/{key}");
-      URI.Set_Path_Param ("key", Key);
+      URI.Set_Path ("/user/api-keys/{key_or_hash}");
+      URI.Set_Path_Param ("key_or_hash", Key_Or_Hash);
       Client.Call (Swagger.Clients.DELETE, URI, Reply);
       Swagger.Streams.Deserialize (Reply, "", Result);
-   end User_Api_Keys_Key_Delete;
+   end User_Api_Keys_Key_Or_Hash_Delete;
 
    --  Create API keys for a user
    --  This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.

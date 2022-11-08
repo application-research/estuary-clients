@@ -36,7 +36,7 @@ impl<C: hyper::client::Connect> UserApiClient<C> {
 
 pub trait UserApi {
     fn user_api_keys_get(&self, ) -> Box<Future<Item = Vec<Vec<::models::MainGetApiKeysResp>>, Error = Error<serde_json::Value>>>;
-    fn user_api_keys_key_delete(&self, key: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn user_api_keys_key_or_hash_delete(&self, key_or_hash: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn user_api_keys_post(&self, expiry: &str, perms: &str) -> Box<Future<Item = ::models::MainGetApiKeysResp, Error = Error<serde_json::Value>>>;
     fn user_export_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn user_stats_get(&self, ) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
@@ -110,7 +110,7 @@ impl<C: hyper::client::Connect>UserApi for UserApiClient<C> {
         )
     }
 
-    fn user_api_keys_key_delete(&self, key: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn user_api_keys_key_or_hash_delete(&self, key_or_hash: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -132,7 +132,7 @@ impl<C: hyper::client::Connect>UserApi for UserApiClient<C> {
             }
             query.finish()
         };
-        let uri_str = format!("{}/user/api-keys/{key}?{}", configuration.base_path, query_string, key=key);
+        let uri_str = format!("{}/user/api-keys/{key_or_hash}?{}", configuration.base_path, query_string, key_or_hash=key_or_hash);
 
         // TODO(farcaller): handle error
         // if let Err(e) = uri {

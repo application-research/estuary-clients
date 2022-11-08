@@ -160,13 +160,13 @@ func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([][]MainGetApiKeys
 
 /*
 UserApiService Revoke a User API Key.
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param key Key
+ * @param keyOrHash Key or Hash
 
 @return string
 */
-func (a *UserApiService) UserApiKeysKeyDelete(ctx context.Context, key string) (string, *http.Response, error) {
+func (a *UserApiService) UserApiKeysKeyOrHashDelete(ctx context.Context, keyOrHash string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -176,8 +176,8 @@ func (a *UserApiService) UserApiKeysKeyDelete(ctx context.Context, key string) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/user/api-keys/{key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", fmt.Sprintf("%v", key), -1)
+	localVarPath := a.client.cfg.BasePath + "/user/api-keys/{key_or_hash}"
+	localVarPath = strings.Replace(localVarPath, "{"+"key_or_hash"+"}", fmt.Sprintf("%v", keyOrHash), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

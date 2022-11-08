@@ -25,6 +25,10 @@
 
 @property(nonatomic) NSString* expiry;
 
+@property(nonatomic) NSString* label;
+
 @property(nonatomic) NSString* token;
+
+@property(nonatomic) NSString* tokenHash;
 
 @end

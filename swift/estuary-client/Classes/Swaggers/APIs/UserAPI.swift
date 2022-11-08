@@ -51,11 +51,11 @@ public class UserAPI: APIBase {
     /**
      Revoke a User API Key.
      
-     - parameter key: (path) Key 
+     - parameter keyOrHash: (path) Key or Hash 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func userApiKeysKeyDelete(key key: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
-        userApiKeysKeyDeleteWithRequestBuilder(key: key).execute { (response, error) -> Void in
+    public class func userApiKeysKeyOrHashDelete(keyOrHash keyOrHash: String, completion: ((data: String?, error: ErrorType?) -> Void)) {
+        userApiKeysKeyOrHashDeleteWithRequestBuilder(keyOrHash: keyOrHash).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
     }
@@ -63,8 +63,8 @@ public class UserAPI: APIBase {
 
     /**
      Revoke a User API Key.
-     - DELETE /user/api-keys/{key}
-     - This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     - DELETE /user/api-keys/{keyOrHash}
+     - This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
@@ -73,13 +73,13 @@ public class UserAPI: APIBase {
   "empty": true
 }}]
      
-     - parameter key: (path) Key 
+     - parameter keyOrHash: (path) Key or Hash 
 
      - returns: RequestBuilder<String> 
      */
-    public class func userApiKeysKeyDeleteWithRequestBuilder(key key: String) -> RequestBuilder<String> {
-        var path = "/user/api-keys/{key}"
-        path = path.stringByReplacingOccurrencesOfString("{key}", withString: "\(key)", options: .LiteralSearch, range: nil)
+    public class func userApiKeysKeyOrHashDeleteWithRequestBuilder(keyOrHash keyOrHash: String) -> RequestBuilder<String> {
+        var path = "/user/api-keys/{keyOrHash}"
+        path = path.stringByReplacingOccurrencesOfString("{key_or_hash}", withString: "\(keyOrHash)", options: .LiteralSearch, range: nil)
         let URLString = estuary-clientAPI.basePath + path
 
         let nillableParameters: [String:AnyObject?] = [:]

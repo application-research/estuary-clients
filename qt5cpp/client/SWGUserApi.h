@@ -37,33 +37,33 @@ public:
     QMap<QString, QString> defaultHeaders;
 
     void userApiKeysGet();
-    void userApiKeysKeyDelete(QString* key);
+    void userApiKeysKeyOrHashDelete(QString* key_or_hash);
     void userApiKeysPost(QString* expiry, QString* perms);
     void userExportGet();
     void userStatsGet();
     
 private:
     void userApiKeysGetCallback (SWGHttpRequestWorker * worker);
-    void userApiKeysKeyDeleteCallback (SWGHttpRequestWorker * worker);
+    void userApiKeysKeyOrHashDeleteCallback (SWGHttpRequestWorker * worker);
     void userApiKeysPostCallback (SWGHttpRequestWorker * worker);
     void userExportGetCallback (SWGHttpRequestWorker * worker);
     void userStatsGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void userApiKeysGetSignal(QList<QList<SWGMain.getApiKeysResp*>*>* summary);
-    void userApiKeysKeyDeleteSignal(QString* summary);
+    void userApiKeysKeyOrHashDeleteSignal(QString* summary);
     void userApiKeysPostSignal(SWGMain.getApiKeysResp* summary);
     void userExportGetSignal(QString* summary);
     void userStatsGetSignal(QString* summary);
     
     void userApiKeysGetSignalE(QList<QList<SWGMain.getApiKeysResp*>*>* summary, QNetworkReply::NetworkError error_type, QString& error_str);
-    void userApiKeysKeyDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void userApiKeysKeyOrHashDeleteSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void userApiKeysPostSignalE(SWGMain.getApiKeysResp* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void userExportGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void userStatsGetSignalE(QString* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     
     void userApiKeysGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
-    void userApiKeysKeyDeleteSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+    void userApiKeysKeyOrHashDeleteSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void userApiKeysPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void userExportGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     void userStatsGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);

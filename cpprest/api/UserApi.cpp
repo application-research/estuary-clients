@@ -164,13 +164,13 @@ pplx::task<std::vector<std::vector<std::shared_ptr<Main.getApiKeysResp>>>> UserA
         return result;
     });
 }
-pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t key)
+pplx::task<utility::string_t> UserApi::userApiKeysKeyOrHashDelete(utility::string_t keyOrHash)
 {
 
 
     std::shared_ptr<ApiConfiguration> apiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t path = utility::conversions::to_string_t("/user/api-keys/{key}");
-    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("key") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(key));
+    utility::string_t path = utility::conversions::to_string_t("/user/api-keys/{key_or_hash}");
+    boost::replace_all(path, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("key_or_hash") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(keyOrHash));
 
     std::map<utility::string_t, utility::string_t> queryParams;
     std::map<utility::string_t, utility::string_t> headerParams( apiConfiguration->getDefaultHeaders() );
@@ -204,7 +204,7 @@ pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t ke
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("UserApi->userApiKeysKeyDelete does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("UserApi->userApiKeysKeyOrHashDelete does not produce any supported media type"));
     }
 
     headerParams[utility::conversions::to_string_t("Accept")] = responseHttpContentType;
@@ -227,7 +227,7 @@ pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t ke
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("UserApi->userApiKeysKeyDelete does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("UserApi->userApiKeysKeyOrHashDelete does not consume any supported media type"));
     }
 
     // authentication (bearerAuth) required
@@ -250,7 +250,7 @@ pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t ke
         if (response.status_code() >= 400)
         {
             throw ApiException(response.status_code()
-                , utility::conversions::to_string_t("error calling userApiKeysKeyDelete: ") + response.reason_phrase()
+                , utility::conversions::to_string_t("error calling userApiKeysKeyOrHashDelete: ") + response.reason_phrase()
                 , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
         }
 
@@ -261,7 +261,7 @@ pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t ke
             if( contentType.find(responseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling userApiKeysKeyDelete: unexpected response type: ") + contentType
+                    , utility::conversions::to_string_t("error calling userApiKeysKeyOrHashDelete: unexpected response type: ") + contentType
                     , std::make_shared<std::stringstream>(response.extract_utf8string(true).get()));
             }
         }
@@ -290,7 +290,7 @@ pplx::task<utility::string_t> UserApi::userApiKeysKeyDelete(utility::string_t ke
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling userApiKeysKeyDelete: unsupported response type"));
+                , utility::conversions::to_string_t("error calling userApiKeysKeyOrHashDelete: unsupported response type"));
         }
 
         return result;

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**UserApiKeysGet**](UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-[**UserApiKeysKeyDelete**](UserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**UserApiKeysKeyOrHashDelete**](UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**UserApiKeysPost**](UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**UserExportGet**](UserApi.md#userexportget) | **GET** /user/export | Export user data
 [**UserStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
@@ -74,13 +74,13 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="userapikeyskeydelete"></a>
-# **UserApiKeysKeyDelete**
-> string UserApiKeysKeyDelete (string key)
+<a name="userapikeyskeyorhashdelete"></a>
+# **UserApiKeysKeyOrHashDelete**
+> string UserApiKeysKeyOrHashDelete (string keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```csharp
@@ -92,7 +92,7 @@ using estuary-client.Model;
 
 namespace Example
 {
-    public class UserApiKeysKeyDeleteExample
+    public class UserApiKeysKeyOrHashDeleteExample
     {
         public void main()
         {
@@ -103,17 +103,17 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserApi();
-            var key = key_example;  // string | Key
+            var keyOrHash = keyOrHash_example;  // string | Key or Hash
 
             try
             {
                 // Revoke a User API Key.
-                string result = apiInstance.UserApiKeysKeyDelete(key);
+                string result = apiInstance.UserApiKeysKeyOrHashDelete(keyOrHash);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UserApi.UserApiKeysKeyDelete: " + e.Message );
+                Debug.Print("Exception when calling UserApi.UserApiKeysKeyOrHashDelete: " + e.Message );
             }
         }
     }
@@ -124,7 +124,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| Key | 
+ **keyOrHash** | **string**| Key or Hash | 
 
 ### Return type
 

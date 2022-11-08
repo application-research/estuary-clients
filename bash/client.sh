@@ -168,7 +168,7 @@ operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_minimum_occurrences["publicMinersFailuresMinerGet:::miner"]=1
 operation_parameters_minimum_occurrences["publicMinersStatsMinerGet:::miner"]=1
-operation_parameters_minimum_occurrences["userApiKeysKeyDelete:::key"]=1
+operation_parameters_minimum_occurrences["userApiKeysKeyOrHashDelete:::key_or_hash"]=1
 operation_parameters_minimum_occurrences["userApiKeysPost:::expiry"]=0
 operation_parameters_minimum_occurrences["userApiKeysPost:::perms"]=0
 
@@ -252,7 +252,7 @@ operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["publicMinersDealsMinerGet:::ignore-failed"]=0
 operation_parameters_maximum_occurrences["publicMinersFailuresMinerGet:::miner"]=0
 operation_parameters_maximum_occurrences["publicMinersStatsMinerGet:::miner"]=0
-operation_parameters_maximum_occurrences["userApiKeysKeyDelete:::key"]=0
+operation_parameters_maximum_occurrences["userApiKeysKeyOrHashDelete:::key_or_hash"]=0
 operation_parameters_maximum_occurrences["userApiKeysPost:::expiry"]=0
 operation_parameters_maximum_occurrences["userApiKeysPost:::perms"]=0
 
@@ -333,7 +333,7 @@ operation_parameters_collection_type["publicMinersDealsMinerGet:::miner"]=""
 operation_parameters_collection_type["publicMinersDealsMinerGet:::ignore-failed"]=""
 operation_parameters_collection_type["publicMinersFailuresMinerGet:::miner"]=""
 operation_parameters_collection_type["publicMinersStatsMinerGet:::miner"]=""
-operation_parameters_collection_type["userApiKeysKeyDelete:::key"]=""
+operation_parameters_collection_type["userApiKeysKeyOrHashDelete:::key_or_hash"]=""
 operation_parameters_collection_type["userApiKeysPost:::expiry"]=""
 operation_parameters_collection_type["userApiKeysPost:::perms"]=""
 
@@ -862,7 +862,7 @@ echo "  $ops" | column -t -s ';'
     echo -e "${BOLD}${WHITE}[user]${OFF}"
 read -r -d '' ops <<EOF
   ${CYAN}userApiKeysGet${OFF};Get API keys for a user (AUTH)
-  ${CYAN}userApiKeysKeyDelete${OFF};Revoke a User API Key. (AUTH)
+  ${CYAN}userApiKeysKeyOrHashDelete${OFF};Revoke a User API Key. (AUTH)
   ${CYAN}userApiKeysPost${OFF};Create API keys for a user (AUTH)
   ${CYAN}userExportGet${OFF};Export user data (AUTH)
   ${CYAN}userStatsGet${OFF};Create API keys for a user (AUTH)
@@ -2774,17 +2774,17 @@ print_userApiKeysGet_help() {
 }
 ##############################################################################
 #
-# Print help for userApiKeysKeyDelete operation
+# Print help for userApiKeysKeyOrHashDelete operation
 #
 ##############################################################################
-print_userApiKeysKeyDelete_help() {
+print_userApiKeysKeyOrHashDelete_help() {
     echo ""
-    echo -e "${BOLD}${WHITE}userApiKeysKeyDelete - Revoke a User API Key.${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "${BOLD}${WHITE}userApiKeysKeyOrHashDelete - Revoke a User API Key.${OFF}${BLUE}(AUTH - HEADER)${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo -e ""
-    echo -e "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user." | paste -sd' ' | fold -sw 80
+    echo -e "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable." | paste -sd' ' | fold -sw 80
     echo -e ""
     echo -e "${BOLD}${WHITE}Parameters${OFF}"
-    echo -e "  * ${GREEN}key${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Key ${YELLOW}Specify as: key=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
+    echo -e "  * ${GREEN}key_or_hash${OFF} ${BLUE}[string]${OFF} ${RED}(required)${OFF}${OFF} - Key or Hash ${YELLOW}Specify as: key_or_hash=value${OFF}" | paste -sd' ' | fold -sw 80 | sed '2,$s/^/    /'
     echo ""
     echo -e "${BOLD}${WHITE}Responses${OFF}"
     code=200
@@ -6396,19 +6396,19 @@ call_userApiKeysGet() {
 
 ##############################################################################
 #
-# Call userApiKeysKeyDelete operation
+# Call userApiKeysKeyOrHashDelete operation
 #
 ##############################################################################
-call_userApiKeysKeyDelete() {
+call_userApiKeysKeyOrHashDelete() {
     # ignore error about 'path_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
-    local path_parameter_names=(key)
+    local path_parameter_names=(key_or_hash)
     # ignore error about 'query_parameter_names' being unused; passed by reference
     # shellcheck disable=SC2034
     local query_parameter_names=(  )
     local path
 
-    if ! path=$(build_request_path "/user/api-keys/{key}" path_parameter_names query_parameter_names); then
+    if ! path=$(build_request_path "/user/api-keys/{key_or_hash}" path_parameter_names query_parameter_names); then
         ERROR_MSG=$path
         exit 1
     fi
@@ -6890,8 +6890,8 @@ case $key in
     userApiKeysGet)
     operation="userApiKeysGet"
     ;;
-    userApiKeysKeyDelete)
-    operation="userApiKeysKeyDelete"
+    userApiKeysKeyOrHashDelete)
+    operation="userApiKeysKeyOrHashDelete"
     ;;
     userApiKeysPost)
     operation="userApiKeysPost"
@@ -7241,8 +7241,8 @@ case $operation in
     userApiKeysGet)
     call_userApiKeysGet
     ;;
-    userApiKeysKeyDelete)
-    call_userApiKeysKeyDelete
+    userApiKeysKeyOrHashDelete)
+    call_userApiKeysKeyOrHashDelete
     ;;
     userApiKeysPost)
     call_userApiKeysPost

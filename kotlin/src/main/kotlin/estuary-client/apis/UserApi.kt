@@ -57,12 +57,12 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
 
     /**
     * Revoke a User API Key.
-    * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-    * @param key Key 
+    * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+    * @param keyOrHash Key or Hash 
     * @return kotlin.String
     */
     @Suppress("UNCHECKED_CAST")
-    fun userApiKeysKeyDelete(key: kotlin.String) : kotlin.String {
+    fun userApiKeysKeyOrHashDelete(keyOrHash: kotlin.String) : kotlin.String {
         val localVariableBody: kotlin.Any? = null
         val localVariableQuery: MultiValueMap = mapOf()
         
@@ -74,7 +74,7 @@ class UserApi(basePath: kotlin.String = "https://api.estuary.tech") : ApiClient(
         
         val localVariableConfig = RequestConfig(
             RequestMethod.DELETE,
-            "/user/api-keys/{key}".replace("{"+"key"+"}", "$key"),
+            "/user/api-keys/{key_or_hash}".replace("{"+"key_or_hash"+"}", "$keyOrHash"),
             query = localVariableQuery,
             headers = localVariableHeaders
         )

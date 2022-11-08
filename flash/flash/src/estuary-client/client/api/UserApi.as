@@ -25,7 +25,7 @@ public class UserApi extends SwaggerApi {
     }
 
         public static const event_user_api_keys_get: String = "user_api_keys_get";
-        public static const event_user_api_keys_key_delete: String = "user_api_keys_key_delete";
+        public static const event_user_api_keys_key_or_hash_delete: String = "user_api_keys_key_or_hash_delete";
         public static const event_user_api_keys_post: String = "user_api_keys_post";
         public static const event_user_export_get: String = "user_export_get";
         public static const event_user_stats_get: String = "user_stats_get";
@@ -60,9 +60,9 @@ public class UserApi extends SwaggerApi {
     /*
      * Returns String 
      */
-    public function user_api_keys_key_delete (key: String): String {
+    public function user_api_keys_key_or_hash_delete (keyOrHash: String): String {
         // create path and map variables
-        var path: String = "/user/api-keys/{key}".replace(/{format}/g,"xml").replace("{" + "key" + "}", getApiInvoker().escapeString(key));
+        var path: String = "/user/api-keys/{key_or_hash}".replace(/{format}/g,"xml").replace("{" + "key_or_hash" + "}", getApiInvoker().escapeString(keyOrHash));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -80,7 +80,7 @@ public class UserApi extends SwaggerApi {
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
-        token.completionEventType = "user_api_keys_key_delete";
+        token.completionEventType = "user_api_keys_key_or_hash_delete";
 
         token.returnType = String;
         return requestId;

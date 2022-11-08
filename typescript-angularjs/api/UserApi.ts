@@ -49,19 +49,19 @@ export class UserApi {
         return this.$http(httpRequestParams);
     }
     /**
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      * @summary Revoke a User API Key.
-     * @param key Key
+     * @param keyOrHash Key or Hash
      */
-    public userApiKeysKeyDelete (key: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
-        const localVarPath = this.basePath + '/user/api-keys/{key}'
-            .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
+    public userApiKeysKeyOrHashDelete (keyOrHash: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
+        const localVarPath = this.basePath + '/user/api-keys/{key_or_hash}'
+            .replace('{' + 'key_or_hash' + '}', encodeURIComponent(String(keyOrHash)));
 
         let queryParameters: any = {};
         let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
-        // verify required parameter 'key' is not null or undefined
-        if (key === null || key === undefined) {
-            throw new Error('Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        // verify required parameter 'keyOrHash' is not null or undefined
+        if (keyOrHash === null || keyOrHash === undefined) {
+            throw new Error('Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
         }
 
         let httpRequestParams: ng.IRequestConfig = {

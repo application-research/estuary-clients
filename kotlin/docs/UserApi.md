@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
 [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
@@ -54,13 +54,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="userApiKeysKeyDelete"></a>
-# **userApiKeysKeyDelete**
-> kotlin.String userApiKeysKeyDelete(key)
+<a name="userApiKeysKeyOrHashDelete"></a>
+# **userApiKeysKeyOrHashDelete**
+> kotlin.String userApiKeysKeyOrHashDelete(keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```kotlin
@@ -69,15 +69,15 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 //import estuary-client.models.*
 
 val apiInstance = UserApi()
-val key : kotlin.String = key_example // kotlin.String | Key
+val keyOrHash : kotlin.String = keyOrHash_example // kotlin.String | Key or Hash
 try {
-    val result : kotlin.String = apiInstance.userApiKeysKeyDelete(key)
+    val result : kotlin.String = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash)
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling UserApi#userApiKeysKeyDelete")
+    println("4xx response calling UserApi#userApiKeysKeyOrHashDelete")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling UserApi#userApiKeysKeyDelete")
+    println("5xx response calling UserApi#userApiKeysKeyOrHashDelete")
     e.printStackTrace()
 }
 ```
@@ -86,7 +86,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **kotlin.String**| Key |
+ **keyOrHash** | **kotlin.String**| Key or Hash |
 
 ### Return type
 

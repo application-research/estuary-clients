@@ -32,17 +32,17 @@ private class SwagUserApiTest {
     /**
      * Revoke a User API Key.
      *
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that\&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      */
     @isTest
-    private static void userApiKeysKeyDeleteTest() {
+    private static void userApiKeysKeyOrHashDeleteTest() {
         HttpResponse res = new HttpResponse();
         res.setStatusCode(200);
         res.setStatus('OK');
         Test.setMock(HttpCalloutMock.class, new SwaggerResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'key' => 'key_example'
+            'keyOrHash' => 'keyOrHash_example'
         };
 
         SwagClient client;
@@ -58,7 +58,7 @@ private class SwagUserApiTest {
         res.setHeader('Content-Type', 'application/json');
         res.setBody('{\n  "bytes": [],\n  "empty": true\n}');
         expectedResponse = 'aeiou';
-        response = (String) api.userApiKeysKeyDelete(params);
+        response = (String) api.userApiKeysKeyOrHashDelete(params);
         System.assertEquals(expectedResponse, response);
     }
 

@@ -53,27 +53,27 @@ bool userApiKeysGetAsync(char * accessToken,
 
 /*! \brief Revoke a User API Key.. *Synchronous*
  *
- * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
- * \param key Key *Required*
+ * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+ * \param keyOrHash Key or Hash *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool userApiKeysKeyDeleteSync(char * accessToken,
-	std::string key, 
+bool userApiKeysKeyOrHashDeleteSync(char * accessToken,
+	std::string keyOrHash, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData);
 
 /*! \brief Revoke a User API Key.. *Asynchronous*
  *
- * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
- * \param key Key *Required*
+ * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+ * \param keyOrHash Key or Hash *Required*
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
-bool userApiKeysKeyDeleteAsync(char * accessToken,
-	std::string key, 
+bool userApiKeysKeyOrHashDeleteAsync(char * accessToken,
+	std::string keyOrHash, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData);
 

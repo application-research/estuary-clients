@@ -56,8 +56,12 @@
       obj = obj || new exports();
       if (data.hasOwnProperty('expiry'))
         obj.expiry = ApiClient.convertToType(data['expiry'], 'String');
+      if (data.hasOwnProperty('label'))
+        obj.label = ApiClient.convertToType(data['label'], 'String');
       if (data.hasOwnProperty('token'))
         obj.token = ApiClient.convertToType(data['token'], 'String');
+      if (data.hasOwnProperty('tokenHash'))
+        obj.tokenHash = ApiClient.convertToType(data['tokenHash'], 'String');
     }
     return obj;
   }
@@ -68,9 +72,19 @@
   exports.prototype.expiry = undefined;
 
   /**
+   * @member {String} label
+   */
+  exports.prototype.label = undefined;
+
+  /**
    * @member {String} token
    */
   exports.prototype.token = undefined;
+
+  /**
+   * @member {String} tokenHash
+   */
+  exports.prototype.tokenHash = undefined;
 
 
   return exports;

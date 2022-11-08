@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Path("/user")
 @Api(description = "the user API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-07T20:06:06.071Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T00:36:54.363Z")
 public class UserApi {
 
     @GET
@@ -36,9 +36,9 @@ public class UserApi {
     }
 
     @DELETE
-    @Path("/api-keys/{key}")
+    @Path("/api-keys/{key_or_hash}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.", response = String.class, authorizations = {
+    @ApiOperation(value = "Revoke a User API Key.", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "User",  })
     @ApiResponses(value = { 
@@ -46,7 +46,7 @@ public class UserApi {
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
     })
-    public Response userApiKeysKeyDelete(@PathParam("key") @ApiParam("Key") String key) {
+    public Response userApiKeysKeyOrHashDelete(@PathParam("key_or_hash") @ApiParam("Key or Hash") String keyOrHash) {
         return Response.ok().entity("magic!").build();
     }
 

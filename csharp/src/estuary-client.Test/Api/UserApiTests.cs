@@ -76,14 +76,14 @@ namespace estuary-client.Test
         }
         
         /// <summary>
-        /// Test UserApiKeysKeyDelete
+        /// Test UserApiKeysKeyOrHashDelete
         /// </summary>
         [Test]
-        public void UserApiKeysKeyDeleteTest()
+        public void UserApiKeysKeyOrHashDeleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string key = null;
-            //var response = instance.UserApiKeysKeyDelete(key);
+            //string keyOrHash = null;
+            //var response = instance.UserApiKeysKeyOrHashDelete(keyOrHash);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         

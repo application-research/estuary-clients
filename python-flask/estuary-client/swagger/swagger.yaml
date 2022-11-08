@@ -2042,22 +2042,23 @@ paths:
           schema:
             $ref: "#/definitions/util.HttpError"
       x-swagger-router-controller: "estuary-client.controllers.user_controller"
-  /user/api-keys/{key}:
+  /user/api-keys/{key_or_hash}:
     delete:
       tags:
       - "User"
       summary: "Revoke a User API Key."
       description: "This endpoint is used to revoke a user API key. In estuary, every\
         \ user is assigned with an API key, this API key is generated and issued for\
-        \ each user and is primarily use to access all estuary features. This endpoint\
-        \ can be used to revoke the API key thats assigned to the user."
-      operationId: "user_api_keys_key_delete"
+        \ each user and is primarily used to access all estuary features. This endpoint\
+        \ can be used to revoke the API key that's assigned to the user. Revoked API\
+        \ keys are completely deleted and are not recoverable."
+      operationId: "user_api_keys_key_or_hash_delete"
       produces:
       - "application/json"
       parameters:
-      - name: "key"
+      - name: "key_or_hash"
         in: "path"
-        description: "Key"
+        description: "Key or Hash"
         required: true
         type: "string"
       responses:
@@ -2190,10 +2191,16 @@ definitions:
     properties:
       expiry:
         type: "string"
+      label:
+        type: "string"
       token:
+        type: "string"
+      tokenHash:
         type: "string"
     example:
       expiry: "expiry"
+      label: "label"
+      tokenHash: "tokenHash"
       token: "token"
   main.importDealBody:
     type: "object"

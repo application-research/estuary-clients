@@ -39,7 +39,7 @@ object UserApi {
       .withErrorResponse[UtilHttpError](404)
       .withErrorResponse[UtilHttpError](500)
         /**
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
    * 
    * Expected answers:
    *   code 200 : String (OK)
@@ -49,12 +49,12 @@ object UserApi {
    * Available security schemes:
    *   bearerAuth (apiKey)
    * 
-   * @param key Key
+   * @param keyOrHash Key or Hash
    */
-  def userApiKeysKeyDelete(key: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
-    ApiRequest[String](ApiMethods.DELETE, "https://api.estuary.tech", "/user/api-keys/{key}", "application/json")
+  def userApiKeysKeyOrHashDelete(keyOrHash: String)(implicit apiKey: ApiKeyValue): ApiRequest[String] =
+    ApiRequest[String](ApiMethods.DELETE, "https://api.estuary.tech", "/user/api-keys/{key_or_hash}", "application/json")
       .withApiKey(apiKey, "Authorization", HEADER)
-      .withPathParam("key", key)
+      .withPathParam("key_or_hash", keyOrHash)
       .withSuccessResponse[String](200)
       .withErrorResponse[UtilHttpError](400)
       .withErrorResponse[UtilHttpError](500)

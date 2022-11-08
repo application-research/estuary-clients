@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 @Api(description = "the pinning API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-07T20:06:06.071Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-08T00:36:54.363Z")
 public class PinningApi {
 
     @GET

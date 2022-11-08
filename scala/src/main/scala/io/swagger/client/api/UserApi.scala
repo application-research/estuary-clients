@@ -106,13 +106,13 @@ class UserApi(
 
   /**
    * Revoke a User API Key.
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
    *
-   * @param key Key 
+   * @param keyOrHash Key or Hash 
    * @return String
    */
-  def userApiKeysKeyDelete(key: String): Option[String] = {
-    val await = Try(Await.result(userApiKeysKeyDeleteAsync(key), Duration.Inf))
+  def userApiKeysKeyOrHashDelete(keyOrHash: String): Option[String] = {
+    val await = Try(Await.result(userApiKeysKeyOrHashDeleteAsync(keyOrHash), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -121,13 +121,13 @@ class UserApi(
 
   /**
    * Revoke a User API Key. asynchronously
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
    *
-   * @param key Key 
+   * @param keyOrHash Key or Hash 
    * @return Future(String)
    */
-  def userApiKeysKeyDeleteAsync(key: String): Future[String] = {
-      helper.userApiKeysKeyDelete(key)
+  def userApiKeysKeyOrHashDeleteAsync(keyOrHash: String): Future[String] = {
+      helper.userApiKeysKeyOrHashDelete(keyOrHash)
   }
 
   /**
@@ -225,16 +225,16 @@ class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends
     }
   }
 
-  def userApiKeysKeyDelete(key: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+  def userApiKeysKeyOrHashDelete(keyOrHash: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
-    val path = (addFmt("/user/api-keys/{key}")
-      replaceAll("\\{" + "key" + "\\}", key.toString))
+    val path = (addFmt("/user/api-keys/{key_or_hash}")
+      replaceAll("\\{" + "key_or_hash" + "\\}", keyOrHash.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (key == null) throw new Exception("Missing required parameter 'key' when calling UserApi->userApiKeysKeyDelete")
+    if (keyOrHash == null) throw new Exception("Missing required parameter 'keyOrHash' when calling UserApi->userApiKeysKeyOrHashDelete")
 
 
     val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, "")

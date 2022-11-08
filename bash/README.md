@@ -179,7 +179,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userexportget) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user

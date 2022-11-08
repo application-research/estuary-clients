@@ -16,11 +16,11 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-07T20:06:01.579Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-08T00:36:50.717Z")
 public interface UserApiService {
       Response userApiKeysGet(SecurityContext securityContext)
       throws NotFoundException;
-      Response userApiKeysKeyDelete(String key,SecurityContext securityContext)
+      Response userApiKeysKeyOrHashDelete(String keyOrHash,SecurityContext securityContext)
       throws NotFoundException;
       Response userApiKeysPost(String expiry,String perms,SecurityContext securityContext)
       throws NotFoundException;

@@ -44,7 +44,9 @@ export interface MainEstimateDealBody {
 
 export interface MainGetApiKeysResp {
   expiry?: string;
+  label?: string;
   token?: string;
+  tokenHash?: string;
 }
 
 export interface MainImportDealBody {

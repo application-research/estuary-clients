@@ -651,10 +651,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"UserApiKeysKeyDelete",
+		"UserApiKeysKeyOrHashDelete",
 		strings.ToUpper("Delete"),
-		"//user/api-keys/{key}",
-		UserApiKeysKeyDelete,
+		"//user/api-keys/{key_or_hash}",
+		UserApiKeysKeyOrHashDelete,
 	},
 
 	Route{

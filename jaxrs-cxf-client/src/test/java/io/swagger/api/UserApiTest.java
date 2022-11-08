@@ -92,15 +92,15 @@ public class UserApiTest {
     /**
      * Revoke a User API Key.
      *
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void userApiKeysKeyDeleteTest() {
-        String key = null;
-        //String response = api.userApiKeysKeyDelete(key);
+    public void userApiKeysKeyOrHashDeleteTest() {
+        String keyOrHash = null;
+        //String response = api.userApiKeysKeyOrHashDelete(keyOrHash);
         //assertNotNull(response);
         // TODO: test validations
         

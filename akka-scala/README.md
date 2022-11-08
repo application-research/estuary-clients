@@ -151,7 +151,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | **publicNetPeersGet** | **GET** /public/net/peers | Net Peers
 *PublicApi* | **publicStatsGet** | **GET** /public/stats | Public stats
 *UserApi* | **userApiKeysGet** | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | **userApiKeysKeyDelete** | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | **userApiKeysKeyOrHashDelete** | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | **userApiKeysPost** | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | **userExportGet** | **GET** /user/export | Export user data
 *UserApi* | **userStatsGet** | **GET** /user/stats | Create API keys for a user

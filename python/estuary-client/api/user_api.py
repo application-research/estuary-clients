@@ -120,45 +120,45 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def user_api_keys_key_delete(self, key, **kwargs):  # noqa: E501
+    def user_api_keys_key_or_hash_delete(self, key_or_hash, **kwargs):  # noqa: E501
         """Revoke a User API Key.  # noqa: E501
 
-        This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.  # noqa: E501
+        This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.user_api_keys_key_delete(key, async_req=True)
+        >>> thread = api.user_api_keys_key_or_hash_delete(key_or_hash, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str key: Key (required)
+        :param str key_or_hash: Key or Hash (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.user_api_keys_key_delete_with_http_info(key, **kwargs)  # noqa: E501
+            return self.user_api_keys_key_or_hash_delete_with_http_info(key_or_hash, **kwargs)  # noqa: E501
         else:
-            (data) = self.user_api_keys_key_delete_with_http_info(key, **kwargs)  # noqa: E501
+            (data) = self.user_api_keys_key_or_hash_delete_with_http_info(key_or_hash, **kwargs)  # noqa: E501
             return data
 
-    def user_api_keys_key_delete_with_http_info(self, key, **kwargs):  # noqa: E501
+    def user_api_keys_key_or_hash_delete_with_http_info(self, key_or_hash, **kwargs):  # noqa: E501
         """Revoke a User API Key.  # noqa: E501
 
-        This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.  # noqa: E501
+        This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.user_api_keys_key_delete_with_http_info(key, async_req=True)
+        >>> thread = api.user_api_keys_key_or_hash_delete_with_http_info(key_or_hash, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str key: Key (required)
+        :param str key_or_hash: Key or Hash (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['key']  # noqa: E501
+        all_params = ['key_or_hash']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -169,20 +169,20 @@ class UserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method user_api_keys_key_delete" % key
+                    " to method user_api_keys_key_or_hash_delete" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'key' is set
-        if self.api_client.client_side_validation and ('key' not in params or
-                                                       params['key'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `key` when calling `user_api_keys_key_delete`")  # noqa: E501
+        # verify the required parameter 'key_or_hash' is set
+        if self.api_client.client_side_validation and ('key_or_hash' not in params or
+                                                       params['key_or_hash'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `key_or_hash` when calling `user_api_keys_key_or_hash_delete`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'key' in params:
-            path_params['key'] = params['key']  # noqa: E501
+        if 'key_or_hash' in params:
+            path_params['key_or_hash'] = params['key_or_hash']  # noqa: E501
 
         query_params = []
 
@@ -200,7 +200,7 @@ class UserApi(object):
         auth_settings = ['bearerAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/user/api-keys/{key}', 'DELETE',
+            '/user/api-keys/{key_or_hash}', 'DELETE',
             path_params,
             query_params,
             header_params,

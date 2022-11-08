@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T00:37:33.715Z")
 
 @Controller
 public class UserApiController implements UserApi {
@@ -53,7 +53,7 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<List<List<MainGetApiKeysResp>>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> userApiKeysKeyDelete(@ApiParam(value = "Key",required=true) @PathVariable("key") String key) {
+    public ResponseEntity<String> userApiKeysKeyOrHashDelete(@ApiParam(value = "Key or Hash",required=true) @PathVariable("key_or_hash") String keyOrHash) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

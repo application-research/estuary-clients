@@ -237,7 +237,19 @@ export interface MainGetApiKeysResp {
      * @type {string}
      * @memberof MainGetApiKeysResp
      */
+    label?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MainGetApiKeysResp
+     */
     token?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MainGetApiKeysResp
+     */
+    tokenHash?: string;
 }
 
 /**
@@ -7439,19 +7451,19 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
          * @summary Revoke a User API Key.
-         * @param {string} key Key
+         * @param {string} keyOrHash Key or Hash
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysKeyDelete(key: string, options: any = {}): FetchArgs {
-            // verify required parameter 'key' is not null or undefined
-            if (key === null || key === undefined) {
-                throw new RequiredError('key','Required parameter key was null or undefined when calling userApiKeysKeyDelete.');
+        userApiKeysKeyOrHashDelete(keyOrHash: string, options: any = {}): FetchArgs {
+            // verify required parameter 'keyOrHash' is not null or undefined
+            if (keyOrHash === null || keyOrHash === undefined) {
+                throw new RequiredError('keyOrHash','Required parameter keyOrHash was null or undefined when calling userApiKeysKeyOrHashDelete.');
             }
-            const localVarPath = `/user/api-keys/{key}`
-                .replace(`{${"key"}}`, encodeURIComponent(String(key)));
+            const localVarPath = `/user/api-keys/{key_or_hash}`
+                .replace(`{${"key_or_hash"}}`, encodeURIComponent(String(keyOrHash)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
@@ -7606,14 +7618,14 @@ export const UserApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
          * @summary Revoke a User API Key.
-         * @param {string} key Key
+         * @param {string} keyOrHash Key or Hash
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysKeyDelete(key: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysKeyDelete(key, options);
+        userApiKeysKeyOrHashDelete(keyOrHash: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysKeyOrHashDelete(keyOrHash, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -7699,14 +7711,14 @@ export const UserApiFactory = function (configuration?: Configuration, fetch?: F
             return UserApiFp(configuration).userApiKeysGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+         * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
          * @summary Revoke a User API Key.
-         * @param {string} key Key
+         * @param {string} keyOrHash Key or Hash
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysKeyDelete(key: string, options?: any) {
-            return UserApiFp(configuration).userApiKeysKeyDelete(key, options)(fetch, basePath);
+        userApiKeysKeyOrHashDelete(keyOrHash: string, options?: any) {
+            return UserApiFp(configuration).userApiKeysKeyOrHashDelete(keyOrHash, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
@@ -7759,15 +7771,15 @@ export class UserApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
      * @summary Revoke a User API Key.
-     * @param {string} key Key
+     * @param {string} keyOrHash Key or Hash
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public userApiKeysKeyDelete(key: string, options?: any) {
-        return UserApiFp(this.configuration).userApiKeysKeyDelete(key, options)(this.fetch, this.basePath);
+    public userApiKeysKeyOrHashDelete(keyOrHash: string, options?: any) {
+        return UserApiFp(this.configuration).userApiKeysKeyOrHashDelete(keyOrHash, options)(this.fetch, this.basePath);
     }
 
     /**

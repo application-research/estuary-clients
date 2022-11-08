@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T00:37:33.715Z")
 
 @Validated
 @Api(value = "user", description = "the user API")
@@ -44,17 +44,17 @@ public interface UserApi {
     ResponseEntity<List<List<MainGetApiKeysResp>>> userApiKeysGet();
 
 
-    @ApiOperation(value = "Revoke a User API Key.", nickname = "userApiKeysKeyDelete", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.", response = String.class, authorizations = {
+    @ApiOperation(value = "Revoke a User API Key.", nickname = "userApiKeysKeyOrHashDelete", notes = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.", response = String.class, authorizations = {
         @Authorization(value = "bearerAuth")
     }, tags={ "User", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = String.class),
         @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
         @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    @RequestMapping(value = "/user/api-keys/{key}",
+    @RequestMapping(value = "/user/api-keys/{key_or_hash}",
         produces = { "application/json" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<String> userApiKeysKeyDelete(@ApiParam(value = "Key",required=true) @PathVariable("key") String key);
+    ResponseEntity<String> userApiKeysKeyOrHashDelete(@ApiParam(value = "Key or Hash",required=true) @PathVariable("key_or_hash") String keyOrHash);
 
 
     @ApiOperation(value = "Create API keys for a user", nickname = "userApiKeysPost", notes = "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.", response = MainGetApiKeysResp.class, authorizations = {

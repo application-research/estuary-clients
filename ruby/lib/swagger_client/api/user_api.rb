@@ -66,30 +66,30 @@ module SwaggerClient
       return data, status_code, headers
     end
     # Revoke a User API Key.
-    # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-    # @param key Key
+    # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+    # @param key_or_hash Key or Hash
     # @param [Hash] opts the optional parameters
     # @return [String]
-    def user_api_keys_key_delete(key, opts = {})
-      data, _status_code, _headers = user_api_keys_key_delete_with_http_info(key, opts)
+    def user_api_keys_key_or_hash_delete(key_or_hash, opts = {})
+      data, _status_code, _headers = user_api_keys_key_or_hash_delete_with_http_info(key_or_hash, opts)
       data
     end
 
     # Revoke a User API Key.
-    # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-    # @param key Key
+    # This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+    # @param key_or_hash Key or Hash
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
-    def user_api_keys_key_delete_with_http_info(key, opts = {})
+    def user_api_keys_key_or_hash_delete_with_http_info(key_or_hash, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_key_delete ...'
+        @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_key_or_hash_delete ...'
       end
-      # verify the required parameter 'key' is set
-      if @api_client.config.client_side_validation && key.nil?
-        fail ArgumentError, "Missing the required parameter 'key' when calling UserApi.user_api_keys_key_delete"
+      # verify the required parameter 'key_or_hash' is set
+      if @api_client.config.client_side_validation && key_or_hash.nil?
+        fail ArgumentError, "Missing the required parameter 'key_or_hash' when calling UserApi.user_api_keys_key_or_hash_delete"
       end
       # resource path
-      local_var_path = '/user/api-keys/{key}'.sub('{' + 'key' + '}', key.to_s)
+      local_var_path = '/user/api-keys/{key_or_hash}'.sub('{' + 'key_or_hash' + '}', key_or_hash.to_s)
 
       # query parameters
       query_params = {}
@@ -113,7 +113,7 @@ module SwaggerClient
         :auth_names => auth_names,
         :return_type => 'String')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: UserApi#user_api_keys_key_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: UserApi#user_api_keys_key_or_hash_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

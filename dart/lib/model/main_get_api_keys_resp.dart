@@ -5,13 +5,19 @@ class MainGetApiKeysResp {
   String expiry = null;
   
 
+  String label = null;
+  
+
   String token = null;
+  
+
+  String tokenHash = null;
   
   MainGetApiKeysResp();
 
   @override
   String toString() {
-    return 'MainGetApiKeysResp[expiry=$expiry, token=$token, ]';
+    return 'MainGetApiKeysResp[expiry=$expiry, label=$label, token=$token, tokenHash=$tokenHash, ]';
   }
 
   MainGetApiKeysResp.fromJson(Map<String, dynamic> json) {
@@ -19,15 +25,23 @@ class MainGetApiKeysResp {
     expiry =
         json['expiry']
     ;
+    label =
+        json['label']
+    ;
     token =
         json['token']
+    ;
+    tokenHash =
+        json['tokenHash']
     ;
   }
 
   Map<String, dynamic> toJson() {
     return {
       'expiry': expiry,
-      'token': token
+      'label': label,
+      'token': token,
+      'tokenHash': tokenHash
      };
   }
 

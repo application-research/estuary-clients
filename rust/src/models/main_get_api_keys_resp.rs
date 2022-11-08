@@ -16,15 +16,21 @@ use serde_json::Value;
 pub struct MainGetApiKeysResp {
   #[serde(rename = "expiry")]
   expiry: Option<String>,
+  #[serde(rename = "label")]
+  label: Option<String>,
   #[serde(rename = "token")]
-  token: Option<String>
+  token: Option<String>,
+  #[serde(rename = "tokenHash")]
+  token_hash: Option<String>
 }
 
 impl MainGetApiKeysResp {
   pub fn new() -> MainGetApiKeysResp {
     MainGetApiKeysResp {
       expiry: None,
-      token: None
+      label: None,
+      token: None,
+      token_hash: None
     }
   }
 
@@ -45,6 +51,23 @@ impl MainGetApiKeysResp {
     self.expiry = None;
   }
 
+  pub fn set_label(&mut self, label: String) {
+    self.label = Some(label);
+  }
+
+  pub fn with_label(mut self, label: String) -> MainGetApiKeysResp {
+    self.label = Some(label);
+    self
+  }
+
+  pub fn label(&self) -> Option<&String> {
+    self.label.as_ref()
+  }
+
+  pub fn reset_label(&mut self) {
+    self.label = None;
+  }
+
   pub fn set_token(&mut self, token: String) {
     self.token = Some(token);
   }
@@ -60,6 +83,23 @@ impl MainGetApiKeysResp {
 
   pub fn reset_token(&mut self) {
     self.token = None;
+  }
+
+  pub fn set_token_hash(&mut self, token_hash: String) {
+    self.token_hash = Some(token_hash);
+  }
+
+  pub fn with_token_hash(mut self, token_hash: String) -> MainGetApiKeysResp {
+    self.token_hash = Some(token_hash);
+    self
+  }
+
+  pub fn token_hash(&self) -> Option<&String> {
+    self.token_hash.as_ref()
+  }
+
+  pub fn reset_token_hash(&mut self) {
+    self.token_hash = None;
   }
 
 }

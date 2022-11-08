@@ -6,7 +6,13 @@ function New-MainGetApiKeysResp {
         ${expiry},
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
         [String]
-        ${token}
+        ${label},
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${token},
+        [Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
+        [String]
+        ${tokenHash}
     )
 
     Process {
@@ -15,7 +21,9 @@ function New-MainGetApiKeysResp {
 
         New-Object -TypeName estuary-client.Model.MainGetApiKeysResp -ArgumentList @(
             ${expiry},
-            ${token}
+            ${label},
+            ${token},
+            ${tokenHash}
         )
     }
 }

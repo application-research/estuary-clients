@@ -33,17 +33,17 @@ class UserApi {
                     List.class )
                     
     }
-    def userApiKeysKeyDelete ( String key, Closure onSuccess, Closure onFailure)  {
+    def userApiKeysKeyOrHashDelete ( String keyOrHash, Closure onSuccess, Closure onFailure)  {
         // create path and map path parameters (TODO)
-        String resourcePath = "/user/api-keys/{key}"
+        String resourcePath = "/user/api-keys/{key_or_hash}"
 
         // query params
         def queryParams = [:]
         def headerParams = [:]
     
         // verify required params are set
-        if (key == null) {
-            throw new RuntimeException("missing required params key")
+        if (keyOrHash == null) {
+            throw new RuntimeException("missing required params keyOrHash")
         }
 
         

@@ -47,23 +47,23 @@ namespace estuary-client.Api
         /// Revoke a User API Key.
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>string</returns>
-        string UserApiKeysKeyDelete (string key);
+        string UserApiKeysKeyOrHashDelete (string keyOrHash);
 
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> UserApiKeysKeyDeleteWithHttpInfo (string key);
+        ApiResponse<string> UserApiKeysKeyOrHashDeleteWithHttpInfo (string keyOrHash);
         /// <summary>
         /// Create API keys for a user
         /// </summary>
@@ -150,23 +150,23 @@ namespace estuary-client.Api
         /// Revoke a User API Key.
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> UserApiKeysKeyDeleteAsync (string key);
+        System.Threading.Tasks.Task<string> UserApiKeysKeyOrHashDeleteAsync (string keyOrHash);
 
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> UserApiKeysKeyDeleteAsyncWithHttpInfo (string key);
+        System.Threading.Tasks.Task<ApiResponse<string>> UserApiKeysKeyOrHashDeleteAsyncWithHttpInfo (string keyOrHash);
         /// <summary>
         /// Create API keys for a user
         /// </summary>
@@ -460,30 +460,30 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>string</returns>
-        public string UserApiKeysKeyDelete (string key)
+        public string UserApiKeysKeyOrHashDelete (string keyOrHash)
         {
-             ApiResponse<string> localVarResponse = UserApiKeysKeyDeleteWithHttpInfo(key);
+             ApiResponse<string> localVarResponse = UserApiKeysKeyOrHashDeleteWithHttpInfo(keyOrHash);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > UserApiKeysKeyDeleteWithHttpInfo (string key)
+        public ApiResponse< string > UserApiKeysKeyOrHashDeleteWithHttpInfo (string keyOrHash)
         {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling UserApi->UserApiKeysKeyDelete");
+            // verify the required parameter 'keyOrHash' is set
+            if (keyOrHash == null)
+                throw new ApiException(400, "Missing required parameter 'keyOrHash' when calling UserApi->UserApiKeysKeyOrHashDelete");
 
-            var localVarPath = "/user/api-keys/{key}";
+            var localVarPath = "/user/api-keys/{key_or_hash}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -504,7 +504,7 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
+            if (keyOrHash != null) localVarPathParams.Add("key_or_hash", this.Configuration.ApiClient.ParameterToString(keyOrHash)); // path parameter
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -521,7 +521,7 @@ namespace estuary-client.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UserApiKeysKeyDelete", localVarResponse);
+                Exception exception = ExceptionFactory("UserApiKeysKeyOrHashDelete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -531,31 +531,31 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> UserApiKeysKeyDeleteAsync (string key)
+        public async System.Threading.Tasks.Task<string> UserApiKeysKeyOrHashDeleteAsync (string keyOrHash)
         {
-             ApiResponse<string> localVarResponse = await UserApiKeysKeyDeleteAsyncWithHttpInfo(key);
+             ApiResponse<string> localVarResponse = await UserApiKeysKeyOrHashDeleteAsyncWithHttpInfo(keyOrHash);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">Key</param>
+        /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> UserApiKeysKeyDeleteAsyncWithHttpInfo (string key)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> UserApiKeysKeyOrHashDeleteAsyncWithHttpInfo (string keyOrHash)
         {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling UserApi->UserApiKeysKeyDelete");
+            // verify the required parameter 'keyOrHash' is set
+            if (keyOrHash == null)
+                throw new ApiException(400, "Missing required parameter 'keyOrHash' when calling UserApi->UserApiKeysKeyOrHashDelete");
 
-            var localVarPath = "/user/api-keys/{key}";
+            var localVarPath = "/user/api-keys/{key_or_hash}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -576,7 +576,7 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
+            if (keyOrHash != null) localVarPathParams.Add("key_or_hash", this.Configuration.ApiClient.ParameterToString(keyOrHash)); // path parameter
 
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -593,7 +593,7 @@ namespace estuary-client.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UserApiKeysKeyDelete", localVarResponse);
+                Exception exception = ExceptionFactory("UserApiKeysKeyOrHashDelete", localVarResponse);
                 if (exception != null) throw exception;
             }
 

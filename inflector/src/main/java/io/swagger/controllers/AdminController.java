@@ -13,7 +13,7 @@ import io.swagger.model.*;
 import java.util.List;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-07T20:05:41.507Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-08T00:36:33.575Z")
 public class AdminController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map

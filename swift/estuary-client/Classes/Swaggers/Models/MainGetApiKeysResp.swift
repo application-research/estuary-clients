@@ -10,7 +10,9 @@ import Foundation
 
 public class MainGetApiKeysResp: JSONEncodable {
     public var expiry: String?
+    public var label: String?
     public var token: String?
+    public var tokenHash: String?
 
     public init() {}
 
@@ -18,7 +20,9 @@ public class MainGetApiKeysResp: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["expiry"] = self.expiry
+        nillableDictionary["label"] = self.label
         nillableDictionary["token"] = self.token
+        nillableDictionary["tokenHash"] = self.tokenHash
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

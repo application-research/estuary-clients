@@ -62,13 +62,13 @@
           done();
         });
       });
-      describe('userApiKeysKeyDelete', function() {
-        it('should call userApiKeysKeyDelete successfully', function(done) {
-          // TODO: uncomment, update parameter values for userApiKeysKeyDelete call and complete the assertions
+      describe('userApiKeysKeyOrHashDelete', function() {
+        it('should call userApiKeysKeyOrHashDelete successfully', function(done) {
+          // TODO: uncomment, update parameter values for userApiKeysKeyOrHashDelete call and complete the assertions
           /*
-          var key = "key_example";
+          var keyOrHash = "keyOrHash_example";
 
-          instance.userApiKeysKeyDelete(key, function(error, data, response) {
+          instance.userApiKeysKeyOrHashDelete(keyOrHash, function(error, data, response) {
             if (error) {
               done(error);
               return;
@@ -101,8 +101,12 @@
             expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
             expect(data.expiry).to.be.a('string');
             expect(data.expiry).to.be("");
+            expect(data.label).to.be.a('string');
+            expect(data.label).to.be("");
             expect(data.token).to.be.a('string');
             expect(data.token).to.be("");
+            expect(data.tokenHash).to.be.a('string');
+            expect(data.tokenHash).to.be("");
 
             done();
           });

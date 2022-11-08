@@ -129,8 +129,8 @@ newtype IgnoreDupes = IgnoreDupes { unIgnoreDupes :: Text } deriving (P.Eq, P.Sh
 -- ** IgnoreFailed
 newtype IgnoreFailed = IgnoreFailed { unIgnoreFailed :: Text } deriving (P.Eq, P.Show)
 
--- ** Key
-newtype Key = Key { unKey :: Text } deriving (P.Eq, P.Show)
+-- ** KeyOrHash
+newtype KeyOrHash = KeyOrHash { unKeyOrHash :: Text } deriving (P.Eq, P.Show)
 
 -- ** LazyProvide
 newtype LazyProvide = LazyProvide { unLazyProvide :: Text } deriving (P.Eq, P.Show)
@@ -372,7 +372,9 @@ mkMainEstimateDealBody =
 -- | MainGetApiKeysResp
 data MainGetApiKeysResp = MainGetApiKeysResp
   { mainGetApiKeysRespExpiry :: !(Maybe Text) -- ^ "expiry"
+  , mainGetApiKeysRespLabel :: !(Maybe Text) -- ^ "label"
   , mainGetApiKeysRespToken :: !(Maybe Text) -- ^ "token"
+  , mainGetApiKeysRespTokenHash :: !(Maybe Text) -- ^ "tokenHash"
   } deriving (P.Show, P.Eq, P.Typeable)
 
 -- | FromJSON MainGetApiKeysResp
@@ -380,14 +382,18 @@ instance A.FromJSON MainGetApiKeysResp where
   parseJSON = A.withObject "MainGetApiKeysResp" $ \o ->
     MainGetApiKeysResp
       <$> (o .:? "expiry")
+      <*> (o .:? "label")
       <*> (o .:? "token")
+      <*> (o .:? "tokenHash")
 
 -- | ToJSON MainGetApiKeysResp
 instance A.ToJSON MainGetApiKeysResp where
   toJSON MainGetApiKeysResp {..} =
    _omitNulls
       [ "expiry" .= mainGetApiKeysRespExpiry
+      , "label" .= mainGetApiKeysRespLabel
       , "token" .= mainGetApiKeysRespToken
+      , "tokenHash" .= mainGetApiKeysRespTokenHash
       ]
 
 
@@ -397,7 +403,9 @@ mkMainGetApiKeysResp
 mkMainGetApiKeysResp =
   MainGetApiKeysResp
   { mainGetApiKeysRespExpiry = Nothing
+  , mainGetApiKeysRespLabel = Nothing
   , mainGetApiKeysRespToken = Nothing
+  , mainGetApiKeysRespTokenHash = Nothing
   }
 
 -- ** MainImportDealBody

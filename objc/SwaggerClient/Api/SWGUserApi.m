@@ -104,29 +104,29 @@ NSInteger kSWGUserApiMissingParamErrorCode = 234513;
 
 ///
 /// Revoke a User API Key.
-/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-///  @param key Key 
+/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+///  @param keyOrHash Key or Hash 
 ///
 ///  @returns NSString*
 ///
--(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
+-(NSURLSessionTask*) userApiKeysKeyOrHashDeleteWithKeyOrHash: (NSString*) keyOrHash
     completionHandler: (void (^)(NSString* output, NSError* error)) handler {
-    // verify the required parameter 'key' is set
-    if (key == nil) {
-        NSParameterAssert(key);
+    // verify the required parameter 'keyOrHash' is set
+    if (keyOrHash == nil) {
+        NSParameterAssert(keyOrHash);
         if(handler) {
-            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"key"] };
+            NSDictionary * userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:NSLocalizedString(@"Missing required parameter '%@'", nil),@"keyOrHash"] };
             NSError* error = [NSError errorWithDomain:kSWGUserApiErrorDomain code:kSWGUserApiMissingParamErrorCode userInfo:userInfo];
             handler(nil, error);
         }
         return nil;
     }
 
-    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/api-keys/{key}"];
+    NSMutableString* resourcePath = [NSMutableString stringWithFormat:@"/user/api-keys/{key_or_hash}"];
 
     NSMutableDictionary *pathParams = [[NSMutableDictionary alloc] init];
-    if (key != nil) {
-        pathParams[@"key"] = key;
+    if (keyOrHash != nil) {
+        pathParams[@"key_or_hash"] = keyOrHash;
     }
 
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];

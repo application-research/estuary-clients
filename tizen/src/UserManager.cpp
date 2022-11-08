@@ -186,7 +186,7 @@ bool UserManager::userApiKeysGetSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool userApiKeysKeyDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool userApiKeysKeyOrHashDeleteProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
 	void(* handler)(std::string, Error, void* )
@@ -246,8 +246,8 @@ static bool userApiKeysKeyDeleteProcessor(MemoryStruct_s p_chunk, long code, cha
 			}
 }
 
-static bool userApiKeysKeyDeleteHelper(char * accessToken,
-	std::string key, 
+static bool userApiKeysKeyOrHashDeleteHelper(char * accessToken,
+	std::string keyOrHash, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -268,15 +268,15 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/user/api-keys/{key}");
+	string url("/user/api-keys/{key_or_hash}");
 	int pos;
 
-	string s_key("{");
-	s_key.append("key");
-	s_key.append("}");
-	pos = url.find(s_key);
-	url.erase(pos, s_key.length());
-	url.insert(pos, stringify(&key, "std::string"));
+	string s_keyOrHash("{");
+	s_keyOrHash.append("key_or_hash");
+	s_keyOrHash.append("}");
+	pos = url.find(s_keyOrHash);
+	url.erase(pos, s_keyOrHash.length());
+	url.insert(pos, stringify(&keyOrHash, "std::string"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -293,7 +293,7 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(UserManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = userApiKeysKeyDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = userApiKeysKeyOrHashDeleteProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -311,7 +311,7 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (UserManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userApiKeysKeyDeleteProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), userApiKeysKeyOrHashDeleteProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -323,23 +323,23 @@ static bool userApiKeysKeyDeleteHelper(char * accessToken,
 
 
 
-bool UserManager::userApiKeysKeyDeleteAsync(char * accessToken,
-	std::string key, 
+bool UserManager::userApiKeysKeyOrHashDeleteAsync(char * accessToken,
+	std::string keyOrHash, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
-	return userApiKeysKeyDeleteHelper(accessToken,
-	key, 
+	return userApiKeysKeyOrHashDeleteHelper(accessToken,
+	keyOrHash, 
 	handler, userData, true);
 }
 
-bool UserManager::userApiKeysKeyDeleteSync(char * accessToken,
-	std::string key, 
+bool UserManager::userApiKeysKeyOrHashDeleteSync(char * accessToken,
+	std::string keyOrHash, 
 	void(* handler)(std::string, Error, void* )
 	, void* userData)
 {
-	return userApiKeysKeyDeleteHelper(accessToken,
-	key, 
+	return userApiKeysKeyOrHashDeleteHelper(accessToken,
+	keyOrHash, 
 	handler, userData, false);
 }
 

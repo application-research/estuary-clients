@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-07T20:05:43.812Z
+  - Build date: 2022-11-08T00:36:35.475Z
 
 This is the API for the Estuary application.
 
@@ -197,7 +197,7 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 *UserApi* | [**userApiKeysGet**](docs/UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-*UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user

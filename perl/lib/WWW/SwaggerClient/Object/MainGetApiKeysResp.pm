@@ -150,9 +150,23 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'label' => {
+    	datatype => 'string',
+    	base_name => 'label',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
     'token' => {
     	datatype => 'string',
     	base_name => 'token',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
+    'token_hash' => {
+    	datatype => 'string',
+    	base_name => 'tokenHash',
     	description => '',
     	format => '',
     	read_only => '',
@@ -161,12 +175,16 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'expiry' => 'string',
-    'token' => 'string'
+    'label' => 'string',
+    'token' => 'string',
+    'token_hash' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'expiry' => 'expiry',
-    'token' => 'token'
+    'label' => 'label',
+    'token' => 'token',
+    'token_hash' => 'tokenHash'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

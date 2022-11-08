@@ -15,6 +15,8 @@ package io.swagger.client.model
 
 case class GetApiKeysResp (
   expiry: Option[String] = None,
-  token: Option[String] = None
+  label: Option[String] = None,
+  token: Option[String] = None,
+  tokenHash: Option[String] = None
 )
 

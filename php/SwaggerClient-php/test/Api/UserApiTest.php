@@ -82,12 +82,12 @@ class UserApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for userApiKeysKeyDelete
+     * Test case for userApiKeysKeyOrHashDelete
      *
      * Revoke a User API Key..
      *
      */
-    public function testUserApiKeysKeyDelete()
+    public function testUserApiKeysKeyOrHashDelete()
     {
     }
 

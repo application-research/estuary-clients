@@ -701,7 +701,7 @@ margin-bottom: 20px;
         defs["main.createCollectionBody"] = {"type":"object","properties":{"description":{"type":"string"},"name":{"type":"string"}}};
         defs["main.deleteContentFromCollectionBody"] = {"type":"object","properties":{"by":{"type":"string"},"value":{"type":"string"}}};
         defs["main.estimateDealBody"] = {"type":"object","properties":{"durationBlks":{"type":"integer"},"replication":{"type":"integer"},"size":{"type":"integer"},"verified":{"type":"boolean"}}};
-        defs["main.getApiKeysResp"] = {"type":"object","properties":{"expiry":{"type":"string"},"token":{"type":"string"}}};
+        defs["main.getApiKeysResp"] = {"type":"object","properties":{"expiry":{"type":"string"},"label":{"type":"string"},"token":{"type":"string"},"tokenHash":{"type":"string"}}};
         defs["main.importDealBody"] = {"type":"object","properties":{"coluuid":{"type":"string"},"dealIDs":{"type":"array","items":{"type":"integer"}},"dir":{"type":"string"},"name":{"type":"string"}}};
         defs["types.IpfsPin"] = {"type":"object","properties":{"cid":{"type":"string"},"meta":{"type":"object","properties":{}},"name":{"type":"string"},"origins":{"type":"array","items":{"type":"string"}}}};
         defs["util.ContentAddIpfsBody"] = {"type":"object","properties":{"coluuid":{"type":"string"},"dir":{"type":"string"},"filename":{"type":"string"},"peers":{"type":"array","items":{"type":"string"}},"root":{"type":"string"}}};
@@ -992,8 +992,8 @@ margin-bottom: 20px;
                     <li data-group="User" data-name="userApiKeysGet" class="">
                       <a href="#api-User-userApiKeysGet">userApiKeysGet</a>
                     </li>
-                    <li data-group="User" data-name="userApiKeysKeyDelete" class="">
-                      <a href="#api-User-userApiKeysKeyDelete">userApiKeysKeyDelete</a>
+                    <li data-group="User" data-name="userApiKeysKeyOrHashDelete" class="">
+                      <a href="#api-User-userApiKeysKeyOrHashDelete">userApiKeysKeyOrHashDelete</a>
                     </li>
                     <li data-group="User" data-name="userApiKeysPost" class="">
                       <a href="#api-User-userApiKeysPost">userApiKeysPost</a>
@@ -36253,41 +36253,41 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-User-userApiKeysKeyDelete">
-                      <article id="api-User-userApiKeysKeyDelete-0" data-group="User" data-name="userApiKeysKeyDelete" data-version="0">
+                    <div id="api-User-userApiKeysKeyOrHashDelete">
+                      <article id="api-User-userApiKeysKeyOrHashDelete-0" data-group="User" data-name="userApiKeysKeyOrHashDelete" data-version="0">
                         <div class="pull-left">
-                          <h1>userApiKeysKeyDelete</h1>
+                          <h1>userApiKeysKeyOrHashDelete</h1>
                           <p>Revoke a User API Key.</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</p>
+                        <p class="marked">This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/user/api-keys/{key}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/user/api-keys/{key_or_hash}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-User-userApiKeysKeyDelete-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-User-userApiKeysKeyDelete-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-User-userApiKeysKeyDelete-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-userApiKeysKeyDelete-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-User-userApiKeysKeyOrHashDelete-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-java">Java</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-User-userApiKeysKeyOrHashDelete-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-User-userApiKeysKeyDelete-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "Authorization: [[apiKey]]" "https://api.estuary.tech/user/api-keys/{key}"</code></pre>
+                          <div class="tab-pane active" id="examples-User-userApiKeysKeyOrHashDelete-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE -H "Authorization: [[apiKey]]" "https://api.estuary.tech/user/api-keys/{key_or_hash}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-java">
+                          <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -36308,41 +36308,41 @@ public class UserApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         UserApi apiInstance = new UserApi();
-        String key = key_example; // String | Key
+        String keyOrHash = keyOrHash_example; // String | Key or Hash
         try {
-            'String' result = apiInstance.userApiKeysKeyDelete(key);
+            'String' result = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userApiKeysKeyDelete");
+            System.err.println("Exception when calling UserApi#userApiKeysKeyOrHashDelete");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-android">
+                          <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.UserApi;
 
 public class UserApiExample {
 
     public static void main(String[] args) {
         UserApi apiInstance = new UserApi();
-        String key = key_example; // String | Key
+        String keyOrHash = keyOrHash_example; // String | Key or Hash
         try {
-            'String' result = apiInstance.userApiKeysKeyDelete(key);
+            'String' result = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#userApiKeysKeyDelete");
+            System.err.println("Exception when calling UserApi#userApiKeysKeyOrHashDelete");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-groovy">
+  <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-objc">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: bearerAuth)
@@ -36350,12 +36350,12 @@ public class UserApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 
-String *key = key_example; // Key
+String *keyOrHash = keyOrHash_example; // Key or Hash
 
 UserApi *apiInstance = [[UserApi alloc] init];
 
 // Revoke a User API Key.
-[apiInstance userApiKeysKeyDeleteWith:key
+[apiInstance userApiKeysKeyOrHashDeleteWith:keyOrHash
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -36367,7 +36367,7 @@ UserApi *apiInstance = [[UserApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-javascript">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
 var defaultClient = EstuaryApi.ApiClient.instance;
 
@@ -36379,7 +36379,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 
 var api = new EstuaryApi.UserApi()
 
-var key = key_example; // {String} Key
+var keyOrHash = keyOrHash_example; // {String} Key or Hash
 
 
 var callback = function(error, data, response) {
@@ -36389,14 +36389,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.userApiKeysKeyDelete(key, callback);
+api.userApiKeysKeyOrHashDelete(keyOrHash, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-angular">
+                            <!--<div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-csharp">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using estuary-client.Api;
@@ -36405,7 +36405,7 @@ using estuary-client.Model;
 
 namespace Example
 {
-    public class userApiKeysKeyDeleteExample
+    public class userApiKeysKeyOrHashDeleteExample
     {
         public void main()
         {
@@ -36416,17 +36416,17 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new UserApi();
-            var key = key_example;  // String | Key
+            var keyOrHash = keyOrHash_example;  // String | Key or Hash
 
             try
             {
                 // Revoke a User API Key.
-                'String' result = apiInstance.userApiKeysKeyDelete(key);
+                'String' result = apiInstance.userApiKeysKeyOrHashDelete(keyOrHash);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling UserApi.userApiKeysKeyDelete: " + e.Message );
+                Debug.Print("Exception when calling UserApi.userApiKeysKeyOrHashDelete: " + e.Message );
             }
         }
     }
@@ -36434,7 +36434,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-php">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -36444,18 +36444,18 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\UserApi();
-$key = key_example; // String | Key
+$keyOrHash = keyOrHash_example; // String | Key or Hash
 
 try {
-    $result = $api_instance->userApiKeysKeyDelete($key);
+    $result = $api_instance->userApiKeysKeyOrHashDelete($keyOrHash);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserApi->userApiKeysKeyDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserApi->userApiKeysKeyOrHashDelete: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-perl">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::UserApi;
@@ -36466,18 +36466,18 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::UserApi->new();
-my $key = key_example; # String | Key
+my $keyOrHash = keyOrHash_example; # String | Key or Hash
 
 eval { 
-    my $result = $api_instance->userApiKeysKeyDelete(key => $key);
+    my $result = $api_instance->userApiKeysKeyOrHashDelete(keyOrHash => $keyOrHash);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling UserApi->userApiKeysKeyDelete: $@\n";
+    warn "Exception when calling UserApi->userApiKeysKeyOrHashDelete: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-userApiKeysKeyDelete-0-python">
+                            <div class="tab-pane" id="examples-User-userApiKeysKeyOrHashDelete-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -36491,14 +36491,14 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.UserApi()
-key = key_example # String | Key
+keyOrHash = keyOrHash_example # String | Key or Hash
 
 try: 
     # Revoke a User API Key.
-    api_response = api_instance.user_api_keys_key_delete(key)
+    api_response = api_instance.user_api_keys_key_or_hash_delete(keyOrHash)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UserApi->userApiKeysKeyDelete: %s\n" % e)</code></pre>
+    print("Exception when calling UserApi->userApiKeysKeyOrHashDelete: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -36510,11 +36510,11 @@ except ApiException as e:
                                   <th width="150px">Name</th>
                                   <th>Description</th>
                                 </tr>
-                                  <tr><td style="width:150px;">key*</td>
+                                  <tr><td style="width:150px;">key_or_hash*</td>
 <td>
 
 
-    <div id="d2e199_userApiKeysKeyDelete_key">
+    <div id="d2e199_userApiKeysKeyOrHashDelete_keyOrHash">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -36522,7 +36522,7 @@ except ApiException as e:
                 </span>
 
                     <div class="inner description">
-                        Key
+                        Key or Hash
                     </div>
             </div>
                 <div class="inner required">
@@ -36544,14 +36544,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-userApiKeysKeyDelete-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-userApiKeysKeyOrHashDelete-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-userApiKeysKeyDelete-200-schema">
-                                  <div id='responses-userApiKeysKeyDelete-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-userApiKeysKeyOrHashDelete-200-schema">
+                                  <div id='responses-userApiKeysKeyOrHashDelete-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -36572,14 +36572,14 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-userApiKeysKeyDelete-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-userApiKeysKeyDelete-200-schema-200');
+                                        $('#responses-userApiKeysKeyOrHashDelete-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userApiKeysKeyOrHashDelete-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-userApiKeysKeyDelete-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-userApiKeysKeyOrHashDelete-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -36587,14 +36587,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-userApiKeysKeyDelete-400-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-userApiKeysKeyOrHashDelete-400-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-userApiKeysKeyDelete-400-schema">
-                                  <div id='responses-userApiKeysKeyDelete-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-userApiKeysKeyOrHashDelete-400-schema">
+                                  <div id='responses-userApiKeysKeyOrHashDelete-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -36615,14 +36615,14 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-userApiKeysKeyDelete-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-userApiKeysKeyDelete-400-schema-400');
+                                        $('#responses-userApiKeysKeyOrHashDelete-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userApiKeysKeyOrHashDelete-400-schema-400');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-userApiKeysKeyDelete-400-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-userApiKeysKeyOrHashDelete-400-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -36630,14 +36630,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-userApiKeysKeyDelete-500-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-userApiKeysKeyOrHashDelete-500-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-userApiKeysKeyDelete-500-schema">
-                                  <div id='responses-userApiKeysKeyDelete-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-userApiKeysKeyOrHashDelete-500-schema">
+                                  <div id='responses-userApiKeysKeyOrHashDelete-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -36658,14 +36658,14 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-userApiKeysKeyDelete-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-userApiKeysKeyDelete-500-schema-500');
+                                        $('#responses-userApiKeysKeyOrHashDelete-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-userApiKeysKeyOrHashDelete-500-schema-500');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-userApiKeysKeyDelete-500-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-userApiKeysKeyOrHashDelete-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

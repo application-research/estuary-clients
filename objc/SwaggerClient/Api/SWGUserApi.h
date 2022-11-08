@@ -39,16 +39,16 @@ extern NSInteger kSWGUserApiMissingParamErrorCode;
 
 
 /// Revoke a User API Key.
-/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+/// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 ///
-/// @param key Key
+/// @param keyOrHash Key or Hash
 /// 
 ///  code:200 message:"OK",
 ///  code:400 message:"Bad Request",
 ///  code:500 message:"Internal Server Error"
 ///
 /// @return NSString*
--(NSURLSessionTask*) userApiKeysKeyDeleteWithKey: (NSString*) key
+-(NSURLSessionTask*) userApiKeysKeyOrHashDeleteWithKeyOrHash: (NSString*) keyOrHash
     completionHandler: (void (^)(NSString* output, NSError* error)) handler;
 
 

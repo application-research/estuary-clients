@@ -130,7 +130,9 @@ instance Arbitrary MainGetApiKeysResp where
   arbitrary =
     MainGetApiKeysResp
       <$> arbitrary -- mainGetApiKeysRespExpiry :: Maybe Text
+      <*> arbitrary -- mainGetApiKeysRespLabel :: Maybe Text
       <*> arbitrary -- mainGetApiKeysRespToken :: Maybe Text
+      <*> arbitrary -- mainGetApiKeysRespTokenHash :: Maybe Text
     
 instance Arbitrary MainImportDealBody where
   arbitrary =

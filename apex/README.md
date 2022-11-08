@@ -150,7 +150,7 @@ Class | Method | HTTP request | Description
 *SwagPublicApi* | [**publicNetPeersGet**](docs/SwagPublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *SwagPublicApi* | [**publicStatsGet**](docs/SwagPublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 *SwagUserApi* | [**userApiKeysGet**](docs/SwagUserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-*SwagUserApi* | [**userApiKeysKeyDelete**](docs/SwagUserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*SwagUserApi* | [**userApiKeysKeyOrHashDelete**](docs/SwagUserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SwagUserApi* | [**userApiKeysPost**](docs/SwagUserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *SwagUserApi* | [**userExportGet**](docs/SwagUserApi.md#userExportGet) | **GET** /user/export | Export user data
 *SwagUserApi* | [**userStatsGet**](docs/SwagUserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user

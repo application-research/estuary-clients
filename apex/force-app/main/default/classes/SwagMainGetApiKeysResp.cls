@@ -21,15 +21,29 @@ public class SwagMainGetApiKeysResp {
     public String expiry { get; set; }
 
     /**
+     * Get label
+     * @return label
+     */
+    public String label { get; set; }
+
+    /**
      * Get token
      * @return token
      */
     public String token { get; set; }
 
+    /**
+     * Get tokenHash
+     * @return tokenHash
+     */
+    public String tokenHash { get; set; }
+
     public static SwagMainGetApiKeysResp getExample() {
         SwagMainGetApiKeysResp mainGetApiKeysResp = new SwagMainGetApiKeysResp();
         mainGetApiKeysResp.expiry = 'aeiou';
+        mainGetApiKeysResp.label = 'aeiou';
         mainGetApiKeysResp.token = 'aeiou';
+        mainGetApiKeysResp.tokenHash = 'aeiou';
         return mainGetApiKeysResp;
     }
 
@@ -37,7 +51,9 @@ public class SwagMainGetApiKeysResp {
         if (obj instanceof SwagMainGetApiKeysResp) {
             SwagMainGetApiKeysResp mainGetApiKeysResp = (SwagMainGetApiKeysResp) obj;
             return this.expiry == mainGetApiKeysResp.expiry
-                && this.token == mainGetApiKeysResp.token;
+                && this.label == mainGetApiKeysResp.label
+                && this.token == mainGetApiKeysResp.token
+                && this.tokenHash == mainGetApiKeysResp.tokenHash;
         }
         return false;
     }
@@ -45,7 +61,9 @@ public class SwagMainGetApiKeysResp {
     public Integer hashCode() {
         Integer hashCode = 43;
         hashCode = (17 * hashCode) + (expiry == null ? 0 : System.hashCode(expiry));
+        hashCode = (17 * hashCode) + (label == null ? 0 : System.hashCode(label));
         hashCode = (17 * hashCode) + (token == null ? 0 : System.hashCode(token));
+        hashCode = (17 * hashCode) + (tokenHash == null ? 0 : System.hashCode(tokenHash));
         return hashCode;
     }
 }

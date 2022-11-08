@@ -122,7 +122,9 @@ package body .Models is
    begin
       Into.Start_Entity (Name);
       Into.Write_Entity ("expiry", Value.Expiry);
+      Into.Write_Entity ("label", Value.Label);
       Into.Write_Entity ("token", Value.Token);
+      Into.Write_Entity ("tokenHash", Value.Token_Hash);
       Into.End_Entity (Name);
    end Serialize;
 
@@ -144,7 +146,9 @@ package body .Models is
    begin
       Swagger.Streams.Deserialize (From, Name, Object);
       Swagger.Streams.Deserialize (Object, "expiry", Value.Expiry);
+      Swagger.Streams.Deserialize (Object, "label", Value.Label);
       Swagger.Streams.Deserialize (Object, "token", Value.Token);
+      Swagger.Streams.Deserialize (Object, "tokenHash", Value.Token_Hash);
    end Deserialize;
 
    procedure Deserialize (From  : in Swagger.Value_Type;

@@ -98,20 +98,20 @@ sub user_api_keys_get {
 }
 
 #
-# user_api_keys_key_delete
+# user_api_keys_key_or_hash_delete
 #
 # Revoke a User API Key.
 # 
-# @param string $key Key (required)
+# @param string $key_or_hash Key or Hash (required)
 {
     my $params = {
-    'key' => {
+    'key_or_hash' => {
         data_type => 'string',
-        description => 'Key',
+        description => 'Key or Hash',
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'user_api_keys_key_delete' } = { 
+    __PACKAGE__->method_documentation->{ 'user_api_keys_key_or_hash_delete' } = { 
     	summary => 'Revoke a User API Key.',
         params => $params,
         returns => 'string',
@@ -119,16 +119,16 @@ sub user_api_keys_get {
 }
 # @return string
 #
-sub user_api_keys_key_delete {
+sub user_api_keys_key_or_hash_delete {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'key' is set
-    unless (exists $args{'key'}) {
-      croak("Missing the required parameter 'key' when calling user_api_keys_key_delete");
+    # verify the required parameter 'key_or_hash' is set
+    unless (exists $args{'key_or_hash'}) {
+      croak("Missing the required parameter 'key_or_hash' when calling user_api_keys_key_or_hash_delete");
     }
 
     # parse inputs
-    my $_resource_path = '/user/api-keys/{key}';
+    my $_resource_path = '/user/api-keys/{key_or_hash}';
 
     my $_method = 'DELETE';
     my $query_params = {};
@@ -143,9 +143,9 @@ sub user_api_keys_key_delete {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     # path params
-    if ( exists $args{'key'}) {
-        my $_base_variable = "{" . "key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'key'});
+    if ( exists $args{'key_or_hash'}) {
+        my $_base_variable = "{" . "key_or_hash" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'key_or_hash'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 

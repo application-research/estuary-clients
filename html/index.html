@@ -320,7 +320,7 @@ font-style: italic;
   <h4><a href="#User">User</a></h4>
   <ul>
   <li><a href="#userApiKeysGet"><code><span class="http-method">get</span> /user/api-keys</code></a></li>
-  <li><a href="#userApiKeysKeyDelete"><code><span class="http-method">delete</span> /user/api-keys/{key}</code></a></li>
+  <li><a href="#userApiKeysKeyOrHashDelete"><code><span class="http-method">delete</span> /user/api-keys/{key_or_hash}</code></a></li>
   <li><a href="#userApiKeysPost"><code><span class="http-method">post</span> /user/api-keys</code></a></li>
   <li><a href="#userExportGet"><code><span class="http-method">get</span> /user/export</code></a></li>
   <li><a href="#userStatsGet"><code><span class="http-method">get</span> /user/stats</code></a></li>
@@ -4706,18 +4706,18 @@ font-style: italic;
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="userApiKeysKeyDelete"/>
+  <div class="method"><a name="userApiKeysKeyOrHashDelete"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /user/api-keys/{key}</code></pre></div>
-    <div class="method-summary">Revoke a User API Key. (<span class="nickname">userApiKeysKeyDelete</span>)</div>
-    <div class="method-notes">This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.</div>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /user/api-keys/{key_or_hash}</code></pre></div>
+    <div class="method-summary">Revoke a User API Key. (<span class="nickname">userApiKeysKeyOrHashDelete</span>)</div>
+    <div class="method-notes">This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
-      <div class="param">key (required)</div>
+      <div class="param">key_or_hash (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Key </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Key or Hash </div>
     </div>  <!-- field-items -->
 
 
@@ -4980,7 +4980,9 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">tokenHash (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

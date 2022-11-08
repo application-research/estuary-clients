@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**user_api_keys_get**](UserApi.md#user_api_keys_get) | **Get** /user/api-keys | Get API keys for a user
-[**user_api_keys_key_delete**](UserApi.md#user_api_keys_key_delete) | **Delete** /user/api-keys/{key} | Revoke a User API Key.
+[**user_api_keys_key_or_hash_delete**](UserApi.md#user_api_keys_key_or_hash_delete) | **Delete** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **Post** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **Get** /user/export | Export user data
 [**user_stats_get**](UserApi.md#user_stats_get) | **Get** /user/stats | Create API keys for a user
@@ -35,18 +35,18 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_api_keys_key_delete**
-> String user_api_keys_key_delete(ctx, key)
+# **user_api_keys_key_or_hash_delete**
+> String user_api_keys_key_or_hash_delete(ctx, key_or_hash)
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **key** | **String**| Key | 
+  **key_or_hash** | **String**| Key or Hash | 
 
 ### Return type
 

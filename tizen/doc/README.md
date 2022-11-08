@@ -259,8 +259,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 *userApiKeysGetSync* | *GET* /user/api-keys | Get API keys for a user.
 *userApiKeysGetASync* | *GET* /user/api-keys | Get API keys for a user.
-*userApiKeysKeyDeleteSync* | *DELETE* /user/api-keys/{key} | Revoke a User API Key..
-*userApiKeysKeyDeleteASync* | *DELETE* /user/api-keys/{key} | Revoke a User API Key..
+*userApiKeysKeyOrHashDeleteSync* | *DELETE* /user/api-keys/{key_or_hash} | Revoke a User API Key..
+*userApiKeysKeyOrHashDeleteASync* | *DELETE* /user/api-keys/{key_or_hash} | Revoke a User API Key..
 *userApiKeysPostSync* | *POST* /user/api-keys | Create API keys for a user.
 *userApiKeysPostASync* | *POST* /user/api-keys | Create API keys for a user.
 *userExportGetSync* | *GET* /user/export | Export user data.

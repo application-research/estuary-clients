@@ -197,7 +197,7 @@ Class | Method | HTTP request | Description
 *SWGPublicApi* | [**publicNetPeersGet**](docs/SWGPublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *SWGPublicApi* | [**publicStatsGet**](docs/SWGPublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
 *SWGUserApi* | [**userApiKeysGet**](docs/SWGUserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
-*SWGUserApi* | [**userApiKeysKeyDelete**](docs/SWGUserApi.md#userapikeyskeydelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*SWGUserApi* | [**userApiKeysKeyOrHashDelete**](docs/SWGUserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SWGUserApi* | [**userApiKeysPost**](docs/SWGUserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 *SWGUserApi* | [**userExportGet**](docs/SWGUserApi.md#userexportget) | **GET** /user/export | Export user data
 *SWGUserApi* | [**userStatsGet**](docs/SWGUserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user

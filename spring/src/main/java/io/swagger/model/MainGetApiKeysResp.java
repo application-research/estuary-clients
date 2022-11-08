@@ -13,15 +13,21 @@ import javax.validation.constraints.*;
  * MainGetApiKeysResp
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-07T20:06:52.777Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-08T00:37:33.715Z")
 
 
 public class MainGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;
 
+  @JsonProperty("label")
+  private String label = null;
+
   @JsonProperty("token")
   private String token = null;
+
+  @JsonProperty("tokenHash")
+  private String tokenHash = null;
 
   public MainGetApiKeysResp expiry(String expiry) {
     this.expiry = expiry;
@@ -41,6 +47,26 @@ public class MainGetApiKeysResp   {
 
   public void setExpiry(String expiry) {
     this.expiry = expiry;
+  }
+
+  public MainGetApiKeysResp label(String label) {
+    this.label = label;
+    return this;
+  }
+
+  /**
+   * Get label
+   * @return label
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getLabel() {
+    return label;
+  }
+
+  public void setLabel(String label) {
+    this.label = label;
   }
 
   public MainGetApiKeysResp token(String token) {
@@ -63,6 +89,26 @@ public class MainGetApiKeysResp   {
     this.token = token;
   }
 
+  public MainGetApiKeysResp tokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+    return this;
+  }
+
+  /**
+   * Get tokenHash
+   * @return tokenHash
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getTokenHash() {
+    return tokenHash;
+  }
+
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -74,12 +120,14 @@ public class MainGetApiKeysResp   {
     }
     MainGetApiKeysResp mainGetApiKeysResp = (MainGetApiKeysResp) o;
     return Objects.equals(this.expiry, mainGetApiKeysResp.expiry) &&
-        Objects.equals(this.token, mainGetApiKeysResp.token);
+        Objects.equals(this.label, mainGetApiKeysResp.label) &&
+        Objects.equals(this.token, mainGetApiKeysResp.token) &&
+        Objects.equals(this.tokenHash, mainGetApiKeysResp.tokenHash);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiry, token);
+    return Objects.hash(expiry, label, token, tokenHash);
   }
 
   @Override
@@ -88,7 +136,9 @@ public class MainGetApiKeysResp   {
     sb.append("class MainGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -367,37 +367,37 @@ class UserApi
     }
 
     /**
-     * Operation userApiKeysKeyDelete
+     * Operation userApiKeysKeyOrHashDelete
      *
      * Revoke a User API Key.
      *
-     * @param  string $key Key (required)
+     * @param  string $key_or_hash Key or Hash (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function userApiKeysKeyDelete($key)
+    public function userApiKeysKeyOrHashDelete($key_or_hash)
     {
-        list($response) = $this->userApiKeysKeyDeleteWithHttpInfo($key);
+        list($response) = $this->userApiKeysKeyOrHashDeleteWithHttpInfo($key_or_hash);
         return $response;
     }
 
     /**
-     * Operation userApiKeysKeyDeleteWithHttpInfo
+     * Operation userApiKeysKeyOrHashDeleteWithHttpInfo
      *
      * Revoke a User API Key.
      *
-     * @param  string $key Key (required)
+     * @param  string $key_or_hash Key or Hash (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function userApiKeysKeyDeleteWithHttpInfo($key)
+    public function userApiKeysKeyOrHashDeleteWithHttpInfo($key_or_hash)
     {
         $returnType = 'string';
-        $request = $this->userApiKeysKeyDeleteRequest($key);
+        $request = $this->userApiKeysKeyOrHashDeleteRequest($key_or_hash);
 
         try {
             $options = $this->createHttpClientOption();
@@ -475,18 +475,18 @@ class UserApi
     }
 
     /**
-     * Operation userApiKeysKeyDeleteAsync
+     * Operation userApiKeysKeyOrHashDeleteAsync
      *
      * Revoke a User API Key.
      *
-     * @param  string $key Key (required)
+     * @param  string $key_or_hash Key or Hash (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function userApiKeysKeyDeleteAsync($key)
+    public function userApiKeysKeyOrHashDeleteAsync($key_or_hash)
     {
-        return $this->userApiKeysKeyDeleteAsyncWithHttpInfo($key)
+        return $this->userApiKeysKeyOrHashDeleteAsyncWithHttpInfo($key_or_hash)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -495,19 +495,19 @@ class UserApi
     }
 
     /**
-     * Operation userApiKeysKeyDeleteAsyncWithHttpInfo
+     * Operation userApiKeysKeyOrHashDeleteAsyncWithHttpInfo
      *
      * Revoke a User API Key.
      *
-     * @param  string $key Key (required)
+     * @param  string $key_or_hash Key or Hash (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function userApiKeysKeyDeleteAsyncWithHttpInfo($key)
+    public function userApiKeysKeyOrHashDeleteAsyncWithHttpInfo($key_or_hash)
     {
         $returnType = 'string';
-        $request = $this->userApiKeysKeyDeleteRequest($key);
+        $request = $this->userApiKeysKeyOrHashDeleteRequest($key_or_hash);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -547,23 +547,23 @@ class UserApi
     }
 
     /**
-     * Create request for operation 'userApiKeysKeyDelete'
+     * Create request for operation 'userApiKeysKeyOrHashDelete'
      *
-     * @param  string $key Key (required)
+     * @param  string $key_or_hash Key or Hash (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function userApiKeysKeyDeleteRequest($key)
+    protected function userApiKeysKeyOrHashDeleteRequest($key_or_hash)
     {
-        // verify the required parameter 'key' is set
-        if ($key === null || (is_array($key) && count($key) === 0)) {
+        // verify the required parameter 'key_or_hash' is set
+        if ($key_or_hash === null || (is_array($key_or_hash) && count($key_or_hash) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $key when calling userApiKeysKeyDelete'
+                'Missing the required parameter $key_or_hash when calling userApiKeysKeyOrHashDelete'
             );
         }
 
-        $resourcePath = '/user/api-keys/{key}';
+        $resourcePath = '/user/api-keys/{key_or_hash}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -572,10 +572,10 @@ class UserApi
 
 
         // path params
-        if ($key !== null) {
+        if ($key_or_hash !== null) {
             $resourcePath = str_replace(
-                '{' . 'key' . '}',
-                ObjectSerializer::toPathValue($key),
+                '{' . 'key_or_hash' . '}',
+                ObjectSerializer::toPathValue($key_or_hash),
                 $resourcePath
             );
         }

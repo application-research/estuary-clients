@@ -12,20 +12,20 @@ function Invoke-UserApiUserApiKeysGet {
     }
 }
 
-function Invoke-UserApiUserApiKeysKeyDelete {
+function Invoke-UserApiUserApiKeysKeyOrHashDelete {
     [CmdletBinding()]
     Param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true, Mandatory = $true)]
         [String]
-        ${key}
+        ${keyOrHash}
     )
 
     Process {
-        'Calling method: UserApi-UserApiKeysKeyDelete' | Write-Verbose
+        'Calling method: UserApi-UserApiKeysKeyOrHashDelete' | Write-Verbose
         $PSBoundParameters | Out-DebugParameter | Write-Debug
 
-        $Script:UserApi.UserApiKeysKeyDelete(
-            ${key}
+        $Script:UserApi.UserApiKeysKeyOrHashDelete(
+            ${keyOrHash}
         )
     }
 }

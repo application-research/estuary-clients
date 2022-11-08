@@ -89,8 +89,8 @@
     }
 
     /**
-     * Callback function to receive the result of the userApiKeysKeyDelete operation.
-     * @callback module:api/UserApi~userApiKeysKeyDeleteCallback
+     * Callback function to receive the result of the userApiKeysKeyOrHashDelete operation.
+     * @callback module:api/UserApi~userApiKeysKeyOrHashDeleteCallback
      * @param {String} error Error message, if any.
      * @param {'String'} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -98,22 +98,22 @@
 
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param {String} key Key
-     * @param {module:api/UserApi~userApiKeysKeyDeleteCallback} callback The callback function, accepting three arguments: error, data, response
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param {String} keyOrHash Key or Hash
+     * @param {module:api/UserApi~userApiKeysKeyOrHashDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link 'String'}
      */
-    this.userApiKeysKeyDelete = function(key, callback) {
+    this.userApiKeysKeyOrHashDelete = function(keyOrHash, callback) {
       var postBody = null;
 
-      // verify the required parameter 'key' is set
-      if (key === undefined || key === null) {
-        throw new Error("Missing the required parameter 'key' when calling userApiKeysKeyDelete");
+      // verify the required parameter 'keyOrHash' is set
+      if (keyOrHash === undefined || keyOrHash === null) {
+        throw new Error("Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete");
       }
 
 
       var pathParams = {
-        'key': key
+        'key_or_hash': keyOrHash
       };
       var queryParams = {
       };
@@ -130,7 +130,7 @@
       var returnType = 'String';
 
       return this.apiClient.callApi(
-        '/user/api-keys/{key}', 'DELETE',
+        '/user/api-keys/{key_or_hash}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

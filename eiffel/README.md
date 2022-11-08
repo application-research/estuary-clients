@@ -107,7 +107,7 @@ Class | Method | HTTP request | Description
 *PUBLIC_API* | [**public_net_peers_get**](docs/PUBLIC_API.md#public_net_peers_get) | **Get** /public/net/peers | Net Peers
 *PUBLIC_API* | [**public_stats_get**](docs/PUBLIC_API.md#public_stats_get) | **Get** /public/stats | Public stats
 *USER_API* | [**user_api_keys_get**](docs/USER_API.md#user_api_keys_get) | **Get** /user/api-keys | Get API keys for a user
-*USER_API* | [**user_api_keys_key_delete**](docs/USER_API.md#user_api_keys_key_delete) | **Delete** /user/api-keys/{key} | Revoke a User API Key.
+*USER_API* | [**user_api_keys_key_or_hash_delete**](docs/USER_API.md#user_api_keys_key_or_hash_delete) | **Delete** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *USER_API* | [**user_api_keys_post**](docs/USER_API.md#user_api_keys_post) | **Post** /user/api-keys | Create API keys for a user
 *USER_API* | [**user_export_get**](docs/USER_API.md#user_export_get) | **Get** /user/export | Export user data
 *USER_API* | [**user_stats_get**](docs/USER_API.md#user_stats_get) | **Get** /user/stats | Create API keys for a user

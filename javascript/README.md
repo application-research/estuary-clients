@@ -211,7 +211,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *EstuaryClient.PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 *EstuaryClient.UserApi* | [**userApiKeysGet**](docs/UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-*EstuaryClient.UserApi* | [**userApiKeysKeyDelete**](docs/UserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+*EstuaryClient.UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *EstuaryClient.UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *EstuaryClient.UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
 *EstuaryClient.UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user

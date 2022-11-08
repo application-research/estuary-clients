@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**userApiKeysGet**](SwagUserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
-[**userApiKeysKeyDelete**](SwagUserApi.md#userApiKeysKeyDelete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**userApiKeysKeyOrHashDelete**](SwagUserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**userApiKeysPost**](SwagUserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 [**userExportGet**](SwagUserApi.md#userExportGet) | **GET** /user/export | Export user data
 [**userStatsGet**](SwagUserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
@@ -53,13 +53,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="userApiKeysKeyDelete"></a>
-# **userApiKeysKeyDelete**
-> String userApiKeysKeyDelete(key)
+<a name="userApiKeysKeyOrHashDelete"></a>
+# **userApiKeysKeyOrHashDelete**
+> String userApiKeysKeyOrHashDelete(keyOrHash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that\&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```java
@@ -71,12 +71,12 @@ ApiKeyAuth bearerAuth = (ApiKeyAuth) client.getAuthentication('bearerAuth');
 bearerAuth.setApiKey('YOUR API KEY');
 
 Map<String, Object> params = new Map<String, Object>{
-    'key' => 'key_example'
+    'keyOrHash' => 'keyOrHash_example'
 };
 
 try {
     // cross your fingers
-    String result = api.userApiKeysKeyDelete(params);
+    String result = api.userApiKeysKeyOrHashDelete(params);
     System.debug(result);
 } catch (Swagger.ApiException e) {
     // ...handle your exceptions
@@ -87,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **String**| Key |
+ **keyOrHash** | **String**| Key or Hash |
 
 ### Return type
 

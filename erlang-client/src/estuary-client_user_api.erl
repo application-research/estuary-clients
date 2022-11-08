@@ -1,7 +1,7 @@
 -module(estuary-client_user_api).
 
 -export([user_api_keys_get/1, user_api_keys_get/2,
-         user_api_keys_key_delete/2, user_api_keys_key_delete/3,
+         user_api_keys_key_or_hash_delete/2, user_api_keys_key_or_hash_delete/3,
          user_api_keys_post/1, user_api_keys_post/2,
          user_export_get/1, user_export_get/2,
          user_stats_get/1, user_stats_get/2]).
@@ -30,18 +30,18 @@ user_api_keys_get(Ctx, Optional) ->
     estuary-client_utils:request(Ctx, Method, [?BASE_URL, Path], QS, ContentTypeHeader++Headers, Body1, Opts, Cfg).
 
 %% @doc Revoke a User API Key.
-%% This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
--spec user_api_keys_key_delete(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
-user_api_keys_key_delete(Ctx, Key) ->
-    user_api_keys_key_delete(Ctx, Key, #{}).
+%% This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+-spec user_api_keys_key_or_hash_delete(ctx:ctx(), binary()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+user_api_keys_key_or_hash_delete(Ctx, KeyOrHash) ->
+    user_api_keys_key_or_hash_delete(Ctx, KeyOrHash, #{}).
 
--spec user_api_keys_key_delete(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
-user_api_keys_key_delete(Ctx, Key, Optional) ->
+-spec user_api_keys_key_or_hash_delete(ctx:ctx(), binary(), maps:map()) -> {ok, binary(), estuary-client_utils:response_info()} | {ok, hackney:client_ref()} | {error, term(), estuary-client_utils:response_info()}.
+user_api_keys_key_or_hash_delete(Ctx, KeyOrHash, Optional) ->
     _OptionalParams = maps:get(params, Optional, #{}),
     Cfg = maps:get(cfg, Optional, application:get_env(kuberl, config, #{})),
 
     Method = delete,
-    Path = ["/user/api-keys/", Key, ""],
+    Path = ["/user/api-keys/", KeyOrHash, ""],
     QS = [],
     Headers = [],
     Body1 = [],

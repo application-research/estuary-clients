@@ -369,7 +369,7 @@ case $state in
             "publicNetAddrsGet[Net Addrs]" \
             "publicNetPeersGet[Net Peers]" \
             "publicStatsGet[Public stats]"             "userApiKeysGet[Get API keys for a user]" \
-            "userApiKeysKeyDelete[Revoke a User API Key.]" \
+            "userApiKeysKeyOrHashDelete[Revoke a User API Key.]" \
             "userApiKeysPost[Create API keys for a user]" \
             "userExportGet[Export user data]" \
             "userStatsGet[Create API keys for a user]" 
@@ -944,10 +944,10 @@ case $state in
                               )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;
-      userApiKeysKeyDelete)
+      userApiKeysKeyOrHashDelete)
         local -a _op_arguments
         _op_arguments=(
-          "key=:[PATH] Key"
+          "key_or_hash=:[PATH] Key or Hash"
                     )
         _describe -t actions 'operations' _op_arguments -S '' && ret=0
         ;;

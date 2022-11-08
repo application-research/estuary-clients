@@ -20,8 +20,12 @@ public class MainGetApiKeysResp {
   
   @SerializedName("expiry")
   private String expiry = null;
+  @SerializedName("label")
+  private String label = null;
   @SerializedName("token")
   private String token = null;
+  @SerializedName("tokenHash")
+  private String tokenHash = null;
 
   /**
    **/
@@ -36,11 +40,31 @@ public class MainGetApiKeysResp {
   /**
    **/
   @ApiModelProperty(value = "")
+  public String getLabel() {
+    return label;
+  }
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
   public String getToken() {
     return token;
   }
   public void setToken(String token) {
     this.token = token;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public String getTokenHash() {
+    return tokenHash;
+  }
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
   }
 
 
@@ -54,14 +78,18 @@ public class MainGetApiKeysResp {
     }
     MainGetApiKeysResp mainGetApiKeysResp = (MainGetApiKeysResp) o;
     return (this.expiry == null ? mainGetApiKeysResp.expiry == null : this.expiry.equals(mainGetApiKeysResp.expiry)) &&
-        (this.token == null ? mainGetApiKeysResp.token == null : this.token.equals(mainGetApiKeysResp.token));
+        (this.label == null ? mainGetApiKeysResp.label == null : this.label.equals(mainGetApiKeysResp.label)) &&
+        (this.token == null ? mainGetApiKeysResp.token == null : this.token.equals(mainGetApiKeysResp.token)) &&
+        (this.tokenHash == null ? mainGetApiKeysResp.tokenHash == null : this.tokenHash.equals(mainGetApiKeysResp.tokenHash));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.expiry == null ? 0: this.expiry.hashCode());
+    result = 31 * result + (this.label == null ? 0: this.label.hashCode());
     result = 31 * result + (this.token == null ? 0: this.token.hashCode());
+    result = 31 * result + (this.tokenHash == null ? 0: this.tokenHash.hashCode());
     return result;
   }
 
@@ -71,7 +99,9 @@ public class MainGetApiKeysResp {
     sb.append("class MainGetApiKeysResp {\n");
     
     sb.append("  expiry: ").append(expiry).append("\n");
+    sb.append("  label: ").append(label).append("\n");
     sb.append("  token: ").append(token).append("\n");
+    sb.append("  tokenHash: ").append(tokenHash).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

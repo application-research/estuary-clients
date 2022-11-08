@@ -77,7 +77,9 @@ package .Models is
    type Main_getApiKeysResp_Type is
      record
        Expiry : Swagger.Nullable_UString;
+       Label : Swagger.Nullable_UString;
        Token : Swagger.Nullable_UString;
+       Token_Hash : Swagger.Nullable_UString;
      end record;
 
    package Main_getApiKeysResp_Type_Vectors is

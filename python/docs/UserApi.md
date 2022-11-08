@@ -5,7 +5,7 @@ All URIs are relative to *https://api.estuary.tech*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**user_api_keys_get**](UserApi.md#user_api_keys_get) | **GET** /user/api-keys | Get API keys for a user
-[**user_api_keys_key_delete**](UserApi.md#user_api_keys_key_delete) | **DELETE** /user/api-keys/{key} | Revoke a User API Key.
+[**user_api_keys_key_or_hash_delete**](UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **GET** /user/export | Export user data
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
@@ -61,12 +61,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_api_keys_key_delete**
-> str user_api_keys_key_delete(key)
+# **user_api_keys_key_or_hash_delete**
+> str user_api_keys_key_or_hash_delete(key_or_hash)
 
 Revoke a User API Key.
 
-This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
+This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.
 
 ### Example
 ```python
@@ -84,21 +84,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary-client.UserApi(estuary-client.ApiClient(configuration))
-key = 'key_example' # str | Key
+key_or_hash = 'key_or_hash_example' # str | Key or Hash
 
 try:
     # Revoke a User API Key.
-    api_response = api_instance.user_api_keys_key_delete(key)
+    api_response = api_instance.user_api_keys_key_or_hash_delete(key_or_hash)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UserApi->user_api_keys_key_delete: %s\n" % e)
+    print("Exception when calling UserApi->user_api_keys_key_or_hash_delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **str**| Key | 
+ **key_or_hash** | **str**| Key or Hash | 
 
 ### Return type
 

@@ -10,12 +10,16 @@ defmodule EstuaryAPI.Model.MainGetApiKeysResp do
   @derive [Poison.Encoder]
   defstruct [
     :"expiry",
-    :"token"
+    :"label",
+    :"token",
+    :"tokenHash"
   ]
 
   @type t :: %__MODULE__{
     :"expiry" => String.t,
-    :"token" => String.t
+    :"label" => String.t,
+    :"token" => String.t,
+    :"tokenHash" => String.t
   }
 end
 

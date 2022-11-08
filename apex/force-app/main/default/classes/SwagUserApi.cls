@@ -48,21 +48,21 @@ public class SwagUserApi {
     }
     /**
      * Revoke a User API Key.
-     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-     * @param key Key (required)
+     * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that\&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+     * @param keyOrHash Key or Hash (required)
      * @return String
      * @throws Swagger.ApiException if fails to make API call
      */
-    public String userApiKeysKeyDelete(Map<String, Object> params) {
-        client.assertNotNull(params.get('key'), 'key');
+    public String userApiKeysKeyOrHashDelete(Map<String, Object> params) {
+        client.assertNotNull(params.get('keyOrHash'), 'keyOrHash');
         List<Swagger.Param> query = new List<Swagger.Param>();
         List<Swagger.Param> form = new List<Swagger.Param>();
 
         return (String) client.invoke(
-            'DELETE', '/user/api-keys/{key}', '',
+            'DELETE', '/user/api-keys/{key_or_hash}', '',
             query, form,
             new Map<String, Object>{
-                'key' => (String) params.get('key')
+                'key_or_hash' => (String) params.get('keyOrHash')
             },
             new Map<String, Object>(),
             new List<String>{ 'application/json' },

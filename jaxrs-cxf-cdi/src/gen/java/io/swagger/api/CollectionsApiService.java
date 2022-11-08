@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-07T20:05:55.877Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-08T00:36:45.873Z")
 public interface CollectionsApiService {
       public Response collectionsColuuidCommitPost(String coluuid, SecurityContext securityContext);
       public Response collectionsColuuidContentsDelete(String coluuid, String contentid, MainDeleteContentFromCollectionBody body, SecurityContext securityContext);

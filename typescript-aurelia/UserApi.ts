@@ -25,10 +25,10 @@ export interface IUserApiKeysGetParams {
 }
 
 /**
- * userApiKeysKeyDelete - parameters interface
+ * userApiKeysKeyOrHashDelete - parameters interface
  */
-export interface IUserApiKeysKeyDeleteParams {
-  key: string;
+export interface IUserApiKeysKeyOrHashDeleteParams {
+  keyOrHash: string;
 }
 
 /**
@@ -96,16 +96,16 @@ export class UserApi extends Api {
 
   /**
    * Revoke a User API Key.
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-   * @param params.key Key
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   * @param params.keyOrHash Key or Hash
    */
-  async userApiKeysKeyDelete(params: IUserApiKeysKeyDeleteParams): Promise<string> {
+  async userApiKeysKeyOrHashDelete(params: IUserApiKeysKeyOrHashDeleteParams): Promise<string> {
     // Verify required parameters are set
-    this.ensureParamIsSet('userApiKeysKeyDelete', params, 'key');
+    this.ensureParamIsSet('userApiKeysKeyOrHashDelete', params, 'keyOrHash');
 
     // Create URL to call
-    const url = `${this.basePath}/user/api-keys/{key}`
-      .replace(`{${'key'}}`, encodeURIComponent(`${params['key']}`));
+    const url = `${this.basePath}/user/api-keys/{key_or_hash}`
+      .replace(`{${'key_or_hash'}}`, encodeURIComponent(`${params['keyOrHash']}`));
 
     const response = await this.httpClient.createRequest(url)
       // Set HTTP method

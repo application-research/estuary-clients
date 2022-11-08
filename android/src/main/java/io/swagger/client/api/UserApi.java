@@ -175,20 +175,20 @@ public class UserApi {
   }
   /**
   * Revoke a User API Key.
-  * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-   * @param key Key
+  * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   * @param keyOrHash Key or Hash
    * @return String
   */
-  public String userApiKeysKeyDelete (String key) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public String userApiKeysKeyOrHashDelete (String keyOrHash) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'key' is set
-    if (key == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'key' when calling userApiKeysKeyDelete",
-        new ApiException(400, "Missing the required parameter 'key' when calling userApiKeysKeyDelete"));
+    // verify the required parameter 'keyOrHash' is set
+    if (keyOrHash == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete",
+        new ApiException(400, "Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete"));
     }
 
     // create path and map variables
-    String path = "/user/api-keys/{key}".replaceAll("\\{" + "key" + "\\}", apiInvoker.escapeString(key.toString()));
+    String path = "/user/api-keys/{key_or_hash}".replaceAll("\\{" + "key_or_hash" + "\\}", apiInvoker.escapeString(keyOrHash.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -237,20 +237,20 @@ public class UserApi {
 
       /**
    * Revoke a User API Key.
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily use to access all estuary features. This endpoint can be used to revoke the API key thats assigned to the user.
-   * @param key Key
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   * @param keyOrHash Key or Hash
   */
-  public void userApiKeysKeyDelete (String key, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void userApiKeysKeyOrHashDelete (String keyOrHash, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'key' is set
-    if (key == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'key' when calling userApiKeysKeyDelete",
-        new ApiException(400, "Missing the required parameter 'key' when calling userApiKeysKeyDelete"));
+    // verify the required parameter 'keyOrHash' is set
+    if (keyOrHash == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete",
+        new ApiException(400, "Missing the required parameter 'keyOrHash' when calling userApiKeysKeyOrHashDelete"));
     }
 
     // create path and map variables
-    String path = "/user/api-keys/{key}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "key" + "\\}", apiInvoker.escapeString(key.toString()));
+    String path = "/user/api-keys/{key_or_hash}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "key_or_hash" + "\\}", apiInvoker.escapeString(keyOrHash.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

@@ -24,13 +24,13 @@ class TestUserController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_user_api_keys_key_delete(self):
-        """Test case for user_api_keys_key_delete
+    def test_user_api_keys_key_or_hash_delete(self):
+        """Test case for user_api_keys_key_or_hash_delete
 
         Revoke a User API Key.
         """
         response = self.client.open(
-            '//user/api-keys/{key}'.format(key='key_example'),
+            '//user/api-keys/{key_or_hash}'.format(key_or_hash='key_or_hash_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

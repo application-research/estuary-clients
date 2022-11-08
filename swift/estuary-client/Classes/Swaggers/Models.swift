@@ -237,7 +237,9 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = MainGetApiKeysResp()
                 instance.expiry = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["expiry"])
+                instance.label = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["label"])
                 instance.token = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["token"])
+                instance.tokenHash = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["tokenHash"])
                 return instance
             }
 

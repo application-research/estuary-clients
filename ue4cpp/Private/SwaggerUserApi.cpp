@@ -119,7 +119,7 @@ void SwaggerUserApi::OnUserApiKeysGetResponse(FHttpRequestPtr HttpRequest, FHttp
 	Delegate.ExecuteIfBound(Response);
 }
 
-bool SwaggerUserApi::UserApiKeysKeyDelete(const UserApiKeysKeyDeleteRequest& Request, const FUserApiKeysKeyDeleteDelegate& Delegate /*= FUserApiKeysKeyDeleteDelegate()*/) const
+bool SwaggerUserApi::UserApiKeysKeyOrHashDelete(const UserApiKeysKeyOrHashDeleteRequest& Request, const FUserApiKeysKeyOrHashDeleteDelegate& Delegate /*= FUserApiKeysKeyOrHashDeleteDelegate()*/) const
 {
 	if (!IsValid())
 		return false;
@@ -134,13 +134,13 @@ bool SwaggerUserApi::UserApiKeysKeyDelete(const UserApiKeysKeyDeleteRequest& Req
 
 	Request.SetupHttpRequest(HttpRequest);
 	
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &SwaggerUserApi::OnUserApiKeysKeyDeleteResponse, Delegate);
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &SwaggerUserApi::OnUserApiKeysKeyOrHashDeleteResponse, Delegate);
 	return HttpRequest->ProcessRequest();
 }
 
-void SwaggerUserApi::OnUserApiKeysKeyDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysKeyDeleteDelegate Delegate) const
+void SwaggerUserApi::OnUserApiKeysKeyOrHashDeleteResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUserApiKeysKeyOrHashDeleteDelegate Delegate) const
 {
-	UserApiKeysKeyDeleteResponse Response;
+	UserApiKeysKeyOrHashDeleteResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
