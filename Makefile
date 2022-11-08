@@ -36,7 +36,7 @@ python-config.json: config.json.template subversion
 
 
 %/: swagger.json %-config.json
-	${SWAGGER} generate \
+	rm -rf $@ && ${SWAGGER} generate \
 		-i swagger.json \
 		-l $$(basename $@) \
 		-o $@ \
