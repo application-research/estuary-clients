@@ -15,13 +15,13 @@ class MainImportDealBody(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, coluuid: str=None, deal_i_ds: List[int]=None, dir: str=None, name: str=None):  # noqa: E501
+    def __init__(self, coluuid: str=None, deal_ids: List[int]=None, dir: str=None, name: str=None):  # noqa: E501
         """MainImportDealBody - a model defined in Swagger
 
         :param coluuid: The coluuid of this MainImportDealBody.  # noqa: E501
         :type coluuid: str
-        :param deal_i_ds: The deal_i_ds of this MainImportDealBody.  # noqa: E501
-        :type deal_i_ds: List[int]
+        :param deal_ids: The deal_ids of this MainImportDealBody.  # noqa: E501
+        :type deal_ids: List[int]
         :param dir: The dir of this MainImportDealBody.  # noqa: E501
         :type dir: str
         :param name: The name of this MainImportDealBody.  # noqa: E501
@@ -29,20 +29,20 @@ class MainImportDealBody(Model):
         """
         self.swagger_types = {
             'coluuid': str,
-            'deal_i_ds': List[int],
+            'deal_ids': List[int],
             'dir': str,
             'name': str
         }
 
         self.attribute_map = {
             'coluuid': 'coluuid',
-            'deal_i_ds': 'dealIDs',
+            'deal_ids': 'dealIDs',
             'dir': 'dir',
             'name': 'name'
         }
 
         self._coluuid = coluuid
-        self._deal_i_ds = deal_i_ds
+        self._deal_ids = deal_ids
         self._dir = dir
         self._name = name
 
@@ -79,25 +79,25 @@ class MainImportDealBody(Model):
         self._coluuid = coluuid
 
     @property
-    def deal_i_ds(self) -> List[int]:
-        """Gets the deal_i_ds of this MainImportDealBody.
+    def deal_ids(self) -> List[int]:
+        """Gets the deal_ids of this MainImportDealBody.
 
 
-        :return: The deal_i_ds of this MainImportDealBody.
+        :return: The deal_ids of this MainImportDealBody.
         :rtype: List[int]
         """
-        return self._deal_i_ds
+        return self._deal_ids
 
-    @deal_i_ds.setter
-    def deal_i_ds(self, deal_i_ds: List[int]):
-        """Sets the deal_i_ds of this MainImportDealBody.
+    @deal_ids.setter
+    def deal_ids(self, deal_ids: List[int]):
+        """Sets the deal_ids of this MainImportDealBody.
 
 
-        :param deal_i_ds: The deal_i_ds of this MainImportDealBody.
-        :type deal_i_ds: List[int]
+        :param deal_ids: The deal_ids of this MainImportDealBody.
+        :type deal_ids: List[int]
         """
 
-        self._deal_i_ds = deal_i_ds
+        self._deal_ids = deal_ids
 
     @property
     def dir(self) -> str:

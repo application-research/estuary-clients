@@ -150,7 +150,7 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
-    'deal_i_ds' => {
+    'deal_ids' => {
     	datatype => 'ARRAY[int]',
     	base_name => 'dealIDs',
     	description => '',
@@ -175,14 +175,14 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'coluuid' => 'string',
-    'deal_i_ds' => 'ARRAY[int]',
+    'deal_ids' => 'ARRAY[int]',
     'dir' => 'string',
     'name' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'coluuid' => 'coluuid',
-    'deal_i_ds' => 'dealIDs',
+    'deal_ids' => 'dealIDs',
     'dir' => 'dir',
     'name' => 'name'
 } );

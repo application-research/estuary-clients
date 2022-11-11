@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> String collections_coluuid_post(ctx, coluuid, content_i_ds)
+> String collections_coluuid_post(ctx, coluuid, content_ids)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
   **coluuid** | **String**| coluuid | 
-  **content_i_ds** | **Vec&lt;i32&gt;**| Content IDs to add to collection | 
+  **content_ids** | **Vec&lt;i32&gt;**| Content IDs to add to collection | 
 
 ### Return type
 

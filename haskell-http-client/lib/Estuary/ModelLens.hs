@@ -172,10 +172,10 @@ mainImportDealBodyColuuidL :: Lens_' MainImportDealBody (Maybe Text)
 mainImportDealBodyColuuidL f MainImportDealBody{..} = (\mainImportDealBodyColuuid -> MainImportDealBody { mainImportDealBodyColuuid, ..} ) <$> f mainImportDealBodyColuuid
 {-# INLINE mainImportDealBodyColuuidL #-}
 
--- | 'mainImportDealBodyDealIDs' Lens
-mainImportDealBodyDealIDsL :: Lens_' MainImportDealBody (Maybe [Int])
-mainImportDealBodyDealIDsL f MainImportDealBody{..} = (\mainImportDealBodyDealIDs -> MainImportDealBody { mainImportDealBodyDealIDs, ..} ) <$> f mainImportDealBodyDealIDs
-{-# INLINE mainImportDealBodyDealIDsL #-}
+-- | 'mainImportDealBodyDealIds' Lens
+mainImportDealBodyDealIdsL :: Lens_' MainImportDealBody (Maybe [Int])
+mainImportDealBodyDealIdsL f MainImportDealBody{..} = (\mainImportDealBodyDealIds -> MainImportDealBody { mainImportDealBodyDealIds, ..} ) <$> f mainImportDealBodyDealIds
+{-# INLINE mainImportDealBodyDealIdsL #-}
 
 -- | 'mainImportDealBodyDir' Lens
 mainImportDealBodyDirL :: Lens_' MainImportDealBody (Maybe Text)

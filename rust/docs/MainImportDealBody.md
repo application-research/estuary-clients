@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coluuid** | **String** |  | [optional] [default to null]
-**deal_i_ds** | **Vec<i32>** |  | [optional] [default to null]
+**deal_ids** | **Vec<i32>** |  | [optional] [default to null]
 **dir** | **String** |  | [optional] [default to null]
 **name** | **String** |  | [optional] [default to null]
 

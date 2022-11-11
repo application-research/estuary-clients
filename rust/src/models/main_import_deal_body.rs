@@ -17,7 +17,7 @@ pub struct MainImportDealBody {
   #[serde(rename = "coluuid")]
   coluuid: Option<String>,
   #[serde(rename = "dealIDs")]
-  deal_i_ds: Option<Vec<i32>>,
+  deal_ids: Option<Vec<i32>>,
   #[serde(rename = "dir")]
   dir: Option<String>,
   #[serde(rename = "name")]
@@ -28,7 +28,7 @@ impl MainImportDealBody {
   pub fn new() -> MainImportDealBody {
     MainImportDealBody {
       coluuid: None,
-      deal_i_ds: None,
+      deal_ids: None,
       dir: None,
       name: None
     }
@@ -51,21 +51,21 @@ impl MainImportDealBody {
     self.coluuid = None;
   }
 
-  pub fn set_deal_i_ds(&mut self, deal_i_ds: Vec<i32>) {
-    self.deal_i_ds = Some(deal_i_ds);
+  pub fn set_deal_ids(&mut self, deal_ids: Vec<i32>) {
+    self.deal_ids = Some(deal_ids);
   }
 
-  pub fn with_deal_i_ds(mut self, deal_i_ds: Vec<i32>) -> MainImportDealBody {
-    self.deal_i_ds = Some(deal_i_ds);
+  pub fn with_deal_ids(mut self, deal_ids: Vec<i32>) -> MainImportDealBody {
+    self.deal_ids = Some(deal_ids);
     self
   }
 
-  pub fn deal_i_ds(&self) -> Option<&Vec<i32>> {
-    self.deal_i_ds.as_ref()
+  pub fn deal_ids(&self) -> Option<&Vec<i32>> {
+    self.deal_ids.as_ref()
   }
 
-  pub fn reset_deal_i_ds(&mut self) {
-    self.deal_i_ds = None;
+  pub fn reset_deal_ids(&mut self) {
+    self.deal_ids = None;
   }
 
   pub fn set_dir(&mut self, dir: String) {

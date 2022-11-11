@@ -42,7 +42,7 @@ public:
     void collectionsColuuidContentsDelete(QString* coluuid, QString* contentid, SWGMain.deleteContentFromCollectionBody& body);
     void collectionsColuuidDelete(QString* coluuid);
     void collectionsColuuidGet(QString* coluuid, QString* dir);
-    void collectionsColuuidPost(QString* coluuid, QList<qint32>*& content_i_ds);
+    void collectionsColuuidPost(QString* coluuid, QList<qint32>*& content_ids);
     void collectionsFsAddPost(QString* coluuid, QString* content, QString* path);
     void collectionsGet();
     void collectionsPost(SWGMain.createCollectionBody& body);

@@ -127,7 +127,7 @@ defmodule EstuaryAPI.Api.Collections do
 
   - connection (EstuaryAPI.Connection): Connection to server
   - coluuid (String.t): coluuid
-  - content_i_ds ([integer()]): Content IDs to add to collection
+  - content_ids ([integer()]): Content IDs to add to collection
   - opts (KeywordList): [optional] Optional parameters
 
   ## Returns
@@ -136,11 +136,11 @@ defmodule EstuaryAPI.Api.Collections do
   {:error, info} on failure
   """
   @spec collections_coluuid_post(Tesla.Env.client, String.t, list(Integer.t), keyword()) :: {:ok, String.t} | {:error, Tesla.Env.t}
-  def collections_coluuid_post(connection, coluuid, content_i_ds, _opts \\ []) do
+  def collections_coluuid_post(connection, coluuid, content_ids, _opts \\ []) do
     %{}
     |> method(:post)
     |> url("/collections/#{coluuid}")
-    |> add_param(:body, :"contentIDs", content_i_ds)
+    |> add_param(:body, :"contentIDs", content_ids)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(false)

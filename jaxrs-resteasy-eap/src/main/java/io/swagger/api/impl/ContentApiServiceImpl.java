@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-08T19:38:20.184Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
 public class ContentApiServiceImpl implements ContentApi {
       public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext) {
       // do some magic!

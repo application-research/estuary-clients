@@ -19,10 +19,10 @@ local function cast_main_import_deal_body(t)
 	return setmetatable(t, main_import_deal_body_mt)
 end
 
-local function new_main_import_deal_body(coluuid, deal_i_ds, dir, name)
+local function new_main_import_deal_body(coluuid, deal_ids, dir, name)
 	return cast_main_import_deal_body({
 		["coluuid"] = coluuid;
-		["dealIDs"] = deal_i_ds;
+		["dealIDs"] = deal_ids;
 		["dir"] = dir;
 		["name"] = name;
 	})

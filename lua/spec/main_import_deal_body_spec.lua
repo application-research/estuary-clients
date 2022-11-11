@@ -23,8 +23,8 @@ describe("main_import_deal_body", function()
     end)
   end)
 
-  -- unit tests for the property 'deal_i_ds'
-  describe("property deal_i_ds test", function()
+  -- unit tests for the property 'deal_ids'
+  describe("property deal_ids test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

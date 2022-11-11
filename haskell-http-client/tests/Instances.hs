@@ -138,7 +138,7 @@ instance Arbitrary MainImportDealBody where
   arbitrary =
     MainImportDealBody
       <$> arbitrary -- mainImportDealBodyColuuid :: Maybe Text
-      <*> arbitrary -- mainImportDealBodyDealIDs :: Maybe [Int]
+      <*> arbitrary -- mainImportDealBodyDealIds :: Maybe [Int]
       <*> arbitrary -- mainImportDealBodyDir :: Maybe Text
       <*> arbitrary -- mainImportDealBodyName :: Maybe Text
     

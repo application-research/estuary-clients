@@ -69,8 +69,8 @@ isa_ok($api, 'WWW::SwaggerClient::CollectionsApi');
 #
 {
     my $coluuid = undef; # replace NULL with a proper value
-    my $content_i_ds = undef; # replace NULL with a proper value
-    my $result = $api->collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds);
+    my $content_ids = undef; # replace NULL with a proper value
+    my $result = $api->collections_coluuid_post(coluuid => $coluuid, content_ids => $content_ids);
 }
 
 #

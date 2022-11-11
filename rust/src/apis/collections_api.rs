@@ -39,7 +39,7 @@ pub trait CollectionsApi {
     fn collections_coluuid_contents_delete(&self, coluuid: &str, contentid: &str, body: ::models::MainDeleteContentFromCollectionBody) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_coluuid_delete(&self, coluuid: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_coluuid_get(&self, coluuid: &str, dir: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
-    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
+    fn collections_coluuid_post(&self, coluuid: &str, content_ids: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_fs_add_post(&self, coluuid: &str, content: &str, path: &str) -> Box<Future<Item = String, Error = Error<serde_json::Value>>>;
     fn collections_get(&self, ) -> Box<Future<Item = Vec<Vec<::models::CollectionsCollection>>, Error = Error<serde_json::Value>>>;
     fn collections_post(&self, body: ::models::MainCreateCollectionBody) -> Box<Future<Item = ::models::CollectionsCollection, Error = Error<serde_json::Value>>>;
@@ -316,7 +316,7 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
         )
     }
 
-    fn collections_coluuid_post(&self, coluuid: &str, content_i_ds: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
+    fn collections_coluuid_post(&self, coluuid: &str, content_ids: Vec<i32>) -> Box<Future<Item = String, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -357,7 +357,7 @@ impl<C: hyper::client::Connect>CollectionsApi for CollectionsApiClient<C> {
             req.headers_mut().set_raw(key, val);
         }
 
-        let serialized = serde_json::to_string(&content_i_ds).unwrap();
+        let serialized = serde_json::to_string(&content_ids).unwrap();
         req.headers_mut().set(hyper::header::ContentType::json());
         req.headers_mut().set(hyper::header::ContentLength(serialized.len() as u64));
         req.set_body(serialized);

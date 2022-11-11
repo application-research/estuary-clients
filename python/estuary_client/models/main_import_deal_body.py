@@ -34,34 +34,34 @@ class MainImportDealBody(object):
     """
     swagger_types = {
         'coluuid': 'str',
-        'deal_i_ds': 'list[int]',
+        'deal_ids': 'list[int]',
         'dir': 'str',
         'name': 'str'
     }
 
     attribute_map = {
         'coluuid': 'coluuid',
-        'deal_i_ds': 'dealIDs',
+        'deal_ids': 'dealIDs',
         'dir': 'dir',
         'name': 'name'
     }
 
-    def __init__(self, coluuid=None, deal_i_ds=None, dir=None, name=None, _configuration=None):  # noqa: E501
+    def __init__(self, coluuid=None, deal_ids=None, dir=None, name=None, _configuration=None):  # noqa: E501
         """MainImportDealBody - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._coluuid = None
-        self._deal_i_ds = None
+        self._deal_ids = None
         self._dir = None
         self._name = None
         self.discriminator = None
 
         if coluuid is not None:
             self.coluuid = coluuid
-        if deal_i_ds is not None:
-            self.deal_i_ds = deal_i_ds
+        if deal_ids is not None:
+            self.deal_ids = deal_ids
         if dir is not None:
             self.dir = dir
         if name is not None:
@@ -89,25 +89,25 @@ class MainImportDealBody(object):
         self._coluuid = coluuid
 
     @property
-    def deal_i_ds(self):
-        """Gets the deal_i_ds of this MainImportDealBody.  # noqa: E501
+    def deal_ids(self):
+        """Gets the deal_ids of this MainImportDealBody.  # noqa: E501
 
 
-        :return: The deal_i_ds of this MainImportDealBody.  # noqa: E501
+        :return: The deal_ids of this MainImportDealBody.  # noqa: E501
         :rtype: list[int]
         """
-        return self._deal_i_ds
+        return self._deal_ids
 
-    @deal_i_ds.setter
-    def deal_i_ds(self, deal_i_ds):
-        """Sets the deal_i_ds of this MainImportDealBody.
+    @deal_ids.setter
+    def deal_ids(self, deal_ids):
+        """Sets the deal_ids of this MainImportDealBody.
 
 
-        :param deal_i_ds: The deal_i_ds of this MainImportDealBody.  # noqa: E501
+        :param deal_ids: The deal_ids of this MainImportDealBody.  # noqa: E501
         :type: list[int]
         """
 
-        self._deal_i_ds = deal_i_ds
+        self._deal_ids = deal_ids
 
     @property
     def dir(self):

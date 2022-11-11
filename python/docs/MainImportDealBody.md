@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coluuid** | **str** |  | [optional] 
-**deal_i_ds** | **list[int]** |  | [optional] 
+**deal_ids** | **list[int]** |  | [optional] 
 **dir** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 

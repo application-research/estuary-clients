@@ -45,8 +45,8 @@ public:
     QString* getColuuid();
     void setColuuid(QString* coluuid);
 
-    QList<qint32>* getDealIDs();
-    void setDealIDs(QList<qint32>* deal_i_ds);
+    QList<qint32>* getDealIds();
+    void setDealIds(QList<qint32>* deal_ids);
 
     QString* getDir();
     void setDir(QString* dir);
@@ -61,8 +61,8 @@ private:
     QString* coluuid;
     bool m_coluuid_isSet;
 
-    QList<qint32>* deal_i_ds;
-    bool m_deal_i_ds_isSet;
+    QList<qint32>* deal_ids;
+    bool m_deal_ids_isSet;
 
     QString* dir;
     bool m_dir_isSet;

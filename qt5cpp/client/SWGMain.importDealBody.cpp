@@ -39,8 +39,8 @@ void
 SWGMain.importDealBody::init() {
     coluuid = new QString("");
     m_coluuid_isSet = false;
-    deal_i_ds = new QList<qint32>();
-    m_deal_i_ds_isSet = false;
+    deal_ids = new QList<qint32>();
+    m_deal_ids_isSet = false;
     dir = new QString("");
     m_dir_isSet = false;
     name = new QString("");
@@ -53,8 +53,8 @@ SWGMain.importDealBody::cleanup() {
         delete coluuid;
     }
 
-    if(deal_i_ds != nullptr) { 
-        delete deal_i_ds;
+    if(deal_ids != nullptr) { 
+        delete deal_ids;
     }
     if(dir != nullptr) { 
         delete dir;
@@ -78,7 +78,7 @@ SWGMain.importDealBody::fromJsonObject(QJsonObject pJson) {
     ::Swagger::setValue(&coluuid, pJson["coluuid"], "QString", "QString");
     
     
-    ::Swagger::setValue(&deal_i_ds, pJson["dealIDs"], "QList", "qint32");
+    ::Swagger::setValue(&deal_ids, pJson["dealIDs"], "QList", "qint32");
     ::Swagger::setValue(&dir, pJson["dir"], "QString", "QString");
     
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
@@ -100,8 +100,8 @@ SWGMain.importDealBody::asJsonObject() {
     if(coluuid != nullptr && *coluuid != QString("")){
         toJsonValue(QString("coluuid"), coluuid, obj, QString("QString"));
     }
-    if(deal_i_ds->size() > 0){
-        toJsonArray((QList<void*>*)deal_i_ds, obj, "dealIDs", "");
+    if(deal_ids->size() > 0){
+        toJsonArray((QList<void*>*)deal_ids, obj, "dealIDs", "");
     }
     if(dir != nullptr && *dir != QString("")){
         toJsonValue(QString("dir"), dir, obj, QString("QString"));
@@ -124,13 +124,13 @@ SWGMain.importDealBody::setColuuid(QString* coluuid) {
 }
 
 QList<qint32>*
-SWGMain.importDealBody::getDealIDs() {
-    return deal_i_ds;
+SWGMain.importDealBody::getDealIds() {
+    return deal_ids;
 }
 void
-SWGMain.importDealBody::setDealIDs(QList<qint32>* deal_i_ds) {
-    this->deal_i_ds = deal_i_ds;
-    this->m_deal_i_ds_isSet = true;
+SWGMain.importDealBody::setDealIds(QList<qint32>* deal_ids) {
+    this->deal_ids = deal_ids;
+    this->m_deal_ids_isSet = true;
 }
 
 QString*
@@ -159,7 +159,7 @@ SWGMain.importDealBody::isSet(){
     bool isObjectUpdated = false;
     do{
         if(coluuid != nullptr && *coluuid != QString("")){ isObjectUpdated = true; break;}
-        if(m_deal_i_ds_isSet){ isObjectUpdated = true; break;}if(deal_i_ds->size() > 0){ isObjectUpdated = true; break;}
+        if(m_deal_ids_isSet){ isObjectUpdated = true; break;}if(deal_ids->size() > 0){ isObjectUpdated = true; break;}
         if(dir != nullptr && *dir != QString("")){ isObjectUpdated = true; break;}
         if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
     }while(false);

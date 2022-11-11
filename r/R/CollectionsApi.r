@@ -183,13 +183,13 @@ CollectionsApi <- R6::R6Class(
       }
 
     },
-    collections_coluuid_post = function(coluuid, content_i_ds, ...){
+    collections_coluuid_post = function(coluuid, content_ids, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      if (!missing(`content_i_ds`)) {
-        body <- `content_i_ds`$toJSONString()
+      if (!missing(`content_ids`)) {
+        body <- `content_ids`$toJSONString()
       } else {
         body <- NULL
       }

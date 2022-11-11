@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> string collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds)
+> string collections_coluuid_post(coluuid => $coluuid, content_ids => $content_ids)
 
 Add contents to a collection
 
@@ -249,10 +249,10 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new(
 );
 
 my $coluuid = 'coluuid_example'; # string | coluuid
-my $content_i_ds = [WWW::SwaggerClient::Object::ARRAY[int]->new()]; # ARRAY[int] | Content IDs to add to collection
+my $content_ids = [WWW::SwaggerClient::Object::ARRAY[int]->new()]; # ARRAY[int] | Content IDs to add to collection
 
 eval { 
-    my $result = $api_instance->collections_coluuid_post(coluuid => $coluuid, content_i_ds => $content_i_ds);
+    my $result = $api_instance->collections_coluuid_post(coluuid => $coluuid, content_ids => $content_ids);
     print Dumper($result);
 };
 if ($@) {
@@ -265,7 +265,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| coluuid | 
- **content_i_ds** | **ARRAY[int]**| Content IDs to add to collection | 
+ **content_ids** | **ARRAY[int]**| Content IDs to add to collection | 
 
 ### Return type
 

@@ -88,14 +88,14 @@
 (defn collections-coluuid-post-with-http-info
   "Add contents to a collection
   This endpoint adds already-pinned contents (that have ContentIDs) to a collection."
-  [coluuid content-i-ds ]
-  (check-required-params coluuid content-i-ds)
+  [coluuid content-ids ]
+  (check-required-params coluuid content-ids)
   (call-api "/collections/{coluuid}" :post
             {:path-params   {"coluuid" coluuid }
              :header-params {}
              :query-params  {}
              :form-params   {}
-             :body-param    content-i-ds
+             :body-param    content-ids
              :content-types ["application/json"]
              :accepts       ["application/json"]
              :auth-names    ["bearerAuth"]}))
@@ -103,8 +103,8 @@
 (defn collections-coluuid-post
   "Add contents to a collection
   This endpoint adds already-pinned contents (that have ContentIDs) to a collection."
-  [coluuid content-i-ds ]
-  (:data (collections-coluuid-post-with-http-info coluuid content-i-ds)))
+  [coluuid content-ids ]
+  (:data (collections-coluuid-post-with-http-info coluuid content-ids)))
 
 (defn collections-fs-add-post-with-http-info
   "Add a file to a collection

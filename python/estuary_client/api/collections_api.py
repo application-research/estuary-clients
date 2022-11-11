@@ -429,47 +429,47 @@ class CollectionsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def collections_coluuid_post(self, coluuid, content_i_ds, **kwargs):  # noqa: E501
+    def collections_coluuid_post(self, coluuid, content_ids, **kwargs):  # noqa: E501
         """Add contents to a collection  # noqa: E501
 
         This endpoint adds already-pinned contents (that have ContentIDs) to a collection.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_coluuid_post(coluuid, content_i_ds, async_req=True)
+        >>> thread = api.collections_coluuid_post(coluuid, content_ids, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str coluuid: coluuid (required)
-        :param list[int] content_i_ds: Content IDs to add to collection (required)
+        :param list[int] content_ids: Content IDs to add to collection (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.collections_coluuid_post_with_http_info(coluuid, content_i_ds, **kwargs)  # noqa: E501
+            return self.collections_coluuid_post_with_http_info(coluuid, content_ids, **kwargs)  # noqa: E501
         else:
-            (data) = self.collections_coluuid_post_with_http_info(coluuid, content_i_ds, **kwargs)  # noqa: E501
+            (data) = self.collections_coluuid_post_with_http_info(coluuid, content_ids, **kwargs)  # noqa: E501
             return data
 
-    def collections_coluuid_post_with_http_info(self, coluuid, content_i_ds, **kwargs):  # noqa: E501
+    def collections_coluuid_post_with_http_info(self, coluuid, content_ids, **kwargs):  # noqa: E501
         """Add contents to a collection  # noqa: E501
 
         This endpoint adds already-pinned contents (that have ContentIDs) to a collection.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_coluuid_post_with_http_info(coluuid, content_i_ds, async_req=True)
+        >>> thread = api.collections_coluuid_post_with_http_info(coluuid, content_ids, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str coluuid: coluuid (required)
-        :param list[int] content_i_ds: Content IDs to add to collection (required)
+        :param list[int] content_ids: Content IDs to add to collection (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['coluuid', 'content_i_ds']  # noqa: E501
+        all_params = ['coluuid', 'content_ids']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -488,10 +488,10 @@ class CollectionsApi(object):
         if self.api_client.client_side_validation and ('coluuid' not in params or
                                                        params['coluuid'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `coluuid` when calling `collections_coluuid_post`")  # noqa: E501
-        # verify the required parameter 'content_i_ds' is set
-        if self.api_client.client_side_validation and ('content_i_ds' not in params or
-                                                       params['content_i_ds'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `content_i_ds` when calling `collections_coluuid_post`")  # noqa: E501
+        # verify the required parameter 'content_ids' is set
+        if self.api_client.client_side_validation and ('content_ids' not in params or
+                                                       params['content_ids'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `content_ids` when calling `collections_coluuid_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -507,8 +507,8 @@ class CollectionsApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'content_i_ds' in params:
-            body_params = params['content_i_ds']
+        if 'content_ids' in params:
+            body_params = params['content_ids']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501

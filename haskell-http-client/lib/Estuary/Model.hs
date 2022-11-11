@@ -90,8 +90,8 @@ newtype Cont = Cont { unCont :: Text } deriving (P.Eq, P.Show)
 -- ** Content
 newtype Content = Content { unContent :: Text } deriving (P.Eq, P.Show)
 
--- ** ContentIDs
-newtype ContentIDs = ContentIDs { unContentIDs :: [Int] } deriving (P.Eq, P.Show, A.ToJSON)
+-- ** ContentIds
+newtype ContentIds = ContentIds { unContentIds :: [Int] } deriving (P.Eq, P.Show, A.ToJSON)
 
 -- ** Contentid
 newtype Contentid = Contentid { unContentid :: Text } deriving (P.Eq, P.Show)
@@ -421,7 +421,7 @@ mkMainGetApiKeysResp =
 -- | MainImportDealBody
 data MainImportDealBody = MainImportDealBody
   { mainImportDealBodyColuuid :: !(Maybe Text) -- ^ "coluuid"
-  , mainImportDealBodyDealIDs :: !(Maybe [Int]) -- ^ "dealIDs"
+  , mainImportDealBodyDealIds :: !(Maybe [Int]) -- ^ "dealIDs"
   , mainImportDealBodyDir :: !(Maybe Text) -- ^ "dir"
   , mainImportDealBodyName :: !(Maybe Text) -- ^ "name"
   } deriving (P.Show, P.Eq, P.Typeable)
@@ -440,7 +440,7 @@ instance A.ToJSON MainImportDealBody where
   toJSON MainImportDealBody {..} =
    _omitNulls
       [ "coluuid" .= mainImportDealBodyColuuid
-      , "dealIDs" .= mainImportDealBodyDealIDs
+      , "dealIDs" .= mainImportDealBodyDealIds
       , "dir" .= mainImportDealBodyDir
       , "name" .= mainImportDealBodyName
       ]
@@ -452,7 +452,7 @@ mkMainImportDealBody
 mkMainImportDealBody =
   MainImportDealBody
   { mainImportDealBodyColuuid = Nothing
-  , mainImportDealBodyDealIDs = Nothing
+  , mainImportDealBodyDealIds = Nothing
   , mainImportDealBodyDir = Nothing
   , mainImportDealBodyName = Nothing
   }

@@ -9,7 +9,7 @@ use WWW::SwaggerClient::Object::MainImportDealBody;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coluuid** | **string** |  | [optional] 
-**deal_i_ds** | **ARRAY[int]** |  | [optional] 
+**deal_ids** | **ARRAY[int]** |  | [optional] 
 **dir** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 

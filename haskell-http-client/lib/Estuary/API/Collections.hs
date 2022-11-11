@@ -167,19 +167,19 @@ instance Produces CollectionsColuuidGet MimeJSON
 -- AuthMethod: 'AuthApiKeyBearerAuth'
 -- 
 collectionsColuuidPost 
-  :: (Consumes CollectionsColuuidPost MimeJSON, MimeRender MimeJSON ContentIDs)
+  :: (Consumes CollectionsColuuidPost MimeJSON, MimeRender MimeJSON ContentIds)
   => Coluuid -- ^ "coluuid" -  coluuid
-  -> ContentIDs -- ^ "contentIDs" -  Content IDs to add to collection
+  -> ContentIds -- ^ "contentIds" -  Content IDs to add to collection
   -> EstuaryRequest CollectionsColuuidPost MimeJSON Text MimeJSON
-collectionsColuuidPost (Coluuid coluuid) contentIDs =
+collectionsColuuidPost (Coluuid coluuid) contentIds =
   _mkRequest "POST" ["/collections/",toPath coluuid]
     `_hasAuthType` (P.Proxy :: P.Proxy AuthApiKeyBearerAuth)
-    `setBodyParam` contentIDs
+    `setBodyParam` contentIds
 
 data CollectionsColuuidPost 
 
 -- | /Body Param/ "contentIDs" - Content IDs to add to collection
-instance HasBodyParam CollectionsColuuidPost ContentIDs 
+instance HasBodyParam CollectionsColuuidPost ContentIds 
 
 -- | @application/json@
 instance Consumes CollectionsColuuidPost MimeJSON

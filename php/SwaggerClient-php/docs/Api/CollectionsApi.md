@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidPost**
-> string collectionsColuuidPost($coluuid, $content_i_ds)
+> string collectionsColuuidPost($coluuid, $content_ids)
 
 Add contents to a collection
 
@@ -264,10 +264,10 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
     $config
 );
 $coluuid = "coluuid_example"; // string | coluuid
-$content_i_ds = array(new \Swagger\Client\Model\int[]()); // int[] | Content IDs to add to collection
+$content_ids = array(new \Swagger\Client\Model\int[]()); // int[] | Content IDs to add to collection
 
 try {
-    $result = $apiInstance->collectionsColuuidPost($coluuid, $content_i_ds);
+    $result = $apiInstance->collectionsColuuidPost($coluuid, $content_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidPost: ', $e->getMessage(), PHP_EOL;
@@ -280,7 +280,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| coluuid |
- **content_i_ds** | **int[]**| Content IDs to add to collection |
+ **content_ids** | **int[]**| Content IDs to add to collection |
 
 ### Return type
 

@@ -242,7 +242,7 @@ function collections_api:collections_coluuid_get(coluuid, dir)
 	end
 end
 
-function collections_api:collections_coluuid_post(coluuid, content_i_ds)
+function collections_api:collections_coluuid_post(coluuid, content_ids)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -262,7 +262,7 @@ function collections_api:collections_coluuid_post(coluuid, content_i_ds)
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
 
-	req:set_body(dkjson.encode(content_i_ds))
+	req:set_body(dkjson.encode(content_ids))
 
 	-- api key in headers 'Authorization'
 	if self.api_key['Authorization'] then

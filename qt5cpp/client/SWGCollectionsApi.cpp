@@ -263,7 +263,7 @@ SWGCollectionsApi::collectionsColuuidGetCallback(SWGHttpRequestWorker * worker) 
 }
 
 void
-SWGCollectionsApi::collectionsColuuidPost(QString* coluuid, QList<qint32>*& content_i_ds) {
+SWGCollectionsApi::collectionsColuuidPost(QString* coluuid, QList<qint32>*& content_ids) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/collections/{coluuid}");
 
@@ -275,10 +275,10 @@ SWGCollectionsApi::collectionsColuuidPost(QString* coluuid, QList<qint32>*& cont
     SWGHttpRequestInput input(fullPath, "POST");
 
 
-    QJsonObject content_i_ds_jobj;
-    toJsonArray((QList<void*>*)content_i_ds, content_i_ds_jobj, QString("body"), QString("SWGUser*"));
+    QJsonObject content_ids_jobj;
+    toJsonArray((QList<void*>*)content_ids, content_ids_jobj, QString("body"), QString("SWGUser*"));
 
-    QJsonDocument doc(content_i_ds_jobj);
+    QJsonDocument doc(content_ids_jobj);
     QByteArray bytes = doc.toJson();
 
     input.request_body.append(bytes);

@@ -367,7 +367,7 @@ sub collections_coluuid_get {
 # Add contents to a collection
 # 
 # @param string $coluuid coluuid (required)
-# @param ARRAY[int] $content_i_ds Content IDs to add to collection (required)
+# @param ARRAY[int] $content_ids Content IDs to add to collection (required)
 {
     my $params = {
     'coluuid' => {
@@ -375,7 +375,7 @@ sub collections_coluuid_get {
         description => 'coluuid',
         required => '1',
     },
-    'content_i_ds' => {
+    'content_ids' => {
         data_type => 'ARRAY[int]',
         description => 'Content IDs to add to collection',
         required => '1',
@@ -397,9 +397,9 @@ sub collections_coluuid_post {
       croak("Missing the required parameter 'coluuid' when calling collections_coluuid_post");
     }
 
-    # verify the required parameter 'content_i_ds' is set
-    unless (exists $args{'content_i_ds'}) {
-      croak("Missing the required parameter 'content_i_ds' when calling collections_coluuid_post");
+    # verify the required parameter 'content_ids' is set
+    unless (exists $args{'content_ids'}) {
+      croak("Missing the required parameter 'content_ids' when calling collections_coluuid_post");
     }
 
     # parse inputs
@@ -426,8 +426,8 @@ sub collections_coluuid_post {
 
     my $_body_data;
     # body params
-    if ( exists $args{'content_i_ds'}) {
-        $_body_data = $args{'content_i_ds'};
+    if ( exists $args{'content_ids'}) {
+        $_body_data = $args{'content_ids'};
     }
 
     # authentication setting, if any
