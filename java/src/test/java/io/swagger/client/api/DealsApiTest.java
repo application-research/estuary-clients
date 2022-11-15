@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.MainChannelIDParam;
@@ -25,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for DealsApi
  */
@@ -33,7 +33,6 @@ public class DealsApiTest {
 
     private final DealsApi api = new DealsApi();
 
-    
     /**
      * Estimate the cost of a deal
      *
@@ -49,7 +48,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get Deal Info
      *
@@ -65,7 +63,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get Proposal
      *
@@ -81,7 +78,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Query Ask
      *
@@ -97,7 +93,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get Deal Status by PropCid
      *
@@ -113,7 +108,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Deal Status
      *
@@ -130,7 +124,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Transfer In Progress
      *
@@ -145,7 +138,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Transfer Status
      *
@@ -156,12 +148,11 @@ public class DealsApiTest {
      */
     @Test
     public void dealTransferStatusPostTest() throws Exception {
-        MainChannelIDParam chanid = null;
-        String response = api.dealTransferStatusPost(chanid);
+        MainChannelIDParam body = null;
+        String response = api.dealTransferStatusPost(body);
 
         // TODO: test validations
     }
-    
     /**
      * Get storage failures for user
      *
@@ -176,7 +167,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Make Deal
      *
@@ -187,13 +177,12 @@ public class DealsApiTest {
      */
     @Test
     public void dealsMakeMinerPostTest() throws Exception {
+        String body = null;
         String miner = null;
-        String dealRequest = null;
-        String response = api.dealsMakeMinerPost(miner, dealRequest);
+        String response = api.dealsMakeMinerPost(body, miner);
 
         // TODO: test validations
     }
-    
     /**
      * Get Deal Status
      *
@@ -209,7 +198,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get storage failures
      *
@@ -224,7 +212,6 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Query Ask
      *
@@ -240,5 +227,4 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
-    
 }

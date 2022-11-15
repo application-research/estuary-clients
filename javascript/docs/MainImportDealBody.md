@@ -7,5 +7,3 @@ Name | Type | Description | Notes
 **dealIDs** | **[Number]** |  | [optional] 
 **dir** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
-
-

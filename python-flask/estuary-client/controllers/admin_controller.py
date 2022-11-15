@@ -5,13 +5,13 @@ from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
-def admin_peering_peers_delete(peerIds):  # noqa: E501
+def admin_peering_peers_delete(body):  # noqa: E501
     """Remove peers on Peering Service
 
     This endpoint can be used to remove a Peer from the Peering Service # noqa: E501
 
-    :param peerIds: Peer ids
-    :type peerIds: List[]
+    :param body: Peer ids
+    :type body: List[]
 
     :rtype: str
     """

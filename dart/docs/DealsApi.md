@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,7 +23,6 @@ Method | HTTP request | Description
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
 
-
 # **dealEstimatePost**
 > String dealEstimatePost(body)
 
@@ -31,7 +30,7 @@ Estimate the cost of a deal
 
 This endpoint estimates the cost of a deal
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -42,7 +41,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var body = new MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
-try { 
+try {
     var result = api_instance.dealEstimatePost(body);
     print(result);
 } catch (e) {
@@ -66,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -78,7 +77,7 @@ Get Deal Info
 
 This endpoint returns the deal info for a deal
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -89,7 +88,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var dealid = 56; // int | Deal ID
 
-try { 
+try {
     var result = api_instance.dealInfoDealidGet(dealid);
     print(result);
 } catch (e) {
@@ -125,7 +124,7 @@ Get Proposal
 
 This endpoint returns the proposal for a deal
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -136,7 +135,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var propcid = propcid_example; // String | Proposal CID
 
-try { 
+try {
     var result = api_instance.dealProposalPropcidGet(propcid);
     print(result);
 } catch (e) {
@@ -172,7 +171,7 @@ Query Ask
 
 This endpoint returns the ask for a given CID
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -183,7 +182,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var miner = miner_example; // String | CID
 
-try { 
+try {
     var result = api_instance.dealQueryMinerGet(miner);
     print(result);
 } catch (e) {
@@ -219,7 +218,7 @@ Get Deal Status by PropCid
 
 Get Deal Status by PropCid
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -230,7 +229,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var propcid = propcid_example; // String | PropCid
 
-try { 
+try {
     var result = api_instance.dealStatusByProposalPropcidGet(propcid);
     print(result);
 } catch (e) {
@@ -266,7 +265,7 @@ Deal Status
 
 This endpoint returns the status of a deal
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -278,7 +277,7 @@ var api_instance = new DealsApi();
 var miner = miner_example; // String | Miner
 var propcid = propcid_example; // String | Proposal CID
 
-try { 
+try {
     var result = api_instance.dealStatusMinerPropcidGet(miner, propcid);
     print(result);
 } catch (e) {
@@ -315,7 +314,7 @@ Transfer In Progress
 
 This endpoint returns the in-progress transfers
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -325,7 +324,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new DealsApi();
 
-try { 
+try {
     var result = api_instance.dealTransferInProgressGet();
     print(result);
 } catch (e) {
@@ -352,13 +351,13 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealTransferStatusPost**
-> String dealTransferStatusPost(chanid)
+> String dealTransferStatusPost(body)
 
 Transfer Status
 
 This endpoint returns the status of a transfer
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -367,10 +366,10 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new DealsApi();
-var chanid = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+var body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
 
-try { 
-    var result = api_instance.dealTransferStatusPost(chanid);
+try {
+    var result = api_instance.dealTransferStatusPost(body);
     print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealTransferStatusPost: $e\n");
@@ -381,7 +380,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
 
 ### Return type
 
@@ -393,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -405,7 +404,7 @@ Get storage failures for user
 
 This endpoint returns a list of storage failures for user
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -415,7 +414,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new DealsApi();
 
-try { 
+try {
     var result = api_instance.dealsFailuresGet();
     print(result);
 } catch (e) {
@@ -442,13 +441,13 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **dealsMakeMinerPost**
-> String dealsMakeMinerPost(miner, dealRequest)
+> String dealsMakeMinerPost(body, miner)
 
 Make Deal
 
 This endpoint makes a deal for a given content and miner
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -457,11 +456,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new DealsApi();
+var body = new String(); // String | Deal Request
 var miner = miner_example; // String | Miner
-var dealRequest = new String(); // String | Deal Request
 
-try { 
-    var result = api_instance.dealsMakeMinerPost(miner, dealRequest);
+try {
+    var result = api_instance.dealsMakeMinerPost(body, miner);
     print(result);
 } catch (e) {
     print("Exception when calling DealsApi->dealsMakeMinerPost: $e\n");
@@ -472,8 +471,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Deal Request | 
  **miner** | **String**| Miner | 
- **dealRequest** | **String**| Deal Request | 
 
 ### Return type
 
@@ -485,7 +484,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -497,7 +496,7 @@ Get Deal Status
 
 This endpoint returns the status of a deal
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -508,7 +507,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var deal = 56; // int | Deal ID
 
-try { 
+try {
     var result = api_instance.dealsStatusDealGet(deal);
     print(result);
 } catch (e) {
@@ -544,7 +543,7 @@ Get storage failures
 
 This endpoint returns a list of storage failures
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -554,7 +553,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new DealsApi();
 
-try { 
+try {
     var result = api_instance.publicDealsFailuresGet();
     print(result);
 } catch (e) {
@@ -587,7 +586,7 @@ Query Ask
 
 This endpoint returns the ask for a given CID
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -598,7 +597,7 @@ import 'package:swagger/api.dart';
 var api_instance = new DealsApi();
 var miner = miner_example; // String | CID
 
-try { 
+try {
     var result = api_instance.publicMinersStorageQueryMinerGet(miner);
     print(result);
 } catch (e) {

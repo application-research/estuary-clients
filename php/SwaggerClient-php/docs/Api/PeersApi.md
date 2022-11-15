@@ -1,19 +1,18 @@
 # Swagger\Client\PeersApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminPeeringPeersDelete**](PeersApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-[**adminPeeringPeersGet**](PeersApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-[**adminPeeringPeersPost**](PeersApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-[**adminPeeringStartPost**](PeersApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-[**adminPeeringStatusGet**](PeersApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-[**adminPeeringStopPost**](PeersApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
-
+[**adminPeeringPeersDelete**](PeersApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
+[**adminPeeringPeersGet**](PeersApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
+[**adminPeeringPeersPost**](PeersApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
+[**adminPeeringStartPost**](PeersApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
+[**adminPeeringStatusGet**](PeersApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
+[**adminPeeringStopPost**](PeersApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 
 # **adminPeeringPeersDelete**
-> string adminPeeringPeersDelete($peer_ids)
+> string adminPeeringPeersDelete($body)
 
 Remove peers on Peering Service
 
@@ -23,7 +22,6 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -35,10 +33,10 @@ $apiInstance = new Swagger\Client\Api\PeersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$peer_ids = array(new \Swagger\Client\Model\bool[]()); // bool[] | Peer ids
+$body = array(True); // bool[] | Peer ids
 
 try {
-    $result = $apiInstance->adminPeeringPeersDelete($peer_ids);
+    $result = $apiInstance->adminPeeringPeersDelete($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PeersApi->adminPeeringPeersDelete: ', $e->getMessage(), PHP_EOL;
@@ -50,7 +48,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peer_ids** | **bool[]**| Peer ids |
+ **body** | [**bool[]**](../Model/bool.md)| Peer ids |
 
 ### Return type
 
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -78,7 +76,6 @@ This endpoint can be used to list all peers on Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -129,7 +126,6 @@ This endpoint can be used to add a Peer from the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -180,7 +176,6 @@ This endpoint can be used to start the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -231,7 +226,6 @@ This endpoint can be used to check the Peering status
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -282,7 +276,6 @@ This endpoint can be used to stop the Peering Service
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

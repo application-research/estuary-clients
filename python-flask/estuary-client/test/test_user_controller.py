@@ -19,7 +19,7 @@ class TestUserController(BaseTestCase):
         Get API keys for a user
         """
         response = self.client.open(
-            '//user/api-keys',
+            '/user/api-keys',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -30,7 +30,7 @@ class TestUserController(BaseTestCase):
         Revoke a User API Key.
         """
         response = self.client.open(
-            '//user/api-keys/{key_or_hash}'.format(key_or_hash='key_or_hash_example'),
+            '/user/api-keys/{key_or_hash}'.format(key_or_hash='key_or_hash_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -43,7 +43,7 @@ class TestUserController(BaseTestCase):
         query_string = [('expiry', 'expiry_example'),
                         ('perms', 'perms_example')]
         response = self.client.open(
-            '//user/api-keys',
+            '/user/api-keys',
             method='POST',
             query_string=query_string)
         self.assert200(response,
@@ -55,7 +55,7 @@ class TestUserController(BaseTestCase):
         Export user data
         """
         response = self.client.open(
-            '//user/export',
+            '/user/export',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -66,7 +66,7 @@ class TestUserController(BaseTestCase):
         Create API keys for a user
         """
         response = self.client.open(
-            '//user/stats',
+            '/user/stats',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

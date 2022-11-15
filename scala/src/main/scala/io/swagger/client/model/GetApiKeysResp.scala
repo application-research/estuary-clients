@@ -9,10 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param expiry 
+ * @param label 
+ * @param token 
+ * @param tokenHash 
+ */
 case class GetApiKeysResp (
   expiry: Option[String] = None,
   label: Option[String] = None,

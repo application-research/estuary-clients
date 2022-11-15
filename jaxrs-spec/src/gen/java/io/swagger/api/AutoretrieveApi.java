@@ -5,7 +5,14 @@ import io.swagger.model.UtilHttpError;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.util.Map;
 import java.util.List;
@@ -13,22 +20,23 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 @Path("/autoretrieve")
-@Api(description = "the autoretrieve API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-11T23:35:22.829Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-15T21:05:26.621Z[GMT]")
 public class AutoretrieveApi {
 
     @POST
     @Path("/heartbeat")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Marks autoretrieve server as up", notes = "This endpoint updates the lastConnection field for autoretrieve", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "autoretrieve" })
+    @Operation(summary = "Marks autoretrieve server as up", description = "This endpoint updates the lastConnection field for autoretrieve", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "autoretrieve" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response autoretrieveHeartbeatPost(@HeaderParam("token") @NotNull   @ApiParam("Autoretrieve&#39;s auth token") String token) {
+    public Response autoretrieveHeartbeatPost( @NotNull  @HeaderParam("token") 
+
+ @Parameter(description = "Autoretrieve&#x27;s auth token") String token
+) {
         return Response.ok().entity("magic!").build();
-    }
-}
+    }}

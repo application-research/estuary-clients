@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -95,10 +95,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string NetAddrsGet ()
         {
-            
     
             var path = "/net/addrs";
             path = path.Replace("{format}", "json");
@@ -109,7 +108,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -127,14 +126,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <param name="miner">Filter by miner</param> 
-        /// <returns>string</returns>            
+        /// <param name="miner">Filter by miner</param>
+        /// <returns>string</returns>
         public string PublicMinersFailuresMinerGet (string miner)
         {
-            
             // verify the required parameter 'miner' is set
             if (miner == null) throw new ApiException(400, "Missing required parameter 'miner' when calling PublicMinersFailuresMinerGet");
-            
     
             var path = "/public/miners/failures/{miner}";
             path = path.Replace("{format}", "json");
@@ -146,7 +143,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -164,10 +161,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string PublicMinersGet ()
         {
-            
     
             var path = "/public/miners";
             path = path.Replace("{format}", "json");
@@ -178,7 +174,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -196,10 +192,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>            
+        /// <returns>List&lt;string&gt;</returns>
         public List<string> PublicNetAddrsGet ()
         {
-            
     
             var path = "/public/net/addrs";
             path = path.Replace("{format}", "json");
@@ -210,7 +205,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -228,10 +223,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Net Peers This endpoint is used to get net peers
         /// </summary>
-        /// <returns>List&lt;string&gt;</returns>            
+        /// <returns>List&lt;string&gt;</returns>
         public List<string> PublicNetPeersGet ()
         {
-            
     
             var path = "/public/net/peers";
             path = path.Replace("{format}", "json");
@@ -242,7 +236,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

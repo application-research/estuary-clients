@@ -8,21 +8,22 @@
 import Foundation
 
 
-
 public struct UtilContentAddResponse: Codable {
 
-    public var cid: String?
-    public var estuaryId: Int?
-    public var providers: [String]?
-    public var retrievalUrl: String?
 
-    public init(cid: String?, estuaryId: Int?, providers: [String]?, retrievalUrl: String?) {
+    public var cid: String?
+
+    public var estuaryId: Int?
+
+    public var providers: [String]?
+
+    public var retrievalUrl: String?
+    public init(cid: String? = nil, estuaryId: Int? = nil, providers: [String]? = nil, retrievalUrl: String? = nil) { 
         self.cid = cid
         self.estuaryId = estuaryId
         self.providers = providers
         self.retrievalUrl = retrievalUrl
     }
-
     public enum CodingKeys: String, CodingKey { 
         case cid
         case estuaryId
@@ -30,6 +31,4 @@ public struct UtilContentAddResponse: Codable {
         case retrievalUrl = "retrieval_url"
     }
 
-
 }
-

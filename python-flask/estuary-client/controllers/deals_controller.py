@@ -100,18 +100,18 @@ def deal_transfer_in_progress_get():  # noqa: E501
     return 'do some magic!'
 
 
-def deal_transfer_status_post(chanid):  # noqa: E501
+def deal_transfer_status_post(body):  # noqa: E501
     """Transfer Status
 
     This endpoint returns the status of a transfer # noqa: E501
 
-    :param chanid: Channel ID
-    :type chanid: dict | bytes
+    :param body: Channel ID
+    :type body: dict | bytes
 
     :rtype: str
     """
     if connexion.request.is_json:
-        chanid = MainChannelIDParam.from_dict(connexion.request.get_json())  # noqa: E501
+        body = MainChannelIDParam.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -126,18 +126,20 @@ def deals_failures_get():  # noqa: E501
     return 'do some magic!'
 
 
-def deals_make_miner_post(miner, dealRequest):  # noqa: E501
+def deals_make_miner_post(body, miner):  # noqa: E501
     """Make Deal
 
     This endpoint makes a deal for a given content and miner # noqa: E501
 
+    :param body: Deal Request
+    :type body: dict | bytes
     :param miner: Miner
     :type miner: str
-    :param dealRequest: Deal Request
-    :type dealRequest: str
 
     :rtype: str
     """
+    if connexion.request.is_json:
+        body = str.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

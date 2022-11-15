@@ -6,7 +6,6 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import io.swagger.model.CollectionsCollection;
-import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
@@ -20,15 +19,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-11T23:35:21.555Z")
-public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       @Override
       public Response collectionsColuuidCommitPost(String coluuid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response collectionsColuuidContentsDelete(String coluuid, String contentid, MainDeleteContentFromCollectionBody body, SecurityContext securityContext) {
+      public Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -43,7 +41,7 @@ public class CollectionsApiServiceImpl implements CollectionsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response collectionsColuuidPost(String coluuid, List<Integer> contentIDs, SecurityContext securityContext) {
+      public Response collectionsColuuidPost(List<Integer> body, String coluuid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

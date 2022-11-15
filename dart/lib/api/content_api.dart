@@ -32,7 +32,7 @@ class ContentApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "filename", filename));
     }
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -40,7 +40,6 @@ class ContentApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -59,7 +58,7 @@ class ContentApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -87,7 +86,7 @@ class ContentApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
     }
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -95,7 +94,6 @@ class ContentApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -114,7 +112,7 @@ class ContentApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -123,12 +121,15 @@ class ContentApi {
   /// Add new content
   ///
   /// This endpoint is used to upload new content.
-  Future<UtilContentAddResponse> contentAddPost(MultipartFile data, { String filename, String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
+  Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
     Object postBody = null;
 
     // verify required params are set
     if(data == null) {
      throw new ApiException(400, "Missing required param: data");
+    }
+    if(filename == null) {
+     throw new ApiException(400, "Missing required param: filename");
     }
 
     // create path and map variables
@@ -162,18 +163,15 @@ class ContentApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if (data != null) {
         hasFields = true;
         mp.fields['data'] = data.field;
         mp.files.add(data);
       }
-      
       if (filename != null) {
         hasFields = true;
         mp.fields['filename'] = parameterToString(filename);
       }
-      
       if(hasFields)
         postBody = mp;
     }
@@ -195,7 +193,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
     } else {
       return null;
@@ -228,7 +226,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -247,7 +244,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -289,7 +286,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -308,7 +304,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -341,7 +337,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -360,7 +355,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -369,12 +364,12 @@ if (filename != null)
   /// Add a new content
   ///
   /// This endpoint adds a new content
-  Future<String> contentCreatePost(UtilContentCreateBody req, { String ignoreDupes }) async {
-    Object postBody = req;
+  Future<String> contentCreatePost(UtilContentCreateBody body, { String ignoreDupes }) async {
+    Object postBody = body;
 
     // verify required params are set
-    if(req == null) {
-     throw new ApiException(400, "Missing required param: req");
+    if(body == null) {
+     throw new ApiException(400, "Missing required param: body");
     }
 
     // create path and map variables
@@ -388,7 +383,7 @@ if (filename != null)
       queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
     }
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -396,7 +391,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -415,7 +409,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -451,7 +445,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -470,7 +463,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -503,7 +496,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -522,7 +514,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -555,7 +547,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -574,7 +565,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -607,7 +598,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -626,7 +616,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -651,7 +641,7 @@ if (filename != null)
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -659,7 +649,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -678,7 +667,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -708,7 +697,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -727,7 +715,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -760,7 +748,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -779,7 +766,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -809,7 +796,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -828,7 +814,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -866,7 +852,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -885,7 +870,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -918,7 +903,6 @@ if (filename != null)
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -937,7 +921,7 @@ if (filename != null)
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;

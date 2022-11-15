@@ -8,25 +8,23 @@
 import Foundation
 
 
-
 public struct MainChannelIDParam: Codable {
 
-    public var _id: Int?
-    public var initiator: String?
-    public var responder: String?
 
-    public init(_id: Int?, initiator: String?, responder: String?) {
+    public var _id: Int?
+
+    public var initiator: String?
+
+    public var responder: String?
+    public init(_id: Int? = nil, initiator: String? = nil, responder: String? = nil) { 
         self._id = _id
         self.initiator = initiator
         self.responder = responder
     }
-
     public enum CodingKeys: String, CodingKey { 
         case _id = "id"
         case initiator
         case responder
     }
 
-
 }
-

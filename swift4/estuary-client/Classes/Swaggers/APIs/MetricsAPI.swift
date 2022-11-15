@@ -13,7 +13,7 @@ import Alamofire
 open class MetricsAPI {
     /**
      Get deal metrics
-     
+
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func publicMetricsDealsOnChainGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
@@ -30,10 +30,7 @@ open class MetricsAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
 
      - returns: RequestBuilder<String> 
      */
@@ -41,7 +38,7 @@ open class MetricsAPI {
         let path = "/public/metrics/deals-on-chain"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

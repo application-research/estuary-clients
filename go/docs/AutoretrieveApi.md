@@ -1,13 +1,12 @@
-# \AutoretrieveApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAutoretrieveInitPost**](AutoretrieveApi.md#AdminAutoretrieveInitPost) | **Post** /admin/autoretrieve/init | Register autoretrieve server
 [**AdminAutoretrieveListGet**](AutoretrieveApi.md#AdminAutoretrieveListGet) | **Get** /admin/autoretrieve/list | List autoretrieve servers
 [**AutoretrieveHeartbeatPost**](AutoretrieveApi.md#AutoretrieveHeartbeatPost) | **Post** /autoretrieve/heartbeat | Marks autoretrieve server as up
-
 
 # **AdminAutoretrieveInitPost**
 > string AdminAutoretrieveInitPost(ctx, addresses, pubKey)
@@ -20,8 +19,8 @@ This endpoint registers a new autoretrieve server
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **addresses** | **string**| Autoretrieve&#39;s comma-separated list of addresses | 
-  **pubKey** | **string**| Autoretrieve&#39;s public key | 
+  **addresses** | **string**|  | 
+  **pubKey** | **string**|  | 
 
 ### Return type
 
@@ -33,7 +32,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -73,7 +72,7 @@ This endpoint updates the lastConnection field for autoretrieve
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **token** | **string**| Autoretrieve&#39;s auth token | 
+  **token** | **string**| Autoretrieve&#x27;s auth token | 
 
 ### Return type
 

@@ -3,16 +3,13 @@ part of swagger.api;
 class MainImportDealBody {
   
   String coluuid = null;
-  
 
   List<int> dealIDs = [];
-  
 
   String dir = null;
-  
 
   String name = null;
-  
+
   MainImportDealBody();
 
   @override
@@ -22,18 +19,10 @@ class MainImportDealBody {
 
   MainImportDealBody.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    coluuid =
-        json['coluuid']
-    ;
-    dealIDs =
-        (json['dealIDs'] as List).map((item) => item as int).toList()
-    ;
-    dir =
-        json['dir']
-    ;
-    name =
-        json['name']
-    ;
+    coluuid = json['coluuid'];
+    dealIDs = (json['dealIDs'] as List).map((item) => item as int).toList();
+    dir = json['dir'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
@@ -57,4 +46,3 @@ class MainImportDealBody {
     return map;
   }
 }
-

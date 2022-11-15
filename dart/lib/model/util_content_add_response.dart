@@ -3,16 +3,13 @@ part of swagger.api;
 class UtilContentAddResponse {
   
   String cid = null;
-  
 
   int estuaryId = null;
-  
 
   List<String> providers = [];
-  
 
   String retrievalUrl = null;
-  
+
   UtilContentAddResponse();
 
   @override
@@ -22,18 +19,10 @@ class UtilContentAddResponse {
 
   UtilContentAddResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    cid =
-        json['cid']
-    ;
-    estuaryId =
-        json['estuaryId']
-    ;
-    providers =
-        (json['providers'] as List).map((item) => item as String).toList()
-    ;
-    retrievalUrl =
-        json['retrieval_url']
-    ;
+    cid = json['cid'];
+    estuaryId = json['estuaryId'];
+    providers = (json['providers'] as List).map((item) => item as String).toList();
+    retrievalUrl = json['retrieval_url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -57,4 +46,3 @@ class UtilContentAddResponse {
     return map;
   }
 }
-

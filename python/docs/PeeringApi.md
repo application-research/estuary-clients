@@ -1,6 +1,6 @@
 # estuary_client.PeeringApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,8 @@ Method | HTTP request | Description
 [**admin_peering_status_get**](PeeringApi.md#admin_peering_status_get) | **GET** /admin/peering/status | Check Peering Status
 [**admin_peering_stop_post**](PeeringApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
 
-
 # **admin_peering_peers_delete**
-> str admin_peering_peers_delete(peer_ids)
+> str admin_peering_peers_delete(body)
 
 Remove peers on Peering Service
 
@@ -35,11 +34,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.PeeringApi(estuary_client.ApiClient(configuration))
-peer_ids = [estuary_client.list[bool]()] # list[bool] | Peer ids
+body = [True] # list[bool] | Peer ids
 
 try:
     # Remove peers on Peering Service
-    api_response = api_instance.admin_peering_peers_delete(peer_ids)
+    api_response = api_instance.admin_peering_peers_delete(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PeeringApi->admin_peering_peers_delete: %s\n" % e)
@@ -49,7 +48,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peer_ids** | **list[bool]**| Peer ids | 
+ **body** | [**list[bool]**](bool.md)| Peer ids | 
 
 ### Return type
 
@@ -61,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

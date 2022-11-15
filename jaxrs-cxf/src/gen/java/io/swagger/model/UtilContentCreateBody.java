@@ -1,9 +1,8 @@
 package io.swagger.model;
 
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,25 +11,27 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
-public class UtilContentCreateBody  {
+public class UtilContentCreateBody   {
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   private String coluuid = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String dir = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String location = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String name = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String root = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private Integer type = null;
  /**
    * Get coluuid
@@ -167,4 +168,3 @@ public class UtilContentCreateBody  {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

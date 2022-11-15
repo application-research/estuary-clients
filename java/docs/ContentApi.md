@@ -1,6 +1,6 @@
 # ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
-
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
@@ -65,7 +64,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Car |
+ **body** | [**String**](String.md)| Car |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
  **filename** | **String**| Filename | [optional]
 
@@ -79,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -136,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddPost"></a>
@@ -165,8 +164,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-File data = new File("/path/to/file.txt"); // File | File to upload
-String filename = "filename_example"; // String | Filenam to use for upload
+File data = new File("data_example"); // File | 
+String filename = "filename_example"; // String | 
 String coluuid = "coluuid_example"; // String | Collection UUID
 Integer replication = 56; // Integer | Replication value
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
@@ -185,8 +184,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **File**| File to upload |
- **filename** | **String**| Filenam to use for upload | [optional]
+ **data** | **File**|  |
+ **filename** | **String**|  |
  **coluuid** | **String**| Collection UUID | [optional]
  **replication** | **Integer**| Replication value | [optional]
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
@@ -377,7 +376,7 @@ Name | Type | Description  | Notes
 
 <a name="contentCreatePost"></a>
 # **contentCreatePost**
-> String contentCreatePost(req, ignoreDupes)
+> String contentCreatePost(body, ignoreDupes)
 
 Add a new content
 
@@ -401,10 +400,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-UtilContentCreateBody req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+UtilContentCreateBody body = new UtilContentCreateBody(); // UtilContentCreateBody | Content
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
-    String result = apiInstance.contentCreatePost(req, ignoreDupes);
+    String result = apiInstance.contentCreatePost(body, ignoreDupes);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentCreatePost");
@@ -416,7 +415,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
 
 ### Return type
@@ -429,7 +428,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentDealsGet"></a>
@@ -706,7 +705,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentListGet"></a>

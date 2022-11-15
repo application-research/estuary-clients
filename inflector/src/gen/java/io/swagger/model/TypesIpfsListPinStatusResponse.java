@@ -1,26 +1,20 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class TypesIpfsListPinStatusResponse   {
   @JsonProperty("count")
   private Integer count = null;
-
   @JsonProperty("results")
   private List<TypesIpfsPinStatusResponse> results = null;
-
   /**
    **/
   public TypesIpfsListPinStatusResponse count(Integer count) {
@@ -29,7 +23,7 @@ public class TypesIpfsListPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("count")
   public Integer getCount() {
     return count;
@@ -46,7 +40,7 @@ public class TypesIpfsListPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("results")
   public List<TypesIpfsPinStatusResponse> getResults() {
     return results;
@@ -78,7 +72,6 @@ public class TypesIpfsListPinStatusResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsListPinStatusResponse {\n");
-    
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("}");
@@ -96,4 +89,3 @@ public class TypesIpfsListPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

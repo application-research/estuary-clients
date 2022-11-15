@@ -37,7 +37,6 @@ class MinerApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -56,7 +55,7 @@ class MinerApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -89,7 +88,6 @@ class MinerApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -108,7 +106,7 @@ class MinerApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;

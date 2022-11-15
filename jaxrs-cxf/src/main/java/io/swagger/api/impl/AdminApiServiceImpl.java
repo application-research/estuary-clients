@@ -1,7 +1,6 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import java.util.List;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -15,7 +14,6 @@ import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
 
 /**
  * Estuary API
@@ -30,7 +28,7 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to remove a Peer from the Peering Service
      *
      */
-    public String adminPeeringPeersDelete(List<Boolean> peerIds) {
+    public String adminPeeringPeersDelete(List<Boolean> body) {
         // TODO: Implement...
         
         return null;

@@ -12,11 +12,11 @@ import Foundation
 public struct TypesIpfsPin: Codable {
 
     public var cid: String?
-    public var meta: JSONValue?
+    public var meta: Any?
     public var name: String?
     public var origins: [String]?
 
-    public init(cid: String?, meta: JSONValue?, name: String?, origins: [String]?) {
+    public init(cid: String? = nil, meta: Any? = nil, name: String? = nil, origins: [String]? = nil) {
         self.cid = cid
         self.meta = meta
         self.name = name
@@ -25,4 +25,3 @@ public struct TypesIpfsPin: Codable {
 
 
 }
-

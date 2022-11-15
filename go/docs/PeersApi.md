@@ -1,6 +1,6 @@
-# \PeersApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,9 +11,8 @@ Method | HTTP request | Description
 [**AdminPeeringStatusGet**](PeersApi.md#AdminPeeringStatusGet) | **Get** /admin/peering/status | Check Peering Status
 [**AdminPeeringStopPost**](PeersApi.md#AdminPeeringStopPost) | **Post** /admin/peering/stop | Stop Peering
 
-
 # **AdminPeeringPeersDelete**
-> string AdminPeeringPeersDelete(ctx, peerIds)
+> string AdminPeeringPeersDelete(ctx, body)
 Remove peers on Peering Service
 
 This endpoint can be used to remove a Peer from the Peering Service
@@ -23,7 +22,7 @@ This endpoint can be used to remove a Peer from the Peering Service
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **peerIds** | **[]bool**| Peer ids | 
+  **body** | [**[]bool**](bool.md)| Peer ids | 
 
 ### Return type
 
@@ -35,7 +34,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

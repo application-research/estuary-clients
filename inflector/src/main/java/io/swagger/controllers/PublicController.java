@@ -1,7 +1,7 @@
 package io.swagger.controllers;
 
-import io.swagger.inflector.models.RequestContext;
-import io.swagger.inflector.models.ResponseContext;
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -12,8 +12,7 @@ import io.swagger.model.*;
 
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
-public class PublicController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")public class PublicController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -21,7 +20,8 @@ public class PublicController  {
    **/
 
   /*
-    public ResponseContext publicByCidCidGET(RequestContext request , String cid) {
+    public ResponseContext publicByCidCidGET(RequestContext request , String cid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -51,25 +51,31 @@ public class PublicController  {
   */
 
   /*
-    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner, String ignoreFailed) {
+    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner 
+, String ignoreFailed 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner, String ignoreFailed) {
+    public ResponseContext publicMinersDealsMinerGET(RequestContext request , String miner 
+, String ignoreFailed 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersFailuresMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersFailuresMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersFailuresMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersFailuresMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -87,19 +93,22 @@ public class PublicController  {
   */
 
   /*
-    public ResponseContext publicMinersStatsMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersStatsMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersStatsMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersStatsMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext publicMinersStorageQueryMinerGET(RequestContext request , String miner) {
+    public ResponseContext publicMinersStorageQueryMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

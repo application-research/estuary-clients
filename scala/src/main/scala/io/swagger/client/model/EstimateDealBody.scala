@@ -9,10 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param durationBlks 
+ * @param replication 
+ * @param size 
+ * @param verified 
+ */
 case class EstimateDealBody (
   durationBlks: Option[Integer] = None,
   replication: Option[Integer] = None,

@@ -9,10 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param id 
+ * @param initiator 
+ * @param responder 
+ */
 case class ChannelIDParam (
   id: Option[Integer] = None,
   initiator: Option[String] = None,

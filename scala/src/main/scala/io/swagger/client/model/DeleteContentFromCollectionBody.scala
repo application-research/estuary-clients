@@ -9,10 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param by 
+ * @param value 
+ */
 case class DeleteContentFromCollectionBody (
   by: Option[String] = None,
   value: Option[String] = None

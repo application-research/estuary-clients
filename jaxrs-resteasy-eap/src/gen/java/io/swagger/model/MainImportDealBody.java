@@ -4,17 +4,12 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class MainImportDealBody   {
-  
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class MainImportDealBody   {
   private String coluuid = null;
   private List<Integer> dealIDs = new ArrayList<Integer>();
   private String dir = null;
@@ -23,7 +18,7 @@ public class MainImportDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -35,7 +30,7 @@ public class MainImportDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("dealIDs")
   public List<Integer> getDealIDs() {
     return dealIDs;
@@ -47,7 +42,7 @@ public class MainImportDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -59,7 +54,7 @@ public class MainImportDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -113,4 +108,3 @@ public class MainImportDealBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.model;
 
 import java.util.Objects;
@@ -20,14 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-
 /**
  * MainChannelIDParam
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-11T23:35:09.103Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-15T21:05:25.647Z[GMT]")
 public class MainChannelIDParam {
   @SerializedName("id")
   private Integer id = null;
@@ -47,7 +45,7 @@ public class MainChannelIDParam {
    * Get id
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public Integer getId() {
     return id;
   }
@@ -65,7 +63,7 @@ public class MainChannelIDParam {
    * Get initiator
    * @return initiator
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getInitiator() {
     return initiator;
   }
@@ -83,7 +81,7 @@ public class MainChannelIDParam {
    * Get responder
    * @return responder
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getResponder() {
     return responder;
   }
@@ -137,4 +135,3 @@ public class MainChannelIDParam {
   }
 
 }
-

@@ -9,11 +9,10 @@ import Foundation
 import Alamofire
 
 
-
 open class MinerAPI {
     /**
      Get all miners deals
-     
+
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -28,15 +27,11 @@ open class MinerAPI {
     /**
      Get all miners deals
      - GET /public/miners/deals/{miner}
-     - This endpoint returns all miners deals
+
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
 
@@ -49,20 +44,19 @@ open class MinerAPI {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "ignore-failed": ignoreFailed
+                        "ignore-failed": ignoreFailed
         ])
+
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
-
     /**
      Get miner stats
-     
+
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -76,15 +70,11 @@ open class MinerAPI {
     /**
      Get miner stats
      - GET /public/miners/stats/{miner}
-     - This endpoint returns miner stats
+
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Filter by miner 
 
      - returns: RequestBuilder<String> 
@@ -96,12 +86,11 @@ open class MinerAPI {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         let url = URLComponents(string: URLString)
+
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
-
 }

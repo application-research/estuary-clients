@@ -26,8 +26,9 @@ part 'api/peers_api.dart';
 part 'api/pinning_api.dart';
 part 'api/public_api.dart';
 part 'api/user_api.dart';
-
+part 'model/autoretrieve_init_body.dart';
 part 'model/collections_collection.dart';
+part 'model/content_add_body.dart';
 part 'model/main_channel_id_param.dart';
 part 'model/main_create_collection_body.dart';
 part 'model/main_delete_content_from_collection_body.dart';
@@ -41,6 +42,5 @@ part 'model/util_content_add_ipfs_body.dart';
 part 'model/util_content_add_response.dart';
 part 'model/util_content_create_body.dart';
 part 'model/util_http_error.dart';
-
 
 ApiClient defaultApiClient = new ApiClient();

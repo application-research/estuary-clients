@@ -9,10 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param cid 
+ * @param estuaryId 
+ * @param providers 
+ * @param retrievalUrl 
+ */
 case class ContentAddResponse (
   cid: Option[String] = None,
   estuaryId: Option[Integer] = None,

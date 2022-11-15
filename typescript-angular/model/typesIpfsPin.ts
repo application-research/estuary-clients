@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface TypesIpfsPin { 
     cid?: string;
     meta?: any;

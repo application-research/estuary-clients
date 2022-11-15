@@ -1,11 +1,10 @@
 # estuary_client.MetricsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**public_metrics_deals_on_chain_get**](MetricsApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
-
 
 # **public_metrics_deals_on_chain_get**
 > str public_metrics_deals_on_chain_get()

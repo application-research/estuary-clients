@@ -17,12 +17,12 @@ class TestPeeringController(BaseTestCase):
 
         Remove peers on Peering Service
         """
-        peerIds = [List[bool]()]
+        body = [True]
         response = self.client.open(
-            '//admin/peering/peers',
+            '/admin/peering/peers',
             method='DELETE',
-            data=json.dumps(peerIds),
-            content_type='application/json')
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -32,7 +32,7 @@ class TestPeeringController(BaseTestCase):
         List all Peering peers
         """
         response = self.client.open(
-            '//admin/peering/peers',
+            '/admin/peering/peers',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -43,7 +43,7 @@ class TestPeeringController(BaseTestCase):
         Add peers on Peering Service
         """
         response = self.client.open(
-            '//admin/peering/peers',
+            '/admin/peering/peers',
             method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -54,7 +54,7 @@ class TestPeeringController(BaseTestCase):
         Start Peering
         """
         response = self.client.open(
-            '//admin/peering/start',
+            '/admin/peering/start',
             method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -65,7 +65,7 @@ class TestPeeringController(BaseTestCase):
         Check Peering Status
         """
         response = self.client.open(
-            '//admin/peering/status',
+            '/admin/peering/status',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -76,7 +76,7 @@ class TestPeeringController(BaseTestCase):
         Stop Peering
         """
         response = self.client.open(
-            '//admin/peering/stop',
+            '/admin/peering/stop',
             method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

@@ -8,17 +8,21 @@
 import Foundation
 
 
-
 public struct UtilContentCreateBody: Codable {
 
-    public var coluuid: String?
-    public var dir: String?
-    public var location: String?
-    public var name: String?
-    public var root: String?
-    public var type: Int?
 
-    public init(coluuid: String?, dir: String?, location: String?, name: String?, root: String?, type: Int?) {
+    public var coluuid: String?
+
+    public var dir: String?
+
+    public var location: String?
+
+    public var name: String?
+
+    public var root: String?
+
+    public var type: Int?
+    public init(coluuid: String? = nil, dir: String? = nil, location: String? = nil, name: String? = nil, root: String? = nil, type: Int? = nil) { 
         self.coluuid = coluuid
         self.dir = dir
         self.location = location
@@ -27,6 +31,4 @@ public struct UtilContentCreateBody: Codable {
         self.type = type
     }
 
-
 }
-

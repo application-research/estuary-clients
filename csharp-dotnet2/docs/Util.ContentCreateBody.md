@@ -1,4 +1,4 @@
-# estuary-client.Model.UtilContentCreateBody
+# IO.Swagger.Model.UtilContentCreateBody
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,13 +1,12 @@
 # estuary_client.AutoretrieveApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**admin_autoretrieve_init_post**](AutoretrieveApi.md#admin_autoretrieve_init_post) | **POST** /admin/autoretrieve/init | Register autoretrieve server
 [**admin_autoretrieve_list_get**](AutoretrieveApi.md#admin_autoretrieve_list_get) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 [**autoretrieve_heartbeat_post**](AutoretrieveApi.md#autoretrieve_heartbeat_post) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
-
 
 # **admin_autoretrieve_init_post**
 > str admin_autoretrieve_init_post(addresses, pub_key)
@@ -32,8 +31,8 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.AutoretrieveApi(estuary_client.ApiClient(configuration))
-addresses = 'addresses_example' # str | Autoretrieve's comma-separated list of addresses
-pub_key = 'pub_key_example' # str | Autoretrieve's public key
+addresses = 'addresses_example' # str | 
+pub_key = 'pub_key_example' # str | 
 
 try:
     # Register autoretrieve server
@@ -47,8 +46,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addresses** | **str**| Autoretrieve&#39;s comma-separated list of addresses | 
- **pub_key** | **str**| Autoretrieve&#39;s public key | 
+ **addresses** | **str**|  | 
+ **pub_key** | **str**|  | 
 
 ### Return type
 
@@ -60,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -152,7 +151,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **str**| Autoretrieve&#39;s auth token | 
+ **token** | **str**| Autoretrieve&#x27;s auth token | 
 
 ### Return type
 

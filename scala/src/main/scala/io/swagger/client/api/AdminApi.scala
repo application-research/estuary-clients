@@ -9,12 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.HttpError
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -45,7 +44,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class AdminApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {
@@ -83,11 +82,11 @@ class AdminApi(
    * Remove peers on Peering Service
    * This endpoint can be used to remove a Peer from the Peering Service
    *
-   * @param peerIds Peer ids 
+   * @param body Peer ids 
    * @return String
    */
-  def adminPeeringPeersDelete(peerIds: List[Boolean]): Option[String] = {
-    val await = Try(Await.result(adminPeeringPeersDeleteAsync(peerIds), Duration.Inf))
+  def adminPeeringPeersDelete(body: List[Boolean]): Option[String] = {
+    val await = Try(Await.result(adminPeeringPeersDeleteAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -98,11 +97,11 @@ class AdminApi(
    * Remove peers on Peering Service asynchronously
    * This endpoint can be used to remove a Peer from the Peering Service
    *
-   * @param peerIds Peer ids 
+   * @param body Peer ids 
    * @return Future(String)
    */
-  def adminPeeringPeersDeleteAsync(peerIds: List[Boolean]): Future[String] = {
-      helper.adminPeeringPeersDelete(peerIds)
+  def adminPeeringPeersDeleteAsync(body: List[Boolean]): Future[String] = {
+      helper.adminPeeringPeersDelete(body)
   }
 
   /**
@@ -277,7 +276,7 @@ class AdminApi(
 
 class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def adminPeeringPeersDelete(peerIds: List[Boolean])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Boolean]]): Future[String] = {
+  def adminPeeringPeersDelete(body: List[Boolean])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Boolean]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -285,8 +284,9 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling AdminApi->adminPeeringPeersDelete")
 
-    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(peerIds))
+    val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

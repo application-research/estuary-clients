@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,7 +12,7 @@ import javax.validation.constraints.*;
  * MainDeleteContentFromCollectionBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class MainDeleteContentFromCollectionBody   {
@@ -31,11 +30,10 @@ public class MainDeleteContentFromCollectionBody   {
   /**
    * Get by
    * @return by
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getBy() {
+   **/
+  @Schema(description = "")
+  
+    public String getBy() {
     return by;
   }
 
@@ -51,11 +49,10 @@ public class MainDeleteContentFromCollectionBody   {
   /**
    * Get value
    * @return value
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getValue() {
+   **/
+  @Schema(description = "")
+  
+    public String getValue() {
     return value;
   }
 
@@ -104,4 +101,3 @@ public class MainDeleteContentFromCollectionBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -13,9 +13,8 @@ module.exports.pinningPinsGET = function pinningPinsGET (req, res, next) {
     });
 };
 
-module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next) {
-  var pin = req.swagger.params['pin'].value;
-  Pinning.pinningPinsPOST(pin)
+module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next, body) {
+  Pinning.pinningPinsPOST(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -24,8 +23,7 @@ module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next) {
     });
 };
 
-module.exports.pinningPinsPinidDELETE = function pinningPinsPinidDELETE (req, res, next) {
-  var pinid = req.swagger.params['pinid'].value;
+module.exports.pinningPinsPinidDELETE = function pinningPinsPinidDELETE (req, res, next, pinid) {
   Pinning.pinningPinsPinidDELETE(pinid)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -35,8 +33,7 @@ module.exports.pinningPinsPinidDELETE = function pinningPinsPinidDELETE (req, re
     });
 };
 
-module.exports.pinningPinsPinidGET = function pinningPinsPinidGET (req, res, next) {
-  var pinid = req.swagger.params['pinid'].value;
+module.exports.pinningPinsPinidGET = function pinningPinsPinidGET (req, res, next, pinid) {
   Pinning.pinningPinsPinidGET(pinid)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -46,13 +43,8 @@ module.exports.pinningPinsPinidGET = function pinningPinsPinidGET (req, res, nex
     });
 };
 
-module.exports.pinningPinsPinidPOST = function pinningPinsPinidPOST (req, res, next) {
-  var pinid = req.swagger.params['pinid'].value;
-  var cid = req.swagger.params['cid'].value;
-  var name = req.swagger.params['name'].value;
-  var origins = req.swagger.params['origins'].value;
-  var meta = req.swagger.params['meta'].value;
-  Pinning.pinningPinsPinidPOST(pinid,cid,name,origins,meta)
+module.exports.pinningPinsPinidPOST = function pinningPinsPinidPOST (req, res, next, body, pinid) {
+  Pinning.pinningPinsPinidPOST(body, pinid)
     .then(function (response) {
       utils.writeJson(res, response);
     })

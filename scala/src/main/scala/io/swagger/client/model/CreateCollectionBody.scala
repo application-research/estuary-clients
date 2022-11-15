@@ -9,10 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param description 
+ * @param name 
+ */
 case class CreateCollectionBody (
   description: Option[String] = None,
   name: Option[String] = None

@@ -1,6 +1,6 @@
-# estuary-client.Api.NetApi
+# IO.Swagger.Api.NetApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PublicMinersGet**](NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 [**PublicNetAddrsGet**](NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
-
 
 <a name="netaddrsget"></a>
 # **NetAddrsGet**
@@ -23,9 +22,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -33,7 +32,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -86,9 +85,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -96,7 +95,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -153,9 +152,9 @@ This endpoint returns all miners
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -163,7 +162,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -216,9 +215,9 @@ This endpoint is used to get net addrs
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -226,7 +225,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -279,9 +278,9 @@ This endpoint is used to get net peers
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -289,7 +288,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

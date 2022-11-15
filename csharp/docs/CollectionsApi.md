@@ -1,6 +1,6 @@
 # estuary-client.Api.CollectionsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**CollectionsFsAddPost**](CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 [**CollectionsGet**](CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 [**CollectionsPost**](CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
-
 
 <a name="collectionscoluuidcommitpost"></a>
 # **CollectionsColuuidCommitPost**
@@ -79,10 +78,9 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionscoluuidcontentsdelete"></a>
 # **CollectionsColuuidContentsDelete**
-> string CollectionsColuuidContentsDelete (string coluuid, string contentid, MainDeleteContentFromCollectionBody body)
+> string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
 
 Deletes a content from a collection
 
@@ -108,14 +106,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
+            var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
             var coluuid = coluuid_example;  // string | Collection ID
             var contentid = contentid_example;  // string | Content ID
-            var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 
             try
             {
                 // Deletes a content from a collection
-                string result = apiInstance.CollectionsColuuidContentsDelete(coluuid, contentid, body);
+                string result = apiInstance.CollectionsColuuidContentsDelete(body, coluuid, contentid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -131,9 +129,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **string**| Collection ID | 
  **contentid** | **string**| Content ID | 
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -145,11 +143,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionscoluuiddelete"></a>
 # **CollectionsColuuidDelete**
 > string CollectionsColuuidDelete (string coluuid)
@@ -212,10 +209,9 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionscoluuidget"></a>
 # **CollectionsColuuidGet**
 > string CollectionsColuuidGet (string coluuid, string dir = null)
@@ -283,10 +279,9 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionscoluuidpost"></a>
 # **CollectionsColuuidPost**
-> string CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
+> string CollectionsColuuidPost (List<int?> body, string coluuid)
 
 Add contents to a collection
 
@@ -312,13 +307,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var coluuid = coluuid_example;  // string | coluuid
-            var contentIDs = ;  // List<int?> | Content IDs to add to collection
+            var body = new List<int?>(); // List<int?> | Content IDs to add to collection
+            var coluuid = coluuid_example;  // string | Collection UUID
 
             try
             {
                 // Add contents to a collection
-                string result = apiInstance.CollectionsColuuidPost(coluuid, contentIDs);
+                string result = apiInstance.CollectionsColuuidPost(body, coluuid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -334,8 +329,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **string**| coluuid | 
- **contentIDs** | **List&lt;int?&gt;**| Content IDs to add to collection | 
+ **body** | [**List&lt;int?&gt;**](int?.md)| Content IDs to add to collection | 
+ **coluuid** | **string**| Collection UUID | 
 
 ### Return type
 
@@ -351,7 +346,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionsfsaddpost"></a>
 # **CollectionsFsAddPost**
 > string CollectionsFsAddPost (string coluuid, string content, string path)
@@ -421,7 +415,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionsget"></a>
 # **CollectionsGet**
 > List<List<CollectionsCollection>> CollectionsGet ()
@@ -483,7 +476,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="collectionspost"></a>
 # **CollectionsPost**
 > CollectionsCollection CollectionsPost (MainCreateCollectionBody body)
@@ -545,8 +537,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

@@ -4,17 +4,12 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class TypesIpfsPin   {
-  
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class TypesIpfsPin   {
   private String cid = null;
   private Object meta = null;
   private String name = null;
@@ -23,7 +18,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -35,7 +30,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("meta")
   public Object getMeta() {
     return meta;
@@ -47,7 +42,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -59,7 +54,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("origins")
   public List<String> getOrigins() {
     return origins;
@@ -113,4 +108,3 @@ public class TypesIpfsPin   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

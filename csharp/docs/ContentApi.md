@@ -1,6 +1,6 @@
 # estuary-client.Api.ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**ContentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
 [**ContentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
-
 
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
@@ -51,7 +50,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = body_example;  // string | Car
+            var body = new string(); // string | Car
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
             var filename = filename_example;  // string | Filename (optional) 
 
@@ -74,7 +73,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string**| Car | 
+ **body** | [**string**](string.md)| Car | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
  **filename** | **string**| Filename | [optional] 
 
@@ -88,11 +87,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
 > string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null)
@@ -156,14 +154,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentaddpost"></a>
 # **ContentAddPost**
-> UtilContentAddResponse ContentAddPost (System.IO.Stream data, string filename = null, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
+> UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
 
 Add new content
 
@@ -189,8 +186,8 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var data = new System.IO.Stream(); // System.IO.Stream | File to upload
-            var filename = filename_example;  // string | Filenam to use for upload (optional) 
+            var data = data_example;  // byte[] | 
+            var filename = filename_example;  // string | 
             var coluuid = coluuid_example;  // string | Collection UUID (optional) 
             var replication = 56;  // int? | Replication value (optional) 
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes true/false (optional) 
@@ -216,8 +213,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **System.IO.Stream**| File to upload | 
- **filename** | **string**| Filenam to use for upload | [optional] 
+ **data** | **byte[]****byte[]**|  | 
+ **filename** | **string**|  | 
  **coluuid** | **string**| Collection UUID | [optional] 
  **replication** | **int?**| Replication value | [optional] 
  **ignoreDupes** | **string**| Ignore Dupes true/false | [optional] 
@@ -238,7 +235,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentaggregatedcontentget"></a>
 # **ContentAggregatedContentGet**
 > string ContentAggregatedContentGet (string content)
@@ -304,7 +300,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentalldealsget"></a>
 # **ContentAllDealsGet**
 > string ContentAllDealsGet (string begin, string duration, string all)
@@ -374,7 +369,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentbwusagecontentget"></a>
 # **ContentBwUsageContentGet**
 > string ContentBwUsageContentGet (string content)
@@ -440,10 +434,9 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentcreatepost"></a>
 # **ContentCreatePost**
-> string ContentCreatePost (UtilContentCreateBody req, string ignoreDupes = null)
+> string ContentCreatePost (UtilContentCreateBody body, string ignoreDupes = null)
 
 Add a new content
 
@@ -469,13 +462,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+            var body = new UtilContentCreateBody(); // UtilContentCreateBody | Content
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
 
             try
             {
                 // Add a new content
-                string result = apiInstance.ContentCreatePost(req, ignoreDupes);
+                string result = apiInstance.ContentCreatePost(body, ignoreDupes);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -491,7 +484,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type
@@ -504,11 +497,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentdealsget"></a>
 # **ContentDealsGet**
 > string ContentDealsGet (int? limit = null, int? offset = null)
@@ -576,7 +568,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentensurereplicationdatacidget"></a>
 # **ContentEnsureReplicationDatacidGet**
 > string ContentEnsureReplicationDatacidGet (string datacid)
@@ -642,7 +633,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentfailurescontentget"></a>
 # **ContentFailuresContentGet**
 > string ContentFailuresContentGet (string content)
@@ -708,7 +698,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentidget"></a>
 # **ContentIdGet**
 > string ContentIdGet (int? id)
@@ -774,7 +763,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentimportdealpost"></a>
 # **ContentImportdealPost**
 > string ContentImportdealPost (MainImportDealBody body)
@@ -836,11 +824,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentlistget"></a>
 # **ContentListGet**
 > string ContentListGet ()
@@ -902,7 +889,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentreadcontget"></a>
 # **ContentReadContGet**
 > string ContentReadContGet (string cont)
@@ -968,7 +954,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentstagingzonesget"></a>
 # **ContentStagingZonesGet**
 > string ContentStagingZonesGet ()
@@ -1030,7 +1015,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentstatsget"></a>
 # **ContentStatsGet**
 > string ContentStatsGet (string limit, string offset)
@@ -1098,7 +1082,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="contentstatusidget"></a>
 # **ContentStatusIdGet**
 > string ContentStatusIdGet (int? id)
@@ -1164,4 +1147,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

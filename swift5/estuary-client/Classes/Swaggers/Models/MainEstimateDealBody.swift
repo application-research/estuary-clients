@@ -16,7 +16,7 @@ public struct MainEstimateDealBody: Codable {
     public var size: Int?
     public var verified: Bool?
 
-    public init(durationBlks: Int?, replication: Int?, size: Int?, verified: Bool?) {
+    public init(durationBlks: Int? = nil, replication: Int? = nil, size: Int? = nil, verified: Bool? = nil) {
         self.durationBlks = durationBlks
         self.replication = replication
         self.size = size
@@ -25,4 +25,3 @@ public struct MainEstimateDealBody: Codable {
 
 
 }
-

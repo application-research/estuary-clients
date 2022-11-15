@@ -1,4 +1,4 @@
-# estuary-client.Model.UtilHttpError
+# IO.Swagger.Model.UtilHttpError
 ## Properties
 
 Name | Type | Description | Notes

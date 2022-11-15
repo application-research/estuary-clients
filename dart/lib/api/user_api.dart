@@ -31,7 +31,6 @@ class UserApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -50,7 +49,7 @@ class UserApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
         (apiClient.deserialize(response.body, 'List<List<MainGetApiKeysResp>>') as List).map((item) => item as List).toList();
     } else {
       return null;
@@ -58,7 +57,7 @@ class UserApi {
   }
   /// Revoke a User API Key.
   ///
-  /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+  /// This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
   Future<String> userApiKeysKeyOrHashDelete(String keyOrHash) async {
     Object postBody = null;
 
@@ -83,7 +82,6 @@ class UserApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -102,7 +100,7 @@ class UserApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -138,7 +136,6 @@ class UserApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -157,7 +154,7 @@ class UserApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'MainGetApiKeysResp') as MainGetApiKeysResp ;
     } else {
       return null;
@@ -187,7 +184,6 @@ class UserApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -206,7 +202,7 @@ class UserApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -236,7 +232,6 @@ class UserApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -255,7 +250,7 @@ class UserApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;

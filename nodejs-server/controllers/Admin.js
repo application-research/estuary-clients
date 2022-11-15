@@ -3,9 +3,8 @@
 var utils = require('../utils/writer.js');
 var Admin = require('../service/AdminService');
 
-module.exports.adminPeeringPeersDELETE = function adminPeeringPeersDELETE (req, res, next) {
-  var peerIds = req.swagger.params['peerIds'].value;
-  Admin.adminPeeringPeersDELETE(peerIds)
+module.exports.adminPeeringPeersDELETE = function adminPeeringPeersDELETE (req, res, next, body) {
+  Admin.adminPeeringPeersDELETE(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

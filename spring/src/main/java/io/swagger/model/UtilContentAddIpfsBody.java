@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
  * UtilContentAddIpfsBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class UtilContentAddIpfsBody   {
@@ -43,11 +42,10 @@ public class UtilContentAddIpfsBody   {
   /**
    * Get coluuid
    * @return coluuid
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getColuuid() {
+   **/
+  @Schema(description = "")
+  
+    public String getColuuid() {
     return coluuid;
   }
 
@@ -63,11 +61,10 @@ public class UtilContentAddIpfsBody   {
   /**
    * Get dir
    * @return dir
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDir() {
+   **/
+  @Schema(description = "")
+  
+    public String getDir() {
     return dir;
   }
 
@@ -83,11 +80,10 @@ public class UtilContentAddIpfsBody   {
   /**
    * Get filename
    * @return filename
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getFilename() {
+   **/
+  @Schema(description = "")
+  
+    public String getFilename() {
     return filename;
   }
 
@@ -111,11 +107,10 @@ public class UtilContentAddIpfsBody   {
   /**
    * Get peers
    * @return peers
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public List<String> getPeers() {
+   **/
+  @Schema(description = "")
+  
+    public List<String> getPeers() {
     return peers;
   }
 
@@ -131,11 +126,10 @@ public class UtilContentAddIpfsBody   {
   /**
    * Get root
    * @return root
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getRoot() {
+   **/
+  @Schema(description = "")
+  
+    public String getRoot() {
     return root;
   }
 
@@ -190,4 +184,3 @@ public class UtilContentAddIpfsBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

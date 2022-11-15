@@ -3,9 +3,7 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-
 import io.swagger.model.CollectionsCollection;
-import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
@@ -20,14 +18,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       public Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response collectionsColuuidContentsDelete(String coluuid,String contentid,MainDeleteContentFromCollectionBody body,SecurityContext securityContext)
+      public Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,String contentid,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -42,7 +39,7 @@ public class CollectionsApiServiceImpl implements CollectionsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response collectionsColuuidPost(String coluuid,List<Integer> contentIDs,SecurityContext securityContext)
+      public Response collectionsColuuidPost(List<Integer> body,String coluuid,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

@@ -1,6 +1,5 @@
 package io.swagger.api;
 
-import java.util.List;
 import io.swagger.model.UtilHttpError;
 import io.swagger.api.AdminApiService;
 
@@ -11,7 +10,14 @@ import javax.ws.rs.core.SecurityContext;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.io.InputStream;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
@@ -23,11 +29,10 @@ import javax.validation.constraints.*;
 @Path("/admin")
 @RequestScoped
 
-@Api(description = "the admin API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-11T23:35:21.555Z")
 
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")
 public class AdminApi  {
 
   @Context SecurityContext securityContext;
@@ -37,15 +42,14 @@ public class AdminApi  {
 
     @POST
     @Path("/autoretrieve/init")
-    
+    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Register autoretrieve server", notes = "This endpoint registers a new autoretrieve server", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "autoretrieve",  })
+    @Operation(summary = "Register autoretrieve server", description = "This endpoint registers a new autoretrieve server", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "autoretrieve" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminAutoretrieveInitPost(@Multipart(value = "addresses")  String addresses, @Multipart(value = "pubKey")  String pubKey) {
         return delegate.adminAutoretrieveInitPost(addresses, pubKey, securityContext);
     }
@@ -54,43 +58,42 @@ public class AdminApi  {
     @Path("/autoretrieve/list")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List autoretrieve servers", notes = "This endpoint lists all registered autoretrieve servers", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "autoretrieve",  })
+    @Operation(summary = "List autoretrieve servers", description = "This endpoint lists all registered autoretrieve servers", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "autoretrieve" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminAutoretrieveListGet() {
         return delegate.adminAutoretrieveListGet(securityContext);
     }
 
     @DELETE
     @Path("/peering/peers")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Remove peers on Peering Service", notes = "This endpoint can be used to remove a Peer from the Peering Service", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Remove peers on Peering Service", description = "This endpoint can be used to remove a Peer from the Peering Service", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response adminPeeringPeersDelete(@ApiParam(value = "Peer ids" ,required=true) List<Boolean> peerIds) {
-        return delegate.adminPeeringPeersDelete(peerIds, securityContext);
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response adminPeeringPeersDelete(
+@Parameter(description = "Peer ids" ,required=true) List<Boolean> body
+) {
+        return delegate.adminPeeringPeersDelete(body, securityContext);
     }
 
     @GET
     @Path("/peering/peers")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all Peering peers", notes = "This endpoint can be used to list all peers on Peering Service", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "List all Peering peers", description = "This endpoint can be used to list all peers on Peering Service", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringPeersGet() {
         return delegate.adminPeeringPeersGet(securityContext);
     }
@@ -99,13 +102,12 @@ public class AdminApi  {
     @Path("/peering/peers")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add peers on Peering Service", notes = "This endpoint can be used to add a Peer from the Peering Service", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringPeersPost() {
         return delegate.adminPeeringPeersPost(securityContext);
     }
@@ -114,13 +116,12 @@ public class AdminApi  {
     @Path("/peering/start")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Start Peering", notes = "This endpoint can be used to start the Peering Service", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Start Peering", description = "This endpoint can be used to start the Peering Service", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringStartPost() {
         return delegate.adminPeeringStartPost(securityContext);
     }
@@ -129,13 +130,12 @@ public class AdminApi  {
     @Path("/peering/status")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Check Peering Status", notes = "This endpoint can be used to check the Peering status", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Check Peering Status", description = "This endpoint can be used to check the Peering status", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringStatusGet() {
         return delegate.adminPeeringStatusGet(securityContext);
     }
@@ -144,13 +144,12 @@ public class AdminApi  {
     @Path("/peering/stop")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Stop Peering", notes = "This endpoint can be used to stop the Peering Service", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Stop Peering", description = "This endpoint can be used to stop the Peering Service", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringStopPost() {
         return delegate.adminPeeringStopPost(securityContext);
     }
@@ -159,13 +158,12 @@ public class AdminApi  {
     @Path("/system/config")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get systems(estuary/shuttle) config", notes = "This endpoint is used to get system configs.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin",  })
+    @Operation(summary = "Get systems(estuary/shuttle) config", description = "This endpoint is used to get system configs.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminSystemConfigGet() {
         return delegate.adminSystemConfigGet(securityContext);
     }
@@ -174,13 +172,12 @@ public class AdminApi  {
     @Path("/users")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get all users", notes = "This endpoint is used to get all users.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "admin" })
+    @Operation(summary = "Get all users", description = "This endpoint is used to get all users.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminUsersGet() {
         return delegate.adminUsersGet(securityContext);
     }

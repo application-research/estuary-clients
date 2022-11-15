@@ -4,9 +4,7 @@ var utils = require('../utils/writer.js');
 var Autoretrieve = require('../service/AutoretrieveService');
 
 module.exports.adminAutoretrieveInitPOST = function adminAutoretrieveInitPOST (req, res, next) {
-  var addresses = req.swagger.params['addresses'].value;
-  var pubKey = req.swagger.params['pubKey'].value;
-  Autoretrieve.adminAutoretrieveInitPOST(addresses,pubKey)
+  Autoretrieve.adminAutoretrieveInitPOST()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -25,8 +23,7 @@ module.exports.adminAutoretrieveListGET = function adminAutoretrieveListGET (req
     });
 };
 
-module.exports.autoretrieveHeartbeatPOST = function autoretrieveHeartbeatPOST (req, res, next) {
-  var token = req.swagger.params['token'].value;
+module.exports.autoretrieveHeartbeatPOST = function autoretrieveHeartbeatPOST (req, res, next, token) {
   Autoretrieve.autoretrieveHeartbeatPOST(token)
     .then(function (response) {
       utils.writeJson(res, response);

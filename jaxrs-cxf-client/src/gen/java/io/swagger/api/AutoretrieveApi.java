@@ -11,11 +11,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.jaxrs.PATCH;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Estuary API
@@ -24,7 +25,6 @@ import io.swagger.jaxrs.PATCH;
  *
  */
 @Path("/")
-@Api(value = "/", description = "")
 public interface AutoretrieveApi  {
 
     /**
@@ -35,12 +35,13 @@ public interface AutoretrieveApi  {
      */
     @POST
     @Path("/admin/autoretrieve/init")
+    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Register autoretrieve server", tags={  })
+    @Operation(summary = "Register autoretrieve server", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminAutoretrieveInitPost(@Multipart(value = "addresses")  String addresses, @Multipart(value = "pubKey")  String pubKey);
 
     /**
@@ -52,11 +53,11 @@ public interface AutoretrieveApi  {
     @GET
     @Path("/admin/autoretrieve/list")
     @Produces({ "application/json" })
-    @ApiOperation(value = "List autoretrieve servers", tags={  })
+    @Operation(summary = "List autoretrieve servers", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminAutoretrieveListGet();
 
     /**
@@ -68,11 +69,10 @@ public interface AutoretrieveApi  {
     @POST
     @Path("/autoretrieve/heartbeat")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Marks autoretrieve server as up", tags={  })
+    @Operation(summary = "Marks autoretrieve server as up", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String autoretrieveHeartbeatPost(@HeaderParam("token") String token);
 }
-

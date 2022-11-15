@@ -21,7 +21,7 @@ class TestCollectionsController(BaseTestCase):
         Produce a CID of the collection contents
         """
         response = self.client.open(
-            '//collections/{coluuid}/commit'.format(coluuid='coluuid_example'),
+            '/collections/{coluuid}/commit'.format(coluuid='coluuid_example'),
             method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -33,10 +33,10 @@ class TestCollectionsController(BaseTestCase):
         """
         body = MainDeleteContentFromCollectionBody()
         response = self.client.open(
-            '//collections/{coluuid}/contents'.format(coluuid='coluuid_example', contentid='contentid_example'),
+            '/collections/{coluuid}/contents'.format(coluuid='coluuid_example', contentid='contentid_example'),
             method='DELETE',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -46,7 +46,7 @@ class TestCollectionsController(BaseTestCase):
         Deletes a collection
         """
         response = self.client.open(
-            '//collections/{coluuid}'.format(coluuid='coluuid_example'),
+            '/collections/{coluuid}'.format(coluuid='coluuid_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -58,7 +58,7 @@ class TestCollectionsController(BaseTestCase):
         """
         query_string = [('dir', 'dir_example')]
         response = self.client.open(
-            '//collections/{coluuid}'.format(coluuid='coluuid_example'),
+            '/collections/{coluuid}'.format(coluuid='coluuid_example'),
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -69,11 +69,11 @@ class TestCollectionsController(BaseTestCase):
 
         Add contents to a collection
         """
-        contentIDs = [List[int]()]
+        body = [56]
         response = self.client.open(
-            '//collections/{coluuid}'.format(coluuid='coluuid_example'),
+            '/collections/{coluuid}'.format(coluuid='coluuid_example'),
             method='POST',
-            data=json.dumps(contentIDs),
+            data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -87,7 +87,7 @@ class TestCollectionsController(BaseTestCase):
                         ('content', 'content_example'),
                         ('path', 'path_example')]
         response = self.client.open(
-            '//collections/fs/add',
+            '/collections/fs/add',
             method='POST',
             query_string=query_string)
         self.assert200(response,
@@ -99,7 +99,7 @@ class TestCollectionsController(BaseTestCase):
         List all collections
         """
         response = self.client.open(
-            '//collections/',
+            '/collections/',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -111,10 +111,10 @@ class TestCollectionsController(BaseTestCase):
         """
         body = MainCreateCollectionBody()
         response = self.client.open(
-            '//collections/',
+            '/collections/',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

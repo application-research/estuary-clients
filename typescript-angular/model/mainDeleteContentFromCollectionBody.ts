@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface MainDeleteContentFromCollectionBody { 
     by?: string;
     value?: string;

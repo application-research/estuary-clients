@@ -1,31 +1,23 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;
-
   @JsonProperty("estuaryId")
   private Integer estuaryId = null;
-
   @JsonProperty("providers")
   private List<String> providers = null;
-
   @JsonProperty("retrieval_url")
   private String retrievalUrl = null;
-
   /**
    **/
   public UtilContentAddResponse cid(String cid) {
@@ -34,7 +26,7 @@ public class UtilContentAddResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -51,7 +43,7 @@ public class UtilContentAddResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("estuaryId")
   public Integer getEstuaryId() {
     return estuaryId;
@@ -68,7 +60,7 @@ public class UtilContentAddResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("providers")
   public List<String> getProviders() {
     return providers;
@@ -85,7 +77,7 @@ public class UtilContentAddResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("retrieval_url")
   public String getRetrievalUrl() {
     return retrievalUrl;
@@ -119,7 +111,6 @@ public class UtilContentAddResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UtilContentAddResponse {\n");
-    
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
@@ -139,4 +130,3 @@ public class UtilContentAddResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

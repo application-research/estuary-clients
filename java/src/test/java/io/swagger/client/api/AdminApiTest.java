@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.UtilHttpError;
@@ -23,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for AdminApi
  */
@@ -31,7 +31,6 @@ public class AdminApiTest {
 
     private final AdminApi api = new AdminApi();
 
-    
     /**
      * Remove peers on Peering Service
      *
@@ -42,12 +41,11 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() throws Exception {
-        List<Boolean> peerIds = null;
-        String response = api.adminPeeringPeersDelete(peerIds);
+        List<Boolean> body = null;
+        String response = api.adminPeeringPeersDelete(body);
 
         // TODO: test validations
     }
-    
     /**
      * List all Peering peers
      *
@@ -62,7 +60,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Add peers on Peering Service
      *
@@ -77,7 +74,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Start Peering
      *
@@ -92,7 +88,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Check Peering Status
      *
@@ -107,7 +102,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Stop Peering
      *
@@ -122,7 +116,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get systems(estuary/shuttle) config
      *
@@ -137,7 +130,6 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get all users
      *
@@ -152,5 +144,4 @@ public class AdminApiTest {
 
         // TODO: test validations
     }
-    
 }

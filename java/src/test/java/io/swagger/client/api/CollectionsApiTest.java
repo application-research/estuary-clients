@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.CollectionsCollection;
@@ -26,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for CollectionsApi
  */
@@ -34,7 +34,6 @@ public class CollectionsApiTest {
 
     private final CollectionsApi api = new CollectionsApi();
 
-    
     /**
      * Produce a CID of the collection contents
      *
@@ -50,7 +49,6 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Deletes a content from a collection
      *
@@ -61,14 +59,13 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidContentsDeleteTest() throws Exception {
+        MainDeleteContentFromCollectionBody body = null;
         String coluuid = null;
         String contentid = null;
-        MainDeleteContentFromCollectionBody body = null;
-        String response = api.collectionsColuuidContentsDelete(coluuid, contentid, body);
+        String response = api.collectionsColuuidContentsDelete(body, coluuid, contentid);
 
         // TODO: test validations
     }
-    
     /**
      * Deletes a collection
      *
@@ -84,7 +81,6 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get contents in a collection
      *
@@ -101,7 +97,6 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Add contents to a collection
      *
@@ -112,13 +107,12 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidPostTest() throws Exception {
+        List<Integer> body = null;
         String coluuid = null;
-        List<Integer> contentIDs = null;
-        String response = api.collectionsColuuidPost(coluuid, contentIDs);
+        String response = api.collectionsColuuidPost(body, coluuid);
 
         // TODO: test validations
     }
-    
     /**
      * Add a file to a collection
      *
@@ -136,7 +130,6 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * List all collections
      *
@@ -151,7 +144,6 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Create a new collection
      *
@@ -167,5 +159,4 @@ public class CollectionsApiTest {
 
         // TODO: test validations
     }
-    
 }

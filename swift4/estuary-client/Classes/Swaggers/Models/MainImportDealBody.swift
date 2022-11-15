@@ -8,21 +8,21 @@
 import Foundation
 
 
-
 public struct MainImportDealBody: Codable {
 
-    public var coluuid: String?
-    public var dealIDs: [Int]?
-    public var dir: String?
-    public var name: String?
 
-    public init(coluuid: String?, dealIDs: [Int]?, dir: String?, name: String?) {
+    public var coluuid: String?
+
+    public var dealIDs: [Int]?
+
+    public var dir: String?
+
+    public var name: String?
+    public init(coluuid: String? = nil, dealIDs: [Int]? = nil, dir: String? = nil, name: String? = nil) { 
         self.coluuid = coluuid
         self.dealIDs = dealIDs
         self.dir = dir
         self.name = name
     }
 
-
 }
-

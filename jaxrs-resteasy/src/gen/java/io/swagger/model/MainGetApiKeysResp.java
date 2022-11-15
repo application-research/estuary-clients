@@ -5,21 +5,16 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class MainGetApiKeysResp   {
-  
-  private String expiry = null;
-  private String label = null;
-  private String token = null;
-  private String tokenHash = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class MainGetApiKeysResp   {
+  private String expiry = null;  private String label = null;  private String token = null;  private String tokenHash = null;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("expiry")
   public String getExpiry() {
     return expiry;
@@ -31,7 +26,7 @@ public class MainGetApiKeysResp   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("label")
   public String getLabel() {
     return label;
@@ -43,7 +38,7 @@ public class MainGetApiKeysResp   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("token")
   public String getToken() {
     return token;
@@ -55,7 +50,7 @@ public class MainGetApiKeysResp   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("tokenHash")
   public String getTokenHash() {
     return tokenHash;
@@ -109,4 +104,3 @@ public class MainGetApiKeysResp   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

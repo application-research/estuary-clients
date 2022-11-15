@@ -28,17 +28,14 @@ open class MetricsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func publicMetricsDealsOnChainGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/metrics/deals-on-chain"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

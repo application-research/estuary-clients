@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
  * MainImportDealBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class MainImportDealBody   {
@@ -40,11 +39,10 @@ public class MainImportDealBody   {
   /**
    * Get coluuid
    * @return coluuid
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getColuuid() {
+   **/
+  @Schema(description = "")
+  
+    public String getColuuid() {
     return coluuid;
   }
 
@@ -68,11 +66,10 @@ public class MainImportDealBody   {
   /**
    * Get dealIDs
    * @return dealIDs
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public List<Integer> getDealIDs() {
+   **/
+  @Schema(description = "")
+  
+    public List<Integer> getDealIDs() {
     return dealIDs;
   }
 
@@ -88,11 +85,10 @@ public class MainImportDealBody   {
   /**
    * Get dir
    * @return dir
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDir() {
+   **/
+  @Schema(description = "")
+  
+    public String getDir() {
     return dir;
   }
 
@@ -108,11 +104,10 @@ public class MainImportDealBody   {
   /**
    * Get name
    * @return name
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getName() {
+   **/
+  @Schema(description = "")
+  
+    public String getName() {
     return name;
   }
 
@@ -165,4 +160,3 @@ public class MainImportDealBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

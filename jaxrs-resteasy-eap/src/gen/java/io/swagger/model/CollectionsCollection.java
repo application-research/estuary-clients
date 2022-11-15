@@ -4,15 +4,11 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class CollectionsCollection   {
-  
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class CollectionsCollection   {
   private String cid = null;
   private String createdAt = null;
   private String description = null;
@@ -23,7 +19,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -35,7 +31,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("createdAt")
   public String getCreatedAt() {
     return createdAt;
@@ -47,7 +43,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -59,7 +55,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -71,7 +67,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("userId")
   public Integer getUserId() {
     return userId;
@@ -83,7 +79,7 @@ public class CollectionsCollection   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("uuid")
   public String getUuid() {
     return uuid;
@@ -141,4 +137,3 @@ public class CollectionsCollection   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

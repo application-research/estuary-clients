@@ -15,7 +15,7 @@ def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
     This endpoint is used to add a car object to the network. The object can be a file or a directory. # noqa: E501
 
     :param body: Car
-    :type body: str
+    :type body: dict | bytes
     :param ignore_dupes: Ignore Dupes
     :type ignore_dupes: str
     :param filename: Filename
@@ -23,6 +23,8 @@ def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
 
     :rtype: str
     """
+    if connexion.request.is_json:
+        body = str.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -43,14 +45,14 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_post(data, filename=None, coluuid=None, replication=None, ignore_dupes=None, lazy_provide=None, dir=None):  # noqa: E501
+def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupes=None, lazy_provide=None, dir=None):  # noqa: E501
     """Add new content
 
     This endpoint is used to upload new content. # noqa: E501
 
-    :param data: File to upload
-    :type data: werkzeug.datastructures.FileStorage
-    :param filename: Filenam to use for upload
+    :param data: 
+    :type data: strstr
+    :param filename: 
     :type filename: str
     :param coluuid: Collection UUID
     :type coluuid: str
@@ -111,20 +113,20 @@ def content_bw_usage_content_get(content):  # noqa: E501
     return 'do some magic!'
 
 
-def content_create_post(req, ignore_dupes=None):  # noqa: E501
+def content_create_post(body, ignore_dupes=None):  # noqa: E501
     """Add a new content
 
     This endpoint adds a new content # noqa: E501
 
-    :param req: Content
-    :type req: dict | bytes
+    :param body: Content
+    :type body: dict | bytes
     :param ignore_dupes: Ignore Dupes
     :type ignore_dupes: str
 
     :rtype: str
     """
     if connexion.request.is_json:
-        req = UtilContentCreateBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = UtilContentCreateBody.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

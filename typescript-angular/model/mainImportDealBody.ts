@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface MainImportDealBody { 
     coluuid?: string;
     dealIDs?: Array<number>;

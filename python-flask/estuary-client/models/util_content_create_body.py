@@ -14,7 +14,6 @@ class UtilContentCreateBody(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, coluuid: str=None, dir: str=None, location: str=None, name: str=None, root: str=None, type: int=None):  # noqa: E501
         """UtilContentCreateBody - a model defined in Swagger
 
@@ -48,7 +47,6 @@ class UtilContentCreateBody(Model):
             'root': 'root',
             'type': 'type'
         }
-
         self._coluuid = coluuid
         self._dir = dir
         self._location = location

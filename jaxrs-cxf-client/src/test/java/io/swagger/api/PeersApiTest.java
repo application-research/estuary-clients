@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.UtilHttpError;
@@ -64,13 +63,12 @@ public class PeersApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", PeersApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", PeersApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Remove peers on Peering Service
      *
@@ -81,14 +79,13 @@ public class PeersApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        List<Boolean> peerIds = null;
-        //String response = api.adminPeeringPeersDelete(peerIds);
+        List<Boolean> body = null;
+        //String response = api.adminPeeringPeersDelete(body);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * List all Peering peers
      *
@@ -105,7 +102,6 @@ public class PeersApiTest {
         
         
     }
-    
     /**
      * Add peers on Peering Service
      *
@@ -122,7 +118,6 @@ public class PeersApiTest {
         
         
     }
-    
     /**
      * Start Peering
      *
@@ -139,7 +134,6 @@ public class PeersApiTest {
         
         
     }
-    
     /**
      * Check Peering Status
      *
@@ -156,7 +150,6 @@ public class PeersApiTest {
         
         
     }
-    
     /**
      * Stop Peering
      *
@@ -173,5 +166,4 @@ public class PeersApiTest {
         
         
     }
-    
 }

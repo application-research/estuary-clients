@@ -9,13 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.GetApiKeysResp
-import io.swagger.client.model.HttpError
+import io.swagger.client.model.main.getApiKeysResp
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -46,7 +45,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class UserApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {
@@ -84,9 +83,9 @@ class UserApi(
    * Get API keys for a user
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    *
-   * @return List[List[GetApiKeysResp]]
+   * @return List[List[main.getApiKeysResp]]
    */
-  def userApiKeysGet(): Option[List[List[GetApiKeysResp]]] = {
+  def userApiKeysGet(): Option[List[List[main.getApiKeysResp]]] = {
     val await = Try(Await.result(userApiKeysGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -98,15 +97,15 @@ class UserApi(
    * Get API keys for a user asynchronously
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    *
-   * @return Future(List[List[GetApiKeysResp]])
+   * @return Future(List[List[main.getApiKeysResp]])
    */
-  def userApiKeysGetAsync(): Future[List[List[GetApiKeysResp]]] = {
+  def userApiKeysGetAsync(): Future[List[List[main.getApiKeysResp]]] = {
       helper.userApiKeysGet()
   }
 
   /**
    * Revoke a User API Key.
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
    *
    * @param keyOrHash Key or Hash 
    * @return String
@@ -121,7 +120,7 @@ class UserApi(
 
   /**
    * Revoke a User API Key. asynchronously
-   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+   * This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
    *
    * @param keyOrHash Key or Hash 
    * @return Future(String)
@@ -136,9 +135,9 @@ class UserApi(
    *
    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
    * @param perms Permissions -- currently unused (optional)
-   * @return GetApiKeysResp
+   * @return main.getApiKeysResp
    */
-  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None): Option[GetApiKeysResp] = {
+  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None): Option[main.getApiKeysResp] = {
     val await = Try(Await.result(userApiKeysPostAsync(expiry, perms), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -152,9 +151,9 @@ class UserApi(
    *
    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
    * @param perms Permissions -- currently unused (optional)
-   * @return Future(GetApiKeysResp)
+   * @return Future(main.getApiKeysResp)
    */
-  def userApiKeysPostAsync(expiry: Option[String] = None, perms: Option[String] = None): Future[GetApiKeysResp] = {
+  def userApiKeysPostAsync(expiry: Option[String] = None, perms: Option[String] = None): Future[main.getApiKeysResp] = {
       helper.userApiKeysPost(expiry, perms)
   }
 
@@ -210,7 +209,7 @@ class UserApi(
 
 class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def userApiKeysGet()(implicit reader: ClientResponseReader[List[List[GetApiKeysResp]]]): Future[List[List[GetApiKeysResp]]] = {
+  def userApiKeysGet()(implicit reader: ClientResponseReader[List[List[main.getApiKeysResp]]]): Future[List[List[main.getApiKeysResp]]] = {
     // create path and map variables
     val path = (addFmt("/user/api-keys"))
 
@@ -245,7 +244,7 @@ class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends
 
   def userApiKeysPost(expiry: Option[String] = None,
     perms: Option[String] = None
-    )(implicit reader: ClientResponseReader[GetApiKeysResp]): Future[GetApiKeysResp] = {
+    )(implicit reader: ClientResponseReader[main.getApiKeysResp]): Future[main.getApiKeysResp] = {
     // create path and map variables
     val path = (addFmt("/user/api-keys"))
 

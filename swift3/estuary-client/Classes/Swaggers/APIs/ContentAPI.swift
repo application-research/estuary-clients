@@ -31,10 +31,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) Car 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter filename: (query) Filename (optional)
@@ -44,11 +41,10 @@ open class ContentAPI: APIBase {
         let path = "/content/add-car"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
-
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "ignore-dupes": ignoreDupes,
-            "filename": filename
+                        "ignore-dupes": ignoreDupes,
+                        "filename": filename
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -76,10 +72,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) IPFS Body 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - returns: RequestBuilder<String> 
@@ -88,10 +81,9 @@ open class ContentAPI: APIBase {
         let path = "/content/add-ipfs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
-
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "ignore-dupes": ignoreDupes
+                        "ignore-dupes": ignoreDupes
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -101,8 +93,8 @@ open class ContentAPI: APIBase {
 
     /**
      Add new content
-     - parameter data: (form) File to upload 
-     - parameter filename: (form) Filenam to use for upload (optional)
+     - parameter data: (form)  
+     - parameter filename: (form)  
      - parameter coluuid: (query) Collection UUID (optional)
      - parameter replication: (query) Replication value (optional)
      - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
@@ -110,7 +102,7 @@ open class ContentAPI: APIBase {
      - parameter dir: (query) Directory (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddPost(data: URL, filename: String? = nil, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?, _ error: ErrorResponse?) -> Void)) {
+    open class func contentAddPost(data: Data, filename: String, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?, _ error: ErrorResponse?) -> Void)) {
         contentAddPostWithRequestBuilder(data: data, filename: filename, coluuid: coluuid, replication: replication, ignoreDupes: ignoreDupes, lazyProvide: lazyProvide, dir: dir).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -124,9 +116,14 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={"empty": false}}]
-     - parameter data: (form) File to upload 
-     - parameter filename: (form) Filenam to use for upload (optional)
+     - examples: [{contentType=application/json, example={
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}}]
+     - parameter data: (form)  
+     - parameter filename: (form)  
      - parameter coluuid: (query) Collection UUID (optional)
      - parameter replication: (query) Replication value (optional)
      - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
@@ -134,24 +131,23 @@ open class ContentAPI: APIBase {
      - parameter dir: (query) Directory (optional)
      - returns: RequestBuilder<UtilContentAddResponse> 
      */
-    open class func contentAddPostWithRequestBuilder(data: URL, filename: String? = nil, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
+    open class func contentAddPostWithRequestBuilder(data: Data, filename: String, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
         let path = "/content/add"
         let URLString = estuary-clientAPI.basePath + path
         let formParams: [String:Any?] = [
-            "data": data,
-            "filename": filename
+                        "data": data,
+                        "filename": filename
         ]
 
         let nonNullParameters = APIHelper.rejectNil(formParams)
         let parameters = APIHelper.convertBoolToString(nonNullParameters)
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "coluuid": coluuid,
-            "replication": replication?.encodeToJSON(),
-            "ignore-dupes": ignoreDupes,
-            "lazy-provide": lazyProvide,
-            "dir": dir
+                        "coluuid": coluuid,
+                        "replication": replication?.encodeToJSON(),
+                        "ignore-dupes": ignoreDupes,
+                        "lazy-provide": lazyProvide,
+                        "dir": dir
         ])
 
         let requestBuilder: RequestBuilder<UtilContentAddResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -178,10 +174,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter content: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
@@ -192,7 +185,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{content}", with: contentPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -221,10 +214,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter begin: (query) Begin 
      - parameter duration: (query) Duration 
      - parameter all: (query) All 
@@ -234,12 +224,11 @@ open class ContentAPI: APIBase {
         let path = "/content/all-deals"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "begin": begin,
-            "duration": duration,
-            "all": all
+                        "begin": begin,
+                        "duration": duration,
+                        "all": all
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -266,10 +255,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter content: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
@@ -280,7 +266,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{content}", with: contentPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -290,12 +276,12 @@ open class ContentAPI: APIBase {
 
     /**
      Add a new content
-     - parameter req: (body) Content 
+     - parameter body: (body) Content 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentCreatePost(req: UtilContentCreateBody, ignoreDupes: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        contentCreatePostWithRequestBuilder(req: req, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
+    open class func contentCreatePost(body: UtilContentCreateBody, ignoreDupes: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        contentCreatePostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -308,22 +294,18 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     - parameter req: (body) Content 
+     - examples: [{contentType=application/json, example=""}]
+     - parameter body: (body) Content 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func contentCreatePostWithRequestBuilder(req: UtilContentCreateBody, ignoreDupes: String? = nil) -> RequestBuilder<String> {
+    open class func contentCreatePostWithRequestBuilder(body: UtilContentCreateBody, ignoreDupes: String? = nil) -> RequestBuilder<String> {
         let path = "/content/create"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = req.encodeToJSON()
-
+        let parameters = body.encodeToJSON()
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "ignore-dupes": ignoreDupes
+                        "ignore-dupes": ignoreDupes
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -351,10 +333,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter limit: (query) Limit (optional)
      - parameter offset: (query) Offset (optional)
      - returns: RequestBuilder<String> 
@@ -363,11 +342,10 @@ open class ContentAPI: APIBase {
         let path = "/content/deals"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "limit": limit?.encodeToJSON(),
-            "offset": offset?.encodeToJSON()
+                        "limit": limit?.encodeToJSON(),
+                        "offset": offset?.encodeToJSON()
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -394,10 +372,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter datacid: (path) Data CID 
      - returns: RequestBuilder<String> 
      */
@@ -408,7 +383,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{datacid}", with: datacidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -435,10 +410,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter content: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
@@ -449,7 +421,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{content}", with: contentPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -476,10 +448,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter id: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
@@ -490,7 +459,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -517,10 +486,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) Import a deal 
      - returns: RequestBuilder<String> 
      */
@@ -554,17 +520,14 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func contentListGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/list"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -591,10 +554,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter cont: (path) CID 
      - returns: RequestBuilder<String> 
      */
@@ -605,7 +565,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{cont}", with: contPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -631,17 +591,14 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func contentStagingZonesGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/staging-zones"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -669,10 +626,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter limit: (query) limit 
      - parameter offset: (query) offset 
      - returns: RequestBuilder<String> 
@@ -681,11 +635,10 @@ open class ContentAPI: APIBase {
         let path = "/content/stats"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "limit": limit,
-            "offset": offset
+                        "limit": limit,
+                        "offset": offset
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -712,10 +665,7 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter id: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
@@ -726,7 +676,7 @@ open class ContentAPI: APIBase {
         path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

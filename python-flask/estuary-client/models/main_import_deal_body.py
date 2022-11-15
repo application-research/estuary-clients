@@ -14,7 +14,6 @@ class MainImportDealBody(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, coluuid: str=None, deal_ids: List[int]=None, dir: str=None, name: str=None):  # noqa: E501
         """MainImportDealBody - a model defined in Swagger
 
@@ -40,7 +39,6 @@ class MainImportDealBody(Model):
             'dir': 'dir',
             'name': 'name'
         }
-
         self._coluuid = coluuid
         self._deal_ids = deal_ids
         self._dir = dir

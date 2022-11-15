@@ -1,12 +1,11 @@
-# estuary-client.Api.MinerApi
+# IO.Swagger.Api.MinerApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PublicMinersDealsMinerGet**](MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**PublicMinersStatsMinerGet**](MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
-
 
 <a name="publicminersdealsminerget"></a>
 # **PublicMinersDealsMinerGet**
@@ -20,9 +19,9 @@ This endpoint returns all miners deals
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -30,7 +29,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -89,9 +88,9 @@ This endpoint returns miner stats
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -99,7 +98,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

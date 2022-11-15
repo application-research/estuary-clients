@@ -1,6 +1,6 @@
 # estuary_client.UserApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **GET** /user/export | Export user data
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
-
 
 # **user_api_keys_get**
 > list[list[MainGetApiKeysResp]] user_api_keys_get()

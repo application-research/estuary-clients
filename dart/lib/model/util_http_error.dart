@@ -3,13 +3,11 @@ part of swagger.api;
 class UtilHttpError {
   
   int code = null;
-  
 
   String details = null;
-  
 
   String reason = null;
-  
+
   UtilHttpError();
 
   @override
@@ -19,15 +17,9 @@ class UtilHttpError {
 
   UtilHttpError.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    code =
-        json['code']
-    ;
-    details =
-        json['details']
-    ;
-    reason =
-        json['reason']
-    ;
+    code = json['code'];
+    details = json['details'];
+    reason = json['reason'];
   }
 
   Map<String, dynamic> toJson() {
@@ -50,4 +42,3 @@ class UtilHttpError {
     return map;
   }
 }
-

@@ -1,6 +1,5 @@
 package io.swagger.api;
 
-import java.util.List;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -12,11 +11,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.jaxrs.PATCH;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -27,7 +27,6 @@ import javax.validation.Valid;
  *
  */
 @Path("/")
-@Api(value = "/", description = "")
 public interface AdminApi  {
 
     /**
@@ -38,13 +37,14 @@ public interface AdminApi  {
      */
     @DELETE
     @Path("/admin/peering/peers")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Remove peers on Peering Service", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Remove peers on Peering Service", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public String adminPeeringPeersDelete(@Valid List<Boolean> peerIds);
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String adminPeeringPeersDelete(@Valid List<Boolean> body);
 
     /**
      * List all Peering peers
@@ -55,11 +55,11 @@ public interface AdminApi  {
     @GET
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all Peering peers", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "List all Peering peers", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminPeeringPeersGet();
 
     /**
@@ -71,11 +71,11 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add peers on Peering Service", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Add peers on Peering Service", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminPeeringPeersPost();
 
     /**
@@ -87,11 +87,11 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/start")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Start Peering", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Start Peering", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminPeeringStartPost();
 
     /**
@@ -103,11 +103,11 @@ public interface AdminApi  {
     @GET
     @Path("/admin/peering/status")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Check Peering Status", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Check Peering Status", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminPeeringStatusGet();
 
     /**
@@ -119,11 +119,11 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/stop")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Stop Peering", tags={ "admin", "peering", "peers",  })
+    @Operation(summary = "Stop Peering", tags={ "admin", "peering", "peers" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminPeeringStopPost();
 
     /**
@@ -135,11 +135,11 @@ public interface AdminApi  {
     @GET
     @Path("/admin/system/config")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get systems(estuary/shuttle) config", tags={ "admin",  })
+    @Operation(summary = "Get systems(estuary/shuttle) config", tags={ "admin" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminSystemConfigGet();
 
     /**
@@ -151,11 +151,10 @@ public interface AdminApi  {
     @GET
     @Path("/admin/users")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get all users", tags={ "admin" })
+    @Operation(summary = "Get all users", tags={ "admin" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String adminUsersGet();
 }
-

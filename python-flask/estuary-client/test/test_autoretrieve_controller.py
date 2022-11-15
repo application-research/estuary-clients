@@ -18,11 +18,12 @@ class TestAutoretrieveController(BaseTestCase):
         Register autoretrieve server
         """
         data = dict(addresses='addresses_example',
-                    pubKey='pubKey_example')
+                    pub_key='pub_key_example')
         response = self.client.open(
-            '//admin/autoretrieve/init',
+            '/admin/autoretrieve/init',
             method='POST',
-            data=data)
+            data=data,
+            content_type='multipart/form-data')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -32,7 +33,7 @@ class TestAutoretrieveController(BaseTestCase):
         List autoretrieve servers
         """
         response = self.client.open(
-            '//admin/autoretrieve/list',
+            '/admin/autoretrieve/list',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -44,7 +45,7 @@ class TestAutoretrieveController(BaseTestCase):
         """
         headers = [('token', 'token_example')]
         response = self.client.open(
-            '//autoretrieve/heartbeat',
+            '/autoretrieve/heartbeat',
             method='POST',
             headers=headers)
         self.assert200(response,

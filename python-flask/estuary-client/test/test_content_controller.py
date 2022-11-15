@@ -25,10 +25,10 @@ class TestContentController(BaseTestCase):
         query_string = [('ignore_dupes', 'ignore_dupes_example'),
                         ('filename', 'filename_example')]
         response = self.client.open(
-            '//content/add-car',
+            '/content/add-car',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json',
+            content_type='*/*',
             query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -41,10 +41,10 @@ class TestContentController(BaseTestCase):
         body = UtilContentAddIpfsBody()
         query_string = [('ignore_dupes', 'ignore_dupes_example')]
         response = self.client.open(
-            '//content/add-ipfs',
+            '/content/add-ipfs',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json',
+            content_type='*/*',
             query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -59,10 +59,10 @@ class TestContentController(BaseTestCase):
                         ('ignore_dupes', 'ignore_dupes_example'),
                         ('lazy_provide', 'lazy_provide_example'),
                         ('dir', 'dir_example')]
-        data = dict(data=(BytesIO(b'some file data'), 'file.txt'),
+        data = dict(data='data_example',
                     filename='filename_example')
         response = self.client.open(
-            '//content/add',
+            '/content/add',
             method='POST',
             data=data,
             content_type='multipart/form-data',
@@ -76,7 +76,7 @@ class TestContentController(BaseTestCase):
         Get aggregated content stats
         """
         response = self.client.open(
-            '//content/aggregated/{content}'.format(content='content_example'),
+            '/content/aggregated/{content}'.format(content='content_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -90,7 +90,7 @@ class TestContentController(BaseTestCase):
                         ('duration', 'duration_example'),
                         ('all', 'all_example')]
         response = self.client.open(
-            '//content/all-deals',
+            '/content/all-deals',
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -102,7 +102,7 @@ class TestContentController(BaseTestCase):
         Get content bandwidth
         """
         response = self.client.open(
-            '//content/bw-usage/{content}'.format(content='content_example'),
+            '/content/bw-usage/{content}'.format(content='content_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -112,13 +112,13 @@ class TestContentController(BaseTestCase):
 
         Add a new content
         """
-        req = UtilContentCreateBody()
+        body = UtilContentCreateBody()
         query_string = [('ignore_dupes', 'ignore_dupes_example')]
         response = self.client.open(
-            '//content/create',
+            '/content/create',
             method='POST',
-            data=json.dumps(req),
-            content_type='application/json',
+            data=json.dumps(body),
+            content_type='*/*',
             query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -131,7 +131,7 @@ class TestContentController(BaseTestCase):
         query_string = [('limit', 56),
                         ('offset', 56)]
         response = self.client.open(
-            '//content/deals',
+            '/content/deals',
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -143,7 +143,7 @@ class TestContentController(BaseTestCase):
         Ensure Replication
         """
         response = self.client.open(
-            '//content/ensure-replication/{datacid}'.format(datacid='datacid_example'),
+            '/content/ensure-replication/{datacid}'.format(datacid='datacid_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -154,7 +154,7 @@ class TestContentController(BaseTestCase):
         List all failures for a content
         """
         response = self.client.open(
-            '//content/failures/{content}'.format(content='content_example'),
+            '/content/failures/{content}'.format(content='content_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -165,7 +165,7 @@ class TestContentController(BaseTestCase):
         Content
         """
         response = self.client.open(
-            '//content/{id}'.format(id=56),
+            '/content/{id}'.format(id=56),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -177,10 +177,10 @@ class TestContentController(BaseTestCase):
         """
         body = MainImportDealBody()
         response = self.client.open(
-            '//content/importdeal',
+            '/content/importdeal',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -190,7 +190,7 @@ class TestContentController(BaseTestCase):
         List all pinned content
         """
         response = self.client.open(
-            '//content/list',
+            '/content/list',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -201,7 +201,7 @@ class TestContentController(BaseTestCase):
         Read content
         """
         response = self.client.open(
-            '//content/read/{cont}'.format(cont='cont_example'),
+            '/content/read/{cont}'.format(cont='cont_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -212,7 +212,7 @@ class TestContentController(BaseTestCase):
         Get staging zone for user
         """
         response = self.client.open(
-            '//content/staging-zones',
+            '/content/staging-zones',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -225,7 +225,7 @@ class TestContentController(BaseTestCase):
         query_string = [('limit', 'limit_example'),
                         ('offset', 'offset_example')]
         response = self.client.open(
-            '//content/stats',
+            '/content/stats',
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -237,7 +237,7 @@ class TestContentController(BaseTestCase):
         Content Status
         """
         response = self.client.open(
-            '//content/status/{id}'.format(id=56),
+            '/content/status/{id}'.format(id=56),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

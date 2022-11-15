@@ -2,9 +2,8 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.*;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-
-import java.util.List;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -17,9 +16,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class AdminApiServiceImpl implements AdminApiService {
-      public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
+      public Response adminAutoretrieveInitPost(MultipartFormDataInput input,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -29,7 +27,7 @@ public class AdminApiServiceImpl implements AdminApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response adminPeeringPeersDelete(List<Boolean> peerIds,SecurityContext securityContext)
+      public Response adminPeeringPeersDelete(List<Boolean> body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

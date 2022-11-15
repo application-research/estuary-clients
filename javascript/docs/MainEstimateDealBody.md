@@ -7,5 +7,3 @@ Name | Type | Description | Notes
 **replication** | **Number** |  | [optional] 
 **size** | **Number** |  | [optional] 
 **verified** | **Boolean** |  | [optional] 
-
-

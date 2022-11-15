@@ -14,7 +14,6 @@ class TypesIpfsPin(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, cid: str=None, meta: object=None, name: str=None, origins: List[str]=None):  # noqa: E501
         """TypesIpfsPin - a model defined in Swagger
 
@@ -40,7 +39,6 @@ class TypesIpfsPin(Model):
             'name': 'name',
             'origins': 'origins'
         }
-
         self._cid = cid
         self._meta = meta
         self._name = name

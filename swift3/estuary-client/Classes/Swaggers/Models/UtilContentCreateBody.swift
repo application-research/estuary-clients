@@ -9,7 +9,6 @@ import Foundation
 
 
 open class UtilContentCreateBody: JSONEncodable {
-
     public var coluuid: String?
     public var dir: String?
     public var location: String?
@@ -33,4 +32,3 @@ open class UtilContentCreateBody: JSONEncodable {
         return dictionary
     }
 }
-

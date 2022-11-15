@@ -6,7 +6,6 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
-import java.util.List;
 import io.swagger.model.MainGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
@@ -17,8 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-11T23:35:21.555Z")
-public interface UserApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")public interface UserApiService {
       public Response userApiKeysGet(SecurityContext securityContext);
       public Response userApiKeysKeyOrHashDelete(String keyOrHash, SecurityContext securityContext);
       public Response userApiKeysPost(String expiry, String perms, SecurityContext securityContext);

@@ -3,7 +3,6 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-
 import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesIpfsPinStatusResponse;
@@ -16,8 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class PinningApiServiceImpl implements PinningApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class PinningApiServiceImpl implements PinningApi {
       public Response pinningPinsGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -30,11 +28,11 @@ public class PinningApiServiceImpl implements PinningApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response pinningPinsPinidPost(String pinid,String cid,String name,String origins,String meta,SecurityContext securityContext) {
+      public Response pinningPinsPinidPost(String pinid,String body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response pinningPinsPost(TypesIpfsPin pin,SecurityContext securityContext) {
+      public Response pinningPinsPost(TypesIpfsPin body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

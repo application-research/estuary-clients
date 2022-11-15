@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.CollectionsCollection;
@@ -67,13 +66,12 @@ public class CollectionsApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", CollectionsApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", CollectionsApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Produce a CID of the collection contents
      *
@@ -91,7 +89,6 @@ public class CollectionsApiTest {
         
         
     }
-    
     /**
      * Deletes a content from a collection
      *
@@ -102,16 +99,15 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidContentsDeleteTest() {
+        MainDeleteContentFromCollectionBody body = null;
         String coluuid = null;
         String contentid = null;
-        MainDeleteContentFromCollectionBody body = null;
-        //String response = api.collectionsColuuidContentsDelete(coluuid, contentid, body);
+        //String response = api.collectionsColuuidContentsDelete(body, coluuid, contentid);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * Deletes a collection
      *
@@ -129,7 +125,6 @@ public class CollectionsApiTest {
         
         
     }
-    
     /**
      * Get contents in a collection
      *
@@ -148,7 +143,6 @@ public class CollectionsApiTest {
         
         
     }
-    
     /**
      * Add contents to a collection
      *
@@ -159,15 +153,14 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsColuuidPostTest() {
+        List<Integer> body = null;
         String coluuid = null;
-        List<Integer> contentIDs = null;
-        //String response = api.collectionsColuuidPost(coluuid, contentIDs);
+        //String response = api.collectionsColuuidPost(body, coluuid);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * Add a file to a collection
      *
@@ -187,7 +180,6 @@ public class CollectionsApiTest {
         
         
     }
-    
     /**
      * List all collections
      *
@@ -204,7 +196,6 @@ public class CollectionsApiTest {
         
         
     }
-    
     /**
      * Create a new collection
      *
@@ -222,5 +213,4 @@ public class CollectionsApiTest {
         
         
     }
-    
 }

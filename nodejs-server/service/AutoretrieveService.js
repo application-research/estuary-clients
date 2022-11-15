@@ -5,17 +5,12 @@
  * Register autoretrieve server
  * This endpoint registers a new autoretrieve server
  *
- * addresses String Autoretrieve's comma-separated list of addresses
- * pubKey String Autoretrieve's public key
  * returns String
  **/
-exports.adminAutoretrieveInitPOST = function(addresses,pubKey) {
+exports.adminAutoretrieveInitPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -34,10 +29,7 @@ exports.adminAutoretrieveInitPOST = function(addresses,pubKey) {
 exports.adminAutoretrieveListGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -57,10 +49,7 @@ exports.adminAutoretrieveListGET = function() {
 exports.autoretrieveHeartbeatPOST = function(token) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

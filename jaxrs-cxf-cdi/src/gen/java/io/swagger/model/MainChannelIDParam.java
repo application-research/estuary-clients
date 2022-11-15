@@ -3,10 +3,8 @@ package io.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -14,7 +12,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class MainChannelIDParam   {
-  
   private Integer id = null;
   private String initiator = null;
   private String responder = null;
@@ -27,7 +24,8 @@ public class MainChannelIDParam   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("id")
   public Integer getId() {
     return id;
@@ -44,7 +42,8 @@ public class MainChannelIDParam   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("initiator")
   public String getInitiator() {
     return initiator;
@@ -61,7 +60,8 @@ public class MainChannelIDParam   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("responder")
   public String getResponder() {
     return responder;
@@ -113,4 +113,3 @@ public class MainChannelIDParam   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

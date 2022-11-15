@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
  * TypesIpfsPin
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class TypesIpfsPin   {
@@ -40,11 +39,10 @@ public class TypesIpfsPin   {
   /**
    * Get cid
    * @return cid
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getCid() {
+   **/
+  @Schema(description = "")
+  
+    public String getCid() {
     return cid;
   }
 
@@ -60,11 +58,10 @@ public class TypesIpfsPin   {
   /**
    * Get meta
    * @return meta
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Object getMeta() {
+   **/
+  @Schema(description = "")
+  
+    public Object getMeta() {
     return meta;
   }
 
@@ -80,11 +77,10 @@ public class TypesIpfsPin   {
   /**
    * Get name
    * @return name
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getName() {
+   **/
+  @Schema(description = "")
+  
+    public String getName() {
     return name;
   }
 
@@ -108,11 +104,10 @@ public class TypesIpfsPin   {
   /**
    * Get origins
    * @return origins
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public List<String> getOrigins() {
+   **/
+  @Schema(description = "")
+  
+    public List<String> getOrigins() {
     return origins;
   }
 
@@ -165,4 +160,3 @@ public class TypesIpfsPin   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

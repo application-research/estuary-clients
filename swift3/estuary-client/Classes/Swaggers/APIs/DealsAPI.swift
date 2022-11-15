@@ -29,10 +29,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
      - returns: RequestBuilder<String> 
      */
@@ -67,10 +64,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter dealid: (path) Deal ID 
      - returns: RequestBuilder<String> 
      */
@@ -81,7 +75,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{dealid}", with: dealidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -108,10 +102,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter propcid: (path) Proposal CID 
      - returns: RequestBuilder<String> 
      */
@@ -122,7 +113,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{propcid}", with: propcidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -149,10 +140,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) CID 
      - returns: RequestBuilder<String> 
      */
@@ -163,7 +151,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -190,10 +178,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter propcid: (path) PropCid 
      - returns: RequestBuilder<String> 
      */
@@ -204,7 +189,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{propcid}", with: propcidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -232,10 +217,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Miner 
      - parameter propcid: (path) Proposal CID 
      - returns: RequestBuilder<String> 
@@ -250,7 +232,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{propcid}", with: propcidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -276,17 +258,14 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func dealTransferInProgressGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/deal/transfer/in-progress"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -296,11 +275,11 @@ open class DealsAPI: APIBase {
 
     /**
      Transfer Status
-     - parameter chanid: (body) Channel ID 
+     - parameter body: (body) Channel ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func dealTransferStatusPost(chanid: MainChannelIDParam, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        dealTransferStatusPostWithRequestBuilder(chanid: chanid).execute { (response, error) -> Void in
+    open class func dealTransferStatusPost(body: MainChannelIDParam, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        dealTransferStatusPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -313,17 +292,14 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     - parameter chanid: (body) Channel ID 
+     - examples: [{contentType=application/json, example=""}]
+     - parameter body: (body) Channel ID 
      - returns: RequestBuilder<String> 
      */
-    open class func dealTransferStatusPostWithRequestBuilder(chanid: MainChannelIDParam) -> RequestBuilder<String> {
+    open class func dealTransferStatusPostWithRequestBuilder(body: MainChannelIDParam) -> RequestBuilder<String> {
         let path = "/deal/transfer/status"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = chanid.encodeToJSON()
+        let parameters = body.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -350,17 +326,14 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func dealsFailuresGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/deals/failures"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -370,12 +343,12 @@ open class DealsAPI: APIBase {
 
     /**
      Make Deal
+     - parameter body: (body) Deal Request 
      - parameter miner: (path) Miner 
-     - parameter dealRequest: (body) Deal Request 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func dealsMakeMinerPost(miner: String, dealRequest: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        dealsMakeMinerPostWithRequestBuilder(miner: miner, dealRequest: dealRequest).execute { (response, error) -> Void in
+    open class func dealsMakeMinerPost(body: String, miner: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        dealsMakeMinerPostWithRequestBuilder(body: body, miner: miner).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -388,21 +361,18 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
+     - parameter body: (body) Deal Request 
      - parameter miner: (path) Miner 
-     - parameter dealRequest: (body) Deal Request 
      - returns: RequestBuilder<String> 
      */
-    open class func dealsMakeMinerPostWithRequestBuilder(miner: String, dealRequest: String) -> RequestBuilder<String> {
+    open class func dealsMakeMinerPostWithRequestBuilder(body: String, miner: String) -> RequestBuilder<String> {
         var path = "/deals/make/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = dealRequest.encodeToJSON()
+        let parameters = body.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -430,10 +400,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter deal: (path) Deal ID 
      - returns: RequestBuilder<String> 
      */
@@ -444,7 +411,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{deal}", with: dealPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -470,17 +437,14 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func publicDealsFailuresGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/public/deals/failures"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -507,10 +471,7 @@ open class DealsAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) CID 
      - returns: RequestBuilder<String> 
      */
@@ -521,7 +482,7 @@ open class DealsAPI: APIBase {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

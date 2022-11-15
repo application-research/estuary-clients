@@ -9,12 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.HttpError
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -45,7 +44,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class PublicApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {

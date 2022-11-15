@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainDeleteContentFromCollectionBody: JSONEncodable {
-
     public var by: String?
     public var value: String?
 
@@ -25,4 +24,3 @@ open class MainDeleteContentFromCollectionBody: JSONEncodable {
         return dictionary
     }
 }
-

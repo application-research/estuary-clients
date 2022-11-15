@@ -18,7 +18,7 @@ class ApiClient {
   final _RegList = new RegExp(r'^List<(.*)>$');
   final _RegMap = new RegExp(r'^Map<String,(.*)>$');
 
-  ApiClient({this.basePath: "https://api.estuary.tech"}) {
+  ApiClient({this.basePath: "//api.estuary.tech/"}) {
     // Setup authentications (key: authentication name, value: authentication).
     _authentications['bearerAuth'] = new ApiKeyAuth("header", "Authorization");
   }
@@ -38,8 +38,12 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'AutoretrieveInitBody':
+          return new AutoretrieveInitBody.fromJson(value);
         case 'CollectionsCollection':
           return new CollectionsCollection.fromJson(value);
+        case 'ContentAddBody':
+          return new ContentAddBody.fromJson(value);
         case 'MainChannelIDParam':
           return new MainChannelIDParam.fromJson(value);
         case 'MainCreateCollectionBody':

@@ -3,8 +3,7 @@
 var utils = require('../utils/writer.js');
 var Collections = require('../service/CollectionsService');
 
-module.exports.collectionsColuuidCommitPOST = function collectionsColuuidCommitPOST (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
+module.exports.collectionsColuuidCommitPOST = function collectionsColuuidCommitPOST (req, res, next, coluuid) {
   Collections.collectionsColuuidCommitPOST(coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -14,11 +13,8 @@ module.exports.collectionsColuuidCommitPOST = function collectionsColuuidCommitP
     });
 };
 
-module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidContentsDELETE (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
-  var contentid = req.swagger.params['contentid'].value;
-  var body = req.swagger.params['body'].value;
-  Collections.collectionsColuuidContentsDELETE(coluuid,contentid,body)
+module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidContentsDELETE (req, res, next, body, coluuid, contentid) {
+  Collections.collectionsColuuidContentsDELETE(body, coluuid, contentid)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -27,8 +23,7 @@ module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidCon
     });
 };
 
-module.exports.collectionsColuuidDELETE = function collectionsColuuidDELETE (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
+module.exports.collectionsColuuidDELETE = function collectionsColuuidDELETE (req, res, next, coluuid) {
   Collections.collectionsColuuidDELETE(coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -38,10 +33,8 @@ module.exports.collectionsColuuidDELETE = function collectionsColuuidDELETE (req
     });
 };
 
-module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
-  var dir = req.swagger.params['dir'].value;
-  Collections.collectionsColuuidGET(coluuid,dir)
+module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res, next, coluuid, dir) {
+  Collections.collectionsColuuidGET(coluuid, dir)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -50,10 +43,8 @@ module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res,
     });
 };
 
-module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
-  var contentIDs = req.swagger.params['contentIDs'].value;
-  Collections.collectionsColuuidPOST(coluuid,contentIDs)
+module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next, body, coluuid) {
+  Collections.collectionsColuuidPOST(body, coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -62,11 +53,8 @@ module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, re
     });
 };
 
-module.exports.collectionsFsAddPOST = function collectionsFsAddPOST (req, res, next) {
-  var coluuid = req.swagger.params['coluuid'].value;
-  var content = req.swagger.params['content'].value;
-  var path = req.swagger.params['path'].value;
-  Collections.collectionsFsAddPOST(coluuid,content,path)
+module.exports.collectionsFsAddPOST = function collectionsFsAddPOST (req, res, next, coluuid, content, path) {
+  Collections.collectionsFsAddPOST(coluuid, content, path)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -85,8 +73,7 @@ module.exports.collectionsGET = function collectionsGET (req, res, next) {
     });
 };
 
-module.exports.collectionsPOST = function collectionsPOST (req, res, next) {
-  var body = req.swagger.params['body'].value;
+module.exports.collectionsPOST = function collectionsPOST (req, res, next, body) {
   Collections.collectionsPOST(body)
     .then(function (response) {
       utils.writeJson(res, response);

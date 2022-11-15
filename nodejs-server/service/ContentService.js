@@ -5,8 +5,6 @@
  * Add new content
  * This endpoint is used to upload new content.
  *
- * data File File to upload
- * filename String Filenam to use for upload (optional)
  * coluuid String Collection UUID (optional)
  * replication Integer Replication value (optional)
  * ignoreDupes String Ignore Dupes true/false (optional)
@@ -14,10 +12,15 @@
  * dir String Directory (optional)
  * returns util.ContentAddResponse
  **/
-exports.contentAddPOST = function(data,filename,coluuid,replication,ignoreDupes,lazyProvide,dir) {
+exports.contentAddPOST = function(coluuid,replication,ignoreDupes,lazyProvide,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {"empty": false};
+    examples['application/json'] = {
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -39,10 +42,7 @@ exports.contentAddPOST = function(data,filename,coluuid,replication,ignoreDupes,
 exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -63,10 +63,7 @@ exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
 exports.contentAdd_ipfsPOST = function(body,ignoreDupes) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -86,10 +83,7 @@ exports.contentAdd_ipfsPOST = function(body,ignoreDupes) {
 exports.contentAggregatedContentGET = function(content) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -111,10 +105,7 @@ exports.contentAggregatedContentGET = function(content) {
 exports.contentAll_dealsGET = function(begin,duration,all) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -134,10 +125,7 @@ exports.contentAll_dealsGET = function(begin,duration,all) {
 exports.contentBw_usageContentGET = function(content) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -151,17 +139,14 @@ exports.contentBw_usageContentGET = function(content) {
  * Add a new content
  * This endpoint adds a new content
  *
- * req Util.ContentCreateBody Content
+ * body Util.ContentCreateBody Content
  * ignoreDupes String Ignore Dupes (optional)
  * returns String
  **/
-exports.contentCreatePOST = function(req,ignoreDupes) {
+exports.contentCreatePOST = function(body,ignoreDupes) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -182,10 +167,7 @@ exports.contentCreatePOST = function(req,ignoreDupes) {
 exports.contentDealsGET = function(limit,offset) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -205,10 +187,7 @@ exports.contentDealsGET = function(limit,offset) {
 exports.contentEnsure_replicationDatacidGET = function(datacid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -228,10 +207,7 @@ exports.contentEnsure_replicationDatacidGET = function(datacid) {
 exports.contentFailuresContentGET = function(content) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -251,10 +227,7 @@ exports.contentFailuresContentGET = function(content) {
 exports.contentIdGET = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -274,10 +247,7 @@ exports.contentIdGET = function(id) {
 exports.contentImportdealPOST = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -296,10 +266,7 @@ exports.contentImportdealPOST = function(body) {
 exports.contentListGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -319,10 +286,7 @@ exports.contentListGET = function() {
 exports.contentReadContGET = function(cont) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -341,10 +305,7 @@ exports.contentReadContGET = function(cont) {
 exports.contentStaging_zonesGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -365,10 +326,7 @@ exports.contentStaging_zonesGET = function() {
 exports.contentStatsGET = function(limit,offset) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -388,10 +346,7 @@ exports.contentStatsGET = function(limit,offset) {
 exports.contentStatusIdGET = function(id) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

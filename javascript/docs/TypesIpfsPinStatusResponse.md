@@ -9,5 +9,3 @@ Name | Type | Description | Notes
 **pin** | [**TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] 
 **requestid** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
-
-

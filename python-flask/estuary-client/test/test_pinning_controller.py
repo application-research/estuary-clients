@@ -21,7 +21,7 @@ class TestPinningController(BaseTestCase):
         List all pin status objects
         """
         response = self.client.open(
-            '//pinning/pins',
+            '/pinning/pins',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -32,7 +32,7 @@ class TestPinningController(BaseTestCase):
         Delete a pinned object
         """
         response = self.client.open(
-            '//pinning/pins/{pinid}'.format(pinid='pinid_example'),
+            '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -43,7 +43,7 @@ class TestPinningController(BaseTestCase):
         Get a pin status object
         """
         response = self.client.open(
-            '//pinning/pins/{pinid}'.format(pinid='pinid_example'),
+            '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -53,12 +53,12 @@ class TestPinningController(BaseTestCase):
 
         Replace a pinned object
         """
-        meta = 'meta_example'
+        body = 'body_example'
         response = self.client.open(
-            '//pinning/pins/{pinid}'.format(pinid='pinid_example'),
+            '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='POST',
-            data=json.dumps(meta),
-            content_type='application/json')
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -67,12 +67,12 @@ class TestPinningController(BaseTestCase):
 
         Add and pin object
         """
-        pin = TypesIpfsPin()
+        body = TypesIpfsPin()
         response = self.client.open(
-            '//pinning/pins',
+            '/pinning/pins',
             method='POST',
-            data=json.dumps(pin),
-            content_type='application/json')
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

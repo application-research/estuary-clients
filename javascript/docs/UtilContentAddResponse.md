@@ -7,5 +7,3 @@ Name | Type | Description | Notes
 **estuaryId** | **Number** |  | [optional] 
 **providers** | **[String]** |  | [optional] 
 **retrievalUrl** | **String** |  | [optional] 
-
-

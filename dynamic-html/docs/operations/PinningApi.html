@@ -7,7 +7,7 @@
   <p></p>
   <p>This endpoint lists all pin status objects</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/pinning/pins</code>
+  <code>//api.estuary.tech//pinning/pins</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -20,7 +20,7 @@
   <p></p>
   <p>This endpoint deletes a pinned object.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/pinning/pins/{pinid}</code>
+  <code>//api.estuary.tech//pinning/pins/{pinid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>DELETE</code>
   <h3 class="section">Response Type</h3>
@@ -44,7 +44,7 @@
   <p></p>
   <p>This endpoint returns a pin status object.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/pinning/pins/{pinid}</code>
+  <code>//api.estuary.tech//pinning/pins/{pinid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -68,7 +68,7 @@
   <p></p>
   <p>This endpoint replaces a pinned object.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/pinning/pins/{pinid}</code>
+  <code>//api.estuary.tech//pinning/pins/{pinid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -92,40 +92,7 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">cid</span>
-      <span class="param-type">String(string)</span>
-      
-      <p class="param-description">CID of new pin</p>
-	  </li>
-	  <li class="parameter">
-      
-      
-      
-      
-      <span class="param-in">Body: </span>
-      <span class="param-name">name</span>
-      <span class="param-type">String(string)</span>
-      
-      <p class="param-description">Name (filename) of new pin</p>
-	  </li>
-	  <li class="parameter">
-      
-      
-      
-      
-      <span class="param-in">Body: </span>
-      <span class="param-name">origins</span>
-      <span class="param-type">String(string)</span>
-      
-      <p class="param-description">Origins of new pin</p>
-	  </li>
-	  <li class="parameter">
-      
-      
-      
-      
-      <span class="param-in">Body: </span>
-      <span class="param-name">meta</span>
+      <span class="param-name">body</span>
       <span class="param-type">String(string)</span>
       
       <p class="param-description">Meta information of new pin</p>
@@ -136,7 +103,7 @@
   <p></p>
   <p>This endpoint adds a pin to the IPFS daemon.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/pinning/pins</code>
+  <code>//api.estuary.tech//pinning/pins</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -149,7 +116,7 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">pin</span>
+      <span class="param-name">body</span>
       <span class="param-type">Types.IpfsPin(Types.IpfsPin)</span>
       
       <p class="param-description">Pin Body {cid:cid, name:name}</p>

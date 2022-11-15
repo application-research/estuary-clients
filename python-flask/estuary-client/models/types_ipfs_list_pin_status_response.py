@@ -6,7 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from estuary-client.models.base_model_ import Model
-from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse
+from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse  # noqa: F401,E501
 from estuary-client import util
 
 
@@ -15,7 +15,6 @@ class TypesIpfsListPinStatusResponse(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, count: int=None, results: List[TypesIpfsPinStatusResponse]=None):  # noqa: E501
         """TypesIpfsListPinStatusResponse - a model defined in Swagger
 
@@ -33,7 +32,6 @@ class TypesIpfsListPinStatusResponse(Model):
             'count': 'count',
             'results': 'results'
         }
-
         self._count = count
         self._results = results
 

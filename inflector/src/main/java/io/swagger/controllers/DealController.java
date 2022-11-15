@@ -1,7 +1,7 @@
 package io.swagger.controllers;
 
-import io.swagger.inflector.models.RequestContext;
-import io.swagger.inflector.models.ResponseContext;
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -14,8 +14,7 @@ import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
-public class DealController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")public class DealController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -23,37 +22,44 @@ public class DealController  {
    **/
 
   /*
-    public ResponseContext dealEstimatePOST(RequestContext request , MainEstimateDealBody body) {
+    public ResponseContext dealEstimatePOST(RequestContext request , MainEstimateDealBody body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext dealInfoDealidGET(RequestContext request , Integer dealid) {
+    public ResponseContext dealInfoDealidGET(RequestContext request , Integer dealid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext dealProposalPropcidGET(RequestContext request , String propcid) {
+    public ResponseContext dealProposalPropcidGET(RequestContext request , String propcid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext dealQueryMinerGET(RequestContext request , String miner) {
+    public ResponseContext dealQueryMinerGET(RequestContext request , String miner 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext dealStatusByProposalPropcidGET(RequestContext request , String propcid) {
+    public ResponseContext dealStatusByProposalPropcidGET(RequestContext request , String propcid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext dealStatusMinerPropcidGET(RequestContext request , String miner, String propcid) {
+    public ResponseContext dealStatusMinerPropcidGET(RequestContext request , String miner 
+, String propcid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -65,7 +71,8 @@ public class DealController  {
   */
 
   /*
-    public ResponseContext dealTransferStatusPOST(RequestContext request , MainChannelIDParam chanid) {
+    public ResponseContext dealTransferStatusPOST(RequestContext request , MainChannelIDParam body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

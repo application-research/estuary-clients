@@ -1,7 +1,7 @@
 package io.swagger.controllers;
 
-import io.swagger.inflector.models.RequestContext;
-import io.swagger.inflector.models.ResponseContext;
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -15,8 +15,7 @@ import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
-public class PinningController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")public class PinningController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -30,25 +29,30 @@ public class PinningController  {
   */
 
   /*
-    public ResponseContext pinningPinsPOST(RequestContext request , TypesIpfsPin pin) {
+    public ResponseContext pinningPinsPOST(RequestContext request , TypesIpfsPin body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext pinningPinsPinidDELETE(RequestContext request , String pinid) {
+    public ResponseContext pinningPinsPinidDELETE(RequestContext request , String pinid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext pinningPinsPinidGET(RequestContext request , String pinid) {
+    public ResponseContext pinningPinsPinidGET(RequestContext request , String pinid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext pinningPinsPinidPOST(RequestContext request , String pinid, String cid, String name, String origins, String meta) {
+    public ResponseContext pinningPinsPinidPOST(RequestContext request , String pinid 
+, String body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

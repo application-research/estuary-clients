@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface UtilContentAddResponse { 
     cid?: string;
     estuaryId?: number;

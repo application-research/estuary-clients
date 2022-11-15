@@ -14,7 +14,6 @@ class MainEstimateDealBody(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, duration_blks: int=None, replication: int=None, size: int=None, verified: bool=None):  # noqa: E501
         """MainEstimateDealBody - a model defined in Swagger
 
@@ -40,7 +39,6 @@ class MainEstimateDealBody(Model):
             'size': 'size',
             'verified': 'verified'
         }
-
         self._duration_blks = duration_blks
         self._replication = replication
         self._size = size

@@ -3,8 +3,14 @@ package io.swagger.api;
 import io.swagger.model.*;
 import io.swagger.api.DealApiService;
 
-import io.swagger.annotations.ApiParam;
-import io.swagger.jaxrs.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
@@ -23,30 +29,27 @@ import javax.ws.rs.*;
 import javax.inject.Inject;
 
 import javax.validation.constraints.*;
-
 @Path("/deal")
 
 
-@io.swagger.annotations.Api(description = "the deal API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class DealApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class DealApi  {
 
     @Inject DealApiService service;
 
     @POST
     @Path("/estimate")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Estimate the cost of a deal", notes = "This endpoint estimates the cost of a deal", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Estimate the cost of a deal", description = "This endpoint estimates the cost of a deal", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response dealEstimatePost(@ApiParam(value = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks" ,required=true) MainEstimateDealBody body,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response dealEstimatePost(@Parameter(description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks" ,required=true) MainEstimateDealBody body,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealEstimatePost(body,securityContext);
     }
@@ -54,15 +57,15 @@ public class DealApi  {
     @Path("/info/{dealid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get Deal Info", notes = "This endpoint returns the deal info for a deal", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get Deal Info", description = "This endpoint returns the deal info for a deal", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealInfoDealidGet( @PathParam("dealid") Integer dealid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealInfoDealidGet(dealid,securityContext);
@@ -71,15 +74,15 @@ public class DealApi  {
     @Path("/proposal/{propcid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get Proposal", notes = "This endpoint returns the proposal for a deal", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get Proposal", description = "This endpoint returns the proposal for a deal", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealProposalPropcidGet( @PathParam("propcid") String propcid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealProposalPropcidGet(propcid,securityContext);
@@ -88,15 +91,15 @@ public class DealApi  {
     @Path("/query/{miner}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Query Ask", notes = "This endpoint returns the ask for a given CID", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Query Ask", description = "This endpoint returns the ask for a given CID", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealQueryMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealQueryMinerGet(miner,securityContext);
@@ -105,15 +108,15 @@ public class DealApi  {
     @Path("/status-by-proposal/{propcid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get Deal Status by PropCid", notes = "Get Deal Status by PropCid", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get Deal Status by PropCid", description = "Get Deal Status by PropCid", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealStatusByProposalPropcidGet( @PathParam("propcid") String propcid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealStatusByProposalPropcidGet(propcid,securityContext);
@@ -122,15 +125,15 @@ public class DealApi  {
     @Path("/status/{miner}/{propcid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Deal Status", notes = "This endpoint returns the status of a deal", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Deal Status", description = "This endpoint returns the status of a deal", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealStatusMinerPropcidGet( @PathParam("miner") String miner, @PathParam("propcid") String propcid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealStatusMinerPropcidGet(miner,propcid,securityContext);
@@ -139,34 +142,34 @@ public class DealApi  {
     @Path("/transfer/in-progress")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Transfer In Progress", notes = "This endpoint returns the in-progress transfers", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Transfer In Progress", description = "This endpoint returns the in-progress transfers", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response dealTransferInProgressGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.dealTransferInProgressGet(securityContext);
     }
     @POST
     @Path("/transfer/status")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Transfer Status", notes = "This endpoint returns the status of a transfer", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Transfer Status", description = "This endpoint returns the status of a transfer", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response dealTransferStatusPost(@ApiParam(value = "Channel ID" ,required=true) MainChannelIDParam chanid,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response dealTransferStatusPost(@Parameter(description = "Channel ID" ,required=true) MainChannelIDParam body,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.dealTransferStatusPost(chanid,securityContext);
+        return service.dealTransferStatusPost(body,securityContext);
     }
 }

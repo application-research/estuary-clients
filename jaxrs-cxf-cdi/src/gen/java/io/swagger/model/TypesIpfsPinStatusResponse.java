@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
 import java.util.ArrayList;
 import java.util.List;
-import javax.validation.constraints.*;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -17,7 +16,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class TypesIpfsPinStatusResponse   {
-  
   private String created = null;
   private List<String> delegates = new ArrayList<String>();
   private Object info = null;
@@ -33,7 +31,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("created")
   public String getCreated() {
     return created;
@@ -50,7 +49,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("delegates")
   public List<String> getDelegates() {
     return delegates;
@@ -67,7 +67,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("info")
   public Object getInfo() {
     return info;
@@ -84,7 +85,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("pin")
   @Valid
   public TypesIpfsPin getPin() {
@@ -102,7 +104,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("requestid")
   public String getRequestid() {
     return requestid;
@@ -119,7 +122,8 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -177,4 +181,3 @@ public class TypesIpfsPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

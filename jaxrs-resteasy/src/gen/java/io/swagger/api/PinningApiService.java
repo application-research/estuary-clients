@@ -3,7 +3,6 @@ package io.swagger.api;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-
 import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesIpfsPinStatusResponse;
@@ -17,16 +16,15 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public interface PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public interface PinningApiService {
       Response pinningPinsGet(SecurityContext securityContext)
       throws NotFoundException;
       Response pinningPinsPinidDelete(String pinid,SecurityContext securityContext)
       throws NotFoundException;
       Response pinningPinsPinidGet(String pinid,SecurityContext securityContext)
       throws NotFoundException;
-      Response pinningPinsPinidPost(String pinid,String cid,String name,String origins,String meta,SecurityContext securityContext)
+      Response pinningPinsPinidPost(String pinid,String body,SecurityContext securityContext)
       throws NotFoundException;
-      Response pinningPinsPost(TypesIpfsPin pin,SecurityContext securityContext)
+      Response pinningPinsPost(TypesIpfsPin body,SecurityContext securityContext)
       throws NotFoundException;
 }

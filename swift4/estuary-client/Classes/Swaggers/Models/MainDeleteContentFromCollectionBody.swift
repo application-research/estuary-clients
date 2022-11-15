@@ -8,17 +8,15 @@
 import Foundation
 
 
-
 public struct MainDeleteContentFromCollectionBody: Codable {
 
-    public var by: String?
-    public var value: String?
 
-    public init(by: String?, value: String?) {
+    public var by: String?
+
+    public var value: String?
+    public init(by: String? = nil, value: String? = nil) { 
         self.by = by
         self.value = value
     }
 
-
 }
-

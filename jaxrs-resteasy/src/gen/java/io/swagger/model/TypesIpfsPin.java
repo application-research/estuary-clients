@@ -6,21 +6,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class TypesIpfsPin   {
-  
-  private String cid = null;
-  private Object meta = null;
-  private String name = null;
-  private List<String> origins = new ArrayList<String>();
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class TypesIpfsPin   {
+  private String cid = null;  private Object meta = null;  private String name = null;  private List<String> origins = new ArrayList<String>();
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -32,7 +27,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("meta")
   public Object getMeta() {
     return meta;
@@ -44,7 +39,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -56,7 +51,7 @@ public class TypesIpfsPin   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("origins")
   public List<String> getOrigins() {
     return origins;
@@ -110,4 +105,3 @@ public class TypesIpfsPin   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

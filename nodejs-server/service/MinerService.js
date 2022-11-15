@@ -12,10 +12,7 @@
 exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -35,10 +32,7 @@ exports.publicMinersDealsMinerGET = function(miner,ignoreFailed) {
 exports.publicMinersStatsMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

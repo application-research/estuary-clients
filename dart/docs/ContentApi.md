@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,6 @@ Method | HTTP request | Description
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
-
 # **contentAddCarPost**
 > String contentAddCarPost(body, ignoreDupes, filename)
 
@@ -35,7 +34,7 @@ Add Car object
 
 This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -48,7 +47,7 @@ var body = new String(); // String | Car
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 var filename = filename_example; // String | Filename
 
-try { 
+try {
     var result = api_instance.contentAddCarPost(body, ignoreDupes, filename);
     print(result);
 } catch (e) {
@@ -60,7 +59,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Car | 
+ **body** | [**String**](String.md)| Car | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **filename** | **String**| Filename | [optional] 
 
@@ -74,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -86,7 +85,7 @@ Add IPFS object
 
 This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -98,7 +97,7 @@ var api_instance = new ContentApi();
 var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
-try { 
+try {
     var result = api_instance.contentAddIpfsPost(body, ignoreDupes);
     print(result);
 } catch (e) {
@@ -123,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -135,7 +134,7 @@ Add new content
 
 This endpoint is used to upload new content.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -144,15 +143,15 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var data = /path/to/file.txt; // MultipartFile | File to upload
-var filename = filename_example; // String | Filenam to use for upload
+var data = data_example; // String | 
+var filename = filename_example; // String | 
 var coluuid = coluuid_example; // String | Collection UUID
 var replication = 56; // int | Replication value
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
 var lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
 var dir = dir_example; // String | Directory
 
-try { 
+try {
     var result = api_instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
     print(result);
 } catch (e) {
@@ -164,8 +163,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **MultipartFile**| File to upload | 
- **filename** | **String**| Filenam to use for upload | [optional] 
+ **data** | **String****String**|  | 
+ **filename** | **String**|  | 
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **int**| Replication value | [optional] 
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
@@ -194,7 +193,7 @@ Get aggregated content stats
 
 This endpoint returns aggregated content stats
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -205,7 +204,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var content = content_example; // String | Content ID
 
-try { 
+try {
     var result = api_instance.contentAggregatedContentGet(content);
     print(result);
 } catch (e) {
@@ -241,7 +240,7 @@ Get all deals for a user
 
 This endpoint is used to get all deals for a user
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -254,7 +253,7 @@ var begin = begin_example; // String | Begin
 var duration = duration_example; // String | Duration
 var all = all_example; // String | All
 
-try { 
+try {
     var result = api_instance.contentAllDealsGet(begin, duration, all);
     print(result);
 } catch (e) {
@@ -292,7 +291,7 @@ Get content bandwidth
 
 This endpoint returns content bandwidth
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -303,7 +302,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var content = content_example; // String | Content ID
 
-try { 
+try {
     var result = api_instance.contentBwUsageContentGet(content);
     print(result);
 } catch (e) {
@@ -333,13 +332,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentCreatePost**
-> String contentCreatePost(req, ignoreDupes)
+> String contentCreatePost(body, ignoreDupes)
 
 Add a new content
 
 This endpoint adds a new content
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -348,11 +347,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var req = new UtilContentCreateBody(); // UtilContentCreateBody | Content
+var body = new UtilContentCreateBody(); // UtilContentCreateBody | Content
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
-try { 
-    var result = api_instance.contentCreatePost(req, ignoreDupes);
+try {
+    var result = api_instance.contentCreatePost(body, ignoreDupes);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentCreatePost: $e\n");
@@ -363,7 +362,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
@@ -376,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -388,7 +387,7 @@ Content with deals
 
 This endpoint lists all content with deals
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -400,7 +399,7 @@ var api_instance = new ContentApi();
 var limit = 56; // int | Limit
 var offset = 56; // int | Offset
 
-try { 
+try {
     var result = api_instance.contentDealsGet(limit, offset);
     print(result);
 } catch (e) {
@@ -437,7 +436,7 @@ Ensure Replication
 
 This endpoint ensures that the content is replicated to the specified number of providers
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -448,7 +447,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var datacid = datacid_example; // String | Data CID
 
-try { 
+try {
     var result = api_instance.contentEnsureReplicationDatacidGet(datacid);
     print(result);
 } catch (e) {
@@ -484,7 +483,7 @@ List all failures for a content
 
 This endpoint returns all failures for a content
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -495,7 +494,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var content = content_example; // String | Content ID
 
-try { 
+try {
     var result = api_instance.contentFailuresContentGet(content);
     print(result);
 } catch (e) {
@@ -531,7 +530,7 @@ Content
 
 This endpoint returns a content by its ID
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -542,7 +541,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var id = 56; // int | Content ID
 
-try { 
+try {
     var result = api_instance.contentIdGet(id);
     print(result);
 } catch (e) {
@@ -578,7 +577,7 @@ Import a deal
 
 This endpoint imports a deal into the shuttle.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -589,7 +588,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var body = new MainImportDealBody(); // MainImportDealBody | Import a deal
 
-try { 
+try {
     var result = api_instance.contentImportdealPost(body);
     print(result);
 } catch (e) {
@@ -613,7 +612,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -625,7 +624,7 @@ List all pinned content
 
 This endpoint lists all content
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -635,7 +634,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new ContentApi();
 
-try { 
+try {
     var result = api_instance.contentListGet();
     print(result);
 } catch (e) {
@@ -668,7 +667,7 @@ Read content
 
 This endpoint reads content from the blockstore
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -679,7 +678,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var cont = cont_example; // String | CID
 
-try { 
+try {
     var result = api_instance.contentReadContGet(cont);
     print(result);
 } catch (e) {
@@ -715,7 +714,7 @@ Get staging zone for user
 
 This endpoint is used to get staging zone for user.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -725,7 +724,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new ContentApi();
 
-try { 
+try {
     var result = api_instance.contentStagingZonesGet();
     print(result);
 } catch (e) {
@@ -758,7 +757,7 @@ Get content statistics
 
 This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -770,7 +769,7 @@ var api_instance = new ContentApi();
 var limit = limit_example; // String | limit
 var offset = offset_example; // String | offset
 
-try { 
+try {
     var result = api_instance.contentStatsGet(limit, offset);
     print(result);
 } catch (e) {
@@ -807,7 +806,7 @@ Content Status
 
 This endpoint returns the status of a content
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -818,7 +817,7 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var id = 56; // int | Content ID
 
-try { 
+try {
     var result = api_instance.contentStatusIdGet(id);
     print(result);
 } catch (e) {

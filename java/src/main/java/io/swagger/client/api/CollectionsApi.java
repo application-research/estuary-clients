@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.ApiCallback;
@@ -67,7 +66,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsColuuidCommitPostCall(String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/collections/{coluuid}/commit"
             .replaceAll("\\{" + "coluuid" + "\\}", apiClient.escapeString(coluuid.toString()));
@@ -106,19 +105,21 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsColuuidCommitPostValidateBeforeCall(String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidCommitPost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = collectionsColuuidCommitPostCall(coluuid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -182,17 +183,17 @@ public class CollectionsApi {
     }
     /**
      * Build call for collectionsColuuidContentsDelete
+     * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param coluuid Collection ID (required)
      * @param contentid Content ID (required)
-     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidContentsDeleteCall(String coluuid, String contentid, MainDeleteContentFromCollectionBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidContentsDeleteCall(MainDeleteContentFromCollectionBody body, String coluuid, String contentid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-
+        
         // create path and map variables
         String localVarPath = "/collections/{coluuid}/contents"
             .replaceAll("\\{" + "coluuid" + "\\}", apiClient.escapeString(coluuid.toString()))
@@ -212,7 +213,7 @@ public class CollectionsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -232,56 +233,56 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call collectionsColuuidContentsDeleteValidateBeforeCall(String coluuid, String contentid, MainDeleteContentFromCollectionBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call collectionsColuuidContentsDeleteValidateBeforeCall(MainDeleteContentFromCollectionBody body, String coluuid, String contentid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling collectionsColuuidContentsDelete(Async)");
+        }
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidContentsDelete(Async)");
         }
-        
         // verify the required parameter 'contentid' is set
         if (contentid == null) {
             throw new ApiException("Missing the required parameter 'contentid' when calling collectionsColuuidContentsDelete(Async)");
         }
         
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling collectionsColuuidContentsDelete(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteCall(coluuid, contentid, body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteCall(body, coluuid, contentid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Deletes a content from a collection
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param coluuid Collection ID (required)
      * @param contentid Content ID (required)
-     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String collectionsColuuidContentsDelete(String coluuid, String contentid, MainDeleteContentFromCollectionBody body) throws ApiException {
-        ApiResponse<String> resp = collectionsColuuidContentsDeleteWithHttpInfo(coluuid, contentid, body);
+    public String collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidContentsDeleteWithHttpInfo(body, coluuid, contentid);
         return resp.getData();
     }
 
     /**
      * Deletes a content from a collection
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param coluuid Collection ID (required)
      * @param contentid Content ID (required)
-     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> collectionsColuuidContentsDeleteWithHttpInfo(String coluuid, String contentid, MainDeleteContentFromCollectionBody body) throws ApiException {
-        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteValidateBeforeCall(coluuid, contentid, body, null, null);
+    public ApiResponse<String> collectionsColuuidContentsDeleteWithHttpInfo(MainDeleteContentFromCollectionBody body, String coluuid, String contentid) throws ApiException {
+        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteValidateBeforeCall(body, coluuid, contentid, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -289,14 +290,14 @@ public class CollectionsApi {
     /**
      * Deletes a content from a collection (asynchronously)
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
+     * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param coluuid Collection ID (required)
      * @param contentid Content ID (required)
-     * @param body Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidContentsDeleteAsync(String coluuid, String contentid, MainDeleteContentFromCollectionBody body, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidContentsDeleteAsync(MainDeleteContentFromCollectionBody body, String coluuid, String contentid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -317,7 +318,7 @@ public class CollectionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteValidateBeforeCall(coluuid, contentid, body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidContentsDeleteValidateBeforeCall(body, coluuid, contentid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -332,7 +333,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsColuuidDeleteCall(String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/collections/{coluuid}"
             .replaceAll("\\{" + "coluuid" + "\\}", apiClient.escapeString(coluuid.toString()));
@@ -345,7 +346,7 @@ public class CollectionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
+            "*/*"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -371,19 +372,21 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsColuuidDeleteValidateBeforeCall(String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidDelete(Async)");
         }
         
-
         com.squareup.okhttp.Call call = collectionsColuuidDeleteCall(coluuid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -456,7 +459,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsColuuidGetCall(String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/collections/{coluuid}"
             .replaceAll("\\{" + "coluuid" + "\\}", apiClient.escapeString(coluuid.toString()));
@@ -497,19 +500,21 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsColuuidGetValidateBeforeCall(String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = collectionsColuuidGetCall(coluuid, dir, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -576,16 +581,16 @@ public class CollectionsApi {
     }
     /**
      * Build call for collectionsColuuidPost
-     * @param coluuid coluuid (required)
-     * @param contentIDs Content IDs to add to collection (required)
+     * @param body Content IDs to add to collection (required)
+     * @param coluuid Collection UUID (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostCall(String coluuid, List<Integer> contentIDs, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = contentIDs;
-
+    public com.squareup.okhttp.Call collectionsColuuidPostCall(List<Integer> body, String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
         // create path and map variables
         String localVarPath = "/collections/{coluuid}"
             .replaceAll("\\{" + "coluuid" + "\\}", apiClient.escapeString(coluuid.toString()));
@@ -624,49 +629,50 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(String coluuid, List<Integer> contentIDs, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(List<Integer> body, String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling collectionsColuuidPost(Async)");
+        }
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidPost(Async)");
         }
         
-        // verify the required parameter 'contentIDs' is set
-        if (contentIDs == null) {
-            throw new ApiException("Missing the required parameter 'contentIDs' when calling collectionsColuuidPost(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = collectionsColuuidPostCall(coluuid, contentIDs, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostCall(body, coluuid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Add contents to a collection
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-     * @param coluuid coluuid (required)
-     * @param contentIDs Content IDs to add to collection (required)
+     * @param body Content IDs to add to collection (required)
+     * @param coluuid Collection UUID (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String collectionsColuuidPost(String coluuid, List<Integer> contentIDs) throws ApiException {
-        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(coluuid, contentIDs);
+    public String collectionsColuuidPost(List<Integer> body, String coluuid) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(body, coluuid);
         return resp.getData();
     }
 
     /**
      * Add contents to a collection
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-     * @param coluuid coluuid (required)
-     * @param contentIDs Content IDs to add to collection (required)
+     * @param body Content IDs to add to collection (required)
+     * @param coluuid Collection UUID (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(String coluuid, List<Integer> contentIDs) throws ApiException {
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(coluuid, contentIDs, null, null);
+    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(List<Integer> body, String coluuid) throws ApiException {
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -674,13 +680,13 @@ public class CollectionsApi {
     /**
      * Add contents to a collection (asynchronously)
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-     * @param coluuid coluuid (required)
-     * @param contentIDs Content IDs to add to collection (required)
+     * @param body Content IDs to add to collection (required)
+     * @param coluuid Collection UUID (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostAsync(String coluuid, List<Integer> contentIDs, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostAsync(List<Integer> body, String coluuid, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -701,7 +707,7 @@ public class CollectionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(coluuid, contentIDs, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -718,7 +724,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsFsAddPostCall(String coluuid, String content, String path, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/collections/fs/add";
 
@@ -762,29 +768,29 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsFsAddPostValidateBeforeCall(String coluuid, String content, String path, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsFsAddPost(Async)");
         }
-        
         // verify the required parameter 'content' is set
         if (content == null) {
             throw new ApiException("Missing the required parameter 'content' when calling collectionsFsAddPost(Async)");
         }
-        
         // verify the required parameter 'path' is set
         if (path == null) {
             throw new ApiException("Missing the required parameter 'path' when calling collectionsFsAddPost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = collectionsFsAddPostCall(coluuid, content, path, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -861,7 +867,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/collections/";
 
@@ -899,14 +905,17 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = collectionsGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -975,7 +984,7 @@ public class CollectionsApi {
      */
     public com.squareup.okhttp.Call collectionsPostCall(MainCreateCollectionBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-
+        
         // create path and map variables
         String localVarPath = "/collections/";
 
@@ -993,7 +1002,7 @@ public class CollectionsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1013,19 +1022,21 @@ public class CollectionsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call collectionsPostValidateBeforeCall(MainCreateCollectionBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling collectionsPost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = collectionsPostCall(body, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**

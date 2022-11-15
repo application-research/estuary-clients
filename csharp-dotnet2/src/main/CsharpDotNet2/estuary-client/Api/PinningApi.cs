@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -32,18 +32,15 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <param name="pinid">Pin ID</param>
-        /// <param name="cid">CID of new pin</param>
-        /// <param name="name">Name (filename) of new pin</param>
-        /// <param name="origins">Origins of new pin</param>
-        /// <param name="meta">Meta information of new pin</param>
+        /// <param name="body">Meta information of new pin</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta);
+        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body);
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
-        /// <param name="pin">Pin Body {cid:cid, name:name}</param>
+        /// <param name="body">Pin Body {cid:cid, name:name}</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin);
+        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body);
     }
   
     /// <summary>
@@ -102,10 +99,9 @@ namespace estuary-client.Api
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
-        /// <returns>TypesIpfsListPinStatusResponse</returns>            
+        /// <returns>TypesIpfsListPinStatusResponse</returns>
         public TypesIpfsListPinStatusResponse PinningPinsGet ()
         {
-            
     
             var path = "/pinning/pins";
             path = path.Replace("{format}", "json");
@@ -116,7 +112,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -134,14 +130,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Delete a pinned object This endpoint deletes a pinned object.
         /// </summary>
-        /// <param name="pinid">Pin ID</param> 
-        /// <returns></returns>            
+        /// <param name="pinid">Pin ID</param>
+        /// <returns></returns>
         public void PinningPinsPinidDelete (string pinid)
         {
-            
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidDelete");
-            
     
             var path = "/pinning/pins/{pinid}";
             path = path.Replace("{format}", "json");
@@ -153,7 +147,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -171,14 +165,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Get a pin status object This endpoint returns a pin status object.
         /// </summary>
-        /// <param name="pinid">cid</param> 
-        /// <returns>TypesIpfsPinStatusResponse</returns>            
+        /// <param name="pinid">cid</param>
+        /// <returns>TypesIpfsPinStatusResponse</returns>
         public TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
         {
-            
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidGet");
-            
     
             var path = "/pinning/pins/{pinid}";
             path = path.Replace("{format}", "json");
@@ -190,7 +182,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -208,21 +200,13 @@ namespace estuary-client.Api
         /// <summary>
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
-        /// <param name="pinid">Pin ID</param> 
-        /// <param name="cid">CID of new pin</param> 
-        /// <param name="name">Name (filename) of new pin</param> 
-        /// <param name="origins">Origins of new pin</param> 
-        /// <param name="meta">Meta information of new pin</param> 
-        /// <returns>TypesIpfsPinStatusResponse</returns>            
-        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta)
+        /// <param name="pinid">Pin ID</param>
+        /// <param name="body">Meta information of new pin</param>
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body)
         {
-            
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidPost");
-            
-            // verify the required parameter 'cid' is set
-            if (cid == null) throw new ApiException(400, "Missing required parameter 'cid' when calling PinningPinsPinidPost");
-            
     
             var path = "/pinning/pins/{pinid}";
             path = path.Replace("{format}", "json");
@@ -234,8 +218,8 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(meta); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -253,14 +237,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
-        /// <param name="pin">Pin Body {cid:cid, name:name}</param> 
-        /// <returns>TypesIpfsPinStatusResponse</returns>            
-        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin)
+        /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <returns>TypesIpfsPinStatusResponse</returns>
+        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
         {
-            
-            // verify the required parameter 'pin' is set
-            if (pin == null) throw new ApiException(400, "Missing required parameter 'pin' when calling PinningPinsPost");
-            
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PinningPinsPost");
     
             var path = "/pinning/pins";
             path = path.Replace("{format}", "json");
@@ -271,8 +253,8 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(pin); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

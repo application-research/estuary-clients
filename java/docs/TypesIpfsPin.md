@@ -1,4 +1,3 @@
-
 # TypesIpfsPin
 
 ## Properties
@@ -8,6 +7,3 @@ Name | Type | Description | Notes
 **meta** | **Object** |  |  [optional]
 **name** | **String** |  |  [optional]
 **origins** | **List&lt;String&gt;** |  |  [optional]
-
-
-

@@ -7,5 +7,3 @@ Name | Type | Description | Notes
 **meta** | **Object** |  | [optional] 
 **name** | **String** |  | [optional] 
 **origins** | **[String]** |  | [optional] 
-
-

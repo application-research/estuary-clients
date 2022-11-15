@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace estuary-client.Model {
+namespace IO.Swagger.Model {
 
   /// <summary>
   /// 

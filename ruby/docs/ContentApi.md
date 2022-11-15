@@ -1,6 +1,6 @@
 # SwaggerClient::ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,7 +22,6 @@ Method | HTTP request | Description
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 
-
 # **content_add_car_post**
 > String content_add_car_post(body, opts)
 
@@ -43,11 +42,9 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = 'body_example' # String | Car
-
 opts = { 
-  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
   filename: 'filename_example' # String | Filename
 }
 
@@ -64,7 +61,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **String**| Car | 
+ **body** | [**String**](String.md)| Car | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
  **filename** | **String**| Filename | [optional] 
 
@@ -78,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -103,9 +100,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
-
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
@@ -136,13 +131,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(data, opts)
+> UtilContentAddResponse content_add_post(datafilename, opts)
 
 Add new content
 
@@ -161,21 +156,19 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
-data = File.new('/path/to/file.txt') # File | File to upload
-
+data = 'data_example' # String | 
+filename = 'filename_example' # String | 
 opts = { 
-  filename: 'filename_example', # String | Filenam to use for upload
-  coluuid: 'coluuid_example', # String | Collection UUID
-  replication: 56, # Integer | Replication value
-  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
-  lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
+  coluuid: 'coluuid_example' # String | Collection UUID
+  replication: 56 # Integer | Replication value
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
+  lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
 
 begin
   #Add new content
-  result = api_instance.content_add_post(data, opts)
+  result = api_instance.content_add_post(datafilename, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -186,8 +179,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **File**| File to upload | 
- **filename** | **String**| Filenam to use for upload | [optional] 
+ **data** | **String**|  | 
+ **filename** | **String**|  | 
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Integer**| Replication value | [optional] 
  **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
@@ -229,7 +222,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
@@ -283,11 +275,8 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 _begin = '_begin_example' # String | Begin
-
 duration = 'duration_example' # String | Duration
-
 all = 'all_example' # String | All
 
 
@@ -343,7 +332,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
@@ -378,7 +366,7 @@ Name | Type | Description  | Notes
 
 
 # **content_create_post**
-> String content_create_post(req, opts)
+> String content_create_post(body, opts)
 
 Add a new content
 
@@ -397,16 +385,14 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
-req = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
-
+body = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
 
 begin
   #Add a new content
-  result = api_instance.content_create_post(req, opts)
+  result = api_instance.content_create_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_create_post: #{e}"
@@ -417,7 +403,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type
@@ -430,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -455,7 +441,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 opts = { 
   limit: 56, # Integer | Limit
   offset: 56 # Integer | Offset
@@ -512,7 +497,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 datacid = 'datacid_example' # String | Data CID
 
 
@@ -566,7 +550,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 content = 'content_example' # String | Content ID
 
 
@@ -620,7 +603,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 id = 56 # Integer | Content ID
 
 
@@ -674,7 +656,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
 
 
@@ -703,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -776,7 +757,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 cont = 'cont_example' # String | CID
 
 
@@ -878,9 +858,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 limit = 'limit_example' # String | limit
-
 offset = 'offset_example' # String | offset
 
 
@@ -935,7 +913,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-
 id = 56 # Integer | Content ID
 
 

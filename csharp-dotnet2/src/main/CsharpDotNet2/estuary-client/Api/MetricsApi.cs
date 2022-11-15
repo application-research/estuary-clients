@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -74,10 +74,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string PublicMetricsDealsOnChainGet ()
         {
-            
     
             var path = "/public/metrics/deals-on-chain";
             path = path.Replace("{format}", "json");
@@ -88,7 +87,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

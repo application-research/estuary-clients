@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.MainChannelIDParam;
@@ -66,13 +65,12 @@ public class DealsApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", DealsApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", DealsApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Estimate the cost of a deal
      *
@@ -90,7 +88,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Get Deal Info
      *
@@ -108,7 +105,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Get Proposal
      *
@@ -126,7 +122,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Query Ask
      *
@@ -144,7 +139,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Get Deal Status by PropCid
      *
@@ -162,7 +156,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Deal Status
      *
@@ -181,7 +174,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Transfer In Progress
      *
@@ -198,7 +190,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Transfer Status
      *
@@ -209,14 +200,13 @@ public class DealsApiTest {
      */
     @Test
     public void dealTransferStatusPostTest() {
-        MainChannelIDParam chanid = null;
-        //String response = api.dealTransferStatusPost(chanid);
+        MainChannelIDParam body = null;
+        //String response = api.dealTransferStatusPost(body);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * Get storage failures for user
      *
@@ -233,7 +223,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Make Deal
      *
@@ -244,15 +233,14 @@ public class DealsApiTest {
      */
     @Test
     public void dealsMakeMinerPostTest() {
+        String body = null;
         String miner = null;
-        String dealRequest = null;
-        //String response = api.dealsMakeMinerPost(miner, dealRequest);
+        //String response = api.dealsMakeMinerPost(body, miner);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * Get Deal Status
      *
@@ -270,7 +258,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Get storage failures
      *
@@ -287,7 +274,6 @@ public class DealsApiTest {
         
         
     }
-    
     /**
      * Query Ask
      *
@@ -305,5 +291,4 @@ public class DealsApiTest {
         
         
     }
-    
 }

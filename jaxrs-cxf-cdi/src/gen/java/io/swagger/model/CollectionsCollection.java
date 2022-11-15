@@ -3,10 +3,8 @@ package io.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -14,7 +12,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class CollectionsCollection   {
-  
   private String cid = null;
   private String createdAt = null;
   private String description = null;
@@ -30,7 +27,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -47,7 +45,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("createdAt")
   public String getCreatedAt() {
     return createdAt;
@@ -64,7 +63,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -81,7 +81,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -98,7 +99,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("userId")
   public Integer getUserId() {
     return userId;
@@ -115,7 +117,8 @@ public class CollectionsCollection   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("uuid")
   public String getUuid() {
     return uuid;
@@ -173,4 +176,3 @@ public class CollectionsCollection   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

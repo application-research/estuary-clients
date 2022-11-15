@@ -1,4 +1,4 @@
-# estuary-client.Model.TypesIpfsPin
+# IO.Swagger.Model.TypesIpfsPin
 ## Properties
 
 Name | Type | Description | Notes

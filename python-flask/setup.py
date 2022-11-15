@@ -5,7 +5,6 @@ from setuptools import setup, find_packages
 
 NAME = "estuary-client"
 VERSION = "1.0.3"
-
 # To install the library, run the following
 #
 # python setup.py install
@@ -35,4 +34,3 @@ setup(
     This is the API for the Estuary application.
     """
 )
-

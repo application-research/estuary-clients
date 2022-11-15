@@ -30,10 +30,7 @@ open class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Filter by miner 
      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - returns: RequestBuilder<String> 
@@ -45,10 +42,9 @@ open class MinerAPI: APIBase {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "ignore-failed": ignoreFailed
+                        "ignore-failed": ignoreFailed
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -75,10 +71,7 @@ open class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Filter by miner 
      - returns: RequestBuilder<String> 
      */
@@ -89,7 +82,7 @@ open class MinerAPI: APIBase {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

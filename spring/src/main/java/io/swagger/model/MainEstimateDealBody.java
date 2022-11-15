@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,7 +12,7 @@ import javax.validation.constraints.*;
  * MainEstimateDealBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class MainEstimateDealBody   {
@@ -37,11 +36,10 @@ public class MainEstimateDealBody   {
   /**
    * Get durationBlks
    * @return durationBlks
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getDurationBlks() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getDurationBlks() {
     return durationBlks;
   }
 
@@ -57,11 +55,10 @@ public class MainEstimateDealBody   {
   /**
    * Get replication
    * @return replication
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getReplication() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getReplication() {
     return replication;
   }
 
@@ -77,11 +74,10 @@ public class MainEstimateDealBody   {
   /**
    * Get size
    * @return size
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getSize() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getSize() {
     return size;
   }
 
@@ -97,11 +93,10 @@ public class MainEstimateDealBody   {
   /**
    * Get verified
    * @return verified
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Boolean isVerified() {
+   **/
+  @Schema(description = "")
+  
+    public Boolean isVerified() {
     return verified;
   }
 
@@ -154,4 +149,3 @@ public class MainEstimateDealBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

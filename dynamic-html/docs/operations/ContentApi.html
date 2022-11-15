@@ -7,7 +7,7 @@
   <p></p>
   <p>This endpoint is used to add a car object to the network. The object can be a file or a directory.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/add-car</code>
+  <code>//api.estuary.tech//content/add-car</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -53,7 +53,7 @@
   <p></p>
   <p>This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/add-ipfs</code>
+  <code>//api.estuary.tech//content/add-ipfs</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -88,7 +88,7 @@
   <p></p>
   <p>This endpoint is used to upload new content.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/add</code>
+  <code>//api.estuary.tech//content/add</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -102,9 +102,9 @@
       
       
       <span class="param-name">data</span>
-      <span class="param-type">File</span>
+      <span class="param-type">byte[]</span>
       
-      <p class="param-description">File to upload</p>
+      <p class="param-description"></p>
 	  </li>
 	  <li class="parameter">
       <span class="param-in">Form: </span>
@@ -115,7 +115,7 @@
       <span class="param-name">filename</span>
       <span class="param-type">String</span>
       
-      <p class="param-description">Filenam to use for upload</p>
+      <p class="param-description"></p>
 	  </li>
 	  <li class="parameter">
       
@@ -178,7 +178,7 @@
   <p></p>
   <p>This endpoint returns aggregated content stats</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/aggregated/{content}</code>
+  <code>//api.estuary.tech//content/aggregated/{content}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -202,7 +202,7 @@
   <p></p>
   <p>This endpoint is used to get all deals for a user</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/all-deals</code>
+  <code>//api.estuary.tech//content/all-deals</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -248,7 +248,7 @@
   <p></p>
   <p>This endpoint returns content bandwidth</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/bw-usage/{content}</code>
+  <code>//api.estuary.tech//content/bw-usage/{content}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -272,7 +272,7 @@
   <p></p>
   <p>This endpoint adds a new content</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/create</code>
+  <code>//api.estuary.tech//content/create</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -285,7 +285,7 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">req</span>
+      <span class="param-name">body</span>
       <span class="param-type">Util.ContentCreateBody(Util.ContentCreateBody)</span>
       
       <p class="param-description">Content</p>
@@ -307,7 +307,7 @@
   <p></p>
   <p>This endpoint lists all content with deals</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/deals</code>
+  <code>//api.estuary.tech//content/deals</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -342,7 +342,7 @@
   <p></p>
   <p>This endpoint ensures that the content is replicated to the specified number of providers</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/ensure-replication/{datacid}</code>
+  <code>//api.estuary.tech//content/ensure-replication/{datacid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -366,7 +366,7 @@
   <p></p>
   <p>This endpoint returns all failures for a content</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/failures/{content}</code>
+  <code>//api.estuary.tech//content/failures/{content}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -390,7 +390,7 @@
   <p></p>
   <p>This endpoint returns a content by its ID</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/{id}</code>
+  <code>//api.estuary.tech//content/{id}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -414,7 +414,7 @@
   <p></p>
   <p>This endpoint imports a deal into the shuttle.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/importdeal</code>
+  <code>//api.estuary.tech//content/importdeal</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -438,7 +438,7 @@
   <p></p>
   <p>This endpoint lists all content</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/list</code>
+  <code>//api.estuary.tech//content/list</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -451,7 +451,7 @@
   <p></p>
   <p>This endpoint reads content from the blockstore</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/read/{cont}</code>
+  <code>//api.estuary.tech//content/read/{cont}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -475,7 +475,7 @@
   <p></p>
   <p>This endpoint is used to get staging zone for user.</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/staging-zones</code>
+  <code>//api.estuary.tech//content/staging-zones</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -488,7 +488,7 @@
   <p></p>
   <p>This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/stats</code>
+  <code>//api.estuary.tech//content/stats</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -523,7 +523,7 @@
   <p></p>
   <p>This endpoint returns the status of a content</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/content/status/{id}</code>
+  <code>//api.estuary.tech//content/status/{id}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>

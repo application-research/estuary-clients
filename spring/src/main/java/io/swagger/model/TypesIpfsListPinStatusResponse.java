@@ -3,9 +3,8 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +15,7 @@ import javax.validation.constraints.*;
  * TypesIpfsListPinStatusResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class TypesIpfsListPinStatusResponse   {
@@ -35,11 +34,10 @@ public class TypesIpfsListPinStatusResponse   {
   /**
    * Get count
    * @return count
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getCount() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getCount() {
     return count;
   }
 
@@ -63,12 +61,10 @@ public class TypesIpfsListPinStatusResponse   {
   /**
    * Get results
    * @return results
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<TypesIpfsPinStatusResponse> getResults() {
+   **/
+  @Schema(description = "")
+      @Valid
+    public List<TypesIpfsPinStatusResponse> getResults() {
     return results;
   }
 
@@ -117,4 +113,3 @@ public class TypesIpfsListPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

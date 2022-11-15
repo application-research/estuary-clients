@@ -1,6 +1,6 @@
-# \PinningApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PinningPinsPinidGet**](PinningApi.md#PinningPinsPinidGet) | **Get** /pinning/pins/{pinid} | Get a pin status object
 [**PinningPinsPinidPost**](PinningApi.md#PinningPinsPinidPost) | **Post** /pinning/pins/{pinid} | Replace a pinned object
 [**PinningPinsPost**](PinningApi.md#PinningPinsPost) | **Post** /pinning/pins | Add and pin object
-
 
 # **PinningPinsGet**
 > TypesIpfsListPinStatusResponse PinningPinsGet(ctx, )
@@ -92,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, pinid, cid, optional)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, pinid, optional)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -103,19 +102,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **pinid** | **string**| Pin ID | 
-  **cid** | **string**| CID of new pin | 
  **optional** | ***PinningApiPinningPinsPinidPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a PinningApiPinningPinsPinidPostOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
- **name** | **optional.String**| Name (filename) of new pin | 
- **origins** | **optional.String**| Origins of new pin | 
- **meta** | **optional.String**| Meta information of new pin | 
+ **body** | [**optional.Interface of string**](string.md)| Meta information of new pin | 
 
 ### Return type
 
@@ -127,13 +121,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost(ctx, pin)
+> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -143,7 +137,7 @@ This endpoint adds a pin to the IPFS daemon.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -155,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

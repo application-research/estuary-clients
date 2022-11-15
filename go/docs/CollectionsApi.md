@@ -1,6 +1,6 @@
-# \CollectionsApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**CollectionsFsAddPost**](CollectionsApi.md#CollectionsFsAddPost) | **Post** /collections/fs/add | Add a file to a collection
 [**CollectionsGet**](CollectionsApi.md#CollectionsGet) | **Get** /collections/ | List all collections
 [**CollectionsPost**](CollectionsApi.md#CollectionsPost) | **Post** /collections/ | Create a new collection
-
 
 # **CollectionsColuuidCommitPost**
 > string CollectionsColuuidCommitPost(ctx, coluuid)
@@ -43,7 +42,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidContentsDelete**
-> string CollectionsColuuidContentsDelete(ctx, coluuid, contentid, body)
+> string CollectionsColuuidContentsDelete(ctx, body, coluuid, contentid)
 Deletes a content from a collection
 
 This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
@@ -53,9 +52,9 @@ This endpoint is used to delete an existing content from an existing collection.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
   **coluuid** | **string**| Collection ID | 
   **contentid** | **string**| Content ID | 
-  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -67,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -96,7 +95,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -116,7 +115,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a CollectionsApiCollectionsColuuidGetOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
@@ -138,7 +136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidPost**
-> string CollectionsColuuidPost(ctx, coluuid, contentIDs)
+> string CollectionsColuuidPost(ctx, body, coluuid)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -148,8 +146,8 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **coluuid** | **string**| coluuid | 
-  **contentIDs** | **[]int32**| Content IDs to add to collection | 
+  **body** | [**[]int32**](int32.md)| Content IDs to add to collection | 
+  **coluuid** | **string**| Collection UUID | 
 
 ### Return type
 
@@ -243,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -10,12 +10,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class UtilContentCreateBody   {
-  
+
   private @Valid String coluuid = null;
+
   private @Valid String dir = null;
+
   private @Valid String location = null;
+
   private @Valid String name = null;
+
   private @Valid String root = null;
+
   private @Valid Integer type = null;
 
   /**
@@ -28,6 +33,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("coluuid")
+
   public String getColuuid() {
     return coluuid;
   }
@@ -45,6 +51,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("dir")
+
   public String getDir() {
     return dir;
   }
@@ -62,6 +69,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("location")
+
   public String getLocation() {
     return location;
   }
@@ -79,6 +87,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("name")
+
   public String getName() {
     return name;
   }
@@ -96,6 +105,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("root")
+
   public String getRoot() {
     return root;
   }
@@ -113,6 +123,7 @@ public class UtilContentCreateBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("type")
+
   public Integer getType() {
     return type;
   }
@@ -169,4 +180,3 @@ public class UtilContentCreateBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

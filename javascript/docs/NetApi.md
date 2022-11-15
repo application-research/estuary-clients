@@ -1,6 +1,6 @@
 # EstuaryClient.NetApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,10 +10,9 @@ Method | HTTP request | Description
 [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 
-
 <a name="netAddrsGet"></a>
 # **netAddrsGet**
-> 'String' netAddrsGet()
+> &#x27;String&#x27; netAddrsGet()
 
 Net Addrs
 
@@ -21,25 +20,23 @@ This endpoint is used to get net addrs
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.NetApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.NetApi();
+apiInstance.netAddrsGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.netAddrsGet(callback);
+});
 ```
 
 ### Parameters
@@ -47,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -60,7 +57,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
-> 'String' publicMinersFailuresMinerGet(miner)
+> &#x27;String&#x27; publicMinersFailuresMinerGet(miner)
 
 Get all miners
 
@@ -68,28 +65,25 @@ This endpoint returns all miners
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.NetApi();
+let apiInstance = new EstuaryClient.NetApi();
+let miner = "miner_example"; // String | Filter by miner
 
-var miner = "miner_example"; // String | Filter by miner
-
-
-var callback = function(error, data, response) {
+apiInstance.publicMinersFailuresMinerGet(miner, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicMinersFailuresMinerGet(miner, callback);
+});
 ```
 
 ### Parameters
@@ -100,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -113,7 +107,7 @@ Name | Type | Description  | Notes
 
 <a name="publicMinersGet"></a>
 # **publicMinersGet**
-> 'String' publicMinersGet()
+> &#x27;String&#x27; publicMinersGet()
 
 Get all miners
 
@@ -121,25 +115,23 @@ This endpoint returns all miners
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.NetApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.NetApi();
+apiInstance.publicMinersGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicMinersGet(callback);
+});
 ```
 
 ### Parameters
@@ -147,7 +139,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -160,7 +152,7 @@ This endpoint does not need any parameter.
 
 <a name="publicNetAddrsGet"></a>
 # **publicNetAddrsGet**
-> ['String'] publicNetAddrsGet()
+> [&#x27;String&#x27;] publicNetAddrsGet()
 
 Net Addrs
 
@@ -168,25 +160,23 @@ This endpoint is used to get net addrs
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.NetApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.NetApi();
+apiInstance.publicNetAddrsGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicNetAddrsGet(callback);
+});
 ```
 
 ### Parameters
@@ -194,7 +184,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**['String']**
+**[&#x27;String&#x27;]**
 
 ### Authorization
 
@@ -207,7 +197,7 @@ This endpoint does not need any parameter.
 
 <a name="publicNetPeersGet"></a>
 # **publicNetPeersGet**
-> ['String'] publicNetPeersGet()
+> [&#x27;String&#x27;] publicNetPeersGet()
 
 Net Peers
 
@@ -215,25 +205,23 @@ This endpoint is used to get net peers
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.NetApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.NetApi();
+apiInstance.publicNetPeersGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicNetPeersGet(callback);
+});
 ```
 
 ### Parameters
@@ -241,7 +229,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**['String']**
+**[&#x27;String&#x27;]**
 
 ### Authorization
 

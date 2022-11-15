@@ -1,7 +1,7 @@
 package io.swagger.controllers;
 
-import io.swagger.inflector.models.RequestContext;
-import io.swagger.inflector.models.ResponseContext;
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -17,8 +17,7 @@ import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
-public class ContentController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")public class ContentController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -26,73 +25,98 @@ public class ContentController  {
    **/
 
   /*
-    public ResponseContext contentAddCarPOST(RequestContext request , String body, String ignoreDupes, String filename) {
+    public ResponseContext contentAddCarPOST(RequestContext request , String body 
+, String ignoreDupes 
+, String filename 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAddIpfsPOST(RequestContext request , UtilContentAddIpfsBody body, String ignoreDupes) {
+    public ResponseContext contentAddIpfsPOST(RequestContext request , UtilContentAddIpfsBody body 
+, String ignoreDupes 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAddPOST(RequestContext request , FormDataContentDisposition fileDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
+    public ResponseContext contentAddPOST(RequestContext request ,  FormDataContentDisposition fileDetail
+,  String filename
+, String coluuid 
+, Integer replication 
+, String ignoreDupes 
+, String lazyProvide 
+, String dir 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAggregatedContentGET(RequestContext request , String content) {
+    public ResponseContext contentAggregatedContentGET(RequestContext request , String content 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentAllDealsGET(RequestContext request , String begin, String duration, String all) {
+    public ResponseContext contentAllDealsGET(RequestContext request , String begin 
+, String duration 
+, String all 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentBwUsageContentGET(RequestContext request , String content) {
+    public ResponseContext contentBwUsageContentGET(RequestContext request , String content 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentCreatePOST(RequestContext request , UtilContentCreateBody req, String ignoreDupes) {
+    public ResponseContext contentCreatePOST(RequestContext request , UtilContentCreateBody body 
+, String ignoreDupes 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentDealsGET(RequestContext request , Integer limit, Integer offset) {
+    public ResponseContext contentDealsGET(RequestContext request , Integer limit 
+, Integer offset 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentEnsureReplicationDatacidGET(RequestContext request , String datacid) {
+    public ResponseContext contentEnsureReplicationDatacidGET(RequestContext request , String datacid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentFailuresContentGET(RequestContext request , String content) {
+    public ResponseContext contentFailuresContentGET(RequestContext request , String content 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentIdGET(RequestContext request , Integer id) {
+    public ResponseContext contentIdGET(RequestContext request , Integer id 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentImportdealPOST(RequestContext request , MainImportDealBody body) {
+    public ResponseContext contentImportdealPOST(RequestContext request , MainImportDealBody body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -104,7 +128,8 @@ public class ContentController  {
   */
 
   /*
-    public ResponseContext contentReadContGET(RequestContext request , String cont) {
+    public ResponseContext contentReadContGET(RequestContext request , String cont 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -116,13 +141,16 @@ public class ContentController  {
   */
 
   /*
-    public ResponseContext contentStatsGET(RequestContext request , String limit, String offset) {
+    public ResponseContext contentStatsGET(RequestContext request , String limit 
+, String offset 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext contentStatusIdGET(RequestContext request , Integer id) {
+    public ResponseContext contentStatusIdGET(RequestContext request , Integer id 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

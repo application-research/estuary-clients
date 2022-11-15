@@ -8,7 +8,14 @@ import io.swagger.model.UtilHttpError;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.util.Map;
 import java.util.List;
@@ -16,80 +23,81 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 @Path("/pinning")
-@Api(description = "the pinning API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-11T23:35:22.829Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-15T21:05:26.621Z[GMT]")
 public class PinningApi {
 
     @GET
     @Path("/pins")
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all pin status objects", notes = "This endpoint lists all pin status objects", response = TypesIpfsListPinStatusResponse.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "pinning",  })
+    @Operation(summary = "List all pin status objects", description = "This endpoint lists all pin status objects", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = TypesIpfsListPinStatusResponse.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsListPinStatusResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
     public Response pinningPinsGet() {
         return Response.ok().entity("magic!").build();
     }
-
     @DELETE
     @Path("/pins/{pinid}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Delete a pinned object", notes = "This endpoint deletes a pinned object.", response = Void.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "pinning",  })
+    @Operation(summary = "Delete a pinned object", description = "This endpoint deletes a pinned object.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 202, message = "", response = Void.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "202", description = ""),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPinidDelete(@PathParam("pinid") @ApiParam("Pin ID") String pinid) {
+    public Response pinningPinsPinidDelete( @PathParam("pinid")
+
+ @Parameter(description = "Pin ID") String pinid
+) {
         return Response.ok().entity("magic!").build();
     }
-
     @GET
     @Path("/pins/{pinid}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get a pin status object", notes = "This endpoint returns a pin status object.", response = TypesIpfsPinStatusResponse.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "pinning",  })
+    @Operation(summary = "Get a pin status object", description = "This endpoint returns a pin status object.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = TypesIpfsPinStatusResponse.class),
-        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPinidGet(@PathParam("pinid") @ApiParam("cid") String pinid) {
+    public Response pinningPinsPinidGet( @PathParam("pinid")
+
+ @Parameter(description = "cid") String pinid
+) {
         return Response.ok().entity("magic!").build();
     }
-
     @POST
     @Path("/pins/{pinid}")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Replace a pinned object", notes = "This endpoint replaces a pinned object.", response = TypesIpfsPinStatusResponse.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "pinning",  })
+    @Operation(summary = "Replace a pinned object", description = "This endpoint replaces a pinned object.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 202, message = "Accepted", response = TypesIpfsPinStatusResponse.class),
-        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPinidPost(@PathParam("pinid") @ApiParam("Pin ID") String pinid,@Valid String cid,@Valid String name,@Valid String origins,@Valid String meta) {
+    public Response pinningPinsPinidPost( @PathParam("pinid")
+
+ @Parameter(description = "Pin ID") String pinid
+,@Valid String body) {
         return Response.ok().entity("magic!").build();
     }
-
     @POST
     @Path("/pins")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add and pin object", notes = "This endpoint adds a pin to the IPFS daemon.", response = TypesIpfsPinStatusResponse.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "pinning" })
+    @Operation(summary = "Add and pin object", description = "This endpoint adds a pin to the IPFS daemon.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 202, message = "Accepted", response = TypesIpfsPinStatusResponse.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPost(@Valid TypesIpfsPin pin) {
+    public Response pinningPinsPost(@Valid TypesIpfsPin body) {
         return Response.ok().entity("magic!").build();
-    }
-}
+    }}

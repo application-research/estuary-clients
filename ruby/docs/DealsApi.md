@@ -1,6 +1,6 @@
 # SwaggerClient::DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 [**public_deals_failures_get**](DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 [**public_miners_storage_query_miner_get**](DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-
 
 # **deal_estimate_post**
 > String deal_estimate_post(body)
@@ -39,7 +38,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 body = SwaggerClient::MainEstimateDealBody.new # MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -93,7 +91,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 dealid = 56 # Integer | Deal ID
 
 
@@ -147,7 +144,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 propcid = 'propcid_example' # String | Proposal CID
 
 
@@ -201,7 +197,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 miner = 'miner_example' # String | CID
 
 
@@ -255,7 +250,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 propcid = 'propcid_example' # String | PropCid
 
 
@@ -309,9 +303,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 miner = 'miner_example' # String | Miner
-
 propcid = 'propcid_example' # String | Proposal CID
 
 
@@ -395,7 +387,7 @@ This endpoint does not need any parameter.
 
 
 # **deal_transfer_status_post**
-> String deal_transfer_status_post(chanid)
+> String deal_transfer_status_post(body)
 
 Transfer Status
 
@@ -414,13 +406,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
-chanid = SwaggerClient::MainChannelIDParam.new # MainChannelIDParam | Channel ID
+body = SwaggerClient::MainChannelIDParam.new # MainChannelIDParam | Channel ID
 
 
 begin
   #Transfer Status
-  result = api_instance.deal_transfer_status_post(chanid)
+  result = api_instance.deal_transfer_status_post(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deal_transfer_status_post: #{e}"
@@ -431,7 +422,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
 
 ### Return type
 
@@ -443,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -497,7 +488,7 @@ This endpoint does not need any parameter.
 
 
 # **deals_make_miner_post**
-> String deals_make_miner_post(miner, deal_request)
+> String deals_make_miner_post(bodyminer)
 
 Make Deal
 
@@ -516,15 +507,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
+body = 'body_example' # String | Deal Request
 miner = 'miner_example' # String | Miner
-
-deal_request = 'deal_request_example' # String | Deal Request
 
 
 begin
   #Make Deal
-  result = api_instance.deals_make_miner_post(miner, deal_request)
+  result = api_instance.deals_make_miner_post(bodyminer)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling DealsApi->deals_make_miner_post: #{e}"
@@ -535,8 +524,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Deal Request | 
  **miner** | **String**| Miner | 
- **deal_request** | **String**| Deal Request | 
 
 ### Return type
 
@@ -548,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -573,7 +562,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 deal = 56 # Integer | Deal ID
 
 
@@ -675,7 +663,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::DealsApi.new
-
 miner = 'miner_example' # String | CID
 
 

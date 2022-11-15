@@ -1,23 +1,17 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class MainDeleteContentFromCollectionBody   {
   @JsonProperty("by")
   private String by = null;
-
   @JsonProperty("value")
   private String value = null;
-
   /**
    **/
   public MainDeleteContentFromCollectionBody by(String by) {
@@ -26,7 +20,7 @@ public class MainDeleteContentFromCollectionBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("by")
   public String getBy() {
     return by;
@@ -43,7 +37,7 @@ public class MainDeleteContentFromCollectionBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("value")
   public String getValue() {
     return value;
@@ -75,7 +69,6 @@ public class MainDeleteContentFromCollectionBody   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MainDeleteContentFromCollectionBody {\n");
-    
     sb.append("    by: ").append(toIndentedString(by)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
@@ -93,4 +86,3 @@ public class MainDeleteContentFromCollectionBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

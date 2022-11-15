@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -20,11 +20,11 @@ namespace estuary-client.Api
         /// <summary>
         /// Deletes a content from a collection This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
         /// </summary>
+        /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="contentid">Content ID</param>
-        /// <param name="body">Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)</param>
         /// <returns>string</returns>
-        string CollectionsColuuidContentsDelete (string coluuid, string contentid, MainDeleteContentFromCollectionBody body);
+        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
         /// <summary>
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
@@ -41,10 +41,10 @@ namespace estuary-client.Api
         /// <summary>
         /// Add contents to a collection This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
         /// </summary>
-        /// <param name="coluuid">coluuid</param>
-        /// <param name="contentIDs">Content IDs to add to collection</param>
+        /// <param name="body">Content IDs to add to collection</param>
+        /// <param name="coluuid">Collection UUID</param>
         /// <returns>string</returns>
-        string CollectionsColuuidPost (string coluuid, List<int?> contentIDs);
+        string CollectionsColuuidPost (List<int?> body, string coluuid);
         /// <summary>
         /// Add a file to a collection This endpoint adds a file to a collection
         /// </summary>
@@ -122,14 +122,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Produce a CID of the collection contents This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.
         /// </summary>
-        /// <param name="coluuid">coluuid</param> 
-        /// <returns>string</returns>            
+        /// <param name="coluuid">coluuid</param>
+        /// <returns>string</returns>
         public string CollectionsColuuidCommitPost (string coluuid)
         {
-            
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidCommitPost");
-            
     
             var path = "/collections/{coluuid}/commit";
             path = path.Replace("{format}", "json");
@@ -141,7 +139,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -159,22 +157,18 @@ namespace estuary-client.Api
         /// <summary>
         /// Deletes a content from a collection This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
         /// </summary>
-        /// <param name="coluuid">Collection ID</param> 
-        /// <param name="contentid">Content ID</param> 
-        /// <param name="body">Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;)</param> 
-        /// <returns>string</returns>            
-        public string CollectionsColuuidContentsDelete (string coluuid, string contentid, MainDeleteContentFromCollectionBody body)
+        /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
+        /// <param name="coluuid">Collection ID</param>
+        /// <param name="contentid">Content ID</param>
+        /// <returns>string</returns>
+        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
         {
-            
-            // verify the required parameter 'coluuid' is set
-            if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidContentsDelete");
-            
-            // verify the required parameter 'contentid' is set
-            if (contentid == null) throw new ApiException(400, "Missing required parameter 'contentid' when calling CollectionsColuuidContentsDelete");
-            
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidContentsDelete");
-            
+            // verify the required parameter 'coluuid' is set
+            if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidContentsDelete");
+            // verify the required parameter 'contentid' is set
+            if (contentid == null) throw new ApiException(400, "Missing required parameter 'contentid' when calling CollectionsColuuidContentsDelete");
     
             var path = "/collections/{coluuid}/contents";
             path = path.Replace("{format}", "json");
@@ -187,8 +181,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(body); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -206,14 +200,12 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
-        /// <param name="coluuid">Collection ID</param> 
-        /// <returns>string</returns>            
+        /// <param name="coluuid">Collection ID</param>
+        /// <returns>string</returns>
         public string CollectionsColuuidDelete (string coluuid)
         {
-            
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidDelete");
-            
     
             var path = "/collections/{coluuid}";
             path = path.Replace("{format}", "json");
@@ -225,7 +217,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -243,15 +235,13 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// Get contents in a collection This endpoint is used to get contents in a collection. If no colpath query param is passed
         /// </summary>
-        /// <param name="coluuid">coluuid</param> 
-        /// <param name="dir">Directory</param> 
-        /// <returns>string</returns>            
+        /// <param name="coluuid">coluuid</param>
+        /// <param name="dir">Directory</param>
+        /// <returns>string</returns>
         public string CollectionsColuuidGet (string coluuid, string dir)
         {
-            
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidGet");
-            
     
             var path = "/collections/{coluuid}";
             path = path.Replace("{format}", "json");
@@ -264,7 +254,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             String postBody = null;
     
              if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
-                                        
+                        
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -282,18 +272,15 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// Add contents to a collection This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
         /// </summary>
-        /// <param name="coluuid">coluuid</param> 
-        /// <param name="contentIDs">Content IDs to add to collection</param> 
-        /// <returns>string</returns>            
-        public string CollectionsColuuidPost (string coluuid, List<int?> contentIDs)
+        /// <param name="body">Content IDs to add to collection</param>
+        /// <param name="coluuid">Collection UUID</param>
+        /// <returns>string</returns>
+        public string CollectionsColuuidPost (List<int?> body, string coluuid)
         {
-            
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidPost");
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidPost");
-            
-            // verify the required parameter 'contentIDs' is set
-            if (contentIDs == null) throw new ApiException(400, "Missing required parameter 'contentIDs' when calling CollectionsColuuidPost");
-            
     
             var path = "/collections/{coluuid}";
             path = path.Replace("{format}", "json");
@@ -305,8 +292,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(contentIDs); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -324,22 +311,18 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// Add a file to a collection This endpoint adds a file to a collection
         /// </summary>
-        /// <param name="coluuid">Collection ID</param> 
-        /// <param name="content">Content</param> 
-        /// <param name="path">Path to file</param> 
-        /// <returns>string</returns>            
+        /// <param name="coluuid">Collection ID</param>
+        /// <param name="content">Content</param>
+        /// <param name="path">Path to file</param>
+        /// <returns>string</returns>
         public string CollectionsFsAddPost (string coluuid, string content, string path)
         {
-            
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsFsAddPost");
-            
             // verify the required parameter 'content' is set
             if (content == null) throw new ApiException(400, "Missing required parameter 'content' when calling CollectionsFsAddPost");
-            
             // verify the required parameter 'path' is set
             if (path == null) throw new ApiException(400, "Missing required parameter 'path' when calling CollectionsFsAddPost");
-            
     
             var path = "/collections/fs/add";
             path = path.Replace("{format}", "json");
@@ -353,7 +336,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
              if (coluuid != null) queryParams.Add("coluuid", ApiClient.ParameterToString(coluuid)); // query parameter
  if (content != null) queryParams.Add("content", ApiClient.ParameterToString(content)); // query parameter
  if (path != null) queryParams.Add("path", ApiClient.ParameterToString(path)); // query parameter
-                                        
+                        
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -371,10 +354,9 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
-        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>            
+        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
         public List<List<CollectionsCollection>> CollectionsGet ()
         {
-            
     
             var path = "/collections/";
             path = path.Replace("{format}", "json");
@@ -385,7 +367,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -403,14 +385,12 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// Create a new collection This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
         /// </summary>
-        /// <param name="body">Collection name and description</param> 
-        /// <returns>CollectionsCollection</returns>            
+        /// <param name="body">Collection name and description</param>
+        /// <returns>CollectionsCollection</returns>
         public CollectionsCollection CollectionsPost (MainCreateCollectionBody body)
         {
-            
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsPost");
-            
     
             var path = "/collections/";
             path = path.Replace("{format}", "json");
@@ -421,8 +401,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(body); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

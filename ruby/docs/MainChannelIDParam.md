@@ -7,4 +7,3 @@ Name | Type | Description | Notes
 **initiator** | **String** |  | [optional] 
 **responder** | **String** |  | [optional] 
 
-

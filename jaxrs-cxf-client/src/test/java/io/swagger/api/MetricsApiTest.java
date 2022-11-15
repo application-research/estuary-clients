@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.UtilHttpError;
@@ -64,13 +63,12 @@ public class MetricsApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", MetricsApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", MetricsApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Get deal metrics
      *
@@ -87,5 +85,4 @@ public class MetricsApiTest {
         
         
     }
-    
 }

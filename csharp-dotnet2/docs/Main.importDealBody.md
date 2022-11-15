@@ -1,4 +1,4 @@
-# estuary-client.Model.MainImportDealBody
+# IO.Swagger.Model.MainImportDealBody
 ## Properties
 
 Name | Type | Description | Notes

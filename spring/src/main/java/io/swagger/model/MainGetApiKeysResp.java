@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,7 +12,7 @@ import javax.validation.constraints.*;
  * MainGetApiKeysResp
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class MainGetApiKeysResp   {
@@ -37,11 +36,10 @@ public class MainGetApiKeysResp   {
   /**
    * Get expiry
    * @return expiry
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getExpiry() {
+   **/
+  @Schema(description = "")
+  
+    public String getExpiry() {
     return expiry;
   }
 
@@ -57,11 +55,10 @@ public class MainGetApiKeysResp   {
   /**
    * Get label
    * @return label
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getLabel() {
+   **/
+  @Schema(description = "")
+  
+    public String getLabel() {
     return label;
   }
 
@@ -77,11 +74,10 @@ public class MainGetApiKeysResp   {
   /**
    * Get token
    * @return token
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getToken() {
+   **/
+  @Schema(description = "")
+  
+    public String getToken() {
     return token;
   }
 
@@ -97,11 +93,10 @@ public class MainGetApiKeysResp   {
   /**
    * Get tokenHash
    * @return tokenHash
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getTokenHash() {
+   **/
+  @Schema(description = "")
+  
+    public String getTokenHash() {
     return tokenHash;
   }
 
@@ -154,4 +149,3 @@ public class MainGetApiKeysResp   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

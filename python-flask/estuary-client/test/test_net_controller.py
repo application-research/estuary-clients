@@ -18,7 +18,7 @@ class TestNetController(BaseTestCase):
         Net Addrs
         """
         response = self.client.open(
-            '//net/addrs',
+            '/net/addrs',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -29,7 +29,7 @@ class TestNetController(BaseTestCase):
         Get all miners
         """
         response = self.client.open(
-            '//public/miners/failures/{miner}'.format(miner='miner_example'),
+            '/public/miners/failures/{miner}'.format(miner='miner_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -40,7 +40,7 @@ class TestNetController(BaseTestCase):
         Get all miners
         """
         response = self.client.open(
-            '//public/miners',
+            '/public/miners',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -51,7 +51,7 @@ class TestNetController(BaseTestCase):
         Net Addrs
         """
         response = self.client.open(
-            '//public/net/addrs',
+            '/public/net/addrs',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -62,7 +62,7 @@ class TestNetController(BaseTestCase):
         Net Peers
         """
         response = self.client.open(
-            '//public/net/peers',
+            '/public/net/peers',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

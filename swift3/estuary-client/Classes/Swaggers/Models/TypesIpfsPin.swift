@@ -9,7 +9,6 @@ import Foundation
 
 
 open class TypesIpfsPin: JSONEncodable {
-
     public var cid: String?
     public var meta: Any?
     public var name: String?
@@ -29,4 +28,3 @@ open class TypesIpfsPin: JSONEncodable {
         return dictionary
     }
 }
-

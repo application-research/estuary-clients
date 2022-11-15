@@ -7,23 +7,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class TypesIpfsPinStatusResponse   {
-  
-  private String created = null;
-  private List<String> delegates = new ArrayList<String>();
-  private Object info = null;
-  private TypesIpfsPin pin = null;
-  private String requestid = null;
-  private String status = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class TypesIpfsPinStatusResponse   {
+  private String created = null;  private List<String> delegates = new ArrayList<String>();  private Object info = null;  private TypesIpfsPin pin = null;  private String requestid = null;  private String status = null;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("created")
   public String getCreated() {
     return created;
@@ -35,7 +28,7 @@ public class TypesIpfsPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("delegates")
   public List<String> getDelegates() {
     return delegates;
@@ -47,7 +40,7 @@ public class TypesIpfsPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("info")
   public Object getInfo() {
     return info;
@@ -59,7 +52,7 @@ public class TypesIpfsPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("pin")
   public TypesIpfsPin getPin() {
     return pin;
@@ -71,7 +64,7 @@ public class TypesIpfsPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("requestid")
   public String getRequestid() {
     return requestid;
@@ -83,7 +76,7 @@ public class TypesIpfsPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -141,4 +134,3 @@ public class TypesIpfsPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

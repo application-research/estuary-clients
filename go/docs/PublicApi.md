@@ -1,6 +1,6 @@
-# \PublicApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**PublicNetAddrsGet**](PublicApi.md#PublicNetAddrsGet) | **Get** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](PublicApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
 [**PublicStatsGet**](PublicApi.md#PublicStatsGet) | **Get** /public/stats | Public stats
-
 
 # **PublicByCidCidGet**
 > string PublicByCidCidGet(ctx, cid)
@@ -108,7 +107,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a PublicApiPublicMinersDealsMinerGetOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 

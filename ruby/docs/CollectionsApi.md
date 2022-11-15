@@ -1,6 +1,6 @@
 # SwaggerClient::CollectionsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**collections_fs_add_post**](CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 [**collections_get**](CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 [**collections_post**](CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
-
 
 # **collections_coluuid_commit_post**
 > String collections_coluuid_commit_post(coluuid)
@@ -34,7 +33,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
 coluuid = 'coluuid_example' # String | coluuid
 
 
@@ -69,7 +67,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_contents_delete**
-> String collections_coluuid_contents_delete(coluuid, contentid, body)
+> String collections_coluuid_contents_delete(bodycoluuidcontentid)
 
 Deletes a content from a collection
 
@@ -88,17 +86,14 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
-coluuid = 'coluuid_example' # String | Collection ID
-
-contentid = 'contentid_example' # String | Content ID
-
 body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+coluuid = 'coluuid_example' # String | Collection ID
+contentid = 'contentid_example' # String | Content ID
 
 
 begin
   #Deletes a content from a collection
-  result = api_instance.collections_coluuid_contents_delete(coluuid, contentid, body)
+  result = api_instance.collections_coluuid_contents_delete(bodycoluuidcontentid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_contents_delete: #{e}"
@@ -109,9 +104,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
  **contentid** | **String**| Content ID | 
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -123,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -148,7 +143,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
 coluuid = 'coluuid_example' # String | Collection ID
 
 
@@ -178,7 +172,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 
 
@@ -202,9 +196,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
 coluuid = 'coluuid_example' # String | coluuid
-
 opts = { 
   dir: 'dir_example' # String | Directory
 }
@@ -241,7 +233,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_post**
-> String collections_coluuid_post(coluuid, content_ids)
+> String collections_coluuid_post(bodycoluuid)
 
 Add contents to a collection
 
@@ -260,15 +252,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
-coluuid = 'coluuid_example' # String | coluuid
-
-content_ids = [SwaggerClient::Array<Integer>.new] # Array<Integer> | Content IDs to add to collection
+body = [56] # Array<Integer> | Content IDs to add to collection
+coluuid = 'coluuid_example' # String | Collection UUID
 
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(coluuid, content_ids)
+  result = api_instance.collections_coluuid_post(bodycoluuid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"
@@ -279,8 +269,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| coluuid | 
- **content_ids** | **Array&lt;Integer&gt;**| Content IDs to add to collection | 
+ **body** | [**Array&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection | 
+ **coluuid** | **String**| Collection UUID | 
 
 ### Return type
 
@@ -317,11 +307,8 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
 coluuid = 'coluuid_example' # String | Collection ID
-
 content = 'content_example' # String | Content
-
 path = 'path_example' # String | Path to file
 
 
@@ -425,7 +412,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-
 body = SwaggerClient::MainCreateCollectionBody.new # MainCreateCollectionBody | Collection name and description
 
 
@@ -454,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 

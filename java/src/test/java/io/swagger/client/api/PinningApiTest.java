@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.TypesIpfsListPinStatusResponse;
@@ -26,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for PinningApi
  */
@@ -34,7 +34,6 @@ public class PinningApiTest {
 
     private final PinningApi api = new PinningApi();
 
-    
     /**
      * List all pin status objects
      *
@@ -49,7 +48,6 @@ public class PinningApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Delete a pinned object
      *
@@ -65,7 +63,6 @@ public class PinningApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get a pin status object
      *
@@ -81,7 +78,6 @@ public class PinningApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Replace a pinned object
      *
@@ -93,15 +89,11 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidPostTest() throws Exception {
         String pinid = null;
-        String cid = null;
-        String name = null;
-        String origins = null;
-        String meta = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+        String body = null;
+        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, body);
 
         // TODO: test validations
     }
-    
     /**
      * Add and pin object
      *
@@ -112,10 +104,9 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPostTest() throws Exception {
-        TypesIpfsPin pin = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPost(pin);
+        TypesIpfsPin body = null;
+        TypesIpfsPinStatusResponse response = api.pinningPinsPost(body);
 
         // TODO: test validations
     }
-    
 }

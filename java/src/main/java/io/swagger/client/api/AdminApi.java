@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.ApiCallback;
@@ -56,15 +55,15 @@ public class AdminApi {
 
     /**
      * Build call for adminPeeringPeersDelete
-     * @param peerIds Peer ids (required)
+     * @param body Peer ids (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(List<Boolean> peerIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = peerIds;
-
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteCall(List<Boolean> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
         // create path and map variables
         String localVarPath = "/admin/peering/peers";
 
@@ -82,7 +81,7 @@ public class AdminApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -102,42 +101,44 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(List<Boolean> peerIds, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'peerIds' is set
-        if (peerIds == null) {
-            throw new ApiException("Missing the required parameter 'peerIds' when calling adminPeeringPeersDelete(Async)");
+    private com.squareup.okhttp.Call adminPeeringPeersDeleteValidateBeforeCall(List<Boolean> body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling adminPeeringPeersDelete(Async)");
         }
         
-
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(peerIds, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteCall(body, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param peerIds Peer ids (required)
+     * @param body Peer ids (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String adminPeeringPeersDelete(List<Boolean> peerIds) throws ApiException {
-        ApiResponse<String> resp = adminPeeringPeersDeleteWithHttpInfo(peerIds);
+    public String adminPeeringPeersDelete(List<Boolean> body) throws ApiException {
+        ApiResponse<String> resp = adminPeeringPeersDeleteWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param peerIds Peer ids (required)
+     * @param body Peer ids (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> adminPeeringPeersDeleteWithHttpInfo(List<Boolean> peerIds) throws ApiException {
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(peerIds, null, null);
+    public ApiResponse<String> adminPeeringPeersDeleteWithHttpInfo(List<Boolean> body) throws ApiException {
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -145,12 +146,12 @@ public class AdminApi {
     /**
      * Remove peers on Peering Service (asynchronously)
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param peerIds Peer ids (required)
+     * @param body Peer ids (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(List<Boolean> peerIds, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call adminPeeringPeersDeleteAsync(List<Boolean> body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,7 +172,7 @@ public class AdminApi {
             };
         }
 
-        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(peerIds, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = adminPeeringPeersDeleteValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -185,7 +186,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminPeeringPeersGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/peering/peers";
 
@@ -223,14 +224,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminPeeringPeersGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminPeeringPeersGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -298,7 +302,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminPeeringPeersPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/peering/peers";
 
@@ -336,14 +340,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminPeeringPeersPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminPeeringPeersPostCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -411,7 +418,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminPeeringStartPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/peering/start";
 
@@ -449,14 +456,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminPeeringStartPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminPeeringStartPostCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -524,7 +534,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminPeeringStatusGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/peering/status";
 
@@ -562,14 +572,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminPeeringStatusGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminPeeringStatusGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -637,7 +650,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminPeeringStopPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/peering/stop";
 
@@ -675,14 +688,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminPeeringStopPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminPeeringStopPostCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -750,7 +766,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminSystemConfigGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/system/config";
 
@@ -788,14 +804,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminSystemConfigGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminSystemConfigGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -863,7 +882,7 @@ public class AdminApi {
      */
     public com.squareup.okhttp.Call adminUsersGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/users";
 
@@ -901,14 +920,17 @@ public class AdminApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminUsersGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminUsersGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**

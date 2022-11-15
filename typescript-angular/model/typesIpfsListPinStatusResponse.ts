@@ -11,7 +11,6 @@
  */
 import { TypesIpfsPinStatusResponse } from './typesIpfsPinStatusResponse';
 
-
 export interface TypesIpfsListPinStatusResponse { 
     count?: number;
     results?: Array<TypesIpfsPinStatusResponse>;

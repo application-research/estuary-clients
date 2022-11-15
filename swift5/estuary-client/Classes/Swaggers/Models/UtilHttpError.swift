@@ -15,7 +15,7 @@ public struct UtilHttpError: Codable {
     public var details: String?
     public var reason: String?
 
-    public init(code: Int?, details: String?, reason: String?) {
+    public init(code: Int? = nil, details: String? = nil, reason: String? = nil) {
         self.code = code
         self.details = details
         self.reason = reason
@@ -23,4 +23,3 @@ public struct UtilHttpError: Codable {
 
 
 }
-

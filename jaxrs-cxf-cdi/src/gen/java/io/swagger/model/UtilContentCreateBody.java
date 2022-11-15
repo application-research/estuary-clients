@@ -3,10 +3,8 @@ package io.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -14,7 +12,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class UtilContentCreateBody   {
-  
   private String coluuid = null;
   private String dir = null;
   private String location = null;
@@ -30,7 +27,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -47,7 +45,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -64,7 +63,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("location")
   public String getLocation() {
     return location;
@@ -81,7 +81,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -98,7 +99,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -115,7 +117,8 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("type")
   public Integer getType() {
     return type;
@@ -173,4 +176,3 @@ public class UtilContentCreateBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

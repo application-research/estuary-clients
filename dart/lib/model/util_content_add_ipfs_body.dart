@@ -3,19 +3,15 @@ part of swagger.api;
 class UtilContentAddIpfsBody {
   
   String coluuid = null;
-  
 
   String dir = null;
-  
 
   String filename = null;
-  
 
   List<String> peers = [];
-  
 
   String root = null;
-  
+
   UtilContentAddIpfsBody();
 
   @override
@@ -25,21 +21,11 @@ class UtilContentAddIpfsBody {
 
   UtilContentAddIpfsBody.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    coluuid =
-        json['coluuid']
-    ;
-    dir =
-        json['dir']
-    ;
-    filename =
-        json['filename']
-    ;
-    peers =
-        (json['peers'] as List).map((item) => item as String).toList()
-    ;
-    root =
-        json['root']
-    ;
+    coluuid = json['coluuid'];
+    dir = json['dir'];
+    filename = json['filename'];
+    peers = (json['peers'] as List).map((item) => item as String).toList();
+    root = json['root'];
   }
 
   Map<String, dynamic> toJson() {
@@ -64,4 +50,3 @@ class UtilContentAddIpfsBody {
     return map;
   }
 }
-

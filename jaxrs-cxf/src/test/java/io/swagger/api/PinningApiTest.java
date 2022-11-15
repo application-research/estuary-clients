@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.TypesIpfsListPinStatusResponse;
@@ -67,13 +66,12 @@ public class PinningApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", PinningApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", PinningApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * List all pin status objects
      *
@@ -90,7 +88,6 @@ public class PinningApiTest {
         
         
     }
-    
     /**
      * Delete a pinned object
      *
@@ -108,7 +105,6 @@ public class PinningApiTest {
         
         
     }
-    
     /**
      * Get a pin status object
      *
@@ -126,7 +122,6 @@ public class PinningApiTest {
         
         
     }
-    
     /**
      * Replace a pinned object
      *
@@ -138,17 +133,13 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidPostTest() {
         String pinid = null;
-        String cid = null;
-        String name = null;
-        String origins = null;
-        String meta = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+        String body = null;
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, body);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * Add and pin object
      *
@@ -159,12 +150,11 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPostTest() {
-        TypesIpfsPin pin = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(pin);
+        TypesIpfsPin body = null;
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(body);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
 }

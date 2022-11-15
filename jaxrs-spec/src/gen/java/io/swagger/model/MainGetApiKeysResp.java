@@ -10,10 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class MainGetApiKeysResp   {
-  
+
   private @Valid String expiry = null;
+
   private @Valid String label = null;
+
   private @Valid String token = null;
+
   private @Valid String tokenHash = null;
 
   /**
@@ -26,6 +29,7 @@ public class MainGetApiKeysResp   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("expiry")
+
   public String getExpiry() {
     return expiry;
   }
@@ -43,6 +47,7 @@ public class MainGetApiKeysResp   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("label")
+
   public String getLabel() {
     return label;
   }
@@ -60,6 +65,7 @@ public class MainGetApiKeysResp   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("token")
+
   public String getToken() {
     return token;
   }
@@ -77,6 +83,7 @@ public class MainGetApiKeysResp   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("tokenHash")
+
   public String getTokenHash() {
     return tokenHash;
   }
@@ -129,4 +136,3 @@ public class MainGetApiKeysResp   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

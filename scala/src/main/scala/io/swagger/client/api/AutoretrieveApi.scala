@@ -9,12 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.HttpError
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -45,7 +44,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class AutoretrieveApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {
@@ -83,8 +82,8 @@ class AutoretrieveApi(
    * Register autoretrieve server
    * This endpoint registers a new autoretrieve server
    *
-   * @param addresses Autoretrieve&#39;s comma-separated list of addresses 
-   * @param pubKey Autoretrieve&#39;s public key 
+   * @param addresses  
+   * @param pubKey  
    * @return String
    */
   def adminAutoretrieveInitPost(addresses: String, pubKey: String): Option[String] = {
@@ -99,8 +98,8 @@ class AutoretrieveApi(
    * Register autoretrieve server asynchronously
    * This endpoint registers a new autoretrieve server
    *
-   * @param addresses Autoretrieve&#39;s comma-separated list of addresses 
-   * @param pubKey Autoretrieve&#39;s public key 
+   * @param addresses  
+   * @param pubKey  
    * @return Future(String)
    */
   def adminAutoretrieveInitPostAsync(addresses: String, pubKey: String): Future[String] = {
@@ -135,7 +134,7 @@ class AutoretrieveApi(
    * Marks autoretrieve server as up
    * This endpoint updates the lastConnection field for autoretrieve
    *
-   * @param token Autoretrieve&#39;s auth token 
+   * @param token Autoretrieve&#x27;s auth token 
    * @return String
    */
   def autoretrieveHeartbeatPost(token: String): Option[String] = {
@@ -150,7 +149,7 @@ class AutoretrieveApi(
    * Marks autoretrieve server as up asynchronously
    * This endpoint updates the lastConnection field for autoretrieve
    *
-   * @param token Autoretrieve&#39;s auth token 
+   * @param token Autoretrieve&#x27;s auth token 
    * @return Future(String)
    */
   def autoretrieveHeartbeatPostAsync(token: String): Future[String] = {

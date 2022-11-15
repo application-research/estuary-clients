@@ -1,35 +1,25 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class UtilContentCreateBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;
-
   @JsonProperty("dir")
   private String dir = null;
-
   @JsonProperty("location")
   private String location = null;
-
   @JsonProperty("name")
   private String name = null;
-
   @JsonProperty("root")
   private String root = null;
-
   @JsonProperty("type")
   private Integer type = null;
-
   /**
    **/
   public UtilContentCreateBody coluuid(String coluuid) {
@@ -38,7 +28,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -55,7 +45,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -72,7 +62,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("location")
   public String getLocation() {
     return location;
@@ -89,7 +79,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -106,7 +96,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -123,7 +113,7 @@ public class UtilContentCreateBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("type")
   public Integer getType() {
     return type;
@@ -159,7 +149,6 @@ public class UtilContentCreateBody   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UtilContentCreateBody {\n");
-    
     sb.append("    coluuid: ").append(toIndentedString(coluuid)).append("\n");
     sb.append("    dir: ").append(toIndentedString(dir)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
@@ -181,4 +170,3 @@ public class UtilContentCreateBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

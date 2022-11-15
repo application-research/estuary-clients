@@ -14,7 +14,6 @@ class UtilContentAddIpfsBody(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, coluuid: str=None, dir: str=None, filename: str=None, peers: List[str]=None, root: str=None):  # noqa: E501
         """UtilContentAddIpfsBody - a model defined in Swagger
 
@@ -44,7 +43,6 @@ class UtilContentAddIpfsBody(Model):
             'peers': 'peers',
             'root': 'root'
         }
-
         self._coluuid = coluuid
         self._dir = dir
         self._filename = filename

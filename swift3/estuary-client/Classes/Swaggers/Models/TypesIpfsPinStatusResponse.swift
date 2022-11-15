@@ -9,7 +9,6 @@ import Foundation
 
 
 open class TypesIpfsPinStatusResponse: JSONEncodable {
-
     public var created: String?
     public var delegates: [String]?
     public var info: Any?
@@ -33,4 +32,3 @@ open class TypesIpfsPinStatusResponse: JSONEncodable {
         return dictionary
     }
 }
-

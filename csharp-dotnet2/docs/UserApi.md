@@ -1,6 +1,6 @@
-# estuary-client.Api.UserApi
+# IO.Swagger.Api.UserApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**UserApiKeysPost**](UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**UserExportGet**](UserApi.md#userexportget) | **GET** /user/export | Export user data
 [**UserStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
-
 
 <a name="userapikeysget"></a>
 # **UserApiKeysGet**
@@ -23,9 +22,9 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -33,7 +32,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -86,9 +85,9 @@ This endpoint is used to revoke a user API key. In estuary, every user is assign
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -96,7 +95,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -153,9 +152,9 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -163,7 +162,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -222,9 +221,9 @@ This endpoint is used to get API keys for a user.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -232,7 +231,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -285,9 +284,9 @@ This endpoint is used to create API keys for a user.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -295,7 +294,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

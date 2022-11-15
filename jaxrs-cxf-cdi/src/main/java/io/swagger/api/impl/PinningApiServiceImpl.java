@@ -19,8 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-11T23:35:21.555Z")
-public class PinningApiServiceImpl implements PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")public class PinningApiServiceImpl implements PinningApiService {
       @Override
       public Response pinningPinsGet(SecurityContext securityContext) {
       // do some magic!
@@ -37,12 +36,12 @@ public class PinningApiServiceImpl implements PinningApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response pinningPinsPinidPost(String pinid, String cid, String name, String origins, String meta, SecurityContext securityContext) {
+      public Response pinningPinsPinidPost(String pinid, String body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response pinningPinsPost(TypesIpfsPin pin, SecurityContext securityContext) {
+      public Response pinningPinsPost(TypesIpfsPin body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.model;
 
 import java.util.Objects;
@@ -20,17 +19,16 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.client.model.TypesIpfsPinStatusResponse;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * TypesIpfsListPinStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-11T23:35:09.103Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-15T21:05:25.647Z[GMT]")
 public class TypesIpfsListPinStatusResponse {
   @SerializedName("count")
   private Integer count = null;
@@ -47,7 +45,7 @@ public class TypesIpfsListPinStatusResponse {
    * Get count
    * @return count
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public Integer getCount() {
     return count;
   }
@@ -73,7 +71,7 @@ public class TypesIpfsListPinStatusResponse {
    * Get results
    * @return results
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public List<TypesIpfsPinStatusResponse> getResults() {
     return results;
   }
@@ -125,4 +123,3 @@ public class TypesIpfsListPinStatusResponse {
   }
 
 }
-

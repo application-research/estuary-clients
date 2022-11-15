@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainEstimateDealBody: JSONEncodable {
-
     public var durationBlks: Int32?
     public var replication: Int32?
     public var size: Int32?
@@ -29,4 +28,3 @@ open class MainEstimateDealBody: JSONEncodable {
         return dictionary
     }
 }
-

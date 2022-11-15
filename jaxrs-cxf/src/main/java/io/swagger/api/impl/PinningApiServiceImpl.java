@@ -17,7 +17,6 @@ import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
 
 /**
  * Estuary API
@@ -68,7 +67,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint replaces a pinned object.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPinidPost(String pinid, String cid, String name, String origins, String meta) {
+    public TypesIpfsPinStatusResponse pinningPinsPinidPost(String pinid, String body) {
         // TODO: Implement...
         
         return null;
@@ -80,7 +79,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint adds a pin to the IPFS daemon.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin pin) {
+    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body) {
         // TODO: Implement...
         
         return null;

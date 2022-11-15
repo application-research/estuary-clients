@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.UtilHttpError;
@@ -23,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for MetricsApi
  */
@@ -31,7 +31,6 @@ public class MetricsApiTest {
 
     private final MetricsApi api = new MetricsApi();
 
-    
     /**
      * Get deal metrics
      *
@@ -46,5 +45,4 @@ public class MetricsApiTest {
 
         // TODO: test validations
     }
-    
 }

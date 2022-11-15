@@ -1,31 +1,23 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class TypesIpfsPin   {
   @JsonProperty("cid")
   private String cid = null;
-
   @JsonProperty("meta")
   private Object meta = null;
-
   @JsonProperty("name")
   private String name = null;
-
   @JsonProperty("origins")
   private List<String> origins = null;
-
   /**
    **/
   public TypesIpfsPin cid(String cid) {
@@ -34,7 +26,7 @@ public class TypesIpfsPin   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("cid")
   public String getCid() {
     return cid;
@@ -51,7 +43,7 @@ public class TypesIpfsPin   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("meta")
   public Object getMeta() {
     return meta;
@@ -68,7 +60,7 @@ public class TypesIpfsPin   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -85,7 +77,7 @@ public class TypesIpfsPin   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("origins")
   public List<String> getOrigins() {
     return origins;
@@ -119,7 +111,6 @@ public class TypesIpfsPin   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPin {\n");
-    
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -139,4 +130,3 @@ public class TypesIpfsPin   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

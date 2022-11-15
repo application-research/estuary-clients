@@ -10,8 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class MainDeleteContentFromCollectionBody   {
-  
+
   private @Valid String by = null;
+
   private @Valid String value = null;
 
   /**
@@ -24,6 +25,7 @@ public class MainDeleteContentFromCollectionBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("by")
+
   public String getBy() {
     return by;
   }
@@ -41,6 +43,7 @@ public class MainDeleteContentFromCollectionBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("value")
+
   public String getValue() {
     return value;
   }
@@ -89,4 +92,3 @@ public class MainDeleteContentFromCollectionBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

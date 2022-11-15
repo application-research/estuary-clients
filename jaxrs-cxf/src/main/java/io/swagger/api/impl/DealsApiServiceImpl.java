@@ -16,7 +16,6 @@ import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
 
 /**
  * Estuary API
@@ -115,7 +114,7 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the status of a transfer
      *
      */
-    public String dealTransferStatusPost(MainChannelIDParam chanid) {
+    public String dealTransferStatusPost(MainChannelIDParam body) {
         // TODO: Implement...
         
         return null;
@@ -139,7 +138,7 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint makes a deal for a given content and miner
      *
      */
-    public String dealsMakeMinerPost(String miner, String dealRequest) {
+    public String dealsMakeMinerPost(String body, String miner) {
         // TODO: Implement...
         
         return null;

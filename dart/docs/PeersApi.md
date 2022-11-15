@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,15 +16,14 @@ Method | HTTP request | Description
 [**adminPeeringStatusGet**](PeersApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
 [**adminPeeringStopPost**](PeersApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 
-
 # **adminPeeringPeersDelete**
-> String adminPeeringPeersDelete(peerIds)
+> String adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
 This endpoint can be used to remove a Peer from the Peering Service
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -33,10 +32,10 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PeersApi();
-var peerIds = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
+var body = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
 
-try { 
-    var result = api_instance.adminPeeringPeersDelete(peerIds);
+try {
+    var result = api_instance.adminPeeringPeersDelete(body);
     print(result);
 } catch (e) {
     print("Exception when calling PeersApi->adminPeeringPeersDelete: $e\n");
@@ -47,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peerIds** | **List&lt;bool&gt;**| Peer ids | 
+ **body** | [**List&lt;bool&gt;**](bool.md)| Peer ids | 
 
 ### Return type
 
@@ -59,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -71,7 +70,7 @@ List all Peering peers
 
 This endpoint can be used to list all peers on Peering Service
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -81,7 +80,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PeersApi();
 
-try { 
+try {
     var result = api_instance.adminPeeringPeersGet();
     print(result);
 } catch (e) {
@@ -114,7 +113,7 @@ Add peers on Peering Service
 
 This endpoint can be used to add a Peer from the Peering Service
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -124,7 +123,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PeersApi();
 
-try { 
+try {
     var result = api_instance.adminPeeringPeersPost();
     print(result);
 } catch (e) {
@@ -157,7 +156,7 @@ Start Peering
 
 This endpoint can be used to start the Peering Service
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -167,7 +166,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PeersApi();
 
-try { 
+try {
     var result = api_instance.adminPeeringStartPost();
     print(result);
 } catch (e) {
@@ -200,7 +199,7 @@ Check Peering Status
 
 This endpoint can be used to check the Peering status
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -210,7 +209,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PeersApi();
 
-try { 
+try {
     var result = api_instance.adminPeeringStatusGet();
     print(result);
 } catch (e) {
@@ -243,7 +242,7 @@ Stop Peering
 
 This endpoint can be used to stop the Peering Service
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -253,7 +252,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PeersApi();
 
-try { 
+try {
     var result = api_instance.adminPeeringStopPost();
     print(result);
 } catch (e) {

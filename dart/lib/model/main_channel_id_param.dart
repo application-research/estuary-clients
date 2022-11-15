@@ -3,13 +3,11 @@ part of swagger.api;
 class MainChannelIDParam {
   
   int id = null;
-  
 
   String initiator = null;
-  
 
   String responder = null;
-  
+
   MainChannelIDParam();
 
   @override
@@ -19,15 +17,9 @@ class MainChannelIDParam {
 
   MainChannelIDParam.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    id =
-        json['id']
-    ;
-    initiator =
-        json['initiator']
-    ;
-    responder =
-        json['responder']
-    ;
+    id = json['id'];
+    initiator = json['initiator'];
+    responder = json['responder'];
   }
 
   Map<String, dynamic> toJson() {
@@ -50,4 +42,3 @@ class MainChannelIDParam {
     return map;
   }
 }
-

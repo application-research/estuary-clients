@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.ApiCallback;
@@ -65,7 +64,7 @@ public class MinerApi {
      */
     public com.squareup.okhttp.Call publicMinersDealsMinerGetCall(String miner, String ignoreFailed, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/public/miners/deals/{miner}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
@@ -106,19 +105,21 @@ public class MinerApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call publicMinersDealsMinerGetValidateBeforeCall(String miner, String ignoreFailed, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling publicMinersDealsMinerGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = publicMinersDealsMinerGetCall(miner, ignoreFailed, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -193,7 +194,7 @@ public class MinerApi {
      */
     public com.squareup.okhttp.Call publicMinersStatsMinerGetCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/public/miners/stats/{miner}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
@@ -232,19 +233,21 @@ public class MinerApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call publicMinersStatsMinerGetValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling publicMinersStatsMinerGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = publicMinersStatsMinerGetCall(miner, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**

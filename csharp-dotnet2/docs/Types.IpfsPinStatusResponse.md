@@ -1,4 +1,4 @@
-# estuary-client.Model.TypesIpfsPinStatusResponse
+# IO.Swagger.Model.TypesIpfsPinStatusResponse
 ## Properties
 
 Name | Type | Description | Notes

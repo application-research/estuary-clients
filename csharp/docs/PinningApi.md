@@ -1,6 +1,6 @@
 # estuary-client.Api.PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PinningPinsPinidGet**](PinningApi.md#pinningpinspinidget) | **GET** /pinning/pins/{pinid} | Get a pin status object
 [**PinningPinsPinidPost**](PinningApi.md#pinningpinspinidpost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**PinningPinsPost**](PinningApi.md#pinningpinspost) | **POST** /pinning/pins | Add and pin object
-
 
 <a name="pinningpinsget"></a>
 # **PinningPinsGet**
@@ -72,7 +71,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="pinningpinspiniddelete"></a>
 # **PinningPinsPinidDelete**
 > void PinningPinsPinidDelete (string pinid)
@@ -137,7 +135,6 @@ void (empty response body)
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="pinningpinspinidget"></a>
 # **PinningPinsPinidGet**
 > TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
@@ -203,10 +200,9 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name = null, string origins = null, string meta = null)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body = null)
 
 Replace a pinned object
 
@@ -233,15 +229,12 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var pinid = pinid_example;  // string | Pin ID
-            var cid = cid_example;  // string | CID of new pin
-            var name = name_example;  // string | Name (filename) of new pin (optional) 
-            var origins = origins_example;  // string | Origins of new pin (optional) 
-            var meta = meta_example;  // string | Meta information of new pin (optional) 
+            var body = new string(); // string | Meta information of new pin (optional) 
 
             try
             {
                 // Replace a pinned object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(pinid, cid, name, origins, meta);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(pinid, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -258,10 +251,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID | 
- **cid** | **string**| CID of new pin | 
- **name** | **string**| Name (filename) of new pin | [optional] 
- **origins** | **string**| Origins of new pin | [optional] 
- **meta** | **string**| Meta information of new pin | [optional] 
+ **body** | [**string**](string.md)| Meta information of new pin | [optional] 
 
 ### Return type
 
@@ -273,14 +263,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="pinningpinspost"></a>
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin)
+> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
 
 Add and pin object
 
@@ -306,12 +295,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+            var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
             try
             {
                 // Add and pin object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(pin);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -327,7 +316,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -339,8 +328,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

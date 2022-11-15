@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainCreateCollectionBody: JSONEncodable {
-
     public var description: String?
     public var name: String?
 
@@ -25,4 +24,3 @@ open class MainCreateCollectionBody: JSONEncodable {
         return dictionary
     }
 }
-

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -14,9 +14,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
-        /// <param name="peerIds">Peer ids</param>
+        /// <param name="body">Peer ids</param>
         /// <returns>string</returns>
-        string AdminPeeringPeersDelete (List<bool?> peerIds);
+        string AdminPeeringPeersDelete (List<bool?> body);
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
@@ -100,14 +100,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
-        /// <param name="peerIds">Peer ids</param> 
-        /// <returns>string</returns>            
-        public string AdminPeeringPeersDelete (List<bool?> peerIds)
+        /// <param name="body">Peer ids</param>
+        /// <returns>string</returns>
+        public string AdminPeeringPeersDelete (List<bool?> body)
         {
-            
-            // verify the required parameter 'peerIds' is set
-            if (peerIds == null) throw new ApiException(400, "Missing required parameter 'peerIds' when calling AdminPeeringPeersDelete");
-            
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling AdminPeeringPeersDelete");
     
             var path = "/admin/peering/peers";
             path = path.Replace("{format}", "json");
@@ -118,8 +116,8 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                postBody = ApiClient.Serialize(peerIds); // http body (model) parameter
-    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -137,10 +135,9 @@ namespace estuary-client.Api
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminPeeringPeersGet ()
         {
-            
     
             var path = "/admin/peering/peers";
             path = path.Replace("{format}", "json");
@@ -151,7 +148,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -169,10 +166,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminPeeringPeersPost ()
         {
-            
     
             var path = "/admin/peering/peers";
             path = path.Replace("{format}", "json");
@@ -183,7 +179,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -201,10 +197,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminPeeringStartPost ()
         {
-            
     
             var path = "/admin/peering/start";
             path = path.Replace("{format}", "json");
@@ -215,7 +210,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -233,10 +228,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Check Peering Status This endpoint can be used to check the Peering status
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminPeeringStatusGet ()
         {
-            
     
             var path = "/admin/peering/status";
             path = path.Replace("{format}", "json");
@@ -247,7 +241,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -265,10 +259,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Stop Peering This endpoint can be used to stop the Peering Service
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminPeeringStopPost ()
         {
-            
     
             var path = "/admin/peering/stop";
             path = path.Replace("{format}", "json");
@@ -279,7 +272,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

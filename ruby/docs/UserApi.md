@@ -1,6 +1,6 @@
 # SwaggerClient::UserApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**user_api_keys_post**](UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 [**user_export_get**](UserApi.md#user_export_get) | **GET** /user/export | Export user data
 [**user_stats_get**](UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
-
 
 # **user_api_keys_get**
 > Array&lt;Array&lt;MainGetApiKeysResp&gt;&gt; user_api_keys_get
@@ -79,7 +78,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::UserApi.new
-
 key_or_hash = 'key_or_hash_example' # String | Key or Hash
 
 
@@ -133,7 +131,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::UserApi.new
-
 opts = { 
   expiry: 'expiry_example', # String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   perms: 'perms_example' # String | Permissions -- currently unused

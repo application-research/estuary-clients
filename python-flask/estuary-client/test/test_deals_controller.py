@@ -21,10 +21,10 @@ class TestDealsController(BaseTestCase):
         """
         body = MainEstimateDealBody()
         response = self.client.open(
-            '//deal/estimate',
+            '/deal/estimate',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -34,7 +34,7 @@ class TestDealsController(BaseTestCase):
         Get Deal Info
         """
         response = self.client.open(
-            '//deal/info/{dealid}'.format(dealid=56),
+            '/deal/info/{dealid}'.format(dealid=56),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -45,7 +45,7 @@ class TestDealsController(BaseTestCase):
         Get Proposal
         """
         response = self.client.open(
-            '//deal/proposal/{propcid}'.format(propcid='propcid_example'),
+            '/deal/proposal/{propcid}'.format(propcid='propcid_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -56,7 +56,7 @@ class TestDealsController(BaseTestCase):
         Query Ask
         """
         response = self.client.open(
-            '//deal/query/{miner}'.format(miner='miner_example'),
+            '/deal/query/{miner}'.format(miner='miner_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -67,7 +67,7 @@ class TestDealsController(BaseTestCase):
         Get Deal Status by PropCid
         """
         response = self.client.open(
-            '//deal/status-by-proposal/{propcid}'.format(propcid='propcid_example'),
+            '/deal/status-by-proposal/{propcid}'.format(propcid='propcid_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -78,7 +78,7 @@ class TestDealsController(BaseTestCase):
         Deal Status
         """
         response = self.client.open(
-            '//deal/status/{miner}/{propcid}'.format(miner='miner_example', propcid='propcid_example'),
+            '/deal/status/{miner}/{propcid}'.format(miner='miner_example', propcid='propcid_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -89,7 +89,7 @@ class TestDealsController(BaseTestCase):
         Transfer In Progress
         """
         response = self.client.open(
-            '//deal/transfer/in-progress',
+            '/deal/transfer/in-progress',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -99,12 +99,12 @@ class TestDealsController(BaseTestCase):
 
         Transfer Status
         """
-        chanid = MainChannelIDParam()
+        body = MainChannelIDParam()
         response = self.client.open(
-            '//deal/transfer/status',
+            '/deal/transfer/status',
             method='POST',
-            data=json.dumps(chanid),
-            content_type='application/json')
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -114,7 +114,7 @@ class TestDealsController(BaseTestCase):
         Get storage failures for user
         """
         response = self.client.open(
-            '//deals/failures',
+            '/deals/failures',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -124,12 +124,12 @@ class TestDealsController(BaseTestCase):
 
         Make Deal
         """
-        dealRequest = 'dealRequest_example'
+        body = 'body_example'
         response = self.client.open(
-            '//deals/make/{miner}'.format(miner='miner_example'),
+            '/deals/make/{miner}'.format(miner='miner_example'),
             method='POST',
-            data=json.dumps(dealRequest),
-            content_type='application/json')
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -139,7 +139,7 @@ class TestDealsController(BaseTestCase):
         Get Deal Status
         """
         response = self.client.open(
-            '//deals/status/{deal}'.format(deal=56),
+            '/deals/status/{deal}'.format(deal=56),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -150,7 +150,7 @@ class TestDealsController(BaseTestCase):
         Get storage failures
         """
         response = self.client.open(
-            '//public/deals/failures',
+            '/public/deals/failures',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -161,7 +161,7 @@ class TestDealsController(BaseTestCase):
         Query Ask
         """
         response = self.client.open(
-            '//public/miners/storage/query/{miner}'.format(miner='miner_example'),
+            '/public/miners/storage/query/{miner}'.format(miner='miner_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

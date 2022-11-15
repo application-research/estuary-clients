@@ -3,8 +3,14 @@ package io.swagger.api;
 import io.swagger.model.*;
 import io.swagger.api.ContentApiService;
 
-import io.swagger.annotations.ApiParam;
-import io.swagger.jaxrs.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.io.File;
 import io.swagger.model.MainImportDealBody;
@@ -27,47 +33,44 @@ import javax.inject.Inject;
 
 import javax.validation.constraints.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-
 @Path("/content")
 
 
-@io.swagger.annotations.Api(description = "the content API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
     @POST
     @Path("/add-car")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Add Car object", notes = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("filename") String filename,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAddCarPost(@Parameter(description = "Car" ,required=true) String body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("filename") String filename,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAddCarPost(body,ignoreDupes,filename,securityContext);
     }
     @POST
     @Path("/add-ipfs")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Add IPFS object", notes = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Add IPFS object", description = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAddIpfsPost(body,ignoreDupes,securityContext);
     }
@@ -75,15 +78,15 @@ public class ContentApi  {
     @Path("/add")
     @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Add new content", notes = "This endpoint is used to upload new content.", response = UtilContentAddResponse.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class),
+    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentAddPost(MultipartFormDataInput input,  @QueryParam("coluuid") String coluuid,  @QueryParam("replication") Integer replication,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("lazy-provide") String lazyProvide,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAddPost(input,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
@@ -92,15 +95,15 @@ public class ContentApi  {
     @Path("/aggregated/{content}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get aggregated content stats", notes = "This endpoint returns aggregated content stats", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get aggregated content stats", description = "This endpoint returns aggregated content stats", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentAggregatedContentGet( @PathParam("content") String content,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAggregatedContentGet(content,securityContext);
@@ -109,15 +112,15 @@ public class ContentApi  {
     @Path("/all-deals")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get all deals for a user", notes = "This endpoint is used to get all deals for a user", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get all deals for a user", description = "This endpoint is used to get all deals for a user", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentAllDealsGet( @NotNull  @QueryParam("begin") String begin, @NotNull  @QueryParam("duration") String duration, @NotNull  @QueryParam("all") String all,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAllDealsGet(begin,duration,all,securityContext);
@@ -126,49 +129,49 @@ public class ContentApi  {
     @Path("/bw-usage/{content}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get content bandwidth", notes = "This endpoint returns content bandwidth", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get content bandwidth", description = "This endpoint returns content bandwidth", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentBwUsageContentGet( @PathParam("content") String content,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentBwUsageContentGet(content,securityContext);
     }
     @POST
     @Path("/create")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Add a new content", notes = "This endpoint adds a new content", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Add a new content", description = "This endpoint adds a new content", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) UtilContentCreateBody req,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentCreatePost(@Parameter(description = "Content" ,required=true) UtilContentCreateBody body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentCreatePost(req,ignoreDupes,securityContext);
+        return service.contentCreatePost(body,ignoreDupes,securityContext);
     }
     @GET
     @Path("/deals")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Content with deals", notes = "This endpoint lists all content with deals", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Content with deals", description = "This endpoint lists all content with deals", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentDealsGet(  @QueryParam("limit") Integer limit,  @QueryParam("offset") Integer offset,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentDealsGet(limit,offset,securityContext);
@@ -177,15 +180,15 @@ public class ContentApi  {
     @Path("/ensure-replication/{datacid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Ensure Replication", notes = "This endpoint ensures that the content is replicated to the specified number of providers", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Ensure Replication", description = "This endpoint ensures that the content is replicated to the specified number of providers", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentEnsureReplicationDatacidGet( @PathParam("datacid") String datacid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentEnsureReplicationDatacidGet(datacid,securityContext);
@@ -194,15 +197,15 @@ public class ContentApi  {
     @Path("/failures/{content}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "List all failures for a content", notes = "This endpoint returns all failures for a content", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "List all failures for a content", description = "This endpoint returns all failures for a content", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentFailuresContentGet( @PathParam("content") String content,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentFailuresContentGet(content,securityContext);
@@ -211,33 +214,33 @@ public class ContentApi  {
     @Path("/{id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Content", description = "This endpoint returns a content by its ID", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentIdGet( @PathParam("id") Integer id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentIdGet(id,securityContext);
     }
     @POST
     @Path("/importdeal")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Import a deal", notes = "This endpoint imports a deal into the shuttle.", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Import a deal", description = "This endpoint imports a deal into the shuttle.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentImportdealPost(@ApiParam(value = "Import a deal" ,required=true) MainImportDealBody body,@Context SecurityContext securityContext)
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentImportdealPost(@Parameter(description = "Import a deal" ,required=true) MainImportDealBody body,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentImportdealPost(body,securityContext);
     }
@@ -245,15 +248,15 @@ public class ContentApi  {
     @Path("/list")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "List all pinned content", notes = "This endpoint lists all content", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "List all pinned content", description = "This endpoint lists all content", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentListGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentListGet(securityContext);
@@ -262,15 +265,15 @@ public class ContentApi  {
     @Path("/read/{cont}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Read content", notes = "This endpoint reads content from the blockstore", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Read content", description = "This endpoint reads content from the blockstore", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentReadContGet( @PathParam("cont") String cont,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentReadContGet(cont,securityContext);
@@ -279,15 +282,15 @@ public class ContentApi  {
     @Path("/staging-zones")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get staging zone for user", notes = "This endpoint is used to get staging zone for user.", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get staging zone for user", description = "This endpoint is used to get staging zone for user.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentStagingZonesGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentStagingZonesGet(securityContext);
@@ -296,15 +299,15 @@ public class ContentApi  {
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get content statistics", notes = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentStatsGet( @NotNull  @QueryParam("limit") String limit, @NotNull  @QueryParam("offset") String offset,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentStatsGet(limit,offset,securityContext);
@@ -313,15 +316,15 @@ public class ContentApi  {
     @Path("/status/{id}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Content Status", notes = "This endpoint returns the status of a content", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "content", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Content Status", description = "This endpoint returns the status of a content", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentStatusIdGet( @PathParam("id") Integer id,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentStatusIdGet(id,securityContext);

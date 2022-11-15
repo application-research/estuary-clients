@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,6 @@ Method | HTTP request | Description
 [**pinningPinsPinidPost**](PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
 
-
 # **pinningPinsGet**
 > TypesIpfsListPinStatusResponse pinningPinsGet()
 
@@ -23,7 +22,7 @@ List all pin status objects
 
 This endpoint lists all pin status objects
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -33,7 +32,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PinningApi();
 
-try { 
+try {
     var result = api_instance.pinningPinsGet();
     print(result);
 } catch (e) {
@@ -66,7 +65,7 @@ Delete a pinned object
 
 This endpoint deletes a pinned object.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -77,7 +76,7 @@ import 'package:swagger/api.dart';
 var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
 
-try { 
+try {
     api_instance.pinningPinsPinidDelete(pinid);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidDelete: $e\n");
@@ -112,7 +111,7 @@ Get a pin status object
 
 This endpoint returns a pin status object.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -123,7 +122,7 @@ import 'package:swagger/api.dart';
 var api_instance = new PinningApi();
 var pinid = pinid_example; // String | cid
 
-try { 
+try {
     var result = api_instance.pinningPinsPinidGet(pinid);
     print(result);
 } catch (e) {
@@ -153,13 +152,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, cid, name, origins, meta)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
 
 Replace a pinned object
 
 This endpoint replaces a pinned object.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -169,13 +168,10 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PinningApi();
 var pinid = pinid_example; // String | Pin ID
-var cid = new String(); // String | CID of new pin
-var name = new String(); // String | Name (filename) of new pin
-var origins = new String(); // String | Origins of new pin
-var meta = new String(); // String | Meta information of new pin
+var body = new String(); // String | Meta information of new pin
 
-try { 
-    var result = api_instance.pinningPinsPinidPost(pinid, cid, name, origins, meta);
+try {
+    var result = api_instance.pinningPinsPinidPost(pinid, body);
     print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidPost: $e\n");
@@ -187,10 +183,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID | 
- **cid** | **String**| CID of new pin | 
- **name** | **String**| Name (filename) of new pin | [optional] 
- **origins** | **String**| Origins of new pin | [optional] 
- **meta** | **String**| Meta information of new pin | [optional] 
+ **body** | [**String**](String.md)| Meta information of new pin | [optional] 
 
 ### Return type
 
@@ -202,19 +195,19 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(pin)
+> TypesIpfsPinStatusResponse pinningPinsPost(body)
 
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -223,10 +216,10 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PinningApi();
-var pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
-try { 
-    var result = api_instance.pinningPinsPost(pin);
+try {
+    var result = api_instance.pinningPinsPost(body);
     print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPost: $e\n");
@@ -237,7 +230,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -249,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -28,14 +28,34 @@ open class UserAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={}}]
+     - examples: [{contentType=application/json, example=[ [ {
+  "expiry" : "expiry",
+  "label" : "label",
+  "tokenHash" : "tokenHash",
+  "token" : "token"
+}, {
+  "expiry" : "expiry",
+  "label" : "label",
+  "tokenHash" : "tokenHash",
+  "token" : "token"
+} ], [ {
+  "expiry" : "expiry",
+  "label" : "label",
+  "tokenHash" : "tokenHash",
+  "token" : "token"
+}, {
+  "expiry" : "expiry",
+  "label" : "label",
+  "tokenHash" : "tokenHash",
+  "token" : "token"
+} ] ]}]
      - returns: RequestBuilder<[[MainGetApiKeysResp]]> 
      */
     open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[[MainGetApiKeysResp]]> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<[[MainGetApiKeysResp]]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -62,10 +82,7 @@ open class UserAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - parameter keyOrHash: (path) Key or Hash 
      - returns: RequestBuilder<String> 
      */
@@ -76,7 +93,7 @@ open class UserAPI: APIBase {
         path = path.replacingOccurrences(of: "{key_or_hash}", with: keyOrHashPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -104,7 +121,12 @@ open class UserAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={"empty": false}}]
+     - examples: [{contentType=application/json, example={
+  "expiry" : "expiry",
+  "label" : "label",
+  "tokenHash" : "tokenHash",
+  "token" : "token"
+}}]
      - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      - parameter perms: (query) Permissions -- currently unused (optional)
      - returns: RequestBuilder<MainGetApiKeysResp> 
@@ -113,11 +135,10 @@ open class UserAPI: APIBase {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-            "expiry": expiry,
-            "perms": perms
+                        "expiry": expiry,
+                        "perms": perms
         ])
 
         let requestBuilder: RequestBuilder<MainGetApiKeysResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -143,17 +164,14 @@ open class UserAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func userExportGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/user/export"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -179,17 +197,14 @@ open class UserAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func userStatsGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/user/stats"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

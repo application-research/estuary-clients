@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,7 +18,6 @@ Method | HTTP request | Description
 [**collectionsGet**](CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 [**collectionsPost**](CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
 
-
 # **collectionsColuuidCommitPost**
 > String collectionsColuuidCommitPost(coluuid)
 
@@ -26,7 +25,7 @@ Produce a CID of the collection contents
 
 This endpoint is used to save the contents in a collection, producing a top-level CID that references all the current CIDs in the collection.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -37,7 +36,7 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var coluuid = coluuid_example; // String | coluuid
 
-try { 
+try {
     var result = api_instance.collectionsColuuidCommitPost(coluuid);
     print(result);
 } catch (e) {
@@ -67,13 +66,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidContentsDelete**
-> String collectionsColuuidContentsDelete(coluuid, contentid, body)
+> String collectionsColuuidContentsDelete(body, coluuid, contentid)
 
 Deletes a content from a collection
 
 This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -82,12 +81,12 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new CollectionsApi();
+var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 var coluuid = coluuid_example; // String | Collection ID
 var contentid = contentid_example; // String | Content ID
-var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 
-try { 
-    var result = api_instance.collectionsColuuidContentsDelete(coluuid, contentid, body);
+try {
+    var result = api_instance.collectionsColuuidContentsDelete(body, coluuid, contentid);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidContentsDelete: $e\n");
@@ -98,9 +97,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
  **contentid** | **String**| Content ID | 
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -112,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -124,7 +123,7 @@ Deletes a collection
 
 This endpoint is used to delete an existing collection.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -135,7 +134,7 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var coluuid = coluuid_example; // String | Collection ID
 
-try { 
+try {
     var result = api_instance.collectionsColuuidDelete(coluuid);
     print(result);
 } catch (e) {
@@ -160,7 +159,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -171,7 +170,7 @@ Get contents in a collection
 
 This endpoint is used to get contents in a collection. If no colpath query param is passed
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -183,7 +182,7 @@ var api_instance = new CollectionsApi();
 var coluuid = coluuid_example; // String | coluuid
 var dir = dir_example; // String | Directory
 
-try { 
+try {
     var result = api_instance.collectionsColuuidGet(coluuid, dir);
     print(result);
 } catch (e) {
@@ -214,13 +213,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidPost**
-> String collectionsColuuidPost(coluuid, contentIDs)
+> String collectionsColuuidPost(body, coluuid)
 
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -229,11 +228,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new CollectionsApi();
-var coluuid = coluuid_example; // String | coluuid
-var contentIDs = [new List&lt;int&gt;()]; // List<int> | Content IDs to add to collection
+var body = [new List&lt;int&gt;()]; // List<int> | Content IDs to add to collection
+var coluuid = coluuid_example; // String | Collection UUID
 
-try { 
-    var result = api_instance.collectionsColuuidPost(coluuid, contentIDs);
+try {
+    var result = api_instance.collectionsColuuidPost(body, coluuid);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidPost: $e\n");
@@ -244,8 +243,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **String**| coluuid | 
- **contentIDs** | **List&lt;int&gt;**| Content IDs to add to collection | 
+ **body** | [**List&lt;int&gt;**](int.md)| Content IDs to add to collection | 
+ **coluuid** | **String**| Collection UUID | 
 
 ### Return type
 
@@ -269,7 +268,7 @@ Add a file to a collection
 
 This endpoint adds a file to a collection
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -282,7 +281,7 @@ var coluuid = coluuid_example; // String | Collection ID
 var content = content_example; // String | Content
 var path = path_example; // String | Path to file
 
-try { 
+try {
     var result = api_instance.collectionsFsAddPost(coluuid, content, path);
     print(result);
 } catch (e) {
@@ -320,7 +319,7 @@ List all collections
 
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -330,7 +329,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new CollectionsApi();
 
-try { 
+try {
     var result = api_instance.collectionsGet();
     print(result);
 } catch (e) {
@@ -363,7 +362,7 @@ Create a new collection
 
 This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -374,7 +373,7 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var body = new MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
 
-try { 
+try {
     var result = api_instance.collectionsPost(body);
     print(result);
 } catch (e) {
@@ -398,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

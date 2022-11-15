@@ -3,7 +3,9 @@
 # flake8: noqa
 from __future__ import absolute_import
 # import models into model package
+from estuary-client.models.autoretrieve_init_body import AutoretrieveInitBody
 from estuary-client.models.collections_collection import CollectionsCollection
+from estuary-client.models.content_add_body import ContentAddBody
 from estuary-client.models.main_channel_id_param import MainChannelIDParam
 from estuary-client.models.main_create_collection_body import MainCreateCollectionBody
 from estuary-client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody

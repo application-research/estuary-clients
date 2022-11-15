@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.ApiCallback;
@@ -66,7 +65,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealEstimatePostCall(MainEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-
+        
         // create path and map variables
         String localVarPath = "/deal/estimate";
 
@@ -84,7 +83,7 @@ public class DealsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -104,19 +103,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealEstimatePostValidateBeforeCall(MainEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling dealEstimatePost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealEstimatePostCall(body, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -188,7 +189,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealInfoDealidGetCall(Integer dealid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/info/{dealid}"
             .replaceAll("\\{" + "dealid" + "\\}", apiClient.escapeString(dealid.toString()));
@@ -227,19 +228,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealInfoDealidGetValidateBeforeCall(Integer dealid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'dealid' is set
         if (dealid == null) {
             throw new ApiException("Missing the required parameter 'dealid' when calling dealInfoDealidGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealInfoDealidGetCall(dealid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -311,7 +314,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealProposalPropcidGetCall(String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/proposal/{propcid}"
             .replaceAll("\\{" + "propcid" + "\\}", apiClient.escapeString(propcid.toString()));
@@ -350,19 +353,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealProposalPropcidGetValidateBeforeCall(String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'propcid' is set
         if (propcid == null) {
             throw new ApiException("Missing the required parameter 'propcid' when calling dealProposalPropcidGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealProposalPropcidGetCall(propcid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -434,7 +439,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealQueryMinerGetCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/query/{miner}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
@@ -473,19 +478,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealQueryMinerGetValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling dealQueryMinerGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealQueryMinerGetCall(miner, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -557,7 +564,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealStatusByProposalPropcidGetCall(String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/status-by-proposal/{propcid}"
             .replaceAll("\\{" + "propcid" + "\\}", apiClient.escapeString(propcid.toString()));
@@ -596,19 +603,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealStatusByProposalPropcidGetValidateBeforeCall(String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'propcid' is set
         if (propcid == null) {
             throw new ApiException("Missing the required parameter 'propcid' when calling dealStatusByProposalPropcidGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealStatusByProposalPropcidGetCall(propcid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -681,7 +690,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealStatusMinerPropcidGetCall(String miner, String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/status/{miner}/{propcid}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()))
@@ -721,24 +730,25 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealStatusMinerPropcidGetValidateBeforeCall(String miner, String propcid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling dealStatusMinerPropcidGet(Async)");
         }
-        
         // verify the required parameter 'propcid' is set
         if (propcid == null) {
             throw new ApiException("Missing the required parameter 'propcid' when calling dealStatusMinerPropcidGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealStatusMinerPropcidGetCall(miner, propcid, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -812,7 +822,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealTransferInProgressGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deal/transfer/in-progress";
 
@@ -850,14 +860,17 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealTransferInProgressGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = dealTransferInProgressGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -918,15 +931,15 @@ public class DealsApi {
     }
     /**
      * Build call for dealTransferStatusPost
-     * @param chanid Channel ID (required)
+     * @param body Channel ID (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call dealTransferStatusPostCall(MainChannelIDParam chanid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = chanid;
-
+    public com.squareup.okhttp.Call dealTransferStatusPostCall(MainChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
         // create path and map variables
         String localVarPath = "/deal/transfer/status";
 
@@ -944,7 +957,7 @@ public class DealsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -964,42 +977,44 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call dealTransferStatusPostValidateBeforeCall(MainChannelIDParam chanid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'chanid' is set
-        if (chanid == null) {
-            throw new ApiException("Missing the required parameter 'chanid' when calling dealTransferStatusPost(Async)");
+    private com.squareup.okhttp.Call dealTransferStatusPostValidateBeforeCall(MainChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling dealTransferStatusPost(Async)");
         }
         
-
-        com.squareup.okhttp.Call call = dealTransferStatusPostCall(chanid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = dealTransferStatusPostCall(body, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Transfer Status
      * This endpoint returns the status of a transfer
-     * @param chanid Channel ID (required)
+     * @param body Channel ID (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String dealTransferStatusPost(MainChannelIDParam chanid) throws ApiException {
-        ApiResponse<String> resp = dealTransferStatusPostWithHttpInfo(chanid);
+    public String dealTransferStatusPost(MainChannelIDParam body) throws ApiException {
+        ApiResponse<String> resp = dealTransferStatusPostWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
      * Transfer Status
      * This endpoint returns the status of a transfer
-     * @param chanid Channel ID (required)
+     * @param body Channel ID (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> dealTransferStatusPostWithHttpInfo(MainChannelIDParam chanid) throws ApiException {
-        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(chanid, null, null);
+    public ApiResponse<String> dealTransferStatusPostWithHttpInfo(MainChannelIDParam body) throws ApiException {
+        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1007,12 +1022,12 @@ public class DealsApi {
     /**
      * Transfer Status (asynchronously)
      * This endpoint returns the status of a transfer
-     * @param chanid Channel ID (required)
+     * @param body Channel ID (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealTransferStatusPostAsync(MainChannelIDParam chanid, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealTransferStatusPostAsync(MainChannelIDParam body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1033,7 +1048,7 @@ public class DealsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(chanid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(body, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1047,7 +1062,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealsFailuresGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deals/failures";
 
@@ -1085,14 +1100,17 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealsFailuresGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = dealsFailuresGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -1153,16 +1171,16 @@ public class DealsApi {
     }
     /**
      * Build call for dealsMakeMinerPost
+     * @param body Deal Request (required)
      * @param miner Miner (required)
-     * @param dealRequest Deal Request (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call dealsMakeMinerPostCall(String miner, String dealRequest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = dealRequest;
-
+    public com.squareup.okhttp.Call dealsMakeMinerPostCall(String body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
         // create path and map variables
         String localVarPath = "/deals/make/{miner}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
@@ -1181,7 +1199,7 @@ public class DealsApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -1201,49 +1219,50 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call dealsMakeMinerPostValidateBeforeCall(String miner, String dealRequest, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call dealsMakeMinerPostValidateBeforeCall(String body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling dealsMakeMinerPost(Async)");
+        }
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling dealsMakeMinerPost(Async)");
         }
         
-        // verify the required parameter 'dealRequest' is set
-        if (dealRequest == null) {
-            throw new ApiException("Missing the required parameter 'dealRequest' when calling dealsMakeMinerPost(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = dealsMakeMinerPostCall(miner, dealRequest, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = dealsMakeMinerPostCall(body, miner, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Make Deal
      * This endpoint makes a deal for a given content and miner
+     * @param body Deal Request (required)
      * @param miner Miner (required)
-     * @param dealRequest Deal Request (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String dealsMakeMinerPost(String miner, String dealRequest) throws ApiException {
-        ApiResponse<String> resp = dealsMakeMinerPostWithHttpInfo(miner, dealRequest);
+    public String dealsMakeMinerPost(String body, String miner) throws ApiException {
+        ApiResponse<String> resp = dealsMakeMinerPostWithHttpInfo(body, miner);
         return resp.getData();
     }
 
     /**
      * Make Deal
      * This endpoint makes a deal for a given content and miner
+     * @param body Deal Request (required)
      * @param miner Miner (required)
-     * @param dealRequest Deal Request (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> dealsMakeMinerPostWithHttpInfo(String miner, String dealRequest) throws ApiException {
-        com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(miner, dealRequest, null, null);
+    public ApiResponse<String> dealsMakeMinerPostWithHttpInfo(String body, String miner) throws ApiException {
+        com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(body, miner, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1251,13 +1270,13 @@ public class DealsApi {
     /**
      * Make Deal (asynchronously)
      * This endpoint makes a deal for a given content and miner
+     * @param body Deal Request (required)
      * @param miner Miner (required)
-     * @param dealRequest Deal Request (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealsMakeMinerPostAsync(String miner, String dealRequest, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealsMakeMinerPostAsync(String body, String miner, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1278,7 +1297,7 @@ public class DealsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(miner, dealRequest, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = dealsMakeMinerPostValidateBeforeCall(body, miner, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1293,7 +1312,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call dealsStatusDealGetCall(Integer deal, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/deals/status/{deal}"
             .replaceAll("\\{" + "deal" + "\\}", apiClient.escapeString(deal.toString()));
@@ -1332,19 +1351,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call dealsStatusDealGetValidateBeforeCall(Integer deal, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'deal' is set
         if (deal == null) {
             throw new ApiException("Missing the required parameter 'deal' when calling dealsStatusDealGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = dealsStatusDealGetCall(deal, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -1415,7 +1436,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call publicDealsFailuresGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/public/deals/failures";
 
@@ -1453,14 +1474,17 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call publicDealsFailuresGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = publicDealsFailuresGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -1529,7 +1553,7 @@ public class DealsApi {
      */
     public com.squareup.okhttp.Call publicMinersStorageQueryMinerGetCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/public/miners/storage/query/{miner}"
             .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
@@ -1568,19 +1592,21 @@ public class DealsApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call publicMinersStorageQueryMinerGetValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'miner' is set
         if (miner == null) {
             throw new ApiException("Missing the required parameter 'miner' when calling publicMinersStorageQueryMinerGet(Async)");
         }
         
-
         com.squareup.okhttp.Call call = publicMinersStorageQueryMinerGetCall(miner, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**

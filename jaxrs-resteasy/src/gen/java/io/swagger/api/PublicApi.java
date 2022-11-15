@@ -3,8 +3,14 @@ package io.swagger.api;
 import io.swagger.model.*;
 import io.swagger.api.PublicApiService;
 
-import io.swagger.annotations.ApiParam;
-import io.swagger.jaxrs.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import io.swagger.model.UtilHttpError;
 
@@ -21,13 +27,10 @@ import javax.ws.rs.*;
 import javax.inject.Inject;
 
 import javax.validation.constraints.*;
-
 @Path("/public")
 
 
-@io.swagger.annotations.Api(description = "the public API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class PublicApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class PublicApi  {
 
     @Inject PublicApiService service;
 
@@ -35,15 +38,15 @@ public class PublicApi  {
     @Path("/by-cid/{cid}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get Content by Cid", notes = "This endpoint returns the content associated with a CID", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get Content by Cid", description = "This endpoint returns the content associated with a CID", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicByCidCidGet( @PathParam("cid") String cid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicByCidCidGet(cid,securityContext);
@@ -52,15 +55,15 @@ public class PublicApi  {
     @Path("/deals/failures")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get storage failures", notes = "This endpoint returns a list of storage failures", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get storage failures", description = "This endpoint returns a list of storage failures", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicDealsFailuresGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicDealsFailuresGet(securityContext);
@@ -69,15 +72,15 @@ public class PublicApi  {
     @Path("/info")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get public node info", notes = "This endpoint returns information about the node", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get public node info", description = "This endpoint returns information about the node", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicInfoGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicInfoGet(securityContext);
@@ -86,15 +89,15 @@ public class PublicApi  {
     @Path("/metrics/deals-on-chain")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get deal metrics", notes = "This endpoint is used to get deal metrics", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","metrics", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get deal metrics", description = "This endpoint is used to get deal metrics", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "metrics" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMetricsDealsOnChainGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMetricsDealsOnChainGet(securityContext);
@@ -103,15 +106,15 @@ public class PublicApi  {
     @Path("/miners/deals/{miner}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get all miners deals", notes = "This endpoint returns all miners deals", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","miner", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get all miners deals", description = "This endpoint returns all miners deals", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "miner" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMinersDealsMinerGet( @PathParam("miner") String miner,  @QueryParam("ignore-failed") String ignoreFailed,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMinersDealsMinerGet(miner,ignoreFailed,securityContext);
@@ -120,15 +123,15 @@ public class PublicApi  {
     @Path("/miners/failures/{miner}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get all miners", notes = "This endpoint returns all miners", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","net", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get all miners", description = "This endpoint returns all miners", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMinersFailuresMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMinersFailuresMinerGet(miner,securityContext);
@@ -137,15 +140,15 @@ public class PublicApi  {
     @Path("/miners")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get all miners", notes = "This endpoint returns all miners", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","net", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get all miners", description = "This endpoint returns all miners", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMinersGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMinersGet(securityContext);
@@ -154,15 +157,15 @@ public class PublicApi  {
     @Path("/miners/stats/{miner}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Get miner stats", notes = "This endpoint returns miner stats", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","miner", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Get miner stats", description = "This endpoint returns miner stats", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "miner" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMinersStatsMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMinersStatsMinerGet(miner,securityContext);
@@ -171,15 +174,15 @@ public class PublicApi  {
     @Path("/miners/storage/query/{miner}")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Query Ask", notes = "This endpoint returns the ask for a given CID", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "deals", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Query Ask", description = "This endpoint returns the ask for a given CID", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "deals" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicMinersStorageQueryMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicMinersStorageQueryMinerGet(miner,securityContext);
@@ -188,11 +191,11 @@ public class PublicApi  {
     @Path("/net/addrs")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Net Addrs", notes = "This endpoint is used to get net addrs", response = String.class, responseContainer = "List", authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","net", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List") })
+    @Operation(summary = "Net Addrs", description = "This endpoint is used to get net addrs", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = String.class)))) })
     public Response publicNetAddrsGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicNetAddrsGet(securityContext);
@@ -201,15 +204,15 @@ public class PublicApi  {
     @Path("/net/peers")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Net Peers", notes = "This endpoint is used to get net peers", response = String.class, responseContainer = "List", authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public","net", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class, responseContainer = "List"),
+    @Operation(summary = "Net Peers", description = "This endpoint is used to get net peers", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = String.class)))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicNetPeersGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicNetPeersGet(securityContext);
@@ -218,15 +221,15 @@ public class PublicApi  {
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @io.swagger.annotations.ApiOperation(value = "Public stats", notes = "This endpoint is used to get public stats.", response = String.class, authorizations = {
-        @io.swagger.annotations.Authorization(value = "bearerAuth")
-    }, tags={ "public", })
-    @io.swagger.annotations.ApiResponses(value = { 
-        @io.swagger.annotations.ApiResponse(code = 200, message = "OK", response = String.class),
+    @Operation(summary = "Public stats", description = "This endpoint is used to get public stats.", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "public" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
-        @io.swagger.annotations.ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response publicStatsGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.publicStatsGet(securityContext);

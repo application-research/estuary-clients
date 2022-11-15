@@ -14,7 +14,6 @@ class UtilHttpError(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, code: int=None, details: str=None, reason: str=None):  # noqa: E501
         """UtilHttpError - a model defined in Swagger
 
@@ -36,7 +35,6 @@ class UtilHttpError(Model):
             'details': 'details',
             'reason': 'reason'
         }
-
         self._code = code
         self._details = details
         self._reason = reason

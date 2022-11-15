@@ -15,7 +15,7 @@ public struct MainChannelIDParam: Codable {
     public var initiator: String?
     public var responder: String?
 
-    public init(_id: Int?, initiator: String?, responder: String?) {
+    public init(_id: Int? = nil, initiator: String? = nil, responder: String? = nil) {
         self._id = _id
         self.initiator = initiator
         self.responder = responder
@@ -27,6 +27,4 @@ public struct MainChannelIDParam: Codable {
         case responder
     }
 
-
 }
-

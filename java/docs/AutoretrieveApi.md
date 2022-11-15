@@ -1,13 +1,12 @@
 # AutoretrieveApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adminAutoretrieveInitPost**](AutoretrieveApi.md#adminAutoretrieveInitPost) | **POST** /admin/autoretrieve/init | Register autoretrieve server
 [**adminAutoretrieveListGet**](AutoretrieveApi.md#adminAutoretrieveListGet) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 [**autoretrieveHeartbeatPost**](AutoretrieveApi.md#autoretrieveHeartbeatPost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
-
 
 <a name="adminAutoretrieveInitPost"></a>
 # **adminAutoretrieveInitPost**
@@ -35,8 +34,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 AutoretrieveApi apiInstance = new AutoretrieveApi();
-String addresses = "addresses_example"; // String | Autoretrieve's comma-separated list of addresses
-String pubKey = "pubKey_example"; // String | Autoretrieve's public key
+String addresses = "addresses_example"; // String | 
+String pubKey = "pubKey_example"; // String | 
 try {
     String result = apiInstance.adminAutoretrieveInitPost(addresses, pubKey);
     System.out.println(result);
@@ -50,8 +49,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addresses** | **String**| Autoretrieve&#39;s comma-separated list of addresses |
- **pubKey** | **String**| Autoretrieve&#39;s public key |
+ **addresses** | **String**|  |
+ **pubKey** | **String**|  |
 
 ### Return type
 
@@ -63,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 <a name="adminAutoretrieveListGet"></a>
@@ -157,7 +156,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **String**| Autoretrieve&#39;s auth token |
+ **token** | **String**| Autoretrieve&#x27;s auth token |
 
 ### Return type
 

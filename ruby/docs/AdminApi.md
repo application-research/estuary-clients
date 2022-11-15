@@ -1,6 +1,6 @@
 # SwaggerClient::AdminApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,9 +13,8 @@ Method | HTTP request | Description
 [**admin_system_config_get**](AdminApi.md#admin_system_config_get) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**admin_users_get**](AdminApi.md#admin_users_get) | **GET** /admin/users | Get all users
 
-
 # **admin_peering_peers_delete**
-> String admin_peering_peers_delete(peer_ids)
+> String admin_peering_peers_delete(body)
 
 Remove peers on Peering Service
 
@@ -34,13 +33,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
-
-peer_ids = [SwaggerClient::Array<BOOLEAN>.new] # Array<BOOLEAN> | Peer ids
+body = [true] # Array<BOOLEAN> | Peer ids
 
 
 begin
   #Remove peers on Peering Service
-  result = api_instance.admin_peering_peers_delete(peer_ids)
+  result = api_instance.admin_peering_peers_delete(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_delete: #{e}"
@@ -51,7 +49,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peer_ids** | **Array&lt;BOOLEAN&gt;**| Peer ids | 
+ **body** | [**Array&lt;BOOLEAN&gt;**](BOOLEAN.md)| Peer ids | 
 
 ### Return type
 
@@ -63,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 

@@ -1,29 +1,21 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class MainGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;
-
   @JsonProperty("label")
   private String label = null;
-
   @JsonProperty("token")
   private String token = null;
-
   @JsonProperty("tokenHash")
   private String tokenHash = null;
-
   /**
    **/
   public MainGetApiKeysResp expiry(String expiry) {
@@ -32,7 +24,7 @@ public class MainGetApiKeysResp   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("expiry")
   public String getExpiry() {
     return expiry;
@@ -49,7 +41,7 @@ public class MainGetApiKeysResp   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("label")
   public String getLabel() {
     return label;
@@ -66,7 +58,7 @@ public class MainGetApiKeysResp   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("token")
   public String getToken() {
     return token;
@@ -83,7 +75,7 @@ public class MainGetApiKeysResp   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("tokenHash")
   public String getTokenHash() {
     return tokenHash;
@@ -117,7 +109,6 @@ public class MainGetApiKeysResp   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MainGetApiKeysResp {\n");
-    
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
@@ -137,4 +128,3 @@ public class MainGetApiKeysResp   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -3,10 +3,9 @@ part of swagger.api;
 class TypesIpfsListPinStatusResponse {
   
   int count = null;
-  
 
   List<TypesIpfsPinStatusResponse> results = [];
-  
+
   TypesIpfsListPinStatusResponse();
 
   @override
@@ -16,12 +15,8 @@ class TypesIpfsListPinStatusResponse {
 
   TypesIpfsListPinStatusResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    count =
-        json['count']
-    ;
-    results =
-      TypesIpfsPinStatusResponse.listFromJson(json['results'])
-;
+    count = json['count'];
+    results = TypesIpfsPinStatusResponse.listFromJson(json['results']);
   }
 
   Map<String, dynamic> toJson() {
@@ -43,4 +38,3 @@ class TypesIpfsListPinStatusResponse {
     return map;
   }
 }
-

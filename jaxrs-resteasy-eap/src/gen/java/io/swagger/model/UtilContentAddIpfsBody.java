@@ -4,17 +4,12 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class UtilContentAddIpfsBody   {
-  
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class UtilContentAddIpfsBody   {
   private String coluuid = null;
   private String dir = null;
   private String filename = null;
@@ -24,7 +19,7 @@ public class UtilContentAddIpfsBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -36,7 +31,7 @@ public class UtilContentAddIpfsBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -48,7 +43,7 @@ public class UtilContentAddIpfsBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("filename")
   public String getFilename() {
     return filename;
@@ -60,7 +55,7 @@ public class UtilContentAddIpfsBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("peers")
   public List<String> getPeers() {
     return peers;
@@ -72,7 +67,7 @@ public class UtilContentAddIpfsBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -128,4 +123,3 @@ public class UtilContentAddIpfsBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

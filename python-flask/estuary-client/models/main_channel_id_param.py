@@ -14,7 +14,6 @@ class MainChannelIDParam(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, id: int=None, initiator: str=None, responder: str=None):  # noqa: E501
         """MainChannelIDParam - a model defined in Swagger
 
@@ -36,7 +35,6 @@ class MainChannelIDParam(Model):
             'initiator': 'initiator',
             'responder': 'responder'
         }
-
         self._id = id
         self._initiator = initiator
         self._responder = responder

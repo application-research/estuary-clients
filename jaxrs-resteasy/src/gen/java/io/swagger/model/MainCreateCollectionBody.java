@@ -5,19 +5,16 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class MainCreateCollectionBody   {
-  
-  private String description = null;
-  private String name = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class MainCreateCollectionBody   {
+  private String description = null;  private String name = null;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("description")
   public String getDescription() {
     return description;
@@ -29,7 +26,7 @@ public class MainCreateCollectionBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -79,4 +76,3 @@ public class MainCreateCollectionBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

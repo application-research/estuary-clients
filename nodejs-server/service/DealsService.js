@@ -11,10 +11,7 @@
 exports.dealEstimatePOST = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -34,10 +31,7 @@ exports.dealEstimatePOST = function(body) {
 exports.dealInfoDealidGET = function(dealid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -57,10 +51,7 @@ exports.dealInfoDealidGET = function(dealid) {
 exports.dealProposalPropcidGET = function(propcid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -80,10 +71,7 @@ exports.dealProposalPropcidGET = function(propcid) {
 exports.dealQueryMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -104,10 +92,7 @@ exports.dealQueryMinerGET = function(miner) {
 exports.dealStatusMinerPropcidGET = function(miner,propcid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -127,10 +112,7 @@ exports.dealStatusMinerPropcidGET = function(miner,propcid) {
 exports.dealStatus_by_proposalPropcidGET = function(propcid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -149,10 +131,7 @@ exports.dealStatus_by_proposalPropcidGET = function(propcid) {
 exports.dealTransferIn_progressGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -166,16 +145,13 @@ exports.dealTransferIn_progressGET = function() {
  * Transfer Status
  * This endpoint returns the status of a transfer
  *
- * chanid Main.ChannelIDParam Channel ID
+ * body Main.ChannelIDParam Channel ID
  * returns String
  **/
-exports.dealTransferStatusPOST = function(chanid) {
+exports.dealTransferStatusPOST = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -194,10 +170,7 @@ exports.dealTransferStatusPOST = function(chanid) {
 exports.dealsFailuresGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -211,17 +184,14 @@ exports.dealsFailuresGET = function() {
  * Make Deal
  * This endpoint makes a deal for a given content and miner
  *
+ * body String Deal Request
  * miner String Miner
- * dealRequest String Deal Request
  * returns String
  **/
-exports.dealsMakeMinerPOST = function(miner,dealRequest) {
+exports.dealsMakeMinerPOST = function(body,miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -241,10 +211,7 @@ exports.dealsMakeMinerPOST = function(miner,dealRequest) {
 exports.dealsStatusDealGET = function(deal) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -263,10 +230,7 @@ exports.dealsStatusDealGET = function(deal) {
 exports.publicDealsFailuresGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -286,10 +250,7 @@ exports.publicDealsFailuresGET = function() {
 exports.publicMinersStorageQueryMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

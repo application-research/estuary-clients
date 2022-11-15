@@ -7,18 +7,18 @@ is an example of building a swagger-enabled JAX-RS server.
 
 This example uses the [JAX-RS](https://jax-rs-spec.java.net/) framework.
 
-To run with docker, please execute the following:
+To run the server, please execute the following:
 
 ```
-mvn package
-
-docker build -q --rm --tag=swagger-codegen-resteasy .
-
-docker run -d -p 8080:8080 -p 9990:9990 -p 8009:8009 --name swagger-resteasy -it swagger-codegen-resteasy
+mvn clean package
 ```
 
 You can then view the swagger listing here:
 
 ```
-http://localhost:8080/swagger.json
+Swagger / OpenAPI v2: http://localhost:8080/swagger.json
+Swagger / OpenAPI v3: http://localhost:8080/openapi.json
 ```
+
+Note that if you have configured the `host` to be something other than localhost, the calls through
+swagger-ui will be directed to that host and not localhost!

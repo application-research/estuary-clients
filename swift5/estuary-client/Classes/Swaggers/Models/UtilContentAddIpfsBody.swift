@@ -17,7 +17,7 @@ public struct UtilContentAddIpfsBody: Codable {
     public var peers: [String]?
     public var root: String?
 
-    public init(coluuid: String?, dir: String?, filename: String?, peers: [String]?, root: String?) {
+    public init(coluuid: String? = nil, dir: String? = nil, filename: String? = nil, peers: [String]? = nil, root: String? = nil) {
         self.coluuid = coluuid
         self.dir = dir
         self.filename = filename
@@ -27,4 +27,3 @@ public struct UtilContentAddIpfsBody: Codable {
 
 
 }
-

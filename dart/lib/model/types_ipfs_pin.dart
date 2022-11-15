@@ -3,16 +3,13 @@ part of swagger.api;
 class TypesIpfsPin {
   
   String cid = null;
-  
 
   Object meta = null;
-  
 
   String name = null;
-  
 
   List<String> origins = [];
-  
+
   TypesIpfsPin();
 
   @override
@@ -22,20 +19,10 @@ class TypesIpfsPin {
 
   TypesIpfsPin.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    cid =
-        json['cid']
-    ;
-    meta =
-      
-      
-      new Object.fromJson(json['meta'])
-;
-    name =
-        json['name']
-    ;
-    origins =
-        (json['origins'] as List).map((item) => item as String).toList()
-    ;
+    cid = json['cid'];
+    meta = new Object.fromJson(json['meta']);
+    name = json['name'];
+    origins = (json['origins'] as List).map((item) => item as String).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -59,4 +46,3 @@ class TypesIpfsPin {
     return map;
   }
 }
-

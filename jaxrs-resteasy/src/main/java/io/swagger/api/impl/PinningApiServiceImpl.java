@@ -3,7 +3,6 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-
 import io.swagger.model.TypesIpfsListPinStatusResponse;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesIpfsPinStatusResponse;
@@ -19,8 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class PinningApiServiceImpl implements PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class PinningApiServiceImpl implements PinningApiService {
       public Response pinningPinsGet(SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -36,12 +34,12 @@ public class PinningApiServiceImpl implements PinningApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response pinningPinsPinidPost(String pinid,String cid,String name,String origins,String meta,SecurityContext securityContext)
+      public Response pinningPinsPinidPost(String pinid,String body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response pinningPinsPost(TypesIpfsPin pin,SecurityContext securityContext)
+      public Response pinningPinsPost(TypesIpfsPin body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

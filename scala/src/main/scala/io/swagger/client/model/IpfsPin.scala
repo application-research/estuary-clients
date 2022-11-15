@@ -9,10 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param cid 
+ * @param meta 
+ * @param name 
+ * @param origins 
+ */
 case class IpfsPin (
   cid: Option[String] = None,
   meta: Option[Any] = None,

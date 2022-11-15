@@ -1,23 +1,22 @@
 # Swagger\Client\DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**dealEstimatePost**](DealsApi.md#dealEstimatePost) | **POST** /deal/estimate | Estimate the cost of a deal
-[**dealInfoDealidGet**](DealsApi.md#dealInfoDealidGet) | **GET** /deal/info/{dealid} | Get Deal Info
-[**dealProposalPropcidGet**](DealsApi.md#dealProposalPropcidGet) | **GET** /deal/proposal/{propcid} | Get Proposal
-[**dealQueryMinerGet**](DealsApi.md#dealQueryMinerGet) | **GET** /deal/query/{miner} | Query Ask
-[**dealStatusByProposalPropcidGet**](DealsApi.md#dealStatusByProposalPropcidGet) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
-[**dealStatusMinerPropcidGet**](DealsApi.md#dealStatusMinerPropcidGet) | **GET** /deal/status/{miner}/{propcid} | Deal Status
-[**dealTransferInProgressGet**](DealsApi.md#dealTransferInProgressGet) | **GET** /deal/transfer/in-progress | Transfer In Progress
-[**dealTransferStatusPost**](DealsApi.md#dealTransferStatusPost) | **POST** /deal/transfer/status | Transfer Status
-[**dealsFailuresGet**](DealsApi.md#dealsFailuresGet) | **GET** /deals/failures | Get storage failures for user
-[**dealsMakeMinerPost**](DealsApi.md#dealsMakeMinerPost) | **POST** /deals/make/{miner} | Make Deal
-[**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
-[**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
-[**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-
+[**dealEstimatePost**](DealsApi.md#dealestimatepost) | **POST** /deal/estimate | Estimate the cost of a deal
+[**dealInfoDealidGet**](DealsApi.md#dealinfodealidget) | **GET** /deal/info/{dealid} | Get Deal Info
+[**dealProposalPropcidGet**](DealsApi.md#dealproposalpropcidget) | **GET** /deal/proposal/{propcid} | Get Proposal
+[**dealQueryMinerGet**](DealsApi.md#dealqueryminerget) | **GET** /deal/query/{miner} | Query Ask
+[**dealStatusByProposalPropcidGet**](DealsApi.md#dealstatusbyproposalpropcidget) | **GET** /deal/status-by-proposal/{propcid} | Get Deal Status by PropCid
+[**dealStatusMinerPropcidGet**](DealsApi.md#dealstatusminerpropcidget) | **GET** /deal/status/{miner}/{propcid} | Deal Status
+[**dealTransferInProgressGet**](DealsApi.md#dealtransferinprogressget) | **GET** /deal/transfer/in-progress | Transfer In Progress
+[**dealTransferStatusPost**](DealsApi.md#dealtransferstatuspost) | **POST** /deal/transfer/status | Transfer Status
+[**dealsFailuresGet**](DealsApi.md#dealsfailuresget) | **GET** /deals/failures | Get storage failures for user
+[**dealsMakeMinerPost**](DealsApi.md#dealsmakeminerpost) | **POST** /deals/make/{miner} | Make Deal
+[**dealsStatusDealGet**](DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
+[**publicDealsFailuresGet**](DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
+[**publicMinersStorageQueryMinerGet**](DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
 
 # **dealEstimatePost**
 > string dealEstimatePost($body)
@@ -30,7 +29,6 @@ This endpoint estimates the cost of a deal
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -69,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -85,7 +83,6 @@ This endpoint returns the deal info for a deal
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -140,7 +137,6 @@ This endpoint returns the proposal for a deal
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -195,7 +191,6 @@ This endpoint returns the ask for a given CID
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -250,7 +245,6 @@ Get Deal Status by PropCid
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -305,7 +299,6 @@ This endpoint returns the status of a deal
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -362,7 +355,6 @@ This endpoint returns the in-progress transfers
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -403,7 +395,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealTransferStatusPost**
-> string dealTransferStatusPost($chanid)
+> string dealTransferStatusPost($body)
 
 Transfer Status
 
@@ -413,7 +405,6 @@ This endpoint returns the status of a transfer
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -425,10 +416,10 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$chanid = new \Swagger\Client\Model\MainChannelIDParam(); // \Swagger\Client\Model\MainChannelIDParam | Channel ID
+$body = new \Swagger\Client\Model\MainChannelIDParam(); // \Swagger\Client\Model\MainChannelIDParam | Channel ID
 
 try {
-    $result = $apiInstance->dealTransferStatusPost($chanid);
+    $result = $apiInstance->dealTransferStatusPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealTransferStatusPost: ', $e->getMessage(), PHP_EOL;
@@ -440,7 +431,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**\Swagger\Client\Model\MainChannelIDParam**](../Model/MainChannelIDParam.md)| Channel ID |
+ **body** | [**\Swagger\Client\Model\MainChannelIDParam**](../Model/MainChannelIDParam.md)| Channel ID |
 
 ### Return type
 
@@ -452,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -468,7 +459,6 @@ This endpoint returns a list of storage failures for user
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -509,7 +499,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **dealsMakeMinerPost**
-> string dealsMakeMinerPost($miner, $deal_request)
+> string dealsMakeMinerPost($body, $miner)
 
 Make Deal
 
@@ -519,7 +509,6 @@ This endpoint makes a deal for a given content and miner
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -531,11 +520,11 @@ $apiInstance = new Swagger\Client\Api\DealsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = "body_example"; // string | Deal Request
 $miner = "miner_example"; // string | Miner
-$deal_request = "deal_request_example"; // string | Deal Request
 
 try {
-    $result = $apiInstance->dealsMakeMinerPost($miner, $deal_request);
+    $result = $apiInstance->dealsMakeMinerPost($body, $miner);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DealsApi->dealsMakeMinerPost: ', $e->getMessage(), PHP_EOL;
@@ -547,8 +536,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**string**](../Model/string.md)| Deal Request |
  **miner** | **string**| Miner |
- **deal_request** | **string**| Deal Request |
 
 ### Return type
 
@@ -560,7 +549,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -576,7 +565,6 @@ This endpoint returns the status of a deal
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -631,7 +619,6 @@ This endpoint returns a list of storage failures
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -682,7 +669,6 @@ This endpoint returns the ask for a given CID
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

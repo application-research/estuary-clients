@@ -9,7 +9,6 @@ import Foundation
 
 
 open class TypesIpfsListPinStatusResponse: JSONEncodable {
-
     public var count: Int32?
     public var results: [TypesIpfsPinStatusResponse]?
 
@@ -25,4 +24,3 @@ open class TypesIpfsListPinStatusResponse: JSONEncodable {
         return dictionary
     }
 }
-

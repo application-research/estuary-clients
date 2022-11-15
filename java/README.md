@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-11T23:35:09.103Z
+  - Build date: 2022-11-15T21:05:25.647Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -72,7 +72,6 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
-
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -85,7 +84,7 @@ public class AdminApiExample {
 
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        
+
         // Configure API key authorization: bearerAuth
         ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
         bearerAuth.setApiKey("YOUR API KEY");
@@ -93,9 +92,9 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        List<Boolean> peerIds = Arrays.asList(new List<Boolean>()); // List<Boolean> | Peer ids
+        List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
         try {
-            String result = apiInstance.adminPeeringPeersDelete(peerIds);
+            String result = apiInstance.adminPeeringPeersDelete(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersDelete");
@@ -103,12 +102,214 @@ public class AdminApiExample {
         }
     }
 }
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
 
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringPeersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringPeersGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringPeersPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStartPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStartPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStatusGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStatusGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminPeeringStopPost();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminPeeringStopPost");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminSystemConfigGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminSystemConfigGet");
+            e.printStackTrace();
+        }
+    }
+}
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            String result = apiInstance.adminUsersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminUsersGet");
+            e.printStackTrace();
+        }
+    }
+}
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -202,10 +403,11 @@ Class | Method | HTTP request | Description
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
 *UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
 
-
 ## Documentation for Models
 
+ - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
+ - [ContentAddBody](docs/ContentAddBody.md)
  - [MainChannelIDParam](docs/MainChannelIDParam.md)
  - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
  - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
@@ -219,7 +421,6 @@ Class | Method | HTTP request | Description
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [UtilHttpError](docs/UtilHttpError.md)
-
 
 ## Documentation for Authorization
 
@@ -236,6 +437,5 @@ Authentication schemes defined for the API:
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
 ## Author
-
 
 

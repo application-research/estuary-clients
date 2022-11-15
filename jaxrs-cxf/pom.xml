@@ -37,6 +37,13 @@
             <idleTimeout>60000</idleTimeout>
           </httpConnector>
         </configuration>
+        <dependencies>
+          <dependency>
+              <groupId>javax.validation</groupId>
+              <artifactId>validation-api</artifactId>
+              <version>${beanvalidation-version}</version>
+          </dependency>
+        </dependencies>
         <executions>
           <execution>
             <id>start-jetty</id>
@@ -90,8 +97,8 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>io.swagger</groupId>
-      <artifactId>swagger-jaxrs</artifactId>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-jaxrs2</artifactId>
       <scope>compile</scope>
       <version>${swagger-core-version}</version>
     </dependency>
@@ -143,7 +150,7 @@
     </dependency>
     <dependency>
         <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
+        <artifactId>cxf-rt-rs-service-description-openapi-v3</artifactId>
         <version>${cxf-version}</version>
         <scope>compile</scope>
     </dependency>
@@ -170,6 +177,16 @@
         <artifactId>jackson-datatype-joda</artifactId>
         <version>${jackson-jaxrs-version}</version>
     </dependency>
+      <dependency>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+          <version>2.2.6</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.activation</groupId>
+          <artifactId>activation</artifactId>
+          <version>1.1.1</version>
+      </dependency>
   </dependencies>
   <repositories>
     <repository>
@@ -184,14 +201,14 @@
     <java.version>1.7</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <swagger-core-version>1.5.24</swagger-core-version>
-    <jetty-version>9.3.27.v20190418</jetty-version>
+    <swagger-core-version>2.0.0</swagger-core-version>
+    <jetty-version>9.2.9.v20150224</jetty-version>
     <junit-version>4.13.1</junit-version>
     <logback-version>1.2.9</logback-version>
     <servlet-api-version>2.5</servlet-api-version>
     <beanvalidation-version>1.1.0.Final</beanvalidation-version>
-    <cxf-version>3.2.1</cxf-version>
-    <jackson-jaxrs-version>2.11.4</jackson-jaxrs-version>
+    <cxf-version>3.2.4</cxf-version>
+    <jackson-jaxrs-version>2.9.1</jackson-jaxrs-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>

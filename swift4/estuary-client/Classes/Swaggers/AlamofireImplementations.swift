@@ -20,9 +20,6 @@ class AlamofireRequestBuilderFactory: RequestBuilderFactory {
 // Store manager to retain its reference
 private var managerStore: [String: Alamofire.SessionManager] = [:]
 
-// Sync queue to manage safe access to the store manager
-private let syncQueue = DispatchQueue(label: "thread-safe-sync-queue", attributes: .concurrent)
-
 open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
     required public init(method: String, URLString: String, parameters: [String : Any]?, isBody: Bool, headers: [String : String] = [:]) {
         super.init(method: method, URLString: URLString, parameters: parameters, isBody: isBody, headers: headers)
@@ -61,9 +58,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         let managerId:String = UUID().uuidString
         // Create a new manager for each request to customize its request header
         let manager = createSessionManager()
-        syncQueue.async(flags: .barrier) {
-            managerStore[managerId] = manager
-        }
+        managerStore[managerId] = manager
 
         let encoding:ParameterEncoding = isBody ? JSONDataEncoding() : URLEncoding()
 
@@ -117,9 +112,7 @@ open class AlamofireRequestBuilder<T>: RequestBuilder<T> {
         }
 
         let cleanupRequest = {
-            syncQueue.async(flags: .barrier) {
-                 _ = managerStore.removeValue(forKey: managerId)
-            }
+            _ = managerStore.removeValue(forKey: managerId)
         }
 
         let validatedRequest = request.validate()
@@ -321,9 +314,7 @@ open class AlamofireDecodableRequestBuilder<T:Decodable>: AlamofireRequestBuilde
         }
 
         let cleanupRequest = {
-            syncQueue.async(flags: .barrier) {
-                _ = managerStore.removeValue(forKey: managerId)
-            }
+            _ = managerStore.removeValue(forKey: managerId)
         }
 
         let validatedRequest = request.validate()

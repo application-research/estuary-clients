@@ -9,10 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param code 
+ * @param details 
+ * @param reason 
+ */
 case class HttpError (
   code: Option[Integer] = None,
   details: Option[String] = None,

@@ -5,16 +5,13 @@
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
  *
- * peerIds List Peer ids
+ * body List Peer ids
  * returns String
  **/
-exports.adminPeeringPeersDELETE = function(peerIds) {
+exports.adminPeeringPeersDELETE = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -33,10 +30,7 @@ exports.adminPeeringPeersDELETE = function(peerIds) {
 exports.adminPeeringPeersGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -55,10 +49,7 @@ exports.adminPeeringPeersGET = function() {
 exports.adminPeeringPeersPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -77,10 +68,7 @@ exports.adminPeeringPeersPOST = function() {
 exports.adminPeeringStartPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -99,10 +87,7 @@ exports.adminPeeringStartPOST = function() {
 exports.adminPeeringStatusGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -121,10 +106,7 @@ exports.adminPeeringStatusGET = function() {
 exports.adminPeeringStopPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -143,10 +125,7 @@ exports.adminPeeringStopPOST = function() {
 exports.adminSystemConfigGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -165,10 +144,7 @@ exports.adminSystemConfigGET = function() {
 exports.adminUsersGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

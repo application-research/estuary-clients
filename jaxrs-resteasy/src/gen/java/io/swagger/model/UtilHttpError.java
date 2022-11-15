@@ -5,20 +5,16 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class UtilHttpError   {
-  
-  private Integer code = null;
-  private String details = null;
-  private String reason = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class UtilHttpError   {
+  private Integer code = null;  private String details = null;  private String reason = null;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("code")
   public Integer getCode() {
     return code;
@@ -30,7 +26,7 @@ public class UtilHttpError   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("details")
   public String getDetails() {
     return details;
@@ -42,7 +38,7 @@ public class UtilHttpError   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("reason")
   public String getReason() {
     return reason;
@@ -94,4 +90,3 @@ public class UtilHttpError   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -1,4 +1,4 @@
-# estuary-client.Model.UtilContentAddResponse
+# IO.Swagger.Model.UtilContentAddResponse
 ## Properties
 
 Name | Type | Description | Notes

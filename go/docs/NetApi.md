@@ -1,6 +1,6 @@
-# \NetApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PublicMinersGet**](NetApi.md#PublicMinersGet) | **Get** /public/miners | Get all miners
 [**PublicNetAddrsGet**](NetApi.md#PublicNetAddrsGet) | **Get** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](NetApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
-
 
 # **NetAddrsGet**
 > string NetAddrsGet(ctx, )

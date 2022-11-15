@@ -3,22 +3,17 @@ part of swagger.api;
 class UtilContentCreateBody {
   
   String coluuid = null;
-  
 
   String dir = null;
-  
 
   String location = null;
-  
 
   String name = null;
-  
 
   String root = null;
-  
 
   int type = null;
-  
+
   UtilContentCreateBody();
 
   @override
@@ -28,24 +23,12 @@ class UtilContentCreateBody {
 
   UtilContentCreateBody.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    coluuid =
-        json['coluuid']
-    ;
-    dir =
-        json['dir']
-    ;
-    location =
-        json['location']
-    ;
-    name =
-        json['name']
-    ;
-    root =
-        json['root']
-    ;
-    type =
-        json['type']
-    ;
+    coluuid = json['coluuid'];
+    dir = json['dir'];
+    location = json['location'];
+    name = json['name'];
+    root = json['root'];
+    type = json['type'];
   }
 
   Map<String, dynamic> toJson() {
@@ -71,4 +54,3 @@ class UtilContentCreateBody {
     return map;
   }
 }
-

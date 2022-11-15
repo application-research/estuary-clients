@@ -14,7 +14,6 @@ class MainDeleteContentFromCollectionBody(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, by: str=None, value: str=None):  # noqa: E501
         """MainDeleteContentFromCollectionBody - a model defined in Swagger
 
@@ -32,7 +31,6 @@ class MainDeleteContentFromCollectionBody(Model):
             'by': 'by',
             'value': 'value'
         }
-
         self._by = by
         self._value = value
 

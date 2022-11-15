@@ -19,7 +19,7 @@ class TestMinerController(BaseTestCase):
         """
         query_string = [('ignore_failed', 'ignore_failed_example')]
         response = self.client.open(
-            '//public/miners/deals/{miner}'.format(miner='miner_example'),
+            '/public/miners/deals/{miner}'.format(miner='miner_example'),
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -31,7 +31,7 @@ class TestMinerController(BaseTestCase):
         Get miner stats
         """
         response = self.client.open(
-            '//public/miners/stats/{miner}'.format(miner='miner_example'),
+            '/public/miners/stats/{miner}'.format(miner='miner_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

@@ -8,4 +8,3 @@ Name | Type | Description | Notes
 **token** | **String** |  | [optional] 
 **token_hash** | **String** |  | [optional] 
 
-

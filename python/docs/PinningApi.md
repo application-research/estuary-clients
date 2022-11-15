@@ -1,6 +1,6 @@
 # estuary_client.PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**pinning_pins_pinid_get**](PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 [**pinning_pins_pinid_post**](PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**pinning_pins_post**](PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
-
 
 # **pinning_pins_get**
 > TypesIpfsListPinStatusResponse pinning_pins_get()
@@ -169,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, body=body)
 
 Replace a pinned object
 
@@ -192,14 +191,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 pinid = 'pinid_example' # str | Pin ID
-cid = 'cid_example' # str | CID of new pin
-name = 'name_example' # str | Name (filename) of new pin (optional)
-origins = 'origins_example' # str | Origins of new pin (optional)
-meta = 'meta_example' # str | Meta information of new pin (optional)
+body = 'body_example' # str | Meta information of new pin (optional)
 
 try:
     # Replace a pinned object
-    api_response = api_instance.pinning_pins_pinid_post(pinid, cid, name=name, origins=origins, meta=meta)
+    api_response = api_instance.pinning_pins_pinid_post(pinid, body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_post: %s\n" % e)
@@ -210,10 +206,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **str**| Pin ID | 
- **cid** | **str**| CID of new pin | 
- **name** | **str**| Name (filename) of new pin | [optional] 
- **origins** | **str**| Origins of new pin | [optional] 
- **meta** | **str**| Meta information of new pin | [optional] 
+ **body** | [**str**](str.md)| Meta information of new pin | [optional] 
 
 ### Return type
 
@@ -225,13 +218,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> TypesIpfsPinStatusResponse pinning_pins_post(pin)
+> TypesIpfsPinStatusResponse pinning_pins_post(body)
 
 Add and pin object
 
@@ -253,11 +246,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
-pin = estuary_client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
+body = estuary_client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 try:
     # Add and pin object
-    api_response = api_instance.pinning_pins_post(pin)
+    api_response = api_instance.pinning_pins_post(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_post: %s\n" % e)
@@ -267,7 +260,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -279,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

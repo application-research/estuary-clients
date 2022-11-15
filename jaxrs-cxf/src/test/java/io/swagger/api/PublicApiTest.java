@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.UtilHttpError;
@@ -64,13 +63,12 @@ public class PublicApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", PublicApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", PublicApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Get Content by Cid
      *
@@ -88,7 +86,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get public node info
      *
@@ -105,7 +102,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get deal metrics
      *
@@ -122,7 +118,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get all miners deals
      *
@@ -141,7 +136,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get all miners
      *
@@ -159,7 +153,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get all miners
      *
@@ -176,7 +169,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Get miner stats
      *
@@ -194,7 +186,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Net Addrs
      *
@@ -211,7 +202,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Net Peers
      *
@@ -228,7 +218,6 @@ public class PublicApiTest {
         
         
     }
-    
     /**
      * Public stats
      *
@@ -245,5 +234,4 @@ public class PublicApiTest {
         
         
     }
-    
 }

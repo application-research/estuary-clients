@@ -5,13 +5,12 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**publicMinersDealsMinerGet**](MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
-
 
 # **publicMinersDealsMinerGet**
 > String publicMinersDealsMinerGet(miner, ignoreFailed)
@@ -20,7 +19,7 @@ Get all miners deals
 
 This endpoint returns all miners deals
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -32,7 +31,7 @@ var api_instance = new MinerApi();
 var miner = miner_example; // String | Filter by miner
 var ignoreFailed = ignoreFailed_example; // String | Ignore Failed
 
-try { 
+try {
     var result = api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
     print(result);
 } catch (e) {
@@ -69,7 +68,7 @@ Get miner stats
 
 This endpoint returns miner stats
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -80,7 +79,7 @@ import 'package:swagger/api.dart';
 var api_instance = new MinerApi();
 var miner = miner_example; // String | Filter by miner
 
-try { 
+try {
     var result = api_instance.publicMinersStatsMinerGet(miner);
     print(result);
 } catch (e) {

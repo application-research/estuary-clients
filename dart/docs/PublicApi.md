@@ -5,7 +5,7 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,7 +20,6 @@ Method | HTTP request | Description
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
-
 # **publicByCidCidGet**
 > String publicByCidCidGet(cid)
 
@@ -28,7 +27,7 @@ Get Content by Cid
 
 This endpoint returns the content associated with a CID
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -39,7 +38,7 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 var cid = cid_example; // String | Cid
 
-try { 
+try {
     var result = api_instance.publicByCidCidGet(cid);
     print(result);
 } catch (e) {
@@ -75,7 +74,7 @@ Get public node info
 
 This endpoint returns information about the node
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -85,7 +84,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicInfoGet();
     print(result);
 } catch (e) {
@@ -118,7 +117,7 @@ Get deal metrics
 
 This endpoint is used to get deal metrics
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -128,7 +127,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicMetricsDealsOnChainGet();
     print(result);
 } catch (e) {
@@ -161,7 +160,7 @@ Get all miners deals
 
 This endpoint returns all miners deals
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -173,7 +172,7 @@ var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
 var ignoreFailed = ignoreFailed_example; // String | Ignore Failed
 
-try { 
+try {
     var result = api_instance.publicMinersDealsMinerGet(miner, ignoreFailed);
     print(result);
 } catch (e) {
@@ -210,7 +209,7 @@ Get all miners
 
 This endpoint returns all miners
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -221,7 +220,7 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
 
-try { 
+try {
     var result = api_instance.publicMinersFailuresMinerGet(miner);
     print(result);
 } catch (e) {
@@ -257,7 +256,7 @@ Get all miners
 
 This endpoint returns all miners
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -267,7 +266,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicMinersGet();
     print(result);
 } catch (e) {
@@ -300,7 +299,7 @@ Get miner stats
 
 This endpoint returns miner stats
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -311,7 +310,7 @@ import 'package:swagger/api.dart';
 var api_instance = new PublicApi();
 var miner = miner_example; // String | Filter by miner
 
-try { 
+try {
     var result = api_instance.publicMinersStatsMinerGet(miner);
     print(result);
 } catch (e) {
@@ -347,7 +346,7 @@ Net Addrs
 
 This endpoint is used to get net addrs
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -357,7 +356,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicNetAddrsGet();
     print(result);
 } catch (e) {
@@ -390,7 +389,7 @@ Net Peers
 
 This endpoint is used to get net peers
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -400,7 +399,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicNetPeersGet();
     print(result);
 } catch (e) {
@@ -433,7 +432,7 @@ Public stats
 
 This endpoint is used to get public stats.
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -443,7 +442,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PublicApi();
 
-try { 
+try {
     var result = api_instance.publicStatsGet();
     print(result);
 } catch (e) {

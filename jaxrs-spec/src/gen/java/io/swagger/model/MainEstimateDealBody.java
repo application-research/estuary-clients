@@ -10,10 +10,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class MainEstimateDealBody   {
-  
+
   private @Valid Integer durationBlks = null;
+
   private @Valid Integer replication = null;
+
   private @Valid Integer size = null;
+
   private @Valid Boolean verified = null;
 
   /**
@@ -26,6 +29,7 @@ public class MainEstimateDealBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("durationBlks")
+
   public Integer getDurationBlks() {
     return durationBlks;
   }
@@ -43,6 +47,7 @@ public class MainEstimateDealBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("replication")
+
   public Integer getReplication() {
     return replication;
   }
@@ -60,6 +65,7 @@ public class MainEstimateDealBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("size")
+
   public Integer getSize() {
     return size;
   }
@@ -77,6 +83,7 @@ public class MainEstimateDealBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("verified")
+
   public Boolean isVerified() {
     return verified;
   }
@@ -129,4 +136,3 @@ public class MainEstimateDealBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

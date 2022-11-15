@@ -1,6 +1,6 @@
 # SwaggerClient::PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**pinning_pins_pinid_get**](PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 [**pinning_pins_pinid_post**](PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**pinning_pins_post**](PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
-
 
 # **pinning_pins_get**
 > TypesIpfsListPinStatusResponse pinning_pins_get
@@ -79,7 +78,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-
 pinid = 'pinid_example' # String | Pin ID
 
 
@@ -132,7 +130,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-
 pinid = 'pinid_example' # String | cid
 
 
@@ -167,7 +164,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_pinid_post**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, cid, opts)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, opts)
 
 Replace a pinned object
 
@@ -186,20 +183,14 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-
 pinid = 'pinid_example' # String | Pin ID
-
-cid = 'cid_example' # String | CID of new pin
-
 opts = { 
-  name: 'name_example', # String | Name (filename) of new pin
-  origins: 'origins_example', # String | Origins of new pin
-  meta: 'meta_example' # String | Meta information of new pin
+  body: 'body_example' # String | Meta information of new pin
 }
 
 begin
   #Replace a pinned object
-  result = api_instance.pinning_pins_pinid_post(pinid, cid, opts)
+  result = api_instance.pinning_pins_pinid_post(pinid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
@@ -211,10 +202,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **String**| Pin ID | 
- **cid** | **String**| CID of new pin | 
- **name** | **String**| Name (filename) of new pin | [optional] 
- **origins** | **String**| Origins of new pin | [optional] 
- **meta** | **String**| Meta information of new pin | [optional] 
+ **body** | [**String**](String.md)| Meta information of new pin | [optional] 
 
 ### Return type
 
@@ -226,13 +214,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
 
 # **pinning_pins_post**
-> TypesIpfsPinStatusResponse pinning_pins_post(pin)
+> TypesIpfsPinStatusResponse pinning_pins_post(body)
 
 Add and pin object
 
@@ -251,13 +239,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-
-pin = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
 
 
 begin
   #Add and pin object
-  result = api_instance.pinning_pins_post(pin)
+  result = api_instance.pinning_pins_post(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_post: #{e}"
@@ -268,7 +255,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -280,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 

@@ -1,11 +1,10 @@
-# \MetricsApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PublicMetricsDealsOnChainGet**](MetricsApi.md#PublicMetricsDealsOnChainGet) | **Get** /public/metrics/deals-on-chain | Get deal metrics
-
 
 # **PublicMetricsDealsOnChainGet**
 > string PublicMetricsDealsOnChainGet(ctx, )

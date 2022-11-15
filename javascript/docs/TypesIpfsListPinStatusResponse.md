@@ -5,5 +5,3 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **Number** |  | [optional] 
 **results** | [**[TypesIpfsPinStatusResponse]**](TypesIpfsPinStatusResponse.md) |  | [optional] 
-
-

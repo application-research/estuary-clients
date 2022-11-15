@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.UtilHttpError;
@@ -64,13 +63,12 @@ public class AutoretrieveApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", AutoretrieveApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", AutoretrieveApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Register autoretrieve server
      *
@@ -89,7 +87,6 @@ public class AutoretrieveApiTest {
         
         
     }
-    
     /**
      * List autoretrieve servers
      *
@@ -106,7 +103,6 @@ public class AutoretrieveApiTest {
         
         
     }
-    
     /**
      * Marks autoretrieve server as up
      *
@@ -124,5 +120,4 @@ public class AutoretrieveApiTest {
         
         
     }
-    
 }

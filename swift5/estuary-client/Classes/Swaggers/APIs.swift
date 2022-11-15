@@ -7,7 +7,7 @@
 import Foundation
 
 open class estuary-clientAPI {
-    public static var basePath = "https://api.estuary.tech"
+    public static var basePath = "//api.estuary.tech/"
     public static var credential: URLCredential?
     public static var customHeaders: [String:String] = [:]
     public static var requestBuilderFactory: RequestBuilderFactory = AlamofireRequestBuilderFactory()

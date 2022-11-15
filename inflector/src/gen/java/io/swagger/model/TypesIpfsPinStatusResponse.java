@@ -1,38 +1,28 @@
 package io.swagger.model;
-
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-
-
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")
 public class TypesIpfsPinStatusResponse   {
   @JsonProperty("created")
   private String created = null;
-
   @JsonProperty("delegates")
   private List<String> delegates = null;
-
   @JsonProperty("info")
   private Object info = null;
-
   @JsonProperty("pin")
   private TypesIpfsPin pin = null;
-
   @JsonProperty("requestid")
   private String requestid = null;
-
   @JsonProperty("status")
   private String status = null;
-
   /**
    **/
   public TypesIpfsPinStatusResponse created(String created) {
@@ -41,7 +31,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("created")
   public String getCreated() {
     return created;
@@ -58,7 +48,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("delegates")
   public List<String> getDelegates() {
     return delegates;
@@ -75,7 +65,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("info")
   public Object getInfo() {
     return info;
@@ -92,7 +82,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("pin")
   public TypesIpfsPin getPin() {
     return pin;
@@ -109,7 +99,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("requestid")
   public String getRequestid() {
     return requestid;
@@ -126,7 +116,7 @@ public class TypesIpfsPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -162,7 +152,6 @@ public class TypesIpfsPinStatusResponse   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPinStatusResponse {\n");
-    
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    delegates: ").append(toIndentedString(delegates)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");
@@ -184,4 +173,3 @@ public class TypesIpfsPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

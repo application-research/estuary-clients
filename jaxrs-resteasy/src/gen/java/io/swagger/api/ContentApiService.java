@@ -4,7 +4,6 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-
 import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
@@ -20,8 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public interface ContentApiService {
       Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddIpfsPost(UtilContentAddIpfsBody body,String ignoreDupes,SecurityContext securityContext)
@@ -34,7 +32,7 @@ public interface ContentApiService {
       throws NotFoundException;
       Response contentBwUsageContentGet(String content,SecurityContext securityContext)
       throws NotFoundException;
-      Response contentCreatePost(UtilContentCreateBody req,String ignoreDupes,SecurityContext securityContext)
+      Response contentCreatePost(UtilContentCreateBody body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException;
       Response contentDealsGet(Integer limit,Integer offset,SecurityContext securityContext)
       throws NotFoundException;

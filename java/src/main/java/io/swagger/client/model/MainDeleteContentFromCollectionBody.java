@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.model;
 
 import java.util.Objects;
@@ -20,14 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-
 /**
  * MainDeleteContentFromCollectionBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-11T23:35:09.103Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-15T21:05:25.647Z[GMT]")
 public class MainDeleteContentFromCollectionBody {
   @SerializedName("by")
   private String by = null;
@@ -44,7 +42,7 @@ public class MainDeleteContentFromCollectionBody {
    * Get by
    * @return by
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getBy() {
     return by;
   }
@@ -62,7 +60,7 @@ public class MainDeleteContentFromCollectionBody {
    * Get value
    * @return value
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getValue() {
     return value;
   }
@@ -114,4 +112,3 @@ public class MainDeleteContentFromCollectionBody {
   }
 
 }
-

@@ -45,37 +45,33 @@ def pinning_pins_pinid_get(pinid):  # noqa: E501
     return 'do some magic!'
 
 
-def pinning_pins_pinid_post(pinid, cid, name=None, origins=None, meta=None):  # noqa: E501
+def pinning_pins_pinid_post(pinid, body=None):  # noqa: E501
     """Replace a pinned object
 
     This endpoint replaces a pinned object. # noqa: E501
 
     :param pinid: Pin ID
     :type pinid: str
-    :param cid: CID of new pin
-    :type cid: str
-    :param name: Name (filename) of new pin
-    :type name: str
-    :param origins: Origins of new pin
-    :type origins: str
-    :param meta: Meta information of new pin
-    :type meta: str
-
-    :rtype: TypesIpfsPinStatusResponse
-    """
-    return 'do some magic!'
-
-
-def pinning_pins_post(pin):  # noqa: E501
-    """Add and pin object
-
-    This endpoint adds a pin to the IPFS daemon. # noqa: E501
-
-    :param pin: Pin Body {cid:cid, name:name}
-    :type pin: dict | bytes
+    :param body: Meta information of new pin
+    :type body: dict | bytes
 
     :rtype: TypesIpfsPinStatusResponse
     """
     if connexion.request.is_json:
-        pin = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
+        body = str.from_dict(connexion.request.get_json())  # noqa: E501
+    return 'do some magic!'
+
+
+def pinning_pins_post(body):  # noqa: E501
+    """Add and pin object
+
+    This endpoint adds a pin to the IPFS daemon. # noqa: E501
+
+    :param body: Pin Body {cid:cid, name:name}
+    :type body: dict | bytes
+
+    :rtype: TypesIpfsPinStatusResponse
+    """
+    if connexion.request.is_json:
+        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'

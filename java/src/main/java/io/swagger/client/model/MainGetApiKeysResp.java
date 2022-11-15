@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.model;
 
 import java.util.Objects;
@@ -20,14 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-
 /**
  * MainGetApiKeysResp
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-11T23:35:09.103Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-15T21:05:25.647Z[GMT]")
 public class MainGetApiKeysResp {
   @SerializedName("expiry")
   private String expiry = null;
@@ -50,7 +48,7 @@ public class MainGetApiKeysResp {
    * Get expiry
    * @return expiry
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getExpiry() {
     return expiry;
   }
@@ -68,7 +66,7 @@ public class MainGetApiKeysResp {
    * Get label
    * @return label
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getLabel() {
     return label;
   }
@@ -86,7 +84,7 @@ public class MainGetApiKeysResp {
    * Get token
    * @return token
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getToken() {
     return token;
   }
@@ -104,7 +102,7 @@ public class MainGetApiKeysResp {
    * Get tokenHash
    * @return tokenHash
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getTokenHash() {
     return tokenHash;
   }
@@ -160,4 +158,3 @@ public class MainGetApiKeysResp {
   }
 
 }
-

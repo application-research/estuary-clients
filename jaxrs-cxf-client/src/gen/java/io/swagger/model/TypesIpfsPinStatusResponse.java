@@ -4,7 +4,7 @@ import io.swagger.model.TypesIpfsPin;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -13,25 +13,27 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
-public class TypesIpfsPinStatusResponse  {
+public class TypesIpfsPinStatusResponse   {
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   private String created = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private List<String> delegates = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private Object info = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private TypesIpfsPin pin = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String requestid = null;
-
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   private String status = null;
  /**
    * Get created
@@ -173,4 +175,3 @@ public class TypesIpfsPinStatusResponse  {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

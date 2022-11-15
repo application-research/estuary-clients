@@ -16,7 +16,7 @@ public struct UtilContentAddResponse: Codable {
     public var providers: [String]?
     public var retrievalUrl: String?
 
-    public init(cid: String?, estuaryId: Int?, providers: [String]?, retrievalUrl: String?) {
+    public init(cid: String? = nil, estuaryId: Int? = nil, providers: [String]? = nil, retrievalUrl: String? = nil) {
         self.cid = cid
         self.estuaryId = estuaryId
         self.providers = providers
@@ -30,6 +30,4 @@ public struct UtilContentAddResponse: Codable {
         case retrievalUrl = "retrieval_url"
     }
 
-
 }
-

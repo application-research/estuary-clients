@@ -1,6 +1,6 @@
-# estuary-client.Api.PinningApi
+# IO.Swagger.Api.PinningApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**PinningPinsPinidGet**](PinningApi.md#pinningpinspinidget) | **GET** /pinning/pins/{pinid} | Get a pin status object
 [**PinningPinsPinidPost**](PinningApi.md#pinningpinspinidpost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 [**PinningPinsPost**](PinningApi.md#pinningpinspost) | **POST** /pinning/pins | Add and pin object
-
 
 <a name="pinningpinsget"></a>
 # **PinningPinsGet**
@@ -23,9 +22,9 @@ This endpoint lists all pin status objects
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -33,7 +32,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -86,9 +85,9 @@ This endpoint deletes a pinned object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -96,7 +95,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -152,9 +151,9 @@ This endpoint returns a pin status object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -162,7 +161,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -209,7 +208,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string cid, string name, string origins, string meta)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body)
 
 Replace a pinned object
 
@@ -219,9 +218,9 @@ This endpoint replaces a pinned object.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -229,7 +228,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -237,15 +236,12 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var pinid = pinid_example;  // string | Pin ID
-            var cid = cid_example;  // string | CID of new pin
-            var name = name_example;  // string | Name (filename) of new pin (optional) 
-            var origins = origins_example;  // string | Origins of new pin (optional) 
-            var meta = meta_example;  // string | Meta information of new pin (optional) 
+            var body = new string(); // string | Meta information of new pin (optional) 
 
             try
             {
                 // Replace a pinned object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(pinid, cid, name, origins, meta);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(pinid, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -262,10 +258,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pinid** | **string**| Pin ID | 
- **cid** | **string**| CID of new pin | 
- **name** | **string**| Name (filename) of new pin | [optional] 
- **origins** | **string**| Origins of new pin | [optional] 
- **meta** | **string**| Meta information of new pin | [optional] 
+ **body** | [**string**](string.md)| Meta information of new pin | [optional] 
 
 ### Return type
 
@@ -277,14 +270,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="pinningpinspost"></a>
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin pin)
+> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
 
 Add and pin object
 
@@ -294,9 +287,9 @@ This endpoint adds a pin to the IPFS daemon.
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -304,19 +297,19 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var pin = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+            var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
 
             try
             {
                 // Add and pin object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(pin);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -332,7 +325,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pin** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
 
 ### Return type
 
@@ -344,7 +337,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

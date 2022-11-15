@@ -22,7 +22,6 @@
  * limitations under the License.
  */
 
-
 package io.swagger.api;
 
 import io.swagger.model.UtilHttpError;
@@ -64,13 +63,12 @@ public class AdminApiTest {
         List providers = new ArrayList();
         providers.add(provider);
         
-        api = JAXRSClientFactory.create("https://api.estuary.tech", AdminApi.class, providers);
+        api = JAXRSClientFactory.create("//api.estuary.tech/", AdminApi.class, providers);
         org.apache.cxf.jaxrs.client.Client client = WebClient.client(api);
         
         ClientConfiguration config = WebClient.getConfig(client); 
     }
 
-    
     /**
      * Remove peers on Peering Service
      *
@@ -81,14 +79,13 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        List<Boolean> peerIds = null;
-        //String response = api.adminPeeringPeersDelete(peerIds);
+        List<Boolean> body = null;
+        //String response = api.adminPeeringPeersDelete(body);
         //assertNotNull(response);
         // TODO: test validations
         
         
     }
-    
     /**
      * List all Peering peers
      *
@@ -105,7 +102,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Add peers on Peering Service
      *
@@ -122,7 +118,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Start Peering
      *
@@ -139,7 +134,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Check Peering Status
      *
@@ -156,7 +150,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Stop Peering
      *
@@ -173,7 +166,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Get systems(estuary/shuttle) config
      *
@@ -190,7 +182,6 @@ public class AdminApiTest {
         
         
     }
-    
     /**
      * Get all users
      *
@@ -207,5 +198,4 @@ public class AdminApiTest {
         
         
     }
-    
 }

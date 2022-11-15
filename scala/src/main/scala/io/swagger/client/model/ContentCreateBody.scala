@@ -9,10 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param coluuid 
+ * @param dir 
+ * @param location 
+ * @param name 
+ * @param root 
+ * @param `type` 
+ */
 case class ContentCreateBody (
   coluuid: Option[String] = None,
   dir: Option[String] = None,

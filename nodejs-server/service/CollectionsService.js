@@ -11,10 +11,7 @@
 exports.collectionsColuuidCommitPOST = function(coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -28,18 +25,15 @@ exports.collectionsColuuidCommitPOST = function(coluuid) {
  * Deletes a content from a collection
  * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
  *
+ * body Main.deleteContentFromCollectionBody Variable to use when filtering for files (must be either 'path' or 'content_id')
  * coluuid String Collection ID
  * contentid String Content ID
- * body Main.deleteContentFromCollectionBody Variable to use when filtering for files (must be either 'path' or 'content_id')
  * returns String
  **/
-exports.collectionsColuuidContentsDELETE = function(coluuid,contentid,body) {
+exports.collectionsColuuidContentsDELETE = function(body,coluuid,contentid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -59,10 +53,7 @@ exports.collectionsColuuidContentsDELETE = function(coluuid,contentid,body) {
 exports.collectionsColuuidDELETE = function(coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -83,10 +74,7 @@ exports.collectionsColuuidDELETE = function(coluuid) {
 exports.collectionsColuuidGET = function(coluuid,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -100,17 +88,14 @@ exports.collectionsColuuidGET = function(coluuid,dir) {
  * Add contents to a collection
  * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
  *
- * coluuid String coluuid
- * contentIDs List Content IDs to add to collection
+ * body List Content IDs to add to collection
+ * coluuid String Collection UUID
  * returns String
  **/
-exports.collectionsColuuidPOST = function(coluuid,contentIDs) {
+exports.collectionsColuuidPOST = function(body,coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -132,10 +117,7 @@ exports.collectionsColuuidPOST = function(coluuid,contentIDs) {
 exports.collectionsFsAddPOST = function(coluuid,content,path) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "bytes": [],
-  "empty": true
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -154,7 +136,35 @@ exports.collectionsFsAddPOST = function(coluuid,content,path) {
 exports.collectionsGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {};
+    examples['application/json'] = [ [ {
+  "createdAt" : "createdAt",
+  "name" : "name",
+  "description" : "description",
+  "userId" : 0,
+  "uuid" : "uuid",
+  "cid" : "cid"
+}, {
+  "createdAt" : "createdAt",
+  "name" : "name",
+  "description" : "description",
+  "userId" : 0,
+  "uuid" : "uuid",
+  "cid" : "cid"
+} ], [ {
+  "createdAt" : "createdAt",
+  "name" : "name",
+  "description" : "description",
+  "userId" : 0,
+  "uuid" : "uuid",
+  "cid" : "cid"
+}, {
+  "createdAt" : "createdAt",
+  "name" : "name",
+  "description" : "description",
+  "userId" : 0,
+  "uuid" : "uuid",
+  "cid" : "cid"
+} ] ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -174,7 +184,14 @@ exports.collectionsGET = function() {
 exports.collectionsPOST = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {"empty": false};
+    examples['application/json'] = {
+  "createdAt" : "createdAt",
+  "name" : "name",
+  "description" : "description",
+  "userId" : 0,
+  "uuid" : "uuid",
+  "cid" : "cid"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

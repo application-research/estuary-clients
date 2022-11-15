@@ -1,4 +1,4 @@
-# estuary-client.Model.MainCreateCollectionBody
+# IO.Swagger.Model.MainCreateCollectionBody
 ## Properties
 
 Name | Type | Description | Notes

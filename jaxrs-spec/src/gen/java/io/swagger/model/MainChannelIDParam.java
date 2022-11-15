@@ -10,9 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class MainChannelIDParam   {
-  
+
   private @Valid Integer id = null;
+
   private @Valid String initiator = null;
+
   private @Valid String responder = null;
 
   /**
@@ -25,6 +27,7 @@ public class MainChannelIDParam   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("id")
+
   public Integer getId() {
     return id;
   }
@@ -42,6 +45,7 @@ public class MainChannelIDParam   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("initiator")
+
   public String getInitiator() {
     return initiator;
   }
@@ -59,6 +63,7 @@ public class MainChannelIDParam   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("responder")
+
   public String getResponder() {
     return responder;
   }
@@ -109,4 +114,3 @@ public class MainChannelIDParam   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

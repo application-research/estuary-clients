@@ -13,8 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class TypesIpfsListPinStatusResponse   {
-  
+
   private @Valid Integer count = null;
+
   private @Valid List<TypesIpfsPinStatusResponse> results = new ArrayList<TypesIpfsPinStatusResponse>();
 
   /**
@@ -27,6 +28,7 @@ public class TypesIpfsListPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("count")
+
   public Integer getCount() {
     return count;
   }
@@ -44,6 +46,7 @@ public class TypesIpfsListPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("results")
+
   public List<TypesIpfsPinStatusResponse> getResults() {
     return results;
   }
@@ -92,4 +95,3 @@ public class TypesIpfsListPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

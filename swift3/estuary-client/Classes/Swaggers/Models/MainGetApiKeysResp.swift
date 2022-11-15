@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainGetApiKeysResp: JSONEncodable {
-
     public var expiry: String?
     public var label: String?
     public var token: String?
@@ -29,4 +28,3 @@ open class MainGetApiKeysResp: JSONEncodable {
         return dictionary
     }
 }
-

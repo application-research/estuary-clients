@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface UtilContentAddIpfsBody { 
     coluuid?: string;
     dir?: string;

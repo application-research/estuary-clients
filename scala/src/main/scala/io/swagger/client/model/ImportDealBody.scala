@@ -9,10 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param coluuid 
+ * @param dealIDs 
+ * @param dir 
+ * @param name 
+ */
 case class ImportDealBody (
   coluuid: Option[String] = None,
   dealIDs: Option[List[Integer]] = None,

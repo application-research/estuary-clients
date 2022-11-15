@@ -1,6 +1,6 @@
 # estuary_client.ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,7 +21,6 @@ Method | HTTP request | Description
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
-
 
 # **content_add_car_post**
 > str content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
@@ -62,7 +61,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Car | 
+ **body** | [**str**](str.md)| Car | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
  **filename** | **str**| Filename | [optional] 
 
@@ -76,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -132,13 +131,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(data, filename=filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
 
 Add new content
 
@@ -160,8 +159,8 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-data = '/path/to/file.txt' # file | File to upload
-filename = 'filename_example' # str | Filenam to use for upload (optional)
+data = 'data_example' # str | 
+filename = 'filename_example' # str | 
 coluuid = 'coluuid_example' # str | Collection UUID (optional)
 replication = 56 # int | Replication value (optional)
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes true/false (optional)
@@ -170,7 +169,7 @@ dir = 'dir_example' # str | Directory (optional)
 
 try:
     # Add new content
-    api_response = api_instance.content_add_post(data, filename=filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_post: %s\n" % e)
@@ -180,8 +179,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **file**| File to upload | 
- **filename** | **str**| Filenam to use for upload | [optional] 
+ **data** | **str**|  | 
+ **filename** | **str**|  | 
  **coluuid** | **str**| Collection UUID | [optional] 
  **replication** | **int**| Replication value | [optional] 
  **ignore_dupes** | **str**| Ignore Dupes true/false | [optional] 
@@ -370,7 +369,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_create_post**
-> str content_create_post(req, ignore_dupes=ignore_dupes)
+> str content_create_post(body, ignore_dupes=ignore_dupes)
 
 Add a new content
 
@@ -392,12 +391,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-req = estuary_client.UtilContentCreateBody() # UtilContentCreateBody | Content
+body = estuary_client.UtilContentCreateBody() # UtilContentCreateBody | Content
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
     # Add a new content
-    api_response = api_instance.content_create_post(req, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_create_post(body, ignore_dupes=ignore_dupes)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_create_post: %s\n" % e)
@@ -407,7 +406,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
+ **body** | [**UtilContentCreateBody**](UtilContentCreateBody.md)| Content | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
 
 ### Return type
@@ -420,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -692,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -1,13 +1,12 @@
 # Swagger\Client\AutoretrieveApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminAutoretrieveInitPost**](AutoretrieveApi.md#adminAutoretrieveInitPost) | **POST** /admin/autoretrieve/init | Register autoretrieve server
-[**adminAutoretrieveListGet**](AutoretrieveApi.md#adminAutoretrieveListGet) | **GET** /admin/autoretrieve/list | List autoretrieve servers
-[**autoretrieveHeartbeatPost**](AutoretrieveApi.md#autoretrieveHeartbeatPost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
-
+[**adminAutoretrieveInitPost**](AutoretrieveApi.md#adminautoretrieveinitpost) | **POST** /admin/autoretrieve/init | Register autoretrieve server
+[**adminAutoretrieveListGet**](AutoretrieveApi.md#adminautoretrievelistget) | **GET** /admin/autoretrieve/list | List autoretrieve servers
+[**autoretrieveHeartbeatPost**](AutoretrieveApi.md#autoretrieveheartbeatpost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
 
 # **adminAutoretrieveInitPost**
 > string adminAutoretrieveInitPost($addresses, $pub_key)
@@ -20,7 +19,6 @@ This endpoint registers a new autoretrieve server
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -32,8 +30,8 @@ $apiInstance = new Swagger\Client\Api\AutoretrieveApi(
     new GuzzleHttp\Client(),
     $config
 );
-$addresses = "addresses_example"; // string | Autoretrieve's comma-separated list of addresses
-$pub_key = "pub_key_example"; // string | Autoretrieve's public key
+$addresses = "addresses_example"; // string | 
+$pub_key = "pub_key_example"; // string | 
 
 try {
     $result = $apiInstance->adminAutoretrieveInitPost($addresses, $pub_key);
@@ -48,8 +46,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addresses** | **string**| Autoretrieve&#39;s comma-separated list of addresses |
- **pub_key** | **string**| Autoretrieve&#39;s public key |
+ **addresses** | **string**|  |
+ **pub_key** | **string**|  |
 
 ### Return type
 
@@ -61,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -77,7 +75,6 @@ This endpoint lists all registered autoretrieve servers
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -128,7 +125,6 @@ This endpoint updates the lastConnection field for autoretrieve
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -155,7 +151,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string**| Autoretrieve&#39;s auth token |
+ **token** | **string**| Autoretrieve&#x27;s auth token |
 
 ### Return type
 

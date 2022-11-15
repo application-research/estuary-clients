@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +14,7 @@ import javax.validation.constraints.*;
  * UtilContentAddResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class UtilContentAddResponse   {
@@ -40,11 +39,10 @@ public class UtilContentAddResponse   {
   /**
    * Get cid
    * @return cid
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getCid() {
+   **/
+  @Schema(description = "")
+  
+    public String getCid() {
     return cid;
   }
 
@@ -60,11 +58,10 @@ public class UtilContentAddResponse   {
   /**
    * Get estuaryId
    * @return estuaryId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getEstuaryId() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getEstuaryId() {
     return estuaryId;
   }
 
@@ -88,11 +85,10 @@ public class UtilContentAddResponse   {
   /**
    * Get providers
    * @return providers
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public List<String> getProviders() {
+   **/
+  @Schema(description = "")
+  
+    public List<String> getProviders() {
     return providers;
   }
 
@@ -108,11 +104,10 @@ public class UtilContentAddResponse   {
   /**
    * Get retrievalUrl
    * @return retrievalUrl
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getRetrievalUrl() {
+   **/
+  @Schema(description = "")
+  
+    public String getRetrievalUrl() {
     return retrievalUrl;
   }
 
@@ -165,4 +160,3 @@ public class UtilContentAddResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

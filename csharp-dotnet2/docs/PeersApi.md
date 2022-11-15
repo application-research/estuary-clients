@@ -1,6 +1,6 @@
-# estuary-client.Api.PeersApi
+# IO.Swagger.Api.PeersApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,10 +11,9 @@ Method | HTTP request | Description
 [**AdminPeeringStatusGet**](PeersApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
 [**AdminPeeringStopPost**](PeersApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 
-
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**
-> string AdminPeeringPeersDelete (List<bool?> peerIds)
+> string AdminPeeringPeersDelete (List<bool?> body)
 
 Remove peers on Peering Service
 
@@ -24,9 +23,9 @@ This endpoint can be used to remove a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -34,19 +33,19 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PeersApi();
-            var peerIds = ;  // List<bool?> | Peer ids
+            var body = new List<bool?>(); // List<bool?> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                string result = apiInstance.AdminPeeringPeersDelete(peerIds);
+                string result = apiInstance.AdminPeeringPeersDelete(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -62,7 +61,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peerIds** | **List<bool?>**| Peer ids | 
+ **body** | [**List<bool?>**](bool?.md)| Peer ids | 
 
 ### Return type
 
@@ -74,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -91,9 +90,9 @@ This endpoint can be used to list all peers on Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -101,7 +100,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -154,9 +153,9 @@ This endpoint can be used to add a Peer from the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -164,7 +163,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -217,9 +216,9 @@ This endpoint can be used to start the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -227,7 +226,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -280,9 +279,9 @@ This endpoint can be used to check the Peering status
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -290,7 +289,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -343,9 +342,9 @@ This endpoint can be used to stop the Peering Service
 ```csharp
 using System;
 using System.Diagnostics;
-using estuary-client.Api;
+using IO.Swagger.Api;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
 namespace Example
 {
@@ -353,7 +352,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure API key authorization: bearerAuth
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

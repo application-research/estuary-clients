@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.ApiCallback;
@@ -56,8 +55,8 @@ public class AutoretrieveApi {
 
     /**
      * Build call for adminAutoretrieveInitPost
-     * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
-     * @param pubKey Autoretrieve&#39;s public key (required)
+     * @param addresses  (required)
+     * @param pubKey  (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -65,7 +64,7 @@ public class AutoretrieveApi {
      */
     public com.squareup.okhttp.Call adminAutoretrieveInitPostCall(String addresses, String pubKey, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/autoretrieve/init";
 
@@ -87,7 +86,7 @@ public class AutoretrieveApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -107,31 +106,32 @@ public class AutoretrieveApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminAutoretrieveInitPostValidateBeforeCall(String addresses, String pubKey, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'addresses' is set
         if (addresses == null) {
             throw new ApiException("Missing the required parameter 'addresses' when calling adminAutoretrieveInitPost(Async)");
         }
-        
         // verify the required parameter 'pubKey' is set
         if (pubKey == null) {
             throw new ApiException("Missing the required parameter 'pubKey' when calling adminAutoretrieveInitPost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = adminAutoretrieveInitPostCall(addresses, pubKey, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Register autoretrieve server
      * This endpoint registers a new autoretrieve server
-     * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
-     * @param pubKey Autoretrieve&#39;s public key (required)
+     * @param addresses  (required)
+     * @param pubKey  (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -143,8 +143,8 @@ public class AutoretrieveApi {
     /**
      * Register autoretrieve server
      * This endpoint registers a new autoretrieve server
-     * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
-     * @param pubKey Autoretrieve&#39;s public key (required)
+     * @param addresses  (required)
+     * @param pubKey  (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -157,8 +157,8 @@ public class AutoretrieveApi {
     /**
      * Register autoretrieve server (asynchronously)
      * This endpoint registers a new autoretrieve server
-     * @param addresses Autoretrieve&#39;s comma-separated list of addresses (required)
-     * @param pubKey Autoretrieve&#39;s public key (required)
+     * @param addresses  (required)
+     * @param pubKey  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -198,7 +198,7 @@ public class AutoretrieveApi {
      */
     public com.squareup.okhttp.Call adminAutoretrieveListGetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/admin/autoretrieve/list";
 
@@ -236,14 +236,17 @@ public class AutoretrieveApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call adminAutoretrieveListGetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-
         com.squareup.okhttp.Call call = adminAutoretrieveListGetCall(progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
@@ -304,7 +307,7 @@ public class AutoretrieveApi {
     }
     /**
      * Build call for autoretrieveHeartbeatPost
-     * @param token Autoretrieve&#39;s auth token (required)
+     * @param token Autoretrieve&#x27;s auth token (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -312,7 +315,7 @@ public class AutoretrieveApi {
      */
     public com.squareup.okhttp.Call autoretrieveHeartbeatPostCall(String token, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-
+        
         // create path and map variables
         String localVarPath = "/autoretrieve/heartbeat";
 
@@ -352,25 +355,27 @@ public class AutoretrieveApi {
         String[] localVarAuthNames = new String[] { "bearerAuth" };
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-
+    
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call autoretrieveHeartbeatPostValidateBeforeCall(String token, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
         // verify the required parameter 'token' is set
         if (token == null) {
             throw new ApiException("Missing the required parameter 'token' when calling autoretrieveHeartbeatPost(Async)");
         }
         
-
         com.squareup.okhttp.Call call = autoretrieveHeartbeatPostCall(token, progressListener, progressRequestListener);
         return call;
 
+        
+        
+        
+        
     }
 
     /**
      * Marks autoretrieve server as up
      * This endpoint updates the lastConnection field for autoretrieve
-     * @param token Autoretrieve&#39;s auth token (required)
+     * @param token Autoretrieve&#x27;s auth token (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -382,7 +387,7 @@ public class AutoretrieveApi {
     /**
      * Marks autoretrieve server as up
      * This endpoint updates the lastConnection field for autoretrieve
-     * @param token Autoretrieve&#39;s auth token (required)
+     * @param token Autoretrieve&#x27;s auth token (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -395,7 +400,7 @@ public class AutoretrieveApi {
     /**
      * Marks autoretrieve server as up (asynchronously)
      * This endpoint updates the lastConnection field for autoretrieve
-     * @param token Autoretrieve&#39;s auth token (required)
+     * @param token Autoretrieve&#x27;s auth token (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

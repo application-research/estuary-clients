@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import java.io.File;
-import java.io.InputStream;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
 import io.swagger.model.UtilContentAddResponse;
@@ -16,7 +15,14 @@ import javax.ws.rs.core.SecurityContext;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.io.InputStream;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
@@ -28,11 +34,10 @@ import javax.validation.constraints.*;
 @Path("/content")
 @RequestScoped
 
-@Api(description = "the content API")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-11T23:35:21.555Z")
 
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")
 public class ContentApi  {
 
   @Context SecurityContext securityContext;
@@ -42,31 +47,39 @@ public class ContentApi  {
 
     @POST
     @Path("/add-car")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add Car object", notes = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAddCarPost(@ApiParam(value = "Car" ,required=true) String body,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes,  @ApiParam(value = "Filename")  @QueryParam("filename") String filename) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAddCarPost(
+@Parameter(description = "Car" ,required=true) String body
+,  
+@Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
+,  
+@Parameter(description = "Filename")  @QueryParam("filename") String filename
+) {
         return delegate.contentAddCarPost(body, ignoreDupes, filename, securityContext);
     }
 
     @POST
     @Path("/add-ipfs")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add IPFS object", notes = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Add IPFS object", description = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAddIpfsPost(@ApiParam(value = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAddIpfsPost(
+@Parameter(description = "IPFS Body" ,required=true) UtilContentAddIpfsBody body
+,  
+@Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
+) {
         return delegate.contentAddIpfsPost(body, ignoreDupes, securityContext);
     }
 
@@ -74,14 +87,23 @@ public class ContentApi  {
     @Path("/add")
     @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add new content", notes = "This endpoint is used to upload new content.", response = UtilContentAddResponse.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = UtilContentAddResponse.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAddPost( @Multipart(value = "data") InputStream dataInputStream, @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename", required = false)  String filename,  @ApiParam(value = "Collection UUID")  @QueryParam("coluuid") String coluuid,  @ApiParam(value = "Replication value")  @QueryParam("replication") Integer replication,  @ApiParam(value = "Ignore Dupes true/false")  @QueryParam("ignore-dupes") String ignoreDupes,  @ApiParam(value = "Lazy Provide true/false")  @QueryParam("lazy-provide") String lazyProvide,  @ApiParam(value = "Directory")  @QueryParam("dir") String dir) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAddPost( @Multipart(value = "data") InputStream dataInputStream, @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename,  
+@Parameter(description = "Collection UUID")  @QueryParam("coluuid") String coluuid
+,  
+@Parameter(description = "Replication value")  @QueryParam("replication") Integer replication
+,  
+@Parameter(description = "Ignore Dupes true/false")  @QueryParam("ignore-dupes") String ignoreDupes
+,  
+@Parameter(description = "Lazy Provide true/false")  @QueryParam("lazy-provide") String lazyProvide
+,  
+@Parameter(description = "Directory")  @QueryParam("dir") String dir
+) {
         return delegate.contentAddPost(dataInputStream, dataDetail, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, securityContext);
     }
 
@@ -89,14 +111,15 @@ public class ContentApi  {
     @Path("/aggregated/{content}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get aggregated content stats", notes = "This endpoint returns aggregated content stats", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Get aggregated content stats", description = "This endpoint returns aggregated content stats", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAggregatedContentGet(@ApiParam(value = "Content ID",required=true) @PathParam("content") String content) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAggregatedContentGet(
+@Parameter(description = "Content ID",required=true) @PathParam("content") String content
+) {
         return delegate.contentAggregatedContentGet(content, securityContext);
     }
 
@@ -104,14 +127,19 @@ public class ContentApi  {
     @Path("/all-deals")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get all deals for a user", notes = "This endpoint is used to get all deals for a user", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Get all deals for a user", description = "This endpoint is used to get all deals for a user", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentAllDealsGet( @NotNull @ApiParam(value = "Begin",required=true)  @QueryParam("begin") String begin,  @NotNull @ApiParam(value = "Duration",required=true)  @QueryParam("duration") String duration,  @NotNull @ApiParam(value = "All",required=true)  @QueryParam("all") String all) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentAllDealsGet( @NotNull 
+@Parameter(description = "Begin",required=true)  @QueryParam("begin") String begin
+,  @NotNull 
+@Parameter(description = "Duration",required=true)  @QueryParam("duration") String duration
+,  @NotNull 
+@Parameter(description = "All",required=true)  @QueryParam("all") String all
+) {
         return delegate.contentAllDealsGet(begin, duration, all, securityContext);
     }
 
@@ -119,44 +147,51 @@ public class ContentApi  {
     @Path("/bw-usage/{content}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get content bandwidth", notes = "This endpoint returns content bandwidth", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Get content bandwidth", description = "This endpoint returns content bandwidth", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentBwUsageContentGet(@ApiParam(value = "Content ID",required=true) @PathParam("content") String content) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentBwUsageContentGet(
+@Parameter(description = "Content ID",required=true) @PathParam("content") String content
+) {
         return delegate.contentBwUsageContentGet(content, securityContext);
     }
 
     @POST
     @Path("/create")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add a new content", notes = "This endpoint adds a new content", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Add a new content", description = "This endpoint adds a new content", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentCreatePost(@ApiParam(value = "Content" ,required=true) UtilContentCreateBody req,  @ApiParam(value = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes) {
-        return delegate.contentCreatePost(req, ignoreDupes, securityContext);
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentCreatePost(
+@Parameter(description = "Content" ,required=true) UtilContentCreateBody body
+,  
+@Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
+) {
+        return delegate.contentCreatePost(body, ignoreDupes, securityContext);
     }
 
     @GET
     @Path("/deals")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Content with deals", notes = "This endpoint lists all content with deals", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Content with deals", description = "This endpoint lists all content with deals", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentDealsGet( @ApiParam(value = "Limit")  @QueryParam("limit") Integer limit,  @ApiParam(value = "Offset")  @QueryParam("offset") Integer offset) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentDealsGet( 
+@Parameter(description = "Limit")  @QueryParam("limit") Integer limit
+,  
+@Parameter(description = "Offset")  @QueryParam("offset") Integer offset
+) {
         return delegate.contentDealsGet(limit, offset, securityContext);
     }
 
@@ -164,14 +199,15 @@ public class ContentApi  {
     @Path("/ensure-replication/{datacid}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Ensure Replication", notes = "This endpoint ensures that the content is replicated to the specified number of providers", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Ensure Replication", description = "This endpoint ensures that the content is replicated to the specified number of providers", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentEnsureReplicationDatacidGet(@ApiParam(value = "Data CID",required=true) @PathParam("datacid") String datacid) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentEnsureReplicationDatacidGet(
+@Parameter(description = "Data CID",required=true) @PathParam("datacid") String datacid
+) {
         return delegate.contentEnsureReplicationDatacidGet(datacid, securityContext);
     }
 
@@ -179,14 +215,15 @@ public class ContentApi  {
     @Path("/failures/{content}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all failures for a content", notes = "This endpoint returns all failures for a content", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "List all failures for a content", description = "This endpoint returns all failures for a content", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentFailuresContentGet(@ApiParam(value = "Content ID",required=true) @PathParam("content") String content) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentFailuresContentGet(
+@Parameter(description = "Content ID",required=true) @PathParam("content") String content
+) {
         return delegate.contentFailuresContentGet(content, securityContext);
     }
 
@@ -194,29 +231,31 @@ public class ContentApi  {
     @Path("/{id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Content", notes = "This endpoint returns a content by its ID", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Content", description = "This endpoint returns a content by its ID", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentIdGet(@ApiParam(value = "Content ID",required=true) @PathParam("id") Integer id) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentIdGet(
+@Parameter(description = "Content ID",required=true) @PathParam("id") Integer id
+) {
         return delegate.contentIdGet(id, securityContext);
     }
 
     @POST
     @Path("/importdeal")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Import a deal", notes = "This endpoint imports a deal into the shuttle.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Import a deal", description = "This endpoint imports a deal into the shuttle.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentImportdealPost(@ApiParam(value = "Import a deal" ,required=true) MainImportDealBody body) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentImportdealPost(
+@Parameter(description = "Import a deal" ,required=true) MainImportDealBody body
+) {
         return delegate.contentImportdealPost(body, securityContext);
     }
 
@@ -224,13 +263,12 @@ public class ContentApi  {
     @Path("/list")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all pinned content", notes = "This endpoint lists all content", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "List all pinned content", description = "This endpoint lists all content", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentListGet() {
         return delegate.contentListGet(securityContext);
     }
@@ -239,14 +277,15 @@ public class ContentApi  {
     @Path("/read/{cont}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Read content", notes = "This endpoint reads content from the blockstore", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Read content", description = "This endpoint reads content from the blockstore", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentReadContGet(@ApiParam(value = "CID",required=true) @PathParam("cont") String cont) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentReadContGet(
+@Parameter(description = "CID",required=true) @PathParam("cont") String cont
+) {
         return delegate.contentReadContGet(cont, securityContext);
     }
 
@@ -254,13 +293,12 @@ public class ContentApi  {
     @Path("/staging-zones")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get staging zone for user", notes = "This endpoint is used to get staging zone for user.", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Get staging zone for user", description = "This endpoint is used to get staging zone for user.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentStagingZonesGet() {
         return delegate.contentStagingZonesGet(securityContext);
     }
@@ -269,14 +307,17 @@ public class ContentApi  {
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get content statistics", notes = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content",  })
+    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentStatsGet( @NotNull @ApiParam(value = "limit",required=true)  @QueryParam("limit") String limit,  @NotNull @ApiParam(value = "offset",required=true)  @QueryParam("offset") String offset) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentStatsGet( @NotNull 
+@Parameter(description = "limit",required=true)  @QueryParam("limit") String limit
+,  @NotNull 
+@Parameter(description = "offset",required=true)  @QueryParam("offset") String offset
+) {
         return delegate.contentStatsGet(limit, offset, securityContext);
     }
 
@@ -284,14 +325,15 @@ public class ContentApi  {
     @Path("/status/{id}")
     
     @Produces({ "application/json" })
-    @ApiOperation(value = "Content Status", notes = "This endpoint returns the status of a content", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "content" })
+    @Operation(summary = "Content Status", description = "This endpoint returns the status of a content", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public Response contentStatusIdGet(@ApiParam(value = "Content ID",required=true) @PathParam("id") Integer id) {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentStatusIdGet(
+@Parameter(description = "Content ID",required=true) @PathParam("id") Integer id
+) {
         return delegate.contentStatusIdGet(id, securityContext);
     }
 }

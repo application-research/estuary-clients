@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -17,7 +17,7 @@ namespace estuary-client.Api
         /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
         List<List<MainGetApiKeysResp>> UserApiKeysGet ();
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
         /// <param name="keyOrHash">Key or Hash</param>
         /// <returns>string</returns>
@@ -97,10 +97,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>            
+        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
         public List<List<MainGetApiKeysResp>> UserApiKeysGet ()
         {
-            
     
             var path = "/user/api-keys";
             path = path.Replace("{format}", "json");
@@ -111,7 +110,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -127,16 +126,14 @@ namespace estuary-client.Api
         }
     
         /// <summary>
-        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#39;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
+        /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
-        /// <param name="keyOrHash">Key or Hash</param> 
-        /// <returns>string</returns>            
+        /// <param name="keyOrHash">Key or Hash</param>
+        /// <returns>string</returns>
         public string UserApiKeysKeyOrHashDelete (string keyOrHash)
         {
-            
             // verify the required parameter 'keyOrHash' is set
             if (keyOrHash == null) throw new ApiException(400, "Missing required parameter 'keyOrHash' when calling UserApiKeysKeyOrHashDelete");
-            
     
             var path = "/user/api-keys/{key_or_hash}";
             path = path.Replace("{format}", "json");
@@ -148,7 +145,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -166,12 +163,11 @@ namespace estuary-client.Api
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
         /// </summary>
-        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param> 
-        /// <param name="perms">Permissions - - currently unused</param> 
-        /// <returns>MainGetApiKeysResp</returns>            
+        /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param>
+        /// <param name="perms">Permissions - - currently unused</param>
+        /// <returns>MainGetApiKeysResp</returns>
         public MainGetApiKeysResp UserApiKeysPost (string expiry, string perms)
         {
-            
     
             var path = "/user/api-keys";
             path = path.Replace("{format}", "json");
@@ -184,7 +180,7 @@ namespace estuary-client.Api
     
              if (expiry != null) queryParams.Add("expiry", ApiClient.ParameterToString(expiry)); // query parameter
  if (perms != null) queryParams.Add("perms", ApiClient.ParameterToString(perms)); // query parameter
-                                        
+                        
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -202,10 +198,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Export user data This endpoint is used to get API keys for a user.
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string UserExportGet ()
         {
-            
     
             var path = "/user/export";
             path = path.Replace("{format}", "json");
@@ -216,7 +211,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -234,10 +229,9 @@ namespace estuary-client.Api
         /// <summary>
         /// Create API keys for a user This endpoint is used to create API keys for a user.
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string UserStatsGet ()
         {
-            
     
             var path = "/user/stats";
             path = path.Replace("{format}", "json");
@@ -248,7 +242,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

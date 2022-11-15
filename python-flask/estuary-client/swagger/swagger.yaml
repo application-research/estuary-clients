@@ -1,2380 +1,2877 @@
----
-swagger: "2.0"
+openapi: 3.0.1
 info:
-  description: "This is the API for the Estuary application."
-  version: "0.0.0"
-  title: "Estuary API"
-  termsOfService: "http://estuary.tech"
+  title: Estuary API
+  description: This is the API for the Estuary application.
+  termsOfService: http://estuary.tech
   contact:
-    name: "API Support"
-    url: "https://docs.estuary.tech/feedback"
+    name: API Support
+    url: https://docs.estuary.tech/feedback
   license:
-    name: "Apache 2.0 Apache-2.0 OR MIT"
-    url: "https://github.com/application-research/estuary/blob/master/LICENSE.md"
-host: "api.estuary.tech"
-basePath: "/"
+    name: Apache 2.0 Apache-2.0 OR MIT
+    url: https://github.com/application-research/estuary/blob/master/LICENSE.md
+  version: 0.0.0
+servers:
+- url: //api.estuary.tech/
 security:
 - bearerAuth: []
 paths:
   /admin/autoretrieve/init:
     post:
       tags:
-      - "autoretrieve"
-      summary: "Register autoretrieve server"
-      description: "This endpoint registers a new autoretrieve server"
-      operationId: "admin_autoretrieve_init_post"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "addresses"
-        in: "formData"
-        description: "Autoretrieve's comma-separated list of addresses"
+      - autoretrieve
+      summary: Register autoretrieve server
+      description: This endpoint registers a new autoretrieve server
+      operationId: admin_autoretrieve_init_post
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/autoretrieve_init_body'
         required: true
-        type: "string"
-      - name: "pubKey"
-        in: "formData"
-        description: "Autoretrieve's public key"
-        required: true
-        type: "string"
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.autoretrieve_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.autoretrieve_controller
   /admin/autoretrieve/list:
     get:
       tags:
-      - "autoretrieve"
-      summary: "List autoretrieve servers"
-      description: "This endpoint lists all registered autoretrieve servers"
-      operationId: "admin_autoretrieve_list_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - autoretrieve
+      summary: List autoretrieve servers
+      description: This endpoint lists all registered autoretrieve servers
+      operationId: admin_autoretrieve_list_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.autoretrieve_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.autoretrieve_controller
   /admin/peering/peers:
     get:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "List all Peering peers"
-      description: "This endpoint can be used to list all peers on Peering Service"
-      operationId: "admin_peering_peers_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      - peering
+      - peers
+      summary: List all Peering peers
+      description: This endpoint can be used to list all peers on Peering Service
+      operationId: admin_peering_peers_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
     post:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "Add peers on Peering Service"
-      description: "This endpoint can be used to add a Peer from the Peering Service"
-      operationId: "admin_peering_peers_post"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      - peering
+      - peers
+      summary: Add peers on Peering Service
+      description: This endpoint can be used to add a Peer from the Peering Service
+      operationId: admin_peering_peers_post
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
     delete:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "Remove peers on Peering Service"
-      description: "This endpoint can be used to remove a Peer from the Peering Service"
-      operationId: "admin_peering_peers_delete"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "peerIds"
-        description: "Peer ids"
+      - admin
+      - peering
+      - peers
+      summary: Remove peers on Peering Service
+      description: This endpoint can be used to remove a Peer from the Peering Service
+      operationId: admin_peering_peers_delete
+      requestBody:
+        description: Peer ids
+        content:
+          '*/*':
+            schema:
+              type: array
+              items:
+                type: boolean
         required: true
-        schema:
-          type: "array"
-          items:
-            type: "boolean"
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: peerIds
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /admin/peering/start:
     post:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "Start Peering"
-      description: "This endpoint can be used to start the Peering Service"
-      operationId: "admin_peering_start_post"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      - peering
+      - peers
+      summary: Start Peering
+      description: This endpoint can be used to start the Peering Service
+      operationId: admin_peering_start_post
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /admin/peering/status:
     get:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "Check Peering Status"
-      description: "This endpoint can be used to check the Peering status"
-      operationId: "admin_peering_status_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      - peering
+      - peers
+      summary: Check Peering Status
+      description: This endpoint can be used to check the Peering status
+      operationId: admin_peering_status_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /admin/peering/stop:
     post:
       tags:
-      - "admin"
-      - "peering"
-      - "peers"
-      summary: "Stop Peering"
-      description: "This endpoint can be used to stop the Peering Service"
-      operationId: "admin_peering_stop_post"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      - peering
+      - peers
+      summary: Stop Peering
+      description: This endpoint can be used to stop the Peering Service
+      operationId: admin_peering_stop_post
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /admin/system/config:
     get:
       tags:
-      - "admin"
-      summary: "Get systems(estuary/shuttle) config"
-      description: "This endpoint is used to get system configs."
-      operationId: "admin_system_config_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      summary: Get systems(estuary/shuttle) config
+      description: This endpoint is used to get system configs.
+      operationId: admin_system_config_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /admin/users:
     get:
       tags:
-      - "admin"
-      summary: "Get all users"
-      description: "This endpoint is used to get all users."
-      operationId: "admin_users_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - admin
+      summary: Get all users
+      description: This endpoint is used to get all users.
+      operationId: admin_users_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.admin_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.admin_controller
   /autoretrieve/heartbeat:
     post:
       tags:
-      - "autoretrieve"
-      summary: "Marks autoretrieve server as up"
-      description: "This endpoint updates the lastConnection field for autoretrieve"
-      operationId: "autoretrieve_heartbeat_post"
-      produces:
-      - "application/json"
+      - autoretrieve
+      summary: Marks autoretrieve server as up
+      description: This endpoint updates the lastConnection field for autoretrieve
+      operationId: autoretrieve_heartbeat_post
       parameters:
-      - name: "token"
-        in: "header"
-        description: "Autoretrieve's auth token"
+      - name: token
+        in: header
+        description: Autoretrieve's auth token
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.autoretrieve_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.autoretrieve_controller
   /collections/:
     get:
       tags:
-      - "collections"
-      summary: "List all collections"
+      - collections
+      summary: List all collections
       description: "This endpoint is used to list all collections. Whenever a user\
         \ logs on estuary, it will list all collections that the user has access to.\
         \ This endpoint provides a way to list all collections to the user."
-      operationId: "collections_get"
-      produces:
-      - "application/json"
-      parameters: []
+      operationId: collections_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              type: "array"
-              items:
-                $ref: "#/definitions/collections.Collection"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/collections.Collection'
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
     post:
       tags:
-      - "collections"
-      summary: "Create a new collection"
-      description: "This endpoint is used to create a new collection. A collection\
-        \ is a representaion of a group of objects added on the estuary. This endpoint\
-        \ can be used to create a new collection."
-      operationId: "collections_post"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Collection name and description"
+      - collections
+      summary: Create a new collection
+      description: This endpoint is used to create a new collection. A collection
+        is a representaion of a group of objects added on the estuary. This endpoint
+        can be used to create a new collection.
+      operationId: collections_post
+      requestBody:
+        description: Collection name and description
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/main.createCollectionBody'
         required: true
-        schema:
-          $ref: "#/definitions/main.createCollectionBody"
       responses:
         "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/collections.Collection"
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/collections.Collection'
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
   /collections/fs/add:
     post:
       tags:
-      - "collections"
-      summary: "Add a file to a collection"
-      description: "This endpoint adds a file to a collection"
-      operationId: "collections_fs_add_post"
-      produces:
-      - "application/json"
+      - collections
+      summary: Add a file to a collection
+      description: This endpoint adds a file to a collection
+      operationId: collections_fs_add_post
       parameters:
-      - name: "coluuid"
-        in: "query"
-        description: "Collection ID"
+      - name: coluuid
+        in: query
+        description: Collection ID
         required: true
-        type: "string"
-      - name: "content"
-        in: "query"
-        description: "Content"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: content
+        in: query
+        description: Content
         required: true
-        type: "string"
-      - name: "path"
-        in: "query"
-        description: "Path to file"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: path
+        in: query
+        description: Path to file
         required: true
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
   /collections/{coluuid}:
     get:
       tags:
-      - "collections"
-      summary: "Get contents in a collection"
-      description: "This endpoint is used to get contents in a collection. If no colpath\
-        \ query param is passed"
-      operationId: "collections_coluuid_get"
-      produces:
-      - "application/json"
+      - collections
+      summary: Get contents in a collection
+      description: This endpoint is used to get contents in a collection. If no colpath
+        query param is passed
+      operationId: collections_coluuid_get
       parameters:
-      - name: "coluuid"
-        in: "path"
-        description: "coluuid"
+      - name: coluuid
+        in: path
+        description: coluuid
         required: true
-        type: "string"
-      - name: "dir"
-        in: "query"
-        description: "Directory"
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: dir
+        in: query
+        description: Directory
         required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
     post:
       tags:
-      - "collections"
-      summary: "Add contents to a collection"
-      description: "This endpoint adds already-pinned contents (that have ContentIDs)\
-        \ to a collection."
-      operationId: "collections_coluuid_post"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
+      - collections
+      summary: Add contents to a collection
+      description: This endpoint adds already-pinned contents (that have ContentIDs)
+        to a collection.
+      operationId: collections_coluuid_post
       parameters:
-      - name: "coluuid"
-        in: "path"
-        description: "coluuid"
+      - name: coluuid
+        in: path
+        description: Collection UUID
         required: true
-        type: "string"
-      - in: "body"
-        name: "contentIDs"
-        description: "Content IDs to add to collection"
-        required: true
+        style: simple
+        explode: false
         schema:
-          type: "array"
-          items:
-            type: "integer"
+          type: string
+      requestBody:
+        description: Content IDs to add to collection
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: contentIDs
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
     delete:
       tags:
-      - "collections"
-      summary: "Deletes a collection"
-      description: "This endpoint is used to delete an existing collection."
-      operationId: "collections_coluuid_delete"
+      - collections
+      summary: Deletes a collection
+      description: This endpoint is used to delete an existing collection.
+      operationId: collections_coluuid_delete
       parameters:
-      - name: "coluuid"
-        in: "path"
-        description: "Collection ID"
+      - name: coluuid
+        in: path
+        description: Collection ID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                x-content-type: '*/*'
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
   /collections/{coluuid}/commit:
     post:
       tags:
-      - "collections"
-      summary: "Produce a CID of the collection contents"
+      - collections
+      summary: Produce a CID of the collection contents
       description: "This endpoint is used to save the contents in a collection, producing\
         \ a top-level CID that references all the current CIDs in the collection."
-      operationId: "collections_coluuid_commit_post"
-      produces:
-      - "application/json"
+      operationId: collections_coluuid_commit_post
       parameters:
-      - name: "coluuid"
-        in: "path"
-        description: "coluuid"
+      - name: coluuid
+        in: path
+        description: coluuid
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
   /collections/{coluuid}/contents:
     delete:
       tags:
-      - "collections"
-      summary: "Deletes a content from a collection"
+      - collections
+      summary: Deletes a content from a collection
       description: "This endpoint is used to delete an existing content from an existing\
         \ collection. If two or more files with the same contentid exist in the collection,\
         \ delete the one in the specified path"
-      operationId: "collections_coluuid_contents_delete"
-      produces:
-      - "application/json"
+      operationId: collections_coluuid_contents_delete
       parameters:
-      - name: "coluuid"
-        in: "path"
-        description: "Collection ID"
+      - name: coluuid
+        in: path
+        description: Collection ID
         required: true
-        type: "string"
-      - name: "contentid"
-        in: "path"
-        description: "Content ID"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Variable to use when filtering for files (must be either 'path'\
-          \ or 'content_id')"
-        required: true
+        style: simple
+        explode: false
         schema:
-          $ref: "#/definitions/main.deleteContentFromCollectionBody"
+          type: string
+      - name: contentid
+        in: path
+        description: Content ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Variable to use when filtering for files (must be either 'path'
+          or 'content_id')
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/main.deleteContentFromCollectionBody'
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.collections_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.collections_controller
   /content/add:
     post:
       tags:
-      - "content"
-      summary: "Add new content"
-      description: "This endpoint is used to upload new content."
-      operationId: "content_add_post"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
+      - content
+      summary: Add new content
+      description: This endpoint is used to upload new content.
+      operationId: content_add_post
       parameters:
-      - name: "data"
-        in: "formData"
-        description: "File to upload"
+      - name: coluuid
+        in: query
+        description: Collection UUID
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: replication
+        in: query
+        description: Replication value
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: ignore_dupes
+        in: query
+        description: Ignore Dupes true/false
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: lazy_provide
+        in: query
+        description: Lazy Provide true/false
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: dir
+        in: query
+        description: Directory
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/content_add_body'
         required: true
-        type: "file"
-      - name: "filename"
-        in: "formData"
-        description: "Filenam to use for upload"
-        required: false
-        type: "string"
-      - name: "coluuid"
-        in: "query"
-        description: "Collection UUID"
-        required: false
-        type: "string"
-      - name: "replication"
-        in: "query"
-        description: "Replication value"
-        required: false
-        type: "integer"
-      - name: "ignore_dupes"
-        in: "query"
-        description: "Ignore Dupes true/false"
-        required: false
-        type: "string"
-      - name: "lazy_provide"
-        in: "query"
-        description: "Lazy Provide true/false"
-        required: false
-        type: "string"
-      - name: "dir"
-        in: "query"
-        description: "Directory"
-        required: false
-        type: "string"
       responses:
         "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/util.ContentAddResponse"
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.ContentAddResponse'
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/add-car:
     post:
       tags:
-      - "content"
-      summary: "Add Car object"
-      description: "This endpoint is used to add a car object to the network. The\
-        \ object can be a file or a directory."
-      operationId: "content_add_car_post"
-      produces:
-      - "application/json"
+      - content
+      summary: Add Car object
+      description: This endpoint is used to add a car object to the network. The object
+        can be a file or a directory.
+      operationId: content_add_car_post
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Car"
-        required: true
+      - name: ignore_dupes
+        in: query
+        description: Ignore Dupes
+        required: false
+        style: form
+        explode: true
         schema:
-          type: "string"
-      - name: "ignore_dupes"
-        in: "query"
-        description: "Ignore Dupes"
+          type: string
+      - name: filename
+        in: query
+        description: Filename
         required: false
-        type: "string"
-      - name: "filename"
-        in: "query"
-        description: "Filename"
-        required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        description: Car
+        content:
+          '*/*':
+            schema:
+              type: string
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/add-ipfs:
     post:
       tags:
-      - "content"
-      summary: "Add IPFS object"
-      description: "This endpoint is used to add an IPFS object to the network. The\
-        \ object can be a file or a directory."
-      operationId: "content_add_ipfs_post"
-      produces:
-      - "application/json"
+      - content
+      summary: Add IPFS object
+      description: This endpoint is used to add an IPFS object to the network. The
+        object can be a file or a directory.
+      operationId: content_add_ipfs_post
       parameters:
-      - in: "body"
-        name: "body"
-        description: "IPFS Body"
-        required: true
-        schema:
-          $ref: "#/definitions/util.ContentAddIpfsBody"
-      - name: "ignore_dupes"
-        in: "query"
-        description: "Ignore Dupes"
+      - name: ignore_dupes
+        in: query
+        description: Ignore Dupes
         required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        description: IPFS Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/util.ContentAddIpfsBody'
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/aggregated/{content}:
     get:
       tags:
-      - "content"
-      summary: "Get aggregated content stats"
-      description: "This endpoint returns aggregated content stats"
-      operationId: "content_aggregated_content_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Get aggregated content stats
+      description: This endpoint returns aggregated content stats
+      operationId: content_aggregated_content_get
       parameters:
-      - name: "content"
-        in: "path"
-        description: "Content ID"
+      - name: content
+        in: path
+        description: Content ID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/all-deals:
     get:
       tags:
-      - "content"
-      summary: "Get all deals for a user"
-      description: "This endpoint is used to get all deals for a user"
-      operationId: "content_all_deals_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Get all deals for a user
+      description: This endpoint is used to get all deals for a user
+      operationId: content_all_deals_get
       parameters:
-      - name: "begin"
-        in: "query"
-        description: "Begin"
+      - name: begin
+        in: query
+        description: Begin
         required: true
-        type: "string"
-      - name: "duration"
-        in: "query"
-        description: "Duration"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: duration
+        in: query
+        description: Duration
         required: true
-        type: "string"
-      - name: "all"
-        in: "query"
-        description: "All"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: all
+        in: query
+        description: All
         required: true
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/bw-usage/{content}:
     get:
       tags:
-      - "content"
-      summary: "Get content bandwidth"
-      description: "This endpoint returns content bandwidth"
-      operationId: "content_bw_usage_content_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Get content bandwidth
+      description: This endpoint returns content bandwidth
+      operationId: content_bw_usage_content_get
       parameters:
-      - name: "content"
-        in: "path"
-        description: "Content ID"
+      - name: content
+        in: path
+        description: Content ID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/create:
     post:
       tags:
-      - "content"
-      summary: "Add a new content"
-      description: "This endpoint adds a new content"
-      operationId: "content_create_post"
-      produces:
-      - "application/json"
+      - content
+      summary: Add a new content
+      description: This endpoint adds a new content
+      operationId: content_create_post
       parameters:
-      - in: "body"
-        name: "req"
-        description: "Content"
-        required: true
-        schema:
-          $ref: "#/definitions/util.ContentCreateBody"
-      - name: "ignore_dupes"
-        in: "query"
-        description: "Ignore Dupes"
+      - name: ignore_dupes
+        in: query
+        description: Ignore Dupes
         required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        description: Content
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/util.ContentCreateBody'
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/deals:
     get:
       tags:
-      - "content"
-      summary: "Content with deals"
-      description: "This endpoint lists all content with deals"
-      operationId: "content_deals_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Content with deals
+      description: This endpoint lists all content with deals
+      operationId: content_deals_get
       parameters:
-      - name: "limit"
-        in: "query"
-        description: "Limit"
+      - name: limit
+        in: query
+        description: Limit
         required: false
-        type: "integer"
-      - name: "offset"
-        in: "query"
-        description: "Offset"
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        description: Offset
         required: false
-        type: "integer"
+        style: form
+        explode: true
+        schema:
+          type: integer
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/ensure-replication/{datacid}:
     get:
       tags:
-      - "content"
-      summary: "Ensure Replication"
-      description: "This endpoint ensures that the content is replicated to the specified\
-        \ number of providers"
-      operationId: "content_ensure_replication_datacid_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Ensure Replication
+      description: This endpoint ensures that the content is replicated to the specified
+        number of providers
+      operationId: content_ensure_replication_datacid_get
       parameters:
-      - name: "datacid"
-        in: "path"
-        description: "Data CID"
+      - name: datacid
+        in: path
+        description: Data CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/failures/{content}:
     get:
       tags:
-      - "content"
-      summary: "List all failures for a content"
-      description: "This endpoint returns all failures for a content"
-      operationId: "content_failures_content_get"
-      produces:
-      - "application/json"
+      - content
+      summary: List all failures for a content
+      description: This endpoint returns all failures for a content
+      operationId: content_failures_content_get
       parameters:
-      - name: "content"
-        in: "path"
-        description: "Content ID"
+      - name: content
+        in: path
+        description: Content ID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/importdeal:
     post:
       tags:
-      - "content"
-      summary: "Import a deal"
-      description: "This endpoint imports a deal into the shuttle."
-      operationId: "content_importdeal_post"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Import a deal"
+      - content
+      summary: Import a deal
+      description: This endpoint imports a deal into the shuttle.
+      operationId: content_importdeal_post
+      requestBody:
+        description: Import a deal
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/main.importDealBody'
         required: true
-        schema:
-          $ref: "#/definitions/main.importDealBody"
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/list:
     get:
       tags:
-      - "content"
-      summary: "List all pinned content"
-      description: "This endpoint lists all content"
-      operationId: "content_list_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - content
+      summary: List all pinned content
+      description: This endpoint lists all content
+      operationId: content_list_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/read/{cont}:
     get:
       tags:
-      - "content"
-      summary: "Read content"
-      description: "This endpoint reads content from the blockstore"
-      operationId: "content_read_cont_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Read content
+      description: This endpoint reads content from the blockstore
+      operationId: content_read_cont_get
       parameters:
-      - name: "cont"
-        in: "path"
-        description: "CID"
+      - name: cont
+        in: path
+        description: CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/staging-zones:
     get:
       tags:
-      - "content"
-      summary: "Get staging zone for user"
-      description: "This endpoint is used to get staging zone for user."
-      operationId: "content_staging_zones_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - content
+      summary: Get staging zone for user
+      description: This endpoint is used to get staging zone for user.
+      operationId: content_staging_zones_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/stats:
     get:
       tags:
-      - "content"
-      summary: "Get content statistics"
-      description: "This endpoint is used to get content statistics. Every content\
-        \ stored in the network (estuary) is tracked by a unique ID which can be used\
-        \ to get information about the content. This endpoint will allow the consumer\
-        \ to get the collected stats of a conten"
-      operationId: "content_stats_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Get content statistics
+      description: This endpoint is used to get content statistics. Every content
+        stored in the network (estuary) is tracked by a unique ID which can be used
+        to get information about the content. This endpoint will allow the consumer
+        to get the collected stats of a conten
+      operationId: content_stats_get
       parameters:
-      - name: "limit"
-        in: "query"
-        description: "limit"
+      - name: limit
+        in: query
+        description: limit
         required: true
-        type: "string"
-      - name: "offset"
-        in: "query"
-        description: "offset"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: offset
         required: true
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/status/{id}:
     get:
       tags:
-      - "content"
-      summary: "Content Status"
-      description: "This endpoint returns the status of a content"
-      operationId: "content_status_id_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Content Status
+      description: This endpoint returns the status of a content
+      operationId: content_status_id_get
       parameters:
-      - name: "id"
-        in: "path"
-        description: "Content ID"
+      - name: id
+        in: path
+        description: Content ID
         required: true
-        type: "integer"
+        style: simple
+        explode: false
+        schema:
+          type: integer
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/{id}:
     get:
       tags:
-      - "content"
-      summary: "Content"
-      description: "This endpoint returns a content by its ID"
-      operationId: "content_id_get"
-      produces:
-      - "application/json"
+      - content
+      summary: Content
+      description: This endpoint returns a content by its ID
+      operationId: content_id_get
       parameters:
-      - name: "id"
-        in: "path"
-        description: "Content ID"
+      - name: id
+        in: path
+        description: Content ID
         required: true
-        type: "integer"
+        style: simple
+        explode: false
+        schema:
+          type: integer
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.content_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.content_controller
   /deal/estimate:
     post:
       tags:
-      - "deals"
-      summary: "Estimate the cost of a deal"
-      description: "This endpoint estimates the cost of a deal"
-      operationId: "deal_estimate_post"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
+      - deals
+      summary: Estimate the cost of a deal
+      description: This endpoint estimates the cost of a deal
+      operationId: deal_estimate_post
+      requestBody:
         description: "The size of the deal in bytes, the replication factor, and the\
           \ duration of the deal in blocks"
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/main.estimateDealBody'
         required: true
-        schema:
-          $ref: "#/definitions/main.estimateDealBody"
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/info/{dealid}:
     get:
       tags:
-      - "deals"
-      summary: "Get Deal Info"
-      description: "This endpoint returns the deal info for a deal"
-      operationId: "deal_info_dealid_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Get Deal Info
+      description: This endpoint returns the deal info for a deal
+      operationId: deal_info_dealid_get
       parameters:
-      - name: "dealid"
-        in: "path"
-        description: "Deal ID"
+      - name: dealid
+        in: path
+        description: Deal ID
         required: true
-        type: "integer"
+        style: simple
+        explode: false
+        schema:
+          type: integer
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/proposal/{propcid}:
     get:
       tags:
-      - "deals"
-      summary: "Get Proposal"
-      description: "This endpoint returns the proposal for a deal"
-      operationId: "deal_proposal_propcid_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Get Proposal
+      description: This endpoint returns the proposal for a deal
+      operationId: deal_proposal_propcid_get
       parameters:
-      - name: "propcid"
-        in: "path"
-        description: "Proposal CID"
+      - name: propcid
+        in: path
+        description: Proposal CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/query/{miner}:
     get:
       tags:
-      - "deals"
-      summary: "Query Ask"
-      description: "This endpoint returns the ask for a given CID"
-      operationId: "deal_query_miner_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Query Ask
+      description: This endpoint returns the ask for a given CID
+      operationId: deal_query_miner_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "CID"
+      - name: miner
+        in: path
+        description: CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/status-by-proposal/{propcid}:
     get:
       tags:
-      - "deals"
-      summary: "Get Deal Status by PropCid"
-      description: "Get Deal Status by PropCid"
-      operationId: "deal_status_by_proposal_propcid_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Get Deal Status by PropCid
+      description: Get Deal Status by PropCid
+      operationId: deal_status_by_proposal_propcid_get
       parameters:
-      - name: "propcid"
-        in: "path"
-        description: "PropCid"
+      - name: propcid
+        in: path
+        description: PropCid
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/status/{miner}/{propcid}:
     get:
       tags:
-      - "deals"
-      summary: "Deal Status"
-      description: "This endpoint returns the status of a deal"
-      operationId: "deal_status_miner_propcid_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Deal Status
+      description: This endpoint returns the status of a deal
+      operationId: deal_status_miner_propcid_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "Miner"
+      - name: miner
+        in: path
+        description: Miner
         required: true
-        type: "string"
-      - name: "propcid"
-        in: "path"
-        description: "Proposal CID"
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: propcid
+        in: path
+        description: Proposal CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/transfer/in-progress:
     get:
       tags:
-      - "deals"
-      summary: "Transfer In Progress"
-      description: "This endpoint returns the in-progress transfers"
-      operationId: "deal_transfer_in_progress_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - deals
+      summary: Transfer In Progress
+      description: This endpoint returns the in-progress transfers
+      operationId: deal_transfer_in_progress_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deal/transfer/status:
     post:
       tags:
-      - "deals"
-      summary: "Transfer Status"
-      description: "This endpoint returns the status of a transfer"
-      operationId: "deal_transfer_status_post"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "chanid"
-        description: "Channel ID"
+      - deals
+      summary: Transfer Status
+      description: This endpoint returns the status of a transfer
+      operationId: deal_transfer_status_post
+      requestBody:
+        description: Channel ID
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/main.ChannelIDParam'
         required: true
-        schema:
-          $ref: "#/definitions/main.ChannelIDParam"
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: chanid
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deals/failures:
     get:
       tags:
-      - "deals"
-      summary: "Get storage failures for user"
-      description: "This endpoint returns a list of storage failures for user"
-      operationId: "deals_failures_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - deals
+      summary: Get storage failures for user
+      description: This endpoint returns a list of storage failures for user
+      operationId: deals_failures_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deals/make/{miner}:
     post:
       tags:
-      - "deals"
-      summary: "Make Deal"
-      description: "This endpoint makes a deal for a given content and miner"
-      operationId: "deals_make_miner_post"
-      produces:
-      - "application/json"
+      - deals
+      summary: Make Deal
+      description: This endpoint makes a deal for a given content and miner
+      operationId: deals_make_miner_post
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "Miner"
+      - name: miner
+        in: path
+        description: Miner
         required: true
-        type: "string"
-      - in: "body"
-        name: "dealRequest"
-        description: "Deal Request"
-        required: true
+        style: simple
+        explode: false
         schema:
-          type: "string"
+          type: string
+      requestBody:
+        description: Deal Request
+        content:
+          '*/*':
+            schema:
+              type: string
+        required: true
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: dealRequest
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /deals/status/{deal}:
     get:
       tags:
-      - "deals"
-      summary: "Get Deal Status"
-      description: "This endpoint returns the status of a deal"
-      operationId: "deals_status_deal_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Get Deal Status
+      description: This endpoint returns the status of a deal
+      operationId: deals_status_deal_get
       parameters:
-      - name: "deal"
-        in: "path"
-        description: "Deal ID"
+      - name: deal
+        in: path
+        description: Deal ID
         required: true
-        type: "integer"
+        style: simple
+        explode: false
+        schema:
+          type: integer
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /net/addrs:
     get:
       tags:
-      - "net"
-      summary: "Net Addrs"
-      description: "This endpoint is used to get net addrs"
-      operationId: "net_addrs_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - net
+      summary: Net Addrs
+      description: This endpoint is used to get net addrs
+      operationId: net_addrs_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.net_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.net_controller
   /pinning/pins:
     get:
       tags:
-      - "pinning"
-      summary: "List all pin status objects"
-      description: "This endpoint lists all pin status objects"
-      operationId: "pinning_pins_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - pinning
+      summary: List all pin status objects
+      description: This endpoint lists all pin status objects
+      operationId: pinning_pins_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/types.IpfsListPinStatusResponse"
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/types.IpfsListPinStatusResponse'
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.pinning_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.pinning_controller
     post:
       tags:
-      - "pinning"
-      summary: "Add and pin object"
-      description: "This endpoint adds a pin to the IPFS daemon."
-      operationId: "pinning_pins_post"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "pin"
+      - pinning
+      summary: Add and pin object
+      description: This endpoint adds a pin to the IPFS daemon.
+      operationId: pinning_pins_post
+      requestBody:
         description: "Pin Body {cid:cid, name:name}"
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/types.IpfsPin'
         required: true
-        schema:
-          $ref: "#/definitions/types.IpfsPin"
       responses:
         "202":
-          description: "Accepted"
-          schema:
-            $ref: "#/definitions/types.IpfsPinStatusResponse"
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.pinning_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: pin
+      x-openapi-router-controller: estuary-client.controllers.pinning_controller
   /pinning/pins/{pinid}:
     get:
       tags:
-      - "pinning"
-      summary: "Get a pin status object"
-      description: "This endpoint returns a pin status object."
-      operationId: "pinning_pins_pinid_get"
-      produces:
-      - "application/json"
+      - pinning
+      summary: Get a pin status object
+      description: This endpoint returns a pin status object.
+      operationId: pinning_pins_pinid_get
       parameters:
-      - name: "pinid"
-        in: "path"
-        description: "cid"
+      - name: pinid
+        in: path
+        description: cid
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/types.IpfsPinStatusResponse"
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.pinning_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.pinning_controller
     post:
       tags:
-      - "pinning"
-      summary: "Replace a pinned object"
-      description: "This endpoint replaces a pinned object."
-      operationId: "pinning_pins_pinid_post"
-      produces:
-      - "application/json"
+      - pinning
+      summary: Replace a pinned object
+      description: This endpoint replaces a pinned object.
+      operationId: pinning_pins_pinid_post
       parameters:
-      - name: "pinid"
-        in: "path"
-        description: "Pin ID"
+      - name: pinid
+        in: path
+        description: Pin ID
         required: true
-        type: "string"
-      - in: "body"
-        name: "cid"
-        description: "CID of new pin"
-        required: true
+        style: simple
+        explode: false
         schema:
-          type: "string"
-      - in: "body"
-        name: "name"
-        description: "Name (filename) of new pin"
+          type: string
+      requestBody:
+        description: Meta information of new pin
+        content:
+          '*/*':
+            schema:
+              type: string
         required: false
-        schema:
-          type: "string"
-      - in: "body"
-        name: "origins"
-        description: "Origins of new pin"
-        required: false
-        schema:
-          type: "string"
-      - in: "body"
-        name: "meta"
-        description: "Meta information of new pin"
-        required: false
-        schema:
-          type: "string"
       responses:
         "202":
-          description: "Accepted"
-          schema:
-            $ref: "#/definitions/types.IpfsPinStatusResponse"
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.pinning_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: meta
+      x-openapi-router-controller: estuary-client.controllers.pinning_controller
     delete:
       tags:
-      - "pinning"
-      summary: "Delete a pinned object"
-      description: "This endpoint deletes a pinned object."
-      operationId: "pinning_pins_pinid_delete"
-      produces:
-      - "application/json"
+      - pinning
+      summary: Delete a pinned object
+      description: This endpoint deletes a pinned object.
+      operationId: pinning_pins_pinid_delete
       parameters:
-      - name: "pinid"
-        in: "path"
-        description: "Pin ID"
+      - name: pinid
+        in: path
+        description: Pin ID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "202":
           description: ""
+          content: {}
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.pinning_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.pinning_controller
   /public/by-cid/{cid}:
     get:
       tags:
-      - "public"
-      summary: "Get Content by Cid"
-      description: "This endpoint returns the content associated with a CID"
-      operationId: "public_by_cid_cid_get"
-      produces:
-      - "application/json"
+      - public
+      summary: Get Content by Cid
+      description: This endpoint returns the content associated with a CID
+      operationId: public_by_cid_cid_get
       parameters:
-      - name: "cid"
-        in: "path"
-        description: "Cid"
+      - name: cid
+        in: path
+        description: Cid
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/deals/failures:
     get:
       tags:
-      - "deals"
-      summary: "Get storage failures"
-      description: "This endpoint returns a list of storage failures"
-      operationId: "public_deals_failures_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - deals
+      summary: Get storage failures
+      description: This endpoint returns a list of storage failures
+      operationId: public_deals_failures_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /public/info:
     get:
       tags:
-      - "public"
-      summary: "Get public node info"
-      description: "This endpoint returns information about the node"
-      operationId: "public_info_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      summary: Get public node info
+      description: This endpoint returns information about the node
+      operationId: public_info_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/metrics/deals-on-chain:
     get:
       tags:
-      - "public"
-      - "metrics"
-      summary: "Get deal metrics"
-      description: "This endpoint is used to get deal metrics"
-      operationId: "public_metrics_deals_on_chain_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      - metrics
+      summary: Get deal metrics
+      description: This endpoint is used to get deal metrics
+      operationId: public_metrics_deals_on_chain_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/miners:
     get:
       tags:
-      - "public"
-      - "net"
-      summary: "Get all miners"
-      description: "This endpoint returns all miners"
-      operationId: "public_miners_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      - net
+      summary: Get all miners
+      description: This endpoint returns all miners
+      operationId: public_miners_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/miners/deals/{miner}:
     get:
       tags:
-      - "public"
-      - "miner"
-      summary: "Get all miners deals"
-      description: "This endpoint returns all miners deals"
-      operationId: "public_miners_deals_miner_get"
-      produces:
-      - "application/json"
+      - public
+      - miner
+      summary: Get all miners deals
+      description: This endpoint returns all miners deals
+      operationId: public_miners_deals_miner_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "Filter by miner"
+      - name: miner
+        in: path
+        description: Filter by miner
         required: true
-        type: "string"
-      - name: "ignore_failed"
-        in: "query"
-        description: "Ignore Failed"
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: ignore_failed
+        in: query
+        description: Ignore Failed
         required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/miners/failures/{miner}:
     get:
       tags:
-      - "public"
-      - "net"
-      summary: "Get all miners"
-      description: "This endpoint returns all miners"
-      operationId: "public_miners_failures_miner_get"
-      produces:
-      - "application/json"
+      - public
+      - net
+      summary: Get all miners
+      description: This endpoint returns all miners
+      operationId: public_miners_failures_miner_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "Filter by miner"
+      - name: miner
+        in: path
+        description: Filter by miner
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/miners/stats/{miner}:
     get:
       tags:
-      - "public"
-      - "miner"
-      summary: "Get miner stats"
-      description: "This endpoint returns miner stats"
-      operationId: "public_miners_stats_miner_get"
-      produces:
-      - "application/json"
+      - public
+      - miner
+      summary: Get miner stats
+      description: This endpoint returns miner stats
+      operationId: public_miners_stats_miner_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "Filter by miner"
+      - name: miner
+        in: path
+        description: Filter by miner
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/miners/storage/query/{miner}:
     get:
       tags:
-      - "deals"
-      summary: "Query Ask"
-      description: "This endpoint returns the ask for a given CID"
-      operationId: "public_miners_storage_query_miner_get"
-      produces:
-      - "application/json"
+      - deals
+      summary: Query Ask
+      description: This endpoint returns the ask for a given CID
+      operationId: public_miners_storage_query_miner_get
       parameters:
-      - name: "miner"
-        in: "path"
-        description: "CID"
+      - name: miner
+        in: path
+        description: CID
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.deals_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.deals_controller
   /public/net/addrs:
     get:
       tags:
-      - "public"
-      - "net"
-      summary: "Net Addrs"
-      description: "This endpoint is used to get net addrs"
-      operationId: "public_net_addrs_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      - net
+      summary: Net Addrs
+      description: This endpoint is used to get net addrs
+      operationId: public_net_addrs_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              type: "string"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                x-content-type: application/json
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/net/peers:
     get:
       tags:
-      - "public"
-      - "net"
-      summary: "Net Peers"
-      description: "This endpoint is used to get net peers"
-      operationId: "public_net_peers_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      - net
+      summary: Net Peers
+      description: This endpoint is used to get net peers
+      operationId: public_net_peers_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /public/stats:
     get:
       tags:
-      - "public"
-      summary: "Public stats"
-      description: "This endpoint is used to get public stats."
-      operationId: "public_stats_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - public
+      summary: Public stats
+      description: This endpoint is used to get public stats.
+      operationId: public_stats_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.public_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.public_controller
   /user/api-keys:
     get:
       tags:
-      - "User"
-      summary: "Get API keys for a user"
+      - User
+      summary: Get API keys for a user
       description: "This endpoint is used to get API keys for a user. In estuary,\
         \ each user can be given multiple API keys (tokens). This endpoint can be\
         \ used to retrieve all available API keys for a given user."
-      operationId: "user_api_keys_get"
-      produces:
-      - "application/json"
-      parameters: []
+      operationId: user_api_keys_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "array"
-            items:
-              type: "array"
-              items:
-                $ref: "#/definitions/main.getApiKeysResp"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/main.getApiKeysResp'
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.user_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.user_controller
     post:
       tags:
-      - "User"
-      summary: "Create API keys for a user"
+      - User
+      summary: Create API keys for a user
       description: "This endpoint is used to create API keys for a user. In estuary,\
         \ each user is given an API key to access all features."
-      operationId: "user_api_keys_post"
-      produces:
-      - "application/json"
+      operationId: user_api_keys_post
       parameters:
-      - name: "expiry"
-        in: "query"
+      - name: expiry
+        in: query
         description: "Expiration - Expiration - Valid time units are ns, us (or µ\
           s),  ms,  s,  m,  h.  for  example  300h"
         required: false
-        type: "string"
-      - name: "perms"
-        in: "query"
-        description: "Permissions -- currently unused"
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: perms
+        in: query
+        description: Permissions -- currently unused
         required: false
-        type: "string"
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            $ref: "#/definitions/main.getApiKeysResp"
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/main.getApiKeysResp'
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "404":
-          description: "Not Found"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.user_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.user_controller
   /user/api-keys/{key_or_hash}:
     delete:
       tags:
-      - "User"
-      summary: "Revoke a User API Key."
+      - User
+      summary: Revoke a User API Key.
       description: "This endpoint is used to revoke a user API key. In estuary, every\
         \ user is assigned with an API key, this API key is generated and issued for\
         \ each user and is primarily used to access all estuary features. This endpoint\
         \ can be used to revoke the API key that's assigned to the user. Revoked API\
         \ keys are completely deleted and are not recoverable."
-      operationId: "user_api_keys_key_or_hash_delete"
-      produces:
-      - "application/json"
+      operationId: user_api_keys_key_or_hash_delete
       parameters:
-      - name: "key_or_hash"
-        in: "path"
-        description: "Key or Hash"
+      - name: key_or_hash
+        in: path
+        description: Key or Hash
         required: true
-        type: "string"
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.user_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.user_controller
   /user/export:
     get:
       tags:
-      - "User"
-      summary: "Export user data"
-      description: "This endpoint is used to get API keys for a user."
-      operationId: "user_export_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - User
+      summary: Export user data
+      description: This endpoint is used to get API keys for a user.
+      operationId: user_export_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.user_controller"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.user_controller
   /user/stats:
     get:
       tags:
-      - "User"
-      summary: "Create API keys for a user"
-      description: "This endpoint is used to create API keys for a user."
-      operationId: "user_stats_get"
-      produces:
-      - "application/json"
-      parameters: []
+      - User
+      summary: Create API keys for a user
+      description: This endpoint is used to create API keys for a user.
+      operationId: user_stats_get
       responses:
         "200":
-          description: "OK"
-          schema:
-            type: "string"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
         "400":
-          description: "Bad Request"
-          schema:
-            $ref: "#/definitions/util.HttpError"
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
         "500":
-          description: "Internal Server Error"
-          schema:
-            $ref: "#/definitions/util.HttpError"
-      x-swagger-router-controller: "estuary-client.controllers.user_controller"
-securityDefinitions:
-  bearerAuth:
-    type: "apiKey"
-    name: "Authorization"
-    in: "header"
-    x-apikeyInfoFunc: "estuary-client.controllers.authorization_controller.check_bearerAuth"
-definitions:
-  collections.Collection:
-    type: "object"
-    properties:
-      cid:
-        type: "string"
-      createdAt:
-        type: "string"
-      description:
-        type: "string"
-      name:
-        type: "string"
-      userId:
-        type: "integer"
-      uuid:
-        type: "string"
-    example:
-      createdAt: "createdAt"
-      name: "name"
-      description: "description"
-      userId: 0
-      uuid: "uuid"
-      cid: "cid"
-  main.ChannelIDParam:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-      initiator:
-        type: "string"
-      responder:
-        type: "string"
-  main.createCollectionBody:
-    type: "object"
-    properties:
-      description:
-        type: "string"
-      name:
-        type: "string"
-  main.deleteContentFromCollectionBody:
-    type: "object"
-    properties:
-      by:
-        type: "string"
-      value:
-        type: "string"
-  main.estimateDealBody:
-    type: "object"
-    properties:
-      durationBlks:
-        type: "integer"
-      replication:
-        type: "integer"
-      size:
-        type: "integer"
-      verified:
-        type: "boolean"
-  main.getApiKeysResp:
-    type: "object"
-    properties:
-      expiry:
-        type: "string"
-      label:
-        type: "string"
-      token:
-        type: "string"
-      tokenHash:
-        type: "string"
-    example:
-      expiry: "expiry"
-      label: "label"
-      tokenHash: "tokenHash"
-      token: "token"
-  main.importDealBody:
-    type: "object"
-    properties:
-      coluuid:
-        type: "string"
-      dealIDs:
-        type: "array"
-        items:
-          type: "integer"
-      dir:
-        type: "string"
-      name:
-        type: "string"
-  types.IpfsListPinStatusResponse:
-    type: "object"
-    properties:
-      count:
-        type: "integer"
-      results:
-        type: "array"
-        items:
-          $ref: "#/definitions/types.IpfsPinStatusResponse"
-    example:
-      count: 0
-      results:
-      - pin:
-          meta: "{}"
-          name: "name"
-          origins:
-          - "origins"
-          - "origins"
-          cid: "cid"
-        created: "created"
-        requestid: "requestid"
-        delegates:
-        - "delegates"
-        - "delegates"
-        info: "{}"
-        status: "status"
-      - pin:
-          meta: "{}"
-          name: "name"
-          origins:
-          - "origins"
-          - "origins"
-          cid: "cid"
-        created: "created"
-        requestid: "requestid"
-        delegates:
-        - "delegates"
-        - "delegates"
-        info: "{}"
-        status: "status"
-  types.IpfsPin:
-    type: "object"
-    properties:
-      cid:
-        type: "string"
-      meta:
-        type: "object"
-        properties: {}
-      name:
-        type: "string"
-      origins:
-        type: "array"
-        items:
-          type: "string"
-    example:
-      meta: "{}"
-      name: "name"
-      origins:
-      - "origins"
-      - "origins"
-      cid: "cid"
-  types.IpfsPinStatusResponse:
-    type: "object"
-    properties:
-      created:
-        type: "string"
-      delegates:
-        type: "array"
-        items:
-          type: "string"
-      info:
-        type: "object"
-        properties: {}
-      pin:
-        $ref: "#/definitions/types.IpfsPin"
-      requestid:
-        type: "string"
-      status:
-        type: "string"
-    example:
-      pin:
-        meta: "{}"
-        name: "name"
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.user_controller
+components:
+  schemas:
+    collections.Collection:
+      type: object
+      properties:
+        cid:
+          type: string
+        createdAt:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        userId:
+          type: integer
+        uuid:
+          type: string
+      example:
+        createdAt: createdAt
+        name: name
+        description: description
+        userId: 0
+        uuid: uuid
+        cid: cid
+    main.ChannelIDParam:
+      type: object
+      properties:
+        id:
+          type: integer
+        initiator:
+          type: string
+        responder:
+          type: string
+    main.createCollectionBody:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    main.deleteContentFromCollectionBody:
+      type: object
+      properties:
+        by:
+          type: string
+        value:
+          type: string
+    main.estimateDealBody:
+      type: object
+      properties:
+        durationBlks:
+          type: integer
+        replication:
+          type: integer
+        size:
+          type: integer
+        verified:
+          type: boolean
+    main.getApiKeysResp:
+      type: object
+      properties:
+        expiry:
+          type: string
+        label:
+          type: string
+        token:
+          type: string
+        tokenHash:
+          type: string
+      example:
+        expiry: expiry
+        label: label
+        tokenHash: tokenHash
+        token: token
+    main.importDealBody:
+      type: object
+      properties:
+        coluuid:
+          type: string
+        dealIDs:
+          type: array
+          items:
+            type: integer
+        dir:
+          type: string
+        name:
+          type: string
+    types.IpfsListPinStatusResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/types.IpfsPinStatusResponse'
+      example:
+        count: 0
+        results:
+        - pin:
+            meta: {}
+            name: name
+            origins:
+            - origins
+            - origins
+            cid: cid
+          created: created
+          requestid: requestid
+          delegates:
+          - delegates
+          - delegates
+          info: {}
+          status: status
+        - pin:
+            meta: {}
+            name: name
+            origins:
+            - origins
+            - origins
+            cid: cid
+          created: created
+          requestid: requestid
+          delegates:
+          - delegates
+          - delegates
+          info: {}
+          status: status
+    types.IpfsPin:
+      type: object
+      properties:
+        cid:
+          type: string
+        meta:
+          type: object
+          properties: {}
+          example: {}
+        name:
+          type: string
         origins:
-        - "origins"
-        - "origins"
-        cid: "cid"
-      created: "created"
-      requestid: "requestid"
-      delegates:
-      - "delegates"
-      - "delegates"
-      info: "{}"
-      status: "status"
-  util.ContentAddIpfsBody:
-    type: "object"
-    properties:
-      coluuid:
-        type: "string"
-      dir:
-        type: "string"
-      filename:
-        type: "string"
-      peers:
-        type: "array"
-        items:
-          type: "string"
-      root:
-        type: "string"
-  util.ContentAddResponse:
-    type: "object"
-    properties:
-      cid:
-        type: "string"
-      estuaryId:
-        type: "integer"
-      providers:
-        type: "array"
-        items:
-          type: "string"
-      retrieval_url:
-        type: "string"
-    example:
-      retrieval_url: "retrieval_url"
-      estuaryId: 0
-      providers:
-      - "providers"
-      - "providers"
-      cid: "cid"
-  util.ContentCreateBody:
-    type: "object"
-    properties:
-      coluuid:
-        type: "string"
-      dir:
-        type: "string"
-      location:
-        type: "string"
-      name:
-        type: "string"
-      root:
-        type: "string"
-      type:
-        type: "integer"
-  util.HttpError:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-      details:
-        type: "string"
-      reason:
-        type: "string"
+          type: array
+          items:
+            type: string
+      example:
+        meta: {}
+        name: name
+        origins:
+        - origins
+        - origins
+        cid: cid
+    types.IpfsPinStatusResponse:
+      type: object
+      properties:
+        created:
+          type: string
+        delegates:
+          type: array
+          items:
+            type: string
+        info:
+          type: object
+          properties: {}
+          example: {}
+        pin:
+          $ref: '#/components/schemas/types.IpfsPin'
+        requestid:
+          type: string
+        status:
+          type: string
+      example:
+        pin:
+          meta: {}
+          name: name
+          origins:
+          - origins
+          - origins
+          cid: cid
+        created: created
+        requestid: requestid
+        delegates:
+        - delegates
+        - delegates
+        info: {}
+        status: status
+    util.ContentAddIpfsBody:
+      type: object
+      properties:
+        coluuid:
+          type: string
+        dir:
+          type: string
+        filename:
+          type: string
+        peers:
+          type: array
+          items:
+            type: string
+        root:
+          type: string
+    util.ContentAddResponse:
+      type: object
+      properties:
+        cid:
+          type: string
+        estuaryId:
+          type: integer
+        providers:
+          type: array
+          items:
+            type: string
+        retrieval_url:
+          type: string
+      example:
+        retrieval_url: retrieval_url
+        estuaryId: 0
+        providers:
+        - providers
+        - providers
+        cid: cid
+    util.ContentCreateBody:
+      type: object
+      properties:
+        coluuid:
+          type: string
+        dir:
+          type: string
+        location:
+          type: string
+        name:
+          type: string
+        root:
+          type: string
+        type:
+          type: integer
+    util.HttpError:
+      type: object
+      properties:
+        code:
+          type: integer
+        details:
+          type: string
+        reason:
+          type: string
+    autoretrieve_init_body:
+      required:
+      - addresses
+      - pubKey
+      type: object
+      properties:
+        addresses:
+          type: string
+          description: Autoretrieve's comma-separated list of addresses
+        pubKey:
+          type: string
+          description: Autoretrieve's public key
+    content_add_body:
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          type: string
+          description: File to upload
+          format: binary
+        filename:
+          type: string
+          description: Filenam to use for upload
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-apikeyInfoFunc: estuary-client.controllers.authorization_controller.check_bearerAuth
+x-original-swagger-version: "2.0"
+

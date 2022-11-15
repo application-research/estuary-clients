@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.CollectionsCollection;
-import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
@@ -15,11 +14,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.jaxrs.PATCH;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -30,7 +30,6 @@ import javax.validation.Valid;
  *
  */
 @Path("/")
-@Api(value = "/", description = "")
 public interface CollectionsApi  {
 
     /**
@@ -42,11 +41,11 @@ public interface CollectionsApi  {
     @POST
     @Path("/collections/{coluuid}/commit")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Produce a CID of the collection contents", tags={ "collections",  })
+    @Operation(summary = "Produce a CID of the collection contents", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String collectionsColuuidCommitPost(@PathParam("coluuid") String coluuid);
 
     /**
@@ -57,13 +56,14 @@ public interface CollectionsApi  {
      */
     @DELETE
     @Path("/collections/{coluuid}/contents")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Deletes a content from a collection", tags={ "collections",  })
+    @Operation(summary = "Deletes a content from a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public String collectionsColuuidContentsDelete(@PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid, @Valid MainDeleteContentFromCollectionBody body);
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String collectionsColuuidContentsDelete(@Valid MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid);
 
     /**
      * Deletes a collection
@@ -73,11 +73,12 @@ public interface CollectionsApi  {
      */
     @DELETE
     @Path("/collections/{coluuid}")
-    @ApiOperation(value = "Deletes a collection", tags={ "collections",  })
+    @Produces({ "*/*" })
+    @Operation(summary = "Deletes a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "*/*", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "*/*", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "*/*", schema = @Schema(implementation = UtilHttpError.class))) })
     public String collectionsColuuidDelete(@PathParam("coluuid") String coluuid);
 
     /**
@@ -89,11 +90,11 @@ public interface CollectionsApi  {
     @GET
     @Path("/collections/{coluuid}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get contents in a collection", tags={ "collections",  })
+    @Operation(summary = "Get contents in a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String collectionsColuuidGet(@PathParam("coluuid") String coluuid, @QueryParam("dir") String dir);
 
     /**
@@ -106,12 +107,12 @@ public interface CollectionsApi  {
     @Path("/collections/{coluuid}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add contents to a collection", tags={ "collections",  })
+    @Operation(summary = "Add contents to a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
-    public String collectionsColuuidPost(@PathParam("coluuid") String coluuid, @Valid List<Integer> contentIDs);
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String collectionsColuuidPost(@Valid List<Integer> body, @PathParam("coluuid") String coluuid);
 
     /**
      * Add a file to a collection
@@ -122,11 +123,11 @@ public interface CollectionsApi  {
     @POST
     @Path("/collections/fs/add")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Add a file to a collection", tags={ "collections",  })
+    @Operation(summary = "Add a file to a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String collectionsFsAddPost(@QueryParam("coluuid") @NotNull String coluuid, @QueryParam("content") @NotNull String content, @QueryParam("path") @NotNull String path);
 
     /**
@@ -138,12 +139,12 @@ public interface CollectionsApi  {
     @GET
     @Path("/collections/")
     @Produces({ "application/json" })
-    @ApiOperation(value = "List all collections", tags={ "collections",  })
+    @Operation(summary = "List all collections", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = List.class, responseContainer = "List"),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CollectionsCollection.class)))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public List<List<CollectionsCollection>> collectionsGet();
 
     /**
@@ -154,13 +155,13 @@ public interface CollectionsApi  {
      */
     @POST
     @Path("/collections/")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Create a new collection", tags={ "collections" })
+    @Operation(summary = "Create a new collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = CollectionsCollection.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 404, message = "Not Found", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class) })
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CollectionsCollection.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public CollectionsCollection collectionsPost(@Valid MainCreateCollectionBody body);
 }
-

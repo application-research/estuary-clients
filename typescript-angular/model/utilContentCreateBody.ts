@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 export interface UtilContentCreateBody { 
     coluuid?: string;
     dir?: string;

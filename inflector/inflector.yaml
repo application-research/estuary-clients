@@ -1,10 +1,12 @@
 controllerPackage: io.swagger.controllers
 modelPackage:  io.swagger.model
-swaggerUrl: ./src/main/swagger/swagger.yaml
+swaggerUrl: ./src/main/resources/openapi3.yaml
 modelMappings:
   # to enable explicit mappings, use this syntax:
   DefinitionFromSwaggerSpecification: fully.qualified.path.to.Model
-  CollectionsCollection : io.swagger.model.CollectionsCollection
+  AutoretrieveInitBody : io.swagger.model.AutoretrieveInitBody
+CollectionsCollection : io.swagger.model.CollectionsCollection
+ContentAddBody : io.swagger.model.ContentAddBody
 MainChannelIDParam : io.swagger.model.MainChannelIDParam
 MainCreateCollectionBody : io.swagger.model.MainCreateCollectionBody
 MainDeleteContentFromCollectionBody : io.swagger.model.MainDeleteContentFromCollectionBody

@@ -3,10 +3,9 @@ part of swagger.api;
 class MainDeleteContentFromCollectionBody {
   
   String by = null;
-  
 
   String value = null;
-  
+
   MainDeleteContentFromCollectionBody();
 
   @override
@@ -16,12 +15,8 @@ class MainDeleteContentFromCollectionBody {
 
   MainDeleteContentFromCollectionBody.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    by =
-        json['by']
-    ;
-    value =
-        json['value']
-    ;
+    by = json['by'];
+    value = json['value'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,4 +38,3 @@ class MainDeleteContentFromCollectionBody {
     return map;
   }
 }
-

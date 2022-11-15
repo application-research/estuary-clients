@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.api;
 
 import io.swagger.client.model.UtilHttpError;
@@ -23,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * API tests for MinerApi
  */
@@ -31,7 +31,6 @@ public class MinerApiTest {
 
     private final MinerApi api = new MinerApi();
 
-    
     /**
      * Get all miners deals
      *
@@ -48,7 +47,6 @@ public class MinerApiTest {
 
         // TODO: test validations
     }
-    
     /**
      * Get miner stats
      *
@@ -64,5 +62,4 @@ public class MinerApiTest {
 
         // TODO: test validations
     }
-    
 }

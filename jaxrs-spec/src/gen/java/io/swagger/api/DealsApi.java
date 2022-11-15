@@ -5,7 +5,14 @@ import io.swagger.model.UtilHttpError;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.util.Map;
 import java.util.List;
@@ -13,52 +20,53 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 @Path("/deals")
-@Api(description = "the deals API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2022-11-11T23:35:22.829Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-15T21:05:26.621Z[GMT]")
 public class DealsApi {
 
     @GET
     @Path("/failures")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get storage failures for user", notes = "This endpoint returns a list of storage failures for user", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "deals",  })
+    @Operation(summary = "Get storage failures for user", description = "This endpoint returns a list of storage failures for user", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "deals" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
     public Response dealsFailuresGet() {
         return Response.ok().entity("magic!").build();
     }
-
     @POST
     @Path("/make/{miner}")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @ApiOperation(value = "Make Deal", notes = "This endpoint makes a deal for a given content and miner", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "deals",  })
+    @Operation(summary = "Make Deal", description = "This endpoint makes a deal for a given content and miner", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "deals" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response dealsMakeMinerPost(@PathParam("miner") @ApiParam("Miner") String miner,@Valid String dealRequest) {
+    public Response dealsMakeMinerPost(@Valid String body, @PathParam("miner")
+
+ @Parameter(description = "Miner") String miner
+) {
         return Response.ok().entity("magic!").build();
     }
-
     @GET
     @Path("/status/{deal}")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Get Deal Status", notes = "This endpoint returns the status of a deal", response = String.class, authorizations = {
-        @Authorization(value = "bearerAuth")
-    }, tags={ "deals" })
+    @Operation(summary = "Get Deal Status", description = "This endpoint returns the status of a deal", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "deals" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 400, message = "Bad Request", response = UtilHttpError.class),
-        @ApiResponse(code = 500, message = "Internal Server Error", response = UtilHttpError.class)
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response dealsStatusDealGet(@PathParam("deal") @ApiParam("Deal ID") Integer deal) {
+    public Response dealsStatusDealGet( @PathParam("deal")
+
+ @Parameter(description = "Deal ID") Integer deal
+) {
         return Response.ok().entity("magic!").build();
-    }
-}
+    }}

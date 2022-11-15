@@ -12,11 +12,11 @@ import Alamofire
 open class PeersAPI: APIBase {
     /**
      Remove peers on Peering Service
-     - parameter peerIds: (body) Peer ids 
+     - parameter body: (body) Peer ids 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func adminPeeringPeersDelete(peerIds: [Bool], completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        adminPeeringPeersDeleteWithRequestBuilder(peerIds: peerIds).execute { (response, error) -> Void in
+    open class func adminPeeringPeersDelete(body: [Bool], completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        adminPeeringPeersDeleteWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -29,17 +29,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     - parameter peerIds: (body) Peer ids 
+     - examples: [{contentType=application/json, example=""}]
+     - parameter body: (body) Peer ids 
      - returns: RequestBuilder<String> 
      */
-    open class func adminPeeringPeersDeleteWithRequestBuilder(peerIds: [Bool]) -> RequestBuilder<String> {
+    open class func adminPeeringPeersDeleteWithRequestBuilder(body: [Bool]) -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters = peerIds.encodeToJSON()
+        let parameters = body.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -66,17 +63,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func adminPeeringPeersGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -102,17 +96,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func adminPeeringPeersPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/peers"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -138,17 +129,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func adminPeeringStartPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/start"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -174,17 +162,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func adminPeeringStatusGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/status"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -210,17 +195,14 @@ open class PeersAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
+     - examples: [{contentType=application/json, example=""}]
      - returns: RequestBuilder<String> 
      */
     open class func adminPeeringStopPostWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/admin/peering/stop"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

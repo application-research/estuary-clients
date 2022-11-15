@@ -9,10 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param cid 
+ * @param createdAt 
+ * @param description 
+ * @param name 
+ * @param userId 
+ * @param uuid 
+ */
 case class Collection (
   cid: Option[String] = None,
   createdAt: Option[String] = None,

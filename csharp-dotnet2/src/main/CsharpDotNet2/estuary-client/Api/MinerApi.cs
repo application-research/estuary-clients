@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -82,15 +82,13 @@ namespace estuary-client.Api
         /// <summary>
         /// Get all miners deals This endpoint returns all miners deals
         /// </summary>
-        /// <param name="miner">Filter by miner</param> 
-        /// <param name="ignoreFailed">Ignore Failed</param> 
-        /// <returns>string</returns>            
+        /// <param name="miner">Filter by miner</param>
+        /// <param name="ignoreFailed">Ignore Failed</param>
+        /// <returns>string</returns>
         public string PublicMinersDealsMinerGet (string miner, string ignoreFailed)
         {
-            
             // verify the required parameter 'miner' is set
             if (miner == null) throw new ApiException(400, "Missing required parameter 'miner' when calling PublicMinersDealsMinerGet");
-            
     
             var path = "/public/miners/deals/{miner}";
             path = path.Replace("{format}", "json");
@@ -103,7 +101,7 @@ namespace estuary-client.Api
             String postBody = null;
     
              if (ignoreFailed != null) queryParams.Add("ignore-failed", ApiClient.ParameterToString(ignoreFailed)); // query parameter
-                                        
+                        
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -121,14 +119,12 @@ namespace estuary-client.Api
         /// <summary>
         /// Get miner stats This endpoint returns miner stats
         /// </summary>
-        /// <param name="miner">Filter by miner</param> 
-        /// <returns>string</returns>            
+        /// <param name="miner">Filter by miner</param>
+        /// <returns>string</returns>
         public string PublicMinersStatsMinerGet (string miner)
         {
-            
             // verify the required parameter 'miner' is set
             if (miner == null) throw new ApiException(400, "Missing required parameter 'miner' when calling PublicMinersStatsMinerGet");
-            
     
             var path = "/public/miners/stats/{miner}";
             path = path.Replace("{format}", "json");
@@ -140,7 +136,7 @@ namespace estuary-client.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

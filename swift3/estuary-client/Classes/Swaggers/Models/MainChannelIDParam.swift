@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainChannelIDParam: JSONEncodable {
-
     public var id: Int32?
     public var initiator: String?
     public var responder: String?
@@ -27,4 +26,3 @@ open class MainChannelIDParam: JSONEncodable {
         return dictionary
     }
 }
-

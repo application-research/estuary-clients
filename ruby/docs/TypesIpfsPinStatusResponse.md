@@ -10,4 +10,3 @@ Name | Type | Description | Notes
 **requestid** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
 
-

@@ -1,6 +1,6 @@
 # estuary-client.Api.DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**DealsStatusDealGet**](DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 [**PublicDealsFailuresGet**](DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 [**PublicMinersStorageQueryMinerGet**](DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-
 
 <a name="dealestimatepost"></a>
 # **DealEstimatePost**
@@ -80,11 +79,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealinfodealidget"></a>
 # **DealInfoDealidGet**
 > string DealInfoDealidGet (int? dealid)
@@ -150,7 +148,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealproposalpropcidget"></a>
 # **DealProposalPropcidGet**
 > string DealProposalPropcidGet (string propcid)
@@ -216,7 +213,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealqueryminerget"></a>
 # **DealQueryMinerGet**
 > string DealQueryMinerGet (string miner)
@@ -282,7 +278,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealstatusbyproposalpropcidget"></a>
 # **DealStatusByProposalPropcidGet**
 > string DealStatusByProposalPropcidGet (string propcid)
@@ -348,7 +343,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealstatusminerpropcidget"></a>
 # **DealStatusMinerPropcidGet**
 > string DealStatusMinerPropcidGet (string miner, string propcid)
@@ -416,7 +410,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealtransferinprogressget"></a>
 # **DealTransferInProgressGet**
 > string DealTransferInProgressGet ()
@@ -478,10 +471,9 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealtransferstatuspost"></a>
 # **DealTransferStatusPost**
-> string DealTransferStatusPost (MainChannelIDParam chanid)
+> string DealTransferStatusPost (MainChannelIDParam body)
 
 Transfer Status
 
@@ -507,12 +499,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new DealsApi();
-            var chanid = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+            var body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
 
             try
             {
                 // Transfer Status
-                string result = apiInstance.DealTransferStatusPost(chanid);
+                string result = apiInstance.DealTransferStatusPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -528,7 +520,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
 
 ### Return type
 
@@ -540,11 +532,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealsfailuresget"></a>
 # **DealsFailuresGet**
 > string DealsFailuresGet ()
@@ -606,10 +597,9 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealsmakeminerpost"></a>
 # **DealsMakeMinerPost**
-> string DealsMakeMinerPost (string miner, string dealRequest)
+> string DealsMakeMinerPost (string body, string miner)
 
 Make Deal
 
@@ -635,13 +625,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new DealsApi();
+            var body = new string(); // string | Deal Request
             var miner = miner_example;  // string | Miner
-            var dealRequest = dealRequest_example;  // string | Deal Request
 
             try
             {
                 // Make Deal
-                string result = apiInstance.DealsMakeMinerPost(miner, dealRequest);
+                string result = apiInstance.DealsMakeMinerPost(body, miner);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -657,8 +647,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**string**](string.md)| Deal Request | 
  **miner** | **string**| Miner | 
- **dealRequest** | **string**| Deal Request | 
 
 ### Return type
 
@@ -670,11 +660,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="dealsstatusdealget"></a>
 # **DealsStatusDealGet**
 > string DealsStatusDealGet (int? deal)
@@ -740,7 +729,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="publicdealsfailuresget"></a>
 # **PublicDealsFailuresGet**
 > string PublicDealsFailuresGet ()
@@ -802,7 +790,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="publicminersstoragequeryminerget"></a>
 # **PublicMinersStorageQueryMinerGet**
 > string PublicMinersStorageQueryMinerGet (string miner)
@@ -868,4 +855,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

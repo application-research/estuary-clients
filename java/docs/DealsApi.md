@@ -1,6 +1,6 @@
 # DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
@@ -71,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealInfoDealidGet"></a>
@@ -404,7 +403,7 @@ This endpoint does not need any parameter.
 
 <a name="dealTransferStatusPost"></a>
 # **dealTransferStatusPost**
-> String dealTransferStatusPost(chanid)
+> String dealTransferStatusPost(body)
 
 Transfer Status
 
@@ -428,9 +427,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 DealsApi apiInstance = new DealsApi();
-MainChannelIDParam chanid = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+MainChannelIDParam body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
 try {
-    String result = apiInstance.dealTransferStatusPost(chanid);
+    String result = apiInstance.dealTransferStatusPost(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DealsApi#dealTransferStatusPost");
@@ -442,7 +441,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID |
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID |
 
 ### Return type
 
@@ -454,7 +453,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealsFailuresGet"></a>
@@ -510,7 +509,7 @@ This endpoint does not need any parameter.
 
 <a name="dealsMakeMinerPost"></a>
 # **dealsMakeMinerPost**
-> String dealsMakeMinerPost(miner, dealRequest)
+> String dealsMakeMinerPost(body, miner)
 
 Make Deal
 
@@ -534,10 +533,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 DealsApi apiInstance = new DealsApi();
+String body = "body_example"; // String | Deal Request
 String miner = "miner_example"; // String | Miner
-String dealRequest = "dealRequest_example"; // String | Deal Request
 try {
-    String result = apiInstance.dealsMakeMinerPost(miner, dealRequest);
+    String result = apiInstance.dealsMakeMinerPost(body, miner);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DealsApi#dealsMakeMinerPost");
@@ -549,8 +548,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Deal Request |
  **miner** | **String**| Miner |
- **dealRequest** | **String**| Deal Request |
 
 ### Return type
 
@@ -562,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealsStatusDealGet"></a>

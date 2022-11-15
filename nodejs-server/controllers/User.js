@@ -13,8 +13,7 @@ module.exports.userApi_keysGET = function userApi_keysGET (req, res, next) {
     });
 };
 
-module.exports.userApi_keysKey_or_hashDELETE = function userApi_keysKey_or_hashDELETE (req, res, next) {
-  var key_or_hash = req.swagger.params['key_or_hash'].value;
+module.exports.userApi_keysKey_or_hashDELETE = function userApi_keysKey_or_hashDELETE (req, res, next, key_or_hash) {
   User.userApi_keysKey_or_hashDELETE(key_or_hash)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -24,10 +23,8 @@ module.exports.userApi_keysKey_or_hashDELETE = function userApi_keysKey_or_hashD
     });
 };
 
-module.exports.userApi_keysPOST = function userApi_keysPOST (req, res, next) {
-  var expiry = req.swagger.params['expiry'].value;
-  var perms = req.swagger.params['perms'].value;
-  User.userApi_keysPOST(expiry,perms)
+module.exports.userApi_keysPOST = function userApi_keysPOST (req, res, next, expiry, perms) {
+  User.userApi_keysPOST(expiry, perms)
     .then(function (response) {
       utils.writeJson(res, response);
     })

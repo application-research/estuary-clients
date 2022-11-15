@@ -13,9 +13,7 @@ import Alamofire
 open class MinerAPI {
     /**
      Get all miners deals
-     
-     - parameter miner: (path) Filter by miner 
-     - parameter ignoreFailed: (query) Ignore Failed (optional)
+     - parameter miner: (path) Filter by miner      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func publicMinersDealsMinerGet(miner: String, ignoreFailed: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
@@ -32,13 +30,8 @@ open class MinerAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     
-     - parameter miner: (path) Filter by miner 
-     - parameter ignoreFailed: (query) Ignore Failed (optional)
+     - examples: [{contentType=application/json, example=""}]
+     - parameter miner: (path) Filter by miner      - parameter ignoreFailed: (query) Ignore Failed (optional)
 
      - returns: RequestBuilder<String> 
      */
@@ -49,10 +42,9 @@ open class MinerAPI {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-            "ignore-failed": ignoreFailed
+                        "ignore-failed": ignoreFailed
         ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
@@ -62,7 +54,6 @@ open class MinerAPI {
 
     /**
      Get miner stats
-     
      - parameter miner: (path) Filter by miner 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -80,11 +71,7 @@ open class MinerAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={
-  "bytes": [],
-  "empty": true
-}}]
-     
+     - examples: [{contentType=application/json, example=""}]
      - parameter miner: (path) Filter by miner 
 
      - returns: RequestBuilder<String> 
@@ -96,7 +83,7 @@ open class MinerAPI {
         path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        
+
         let url = URLComponents(string: URLString)
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()

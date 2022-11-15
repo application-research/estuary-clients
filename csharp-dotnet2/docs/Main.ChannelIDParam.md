@@ -1,4 +1,4 @@
-# estuary-client.Model.MainChannelIDParam
+# IO.Swagger.Model.MainChannelIDParam
 ## Properties
 
 Name | Type | Description | Notes

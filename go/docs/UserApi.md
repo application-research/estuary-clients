@@ -1,6 +1,6 @@
-# \UserApi
+# {{classname}}
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**UserApiKeysPost**](UserApi.md#UserApiKeysPost) | **Post** /user/api-keys | Create API keys for a user
 [**UserExportGet**](UserApi.md#UserExportGet) | **Get** /user/export | Export user data
 [**UserStatsGet**](UserApi.md#UserStatsGet) | **Get** /user/stats | Create API keys for a user
-
 
 # **UserApiKeysGet**
 > [][]MainGetApiKeysResp UserApiKeysGet(ctx, )
@@ -78,7 +77,6 @@ Name | Type | Description  | Notes
 
 ### Optional Parameters
 Optional parameters are passed through a pointer to a UserApiUserApiKeysPostOpts struct
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **expiry** | **optional.String**| Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h | 

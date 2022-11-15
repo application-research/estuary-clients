@@ -31,7 +31,6 @@ class PinningApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -50,7 +49,7 @@ class PinningApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'TypesIpfsListPinStatusResponse') as TypesIpfsListPinStatusResponse ;
     } else {
       return null;
@@ -83,7 +82,6 @@ class PinningApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -102,7 +100,7 @@ class PinningApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           ;
     } else {
       return ;
@@ -135,7 +133,6 @@ class PinningApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -154,7 +151,7 @@ class PinningApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
     } else {
       return null;
@@ -163,15 +160,12 @@ class PinningApi {
   /// Replace a pinned object
   ///
   /// This endpoint replaces a pinned object.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(String pinid, String cid, { String name, String origins, String meta }) async {
-    Object postBody = meta;
+  Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(String pinid, { String body }) async {
+    Object postBody = body;
 
     // verify required params are set
     if(pinid == null) {
      throw new ApiException(400, "Missing required param: pinid");
-    }
-    if(cid == null) {
-     throw new ApiException(400, "Missing required param: cid");
     }
 
     // create path and map variables
@@ -182,7 +176,7 @@ class PinningApi {
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -190,7 +184,6 @@ class PinningApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -209,7 +202,7 @@ class PinningApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
     } else {
       return null;
@@ -218,12 +211,12 @@ class PinningApi {
   /// Add and pin object
   ///
   /// This endpoint adds a pin to the IPFS daemon.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin pin) async {
-    Object postBody = pin;
+  Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body) async {
+    Object postBody = body;
 
     // verify required params are set
-    if(pin == null) {
-     throw new ApiException(400, "Missing required param: pin");
+    if(body == null) {
+     throw new ApiException(400, "Missing required param: body");
     }
 
     // create path and map variables
@@ -234,7 +227,7 @@ class PinningApi {
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -242,7 +235,6 @@ class PinningApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -261,7 +253,7 @@ class PinningApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
     } else {
       return null;

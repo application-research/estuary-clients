@@ -9,14 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
 import io.swagger.client.model.ChannelIDParam
 import io.swagger.client.model.EstimateDealBody
-import io.swagger.client.model.HttpError
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -47,7 +46,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class DealsApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {
@@ -267,11 +266,11 @@ class DealsApi(
    * Transfer Status
    * This endpoint returns the status of a transfer
    *
-   * @param chanid Channel ID 
+   * @param body Channel ID 
    * @return String
    */
-  def dealTransferStatusPost(chanid: ChannelIDParam): Option[String] = {
-    val await = Try(Await.result(dealTransferStatusPostAsync(chanid), Duration.Inf))
+  def dealTransferStatusPost(body: ChannelIDParam): Option[String] = {
+    val await = Try(Await.result(dealTransferStatusPostAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -282,11 +281,11 @@ class DealsApi(
    * Transfer Status asynchronously
    * This endpoint returns the status of a transfer
    *
-   * @param chanid Channel ID 
+   * @param body Channel ID 
    * @return Future(String)
    */
-  def dealTransferStatusPostAsync(chanid: ChannelIDParam): Future[String] = {
-      helper.dealTransferStatusPost(chanid)
+  def dealTransferStatusPostAsync(body: ChannelIDParam): Future[String] = {
+      helper.dealTransferStatusPost(body)
   }
 
   /**
@@ -317,12 +316,12 @@ class DealsApi(
    * Make Deal
    * This endpoint makes a deal for a given content and miner
    *
+   * @param body Deal Request 
    * @param miner Miner 
-   * @param dealRequest Deal Request 
    * @return String
    */
-  def dealsMakeMinerPost(miner: String, dealRequest: String): Option[String] = {
-    val await = Try(Await.result(dealsMakeMinerPostAsync(miner, dealRequest), Duration.Inf))
+  def dealsMakeMinerPost(body: String, miner: String): Option[String] = {
+    val await = Try(Await.result(dealsMakeMinerPostAsync(body, miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -333,12 +332,12 @@ class DealsApi(
    * Make Deal asynchronously
    * This endpoint makes a deal for a given content and miner
    *
+   * @param body Deal Request 
    * @param miner Miner 
-   * @param dealRequest Deal Request 
    * @return Future(String)
    */
-  def dealsMakeMinerPostAsync(miner: String, dealRequest: String): Future[String] = {
-      helper.dealsMakeMinerPost(miner, dealRequest)
+  def dealsMakeMinerPostAsync(body: String, miner: String): Future[String] = {
+      helper.dealsMakeMinerPost(body, miner)
   }
 
   /**
@@ -544,7 +543,7 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealTransferStatusPost(chanid: ChannelIDParam)(implicit reader: ClientResponseReader[String], writer: RequestWriter[ChannelIDParam]): Future[String] = {
+  def dealTransferStatusPost(body: ChannelIDParam)(implicit reader: ClientResponseReader[String], writer: RequestWriter[ChannelIDParam]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deal/transfer/status"))
 
@@ -552,9 +551,9 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (chanid == null) throw new Exception("Missing required parameter 'chanid' when calling DealsApi->dealTransferStatusPost")
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling DealsApi->dealTransferStatusPost")
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(chanid))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -575,8 +574,8 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def dealsMakeMinerPost(miner: String,
-    dealRequest: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[String]): Future[String] = {
+  def dealsMakeMinerPost(body: String,
+    miner: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/deals/make/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -585,12 +584,11 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling DealsApi->dealsMakeMinerPost")
     if (miner == null) throw new Exception("Missing required parameter 'miner' when calling DealsApi->dealsMakeMinerPost")
 
-    if (dealRequest == null) throw new Exception("Missing required parameter 'dealRequest' when calling DealsApi->dealsMakeMinerPost")
 
-
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(dealRequest))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

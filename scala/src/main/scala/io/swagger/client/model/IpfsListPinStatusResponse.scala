@@ -9,12 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param count 
+ * @param results 
+ */
 case class IpfsListPinStatusResponse (
   count: Option[Integer] = None,
-  results: Option[List[IpfsPinStatusResponse]] = None
+  results: Option[List[types.IpfsPinStatusResponse]] = None
 )
 

@@ -8,4 +8,3 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **origins** | **Array&lt;String&gt;** |  | [optional] 
 
-

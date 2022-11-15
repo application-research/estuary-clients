@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPinStatusResponse;
 import java.util.ArrayList;
 import java.util.List;
-import javax.validation.constraints.*;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -17,7 +16,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class TypesIpfsListPinStatusResponse   {
-  
   private Integer count = null;
   private List<TypesIpfsPinStatusResponse> results = new ArrayList<TypesIpfsPinStatusResponse>();
 
@@ -29,7 +27,8 @@ public class TypesIpfsListPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("count")
   public Integer getCount() {
     return count;
@@ -46,7 +45,8 @@ public class TypesIpfsListPinStatusResponse   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("results")
   @Valid
   public List<TypesIpfsPinStatusResponse> getResults() {
@@ -97,4 +97,3 @@ public class TypesIpfsListPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -2,7 +2,6 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.CollectionsCollection;
-import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
@@ -18,7 +17,6 @@ import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
 
 /**
  * Estuary API
@@ -45,7 +43,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      *
      */
-    public String collectionsColuuidContentsDelete(String coluuid, String contentid, MainDeleteContentFromCollectionBody body) {
+    public String collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid) {
         // TODO: Implement...
         
         return null;
@@ -81,7 +79,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      *
      */
-    public String collectionsColuuidPost(String coluuid, List<Integer> contentIDs) {
+    public String collectionsColuuidPost(List<Integer> body, String coluuid) {
         // TODO: Implement...
         
         return null;

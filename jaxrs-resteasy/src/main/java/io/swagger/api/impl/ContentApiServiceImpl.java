@@ -4,7 +4,6 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-
 import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
@@ -22,8 +21,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class ContentApiServiceImpl implements ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
       public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -54,7 +52,7 @@ public class ContentApiServiceImpl implements ContentApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response contentCreatePost(UtilContentCreateBody req,String ignoreDupes,SecurityContext securityContext)
+      public Response contentCreatePost(UtilContentCreateBody body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

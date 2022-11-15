@@ -1,7 +1,7 @@
 package io.swagger.controllers;
 
-import io.swagger.inflector.models.RequestContext;
-import io.swagger.inflector.models.ResponseContext;
+import io.swagger.oas.inflector.models.RequestContext;
+import io.swagger.oas.inflector.models.ResponseContext;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -11,13 +11,11 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.CollectionsCollection;
-import java.util.List;
 import io.swagger.model.MainCreateCollectionBody;
 import io.swagger.model.MainDeleteContentFromCollectionBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaInflectorServerCodegen", date = "2022-11-11T23:35:09.841Z")
-public class CollectionsController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-15T21:05:25.078Z[GMT]")public class CollectionsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -25,37 +23,49 @@ public class CollectionsController  {
    **/
 
   /*
-    public ResponseContext collectionsColuuidCommitPOST(RequestContext request , String coluuid) {
+    public ResponseContext collectionsColuuidCommitPOST(RequestContext request , String coluuid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext collectionsColuuidContentsDELETE(RequestContext request , String coluuid, String contentid, MainDeleteContentFromCollectionBody body) {
+    public ResponseContext collectionsColuuidContentsDELETE(RequestContext request , MainDeleteContentFromCollectionBody body 
+, String coluuid 
+, String contentid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext collectionsColuuidDELETE(RequestContext request , String coluuid) {
+    public ResponseContext collectionsColuuidDELETE(RequestContext request , String coluuid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext collectionsColuuidGET(RequestContext request , String coluuid, String dir) {
+    public ResponseContext collectionsColuuidGET(RequestContext request , String coluuid 
+, String dir 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext collectionsColuuidPOST(RequestContext request , String coluuid, List<Integer> contentIDs) {
+    public ResponseContext collectionsColuuidPOST(RequestContext request , List<Integer> body 
+, String coluuid 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
-    public ResponseContext collectionsFsAddPOST(RequestContext request , String coluuid, String content, String path) {
+    public ResponseContext collectionsFsAddPOST(RequestContext request , String coluuid 
+, String content 
+, String path 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -67,7 +77,8 @@ public class CollectionsController  {
   */
 
   /*
-    public ResponseContext collectionsPOST(RequestContext request , MainCreateCollectionBody body) {
+    public ResponseContext collectionsPOST(RequestContext request , MainCreateCollectionBody body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

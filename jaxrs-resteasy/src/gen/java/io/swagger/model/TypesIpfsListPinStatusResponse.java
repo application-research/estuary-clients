@@ -7,19 +7,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPinStatusResponse;
 import java.util.List;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class TypesIpfsListPinStatusResponse   {
-  
-  private Integer count = null;
-  private List<TypesIpfsPinStatusResponse> results = new ArrayList<TypesIpfsPinStatusResponse>();
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class TypesIpfsListPinStatusResponse   {
+  private Integer count = null;  private List<TypesIpfsPinStatusResponse> results = new ArrayList<TypesIpfsPinStatusResponse>();
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("count")
   public Integer getCount() {
     return count;
@@ -31,7 +28,7 @@ public class TypesIpfsListPinStatusResponse   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("results")
   public List<TypesIpfsPinStatusResponse> getResults() {
     return results;
@@ -81,4 +78,3 @@ public class TypesIpfsListPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

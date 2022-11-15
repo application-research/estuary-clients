@@ -5,12 +5,11 @@
 import 'package:swagger/api.dart';
 ```
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**publicMetricsDealsOnChainGet**](MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
-
 
 # **publicMetricsDealsOnChainGet**
 > String publicMetricsDealsOnChainGet()
@@ -19,7 +18,7 @@ Get deal metrics
 
 This endpoint is used to get deal metrics
 
-### Example 
+### Example
 ```dart
 import 'package:swagger/api.dart';
 // TODO Configure API key authorization: bearerAuth
@@ -29,7 +28,7 @@ import 'package:swagger/api.dart';
 
 var api_instance = new MetricsApi();
 
-try { 
+try {
     var result = api_instance.publicMetricsDealsOnChainGet();
     print(result);
 } catch (e) {

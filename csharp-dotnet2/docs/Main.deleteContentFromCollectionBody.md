@@ -1,4 +1,4 @@
-# estuary-client.Model.MainDeleteContentFromCollectionBody
+# IO.Swagger.Model.MainDeleteContentFromCollectionBody
 ## Properties
 
 Name | Type | Description | Notes

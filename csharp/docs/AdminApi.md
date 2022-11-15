@@ -1,6 +1,6 @@
 # estuary-client.Api.AdminApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,10 +13,9 @@ Method | HTTP request | Description
 [**AdminSystemConfigGet**](AdminApi.md#adminsystemconfigget) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**AdminUsersGet**](AdminApi.md#adminusersget) | **GET** /admin/users | Get all users
 
-
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**
-> string AdminPeeringPeersDelete (List<bool?> peerIds)
+> string AdminPeeringPeersDelete (List<bool?> body)
 
 Remove peers on Peering Service
 
@@ -42,12 +41,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
-            var peerIds = ;  // List<bool?> | Peer ids
+            var body = new List<bool?>(); // List<bool?> | Peer ids
 
             try
             {
                 // Remove peers on Peering Service
-                string result = apiInstance.AdminPeeringPeersDelete(peerIds);
+                string result = apiInstance.AdminPeeringPeersDelete(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -63,7 +62,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peerIds** | **List&lt;bool?&gt;**| Peer ids | 
+ **body** | [**List&lt;bool?&gt;**](bool?.md)| Peer ids | 
 
 ### Return type
 
@@ -75,11 +74,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminpeeringpeersget"></a>
 # **AdminPeeringPeersGet**
 > string AdminPeeringPeersGet ()
@@ -141,7 +139,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminpeeringpeerspost"></a>
 # **AdminPeeringPeersPost**
 > string AdminPeeringPeersPost ()
@@ -203,7 +200,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminpeeringstartpost"></a>
 # **AdminPeeringStartPost**
 > string AdminPeeringStartPost ()
@@ -265,7 +261,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminpeeringstatusget"></a>
 # **AdminPeeringStatusGet**
 > string AdminPeeringStatusGet ()
@@ -327,7 +322,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminpeeringstoppost"></a>
 # **AdminPeeringStopPost**
 > string AdminPeeringStopPost ()
@@ -389,7 +383,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminsystemconfigget"></a>
 # **AdminSystemConfigGet**
 > string AdminSystemConfigGet ()
@@ -451,7 +444,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminusersget"></a>
 # **AdminUsersGet**
 > string AdminUsersGet ()
@@ -513,4 +505,3 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

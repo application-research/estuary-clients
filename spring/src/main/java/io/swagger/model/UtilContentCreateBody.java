@@ -3,8 +3,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,7 +12,7 @@ import javax.validation.constraints.*;
  * UtilContentCreateBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2022-11-11T23:35:23.025Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
 
 
 public class UtilContentCreateBody   {
@@ -43,11 +42,10 @@ public class UtilContentCreateBody   {
   /**
    * Get coluuid
    * @return coluuid
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getColuuid() {
+   **/
+  @Schema(description = "")
+  
+    public String getColuuid() {
     return coluuid;
   }
 
@@ -63,11 +61,10 @@ public class UtilContentCreateBody   {
   /**
    * Get dir
    * @return dir
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getDir() {
+   **/
+  @Schema(description = "")
+  
+    public String getDir() {
     return dir;
   }
 
@@ -83,11 +80,10 @@ public class UtilContentCreateBody   {
   /**
    * Get location
    * @return location
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getLocation() {
+   **/
+  @Schema(description = "")
+  
+    public String getLocation() {
     return location;
   }
 
@@ -103,11 +99,10 @@ public class UtilContentCreateBody   {
   /**
    * Get name
    * @return name
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getName() {
+   **/
+  @Schema(description = "")
+  
+    public String getName() {
     return name;
   }
 
@@ -123,11 +118,10 @@ public class UtilContentCreateBody   {
   /**
    * Get root
    * @return root
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getRoot() {
+   **/
+  @Schema(description = "")
+  
+    public String getRoot() {
     return root;
   }
 
@@ -143,11 +137,10 @@ public class UtilContentCreateBody   {
   /**
    * Get type
    * @return type
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getType() {
+   **/
+  @Schema(description = "")
+  
+    public Integer getType() {
     return type;
   }
 
@@ -204,4 +197,3 @@ public class UtilContentCreateBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

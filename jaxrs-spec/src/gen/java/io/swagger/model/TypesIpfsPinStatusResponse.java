@@ -13,12 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class TypesIpfsPinStatusResponse   {
-  
+
   private @Valid String created = null;
+
   private @Valid List<String> delegates = new ArrayList<String>();
+
   private @Valid Object info = null;
+
   private @Valid TypesIpfsPin pin = null;
+
   private @Valid String requestid = null;
+
   private @Valid String status = null;
 
   /**
@@ -31,6 +36,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("created")
+
   public String getCreated() {
     return created;
   }
@@ -48,6 +54,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("delegates")
+
   public List<String> getDelegates() {
     return delegates;
   }
@@ -65,6 +72,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("info")
+
   public Object getInfo() {
     return info;
   }
@@ -82,6 +90,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("pin")
+
   public TypesIpfsPin getPin() {
     return pin;
   }
@@ -99,6 +108,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("requestid")
+
   public String getRequestid() {
     return requestid;
   }
@@ -116,6 +126,7 @@ public class TypesIpfsPinStatusResponse   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("status")
+
   public String getStatus() {
     return status;
   }
@@ -172,4 +183,3 @@ public class TypesIpfsPinStatusResponse   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -1,6 +1,6 @@
 # PeeringApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,10 +11,9 @@ Method | HTTP request | Description
 [**adminPeeringStatusGet**](PeeringApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
 [**adminPeeringStopPost**](PeeringApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 
-
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**
-> String adminPeeringPeersDelete(peerIds)
+> String adminPeeringPeersDelete(body)
 
 Remove peers on Peering Service
 
@@ -38,9 +37,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PeeringApi apiInstance = new PeeringApi();
-List<Boolean> peerIds = Arrays.asList(new List<Boolean>()); // List<Boolean> | Peer ids
+List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
 try {
-    String result = apiInstance.adminPeeringPeersDelete(peerIds);
+    String result = apiInstance.adminPeeringPeersDelete(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PeeringApi#adminPeeringPeersDelete");
@@ -52,7 +51,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **peerIds** | **List&lt;Boolean&gt;**| Peer ids |
+ **body** | [**List&lt;Boolean&gt;**](Boolean.md)| Peer ids |
 
 ### Return type
 
@@ -64,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="adminPeeringPeersGet"></a>

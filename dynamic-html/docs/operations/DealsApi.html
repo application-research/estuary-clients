@@ -7,7 +7,7 @@
   <p></p>
   <p>This endpoint estimates the cost of a deal</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/estimate</code>
+  <code>//api.estuary.tech//deal/estimate</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -31,7 +31,7 @@
   <p></p>
   <p>This endpoint returns the deal info for a deal</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/info/{dealid}</code>
+  <code>//api.estuary.tech//deal/info/{dealid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -55,7 +55,7 @@
   <p></p>
   <p>This endpoint returns the proposal for a deal</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/proposal/{propcid}</code>
+  <code>//api.estuary.tech//deal/proposal/{propcid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -79,7 +79,7 @@
   <p></p>
   <p>This endpoint returns the ask for a given CID</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/query/{miner}</code>
+  <code>//api.estuary.tech//deal/query/{miner}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -103,7 +103,7 @@
   <p></p>
   <p>Get Deal Status by PropCid</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/status-by-proposal/{propcid}</code>
+  <code>//api.estuary.tech//deal/status-by-proposal/{propcid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -127,7 +127,7 @@
   <p></p>
   <p>This endpoint returns the status of a deal</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/status/{miner}/{propcid}</code>
+  <code>//api.estuary.tech//deal/status/{miner}/{propcid}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -162,7 +162,7 @@
   <p></p>
   <p>This endpoint returns the in-progress transfers</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/transfer/in-progress</code>
+  <code>//api.estuary.tech//deal/transfer/in-progress</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -175,7 +175,7 @@
   <p></p>
   <p>This endpoint returns the status of a transfer</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deal/transfer/status</code>
+  <code>//api.estuary.tech//deal/transfer/status</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
@@ -188,7 +188,7 @@
       
       
       <span class="param-in">Body: </span>
-      <span class="param-name">chanid</span>
+      <span class="param-name">body</span>
       <span class="param-type">Main.ChannelIDParam(Main.ChannelIDParam)</span>
       
       <p class="param-description">Channel ID</p>
@@ -199,7 +199,7 @@
   <p></p>
   <p>This endpoint returns a list of storage failures for user</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deals/failures</code>
+  <code>//api.estuary.tech//deals/failures</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -212,13 +212,24 @@
   <p></p>
   <p>This endpoint makes a deal for a given content and miner</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deals/make/{miner}</code>
+  <code>//api.estuary.tech//deals/make/{miner}</code>
   <h3 class="section">HTTP Method</h3>
   <code>POST</code>
   <h3 class="section">Response Type</h3>
   <div class="model" data-model="string"><a href="">String</a></div>
   <h3 class="section">Parameters</h3>
   <ul>
+	  <li class="parameter">
+      
+      
+      
+      
+      <span class="param-in">Body: </span>
+      <span class="param-name">body</span>
+      <span class="param-type">String(string)</span>
+      
+      <p class="param-description">Deal Request</p>
+	  </li>
 	  <li class="parameter">
       
       
@@ -230,24 +241,13 @@
       
       <p class="param-description">Miner</p>
 	  </li>
-	  <li class="parameter">
-      
-      
-      
-      
-      <span class="param-in">Body: </span>
-      <span class="param-name">dealRequest</span>
-      <span class="param-type">String(string)</span>
-      
-      <p class="param-description">Deal Request</p>
-	  </li>
   </ul>
   <h2><a name="dealsStatusDealGet"></a>dealsStatusDealGet</h2>
   <hr>
   <p></p>
   <p>This endpoint returns the status of a deal</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/deals/status/{deal}</code>
+  <code>//api.estuary.tech//deals/status/{deal}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -271,7 +271,7 @@
   <p></p>
   <p>This endpoint returns a list of storage failures</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/public/deals/failures</code>
+  <code>//api.estuary.tech//public/deals/failures</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>
@@ -284,7 +284,7 @@
   <p></p>
   <p>This endpoint returns the ask for a given CID</p>
   <h3 class="section">URL</h3>
-  <code>https://api.estuary.tech/public/miners/storage/query/{miner}</code>
+  <code>//api.estuary.tech//public/miners/storage/query/{miner}</code>
   <h3 class="section">HTTP Method</h3>
   <code>GET</code>
   <h3 class="section">Response Type</h3>

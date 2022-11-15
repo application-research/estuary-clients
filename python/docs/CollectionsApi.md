@@ -1,6 +1,6 @@
 # estuary_client.CollectionsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**collections_fs_add_post**](CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 [**collections_get**](CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 [**collections_post**](CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
-
 
 # **collections_coluuid_commit_post**
 > str collections_coluuid_commit_post(coluuid)
@@ -69,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_contents_delete**
-> str collections_coluuid_contents_delete(coluuid, contentid, body)
+> str collections_coluuid_contents_delete(body, coluuid, contentid)
 
 Deletes a content from a collection
 
@@ -91,13 +90,13 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
+body = estuary_client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # str | Collection ID
 contentid = 'contentid_example' # str | Content ID
-body = estuary_client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 
 try:
     # Deletes a content from a collection
-    api_response = api_instance.collections_coluuid_contents_delete(coluuid, contentid, body)
+    api_response = api_instance.collections_coluuid_contents_delete(body, coluuid, contentid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_contents_delete: %s\n" % e)
@@ -107,9 +106,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **str**| Collection ID | 
  **contentid** | **str**| Content ID | 
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#39;path&#39; or &#39;content_id&#39;) | 
 
 ### Return type
 
@@ -121,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -176,7 +175,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -237,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> str collections_coluuid_post(coluuid, content_ids)
+> str collections_coluuid_post(body, coluuid)
 
 Add contents to a collection
 
@@ -259,12 +258,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-coluuid = 'coluuid_example' # str | coluuid
-content_ids = [estuary_client.list[int]()] # list[int] | Content IDs to add to collection
+body = [56] # list[int] | Content IDs to add to collection
+coluuid = 'coluuid_example' # str | Collection UUID
 
 try:
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(coluuid, content_ids)
+    api_response = api_instance.collections_coluuid_post(body, coluuid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_post: %s\n" % e)
@@ -274,8 +273,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **coluuid** | **str**| coluuid | 
- **content_ids** | **list[int]**| Content IDs to add to collection | 
+ **body** | [**list[int]**](int.md)| Content IDs to add to collection | 
+ **coluuid** | **str**| Collection UUID | 
 
 ### Return type
 
@@ -449,7 +448,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

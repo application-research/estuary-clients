@@ -14,7 +14,6 @@ class MainGetApiKeysResp(Model):
 
     Do not edit the class manually.
     """
-
     def __init__(self, expiry: str=None, label: str=None, token: str=None, token_hash: str=None):  # noqa: E501
         """MainGetApiKeysResp - a model defined in Swagger
 
@@ -40,7 +39,6 @@ class MainGetApiKeysResp(Model):
             'token': 'token',
             'token_hash': 'tokenHash'
         }
-
         self._expiry = expiry
         self._label = label
         self._token = token

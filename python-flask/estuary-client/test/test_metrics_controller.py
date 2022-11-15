@@ -18,7 +18,7 @@ class TestMetricsController(BaseTestCase):
         Get deal metrics
         """
         response = self.client.open(
-            '//public/metrics/deals-on-chain',
+            '/public/metrics/deals-on-chain',
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

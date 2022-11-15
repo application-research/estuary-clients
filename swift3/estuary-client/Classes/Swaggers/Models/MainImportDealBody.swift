@@ -9,7 +9,6 @@ import Foundation
 
 
 open class MainImportDealBody: JSONEncodable {
-
     public var coluuid: String?
     public var dealIDs: [Int32]?
     public var dir: String?
@@ -29,4 +28,3 @@ open class MainImportDealBody: JSONEncodable {
         return dictionary
     }
 }
-

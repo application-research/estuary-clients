@@ -3,10 +3,8 @@ package io.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -14,7 +12,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class MainDeleteContentFromCollectionBody   {
-  
   private String by = null;
   private String value = null;
 
@@ -26,7 +23,8 @@ public class MainDeleteContentFromCollectionBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("by")
   public String getBy() {
     return by;
@@ -43,7 +41,8 @@ public class MainDeleteContentFromCollectionBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("value")
   public String getValue() {
     return value;
@@ -93,4 +92,3 @@ public class MainDeleteContentFromCollectionBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

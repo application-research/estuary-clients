@@ -3,16 +3,13 @@ part of swagger.api;
 class MainGetApiKeysResp {
   
   String expiry = null;
-  
 
   String label = null;
-  
 
   String token = null;
-  
 
   String tokenHash = null;
-  
+
   MainGetApiKeysResp();
 
   @override
@@ -22,18 +19,10 @@ class MainGetApiKeysResp {
 
   MainGetApiKeysResp.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    expiry =
-        json['expiry']
-    ;
-    label =
-        json['label']
-    ;
-    token =
-        json['token']
-    ;
-    tokenHash =
-        json['tokenHash']
-    ;
+    expiry = json['expiry'];
+    label = json['label'];
+    token = json['token'];
+    tokenHash = json['tokenHash'];
   }
 
   Map<String, dynamic> toJson() {
@@ -57,4 +46,3 @@ class MainGetApiKeysResp {
     return map;
   }
 }
-

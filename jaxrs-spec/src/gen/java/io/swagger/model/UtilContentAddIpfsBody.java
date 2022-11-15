@@ -12,11 +12,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class UtilContentAddIpfsBody   {
-  
+
   private @Valid String coluuid = null;
+
   private @Valid String dir = null;
+
   private @Valid String filename = null;
+
   private @Valid List<String> peers = new ArrayList<String>();
+
   private @Valid String root = null;
 
   /**
@@ -29,6 +33,7 @@ public class UtilContentAddIpfsBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("coluuid")
+
   public String getColuuid() {
     return coluuid;
   }
@@ -46,6 +51,7 @@ public class UtilContentAddIpfsBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("dir")
+
   public String getDir() {
     return dir;
   }
@@ -63,6 +69,7 @@ public class UtilContentAddIpfsBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("filename")
+
   public String getFilename() {
     return filename;
   }
@@ -80,6 +87,7 @@ public class UtilContentAddIpfsBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("peers")
+
   public List<String> getPeers() {
     return peers;
   }
@@ -97,6 +105,7 @@ public class UtilContentAddIpfsBody   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("root")
+
   public String getRoot() {
     return root;
   }
@@ -151,4 +160,3 @@ public class UtilContentAddIpfsBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

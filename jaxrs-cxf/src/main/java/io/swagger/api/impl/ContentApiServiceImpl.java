@@ -19,7 +19,6 @@ import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import org.apache.cxf.jaxrs.ext.multipart.*;
 
-import io.swagger.annotations.Api;
 
 /**
  * Estuary API
@@ -106,7 +105,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint adds a new content
      *
      */
-    public String contentCreatePost(UtilContentCreateBody req, String ignoreDupes) {
+    public String contentCreatePost(UtilContentCreateBody body, String ignoreDupes) {
         // TODO: Implement...
         
         return null;

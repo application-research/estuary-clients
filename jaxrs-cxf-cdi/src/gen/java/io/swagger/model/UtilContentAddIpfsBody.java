@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
-import javax.validation.Valid;
 
-
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.*;
@@ -16,7 +14,6 @@ import javax.xml.bind.annotation.*;
 
 
 public class UtilContentAddIpfsBody   {
-  
   private String coluuid = null;
   private String dir = null;
   private String filename = null;
@@ -31,7 +28,8 @@ public class UtilContentAddIpfsBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -48,7 +46,8 @@ public class UtilContentAddIpfsBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -65,7 +64,8 @@ public class UtilContentAddIpfsBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("filename")
   public String getFilename() {
     return filename;
@@ -82,7 +82,8 @@ public class UtilContentAddIpfsBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("peers")
   public List<String> getPeers() {
     return peers;
@@ -99,7 +100,8 @@ public class UtilContentAddIpfsBody   {
   }
 
   
-  @ApiModelProperty(value = "")
+  
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -155,4 +157,3 @@ public class UtilContentAddIpfsBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -11,7 +11,6 @@
  */
 import { TypesIpfsPin } from './typesIpfsPin';
 
-
 export interface TypesIpfsPinStatusResponse { 
     created?: string;
     delegates?: Array<string>;

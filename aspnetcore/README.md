@@ -1,4 +1,4 @@
-# estuary-client - ASP.NET Core 3.0 Server
+# estuary-client - ASP.NET Core 2.0 Server
 
 This is the API for the Estuary application.
 

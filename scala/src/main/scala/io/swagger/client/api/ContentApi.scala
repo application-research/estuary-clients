@@ -9,17 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.Array[Byte]
 import io.swagger.client.model.ContentAddIpfsBody
-import io.swagger.client.model.ContentAddResponse
 import io.swagger.client.model.ContentCreateBody
-import java.io.File
-import io.swagger.client.model.HttpError
 import io.swagger.client.model.ImportDealBody
+import io.swagger.client.model.util.ContentAddResponse
+import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
@@ -50,7 +49,7 @@ import scala.util.{Failure, Success, Try}
 import org.json4s._
 
 class ContentApi(
-  val defBasePath: String = "https://api.estuary.tech",
+  val defBasePath: String = "//api.estuary.tech/",
   defApiInvoker: ApiInvoker = ApiInvoker
 ) {
   private lazy val dateTimeFormatter = {
@@ -146,16 +145,16 @@ class ContentApi(
    * Add new content
    * This endpoint is used to upload new content.
    *
-   * @param data File to upload 
-   * @param filename Filenam to use for upload (optional)
+   * @param data  
+   * @param filename  
    * @param coluuid Collection UUID (optional)
    * @param replication Replication value (optional)
    * @param ignoreDupes Ignore Dupes true/false (optional)
    * @param lazyProvide Lazy Provide true/false (optional)
    * @param dir Directory (optional)
-   * @return ContentAddResponse
+   * @return util.ContentAddResponse
    */
-  def contentAddPost(data: File, filename: Option[String] = None, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Option[ContentAddResponse] = {
+  def contentAddPost(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Option[util.ContentAddResponse] = {
     val await = Try(Await.result(contentAddPostAsync(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -167,16 +166,16 @@ class ContentApi(
    * Add new content asynchronously
    * This endpoint is used to upload new content.
    *
-   * @param data File to upload 
-   * @param filename Filenam to use for upload (optional)
+   * @param data  
+   * @param filename  
    * @param coluuid Collection UUID (optional)
    * @param replication Replication value (optional)
    * @param ignoreDupes Ignore Dupes true/false (optional)
    * @param lazyProvide Lazy Provide true/false (optional)
    * @param dir Directory (optional)
-   * @return Future(ContentAddResponse)
+   * @return Future(util.ContentAddResponse)
    */
-  def contentAddPostAsync(data: File, filename: Option[String] = None, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Future[ContentAddResponse] = {
+  def contentAddPostAsync(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Future[util.ContentAddResponse] = {
       helper.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
   }
 
@@ -266,12 +265,12 @@ class ContentApi(
    * Add a new content
    * This endpoint adds a new content
    *
-   * @param req Content 
+   * @param body Content 
    * @param ignoreDupes Ignore Dupes (optional)
    * @return String
    */
-  def contentCreatePost(req: ContentCreateBody, ignoreDupes: Option[String] = None): Option[String] = {
-    val await = Try(Await.result(contentCreatePostAsync(req, ignoreDupes), Duration.Inf))
+  def contentCreatePost(body: ContentCreateBody, ignoreDupes: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(contentCreatePostAsync(body, ignoreDupes), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -282,12 +281,12 @@ class ContentApi(
    * Add a new content asynchronously
    * This endpoint adds a new content
    *
-   * @param req Content 
+   * @param body Content 
    * @param ignoreDupes Ignore Dupes (optional)
    * @return Future(String)
    */
-  def contentCreatePostAsync(req: ContentCreateBody, ignoreDupes: Option[String] = None): Future[String] = {
-      helper.contentCreatePost(req, ignoreDupes)
+  def contentCreatePostAsync(body: ContentCreateBody, ignoreDupes: Option[String] = None): Future[String] = {
+      helper.contentCreatePost(body, ignoreDupes)
   }
 
   /**
@@ -566,7 +565,6 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (body == null) throw new Exception("Missing required parameter 'body' when calling ContentApi->contentAddCarPost")
-
     ignoreDupes match {
       case Some(param) => queryParams += "ignore-dupes" -> param.toString
       case _ => queryParams
@@ -604,14 +602,14 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentAddPost(data: File,
-    filename: Option[String] = None,
+  def contentAddPost(data: Array[Byte],
+    filename: String,
     coluuid: Option[String] = None,
     replication: Option[Integer] = None,
     ignoreDupes: Option[String] = None,
     lazyProvide: Option[String] = None,
     dir: Option[String] = None
-    )(implicit reader: ClientResponseReader[ContentAddResponse]): Future[ContentAddResponse] = {
+    )(implicit reader: ClientResponseReader[util.ContentAddResponse]): Future[util.ContentAddResponse] = {
     // create path and map variables
     val path = (addFmt("/content/add"))
 
@@ -620,6 +618,9 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (data == null) throw new Exception("Missing required parameter 'data' when calling ContentApi->contentAddPost")
+
+    if (filename == null) throw new Exception("Missing required parameter 'filename' when calling ContentApi->contentAddPost")
+
     coluuid match {
       case Some(param) => queryParams += "coluuid" -> param.toString
       case _ => queryParams
@@ -709,7 +710,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentCreatePost(req: ContentCreateBody,
+  def contentCreatePost(body: ContentCreateBody,
     ignoreDupes: Option[String] = None
     )(implicit reader: ClientResponseReader[String], writer: RequestWriter[ContentCreateBody]): Future[String] = {
     // create path and map variables
@@ -719,13 +720,13 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (req == null) throw new Exception("Missing required parameter 'req' when calling ContentApi->contentCreatePost")
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling ContentApi->contentCreatePost")
     ignoreDupes match {
       case Some(param) => queryParams += "ignore-dupes" -> param.toString
       case _ => queryParams
     }
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(req))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

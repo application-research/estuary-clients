@@ -5,23 +5,16 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class UtilContentCreateBody   {
-  
-  private String coluuid = null;
-  private String dir = null;
-  private String location = null;
-  private String name = null;
-  private String root = null;
-  private Integer type = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class UtilContentCreateBody   {
+  private String coluuid = null;  private String dir = null;  private String location = null;  private String name = null;  private String root = null;  private Integer type = null;
 
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("coluuid")
   public String getColuuid() {
     return coluuid;
@@ -33,7 +26,7 @@ public class UtilContentCreateBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("dir")
   public String getDir() {
     return dir;
@@ -45,7 +38,7 @@ public class UtilContentCreateBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("location")
   public String getLocation() {
     return location;
@@ -57,7 +50,7 @@ public class UtilContentCreateBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -69,7 +62,7 @@ public class UtilContentCreateBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -81,7 +74,7 @@ public class UtilContentCreateBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("type")
   public Integer getType() {
     return type;
@@ -139,4 +132,3 @@ public class UtilContentCreateBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

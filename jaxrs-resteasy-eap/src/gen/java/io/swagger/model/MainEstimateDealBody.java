@@ -4,15 +4,11 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
-import io.swagger.annotations.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyEapServerCodegen", date = "2022-11-11T23:35:11.279Z")
-public class MainEstimateDealBody   {
-  
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class MainEstimateDealBody   {
   private Integer durationBlks = null;
   private Integer replication = null;
   private Integer size = null;
@@ -21,7 +17,7 @@ public class MainEstimateDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("durationBlks")
   public Integer getDurationBlks() {
     return durationBlks;
@@ -33,7 +29,7 @@ public class MainEstimateDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("replication")
   public Integer getReplication() {
     return replication;
@@ -45,7 +41,7 @@ public class MainEstimateDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("size")
   public Integer getSize() {
     return size;
@@ -57,7 +53,7 @@ public class MainEstimateDealBody   {
   /**
    **/
   
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   @JsonProperty("verified")
   public Boolean isVerified() {
     return verified;
@@ -111,4 +107,3 @@ public class MainEstimateDealBody   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

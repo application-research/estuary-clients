@@ -1,13 +1,12 @@
 # estuary-client.Api.AutoretrieveApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminAutoretrieveInitPost**](AutoretrieveApi.md#adminautoretrieveinitpost) | **POST** /admin/autoretrieve/init | Register autoretrieve server
 [**AdminAutoretrieveListGet**](AutoretrieveApi.md#adminautoretrievelistget) | **GET** /admin/autoretrieve/list | List autoretrieve servers
 [**AutoretrieveHeartbeatPost**](AutoretrieveApi.md#autoretrieveheartbeatpost) | **POST** /autoretrieve/heartbeat | Marks autoretrieve server as up
-
 
 <a name="adminautoretrieveinitpost"></a>
 # **AdminAutoretrieveInitPost**
@@ -37,8 +36,8 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AutoretrieveApi();
-            var addresses = addresses_example;  // string | Autoretrieve's comma-separated list of addresses
-            var pubKey = pubKey_example;  // string | Autoretrieve's public key
+            var addresses = addresses_example;  // string | 
+            var pubKey = pubKey_example;  // string | 
 
             try
             {
@@ -59,8 +58,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **addresses** | **string**| Autoretrieve&#39;s comma-separated list of addresses | 
- **pubKey** | **string**| Autoretrieve&#39;s public key | 
+ **addresses** | **string**|  | 
+ **pubKey** | **string**|  | 
 
 ### Return type
 
@@ -72,11 +71,10 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="adminautoretrievelistget"></a>
 # **AdminAutoretrieveListGet**
 > string AdminAutoretrieveListGet ()
@@ -138,7 +136,6 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 <a name="autoretrieveheartbeatpost"></a>
 # **AutoretrieveHeartbeatPost**
 > string AutoretrieveHeartbeatPost (string token)
@@ -188,7 +185,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **token** | **string**| Autoretrieve&#39;s auth token | 
+ **token** | **string**| Autoretrieve&#x27;s auth token | 
 
 ### Return type
 
@@ -204,4 +201,3 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-

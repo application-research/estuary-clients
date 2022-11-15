@@ -1,6 +1,6 @@
 # estuary_client.DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 [**public_deals_failures_get**](DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 [**public_miners_storage_query_miner_get**](DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-
 
 # **deal_estimate_post**
 > str deal_estimate_post(body)
@@ -68,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -396,7 +395,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deal_transfer_status_post**
-> str deal_transfer_status_post(chanid)
+> str deal_transfer_status_post(body)
 
 Transfer Status
 
@@ -418,11 +417,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
-chanid = estuary_client.MainChannelIDParam() # MainChannelIDParam | Channel ID
+body = estuary_client.MainChannelIDParam() # MainChannelIDParam | Channel ID
 
 try:
     # Transfer Status
-    api_response = api_instance.deal_transfer_status_post(chanid)
+    api_response = api_instance.deal_transfer_status_post(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deal_transfer_status_post: %s\n" % e)
@@ -432,7 +431,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
 
 ### Return type
 
@@ -444,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -500,7 +499,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deals_make_miner_post**
-> str deals_make_miner_post(miner, deal_request)
+> str deals_make_miner_post(body, miner)
 
 Make Deal
 
@@ -522,12 +521,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
+body = 'body_example' # str | Deal Request
 miner = 'miner_example' # str | Miner
-deal_request = 'deal_request_example' # str | Deal Request
 
 try:
     # Make Deal
-    api_response = api_instance.deals_make_miner_post(miner, deal_request)
+    api_response = api_instance.deals_make_miner_post(body, miner)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DealsApi->deals_make_miner_post: %s\n" % e)
@@ -537,8 +536,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**str**](str.md)| Deal Request | 
  **miner** | **str**| Miner | 
- **deal_request** | **str**| Deal Request | 
 
 ### Return type
 
@@ -550,7 +549,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

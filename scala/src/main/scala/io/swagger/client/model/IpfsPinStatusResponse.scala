@@ -9,15 +9,22 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
 package io.swagger.client.model
 
 
+/**
+ * @param created 
+ * @param delegates 
+ * @param info 
+ * @param pin 
+ * @param requestid 
+ * @param status 
+ */
 case class IpfsPinStatusResponse (
   created: Option[String] = None,
   delegates: Option[List[String]] = None,
   info: Option[Any] = None,
-  pin: Option[IpfsPin] = None,
+  pin: Option[types.IpfsPin] = None,
   requestid: Option[String] = None,
   status: Option[String] = None
 )

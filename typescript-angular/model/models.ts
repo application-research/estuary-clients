@@ -1,4 +1,6 @@
+export * from './autoretrieveInitBody';
 export * from './collectionsCollection';
+export * from './contentAddBody';
 export * from './mainChannelIDParam';
 export * from './mainCreateCollectionBody';
 export * from './mainDeleteContentFromCollectionBody';

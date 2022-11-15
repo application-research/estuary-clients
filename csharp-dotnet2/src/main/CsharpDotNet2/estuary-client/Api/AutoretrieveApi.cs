@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using RestSharp;
 using IO.Swagger.Client;
-using estuary-client.Model;
+using IO.Swagger.Model;
 
-namespace estuary-client.Api
+namespace IO.Swagger.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
@@ -14,8 +14,8 @@ namespace estuary-client.Api
         /// <summary>
         /// Register autoretrieve server This endpoint registers a new autoretrieve server
         /// </summary>
-        /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param>
-        /// <param name="pubKey">Autoretrieve&#39;s public key</param>
+        /// <param name="addresses"></param>
+        /// <param name="pubKey"></param>
         /// <returns>string</returns>
         string AdminAutoretrieveInitPost (string addresses, string pubKey);
         /// <summary>
@@ -26,7 +26,7 @@ namespace estuary-client.Api
         /// <summary>
         /// Marks autoretrieve server as up This endpoint updates the lastConnection field for autoretrieve
         /// </summary>
-        /// <param name="token">Autoretrieve&#39;s auth token</param>
+        /// <param name="token">Autoretrieve&#x27;s auth token</param>
         /// <returns>string</returns>
         string AutoretrieveHeartbeatPost (string token);
     }
@@ -87,18 +87,15 @@ namespace estuary-client.Api
         /// <summary>
         /// Register autoretrieve server This endpoint registers a new autoretrieve server
         /// </summary>
-        /// <param name="addresses">Autoretrieve&#39;s comma-separated list of addresses</param> 
-        /// <param name="pubKey">Autoretrieve&#39;s public key</param> 
-        /// <returns>string</returns>            
+        /// <param name="addresses"></param>
+        /// <param name="pubKey"></param>
+        /// <returns>string</returns>
         public string AdminAutoretrieveInitPost (string addresses, string pubKey)
         {
-            
             // verify the required parameter 'addresses' is set
             if (addresses == null) throw new ApiException(400, "Missing required parameter 'addresses' when calling AdminAutoretrieveInitPost");
-            
             // verify the required parameter 'pubKey' is set
             if (pubKey == null) throw new ApiException(400, "Missing required parameter 'pubKey' when calling AdminAutoretrieveInitPost");
-            
     
             var path = "/admin/autoretrieve/init";
             path = path.Replace("{format}", "json");
@@ -111,7 +108,7 @@ namespace estuary-client.Api
     
                                     if (addresses != null) formParams.Add("addresses", ApiClient.ParameterToString(addresses)); // form parameter
 if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)); // form parameter
-                
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -129,10 +126,9 @@ if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)
         /// <summary>
         /// List autoretrieve servers This endpoint lists all registered autoretrieve servers
         /// </summary>
-        /// <returns>string</returns>            
+        /// <returns>string</returns>
         public string AdminAutoretrieveListGet ()
         {
-            
     
             var path = "/admin/autoretrieve/list";
             path = path.Replace("{format}", "json");
@@ -143,7 +139,7 @@ if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                                    
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -161,14 +157,12 @@ if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)
         /// <summary>
         /// Marks autoretrieve server as up This endpoint updates the lastConnection field for autoretrieve
         /// </summary>
-        /// <param name="token">Autoretrieve&#39;s auth token</param> 
-        /// <returns>string</returns>            
+        /// <param name="token">Autoretrieve&#x27;s auth token</param>
+        /// <returns>string</returns>
         public string AutoretrieveHeartbeatPost (string token)
         {
-            
             // verify the required parameter 'token' is set
             if (token == null) throw new ApiException(400, "Missing required parameter 'token' when calling AutoretrieveHeartbeatPost");
-            
     
             var path = "/autoretrieve/heartbeat";
             path = path.Replace("{format}", "json");
@@ -180,7 +174,7 @@ if (pubKey != null) formParams.Add("pubKey", ApiClient.ParameterToString(pubKey)
             String postBody = null;
     
                          if (token != null) headerParams.Add("token", ApiClient.ParameterToString(token)); // header parameter
-                            
+            
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

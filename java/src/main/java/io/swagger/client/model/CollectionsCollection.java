@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-
 package io.swagger.client.model;
 
 import java.util.Objects;
@@ -20,14 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
-
 /**
  * CollectionsCollection
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-11-11T23:35:09.103Z")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-15T21:05:25.647Z[GMT]")
 public class CollectionsCollection {
   @SerializedName("cid")
   private String cid = null;
@@ -56,7 +54,7 @@ public class CollectionsCollection {
    * Get cid
    * @return cid
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getCid() {
     return cid;
   }
@@ -74,7 +72,7 @@ public class CollectionsCollection {
    * Get createdAt
    * @return createdAt
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getCreatedAt() {
     return createdAt;
   }
@@ -92,7 +90,7 @@ public class CollectionsCollection {
    * Get description
    * @return description
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getDescription() {
     return description;
   }
@@ -110,7 +108,7 @@ public class CollectionsCollection {
    * Get name
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getName() {
     return name;
   }
@@ -128,7 +126,7 @@ public class CollectionsCollection {
    * Get userId
    * @return userId
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public Integer getUserId() {
     return userId;
   }
@@ -146,7 +144,7 @@ public class CollectionsCollection {
    * Get uuid
    * @return uuid
   **/
-  @ApiModelProperty(value = "")
+  @Schema(description = "")
   public String getUuid() {
     return uuid;
   }
@@ -206,4 +204,3 @@ public class CollectionsCollection {
   }
 
 }
-

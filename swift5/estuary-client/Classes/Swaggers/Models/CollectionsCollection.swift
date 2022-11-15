@@ -18,7 +18,7 @@ public struct CollectionsCollection: Codable {
     public var userId: Int?
     public var uuid: String?
 
-    public init(cid: String?, createdAt: String?, _description: String?, name: String?, userId: Int?, uuid: String?) {
+    public init(cid: String? = nil, createdAt: String? = nil, _description: String? = nil, name: String? = nil, userId: Int? = nil, uuid: String? = nil) {
         self.cid = cid
         self.createdAt = createdAt
         self._description = _description
@@ -36,6 +36,4 @@ public struct CollectionsCollection: Codable {
         case uuid
     }
 
-
 }
-

@@ -1,27 +1,26 @@
 # Swagger\Client\ContentApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
-[**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
-[**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
-[**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
-[**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
-[**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
-[**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
-[**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
-[**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
-[**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
-[**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
-[**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
-[**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
-
+[**contentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
+[**contentAddIpfsPost**](ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
+[**contentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
+[**contentAggregatedContentGet**](ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
+[**contentAllDealsGet**](ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
+[**contentBwUsageContentGet**](ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentCreatePost**](ContentApi.md#contentcreatepost) | **POST** /content/create | Add a new content
+[**contentDealsGet**](ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
+[**contentEnsureReplicationDatacidGet**](ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
+[**contentFailuresContentGet**](ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
+[**contentIdGet**](ContentApi.md#contentidget) | **GET** /content/{id} | Content
+[**contentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
+[**contentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
+[**contentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
+[**contentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
+[**contentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 
 # **contentAddCarPost**
 > string contentAddCarPost($body, $ignore_dupes, $filename)
@@ -34,7 +33,6 @@ This endpoint is used to add a car object to the network. The object can be a fi
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -63,7 +61,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **string**| Car |
+ **body** | [**string**](../Model/string.md)| Car |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
  **filename** | **string**| Filename | [optional]
 
@@ -77,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -93,7 +91,6 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -134,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -150,7 +147,6 @@ This endpoint is used to upload new content.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -162,8 +158,8 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$data = "/path/to/file.txt"; // \SplFileObject | File to upload
-$filename = "filename_example"; // string | Filenam to use for upload
+$data = "data_example"; // string | 
+$filename = "filename_example"; // string | 
 $coluuid = "coluuid_example"; // string | Collection UUID
 $replication = 56; // int | Replication value
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes true/false
@@ -183,8 +179,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **\SplFileObject**| File to upload |
- **filename** | **string**| Filenam to use for upload | [optional]
+ **data** | **string****string**|  |
+ **filename** | **string**|  |
  **coluuid** | **string**| Collection UUID | [optional]
  **replication** | **int**| Replication value | [optional]
  **ignore_dupes** | **string**| Ignore Dupes true/false | [optional]
@@ -217,7 +213,6 @@ This endpoint returns aggregated content stats
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -272,7 +267,6 @@ This endpoint is used to get all deals for a user
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -331,7 +325,6 @@ This endpoint returns content bandwidth
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -376,7 +369,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentCreatePost**
-> string contentCreatePost($req, $ignore_dupes)
+> string contentCreatePost($body, $ignore_dupes)
 
 Add a new content
 
@@ -386,7 +379,6 @@ This endpoint adds a new content
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -398,11 +390,11 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$req = new \Swagger\Client\Model\UtilContentCreateBody(); // \Swagger\Client\Model\UtilContentCreateBody | Content
+$body = new \Swagger\Client\Model\UtilContentCreateBody(); // \Swagger\Client\Model\UtilContentCreateBody | Content
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
-    $result = $apiInstance->contentCreatePost($req, $ignore_dupes);
+    $result = $apiInstance->contentCreatePost($body, $ignore_dupes);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentCreatePost: ', $e->getMessage(), PHP_EOL;
@@ -414,7 +406,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **req** | [**\Swagger\Client\Model\UtilContentCreateBody**](../Model/UtilContentCreateBody.md)| Content |
+ **body** | [**\Swagger\Client\Model\UtilContentCreateBody**](../Model/UtilContentCreateBody.md)| Content |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
 
 ### Return type
@@ -427,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -443,7 +435,6 @@ This endpoint lists all content with deals
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -500,7 +491,6 @@ This endpoint ensures that the content is replicated to the specified number of 
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -555,7 +545,6 @@ This endpoint returns all failures for a content
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -610,7 +599,6 @@ This endpoint returns a content by its ID
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -665,7 +653,6 @@ This endpoint imports a deal into the shuttle.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -704,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -720,7 +707,6 @@ This endpoint lists all content
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -771,7 +757,6 @@ This endpoint reads content from the blockstore
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -826,7 +811,6 @@ This endpoint is used to get staging zone for user.
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -877,7 +861,6 @@ This endpoint is used to get content statistics. Every content stored in the net
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -934,7 +917,6 @@ This endpoint returns the status of a content
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 // Configure API key authorization: bearerAuth
 $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed

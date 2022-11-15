@@ -3,7 +3,6 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-
 import io.swagger.model.MainChannelIDParam;
 import io.swagger.model.MainEstimateDealBody;
 import io.swagger.model.UtilHttpError;
@@ -18,8 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaResteasyServerCodegen", date = "2022-11-11T23:35:11.732Z")
-public class DealApiServiceImpl implements DealApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class DealApiServiceImpl implements DealApiService {
       public Response dealEstimatePost(MainEstimateDealBody body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -55,7 +53,7 @@ public class DealApiServiceImpl implements DealApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response dealTransferStatusPost(MainChannelIDParam chanid,SecurityContext securityContext)
+      public Response dealTransferStatusPost(MainChannelIDParam body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

@@ -1,6 +1,6 @@
 # EstuaryClient.DealsApi
 
-All URIs are relative to *https://api.estuary.tech*
+All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,10 +18,9 @@ Method | HTTP request | Description
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
 
-
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
-> 'String' dealEstimatePost(body)
+> &#x27;String&#x27; dealEstimatePost(body)
 
 Estimate the cost of a deal
 
@@ -29,28 +28,25 @@ This endpoint estimates the cost of a deal
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let body = new EstuaryClient.MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
-var body = new EstuaryClient.MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
-
-
-var callback = function(error, data, response) {
+apiInstance.dealEstimatePost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealEstimatePost(body, callback);
+});
 ```
 
 ### Parameters
@@ -61,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -69,12 +65,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealInfoDealidGet"></a>
 # **dealInfoDealidGet**
-> 'String' dealInfoDealidGet(dealid)
+> &#x27;String&#x27; dealInfoDealidGet(dealid)
 
 Get Deal Info
 
@@ -82,28 +78,25 @@ This endpoint returns the deal info for a deal
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let dealid = 56; // Number | Deal ID
 
-var dealid = 56; // Number | Deal ID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealInfoDealidGet(dealid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealInfoDealidGet(dealid, callback);
+});
 ```
 
 ### Parameters
@@ -114,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -127,7 +120,7 @@ Name | Type | Description  | Notes
 
 <a name="dealProposalPropcidGet"></a>
 # **dealProposalPropcidGet**
-> 'String' dealProposalPropcidGet(propcid)
+> &#x27;String&#x27; dealProposalPropcidGet(propcid)
 
 Get Proposal
 
@@ -135,28 +128,25 @@ This endpoint returns the proposal for a deal
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let propcid = "propcid_example"; // String | Proposal CID
 
-var propcid = "propcid_example"; // String | Proposal CID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealProposalPropcidGet(propcid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealProposalPropcidGet(propcid, callback);
+});
 ```
 
 ### Parameters
@@ -167,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -180,7 +170,7 @@ Name | Type | Description  | Notes
 
 <a name="dealQueryMinerGet"></a>
 # **dealQueryMinerGet**
-> 'String' dealQueryMinerGet(miner)
+> &#x27;String&#x27; dealQueryMinerGet(miner)
 
 Query Ask
 
@@ -188,28 +178,25 @@ This endpoint returns the ask for a given CID
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let miner = "miner_example"; // String | CID
 
-var miner = "miner_example"; // String | CID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealQueryMinerGet(miner, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealQueryMinerGet(miner, callback);
+});
 ```
 
 ### Parameters
@@ -220,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -233,7 +220,7 @@ Name | Type | Description  | Notes
 
 <a name="dealStatusByProposalPropcidGet"></a>
 # **dealStatusByProposalPropcidGet**
-> 'String' dealStatusByProposalPropcidGet(propcid)
+> &#x27;String&#x27; dealStatusByProposalPropcidGet(propcid)
 
 Get Deal Status by PropCid
 
@@ -241,28 +228,25 @@ Get Deal Status by PropCid
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let propcid = "propcid_example"; // String | PropCid
 
-var propcid = "propcid_example"; // String | PropCid
-
-
-var callback = function(error, data, response) {
+apiInstance.dealStatusByProposalPropcidGet(propcid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealStatusByProposalPropcidGet(propcid, callback);
+});
 ```
 
 ### Parameters
@@ -273,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -286,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="dealStatusMinerPropcidGet"></a>
 # **dealStatusMinerPropcidGet**
-> 'String' dealStatusMinerPropcidGet(miner, propcid)
+> &#x27;String&#x27; dealStatusMinerPropcidGet(miner, propcid)
 
 Deal Status
 
@@ -294,30 +278,26 @@ This endpoint returns the status of a deal
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let miner = "miner_example"; // String | Miner
+let propcid = "propcid_example"; // String | Proposal CID
 
-var miner = "miner_example"; // String | Miner
-
-var propcid = "propcid_example"; // String | Proposal CID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealStatusMinerPropcidGet(miner, propcid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealStatusMinerPropcidGet(miner, propcid, callback);
+});
 ```
 
 ### Parameters
@@ -329,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -342,7 +322,7 @@ Name | Type | Description  | Notes
 
 <a name="dealTransferInProgressGet"></a>
 # **dealTransferInProgressGet**
-> 'String' dealTransferInProgressGet()
+> &#x27;String&#x27; dealTransferInProgressGet()
 
 Transfer In Progress
 
@@ -350,25 +330,23 @@ This endpoint returns the in-progress transfers
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.DealsApi();
+apiInstance.dealTransferInProgressGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealTransferInProgressGet(callback);
+});
 ```
 
 ### Parameters
@@ -376,7 +354,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -389,7 +367,7 @@ This endpoint does not need any parameter.
 
 <a name="dealTransferStatusPost"></a>
 # **dealTransferStatusPost**
-> 'String' dealTransferStatusPost(chanid)
+> &#x27;String&#x27; dealTransferStatusPost(body)
 
 Transfer Status
 
@@ -397,39 +375,36 @@ This endpoint returns the status of a transfer
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let body = new EstuaryClient.MainChannelIDParam(); // MainChannelIDParam | Channel ID
 
-var chanid = new EstuaryClient.MainChannelIDParam(); // MainChannelIDParam | Channel ID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealTransferStatusPost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealTransferStatusPost(chanid, callback);
+});
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **chanid** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -437,12 +412,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealsFailuresGet"></a>
 # **dealsFailuresGet**
-> 'String' dealsFailuresGet()
+> &#x27;String&#x27; dealsFailuresGet()
 
 Get storage failures for user
 
@@ -450,25 +425,23 @@ This endpoint returns a list of storage failures for user
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.DealsApi();
+apiInstance.dealsFailuresGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealsFailuresGet(callback);
+});
 ```
 
 ### Parameters
@@ -476,7 +449,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -489,7 +462,7 @@ This endpoint does not need any parameter.
 
 <a name="dealsMakeMinerPost"></a>
 # **dealsMakeMinerPost**
-> 'String' dealsMakeMinerPost(miner, dealRequest)
+> &#x27;String&#x27; dealsMakeMinerPost(body, miner)
 
 Make Deal
 
@@ -497,42 +470,38 @@ This endpoint makes a deal for a given content and miner
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let body = "body_example"; // String | Deal Request
+let miner = "miner_example"; // String | Miner
 
-var miner = "miner_example"; // String | Miner
-
-var dealRequest = "dealRequest_example"; // String | Deal Request
-
-
-var callback = function(error, data, response) {
+apiInstance.dealsMakeMinerPost(body, miner, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealsMakeMinerPost(miner, dealRequest, callback);
+});
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Deal Request | 
  **miner** | **String**| Miner | 
- **dealRequest** | **String**| Deal Request | 
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -540,12 +509,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="dealsStatusDealGet"></a>
 # **dealsStatusDealGet**
-> 'String' dealsStatusDealGet(deal)
+> &#x27;String&#x27; dealsStatusDealGet(deal)
 
 Get Deal Status
 
@@ -553,28 +522,25 @@ This endpoint returns the status of a deal
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let deal = 56; // Number | Deal ID
 
-var deal = 56; // Number | Deal ID
-
-
-var callback = function(error, data, response) {
+apiInstance.dealsStatusDealGet(deal, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.dealsStatusDealGet(deal, callback);
+});
 ```
 
 ### Parameters
@@ -585,7 +551,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -598,7 +564,7 @@ Name | Type | Description  | Notes
 
 <a name="publicDealsFailuresGet"></a>
 # **publicDealsFailuresGet**
-> 'String' publicDealsFailuresGet()
+> &#x27;String&#x27; publicDealsFailuresGet()
 
 Get storage failures
 
@@ -606,25 +572,23 @@ This endpoint returns a list of storage failures
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new EstuaryClient.DealsApi();
+apiInstance.publicDealsFailuresGet((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicDealsFailuresGet(callback);
+});
 ```
 
 ### Parameters
@@ -632,7 +596,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -645,7 +609,7 @@ This endpoint does not need any parameter.
 
 <a name="publicMinersStorageQueryMinerGet"></a>
 # **publicMinersStorageQueryMinerGet**
-> 'String' publicMinersStorageQueryMinerGet(miner)
+> &#x27;String&#x27; publicMinersStorageQueryMinerGet(miner)
 
 Query Ask
 
@@ -653,28 +617,25 @@ This endpoint returns the ask for a given CID
 
 ### Example
 ```javascript
-var EstuaryClient = require('estuary-client');
-var defaultClient = EstuaryClient.ApiClient.instance;
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
 
 // Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
+let bearerAuth = defaultClient.authentications['bearerAuth'];
 bearerAuth.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //bearerAuth.apiKeyPrefix = 'Token';
 
-var apiInstance = new EstuaryClient.DealsApi();
+let apiInstance = new EstuaryClient.DealsApi();
+let miner = "miner_example"; // String | CID
 
-var miner = "miner_example"; // String | CID
-
-
-var callback = function(error, data, response) {
+apiInstance.publicMinersStorageQueryMinerGet(miner, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.publicMinersStorageQueryMinerGet(miner, callback);
+});
 ```
 
 ### Parameters
@@ -685,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**'String'**
+**&#x27;String&#x27;**
 
 ### Authorization
 

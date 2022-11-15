@@ -3,8 +3,7 @@
 var utils = require('../utils/writer.js');
 var Public = require('../service/PublicService');
 
-module.exports.publicBy_cidCidGET = function publicBy_cidCidGET (req, res, next) {
-  var cid = req.swagger.params['cid'].value;
+module.exports.publicBy_cidCidGET = function publicBy_cidCidGET (req, res, next, cid) {
   Public.publicBy_cidCidGET(cid)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -34,10 +33,8 @@ module.exports.publicMetricsDeals_on_chainGET = function publicMetricsDeals_on_c
     });
 };
 
-module.exports.publicMinersDealsMinerGET = function publicMinersDealsMinerGET (req, res, next) {
-  var miner = req.swagger.params['miner'].value;
-  var ignoreFailed = req.swagger.params['ignore-failed'].value;
-  Public.publicMinersDealsMinerGET(miner,ignoreFailed)
+module.exports.publicMinersDealsMinerGET = function publicMinersDealsMinerGET (req, res, next, miner, ignoreFailed) {
+  Public.publicMinersDealsMinerGET(miner, ignoreFailed)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -46,8 +43,7 @@ module.exports.publicMinersDealsMinerGET = function publicMinersDealsMinerGET (r
     });
 };
 
-module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMinerGET (req, res, next) {
-  var miner = req.swagger.params['miner'].value;
+module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMinerGET (req, res, next, miner) {
   Public.publicMinersFailuresMinerGET(miner)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -67,8 +63,7 @@ module.exports.publicMinersGET = function publicMinersGET (req, res, next) {
     });
 };
 
-module.exports.publicMinersStatsMinerGET = function publicMinersStatsMinerGET (req, res, next) {
-  var miner = req.swagger.params['miner'].value;
+module.exports.publicMinersStatsMinerGET = function publicMinersStatsMinerGET (req, res, next, miner) {
   Public.publicMinersStatsMinerGET(miner)
     .then(function (response) {
       utils.writeJson(res, response);

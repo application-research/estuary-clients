@@ -31,7 +31,6 @@ class NetApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -50,7 +49,7 @@ class NetApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -83,7 +82,6 @@ class NetApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -102,7 +100,7 @@ class NetApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -132,7 +130,6 @@ class NetApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -151,7 +148,7 @@ class NetApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
           apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
@@ -181,7 +178,6 @@ class NetApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -200,7 +196,7 @@ class NetApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
         (apiClient.deserialize(response.body, 'List<String>') as List).map((item) => item as String).toList();
     } else {
       return null;
@@ -230,7 +226,6 @@ class NetApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
@@ -249,7 +244,7 @@ class NetApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return 
+      return
         (apiClient.deserialize(response.body, 'List<String>') as List).map((item) => item as String).toList();
     } else {
       return null;

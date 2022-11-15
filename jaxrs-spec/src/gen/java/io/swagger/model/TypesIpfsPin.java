@@ -12,10 +12,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class TypesIpfsPin   {
-  
+
   private @Valid String cid = null;
+
   private @Valid Object meta = null;
+
   private @Valid String name = null;
+
   private @Valid List<String> origins = new ArrayList<String>();
 
   /**
@@ -28,6 +31,7 @@ public class TypesIpfsPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("cid")
+
   public String getCid() {
     return cid;
   }
@@ -45,6 +49,7 @@ public class TypesIpfsPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("meta")
+
   public Object getMeta() {
     return meta;
   }
@@ -62,6 +67,7 @@ public class TypesIpfsPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("name")
+
   public String getName() {
     return name;
   }
@@ -79,6 +85,7 @@ public class TypesIpfsPin   {
   
   @ApiModelProperty(value = "")
   @JsonProperty("origins")
+
   public List<String> getOrigins() {
     return origins;
   }
@@ -131,4 +138,3 @@ public class TypesIpfsPin   {
     return o.toString().replace("\n", "\n    ");
   }
 }
-
