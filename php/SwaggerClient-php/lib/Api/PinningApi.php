@@ -1103,7 +1103,7 @@ class PinningApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['*/*']
+                ['application/json']
             );
         }
 
@@ -1373,7 +1373,7 @@ class PinningApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                ['*/*']
+                ['application/json']
             );
         }
 

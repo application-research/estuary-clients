@@ -20,7 +20,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-16T11:02:42.244Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext);
       public Response contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes, SecurityContext securityContext);
       public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext);

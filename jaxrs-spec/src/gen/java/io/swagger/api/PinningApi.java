@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-15T21:05:26.621Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-16T11:02:42.160Z[GMT]")
 public class PinningApi {
 
     @GET
@@ -73,7 +73,7 @@ public class PinningApi {
     }
     @POST
     @Path("/pins/{pinid}")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Replace a pinned object", description = "This endpoint replaces a pinned object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
@@ -90,7 +90,7 @@ public class PinningApi {
     }
     @POST
     @Path("/pins")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Add and pin object", description = "This endpoint adds a pin to the IPFS daemon.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })

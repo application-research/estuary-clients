@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-15T21:05:26.458Z[GMT]")public interface AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-16T11:02:42.244Z[GMT]")public interface AdminApiService {
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext);
       public Response adminAutoretrieveListGet(SecurityContext securityContext);
       public Response adminPeeringPeersDelete(List<Boolean> body, SecurityContext securityContext);

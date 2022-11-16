@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-16T11:02:41.408Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
       public Response publicByCidCidGet(String cid,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!

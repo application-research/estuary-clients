@@ -27,7 +27,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public interface AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-16T11:02:41.227Z[GMT]")public interface AdminApi  {
    
     @POST
     @Path("/autoretrieve/init")

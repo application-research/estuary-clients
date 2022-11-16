@@ -32289,7 +32289,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
--H "Content-Type: */*"\
+-H "Content-Type: application/json"\
 "//api.estuary.tech//pinning/pins/{pinid}"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Pinning-pinningPinsPinidPost-0-java">
@@ -32561,7 +32561,7 @@ except ApiException as e:
                                   var schemaWrapper = {
   "description" : "Meta information of new pin",
   "content" : {
-    "*/*" : {
+    "application/json" : {
       "schema" : {
         "type" : "string"
       }
@@ -32569,7 +32569,7 @@ except ApiException as e:
   },
   "required" : false
 };
-                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  var schema = schemaWrapper.content["application/json"].schema;
                                   if (schema.$ref != null) {
                                     schema = defsParser.$refs.get(schema.$ref);
                                   } else {
@@ -32776,7 +32776,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
--H "Content-Type: */*"\
+-H "Content-Type: application/json"\
 "//api.estuary.tech//pinning/pins"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Pinning-pinningPinsPost-0-java">
@@ -33009,7 +33009,7 @@ except ApiException as e:
                                   var schemaWrapper = {
   "description" : "Pin Body {cid:cid, name:name}",
   "content" : {
-    "*/*" : {
+    "application/json" : {
       "schema" : {
         "$ref" : "#/components/schemas/types.IpfsPin"
       }
@@ -33017,7 +33017,7 @@ except ApiException as e:
   },
   "required" : true
 };
-                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  var schema = schemaWrapper.content["application/json"].schema;
                                   if (schema.$ref != null) {
                                     schema = defsParser.$refs.get(schema.$ref);
                                   } else {

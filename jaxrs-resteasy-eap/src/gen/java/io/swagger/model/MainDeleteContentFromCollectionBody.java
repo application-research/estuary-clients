@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public class MainDeleteContentFromCollectionBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-16T11:02:41.227Z[GMT]")public class MainDeleteContentFromCollectionBody   {
   private String by = null;
   private String value = null;
 

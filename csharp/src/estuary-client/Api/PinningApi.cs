@@ -791,7 +791,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -873,7 +873,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -952,7 +952,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1031,7 +1031,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 

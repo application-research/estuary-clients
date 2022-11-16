@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-15T21:05:29.208Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-16T11:02:44.688Z[GMT]")
 @Validated
 public interface PinningApi {
 
@@ -89,7 +89,7 @@ public interface PinningApi {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     @RequestMapping(value = "/pinning/pins/{pinid}",
         produces = { "application/json" }, 
-        consumes = { "*/*" }, 
+        consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID", required=true, schema=@Schema()) @PathVariable("pinid") String pinid, @Parameter(in = ParameterIn.DEFAULT, description = "Meta information of new pin", schema=@Schema()) @Valid @RequestBody String body);
 
@@ -102,7 +102,7 @@ public interface PinningApi {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     @RequestMapping(value = "/pinning/pins",
         produces = { "application/json" }, 
-        consumes = { "*/*" }, 
+        consumes = { "application/json" }, 
         method = RequestMethod.POST)
     ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body);
 

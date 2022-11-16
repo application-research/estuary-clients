@@ -58,7 +58,7 @@ class TestPinningController(BaseTestCase):
             '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='POST',
             data=json.dumps(body),
-            content_type='*/*')
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -72,7 +72,7 @@ class TestPinningController(BaseTestCase):
             '/pinning/pins',
             method='POST',
             data=json.dumps(body),
-            content_type='*/*')
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

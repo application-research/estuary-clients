@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 @Path("/autoretrieve")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-15T21:05:26.247Z[GMT]")public interface AutoretrieveApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-16T11:02:41.227Z[GMT]")public interface AutoretrieveApi  {
    
     @POST
     @Path("/heartbeat")

@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-15T21:05:25.694Z[GMT]")public class NetApiServiceImpl implements NetApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-16T11:02:41.408Z[GMT]")public class NetApiServiceImpl implements NetApiService {
       public Response netAddrsGet(SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!

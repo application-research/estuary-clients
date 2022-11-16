@@ -87,7 +87,7 @@ public interface PinningApi  {
      */
     @POST
     @Path("/pinning/pins/{pinid}")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Replace a pinned object", tags={ "pinning" })
     @ApiResponses(value = { 
@@ -104,7 +104,7 @@ public interface PinningApi  {
      */
     @POST
     @Path("/pinning/pins")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Add and pin object", tags={ "pinning" })
     @ApiResponses(value = { 

@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-15T21:05:26.107Z[GMT]")public abstract class PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-16T11:02:41.498Z[GMT]")public abstract class PinningApiService {
     public abstract Response pinningPinsGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response pinningPinsPinidDelete(String pinid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response pinningPinsPinidGet(String pinid,SecurityContext securityContext) throws NotFoundException;

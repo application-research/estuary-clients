@@ -382,7 +382,7 @@ func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid stri
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"*/*"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -505,7 +505,7 @@ func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsP
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"*/*"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)

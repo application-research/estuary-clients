@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-15T21:05:26.582Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-16T11:02:40.627Z[GMT]")
 @Controller
 public interface PinningApi {
 
@@ -72,7 +72,7 @@ public interface PinningApi {
     @ApiResponse(responseCode = "202", description = "Accepted")
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/pinning/pins/{pinid}", produces = { "application/json" }, consumes = {"*/*"})
+    @Post(value = "/pinning/pins/{pinid}", produces = { "application/json" }, consumes = {"application/json"})
     default Single<HttpResponse<TypesIpfsPinStatusResponse>> pinningPinsPinidPost(@Parameter(description = "Pin ID") @PathVariable("pinid") String pinid
 ,@Parameter(description = "Meta information of new pin") @Valid @Body String body
 ) {
@@ -85,7 +85,7 @@ public interface PinningApi {
     @Operation(summary = "Add and pin object", operationId = "pinningPinsPost", description = "This endpoint adds a pin to the IPFS daemon." , tags = {"pinning"})
     @ApiResponse(responseCode = "202", description = "Accepted")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/pinning/pins", produces = { "application/json" }, consumes = {"*/*"})
+    @Post(value = "/pinning/pins", produces = { "application/json" }, consumes = {"application/json"})
     default Single<HttpResponse<TypesIpfsPinStatusResponse>> pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}") @Valid @Body TypesIpfsPin body
 ) {
         return Single.fromCallable(() -> {

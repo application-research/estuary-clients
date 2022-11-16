@@ -2560,7 +2560,7 @@
         "requestBody" : {
           "description" : "Pin Body {cid:cid, name:name}",
           "content" : {
-            "*/*" : {
+            "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/types.IpfsPin"
               }
@@ -2660,7 +2660,7 @@
         "requestBody" : {
           "description" : "Meta information of new pin",
           "content" : {
-            "*/*" : {
+            "application/json" : {
               "schema" : {
                 "type" : "string"
               }

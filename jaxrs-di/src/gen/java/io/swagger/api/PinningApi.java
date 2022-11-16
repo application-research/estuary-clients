@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-15T21:05:25.450Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-16T11:02:41.116Z[GMT]")public class PinningApi  {
 
    private PinningApiService delegate;
 
@@ -97,7 +97,7 @@ import javax.validation.constraints.*;
     }
     @POST
     @Path("/pins/{pinid}")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Replace a pinned object", description = "This endpoint replaces a pinned object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
@@ -116,7 +116,7 @@ import javax.validation.constraints.*;
     }
     @POST
     @Path("/pins")
-    @Consumes({ "*/*" })
+    @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @Operation(summary = "Add and pin object", description = "This endpoint adds a pin to the IPFS daemon.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })

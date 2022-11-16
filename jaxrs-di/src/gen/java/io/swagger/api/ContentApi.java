@@ -37,7 +37,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-15T21:05:25.450Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-16T11:02:41.116Z[GMT]")public class ContentApi  {
 
    private ContentApiService delegate;
 

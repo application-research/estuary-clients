@@ -211,7 +211,7 @@ export class PinningApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['*/*'];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = TypesIpfsPinStatusResponse;
 
@@ -258,7 +258,7 @@ export class PinningApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['*/*'];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = TypesIpfsPinStatusResponse;
 

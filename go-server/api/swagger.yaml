@@ -1802,7 +1802,7 @@ paths:
       requestBody:
         description: "Pin Body {cid:cid, name:name}"
         content:
-          '*/*':
+          application/json:
             schema:
               $ref: '#/components/schemas/types.IpfsPin'
         required: true
@@ -1871,7 +1871,7 @@ paths:
       requestBody:
         description: Meta information of new pin
         content:
-          '*/*':
+          application/json:
             schema:
               type: string
         required: false
