@@ -3,7 +3,7 @@ package io.swagger.api.factories;
 import io.swagger.api.AutoretrieveApiService;
 import io.swagger.api.impl.AutoretrieveApiServiceImpl;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-16T11:02:41.498Z[GMT]")public class AutoretrieveApiServiceFactory {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-18T01:22:41.584Z[GMT]")public class AutoretrieveApiServiceFactory {
     private final static AutoretrieveApiService service = new AutoretrieveApiServiceImpl();
 
     public static AutoretrieveApiService getAutoretrieveApi() {

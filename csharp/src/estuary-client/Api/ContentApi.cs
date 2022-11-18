@@ -33,8 +33,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>string</returns>
-        string ContentAddCarPost (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
         /// Add Car object
@@ -46,8 +46,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        ApiResponse<UtilContentAddResponse> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -416,8 +416,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>Task of UtilContentAddResponse</returns>
+        System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
         /// Add Car object
@@ -429,8 +429,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -905,10 +905,10 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>string</returns>
-        public string ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
         {
-             ApiResponse<string> localVarResponse = ContentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+             ApiResponse<UtilContentAddResponse> localVarResponse = ContentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
              return localVarResponse.Data;
         }
 
@@ -919,8 +919,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        public ApiResponse< UtilContentAddResponse > ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -977,9 +977,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>
@@ -989,10 +989,10 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>Task of UtilContentAddResponse</returns>
+        public async System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null)
         {
-             ApiResponse<string> localVarResponse = await ContentAddCarPostAsyncWithHttpInfo(body, ignoreDupes, filename);
+             ApiResponse<UtilContentAddResponse> localVarResponse = await ContentAddCarPostAsyncWithHttpInfo(body, ignoreDupes, filename);
              return localVarResponse.Data;
 
         }
@@ -1004,8 +1004,8 @@ namespace estuary-client.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="filename">Filename (optional)</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1062,9 +1062,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>

@@ -17,8 +17,8 @@ namespace IO.Swagger.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="filename">Filename</param>
-        /// <returns>string</returns>
-        string ContentAddCarPost (string body, string ignoreDupes, string filename);
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename);
         /// <summary>
         /// Add IPFS object This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
         /// </summary>
@@ -186,8 +186,8 @@ namespace IO.Swagger.Api
         /// <param name="body">Car</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="filename">Filename</param>
-        /// <returns>string</returns>
-        public string ContentAddCarPost (string body, string ignoreDupes, string filename)
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddCarPost");
@@ -216,7 +216,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddCarPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (UtilContentAddResponse) ApiClient.Deserialize(response.Content, typeof(UtilContentAddResponse), response.Headers);
         }
     
         /// <summary>

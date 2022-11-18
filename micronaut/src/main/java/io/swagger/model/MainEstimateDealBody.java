@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * MainEstimateDealBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-16T11:02:40.627Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-18T01:22:42.033Z[GMT]")
 public class MainEstimateDealBody   {
   @JsonProperty("durationBlks")
   private Integer durationBlks = null;

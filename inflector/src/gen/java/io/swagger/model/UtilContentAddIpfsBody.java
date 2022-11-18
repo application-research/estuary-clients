@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-16T11:02:39.856Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-18T01:22:41.269Z[GMT]")
 public class UtilContentAddIpfsBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;

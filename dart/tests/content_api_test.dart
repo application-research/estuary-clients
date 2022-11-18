@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint is used to add a car object to the network. The object can be a file or a directory.
     //
-    //Future<String> contentAddCarPost(String body, { String ignoreDupes, String filename }) async
+    //Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async
     test('test contentAddCarPost', () async {
       // TODO
     });

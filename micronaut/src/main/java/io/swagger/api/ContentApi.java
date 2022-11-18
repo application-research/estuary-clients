@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-16T11:02:40.627Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-18T01:22:42.033Z[GMT]")
 @Controller
 public interface ContentApi {
 
@@ -38,7 +38,7 @@ public interface ContentApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/content/add-car", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> contentAddCarPost(@Parameter(description = "Car") @Valid @Body String body
+    default Single<HttpResponse<UtilContentAddResponse>> contentAddCarPost(@Parameter(description = "Car") @Valid @Body String body
 ,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
 ,@Nullable @Parameter(description = "Filename") @Valid @QueryValue(value = "filename") String filename
 ) {

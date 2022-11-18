@@ -38,7 +38,7 @@ describe 'ContentApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_dupes Ignore Dupes
   # @option opts [String] :filename Filename
-  # @return [String]
+  # @return [UtilContentAddResponse]
   describe 'content_add_car_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

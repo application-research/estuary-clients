@@ -3,7 +3,7 @@ package io.swagger.api.factories;
 import io.swagger.api.DealApiService;
 import io.swagger.api.impl.DealApiServiceImpl;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-16T11:02:41.498Z[GMT]")public class DealApiServiceFactory {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-18T01:22:41.584Z[GMT]")public class DealApiServiceFactory {
     private final static DealApiService service = new DealApiServiceImpl();
 
     public static DealApiService getDealApi() {

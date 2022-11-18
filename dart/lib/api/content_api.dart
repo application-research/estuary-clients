@@ -10,7 +10,7 @@ class ContentApi {
   /// Add Car object
   ///
   /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
-  Future<String> contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
+  Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -59,7 +59,7 @@ class ContentApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+          apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
     } else {
       return null;
     }

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 [**contentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 
 # **contentAddCarPost**
-> string contentAddCarPost($body, $ignore_dupes, $filename)
+> \Swagger\Client\Model\UtilContentAddResponse contentAddCarPost($body, $ignore_dupes, $filename)
 
 Add Car object
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\UtilContentAddResponse**](../Model/UtilContentAddResponse.md)
 
 ### Authorization
 

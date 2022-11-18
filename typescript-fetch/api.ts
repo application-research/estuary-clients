@@ -2896,7 +2896,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {

@@ -33,7 +33,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      */
-    public String contentAddCarPost(String body, String ignoreDupes, String filename) {
+    public UtilContentAddResponse contentAddCarPost(String body, String ignoreDupes, String filename) {
         // TODO: Implement...
         
         return null;

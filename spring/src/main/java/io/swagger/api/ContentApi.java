@@ -37,14 +37,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-16T11:02:44.688Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-18T01:22:45.212Z[GMT]")
 @Validated
 public interface ContentApi {
 
     @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -53,7 +53,7 @@ public interface ContentApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> contentAddCarPost(@Parameter(in = ParameterIn.DEFAULT, description = "Car", required=true, schema=@Schema()) @Valid @RequestBody String body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Filename" ,schema=@Schema()) @Valid @RequestParam(value = "filename", required = false) String filename);
+    ResponseEntity<UtilContentAddResponse> contentAddCarPost(@Parameter(in = ParameterIn.DEFAULT, description = "Car", required=true, schema=@Schema()) @Valid @RequestBody String body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Filename" ,schema=@Schema()) @Valid @RequestParam(value = "filename", required = false) String filename);
 
 
     @Operation(summary = "Add IPFS object", description = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", security = {

@@ -21,7 +21,7 @@ def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
     :param filename: Filename
     :type filename: str
 
-    :rtype: str
+    :rtype: UtilContentAddResponse
     """
     if connexion.request.is_json:
         body = str.from_dict(connexion.request.get_json())  # noqa: E501

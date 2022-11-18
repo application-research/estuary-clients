@@ -97,7 +97,7 @@ class ContentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \Swagger\Client\Model\UtilContentAddResponse
      */
     public function contentAddCarPost($body, $ignore_dupes = null, $filename = null)
     {
@@ -116,11 +116,11 @@ class ContentApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UtilContentAddResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function contentAddCarPostWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
         $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         try {
@@ -172,7 +172,7 @@ class ContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\Swagger\Client\Model\UtilContentAddResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -234,7 +234,7 @@ class ContentApi
      */
     public function contentAddCarPostAsyncWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
         $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         return $this->client

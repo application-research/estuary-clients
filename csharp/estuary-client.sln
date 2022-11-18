@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estuary-client", "src\estuary-client\estuary-client.csproj", "{DA891062-6BEA-43AE-8617-AB7CC0BD598B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estuary-client", "src\estuary-client\estuary-client.csproj", "{D8880643-C053-412E-A0D6-478E660BCB3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "estuary-client.Test", "src\estuary-client.Test\estuary-client.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DA891062-6BEA-43AE-8617-AB7CC0BD598B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA891062-6BEA-43AE-8617-AB7CC0BD598B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA891062-6BEA-43AE-8617-AB7CC0BD598B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA891062-6BEA-43AE-8617-AB7CC0BD598B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8880643-C053-412E-A0D6-478E660BCB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8880643-C053-412E-A0D6-478E660BCB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8880643-C053-412E-A0D6-478E660BCB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8880643-C053-412E-A0D6-478E660BCB3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

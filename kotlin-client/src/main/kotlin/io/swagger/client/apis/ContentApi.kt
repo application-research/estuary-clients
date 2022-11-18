@@ -27,22 +27,22 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * @param body Car 
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
-     * @return kotlin.String
+     * @return UtilContentAddResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String? = null, filename: kotlin.String? = null): kotlin.String {
+    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String? = null, filename: kotlin.String? = null): UtilContentAddResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "filename" to listOf("$filename"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/content/add-car", query = localVariableQuery
         )
-        val response = request<kotlin.String>(
+        val response = request<UtilContentAddResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as UtilContentAddResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

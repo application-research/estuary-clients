@@ -42,7 +42,7 @@ export class ContentApi {
      * Callback function to receive the result of the contentAddCarPost operation.
      * @callback moduleapi/ContentApi~contentAddCarPostCallback
      * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
+     * @param {module:model/UtilContentAddResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -80,7 +80,7 @@ export class ContentApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['*/*'];
       let accepts = ['application/json'];
-      let returnType = 'String';
+      let returnType = UtilContentAddResponse;
 
       return this.apiClient.callApi(
         '/content/add-car', 'POST',

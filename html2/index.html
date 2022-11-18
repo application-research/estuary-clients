@@ -9649,7 +9649,7 @@ public class ContentApiExample {
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String filename = filename_example; // String | Filename
         try {
-            'String' result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+            util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddCarPost");
@@ -9670,7 +9670,7 @@ public class ContentApiExample {
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String filename = filename_example; // String | Filename
         try {
-            'String' result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+            util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddCarPost");
@@ -9699,7 +9699,7 @@ ContentApi *apiInstance = [[ContentApi alloc] init];
 [apiInstance contentAddCarPostWith:body
     ignoreDupes:ignoreDupes
     filename:filename
-              completionHandler: ^('String' output, NSError* error) {
+              completionHandler: ^(util.ContentAddResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -9767,7 +9767,7 @@ namespace Example
             try
             {
                 // Add Car object
-                'String' result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+                util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -9970,8 +9970,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
+        "$ref" : "#/components/schemas/util.ContentAddResponse"
       }
     }
   }

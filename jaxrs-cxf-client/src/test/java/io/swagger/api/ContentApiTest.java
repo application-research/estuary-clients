@@ -87,7 +87,7 @@ public class ContentApiTest {
         String body = null;
         String ignoreDupes = null;
         String filename = null;
-        //String response = api.contentAddCarPost(body, ignoreDupes, filename);
+        //UtilContentAddResponse response = api.contentAddCarPost(body, ignoreDupes, filename);
         //assertNotNull(response);
         // TODO: test validations
         

@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
-> string ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
+> UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
 
 Add Car object
 
@@ -57,7 +57,7 @@ namespace Example
             try
             {
                 // Add Car object
-                string result = apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
+                UtilContentAddResponse result = apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 

@@ -46,10 +46,10 @@ public interface ContentApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Add Car object", tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddCarPost(@Valid String body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("filename") String filename);
+    public UtilContentAddResponse contentAddCarPost(@Valid String body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("filename") String filename);
 
     /**
      * Add IPFS object

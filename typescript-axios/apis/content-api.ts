@@ -959,7 +959,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
             const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -1218,7 +1218,7 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
             return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1411,7 +1411,7 @@ export class ContentApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
         return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(this.axios, this.basePath));
     }
     /**

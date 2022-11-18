@@ -22,7 +22,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @return [String]
+    # @return [UtilContentAddResponse]
     def content_add_car_post(body, opts = {})
       data, _status_code, _headers = content_add_car_post_with_http_info(body, opts)
       data
@@ -34,7 +34,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
     # @option opts [String] :filename Filename
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
     def content_add_car_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_car_post ...'
@@ -64,7 +64,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] || 'UtilContentAddResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,

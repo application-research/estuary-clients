@@ -1120,8 +1120,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "string",
-                  "x-content-type" : "application/json"
+                  "$ref" : "#/components/schemas/util.ContentAddResponse"
                 }
               }
             }

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 [**ContentStatusIdGet**](ContentApi.md#ContentStatusIdGet) | **Get** /content/status/{id} | Content Status
 
 # **ContentAddCarPost**
-> string ContentAddCarPost(ctx, body, optional)
+> UtilContentAddResponse ContentAddCarPost(ctx, body, optional)
 Add Car object
 
 This endpoint is used to add a car object to the network. The object can be a file or a directory.
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](util.ContentAddResponse.md)
 
 ### Authorization
 

@@ -28,7 +28,7 @@ Method | HTTP request | Description
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
 # **contentAddCarPost**
-> String contentAddCarPost(body, ignoreDupes, filename)
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 

@@ -1339,15 +1339,20 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1359,7 +1364,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#String">String</a>
+        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>

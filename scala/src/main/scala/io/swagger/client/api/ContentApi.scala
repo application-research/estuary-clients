@@ -90,9 +90,9 @@ class ContentApi(
    * @param body Car 
    * @param ignoreDupes Ignore Dupes (optional)
    * @param filename Filename (optional)
-   * @return String
+   * @return util.ContentAddResponse
    */
-  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Option[String] = {
+  def contentAddCarPost(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Option[util.ContentAddResponse] = {
     val await = Try(Await.result(contentAddCarPostAsync(body, ignoreDupes, filename), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -107,9 +107,9 @@ class ContentApi(
    * @param body Car 
    * @param ignoreDupes Ignore Dupes (optional)
    * @param filename Filename (optional)
-   * @return Future(String)
+   * @return Future(util.ContentAddResponse)
    */
-  def contentAddCarPostAsync(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Future[String] = {
+  def contentAddCarPostAsync(body: String, ignoreDupes: Option[String] = None, filename: Option[String] = None): Future[util.ContentAddResponse] = {
       helper.contentAddCarPost(body, ignoreDupes, filename)
   }
 
@@ -556,7 +556,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def contentAddCarPost(body: String,
     ignoreDupes: Option[String] = None,
     filename: Option[String] = None
-    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[String]): Future[String] = {
+    )(implicit reader: ClientResponseReader[util.ContentAddResponse], writer: RequestWriter[String]): Future[util.ContentAddResponse] = {
     // create path and map variables
     val path = (addFmt("/content/add-car"))
 

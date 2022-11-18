@@ -135,11 +135,11 @@ public class ContentApi {
      * @param body Car (required)
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
-     * @return String
+     * @return UtilContentAddResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String contentAddCarPost(String body, String ignoreDupes, String filename) throws ApiException {
-        ApiResponse<String> resp = contentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
+    public UtilContentAddResponse contentAddCarPost(String body, String ignoreDupes, String filename) throws ApiException {
+        ApiResponse<UtilContentAddResponse> resp = contentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
         return resp.getData();
     }
 
@@ -149,12 +149,12 @@ public class ContentApi {
      * @param body Car (required)
      * @param ignoreDupes Ignore Dupes (optional)
      * @param filename Filename (optional)
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse&lt;UtilContentAddResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> contentAddCarPostWithHttpInfo(String body, String ignoreDupes, String filename) throws ApiException {
+    public ApiResponse<UtilContentAddResponse> contentAddCarPostWithHttpInfo(String body, String ignoreDupes, String filename) throws ApiException {
         com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -168,7 +168,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddCarPostAsync(String body, String ignoreDupes, String filename, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddCarPostAsync(String body, String ignoreDupes, String filename, final ApiCallback<UtilContentAddResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -190,7 +190,7 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

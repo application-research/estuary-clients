@@ -49,7 +49,12 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

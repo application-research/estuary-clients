@@ -37,12 +37,17 @@ exports.contentAddPOST = function(coluuid,replication,ignoreDupes,lazyProvide,di
  * body String Car
  * ignoreDupes String Ignore Dupes (optional)
  * filename String Filename (optional)
- * returns String
+ * returns util.ContentAddResponse
  **/
 exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

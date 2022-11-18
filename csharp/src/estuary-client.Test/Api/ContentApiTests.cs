@@ -73,7 +73,7 @@ namespace estuary-client.Test
             //string ignoreDupes = null;
             //string filename = null;
             //var response = instance.ContentAddCarPost(body, ignoreDupes, filename);
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
         }
         /// <summary>
         /// Test ContentAddIpfsPost

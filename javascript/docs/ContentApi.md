@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> &#x27;String&#x27; contentAddCarPost(body, opts)
+> UtilContentAddResponse contentAddCarPost(body, opts)
 
 Add Car object
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 

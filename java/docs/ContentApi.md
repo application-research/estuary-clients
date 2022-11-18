@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> String contentAddCarPost(body, ignoreDupes, filename)
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -52,7 +52,7 @@ String body = "body_example"; // String | Car
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String filename = "filename_example"; // String | Filename
 try {
-    String result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
+    UtilContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddCarPost");
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 

@@ -68,9 +68,9 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
     public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -112,7 +112,7 @@ export class ContentService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<string>('post',`${this.basePath}/content/add-car`,
+        return this.httpClient.request<UtilContentAddResponse>('post',`${this.basePath}/content/add-car`,
             {
                 body: body,
                 params: queryParameters,

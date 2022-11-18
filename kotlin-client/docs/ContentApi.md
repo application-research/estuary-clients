@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> kotlin.String contentAddCarPost(body, ignoreDupes, filename)
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
 Add Car object
 
@@ -41,7 +41,7 @@ val body : kotlin.String =  // kotlin.String | Car
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 val filename : kotlin.String = filename_example // kotlin.String | Filename
 try {
-    val result : kotlin.String = apiInstance.contentAddCarPost(body, ignoreDupes, filename)
+    val result : UtilContentAddResponse = apiInstance.contentAddCarPost(body, ignoreDupes, filename)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddCarPost")
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 

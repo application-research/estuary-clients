@@ -34,7 +34,7 @@ This endpoint is used to add a car object to the network. The object can be a fi
  * @param optional nil or *ContentApiContentAddCarPostOpts - Optional Parameters:
      * @param "IgnoreDupes" (optional.String) -  Ignore Dupes
      * @param "Filename" (optional.String) -  Filename
-@return string
+@return UtilContentAddResponse
 */
 
 type ContentApiContentAddCarPostOpts struct {
@@ -42,13 +42,13 @@ type ContentApiContentAddCarPostOpts struct {
     Filename optional.String
 }
 
-func (a *ContentApiService) ContentAddCarPost(ctx context.Context, body string, localVarOptionals *ContentApiContentAddCarPostOpts) (string, *http.Response, error) {
+func (a *ContentApiService) ContentAddCarPost(ctx context.Context, body string, localVarOptionals *ContentApiContentAddCarPostOpts) (UtilContentAddResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue string
+		localVarReturnValue UtilContentAddResponse
 	)
 
 	// create path and map variables
@@ -126,7 +126,7 @@ func (a *ContentApiService) ContentAddCarPost(ctx context.Context, body string, 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v string
+			var v UtilContentAddResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

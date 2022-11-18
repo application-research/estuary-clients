@@ -17,7 +17,7 @@ open class ContentAPI: APIBase {
      - parameter filename: (query) Filename (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddCarPost(body: String, ignoreDupes: String? = nil, filename: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+    open class func contentAddCarPost(body: String, ignoreDupes: String? = nil, filename: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?, _ error: ErrorResponse?) -> Void)) {
         contentAddCarPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, filename: filename).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -31,13 +31,18 @@ open class ContentAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
+     - examples: [{contentType=application/json, example={
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}}]
      - parameter body: (body) Car 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter filename: (query) Filename (optional)
-     - returns: RequestBuilder<String> 
+     - returns: RequestBuilder<UtilContentAddResponse> 
      */
-    open class func contentAddCarPostWithRequestBuilder(body: String, ignoreDupes: String? = nil, filename: String? = nil) -> RequestBuilder<String> {
+    open class func contentAddCarPostWithRequestBuilder(body: String, ignoreDupes: String? = nil, filename: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
         let path = "/content/add-car"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
@@ -47,7 +52,7 @@ open class ContentAPI: APIBase {
                         "filename": filename
         ])
 
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<UtilContentAddResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

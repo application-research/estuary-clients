@@ -45,7 +45,7 @@ class ContentApi(object):
         :param str body: Car (required)
         :param str ignore_dupes: Ignore Dupes
         :param str filename: Filename
-        :return: str
+        :return: UtilContentAddResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -69,7 +69,7 @@ class ContentApi(object):
         :param str body: Car (required)
         :param str ignore_dupes: Ignore Dupes
         :param str filename: Filename
-        :return: str
+        :return: UtilContentAddResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -131,7 +131,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='str',  # noqa: E501
+            response_type='UtilContentAddResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 
 # **content_add_car_post**
-> String content_add_car_post(body, opts)
+> UtilContentAddResponse content_add_car_post(body, opts)
 
 Add Car object
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
