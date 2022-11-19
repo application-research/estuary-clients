@@ -400,6 +400,10 @@ describe("PublicApi", () => {
     instance = new api.PublicApi(config)
   });
 
+  test("getCidGet", () => {
+    const cid: string = "cid_example"
+    return expect(instance.getCidGet(cid, {})).resolves.toBe(null)
+  })
   test("publicByCidCidGet", () => {
     const cid: string = "cid_example"
     return expect(instance.publicByCidCidGet(cid, {})).resolves.toBe(null)

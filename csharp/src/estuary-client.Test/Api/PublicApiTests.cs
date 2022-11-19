@@ -63,6 +63,17 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test GetCidGet
+        /// </summary>
+        [Test]
+        public void GetCidGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string cid = null;
+            //instance.GetCidGet(cid);
+            
+        }
+        /// <summary>
         /// Test PublicByCidCidGet
         /// </summary>
         [Test]

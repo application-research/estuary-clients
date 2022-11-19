@@ -30,9 +30,25 @@ import javax.validation.Valid;
 public interface PublicApi  {
 
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      *
      * This endpoint returns the content associated with a CID
+     *
+     */
+    @GET
+    @Path("/get/{cid}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get Full Content by Cid", tags={ "public" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "307", description = "Temporary Redirect", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public void getCidGet(@PathParam("cid") String cid);
+
+    /**
+     * Get Content by Cid
+     *
+     * This endpoint returns the content record associated with a CID
      *
      */
     @GET

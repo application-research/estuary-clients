@@ -12,7 +12,13 @@ namespace IO.Swagger.Api
     public interface IPublicApi
     {
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <param name="cid">Cid</param>
+        /// <returns></returns>
+        void GetCidGet (string cid);
+        /// <summary>
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <param name="cid">Cid</param>
         /// <returns>string</returns>
@@ -122,7 +128,42 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <param name="cid">Cid</param>
+        /// <returns></returns>
+        public void GetCidGet (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null) throw new ApiException(400, "Missing required parameter 'cid' when calling GetCidGet");
+    
+            var path = "/get/{cid}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "cid" + "}", ApiClient.ParameterToString(cid));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetCidGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling GetCidGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return;
+        }
+    
+        /// <summary>
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <param name="cid">Cid</param>
         /// <returns>string</returns>

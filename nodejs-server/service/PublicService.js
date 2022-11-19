@@ -2,8 +2,22 @@
 
 
 /**
- * Get Content by Cid
+ * Get Full Content by Cid
  * This endpoint returns the content associated with a CID
+ *
+ * cid String Cid
+ * no response value expected for this operation
+ **/
+exports.getCidGET = function(cid) {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+
+/**
+ * Get Content by Cid
+ * This endpoint returns the content record associated with a CID
  *
  * cid String Cid
  * returns String

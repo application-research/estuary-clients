@@ -35,6 +35,52 @@ export class PublicApi {
     }
 
     /**
+     * Callback function to receive the result of the getCidGet operation.
+     * @callback moduleapi/PublicApi~getCidGetCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Full Content by Cid
+     * This endpoint returns the content associated with a CID
+     * @param {String} cid Cid
+     * @param {module:api/PublicApi~getCidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    getCidGet(cid, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'cid' is set
+      if (cid === undefined || cid === null) {
+        throw new Error("Missing the required parameter 'cid' when calling getCidGet");
+      }
+
+      let pathParams = {
+        'cid': cid
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
+
+      return this.apiClient.callApi(
+        '/get/{cid}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
      * Callback function to receive the result of the publicByCidCidGet operation.
      * @callback moduleapi/PublicApi~publicByCidCidGetCallback
      * @param {String} error Error message, if any.
@@ -44,7 +90,7 @@ export class PublicApi {
 
     /**
      * Get Content by Cid
-     * This endpoint returns the content associated with a CID
+     * This endpoint returns the content record associated with a CID
      * @param {String} cid Cid
      * @param {module:api/PublicApi~publicByCidCidGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}

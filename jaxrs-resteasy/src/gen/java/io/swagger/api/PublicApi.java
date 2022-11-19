@@ -30,7 +30,7 @@ import javax.validation.constraints.*;
 @Path("/public")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-18T01:22:40.327Z[GMT]")public class PublicApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-19T20:28:53.022Z[GMT]")public class PublicApi  {
 
     @Inject PublicApiService service;
 
@@ -38,7 +38,7 @@ import javax.validation.constraints.*;
     @Path("/by-cid/{cid}")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get Content by Cid", description = "This endpoint returns the content associated with a CID", security = {
+    @Operation(summary = "Get Content by Cid", description = "This endpoint returns the content record associated with a CID", security = {
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "public" })
     @ApiResponses(value = { 

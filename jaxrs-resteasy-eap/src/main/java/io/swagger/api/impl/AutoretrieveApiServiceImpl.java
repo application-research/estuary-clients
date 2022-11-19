@@ -12,7 +12,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-18T01:22:40.918Z[GMT]")public class AutoretrieveApiServiceImpl implements AutoretrieveApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-19T20:28:54.147Z[GMT]")public class AutoretrieveApiServiceImpl implements AutoretrieveApi {
       public Response autoretrieveHeartbeatPost(String token,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();

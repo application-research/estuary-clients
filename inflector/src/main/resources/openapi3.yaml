@@ -1809,6 +1809,42 @@ paths:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
       x-accepts: application/json
+  /get/{cid}:
+    get:
+      tags:
+      - public
+      summary: Get Full Content by Cid
+      description: This endpoint returns the content associated with a CID
+      parameters:
+      - name: cid
+        in: path
+        description: Cid
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "307":
+          description: Temporary Redirect
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-accepts: application/json
   /net/addrs:
     get:
       tags:
@@ -1999,7 +2035,7 @@ paths:
       tags:
       - public
       summary: Get Content by Cid
-      description: This endpoint returns the content associated with a CID
+      description: This endpoint returns the content record associated with a CID
       parameters:
       - name: cid
         in: path

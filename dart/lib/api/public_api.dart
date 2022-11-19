@@ -7,9 +7,60 @@ class PublicApi {
 
   PublicApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// Get Content by Cid
+  /// Get Full Content by Cid
   ///
   /// This endpoint returns the content associated with a CID
+  Future getCidGet(String cid) async {
+    Object postBody = null;
+
+    // verify required params are set
+    if(cid == null) {
+     throw new ApiException(400, "Missing required param: cid");
+    }
+
+    // create path and map variables
+    String path = "/get/{cid}".replaceAll("{format}","json").replaceAll("{" + "cid" + "}", cid.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    List<String> authNames = ["bearerAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+          }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'GET',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, response.body);
+    } else if(response.body != null) {
+      return
+          ;
+    } else {
+      return ;
+    }
+  }
+  /// Get Content by Cid
+  ///
+  /// This endpoint returns the content record associated with a CID
   Future<String> publicByCidCidGet(String cid) async {
     Object postBody = null;
 

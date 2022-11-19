@@ -23,7 +23,7 @@ import javax.validation.Valid;
 /**
  * ContentAddBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-18T01:22:41.584Z[GMT]")public class ContentAddBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-19T20:28:51.425Z[GMT]")public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;
 

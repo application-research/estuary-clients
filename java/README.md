@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-18T01:22:39.488Z[GMT]
+  - Build date: 2022-11-19T20:28:49.325Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -387,6 +387,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinningPinsPinidPost**](docs/PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinningPinsPost**](docs/PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**getCidGet**](docs/PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**publicByCidCidGet**](docs/PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**publicInfoGet**](docs/PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics

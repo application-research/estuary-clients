@@ -32,9 +32,24 @@ public class PublicApiTest {
     private final PublicApi api = new PublicApi();
 
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      *
      * This endpoint returns the content associated with a CID
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void getCidGetTest() throws Exception {
+        String cid = null;
+        api.getCidGet(cid);
+
+        // TODO: test validations
+    }
+    /**
+     * Get Content by Cid
+     *
+     * This endpoint returns the content record associated with a CID
      *
      * @throws Exception
      *          if the Api call fails

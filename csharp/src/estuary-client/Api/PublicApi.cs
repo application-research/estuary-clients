@@ -24,10 +24,31 @@ namespace estuary-client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get Content by Cid
+        /// Get Full Content by Cid
         /// </summary>
         /// <remarks>
         /// This endpoint returns the content associated with a CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns></returns>
+        void GetCidGet (string cid);
+
+        /// <summary>
+        /// Get Full Content by Cid
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the content associated with a CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetCidGetWithHttpInfo (string cid);
+        /// <summary>
+        /// Get Content by Cid
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the content record associated with a CID
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -38,7 +59,7 @@ namespace estuary-client.Api
         /// Get Content by Cid
         /// </summary>
         /// <remarks>
-        /// This endpoint returns the content associated with a CID
+        /// This endpoint returns the content record associated with a CID
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -226,10 +247,31 @@ namespace estuary-client.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Get Content by Cid
+        /// Get Full Content by Cid
         /// </summary>
         /// <remarks>
         /// This endpoint returns the content associated with a CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetCidGetAsync (string cid);
+
+        /// <summary>
+        /// Get Full Content by Cid
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the content associated with a CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetCidGetAsyncWithHttpInfo (string cid);
+        /// <summary>
+        /// Get Content by Cid
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the content record associated with a CID
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -240,7 +282,7 @@ namespace estuary-client.Api
         /// Get Content by Cid
         /// </summary>
         /// <remarks>
-        /// This endpoint returns the content associated with a CID
+        /// This endpoint returns the content record associated with a CID
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -537,7 +579,146 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns></returns>
+        public void GetCidGet (string cid)
+        {
+             GetCidGetWithHttpInfo(cid);
+        }
+
+        /// <summary>
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> GetCidGetWithHttpInfo (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling PublicApi->GetCidGet");
+
+            var localVarPath = "/get/{cid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetCidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetCidGetAsync (string cid)
+        {
+             await GetCidGetAsyncWithHttpInfo(cid);
+
+        }
+
+        /// <summary>
+        /// Get Full Content by Cid This endpoint returns the content associated with a CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">Cid</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetCidGetAsyncWithHttpInfo (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling PublicApi->GetCidGet");
+
+            var localVarPath = "/get/{cid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetCidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                null);
+        }
+
+        /// <summary>
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -549,7 +730,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -607,7 +788,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>
@@ -620,7 +801,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get Content by Cid This endpoint returns the content associated with a CID
+        /// Get Content by Cid This endpoint returns the content record associated with a CID
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cid">Cid</param>

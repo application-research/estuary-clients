@@ -221,6 +221,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinning_pins_pinid_post**](docs/PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinning_pins_post**](docs/PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**get_cid_get**](docs/PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**public_by_cid_cid_get**](docs/PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**public_info_get**](docs/PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 *PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics

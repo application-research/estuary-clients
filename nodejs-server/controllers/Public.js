@@ -3,6 +3,16 @@
 var utils = require('../utils/writer.js');
 var Public = require('../service/PublicService');
 
+module.exports.getCidGET = function getCidGET (req, res, next, cid) {
+  Public.getCidGET(cid)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.publicBy_cidCidGET = function publicBy_cidCidGET (req, res, next, cid) {
   Public.publicBy_cidCidGET(cid)
     .then(function (response) {

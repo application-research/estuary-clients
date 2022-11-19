@@ -25,6 +25,54 @@ export const PublicApiAxiosParamCreator = function (configuration?: Configuratio
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCidGet: async (cid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cid' is not null or undefined
+            if (cid === null || cid === undefined) {
+                throw new RequiredError('cid','Required parameter cid was null or undefined when calling getCidGet.');
+            }
+            const localVarPath = `/get/{cid}`
+                .replace(`{${"cid"}}`, encodeURIComponent(String(cid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -483,6 +531,20 @@ export const PublicApiFp = function(configuration?: Configuration) {
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCidGet(cid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await PublicApiAxiosParamCreator(configuration).getCidGet(cid, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -627,6 +689,16 @@ export const PublicApiFactory = function (configuration?: Configuration, basePat
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCidGet(cid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return PublicApiFp(configuration).getCidGet(cid, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -732,6 +804,17 @@ export const PublicApiFactory = function (configuration?: Configuration, basePat
 export class PublicApi extends BaseAPI {
     /**
      * This endpoint returns the content associated with a CID
+     * @summary Get Full Content by Cid
+     * @param {string} cid Cid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PublicApi
+     */
+    public async getCidGet(cid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return PublicApiFp(this.configuration).getCidGet(cid, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint returns the content record associated with a CID
      * @summary Get Content by Cid
      * @param {string} cid Cid
      * @param {*} [options] Override http request option.

@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-18T01:22:40.327Z[GMT]")public class UtilContentAddIpfsBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-19T20:28:53.022Z[GMT]")public class UtilContentAddIpfsBody   {
   private String coluuid = null;  private String dir = null;  private String filename = null;  private List<String> peers = new ArrayList<String>();  private String root = null;
 
   /**

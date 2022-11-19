@@ -305,6 +305,7 @@
   </ul>
   <h4><a href="#Public">Public</a></h4>
   <ul>
+  <li><a href="#getCidGet"><code><span class="http-method">get</span> /get/{cid}</code></a></li>
   <li><a href="#publicByCidCidGet"><code><span class="http-method">get</span> /public/by-cid/{cid}</code></a></li>
   <li><a href="#publicInfoGet"><code><span class="http-method">get</span> /public/info</code></a></li>
   <li><a href="#publicMetricsDealsOnChainGet"><code><span class="http-method">get</span> /public/metrics/deals-on-chain</code></a></li>
@@ -4085,12 +4086,53 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Public">Public</a></h1>
+  <div class="method"><a name="getCidGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /get/{cid}</code></pre></div>
+    <div class="method-summary">Get Full Content by Cid (<span class="nickname">getCidGet</span>)</div>
+    <div class="method-notes">This endpoint returns the content associated with a CID</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">cid (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Cid </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">307</h4>
+    Temporary Redirect
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="publicByCidCidGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /public/by-cid/{cid}</code></pre></div>
     <div class="method-summary">Get Content by Cid (<span class="nickname">publicByCidCidGet</span>)</div>
-    <div class="method-notes">This endpoint returns the content associated with a CID</div>
+    <div class="method-notes">This endpoint returns the content record associated with a CID</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">

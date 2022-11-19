@@ -23,9 +23,21 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  */
 public class PublicApiServiceImpl implements PublicApi {
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      *
      * This endpoint returns the content associated with a CID
+     *
+     */
+    public void getCidGet(String cid) {
+        // TODO: Implement...
+        
+        
+    }
+    
+    /**
+     * Get Content by Cid
+     *
+     * This endpoint returns the content record associated with a CID
      *
      */
     public String publicByCidCidGet(String cid) {

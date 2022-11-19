@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-18T01:22:40.918Z[GMT]")public interface PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-19T20:28:54.147Z[GMT]")public interface PinningApi  {
    
     @GET
     @Path("/pins")

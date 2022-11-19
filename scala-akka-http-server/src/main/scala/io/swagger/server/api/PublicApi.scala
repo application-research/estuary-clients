@@ -21,6 +21,21 @@ class PublicApi(
             formFields() { () =>
               
                 
+                  publicService.getCidGet(cid = cid)
+               
+             
+            }
+         
+        }
+      }
+    } ~
+    path() { (cid) => 
+      get {
+        parameters() { () =>
+          
+            formFields() { () =>
+              
+                
                   publicService.publicByCidCidGet(cid = cid)
                
              
@@ -168,6 +183,20 @@ class PublicApi(
 
 trait PublicApiService {
 
+  def getCidGet307(responseString: String): Route =
+    complete((307, responseString))
+  def getCidGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((400, responseutil.HttpError))
+  def getCidGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((500, responseutil.HttpError))
+  /**
+   * Code: 307, Message: Temporary Redirect, DataType: String
+   * Code: 400, Message: Bad Request, DataType: util.HttpError
+   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
+   */
+  def getCidGet(cid: String)
+      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+
   def publicByCidCidGet200(responseString: String): Route =
     complete((200, responseString))
   def publicByCidCidGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -305,6 +334,10 @@ trait PublicApiService {
 }
 
 trait PublicApiMarshaller {
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

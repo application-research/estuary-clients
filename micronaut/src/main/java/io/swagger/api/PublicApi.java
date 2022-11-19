@@ -23,12 +23,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-18T01:22:42.033Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-19T20:28:52.869Z[GMT]")
 @Controller
 public interface PublicApi {
 
 
-    @Operation(summary = "Get Content by Cid", operationId = "publicByCidCidGet", description = "This endpoint returns the content associated with a CID" , tags = {"public"})
+    @Operation(summary = "Get Content by Cid", operationId = "publicByCidCidGet", description = "This endpoint returns the content record associated with a CID" , tags = {"public"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")

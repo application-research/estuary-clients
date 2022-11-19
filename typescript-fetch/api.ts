@@ -6738,6 +6738,43 @@ export const PublicApiFetchParamCreator = function (configuration?: Configuratio
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCidGet(cid: string, options: any = {}): FetchArgs {
+            // verify required parameter 'cid' is not null or undefined
+            if (cid === null || cid === undefined) {
+                throw new RequiredError('cid','Required parameter cid was null or undefined when calling getCidGet.');
+            }
+            const localVarPath = `/get/{cid}`
+                .replace(`{${"cid"}}`, encodeURIComponent(String(cid)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -7086,6 +7123,25 @@ export const PublicApiFp = function(configuration?: Configuration) {
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCidGet(cid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = PublicApiFetchParamCreator(configuration).getCidGet(cid, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -7280,6 +7336,16 @@ export const PublicApiFactory = function (configuration?: Configuration, fetch?:
     return {
         /**
          * This endpoint returns the content associated with a CID
+         * @summary Get Full Content by Cid
+         * @param {string} cid Cid
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCidGet(cid: string, options?: any) {
+            return PublicApiFp(configuration).getCidGet(cid, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns the content record associated with a CID
          * @summary Get Content by Cid
          * @param {string} cid Cid
          * @param {*} [options] Override http request option.
@@ -7385,6 +7451,18 @@ export const PublicApiFactory = function (configuration?: Configuration, fetch?:
 export class PublicApi extends BaseAPI {
     /**
      * This endpoint returns the content associated with a CID
+     * @summary Get Full Content by Cid
+     * @param {string} cid Cid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PublicApi
+     */
+    public getCidGet(cid: string, options?: any) {
+        return PublicApiFp(this.configuration).getCidGet(cid, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns the content record associated with a CID
      * @summary Get Content by Cid
      * @param {string} cid Cid
      * @param {*} [options] Override http request option.

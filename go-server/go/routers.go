@@ -573,6 +573,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetCidGet",
+		strings.ToUpper("Get"),
+		"/get/{cid}",
+		GetCidGet,
+	},
+
+	Route{
 		"PublicByCidCidGet",
 		strings.ToUpper("Get"),
 		"/public/by-cid/{cid}",

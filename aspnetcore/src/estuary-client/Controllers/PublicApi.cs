@@ -28,9 +28,39 @@ namespace estuary-client.Controllers
     public class PublicApiController : ControllerBase
     { 
         /// <summary>
-        /// Get Content by Cid
+        /// Get Full Content by Cid
         /// </summary>
         /// <remarks>This endpoint returns the content associated with a CID</remarks>
+        /// <param name="cid">Cid</param>
+        /// <response code="307">Temporary Redirect</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpGet]
+        [Route("//api.estuary.tech//get/{cid}")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("GetCidGet")]
+        [SwaggerResponse(statusCode: 307, type: typeof(string), description: "Temporary Redirect")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult GetCidGet([FromRoute][Required]string cid)
+        { 
+            //TODO: Uncomment the next line to return response 307 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(307, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get Content by Cid
+        /// </summary>
+        /// <remarks>This endpoint returns the content record associated with a CID</remarks>
         /// <param name="cid">Cid</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>

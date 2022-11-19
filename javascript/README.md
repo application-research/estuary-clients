@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *EstuaryClient.PinningApi* | [**pinningPinsPinidPost**](docs/PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *EstuaryClient.PinningApi* | [**pinningPinsPost**](docs/PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*EstuaryClient.PublicApi* | [**getCidGet**](docs/PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *EstuaryClient.PublicApi* | [**publicByCidCidGet**](docs/PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *EstuaryClient.PublicApi* | [**publicInfoGet**](docs/PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *EstuaryClient.PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics

@@ -7,9 +7,18 @@ void main() {
   var instance = new PublicApi();
 
   group('tests for PublicApi', () {
-    // Get Content by Cid
+    // Get Full Content by Cid
     //
     // This endpoint returns the content associated with a CID
+    //
+    //Future getCidGet(String cid) async
+    test('test getCidGet', () async {
+      // TODO
+    });
+
+    // Get Content by Cid
+    //
+    // This endpoint returns the content record associated with a CID
     //
     //Future<String> publicByCidCidGet(String cid) async
     test('test publicByCidCidGet', () async {

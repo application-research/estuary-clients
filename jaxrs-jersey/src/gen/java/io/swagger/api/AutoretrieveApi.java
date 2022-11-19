@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/autoretrieve")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-18T01:22:41.584Z[GMT]")public class AutoretrieveApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-19T20:28:51.425Z[GMT]")public class AutoretrieveApi  {
    private final AutoretrieveApiService delegate;
 
    public AutoretrieveApi(@Context ServletConfig servletContext) {

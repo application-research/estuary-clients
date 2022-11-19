@@ -11,6 +11,48 @@ import Alamofire
 
 open class PublicAPI {
     /**
+     Get Full Content by Cid
+
+     - parameter cid: (path) Cid 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getCidGet(cid: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getCidGetWithRequestBuilder(cid: cid).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Get Full Content by Cid
+     - GET /get/{cid}
+
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - parameter cid: (path) Cid 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getCidGetWithRequestBuilder(cid: String) -> RequestBuilder<Void> {
+        var path = "/get/{cid}"
+        let cidPreEscape = "\(cid)"
+        let cidPostEscape = cidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{cid}", with: cidPostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = estuary-clientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
      Get Content by Cid
 
      - parameter cid: (path) Cid 

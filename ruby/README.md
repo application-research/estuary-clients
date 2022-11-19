@@ -1445,6 +1445,24 @@ cid = 'cid_example' # String | Cid
 
 
 begin
+  #Get Full Content by Cid
+  api_instance.get_cid_get(cid)
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling PublicApi->get_cid_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::PublicApi.new
+cid = 'cid_example' # String | Cid
+
+
+begin
   #Get Content by Cid
   result = api_instance.public_by_cid_cid_get(cid)
   p result
@@ -1785,6 +1803,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_post**](docs/PinningApi.md#pinning_pins_pinid_post) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *SwaggerClient::PinningApi* | [**pinning_pins_post**](docs/PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
+*SwaggerClient::PublicApi* | [**get_cid_get**](docs/PublicApi.md#get_cid_get) | **GET** /get/{cid} | Get Full Content by Cid
 *SwaggerClient::PublicApi* | [**public_by_cid_cid_get**](docs/PublicApi.md#public_by_cid_cid_get) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *SwaggerClient::PublicApi* | [**public_info_get**](docs/PublicApi.md#public_info_get) | **GET** /public/info | Get public node info
 *SwaggerClient::PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics

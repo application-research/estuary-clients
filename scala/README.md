@@ -140,6 +140,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**pinningPinsPinidGet**](PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**pinningPinsPinidPost**](PinningApi.md#pinningPinsPinidPost) | **POST** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
+*PublicApi* | [**getCidGet**](PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**publicByCidCidGet**](PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**publicInfoGet**](PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 *PublicApi* | [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics

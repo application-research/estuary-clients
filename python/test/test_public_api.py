@@ -28,6 +28,13 @@ class TestPublicApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_get_cid_get(self):
+        """Test case for get_cid_get
+
+        Get Full Content by Cid  # noqa: E501
+        """
+        pass
+
     def test_public_by_cid_cid_get(self):
         """Test case for public_by_cid_cid_get
 

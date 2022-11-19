@@ -5,10 +5,23 @@ from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
+def get_cid_get(cid):  # noqa: E501
+    """Get Full Content by Cid
+
+    This endpoint returns the content associated with a CID # noqa: E501
+
+    :param cid: Cid
+    :type cid: str
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
 def public_by_cid_cid_get(cid):  # noqa: E501
     """Get Content by Cid
 
-    This endpoint returns the content associated with a CID # noqa: E501
+    This endpoint returns the content record associated with a CID # noqa: E501
 
     :param cid: Cid
     :type cid: str

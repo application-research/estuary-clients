@@ -545,8 +545,15 @@ object Paths {
     @Location("/pinning/pins") class pinningPinsPost(val body: TypesIpfsPin)
 
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      * This endpoint returns the content associated with a CID
+     * @param cid Cid 
+     */
+    @Location("/get/{cid}") class getCidGet(val cid: kotlin.String)
+
+    /**
+     * Get Content by Cid
+     * This endpoint returns the content record associated with a CID
      * @param cid Cid 
      */
     @Location("/public/by-cid/{cid}") class publicByCidCidGet(val cid: kotlin.String)

@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 *PinningApi* | [**PinningPinsPinidGet**](docs/PinningApi.md#pinningpinspinidget) | **Get** /pinning/pins/{pinid} | Get a pin status object
 *PinningApi* | [**PinningPinsPinidPost**](docs/PinningApi.md#pinningpinspinidpost) | **Post** /pinning/pins/{pinid} | Replace a pinned object
 *PinningApi* | [**PinningPinsPost**](docs/PinningApi.md#pinningpinspost) | **Post** /pinning/pins | Add and pin object
+*PublicApi* | [**GetCidGet**](docs/PublicApi.md#getcidget) | **Get** /get/{cid} | Get Full Content by Cid
 *PublicApi* | [**PublicByCidCidGet**](docs/PublicApi.md#publicbycidcidget) | **Get** /public/by-cid/{cid} | Get Content by Cid
 *PublicApi* | [**PublicInfoGet**](docs/PublicApi.md#publicinfoget) | **Get** /public/info | Get public node info
 *PublicApi* | [**PublicMetricsDealsOnChainGet**](docs/PublicApi.md#publicmetricsdealsonchainget) | **Get** /public/metrics/deals-on-chain | Get deal metrics

@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-18T01:22:40.327Z[GMT]")public interface CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-19T20:28:53.022Z[GMT]")public interface CollectionsApiService {
       Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext)
       throws NotFoundException;
       Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,String contentid,SecurityContext securityContext)

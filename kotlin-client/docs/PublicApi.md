@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCidGet**](PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 [**publicByCidCidGet**](PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**publicInfoGet**](PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -15,13 +16,59 @@ Method | HTTP request | Description
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
+<a name="getCidGet"></a>
+# **getCidGet**
+> getCidGet(cid)
+
+Get Full Content by Cid
+
+This endpoint returns the content associated with a CID
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = PublicApi()
+val cid : kotlin.String = cid_example // kotlin.String | Cid
+try {
+    apiInstance.getCidGet(cid)
+} catch (e: ClientException) {
+    println("4xx response calling PublicApi#getCidGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling PublicApi#getCidGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **kotlin.String**| Cid |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="publicByCidCidGet"></a>
 # **publicByCidCidGet**
 > kotlin.String publicByCidCidGet(cid)
 
 Get Content by Cid
 
-This endpoint returns the content associated with a CID
+This endpoint returns the content record associated with a CID
 
 ### Example
 ```kotlin

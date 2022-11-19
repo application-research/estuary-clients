@@ -71,6 +71,16 @@ class PublicApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getCidGet
+     *
+     * Get Full Content by Cid.
+     *
+     */
+    public function testGetCidGet()
+    {
+    }
+
+    /**
      * Test case for publicByCidCidGet
      *
      * Get Content by Cid.

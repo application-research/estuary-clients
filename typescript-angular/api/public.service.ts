@@ -56,8 +56,54 @@ export class PublicService {
 
 
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      * This endpoint returns the content associated with a CID
+     * @param cid Cid
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getCidGet(cid: string, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public getCidGet(cid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public getCidGet(cid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public getCidGet(cid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (cid === null || cid === undefined) {
+            throw new Error('Required parameter cid was null or undefined when calling getCidGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<any>('get',`${this.basePath}/get/${encodeURIComponent(String(cid))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get Content by Cid
+     * This endpoint returns the content record associated with a CID
      * @param cid Cid
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.

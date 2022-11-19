@@ -39,6 +39,14 @@ import io.swagger.server.models.UtilHttpError
 fun Route.PublicApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
+    get<Paths.getCidGet> {  _: Paths.getCidGet ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
     get<Paths.publicByCidCidGet> {  _: Paths.publicByCidCidGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

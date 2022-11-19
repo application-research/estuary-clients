@@ -9,6 +9,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCidGet**](PublicApi.md#getCidGet) | **GET** /get/{cid} | Get Full Content by Cid
 [**publicByCidCidGet**](PublicApi.md#publicByCidCidGet) | **GET** /public/by-cid/{cid} | Get Content by Cid
 [**publicInfoGet**](PublicApi.md#publicInfoGet) | **GET** /public/info | Get public node info
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
@@ -20,12 +21,58 @@ Method | HTTP request | Description
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 [**publicStatsGet**](PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
 
+# **getCidGet**
+> getCidGet(cid)
+
+Get Full Content by Cid
+
+This endpoint returns the content associated with a CID
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new PublicApi();
+var cid = cid_example; // String | Cid
+
+try {
+    api_instance.getCidGet(cid);
+} catch (e) {
+    print("Exception when calling PublicApi->getCidGet: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **String**| Cid | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **publicByCidCidGet**
 > String publicByCidCidGet(cid)
 
 Get Content by Cid
 
-This endpoint returns the content associated with a CID
+This endpoint returns the content record associated with a CID
 
 ### Example
 ```dart

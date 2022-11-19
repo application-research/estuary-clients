@@ -79,8 +79,34 @@ class PublicApi(
   val helper = new PublicApiAsyncHelper(client, config)
 
   /**
-   * Get Content by Cid
+   * Get Full Content by Cid
    * This endpoint returns the content associated with a CID
+   *
+   * @param cid Cid 
+   * @return void
+   */
+  def getCidGet(cid: String) = {
+    val await = Try(Await.result(getCidGetAsync(cid), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get Full Content by Cid asynchronously
+   * This endpoint returns the content associated with a CID
+   *
+   * @param cid Cid 
+   * @return Future(void)
+   */
+  def getCidGetAsync(cid: String) = {
+      helper.getCidGet(cid)
+  }
+
+  /**
+   * Get Content by Cid
+   * This endpoint returns the content record associated with a CID
    *
    * @param cid Cid 
    * @return String
@@ -95,7 +121,7 @@ class PublicApi(
 
   /**
    * Get Content by Cid asynchronously
-   * This endpoint returns the content associated with a CID
+   * This endpoint returns the content record associated with a CID
    *
    * @param cid Cid 
    * @return Future(String)
@@ -331,6 +357,24 @@ class PublicApi(
 }
 
 class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def getCidGet(cid: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/get/{cid}")
+      replaceAll("\\{" + "cid" + "\\}", cid.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (cid == null) throw new Exception("Missing required parameter 'cid' when calling PublicApi->getCidGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
 
   def publicByCidCidGet(cid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables

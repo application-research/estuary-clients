@@ -31,9 +31,21 @@ describe 'PublicApi' do
     end
   end
 
+  # unit tests for get_cid_get
+  # Get Full Content by Cid
+  # This endpoint returns the content associated with a CID
+  # @param cid Cid
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'get_cid_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for public_by_cid_cid_get
   # Get Content by Cid
-  # This endpoint returns the content associated with a CID
+  # This endpoint returns the content record associated with a CID
   # @param cid Cid
   # @param [Hash] opts the optional parameters
   # @return [String]

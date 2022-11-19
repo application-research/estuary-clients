@@ -18,8 +18,32 @@ import estuary-client.infrastructure.*
 class PublicApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
     /**
-     * Get Content by Cid
+     * Get Full Content by Cid
      * This endpoint returns the content associated with a CID
+     * @param cid Cid 
+     * @return void
+     */
+    fun getCidGet(cid: kotlin.String): Unit {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/get/{cid}".replace("{" + "cid" + "}", "$cid")
+        )
+        val response = request<Any?>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
+     * Get Content by Cid
+     * This endpoint returns the content record associated with a CID
      * @param cid Cid 
      * @return kotlin.String
      */

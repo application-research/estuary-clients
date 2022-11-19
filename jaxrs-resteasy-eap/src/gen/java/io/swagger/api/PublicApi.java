@@ -26,13 +26,13 @@ import javax.validation.constraints.*;
 @Path("/public")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-18T01:22:40.918Z[GMT]")public interface PublicApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-19T20:28:54.147Z[GMT]")public interface PublicApi  {
    
     @GET
     @Path("/by-cid/{cid}")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get Content by Cid", description = "This endpoint returns the content associated with a CID", security = {
+    @Operation(summary = "Get Content by Cid", description = "This endpoint returns the content record associated with a CID", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "public" })
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
