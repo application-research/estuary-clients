@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-21T15:16:49.230Z[GMT]
+  - Build date: 2022-11-21T15:23:16.018Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -332,6 +332,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content

@@ -16,6 +16,28 @@ from estuary-client.test import BaseTestCase
 class TestContentController(BaseTestCase):
     """ContentController integration test stubs"""
 
+    def test_admin_invites_get(self):
+        """Test case for admin_invites_get
+
+        Get Estuary invites
+        """
+        response = self.client.open(
+            '/admin/invites',
+            method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_admin_invites_post(self):
+        """Test case for admin_invites_post
+
+        Create an Estuary invite
+        """
+        response = self.client.open(
+            '/admin/invites'.format(code='code_example'),
+            method='POST')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_content_add_car_post(self):
         """Test case for content_add_car_post
 

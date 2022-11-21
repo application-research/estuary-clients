@@ -28,6 +28,96 @@ import { UtilHttpError } from '../models';
 export const ContentApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * This endpoint is used to list all estuary invites.
+         * @summary Get Estuary invites
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/admin/invites`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesPost: async (code: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            if (code === null || code === undefined) {
+                throw new RequiredError('code','Required parameter code was null or undefined when calling adminInvitesPost.');
+            }
+            const localVarPath = `/admin/invites`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
@@ -951,6 +1041,33 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
 export const ContentApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint is used to list all estuary invites.
+         * @summary Get Estuary invites
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).adminInvitesGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesPost(code: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).adminInvitesPost(code, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
@@ -1210,6 +1327,25 @@ export const ContentApiFp = function(configuration?: Configuration) {
 export const ContentApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
+         * This endpoint is used to list all estuary invites.
+         * @summary Get Estuary invites
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).adminInvitesGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesPost(code: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).adminInvitesPost(code, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint is used to add a car object to the network. The object can be a file or a directory.
          * @summary Add Car object
          * @param {string} body Car
@@ -1401,6 +1537,27 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class ContentApi extends BaseAPI {
+    /**
+     * This endpoint is used to list all estuary invites.
+     * @summary Get Estuary invites
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async adminInvitesGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).adminInvitesGet(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint is used to create an estuary invite.
+     * @summary Create an Estuary invite
+     * @param {string} code Invite code to be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async adminInvitesPost(code: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).adminInvitesPost(code, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @summary Add Car object

@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T15:16:52.052Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T15:23:18.869Z[GMT]")
 @Controller
 public interface GetApi {
 

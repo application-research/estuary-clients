@@ -9,7 +9,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T15:16:47.570Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T15:23:16.354Z[GMT]")
 public class TypesIpfsPinStatusResponse   {
   @JsonProperty("created")
   private String created = null;

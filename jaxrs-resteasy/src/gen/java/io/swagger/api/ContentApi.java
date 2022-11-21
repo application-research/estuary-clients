@@ -36,7 +36,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 

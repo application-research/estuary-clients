@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:23:20.634Z[GMT]")
 public class DealsApi  {
 
   @Context SecurityContext securityContext;

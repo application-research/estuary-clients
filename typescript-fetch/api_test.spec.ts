@@ -119,6 +119,13 @@ describe("ContentApi", () => {
     instance = new api.ContentApi(config)
   });
 
+  test("adminInvitesGet", () => {
+    return expect(instance.adminInvitesGet({})).resolves.toBe(null)
+  })
+  test("adminInvitesPost", () => {
+    const code: string = "code_example"
+    return expect(instance.adminInvitesPost(code, {})).resolves.toBe(null)
+  })
   test("contentAddCarPost", () => {
     const body: string = undefined
     const ignoreDupes: string = "ignoreDupes_example"

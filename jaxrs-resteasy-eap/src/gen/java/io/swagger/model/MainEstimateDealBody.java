@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:16:49.819Z[GMT]")public class MainEstimateDealBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:23:18.564Z[GMT]")public class MainEstimateDealBody   {
   private Integer durationBlks = null;
   private Integer replication = null;
   private Integer size = null;

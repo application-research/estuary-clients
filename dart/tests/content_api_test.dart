@@ -7,6 +7,24 @@ void main() {
   var instance = new ContentApi();
 
   group('tests for ContentApi', () {
+    // Get Estuary invites
+    //
+    // This endpoint is used to list all estuary invites.
+    //
+    //Future<String> adminInvitesGet() async
+    test('test adminInvitesGet', () async {
+      // TODO
+    });
+
+    // Create an Estuary invite
+    //
+    // This endpoint is used to create an estuary invite.
+    //
+    //Future<String> adminInvitesPost(String code) async
+    test('test adminInvitesPost', () async {
+      // TODO
+    });
+
     // Add Car object
     //
     // This endpoint is used to add a car object to the network. The object can be a file or a directory.

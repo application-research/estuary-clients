@@ -12,6 +12,17 @@ namespace IO.Swagger.Api
     public interface IContentApi
     {
         /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <returns>string</returns>
+        string AdminInvitesGet ();
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        string AdminInvitesPost (string code);
+        /// <summary>
         /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
         /// <param name="body">Car</param>
@@ -179,6 +190,72 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
+    
+        /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <returns>string</returns>
+        public string AdminInvitesGet ()
+        {
+    
+            var path = "/admin/invites";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        public string AdminInvitesPost (string code)
+        {
+            // verify the required parameter 'code' is set
+            if (code == null) throw new ApiException(400, "Missing required parameter 'code' when calling AdminInvitesPost");
+    
+            var path = "/admin/invites";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "code" + "}", ApiClient.ParameterToString(code));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesPost: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesPost: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
     
         /// <summary>
         /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.

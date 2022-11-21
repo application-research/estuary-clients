@@ -13,12 +13,20 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:16:49.819Z[GMT]")public class AdminApiServiceImpl implements AdminApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:23:18.564Z[GMT]")public class AdminApiServiceImpl implements AdminApi {
       public Response adminAutoretrieveInitPost(MultipartFormDataInput input,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
       public Response adminAutoretrieveListGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response adminInvitesGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response adminInvitesPost(String code,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

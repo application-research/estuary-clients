@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public class AutoretrieveInitBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public class AutoretrieveInitBody   {
   private String addresses = null;  private String pubKey = null;
 
   /**

@@ -188,6 +188,20 @@ var routes = Routes{
 	},
 
 	Route{
+		"AdminInvitesGet",
+		strings.ToUpper("Get"),
+		"/admin/invites",
+		AdminInvitesGet,
+	},
+
+	Route{
+		"AdminInvitesPost",
+		strings.ToUpper("Post"),
+		"/admin/invites",
+		AdminInvitesPost,
+	},
+
+	Route{
 		"ContentAddCarPost",
 		strings.ToUpper("Post"),
 		"/content/add-car",

@@ -40,6 +40,25 @@ class AdminApiControllerTest {
     }
 
     @Test
+    void adminInvitesGetTest() {
+        try {
+            api.adminInvitesGet().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void adminInvitesPostTest() {
+        String code = "code_example";
+        try {
+            api.adminInvitesPost(code).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void adminPeeringPeersDeleteTest() {
         List<Boolean> body = Arrays.asList(true);
         try {

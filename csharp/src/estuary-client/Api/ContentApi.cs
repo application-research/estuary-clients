@@ -24,6 +24,46 @@ namespace estuary-client.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Get Estuary invites
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to list all estuary invites.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>string</returns>
+        string AdminInvitesGet ();
+
+        /// <summary>
+        /// Get Estuary invites
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to list all estuary invites.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminInvitesGetWithHttpInfo ();
+        /// <summary>
+        /// Create an Estuary invite
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to create an estuary invite.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        string AdminInvitesPost (string code);
+
+        /// <summary>
+        /// Create an Estuary invite
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to create an estuary invite.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> AdminInvitesPostWithHttpInfo (string code);
+        /// <summary>
         /// Add Car object
         /// </summary>
         /// <remarks>
@@ -406,6 +446,46 @@ namespace estuary-client.Api
         ApiResponse<string> ContentStatusIdGetWithHttpInfo (int? id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Get Estuary invites
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to list all estuary invites.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminInvitesGetAsync ();
+
+        /// <summary>
+        /// Get Estuary invites
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to list all estuary invites.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminInvitesGetAsyncWithHttpInfo ();
+        /// <summary>
+        /// Create an Estuary invite
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to create an estuary invite.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> AdminInvitesPostAsync (string code);
+
+        /// <summary>
+        /// Create an Estuary invite
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to create an estuary invite.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminInvitesPostAsyncWithHttpInfo (string code);
         /// <summary>
         /// Add Car object
         /// </summary>
@@ -896,6 +976,276 @@ namespace estuary-client.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>string</returns>
+        public string AdminInvitesGet ()
+        {
+             ApiResponse<string> localVarResponse = AdminInvitesGetWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminInvitesGetWithHttpInfo ()
+        {
+
+            var localVarPath = "/admin/invites";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminInvitesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminInvitesGetAsync ()
+        {
+             ApiResponse<string> localVarResponse = await AdminInvitesGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get Estuary invites This endpoint is used to list all estuary invites.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminInvitesGetAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/admin/invites";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminInvitesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        public string AdminInvitesPost (string code)
+        {
+             ApiResponse<string> localVarResponse = AdminInvitesPostWithHttpInfo(code);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > AdminInvitesPostWithHttpInfo (string code)
+        {
+            // verify the required parameter 'code' is set
+            if (code == null)
+                throw new ApiException(400, "Missing required parameter 'code' when calling ContentApi->AdminInvitesPost");
+
+            var localVarPath = "/admin/invites";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (code != null) localVarPathParams.Add("code", this.Configuration.ApiClient.ParameterToString(code)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminInvitesPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> AdminInvitesPostAsync (string code)
+        {
+             ApiResponse<string> localVarResponse = await AdminInvitesPostAsyncWithHttpInfo(code);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminInvitesPostAsyncWithHttpInfo (string code)
+        {
+            // verify the required parameter 'code' is set
+            if (code == null)
+                throw new ApiException(400, "Missing required parameter 'code' when calling ContentApi->AdminInvitesPost");
+
+            var localVarPath = "/admin/invites";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (code != null) localVarPathParams.Add("code", this.Configuration.ApiClient.ParameterToString(code)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminInvitesPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
 
         /// <summary>

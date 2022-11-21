@@ -22,6 +22,55 @@ import estuary-client.infrastructure.*
 class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
     /**
+     * Get Estuary invites
+     * This endpoint is used to list all estuary invites.
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun adminInvitesGet(): kotlin.String {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/admin/invites"
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param code Invite code to be created 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun adminInvitesPost(code: kotlin.String): kotlin.String {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.POST,
+                "/admin/invites".replace("{" + "code" + "}", "$code")
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car 

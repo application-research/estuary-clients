@@ -34,6 +34,48 @@
 
   describe('(package)', function() {
     describe('ContentApi', function() {
+      describe('adminInvitesGet', function() {
+        it('should call adminInvitesGet successfully', function(done) {
+          // TODO: uncomment adminInvitesGet call and complete the assertions
+          /*
+
+          instance.adminInvitesGet(function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('adminInvitesPost', function() {
+        it('should call adminInvitesPost successfully', function(done) {
+          // TODO: uncomment, update parameter values for adminInvitesPost call and complete the assertions
+          /*
+
+          instance.adminInvitesPost(code, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('contentAddCarPost', function() {
         it('should call contentAddCarPost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentAddCarPost call and complete the assertions

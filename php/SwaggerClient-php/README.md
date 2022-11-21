@@ -237,6 +237,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/Api/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/Api/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/Api/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesGet**](docs/Api/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**adminInvitesPost**](docs/Api/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/Api/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content

@@ -27,7 +27,7 @@ import java.util.List;
  * UtilContentAddResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-21T15:16:49.230Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-21T15:23:16.018Z[GMT]")
 public class UtilContentAddResponse {
   @SerializedName("cid")
   private String cid = null;

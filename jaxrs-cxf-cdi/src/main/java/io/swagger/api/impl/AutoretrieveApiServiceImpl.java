@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")public class AutoretrieveApiServiceImpl implements AutoretrieveApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:23:20.634Z[GMT]")public class AutoretrieveApiServiceImpl implements AutoretrieveApiService {
       @Override
       public Response autoretrieveHeartbeatPost(String token, SecurityContext securityContext) {
       // do some magic!

@@ -71,6 +71,26 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for adminInvitesGet
+     *
+     * Get Estuary invites.
+     *
+     */
+    public function testAdminInvitesGet()
+    {
+    }
+
+    /**
+     * Test case for adminInvitesPost
+     *
+     * Create an Estuary invite.
+     *
+     */
+    public function testAdminInvitesPost()
+    {
+    }
+
+    /**
      * Test case for contentAddCarPost
      *
      * Add Car object.

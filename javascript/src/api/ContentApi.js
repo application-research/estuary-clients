@@ -39,6 +39,95 @@ export class ContentApi {
     }
 
     /**
+     * Callback function to receive the result of the adminInvitesGet operation.
+     * @callback moduleapi/ContentApi~adminInvitesGetCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Estuary invites
+     * This endpoint is used to list all estuary invites.
+     * @param {module:api/ContentApi~adminInvitesGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    adminInvitesGet(callback) {
+      
+      let postBody = null;
+
+      let pathParams = {
+        
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/admin/invites', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the adminInvitesPost operation.
+     * @callback moduleapi/ContentApi~adminInvitesPostCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param {String} code Invite code to be created
+     * @param {module:api/ContentApi~adminInvitesPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    adminInvitesPost(code, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'code' is set
+      if (code === undefined || code === null) {
+        throw new Error("Missing the required parameter 'code' when calling adminInvitesPost");
+      }
+
+      let pathParams = {
+        'code': code
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/admin/invites', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
      * Callback function to receive the result of the contentAddCarPost operation.
      * @callback moduleapi/ContentApi~contentAddCarPostCallback
      * @param {String} error Error message, if any.

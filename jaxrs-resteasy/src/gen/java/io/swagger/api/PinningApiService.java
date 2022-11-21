@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public interface PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public interface PinningApiService {
       Response pinningPinsGet(SecurityContext securityContext)
       throws NotFoundException;
       Response pinningPinsPinidDelete(String pinid,SecurityContext securityContext)

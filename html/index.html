@@ -226,6 +226,8 @@
   </ul>
   <h4><a href="#Content">Content</a></h4>
   <ul>
+  <li><a href="#adminInvitesGet"><code><span class="http-method">get</span> /admin/invites</code></a></li>
+  <li><a href="#adminInvitesPost"><code><span class="http-method">post</span> /admin/invites</code></a></li>
   <li><a href="#contentAddCarPost"><code><span class="http-method">post</span> /content/add-car</code></a></li>
   <li><a href="#contentAddIpfsPost"><code><span class="http-method">post</span> /content/add-ipfs</code></a></li>
   <li><a href="#contentAddPost"><code><span class="http-method">post</span> /content/add</code></a></li>
@@ -1307,6 +1309,99 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Content">Content</a></h1>
+  <div class="method"><a name="adminInvitesGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/invites</code></pre></div>
+    <div class="method-summary">Get Estuary invites (<span class="nickname">adminInvitesGet</span>)</div>
+    <div class="method-notes">This endpoint is used to list all estuary invites.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="adminInvitesPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/invites</code></pre></div>
+    <div class="method-summary">Create an Estuary invite (<span class="nickname">adminInvitesPost</span>)</div>
+    <div class="method-notes">This endpoint is used to create an estuary invite.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">code (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Invite code to be created </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="contentAddCarPost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>

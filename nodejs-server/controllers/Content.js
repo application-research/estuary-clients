@@ -3,6 +3,26 @@
 var utils = require('../utils/writer.js');
 var Content = require('../service/ContentService');
 
+module.exports.adminInvitesGET = function adminInvitesGET (req, res, next) {
+  Content.adminInvitesGET()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.adminInvitesPOST = function adminInvitesPOST (req, res, next, code) {
+  Content.adminInvitesPOST(code)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.contentAddPOST = function contentAddPOST (req, res, next, coluuid, replication, ignoreDupes, lazyProvide, dir) {
   Content.contentAddPOST(coluuid, replication, ignoreDupes, lazyProvide, dir)
     .then(function (response) {

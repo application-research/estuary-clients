@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 @Path("/deal")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public class DealApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public class DealApi  {
 
     @Inject DealApiService service;
 

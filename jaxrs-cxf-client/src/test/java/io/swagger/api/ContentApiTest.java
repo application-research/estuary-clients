@@ -75,6 +75,39 @@ public class ContentApiTest {
     }
 
     /**
+     * Get Estuary invites
+     *
+     * This endpoint is used to list all estuary invites.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void adminInvitesGetTest() {
+        //String response = api.adminInvitesGet();
+        //assertNotNull(response);
+        // TODO: test validations
+        
+        
+    }
+    /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void adminInvitesPostTest() {
+        String code = null;
+        //String response = api.adminInvitesPost(code);
+        //assertNotNull(response);
+        // TODO: test validations
+        
+        
+    }
+    /**
      * Add Car object
      *
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.

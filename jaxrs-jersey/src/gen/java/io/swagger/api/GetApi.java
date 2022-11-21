@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/get")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:16:52.395Z[GMT]")public class GetApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:23:18.958Z[GMT]")public class GetApi  {
    private final GetApiService delegate;
 
    public GetApi(@Context ServletConfig servletContext) {

@@ -60,6 +60,93 @@ export class ContentService {
 
 
     /**
+     * Get Estuary invites
+     * This endpoint is used to list all estuary invites.
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public adminInvitesGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminInvitesGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminInvitesGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public adminInvitesGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<string>('get',`${this.basePath}/admin/invites`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param code Invite code to be created
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public adminInvitesPost(code: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminInvitesPost(code: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminInvitesPost(code: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public adminInvitesPost(code: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (code === null || code === undefined) {
+            throw new Error('Required parameter code was null or undefined when calling adminInvitesPost.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<string>('post',`${this.basePath}/admin/invites`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car

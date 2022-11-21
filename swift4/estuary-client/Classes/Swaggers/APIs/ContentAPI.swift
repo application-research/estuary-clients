@@ -12,6 +12,80 @@ import Alamofire
 
 open class ContentAPI {
     /**
+     Get Estuary invites
+
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func adminInvitesGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        adminInvitesGetWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get Estuary invites
+     - GET /admin/invites
+     - This endpoint is used to list all estuary invites.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example=""}]
+
+     - returns: RequestBuilder<String> 
+     */
+    open class func adminInvitesGetWithRequestBuilder() -> RequestBuilder<String> {
+        let path = "/admin/invites"
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Create an Estuary invite
+     - parameter code: (path) Invite code to be created 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func adminInvitesPost(code: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        adminInvitesPostWithRequestBuilder(code: code).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Create an Estuary invite
+     - POST /admin/invites
+     - This endpoint is used to create an estuary invite.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example=""}]
+     - parameter code: (path) Invite code to be created 
+
+     - returns: RequestBuilder<String> 
+     */
+    open class func adminInvitesPostWithRequestBuilder(code: String) -> RequestBuilder<String> {
+        var path = "/admin/invites"
+        let codePreEscape = "\(code)"
+        let codePostEscape = codePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{code}", with: codePostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Add Car object
      - parameter body: (body) Car      - parameter ignoreDupes: (query) Ignore Dupes (optional)     - parameter filename: (query) Filename (optional)
      - parameter completion: completion handler to receive the data and the error objects

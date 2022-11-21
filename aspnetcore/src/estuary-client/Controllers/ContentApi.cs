@@ -28,6 +28,75 @@ namespace estuary-client.Controllers
     public class ContentApiController : ControllerBase
     { 
         /// <summary>
+        /// Get Estuary invites
+        /// </summary>
+        /// <remarks>This endpoint is used to list all estuary invites.</remarks>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpGet]
+        [Route("//api.estuary.tech//admin/invites")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("AdminInvitesGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult AdminInvitesGet()
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Create an Estuary invite
+        /// </summary>
+        /// <remarks>This endpoint is used to create an estuary invite.</remarks>
+        /// <param name="code">Invite code to be created</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpPost]
+        [Route("//api.estuary.tech//admin/invites")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("AdminInvitesPost")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult AdminInvitesPost([FromRoute][Required]string code)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
         /// Add Car object
         /// </summary>
         /// <remarks>This endpoint is used to add a car object to the network. The object can be a file or a directory.</remarks>

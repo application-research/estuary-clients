@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T15:16:51.356Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T15:23:22.462Z[GMT]")
 @RestController
 public class AdminApiController implements AdminApi {
 
@@ -63,6 +63,34 @@ public class AdminApiController implements AdminApi {
     }
 
     public ResponseEntity<String> adminAutoretrieveListGet() {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<String> adminInvitesGet() {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<String> adminInvitesPost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created", required=true, schema=@Schema()) @PathVariable("code") String code) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

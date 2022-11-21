@@ -116,6 +116,8 @@ Class | Method | HTTP request | Description
 *EstuaryClient.CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *EstuaryClient.CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *EstuaryClient.CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*EstuaryClient.ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*EstuaryClient.ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *EstuaryClient.ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *EstuaryClient.ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *EstuaryClient.ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content

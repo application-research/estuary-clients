@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:23:20.634Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
       @Override
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext) {
       // do some magic!
@@ -24,6 +24,16 @@ import javax.ws.rs.core.SecurityContext;
   }
       @Override
       public Response adminAutoretrieveListGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response adminInvitesGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response adminInvitesPost(String code, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

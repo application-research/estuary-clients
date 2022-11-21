@@ -85,6 +85,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content

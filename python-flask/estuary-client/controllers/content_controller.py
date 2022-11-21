@@ -9,6 +9,30 @@ from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
+def admin_invites_get():  # noqa: E501
+    """Get Estuary invites
+
+    This endpoint is used to list all estuary invites. # noqa: E501
+
+
+    :rtype: str
+    """
+    return 'do some magic!'
+
+
+def admin_invites_post(code):  # noqa: E501
+    """Create an Estuary invite
+
+    This endpoint is used to create an estuary invite. # noqa: E501
+
+    :param code: Invite code to be created
+    :type code: str
+
+    :rtype: str
+    """
+    return 'do some magic!'
+
+
 def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
     """Add Car object
 

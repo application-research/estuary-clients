@@ -12,7 +12,7 @@ import io.swagger.model.*;
 
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T15:16:47.570Z[GMT]")public class DealsController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T15:23:16.354Z[GMT]")public class DealsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector

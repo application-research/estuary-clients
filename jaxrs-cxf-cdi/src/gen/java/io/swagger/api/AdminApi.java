@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:23:20.634Z[GMT]")
 public class AdminApi  {
 
   @Context SecurityContext securityContext;
@@ -66,6 +66,36 @@ public class AdminApi  {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminAutoretrieveListGet() {
         return delegate.adminAutoretrieveListGet(securityContext);
+    }
+
+    @GET
+    @Path("/invites")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get Estuary invites", description = "This endpoint is used to list all estuary invites.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response adminInvitesGet() {
+        return delegate.adminInvitesGet(securityContext);
+    }
+
+    @POST
+    @Path("/invites")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response adminInvitesPost(
+@Parameter(description = "Invite code to be created",required=true) @PathParam("code") String code
+) {
+        return delegate.adminInvitesPost(code, securityContext);
     }
 
     @DELETE

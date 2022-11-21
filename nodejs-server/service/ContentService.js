@@ -2,6 +2,45 @@
 
 
 /**
+ * Get Estuary invites
+ * This endpoint is used to list all estuary invites.
+ *
+ * returns String
+ **/
+exports.adminInvitesGET = function() {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
+ * Create an Estuary invite
+ * This endpoint is used to create an estuary invite.
+ *
+ * code String Invite code to be created
+ * returns String
+ **/
+exports.adminInvitesPOST = function(code) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Add new content
  * This endpoint is used to upload new content.
  *

@@ -35,6 +35,38 @@ import javax.validation.Valid;
 public interface ContentApi  {
 
     /**
+     * Get Estuary invites
+     *
+     * This endpoint is used to list all estuary invites.
+     *
+     */
+    @GET
+    @Path("/admin/invites")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get Estuary invites", tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String adminInvitesGet();
+
+    /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     */
+    @POST
+    @Path("/admin/invites")
+    @Produces({ "application/json" })
+    @Operation(summary = "Create an Estuary invite", tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String adminInvitesPost(@PathParam("code") String code);
+
+    /**
      * Add Car object
      *
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.

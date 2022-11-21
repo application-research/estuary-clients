@@ -4,6 +4,8 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -21,6 +23,96 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+<a name="adminInvitesGet"></a>
+# **adminInvitesGet**
+> kotlin.String adminInvitesGet()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+try {
+    val result : kotlin.String = apiInstance.adminInvitesGet()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#adminInvitesGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#adminInvitesGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="adminInvitesPost"></a>
+# **adminInvitesPost**
+> kotlin.String adminInvitesPost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+val code : kotlin.String = code_example // kotlin.String | Invite code to be created
+try {
+    val result : kotlin.String = apiInstance.adminInvitesPost(code)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#adminInvitesPost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#adminInvitesPost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **kotlin.String**| Invite code to be created |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**

@@ -166,6 +166,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collections_fs_add_post**](docs/CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collections_get**](docs/CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**admin_invites_post**](docs/ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content

@@ -163,6 +163,19 @@ object Paths {
     @Location("/collections/") class collectionsPost(val body: MaincreateCollectionBody)
 
     /**
+     * Get Estuary invites
+     * This endpoint is used to list all estuary invites.
+     */
+    @Location("/admin/invites") class adminInvitesGet()
+
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param code Invite code to be created 
+     */
+    @Location("/admin/invites") class adminInvitesPost(val code: kotlin.String)
+
+    /**
      * Add Car object
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      * @param body Car 

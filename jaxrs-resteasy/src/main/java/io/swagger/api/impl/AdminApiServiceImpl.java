@@ -16,13 +16,23 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
       public Response adminAutoretrieveInitPost(MultipartFormDataInput input,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response adminAutoretrieveListGet(SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response adminInvitesGet(SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response adminInvitesPost(String code,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

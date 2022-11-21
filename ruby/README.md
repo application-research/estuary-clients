@@ -414,6 +414,42 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+
+begin
+  #Get Estuary invites
+  result = api_instance.admin_invites_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+code = 'code_example' # String | Invite code to be created
+
+
+begin
+  #Create an Estuary invite
+  result = api_instance.admin_invites_post(code)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_post: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
 body = 'body_example' # String | Car
 opts = { 
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
@@ -1748,6 +1784,8 @@ Class | Method | HTTP request | Description
 *SwaggerClient::CollectionsApi* | [**collections_fs_add_post**](docs/CollectionsApi.md#collections_fs_add_post) | **POST** /collections/fs/add | Add a file to a collection
 *SwaggerClient::CollectionsApi* | [**collections_get**](docs/CollectionsApi.md#collections_get) | **GET** /collections/ | List all collections
 *SwaggerClient::CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
+*SwaggerClient::ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
+*SwaggerClient::ContentApi* | [**admin_invites_post**](docs/ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
 *SwaggerClient::ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *SwaggerClient::ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
 *SwaggerClient::ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content

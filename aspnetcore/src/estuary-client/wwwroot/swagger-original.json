@@ -111,6 +111,95 @@
         }
       }
     },
+    "/admin/invites" : {
+      "get" : {
+        "tags" : [ "content" ],
+        "summary" : "Get Estuary invites",
+        "description" : "This endpoint is used to list all estuary invites.",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "content" ],
+        "summary" : "Create an Estuary invite",
+        "description" : "This endpoint is used to create an estuary invite.",
+        "parameters" : [ {
+          "name" : "code",
+          "in" : "path",
+          "description" : "Invite code to be created",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/peering/peers" : {
       "get" : {
         "tags" : [ "admin", "peering", "peers" ],

@@ -84,6 +84,56 @@ class ContentApi(
   val helper = new ContentApiAsyncHelper(client, config)
 
   /**
+   * Get Estuary invites
+   * This endpoint is used to list all estuary invites.
+   *
+   * @return String
+   */
+  def adminInvitesGet(): Option[String] = {
+    val await = Try(Await.result(adminInvitesGetAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get Estuary invites asynchronously
+   * This endpoint is used to list all estuary invites.
+   *
+   * @return Future(String)
+   */
+  def adminInvitesGetAsync(): Future[String] = {
+      helper.adminInvitesGet()
+  }
+
+  /**
+   * Create an Estuary invite
+   * This endpoint is used to create an estuary invite.
+   *
+   * @param code Invite code to be created 
+   * @return String
+   */
+  def adminInvitesPost(code: String): Option[String] = {
+    val await = Try(Await.result(adminInvitesPostAsync(code), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Create an Estuary invite asynchronously
+   * This endpoint is used to create an estuary invite.
+   *
+   * @param code Invite code to be created 
+   * @return Future(String)
+   */
+  def adminInvitesPostAsync(code: String): Future[String] = {
+      helper.adminInvitesPost(code)
+  }
+
+  /**
    * Add Car object
    * This endpoint is used to add a car object to the network. The object can be a file or a directory.
    *
@@ -552,6 +602,39 @@ class ContentApi(
 }
 
 class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def adminInvitesGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/admin/invites"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def adminInvitesPost(code: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/admin/invites")
+      replaceAll("\\{" + "code" + "\\}", code.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (code == null) throw new Exception("Missing required parameter 'code' when calling ContentApi->adminInvitesPost")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
 
   def contentAddCarPost(body: String,
     ignoreDupes: Option[String] = None,

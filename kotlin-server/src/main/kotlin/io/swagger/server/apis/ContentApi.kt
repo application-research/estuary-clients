@@ -43,6 +43,34 @@ import io.swagger.server.models.UtilHttpError
 fun Route.ContentApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
+    get<Paths.adminInvitesGet> {  _: Paths.adminInvitesGet ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """"""""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    post<Paths.adminInvitesPost> {  _: Paths.adminInvitesPost ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """"""""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
     post<Paths.contentAddCarPost> {  _: Paths.contentAddCarPost ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

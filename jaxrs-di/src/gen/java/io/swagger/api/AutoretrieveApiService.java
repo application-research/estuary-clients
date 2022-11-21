@@ -15,6 +15,6 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-21T15:16:51.450Z[GMT]")public interface AutoretrieveApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-21T15:23:19.266Z[GMT]")public interface AutoretrieveApiService {
     public Response autoretrieveHeartbeatPost(String token,SecurityContext securityContext);
 }

@@ -9,6 +9,8 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
+[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
 [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
 [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
@@ -26,6 +28,96 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+# **adminInvitesGet**
+> String adminInvitesGet()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+
+try {
+    var result = api_instance.adminInvitesGet();
+    print(result);
+} catch (e) {
+    print("Exception when calling ContentApi->adminInvitesGet: $e\n");
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **adminInvitesPost**
+> String adminInvitesPost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+var code = code_example; // String | Invite code to be created
+
+try {
+    var result = api_instance.adminInvitesPost(code);
+    print(result);
+} catch (e) {
+    print("Exception when calling ContentApi->adminInvitesPost: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddCarPost**
 > UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)

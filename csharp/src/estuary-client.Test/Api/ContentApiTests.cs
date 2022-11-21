@@ -63,6 +63,27 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test AdminInvitesGet
+        /// </summary>
+        [Test]
+        public void AdminInvitesGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.AdminInvitesGet();
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
+        /// Test AdminInvitesPost
+        /// </summary>
+        [Test]
+        public void AdminInvitesPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string code = null;
+            //var response = instance.AdminInvitesPost(code);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
         /// Test ContentAddCarPost
         /// </summary>
         [Test]

@@ -119,6 +119,8 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsFsAddPost**](docs/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**CollectionsGet**](docs/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**CollectionsPost**](docs/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**AdminInvitesGet**](docs/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
+*ContentApi* | [**AdminInvitesPost**](docs/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
 *ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**ContentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
 *ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content

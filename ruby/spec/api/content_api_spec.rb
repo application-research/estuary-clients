@@ -31,6 +31,29 @@ describe 'ContentApi' do
     end
   end
 
+  # unit tests for admin_invites_get
+  # Get Estuary invites
+  # This endpoint is used to list all estuary invites.
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'admin_invites_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for admin_invites_post
+  # Create an Estuary invite
+  # This endpoint is used to create an estuary invite.
+  # @param code Invite code to be created
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'admin_invites_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for content_add_car_post
   # Add Car object
   # This endpoint is used to add a car object to the network. The object can be a file or a directory.

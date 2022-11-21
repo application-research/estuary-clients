@@ -28,6 +28,30 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  */
 public class ContentApiServiceImpl implements ContentApi {
     /**
+     * Get Estuary invites
+     *
+     * This endpoint is used to list all estuary invites.
+     *
+     */
+    public String adminInvitesGet() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     */
+    public String adminInvitesPost(String code) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
      * Add Car object
      *
      * This endpoint is used to add a car object to the network. The object can be a file or a directory.

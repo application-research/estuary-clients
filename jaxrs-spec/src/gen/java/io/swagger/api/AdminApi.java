@@ -21,7 +21,7 @@ import javax.validation.Valid;
 
 @Path("/admin")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-21T15:16:52.582Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-21T15:23:21.367Z[GMT]")
 public class AdminApi {
 
     @POST
@@ -49,6 +49,35 @@ public class AdminApi {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
     public Response adminAutoretrieveListGet() {
+        return Response.ok().entity("magic!").build();
+    }
+    @GET
+    @Path("/invites")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get Estuary invites", description = "This endpoint is used to list all estuary invites.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+    })
+    public Response adminInvitesGet() {
+        return Response.ok().entity("magic!").build();
+    }
+    @POST
+    @Path("/invites")
+    @Produces({ "application/json" })
+    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+    })
+    public Response adminInvitesPost( @PathParam("code")
+
+ @Parameter(description = "Invite code to be created") String code
+) {
         return Response.ok().entity("magic!").build();
     }
     @DELETE

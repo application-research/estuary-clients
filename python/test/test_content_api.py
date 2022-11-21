@@ -28,6 +28,20 @@ class TestContentApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_admin_invites_get(self):
+        """Test case for admin_invites_get
+
+        Get Estuary invites  # noqa: E501
+        """
+        pass
+
+    def test_admin_invites_post(self):
+        """Test case for admin_invites_post
+
+        Create an Estuary invite  # noqa: E501
+        """
+        pass
+
     def test_content_add_car_post(self):
         """Test case for content_add_car_post
 

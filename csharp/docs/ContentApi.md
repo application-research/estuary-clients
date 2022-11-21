@@ -4,6 +4,8 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminInvitesGet**](ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
+[**AdminInvitesPost**](ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
 [**ContentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 [**ContentAddIpfsPost**](ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
 [**ContentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
@@ -22,6 +24,132 @@ Method | HTTP request | Description
 [**ContentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 
+<a name="admininvitesget"></a>
+# **AdminInvitesGet**
+> string AdminInvitesGet ()
+
+Get Estuary invites
+
+This endpoint is used to list all estuary invites.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class AdminInvitesGetExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+
+            try
+            {
+                // Get Estuary invites
+                string result = apiInstance.AdminInvitesGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.AdminInvitesGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+<a name="admininvitespost"></a>
+# **AdminInvitesPost**
+> string AdminInvitesPost (string code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class AdminInvitesPostExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var code = code_example;  // string | Invite code to be created
+
+            try
+            {
+                // Create an Estuary invite
+                string result = apiInstance.AdminInvitesPost(code);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.AdminInvitesPost: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **string**| Invite code to be created | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
 > UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
