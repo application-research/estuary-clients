@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-19T20:28:53.935Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
       @Override
       public Response publicByCidCidGet(String cid, SecurityContext securityContext) {
       // do some magic!

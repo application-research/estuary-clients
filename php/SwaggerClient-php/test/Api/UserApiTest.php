@@ -113,7 +113,7 @@ class UserApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for userStatsGet
      *
-     * Create API keys for a user.
+     * Get stats for the current user.
      *
      */
     public function testUserStatsGet()

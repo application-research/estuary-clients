@@ -106,20 +106,20 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> UserExportGetWithHttpInfo ();
         /// <summary>
-        /// Create API keys for a user
+        /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to create API keys for a user.
+        /// This endpoint is used to geet stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
         string UserStatsGet ();
 
         /// <summary>
-        /// Create API keys for a user
+        /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to create API keys for a user.
+        /// This endpoint is used to geet stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -209,20 +209,20 @@ namespace estuary-client.Api
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> UserExportGetAsyncWithHttpInfo ();
         /// <summary>
-        /// Create API keys for a user
+        /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to create API keys for a user.
+        /// This endpoint is used to geet stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
         System.Threading.Tasks.Task<string> UserStatsGetAsync ();
 
         /// <summary>
-        /// Create API keys for a user
+        /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to create API keys for a user.
+        /// This endpoint is used to geet stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -879,7 +879,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
@@ -890,7 +890,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -943,7 +943,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
@@ -955,7 +955,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>

@@ -129,7 +129,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.UserApi(estuary_client.ApiClient(configuration))
 
 try:
-    # Create API keys for a user
+    # Get stats for the current user
     api_response = api_instance.user_stats_get()
     pprint(api_response)
 except ApiException as e:
@@ -146,7 +146,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
-*UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
+*UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 *AdminApi* | [**admin_peering_peers_delete**](docs/AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**admin_peering_peers_get**](docs/AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**admin_peering_peers_post**](docs/AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service

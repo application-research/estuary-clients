@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-19T20:28:51.425Z[GMT]")public abstract class AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:16:52.395Z[GMT]")public abstract class AdminApiService {
     public abstract Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext) throws NotFoundException;
     public abstract Response adminAutoretrieveListGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response adminPeeringPeersDelete(List<Boolean> body,SecurityContext securityContext) throws NotFoundException;

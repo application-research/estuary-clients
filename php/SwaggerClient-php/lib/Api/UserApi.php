@@ -1198,7 +1198,7 @@ class UserApi
     /**
      * Operation userStatsGet
      *
-     * Create API keys for a user
+     * Get stats for the current user
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1214,7 +1214,7 @@ class UserApi
     /**
      * Operation userStatsGetWithHttpInfo
      *
-     * Create API keys for a user
+     * Get stats for the current user
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1304,7 +1304,7 @@ class UserApi
     /**
      * Operation userStatsGetAsync
      *
-     * Create API keys for a user
+     * Get stats for the current user
      *
      *
      * @throws \InvalidArgumentException
@@ -1323,7 +1323,7 @@ class UserApi
     /**
      * Operation userStatsGetAsyncWithHttpInfo
      *
-     * Create API keys for a user
+     * Get stats for the current user
      *
      *
      * @throws \InvalidArgumentException

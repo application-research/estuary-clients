@@ -1715,7 +1715,7 @@ end
 api_instance = SwaggerClient::UserApi.new
 
 begin
-  #Create API keys for a user
+  #Get stats for the current user
   result = api_instance.user_stats_get
   p result
 rescue SwaggerClient::ApiError => e
@@ -1818,7 +1818,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SwaggerClient::UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *SwaggerClient::UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
-*SwaggerClient::UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Create API keys for a user
+*SwaggerClient::UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 

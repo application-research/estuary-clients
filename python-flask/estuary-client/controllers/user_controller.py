@@ -57,9 +57,9 @@ def user_export_get():  # noqa: E501
 
 
 def user_stats_get():  # noqa: E501
-    """Create API keys for a user
+    """Get stats for the current user
 
-    This endpoint is used to create API keys for a user. # noqa: E501
+    This endpoint is used to geet stats for the current user. # noqa: E501
 
 
     :rtype: str

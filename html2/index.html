@@ -39408,12 +39408,12 @@ except ApiException as e:
                       <article id="api-User-userStatsGet-0" data-group="User" data-name="userStatsGet" data-version="0">
                         <div class="pull-left">
                           <h1>userStatsGet</h1>
-                          <p>Create API keys for a user</p>
+                          <p>Get stats for the current user</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This endpoint is used to create API keys for a user.</p>
+                        <p class="marked">This endpoint is used to geet stats for the current user.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/user/stats</span></code></pre>
@@ -39503,7 +39503,7 @@ public class UserApiExample {
 
 UserApi *apiInstance = [[UserApi alloc] init];
 
-// Create API keys for a user
+// Get stats for the current user
 [apiInstance userStatsGetWithCompletionHandler: 
               ^('String' output, NSError* error) {
                             if (output) {
@@ -39564,7 +39564,7 @@ namespace Example
 
             try
             {
-                // Create API keys for a user
+                // Get stats for the current user
                 'String' result = apiInstance.userStatsGet();
                 Debug.WriteLine(result);
             }
@@ -39635,7 +39635,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = swagger_client.UserApi()
 
 try: 
-    # Create API keys for a user
+    # Get stats for the current user
     api_response = api_instance.user_stats_get()
     pprint(api_response)
 except ApiException as e:

@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-19T20:28:53.527Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T15:16:51.356Z[GMT]")
 @Validated
 public interface UserApi {
 
@@ -97,7 +97,7 @@ public interface UserApi {
     ResponseEntity<String> userExportGet();
 
 
-    @Operation(summary = "Create API keys for a user", description = "This endpoint is used to create API keys for a user.", security = {
+    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to geet stats for the current user.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

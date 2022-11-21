@@ -72,9 +72,9 @@ public class UserApiServiceImpl implements UserApi {
     }
     
     /**
-     * Create API keys for a user
+     * Get stats for the current user
      *
-     * This endpoint is used to create API keys for a user.
+     * This endpoint is used to geet stats for the current user.
      *
      */
     public String userStatsGet() {

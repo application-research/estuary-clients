@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-19T20:28:52.869Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T15:16:52.052Z[GMT]")
 @Controller
 public interface UserApi {
 
@@ -82,7 +82,7 @@ public interface UserApi {
     }
 
 
-    @Operation(summary = "Create API keys for a user", operationId = "userStatsGet", description = "This endpoint is used to create API keys for a user." , tags = {"User"})
+    @Operation(summary = "Get stats for the current user", operationId = "userStatsGet", description = "This endpoint is used to geet stats for the current user." , tags = {"User"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")

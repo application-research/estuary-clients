@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-19T20:28:49.325Z[GMT]
+  - Build date: 2022-11-21T15:16:49.230Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -402,7 +402,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](docs/UserApi.md#userExportGet) | **GET** /user/export | Export user data
-*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+*UserApi* | [**userStatsGet**](docs/UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 

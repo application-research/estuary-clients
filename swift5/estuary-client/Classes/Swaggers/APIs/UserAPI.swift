@@ -185,7 +185,7 @@ open class UserAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Create API keys for a user
+     Get stats for the current user
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -197,7 +197,7 @@ open class UserAPI {
 
 
     /**
-     Create API keys for a user
+     Get stats for the current user
      - GET /user/stats
 
      - API Key:

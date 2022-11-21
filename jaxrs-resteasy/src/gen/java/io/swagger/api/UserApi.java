@@ -31,7 +31,7 @@ import javax.validation.constraints.*;
 @Path("/user")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-19T20:28:53.022Z[GMT]")public class UserApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:16:50.655Z[GMT]")public class UserApi  {
 
     @Inject UserApiService service;
 
@@ -111,7 +111,7 @@ import javax.validation.constraints.*;
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Create API keys for a user", description = "This endpoint is used to create API keys for a user.", security = {
+    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to geet stats for the current user.", security = {
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "User" })
     @ApiResponses(value = { 

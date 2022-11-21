@@ -29,7 +29,7 @@
 #' user_export_get Export user data
 #'
 #'
-#' user_stats_get Create API keys for a user
+#' user_stats_get Get stats for the current user
 #'
 #' }
 #'

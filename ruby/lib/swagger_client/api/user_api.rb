@@ -228,8 +228,8 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Create API keys for a user
-    # This endpoint is used to create API keys for a user.
+    # Get stats for the current user
+    # This endpoint is used to geet stats for the current user.
     # @param [Hash] opts the optional parameters
     # @return [String]
     def user_stats_get(opts = {})
@@ -237,8 +237,8 @@ module SwaggerClient
       data
     end
 
-    # Create API keys for a user
-    # This endpoint is used to create API keys for a user.
+    # Get stats for the current user
+    # This endpoint is used to geet stats for the current user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def user_stats_get_with_http_info(opts = {})

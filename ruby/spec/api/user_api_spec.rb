@@ -79,8 +79,8 @@ describe 'UserApi' do
   end
 
   # unit tests for user_stats_get
-  # Create API keys for a user
-  # This endpoint is used to create API keys for a user.
+  # Get stats for the current user
+  # This endpoint is used to geet stats for the current user.
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'user_stats_get test' do

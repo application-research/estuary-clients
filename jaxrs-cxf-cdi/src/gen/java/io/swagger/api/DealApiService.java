@@ -17,7 +17,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-19T20:28:53.935Z[GMT]")public interface DealApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-21T15:16:51.495Z[GMT]")public interface DealApiService {
       public Response dealEstimatePost(MainEstimateDealBody body, SecurityContext securityContext);
       public Response dealInfoDealidGet(Integer dealid, SecurityContext securityContext);
       public Response dealProposalPropcidGet(String propcid, SecurityContext securityContext);

@@ -63,7 +63,7 @@ class TestUserController(BaseTestCase):
     def test_user_stats_get(self):
         """Test case for user_stats_get
 
-        Create API keys for a user
+        Get stats for the current user
         """
         response = self.client.open(
             '/user/stats',

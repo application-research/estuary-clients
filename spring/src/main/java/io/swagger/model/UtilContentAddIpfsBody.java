@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * UtilContentAddIpfsBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-19T20:28:53.527Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T15:16:51.356Z[GMT]")
 
 
 public class UtilContentAddIpfsBody   {

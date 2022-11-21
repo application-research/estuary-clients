@@ -177,9 +177,9 @@ namespace estuary-client.Controllers
         }
 
         /// <summary>
-        /// Create API keys for a user
+        /// Get stats for the current user
         /// </summary>
-        /// <remarks>This endpoint is used to create API keys for a user.</remarks>
+        /// <remarks>This endpoint is used to geet stats for the current user.</remarks>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>

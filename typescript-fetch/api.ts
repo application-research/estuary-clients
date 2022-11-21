@@ -7724,8 +7724,8 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * This endpoint is used to create API keys for a user.
-         * @summary Create API keys for a user
+         * This endpoint is used to geet stats for the current user.
+         * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7839,8 +7839,8 @@ export const UserApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to create API keys for a user.
-         * @summary Create API keys for a user
+         * This endpoint is used to geet stats for the current user.
+         * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7905,8 +7905,8 @@ export const UserApiFactory = function (configuration?: Configuration, fetch?: F
             return UserApiFp(configuration).userExportGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to create API keys for a user.
-         * @summary Create API keys for a user
+         * This endpoint is used to geet stats for the current user.
+         * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -7971,8 +7971,8 @@ export class UserApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to create API keys for a user.
-     * @summary Create API keys for a user
+     * This endpoint is used to geet stats for the current user.
+     * @summary Get stats for the current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UserApi

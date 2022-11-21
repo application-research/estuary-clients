@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**UserApiKeysKeyOrHashDelete**](UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 [**UserApiKeysPost**](UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
 [**UserExportGet**](UserApi.md#userexportget) | **GET** /user/export | Export user data
-[**UserStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Create API keys for a user
+[**UserStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Get stats for the current user
 
 <a name="userapikeysget"></a>
 # **UserApiKeysGet**
@@ -268,9 +268,9 @@ This endpoint does not need any parameter.
 # **UserStatsGet**
 > string UserStatsGet ()
 
-Create API keys for a user
+Get stats for the current user
 
-This endpoint is used to create API keys for a user.
+This endpoint is used to geet stats for the current user.
 
 ### Example
 ```csharp
@@ -295,7 +295,7 @@ namespace Example
 
             try
             {
-                // Create API keys for a user
+                // Get stats for the current user
                 string result = apiInstance.UserStatsGet();
                 Debug.WriteLine(result);
             }

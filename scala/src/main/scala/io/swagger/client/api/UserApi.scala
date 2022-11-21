@@ -182,8 +182,8 @@ class UserApi(
   }
 
   /**
-   * Create API keys for a user
-   * This endpoint is used to create API keys for a user.
+   * Get stats for the current user
+   * This endpoint is used to geet stats for the current user.
    *
    * @return String
    */
@@ -196,8 +196,8 @@ class UserApi(
   }
 
   /**
-   * Create API keys for a user asynchronously
-   * This endpoint is used to create API keys for a user.
+   * Get stats for the current user asynchronously
+   * This endpoint is used to geet stats for the current user.
    *
    * @return Future(String)
    */

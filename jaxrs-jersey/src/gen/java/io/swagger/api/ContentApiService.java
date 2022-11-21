@@ -21,7 +21,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-19T20:28:51.425Z[GMT]")public abstract class ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:16:52.395Z[GMT]")public abstract class ContentApiService {
     public abstract Response contentAddCarPost(String body, String ignoreDupes, String filename,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddPost(InputStream dataInputStream, FormDataContentDisposition dataDetail,String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir,SecurityContext securityContext) throws NotFoundException;

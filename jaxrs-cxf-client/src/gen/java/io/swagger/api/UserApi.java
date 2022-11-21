@@ -95,15 +95,15 @@ public interface UserApi  {
     public String userExportGet();
 
     /**
-     * Create API keys for a user
+     * Get stats for the current user
      *
-     * This endpoint is used to create API keys for a user.
+     * This endpoint is used to geet stats for the current user.
      *
      */
     @GET
     @Path("/user/stats")
     @Produces({ "application/json" })
-    @Operation(summary = "Create API keys for a user", tags={  })
+    @Operation(summary = "Get stats for the current user", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),

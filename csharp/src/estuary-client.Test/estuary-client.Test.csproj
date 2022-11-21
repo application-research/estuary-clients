@@ -81,7 +81,7 @@ OpenAPI spec version: 0.0.0
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\estuary-client\estuary-client.csproj">
-          <Project>{6A8FCBE8-E737-47B2-89A9-0B793AA48043}</Project>
+          <Project>{9831216C-987B-479D-B58F-28672D19980C}</Project>
           <Name>estuary-client</Name>
       </ProjectReference>
   </ItemGroup>

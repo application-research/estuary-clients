@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * CollectionsCollection
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-19T20:28:51.425Z[GMT]")public class CollectionsCollection   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:16:52.395Z[GMT]")public class CollectionsCollection   {
   @JsonProperty("cid")
   private String cid = null;
 

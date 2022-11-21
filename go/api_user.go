@@ -527,8 +527,8 @@ func (a *UserApiService) UserExportGet(ctx context.Context) (string, *http.Respo
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-UserApiService Create API keys for a user
-This endpoint is used to create API keys for a user.
+UserApiService Get stats for the current user
+This endpoint is used to geet stats for the current user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return string
 */

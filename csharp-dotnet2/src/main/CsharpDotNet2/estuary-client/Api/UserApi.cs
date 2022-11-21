@@ -35,7 +35,7 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string UserExportGet ();
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <returns>string</returns>
         string UserStatsGet ();
@@ -227,7 +227,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Create API keys for a user This endpoint is used to create API keys for a user.
+        /// Get stats for the current user This endpoint is used to geet stats for the current user.
         /// </summary>
         /// <returns>string</returns>
         public string UserStatsGet ()

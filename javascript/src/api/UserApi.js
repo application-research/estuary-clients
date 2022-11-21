@@ -220,8 +220,8 @@ export class UserApi {
      */
 
     /**
-     * Create API keys for a user
-     * This endpoint is used to create API keys for a user.
+     * Get stats for the current user
+     * This endpoint is used to geet stats for the current user.
      * @param {module:api/UserApi~userStatsGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */

@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 @Path("/get")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-19T20:28:54.147Z[GMT]")public interface GetApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:16:49.819Z[GMT]")public interface GetApi  {
    
     @GET
     @Path("/{cid}")

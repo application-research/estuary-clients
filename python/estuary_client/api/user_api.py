@@ -397,9 +397,9 @@ class UserApi(object):
             collection_formats=collection_formats)
 
     def user_stats_get(self, **kwargs):  # noqa: E501
-        """Create API keys for a user  # noqa: E501
+        """Get stats for the current user  # noqa: E501
 
-        This endpoint is used to create API keys for a user.  # noqa: E501
+        This endpoint is used to geet stats for the current user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.user_stats_get(async_req=True)
@@ -418,9 +418,9 @@ class UserApi(object):
             return data
 
     def user_stats_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Create API keys for a user  # noqa: E501
+        """Get stats for the current user  # noqa: E501
 
-        This endpoint is used to create API keys for a user.  # noqa: E501
+        This endpoint is used to geet stats for the current user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.user_stats_get_with_http_info(async_req=True)

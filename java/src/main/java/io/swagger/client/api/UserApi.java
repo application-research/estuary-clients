@@ -600,8 +600,8 @@ public class UserApi {
     }
 
     /**
-     * Create API keys for a user
-     * This endpoint is used to create API keys for a user.
+     * Get stats for the current user
+     * This endpoint is used to geet stats for the current user.
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -611,8 +611,8 @@ public class UserApi {
     }
 
     /**
-     * Create API keys for a user
-     * This endpoint is used to create API keys for a user.
+     * Get stats for the current user
+     * This endpoint is used to geet stats for the current user.
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -623,8 +623,8 @@ public class UserApi {
     }
 
     /**
-     * Create API keys for a user (asynchronously)
-     * This endpoint is used to create API keys for a user.
+     * Get stats for the current user (asynchronously)
+     * This endpoint is used to geet stats for the current user.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

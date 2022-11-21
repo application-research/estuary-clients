@@ -180,7 +180,7 @@ open class UserAPI: APIBase {
     }
 
     /**
-     Create API keys for a user
+     Get stats for the current user
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func userStatsGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
@@ -191,9 +191,9 @@ open class UserAPI: APIBase {
 
 
     /**
-     Create API keys for a user
+     Get stats for the current user
      - GET /user/stats
-     - This endpoint is used to create API keys for a user.
+     - This endpoint is used to geet stats for the current user.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth

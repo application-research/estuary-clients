@@ -239,8 +239,8 @@ export class UserService {
     }
 
     /**
-     * Create API keys for a user
-     * This endpoint is used to create API keys for a user.
+     * Get stats for the current user
+     * This endpoint is used to geet stats for the current user.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */

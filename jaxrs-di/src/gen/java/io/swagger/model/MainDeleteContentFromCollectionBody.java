@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * MainDeleteContentFromCollectionBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-19T20:28:52.988Z[GMT]")public class MainDeleteContentFromCollectionBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-21T15:16:51.450Z[GMT]")public class MainDeleteContentFromCollectionBody   {
   @JsonProperty("by")
   private String by = null;
 

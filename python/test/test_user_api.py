@@ -59,7 +59,7 @@ class TestUserApi(unittest.TestCase):
     def test_user_stats_get(self):
         """Test case for user_stats_get
 
-        Create API keys for a user  # noqa: E501
+        Get stats for the current user  # noqa: E501
         """
         pass
 

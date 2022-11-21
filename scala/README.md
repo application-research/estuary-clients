@@ -155,7 +155,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**userApiKeysKeyOrHashDelete**](UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**userExportGet**](UserApi.md#userExportGet) | **GET** /user/export | Export user data
-*UserApi* | [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Create API keys for a user
+*UserApi* | [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 ## Documentation for Models
 
