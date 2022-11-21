@@ -34,12 +34,14 @@ namespace estuary-client.Model
         /// </summary>
         /// <param name="cid">cid.</param>
         /// <param name="estuaryId">estuaryId.</param>
+        /// <param name="estuaryRetrievalUrl">estuaryRetrievalUrl.</param>
         /// <param name="providers">providers.</param>
         /// <param name="retrievalUrl">retrievalUrl.</param>
-        public UtilContentAddResponse(string cid = default(string), int? estuaryId = default(int?), List<string> providers = default(List<string>), string retrievalUrl = default(string))
+        public UtilContentAddResponse(string cid = default(string), int? estuaryId = default(int?), string estuaryRetrievalUrl = default(string), List<string> providers = default(List<string>), string retrievalUrl = default(string))
         {
             this.Cid = cid;
             this.EstuaryId = estuaryId;
+            this.EstuaryRetrievalUrl = estuaryRetrievalUrl;
             this.Providers = providers;
             this.RetrievalUrl = retrievalUrl;
         }
@@ -55,6 +57,12 @@ namespace estuary-client.Model
         /// </summary>
         [DataMember(Name="estuaryId", EmitDefaultValue=false)]
         public int? EstuaryId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EstuaryRetrievalUrl
+        /// </summary>
+        [DataMember(Name="estuary_retrieval_url", EmitDefaultValue=false)]
+        public string EstuaryRetrievalUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Providers
@@ -78,6 +86,7 @@ namespace estuary-client.Model
             sb.Append("class UtilContentAddResponse {\n");
             sb.Append("  Cid: ").Append(Cid).Append("\n");
             sb.Append("  EstuaryId: ").Append(EstuaryId).Append("\n");
+            sb.Append("  EstuaryRetrievalUrl: ").Append(EstuaryRetrievalUrl).Append("\n");
             sb.Append("  Providers: ").Append(Providers).Append("\n");
             sb.Append("  RetrievalUrl: ").Append(RetrievalUrl).Append("\n");
             sb.Append("}\n");
@@ -125,6 +134,11 @@ namespace estuary-client.Model
                     this.EstuaryId.Equals(input.EstuaryId))
                 ) && 
                 (
+                    this.EstuaryRetrievalUrl == input.EstuaryRetrievalUrl ||
+                    (this.EstuaryRetrievalUrl != null &&
+                    this.EstuaryRetrievalUrl.Equals(input.EstuaryRetrievalUrl))
+                ) && 
+                (
                     this.Providers == input.Providers ||
                     this.Providers != null &&
                     input.Providers != null &&
@@ -150,6 +164,8 @@ namespace estuary-client.Model
                     hashCode = hashCode * 59 + this.Cid.GetHashCode();
                 if (this.EstuaryId != null)
                     hashCode = hashCode * 59 + this.EstuaryId.GetHashCode();
+                if (this.EstuaryRetrievalUrl != null)
+                    hashCode = hashCode * 59 + this.EstuaryRetrievalUrl.GetHashCode();
                 if (this.Providers != null)
                     hashCode = hashCode * 59 + this.Providers.GetHashCode();
                 if (this.RetrievalUrl != null)

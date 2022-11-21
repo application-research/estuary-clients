@@ -14,13 +14,16 @@ import javax.validation.constraints.*;
  * UtilContentAddResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T15:23:18.869Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T16:22:18.815Z[GMT]")
 public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;
 
   @JsonProperty("estuaryId")
   private Integer estuaryId = null;
+
+  @JsonProperty("estuary_retrieval_url")
+  private String estuaryRetrievalUrl = null;
 
   @JsonProperty("providers")
   @Valid
@@ -65,6 +68,25 @@ public class UtilContentAddResponse   {
 
   public void setEstuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+  }
+
+  public UtilContentAddResponse estuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
+    return this;
+  }
+
+  /**
+   * Get estuaryRetrievalUrl
+   * @return estuaryRetrievalUrl
+  **/
+  @Schema(description = "")
+
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
   }
 
   public UtilContentAddResponse providers(List<String> providers) {
@@ -125,13 +147,14 @@ public class UtilContentAddResponse   {
     UtilContentAddResponse utilContentAddResponse = (UtilContentAddResponse) o;
     return Objects.equals(this.cid, utilContentAddResponse.cid) &&
         Objects.equals(this.estuaryId, utilContentAddResponse.estuaryId) &&
+        Objects.equals(this.estuaryRetrievalUrl, utilContentAddResponse.estuaryRetrievalUrl) &&
         Objects.equals(this.providers, utilContentAddResponse.providers) &&
         Objects.equals(this.retrievalUrl, utilContentAddResponse.retrievalUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, estuaryId, providers, retrievalUrl);
+    return Objects.hash(cid, estuaryId, estuaryRetrievalUrl, providers, retrievalUrl);
   }
 
   @Override
@@ -141,6 +164,7 @@ public class UtilContentAddResponse   {
     
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

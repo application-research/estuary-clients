@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cid** | **string** |  | [optional] 
 **EstuaryId** | **int?** |  | [optional] 
+**EstuaryRetrievalUrl** | **string** |  | [optional] 
 **Providers** | **List&lt;string&gt;** |  | [optional] 
 **RetrievalUrl** | **string** |  | [optional] 
 

@@ -125,7 +125,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}";
+            exampleJson = "{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"estuary_retrieval_url\" : \"estuary_retrieval_url\",\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<UtilContentAddResponse>(exampleJson)

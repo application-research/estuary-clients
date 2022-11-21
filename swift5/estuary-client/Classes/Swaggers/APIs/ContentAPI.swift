@@ -108,6 +108,7 @@ open class ContentAPI {
      - examples: [{contentType=application/json, example={
   "retrieval_url" : "retrieval_url",
   "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
   "providers" : [ "providers", "providers" ],
   "cid" : "cid"
 }}]
@@ -202,6 +203,7 @@ open class ContentAPI {
      - examples: [{contentType=application/json, example={
   "retrieval_url" : "retrieval_url",
   "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
   "providers" : [ "providers", "providers" ],
   "cid" : "cid"
 }}]

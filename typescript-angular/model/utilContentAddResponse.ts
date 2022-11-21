@@ -13,6 +13,7 @@
 export interface UtilContentAddResponse { 
     cid?: string;
     estuaryId?: number;
+    estuaryRetrievalUrl?: string;
     providers?: Array<string>;
     retrievalUrl?: string;
 }

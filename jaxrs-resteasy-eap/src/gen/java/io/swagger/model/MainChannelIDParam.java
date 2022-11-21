@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T15:23:18.564Z[GMT]")public class MainChannelIDParam   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T16:22:17.864Z[GMT]")public class MainChannelIDParam   {
   private Integer id = null;
   private String initiator = null;
   private String responder = null;

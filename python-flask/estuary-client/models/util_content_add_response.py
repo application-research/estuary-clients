@@ -14,13 +14,15 @@ class UtilContentAddResponse(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, cid: str=None, estuary_id: int=None, providers: List[str]=None, retrieval_url: str=None):  # noqa: E501
+    def __init__(self, cid: str=None, estuary_id: int=None, estuary_retrieval_url: str=None, providers: List[str]=None, retrieval_url: str=None):  # noqa: E501
         """UtilContentAddResponse - a model defined in Swagger
 
         :param cid: The cid of this UtilContentAddResponse.  # noqa: E501
         :type cid: str
         :param estuary_id: The estuary_id of this UtilContentAddResponse.  # noqa: E501
         :type estuary_id: int
+        :param estuary_retrieval_url: The estuary_retrieval_url of this UtilContentAddResponse.  # noqa: E501
+        :type estuary_retrieval_url: str
         :param providers: The providers of this UtilContentAddResponse.  # noqa: E501
         :type providers: List[str]
         :param retrieval_url: The retrieval_url of this UtilContentAddResponse.  # noqa: E501
@@ -29,6 +31,7 @@ class UtilContentAddResponse(Model):
         self.swagger_types = {
             'cid': str,
             'estuary_id': int,
+            'estuary_retrieval_url': str,
             'providers': List[str],
             'retrieval_url': str
         }
@@ -36,11 +39,13 @@ class UtilContentAddResponse(Model):
         self.attribute_map = {
             'cid': 'cid',
             'estuary_id': 'estuaryId',
+            'estuary_retrieval_url': 'estuary_retrieval_url',
             'providers': 'providers',
             'retrieval_url': 'retrieval_url'
         }
         self._cid = cid
         self._estuary_id = estuary_id
+        self._estuary_retrieval_url = estuary_retrieval_url
         self._providers = providers
         self._retrieval_url = retrieval_url
 
@@ -96,6 +101,27 @@ class UtilContentAddResponse(Model):
         """
 
         self._estuary_id = estuary_id
+
+    @property
+    def estuary_retrieval_url(self) -> str:
+        """Gets the estuary_retrieval_url of this UtilContentAddResponse.
+
+
+        :return: The estuary_retrieval_url of this UtilContentAddResponse.
+        :rtype: str
+        """
+        return self._estuary_retrieval_url
+
+    @estuary_retrieval_url.setter
+    def estuary_retrieval_url(self, estuary_retrieval_url: str):
+        """Sets the estuary_retrieval_url of this UtilContentAddResponse.
+
+
+        :param estuary_retrieval_url: The estuary_retrieval_url of this UtilContentAddResponse.
+        :type estuary_retrieval_url: str
+        """
+
+        self._estuary_retrieval_url = estuary_retrieval_url
 
     @property
     def providers(self) -> List[str]:

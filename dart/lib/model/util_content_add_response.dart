@@ -6,6 +6,8 @@ class UtilContentAddResponse {
 
   int estuaryId = null;
 
+  String estuaryRetrievalUrl = null;
+
   List<String> providers = [];
 
   String retrievalUrl = null;
@@ -14,13 +16,14 @@ class UtilContentAddResponse {
 
   @override
   String toString() {
-    return 'UtilContentAddResponse[cid=$cid, estuaryId=$estuaryId, providers=$providers, retrievalUrl=$retrievalUrl, ]';
+    return 'UtilContentAddResponse[cid=$cid, estuaryId=$estuaryId, estuaryRetrievalUrl=$estuaryRetrievalUrl, providers=$providers, retrievalUrl=$retrievalUrl, ]';
   }
 
   UtilContentAddResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     cid = json['cid'];
     estuaryId = json['estuaryId'];
+    estuaryRetrievalUrl = json['estuary_retrieval_url'];
     providers = (json['providers'] as List).map((item) => item as String).toList();
     retrievalUrl = json['retrieval_url'];
   }
@@ -29,6 +32,7 @@ class UtilContentAddResponse {
     return {
       'cid': cid,
       'estuaryId': estuaryId,
+      'estuary_retrieval_url': estuaryRetrievalUrl,
       'providers': providers,
       'retrieval_url': retrievalUrl
      };

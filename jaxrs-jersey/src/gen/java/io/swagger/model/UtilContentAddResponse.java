@@ -24,12 +24,15 @@ import javax.validation.Valid;
 /**
  * UtilContentAddResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T15:23:18.958Z[GMT]")public class UtilContentAddResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T16:22:17.074Z[GMT]")public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;
 
   @JsonProperty("estuaryId")
   private Integer estuaryId = null;
+
+  @JsonProperty("estuary_retrieval_url")
+  private String estuaryRetrievalUrl = null;
 
   @JsonProperty("providers")
   private List<String> providers = null;
@@ -73,6 +76,25 @@ import javax.validation.Valid;
 
   public void setEstuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+  }
+
+  public UtilContentAddResponse estuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
+    return this;
+  }
+
+  /**
+   * Get estuaryRetrievalUrl
+   * @return estuaryRetrievalUrl
+   **/
+  @JsonProperty("estuary_retrieval_url")
+  @Schema(description = "")
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
   }
 
   public UtilContentAddResponse providers(List<String> providers) {
@@ -133,13 +155,14 @@ import javax.validation.Valid;
     UtilContentAddResponse utilContentAddResponse = (UtilContentAddResponse) o;
     return Objects.equals(this.cid, utilContentAddResponse.cid) &&
         Objects.equals(this.estuaryId, utilContentAddResponse.estuaryId) &&
+        Objects.equals(this.estuaryRetrievalUrl, utilContentAddResponse.estuaryRetrievalUrl) &&
         Objects.equals(this.providers, utilContentAddResponse.providers) &&
         Objects.equals(this.retrievalUrl, utilContentAddResponse.retrievalUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, estuaryId, providers, retrievalUrl);
+    return Objects.hash(cid, estuaryId, estuaryRetrievalUrl, providers, retrievalUrl);
   }
 
 
@@ -150,6 +173,7 @@ import javax.validation.Valid;
     
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

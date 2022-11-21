@@ -58,6 +58,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'cid' => 'string',
 'estuary_id' => 'int',
+'estuary_retrieval_url' => 'string',
 'providers' => 'string[]',
 'retrieval_url' => 'string'    ];
 
@@ -69,6 +70,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'cid' => null,
 'estuary_id' => null,
+'estuary_retrieval_url' => null,
 'providers' => null,
 'retrieval_url' => null    ];
 
@@ -101,6 +103,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'cid' => 'cid',
 'estuary_id' => 'estuaryId',
+'estuary_retrieval_url' => 'estuary_retrieval_url',
 'providers' => 'providers',
 'retrieval_url' => 'retrieval_url'    ];
 
@@ -112,6 +115,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     protected static $setters = [
         'cid' => 'setCid',
 'estuary_id' => 'setEstuaryId',
+'estuary_retrieval_url' => 'setEstuaryRetrievalUrl',
 'providers' => 'setProviders',
 'retrieval_url' => 'setRetrievalUrl'    ];
 
@@ -123,6 +127,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     protected static $getters = [
         'cid' => 'getCid',
 'estuary_id' => 'getEstuaryId',
+'estuary_retrieval_url' => 'getEstuaryRetrievalUrl',
 'providers' => 'getProviders',
 'retrieval_url' => 'getRetrievalUrl'    ];
 
@@ -186,6 +191,7 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     {
         $this->container['cid'] = isset($data['cid']) ? $data['cid'] : null;
         $this->container['estuary_id'] = isset($data['estuary_id']) ? $data['estuary_id'] : null;
+        $this->container['estuary_retrieval_url'] = isset($data['estuary_retrieval_url']) ? $data['estuary_retrieval_url'] : null;
         $this->container['providers'] = isset($data['providers']) ? $data['providers'] : null;
         $this->container['retrieval_url'] = isset($data['retrieval_url']) ? $data['retrieval_url'] : null;
     }
@@ -258,6 +264,30 @@ class UtilContentAddResponse implements ModelInterface, ArrayAccess
     public function setEstuaryId($estuary_id)
     {
         $this->container['estuary_id'] = $estuary_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets estuary_retrieval_url
+     *
+     * @return string
+     */
+    public function getEstuaryRetrievalUrl()
+    {
+        return $this->container['estuary_retrieval_url'];
+    }
+
+    /**
+     * Sets estuary_retrieval_url
+     *
+     * @param string $estuary_retrieval_url estuary_retrieval_url
+     *
+     * @return $this
+     */
+    public function setEstuaryRetrievalUrl($estuary_retrieval_url)
+    {
+        $this->container['estuary_retrieval_url'] = $estuary_retrieval_url;
 
         return $this;
     }

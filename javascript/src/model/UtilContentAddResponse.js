@@ -42,6 +42,8 @@ export class UtilContentAddResponse {
         obj.cid = ApiClient.convertToType(data['cid'], 'String');
       if (data.hasOwnProperty('estuaryId'))
         obj.estuaryId = ApiClient.convertToType(data['estuaryId'], 'Number');
+      if (data.hasOwnProperty('estuary_retrieval_url'))
+        obj.estuaryRetrievalUrl = ApiClient.convertToType(data['estuary_retrieval_url'], 'String');
       if (data.hasOwnProperty('providers'))
         obj.providers = ApiClient.convertToType(data['providers'], ['String']);
       if (data.hasOwnProperty('retrieval_url'))
@@ -60,6 +62,11 @@ UtilContentAddResponse.prototype.cid = undefined;
  * @member {Number} estuaryId
  */
 UtilContentAddResponse.prototype.estuaryId = undefined;
+
+/**
+ * @member {String} estuaryRetrievalUrl
+ */
+UtilContentAddResponse.prototype.estuaryRetrievalUrl = undefined;
 
 /**
  * @member {Array.<String>} providers

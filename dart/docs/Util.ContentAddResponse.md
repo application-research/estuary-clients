@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cid** | **String** |  | [optional] [default to null]
 **estuaryId** | **int** |  | [optional] [default to null]
+**estuaryRetrievalUrl** | **String** |  | [optional] [default to null]
 **providers** | **List&lt;String&gt;** |  | [optional] [default to []]
 **retrievalUrl** | **String** |  | [optional] [default to null]
 

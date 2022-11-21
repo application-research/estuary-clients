@@ -17,6 +17,8 @@ public class UtilContentAddResponse   {
 
   private @Valid Integer estuaryId = null;
 
+  private @Valid String estuaryRetrievalUrl = null;
+
   private @Valid List<String> providers = new ArrayList<String>();
 
   private @Valid String retrievalUrl = null;
@@ -55,6 +57,24 @@ public class UtilContentAddResponse   {
   }
   public void setEstuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+  }
+
+  /**
+   **/
+  public UtilContentAddResponse estuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("estuary_retrieval_url")
+
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
   }
 
   /**
@@ -105,13 +125,14 @@ public class UtilContentAddResponse   {
     UtilContentAddResponse utilContentAddResponse = (UtilContentAddResponse) o;
     return Objects.equals(cid, utilContentAddResponse.cid) &&
         Objects.equals(estuaryId, utilContentAddResponse.estuaryId) &&
+        Objects.equals(estuaryRetrievalUrl, utilContentAddResponse.estuaryRetrievalUrl) &&
         Objects.equals(providers, utilContentAddResponse.providers) &&
         Objects.equals(retrievalUrl, utilContentAddResponse.retrievalUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, estuaryId, providers, retrievalUrl);
+    return Objects.hash(cid, estuaryId, estuaryRetrievalUrl, providers, retrievalUrl);
   }
 
   @Override
@@ -121,6 +142,7 @@ public class UtilContentAddResponse   {
     
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

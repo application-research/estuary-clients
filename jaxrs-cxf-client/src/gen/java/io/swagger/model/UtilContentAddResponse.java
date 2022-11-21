@@ -24,6 +24,9 @@ public class UtilContentAddResponse   {
   private Integer estuaryId = null;
   
   @Schema(description = "")
+  private String estuaryRetrievalUrl = null;
+  
+  @Schema(description = "")
   private List<String> providers = null;
   
   @Schema(description = "")
@@ -61,6 +64,24 @@ public class UtilContentAddResponse   {
 
   public UtilContentAddResponse estuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+    return this;
+  }
+
+ /**
+   * Get estuaryRetrievalUrl
+   * @return estuaryRetrievalUrl
+  **/
+  @JsonProperty("estuary_retrieval_url")
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
+  }
+
+  public UtilContentAddResponse estuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
     return this;
   }
 
@@ -113,6 +134,7 @@ public class UtilContentAddResponse   {
     
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

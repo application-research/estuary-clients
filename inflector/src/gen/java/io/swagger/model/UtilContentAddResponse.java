@@ -8,12 +8,14 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T15:23:16.354Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T16:22:17.959Z[GMT]")
 public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;
   @JsonProperty("estuaryId")
   private Integer estuaryId = null;
+  @JsonProperty("estuary_retrieval_url")
+  private String estuaryRetrievalUrl = null;
   @JsonProperty("providers")
   private List<String> providers = null;
   @JsonProperty("retrieval_url")
@@ -50,6 +52,23 @@ public class UtilContentAddResponse   {
   }
   public void setEstuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+  }
+
+  /**
+   **/
+  public UtilContentAddResponse estuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
+    return this;
+  }
+
+  
+  @Schema(description = "")
+  @JsonProperty("estuary_retrieval_url")
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
   }
 
   /**
@@ -98,13 +117,14 @@ public class UtilContentAddResponse   {
     UtilContentAddResponse utilContentAddResponse = (UtilContentAddResponse) o;
     return Objects.equals(cid, utilContentAddResponse.cid) &&
         Objects.equals(estuaryId, utilContentAddResponse.estuaryId) &&
+        Objects.equals(estuaryRetrievalUrl, utilContentAddResponse.estuaryRetrievalUrl) &&
         Objects.equals(providers, utilContentAddResponse.providers) &&
         Objects.equals(retrievalUrl, utilContentAddResponse.retrievalUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, estuaryId, providers, retrievalUrl);
+    return Objects.hash(cid, estuaryId, estuaryRetrievalUrl, providers, retrievalUrl);
   }
 
   @Override
@@ -113,6 +133,7 @@ public class UtilContentAddResponse   {
     sb.append("class UtilContentAddResponse {\n");
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

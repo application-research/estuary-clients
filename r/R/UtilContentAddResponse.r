@@ -10,6 +10,7 @@
 #'
 #' @field cid 
 #' @field estuaryId 
+#' @field estuary_retrieval_url 
 #' @field providers 
 #' @field retrieval_url 
 #'
@@ -21,9 +22,10 @@ UtilContentAddResponse <- R6::R6Class(
   public = list(
     `cid` = NULL,
     `estuaryId` = NULL,
+    `estuary_retrieval_url` = NULL,
     `providers` = NULL,
     `retrieval_url` = NULL,
-    initialize = function(`cid`, `estuaryId`, `providers`, `retrieval_url`){
+    initialize = function(`cid`, `estuaryId`, `estuary_retrieval_url`, `providers`, `retrieval_url`){
       if (!missing(`cid`)) {
         stopifnot(is.character(`cid`), length(`cid`) == 1)
         self$`cid` <- `cid`
@@ -31,6 +33,10 @@ UtilContentAddResponse <- R6::R6Class(
       if (!missing(`estuaryId`)) {
         stopifnot(is.numeric(`estuaryId`), length(`estuaryId`) == 1)
         self$`estuaryId` <- `estuaryId`
+      }
+      if (!missing(`estuary_retrieval_url`)) {
+        stopifnot(is.character(`estuary_retrieval_url`), length(`estuary_retrieval_url`) == 1)
+        self$`estuary_retrieval_url` <- `estuary_retrieval_url`
       }
       if (!missing(`providers`)) {
         stopifnot(is.list(`providers`), length(`providers`) != 0)
@@ -50,6 +56,9 @@ UtilContentAddResponse <- R6::R6Class(
       if (!is.null(self$`estuaryId`)) {
         UtilContentAddResponseObject[['estuaryId']] <- self$`estuaryId`
       }
+      if (!is.null(self$`estuary_retrieval_url`)) {
+        UtilContentAddResponseObject[['estuary_retrieval_url']] <- self$`estuary_retrieval_url`
+      }
       if (!is.null(self$`providers`)) {
         UtilContentAddResponseObject[['providers']] <- self$`providers`
       }
@@ -67,6 +76,9 @@ UtilContentAddResponse <- R6::R6Class(
       if (!is.null(UtilContentAddResponseObject$`estuaryId`)) {
         self$`estuaryId` <- UtilContentAddResponseObject$`estuaryId`
       }
+      if (!is.null(UtilContentAddResponseObject$`estuary_retrieval_url`)) {
+        self$`estuary_retrieval_url` <- UtilContentAddResponseObject$`estuary_retrieval_url`
+      }
       if (!is.null(UtilContentAddResponseObject$`providers`)) {
         self$`providers` <- UtilContentAddResponseObject$`providers`
       }
@@ -79,11 +91,13 @@ UtilContentAddResponse <- R6::R6Class(
         '{
            "cid": %s,
            "estuaryId": %d,
+           "estuary_retrieval_url": %s,
            "providers": [%s],
            "retrieval_url": %s
         }',
         self$`cid`,
         self$`estuaryId`,
+        self$`estuary_retrieval_url`,
         lapply(self$`providers`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`retrieval_url`
       )
@@ -92,6 +106,7 @@ UtilContentAddResponse <- R6::R6Class(
       UtilContentAddResponseObject <- jsonlite::fromJSON(UtilContentAddResponseJson)
       self$`cid` <- UtilContentAddResponseObject$`cid`
       self$`estuaryId` <- UtilContentAddResponseObject$`estuaryId`
+      self$`estuary_retrieval_url` <- UtilContentAddResponseObject$`estuary_retrieval_url`
       self$`providers` <- UtilContentAddResponseObject$`providers`
       self$`retrieval_url` <- UtilContentAddResponseObject$`retrieval_url`
     }

@@ -15,12 +15,14 @@ package io.swagger.client.model
 /**
  * @param cid 
  * @param estuaryId 
+ * @param estuaryRetrievalUrl 
  * @param providers 
  * @param retrievalUrl 
  */
 case class ContentAddResponse (
   cid: Option[String] = None,
   estuaryId: Option[Integer] = None,
+  estuaryRetrievalUrl: Option[String] = None,
   providers: Option[List[String]] = None,
   retrievalUrl: Option[String] = None
 )

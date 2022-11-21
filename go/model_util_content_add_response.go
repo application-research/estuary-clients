@@ -11,6 +11,7 @@ package estuary_client
 type UtilContentAddResponse struct {
 	Cid string `json:"cid,omitempty"`
 	EstuaryId int32 `json:"estuaryId,omitempty"`
+	EstuaryRetrievalUrl string `json:"estuary_retrieval_url,omitempty"`
 	Providers []string `json:"providers,omitempty"`
 	RetrievalUrl string `json:"retrieval_url,omitempty"`
 }

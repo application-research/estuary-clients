@@ -13,12 +13,14 @@ public struct UtilContentAddResponse: Codable {
 
     public var cid: String?
     public var estuaryId: Int?
+    public var estuaryRetrievalUrl: String?
     public var providers: [String]?
     public var retrievalUrl: String?
 
-    public init(cid: String? = nil, estuaryId: Int? = nil, providers: [String]? = nil, retrievalUrl: String? = nil) {
+    public init(cid: String? = nil, estuaryId: Int? = nil, estuaryRetrievalUrl: String? = nil, providers: [String]? = nil, retrievalUrl: String? = nil) {
         self.cid = cid
         self.estuaryId = estuaryId
+        self.estuaryRetrievalUrl = estuaryRetrievalUrl
         self.providers = providers
         self.retrievalUrl = retrievalUrl
     }
@@ -26,6 +28,7 @@ public struct UtilContentAddResponse: Codable {
     public enum CodingKeys: String, CodingKey { 
         case cid
         case estuaryId
+        case estuaryRetrievalUrl = "estuary_retrieval_url"
         case providers
         case retrievalUrl = "retrieval_url"
     }

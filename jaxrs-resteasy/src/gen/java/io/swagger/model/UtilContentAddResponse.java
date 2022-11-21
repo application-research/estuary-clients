@@ -9,8 +9,8 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T15:23:19.106Z[GMT]")public class UtilContentAddResponse   {
-  private String cid = null;  private Integer estuaryId = null;  private List<String> providers = new ArrayList<String>();  private String retrievalUrl = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-21T16:22:16.912Z[GMT]")public class UtilContentAddResponse   {
+  private String cid = null;  private Integer estuaryId = null;  private String estuaryRetrievalUrl = null;  private List<String> providers = new ArrayList<String>();  private String retrievalUrl = null;
 
   /**
    **/
@@ -34,6 +34,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
   }
   public void setEstuaryId(Integer estuaryId) {
     this.estuaryId = estuaryId;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("estuary_retrieval_url")
+  public String getEstuaryRetrievalUrl() {
+    return estuaryRetrievalUrl;
+  }
+  public void setEstuaryRetrievalUrl(String estuaryRetrievalUrl) {
+    this.estuaryRetrievalUrl = estuaryRetrievalUrl;
   }
 
   /**
@@ -72,13 +84,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
     UtilContentAddResponse utilContentAddResponse = (UtilContentAddResponse) o;
     return Objects.equals(cid, utilContentAddResponse.cid) &&
         Objects.equals(estuaryId, utilContentAddResponse.estuaryId) &&
+        Objects.equals(estuaryRetrievalUrl, utilContentAddResponse.estuaryRetrievalUrl) &&
         Objects.equals(providers, utilContentAddResponse.providers) &&
         Objects.equals(retrievalUrl, utilContentAddResponse.retrievalUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, estuaryId, providers, retrievalUrl);
+    return Objects.hash(cid, estuaryId, estuaryRetrievalUrl, providers, retrievalUrl);
   }
 
   @Override
@@ -88,6 +101,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    estuaryId: ").append(toIndentedString(estuaryId)).append("\n");
+    sb.append("    estuaryRetrievalUrl: ").append(toIndentedString(estuaryRetrievalUrl)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    retrievalUrl: ").append(toIndentedString(retrievalUrl)).append("\n");
     sb.append("}");

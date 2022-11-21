@@ -82,6 +82,14 @@ namespace estuary-client.Test
             // TODO unit test for the property 'EstuaryId'
         }
         /// <summary>
+        /// Test the property 'EstuaryRetrievalUrl'
+        /// </summary>
+        [Test]
+        public void EstuaryRetrievalUrlTest()
+        {
+            // TODO unit test for the property 'EstuaryRetrievalUrl'
+        }
+        /// <summary>
         /// Test the property 'Providers'
         /// </summary>
         [Test]

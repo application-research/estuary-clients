@@ -2859,6 +2859,8 @@ components:
           type: string
         estuaryId:
           type: integer
+        estuary_retrieval_url:
+          type: string
         providers:
           type: array
           items:
@@ -2868,6 +2870,7 @@ components:
       example:
         retrieval_url: retrieval_url
         estuaryId: 0
+        estuary_retrieval_url: estuary_retrieval_url
         providers:
         - providers
         - providers

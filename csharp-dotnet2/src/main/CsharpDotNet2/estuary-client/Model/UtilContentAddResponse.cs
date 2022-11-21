@@ -27,6 +27,13 @@ namespace IO.Swagger.Model {
     public int? EstuaryId { get; set; }
 
     /// <summary>
+    /// Gets or Sets EstuaryRetrievalUrl
+    /// </summary>
+    [DataMember(Name="estuary_retrieval_url", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "estuary_retrieval_url")]
+    public string EstuaryRetrievalUrl { get; set; }
+
+    /// <summary>
     /// Gets or Sets Providers
     /// </summary>
     [DataMember(Name="providers", EmitDefaultValue=false)]
@@ -50,6 +57,7 @@ namespace IO.Swagger.Model {
       sb.Append("class UtilContentAddResponse {\n");
       sb.Append("  Cid: ").Append(Cid).Append("\n");
       sb.Append("  EstuaryId: ").Append(EstuaryId).Append("\n");
+      sb.Append("  EstuaryRetrievalUrl: ").Append(EstuaryRetrievalUrl).Append("\n");
       sb.Append("  Providers: ").Append(Providers).Append("\n");
       sb.Append("  RetrievalUrl: ").Append(RetrievalUrl).Append("\n");
       sb.Append("}\n");

@@ -31,6 +31,12 @@ export interface UtilContentAddResponse {
     estuaryId?: number;
     /**
      * 
+     * @type {string}
+     * @memberof UtilContentAddResponse
+     */
+    estuaryRetrievalUrl?: string;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof UtilContentAddResponse
      */

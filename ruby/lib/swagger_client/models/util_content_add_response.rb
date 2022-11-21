@@ -17,6 +17,8 @@ module SwaggerClient
 
     attr_accessor :estuary_id
 
+    attr_accessor :estuary_retrieval_url
+
     attr_accessor :providers
 
     attr_accessor :retrieval_url
@@ -26,6 +28,7 @@ module SwaggerClient
       {
         :'cid' => :'cid',
         :'estuary_id' => :'estuaryId',
+        :'estuary_retrieval_url' => :'estuary_retrieval_url',
         :'providers' => :'providers',
         :'retrieval_url' => :'retrieval_url'
       }
@@ -36,6 +39,7 @@ module SwaggerClient
       {
         :'cid' => :'Object',
         :'estuary_id' => :'Object',
+        :'estuary_retrieval_url' => :'Object',
         :'providers' => :'Object',
         :'retrieval_url' => :'Object'
       }
@@ -70,6 +74,10 @@ module SwaggerClient
         self.estuary_id = attributes[:'estuary_id']
       end
 
+      if attributes.key?(:'estuary_retrieval_url')
+        self.estuary_retrieval_url = attributes[:'estuary_retrieval_url']
+      end
+
       if attributes.key?(:'providers')
         if (value = attributes[:'providers']).is_a?(Array)
           self.providers = value
@@ -101,6 +109,7 @@ module SwaggerClient
       self.class == o.class &&
           cid == o.cid &&
           estuary_id == o.estuary_id &&
+          estuary_retrieval_url == o.estuary_retrieval_url &&
           providers == o.providers &&
           retrieval_url == o.retrieval_url
     end
@@ -114,7 +123,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cid, estuary_id, providers, retrieval_url].hash
+      [cid, estuary_id, estuary_retrieval_url, providers, retrieval_url].hash
     end
 
     # Builds the object from hash

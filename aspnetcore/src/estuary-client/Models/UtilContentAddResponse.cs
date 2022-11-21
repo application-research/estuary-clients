@@ -41,6 +41,13 @@ namespace estuary-client.Models
         public int? EstuaryId { get; set; }
 
         /// <summary>
+        /// Gets or Sets EstuaryRetrievalUrl
+        /// </summary>
+
+        [DataMember(Name="estuary_retrieval_url")]
+        public string EstuaryRetrievalUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Providers
         /// </summary>
 
@@ -64,6 +71,7 @@ namespace estuary-client.Models
             sb.Append("class UtilContentAddResponse {\n");
             sb.Append("  Cid: ").Append(Cid).Append("\n");
             sb.Append("  EstuaryId: ").Append(EstuaryId).Append("\n");
+            sb.Append("  EstuaryRetrievalUrl: ").Append(EstuaryRetrievalUrl).Append("\n");
             sb.Append("  Providers: ").Append(Providers).Append("\n");
             sb.Append("  RetrievalUrl: ").Append(RetrievalUrl).Append("\n");
             sb.Append("}\n");
@@ -113,6 +121,11 @@ namespace estuary-client.Models
                     EstuaryId.Equals(other.EstuaryId)
                 ) && 
                 (
+                    EstuaryRetrievalUrl == other.EstuaryRetrievalUrl ||
+                    EstuaryRetrievalUrl != null &&
+                    EstuaryRetrievalUrl.Equals(other.EstuaryRetrievalUrl)
+                ) && 
+                (
                     Providers == other.Providers ||
                     Providers != null &&
                     Providers.SequenceEqual(other.Providers)
@@ -138,6 +151,8 @@ namespace estuary-client.Models
                     hashCode = hashCode * 59 + Cid.GetHashCode();
                     if (EstuaryId != null)
                     hashCode = hashCode * 59 + EstuaryId.GetHashCode();
+                    if (EstuaryRetrievalUrl != null)
+                    hashCode = hashCode * 59 + EstuaryRetrievalUrl.GetHashCode();
                     if (Providers != null)
                     hashCode = hashCode * 59 + Providers.GetHashCode();
                     if (RetrievalUrl != null)

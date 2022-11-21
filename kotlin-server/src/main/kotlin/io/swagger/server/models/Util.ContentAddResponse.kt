@@ -12,7 +12,7 @@
 
 
 /**
- *  * @param cid  * @param estuaryId  * @param providers  * @param retrievalUrl */
-data class UtilContentAddResponse (    val cid: kotlin.String? = null,    val estuaryId: kotlin.Int? = null,    val providers: kotlin.Array<kotlin.String>? = null,    val retrievalUrl: kotlin.String? = null
+ *  * @param cid  * @param estuaryId  * @param estuaryRetrievalUrl  * @param providers  * @param retrievalUrl */
+data class UtilContentAddResponse (    val cid: kotlin.String? = null,    val estuaryId: kotlin.Int? = null,    val estuaryRetrievalUrl: kotlin.String? = null,    val providers: kotlin.Array<kotlin.String>? = null,    val retrievalUrl: kotlin.String? = null
 ) {
 }

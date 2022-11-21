@@ -51,6 +51,12 @@
         // expect(instance.estuaryId).to.be(expectedValueLiteral);
       });
 
+      it('should have the property estuaryRetrievalUrl (base name: "estuary_retrieval_url")', function() {
+        // TODO: update the code to test the property estuaryRetrievalUrl
+        expect(instance).to.have.property('estuaryRetrievalUrl');
+        // expect(instance.estuaryRetrievalUrl).to.be(expectedValueLiteral);
+      });
+
       it('should have the property providers (base name: "providers")', function() {
         // TODO: update the code to test the property providers
         expect(instance).to.have.property('providers');

@@ -670,6 +670,10 @@ class Decoders {
                 case let .success(value): _result.estuaryId = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["estuary_retrieval_url"] as AnyObject?) {
+                case let .success(value): _result.estuaryRetrievalUrl = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["providers"] as AnyObject?) {
                 case let .success(value): _result.providers = value
                 case let .failure(error): break

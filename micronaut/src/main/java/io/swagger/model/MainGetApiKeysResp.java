@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * MainGetApiKeysResp
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T15:23:18.869Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T16:22:18.815Z[GMT]")
 public class MainGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;

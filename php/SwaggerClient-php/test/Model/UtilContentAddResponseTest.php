@@ -90,6 +90,13 @@ class UtilContentAddResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "estuary_retrieval_url"
+     */
+    public function testPropertyEstuaryRetrievalUrl()
+    {
+    }
+
+    /**
      * Test attribute "providers"
      */
     public function testPropertyProviders()

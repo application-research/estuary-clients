@@ -37,7 +37,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T15:23:22.462Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T16:22:19.489Z[GMT]")
 @RestController
 public class ContentApiController implements ContentApi {
 
@@ -57,7 +57,7 @@ public class ContentApiController implements ContentApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<UtilContentAddResponse>(objectMapper.readValue("{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}", UtilContentAddResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<UtilContentAddResponse>(objectMapper.readValue("{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"estuary_retrieval_url\" : \"estuary_retrieval_url\",\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}", UtilContentAddResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<UtilContentAddResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -85,7 +85,7 @@ public class ContentApiController implements ContentApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<UtilContentAddResponse>(objectMapper.readValue("{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}", UtilContentAddResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<UtilContentAddResponse>(objectMapper.readValue("{\n  \"retrieval_url\" : \"retrieval_url\",\n  \"estuaryId\" : 0,\n  \"estuary_retrieval_url\" : \"estuary_retrieval_url\",\n  \"providers\" : [ \"providers\", \"providers\" ],\n  \"cid\" : \"cid\"\n}", UtilContentAddResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<UtilContentAddResponse>(HttpStatus.INTERNAL_SERVER_ERROR);

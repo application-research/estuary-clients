@@ -43,6 +43,12 @@ describe 'UtilContentAddResponse' do
     end
   end
 
+  describe 'test attribute "estuary_retrieval_url"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "providers"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -11,6 +11,7 @@ import Foundation
 open class UtilContentAddResponse: JSONEncodable {
     public var cid: String?
     public var estuaryId: Int32?
+    public var estuaryRetrievalUrl: String?
     public var providers: [String]?
     public var retrievalUrl: String?
 
@@ -21,6 +22,7 @@ open class UtilContentAddResponse: JSONEncodable {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["cid"] = self.cid
         nillableDictionary["estuaryId"] = self.estuaryId?.encodeToJSON()
+        nillableDictionary["estuary_retrieval_url"] = self.estuaryRetrievalUrl
         nillableDictionary["providers"] = self.providers?.encodeToJSON()
         nillableDictionary["retrieval_url"] = self.retrievalUrl
 
