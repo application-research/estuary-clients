@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        List<List<MainGetApiKeysResp>> UserApiKeysGet ();
+        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
+        List<MainGetApiKeysResp> UserApiKeysGet ();
         /// <summary>
         /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
@@ -97,8 +97,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        public List<List<MainGetApiKeysResp>> UserApiKeysGet ()
+        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
+        public List<MainGetApiKeysResp> UserApiKeysGet ()
         {
     
             var path = "/user/api-keys";
@@ -122,7 +122,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<List<MainGetApiKeysResp>>) ApiClient.Deserialize(response.Content, typeof(List<List<MainGetApiKeysResp>>), response.Headers);
+            return (List<MainGetApiKeysResp>) ApiClient.Deserialize(response.Content, typeof(List<MainGetApiKeysResp>), response.Headers);
         }
     
         /// <summary>

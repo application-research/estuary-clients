@@ -62,9 +62,9 @@ export class UserService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<Array<MainGetApiKeysResp>>>;
-    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Array<MainGetApiKeysResp>>>>;
-    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Array<MainGetApiKeysResp>>>>;
+    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<MainGetApiKeysResp>>;
+    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MainGetApiKeysResp>>>;
     public userApiKeysGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -87,7 +87,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Array<MainGetApiKeysResp>>>('get',`${this.basePath}/user/api-keys`,
+        return this.httpClient.request<Array<MainGetApiKeysResp>>('get',`${this.basePath}/user/api-keys`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

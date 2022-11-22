@@ -145,7 +145,7 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public List<List<CollectionsCollection>> collectionsGet();
+    public List<CollectionsCollection> collectionsGet();
 
     /**
      * Create a new collection

@@ -7,7 +7,7 @@ import java.io.File;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T16:22:17.959Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-22T22:05:00.847Z[GMT]")
 public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;

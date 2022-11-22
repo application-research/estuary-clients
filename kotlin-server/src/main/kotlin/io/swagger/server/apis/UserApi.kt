@@ -46,7 +46,7 @@ fun Route.UserApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """[ [ {
+            val exampleContentString = """[ {
   "expiry" : "expiry",
   "label" : "label",
   "tokenHash" : "tokenHash",
@@ -56,17 +56,7 @@ fun Route.UserApi() {
   "label" : "label",
   "tokenHash" : "tokenHash",
   "token" : "token"
-} ], [ {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-}, {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-} ] ]"""
+} ]"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

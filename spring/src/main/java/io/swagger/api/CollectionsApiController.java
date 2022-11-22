@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T16:22:19.489Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-22T22:05:04.657Z[GMT]")
 @RestController
 public class CollectionsApiController implements CollectionsApi {
 
@@ -135,18 +135,18 @@ public class CollectionsApiController implements CollectionsApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<List<List<CollectionsCollection>>> collectionsGet() {
+    public ResponseEntity<List<CollectionsCollection>> collectionsGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<List<CollectionsCollection>>>(objectMapper.readValue("[ [ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ], [ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ] ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<CollectionsCollection>>(objectMapper.readValue("[ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<List<CollectionsCollection>>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<CollectionsCollection>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<List<CollectionsCollection>>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<CollectionsCollection>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<CollectionsCollection> collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description", required=true, schema=@Schema()) @Valid @RequestBody MainCreateCollectionBody body) {

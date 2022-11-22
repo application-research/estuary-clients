@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T16:22:19.489Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-22T22:05:04.657Z[GMT]")
 @Validated
 public interface UserApi {
 
@@ -50,7 +50,7 @@ public interface UserApi {
     @RequestMapping(value = "/user/api-keys",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<List<MainGetApiKeysResp>>> userApiKeysGet();
+    ResponseEntity<List<MainGetApiKeysResp>> userApiKeysGet();
 
 
     @Operation(summary = "Revoke a User API Key.", description = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.", security = {

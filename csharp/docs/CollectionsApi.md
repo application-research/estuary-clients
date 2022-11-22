@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionsget"></a>
 # **CollectionsGet**
-> List<List<CollectionsCollection>> CollectionsGet ()
+> List<CollectionsCollection> CollectionsGet ()
 
 List all collections
 
@@ -447,7 +447,7 @@ namespace Example
             try
             {
                 // List all collections
-                List&lt;List&lt;CollectionsCollection&gt;&gt; result = apiInstance.CollectionsGet();
+                List&lt;CollectionsCollection&gt; result = apiInstance.CollectionsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -464,7 +464,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<List<CollectionsCollection>>**
+[**List<CollectionsCollection>**](CollectionsCollection.md)
 
 ### Authorization
 

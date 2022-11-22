@@ -30,8 +30,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        List<List<MainGetApiKeysResp>> UserApiKeysGet ();
+        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
+        List<MainGetApiKeysResp> UserApiKeysGet ();
 
         /// <summary>
         /// Get API keys for a user
@@ -40,8 +40,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        ApiResponse<List<List<MainGetApiKeysResp>>> UserApiKeysGetWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;MainGetApiKeysResp&gt;</returns>
+        ApiResponse<List<MainGetApiKeysResp>> UserApiKeysGetWithHttpInfo ();
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
@@ -133,8 +133,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        System.Threading.Tasks.Task<List<List<MainGetApiKeysResp>>> UserApiKeysGetAsync ();
+        /// <returns>Task of List&lt;MainGetApiKeysResp&gt;</returns>
+        System.Threading.Tasks.Task<List<MainGetApiKeysResp>> UserApiKeysGetAsync ();
 
         /// <summary>
         /// Get API keys for a user
@@ -143,8 +143,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;List&lt;MainGetApiKeysResp&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<List<MainGetApiKeysResp>>>> UserApiKeysGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;MainGetApiKeysResp&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<MainGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ();
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
@@ -342,10 +342,10 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        public List<List<MainGetApiKeysResp>> UserApiKeysGet ()
+        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
+        public List<MainGetApiKeysResp> UserApiKeysGet ()
         {
-             ApiResponse<List<List<MainGetApiKeysResp>>> localVarResponse = UserApiKeysGetWithHttpInfo();
+             ApiResponse<List<MainGetApiKeysResp>> localVarResponse = UserApiKeysGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -353,8 +353,8 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        public ApiResponse< List<List<MainGetApiKeysResp>> > UserApiKeysGetWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;MainGetApiKeysResp&gt;</returns>
+        public ApiResponse< List<MainGetApiKeysResp> > UserApiKeysGetWithHttpInfo ()
         {
 
             var localVarPath = "/user/api-keys";
@@ -397,19 +397,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<List<MainGetApiKeysResp>>>(localVarStatusCode,
+            return new ApiResponse<List<MainGetApiKeysResp>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<List<MainGetApiKeysResp>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<MainGetApiKeysResp>>)));
+                (List<MainGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MainGetApiKeysResp>)));
         }
 
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;List&lt;MainGetApiKeysResp&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<List<List<MainGetApiKeysResp>>> UserApiKeysGetAsync ()
+        /// <returns>Task of List&lt;MainGetApiKeysResp&gt;</returns>
+        public async System.Threading.Tasks.Task<List<MainGetApiKeysResp>> UserApiKeysGetAsync ()
         {
-             ApiResponse<List<List<MainGetApiKeysResp>>> localVarResponse = await UserApiKeysGetAsyncWithHttpInfo();
+             ApiResponse<List<MainGetApiKeysResp>> localVarResponse = await UserApiKeysGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -418,8 +418,8 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;List&lt;MainGetApiKeysResp&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<List<MainGetApiKeysResp>>>> UserApiKeysGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;MainGetApiKeysResp&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<MainGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/user/api-keys";
@@ -462,9 +462,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<List<MainGetApiKeysResp>>>(localVarStatusCode,
+            return new ApiResponse<List<MainGetApiKeysResp>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<List<MainGetApiKeysResp>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<MainGetApiKeysResp>>)));
+                (List<MainGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MainGetApiKeysResp>)));
         }
 
         /// <summary>

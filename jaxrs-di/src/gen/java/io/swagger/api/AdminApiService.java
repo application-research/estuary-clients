@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-21T16:22:15.449Z[GMT]")public interface AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-22T22:05:02.263Z[GMT]")public interface AdminApiService {
     public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext);
     public Response adminAutoretrieveListGet(SecurityContext securityContext);
     public Response adminInvitesGet(SecurityContext securityContext);

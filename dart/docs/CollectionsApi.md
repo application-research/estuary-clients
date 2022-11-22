@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsGet**
-> List<List<CollectionsCollection>> collectionsGet()
+> List<CollectionsCollection> collectionsGet()
 
 List all collections
 
@@ -342,7 +342,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<List<CollectionsCollection>>**](List.md)
+[**List<CollectionsCollection>**](CollectionsCollection.md)
 
 ### Authorization
 

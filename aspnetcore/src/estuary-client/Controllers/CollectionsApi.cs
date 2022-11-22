@@ -256,14 +256,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<List<CollectionsCollection>>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<CollectionsCollection>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<List<CollectionsCollection>>));
+            // return StatusCode(200, default(List<CollectionsCollection>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -274,11 +274,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "[ [ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ], [ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ] ]";
+            exampleJson = "[ {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n}, {\n  \"createdAt\" : \"createdAt\",\n  \"name\" : \"name\",\n  \"description\" : \"description\",\n  \"userId\" : 0,\n  \"uuid\" : \"uuid\",\n  \"cid\" : \"cid\"\n} ]";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<List<CollectionsCollection>>>(exampleJson)
-                        : default(List<List<CollectionsCollection>>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<List<CollectionsCollection>>(exampleJson)
+                        : default(List<CollectionsCollection>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 

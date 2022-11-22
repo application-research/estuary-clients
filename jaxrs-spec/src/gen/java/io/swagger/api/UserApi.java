@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/user")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-21T16:22:19.209Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-22T22:05:04.899Z[GMT]")
 public class UserApi {
 
     @GET

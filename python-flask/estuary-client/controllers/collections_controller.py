@@ -106,7 +106,7 @@ def collections_get():  # noqa: E501
     This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user. # noqa: E501
 
 
-    :rtype: List[List[CollectionsCollection]]
+    :rtype: List[CollectionsCollection]
     """
     return 'do some magic!'
 

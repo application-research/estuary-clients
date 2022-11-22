@@ -94,7 +94,7 @@ class UserApi(
 
 trait UserApiService {
 
-  def userApiKeysGet200(responsemain.getApiKeysResparray: List[List[main.getApiKeysResp]])(implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[List[main.getApiKeysResp]]]): Route =
+  def userApiKeysGet200(responsemain.getApiKeysResparray: List[main.getApiKeysResp])(implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]]): Route =
     complete((200, responsemain.getApiKeysResparray))
   def userApiKeysGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
@@ -103,13 +103,13 @@ trait UserApiService {
   def userApiKeysGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: List[List[main.getApiKeysResp]]
+   * Code: 200, Message: OK, DataType: List[main.getApiKeysResp]
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def userApiKeysGet()
-      (implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[List[main.getApiKeysResp]]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def userApiKeysKeyOrHashDelete200(responseString: String): Route =
     complete((200, responseString))
@@ -174,7 +174,7 @@ trait UserApiService {
 
 trait UserApiMarshaller {
 
-  implicit def toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[List[main.getApiKeysResp]]]
+  implicit def toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

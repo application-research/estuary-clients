@@ -25,7 +25,7 @@ import javax.validation.Valid;
 /**
  * TypesIpfsListPinStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-21T16:22:15.449Z[GMT]")public class TypesIpfsListPinStatusResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-22T22:05:02.263Z[GMT]")public class TypesIpfsListPinStatusResponse   {
   @JsonProperty("count")
   private Integer count = null;
 

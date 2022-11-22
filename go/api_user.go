@@ -29,15 +29,15 @@ type UserApiService service
 UserApiService Get API keys for a user
 This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return [][]MainGetApiKeysResp
+@return []MainGetApiKeysResp
 */
-func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([][]MainGetApiKeysResp, *http.Response, error) {
+func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([]MainGetApiKeysResp, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue [][]MainGetApiKeysResp
+		localVarReturnValue []MainGetApiKeysResp
 	)
 
 	// create path and map variables
@@ -107,7 +107,7 @@ func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([][]MainGetApiKeys
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v [][]MainGetApiKeysResp
+			var v []MainGetApiKeysResp
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

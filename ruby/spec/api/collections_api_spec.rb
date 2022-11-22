@@ -113,7 +113,7 @@ describe 'CollectionsApi' do
   # List all collections
   # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
   # @param [Hash] opts the optional parameters
-  # @return [Array<Array<CollectionsCollection>>]
+  # @return [Array<CollectionsCollection>]
   describe 'collections_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

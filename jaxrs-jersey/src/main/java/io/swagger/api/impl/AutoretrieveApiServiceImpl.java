@@ -16,7 +16,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T16:22:17.074Z[GMT]")public class AutoretrieveApiServiceImpl extends AutoretrieveApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-22T22:05:02.048Z[GMT]")public class AutoretrieveApiServiceImpl extends AutoretrieveApiService {
     @Override
     public Response autoretrieveHeartbeatPost(String token, SecurityContext securityContext) throws NotFoundException {
         // do some magic!

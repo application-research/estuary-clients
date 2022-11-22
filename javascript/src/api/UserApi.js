@@ -39,7 +39,7 @@ export class UserApi {
      * Callback function to receive the result of the userApiKeysGet operation.
      * @callback moduleapi/UserApi~userApiKeysGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<[MainGetApiKeysResp]>{ data The data returned by the service call.
+     * @param {Array.<module:model/MainGetApiKeysResp>{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -69,7 +69,7 @@ export class UserApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [[MainGetApiKeysResp]];
+      let returnType = [MainGetApiKeysResp];
 
       return this.apiClient.callApi(
         '/user/api-keys', 'GET',

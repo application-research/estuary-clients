@@ -12,7 +12,7 @@ def user_api_keys_get():  # noqa: E501
     This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user. # noqa: E501
 
 
-    :rtype: List[List[MainGetApiKeysResp]]
+    :rtype: List[MainGetApiKeysResp]
     """
     return 'do some magic!'
 

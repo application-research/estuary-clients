@@ -136,7 +136,7 @@ exports.collectionsFsAddPOST = function(coluuid,content,path) {
 exports.collectionsGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ [ {
+    examples['application/json'] = [ {
   "createdAt" : "createdAt",
   "name" : "name",
   "description" : "description",
@@ -150,21 +150,7 @@ exports.collectionsGET = function() {
   "userId" : 0,
   "uuid" : "uuid",
   "cid" : "cid"
-} ], [ {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-}, {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-} ] ];
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

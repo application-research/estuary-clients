@@ -225,7 +225,7 @@ trait CollectionsApiService {
   def collectionsFsAddPost(coluuid: String, content: String, path: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def collectionsGet200(responsecollections.Collectionarray: List[List[collections.Collection]])(implicit toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[List[collections.Collection]]]): Route =
+  def collectionsGet200(responsecollections.Collectionarray: List[collections.Collection])(implicit toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[collections.Collection]]): Route =
     complete((200, responsecollections.Collectionarray))
   def collectionsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
@@ -234,13 +234,13 @@ trait CollectionsApiService {
   def collectionsGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: List[List[collections.Collection]]
+   * Code: 200, Message: OK, DataType: List[collections.Collection]
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def collectionsGet()
-      (implicit toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[List[collections.Collection]]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[collections.Collection]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsPost200(responsecollections.Collection: collections.Collection)(implicit toEntityMarshallercollections.Collection: ToEntityMarshaller[collections.Collection]): Route =
     complete((200, responsecollections.Collection))
@@ -293,7 +293,7 @@ trait CollectionsApiMarshaller {
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[List[collections.Collection]]]
+  implicit def toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[collections.Collection]]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

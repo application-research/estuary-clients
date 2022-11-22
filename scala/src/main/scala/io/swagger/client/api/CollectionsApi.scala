@@ -253,9 +253,9 @@ class CollectionsApi(
    * List all collections
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @return List[List[collections.Collection]]
+   * @return List[collections.Collection]
    */
-  def collectionsGet(): Option[List[List[collections.Collection]]] = {
+  def collectionsGet(): Option[List[collections.Collection]] = {
     val await = Try(Await.result(collectionsGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -267,9 +267,9 @@ class CollectionsApi(
    * List all collections asynchronously
    * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
    *
-   * @return Future(List[List[collections.Collection]])
+   * @return Future(List[collections.Collection])
    */
-  def collectionsGetAsync(): Future[List[List[collections.Collection]]] = {
+  def collectionsGetAsync(): Future[List[collections.Collection]] = {
       helper.collectionsGet()
   }
 
@@ -433,7 +433,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     }
   }
 
-  def collectionsGet()(implicit reader: ClientResponseReader[List[List[collections.Collection]]]): Future[List[List[collections.Collection]]] = {
+  def collectionsGet()(implicit reader: ClientResponseReader[List[collections.Collection]]): Future[List[collections.Collection]] = {
     // create path and map variables
     val path = (addFmt("/collections/"))
 

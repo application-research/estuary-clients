@@ -350,7 +350,7 @@ export class CollectionsApi {
      * Callback function to receive the result of the collectionsGet operation.
      * @callback moduleapi/CollectionsApi~collectionsGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<[CollectionsCollection]>{ data The data returned by the service call.
+     * @param {Array.<module:model/CollectionsCollection>{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -380,7 +380,7 @@ export class CollectionsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [[CollectionsCollection]];
+      let returnType = [CollectionsCollection];
 
       return this.apiClient.callApi(
         '/collections/', 'GET',

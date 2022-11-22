@@ -1914,7 +1914,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Array<CollectionsCollection>>> {
+        collectionsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CollectionsCollection>> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsGet(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7922,7 +7922,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<Array<MainGetApiKeysResp>>> {
+        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<MainGetApiKeysResp>> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysGet(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {

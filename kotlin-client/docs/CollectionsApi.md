@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> kotlin.Array&lt;kotlin.Array&lt;CollectionsCollection&gt;&gt; collectionsGet()
+> kotlin.Array&lt;CollectionsCollection&gt; collectionsGet()
 
 List all collections
 
@@ -323,7 +323,7 @@ This endpoint is used to list all collections. Whenever a user logs on estuary, 
 
 val apiInstance = CollectionsApi()
 try {
-    val result : kotlin.Array<kotlin.Array<CollectionsCollection>> = apiInstance.collectionsGet()
+    val result : kotlin.Array<CollectionsCollection> = apiInstance.collectionsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsGet")
@@ -339,7 +339,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.Array&lt;kotlin.Array&lt;CollectionsCollection&gt;&gt;**
+[**kotlin.Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 

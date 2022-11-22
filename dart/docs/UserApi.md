@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**userStatsGet**](UserApi.md#userStatsGet) | **GET** /user/stats | Get stats for the current user
 
 # **userApiKeysGet**
-> List<List<MainGetApiKeysResp>> userApiKeysGet()
+> List<MainGetApiKeysResp> userApiKeysGet()
 
 Get API keys for a user
 
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<List<MainGetApiKeysResp>>**](List.md)
+[**List<MainGetApiKeysResp>**](MainGetApiKeysResp.md)
 
 ### Authorization
 

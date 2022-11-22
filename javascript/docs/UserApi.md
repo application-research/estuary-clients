@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> [[MainGetApiKeysResp]] userApiKeysGet()
+> [MainGetApiKeysResp] userApiKeysGet()
 
 Get API keys for a user
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[[MainGetApiKeysResp]]**
+[**[MainGetApiKeysResp]**](MainGetApiKeysResp.md)
 
 ### Authorization
 

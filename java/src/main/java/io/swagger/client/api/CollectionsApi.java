@@ -921,23 +921,23 @@ public class CollectionsApi {
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @return List&lt;List&lt;CollectionsCollection&gt;&gt;
+     * @return List&lt;CollectionsCollection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<List<CollectionsCollection>> collectionsGet() throws ApiException {
-        ApiResponse<List<List<CollectionsCollection>>> resp = collectionsGetWithHttpInfo();
+    public List<CollectionsCollection> collectionsGet() throws ApiException {
+        ApiResponse<List<CollectionsCollection>> resp = collectionsGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @return ApiResponse&lt;List&lt;List&lt;CollectionsCollection&gt;&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CollectionsCollection&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<List<CollectionsCollection>>> collectionsGetWithHttpInfo() throws ApiException {
+    public ApiResponse<List<CollectionsCollection>> collectionsGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = collectionsGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<List<CollectionsCollection>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CollectionsCollection>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -948,7 +948,7 @@ public class CollectionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsGetAsync(final ApiCallback<List<List<CollectionsCollection>>> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsGetAsync(final ApiCallback<List<CollectionsCollection>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -970,7 +970,7 @@ public class CollectionsApi {
         }
 
         com.squareup.okhttp.Call call = collectionsGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<List<CollectionsCollection>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CollectionsCollection>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

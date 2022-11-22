@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> List&lt;List&lt;MainGetApiKeysResp&gt;&gt; userApiKeysGet()
+> List&lt;MainGetApiKeysResp&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -37,7 +37,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 UserApi apiInstance = new UserApi();
 try {
-    List<List<MainGetApiKeysResp>> result = apiInstance.userApiKeysGet();
+    List<MainGetApiKeysResp> result = apiInstance.userApiKeysGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;List&lt;MainGetApiKeysResp&gt;&gt;**](List.md)
+[**List&lt;MainGetApiKeysResp&gt;**](MainGetApiKeysResp.md)
 
 ### Authorization
 

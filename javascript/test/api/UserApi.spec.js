@@ -50,8 +50,7 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(Array);
-              // expect(data).to.be(null);
+              expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
             }
 
             done();

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**UserStatsGet**](UserApi.md#UserStatsGet) | **Get** /user/stats | Get stats for the current user
 
 # **UserApiKeysGet**
-> [][]MainGetApiKeysResp UserApiKeysGet(ctx, )
+> []MainGetApiKeysResp UserApiKeysGet(ctx, )
 Get API keys for a user
 
 This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
@@ -21,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[][]MainGetApiKeysResp**](array.md)
+[**[]MainGetApiKeysResp**](main.getApiKeysResp.md)
 
 ### Authorization
 

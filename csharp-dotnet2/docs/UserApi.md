@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userapikeysget"></a>
 # **UserApiKeysGet**
-> List<List<MainGetApiKeysResp>> UserApiKeysGet ()
+> List<MainGetApiKeysResp> UserApiKeysGet ()
 
 Get API keys for a user
 
@@ -43,7 +43,7 @@ namespace Example
             try
             {
                 // Get API keys for a user
-                List&lt;List&lt;MainGetApiKeysResp&gt;&gt; result = apiInstance.UserApiKeysGet();
+                List&lt;MainGetApiKeysResp&gt; result = apiInstance.UserApiKeysGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List<List<MainGetApiKeysResp>>**
+[**List<MainGetApiKeysResp>**](MainGetApiKeysResp.md)
 
 ### Authorization
 

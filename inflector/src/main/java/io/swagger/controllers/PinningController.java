@@ -15,7 +15,7 @@ import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-21T16:22:17.959Z[GMT]")public class PinningController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-22T22:05:00.847Z[GMT]")public class PinningController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector

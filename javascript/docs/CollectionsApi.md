@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> [[CollectionsCollection]] collectionsGet()
+> [CollectionsCollection] collectionsGet()
 
 List all collections
 
@@ -360,7 +360,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**[[CollectionsCollection]]**
+[**[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 

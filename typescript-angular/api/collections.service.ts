@@ -397,9 +397,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<Array<CollectionsCollection>>>;
-    public collectionsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<Array<CollectionsCollection>>>>;
-    public collectionsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<Array<CollectionsCollection>>>>;
+    public collectionsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<CollectionsCollection>>;
+    public collectionsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CollectionsCollection>>>;
+    public collectionsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CollectionsCollection>>>;
     public collectionsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -422,7 +422,7 @@ export class CollectionsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<Array<CollectionsCollection>>>('get',`${this.basePath}/collections/`,
+        return this.httpClient.request<Array<CollectionsCollection>>('get',`${this.basePath}/collections/`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

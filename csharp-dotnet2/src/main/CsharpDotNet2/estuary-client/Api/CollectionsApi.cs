@@ -56,8 +56,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
-        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        List<List<CollectionsCollection>> CollectionsGet ();
+        /// <returns>List&lt;CollectionsCollection&gt;</returns>
+        List<CollectionsCollection> CollectionsGet ();
         /// <summary>
         /// Create a new collection This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
         /// </summary>
@@ -354,8 +354,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
-        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        public List<List<CollectionsCollection>> CollectionsGet ()
+        /// <returns>List&lt;CollectionsCollection&gt;</returns>
+        public List<CollectionsCollection> CollectionsGet ()
         {
     
             var path = "/collections/";
@@ -379,7 +379,7 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<List<CollectionsCollection>>) ApiClient.Deserialize(response.Content, typeof(List<List<CollectionsCollection>>), response.Headers);
+            return (List<CollectionsCollection>) ApiClient.Deserialize(response.Content, typeof(List<CollectionsCollection>), response.Headers);
         }
     
         /// <summary>

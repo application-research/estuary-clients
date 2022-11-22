@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_get**
-> list[list[CollectionsCollection]] collections_get()
+> list[CollectionsCollection] collections_get()
 
 List all collections
 
@@ -386,7 +386,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**list[list[CollectionsCollection]]**
+[**list[CollectionsCollection]**](CollectionsCollection.md)
 
 ### Authorization
 

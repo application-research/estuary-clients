@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> kotlin.Array&lt;kotlin.Array&lt;MaingetApiKeysResp&gt;&gt; userApiKeysGet()
+> kotlin.Array&lt;MaingetApiKeysResp&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -26,7 +26,7 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 
 val apiInstance = UserApi()
 try {
-    val result : kotlin.Array<kotlin.Array<MaingetApiKeysResp>> = apiInstance.userApiKeysGet()
+    val result : kotlin.Array<MaingetApiKeysResp> = apiInstance.userApiKeysGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userApiKeysGet")
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.Array&lt;kotlin.Array&lt;MaingetApiKeysResp&gt;&gt;**
+[**kotlin.Array&lt;MaingetApiKeysResp&gt;**](MaingetApiKeysResp.md)
 
 ### Authorization
 

@@ -29,7 +29,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      *
      */
-    public List<List<MainGetApiKeysResp>> userApiKeysGet() {
+    public List<MainGetApiKeysResp> userApiKeysGet() {
         // TODO: Implement...
         
         return null;

@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T16:22:17.864Z[GMT]")public class TypesIpfsPin   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-22T22:05:03.665Z[GMT]")public class TypesIpfsPin   {
   private String cid = null;
   private Object meta = null;
   private String name = null;

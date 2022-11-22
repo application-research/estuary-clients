@@ -15,7 +15,7 @@ open class UserAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysGet(completion: @escaping ((_ data: [[MainGetApiKeysResp]]?,_ error: Error?) -> Void)) {
+    open class func userApiKeysGet(completion: @escaping ((_ data: [MainGetApiKeysResp]?,_ error: Error?) -> Void)) {
         userApiKeysGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -29,7 +29,7 @@ open class UserAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=[ [ {
+     - examples: [{contentType=application/json, example=[ {
   "expiry" : "expiry",
   "label" : "label",
   "tokenHash" : "tokenHash",
@@ -39,28 +39,18 @@ open class UserAPI {
   "label" : "label",
   "tokenHash" : "tokenHash",
   "token" : "token"
-} ], [ {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-}, {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-} ] ]}]
+} ]}]
 
-     - returns: RequestBuilder<[[MainGetApiKeysResp]]> 
+     - returns: RequestBuilder<[MainGetApiKeysResp]> 
      */
-    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[[MainGetApiKeysResp]]> {
+    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[MainGetApiKeysResp]> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<[[MainGetApiKeysResp]]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[MainGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

@@ -439,9 +439,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/collections.Collection'
+                  $ref: '#/components/schemas/collections.Collection'
                 x-content-type: application/json
         "400":
           description: Bad Request
@@ -2530,9 +2528,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/main.getApiKeysResp'
+                  $ref: '#/components/schemas/main.getApiKeysResp'
                 x-content-type: application/json
         "400":
           description: Bad Request

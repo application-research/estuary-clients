@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsGet**
-> \Swagger\Client\Model\CollectionsCollection[][] collectionsGet()
+> \Swagger\Client\Model\CollectionsCollection[] collectionsGet()
 
 List all collections
 
@@ -386,7 +386,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\CollectionsCollection[][]**](../Model/array.md)
+[**\Swagger\Client\Model\CollectionsCollection[]**](../Model/CollectionsCollection.md)
 
 ### Authorization
 

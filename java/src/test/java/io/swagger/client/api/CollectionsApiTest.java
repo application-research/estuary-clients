@@ -140,7 +140,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() throws Exception {
-        List<List<CollectionsCollection>> response = api.collectionsGet();
+        List<CollectionsCollection> response = api.collectionsGet();
 
         // TODO: test validations
     }

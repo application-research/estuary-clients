@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-21T16:22:18.815Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-22T22:05:02.846Z[GMT]")
 @Controller
 public interface UserApi {
 
@@ -35,7 +35,7 @@ public interface UserApi {
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/user/api-keys", produces = { "application/json" })
-    default Single<HttpResponse<List<List<MainGetApiKeysResp>>>> userApiKeysGet() {
+    default Single<HttpResponse<List<MainGetApiKeysResp>>> userApiKeysGet() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

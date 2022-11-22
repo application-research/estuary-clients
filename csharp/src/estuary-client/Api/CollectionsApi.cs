@@ -168,8 +168,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        List<List<CollectionsCollection>> CollectionsGet ();
+        /// <returns>List&lt;CollectionsCollection&gt;</returns>
+        List<CollectionsCollection> CollectionsGet ();
 
         /// <summary>
         /// List all collections
@@ -178,8 +178,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        ApiResponse<List<List<CollectionsCollection>>> CollectionsGetWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;CollectionsCollection&gt;</returns>
+        ApiResponse<List<CollectionsCollection>> CollectionsGetWithHttpInfo ();
         /// <summary>
         /// Create a new collection
         /// </summary>
@@ -348,8 +348,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        System.Threading.Tasks.Task<List<List<CollectionsCollection>>> CollectionsGetAsync ();
+        /// <returns>Task of List&lt;CollectionsCollection&gt;</returns>
+        System.Threading.Tasks.Task<List<CollectionsCollection>> CollectionsGetAsync ();
 
         /// <summary>
         /// List all collections
@@ -358,8 +358,8 @@ namespace estuary-client.Api
         /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;List&lt;CollectionsCollection&gt;&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<List<CollectionsCollection>>>> CollectionsGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;CollectionsCollection&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<CollectionsCollection>>> CollectionsGetAsyncWithHttpInfo ();
         /// <summary>
         /// Create a new collection
         /// </summary>
@@ -1440,10 +1440,10 @@ namespace estuary-client.Api
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        public List<List<CollectionsCollection>> CollectionsGet ()
+        /// <returns>List&lt;CollectionsCollection&gt;</returns>
+        public List<CollectionsCollection> CollectionsGet ()
         {
-             ApiResponse<List<List<CollectionsCollection>>> localVarResponse = CollectionsGetWithHttpInfo();
+             ApiResponse<List<CollectionsCollection>> localVarResponse = CollectionsGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -1451,8 +1451,8 @@ namespace estuary-client.Api
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        public ApiResponse< List<List<CollectionsCollection>> > CollectionsGetWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;CollectionsCollection&gt;</returns>
+        public ApiResponse< List<CollectionsCollection> > CollectionsGetWithHttpInfo ()
         {
 
             var localVarPath = "/collections/";
@@ -1495,19 +1495,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<List<CollectionsCollection>>>(localVarStatusCode,
+            return new ApiResponse<List<CollectionsCollection>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<List<CollectionsCollection>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<CollectionsCollection>>)));
+                (List<CollectionsCollection>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CollectionsCollection>)));
         }
 
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;List&lt;CollectionsCollection&gt;&gt;</returns>
-        public async System.Threading.Tasks.Task<List<List<CollectionsCollection>>> CollectionsGetAsync ()
+        /// <returns>Task of List&lt;CollectionsCollection&gt;</returns>
+        public async System.Threading.Tasks.Task<List<CollectionsCollection>> CollectionsGetAsync ()
         {
-             ApiResponse<List<List<CollectionsCollection>>> localVarResponse = await CollectionsGetAsyncWithHttpInfo();
+             ApiResponse<List<CollectionsCollection>> localVarResponse = await CollectionsGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -1516,8 +1516,8 @@ namespace estuary-client.Api
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;List&lt;CollectionsCollection&gt;&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<List<CollectionsCollection>>>> CollectionsGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;CollectionsCollection&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<CollectionsCollection>>> CollectionsGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/collections/";
@@ -1560,9 +1560,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<List<CollectionsCollection>>>(localVarStatusCode,
+            return new ApiResponse<List<CollectionsCollection>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<List<CollectionsCollection>>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<List<CollectionsCollection>>)));
+                (List<CollectionsCollection>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CollectionsCollection>)));
         }
 
         /// <summary>

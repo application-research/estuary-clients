@@ -80,7 +80,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() {
-        //List<List<MainGetApiKeysResp>> response = api.userApiKeysGet();
+        //List<MainGetApiKeysResp> response = api.userApiKeysGet();
         //assertNotNull(response);
         // TODO: test validations
         

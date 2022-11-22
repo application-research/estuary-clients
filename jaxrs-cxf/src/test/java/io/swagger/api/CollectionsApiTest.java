@@ -190,7 +190,7 @@ public class CollectionsApiTest {
      */
     @Test
     public void collectionsGetTest() {
-        //List<List<CollectionsCollection>> response = api.collectionsGet();
+        //List<CollectionsCollection> response = api.collectionsGet();
         //assertNotNull(response);
         // TODO: test validations
         

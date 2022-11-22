@@ -10,7 +10,7 @@
 exports.userApi_keysGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ [ {
+    examples['application/json'] = [ {
   "expiry" : "expiry",
   "label" : "label",
   "tokenHash" : "tokenHash",
@@ -20,17 +20,7 @@ exports.userApi_keysGET = function() {
   "label" : "label",
   "tokenHash" : "tokenHash",
   "token" : "token"
-} ], [ {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-}, {
-  "expiry" : "expiry",
-  "label" : "label",
-  "tokenHash" : "tokenHash",
-  "token" : "token"
-} ] ];
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

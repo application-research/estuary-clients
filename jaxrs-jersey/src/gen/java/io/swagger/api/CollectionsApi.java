@@ -39,7 +39,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-21T16:22:17.074Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-22T22:05:02.048Z[GMT]")public class CollectionsApi  {
    private final CollectionsApiService delegate;
 
    public CollectionsApi(@Context ServletConfig servletContext) {

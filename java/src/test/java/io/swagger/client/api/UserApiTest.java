@@ -42,7 +42,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() throws Exception {
-        List<List<MainGetApiKeysResp>> response = api.userApiKeysGet();
+        List<MainGetApiKeysResp> response = api.userApiKeysGet();
 
         // TODO: test validations
     }

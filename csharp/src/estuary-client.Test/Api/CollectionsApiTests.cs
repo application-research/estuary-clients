@@ -142,7 +142,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.CollectionsGet();
-            //Assert.IsInstanceOf<List<List<CollectionsCollection>>> (response, "response is List<List<CollectionsCollection>>");
+            //Assert.IsInstanceOf<List<CollectionsCollection>> (response, "response is List<CollectionsCollection>");
         }
         /// <summary>
         /// Test CollectionsPost

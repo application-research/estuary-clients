@@ -35,7 +35,7 @@ describe 'UserApi' do
   # Get API keys for a user
   # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
   # @param [Hash] opts the optional parameters
-  # @return [Array<Array<MainGetApiKeysResp>>]
+  # @return [Array<MainGetApiKeysResp>]
   describe 'user_api_keys_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

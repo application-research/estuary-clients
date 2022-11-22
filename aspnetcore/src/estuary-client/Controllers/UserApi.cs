@@ -40,14 +40,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserApiKeysGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<List<MainGetApiKeysResp>>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<MainGetApiKeysResp>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserApiKeysGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<List<MainGetApiKeysResp>>));
+            // return StatusCode(200, default(List<MainGetApiKeysResp>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -58,11 +58,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "[ [ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ], [ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ] ]";
+            exampleJson = "[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<List<MainGetApiKeysResp>>>(exampleJson)
-                        : default(List<List<MainGetApiKeysResp>>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<List<MainGetApiKeysResp>>(exampleJson)
+                        : default(List<MainGetApiKeysResp>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 

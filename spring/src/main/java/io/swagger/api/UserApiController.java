@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-21T16:22:19.489Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-22T22:05:04.657Z[GMT]")
 @RestController
 public class UserApiController implements UserApi {
 
@@ -49,18 +49,18 @@ public class UserApiController implements UserApi {
         this.request = request;
     }
 
-    public ResponseEntity<List<List<MainGetApiKeysResp>>> userApiKeysGet() {
+    public ResponseEntity<List<MainGetApiKeysResp>> userApiKeysGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<List<MainGetApiKeysResp>>>(objectMapper.readValue("[ [ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ], [ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ] ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<MainGetApiKeysResp>>(objectMapper.readValue("[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<List<MainGetApiKeysResp>>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<List<MainGetApiKeysResp>>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> userApiKeysKeyOrHashDelete(@Parameter(in = ParameterIn.PATH, description = "Key or Hash", required=true, schema=@Schema()) @PathVariable("key_or_hash") String keyOrHash) {

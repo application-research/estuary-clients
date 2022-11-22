@@ -94,7 +94,7 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\MainGetApiKeysResp[][]
+     * @return \Swagger\Client\Model\MainGetApiKeysResp[]
      */
     public function userApiKeysGet()
     {
@@ -110,11 +110,11 @@ class UserApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\MainGetApiKeysResp[][], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\MainGetApiKeysResp[], HTTP status code, HTTP response headers (array of strings)
      */
     public function userApiKeysGetWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[][]';
+        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[]';
         $request = $this->userApiKeysGetRequest();
 
         try {
@@ -166,7 +166,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\MainGetApiKeysResp[][]',
+                        '\Swagger\Client\Model\MainGetApiKeysResp[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -230,7 +230,7 @@ class UserApi
      */
     public function userApiKeysGetAsyncWithHttpInfo()
     {
-        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[][]';
+        $returnType = '\Swagger\Client\Model\MainGetApiKeysResp[]';
         $request = $this->userApiKeysGetRequest();
 
         return $this->client

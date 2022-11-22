@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_get**
-> Array&lt;Array&lt;CollectionsCollection&gt;&gt; collections_get
+> Array&lt;CollectionsCollection&gt; collections_get
 
 List all collections
 
@@ -379,7 +379,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array&lt;Array&lt;CollectionsCollection&gt;&gt;**
+[**Array&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 

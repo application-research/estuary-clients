@@ -21,21 +21,21 @@ class UserApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(baseP
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return kotlin.Array<kotlin.Array<MaingetApiKeysResp>>
+     * @return kotlin.Array<MaingetApiKeysResp>
      */
     @Suppress("UNCHECKED_CAST")
-    fun userApiKeysGet(): kotlin.Array<kotlin.Array<MaingetApiKeysResp>> {
+    fun userApiKeysGet(): kotlin.Array<MaingetApiKeysResp> {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/user/api-keys"
         )
-        val response = request<kotlin.Array<kotlin.Array<MaingetApiKeysResp>>>(
+        val response = request<kotlin.Array<MaingetApiKeysResp>>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.Array<MaingetApiKeysResp>>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<MaingetApiKeysResp>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

@@ -181,21 +181,21 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
     /**
      * List all collections
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-     * @return kotlin.Array<kotlin.Array<CollectionsCollection>>
+     * @return kotlin.Array<CollectionsCollection>
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsGet(): kotlin.Array<kotlin.Array<CollectionsCollection>> {
+    fun collectionsGet(): kotlin.Array<CollectionsCollection> {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/collections/"
         )
-        val response = request<kotlin.Array<kotlin.Array<CollectionsCollection>>>(
+        val response = request<kotlin.Array<CollectionsCollection>>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<kotlin.Array<CollectionsCollection>>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<CollectionsCollection>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

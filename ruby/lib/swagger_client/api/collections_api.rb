@@ -395,7 +395,7 @@ module SwaggerClient
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<Array<CollectionsCollection>>]
+    # @return [Array<CollectionsCollection>]
     def collections_get(opts = {})
       data, _status_code, _headers = collections_get_with_http_info(opts)
       data
@@ -404,7 +404,7 @@ module SwaggerClient
     # List all collections
     # This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<Array<CollectionsCollection>>, Integer, Hash)>] Array<Array<CollectionsCollection>> data, response status code and response headers
+    # @return [Array<(Array<CollectionsCollection>, Integer, Hash)>] Array<CollectionsCollection> data, response status code and response headers
     def collections_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_get ...'
@@ -426,7 +426,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'Array<Array<CollectionsCollection>>' 
+      return_type = opts[:return_type] || 'Array<CollectionsCollection>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

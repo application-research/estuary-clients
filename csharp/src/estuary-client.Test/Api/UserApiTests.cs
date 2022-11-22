@@ -70,7 +70,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.UserApiKeysGet();
-            //Assert.IsInstanceOf<List<List<MainGetApiKeysResp>>> (response, "response is List<List<MainGetApiKeysResp>>");
+            //Assert.IsInstanceOf<List<MainGetApiKeysResp>> (response, "response is List<MainGetApiKeysResp>");
         }
         /// <summary>
         /// Test UserApiKeysKeyOrHashDelete

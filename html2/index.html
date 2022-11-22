@@ -8709,7 +8709,7 @@ public class CollectionsApiExample {
 
         CollectionsApi apiInstance = new CollectionsApi();
         try {
-            array[array[collections.Collection]] result = apiInstance.collectionsGet();
+            array[collections.Collection] result = apiInstance.collectionsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -8727,7 +8727,7 @@ public class CollectionsApiExample {
     public static void main(String[] args) {
         CollectionsApi apiInstance = new CollectionsApi();
         try {
-            array[array[collections.Collection]] result = apiInstance.collectionsGet();
+            array[collections.Collection] result = apiInstance.collectionsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -8751,7 +8751,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // List all collections
 [apiInstance collectionsGetWithCompletionHandler: 
-              ^(array[array[collections.Collection]] output, NSError* error) {
+              ^(array[collections.Collection] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -8811,7 +8811,7 @@ namespace Example
             try
             {
                 // List all collections
-                array[array[collections.Collection]] result = apiInstance.collectionsGet();
+                array[collections.Collection] result = apiInstance.collectionsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8918,10 +8918,7 @@ except ApiException as e:
       "schema" : {
         "type" : "array",
         "items" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/components/schemas/collections.Collection"
-          }
+          "$ref" : "#/components/schemas/collections.Collection"
         },
         "x-content-type" : "application/json"
       }
@@ -38517,7 +38514,7 @@ public class UserApiExample {
 
         UserApi apiInstance = new UserApi();
         try {
-            array[array[main.getApiKeysResp]] result = apiInstance.userApiKeysGet();
+            array[main.getApiKeysResp] result = apiInstance.userApiKeysGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -38535,7 +38532,7 @@ public class UserApiExample {
     public static void main(String[] args) {
         UserApi apiInstance = new UserApi();
         try {
-            array[array[main.getApiKeysResp]] result = apiInstance.userApiKeysGet();
+            array[main.getApiKeysResp] result = apiInstance.userApiKeysGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#userApiKeysGet");
@@ -38559,7 +38556,7 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
 // Get API keys for a user
 [apiInstance userApiKeysGetWithCompletionHandler: 
-              ^(array[array[main.getApiKeysResp]] output, NSError* error) {
+              ^(array[main.getApiKeysResp] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -38619,7 +38616,7 @@ namespace Example
             try
             {
                 // Get API keys for a user
-                array[array[main.getApiKeysResp]] result = apiInstance.userApiKeysGet();
+                array[main.getApiKeysResp] result = apiInstance.userApiKeysGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -38726,10 +38723,7 @@ except ApiException as e:
       "schema" : {
         "type" : "array",
         "items" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/components/schemas/main.getApiKeysResp"
-          }
+          "$ref" : "#/components/schemas/main.getApiKeysResp"
         },
         "x-content-type" : "application/json"
       }

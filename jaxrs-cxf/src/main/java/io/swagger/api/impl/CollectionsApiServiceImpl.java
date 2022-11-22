@@ -103,7 +103,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
      *
      */
-    public List<List<CollectionsCollection>> collectionsGet() {
+    public List<CollectionsCollection> collectionsGet() {
         // TODO: Implement...
         
         return null;

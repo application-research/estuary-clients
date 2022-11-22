@@ -562,7 +562,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<Array<CollectionsCollection>>>>> {
+        async collectionsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CollectionsCollection>>>> {
             const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -664,7 +664,7 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsGet(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<Array<CollectionsCollection>>>> {
+        async collectionsGet(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CollectionsCollection>>> {
             return CollectionsApiFp(configuration).collectionsGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -766,7 +766,7 @@ export class CollectionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<Array<CollectionsCollection>>>> {
+    public async collectionsGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<CollectionsCollection>>> {
         return CollectionsApiFp(this.configuration).collectionsGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**

@@ -132,7 +132,7 @@ fun Route.CollectionsApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """[ [ {
+            val exampleContentString = """[ {
   "createdAt" : "createdAt",
   "name" : "name",
   "description" : "description",
@@ -146,21 +146,7 @@ fun Route.CollectionsApi() {
   "userId" : 0,
   "uuid" : "uuid",
   "cid" : "cid"
-} ], [ {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-}, {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-} ] ]"""
+} ]"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

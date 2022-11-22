@@ -19,7 +19,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<Array<MainGetApiKeysResp>>]
+    # @return [Array<MainGetApiKeysResp>]
     def user_api_keys_get(opts = {})
       data, _status_code, _headers = user_api_keys_get_with_http_info(opts)
       data
@@ -28,7 +28,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<Array<MainGetApiKeysResp>>, Integer, Hash)>] Array<Array<MainGetApiKeysResp>> data, response status code and response headers
+    # @return [Array<(Array<MainGetApiKeysResp>, Integer, Hash)>] Array<MainGetApiKeysResp> data, response status code and response headers
     def user_api_keys_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_get ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'Array<Array<MainGetApiKeysResp>>' 
+      return_type = opts[:return_type] || 'Array<MainGetApiKeysResp>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

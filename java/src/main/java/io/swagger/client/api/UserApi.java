@@ -117,23 +117,23 @@ public class UserApi {
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return List&lt;List&lt;MainGetApiKeysResp&gt;&gt;
+     * @return List&lt;MainGetApiKeysResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<List<MainGetApiKeysResp>> userApiKeysGet() throws ApiException {
-        ApiResponse<List<List<MainGetApiKeysResp>>> resp = userApiKeysGetWithHttpInfo();
+    public List<MainGetApiKeysResp> userApiKeysGet() throws ApiException {
+        ApiResponse<List<MainGetApiKeysResp>> resp = userApiKeysGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return ApiResponse&lt;List&lt;List&lt;MainGetApiKeysResp&gt;&gt;&gt;
+     * @return ApiResponse&lt;List&lt;MainGetApiKeysResp&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<List<MainGetApiKeysResp>>> userApiKeysGetWithHttpInfo() throws ApiException {
+    public ApiResponse<List<MainGetApiKeysResp>> userApiKeysGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<List<MainGetApiKeysResp>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -144,7 +144,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<List<MainGetApiKeysResp>>> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<MainGetApiKeysResp>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,7 +166,7 @@ public class UserApi {
         }
 
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<List<MainGetApiKeysResp>>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

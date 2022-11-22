@@ -10,7 +10,7 @@ class UserApi {
   /// Get API keys for a user
   ///
   /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-  Future<List<List<MainGetApiKeysResp>>> userApiKeysGet() async {
+  Future<List<MainGetApiKeysResp>> userApiKeysGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,7 +50,7 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-        (apiClient.deserialize(response.body, 'List<List<MainGetApiKeysResp>>') as List).map((item) => item as List).toList();
+        (apiClient.deserialize(response.body, 'List<MainGetApiKeysResp>') as List).map((item) => item as MainGetApiKeysResp).toList();
     } else {
       return null;
     }

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**userStatsGet**](UserApi.md#userstatsget) | **GET** /user/stats | Get stats for the current user
 
 # **userApiKeysGet**
-> \Swagger\Client\Model\MainGetApiKeysResp[][] userApiKeysGet()
+> \Swagger\Client\Model\MainGetApiKeysResp[] userApiKeysGet()
 
 Get API keys for a user
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\MainGetApiKeysResp[][]**](../Model/array.md)
+[**\Swagger\Client\Model\MainGetApiKeysResp[]**](../Model/MainGetApiKeysResp.md)
 
 ### Authorization
 

@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsGet**
-> [][]CollectionsCollection CollectionsGet(ctx, )
+> []CollectionsCollection CollectionsGet(ctx, )
 List all collections
 
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
@@ -205,7 +205,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[][]CollectionsCollection**](array.md)
+[**[]CollectionsCollection**](collections.Collection.md)
 
 ### Authorization
 

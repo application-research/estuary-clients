@@ -337,7 +337,7 @@ class CollectionsApi {
   /// List all collections
   ///
   /// This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
-  Future<List<List<CollectionsCollection>>> collectionsGet() async {
+  Future<List<CollectionsCollection>> collectionsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -377,7 +377,7 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-        (apiClient.deserialize(response.body, 'List<List<CollectionsCollection>>') as List).map((item) => item as List).toList();
+        (apiClient.deserialize(response.body, 'List<CollectionsCollection>') as List).map((item) => item as CollectionsCollection).toList();
     } else {
       return null;
     }

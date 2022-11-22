@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-21T16:22:17.864Z[GMT]")public class UtilContentAddResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-22T22:05:03.665Z[GMT]")public class UtilContentAddResponse   {
   private String cid = null;
   private Integer estuaryId = null;
   private String estuaryRetrievalUrl = null;

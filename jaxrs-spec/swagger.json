@@ -582,10 +582,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "type" : "array",
-                    "items" : {
-                      "$ref" : "#/components/schemas/collections.Collection"
-                    }
+                    "$ref" : "#/components/schemas/collections.Collection"
                   }
                 }
               }
@@ -3404,10 +3401,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "type" : "array",
-                    "items" : {
-                      "$ref" : "#/components/schemas/main.getApiKeysResp"
-                    }
+                    "$ref" : "#/components/schemas/main.getApiKeysResp"
                   }
                 }
               }

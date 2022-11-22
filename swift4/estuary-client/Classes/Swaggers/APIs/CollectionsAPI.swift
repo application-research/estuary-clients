@@ -256,7 +256,7 @@ open class CollectionsAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsGet(completion: @escaping ((_ data: [[CollectionsCollection]]?,_ error: Error?) -> Void)) {
+    open class func collectionsGet(completion: @escaping ((_ data: [CollectionsCollection]?,_ error: Error?) -> Void)) {
         collectionsGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -270,7 +270,7 @@ open class CollectionsAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=[ [ {
+     - examples: [{contentType=application/json, example=[ {
   "createdAt" : "createdAt",
   "name" : "name",
   "description" : "description",
@@ -284,32 +284,18 @@ open class CollectionsAPI {
   "userId" : 0,
   "uuid" : "uuid",
   "cid" : "cid"
-} ], [ {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-}, {
-  "createdAt" : "createdAt",
-  "name" : "name",
-  "description" : "description",
-  "userId" : 0,
-  "uuid" : "uuid",
-  "cid" : "cid"
-} ] ]}]
+} ]}]
 
-     - returns: RequestBuilder<[[CollectionsCollection]]> 
+     - returns: RequestBuilder<[CollectionsCollection]> 
      */
-    open class func collectionsGetWithRequestBuilder() -> RequestBuilder<[[CollectionsCollection]]> {
+    open class func collectionsGetWithRequestBuilder() -> RequestBuilder<[CollectionsCollection]> {
         let path = "/collections/"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[[CollectionsCollection]]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[CollectionsCollection]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

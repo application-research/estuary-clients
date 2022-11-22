@@ -759,15 +759,15 @@ func (a *CollectionsApiService) CollectionsFsAddPost(ctx context.Context, coluui
 CollectionsApiService List all collections
 This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return [][]CollectionsCollection
+@return []CollectionsCollection
 */
-func (a *CollectionsApiService) CollectionsGet(ctx context.Context) ([][]CollectionsCollection, *http.Response, error) {
+func (a *CollectionsApiService) CollectionsGet(ctx context.Context) ([]CollectionsCollection, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue [][]CollectionsCollection
+		localVarReturnValue []CollectionsCollection
 	)
 
 	// create path and map variables
@@ -837,7 +837,7 @@ func (a *CollectionsApiService) CollectionsGet(ctx context.Context) ([][]Collect
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v [][]CollectionsCollection
+			var v []CollectionsCollection
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

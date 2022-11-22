@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsGet"></a>
 # **collectionsGet**
-> List&lt;List&lt;CollectionsCollection&gt;&gt; collectionsGet()
+> List&lt;CollectionsCollection&gt; collectionsGet()
 
 List all collections
 
@@ -382,7 +382,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 CollectionsApi apiInstance = new CollectionsApi();
 try {
-    List<List<CollectionsCollection>> result = apiInstance.collectionsGet();
+    List<CollectionsCollection> result = apiInstance.collectionsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsGet");
@@ -395,7 +395,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;List&lt;CollectionsCollection&gt;&gt;**](List.md)
+[**List&lt;CollectionsCollection&gt;**](CollectionsCollection.md)
 
 ### Authorization
 
