@@ -223,7 +223,7 @@ class CollectionsApi {
   /// Add contents to a collection
   ///
   /// This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-  Future<String> collectionsColuuidPost(List<int> body, String coluuid) async {
+  Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -241,6 +241,9 @@ class CollectionsApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(dir != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
+    }
     
     List<String> contentTypes = ["application/json"];
 

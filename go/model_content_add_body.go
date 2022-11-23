@@ -14,6 +14,6 @@ import (
 type ContentAddBody struct {
 	// File to upload
 	Data **os.File `json:"data"`
-	// Filenam to use for upload
+	// Filename to use for upload
 	Filename string `json:"filename,omitempty"`
 }

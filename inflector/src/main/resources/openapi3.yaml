@@ -608,6 +608,14 @@ paths:
         explode: false
         schema:
           type: string
+      - name: dir
+        in: query
+        description: Directory
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
       requestBody:
         description: Content IDs to add to collection
         content:
@@ -2918,7 +2926,7 @@ components:
           format: binary
         filename:
           type: string
-          description: Filenam to use for upload
+          description: Filename to use for upload
   securitySchemes:
     bearerAuth:
       type: apiKey

@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-22T22:05:02.263Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-23T18:54:22.817Z[GMT]")public class CollectionsApi  {
 
    private CollectionsApiService delegate;
 
@@ -134,9 +134,10 @@ import javax.validation.constraints.*;
     public Response collectionsColuuidPost(@Parameter(in = ParameterIn.DEFAULT, description = "Content IDs to add to collection" ,required=true) List<Integer> body
 
 ,@Parameter(in = ParameterIn.PATH, description = "Collection UUID",required=true) @PathParam("coluuid") String coluuid
+,@Parameter(in = ParameterIn.QUERY, description = "Directory") @QueryParam("dir") String dir
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.collectionsColuuidPost(body,coluuid,securityContext);
+        return delegate.collectionsColuuidPost(body,coluuid,dir,securityContext);
     }
     @POST
     @Path("/fs/add")

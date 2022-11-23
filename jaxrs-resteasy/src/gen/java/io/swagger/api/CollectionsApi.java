@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-22T22:05:01.608Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-23T18:54:23.755Z[GMT]")public class CollectionsApi  {
 
     @Inject CollectionsApiService service;
 
@@ -118,9 +118,9 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid,@Context SecurityContext securityContext)
+    public Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.collectionsColuuidPost(body,coluuid,securityContext);
+        return service.collectionsColuuidPost(body,coluuid,dir,securityContext);
     }
     @POST
     @Path("/fs/add")

@@ -271,13 +271,14 @@ export class CollectionsService {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection
      * @param coluuid Collection UUID
+     * @param dir Directory
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling collectionsColuuidPost.');
@@ -285,6 +286,12 @@ export class CollectionsService {
 
         if (coluuid === null || coluuid === undefined) {
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidPost.');
+        }
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (dir !== undefined && dir !== null) {
+            queryParameters = queryParameters.set('dir', <any>dir);
         }
 
         let headers = this.defaultHeaders;
@@ -315,6 +322,7 @@ export class CollectionsService {
         return this.httpClient.request<string>('post',`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
             {
                 body: body,
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

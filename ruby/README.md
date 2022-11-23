@@ -339,11 +339,13 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
-
+opts = { 
+  dir: 'dir_example' # String | Directory
+}
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(body, coluuid)
+  result = api_instance.collections_coluuid_post(body, coluuid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"

@@ -583,12 +583,13 @@ public class CollectionsApi {
      * Build call for collectionsColuuidPost
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
+     * @param dir Directory (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostCall(List<Integer> body, String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostCall(List<Integer> body, String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -597,6 +598,8 @@ public class CollectionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (dir != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dir", dir));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -631,7 +634,7 @@ public class CollectionsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(List<Integer> body, String coluuid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(List<Integer> body, String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling collectionsColuuidPost(Async)");
@@ -641,7 +644,7 @@ public class CollectionsApi {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = collectionsColuuidPostCall(body, coluuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostCall(body, coluuid, dir, progressListener, progressRequestListener);
         return call;
 
         
@@ -655,11 +658,12 @@ public class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
+     * @param dir Directory (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String collectionsColuuidPost(List<Integer> body, String coluuid) throws ApiException {
-        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(body, coluuid);
+    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(body, coluuid, dir);
         return resp.getData();
     }
 
@@ -668,11 +672,12 @@ public class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
+     * @param dir Directory (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(List<Integer> body, String coluuid) throws ApiException {
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, null, null);
+    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(List<Integer> body, String coluuid, String dir) throws ApiException {
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -682,11 +687,12 @@ public class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
+     * @param dir Directory (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostAsync(List<Integer> body, String coluuid, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostAsync(List<Integer> body, String coluuid, String dir, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -707,7 +713,7 @@ public class CollectionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

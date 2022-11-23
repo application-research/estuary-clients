@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-22T22:05:02.846Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
 @Controller
 public interface CollectionsApi {
 
@@ -93,6 +93,7 @@ public interface CollectionsApi {
     @Post(value = "/collections/{coluuid}", produces = { "application/json" }, consumes = {"application/json"})
     default Single<HttpResponse<String>> collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection") @Valid @Body List<Integer> body
 ,@Parameter(description = "Collection UUID") @PathVariable("coluuid") String coluuid
+,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

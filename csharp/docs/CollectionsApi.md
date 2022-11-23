@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionscoluuidpost"></a>
 # **CollectionsColuuidPost**
-> string CollectionsColuuidPost (List<int?> body, string coluuid)
+> string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null)
 
 Add contents to a collection
 
@@ -309,11 +309,12 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var body = new List<int?>(); // List<int?> | Content IDs to add to collection
             var coluuid = coluuid_example;  // string | Collection UUID
+            var dir = dir_example;  // string | Directory (optional) 
 
             try
             {
                 // Add contents to a collection
-                string result = apiInstance.CollectionsColuuidPost(body, coluuid);
+                string result = apiInstance.CollectionsColuuidPost(body, coluuid, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -331,6 +332,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**List&lt;int?&gt;**](int?.md)| Content IDs to add to collection | 
  **coluuid** | **string**| Collection UUID | 
+ **dir** | **string**| Directory | [optional] 
 
 ### Return type
 

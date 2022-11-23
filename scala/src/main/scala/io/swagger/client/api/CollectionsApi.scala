@@ -197,10 +197,11 @@ class CollectionsApi(
    *
    * @param body Content IDs to add to collection 
    * @param coluuid Collection UUID 
+   * @param dir Directory (optional)
    * @return String
    */
-  def collectionsColuuidPost(body: List[Integer], coluuid: String): Option[String] = {
-    val await = Try(Await.result(collectionsColuuidPostAsync(body, coluuid), Duration.Inf))
+  def collectionsColuuidPost(body: List[Integer], coluuid: String, dir: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(collectionsColuuidPostAsync(body, coluuid, dir), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -213,10 +214,11 @@ class CollectionsApi(
    *
    * @param body Content IDs to add to collection 
    * @param coluuid Collection UUID 
+   * @param dir Directory (optional)
    * @return Future(String)
    */
-  def collectionsColuuidPostAsync(body: List[Integer], coluuid: String): Future[String] = {
-      helper.collectionsColuuidPost(body, coluuid)
+  def collectionsColuuidPostAsync(body: List[Integer], coluuid: String, dir: Option[String] = None): Future[String] = {
+      helper.collectionsColuuidPost(body, coluuid, dir)
   }
 
   /**
@@ -388,7 +390,9 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
   }
 
   def collectionsColuuidPost(body: List[Integer],
-    coluuid: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Integer]]): Future[String] = {
+    coluuid: String,
+    dir: Option[String] = None
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Integer]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
       replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
@@ -400,6 +404,10 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
     if (body == null) throw new Exception("Missing required parameter 'body' when calling CollectionsApi->collectionsColuuidPost")
     if (coluuid == null) throw new Exception("Missing required parameter 'coluuid' when calling CollectionsApi->collectionsColuuidPost")
 
+    dir match {
+      case Some(param) => queryParams += "dir" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>

@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-22T22:05:00.847Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-23T18:54:22.698Z[GMT]")
 public class MainGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;

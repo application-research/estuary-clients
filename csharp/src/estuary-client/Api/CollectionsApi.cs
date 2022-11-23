@@ -122,8 +122,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>string</returns>
-        string CollectionsColuuidPost (List<int?> body, string coluuid);
+        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null);
 
         /// <summary>
         /// Add contents to a collection
@@ -134,8 +135,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid);
+        ApiResponse<string> CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -302,8 +304,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid);
+        System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null);
 
         /// <summary>
         /// Add contents to a collection
@@ -314,8 +317,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid);
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -1108,10 +1112,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidPost (List<int?> body, string coluuid)
+        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null)
         {
-             ApiResponse<string> localVarResponse = CollectionsColuuidPostWithHttpInfo(body, coluuid);
+             ApiResponse<string> localVarResponse = CollectionsColuuidPostWithHttpInfo(body, coluuid, dir);
              return localVarResponse.Data;
         }
 
@@ -1121,8 +1126,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid)
+        public ApiResponse< string > CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1154,6 +1160,7 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1192,10 +1199,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid)
+        public async System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null)
         {
-             ApiResponse<string> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(body, coluuid);
+             ApiResponse<string> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(body, coluuid, dir);
              return localVarResponse.Data;
 
         }
@@ -1206,8 +1214,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1239,6 +1248,7 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter

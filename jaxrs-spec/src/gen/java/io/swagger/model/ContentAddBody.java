@@ -37,7 +37,7 @@ public class ContentAddBody   {
   }
 
   /**
-   * Filenam to use for upload
+   * Filename to use for upload
    **/
   public ContentAddBody filename(String filename) {
     this.filename = filename;
@@ -45,7 +45,7 @@ public class ContentAddBody   {
   }
 
   
-  @ApiModelProperty(value = "Filenam to use for upload")
+  @ApiModelProperty(value = "Filename to use for upload")
   @JsonProperty("filename")
 
   public String getFilename() {

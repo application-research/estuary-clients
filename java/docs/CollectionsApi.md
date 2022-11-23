@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> String collectionsColuuidPost(body, coluuid)
+> String collectionsColuuidPost(body, coluuid, dir)
 
 Add contents to a collection
 
@@ -267,8 +267,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 List<Integer> body = Arrays.asList(56); // List<Integer> | Content IDs to add to collection
 String coluuid = "coluuid_example"; // String | Collection UUID
+String dir = "dir_example"; // String | Directory
 try {
-    String result = apiInstance.collectionsColuuidPost(body, coluuid);
+    String result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -282,6 +283,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**List&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection |
  **coluuid** | **String**| Collection UUID |
+ **dir** | **String**| Directory | [optional]
 
 ### Return type
 

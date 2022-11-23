@@ -243,10 +243,11 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost: async (body: Array<number>, coluuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        collectionsColuuidPost: async (body: Array<number>, coluuid: string, dir?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidPost.');
@@ -273,6 +274,10 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
                     ? await configuration.apiKey("Authorization")
                     : await configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -530,11 +535,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidPost(body: Array<number>, coluuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidPost(body, coluuid, options);
+        async collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidPost(body, coluuid, dir, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -640,11 +646,12 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidPost(body: Array<number>, coluuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, options).then((request) => request(axios, basePath));
+        async collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, dir, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint adds a file to a collection
@@ -739,12 +746,13 @@ export class CollectionsApi extends BaseAPI {
      * @summary Add contents to a collection
      * @param {Array<number>} body Content IDs to add to collection
      * @param {string} coluuid Collection UUID
+     * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsColuuidPost(body: Array<number>, coluuid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, options).then((request) => request(this.axios, this.basePath));
+    public async collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, dir, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint adds a file to a collection

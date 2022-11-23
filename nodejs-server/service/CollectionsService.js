@@ -89,10 +89,11 @@ exports.collectionsColuuidGET = function(coluuid,dir) {
  * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
  *
  * body List Content IDs to add to collection
+ * dir String Directory (optional)
  * coluuid String Collection UUID
  * returns String
  **/
-exports.collectionsColuuidPOST = function(body,coluuid) {
+exports.collectionsColuuidPOST = function(body,dir,coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

@@ -56,7 +56,7 @@ export class ContentAddBody {
 ContentAddBody.prototype.data = undefined;
 
 /**
- * Filenam to use for upload
+ * Filename to use for upload
  * @member {String} filename
  */
 ContentAddBody.prototype.filename = undefined;

@@ -43,8 +43,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory</param>
         /// <returns>string</returns>
-        string CollectionsColuuidPost (List<int?> body, string coluuid);
+        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir);
         /// <summary>
         /// Add a file to a collection This endpoint adds a file to a collection
         /// </summary>
@@ -274,8 +275,9 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
         /// </summary>
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
+        /// <param name="dir">Directory</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidPost (List<int?> body, string coluuid)
+        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidPost");
@@ -292,7 +294,8 @@ path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(content
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+             if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
+                        postBody = ApiClient.Serialize(body); // http body (model) parameter
 
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };

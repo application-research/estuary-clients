@@ -14,7 +14,7 @@ public struct ContentAddBody: Codable {
     /** File to upload */
     public var data: Data
 
-    /** Filenam to use for upload */
+    /** Filename to use for upload */
     public var filename: String?
     public init(data: Data, filename: String? = nil) { 
         self.data = data

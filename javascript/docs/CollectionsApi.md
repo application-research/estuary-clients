@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> &#x27;String&#x27; collectionsColuuidPost(body, coluuid)
+> &#x27;String&#x27; collectionsColuuidPost(body, coluuid, opts)
 
 Add contents to a collection
 
@@ -242,8 +242,10 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.CollectionsApi();
 let body = [3.4]; // [Number] | Content IDs to add to collection
 let coluuid = "coluuid_example"; // String | Collection UUID
-
-apiInstance.collectionsColuuidPost(body, coluuid, (error, data, response) => {
+let opts = { 
+  'dir': "dir_example" // String | Directory
+};
+apiInstance.collectionsColuuidPost(body, coluuid, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -258,6 +260,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**[Number]**](Number.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 

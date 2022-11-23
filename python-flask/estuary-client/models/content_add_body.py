@@ -74,7 +74,7 @@ class ContentAddBody(Model):
     def filename(self) -> str:
         """Gets the filename of this ContentAddBody.
 
-        Filenam to use for upload  # noqa: E501
+        Filename to use for upload  # noqa: E501
 
         :return: The filename of this ContentAddBody.
         :rtype: str
@@ -85,7 +85,7 @@ class ContentAddBody(Model):
     def filename(self, filename: str):
         """Sets the filename of this ContentAddBody.
 
-        Filenam to use for upload  # noqa: E501
+        Filename to use for upload  # noqa: E501
 
         :param filename: The filename of this ContentAddBody.
         :type filename: str

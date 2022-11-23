@@ -96,7 +96,8 @@ describe("CollectionsApi", () => {
   test("collectionsColuuidPost", () => {
     const body: Array<number> = undefined
     const coluuid: string = "coluuid_example"
-    return expect(instance.collectionsColuuidPost(body, coluuid, {})).resolves.toBe(null)
+    const dir: string = "dir_example"
+    return expect(instance.collectionsColuuidPost(body, coluuid, dir, {})).resolves.toBe(null)
   })
   test("collectionsFsAddPost", () => {
     const coluuid: string = "coluuid_example"

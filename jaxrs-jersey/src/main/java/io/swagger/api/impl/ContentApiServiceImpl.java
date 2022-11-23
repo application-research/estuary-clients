@@ -21,7 +21,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-22T22:05:02.048Z[GMT]")public class ContentApiServiceImpl extends ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-23T18:54:24.309Z[GMT]")public class ContentApiServiceImpl extends ContentApiService {
     @Override
     public Response contentAddCarPost(String body,  String ignoreDupes,  String filename, SecurityContext securityContext) throws NotFoundException {
         // do some magic!

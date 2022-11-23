@@ -182,10 +182,14 @@ CollectionsApi <- R6::R6Class(
       }
 
     }
-    collections_coluuid_post = function(body, coluuid, ...){
+    collections_coluuid_post = function(body, coluuid, dir, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`dir`)) {
+        queryParams['dir'] <- dir
+      }
 
       if (!missing(`body`)) {
         body <- `body`$toJSONString()

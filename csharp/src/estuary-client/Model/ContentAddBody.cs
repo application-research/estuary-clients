@@ -33,7 +33,7 @@ namespace estuary-client.Model
         /// Initializes a new instance of the <see cref="ContentAddBody" /> class.
         /// </summary>
         /// <param name="data">File to upload (required).</param>
-        /// <param name="filename">Filenam to use for upload.</param>
+        /// <param name="filename">Filename to use for upload.</param>
         public ContentAddBody(byte[] data = default(byte[]), string filename = default(string))
         {
             // to ensure "data" is required (not null)
@@ -56,9 +56,9 @@ namespace estuary-client.Model
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// Filenam to use for upload
+        /// Filename to use for upload
         /// </summary>
-        /// <value>Filenam to use for upload</value>
+        /// <value>Filename to use for upload</value>
         [DataMember(Name="filename", EmitDefaultValue=false)]
         public string Filename { get; set; }
 

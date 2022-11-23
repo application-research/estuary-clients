@@ -79,12 +79,12 @@ class CollectionsApi(
     } ~
     path() { (coluuid) => 
       post {
-        parameters() { () =>
+        parameters("dir".as[String].?) { (dir) =>
           
             formFields() { () =>
               
                 entity(as[List[Int]]){ body =>
-                  collectionsService.collectionsColuuidPost(body = body, coluuid = coluuid)
+                  collectionsService.collectionsColuuidPost(body = body, coluuid = coluuid, dir = dir)
                 }
              
             }
@@ -208,7 +208,7 @@ trait CollectionsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsColuuidPost(body: List[Int], coluuid: String)
+  def collectionsColuuidPost(body: List[Int], coluuid: String, dir: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsFsAddPost200(responseString: String): Route =

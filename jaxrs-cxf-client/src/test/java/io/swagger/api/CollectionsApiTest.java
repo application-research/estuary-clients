@@ -155,7 +155,8 @@ public class CollectionsApiTest {
     public void collectionsColuuidPostTest() {
         List<Integer> body = null;
         String coluuid = null;
-        //String response = api.collectionsColuuidPost(body, coluuid);
+        String dir = null;
+        //String response = api.collectionsColuuidPost(body, coluuid, dir);
         //assertNotNull(response);
         // TODO: test validations
         

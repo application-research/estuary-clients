@@ -109,7 +109,8 @@ public class CollectionsApiTest {
     public void collectionsColuuidPostTest() throws Exception {
         List<Integer> body = null;
         String coluuid = null;
-        String response = api.collectionsColuuidPost(body, coluuid);
+        String dir = null;
+        String response = api.collectionsColuuidPost(body, coluuid, dir);
 
         // TODO: test validations
     }

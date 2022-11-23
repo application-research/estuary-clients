@@ -23,9 +23,9 @@ public class ContentAddBody   {
   **/
   private File data = null;
   
-  @Schema(description = "Filenam to use for upload")
+  @Schema(description = "Filename to use for upload")
  /**
-   * Filenam to use for upload  
+   * Filename to use for upload  
   **/
   private String filename = null;
  /**
@@ -48,7 +48,7 @@ public class ContentAddBody   {
   }
 
  /**
-   * Filenam to use for upload
+   * Filename to use for upload
    * @return filename
   **/
   @JsonProperty("filename")

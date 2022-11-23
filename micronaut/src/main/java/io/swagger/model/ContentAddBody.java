@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * ContentAddBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-22T22:05:02.846Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
 public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;
@@ -48,10 +48,10 @@ public class ContentAddBody   {
   }
 
   /**
-   * Filenam to use for upload
+   * Filename to use for upload
    * @return filename
   **/
-  @Schema(description = "Filenam to use for upload")
+  @Schema(description = "Filename to use for upload")
 
   public String getFilename() {
     return filename;

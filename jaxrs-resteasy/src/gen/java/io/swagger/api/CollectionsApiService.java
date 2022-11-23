@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-22T22:05:01.608Z[GMT]")public interface CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-23T18:54:23.755Z[GMT]")public interface CollectionsApiService {
       Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext)
       throws NotFoundException;
       Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,String contentid,SecurityContext securityContext)
@@ -25,7 +25,7 @@ import javax.ws.rs.core.SecurityContext;
       throws NotFoundException;
       Response collectionsColuuidGet(String coluuid,String dir,SecurityContext securityContext)
       throws NotFoundException;
-      Response collectionsColuuidPost(List<Integer> body,String coluuid,SecurityContext securityContext)
+      Response collectionsColuuidPost(List<Integer> body,String coluuid,String dir,SecurityContext securityContext)
       throws NotFoundException;
       Response collectionsFsAddPost(String coluuid,String content,String path,SecurityContext securityContext)
       throws NotFoundException;

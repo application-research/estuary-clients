@@ -1267,14 +1267,15 @@ class CollectionsApi
      *
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function collectionsColuuidPost($body, $coluuid)
+    public function collectionsColuuidPost($body, $coluuid, $dir = null)
     {
-        list($response) = $this->collectionsColuuidPostWithHttpInfo($body, $coluuid);
+        list($response) = $this->collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir);
         return $response;
     }
 
@@ -1285,15 +1286,16 @@ class CollectionsApi
      *
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function collectionsColuuidPostWithHttpInfo($body, $coluuid)
+    public function collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidPostRequest($body, $coluuid);
+        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1377,13 +1379,14 @@ class CollectionsApi
      *
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidPostAsync($body, $coluuid)
+    public function collectionsColuuidPostAsync($body, $coluuid, $dir = null)
     {
-        return $this->collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid)
+        return $this->collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1398,14 +1401,15 @@ class CollectionsApi
      *
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid)
+    public function collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidPostRequest($body, $coluuid);
+        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1449,11 +1453,12 @@ class CollectionsApi
      *
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function collectionsColuuidPostRequest($body, $coluuid)
+    protected function collectionsColuuidPostRequest($body, $coluuid, $dir = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1475,6 +1480,10 @@ class CollectionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($dir !== null) {
+            $queryParams['dir'] = ObjectSerializer::toQueryValue($dir, null);
+        }
 
         // path params
         if ($coluuid !== null) {

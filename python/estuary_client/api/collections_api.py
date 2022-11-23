@@ -448,6 +448,7 @@ class CollectionsApi(object):
         :param async_req bool
         :param list[int] body: Content IDs to add to collection (required)
         :param str coluuid: Collection UUID (required)
+        :param str dir: Directory
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -471,12 +472,13 @@ class CollectionsApi(object):
         :param async_req bool
         :param list[int] body: Content IDs to add to collection (required)
         :param str coluuid: Collection UUID (required)
+        :param str dir: Directory
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'coluuid']  # noqa: E501
+        all_params = ['body', 'coluuid', 'dir']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -507,6 +509,8 @@ class CollectionsApi(object):
             path_params['coluuid'] = params['coluuid']  # noqa: E501
 
         query_params = []
+        if 'dir' in params:
+            query_params.append(('dir', params['dir']))  # noqa: E501
 
         header_params = {}
 

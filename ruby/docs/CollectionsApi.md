@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_post**
-> String collections_coluuid_post(bodycoluuid)
+> String collections_coluuid_post(bodycoluuid, opts)
 
 Add contents to a collection
 
@@ -254,11 +254,13 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
-
+opts = { 
+  dir: 'dir_example' # String | Directory
+}
 
 begin
   #Add contents to a collection
-  result = api_instance.collections_coluuid_post(bodycoluuid)
+  result = api_instance.collections_coluuid_post(bodycoluuid, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_post: #{e}"
@@ -271,6 +273,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**Array&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 

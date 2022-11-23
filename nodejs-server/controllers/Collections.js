@@ -43,8 +43,8 @@ module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res,
     });
 };
 
-module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next, body, coluuid) {
-  Collections.collectionsColuuidPOST(body, coluuid)
+module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next, body, dir, coluuid) {
+  Collections.collectionsColuuidPOST(body, dir, coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
     //
-    //Future<String> collectionsColuuidPost(List<int> body, String coluuid) async
+    //Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir }) async
     test('test collectionsColuuidPost', () async {
       // TODO
     });

@@ -39,7 +39,7 @@ public class ContentAddBody   {
   }
 
   /**
-   * Filenam to use for upload
+   * Filename to use for upload
    **/
   public ContentAddBody filename(String filename) {
     this.filename = filename;
@@ -48,7 +48,7 @@ public class ContentAddBody   {
 
   
   
-  @Schema(description = "Filenam to use for upload")
+  @Schema(description = "Filename to use for upload")
   @JsonProperty("filename")
   public String getFilename() {
     return filename;

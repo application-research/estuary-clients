@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> kotlin.String collectionsColuuidPost(body, coluuid)
+> kotlin.String collectionsColuuidPost(body, coluuid, dir)
 
 Add contents to a collection
 
@@ -224,8 +224,9 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
 val apiInstance = CollectionsApi()
 val body : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
+val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : kotlin.String = apiInstance.collectionsColuuidPost(body, coluuid)
+    val result : kotlin.String = apiInstance.collectionsColuuidPost(body, coluuid, dir)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidPost")
@@ -242,6 +243,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**kotlin.Array&lt;kotlin.Int&gt;**](kotlin.Int.md)| Content IDs to add to collection |
  **coluuid** | **kotlin.String**| Collection UUID |
+ **dir** | **kotlin.String**| Directory | [optional]
 
 ### Return type
 

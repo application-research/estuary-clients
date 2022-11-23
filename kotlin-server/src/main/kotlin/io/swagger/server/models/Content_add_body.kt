@@ -12,8 +12,8 @@
 
 
 /**
- *  * @param &#x60;data&#x60; File to upload * @param filename Filenam to use for upload*/
+ *  * @param &#x60;data&#x60; File to upload * @param filename Filename to use for upload*/
 data class ContentAddBody (    /* File to upload */
-    val `data`: kotlin.Array<kotlin.Byte>,    /* Filenam to use for upload */    val filename: kotlin.String? = null
+    val `data`: kotlin.Array<kotlin.Byte>,    /* Filename to use for upload */    val filename: kotlin.String? = null
 ) {
 }

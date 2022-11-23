@@ -7,7 +7,7 @@ import java.io.File;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-22T22:05:00.847Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-23T18:54:22.698Z[GMT]")
 public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;
@@ -32,7 +32,7 @@ public class ContentAddBody   {
   }
 
   /**
-   * Filenam to use for upload
+   * Filename to use for upload
    **/
   public ContentAddBody filename(String filename) {
     this.filename = filename;
@@ -40,7 +40,7 @@ public class ContentAddBody   {
   }
 
   
-  @Schema(description = "Filenam to use for upload")
+  @Schema(description = "Filename to use for upload")
   @JsonProperty("filename")
   public String getFilename() {
     return filename;

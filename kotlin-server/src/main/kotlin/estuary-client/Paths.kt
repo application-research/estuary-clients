@@ -137,8 +137,9 @@ object Paths {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection 
      * @param coluuid Collection UUID 
+     * @param dir Directory (optional)
      */
-    @Location("/collections/{coluuid}") class collectionsColuuidPost(val body: kotlin.Array<kotlin.Int>, val coluuid: kotlin.String)
+    @Location("/collections/{coluuid}") class collectionsColuuidPost(val body: kotlin.Array<kotlin.Int>, val coluuid: kotlin.String, val dir: kotlin.String)
 
     /**
      * Add a file to a collection

@@ -16,7 +16,7 @@ export interface ContentAddBody {
      */
     data: Blob;
     /**
-     * Filenam to use for upload
+     * Filename to use for upload
      */
     filename?: string;
 }

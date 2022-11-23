@@ -79,7 +79,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      *
      */
-    public String collectionsColuuidPost(List<Integer> body, String coluuid) {
+    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir) {
         // TODO: Implement...
         
         return null;

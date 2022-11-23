@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-22T22:05:03.665Z[GMT]")public interface CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-23T18:54:23.882Z[GMT]")public interface CollectionsApi  {
    
     @POST
     @Path("/{coluuid}/commit")
@@ -94,7 +94,7 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid,@Context SecurityContext securityContext);
+    Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir") String dir,@Context SecurityContext securityContext);
 
     @POST
     @Path("/fs/add")

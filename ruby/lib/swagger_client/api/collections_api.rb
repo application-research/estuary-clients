@@ -262,6 +262,7 @@ module SwaggerClient
     # @param body Content IDs to add to collection
     # @param coluuid Collection UUID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :dir Directory
     # @return [String]
     def collections_coluuid_post(body, coluuid, opts = {})
       data, _status_code, _headers = collections_coluuid_post_with_http_info(body, coluuid, opts)
@@ -273,6 +274,7 @@ module SwaggerClient
     # @param body Content IDs to add to collection
     # @param coluuid Collection UUID
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :dir Directory
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def collections_coluuid_post_with_http_info(body, coluuid, opts = {})
       if @api_client.config.debugging
@@ -291,6 +293,7 @@ module SwaggerClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

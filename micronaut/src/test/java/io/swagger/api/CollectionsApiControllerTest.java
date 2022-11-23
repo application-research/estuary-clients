@@ -69,8 +69,9 @@ class CollectionsApiControllerTest {
     void collectionsColuuidPostTest() {
         List<Integer> body = Arrays.asList(56);
         String coluuid = "coluuid_example";
+        String dir = "dir_example";
         try {
-            api.collectionsColuuidPost(body, coluuid).blockingGet();
+            api.collectionsColuuidPost(body, coluuid, dir).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> str collections_coluuid_post(body, coluuid)
+> str collections_coluuid_post(body, coluuid, dir=dir)
 
 Add contents to a collection
 
@@ -260,10 +260,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
 body = [56] # list[int] | Content IDs to add to collection
 coluuid = 'coluuid_example' # str | Collection UUID
+dir = 'dir_example' # str | Directory (optional)
 
 try:
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body, coluuid)
+    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_post: %s\n" % e)
@@ -275,6 +276,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**list[int]**](int.md)| Content IDs to add to collection | 
  **coluuid** | **str**| Collection UUID | 
+ **dir** | **str**| Directory | [optional] 
 
 ### Return type
 

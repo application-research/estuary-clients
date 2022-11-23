@@ -70,11 +70,13 @@ class TestCollectionsController(BaseTestCase):
         Add contents to a collection
         """
         body = [56]
+        query_string = [('dir', 'dir_example')]
         response = self.client.open(
             '/collections/{coluuid}'.format(coluuid='coluuid_example'),
             method='POST',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='application/json',
+            query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

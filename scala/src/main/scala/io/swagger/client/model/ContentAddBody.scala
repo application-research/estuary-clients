@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 /**
  * @param data File to upload
- * @param filename Filenam to use for upload
+ * @param filename Filename to use for upload
  */
 case class ContentAddBody (
   data: Array[Byte],

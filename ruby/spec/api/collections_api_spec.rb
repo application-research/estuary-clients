@@ -88,6 +88,7 @@ describe 'CollectionsApi' do
   # @param body Content IDs to add to collection
   # @param coluuid Collection UUID
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :dir Directory
   # @return [String]
   describe 'collections_coluuid_post test' do
     it 'should work' do

@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidPost**
-> String collectionsColuuidPost(body, coluuid)
+> String collectionsColuuidPost(body, coluuid, dir)
 
 Add contents to a collection
 
@@ -230,9 +230,10 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var body = [new List&lt;int&gt;()]; // List<int> | Content IDs to add to collection
 var coluuid = coluuid_example; // String | Collection UUID
+var dir = dir_example; // String | Directory
 
 try {
-    var result = api_instance.collectionsColuuidPost(body, coluuid);
+    var result = api_instance.collectionsColuuidPost(body, coluuid, dir);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidPost: $e\n");
@@ -245,6 +246,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**List&lt;int&gt;**](int.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 

@@ -518,9 +518,16 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Content IDs to add to collection
  * @param coluuid Collection UUID
+ * @param optional nil or *CollectionsApiCollectionsColuuidPostOpts - Optional Parameters:
+     * @param "Dir" (optional.String) -  Directory
 @return string
 */
-func (a *CollectionsApiService) CollectionsColuuidPost(ctx context.Context, body []int32, coluuid string) (string, *http.Response, error) {
+
+type CollectionsApiCollectionsColuuidPostOpts struct {
+    Dir optional.String
+}
+
+func (a *CollectionsApiService) CollectionsColuuidPost(ctx context.Context, body []int32, coluuid string, localVarOptionals *CollectionsApiCollectionsColuuidPostOpts) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -537,6 +544,9 @@ func (a *CollectionsApiService) CollectionsColuuidPost(ctx context.Context, body
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Dir.IsSet() {
+		localVarQueryParams.Add("dir", parameterToString(localVarOptionals.Dir.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
 

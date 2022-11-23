@@ -112,7 +112,7 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String collectionsColuuidPost(@Valid List<Integer> body, @PathParam("coluuid") String coluuid);
+    public String collectionsColuuidPost(@Valid List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir") String dir);
 
     /**
      * Add a file to a collection

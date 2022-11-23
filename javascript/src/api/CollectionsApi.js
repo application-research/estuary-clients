@@ -250,11 +250,13 @@ export class CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param {Array.<Number>} body Content IDs to add to collection
      * @param {String} coluuid Collection UUID
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.dir Directory
      * @param {module:api/CollectionsApi~collectionsColuuidPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    collectionsColuuidPost(body, coluuid, callback) {
-      
+    collectionsColuuidPost(body, coluuid, opts, callback) {
+      opts = opts || {};
       let postBody = body;
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
@@ -269,7 +271,7 @@ export class CollectionsApi {
         'coluuid': coluuid
       };
       let queryParams = {
-        
+        'dir': opts['dir']
       };
       let headerParams = {
         

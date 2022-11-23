@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-22T22:05:04.107Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-23T18:54:23.525Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       @Override
       public Response collectionsColuuidCommitPost(String coluuid, SecurityContext securityContext) {
       // do some magic!
@@ -41,7 +41,7 @@ import javax.ws.rs.core.SecurityContext;
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response collectionsColuuidPost(List<Integer> body, String coluuid, SecurityContext securityContext) {
+      public Response collectionsColuuidPost(List<Integer> body, String coluuid, String dir, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

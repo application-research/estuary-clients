@@ -23,7 +23,7 @@ import javax.validation.Valid;
 /**
  * ContentAddBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-22T22:05:02.048Z[GMT]")public class ContentAddBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-23T18:54:24.309Z[GMT]")public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;
 
@@ -57,11 +57,11 @@ import javax.validation.Valid;
   }
 
   /**
-   * Filenam to use for upload
+   * Filename to use for upload
    * @return filename
    **/
   @JsonProperty("filename")
-  @Schema(description = "Filenam to use for upload")
+  @Schema(description = "Filename to use for upload")
   public String getFilename() {
     return filename;
   }

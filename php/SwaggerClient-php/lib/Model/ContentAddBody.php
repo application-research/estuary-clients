@@ -242,7 +242,7 @@ class ContentAddBody implements ModelInterface, ArrayAccess
     /**
      * Sets filename
      *
-     * @param string $filename Filenam to use for upload
+     * @param string $filename Filename to use for upload
      *
      * @return $this
      */

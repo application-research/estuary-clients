@@ -152,7 +152,7 @@ export interface ContentAddBody {
      */
     data: Blob;
     /**
-     * Filenam to use for upload
+     * Filename to use for upload
      * @type {string}
      * @memberof ContentAddBody
      */
@@ -1609,10 +1609,11 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, options: any = {}): FetchArgs {
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidPost.');
@@ -1634,6 +1635,10 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -1872,11 +1877,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(body, coluuid, options);
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(body, coluuid, dir, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2002,11 +2008,12 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
          * @summary Add contents to a collection
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, options?: any) {
-            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, options)(fetch, basePath);
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any) {
+            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, dir, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a file to a collection
@@ -2105,12 +2112,13 @@ export class CollectionsApi extends BaseAPI {
      * @summary Add contents to a collection
      * @param {Array<number>} body Content IDs to add to collection
      * @param {string} coluuid Collection UUID
+     * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, options)(this.fetch, this.basePath);
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, dir, options)(this.fetch, this.basePath);
     }
 
     /**

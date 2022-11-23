@@ -16,7 +16,7 @@ module SwaggerClient
     # File to upload
     attr_accessor :data
 
-    # Filenam to use for upload
+    # Filename to use for upload
     attr_accessor :filename
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -177,10 +177,11 @@ open class CollectionsAPI: APIBase {
      Add contents to a collection
      - parameter body: (body) Content IDs to add to collection 
      - parameter coluuid: (path) Collection UUID 
+     - parameter dir: (query) Directory (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsColuuidPost(body: [Int32], coluuid: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        collectionsColuuidPostWithRequestBuilder(body: body, coluuid: coluuid).execute { (response, error) -> Void in
+    open class func collectionsColuuidPost(body: [Int32], coluuid: String, dir: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        collectionsColuuidPostWithRequestBuilder(body: body, coluuid: coluuid, dir: dir).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -196,17 +197,20 @@ open class CollectionsAPI: APIBase {
      - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) Content IDs to add to collection 
      - parameter coluuid: (path) Collection UUID 
+     - parameter dir: (query) Directory (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func collectionsColuuidPostWithRequestBuilder(body: [Int32], coluuid: String) -> RequestBuilder<String> {
+    open class func collectionsColuuidPostWithRequestBuilder(body: [Int32], coluuid: String, dir: String? = nil) -> RequestBuilder<String> {
         var path = "/collections/{coluuid}"
         let coluuidPreEscape = "\(coluuid)"
         let coluuidPostEscape = coluuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{coluuid}", with: coluuidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "dir": dir
+        ])
 
         let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 

@@ -129,15 +129,16 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      * @param body Content IDs to add to collection 
      * @param coluuid Collection UUID 
+     * @param dir Directory (optional)
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidPost(body: kotlin.Array<kotlin.Int>, coluuid: kotlin.String): kotlin.String {
+    fun collectionsColuuidPost(body: kotlin.Array<kotlin.Int>, coluuid: kotlin.String, dir: kotlin.String? = null): kotlin.String {
         val localVariableBody: kotlin.Any? = body
-        
+        val localVariableQuery: MultiValueMap = mapOf("dir" to listOf("$dir"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/collections/{coluuid}".replace("{" + "coluuid" + "}", "$coluuid")
+                "/collections/{coluuid}".replace("{" + "coluuid" + "}", "$coluuid"), query = localVariableQuery
         )
         val response = request<kotlin.String>(
                 localVariableConfig, localVariableBody

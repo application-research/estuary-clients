@@ -123,8 +123,9 @@
         it('should call collectionsColuuidPost successfully', function(done) {
           // TODO: uncomment, update parameter values for collectionsColuuidPost call and complete the assertions
           /*
+          var opts = {};
 
-          instance.collectionsColuuidPost(body, coluuid, function(error, data, response) {
+          instance.collectionsColuuidPost(body, coluuid, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

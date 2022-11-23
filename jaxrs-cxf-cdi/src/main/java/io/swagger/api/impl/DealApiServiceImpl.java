@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-22T22:05:04.107Z[GMT]")public class DealApiServiceImpl implements DealApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-23T18:54:23.525Z[GMT]")public class DealApiServiceImpl implements DealApiService {
       @Override
       public Response dealEstimatePost(MainEstimateDealBody body, SecurityContext securityContext) {
       // do some magic!

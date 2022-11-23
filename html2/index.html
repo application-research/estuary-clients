@@ -737,7 +737,7 @@
     },
     "filename" : {
       "type" : "string",
-      "description" : "Filenam to use for upload"
+      "description" : "Filename to use for upload"
     }
   }
 };
@@ -7701,7 +7701,7 @@ except ApiException as e:
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
 -H "Content-Type: application/json"\
-"//api.estuary.tech//collections/{coluuid}"</code></pre>
+"//api.estuary.tech//collections/{coluuid}?dir="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Collections-collectionsColuuidPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7726,8 +7726,9 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         array[Integer] body = ; // array[Integer] | Content IDs to add to collection
         String coluuid = coluuid_example; // String | Collection UUID
+        String dir = dir_example; // String | Directory
         try {
-            'String' result = apiInstance.collectionsColuuidPost(body, coluuid);
+            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -7746,8 +7747,9 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         array[Integer] body = ; // array[Integer] | Content IDs to add to collection
         String coluuid = coluuid_example; // String | Collection UUID
+        String dir = dir_example; // String | Directory
         try {
-            'String' result = apiInstance.collectionsColuuidPost(body, coluuid);
+            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -7768,12 +7770,14 @@ public class CollectionsApiExample {
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 array[Integer] *body = ; // Content IDs to add to collection
 String *coluuid = coluuid_example; // Collection UUID
+String *dir = dir_example; // Directory (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Add contents to a collection
 [apiInstance collectionsColuuidPostWith:body
     coluuid:coluuid
+    dir:dir
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7798,7 +7802,9 @@ bearerAuth.apiKey = "YOUR API KEY"
 var api = new EstuaryApi.CollectionsApi()
 var body = ; // {{array[Integer]}} Content IDs to add to collection
 var coluuid = coluuid_example; // {{String}} Collection UUID
-
+var opts = { 
+  'dir': dir_example // {{String}} Directory
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -7806,7 +7812,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.collectionsColuuidPost(bodycoluuid, callback);
+api.collectionsColuuidPost(bodycoluuid, opts, callback);
 </code></pre>
                             </div>
 
@@ -7835,11 +7841,12 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var body = new array[Integer](); // array[Integer] | Content IDs to add to collection
             var coluuid = coluuid_example;  // String | Collection UUID
+            var dir = dir_example;  // String | Directory (optional) 
 
             try
             {
                 // Add contents to a collection
-                'String' result = apiInstance.collectionsColuuidPost(body, coluuid);
+                'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7864,9 +7871,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 $api_instance = new Swagger\Client\ApiCollectionsApi();
 $body = ; // array[Integer] | Content IDs to add to collection
 $coluuid = coluuid_example; // String | Collection UUID
+$dir = dir_example; // String | Directory
 
 try {
-    $result = $api_instance->collectionsColuuidPost($body, $coluuid);
+    $result = $api_instance->collectionsColuuidPost($body, $coluuid, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidPost: ', $e->getMessage(), PHP_EOL;
@@ -7887,9 +7895,10 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
 my $body = [WWW::SwaggerClient::Object::array[Integer]->new()]; # array[Integer] | Content IDs to add to collection
 my $coluuid = coluuid_example; # String | Collection UUID
+my $dir = dir_example; # String | Directory
 
 eval { 
-    my $result = $api_instance->collectionsColuuidPost(body => $body, coluuid => $coluuid);
+    my $result = $api_instance->collectionsColuuidPost(body => $body, coluuid => $coluuid, dir => $dir);
     print Dumper($result);
 };
 if ($@) {
@@ -7913,10 +7922,11 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = swagger_client.CollectionsApi()
 body =  # array[Integer] | Content IDs to add to collection
 coluuid = coluuid_example # String | Collection UUID
+dir = dir_example # String | Directory (optional)
 
 try: 
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body, coluuid)
+    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collectionsColuuidPost: %s\n" % e)</code></pre>
@@ -8005,6 +8015,32 @@ except ApiException as e:
                             </table>
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">dir</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_collectionsColuuidPost_dir">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Directory
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 200 - OK </h3>

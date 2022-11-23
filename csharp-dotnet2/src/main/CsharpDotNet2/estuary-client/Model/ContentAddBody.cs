@@ -21,9 +21,9 @@ namespace IO.Swagger.Model {
     public byte[] Data { get; set; }
 
     /// <summary>
-    /// Filenam to use for upload
+    /// Filename to use for upload
     /// </summary>
-    /// <value>Filenam to use for upload</value>
+    /// <value>Filename to use for upload</value>
     [DataMember(Name="filename", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "filename")]
     public string Filename { get; set; }

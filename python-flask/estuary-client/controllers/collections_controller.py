@@ -68,7 +68,7 @@ def collections_coluuid_get(coluuid, dir=None):  # noqa: E501
     return 'do some magic!'
 
 
-def collections_coluuid_post(body, coluuid):  # noqa: E501
+def collections_coluuid_post(body, coluuid, dir=None):  # noqa: E501
     """Add contents to a collection
 
     This endpoint adds already-pinned contents (that have ContentIDs) to a collection. # noqa: E501
@@ -77,6 +77,8 @@ def collections_coluuid_post(body, coluuid):  # noqa: E501
     :type body: List[]
     :param coluuid: Collection UUID
     :type coluuid: str
+    :param dir: Directory
+    :type dir: str
 
     :rtype: str
     """

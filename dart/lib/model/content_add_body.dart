@@ -3,7 +3,7 @@ part of swagger.api;
 class ContentAddBody {
   /* File to upload */
   String data = null;
-/* Filenam to use for upload */
+/* Filename to use for upload */
   String filename = null;
 
   ContentAddBody();

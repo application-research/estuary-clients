@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidPost**
-> string CollectionsColuuidPost(ctx, body, coluuid)
+> string CollectionsColuuidPost(ctx, body, coluuid, optional)
 Add contents to a collection
 
 This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
@@ -148,6 +148,15 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**[]int32**](int32.md)| Content IDs to add to collection | 
   **coluuid** | **string**| Collection UUID | 
+ **optional** | ***CollectionsApiCollectionsColuuidPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CollectionsApiCollectionsColuuidPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **dir** | **optional.**| Directory | 
 
 ### Return type
 

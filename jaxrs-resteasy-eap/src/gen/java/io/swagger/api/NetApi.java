@@ -26,7 +26,7 @@ import javax.validation.constraints.*;
 @Path("/net")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-22T22:05:03.665Z[GMT]")public interface NetApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-23T18:54:23.882Z[GMT]")public interface NetApi  {
    
     @GET
     @Path("/addrs")

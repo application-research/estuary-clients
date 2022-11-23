@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-22T22:05:00.847Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-23T18:54:22.698Z[GMT]")
 public class MainImportDealBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;

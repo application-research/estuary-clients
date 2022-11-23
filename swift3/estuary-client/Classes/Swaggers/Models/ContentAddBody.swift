@@ -11,7 +11,7 @@ import Foundation
 open class ContentAddBody: JSONEncodable {
     /** File to upload */
     public var data: Data?
-    /** Filenam to use for upload */
+    /** Filename to use for upload */
     public var filename: String?
 
     public init() {}

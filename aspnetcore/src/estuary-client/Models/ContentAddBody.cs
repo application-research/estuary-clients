@@ -36,9 +36,9 @@ namespace estuary-client.Models
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// Filenam to use for upload
+        /// Filename to use for upload
         /// </summary>
-        /// <value>Filenam to use for upload</value>
+        /// <value>Filename to use for upload</value>
 
         [DataMember(Name="filename")]
         public string Filename { get; set; }
