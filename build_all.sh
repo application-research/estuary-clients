@@ -9,9 +9,3 @@ make -B swagger.json
 git status swagger.json | grep modified && make -j -k -B || true
 
 cp -rv file_overrides/* .
-
-#increment subversion by 1
-subversion=$(cat subversion)
-subversion=$((subversion+1))
-echo $subversion > subversion
-
