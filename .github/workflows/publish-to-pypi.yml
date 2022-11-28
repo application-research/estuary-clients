@@ -30,8 +30,9 @@ jobs:
         .
 
     - name: Publish distribution 📦 to PyPI
-      working-directory: ./python
+      #if: startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
+      working-directory: ./python
       with:
         password: ${{ secrets.PYPI_API_TOKEN }}
 
