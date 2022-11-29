@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidPost**
-> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidPost($pinid, $body)
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidPost($body, $pinid)
 
 Replace a pinned object
 
@@ -189,11 +189,11 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pinid = "pinid_example"; // string | Pin ID
-$body = "body_example"; // string | Meta information of new pin
+$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | New pin
+$pinid = "pinid_example"; // string | Pin ID to be replaced
 
 try {
-    $result = $apiInstance->pinningPinsPinidPost($pinid, $body);
+    $result = $apiInstance->pinningPinsPinidPost($body, $pinid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPinidPost: ', $e->getMessage(), PHP_EOL;
@@ -205,8 +205,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **string**| Pin ID |
- **body** | [**string**](../Model/string.md)| Meta information of new pin | [optional]
+ **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| New pin |
+ **pinid** | **string**| Pin ID to be replaced |
 
 ### Return type
 

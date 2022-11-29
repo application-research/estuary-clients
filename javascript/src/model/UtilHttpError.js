@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UtilHttpError model module.
  * @module model/UtilHttpError
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class UtilHttpError {
   /**

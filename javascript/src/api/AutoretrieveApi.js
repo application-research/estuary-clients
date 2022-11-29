@@ -18,7 +18,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Autoretrieve service.
 * @module api/AutoretrieveApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class AutoretrieveApi {
 

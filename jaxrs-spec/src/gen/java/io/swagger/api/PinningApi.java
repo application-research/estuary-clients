@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-23T18:54:26.964Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
 public class PinningApi {
 
     @GET
@@ -82,10 +82,10 @@ public class PinningApi {
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPinidPost( @PathParam("pinid")
+    public Response pinningPinsPinidPost(@Valid TypesIpfsPin body, @PathParam("pinid")
 
- @Parameter(description = "Pin ID") String pinid
-,@Valid String body) {
+ @Parameter(description = "Pin ID to be replaced") String pinid
+) {
         return Response.ok().entity("magic!").build();
     }
     @POST

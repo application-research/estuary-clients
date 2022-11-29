@@ -18,7 +18,7 @@ import {TypesIpfsPinStatusResponse} from './TypesIpfsPinStatusResponse';
 /**
  * The TypesIpfsListPinStatusResponse model module.
  * @module model/TypesIpfsListPinStatusResponse
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class TypesIpfsListPinStatusResponse {
   /**

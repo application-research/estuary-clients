@@ -21,8 +21,6 @@ part 'api/deals_api.dart';
 part 'api/metrics_api.dart';
 part 'api/miner_api.dart';
 part 'api/net_api.dart';
-part 'api/peering_api.dart';
-part 'api/peers_api.dart';
 part 'api/pinning_api.dart';
 part 'api/public_api.dart';
 part 'api/user_api.dart';

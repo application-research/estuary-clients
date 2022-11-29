@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AutoretrieveInitBody model module.
  * @module model/AutoretrieveInitBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class AutoretrieveInitBody {
   /**

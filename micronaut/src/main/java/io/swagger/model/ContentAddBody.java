@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * ContentAddBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
 public class ContentAddBody   {
   @JsonProperty("data")
   private File data = null;

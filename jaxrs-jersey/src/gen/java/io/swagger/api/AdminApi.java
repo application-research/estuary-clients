@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-23T18:54:24.309Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public class AdminApi  {
    private final AdminApiService delegate;
 
    public AdminApi(@Context ServletConfig servletContext) {
@@ -132,7 +132,7 @@ import javax.validation.constraints.*;
     @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Remove peers on Peering Service", description = "This endpoint can be used to remove a Peer from the Peering Service", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
@@ -150,7 +150,7 @@ import javax.validation.constraints.*;
     
     @Produces({ "application/json" })
     @Operation(summary = "List all Peering peers", description = "This endpoint can be used to list all peers on Peering Service", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
@@ -166,7 +166,7 @@ import javax.validation.constraints.*;
     
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
@@ -182,7 +182,7 @@ import javax.validation.constraints.*;
     
     @Produces({ "application/json" })
     @Operation(summary = "Start Peering", description = "This endpoint can be used to start the Peering Service", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
@@ -198,7 +198,7 @@ import javax.validation.constraints.*;
     
     @Produces({ "application/json" })
     @Operation(summary = "Check Peering Status", description = "This endpoint can be used to check the Peering status", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
@@ -214,7 +214,7 @@ import javax.validation.constraints.*;
     
     @Produces({ "application/json" })
     @Operation(summary = "Stop Peering", description = "This endpoint can be used to stop the Peering Service", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "peering", "peers" })
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         

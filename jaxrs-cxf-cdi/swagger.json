@@ -198,7 +198,7 @@
     },
     "/admin/peering/peers" : {
       "get" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "List all Peering peers",
         "description" : "This endpoint can be used to list all peers on Peering Service",
         "responses" : {
@@ -235,7 +235,7 @@
         }
       },
       "post" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "Add peers on Peering Service",
         "description" : "This endpoint can be used to add a Peer from the Peering Service",
         "responses" : {
@@ -272,7 +272,7 @@
         }
       },
       "delete" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "Remove peers on Peering Service",
         "description" : "This endpoint can be used to remove a Peer from the Peering Service",
         "requestBody" : {
@@ -326,7 +326,7 @@
     },
     "/admin/peering/start" : {
       "post" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "Start Peering",
         "description" : "This endpoint can be used to start the Peering Service",
         "responses" : {
@@ -365,7 +365,7 @@
     },
     "/admin/peering/status" : {
       "get" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "Check Peering Status",
         "description" : "This endpoint can be used to check the Peering status",
         "responses" : {
@@ -404,7 +404,7 @@
     },
     "/admin/peering/stop" : {
       "post" : {
-        "tags" : [ "admin", "peering", "peers" ],
+        "tags" : [ "admin" ],
         "summary" : "Stop Peering",
         "description" : "This endpoint can be used to stop the Peering Service",
         "responses" : {
@@ -990,16 +990,6 @@
           "name" : "coluuid",
           "in" : "path",
           "description" : "Collection ID",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "contentid",
-          "in" : "path",
-          "description" : "Content ID",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -2793,7 +2783,7 @@
         "parameters" : [ {
           "name" : "pinid",
           "in" : "path",
-          "description" : "Pin ID",
+          "description" : "Pin ID to be replaced",
           "required" : true,
           "style" : "simple",
           "explode" : false,
@@ -2802,15 +2792,15 @@
           }
         } ],
         "requestBody" : {
-          "description" : "Meta information of new pin",
+          "description" : "New pin",
           "content" : {
             "application/json" : {
               "schema" : {
-                "type" : "string"
+                "$ref" : "#/components/schemas/types.IpfsPin"
               }
             }
           },
-          "required" : false
+          "required" : true
         },
         "responses" : {
           "202" : {
@@ -2844,7 +2834,7 @@
             }
           }
         },
-        "x-codegen-request-body-name" : "meta"
+        "x-codegen-request-body-name" : "pin"
       },
       "delete" : {
         "tags" : [ "pinning" ],

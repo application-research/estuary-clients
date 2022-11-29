@@ -19,7 +19,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * User service.
 * @module api/UserApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class UserApi {
 

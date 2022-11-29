@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-23T18:54:23.882Z[GMT]")public interface PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-29T10:27:02.680Z[GMT]")public interface PinningApi  {
    
     @GET
     @Path("/pins")
@@ -80,7 +80,7 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response pinningPinsPinidPost( @PathParam("pinid") String pinid,@Parameter(description = "Meta information of new pin" ) String body,@Context SecurityContext securityContext);
+    Response pinningPinsPinidPost(@Parameter(description = "New pin" ,required=true) TypesIpfsPin body, @PathParam("pinid") String pinid,@Context SecurityContext securityContext);
 
     @POST
     @Path("/pins")

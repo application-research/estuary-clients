@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-23T18:54:23.755Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public class PinningApi  {
 
     @Inject PinningApiService service;
 
@@ -99,9 +99,9 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response pinningPinsPinidPost( @PathParam("pinid") String pinid,@Parameter(description = "Meta information of new pin" ) String body,@Context SecurityContext securityContext)
+    public Response pinningPinsPinidPost(@Parameter(description = "New pin" ,required=true) TypesIpfsPin body, @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.pinningPinsPinidPost(pinid,body,securityContext);
+        return service.pinningPinsPinidPost(body,pinid,securityContext);
     }
     @POST
     @Path("/pins")

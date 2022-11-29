@@ -69,9 +69,9 @@ describe 'PinningApi' do
   # unit tests for pinning_pins_pinid_post
   # Replace a pinned object
   # This endpoint replaces a pinned object.
-  # @param pinid Pin ID
+  # @param body New pin
+  # @param pinid Pin ID to be replaced
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :body Meta information of new pin
   # @return [TypesIpfsPinStatusResponse]
   describe 'pinning_pins_pinid_post test' do
     it 'should work' do

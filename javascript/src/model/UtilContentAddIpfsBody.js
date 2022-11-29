@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UtilContentAddIpfsBody model module.
  * @module model/UtilContentAddIpfsBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class UtilContentAddIpfsBody {
   /**

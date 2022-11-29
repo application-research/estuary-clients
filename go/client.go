@@ -60,10 +60,6 @@ type APIClient struct {
 
 	NetApi *NetApiService
 
-	PeeringApi *PeeringApiService
-
-	PeersApi *PeersApiService
-
 	PinningApi *PinningApiService
 
 	PublicApi *PublicApiService
@@ -95,8 +91,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.MinerApi = (*MinerApiService)(&c.common)
 	c.NetApi = (*NetApiService)(&c.common)
-	c.PeeringApi = (*PeeringApiService)(&c.common)
-	c.PeersApi = (*PeersApiService)(&c.common)
 	c.PinningApi = (*PinningApiService)(&c.common)
 	c.PublicApi = (*PublicApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)

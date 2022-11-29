@@ -96,12 +96,12 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID 
-     * @param body Meta information of new pin (optional)
+     * @param body New pin 
+     * @param pinid Pin ID to be replaced 
      * @return TypesIpfsPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidPost(pinid: kotlin.String, body: kotlin.String? = null): TypesIpfsPinStatusResponse {
+    fun pinningPinsPinidPost(body: TypesIpfsPin, pinid: kotlin.String): TypesIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(

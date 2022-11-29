@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidContentsDelete"></a>
 # **collectionsColuuidContentsDelete**
-> &#x27;String&#x27; collectionsColuuidContentsDelete(body, coluuid, contentid)
+> &#x27;String&#x27; collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -85,9 +85,8 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.CollectionsApi();
 let body = new EstuaryClient.MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 let coluuid = "coluuid_example"; // String | Collection ID
-let contentid = "contentid_example"; // String | Content ID
 
-apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid, (error, data, response) => {
+apiInstance.collectionsColuuidContentsDelete(body, coluuid, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -102,7 +101,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
- **contentid** | **String**| Content ID | 
 
 ### Return type
 

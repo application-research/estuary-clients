@@ -160,10 +160,13 @@ class PinningApi {
   /// Replace a pinned object
   ///
   /// This endpoint replaces a pinned object.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(String pinid, { String body }) async {
+  Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(TypesIpfsPin body, String pinid) async {
     Object postBody = body;
 
     // verify required params are set
+    if(body == null) {
+     throw new ApiException(400, "Missing required param: body");
+    }
     if(pinid == null) {
      throw new ApiException(400, "Missing required param: pinid");
     }

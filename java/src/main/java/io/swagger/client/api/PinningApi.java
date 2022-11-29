@@ -420,14 +420,14 @@ public class PinningApi {
     }
     /**
      * Build call for pinningPinsPinidPost
-     * @param pinid Pin ID (required)
-     * @param body Meta information of new pin (optional)
+     * @param body New pin (required)
+     * @param pinid Pin ID to be replaced (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPinidPostCall(String pinid, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPinidPostCall(TypesIpfsPin body, String pinid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -470,13 +470,17 @@ public class PinningApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call pinningPinsPinidPostValidateBeforeCall(String pinid, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call pinningPinsPinidPostValidateBeforeCall(TypesIpfsPin body, String pinid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling pinningPinsPinidPost(Async)");
+        }
         // verify the required parameter 'pinid' is set
         if (pinid == null) {
             throw new ApiException("Missing the required parameter 'pinid' when calling pinningPinsPinidPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = pinningPinsPinidPostCall(pinid, body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = pinningPinsPinidPostCall(body, pinid, progressListener, progressRequestListener);
         return call;
 
         
@@ -488,26 +492,26 @@ public class PinningApi {
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID (required)
-     * @param body Meta information of new pin (optional)
+     * @param body New pin (required)
+     * @param pinid Pin ID to be replaced (required)
      * @return TypesIpfsPinStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TypesIpfsPinStatusResponse pinningPinsPinidPost(String pinid, String body) throws ApiException {
-        ApiResponse<TypesIpfsPinStatusResponse> resp = pinningPinsPinidPostWithHttpInfo(pinid, body);
+    public TypesIpfsPinStatusResponse pinningPinsPinidPost(TypesIpfsPin body, String pinid) throws ApiException {
+        ApiResponse<TypesIpfsPinStatusResponse> resp = pinningPinsPinidPostWithHttpInfo(body, pinid);
         return resp.getData();
     }
 
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID (required)
-     * @param body Meta information of new pin (optional)
+     * @param body New pin (required)
+     * @param pinid Pin ID to be replaced (required)
      * @return ApiResponse&lt;TypesIpfsPinStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TypesIpfsPinStatusResponse> pinningPinsPinidPostWithHttpInfo(String pinid, String body) throws ApiException {
-        com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(pinid, body, null, null);
+    public ApiResponse<TypesIpfsPinStatusResponse> pinningPinsPinidPostWithHttpInfo(TypesIpfsPin body, String pinid) throws ApiException {
+        com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(body, pinid, null, null);
         Type localVarReturnType = new TypeToken<TypesIpfsPinStatusResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -515,13 +519,13 @@ public class PinningApi {
     /**
      * Replace a pinned object (asynchronously)
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID (required)
-     * @param body Meta information of new pin (optional)
+     * @param body New pin (required)
+     * @param pinid Pin ID to be replaced (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPinidPostAsync(String pinid, String body, final ApiCallback<TypesIpfsPinStatusResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPinidPostAsync(TypesIpfsPin body, String pinid, final ApiCallback<TypesIpfsPinStatusResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -542,7 +546,7 @@ public class PinningApi {
             };
         }
 
-        com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(pinid, body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = pinningPinsPinidPostValidateBeforeCall(body, pinid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<TypesIpfsPinStatusResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

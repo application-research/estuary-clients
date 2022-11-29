@@ -149,10 +149,9 @@ This endpoint is used to delete an existing content from an existing collection.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
  * @param coluuid Collection ID
- * @param contentid Content ID
 @return string
 */
-func (a *CollectionsApiService) CollectionsColuuidContentsDelete(ctx context.Context, body MainDeleteContentFromCollectionBody, coluuid string, contentid string) (string, *http.Response, error) {
+func (a *CollectionsApiService) CollectionsColuuidContentsDelete(ctx context.Context, body MainDeleteContentFromCollectionBody, coluuid string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -164,7 +163,6 @@ func (a *CollectionsApiService) CollectionsColuuidContentsDelete(ctx context.Con
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/collections/{coluuid}/contents"
 	localVarPath = strings.Replace(localVarPath, "{"+"coluuid"+"}", fmt.Sprintf("%v", coluuid), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contentid"+"}", fmt.Sprintf("%v", contentid), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

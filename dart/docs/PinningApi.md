@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -167,11 +167,11 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PinningApi();
-var pinid = pinid_example; // String | Pin ID
-var body = new String(); // String | Meta information of new pin
+var body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+var pinid = pinid_example; // String | Pin ID to be replaced
 
 try {
-    var result = api_instance.pinningPinsPinidPost(pinid, body);
+    var result = api_instance.pinningPinsPinidPost(body, pinid);
     print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPinidPost: $e\n");
@@ -182,8 +182,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **String**| Pin ID | 
- **body** | [**String**](String.md)| Meta information of new pin | [optional] 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 

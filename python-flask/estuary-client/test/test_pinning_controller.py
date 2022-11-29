@@ -53,7 +53,7 @@ class TestPinningController(BaseTestCase):
 
         Replace a pinned object
         """
-        body = 'body_example'
+        body = TypesIpfsPin()
         response = self.client.open(
             '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='POST',

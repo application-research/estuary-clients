@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-23T18:54:23.525Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")
 public class CollectionsApi  {
 
   @Context SecurityContext securityContext;
@@ -73,10 +73,8 @@ public class CollectionsApi  {
 @Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body
 , 
 @Parameter(description = "Collection ID",required=true) @PathParam("coluuid") String coluuid
-, 
-@Parameter(description = "Content ID",required=true) @PathParam("contentid") String contentid
 ) {
-        return delegate.collectionsColuuidContentsDelete(body, coluuid, contentid, securityContext);
+        return delegate.collectionsColuuidContentsDelete(body, coluuid, securityContext);
     }
 
     @DELETE

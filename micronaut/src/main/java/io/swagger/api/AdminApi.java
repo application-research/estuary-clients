@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
 @Controller
 public interface AdminApi {
 
@@ -79,7 +79,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "Remove peers on Peering Service", operationId = "adminPeeringPeersDelete", description = "This endpoint can be used to remove a Peer from the Peering Service" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "Remove peers on Peering Service", operationId = "adminPeeringPeersDelete", description = "This endpoint can be used to remove a Peer from the Peering Service" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
@@ -92,7 +92,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "List all Peering peers", operationId = "adminPeeringPeersGet", description = "This endpoint can be used to list all peers on Peering Service" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "List all Peering peers", operationId = "adminPeeringPeersGet", description = "This endpoint can be used to list all peers on Peering Service" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
@@ -104,7 +104,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "Add peers on Peering Service", operationId = "adminPeeringPeersPost", description = "This endpoint can be used to add a Peer from the Peering Service" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "Add peers on Peering Service", operationId = "adminPeeringPeersPost", description = "This endpoint can be used to add a Peer from the Peering Service" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
@@ -116,7 +116,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "Start Peering", operationId = "adminPeeringStartPost", description = "This endpoint can be used to start the Peering Service" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "Start Peering", operationId = "adminPeeringStartPost", description = "This endpoint can be used to start the Peering Service" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
@@ -128,7 +128,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "Check Peering Status", operationId = "adminPeeringStatusGet", description = "This endpoint can be used to check the Peering status" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "Check Peering Status", operationId = "adminPeeringStatusGet", description = "This endpoint can be used to check the Peering status" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
@@ -140,7 +140,7 @@ public interface AdminApi {
     }
 
 
-    @Operation(summary = "Stop Peering", operationId = "adminPeeringStopPost", description = "This endpoint can be used to stop the Peering Service" , tags = {"admin", "peering", "peers"})
+    @Operation(summary = "Stop Peering", operationId = "adminPeeringStopPost", description = "This endpoint can be used to stop the Peering Service" , tags = {"admin"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")

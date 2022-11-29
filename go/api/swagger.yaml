@@ -137,8 +137,6 @@ paths:
     get:
       tags:
       - admin
-      - peering
-      - peers
       summary: List all Peering peers
       description: This endpoint can be used to list all peers on Peering Service
       responses:
@@ -164,8 +162,6 @@ paths:
     post:
       tags:
       - admin
-      - peering
-      - peers
       summary: Add peers on Peering Service
       description: This endpoint can be used to add a Peer from the Peering Service
       responses:
@@ -191,8 +187,6 @@ paths:
     delete:
       tags:
       - admin
-      - peering
-      - peers
       summary: Remove peers on Peering Service
       description: This endpoint can be used to remove a Peer from the Peering Service
       requestBody:
@@ -229,8 +223,6 @@ paths:
     post:
       tags:
       - admin
-      - peering
-      - peers
       summary: Start Peering
       description: This endpoint can be used to start the Peering Service
       responses:
@@ -257,8 +249,6 @@ paths:
     get:
       tags:
       - admin
-      - peering
-      - peers
       summary: Check Peering Status
       description: This endpoint can be used to check the Peering status
       responses:
@@ -285,8 +275,6 @@ paths:
     post:
       tags:
       - admin
-      - peering
-      - peers
       summary: Stop Peering
       description: This endpoint can be used to stop the Peering Service
       responses:
@@ -702,14 +690,6 @@ paths:
       - name: coluuid
         in: path
         description: Collection ID
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: contentid
-        in: path
-        description: Content ID
         required: true
         style: simple
         explode: false
@@ -1962,19 +1942,19 @@ paths:
       parameters:
       - name: pinid
         in: path
-        description: Pin ID
+        description: Pin ID to be replaced
         required: true
         style: simple
         explode: false
         schema:
           type: string
       requestBody:
-        description: Meta information of new pin
+        description: New pin
         content:
           application/json:
             schema:
-              type: string
-        required: false
+              $ref: '#/components/schemas/types.IpfsPin'
+        required: true
       responses:
         "202":
           description: Accepted
@@ -1994,7 +1974,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
-      x-codegen-request-body-name: meta
+      x-codegen-request-body-name: pin
     delete:
       tags:
       - pinning

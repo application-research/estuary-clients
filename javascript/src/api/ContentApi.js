@@ -22,7 +22,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Content service.
 * @module api/ContentApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class ContentApi {
 

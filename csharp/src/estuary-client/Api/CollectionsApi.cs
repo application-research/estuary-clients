@@ -53,9 +53,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>string</returns>
-        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
+        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid);
 
         /// <summary>
         /// Deletes a content from a collection
@@ -66,9 +65,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CollectionsColuuidContentsDeleteWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
+        ApiResponse<string> CollectionsColuuidContentsDeleteWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid);
         /// <summary>
         /// Deletes a collection
         /// </summary>
@@ -235,9 +233,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CollectionsColuuidContentsDeleteAsync (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
+        System.Threading.Tasks.Task<string> CollectionsColuuidContentsDeleteAsync (MainDeleteContentFromCollectionBody body, string coluuid);
 
         /// <summary>
         /// Deletes a content from a collection
@@ -248,9 +245,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidContentsDeleteAsyncWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidContentsDeleteAsyncWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid);
         /// <summary>
         /// Deletes a collection
         /// </summary>
@@ -643,11 +639,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid)
         {
-             ApiResponse<string> localVarResponse = CollectionsColuuidContentsDeleteWithHttpInfo(body, coluuid, contentid);
+             ApiResponse<string> localVarResponse = CollectionsColuuidContentsDeleteWithHttpInfo(body, coluuid);
              return localVarResponse.Data;
         }
 
@@ -657,9 +652,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > CollectionsColuuidContentsDeleteWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+        public ApiResponse< string > CollectionsColuuidContentsDeleteWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -667,9 +661,6 @@ namespace estuary-client.Api
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
                 throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsApi->CollectionsColuuidContentsDelete");
-            // verify the required parameter 'contentid' is set
-            if (contentid == null)
-                throw new ApiException(400, "Missing required parameter 'contentid' when calling CollectionsApi->CollectionsColuuidContentsDelete");
 
             var localVarPath = "/collections/{coluuid}/contents";
             var localVarPathParams = new Dictionary<String, String>();
@@ -694,7 +685,6 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
-            if (contentid != null) localVarPathParams.Add("contentid", this.Configuration.ApiClient.ParameterToString(contentid)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -733,11 +723,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CollectionsColuuidContentsDeleteAsync (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+        public async System.Threading.Tasks.Task<string> CollectionsColuuidContentsDeleteAsync (MainDeleteContentFromCollectionBody body, string coluuid)
         {
-             ApiResponse<string> localVarResponse = await CollectionsColuuidContentsDeleteAsyncWithHttpInfo(body, coluuid, contentid);
+             ApiResponse<string> localVarResponse = await CollectionsColuuidContentsDeleteAsyncWithHttpInfo(body, coluuid);
              return localVarResponse.Data;
 
         }
@@ -748,9 +737,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidContentsDeleteAsyncWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidContentsDeleteAsyncWithHttpInfo (MainDeleteContentFromCollectionBody body, string coluuid)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -758,9 +746,6 @@ namespace estuary-client.Api
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
                 throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsApi->CollectionsColuuidContentsDelete");
-            // verify the required parameter 'contentid' is set
-            if (contentid == null)
-                throw new ApiException(400, "Missing required parameter 'contentid' when calling CollectionsApi->CollectionsColuuidContentsDelete");
 
             var localVarPath = "/collections/{coluuid}/contents";
             var localVarPathParams = new Dictionary<String, String>();
@@ -785,7 +770,6 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
-            if (contentid != null) localVarPathParams.Add("contentid", this.Configuration.ApiClient.ParameterToString(contentid)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter

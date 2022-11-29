@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_pinid_post**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, opts)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_post(bodypinid)
 
 Replace a pinned object
 
@@ -183,14 +183,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-pinid = 'pinid_example' # String | Pin ID
-opts = { 
-  body: 'body_example' # String | Meta information of new pin
-}
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | New pin
+pinid = 'pinid_example' # String | Pin ID to be replaced
+
 
 begin
   #Replace a pinned object
-  result = api_instance.pinning_pins_pinid_post(pinid, opts)
+  result = api_instance.pinning_pins_pinid_post(bodypinid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
@@ -201,8 +200,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **String**| Pin ID | 
- **body** | [**String**](String.md)| Meta information of new pin | [optional] 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 

@@ -167,12 +167,16 @@ export const PinningApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost: async (pinid: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pinningPinsPinidPost: async (body: TypesIpfsPin, pinid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPinidPost.');
+            }
             // verify required parameter 'pinid' is not null or undefined
             if (pinid === null || pinid === undefined) {
                 throw new RequiredError('pinid','Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
@@ -321,13 +325,13 @@ export const PinningApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pinningPinsPinidPost(pinid: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<TypesIpfsPinStatusResponse>>> {
-            const localVarAxiosArgs = await PinningApiAxiosParamCreator(configuration).pinningPinsPinidPost(pinid, body, options);
+        async pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<TypesIpfsPinStatusResponse>>> {
+            const localVarAxiosArgs = await PinningApiAxiosParamCreator(configuration).pinningPinsPinidPost(body, pinid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -388,13 +392,13 @@ export const PinningApiFactory = function (configuration?: Configuration, basePa
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pinningPinsPinidPost(pinid: string, body?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
-            return PinningApiFp(configuration).pinningPinsPinidPost(pinid, body, options).then((request) => request(axios, basePath));
+        async pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
+            return PinningApiFp(configuration).pinningPinsPinidPost(body, pinid, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint adds a pin to the IPFS daemon.
@@ -451,14 +455,14 @@ export class PinningApi extends BaseAPI {
     /**
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
-     * @param {string} pinid Pin ID
-     * @param {string} [body] Meta information of new pin
+     * @param {TypesIpfsPin} body New pin
+     * @param {string} pinid Pin ID to be replaced
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public async pinningPinsPinidPost(pinid: string, body?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
-        return PinningApiFp(this.configuration).pinningPinsPinidPost(pinid, body, options).then((request) => request(this.axios, this.basePath));
+    public async pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
+        return PinningApiFp(this.configuration).pinningPinsPinidPost(body, pinid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint adds a pin to the IPFS daemon.

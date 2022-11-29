@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidContentsDelete"></a>
 # **collectionsColuuidContentsDelete**
-> kotlin.String collectionsColuuidContentsDelete(body, coluuid, contentid)
+> kotlin.String collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -77,9 +77,8 @@ This endpoint is used to delete an existing content from an existing collection.
 val apiInstance = CollectionsApi()
 val body : MaindeleteContentFromCollectionBody =  // MaindeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
-val contentid : kotlin.String = contentid_example // kotlin.String | Content ID
 try {
-    val result : kotlin.String = apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid)
+    val result : kotlin.String = apiInstance.collectionsColuuidContentsDelete(body, coluuid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidContentsDelete")
@@ -96,7 +95,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MaindeleteContentFromCollectionBody**](MaindeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **kotlin.String**| Collection ID |
- **contentid** | **kotlin.String**| Content ID |
 
 ### Return type
 

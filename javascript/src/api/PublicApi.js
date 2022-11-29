@@ -18,7 +18,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Public service.
 * @module api/PublicApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class PublicApi {
 

@@ -161,12 +161,12 @@ class PinningApi(
    * Replace a pinned object
    * This endpoint replaces a pinned object.
    *
-   * @param pinid Pin ID 
-   * @param body Meta information of new pin (optional)
+   * @param body New pin 
+   * @param pinid Pin ID to be replaced 
    * @return types.IpfsPinStatusResponse
    */
-  def pinningPinsPinidPost(pinid: String, body: Option[String] = None): Option[types.IpfsPinStatusResponse] = {
-    val await = Try(Await.result(pinningPinsPinidPostAsync(pinid, body), Duration.Inf))
+  def pinningPinsPinidPost(body: IpfsPin, pinid: String): Option[types.IpfsPinStatusResponse] = {
+    val await = Try(Await.result(pinningPinsPinidPostAsync(body, pinid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -177,12 +177,12 @@ class PinningApi(
    * Replace a pinned object asynchronously
    * This endpoint replaces a pinned object.
    *
-   * @param pinid Pin ID 
-   * @param body Meta information of new pin (optional)
+   * @param body New pin 
+   * @param pinid Pin ID to be replaced 
    * @return Future(types.IpfsPinStatusResponse)
    */
-  def pinningPinsPinidPostAsync(pinid: String, body: Option[String] = None): Future[types.IpfsPinStatusResponse] = {
-      helper.pinningPinsPinidPost(pinid, body)
+  def pinningPinsPinidPostAsync(body: IpfsPin, pinid: String): Future[types.IpfsPinStatusResponse] = {
+      helper.pinningPinsPinidPost(body, pinid)
   }
 
   /**
@@ -266,9 +266,8 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def pinningPinsPinidPost(pinid: String,
-    body: Option[String] = None
-    )(implicit reader: ClientResponseReader[types.IpfsPinStatusResponse], writer: RequestWriter[Option[String]]): Future[types.IpfsPinStatusResponse] = {
+  def pinningPinsPinidPost(body: IpfsPin,
+    pinid: String)(implicit reader: ClientResponseReader[types.IpfsPinStatusResponse], writer: RequestWriter[IpfsPin]): Future[types.IpfsPinStatusResponse] = {
     // create path and map variables
     val path = (addFmt("/pinning/pins/{pinid}")
       replaceAll("\\{" + "pinid" + "\\}", pinid.toString))
@@ -277,6 +276,7 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling PinningApi->pinningPinsPinidPost")
     if (pinid == null) throw new Exception("Missing required parameter 'pinid' when calling PinningApi->pinningPinsPinidPost")
 
 

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UtilContentCreateBody model module.
  * @module model/UtilContentCreateBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class UtilContentCreateBody {
   /**

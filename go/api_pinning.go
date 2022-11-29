@@ -16,7 +16,6 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -354,17 +353,11 @@ func (a *PinningApiService) PinningPinsPinidGet(ctx context.Context, pinid strin
 PinningApiService Replace a pinned object
 This endpoint replaces a pinned object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param pinid Pin ID
- * @param optional nil or *PinningApiPinningPinsPinidPostOpts - Optional Parameters:
-     * @param "Body" (optional.Interface of string) -  Meta information of new pin
+ * @param body New pin
+ * @param pinid Pin ID to be replaced
 @return TypesIpfsPinStatusResponse
 */
-
-type PinningApiPinningPinsPinidPostOpts struct {
-    Body optional.Interface
-}
-
-func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid string, localVarOptionals *PinningApiPinningPinsPinidPostOpts) (TypesIpfsPinStatusResponse, *http.Response, error) {
+func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, body TypesIpfsPin, pinid string) (TypesIpfsPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -399,11 +392,7 @@ func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, pinid stri
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.Body.IsSet() {
-		
-		localVarOptionalBody:= localVarOptionals.Body.Value()
-		localVarPostBody = &localVarOptionalBody
-	}
+	localVarPostBody = &body
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

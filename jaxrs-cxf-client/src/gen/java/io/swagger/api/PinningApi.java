@@ -92,7 +92,7 @@ public interface PinningApi  {
         @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsPinStatusResponse pinningPinsPinidPost(@PathParam("pinid") String pinid, String body);
+    public TypesIpfsPinStatusResponse pinningPinsPinidPost(TypesIpfsPin body, @PathParam("pinid") String pinid);
 
     /**
      * Add and pin object

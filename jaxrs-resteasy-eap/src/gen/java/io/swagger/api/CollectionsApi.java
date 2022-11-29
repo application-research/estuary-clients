@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-23T18:54:23.882Z[GMT]")public interface CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-29T10:27:02.680Z[GMT]")public interface CollectionsApi  {
    
     @POST
     @Path("/{coluuid}/commit")
@@ -55,7 +55,7 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid,@Context SecurityContext securityContext);
+    Response collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid,@Context SecurityContext securityContext);
 
     @DELETE
     @Path("/{coluuid}")

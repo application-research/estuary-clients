@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
 @Controller
 public interface CollectionsApi {
 
@@ -51,7 +51,6 @@ public interface CollectionsApi {
     @Delete(value = "/collections/{coluuid}/contents", produces = { "application/json" }, consumes = {"*/*"})
     default Single<HttpResponse<String>> collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')") @Valid @Body MainDeleteContentFromCollectionBody body
 ,@Parameter(description = "Collection ID") @PathVariable("coluuid") String coluuid
-,@Parameter(description = "Content ID") @PathVariable("contentid") String contentid
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

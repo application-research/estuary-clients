@@ -81,8 +81,7 @@ describe("CollectionsApi", () => {
   test("collectionsColuuidContentsDelete", () => {
     const body: api.MainDeleteContentFromCollectionBody = undefined
     const coluuid: string = "coluuid_example"
-    const contentid: string = "contentid_example"
-    return expect(instance.collectionsColuuidContentsDelete(body, coluuid, contentid, {})).resolves.toBe(null)
+    return expect(instance.collectionsColuuidContentsDelete(body, coluuid, {})).resolves.toBe(null)
   })
   test("collectionsColuuidDelete", () => {
     const coluuid: string = "coluuid_example"
@@ -320,60 +319,6 @@ describe("NetApi", () => {
   })
 })
 
-describe("PeeringApi", () => {
-  let instance: api.PeeringApi
-  beforeEach(function() {
-    instance = new api.PeeringApi(config)
-  });
-
-  test("adminPeeringPeersDelete", () => {
-    const body: Array<boolean> = undefined
-    return expect(instance.adminPeeringPeersDelete(body, {})).resolves.toBe(null)
-  })
-  test("adminPeeringPeersGet", () => {
-    return expect(instance.adminPeeringPeersGet({})).resolves.toBe(null)
-  })
-  test("adminPeeringPeersPost", () => {
-    return expect(instance.adminPeeringPeersPost({})).resolves.toBe(null)
-  })
-  test("adminPeeringStartPost", () => {
-    return expect(instance.adminPeeringStartPost({})).resolves.toBe(null)
-  })
-  test("adminPeeringStatusGet", () => {
-    return expect(instance.adminPeeringStatusGet({})).resolves.toBe(null)
-  })
-  test("adminPeeringStopPost", () => {
-    return expect(instance.adminPeeringStopPost({})).resolves.toBe(null)
-  })
-})
-
-describe("PeersApi", () => {
-  let instance: api.PeersApi
-  beforeEach(function() {
-    instance = new api.PeersApi(config)
-  });
-
-  test("adminPeeringPeersDelete", () => {
-    const body: Array<boolean> = undefined
-    return expect(instance.adminPeeringPeersDelete(body, {})).resolves.toBe(null)
-  })
-  test("adminPeeringPeersGet", () => {
-    return expect(instance.adminPeeringPeersGet({})).resolves.toBe(null)
-  })
-  test("adminPeeringPeersPost", () => {
-    return expect(instance.adminPeeringPeersPost({})).resolves.toBe(null)
-  })
-  test("adminPeeringStartPost", () => {
-    return expect(instance.adminPeeringStartPost({})).resolves.toBe(null)
-  })
-  test("adminPeeringStatusGet", () => {
-    return expect(instance.adminPeeringStatusGet({})).resolves.toBe(null)
-  })
-  test("adminPeeringStopPost", () => {
-    return expect(instance.adminPeeringStopPost({})).resolves.toBe(null)
-  })
-})
-
 describe("PinningApi", () => {
   let instance: api.PinningApi
   beforeEach(function() {
@@ -392,9 +337,9 @@ describe("PinningApi", () => {
     return expect(instance.pinningPinsPinidGet(pinid, {})).resolves.toBe(null)
   })
   test("pinningPinsPinidPost", () => {
+    const body: api.TypesIpfsPin = undefined
     const pinid: string = "pinid_example"
-    const body: string = undefined
-    return expect(instance.pinningPinsPinidPost(pinid, body, {})).resolves.toBe(null)
+    return expect(instance.pinningPinsPinidPost(body, pinid, {})).resolves.toBe(null)
   })
   test("pinningPinsPost", () => {
     const body: api.TypesIpfsPin = undefined

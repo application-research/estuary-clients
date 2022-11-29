@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidContentsDelete**
-> String collectionsColuuidContentsDelete(body, coluuid, contentid)
+> String collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -83,10 +83,9 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 var coluuid = coluuid_example; // String | Collection ID
-var contentid = contentid_example; // String | Content ID
 
 try {
-    var result = api_instance.collectionsColuuidContentsDelete(body, coluuid, contentid);
+    var result = api_instance.collectionsColuuidContentsDelete(body, coluuid);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidContentsDelete: $e\n");
@@ -99,7 +98,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
- **contentid** | **String**| Content ID | 
 
 ### Return type
 

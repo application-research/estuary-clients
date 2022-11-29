@@ -46,7 +46,7 @@
 CollectionsApi <- R6::R6Class(
   'CollectionsApi',
   public = list(
-    userAgent = "Swagger-Codegen/1.0.3/r",
+    userAgent = "Swagger-Codegen/1.0.6/r",
     apiClient = NULL,
     initialize = function(apiClient){
       if (!missing(apiClient)) {
@@ -84,7 +84,7 @@ CollectionsApi <- R6::R6Class(
       }
 
     }
-    collections_coluuid_contents_delete = function(body, coluuid, contentid, ...){
+    collections_coluuid_contents_delete = function(body, coluuid, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -98,10 +98,6 @@ CollectionsApi <- R6::R6Class(
       urlPath <- "/collections/{coluuid}/contents"
       if (!missing(`coluuid`)) {
         urlPath <- gsub(paste0("\\{", "coluuid", "\\}"), `coluuid`, urlPath)
-      }
-
-      if (!missing(`contentid`)) {
-        urlPath <- gsub(paste0("\\{", "contentid", "\\}"), `contentid`, urlPath)
       }
 
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

@@ -88,9 +88,9 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPinidPostTest() throws Exception {
+        TypesIpfsPin body = null;
         String pinid = null;
-        String body = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, body);
+        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
 
         // TODO: test validations
     }

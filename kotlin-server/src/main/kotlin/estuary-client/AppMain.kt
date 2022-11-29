@@ -35,8 +35,6 @@ import io.swagger.server.apis.DealsApi
 import io.swagger.server.apis.MetricsApi
 import io.swagger.server.apis.MinerApi
 import io.swagger.server.apis.NetApi
-import io.swagger.server.apis.PeeringApi
-import io.swagger.server.apis.PeersApi
 import io.swagger.server.apis.PinningApi
 import io.swagger.server.apis.PublicApi
 import io.swagger.server.apis.UserApi
@@ -87,8 +85,6 @@ fun Application.main() {
         MetricsApi()
         MinerApi()
         NetApi()
-        PeeringApi()
-        PeersApi()
         PinningApi()
         PublicApi()
         UserApi()

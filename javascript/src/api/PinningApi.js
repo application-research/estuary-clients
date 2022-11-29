@@ -21,7 +21,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Pinning service.
 * @module api/PinningApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class PinningApi {
 
@@ -183,15 +183,18 @@ export class PinningApi {
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param {String} pinid Pin ID
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.body Meta information of new pin
+     * @param {module:model/TypesIpfsPin} body New pin
+     * @param {String} pinid Pin ID to be replaced
      * @param {module:api/PinningApi~pinningPinsPinidPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    pinningPinsPinidPost(pinid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
+    pinningPinsPinidPost(body, pinid, callback) {
+      
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling pinningPinsPinidPost");
+      }
       // verify the required parameter 'pinid' is set
       if (pinid === undefined || pinid === null) {
         throw new Error("Missing the required parameter 'pinid' when calling pinningPinsPinidPost");

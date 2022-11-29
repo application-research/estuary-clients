@@ -11,8 +11,6 @@ import { DealsService } from './api/deals.service';
 import { MetricsService } from './api/metrics.service';
 import { MinerService } from './api/miner.service';
 import { NetService } from './api/net.service';
-import { PeeringService } from './api/peering.service';
-import { PeersService } from './api/peers.service';
 import { PinningService } from './api/pinning.service';
 import { PublicService } from './api/public.service';
 import { UserService } from './api/user.service';
@@ -30,8 +28,6 @@ import { UserService } from './api/user.service';
     MetricsService,
     MinerService,
     NetService,
-    PeeringService,
-    PeersService,
     PinningService,
     PublicService,
     UserService ]

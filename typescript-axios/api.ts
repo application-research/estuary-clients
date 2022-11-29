@@ -18,8 +18,6 @@ export * from './apis/deals-api';
 export * from './apis/metrics-api';
 export * from './apis/miner-api';
 export * from './apis/net-api';
-export * from './apis/peering-api';
-export * from './apis/peers-api';
 export * from './apis/pinning-api';
 export * from './apis/public-api';
 export * from './apis/user-api';

@@ -132,9 +132,9 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPinidPostTest() {
+        TypesIpfsPin body = null;
         String pinid = null;
-        String body = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(pinid, body);
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
         //assertNotNull(response);
         // TODO: test validations
         

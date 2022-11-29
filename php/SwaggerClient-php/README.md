@@ -277,18 +277,6 @@ Class | Method | HTTP request | Description
 *NetApi* | [**publicMinersGet**](docs/Api/NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/Api/NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/Api/NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
-*PeeringApi* | [**adminPeeringPeersDelete**](docs/Api/PeeringApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeeringApi* | [**adminPeeringPeersGet**](docs/Api/PeeringApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
-*PeeringApi* | [**adminPeeringPeersPost**](docs/Api/PeeringApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeeringApi* | [**adminPeeringStartPost**](docs/Api/PeeringApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
-*PeeringApi* | [**adminPeeringStatusGet**](docs/Api/PeeringApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
-*PeeringApi* | [**adminPeeringStopPost**](docs/Api/PeeringApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
-*PeersApi* | [**adminPeeringPeersDelete**](docs/Api/PeersApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeersApi* | [**adminPeeringPeersGet**](docs/Api/PeersApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
-*PeersApi* | [**adminPeeringPeersPost**](docs/Api/PeersApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeersApi* | [**adminPeeringStartPost**](docs/Api/PeersApi.md#adminpeeringstartpost) | **POST** /admin/peering/start | Start Peering
-*PeersApi* | [**adminPeeringStatusGet**](docs/Api/PeersApi.md#adminpeeringstatusget) | **GET** /admin/peering/status | Check Peering Status
-*PeersApi* | [**adminPeeringStopPost**](docs/Api/PeersApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 *PinningApi* | [**pinningPinsGet**](docs/Api/PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
 *PinningApi* | [**pinningPinsPinidDelete**](docs/Api/PinningApi.md#pinningpinspiniddelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *PinningApi* | [**pinningPinsPinidGet**](docs/Api/PinningApi.md#pinningpinspinidget) | **GET** /pinning/pins/{pinid} | Get a pin status object

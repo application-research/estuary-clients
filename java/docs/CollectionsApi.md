@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidContentsDelete"></a>
 # **collectionsColuuidContentsDelete**
-> String collectionsColuuidContentsDelete(body, coluuid, contentid)
+> String collectionsColuuidContentsDelete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -96,9 +96,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 String coluuid = "coluuid_example"; // String | Collection ID
-String contentid = "contentid_example"; // String | Content ID
 try {
-    String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid, contentid);
+    String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidContentsDelete");
@@ -112,7 +111,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **String**| Collection ID |
- **contentid** | **String**| Content ID |
 
 ### Return type
 

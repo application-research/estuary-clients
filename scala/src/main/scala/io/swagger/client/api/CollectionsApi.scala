@@ -113,11 +113,10 @@ class CollectionsApi(
    *
    * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
    * @param coluuid Collection ID 
-   * @param contentid Content ID 
    * @return String
    */
-  def collectionsColuuidContentsDelete(body: DeleteContentFromCollectionBody, coluuid: String, contentid: String): Option[String] = {
-    val await = Try(Await.result(collectionsColuuidContentsDeleteAsync(body, coluuid, contentid), Duration.Inf))
+  def collectionsColuuidContentsDelete(body: DeleteContentFromCollectionBody, coluuid: String): Option[String] = {
+    val await = Try(Await.result(collectionsColuuidContentsDeleteAsync(body, coluuid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -130,11 +129,10 @@ class CollectionsApi(
    *
    * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
    * @param coluuid Collection ID 
-   * @param contentid Content ID 
    * @return Future(String)
    */
-  def collectionsColuuidContentsDeleteAsync(body: DeleteContentFromCollectionBody, coluuid: String, contentid: String): Future[String] = {
-      helper.collectionsColuuidContentsDelete(body, coluuid, contentid)
+  def collectionsColuuidContentsDeleteAsync(body: DeleteContentFromCollectionBody, coluuid: String): Future[String] = {
+      helper.collectionsColuuidContentsDelete(body, coluuid)
   }
 
   /**
@@ -324,12 +322,10 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
   }
 
   def collectionsColuuidContentsDelete(body: DeleteContentFromCollectionBody,
-    coluuid: String,
-    contentid: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[DeleteContentFromCollectionBody]): Future[String] = {
+    coluuid: String)(implicit reader: ClientResponseReader[String], writer: RequestWriter[DeleteContentFromCollectionBody]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}/contents")
-      replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString)
-      replaceAll("\\{" + "contentid" + "\\}", contentid.toString))
+      replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
@@ -337,8 +333,6 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
     if (body == null) throw new Exception("Missing required parameter 'body' when calling CollectionsApi->collectionsColuuidContentsDelete")
     if (coluuid == null) throw new Exception("Missing required parameter 'coluuid' when calling CollectionsApi->collectionsColuuidContentsDelete")
-
-    if (contentid == null) throw new Exception("Missing required parameter 'contentid' when calling CollectionsApi->collectionsColuuidContentsDelete")
 
 
     val resFuture = client.submit("DELETE", path, queryParams.toMap, headerParams.toMap, writer.write(body))

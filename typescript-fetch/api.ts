@@ -1478,11 +1478,10 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options: any = {}): FetchArgs {
+        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -1491,13 +1490,8 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             if (coluuid === null || coluuid === undefined) {
                 throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
             }
-            // verify required parameter 'contentid' is not null or undefined
-            if (contentid === null || contentid === undefined) {
-                throw new RequiredError('contentid','Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
-            }
             const localVarPath = `/collections/{coluuid}/contents`
-                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)))
-                .replace(`{${"contentid"}}`, encodeURIComponent(String(contentid)));
+                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1817,12 +1811,11 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options);
+        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1975,12 +1968,11 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: any) {
-            return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options)(fetch, basePath);
+        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any) {
+            return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to delete an existing collection.
@@ -2073,13 +2065,12 @@ export class CollectionsApi extends BaseAPI {
      * @summary Deletes a content from a collection
      * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {string} coluuid Collection ID
-     * @param {string} contentid Content ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options)(this.fetch, this.basePath);
+    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -5543,928 +5534,6 @@ export class NetApi extends BaseAPI {
 
 }
 /**
- * PeeringApi - fetch parameter creator
- * @export
- */
-export const PeeringApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
-            }
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/start`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/status`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/stop`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * PeeringApi - functional programming interface
- * @export
- */
-export const PeeringApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStartPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStatusGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeeringApiFetchParamCreator(configuration).adminPeeringStopPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * PeeringApi - factory interface
- * @export
- */
-export const PeeringApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
-            return PeeringApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringPeersGet(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringPeersPost(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringStartPost(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringStatusGet(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options?: any) {
-            return PeeringApiFp(configuration).adminPeeringStopPost(options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * PeeringApi - object-oriented interface
- * @export
- * @class PeeringApi
- * @extends {BaseAPI}
- */
-export class PeeringApi extends BaseAPI {
-    /**
-     * This endpoint can be used to remove a Peer from the Peering Service
-     * @summary Remove peers on Peering Service
-     * @param {Array<boolean>} body Peer ids
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to list all peers on Peering Service
-     * @summary List all Peering peers
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringPeersGet(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringPeersGet(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to add a Peer from the Peering Service
-     * @summary Add peers on Peering Service
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringPeersPost(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringPeersPost(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to start the Peering Service
-     * @summary Start Peering
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringStartPost(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringStartPost(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to check the Peering status
-     * @summary Check Peering Status
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringStatusGet(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringStatusGet(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to stop the Peering Service
-     * @summary Stop Peering
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeeringApi
-     */
-    public adminPeeringStopPost(options?: any) {
-        return PeeringApiFp(this.configuration).adminPeeringStopPost(options)(this.fetch, this.basePath);
-    }
-
-}
-/**
- * PeersApi - fetch parameter creator
- * @export
- */
-export const PeersApiFetchParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
-            }
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/peers`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/start`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/status`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options: any = {}): FetchArgs {
-            const localVarPath = `/admin/peering/stop`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * PeersApi - functional programming interface
- * @export
- */
-export const PeersApiFp = function(configuration?: Configuration) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStartPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStatusGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = PeersApiFetchParamCreator(configuration).adminPeeringStopPost(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-    }
-};
-
-/**
- * PeersApi - factory interface
- * @export
- */
-export const PeersApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
-    return {
-        /**
-         * This endpoint can be used to remove a Peer from the Peering Service
-         * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
-            return PeersApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to list all peers on Peering Service
-         * @summary List all Peering peers
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersGet(options?: any) {
-            return PeersApiFp(configuration).adminPeeringPeersGet(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to add a Peer from the Peering Service
-         * @summary Add peers on Peering Service
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringPeersPost(options?: any) {
-            return PeersApiFp(configuration).adminPeeringPeersPost(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to start the Peering Service
-         * @summary Start Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStartPost(options?: any) {
-            return PeersApiFp(configuration).adminPeeringStartPost(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to check the Peering status
-         * @summary Check Peering Status
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStatusGet(options?: any) {
-            return PeersApiFp(configuration).adminPeeringStatusGet(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint can be used to stop the Peering Service
-         * @summary Stop Peering
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        adminPeeringStopPost(options?: any) {
-            return PeersApiFp(configuration).adminPeeringStopPost(options)(fetch, basePath);
-        },
-    };
-};
-
-/**
- * PeersApi - object-oriented interface
- * @export
- * @class PeersApi
- * @extends {BaseAPI}
- */
-export class PeersApi extends BaseAPI {
-    /**
-     * This endpoint can be used to remove a Peer from the Peering Service
-     * @summary Remove peers on Peering Service
-     * @param {Array<boolean>} body Peer ids
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to list all peers on Peering Service
-     * @summary List all Peering peers
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringPeersGet(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringPeersGet(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to add a Peer from the Peering Service
-     * @summary Add peers on Peering Service
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringPeersPost(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringPeersPost(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to start the Peering Service
-     * @summary Start Peering
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringStartPost(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringStartPost(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to check the Peering status
-     * @summary Check Peering Status
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringStatusGet(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringStatusGet(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint can be used to stop the Peering Service
-     * @summary Stop Peering
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PeersApi
-     */
-    public adminPeeringStopPost(options?: any) {
-        return PeersApiFp(this.configuration).adminPeeringStopPost(options)(this.fetch, this.basePath);
-    }
-
-}
-/**
  * PinningApi - fetch parameter creator
  * @export
  */
@@ -6578,12 +5647,16 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, body?: string, options: any = {}): FetchArgs {
+        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPinidPost.');
+            }
             // verify required parameter 'pinid' is not null or undefined
             if (pinid === null || pinid === undefined) {
                 throw new RequiredError('pinid','Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
@@ -6609,7 +5682,7 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -6725,13 +5798,13 @@ export const PinningApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, body?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
-            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(pinid, body, options);
+        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
+            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(body, pinid, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -6802,13 +5875,13 @@ export const PinningApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {string} pinid Pin ID
-         * @param {string} [body] Meta information of new pin
+         * @param {TypesIpfsPin} body New pin
+         * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(pinid: string, body?: string, options?: any) {
-            return PinningApiFp(configuration).pinningPinsPinidPost(pinid, body, options)(fetch, basePath);
+        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any) {
+            return PinningApiFp(configuration).pinningPinsPinidPost(body, pinid, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a pin to the IPFS daemon.
@@ -6868,14 +5941,14 @@ export class PinningApi extends BaseAPI {
     /**
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
-     * @param {string} pinid Pin ID
-     * @param {string} [body] Meta information of new pin
+     * @param {TypesIpfsPin} body New pin
+     * @param {string} pinid Pin ID to be replaced
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPinidPost(pinid: string, body?: string, options?: any) {
-        return PinningApiFp(this.configuration).pinningPinsPinidPost(pinid, body, options)(this.fetch, this.basePath);
+    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any) {
+        return PinningApiFp(this.configuration).pinningPinsPinidPost(body, pinid, options)(this.fetch, this.basePath);
     }
 
     /**

@@ -61,8 +61,7 @@ public class CollectionsApiTest {
     public void collectionsColuuidContentsDeleteTest() throws Exception {
         MainDeleteContentFromCollectionBody body = null;
         String coluuid = null;
-        String contentid = null;
-        String response = api.collectionsColuuidContentsDelete(body, coluuid, contentid);
+        String response = api.collectionsColuuidContentsDelete(body, coluuid);
 
         // TODO: test validations
     }

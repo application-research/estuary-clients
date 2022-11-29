@@ -876,16 +876,16 @@ class PinningApi
      *
      * Replace a pinned object
      *
-     * @param  string $pinid Pin ID (required)
-     * @param  string $body Meta information of new pin (optional)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body New pin (required)
+     * @param  string $pinid Pin ID to be replaced (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TypesIpfsPinStatusResponse
      */
-    public function pinningPinsPinidPost($pinid, $body = null)
+    public function pinningPinsPinidPost($body, $pinid)
     {
-        list($response) = $this->pinningPinsPinidPostWithHttpInfo($pinid, $body);
+        list($response) = $this->pinningPinsPinidPostWithHttpInfo($body, $pinid);
         return $response;
     }
 
@@ -894,17 +894,17 @@ class PinningApi
      *
      * Replace a pinned object
      *
-     * @param  string $pinid Pin ID (required)
-     * @param  string $body Meta information of new pin (optional)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body New pin (required)
+     * @param  string $pinid Pin ID to be replaced (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TypesIpfsPinStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pinningPinsPinidPostWithHttpInfo($pinid, $body = null)
+    public function pinningPinsPinidPostWithHttpInfo($body, $pinid)
     {
         $returnType = '\Swagger\Client\Model\TypesIpfsPinStatusResponse';
-        $request = $this->pinningPinsPinidPostRequest($pinid, $body);
+        $request = $this->pinningPinsPinidPostRequest($body, $pinid);
 
         try {
             $options = $this->createHttpClientOption();
@@ -986,15 +986,15 @@ class PinningApi
      *
      * Replace a pinned object
      *
-     * @param  string $pinid Pin ID (required)
-     * @param  string $body Meta information of new pin (optional)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body New pin (required)
+     * @param  string $pinid Pin ID to be replaced (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPinidPostAsync($pinid, $body = null)
+    public function pinningPinsPinidPostAsync($body, $pinid)
     {
-        return $this->pinningPinsPinidPostAsyncWithHttpInfo($pinid, $body)
+        return $this->pinningPinsPinidPostAsyncWithHttpInfo($body, $pinid)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1007,16 +1007,16 @@ class PinningApi
      *
      * Replace a pinned object
      *
-     * @param  string $pinid Pin ID (required)
-     * @param  string $body Meta information of new pin (optional)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body New pin (required)
+     * @param  string $pinid Pin ID to be replaced (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPinidPostAsyncWithHttpInfo($pinid, $body = null)
+    public function pinningPinsPinidPostAsyncWithHttpInfo($body, $pinid)
     {
         $returnType = '\Swagger\Client\Model\TypesIpfsPinStatusResponse';
-        $request = $this->pinningPinsPinidPostRequest($pinid, $body);
+        $request = $this->pinningPinsPinidPostRequest($body, $pinid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1058,14 +1058,20 @@ class PinningApi
     /**
      * Create request for operation 'pinningPinsPinidPost'
      *
-     * @param  string $pinid Pin ID (required)
-     * @param  string $body Meta information of new pin (optional)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body New pin (required)
+     * @param  string $pinid Pin ID to be replaced (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function pinningPinsPinidPostRequest($pinid, $body = null)
+    protected function pinningPinsPinidPostRequest($body, $pinid)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling pinningPinsPinidPost'
+            );
+        }
         // verify the required parameter 'pinid' is set
         if ($pinid === null || (is_array($pinid) && count($pinid) === 0)) {
             throw new \InvalidArgumentException(

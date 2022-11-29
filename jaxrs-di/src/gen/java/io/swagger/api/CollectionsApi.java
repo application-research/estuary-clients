@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-23T18:54:22.817Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-29T10:27:01.923Z[GMT]")public class CollectionsApi  {
 
    private CollectionsApiService delegate;
 
@@ -79,10 +79,9 @@ import javax.validation.constraints.*;
     public Response collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body
 
 ,@Parameter(in = ParameterIn.PATH, description = "Collection ID",required=true) @PathParam("coluuid") String coluuid
-,@Parameter(in = ParameterIn.PATH, description = "Content ID",required=true) @PathParam("contentid") String contentid
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.collectionsColuuidContentsDelete(body,coluuid,contentid,securityContext);
+        return delegate.collectionsColuuidContentsDelete(body,coluuid,securityContext);
     }
     @DELETE
     @Path("/{coluuid}")

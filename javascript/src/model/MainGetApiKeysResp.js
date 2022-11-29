@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainGetApiKeysResp model module.
  * @module model/MainGetApiKeysResp
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainGetApiKeysResp {
   /**

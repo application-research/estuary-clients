@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainImportDealBody model module.
  * @module model/MainImportDealBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainImportDealBody {
   /**

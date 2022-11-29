@@ -39,7 +39,7 @@ public interface AdminApi  {
     @Path("/admin/peering/peers")
     @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @Operation(summary = "Remove peers on Peering Service", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "Remove peers on Peering Service", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
@@ -55,7 +55,7 @@ public interface AdminApi  {
     @GET
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
-    @Operation(summary = "List all Peering peers", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "List all Peering peers", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
@@ -71,7 +71,7 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/peers")
     @Produces({ "application/json" })
-    @Operation(summary = "Add peers on Peering Service", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "Add peers on Peering Service", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
@@ -87,7 +87,7 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/start")
     @Produces({ "application/json" })
-    @Operation(summary = "Start Peering", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "Start Peering", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
@@ -103,7 +103,7 @@ public interface AdminApi  {
     @GET
     @Path("/admin/peering/status")
     @Produces({ "application/json" })
-    @Operation(summary = "Check Peering Status", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "Check Peering Status", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
@@ -119,7 +119,7 @@ public interface AdminApi  {
     @POST
     @Path("/admin/peering/stop")
     @Produces({ "application/json" })
-    @Operation(summary = "Stop Peering", tags={ "admin", "peering", "peers" })
+    @Operation(summary = "Stop Peering", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),

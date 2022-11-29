@@ -129,8 +129,8 @@ exports.pinningPinsPinidGET = function(pinid) {
  * Replace a pinned object
  * This endpoint replaces a pinned object.
  *
- * body String Meta information of new pin (optional)
- * pinid String Pin ID
+ * body Types.IpfsPin New pin
+ * pinid String Pin ID to be replaced
  * returns types.IpfsPinStatusResponse
  **/
 exports.pinningPinsPinidPOST = function(body,pinid) {

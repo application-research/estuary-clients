@@ -109,14 +109,13 @@ export class CollectionsService {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param coluuid Collection ID
-     * @param contentid Content ID
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -124,10 +123,6 @@ export class CollectionsService {
 
         if (coluuid === null || coluuid === undefined) {
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
-        }
-
-        if (contentid === null || contentid === undefined) {
-            throw new Error('Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
         }
 
         let headers = this.defaultHeaders;

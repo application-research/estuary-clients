@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -196,10 +196,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PinningApi apiInstance = new PinningApi();
-String pinid = "pinid_example"; // String | Pin ID
-String body = "body_example"; // String | Meta information of new pin
+TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+String pinid = "pinid_example"; // String | Pin ID to be replaced
 try {
-    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(pinid, body);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -211,8 +211,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **String**| Pin ID |
- **body** | [**String**](String.md)| Meta information of new pin | [optional]
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin |
+ **pinid** | **String**| Pin ID to be replaced |
 
 ### Return type
 

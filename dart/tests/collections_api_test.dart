@@ -20,7 +20,7 @@ void main() {
     //
     // This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
     //
-    //Future<String> collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid) async
+    //Future<String> collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid) async
     test('test collectionsColuuidContentsDelete', () async {
       // TODO
     });

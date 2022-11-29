@@ -52,11 +52,10 @@ open class CollectionsAPI: APIBase {
      Deletes a content from a collection
      - parameter body: (body) Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
      - parameter coluuid: (path) Collection ID 
-     - parameter contentid: (path) Content ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: String, contentid: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        collectionsColuuidContentsDeleteWithRequestBuilder(body: body, coluuid: coluuid, contentid: contentid).execute { (response, error) -> Void in
+    open class func collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        collectionsColuuidContentsDeleteWithRequestBuilder(body: body, coluuid: coluuid).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -72,17 +71,13 @@ open class CollectionsAPI: APIBase {
      - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
      - parameter coluuid: (path) Collection ID 
-     - parameter contentid: (path) Content ID 
      - returns: RequestBuilder<String> 
      */
-    open class func collectionsColuuidContentsDeleteWithRequestBuilder(body: MainDeleteContentFromCollectionBody, coluuid: String, contentid: String) -> RequestBuilder<String> {
+    open class func collectionsColuuidContentsDeleteWithRequestBuilder(body: MainDeleteContentFromCollectionBody, coluuid: String) -> RequestBuilder<String> {
         var path = "/collections/{coluuid}/contents"
         let coluuidPreEscape = "\(coluuid)"
         let coluuidPostEscape = coluuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{coluuid}", with: coluuidPostEscape, options: .literal, range: nil)
-        let contentidPreEscape = "\(contentid)"
-        let contentidPostEscape = contentidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{contentid}", with: contentidPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
 

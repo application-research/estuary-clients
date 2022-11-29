@@ -50,16 +50,15 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
      * @param coluuid Collection ID 
-     * @param contentid Content ID 
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidContentsDelete(body: MaindeleteContentFromCollectionBody, coluuid: kotlin.String, contentid: kotlin.String): kotlin.String {
+    fun collectionsColuuidContentsDelete(body: MaindeleteContentFromCollectionBody, coluuid: kotlin.String): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.DELETE,
-                "/collections/{coluuid}/contents".replace("{" + "coluuid" + "}", "$coluuid").replace("{" + "contentid" + "}", "$contentid")
+                "/collections/{coluuid}/contents".replace("{" + "coluuid" + "}", "$coluuid")
         )
         val response = request<kotlin.String>(
                 localVariableConfig, localVariableBody

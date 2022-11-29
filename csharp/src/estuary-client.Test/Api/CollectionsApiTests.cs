@@ -82,8 +82,7 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //MainDeleteContentFromCollectionBody body = null;
             //string coluuid = null;
-            //string contentid = null;
-            //var response = instance.CollectionsColuuidContentsDelete(body, coluuid, contentid);
+            //var response = instance.CollectionsColuuidContentsDelete(body, coluuid);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>

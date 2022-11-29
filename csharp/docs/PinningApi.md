@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body = null)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid)
 
 Replace a pinned object
 
@@ -228,13 +228,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var pinid = pinid_example;  // string | Pin ID
-            var body = new string(); // string | Meta information of new pin (optional) 
+            var body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+            var pinid = pinid_example;  // string | Pin ID to be replaced
 
             try
             {
                 // Replace a pinned object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(pinid, body);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(body, pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -250,8 +250,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **string**| Pin ID | 
- **body** | [**string**](string.md)| Meta information of new pin | [optional] 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **pinid** | **string**| Pin ID to be replaced | 
 
 ### Return type
 

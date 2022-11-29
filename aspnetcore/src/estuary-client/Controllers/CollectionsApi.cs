@@ -68,7 +68,6 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path</remarks>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -80,7 +79,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult CollectionsColuuidContentsDelete([FromBody]MainDeleteContentFromCollectionBody body, [FromRoute][Required]string coluuid, [FromRoute][Required]string contentid)
+        public virtual IActionResult CollectionsColuuidContentsDelete([FromBody]MainDeleteContentFromCollectionBody body, [FromRoute][Required]string coluuid)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

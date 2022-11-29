@@ -19,14 +19,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-23T18:54:23.525Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       @Override
       public Response collectionsColuuidCommitPost(String coluuid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid, SecurityContext securityContext) {
+      public Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(pinid, body)
+> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -161,10 +161,10 @@ This endpoint replaces a pinned object.
 //import io.swagger.client.models.*;
 
 val apiInstance = PinningApi()
-val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID
-val body : kotlin.String =  // kotlin.String | Meta information of new pin
+val body : TypesIpfsPin =  // TypesIpfsPin | New pin
+val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID to be replaced
 try {
-    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidPost(pinid, body)
+    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidPost(body, pinid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidPost")
@@ -179,8 +179,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **kotlin.String**| Pin ID |
- **body** | [**kotlin.String**](kotlin.String.md)| Meta information of new pin | [optional]
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin |
+ **pinid** | **kotlin.String**| Pin ID to be replaced |
 
 ### Return type
 

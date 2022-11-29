@@ -180,24 +180,28 @@ module SwaggerClient
     end
     # Replace a pinned object
     # This endpoint replaces a pinned object.
-    # @param pinid Pin ID
+    # @param body New pin
+    # @param pinid Pin ID to be replaced
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :body Meta information of new pin
     # @return [TypesIpfsPinStatusResponse]
-    def pinning_pins_pinid_post(pinid, opts = {})
-      data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(pinid, opts)
+    def pinning_pins_pinid_post(body, pinid, opts = {})
+      data, _status_code, _headers = pinning_pins_pinid_post_with_http_info(body, pinid, opts)
       data
     end
 
     # Replace a pinned object
     # This endpoint replaces a pinned object.
-    # @param pinid Pin ID
+    # @param body New pin
+    # @param pinid Pin ID to be replaced
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :body Meta information of new pin
     # @return [Array<(TypesIpfsPinStatusResponse, Integer, Hash)>] TypesIpfsPinStatusResponse data, response status code and response headers
-    def pinning_pins_pinid_post_with_http_info(pinid, opts = {})
+    def pinning_pins_pinid_post_with_http_info(body, pinid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PinningApi.pinning_pins_pinid_post ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling PinningApi.pinning_pins_pinid_post"
       end
       # verify the required parameter 'pinid' is set
       if @api_client.config.client_side_validation && pinid.nil?
@@ -220,7 +224,7 @@ module SwaggerClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'body']) 
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       return_type = opts[:return_type] || 'TypesIpfsPinStatusResponse' 
 

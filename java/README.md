@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-11-23T18:54:20.865Z[GMT]
+  - Build date: 2022-11-29T10:27:00.219Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -372,18 +372,6 @@ Class | Method | HTTP request | Description
 *NetApi* | [**publicMinersGet**](docs/NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
-*PeeringApi* | [**adminPeeringPeersDelete**](docs/PeeringApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeeringApi* | [**adminPeeringPeersGet**](docs/PeeringApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-*PeeringApi* | [**adminPeeringPeersPost**](docs/PeeringApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeeringApi* | [**adminPeeringStartPost**](docs/PeeringApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-*PeeringApi* | [**adminPeeringStatusGet**](docs/PeeringApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-*PeeringApi* | [**adminPeeringStopPost**](docs/PeeringApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
-*PeersApi* | [**adminPeeringPeersDelete**](docs/PeersApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*PeersApi* | [**adminPeeringPeersGet**](docs/PeersApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
-*PeersApi* | [**adminPeeringPeersPost**](docs/PeersApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
-*PeersApi* | [**adminPeeringStartPost**](docs/PeersApi.md#adminPeeringStartPost) | **POST** /admin/peering/start | Start Peering
-*PeersApi* | [**adminPeeringStatusGet**](docs/PeersApi.md#adminPeeringStatusGet) | **GET** /admin/peering/status | Check Peering Status
-*PeersApi* | [**adminPeeringStopPost**](docs/PeersApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 *PinningApi* | [**pinningPinsGet**](docs/PinningApi.md#pinningPinsGet) | **GET** /pinning/pins | List all pin status objects
 *PinningApi* | [**pinningPinsPinidDelete**](docs/PinningApi.md#pinningPinsPinidDelete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *PinningApi* | [**pinningPinsPinidGet**](docs/PinningApi.md#pinningPinsPinidGet) | **GET** /pinning/pins/{pinid} | Get a pin status object

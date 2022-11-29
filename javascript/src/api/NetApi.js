@@ -18,7 +18,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Net service.
 * @module api/NetApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class NetApi {
 

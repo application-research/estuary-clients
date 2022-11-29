@@ -127,49 +127,47 @@ class CollectionsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def collections_coluuid_contents_delete(self, body, coluuid, contentid, **kwargs):  # noqa: E501
+    def collections_coluuid_contents_delete(self, body, coluuid, **kwargs):  # noqa: E501
         """Deletes a content from a collection  # noqa: E501
 
         This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_coluuid_contents_delete(body, coluuid, contentid, async_req=True)
+        >>> thread = api.collections_coluuid_contents_delete(body, coluuid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param MainDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
         :param str coluuid: Collection ID (required)
-        :param str contentid: Content ID (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.collections_coluuid_contents_delete_with_http_info(body, coluuid, contentid, **kwargs)  # noqa: E501
+            return self.collections_coluuid_contents_delete_with_http_info(body, coluuid, **kwargs)  # noqa: E501
         else:
-            (data) = self.collections_coluuid_contents_delete_with_http_info(body, coluuid, contentid, **kwargs)  # noqa: E501
+            (data) = self.collections_coluuid_contents_delete_with_http_info(body, coluuid, **kwargs)  # noqa: E501
             return data
 
-    def collections_coluuid_contents_delete_with_http_info(self, body, coluuid, contentid, **kwargs):  # noqa: E501
+    def collections_coluuid_contents_delete_with_http_info(self, body, coluuid, **kwargs):  # noqa: E501
         """Deletes a content from a collection  # noqa: E501
 
         This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_coluuid_contents_delete_with_http_info(body, coluuid, contentid, async_req=True)
+        >>> thread = api.collections_coluuid_contents_delete_with_http_info(body, coluuid, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param MainDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
         :param str coluuid: Collection ID (required)
-        :param str contentid: Content ID (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'coluuid', 'contentid']  # noqa: E501
+        all_params = ['body', 'coluuid']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -192,18 +190,12 @@ class CollectionsApi(object):
         if ('coluuid' not in params or
                 params['coluuid'] is None):
             raise ValueError("Missing the required parameter `coluuid` when calling `collections_coluuid_contents_delete`")  # noqa: E501
-        # verify the required parameter 'contentid' is set
-        if ('contentid' not in params or
-                params['contentid'] is None):
-            raise ValueError("Missing the required parameter `contentid` when calling `collections_coluuid_contents_delete`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'coluuid' in params:
             path_params['coluuid'] = params['coluuid']  # noqa: E501
-        if 'contentid' in params:
-            path_params['contentid'] = params['contentid']  # noqa: E501
 
         query_params = []
 

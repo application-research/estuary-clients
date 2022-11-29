@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainDeleteContentFromCollectionBody model module.
  * @module model/MainDeleteContentFromCollectionBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainDeleteContentFromCollectionBody {
   /**

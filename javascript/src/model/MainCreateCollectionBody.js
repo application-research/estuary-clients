@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainCreateCollectionBody model module.
  * @module model/MainCreateCollectionBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainCreateCollectionBody {
   /**

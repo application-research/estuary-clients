@@ -376,15 +376,14 @@ class CollectionsApi
      *
      * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
-     * @param  string $contentid Content ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function collectionsColuuidContentsDelete($body, $coluuid, $contentid)
+    public function collectionsColuuidContentsDelete($body, $coluuid)
     {
-        list($response) = $this->collectionsColuuidContentsDeleteWithHttpInfo($body, $coluuid, $contentid);
+        list($response) = $this->collectionsColuuidContentsDeleteWithHttpInfo($body, $coluuid);
         return $response;
     }
 
@@ -395,16 +394,15 @@ class CollectionsApi
      *
      * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
-     * @param  string $contentid Content ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function collectionsColuuidContentsDeleteWithHttpInfo($body, $coluuid, $contentid)
+    public function collectionsColuuidContentsDeleteWithHttpInfo($body, $coluuid)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidContentsDeleteRequest($body, $coluuid, $contentid);
+        $request = $this->collectionsColuuidContentsDeleteRequest($body, $coluuid);
 
         try {
             $options = $this->createHttpClientOption();
@@ -488,14 +486,13 @@ class CollectionsApi
      *
      * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
-     * @param  string $contentid Content ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidContentsDeleteAsync($body, $coluuid, $contentid)
+    public function collectionsColuuidContentsDeleteAsync($body, $coluuid)
     {
-        return $this->collectionsColuuidContentsDeleteAsyncWithHttpInfo($body, $coluuid, $contentid)
+        return $this->collectionsColuuidContentsDeleteAsyncWithHttpInfo($body, $coluuid)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -510,15 +507,14 @@ class CollectionsApi
      *
      * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
-     * @param  string $contentid Content ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidContentsDeleteAsyncWithHttpInfo($body, $coluuid, $contentid)
+    public function collectionsColuuidContentsDeleteAsyncWithHttpInfo($body, $coluuid)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidContentsDeleteRequest($body, $coluuid, $contentid);
+        $request = $this->collectionsColuuidContentsDeleteRequest($body, $coluuid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -562,12 +558,11 @@ class CollectionsApi
      *
      * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
-     * @param  string $contentid Content ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function collectionsColuuidContentsDeleteRequest($body, $coluuid, $contentid)
+    protected function collectionsColuuidContentsDeleteRequest($body, $coluuid)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -579,12 +574,6 @@ class CollectionsApi
         if ($coluuid === null || (is_array($coluuid) && count($coluuid) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $coluuid when calling collectionsColuuidContentsDelete'
-            );
-        }
-        // verify the required parameter 'contentid' is set
-        if ($contentid === null || (is_array($contentid) && count($contentid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $contentid when calling collectionsColuuidContentsDelete'
             );
         }
 
@@ -601,14 +590,6 @@ class CollectionsApi
             $resourcePath = str_replace(
                 '{' . 'coluuid' . '}',
                 ObjectSerializer::toPathValue($coluuid),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($contentid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'contentid' . '}',
-                ObjectSerializer::toPathValue($contentid),
                 $resourcePath
             );
         }

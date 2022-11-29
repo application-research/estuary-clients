@@ -20,7 +20,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Deals service.
 * @module api/DealsApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class DealsApi {
 

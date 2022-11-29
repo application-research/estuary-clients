@@ -13,8 +13,8 @@ module.exports.collectionsColuuidCommitPOST = function collectionsColuuidCommitP
     });
 };
 
-module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidContentsDELETE (req, res, next, body, coluuid, contentid) {
-  Collections.collectionsColuuidContentsDELETE(body, coluuid, contentid)
+module.exports.collectionsColuuidContentsDELETE = function collectionsColuuidContentsDELETE (req, res, next, body, coluuid) {
+  Collections.collectionsColuuidContentsDELETE(body, coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
     })

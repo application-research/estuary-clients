@@ -21,7 +21,7 @@ import {UtilHttpError} from '../model/UtilHttpError';
 /**
 * Collections service.
 * @module api/CollectionsApi
-* @version 1.0.3
+* @version 1.0.6
 */
 export class CollectionsApi {
 
@@ -97,11 +97,10 @@ export class CollectionsApi {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @param {module:model/MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {String} coluuid Collection ID
-     * @param {String} contentid Content ID
      * @param {module:api/CollectionsApi~collectionsColuuidContentsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    collectionsColuuidContentsDelete(body, coluuid, contentid, callback) {
+    collectionsColuuidContentsDelete(body, coluuid, callback) {
       
       let postBody = body;
       // verify the required parameter 'body' is set
@@ -112,13 +111,9 @@ export class CollectionsApi {
       if (coluuid === undefined || coluuid === null) {
         throw new Error("Missing the required parameter 'coluuid' when calling collectionsColuuidContentsDelete");
       }
-      // verify the required parameter 'contentid' is set
-      if (contentid === undefined || contentid === null) {
-        throw new Error("Missing the required parameter 'contentid' when calling collectionsColuuidContentsDelete");
-      }
 
       let pathParams = {
-        'coluuid': coluuid,'contentid': contentid
+        'coluuid': coluuid
       };
       let queryParams = {
         

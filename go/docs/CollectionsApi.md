@@ -42,7 +42,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidContentsDelete**
-> string CollectionsColuuidContentsDelete(ctx, body, coluuid, contentid)
+> string CollectionsColuuidContentsDelete(ctx, body, coluuid)
 Deletes a content from a collection
 
 This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
@@ -54,7 +54,6 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
   **coluuid** | **string**| Collection ID | 
-  **contentid** | **string**| Content ID | 
 
 ### Return type
 

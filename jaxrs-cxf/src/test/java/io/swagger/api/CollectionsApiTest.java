@@ -101,8 +101,7 @@ public class CollectionsApiTest {
     public void collectionsColuuidContentsDeleteTest() {
         MainDeleteContentFromCollectionBody body = null;
         String coluuid = null;
-        String contentid = null;
-        //String response = api.collectionsColuuidContentsDelete(body, coluuid, contentid);
+        //String response = api.collectionsColuuidContentsDelete(body, coluuid);
         //assertNotNull(response);
         // TODO: test validations
         

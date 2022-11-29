@@ -36,9 +36,8 @@ class CollectionsApiControllerTest {
     void collectionsColuuidContentsDeleteTest() {
         MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody();
         String coluuid = "coluuid_example";
-        String contentid = "contentid_example";
         try {
-            api.collectionsColuuidContentsDelete(body, coluuid, contentid).blockingGet();
+            api.collectionsColuuidContentsDelete(body, coluuid).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

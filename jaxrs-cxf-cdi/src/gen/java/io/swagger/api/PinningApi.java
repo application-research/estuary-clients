@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-23T18:54:23.525Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")
 public class PinningApi  {
 
   @Context SecurityContext securityContext;
@@ -99,11 +99,11 @@ public class PinningApi  {
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response pinningPinsPinidPost(
-@Parameter(description = "Pin ID",required=true) @PathParam("pinid") String pinid
+@Parameter(description = "New pin" ,required=true) TypesIpfsPin body
 , 
-@Parameter(description = "Meta information of new pin" ) String body
+@Parameter(description = "Pin ID to be replaced",required=true) @PathParam("pinid") String pinid
 ) {
-        return delegate.pinningPinsPinidPost(pinid, body, securityContext);
+        return delegate.pinningPinsPinidPost(body, pinid, securityContext);
     }
 
     @POST

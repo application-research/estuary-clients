@@ -53,10 +53,10 @@ class PinningApiControllerTest {
 
     @Test
     void pinningPinsPinidPostTest() {
+        TypesIpfsPin body = new TypesIpfsPin();
         String pinid = "pinid_example";
-        String body = "body_example";
         try {
-            api.pinningPinsPinidPost(pinid, body).blockingGet();
+            api.pinningPinsPinidPost(body, pinid).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

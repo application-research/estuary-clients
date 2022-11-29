@@ -38,7 +38,7 @@ void main() {
     //
     // This endpoint replaces a pinned object.
     //
-    //Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(String pinid, { String body }) async
+    //Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(TypesIpfsPin body, String pinid) async
     test('test pinningPinsPinidPost', () async {
       // TODO
     });

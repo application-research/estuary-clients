@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/collections")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-23T18:54:26.964Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
 public class CollectionsApi {
 
     @POST
@@ -57,9 +57,6 @@ public class CollectionsApi {
     public Response collectionsColuuidContentsDelete(@Valid MainDeleteContentFromCollectionBody body, @PathParam("coluuid")
 
  @Parameter(description = "Collection ID") String coluuid
-, @PathParam("contentid")
-
- @Parameter(description = "Content ID") String contentid
 ) {
         return Response.ok().entity("magic!").build();
     }

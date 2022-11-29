@@ -32,14 +32,14 @@ class CollectionsApi(
         }
       }
     } ~
-    path() { (coluuid, contentid) => 
+    path() { (coluuid) => 
       delete {
         parameters() { () =>
           
             formFields() { () =>
               
                 entity(as[Main.deleteContentFromCollectionBody]){ body =>
-                  collectionsService.collectionsColuuidContentsDelete(body = body, coluuid = coluuid, contentid = contentid)
+                  collectionsService.collectionsColuuidContentsDelete(body = body, coluuid = coluuid)
                 }
              
             }
@@ -166,7 +166,7 @@ trait CollectionsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsColuuidContentsDelete(body: Main.deleteContentFromCollectionBody, coluuid: String, contentid: String)
+  def collectionsColuuidContentsDelete(body: Main.deleteContentFromCollectionBody, coluuid: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsColuuidDelete200(responseString: String): Route =

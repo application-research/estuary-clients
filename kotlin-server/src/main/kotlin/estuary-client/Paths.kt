@@ -113,9 +113,8 @@ object Paths {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
      * @param coluuid Collection ID 
-     * @param contentid Content ID 
      */
-    @Location("/collections/{coluuid}/contents") class collectionsColuuidContentsDelete(val body: MaindeleteContentFromCollectionBody, val coluuid: kotlin.String, val contentid: kotlin.String)
+    @Location("/collections/{coluuid}/contents") class collectionsColuuidContentsDelete(val body: MaindeleteContentFromCollectionBody, val coluuid: kotlin.String)
 
     /**
      * Deletes a collection
@@ -450,80 +449,6 @@ object Paths {
     @Location("/public/net/peers") class publicNetPeersGet()
 
     /**
-     * Remove peers on Peering Service
-     * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.Boolean>)
-
-    /**
-     * List all Peering peers
-     * This endpoint can be used to list all peers on Peering Service
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersGet()
-
-    /**
-     * Add peers on Peering Service
-     * This endpoint can be used to add a Peer from the Peering Service
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersPost()
-
-    /**
-     * Start Peering
-     * This endpoint can be used to start the Peering Service
-     */
-    @Location("/admin/peering/start") class adminPeeringStartPost()
-
-    /**
-     * Check Peering Status
-     * This endpoint can be used to check the Peering status
-     */
-    @Location("/admin/peering/status") class adminPeeringStatusGet()
-
-    /**
-     * Stop Peering
-     * This endpoint can be used to stop the Peering Service
-     */
-    @Location("/admin/peering/stop") class adminPeeringStopPost()
-
-    /**
-     * Remove peers on Peering Service
-     * This endpoint can be used to remove a Peer from the Peering Service
-     * @param body Peer ids 
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.Boolean>)
-
-    /**
-     * List all Peering peers
-     * This endpoint can be used to list all peers on Peering Service
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersGet()
-
-    /**
-     * Add peers on Peering Service
-     * This endpoint can be used to add a Peer from the Peering Service
-     */
-    @Location("/admin/peering/peers") class adminPeeringPeersPost()
-
-    /**
-     * Start Peering
-     * This endpoint can be used to start the Peering Service
-     */
-    @Location("/admin/peering/start") class adminPeeringStartPost()
-
-    /**
-     * Check Peering Status
-     * This endpoint can be used to check the Peering status
-     */
-    @Location("/admin/peering/status") class adminPeeringStatusGet()
-
-    /**
-     * Stop Peering
-     * This endpoint can be used to stop the Peering Service
-     */
-    @Location("/admin/peering/stop") class adminPeeringStopPost()
-
-    /**
      * List all pin status objects
      * This endpoint lists all pin status objects
      */
@@ -546,10 +471,10 @@ object Paths {
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID 
-     * @param body Meta information of new pin (optional)
+     * @param body New pin 
+     * @param pinid Pin ID to be replaced 
      */
-    @Location("/pinning/pins/{pinid}") class pinningPinsPinidPost(val pinid: kotlin.String, val body: kotlin.String)
+    @Location("/pinning/pins/{pinid}") class pinningPinsPinidPost(val body: TypesIpfsPin, val pinid: kotlin.String)
 
     /**
      * Add and pin object

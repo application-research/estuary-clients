@@ -45,20 +45,20 @@ def pinning_pins_pinid_get(pinid):  # noqa: E501
     return 'do some magic!'
 
 
-def pinning_pins_pinid_post(pinid, body=None):  # noqa: E501
+def pinning_pins_pinid_post(body, pinid):  # noqa: E501
     """Replace a pinned object
 
     This endpoint replaces a pinned object. # noqa: E501
 
-    :param pinid: Pin ID
-    :type pinid: str
-    :param body: Meta information of new pin
+    :param body: New pin
     :type body: dict | bytes
+    :param pinid: Pin ID to be replaced
+    :type pinid: str
 
     :rtype: TypesIpfsPinStatusResponse
     """
     if connexion.request.is_json:
-        body = str.from_dict(connexion.request.get_json())  # noqa: E501
+        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

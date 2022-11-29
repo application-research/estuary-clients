@@ -37,8 +37,6 @@ import {DealsApi} from './api/DealsApi';
 import {MetricsApi} from './api/MetricsApi';
 import {MinerApi} from './api/MinerApi';
 import {NetApi} from './api/NetApi';
-import {PeeringApi} from './api/PeeringApi';
-import {PeersApi} from './api/PeersApi';
 import {PinningApi} from './api/PinningApi';
 import {PublicApi} from './api/PublicApi';
 import {UserApi} from './api/UserApi';
@@ -72,7 +70,7 @@ import {UserApi} from './api/UserApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.0.3
+* @version 1.0.6
 */
 export {
     /**
@@ -224,18 +222,6 @@ export {
     * @property {module:api/NetApi}
     */
     NetApi,
-
-    /**
-    * The PeeringApi service constructor.
-    * @property {module:api/PeeringApi}
-    */
-    PeeringApi,
-
-    /**
-    * The PeersApi service constructor.
-    * @property {module:api/PeersApi}
-    */
-    PeersApi,
 
     /**
     * The PinningApi service constructor.

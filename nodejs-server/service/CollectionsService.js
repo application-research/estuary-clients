@@ -27,10 +27,9 @@ exports.collectionsColuuidCommitPOST = function(coluuid) {
  *
  * body Main.deleteContentFromCollectionBody Variable to use when filtering for files (must be either 'path' or 'content_id')
  * coluuid String Collection ID
- * contentid String Content ID
  * returns String
  **/
-exports.collectionsColuuidContentsDELETE = function(body,coluuid,contentid) {
+exports.collectionsColuuidContentsDELETE = function(body,coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

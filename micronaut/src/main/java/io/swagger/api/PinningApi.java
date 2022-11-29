@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-23T18:54:26.029Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
 @Controller
 public interface PinningApi {
 
@@ -73,8 +73,8 @@ public interface PinningApi {
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/pinning/pins/{pinid}", produces = { "application/json" }, consumes = {"application/json"})
-    default Single<HttpResponse<TypesIpfsPinStatusResponse>> pinningPinsPinidPost(@Parameter(description = "Pin ID") @PathVariable("pinid") String pinid
-,@Parameter(description = "Meta information of new pin") @Valid @Body String body
+    default Single<HttpResponse<TypesIpfsPinStatusResponse>> pinningPinsPinidPost(@Parameter(description = "New pin") @Valid @Body TypesIpfsPin body
+,@Parameter(description = "Pin ID to be replaced") @PathVariable("pinid") String pinid
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

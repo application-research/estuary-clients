@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-23T18:54:23.755Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public class CollectionsApi  {
 
     @Inject CollectionsApiService service;
 
@@ -67,9 +67,9 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid, @PathParam("contentid") String contentid,@Context SecurityContext securityContext)
+    public Response collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.collectionsColuuidContentsDelete(body,coluuid,contentid,securityContext);
+        return service.collectionsColuuidContentsDelete(body,coluuid,securityContext);
     }
     @DELETE
     @Path("/{coluuid}")

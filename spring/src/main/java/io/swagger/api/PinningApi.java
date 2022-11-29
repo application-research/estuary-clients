@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-23T18:54:26.932Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
 @Validated
 public interface PinningApi {
 
@@ -91,7 +91,7 @@ public interface PinningApi {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID", required=true, schema=@Schema()) @PathVariable("pinid") String pinid, @Parameter(in = ParameterIn.DEFAULT, description = "Meta information of new pin", schema=@Schema()) @Valid @RequestBody String body);
+    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID to be replaced", required=true, schema=@Schema()) @PathVariable("pinid") String pinid, @Parameter(in = ParameterIn.DEFAULT, description = "New pin", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body);
 
 
     @Operation(summary = "Add and pin object", description = "This endpoint adds a pin to the IPFS daemon.", security = {

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainChannelIDParam model module.
  * @module model/MainChannelIDParam
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainChannelIDParam {
   /**

@@ -25,7 +25,7 @@
 MetricsApi <- R6::R6Class(
   'MetricsApi',
   public = list(
-    userAgent = "Swagger-Codegen/1.0.3/r",
+    userAgent = "Swagger-Codegen/1.0.6/r",
     apiClient = NULL,
     initialize = function(apiClient){
       if (!missing(apiClient)) {

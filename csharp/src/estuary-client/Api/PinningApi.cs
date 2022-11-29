@@ -91,10 +91,10 @@ namespace estuary-client.Api
         /// This endpoint replaces a pinned object.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body = null);
+        TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid);
 
         /// <summary>
         /// Replace a pinned object
@@ -103,10 +103,10 @@ namespace estuary-client.Api
         /// This endpoint replaces a pinned object.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
-        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPinidPostWithHttpInfo (string pinid, string body = null);
+        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPinidPostWithHttpInfo (TypesIpfsPin body, string pinid);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -198,10 +198,10 @@ namespace estuary-client.Api
         /// This endpoint replaces a pinned object.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>Task of TypesIpfsPinStatusResponse</returns>
-        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (string pinid, string body = null);
+        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (TypesIpfsPin body, string pinid);
 
         /// <summary>
         /// Replace a pinned object
@@ -210,10 +210,10 @@ namespace estuary-client.Api
         /// This endpoint replaces a pinned object.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string body = null);
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (TypesIpfsPin body, string pinid);
         /// <summary>
         /// Add and pin object
         /// </summary>
@@ -759,12 +759,12 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body = null)
+        public TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid)
         {
-             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPinidPostWithHttpInfo(pinid, body);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPinidPostWithHttpInfo(body, pinid);
              return localVarResponse.Data;
         }
 
@@ -772,11 +772,14 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
-        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPinidPostWithHttpInfo (string pinid, string body = null)
+        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPinidPostWithHttpInfo (TypesIpfsPin body, string pinid)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling PinningApi->PinningPinsPinidPost");
             // verify the required parameter 'pinid' is set
             if (pinid == null)
                 throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningApi->PinningPinsPinidPost");
@@ -840,12 +843,12 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>Task of TypesIpfsPinStatusResponse</returns>
-        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (string pinid, string body = null)
+        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPinidPostAsync (TypesIpfsPin body, string pinid)
         {
-             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(pinid, body);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPinidPostAsyncWithHttpInfo(body, pinid);
              return localVarResponse.Data;
 
         }
@@ -854,11 +857,14 @@ namespace estuary-client.Api
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin (optional)</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (string pinid, string body = null)
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPinidPostAsyncWithHttpInfo (TypesIpfsPin body, string pinid)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling PinningApi->PinningPinsPinidPost");
             // verify the required parameter 'pinid' is set
             if (pinid == null)
                 throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningApi->PinningPinsPinidPost");

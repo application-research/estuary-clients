@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-23T18:54:26.932Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
 @RestController
 public class PinningApiController implements PinningApi {
 
@@ -84,7 +84,7 @@ public class PinningApiController implements PinningApi {
         return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID", required=true, schema=@Schema()) @PathVariable("pinid") String pinid,@Parameter(in = ParameterIn.DEFAULT, description = "Meta information of new pin", schema=@Schema()) @Valid @RequestBody String body) {
+    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID to be replaced", required=true, schema=@Schema()) @PathVariable("pinid") String pinid,@Parameter(in = ParameterIn.DEFAULT, description = "New pin", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

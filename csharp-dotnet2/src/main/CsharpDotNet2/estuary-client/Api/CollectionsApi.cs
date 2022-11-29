@@ -22,9 +22,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>string</returns>
-        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid);
+        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid);
         /// <summary>
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
@@ -160,21 +159,17 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
-        /// <param name="contentid">Content ID</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidContentsDelete");
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidContentsDelete");
-            // verify the required parameter 'contentid' is set
-            if (contentid == null) throw new ApiException(400, "Missing required parameter 'contentid' when calling CollectionsColuuidContentsDelete");
     
             var path = "/collections/{coluuid}/contents";
             path = path.Replace("{format}", "json");
             path = path.Replace("{" + "coluuid" + "}", ApiClient.ParameterToString(coluuid));
-path = path.Replace("{" + "contentid" + "}", ApiClient.ParameterToString(contentid));
     
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();

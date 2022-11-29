@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "estuary-client"
-VERSION = "1.0.3"
+VERSION = "1.0.6"
 # To install the library, run the following
 #
 # python setup.py install

@@ -101,9 +101,9 @@ namespace estuary-client.Test
         public void PinningPinsPinidPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //TypesIpfsPin body = null;
             //string pinid = null;
-            //string body = null;
-            //var response = instance.PinningPinsPinidPost(pinid, body);
+            //var response = instance.PinningPinsPinidPost(body, pinid);
             //Assert.IsInstanceOf<TypesIpfsPinStatusResponse> (response, "response is TypesIpfsPinStatusResponse");
         }
         /// <summary>

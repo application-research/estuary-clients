@@ -278,12 +278,11 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # String | Collection ID
-contentid = 'contentid_example' # String | Content ID
 
 
 begin
   #Deletes a content from a collection
-  result = api_instance.collections_coluuid_contents_delete(body, coluuid, contentid)
+  result = api_instance.collections_coluuid_contents_delete(body, coluuid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_coluuid_contents_delete: #{e}"
@@ -1176,214 +1175,6 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PeeringApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
-
-
-begin
-  #Remove peers on Peering Service
-  result = api_instance.admin_peering_peers_delete(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_delete: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #List all Peering peers
-  result = api_instance.admin_peering_peers_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_peers_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Start Peering
-  result = api_instance.admin_peering_start_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_start_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Check Peering Status
-  result = api_instance.admin_peering_status_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_status_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeeringApi.new
-
-begin
-  #Stop Peering
-  result = api_instance.admin_peering_stop_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeeringApi->admin_peering_stop_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
-
-
-begin
-  #Remove peers on Peering Service
-  result = api_instance.admin_peering_peers_delete(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_delete: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #List all Peering peers
-  result = api_instance.admin_peering_peers_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_peers_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Start Peering
-  result = api_instance.admin_peering_start_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_start_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Check Peering Status
-  result = api_instance.admin_peering_status_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_status_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PeersApi.new
-
-begin
-  #Stop Peering
-  result = api_instance.admin_peering_stop_post
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PeersApi->admin_peering_stop_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
 api_instance = SwaggerClient::PinningApi.new
 
 begin
@@ -1439,14 +1230,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-pinid = 'pinid_example' # String | Pin ID
-opts = { 
-  body: 'body_example' # String | Meta information of new pin
-}
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | New pin
+pinid = 'pinid_example' # String | Pin ID to be replaced
+
 
 begin
   #Replace a pinned object
-  result = api_instance.pinning_pins_pinid_post(pinid, opts)
+  result = api_instance.pinning_pins_pinid_post(body, pinid)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_pinid_post: #{e}"
@@ -1826,18 +1616,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::NetApi* | [**public_miners_get**](docs/NetApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::NetApi* | [**public_net_addrs_get**](docs/NetApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::NetApi* | [**public_net_peers_get**](docs/NetApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_delete**](docs/PeeringApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_get**](docs/PeeringApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
-*SwaggerClient::PeeringApi* | [**admin_peering_peers_post**](docs/PeeringApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
-*SwaggerClient::PeeringApi* | [**admin_peering_start_post**](docs/PeeringApi.md#admin_peering_start_post) | **POST** /admin/peering/start | Start Peering
-*SwaggerClient::PeeringApi* | [**admin_peering_status_get**](docs/PeeringApi.md#admin_peering_status_get) | **GET** /admin/peering/status | Check Peering Status
-*SwaggerClient::PeeringApi* | [**admin_peering_stop_post**](docs/PeeringApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
-*SwaggerClient::PeersApi* | [**admin_peering_peers_delete**](docs/PeersApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
-*SwaggerClient::PeersApi* | [**admin_peering_peers_get**](docs/PeersApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
-*SwaggerClient::PeersApi* | [**admin_peering_peers_post**](docs/PeersApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
-*SwaggerClient::PeersApi* | [**admin_peering_start_post**](docs/PeersApi.md#admin_peering_start_post) | **POST** /admin/peering/start | Start Peering
-*SwaggerClient::PeersApi* | [**admin_peering_status_get**](docs/PeersApi.md#admin_peering_status_get) | **GET** /admin/peering/status | Check Peering Status
-*SwaggerClient::PeersApi* | [**admin_peering_stop_post**](docs/PeersApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
 *SwaggerClient::PinningApi* | [**pinning_pins_get**](docs/PinningApi.md#pinning_pins_get) | **GET** /pinning/pins | List all pin status objects
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_delete**](docs/PinningApi.md#pinning_pins_pinid_delete) | **DELETE** /pinning/pins/{pinid} | Delete a pinned object
 *SwaggerClient::PinningApi* | [**pinning_pins_pinid_get**](docs/PinningApi.md#pinning_pins_pinid_get) | **GET** /pinning/pins/{pinid} | Get a pin status object

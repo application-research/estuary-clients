@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_pinid_post**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_post(pinid, body=body)
+> TypesIpfsPinStatusResponse pinning_pins_pinid_post(body, pinid)
 
 Replace a pinned object
 
@@ -190,12 +190,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
-pinid = 'pinid_example' # str | Pin ID
-body = 'body_example' # str | Meta information of new pin (optional)
+body = estuary_client.TypesIpfsPin() # TypesIpfsPin | New pin
+pinid = 'pinid_example' # str | Pin ID to be replaced
 
 try:
     # Replace a pinned object
-    api_response = api_instance.pinning_pins_pinid_post(pinid, body=body)
+    api_response = api_instance.pinning_pins_pinid_post(body, pinid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_pinid_post: %s\n" % e)
@@ -205,8 +205,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pinid** | **str**| Pin ID | 
- **body** | [**str**](str.md)| Meta information of new pin | [optional] 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **pinid** | **str**| Pin ID to be replaced | 
 
 ### Return type
 

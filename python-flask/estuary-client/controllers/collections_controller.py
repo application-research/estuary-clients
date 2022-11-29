@@ -21,7 +21,7 @@ def collections_coluuid_commit_post(coluuid):  # noqa: E501
     return 'do some magic!'
 
 
-def collections_coluuid_contents_delete(body, coluuid, contentid):  # noqa: E501
+def collections_coluuid_contents_delete(body, coluuid):  # noqa: E501
     """Deletes a content from a collection
 
     This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path # noqa: E501
@@ -30,8 +30,6 @@ def collections_coluuid_contents_delete(body, coluuid, contentid):  # noqa: E501
     :type body: dict | bytes
     :param coluuid: Collection ID
     :type coluuid: str
-    :param contentid: Content ID
-    :type contentid: str
 
     :rtype: str
     """

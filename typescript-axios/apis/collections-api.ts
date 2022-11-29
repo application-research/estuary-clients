@@ -79,11 +79,10 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete: async (body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        collectionsColuuidContentsDelete: async (body: MainDeleteContentFromCollectionBody, coluuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -92,13 +91,8 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
             if (coluuid === null || coluuid === undefined) {
                 throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsColuuidContentsDelete.');
             }
-            // verify required parameter 'contentid' is not null or undefined
-            if (contentid === null || contentid === undefined) {
-                throw new RequiredError('contentid','Required parameter contentid was null or undefined when calling collectionsColuuidContentsDelete.');
-            }
             const localVarPath = `/collections/{coluuid}/contents`
-                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)))
-                .replace(`{${"contentid"}}`, encodeURIComponent(String(contentid)));
+                .replace(`{${"coluuid"}}`, encodeURIComponent(String(coluuid)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -490,12 +484,11 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options);
+        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -613,12 +606,11 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
          * @summary Deletes a content from a collection
          * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
-         * @param {string} contentid Content ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options).then((request) => request(axios, basePath));
+        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to delete an existing collection.
@@ -710,13 +702,12 @@ export class CollectionsApi extends BaseAPI {
      * @summary Deletes a content from a collection
      * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {string} coluuid Collection ID
-     * @param {string} contentid Content ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, contentid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, contentid, options).then((request) => request(this.axios, this.basePath));
+    public async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to delete an existing collection.

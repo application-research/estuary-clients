@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidContentsDelete**
-> string collectionsColuuidContentsDelete($body, $coluuid, $contentid)
+> string collectionsColuuidContentsDelete($body, $coluuid)
 
 Deletes a content from a collection
 
@@ -91,10 +91,9 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 );
 $body = new \Swagger\Client\Model\MainDeleteContentFromCollectionBody(); // \Swagger\Client\Model\MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 $coluuid = "coluuid_example"; // string | Collection ID
-$contentid = "contentid_example"; // string | Content ID
 
 try {
-    $result = $apiInstance->collectionsColuuidContentsDelete($body, $coluuid, $contentid);
+    $result = $apiInstance->collectionsColuuidContentsDelete($body, $coluuid);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidContentsDelete: ', $e->getMessage(), PHP_EOL;
@@ -108,7 +107,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\Swagger\Client\Model\MainDeleteContentFromCollectionBody**](../Model/MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **string**| Collection ID |
- **contentid** | **string**| Content ID |
 
 ### Return type
 

@@ -168,11 +168,11 @@ open class PinningAPI {
 
     /**
      Replace a pinned object
-     - parameter pinid: (path) Pin ID      - parameter body: (body) Meta information of new pin (optional)
+     - parameter body: (body) New pin      - parameter pinid: (path) Pin ID to be replaced 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPinidPost(pinid: String, body: String? = nil, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
-        pinningPinsPinidPostWithRequestBuilder(pinid: pinid, body: body).execute { (response, error) -> Void in
+    open class func pinningPinsPinidPost(body: TypesIpfsPin, pinid: String, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
+        pinningPinsPinidPostWithRequestBuilder(body: body, pinid: pinid).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -198,11 +198,11 @@ open class PinningAPI {
   "info" : { },
   "status" : "status"
 }}]
-     - parameter pinid: (path) Pin ID      - parameter body: (body) Meta information of new pin (optional)
+     - parameter body: (body) New pin      - parameter pinid: (path) Pin ID to be replaced 
 
      - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
      */
-    open class func pinningPinsPinidPostWithRequestBuilder(pinid: String, body: String? = nil) -> RequestBuilder<TypesIpfsPinStatusResponse> {
+    open class func pinningPinsPinidPostWithRequestBuilder(body: TypesIpfsPin, pinid: String) -> RequestBuilder<TypesIpfsPinStatusResponse> {
         var path = "/pinning/pins/{pinid}"
         let pinidPreEscape = "\(pinid)"
         let pinidPostEscape = pinidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

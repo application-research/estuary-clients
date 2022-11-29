@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-23T18:54:22.817Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-29T10:27:01.923Z[GMT]")public class PinningApi  {
 
    private PinningApiService delegate;
 
@@ -107,12 +107,12 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID",required=true) @PathParam("pinid") String pinid
-,@Parameter(in = ParameterIn.DEFAULT, description = "Meta information of new pin" ) String body
+    public Response pinningPinsPinidPost(@Parameter(in = ParameterIn.DEFAULT, description = "New pin" ,required=true) TypesIpfsPin body
 
+,@Parameter(in = ParameterIn.PATH, description = "Pin ID to be replaced",required=true) @PathParam("pinid") String pinid
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.pinningPinsPinidPost(pinid,body,securityContext);
+        return delegate.pinningPinsPinidPost(body,pinid,securityContext);
     }
     @POST
     @Path("/pins")

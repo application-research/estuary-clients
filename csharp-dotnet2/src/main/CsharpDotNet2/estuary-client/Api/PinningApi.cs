@@ -31,10 +31,10 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body);
+        TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid);
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
@@ -200,11 +200,13 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPinidPost (string pinid, string body)
+        public TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid)
         {
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PinningPinsPinidPost");
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidPost");
     

@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, pinid, optional)
+> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, body, pinid)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -101,15 +101,8 @@ This endpoint replaces a pinned object.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **pinid** | **string**| Pin ID | 
- **optional** | ***PinningApiPinningPinsPinidPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PinningApiPinningPinsPinidPostOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **body** | [**optional.Interface of string**](string.md)| Meta information of new pin | 
+  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+  **pinid** | **string**| Pin ID to be replaced | 
 
 ### Return type
 

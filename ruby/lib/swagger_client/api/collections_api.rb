@@ -76,11 +76,10 @@ module SwaggerClient
     # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
     # @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
     # @param coluuid Collection ID
-    # @param contentid Content ID
     # @param [Hash] opts the optional parameters
     # @return [String]
-    def collections_coluuid_contents_delete(body, coluuid, contentid, opts = {})
-      data, _status_code, _headers = collections_coluuid_contents_delete_with_http_info(body, coluuid, contentid, opts)
+    def collections_coluuid_contents_delete(body, coluuid, opts = {})
+      data, _status_code, _headers = collections_coluuid_contents_delete_with_http_info(body, coluuid, opts)
       data
     end
 
@@ -88,10 +87,9 @@ module SwaggerClient
     # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
     # @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
     # @param coluuid Collection ID
-    # @param contentid Content ID
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def collections_coluuid_contents_delete_with_http_info(body, coluuid, contentid, opts = {})
+    def collections_coluuid_contents_delete_with_http_info(body, coluuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_contents_delete ...'
       end
@@ -103,12 +101,8 @@ module SwaggerClient
       if @api_client.config.client_side_validation && coluuid.nil?
         fail ArgumentError, "Missing the required parameter 'coluuid' when calling CollectionsApi.collections_coluuid_contents_delete"
       end
-      # verify the required parameter 'contentid' is set
-      if @api_client.config.client_side_validation && contentid.nil?
-        fail ArgumentError, "Missing the required parameter 'contentid' when calling CollectionsApi.collections_coluuid_contents_delete"
-      end
       # resource path
-      local_var_path = '/collections/{coluuid}/contents'.sub('{' + 'coluuid' + '}', coluuid.to_s).sub('{' + 'contentid' + '}', contentid.to_s)
+      local_var_path = '/collections/{coluuid}/contents'.sub('{' + 'coluuid' + '}', coluuid.to_s)
 
       # query parameters
       query_params = opts[:query_params] || {}

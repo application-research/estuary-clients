@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UtilContentAddResponse model module.
  * @module model/UtilContentAddResponse
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class UtilContentAddResponse {
   /**

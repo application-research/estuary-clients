@@ -19,9 +19,9 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-23T18:54:24.309Z[GMT]")public abstract class CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public abstract class CollectionsApiService {
     public abstract Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,String contentid,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidDelete(String coluuid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidGet(String coluuid, String dir,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidPost(List<Integer> body,String coluuid, String dir,SecurityContext securityContext) throws NotFoundException;

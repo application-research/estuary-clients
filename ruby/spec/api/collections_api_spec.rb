@@ -48,7 +48,6 @@ describe 'CollectionsApi' do
   # This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
   # @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
   # @param coluuid Collection ID
-  # @param contentid Content ID
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'collections_coluuid_contents_delete test' do

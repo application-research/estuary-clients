@@ -33,7 +33,7 @@ class TestCollectionsController(BaseTestCase):
         """
         body = MainDeleteContentFromCollectionBody()
         response = self.client.open(
-            '/collections/{coluuid}/contents'.format(coluuid='coluuid_example', contentid='contentid_example'),
+            '/collections/{coluuid}/contents'.format(coluuid='coluuid_example'),
             method='DELETE',
             data=json.dumps(body),
             content_type='*/*')

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ContentAddBody model module.
  * @module model/ContentAddBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class ContentAddBody {
   /**

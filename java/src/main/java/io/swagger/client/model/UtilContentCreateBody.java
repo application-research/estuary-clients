@@ -25,7 +25,7 @@ import java.io.IOException;
  * UtilContentCreateBody
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-23T18:54:20.865Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-29T10:27:00.219Z[GMT]")
 public class UtilContentCreateBody {
   @SerializedName("coluuid")
   private String coluuid = null;

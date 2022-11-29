@@ -37,7 +37,7 @@
 PinningApi <- R6::R6Class(
   'PinningApi',
   public = list(
-    userAgent = "Swagger-Codegen/1.0.3/r",
+    userAgent = "Swagger-Codegen/1.0.6/r",
     apiClient = NULL,
     initialize = function(apiClient){
       if (!missing(apiClient)) {
@@ -125,7 +125,7 @@ PinningApi <- R6::R6Class(
       }
 
     }
-    pinning_pins_pinid_post = function(pinid, body, ...){
+    pinning_pins_pinid_post = function(body, pinid, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()

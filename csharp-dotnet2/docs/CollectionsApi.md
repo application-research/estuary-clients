@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionscoluuidcontentsdelete"></a>
 # **CollectionsColuuidContentsDelete**
-> string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid, string contentid)
+> string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid)
 
 Deletes a content from a collection
 
@@ -111,12 +111,11 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
             var coluuid = coluuid_example;  // string | Collection ID
-            var contentid = contentid_example;  // string | Content ID
 
             try
             {
                 // Deletes a content from a collection
-                string result = apiInstance.CollectionsColuuidContentsDelete(body, coluuid, contentid);
+                string result = apiInstance.CollectionsColuuidContentsDelete(body, coluuid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -134,7 +133,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **string**| Collection ID | 
- **contentid** | **string**| Content ID | 
 
 ### Return type
 

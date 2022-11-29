@@ -43,7 +43,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      *
      */
-    public String collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid, String contentid) {
+    public String collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid) {
         // TODO: Implement...
         
         return null;

@@ -68,8 +68,8 @@ class PinningApi(
           
             formFields() { () =>
               
-                entity(as[String]){ body =>
-                  pinningService.pinningPinsPinidPost(pinid = pinid, body = body)
+                entity(as[Types.IpfsPin]){ body =>
+                  pinningService.pinningPinsPinidPost(body = body, pinid = pinid)
                 }
              
             }
@@ -146,7 +146,7 @@ trait PinningApiService {
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def pinningPinsPinidPost(pinid: String, body: String)
+  def pinningPinsPinidPost(body: Types.IpfsPin, pinid: String)
       (implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def pinningPinsPost202(responsetypes.IpfsPinStatusResponse: types.IpfsPinStatusResponse)(implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]): Route =
@@ -164,8 +164,6 @@ trait PinningApiService {
 
 trait PinningApiMarshaller {
   implicit def fromRequestUnmarshallerTypes.IpfsPin: FromRequestUnmarshaller[Types.IpfsPin]
-
-  implicit def fromRequestUnmarshallerString: FromRequestUnmarshaller[String]
 
 
   implicit def toEntityMarshallertypes.IpfsListPinStatusResponse: ToEntityMarshaller[types.IpfsListPinStatusResponse]

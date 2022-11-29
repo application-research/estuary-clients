@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_contents_delete**
-> str collections_coluuid_contents_delete(body, coluuid, contentid)
+> str collections_coluuid_contents_delete(body, coluuid)
 
 Deletes a content from a collection
 
@@ -92,11 +92,10 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
 body = estuary_client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # str | Collection ID
-contentid = 'contentid_example' # str | Content ID
 
 try:
     # Deletes a content from a collection
-    api_response = api_instance.collections_coluuid_contents_delete(body, coluuid, contentid)
+    api_response = api_instance.collections_coluuid_contents_delete(body, coluuid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_contents_delete: %s\n" % e)
@@ -108,7 +107,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **str**| Collection ID | 
- **contentid** | **str**| Content ID | 
 
 ### Return type
 

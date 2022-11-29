@@ -194,20 +194,23 @@ export class PinningService {
     /**
      * Replace a pinned object
      * This endpoint replaces a pinned object.
-     * @param pinid Pin ID
-     * @param body Meta information of new pin
+     * @param body New pin
+     * @param pinid Pin ID to be replaced
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidPost(pinid: string, body?: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
-    public pinningPinsPinidPost(pinid: string, body?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPinidPost(pinid: string, body?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPinidPost(pinid: string, body?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
+    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling pinningPinsPinidPost.');
+        }
 
         if (pinid === null || pinid === undefined) {
             throw new Error('Required parameter pinid was null or undefined when calling pinningPinsPinidPost.');
         }
-
 
         let headers = this.defaultHeaders;
 

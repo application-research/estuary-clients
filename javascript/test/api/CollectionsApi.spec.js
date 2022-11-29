@@ -60,7 +60,7 @@
           // TODO: uncomment, update parameter values for collectionsColuuidContentsDelete call and complete the assertions
           /*
 
-          instance.collectionsColuuidContentsDelete(body, coluuid, contentid, function(error, data, response) {
+          instance.collectionsColuuidContentsDelete(body, coluuid, function(error, data, response) {
             if (error) {
               done(error);
               return;

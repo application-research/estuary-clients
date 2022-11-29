@@ -124,8 +124,8 @@ namespace estuary-client.Controllers
         /// Replace a pinned object
         /// </summary>
         /// <remarks>This endpoint replaces a pinned object.</remarks>
-        /// <param name="pinid">Pin ID</param>
-        /// <param name="body">Meta information of new pin</param>
+        /// <param name="body">New pin</param>
+        /// <param name="pinid">Pin ID to be replaced</param>
         /// <response code="202">Accepted</response>
         /// <response code="404">Not Found</response>
         /// <response code="500">Internal Server Error</response>
@@ -137,7 +137,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PinningPinsPinidPost([FromRoute][Required]string pinid, [FromBody]string body)
+        public virtual IActionResult PinningPinsPinidPost([FromBody]TypesIpfsPin body, [FromRoute][Required]string pinid)
         { 
             //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(202, default(TypesIpfsPinStatusResponse));

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MainEstimateDealBody model module.
  * @module model/MainEstimateDealBody
- * @version 1.0.3
+ * @version 1.0.6
  */
 export class MainEstimateDealBody {
   /**
